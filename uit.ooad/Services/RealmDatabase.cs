@@ -2,6 +2,7 @@
 using System;
 using System.IO;
 using uit.ooad.Interfaces;
+using uit.ooad.Models;
 
 namespace uit.ooad.Services
 {
@@ -19,6 +20,7 @@ namespace uit.ooad.Services
             {
                 ShouldDeleteIfMigrationNeeded = true,
             };
+            Config.ObjectClasses = new[] { typeof(Example) };
         }
 
         public RealmDatabase() => Database = Realm.GetInstance(Config);
