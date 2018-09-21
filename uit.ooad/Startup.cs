@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using Realms;
+using System;
+using System.IO;
 using System.Text;
 
 namespace uit.ooad
@@ -38,6 +41,19 @@ namespace uit.ooad
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JWT:key"]))
                     };
                 });
+
+            string folder = Path.Combine(
+                Environment.CurrentDirectory,
+                Configuration["DatabaseFolder"]
+            );
+            System.IO.Directory.CreateDirectory(folder);
+
+            RealmConfiguration config = new RealmConfiguration(Path.Combine(folder, Configuration["DatabaseFile"]))
+            {
+                ShouldDeleteIfMigrationNeeded = true,
+            };
+
+            Realm realm = Realm.GetInstance(config);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
