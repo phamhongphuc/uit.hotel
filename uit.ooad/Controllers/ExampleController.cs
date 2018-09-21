@@ -16,6 +16,7 @@ namespace uit.ooad.Controllers
         }
 
         // api/example/{id}
+        [Authorize]
         [HttpGet("{id:int}")]
         public ActionResult<string> GetApiExampleId(int id)
         {
