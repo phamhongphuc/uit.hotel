@@ -30,7 +30,7 @@ namespace uit.ooad.Controllers
                     Value = "value"
                 });
             });
-            return "Hello World " + Realm.All<Example>().ToString();
+            return "Hello World" + Realm.All<Example>().ToString();
         }
 
         // api/example/{id}
