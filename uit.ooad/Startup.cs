@@ -6,8 +6,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using uit.ooad.Interfaces;
-using uit.ooad.Services;
 
 namespace uit.ooad
 {
@@ -40,7 +38,6 @@ namespace uit.ooad
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JWT:key"]))
                     };
                 });
-            services.AddTransient<IRealmDatabase, RealmDatabase>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,6 +54,7 @@ namespace uit.ooad
                 .AllowAnyHeader()
                 .AllowCredentials()
             );
+            app.UseAuthentication();
             app.UseMvc();
         }
     }

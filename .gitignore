@@ -262,3 +262,6 @@ __pycache__/
 
 # Database
 /uit.ooad/Database/
+
+# Tool
+/Tools
