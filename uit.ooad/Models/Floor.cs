@@ -1,5 +1,4 @@
 ﻿using Realms;
-using System.Linq;
 
 namespace uit.ooad.Models
 {

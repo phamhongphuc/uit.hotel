@@ -1,10 +1,10 @@
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using Microsoft.IdentityModel.Tokens;
 using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 
 namespace uit.ooad.Controllers
 {
@@ -14,10 +14,7 @@ namespace uit.ooad.Controllers
     {
         private readonly IConfiguration Configuration;
 
-        public AuthController(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
+        public AuthController(IConfiguration configuration) => Configuration = configuration;
 
         [HttpPost]
         public IActionResult PostApiAuth(string username = "admin", string password = "admin")
@@ -37,16 +34,17 @@ namespace uit.ooad.Controllers
 
         private string TokenBuilder(string username)
         {
-            SymmetricSecurityKey key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JWT:key"]));
-            SigningCredentials credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JWT:key"]));
+            var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
-            JwtSecurityToken token = new JwtSecurityToken(
-                issuer: Configuration["JWT:issuer"],
-                audience: Configuration["JWT:audience"],
+            var token = new JwtSecurityToken(
+                Configuration["JWT:issuer"],
+                Configuration["JWT:audience"],
                 signingCredentials: credentials,
                 expires: DateTime.Now.AddDays(3),
-                claims: new[] {
-                    new Claim(ClaimTypes.Name, username),
+                claims: new[]
+                {
+                    new Claim(ClaimTypes.Name, username)
                 }
             );
 

@@ -1,6 +1,6 @@
-﻿using Realms;
-using System;
+﻿using System;
 using System.IO;
+using Realms;
 using uit.ooad.Models;
 
 namespace uit.ooad.DataAccesses
@@ -8,7 +8,7 @@ namespace uit.ooad.DataAccesses
     public class RealmDatabase
     {
         private static readonly RealmConfiguration Config;
-        protected static Realm Database => Realm.GetInstance(Config);
+
         static RealmDatabase()
         {
             var folder = Path.Combine(Environment.CurrentDirectory, "Database");
@@ -18,10 +18,13 @@ namespace uit.ooad.DataAccesses
             Config = new RealmConfiguration(file)
             {
                 ShouldDeleteIfMigrationNeeded = true,
-                ObjectClasses = new[] {
-                    typeof(Floor),
+                ObjectClasses = new[]
+                {
+                    typeof(Floor)
                 }
             };
         }
+
+        protected static Realm Database => Realm.GetInstance(Config);
     }
 }
