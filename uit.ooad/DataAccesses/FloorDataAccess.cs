@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using uit.ooad.Models;
 
 namespace uit.ooad.DataAccesses
@@ -10,5 +11,9 @@ namespace uit.ooad.DataAccesses
             await Database.WriteAsync(realm => floor = realm.Add(floor));
             return floor;
         }
+
+        public static Floor Get(int floorId) => Database.Find<Floor>(floorId);
+
+        public static IEnumerable<Floor> Get() => Database.All<Floor>();
     }
 }
