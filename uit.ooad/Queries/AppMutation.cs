@@ -11,10 +11,10 @@ namespace uit.ooad.Queries
         {
             Field<FloorType>(
                 "floor",
-                "Return a floor",
+                "Tạo và trả về một tầng mới",
                 new QueryArguments(
-                    new QueryArgument<NonNullGraphType<StringGraphType>> {Name = "name"},
-                    new QueryArgument<NonNullGraphType<IntGraphType>> {Name = "id"}
+                    new QueryArgument<NonNullGraphType<StringGraphType>> { Name = "name" },
+                    new QueryArgument<NonNullGraphType<IntGraphType>> { Name = "id" }
                 ),
                 context => FloorBusiness.Add(new Floor
                 {

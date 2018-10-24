@@ -47,7 +47,7 @@ namespace uit.ooad.Controllers
                 Query = parameter.Query,
                 Inputs = parameter.Variables.ToInputs(),
                 OperationName = parameter.OperationName,
-                UserContext = new GraphQLUserContext {User = User},
+                UserContext = new GraphQLUserContext { User = User },
                 ValidationRules = DocumentValidator.CoreRules().Concat(_validationRules).ToList()
             };
             executionOptions.Listeners.Add(_listener);

@@ -23,7 +23,7 @@ namespace uit.ooad.Queries
                 "floor",
                 "Trả về thông tin một tầng",
                 new QueryArguments(
-                    new QueryArgument<IdGraphType> {Name = "id"}
+                    new QueryArgument<IdGraphType> { Name = "id" }
                 ),
                 context => FloorBusiness.Get(context.GetArgument<int>("id"))
             );

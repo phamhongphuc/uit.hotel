@@ -1,4 +1,6 @@
-﻿using GraphQL;
+﻿using System.Security.Claims;
+using System.Text;
+using GraphQL;
 using GraphQL.Authorization;
 using GraphQL.DataLoader;
 using GraphQL.Http;
@@ -13,8 +15,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.IdentityModel.Tokens;
-using System.Security.Claims;
-using System.Text;
 using uit.ooad.ObjectTypes;
 using uit.ooad.Queries;
 using uit.ooad.Schemas;
