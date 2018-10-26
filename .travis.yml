@@ -5,11 +5,24 @@ stages:
 dotnet: 2.1.402
 node_js: 8.11.2
 
+before_install:
+    - brew update && brew install git-lfs
+    - git lfs install
 before_script:
     - git lfs pull
 
 jobs:
     include:
+        # Front-end
+        - stage: Front-end
+          language: node_js
+          cache:
+              directories: node_modules
+          script:
+              - cd uit.ooad.client
+              - yarn build
+
+        # Back-end
         - stage: Back-end
           language: csharp
           mono: none
@@ -22,11 +35,3 @@ jobs:
           os: osx
           osx_image: xcode9.4
           script: ./.travis/back-end.sh
-
-        - stage: Front-end
-          language: node_js
-          cache:
-              directories: node_modules
-          script:
-              - cd uit.ooad.client
-              - yarn build
