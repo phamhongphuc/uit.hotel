@@ -15,11 +15,13 @@ jobs:
           node_js: 8.11.2
           script:
               - cd uit.ooad.client
+              - yarn
               - yarn lint
         - language: node_js
           node_js: 8.11.2
           script:
               - cd uit.ooad.client
+              - yarn
               - yarn build
 
         # Back-end
