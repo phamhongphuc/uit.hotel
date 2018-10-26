@@ -14,7 +14,7 @@ jobs:
           language: csharp
           mono: none
           os: linux
-          script: ./travis/backend
+          script: ./travis/backend.sh
 
         - stage: Back-end
           language: csharp
@@ -24,7 +24,7 @@ jobs:
               - xcode7.2
               - xcode9.4
               - xcode10
-          script: ./travis/backend
+          script: ./travis/backend.sh
 
         - stage: Front-end
           language: node_js
