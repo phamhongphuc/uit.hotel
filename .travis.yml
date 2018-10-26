@@ -5,12 +5,6 @@ stages:
 dotnet: 2.1.402
 node_js: 8.11.2
 
-before_install:
-    - brew update && brew install git-lfs
-    - git lfs install
-before_script:
-    - git lfs pull
-
 jobs:
     include:
         # Front-end
