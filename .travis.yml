@@ -5,6 +5,11 @@ stages:
 dotnet: 2.1.402
 node_js: 8.11.2
 
+osx_image:
+    - xcode7.2
+    - xcode9.4
+    - xcode10
+
 jobs:
     include:
         # Front-end
@@ -27,8 +32,5 @@ jobs:
           language: csharp
           mono: none
           os: osx
-          osx_image:
-              - xcode7.2
-              - xcode9.4
-              - xcode10
+          osx_image: xcode7.2
           script: ./.travis/back-end.sh
