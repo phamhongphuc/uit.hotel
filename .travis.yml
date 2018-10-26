@@ -2,21 +2,34 @@ stages:
     - Front-end
     - Back-end
 
-mono: none
 dotnet: 2.1.402
+node_js: 8.11.2
+
+before_script:
+    - git lfs pull
 
 jobs:
     include:
         - stage: Back-end
           language: csharp
+          mono: none
           os: linux
           script: ./travis/backend
 
         - stage: Back-end
           language: csharp
+          mono: none
           os: osx
           osx_image:
               - xcode7.2
               - xcode9.4
               - xcode10
           script: ./travis/backend
+
+        - stage: Front-end
+          language: node_js
+          cache:
+              directories: node_modules
+          script:
+              - cd uit.ooad.client
+              - yarn build
