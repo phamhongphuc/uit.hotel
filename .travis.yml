@@ -1,0 +1,56 @@
+stages:
+    - Front-end
+    - Back-end
+
+dotnet: 2.1.402
+
+cache:
+    directories: uit.ooad.client\node_modules
+
+jobs:
+    include:
+        # Front-end
+        - stage: Front-end
+          language: node_js
+          node_js: 8.11.2
+          env: ❤ = Lint
+          script:
+              - cd uit.ooad.client
+              - yarn
+              - yarn lint
+        - language: node_js
+          node_js: 8.11.2
+          env: ❤ = Test
+          script:
+              - cd uit.ooad.client
+              - yarn
+              - yarn test
+        - language: node_js
+          node_js: 8.11.2
+          env: ❤ = Build
+          script:
+              - cd uit.ooad.client
+              - yarn
+              - yarn build
+
+        # Back-end
+        - stage: Back-end
+          language: csharp
+          os: linux
+          mono: none
+          script: ./.travis/back-end.sh
+        - language: csharp
+          os: osx
+          mono: none
+          osx_image: xcode7.2
+          script: ./.travis/back-end.sh
+        - language: csharp
+          os: osx
+          mono: none
+          osx_image: xcode9.4
+          script: ./.travis/back-end.sh
+        - language: csharp
+          os: osx
+          mono: none
+          osx_image: xcode10
+          script: ./.travis/back-end.sh

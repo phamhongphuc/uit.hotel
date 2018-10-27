@@ -259,3 +259,15 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+
+# Database
+/uit.ooad/Database/
+
+# Tool
+/Tools
+
+# Test
+
+coverage
+
+.nyc_output
