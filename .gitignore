@@ -265,3 +265,9 @@ __pycache__/
 
 # Tool
 /Tools
+
+# Test
+
+coverage
+
+.nyc_output
