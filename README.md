@@ -60,18 +60,10 @@ $ yarn start
 This project exists thanks to all the people who contribute.
 
 <p>
-  <a href="https://github.com/phamhongphuc">
-    <img src="https://github.com/phamhongphuc.png?size=40" alt="phamhongphuc">
-  </a>
-  <a href="https://github.com/thaotram">
-    <img src="https://github.com/thaotram.png?size=40" alt="thaotram">
-  </a>
-  <a href="https://github.com/Fijetso">
-    <img src="https://github.com/Fijetso.png?size=40" alt="Fijetso">
-  </a>
-  <a href="https://github.com/nhutkhanhng">
-    <img src="https://github.com/nhutkhanhng.png?size=40" alt="nhutkhanhng">
-  </a>
+  <a href="https://github.com/phamhongphuc"><img src="https://github.com/phamhongphuc.png?size=40" alt="phamhongphuc"></a>
+  <a href="https://github.com/thaotram"><img src="https://github.com/thaotram.png?size=40" alt="thaotram"></a>
+  <a href="https://github.com/Fijetso"><img src="https://github.com/Fijetso.png?size=40" alt="Fijetso"></a>
+  <a href="https://github.com/nhutkhanhng"><img src="https://github.com/nhutkhanhng.png?size=40" alt="nhutkhanhng"></a>
 </p>
 
 ## License
