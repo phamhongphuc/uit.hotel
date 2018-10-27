@@ -13,12 +13,21 @@ jobs:
         - stage: Front-end
           language: node_js
           node_js: 8.11.2
+          env: ❤ = Lint
           script:
               - cd uit.ooad.client
               - yarn
               - yarn lint
         - language: node_js
           node_js: 8.11.2
+          env: ❤ = Test
+          script:
+              - cd uit.ooad.client
+              - yarn
+              - yarn test
+        - language: node_js
+          node_js: 8.11.2
+          env: ❤ = Build
           script:
               - cd uit.ooad.client
               - yarn
