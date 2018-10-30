@@ -22,7 +22,7 @@ module.exports = {
             experimentalObjectRestSpread: true,
         },
     },
-    plugins: ['vue', 'import', 'node'],
+    plugins: ['vue', 'import', 'node', 'graphql'],
     settings: {
         'import/resolver': {
             'babel-plugin-root-import': {
@@ -91,5 +91,7 @@ module.exports = {
                 },
             },
         ],
+        'graphql/template-strings': ['error', { validators: 'all', env: 'apollo' }],
+        'graphql/named-operations': ['warn'],
     },
 };
