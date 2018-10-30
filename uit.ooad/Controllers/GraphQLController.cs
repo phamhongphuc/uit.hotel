@@ -14,7 +14,6 @@ using uit.ooad.GraphQL;
 namespace uit.ooad.Controllers
 {
     [Route("api/[controller]")]
-    [Authorize]
     [ApiController]
     public class GraphQLController : ControllerBase
     {
