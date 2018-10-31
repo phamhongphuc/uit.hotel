@@ -7,6 +7,9 @@
         "**/.DS_Store": true,
         "**/.vscode": true,
         "**/.nuxt": true,
+        "**/.nyc_output": true,
+        "**/coverage": true,
+        "**/dist": true,
         "**/node_modules": true
     },
     "eslint.enable": true,
@@ -23,5 +26,6 @@
     ],
     "editor.tabSize": 4,
     "editor.insertSpaces": true,
-    "editor.detectIndentation": false
+    "editor.detectIndentation": false,
+    "mocha.requires": ["ts-node/register"]
 }
