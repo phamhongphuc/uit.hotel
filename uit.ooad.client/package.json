@@ -11,7 +11,7 @@
         "start": "nuxt start",
         "heroku-postbuild": "yarn build",
         "precommit": "yarn lint",
-        "gql": "gql get-schema",
+        "gql": "bash ./graphql/fetch.sh",
         "lint": "eslint --ext .js,.vue,.gql,.graphql --ignore-path .gitignore .",
         "lint:fix": "eslint --ext .js,.vue --ignore-path .gitignore . --fix",
         "prettier:fix": "prettier --write api/** components/** layouts/** pages/** plugins/** !**/node_modules/** !./node_modules/**",
