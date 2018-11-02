@@ -1,4 +1,5 @@
-﻿using Realms;
+﻿using System.Linq;
+using Realms;
 
 namespace uit.ooad.Models
 {
@@ -7,5 +8,8 @@ namespace uit.ooad.Models
         [PrimaryKey]
         public int Id { get; set; }
         public string Name { get; set; }
+
+        [Backlink(nameof(Room.Floor))]
+        public IQueryable<Room> Rooms { get; }
     }
 }
