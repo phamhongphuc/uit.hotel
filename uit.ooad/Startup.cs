@@ -58,6 +58,7 @@ namespace uit.ooad
 
             services.AddSingleton<FloorType>();
             services.AddSingleton<EmployeeType>();
+            services.AddSingleton<RoomType>();
 
             services.AddSingleton<ISchema, AppSchema>();
 
