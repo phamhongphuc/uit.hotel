@@ -20,7 +20,24 @@ namespace uit.ooad.Queries
                 {
                     Id = context.GetArgument<int>("id"),
                     Name = context.GetArgument<string>("name")
-                }));
+                })
+            );
+
+            Field<EmployeeType>(
+                "createEmployee",
+                "Tạo và trả về một nhân viên mới",
+                new QueryArguments(
+                    new QueryArgument<NonNullGraphType<StringGraphType>> { Name = "name" },
+                    new QueryArgument<NonNullGraphType<StringGraphType>> { Name = "id" },
+                    new QueryArgument<NonNullGraphType<StringGraphType>> { Name = "password" }
+                ),
+                context => EmployeeBusiness.Add(new Employee
+                {
+                    Id = context.GetArgument<string>("id"),
+                    Name = context.GetArgument<string>("name"),
+                    Password = context.GetArgument<string>("password")
+                })
+            );
         }
     }
 }
