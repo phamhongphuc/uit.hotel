@@ -12,6 +12,7 @@ namespace uit.ooad.ObjectTypes
 
             Field(x => x.Id).Description("Id của tầng");
             Field(x => x.Name).Description("Tên tầng");
+            Field(x => x.Rooms).Description("Danh sách các phòng có trong tầng");
         }
     }
 }
