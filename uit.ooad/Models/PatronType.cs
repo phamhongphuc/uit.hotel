@@ -1,11 +1,13 @@
-﻿using Realms;
+using System;
+using Realms;
 
 namespace uit.ooad.Models
 {
-    public class Floor : RealmObject
+    public class PatronType : RealmObject
     {
         [PrimaryKey]
         public int Id { get; set; }
         public string Name { get; set; }
+        public string Description { get; set; }
     }
 }

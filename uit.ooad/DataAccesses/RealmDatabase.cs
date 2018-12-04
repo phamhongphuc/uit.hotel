@@ -20,11 +20,11 @@ namespace uit.ooad.DataAccesses
                 ShouldDeleteIfMigrationNeeded = true,
                 ObjectClasses = new[]
                 {
-                    typeof(Access),
+                    typeof(Position),
                     typeof(Employee),
                     typeof(Floor),
                     typeof(Room),
-                    typeof(RoomType),
+                    typeof(RoomType)
                 }
             };
         }

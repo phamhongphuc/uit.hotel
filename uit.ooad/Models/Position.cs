@@ -2,10 +2,11 @@
 
 namespace uit.ooad.Models
 {
-    public class Floor : RealmObject
+    public class Position : RealmObject
     {
         [PrimaryKey]
         public int Id { get; set; }
         public string Name { get; set; }
+        public bool PermissionCreateAccount { get; set; }
     }
 }

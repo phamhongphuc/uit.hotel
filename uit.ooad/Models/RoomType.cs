@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using Realms;
+﻿using Realms;
 
 namespace uit.ooad.Models
 {
@@ -9,10 +8,5 @@ namespace uit.ooad.Models
         public string Id { get; set; }
         public string Name { get; set; }
         public int NumberOfBeds { get; set; }
-        public int AmountOfPeople { get; set; }
-        public int PriceByDate { get; set; }
-
-        [Backlink(nameof(Room.RoomType))]
-        public IQueryable<Room> Rooms { get; }
     }
 }
