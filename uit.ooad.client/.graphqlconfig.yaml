@@ -1,8 +1,0 @@
-projects:
-    app:
-        schemaPath: graphql/schema.json
-        extensions:
-            endpoints:
-                dev:
-                    url: 'http://localhost:3000/api/graphql'
-                    subscription: 'https://uit-ooad.herokuapp.com/api/graphql'
