@@ -23,6 +23,8 @@ namespace uit.ooad.Models
         public bool EffectiveOnFriday { get; set; }
         public bool EffectiveOnSaturday { get; set; }
         public bool EffectiveOnSunday { get; set; }
+        public DateTimeOffset CreateDate { get; set; }
+
         public RoomType RoomType { get; set; }
     }
 }

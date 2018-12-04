@@ -14,6 +14,7 @@ namespace uit.ooad.Models
         public long LateCheckOutFee { get; set; }
         public long EarlyCheckInFee { get; set; }
         public DateTimeOffset EffectiveStartDate { get; set; }
+        public DateTimeOffset CreateDate { get; set; }
         public RoomType RoomType { get; set; }
     }
 }

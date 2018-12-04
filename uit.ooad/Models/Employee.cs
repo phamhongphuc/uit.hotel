@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Realms;
 
 namespace uit.ooad.Models
@@ -14,5 +15,17 @@ namespace uit.ooad.Models
         public DateTimeOffset Birthdate { get; set; }
         public DateTimeOffset StartingDate { get; set; }
         public Position Position { get; set; }
+
+        [Backlink(nameof(Bill.Employee))]
+        public IQueryable<Bill> Bills { get; }
+
+        [Backlink(nameof(Receipt.Employee))]
+        public IQueryable<Receipt> Receipts { get; }
+
+        [Backlink(nameof(HouseKeeping.Employee))]
+        public IQueryable<HouseKeeping> HouseKeepings { get; }
+
+        [Backlink(nameof(Booking.Employee))]
+        public IQueryable<Booking> Bookings { get; }
     }
 }
