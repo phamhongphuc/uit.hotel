@@ -8,9 +8,9 @@ module.exports = {
     extends: [
         'eslint:recommended',
         'plugin:vue/recommended',
+        'plugin:node/recommended',
         'plugin:import/errors',
         'plugin:import/warnings',
-        'plugin:node/recommended',
     ],
     parser: 'vue-eslint-parser',
     parserOptions: {
