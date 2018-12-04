@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import { filename, itname } from './utils/utils';
+import { filename, itname } from '../utils/utils';
 
 describe(filename(__filename), function() {
     it(itname('.tên_hàm()', 'Làm gì đó'), async function() {
