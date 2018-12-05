@@ -23,5 +23,8 @@ namespace uit.ooad.Models
 
         [Backlink(nameof(Bill.Patron))]
         public IQueryable<Bill> Bills { get; }
+
+        [Backlink(nameof(Booking.Patrons))]
+        public IQueryable<Booking> Bookings { get; }
     }
 }
