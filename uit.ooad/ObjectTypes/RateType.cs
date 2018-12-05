@@ -19,7 +19,7 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.EarlyCheckInFee).Description("Phí check-out sớm");
             Field(x => x.EffectiveStartDate).Description("Ngày giá bắt đầu có hiệu lực");
             Field(x => x.CreateDate).Description("Ngày tạo giá");
-            // Field(x => x.RoomKind).Description("Thuộc loại phòng");
+            Field(x => x.RoomKind).Description("Thuộc loại phòng");
         }
     }
 }
