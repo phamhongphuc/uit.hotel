@@ -8,7 +8,7 @@ namespace uit.ooad.ObjectTypes
     {
         public FloorType()
         {
-            Name = "Floor";
+            Name = nameof(Floor);
             Description = "Một tầng trong khách sạn";
 
             Field(x => x.Id).Description("Id của tầng");

@@ -7,7 +7,7 @@ namespace uit.ooad.ObjectTypes
     {
         public RateType()
         {
-            Name = "Rate";
+            Name = nameof(Rate);
             Description = "Giá cố định của một loại phòng";
 
             Field(x => x.Id).Description("Id của giá");
@@ -19,7 +19,8 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.EarlyCheckInFee).Description("Phí check-out sớm");
             Field(x => x.EffectiveStartDate).Description("Ngày giá bắt đầu có hiệu lực");
             Field(x => x.CreateDate).Description("Ngày tạo giá");
-            // Field(x => x.RoomKind).Description("Thuộc loại phòng");
+
+            Field<RoomKindType>(nameof(Rate.RoomKind), resolve: context => context.Source.RoomKind, description: "Thuộc loại phòng");
         }
     }
 }

@@ -8,7 +8,7 @@ namespace uit.ooad.ObjectTypes
     {
         public PatronType()
         {
-            Name = "Patron";
+            Name = nameof(Patron);
             Description = "Thông tin  một khách hàng của khách sạn";
 
             Field(x => x.Identification).Description("Id của khách hàng");
@@ -22,14 +22,16 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.Residence).Description("Địa chỉ thường trú của khách hàng");
             Field(x => x.Company).Description("Công ty mà khách hàng đang làm việc");
             Field(x => x.Note).Description("Một số chú thích về khách hàng nếu cần thiết");
-            // Field(x => x.PatronKind).Description("Loại khách hàng");
+
+            Field<PatronKindType>(nameof(Patron.PatronKind), resolve: context => context.Source.PatronKind, description: "Loại khách hàng");
+
             Field<ListGraphType<BillType>>(
-                "Bills",
+                nameof(Patron.Bills),
                 resolve: context => context.Source.Bills.ToList(),
                 description: "Danh sách các số hóa đơn của khách hàng"
             );
             Field<ListGraphType<BookingType>>(
-                "Bookings",
+                nameof(Patron.Bookings),
                 resolve: context => context.Source.Bookings.ToList(),
                 description: "Danh sách các đơn đặt trước của khách hàng"
             );

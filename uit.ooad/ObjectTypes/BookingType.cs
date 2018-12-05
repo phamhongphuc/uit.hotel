@@ -8,29 +8,33 @@ namespace uit.ooad.ObjectTypes
     {
         public BookingType()
         {
-            Name = "Booking";
-            Description = "Một đơn đặt phòng trước của khách hàng";
+            Name = nameof(Booking);
+            Description = "Một thông tin thuê phòng của khách hàng";
 
-            Field(x => x.Id).Description("Id của đơn đặt phòng");
+            Field(x => x.Id).Description("Id của thông tin thuê phòng");
             Field(x => x.CheckInTime).Description("Thời điểm nhận phòng dự kiến của khách hàng");
             Field(x => x.CheckOutTime).Description("Thời điểm trả phòng dự kiến của khách hàng");
-            Field(x => x.CreateTime).Description("Thời điểm tạo đơn đặt phòng");
-            // Field(x => x.Status).Description("Trạng thái của đơn đặt phòng");
-            // Field(x => x.Employee).Description("Nhân viên thực hiện giao dịch nhận đặt phòng từ khách hàng");
-            // Field(x => x.Bill).Description("Thông tin hóa đơn của đơn đặt phòng");
-            // Field(x => x.Room).Description("Phòng khách hàng chọn đặt trước");
+            Field(x => x.CreateTime).Description("Thời điểm tạo thông tin thuê phòng");
+            Field(x => x.Status).Description("Trạng thái của thông tin thuê phòng");
+
+            Field<EmployeeType>(nameof(Booking.Employee), resolve: context => context.Source.Employee, description: "Nhân viên thực hiện giao dịch nhận đặt phòng từ khách hàng");
+            Field<BillType>(nameof(Booking.Bill), resolve: context => context.Source.Bill, description: "Thông tin hóa đơn của thông tin thuê phòng");
+            Field<RoomType>(nameof(Booking.Room), resolve: context => context.Source.Room, description: "Phòng khách hàng chọn đặt trước");
+
             Field<ListGraphType<PatronType>>(
-                "Patrons",
+                nameof(Booking.Patrons),
                 resolve: context => context.Source.Patrons.ToList(),
                 description: "Danh sách khách hàng yêu cầu đặt phòng"
             );
+
             Field<ListGraphType<HouseKeepingType>>(
-                "HouseKeepings",
+                nameof(Booking.HouseKeepings),
                 resolve: context => context.Source.HouseKeepings.ToList(),
                 description: "Danh sách nhân viên dọn phòng cho phòng đã đặt này"
             );
+
             Field<ListGraphType<ServicesDetailType>>(
-                "ServicesDetails",
+                nameof(Booking.ServicesDetails),
                 resolve: context => context.Source.ServicesDetails.ToList(),
                 description: "Danh sách chi tiết sử dụng dịch vụ của khách hàng"
             );
