@@ -15,11 +15,11 @@ namespace uit.ooad.Models
 
         [Backlink(nameof(Room.RoomKind))]
         public IQueryable<Room> Rooms { get; }
-        
+
         [Backlink(nameof(Rate.RoomKind))]
-        public IQueryable<Rate> Rates {get;}
+        public IQueryable<Rate> Rates { get; }
 
         [Backlink(nameof(VolatilityRate.RoomKind))]
-        public IQueryable<VolatilityRate> VolatilityRates {get;}
+        public IQueryable<VolatilityRate> VolatilityRates { get; }
     }
 }

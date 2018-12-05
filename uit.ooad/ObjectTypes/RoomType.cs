@@ -16,7 +16,8 @@ namespace uit.ooad.ObjectTypes
             // Field(x => x.Floor).Description("Phòng thuộc tầng nào");
             // Field(x => x.RoomKind).Description("Loại phòng của phòng");
 
-            Field<ListGraphType<BookingType>>("bookings", resolve: context => context.Source.Bookings.ToList(), description: "Danh sách thông tin thuê phòng");
+            Field<ListGraphType<BookingType>>("bookings", resolve: context => context.Source.Bookings.ToList(),
+                                              description: "Danh sách thông tin thuê phòng");
         }
     }
 }

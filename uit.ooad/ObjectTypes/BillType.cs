@@ -20,7 +20,7 @@ namespace uit.ooad.ObjectTypes
                 "Receipts",
                 resolve: context =>
                     context.Source.Receipts.ToList(),
-                    description: "Danh sách các biên nhận cho hóa đơn");
+                description: "Danh sách các biên nhận cho hóa đơn");
 
             Field<ListGraphType<BookingType>>(
                 "Bookings",

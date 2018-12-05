@@ -13,8 +13,8 @@ namespace uit.ooad.Models
         public Employee Employee { get; set; }
 
         [Backlink(nameof(Receipt.Bill))]
-        public IQueryable<Receipt> Receipts { get; }        
-        
+        public IQueryable<Receipt> Receipts { get; }
+
         [Backlink(nameof(Booking.Bill))]
         public IQueryable<Booking> Bookings { get; }
     }

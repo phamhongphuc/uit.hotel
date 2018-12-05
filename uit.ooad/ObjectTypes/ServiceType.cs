@@ -15,8 +15,10 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.Name).Description("Tên dịch vụ");
             Field(x => x.UnitRate).Description("Đơn giá");
             Field(x => x.Unit).Description("Đơn vị");
-            
-            Field<ListGraphType<ServicesDetailType>>("servicesDetails", resolve: context => context.Source.ServicesDetails.ToList(), description: "Danh sách chi tiết dịch vụ");
+
+            Field<ListGraphType<ServicesDetailType>>("servicesDetails",
+                                                     resolve: context => context.Source.ServicesDetails.ToList(),
+                                                     description: "Danh sách chi tiết dịch vụ");
         }
     }
 }
