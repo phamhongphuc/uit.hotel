@@ -19,7 +19,7 @@ namespace uit.ooad.Models
         public string Residence { get; set; }   // Thường trú
         public string Company { get; set; }
         public string Note { get; set; }
-        public PatronType PatronType { get; set; }
+        public PatronKind PatronKind { get; set; }
 
         [Backlink(nameof(Bill.Patron))]
         public IQueryable<Bill> Bills { get; }

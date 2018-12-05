@@ -26,7 +26,7 @@ namespace uit.ooad.DataAccesses
                     typeof(Floor),
                     typeof(HouseKeeping),
                     typeof(Patron),
-                    typeof(PatronType),
+                    typeof(PatronKind),
                     typeof(Position),
                     typeof(Rate),
                     typeof(Receipt),
