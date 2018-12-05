@@ -14,7 +14,7 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.Id).Description("Id của tầng");
             Field(x => x.Name).Description("Tên tầng");
             Field<ListGraphType<RoomType>>(
-                "Rooms",
+                nameof(Floor.Rooms),
                 resolve: context => context.Source.Rooms.ToList(),
                 description: "Danh sách các phòng có trong tầng"
             );

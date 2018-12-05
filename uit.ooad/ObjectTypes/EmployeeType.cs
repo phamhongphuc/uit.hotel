@@ -18,7 +18,7 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.Address).Description("Địa chỉ của nhân viên");
             Field(x => x.Birthdate).Description("Ngày sinh của nhân viên");
             Field(x => x.StartingDate).Description("Ngày vào làm");
-            Field(x => x.Position).Description("Chức vự");
+            // Field(x => x.Position).Description("Chức vự");
             Field<ListGraphType<BillType>>(
                 "Bills",
                 resolve: context => context.Source.Bills.ToList(),

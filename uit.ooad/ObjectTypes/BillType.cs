@@ -8,13 +8,14 @@ namespace uit.ooad.ObjectTypes
     {
         public BillType()
         {
-            Name = "Bill";
+            Name = nameof(Bill);
             Description = "Một phiếu hóa đơn của khách hàng";
 
             Field(x => x.Id).Description("Id của hóa đơn");
             Field(x => x.Time).Description("Thời điểm in hóa đơn");
-            Field(x => x.Patron).Description("Thông tin khách hàng thanh toán hóa đơn");
-            Field(x => x.Employee).Description("Thông tin nhân viên nhận thanh toán hóa đơn");
+            Field<PatronType>(nameof(Bill.Patron), resolve: context => context.Source.Patron);
+            // Field(x => x.Patron).Description("Thông tin khách hàng thanh toán hóa đơn");
+            // Field(x => x.Employee).Description("Thông tin nhân viên nhận thanh toán hóa đơn");
             Field<ListGraphType<ReceiptType>>(
                 "Receipts",
                 resolve: context =>
