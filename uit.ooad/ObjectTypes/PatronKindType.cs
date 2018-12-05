@@ -8,14 +8,15 @@ namespace uit.ooad.ObjectTypes
     {
         public PatronKindType()
         {
-            Name = "PatronKind";
+            Name = nameof(PatronKind);
             Description = "Thông tin  một loại khách hàng";
 
             Field(x => x.Id).Description("Id của loại khách hàng");
             Field(x => x.Name).Description("Tên loại khách hàng");
             Field(x => x.Description).Description("Thông tin mô tả loại khách hàng");
+            
             Field<ListGraphType<PatronType>>(
-                "Patrons",
+                nameof(PatronKind.Patrons),
                 resolve: context => context.Source.Patrons.ToList(),
                 description: "Danh sách các khách hàng thuộc loại khách hàng"
             );

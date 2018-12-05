@@ -8,7 +8,7 @@ namespace uit.ooad.ObjectTypes
     {
         public EmployeeType()
         {
-            Name = "Employee";
+            Name = nameof(Employee);
             Description = "Một nhân viên trong khách sạn";
 
             Field(x => x.Id).Description("Id của nhân viên");
@@ -18,24 +18,29 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.Address).Description("Địa chỉ của nhân viên");
             Field(x => x.Birthdate).Description("Ngày sinh của nhân viên");
             Field(x => x.StartingDate).Description("Ngày vào làm");
-            Field(x => x.Position).Description("Chức vự");
+
+            Field<PositionType>(nameof(Employee.Position), resolve: context => context.Source.Position, description: "Chức vụ");
+
             Field<ListGraphType<BillType>>(
-                "Bills",
+                nameof(Employee.Bills),
                 resolve: context => context.Source.Bills.ToList(),
                 description: "Danh sách các Hóa đơn mà nhân viên tạo"
             );
+
             Field<ListGraphType<ReceiptType>>(
-                "Receipts",
+                nameof(Employee.Receipts),
                 resolve: context => context.Source.Receipts.ToList(),
                 description: "Danh sách các Phiếu thu mà nhân viên tạo"
             );
+
             Field<ListGraphType<HouseKeepingType>>(
-                "HouseKeepings",
+                nameof(Employee.HouseKeepings),
                 resolve: context => context.Source.HouseKeepings.ToList(),
                 description: "Danh sách các Phòng mà nhân viên dọn"
             );
+
             Field<ListGraphType<BookingType>>(
-                "Bookings",
+                nameof(Employee.Bookings),
                 resolve: context => context.Source.Bookings.ToList(),
                 description: "Danh sách các Thông tin thuê phòng mà nhân viên tạo"
             );

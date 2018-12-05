@@ -7,7 +7,7 @@ namespace uit.ooad.ObjectTypes
     {
         public VolatilityRateType()
         {
-            Name = "VolatilityRate";
+            Name = nameof(VolatilityRate);
             Description = "Giá biến động của một loại phòng";
 
             Field(x => x.Id).Description("Id của giá");
@@ -27,7 +27,8 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.EffectiveOnSaturday).Description("Giá có hiệu lực vào ngày Thứ 7");
             Field(x => x.EffectiveOnSunday).Description("Giá có hiệu lực vào ngày Chủ Nhật");
             Field(x => x.CreateDate).Description("Ngày tạo giá");
-            Field(x => x.RoomKind).Description("Thuộc loại phòng");
+
+            Field<RoomKindType>(nameof(VolatilityRate.RoomKind), resolve: context => context.Source.RoomKind, description: "Thuộc loại phòng");
         }
     }
 }

@@ -33,6 +33,7 @@ namespace uit.ooad.DataAccesses
                     typeof(Room),
                     typeof(RoomKind),
                     typeof(Service),
+                    typeof(ServicesDetail),
                     typeof(VolatilityRate)
                 }
             };
