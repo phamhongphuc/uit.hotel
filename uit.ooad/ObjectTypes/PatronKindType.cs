@@ -1,3 +1,4 @@
+using System.Linq;
 using GraphQL.Types;
 using uit.ooad.Models;
 
@@ -13,7 +14,11 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.Id).Description("Id của loại khách hàng");
             Field(x => x.Name).Description("Tên loại khách hàng");
             Field(x => x.Description).Description("Thông tin mô tả loại khách hàng");
-            // Field(x => x.Patrons).Description("Danh sách các khách hàng thuộc loại khách hàng");
+            Field<ListGraphType<PatronType>>(
+                "Patrons",
+                resolve: context => context.Source.Patrons.ToList(),
+                description: "Danh sách các khách hàng thuộc loại khách hàng"
+            );
         }
     }
 }

@@ -1,3 +1,4 @@
+using System.Linq;
 using GraphQL.Types;
 using uit.ooad.Models;
 
@@ -22,8 +23,16 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.Company).Description("Công ty mà khách hàng đang làm việc");
             Field(x => x.Note).Description("Một số chú thích về khách hàng nếu cần thiết");
             Field(x => x.PatronKind).Description("Loại khách hàng");
-            // Field(x => x.Bills).Description("Danh sách các số hóa đơn của khách hàng");
-            // Field(x => x.Bookings).Description("Danh sách các đơn đặt trước của khách hàng");
+            Field<ListGraphType<BillType>>(
+                "Bills",
+                resolve: context => context.Source.Bills.ToList(),
+                description: "Danh sách các số hóa đơn của khách hàng"
+            );
+            Field<ListGraphType<BookingType>>(
+                "Bookings",
+                resolve: context => context.Source.Bookings.ToList(),
+                description: "Danh sách các đơn đặt trước của khách hàng"
+            );
         }
     }
 }
