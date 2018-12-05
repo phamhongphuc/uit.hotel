@@ -13,8 +13,8 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.Id).Description("Id của chi tiết dịch vụ");
             Field(x => x.Time).Description("Thời gian tạo");
             Field(x => x.Number).Description("Số lượng");
-            // Field(x => x.Booking).Description("Thuộc thông tin thuê phòng nào");
-            // Field(x => x.Service).Description("Thuộc dịch vụ nào");
+            Field(x => x.Booking).Description("Thuộc thông tin thuê phòng nào");
+            Field(x => x.Service).Description("Thuộc dịch vụ nào");
         }
     }
 }

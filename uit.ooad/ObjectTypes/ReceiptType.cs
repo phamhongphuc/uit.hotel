@@ -15,8 +15,8 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.Time).Description("Thời gian tạo phiếu thu");
             Field(x => x.TypeOfPayment).Description("Kiểu thanh toán (tiền mặt hoặc chuyển khoản)");
             Field(x => x.BankAccountNumber).Description("Số tài khoản ngân hàng của khách");
-            // Field(x => x.Bill).Description("Phiếu thu thuộc hóa đơn nào");
-            // Field(x => x.Employee).Description("Nhân viên tạo phiếu thu");
+            Field(x => x.Bill).Description("Phiếu thu thuộc hóa đơn nào");
+            Field(x => x.Employee).Description("Nhân viên tạo phiếu thu");
         }
     }
 }
