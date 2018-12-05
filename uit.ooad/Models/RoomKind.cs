@@ -3,7 +3,7 @@ using Realms;
 
 namespace uit.ooad.Models
 {
-    public class RoomType : RealmObject
+    public class RoomKind : RealmObject
     {
         [PrimaryKey]
         public string Id { get; set; }
@@ -13,13 +13,13 @@ namespace uit.ooad.Models
         public int AmountOfPeople { get; set; }
         public int PriceByDate { get; set; }
 
-        [Backlink(nameof(Room.RoomType))]
+        [Backlink(nameof(Room.RoomKind))]
         public IQueryable<Room> Rooms { get; }
         
-        [Backlink(nameof(Rate.RoomType))]
+        [Backlink(nameof(Rate.RoomKind))]
         public IQueryable<Rate> Rates {get;}
 
-        [Backlink(nameof(VolatilityRate.RoomType))]
+        [Backlink(nameof(VolatilityRate.RoomKind))]
         public IQueryable<VolatilityRate> VolatilityRates {get;}
     }
 }

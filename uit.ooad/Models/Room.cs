@@ -10,7 +10,7 @@ namespace uit.ooad.Models
 
         public string Name { get; set; }
         public Floor Floor { get; set; }
-        public RoomType RoomType { get; set; }
+        public RoomKind RoomKind { get; set; }
 
         [Backlink(nameof(Booking.Room))]
         public IQueryable<Booking> Bookings { get; }

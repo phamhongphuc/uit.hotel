@@ -27,7 +27,7 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.EffectiveOnSaturday).Description("Giá có hiệu lực vào ngày Thứ 7");
             Field(x => x.EffectiveOnSunday).Description("Giá có hiệu lực vào ngày Chủ Nhật");
             Field(x => x.CreateDate).Description("Ngày tạo giá");
-            // Field(x => x.RoomType).Description("Thuộc loại phòng");
+            // Field(x => x.RoomKind).Description("Thuộc loại phòng");
         }
     }
 }

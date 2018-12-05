@@ -25,6 +25,6 @@ namespace uit.ooad.Models
         public bool EffectiveOnSunday { get; set; }
         public DateTimeOffset CreateDate { get; set; }
 
-        public RoomType RoomType { get; set; }
+        public RoomKind RoomKind { get; set; }
     }
 }
