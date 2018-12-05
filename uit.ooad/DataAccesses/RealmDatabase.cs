@@ -31,7 +31,7 @@ namespace uit.ooad.DataAccesses
                     typeof(Rate),
                     typeof(Receipt),
                     typeof(Room),
-                    typeof(RoomType),
+                    typeof(RoomKind),
                     typeof(Service),
                     typeof(VolatilityRate)
                 }
