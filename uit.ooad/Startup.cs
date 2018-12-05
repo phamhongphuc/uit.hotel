@@ -63,6 +63,7 @@ namespace uit.ooad
             services.AddSingleton<HouseKeepingType>();
             services.AddSingleton<PatronKindType>();
             services.AddSingleton<PatronType>();
+            services.AddSingleton<PositionType>();
             services.AddSingleton<RateType>();
             services.AddSingleton<ReceiptType>();
             services.AddSingleton<RoomKindType>();
