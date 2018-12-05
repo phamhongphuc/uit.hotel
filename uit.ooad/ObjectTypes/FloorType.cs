@@ -1,4 +1,5 @@
-﻿using GraphQL.Types;
+﻿using System.Linq;
+using GraphQL.Types;
 using uit.ooad.Models;
 
 namespace uit.ooad.ObjectTypes
@@ -12,7 +13,11 @@ namespace uit.ooad.ObjectTypes
 
             Field(x => x.Id).Description("Id của tầng");
             Field(x => x.Name).Description("Tên tầng");
-            Field(x => x.Rooms, type: typeof(RoomType)).Description("Danh sách các phòng có trong tầng");
+            Field<ListGraphType<RoomType>>(
+                "Rooms",
+                resolve: context => context.Source.Rooms.ToList(),
+                description: "Danh sách các phòng có trong tầng"
+            );
         }
     }
 }
