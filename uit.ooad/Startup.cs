@@ -56,9 +56,20 @@ namespace uit.ooad
             services.AddSingleton<AppQuery>();
             services.AddSingleton<AppMutation>();
 
-            services.AddSingleton<FloorType>();
+            services.AddSingleton<BillType>();
+            services.AddSingleton<BookingType>();
             services.AddSingleton<EmployeeType>();
+            services.AddSingleton<FloorType>();
+            services.AddSingleton<HouseKeepingType>();
+            services.AddSingleton<PatronKindType>();
+            services.AddSingleton<PatronType>();
+            services.AddSingleton<RateType>();
+            services.AddSingleton<ReceiptType>();
+            services.AddSingleton<RoomKindType>();
             services.AddSingleton<RoomType>();
+            services.AddSingleton<ServicesDetailType>();
+            services.AddSingleton<ServiceType>();
+            services.AddSingleton<VolatilityRateType>();
 
             services.AddSingleton<ISchema, AppSchema>();
 
