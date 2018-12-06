@@ -28,7 +28,8 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.EffectiveOnSunday).Description("Giá có hiệu lực vào ngày Chủ Nhật");
             Field(x => x.CreateDate).Description("Ngày tạo giá");
 
-            Field<RoomKindType>(nameof(VolatilityRate.RoomKind), resolve: context => context.Source.RoomKind, description: "Thuộc loại phòng");
+            Field<RoomKindType>(nameof(VolatilityRate.RoomKind), resolve: context => context.Source.RoomKind,
+                                description: "Thuộc loại phòng");
         }
     }
 }

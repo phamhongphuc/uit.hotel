@@ -16,8 +16,10 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.TypeOfPayment).Description("Kiểu thanh toán (tiền mặt hoặc chuyển khoản)");
             Field(x => x.BankAccountNumber).Description("Số tài khoản ngân hàng của khách");
 
-            Field<BillType>(nameof(Receipt.Bill), resolve: context => context.Source.Bill, description: "Phiếu thu thuộc hóa đơn nào");
-            Field<EmployeeType>(nameof(Receipt.Employee), resolve: context => context.Source.Employee, description: "Nhân viên tạo phiếu thu");
+            Field<BillType>(nameof(Receipt.Bill), resolve: context => context.Source.Bill,
+                            description: "Phiếu thu thuộc hóa đơn nào");
+            Field<EmployeeType>(nameof(Receipt.Employee), resolve: context => context.Source.Employee,
+                                description: "Nhân viên tạo phiếu thu");
         }
     }
 }

@@ -19,7 +19,8 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.Birthdate).Description("Ngày sinh của nhân viên");
             Field(x => x.StartingDate).Description("Ngày vào làm");
 
-            Field<PositionType>(nameof(Employee.Position), resolve: context => context.Source.Position, description: "Chức vụ");
+            Field<PositionType>(nameof(Employee.Position), resolve: context => context.Source.Position,
+                                description: "Chức vụ");
 
             Field<ListGraphType<BillType>>(
                 nameof(Employee.Bills),

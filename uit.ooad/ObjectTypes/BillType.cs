@@ -14,9 +14,11 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.Id).Description("Id của hóa đơn");
             Field(x => x.Time).Description("Thời điểm in hóa đơn");
 
-            Field<PatronType>(nameof(Bill.Patron), resolve: context => context.Source.Patron, description: "Thông tin khách hàng thanh toán hóa đơn");
-            Field<EmployeeType>(nameof(Bill.Employee), resolve: context => context.Source.Employee, description: "Thông tin nhân viên nhận thanh toán hóa đơn");
-            
+            Field<PatronType>(nameof(Bill.Patron), resolve: context => context.Source.Patron,
+                              description: "Thông tin khách hàng thanh toán hóa đơn");
+            Field<EmployeeType>(nameof(Bill.Employee), resolve: context => context.Source.Employee,
+                                description: "Thông tin nhân viên nhận thanh toán hóa đơn");
+
             Field<ListGraphType<ReceiptType>>(
                 nameof(Bill.Receipts),
                 resolve: context =>

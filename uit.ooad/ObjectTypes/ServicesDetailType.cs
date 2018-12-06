@@ -14,8 +14,10 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.Time).Description("Thời gian tạo");
             Field(x => x.Number).Description("Số lượng");
 
-            Field<BookingType>(nameof(ServicesDetail.Booking), resolve: context => context.Source.Booking, description:"Thuộc thông tin thuê phòng nào");
-            Field<ServiceType>(nameof(ServicesDetail.Service), resolve: context => context.Source.Service, description:"Thuộc dịch vụ nào");
+            Field<BookingType>(nameof(ServicesDetail.Booking), resolve: context => context.Source.Booking,
+                               description: "Thuộc thông tin thuê phòng nào");
+            Field<ServiceType>(nameof(ServicesDetail.Service), resolve: context => context.Source.Service,
+                               description: "Thuộc dịch vụ nào");
         }
     }
 }
