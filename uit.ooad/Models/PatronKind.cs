@@ -1,5 +1,6 @@
 using System.Linq;
 using Realms;
+using uit.ooad.Businesses;
 
 namespace uit.ooad.Models
 {
@@ -12,5 +13,7 @@ namespace uit.ooad.Models
 
         [Backlink(nameof(Patron.PatronKind))]
         public IQueryable<Patron> Patrons { get; }
+
+        public PatronKind GetManaged() => PatronKindBusiness.Get(Id);
     }
 }

@@ -1,9 +1,9 @@
-﻿using uit.ooad.Queries.Interface;
+﻿using uit.ooad.Queries.Base;
 using uit.ooad.Queries.Query;
 
 namespace uit.ooad.Queries
 {
-    public class AppQuery : RootObjectGraphType
+    public class AppQuery : AppType
     {
         public AppQuery()
         {

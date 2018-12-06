@@ -2,11 +2,11 @@ using GraphQL.Types;
 using uit.ooad.Businesses;
 using uit.ooad.Models;
 using uit.ooad.ObjectTypes;
-using uit.ooad.Queries.Interface;
+using uit.ooad.Queries.Base;
 
 namespace uit.ooad.Queries.Query
 {
-    public class FloorQuery : RootQueryGraphType<Floor>
+    public class FloorQuery : QueryType<Floor>
     {
         public FloorQuery()
         {

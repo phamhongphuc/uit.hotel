@@ -1,34 +1,26 @@
 using GraphQL.Types;
-using uit.ooad.Businesses;
 using uit.ooad.Models;
 using uit.ooad.ObjectTypes;
-using uit.ooad.Queries.Interface;
+using uit.ooad.Queries.Base;
 
 namespace uit.ooad.Queries.Mutation
 {
-    public class FloorMutation : RootQueryGraphType<Floor>
+    public class FloorMutation : QueryType<Floor>
     {
         public FloorMutation()
         {
             Field<FloorType>(
                 _Creation,
                 "Tạo và trả về một tầng mới",
-                new QueryArguments(
-                    new QueryArgument<NonNullGraphType<CreateFloorInputType>> { Name = "input" }
-                ),
-                context =>
-                {
-                    return FloorBusiness.Add(
-                        context.GetArgument<Floor>("input")
-                    );
-                }
+                InputArgument<CreateFloorInput>(),
+                context => GetInput(context)
             );
         }
     }
 
-    public class CreateFloorInputType : RootInputGraphType<Floor>
+    public class CreateFloorInput : InputType<Floor>
     {
-        public CreateFloorInputType()
+        public CreateFloorInput()
         {
             Name = _Creation;
             Field<NonNullGraphType<IntGraphType>>(nameof(Floor.Id));

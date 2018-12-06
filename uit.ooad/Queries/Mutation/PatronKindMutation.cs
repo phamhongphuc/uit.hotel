@@ -2,11 +2,11 @@ using GraphQL.Types;
 using uit.ooad.Businesses;
 using uit.ooad.Models;
 using uit.ooad.ObjectTypes;
-using uit.ooad.Queries.Interface;
+using uit.ooad.Queries.Base;
 
 namespace uit.ooad.Queries.Mutation
 {
-    public class PatronKindMutation : RootQueryGraphType<PatronKind>
+    public class PatronKindMutation : QueryType<PatronKind>
     {
         public PatronKindMutation()
         {
@@ -22,7 +22,7 @@ namespace uit.ooad.Queries.Mutation
                 {
                     Id = context.GetArgument<int>("id"),
                     Name = context.GetArgument<string>("name"),
-                    Description = context.GetArgument<string>("description"),
+                    Description = context.GetArgument<string>("description")
                 })
             );
         }

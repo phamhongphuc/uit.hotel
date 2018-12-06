@@ -1,8 +1,8 @@
 using GraphQL.Types;
 
-namespace uit.ooad.Queries.Interface
+namespace uit.ooad.Queries.Base
 {
-    public class RootObjectGraphType : ObjectGraphType
+    public class AppType : ObjectGraphType
     {
         public void AddFields(params ObjectGraphType[] objectGraphTypes)
         {
