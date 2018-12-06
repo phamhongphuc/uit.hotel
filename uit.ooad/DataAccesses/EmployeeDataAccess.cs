@@ -6,13 +6,13 @@ namespace uit.ooad.DataAccesses
 {
     public class EmployeeDataAccess : RealmDatabase
     {
-        public static async Task<Employee> Add(Employee Employee)
+        public static async Task<Employee> Add(Employee employee)
         {
-            await Database.WriteAsync(realm => Employee = realm.Add(Employee));
-            return Employee;
+            await Database.WriteAsync(realm => employee = realm.Add(employee));
+            return employee;
         }
 
-        public static Employee Get(string EmployeeId) => Database.Find<Employee>(EmployeeId);
+        public static Employee Get(string employeeId) => Database.Find<Employee>(employeeId);
 
         public static IEnumerable<Employee> Get() => Database.All<Employee>();
     }
