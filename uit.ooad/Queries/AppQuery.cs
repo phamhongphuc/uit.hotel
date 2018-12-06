@@ -1,4 +1,5 @@
-﻿using uit.ooad.Queries.Query;
+﻿using uit.ooad.Queries.Interface;
+using uit.ooad.Queries.Query;
 
 namespace uit.ooad.Queries
 {

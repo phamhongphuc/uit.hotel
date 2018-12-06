@@ -2,15 +2,16 @@ using GraphQL.Types;
 using uit.ooad.Businesses;
 using uit.ooad.Models;
 using uit.ooad.ObjectTypes;
+using uit.ooad.Queries.Interface;
 
 namespace uit.ooad.Queries.Mutation
 {
-    public class EmployeeeMutation : RootQueryGraphType
+    public class EmployeeeMutation : RootQueryGraphType<Employee>
     {
         public EmployeeeMutation()
         {
             Field<EmployeeType>(
-                GetCreation(nameof(Employee)),
+                _Creation,
                 "Tạo và trả về một nhân viên mới",
                 new QueryArguments(
                     new QueryArgument<NonNullGraphType<StringGraphType>> { Name = "name" },
