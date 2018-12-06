@@ -18,7 +18,7 @@ namespace uit.ooad.Queries.Query
                 nameof(Room),
                 "Trả về thông tin của một phòng",
                 new QueryArguments(
-                    new QueryArgument<IntGraphType> { Name = "id" }
+                    new QueryArgument<IdGraphType> { Name = "id" }
                 ),
                 context => RoomBusiness.Get(context.GetArgument<int>("id"))
             );
