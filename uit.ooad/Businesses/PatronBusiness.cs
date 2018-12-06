@@ -9,11 +9,13 @@ namespace uit.ooad.Businesses
     {
         public static Task<Patron> Add(Patron patron)
         {
+            var patronInDatabase = PatronDataAccess.Get(patron.Identification);
+            if (patronInDatabase != null) return null;
+
             patron.PatronKind = patron.PatronKind.GetManaged();
             return PatronDataAccess.Add(patron);
         }
-
-        public static Patron Get(int patronId) => PatronDataAccess.Get(patronId);
+        public static Patron Get(string patronId) => PatronDataAccess.Get(patronId);
         public static IEnumerable<Patron> Get() => PatronDataAccess.Get();
     }
 }

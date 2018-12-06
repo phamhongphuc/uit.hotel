@@ -12,7 +12,7 @@ namespace uit.ooad.DataAccesses
             return patron;
         }
 
-        public static Patron Get(int patronId) => Database.Find<Patron>(patronId);
+        public static Patron Get(string patronId) => Database.Find<Patron>(patronId);
 
         public static IEnumerable<Patron> Get() => Database.All<Patron>();
     }

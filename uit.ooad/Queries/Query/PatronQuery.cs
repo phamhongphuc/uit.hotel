@@ -19,7 +19,7 @@ namespace uit.ooad.Queries.Query
                 _Item,
                 "Trả về thông tin một khách hàng",
                 IdArgument(),
-                context => PatronBusiness.Get(GetId(context))
+                context => PatronBusiness.Get(GetId<string>(context))
             );
         }
     }
