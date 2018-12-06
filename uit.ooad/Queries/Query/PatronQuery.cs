@@ -21,7 +21,7 @@ namespace uit.ooad.Queries.Query
                 new QueryArguments(
                     new QueryArgument<NonNullGraphType<IdGraphType>> { Name = "id" }
                 ),
-                context => PatronBusiness.Get(context.GetArgument<int>("id"))
+                context => PatronBusiness.Get(context.GetArgument<string>("id"))
             );
         }
     }
