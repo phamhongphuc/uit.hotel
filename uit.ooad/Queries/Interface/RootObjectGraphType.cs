@@ -1,6 +1,6 @@
 using GraphQL.Types;
 
-namespace uit.ooad.Queries
+namespace uit.ooad.Queries.Interface
 {
     public class RootObjectGraphType : ObjectGraphType
     {
