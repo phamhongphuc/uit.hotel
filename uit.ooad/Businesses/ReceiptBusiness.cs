@@ -7,8 +7,13 @@ namespace uit.ooad.Businesses
 {
     public class ReceiptBusiness
     {
-        public static Task<Receipt> Add(Receipt receipt) => ReceiptDataAccess.Add(receipt);
-        public static Receipt Get(int receiptId) => ReceiptDataAccess.Get(receiptId);
+        public static Task<Receipt> Add(Receipt receipt)
+        {
+            var receiptInDatabase = ReceiptDataAccess.Get(receipt.Id);
+            if (receiptInDatabase != null) return null;
+
+            return ReceiptDataAccess.Add(receipt);
+        }
         public static IEnumerable<Receipt> Get() => ReceiptDataAccess.Get();
     }
 }
