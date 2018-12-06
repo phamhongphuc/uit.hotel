@@ -1,33 +1,19 @@
+using System;
 using GraphQL.Types;
 
 namespace uit.ooad.Queries.Base
 {
     public class QueryType<TModel> : ObjectGraphType
     {
-        public string _Item
-        {
-            get => typeof(TModel).Name;
-        }
+        public string _Item => typeof(TModel).Name;
 
-        public string _List
-        {
-            get => typeof(TModel).Name + "s";
-        }
+        public string _List => typeof(TModel).Name + "s";
 
-        public string _Creation
-        {
-            get => "Create" + typeof(TModel).Name;
-        }
+        public string _Creation => "Create" + typeof(TModel).Name;
 
-        public string _Deletion
-        {
-            get => "Delete" + typeof(TModel).Name;
-        }
+        public string _Deletion => "Delete" + typeof(TModel).Name;
 
-        public string _Updation
-        {
-            get => "Update" + typeof(TModel).Name;
-        }
+        public string _Updation => "Update" + typeof(TModel).Name;
 
         public QueryArguments InputArgument<TInputGraphType>() where TInputGraphType : InputType<TModel>
         {
@@ -47,6 +33,9 @@ namespace uit.ooad.Queries.Base
         {
             return context.GetArgument<TModel>("input");
         }
+
+        public Func<ResolveFieldContext<object>, object> _Input
+        => context => context.GetArgument<TModel>("input");
 
         public TIntOrNumber GetId<TIntOrNumber>(ResolveFieldContext<object> context)
         {

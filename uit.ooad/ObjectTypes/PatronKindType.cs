@@ -28,7 +28,7 @@ namespace uit.ooad.ObjectTypes
     {
         public PatronKindIdInput()
         {
-            Name = "PatronKindIdInput";
+            Name = _Id;
             Description = "Input cho thông tin  một loại khách hàng";
 
             Field(x => x.Id).Description("Id của loại khách hàng");
