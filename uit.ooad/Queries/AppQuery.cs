@@ -8,7 +8,8 @@ namespace uit.ooad.Queries
         {
             AddFields(
                 new FloorQuery(),
-                new EmployeeeQuery()
+                new EmployeeeQuery(),
+                new PatronQuery()
             );
         }
     }
