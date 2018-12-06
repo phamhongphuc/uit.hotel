@@ -9,7 +9,9 @@ namespace uit.ooad.Queries
         {
             AddFields(
                 new FloorMutation(),
-                new EmployeeeMutation()
+                new EmployeeeMutation(),
+                new PatronMutation(),
+                new PatronKindMutation()
             );
         }
     }
