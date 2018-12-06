@@ -24,8 +24,8 @@ namespace uit.ooad.Queries.Mutation
                     Name = context.GetArgument<string>("name"),
                     Floor = FloorBusiness.Get(context.GetArgument<int>("floorId"))
                     // RoomKind = RoomKindBusiness.Get(context.GetArgument<string>("roomKindId"))
-                }
-            ));
+                })
+            );
         }
     }
 }
