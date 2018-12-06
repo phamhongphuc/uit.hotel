@@ -1,6 +1,7 @@
 using System.Linq;
 using GraphQL.Types;
 using uit.ooad.Models;
+using uit.ooad.Queries.Base;
 
 namespace uit.ooad.ObjectTypes
 {
@@ -20,6 +21,17 @@ namespace uit.ooad.ObjectTypes
                 resolve: context => context.Source.Patrons.ToList(),
                 description: "Danh sách các khách hàng thuộc loại khách hàng"
             );
+        }
+    }
+
+    public class PatronKindIdInput : InputType<PatronKind>
+    {
+        public PatronKindIdInput()
+        {
+            Name = "PatronKindIdInput";
+            Description = "Input cho thông tin  một loại khách hàng";
+
+            Field(x => x.Id).Description("Id của loại khách hàng");
         }
     }
 }

@@ -12,20 +12,15 @@ namespace uit.ooad.Queries.Mutation
             Field<FloorType>(
                 _Creation,
                 "Tạo và trả về một tầng mới",
-                InputArgument<CreateFloorInputType>(),
-                context =>
-                {
-                    return FloorBusiness.Add(
-                        context.GetArgument<Floor>("input")
-                    );
-                }
+                InputArgument<CreateFloorInput>(),
+                context => GetInput(context)
             );
         }
     }
 
-    public class CreateFloorInputType : InputType<Floor>
+    public class CreateFloorInput : InputType<Floor>
     {
-        public CreateFloorInputType()
+        public CreateFloorInput()
         {
             Name = _Creation;
             Field<NonNullGraphType<IntGraphType>>(nameof(Floor.Id));

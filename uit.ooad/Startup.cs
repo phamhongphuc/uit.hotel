@@ -57,7 +57,9 @@ namespace uit.ooad
             services.AddSingleton<AppQuery>();
             services.AddSingleton<AppMutation>();
 
-            services.AddSingleton<CreateFloorInputType>();
+            services.AddSingleton<PatronCreateInput>();
+            services.AddSingleton<PatronKindIdInput>();
+            services.AddSingleton<CreateFloorInput>();
 
             services.AddSingleton<BillType>();
             services.AddSingleton<BookingType>();

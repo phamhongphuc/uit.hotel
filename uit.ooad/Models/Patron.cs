@@ -15,7 +15,7 @@ namespace uit.ooad.Models
         public bool Gender { get; set; }
         public DateTimeOffset Birthdate { get; set; }
         public long PhoneNumber { get; set; }
-        public string Nationality { get; set; }// Quốc tịch
+        public string Nationality { get; set; } // Quốc tịch
         public string Domicile { get; set; } // Nguyên quán
         public string Residence { get; set; } // Thường trú
         public string Company { get; set; }
