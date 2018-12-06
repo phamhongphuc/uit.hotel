@@ -1,8 +1,8 @@
 using GraphQL.Types;
 
-namespace uit.ooad.Queries.Interface
+namespace uit.ooad.Queries.Base
 {
-    public class RootInputGraphType<T> : InputObjectGraphType<T>
+    public class InputType<T> : InputObjectGraphType<T>
     {
         public string _Creation
         {
@@ -13,5 +13,7 @@ namespace uit.ooad.Queries.Interface
         {
             get => "Update" + typeof(T).Name + "Input";
         }
+
+        public string _Id<TGraphType>() => typeof(TGraphType).Name + "Id";
     }
 }

@@ -1,13 +1,11 @@
-using System;
-using GraphQL.Types;
 using uit.ooad.Businesses;
 using uit.ooad.Models;
 using uit.ooad.ObjectTypes;
-using uit.ooad.Queries.Interface;
+using uit.ooad.Queries.Base;
 
 namespace uit.ooad.Queries.Mutation
 {
-    public class PatronMutation : RootQueryGraphType<Patron>
+    public class PatronMutation : QueryType<Patron>
     {
         public PatronMutation()
         {

@@ -1,12 +1,11 @@
 using GraphQL.Types;
-using uit.ooad.Businesses;
 using uit.ooad.Models;
 using uit.ooad.ObjectTypes;
-using uit.ooad.Queries.Interface;
+using uit.ooad.Queries.Base;
 
 namespace uit.ooad.Queries.Mutation
 {
-    public class FloorMutation : RootQueryGraphType<Floor>
+    public class FloorMutation : QueryType<Floor>
     {
         public FloorMutation()
         {
@@ -24,7 +23,7 @@ namespace uit.ooad.Queries.Mutation
         }
     }
 
-    public class CreateFloorInputType : RootInputGraphType<Floor>
+    public class CreateFloorInputType : InputType<Floor>
     {
         public CreateFloorInputType()
         {
