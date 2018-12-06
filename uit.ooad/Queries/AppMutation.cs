@@ -1,4 +1,5 @@
-﻿using uit.ooad.Queries.Mutation;
+﻿using uit.ooad.Queries.Interface;
+using uit.ooad.Queries.Mutation;
 
 namespace uit.ooad.Queries
 {
