@@ -13,9 +13,7 @@ namespace uit.ooad.Queries.Mutation
             Field<FloorType>(
                 _Creation,
                 "Tạo và trả về một tầng mới",
-                new QueryArguments(
-                    new QueryArgument<NonNullGraphType<CreateFloorInputType>> { Name = "input" }
-                ),
+                InputArgument<CreateFloorInputType>(),
                 context =>
                 {
                     return FloorBusiness.Add(

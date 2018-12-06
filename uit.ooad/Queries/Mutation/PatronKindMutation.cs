@@ -22,7 +22,7 @@ namespace uit.ooad.Queries.Mutation
                 {
                     Id = context.GetArgument<int>("id"),
                     Name = context.GetArgument<string>("name"),
-                    Description = context.GetArgument<string>("description"),
+                    Description = context.GetArgument<string>("description")
                 })
             );
         }
