@@ -12,9 +12,11 @@ namespace uit.ooad.ObjectTypes
 
             Field(x => x.Id).Description("Id của việc dọn dẹp");
             Field(x => x.Type).Description("Hình thức dọn dẹp phòng");
-            
-            Field<EmployeeType>(nameof(HouseKeeping.Employee), resolve: context => context.Source.Employee, description: "Nhân viên thực hiện dọn dẹp");
-            Field<BookingType>(nameof(HouseKeeping.Booking), resolve: context => context.Source.Booking, description: "Thông tin chi tiết đặt trước của phòng cần chuẩn bị");
+
+            Field<EmployeeType>(nameof(HouseKeeping.Employee), resolve: context => context.Source.Employee,
+                                description: "Nhân viên thực hiện dọn dẹp");
+            Field<BookingType>(nameof(HouseKeeping.Booking), resolve: context => context.Source.Booking,
+                               description: "Thông tin chi tiết đặt trước của phòng cần chuẩn bị");
         }
     }
 }
