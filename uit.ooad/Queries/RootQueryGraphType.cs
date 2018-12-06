@@ -4,21 +4,21 @@ namespace uit.ooad.Queries
 {
     public class RootQueryGraphType : ObjectGraphType
     {
-        public string GetList<T>()
+        public string GetList(string name)
         {
-            return nameof(T) + "s";
+            return name + "s";
         }
-        public string GetCreation<T>()
+        public string GetCreation(string name)
         {
-            return "Create" + nameof(T);
+            return "Create" + name;
         }
-        public string GetDeletion<T>()
+        public string GetDeletion(string name)
         {
-            return "Delete" + nameof(T);
+            return "Delete" + name;
         }
-        public string GetUpdation<T>()
+        public string GetUpdation(string name)
         {
-            return "Update" + nameof(T);
+            return "Update" + name;
         }
     }
 }

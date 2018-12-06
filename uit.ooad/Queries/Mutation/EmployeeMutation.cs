@@ -10,7 +10,7 @@ namespace uit.ooad.Queries.Mutation
         public EmployeeeMutation()
         {
             Field<EmployeeType>(
-                GetCreation<Employee>(),
+                GetCreation(nameof(Employee)),
                 "Tạo và trả về một nhân viên mới",
                 new QueryArguments(
                     new QueryArgument<NonNullGraphType<StringGraphType>> { Name = "name" },

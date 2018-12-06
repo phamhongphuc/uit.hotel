@@ -10,7 +10,7 @@ namespace uit.ooad.Queries.Query
         public EmployeeeQuery()
         {
             Field<ListGraphType<EmployeeType>>(
-                GetList<Employee>(),
+                GetList(nameof(Employee)),
                 "Trả về một danh sách các nhân viên",
                 resolve: context => EmployeeBusiness.Get()
             );

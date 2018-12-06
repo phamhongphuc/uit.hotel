@@ -10,7 +10,7 @@ namespace uit.ooad.Queries.Query
         public FloorQuery()
         {
             Field<ListGraphType<FloorType>>(
-                GetCreation<Floor>(),
+                GetList(nameof(Floor)),
                 "Trả về một danh sách các tầng",
                 resolve: context => FloorBusiness.Get()
             );

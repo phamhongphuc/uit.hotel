@@ -10,7 +10,7 @@ namespace uit.ooad.Queries.Mutation
         public FloorMutation()
         {
             Field<FloorType>(
-                GetCreation<Floor>(),
+                GetCreation(nameof(Floor)),
                 "Tạo và trả về một tầng mới",
                 new QueryArguments(
                     new QueryArgument<NonNullGraphType<StringGraphType>> { Name = "name" },
