@@ -7,6 +7,7 @@ namespace uit.ooad.Queries
         public AppMutation()
         {
             AddFields(
+                new RoomMutation(),
                 new FloorMutation(),
                 new EmployeeeMutation()
             );

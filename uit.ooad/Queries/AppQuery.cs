@@ -7,8 +7,9 @@ namespace uit.ooad.Queries
         public AppQuery()
         {
             AddFields(
+                new RoomQuery(),
                 new FloorQuery(),
-                new EmployeeeQuery()
+                new EmployeeQuery()
             );
         }
     }

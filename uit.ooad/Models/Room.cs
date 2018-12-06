@@ -6,7 +6,7 @@ namespace uit.ooad.Models
     public class Room : RealmObject
     {
         [PrimaryKey]
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         public string Name { get; set; }
         public Floor Floor { get; set; }
