@@ -12,19 +12,9 @@ namespace uit.ooad.Queries.Mutation
             Field<FloorType>(
                 _Creation,
                 "Tạo và trả về một tầng mới",
-                InputArgument<CreateFloorInput>(),
+                InputArgument<FloorCreateInput>(),
                 context => GetInput(context)
             );
-        }
-    }
-
-    public class CreateFloorInput : InputType<Floor>
-    {
-        public CreateFloorInput()
-        {
-            Name = _Creation;
-            Field<NonNullGraphType<IntGraphType>>(nameof(Floor.Id));
-            Field<NonNullGraphType<StringGraphType>>(nameof(Floor.Name));
         }
     }
 }
