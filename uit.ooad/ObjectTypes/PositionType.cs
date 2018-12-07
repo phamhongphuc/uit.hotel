@@ -14,9 +14,10 @@ namespace uit.ooad.ObjectTypes
 
             Field(x => x.Id).Description("Id của chức vụ");
             Field(x => x.Name).Description("Tên chức vụ");
-            Field(x => x.PermissionCreateEmployee).Description("Quyền tạo tài khoản");
+            Field(x => x.PermissionCreateEmployee).Description("Quyền tạo tài khoản nhân viên");
             Field(x => x.PermissionCreatePatron).Description("Quyền tạo khách hàng");
-            Field(x => x.PermissionCreateBill).Description("Quyền tạo khách hàng");
+            Field(x => x.PermissionCreateBill).Description("Quyền tạo hóa đơn");
+            Field(x => x.PermissionCreateFloor).Description("Quyền tạo tầng");
 
             Field<ListGraphType<EmployeeType>>(
                 nameof(Position.Employees), 
