@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Realms;
+using uit.ooad.Businesses;
 
 namespace uit.ooad.Models
 {
@@ -17,5 +18,7 @@ namespace uit.ooad.Models
 
         [Backlink(nameof(Booking.Bill))]
         public IQueryable<Booking> Bookings { get; }
+
+        public Bill GetManaged() => BillBusiness.Get(Id);
     }
 }
