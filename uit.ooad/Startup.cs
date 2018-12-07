@@ -17,6 +17,7 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.IdentityModel.Tokens;
 using uit.ooad.ObjectTypes;
 using uit.ooad.Queries;
+using uit.ooad.Queries.Authentication;
 using uit.ooad.Schemas;
 
 namespace uit.ooad
@@ -52,6 +53,8 @@ namespace uit.ooad
             services.AddSingleton<IDependencyResolver>(s => new FuncDependencyResolver(s.GetRequiredService));
             services.AddSingleton<IDocumentExecuter, DocumentExecuter>();
             services.AddSingleton<IDocumentWriter, DocumentWriter>();
+
+            services.AddSingleton<AuthenticationHelper>();
 
             services.AddSingleton<AppQuery>();
             services.AddSingleton<AppMutation>();
