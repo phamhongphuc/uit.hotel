@@ -11,8 +11,8 @@ namespace uit.ooad.Queries
         {
             AddFields(
                 new AuthenticationMutation(authentication),
-
-                new EmployeeeMutation(),
+                new BillMutation(),
+                new EmployeeMutation(),
                 new FloorMutation(),
                 new HouseKeepingMutation(),
                 new PatronKindMutation(),
