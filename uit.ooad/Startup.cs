@@ -62,6 +62,8 @@ namespace uit.ooad
             services.AddSingleton<PatronCreateInput>();
             services.AddSingleton<PatronKindCreateInput>();
             services.AddSingleton<PatronKindIdInput>();
+            services.AddSingleton<RateCreateInput>();
+            services.AddSingleton<RoomKindIdInput>();
             services.AddSingleton<FloorCreateInput>();
 
             services.AddSingleton<BillType>();

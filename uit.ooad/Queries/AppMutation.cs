@@ -16,6 +16,8 @@ namespace uit.ooad.Queries
                 new FloorMutation(),
                 new PatronKindMutation(),
                 new PatronMutation(),
+                new PatronKindMutation(),
+                new RateMutation(),
                 new RoomKindMutation(),
                 new RoomMutation()
             );

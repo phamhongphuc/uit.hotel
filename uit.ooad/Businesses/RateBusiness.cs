@@ -12,6 +12,7 @@ namespace uit.ooad.Businesses
             var rateInDatabase = RateDataAccess.Get(rate.Id);
             if (rateInDatabase != null) return null;
 
+            rate.RoomKind = rate.RoomKind.GetManaged();
             return RateDataAccess.Add(rate);
         }
 
