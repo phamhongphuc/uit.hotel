@@ -34,4 +34,16 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.Id).Description("Id của loại khách hàng");
         }
     }
+
+    public class PatronKindCreateInput : InputType<PatronKind>
+    {
+        public PatronKindCreateInput()
+        {
+            Name = _Creation;
+
+            Field(x => x.Id).Description("Id của loại khách hàng");
+            Field(x => x.Name).Description("Tên loại khách hàng");
+            Field(x => x.Description).Description("Thông tin mô tả loại khách hàng");
+        }
+    }
 }

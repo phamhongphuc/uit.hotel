@@ -57,6 +57,7 @@ namespace uit.ooad
             services.AddSingleton<AppMutation>();
 
             services.AddSingleton<PatronCreateInput>();
+            services.AddSingleton<PatronKindCreateInput>();
             services.AddSingleton<PatronKindIdInput>();
             services.AddSingleton<FloorCreateInput>();
 
