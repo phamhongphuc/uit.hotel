@@ -18,12 +18,21 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.CreateTime).Description("Thời điểm tạo thông tin thuê phòng");
             Field(x => x.Status).Description("Trạng thái của thông tin thuê phòng");
 
-            Field<EmployeeType>(nameof(Booking.Employee), resolve: context => context.Source.Employee,
-                                description: "Nhân viên thực hiện giao dịch nhận đặt phòng từ khách hàng");
-            Field<BillType>(nameof(Booking.Bill), resolve: context => context.Source.Bill,
-                            description: "Thông tin hóa đơn của thông tin thuê phòng");
-            Field<RoomType>(nameof(Booking.Room), resolve: context => context.Source.Room,
-                            description: "Phòng khách hàng chọn đặt trước");
+            Field<NonNullGraphType<EmployeeType>>(
+                nameof(Booking.Employee),
+            resolve: context => context.Source.Employee,
+            description: "Nhân viên thực hiện giao dịch nhận đặt phòng từ khách hàng"
+            );
+            Field<NonNullGraphType<BillType>>(
+                nameof(Booking.Bill),
+                resolve: context => context.Source.Bill,
+                description: "Thông tin hóa đơn của thông tin thuê phòng"
+            );
+            Field<NonNullGraphType<RoomType>>(
+                nameof(Booking.Room),
+                resolve: context => context.Source.Room,
+                description: "Phòng khách hàng chọn đặt trước"
+            );
 
             Field<ListGraphType<PatronType>>(
                 nameof(Booking.Patrons),

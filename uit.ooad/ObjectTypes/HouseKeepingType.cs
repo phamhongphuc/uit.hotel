@@ -30,12 +30,12 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.Id).Description("Id của một hình thức dọn dẹp tại một phòng");
             Field(x => x.Type).Description("Loại hình thức dọn dẹp");
 
-            Field<EmployeeIdInput>(
+            Field<NonNullGraphType<EmployeeIdInput>>(
                 "Employee",
                 "Nhân viên thực hiện dọn dẹp"
             );
 
-            Field<BookingIdInput>(
+            Field<NonNullGraphType<BookingIdInput>>(
                 "Booking",
                 "Thông tin đơn đặt phòng cần dọn dẹp"
             );
