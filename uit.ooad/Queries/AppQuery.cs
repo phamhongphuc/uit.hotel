@@ -16,6 +16,7 @@ namespace uit.ooad.Queries
                 new PatronQuery(),
                 new PositionQuery(),
                 new RateQuery(),
+                new ReceiptQuery(),
                 new RoomKindQuery(),
                 new RoomQuery()
             );
