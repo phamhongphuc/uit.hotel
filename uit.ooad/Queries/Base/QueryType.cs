@@ -15,6 +15,9 @@ namespace uit.ooad.Queries.Base
 
         public string _Updation => "Update" + typeof(TModel).Name;
 
+        public Func<ResolveFieldContext<object>, object> _Input
+            => context => context.GetArgument<TModel>("input");
+
         public QueryArguments InputArgument<TInputGraphType>() where TInputGraphType : InputType<TModel>
         {
             return new QueryArguments(
@@ -33,9 +36,6 @@ namespace uit.ooad.Queries.Base
         {
             return context.GetArgument<TModel>("input");
         }
-
-        public Func<ResolveFieldContext<object>, object> _Input
-        => context => context.GetArgument<TModel>("input");
 
         public TIntOrNumber GetId<TIntOrNumber>(ResolveFieldContext<object> context)
         {

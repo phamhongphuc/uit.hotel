@@ -17,7 +17,6 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.IdentityModel.Tokens;
 using uit.ooad.ObjectTypes;
 using uit.ooad.Queries;
-using uit.ooad.Queries.Mutation;
 using uit.ooad.Schemas;
 
 namespace uit.ooad

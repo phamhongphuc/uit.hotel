@@ -14,6 +14,7 @@ namespace uit.ooad.Businesses
 
             return HouseKeepingDataAccess.Add(houseKeeping);
         }
+
         public static HouseKeeping Get(int houseKeepingId) => HouseKeepingDataAccess.Get(houseKeepingId);
         public static IEnumerable<HouseKeeping> Get() => HouseKeepingDataAccess.Get();
     }
