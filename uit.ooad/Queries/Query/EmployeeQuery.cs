@@ -15,6 +15,12 @@ namespace uit.ooad.Queries.Query
                 "Trả về một danh sách các nhân viên",
                 resolve: context => EmployeeBusiness.Get()
             );
+            Field<EmployeeType>(
+                _Item,
+                "Trả về thông tin một nhân viên",
+                IdArgument(),
+                context => EmployeeBusiness.Get(GetId<string>(context))
+            );
         }
     }
 }
