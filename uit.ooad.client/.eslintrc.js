@@ -1,3 +1,5 @@
+const schemaJson = require('./graphql/schema.json');
+
 module.exports = {
     env: {
         node: true,
@@ -91,7 +93,19 @@ module.exports = {
                 },
             },
         ],
-        'graphql/template-strings': ['error', { validators: 'all', env: 'apollo' }],
-        'graphql/named-operations': ['warn'],
+        'graphql/template-strings': [
+            'error',
+            {
+                validators: 'all',
+                env: 'apollo',
+                schemaJson,
+            },
+        ],
+        'graphql/named-operations': [
+            'warn',
+            {
+                schemaJson,
+            },
+        ],
     },
 };
