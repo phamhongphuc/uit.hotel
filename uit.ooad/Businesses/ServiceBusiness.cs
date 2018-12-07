@@ -14,6 +14,7 @@ namespace uit.ooad.Businesses
 
             return ServiceDataAccess.Add(service);
         }
+
         public static Service Get(int serviceId) => ServiceDataAccess.Get(serviceId);
         public static IEnumerable<Service> Get() => ServiceDataAccess.Get();
     }

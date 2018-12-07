@@ -17,7 +17,6 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.IdentityModel.Tokens;
 using uit.ooad.ObjectTypes;
 using uit.ooad.Queries;
-using uit.ooad.Queries.Mutation;
 using uit.ooad.Schemas;
 
 namespace uit.ooad
@@ -59,7 +58,7 @@ namespace uit.ooad
 
             services.AddSingleton<PatronCreateInput>();
             services.AddSingleton<PatronKindIdInput>();
-            services.AddSingleton<CreateFloorInput>();
+            services.AddSingleton<FloorCreateInput>();
 
             services.AddSingleton<BillType>();
             services.AddSingleton<BookingType>();

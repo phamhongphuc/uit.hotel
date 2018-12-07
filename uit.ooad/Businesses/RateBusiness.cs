@@ -14,6 +14,7 @@ namespace uit.ooad.Businesses
 
             return RateDataAccess.Add(rate);
         }
+
         public static Rate Get(int rateId) => RateDataAccess.Get(rateId);
         public static IEnumerable<Rate> Get() => RateDataAccess.Get();
     }
