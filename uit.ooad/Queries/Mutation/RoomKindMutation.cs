@@ -6,7 +6,7 @@ using uit.ooad.Queries.Base;
 
 namespace uit.ooad.Queries.Mutation
 {
-    public class RoomKindMutation : QueryType<Room>
+    public class RoomKindMutation : QueryType<RoomKind>
     {
         public RoomKindMutation()
         {
