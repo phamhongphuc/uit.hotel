@@ -1,4 +1,5 @@
 using GraphQL.Types;
+using uit.ooad.Businesses;
 using uit.ooad.Models;
 using uit.ooad.ObjectTypes;
 using uit.ooad.Queries.Base;
@@ -13,7 +14,7 @@ namespace uit.ooad.Queries.Mutation
                 _Creation,
                 "Tạo và trả về một tầng mới",
                 InputArgument<FloorCreateInput>(),
-                context => GetInput(context)
+                context => FloorBusiness.Add(GetInput(context))
             );
         }
     }
