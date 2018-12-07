@@ -18,10 +18,8 @@ namespace uit.ooad.Queries.Query
             Field<RoomType>(
                 _Item,
                 "Trả về thông tin của một phòng",
-                new QueryArguments(
-                    new QueryArgument<IdGraphType> { Name = "id" }
-                ),
-                context => RoomBusiness.Get(context.GetArgument<int>("id"))
+                IdArgument(),
+                context => RoomBusiness.Get(GetId<int>(context))
             );
         }
     }
