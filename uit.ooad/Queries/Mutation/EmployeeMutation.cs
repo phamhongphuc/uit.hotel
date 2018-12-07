@@ -8,16 +8,16 @@ using uit.ooad.Queries.Base;
 
 namespace uit.ooad.Queries.Mutation
 {
-    public class EmployeeeMutation : QueryType<Employee>
+    public class EmployeeMutation : QueryType<Employee>
     {
-        public EmployeeeMutation()
+        public EmployeeMutation()
         {
             Field<EmployeeType>(
                 _Creation,
                 "Tạo và trả về một nhân viên mới",
                 InputArgument<EmployeeCreateInput>(),
                 _CheckPermission(
-                    p => p.PermissionCreatePatron,
+                    p => p.PermissionCreateEmployee,
                     context => EmployeeBusiness.Add(GetInput(context))
                 )
             );

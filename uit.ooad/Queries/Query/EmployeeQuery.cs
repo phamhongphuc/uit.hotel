@@ -6,9 +6,9 @@ using uit.ooad.Queries.Base;
 
 namespace uit.ooad.Queries.Query
 {
-    public class EmployeeeQuery : QueryType<Employee>
+    public class EmployeeQuery : QueryType<Employee>
     {
-        public EmployeeeQuery()
+        public EmployeeQuery()
         {
             Field<ListGraphType<EmployeeType>>(
                 _List,
