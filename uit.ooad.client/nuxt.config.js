@@ -25,4 +25,12 @@ module.exports = {
             }
         },
     },
+    modules: ['@nuxtjs/apollo'],
+    apollo: {
+        clientConfigs: {
+            default: {
+                httpEndpoint: 'http://localhost:3000/api/graphql',
+            },
+        },
+    },
 };

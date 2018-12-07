@@ -6,7 +6,6 @@ using GraphQL;
 using GraphQL.DataLoader;
 using GraphQL.Types;
 using GraphQL.Validation;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using uit.ooad.GraphQL;
@@ -14,7 +13,6 @@ using uit.ooad.GraphQL;
 namespace uit.ooad.Controllers
 {
     [Route("api/[controller]")]
-    [Authorize]
     [ApiController]
     public class GraphQLController : ControllerBase
     {

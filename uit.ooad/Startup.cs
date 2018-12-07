@@ -17,6 +17,7 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.IdentityModel.Tokens;
 using uit.ooad.ObjectTypes;
 using uit.ooad.Queries;
+using uit.ooad.Queries.Mutation;
 using uit.ooad.Schemas;
 
 namespace uit.ooad
@@ -56,7 +57,25 @@ namespace uit.ooad
             services.AddSingleton<AppQuery>();
             services.AddSingleton<AppMutation>();
 
+            services.AddSingleton<PatronCreateInput>();
+            services.AddSingleton<PatronKindIdInput>();
+            services.AddSingleton<CreateFloorInput>();
+
+            services.AddSingleton<BillType>();
+            services.AddSingleton<BookingType>();
+            services.AddSingleton<EmployeeType>();
             services.AddSingleton<FloorType>();
+            services.AddSingleton<HouseKeepingType>();
+            services.AddSingleton<PatronKindType>();
+            services.AddSingleton<PatronType>();
+            services.AddSingleton<PositionType>();
+            services.AddSingleton<RateType>();
+            services.AddSingleton<ReceiptType>();
+            services.AddSingleton<RoomKindType>();
+            services.AddSingleton<RoomType>();
+            services.AddSingleton<ServicesDetailType>();
+            services.AddSingleton<ServiceType>();
+            services.AddSingleton<VolatilityRateType>();
 
             services.AddSingleton<ISchema, AppSchema>();
 

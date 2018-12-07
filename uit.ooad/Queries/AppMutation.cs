@@ -1,26 +1,20 @@
-﻿using GraphQL.Types;
-using uit.ooad.Businesses;
-using uit.ooad.Models;
-using uit.ooad.ObjectTypes;
+﻿using uit.ooad.Queries.Base;
+using uit.ooad.Queries.Mutation;
 
 namespace uit.ooad.Queries
 {
-    public class AppMutation : ObjectGraphType
+    public class AppMutation : AppType
     {
         public AppMutation()
         {
-            Field<FloorType>(
-                "floor",
-                "Tạo và trả về một tầng mới",
-                new QueryArguments(
-                    new QueryArgument<NonNullGraphType<StringGraphType>> { Name = "name" },
-                    new QueryArgument<NonNullGraphType<IntGraphType>> { Name = "id" }
-                ),
-                context => FloorBusiness.Add(new Floor
-                {
-                    Id = context.GetArgument<int>("id"),
-                    Name = context.GetArgument<string>("name")
-                }));
+            AddFields(
+                new RoomMutation(),
+                new RoomKindMutation(),
+                new FloorMutation(),
+                new EmployeeeMutation(),
+                new PatronMutation(),
+                new PatronKindMutation()
+            );
         }
     }
 }

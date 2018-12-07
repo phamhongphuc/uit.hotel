@@ -8,9 +8,9 @@ module.exports = {
     extends: [
         'eslint:recommended',
         'plugin:vue/recommended',
+        'plugin:node/recommended',
         'plugin:import/errors',
         'plugin:import/warnings',
-        'plugin:node/recommended',
     ],
     parser: 'vue-eslint-parser',
     parserOptions: {
@@ -22,7 +22,7 @@ module.exports = {
             experimentalObjectRestSpread: true,
         },
     },
-    plugins: ['vue', 'import', 'node'],
+    plugins: ['vue', 'import', 'node', 'graphql'],
     settings: {
         'import/resolver': {
             'babel-plugin-root-import': {
@@ -91,5 +91,7 @@ module.exports = {
                 },
             },
         ],
+        'graphql/template-strings': ['error', { validators: 'all', env: 'apollo' }],
+        'graphql/named-operations': ['warn'],
     },
 };
