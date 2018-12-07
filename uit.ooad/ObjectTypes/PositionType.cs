@@ -18,6 +18,7 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.PermissionCreatePatron).Description("Quyền tạo khách hàng");
             Field(x => x.PermissionCreateBill).Description("Quyền tạo hóa đơn");
             Field(x => x.PermissionCreateFloor).Description("Quyền tạo tầng");
+            Field(x => x.PermissionCreatePosition).Description("Quyền tạo chức vụ");
 
             Field<ListGraphType<EmployeeType>>(
                 nameof(Position.Employees), 
@@ -35,6 +36,22 @@ namespace uit.ooad.ObjectTypes
             Description = "Input cho thông tin một chức vụ";
 
             Field(x => x.Id).Description("Id của chức vụ");
+        }
+    }
+
+    public class PositionCreateInput : InputType<Position>
+    {
+        public PositionCreateInput()
+        {
+            Name = _Creation;
+
+            Field(x => x.Id).Description("Id của chức vụ");
+            Field(x => x.Name).Description("Tên chức vụ");
+            Field(x => x.PermissionCreateEmployee).Description("Quyền tạo tài khoản nhân viên");
+            Field(x => x.PermissionCreatePatron).Description("Quyền tạo khách hàng");
+            Field(x => x.PermissionCreateBill).Description("Quyền tạo hóa đơn");
+            Field(x => x.PermissionCreateFloor).Description("Quyền tạo tầng");
+            Field(x => x.PermissionCreatePosition).Description("Quyền tạo chức vụ");
         }
     }
 }
