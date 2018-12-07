@@ -16,7 +16,7 @@ namespace uit.ooad.Queries
                 new PatronKindQuery(),
                 new HouseKeepingQuery(),
                 new ServiceQuery(),
-                new ServicesDetailQuery()
+                new ServicesDetailQuery(),
                 new PositionQuery(),
                 new RateQuery(),
                 new ReceiptQuery(),
