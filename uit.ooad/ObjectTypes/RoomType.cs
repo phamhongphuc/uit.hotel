@@ -25,6 +25,7 @@ namespace uit.ooad.ObjectTypes
                                               description: "Danh sách thông tin thuê phòng");
         }
     }
+
     public class RoomCreateInput : InputType<Room>
     {
         public RoomCreateInput()

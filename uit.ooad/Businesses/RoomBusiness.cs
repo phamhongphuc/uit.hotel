@@ -16,6 +16,7 @@ namespace uit.ooad.Businesses
             room.RoomKind = room.RoomKind.GetManaged();
             return RoomDataAccess.Add(room);
         }
+
         public static Room Get(int roomId) => RoomDataAccess.Get(roomId);
         public static IEnumerable<Room> Get() => RoomDataAccess.Get();
     }

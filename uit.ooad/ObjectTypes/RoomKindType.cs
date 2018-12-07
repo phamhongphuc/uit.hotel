@@ -38,4 +38,19 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.Id).Description("Id của một loại phòng");
         }
     }
+
+    public class RoomKindCreateInput : InputType<RoomKind>
+    {
+        public RoomKindCreateInput()
+        {
+            Name = _Creation;
+            Description = "Input cho việc tạo một loại phòng";
+
+            Field(x => x.Id).Description("Id của loại phòng");
+            Field(x => x.Name).Description("Tên loại phòng");
+            Field(x => x.NumberOfBeds).Description("Số giường");
+            Field(x => x.AmountOfPeople).Description("Số người trong một phòng");
+            Field(x => x.PriceByDate).Description("Giá theo ngày");
+        }
+    }
 }
