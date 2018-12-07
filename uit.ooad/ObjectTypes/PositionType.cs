@@ -19,6 +19,7 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.PermissionCreateBill).Description("Quyền tạo hóa đơn");
             Field(x => x.PermissionCreateFloor).Description("Quyền tạo tầng");
             Field(x => x.PermissionCreatePosition).Description("Quyền tạo chức vụ");
+            Field(x => x.PermissionCreateReceipt).Description("Quyền tạo phiếu thu");
 
             Field<ListGraphType<EmployeeType>>(
                 nameof(Position.Employees), 
@@ -52,6 +53,7 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.PermissionCreateBill).Description("Quyền tạo hóa đơn");
             Field(x => x.PermissionCreateFloor).Description("Quyền tạo tầng");
             Field(x => x.PermissionCreatePosition).Description("Quyền tạo chức vụ");
+            Field(x => x.PermissionCreateReceipt).Description("Quyền tạo phiếu thu");
         }
     }
 }
