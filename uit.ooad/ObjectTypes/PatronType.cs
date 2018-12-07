@@ -24,7 +24,7 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.Company).Description("Công ty mà khách hàng đang làm việc");
             Field(x => x.Note).Description("Một số chú thích về khách hàng nếu cần thiết");
 
-            Field<PatronKindType>(
+            Field<NonNullGraphType<PatronKindType>>(
                 nameof(Patron.PatronKind),
                 resolve: context => context.Source.PatronKind,
                 description: "Loại khách hàng"
