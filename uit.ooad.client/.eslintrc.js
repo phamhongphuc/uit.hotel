@@ -8,11 +8,15 @@ module.exports = {
         mocha: true,
     },
     extends: [
+        'airbnb-base',
         'eslint:recommended',
+        'standard',
         'plugin:vue/recommended',
         'plugin:node/recommended',
-        'plugin:import/errors',
         'plugin:import/warnings',
+        'plugin:import/errors',
+        'plugin:prettier/recommended',
+        'prettier/vue',
     ],
     parser: 'vue-eslint-parser',
     parserOptions: {
@@ -24,7 +28,7 @@ module.exports = {
             experimentalObjectRestSpread: true,
         },
     },
-    plugins: ['vue', 'import', 'node', 'graphql'],
+    plugins: ['standard', 'vue', 'import', 'node', 'graphql'],
     settings: {
         'import/resolver': {
             'babel-plugin-root-import': {
@@ -32,6 +36,13 @@ module.exports = {
                 rootPathSuffix: '',
             },
         },
+        'import/core-modules': [
+            'vue',
+            'vuex',
+            '@babel/register',
+            '@babel/polyfill',
+            'chalk',
+        ],
     },
     rules: {
         indent: ['error', 4],
