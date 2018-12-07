@@ -15,7 +15,8 @@ namespace uit.ooad.Queries
                 new PatronMutation(),
                 new PatronKindMutation(),
                 new HouseKeepingMutation(),
-                new ServiceMutation()
+                new ServiceMutation(),
+                new ServicesDetailMutation()
             );
         }
     }

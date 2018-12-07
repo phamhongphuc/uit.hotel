@@ -69,6 +69,8 @@ namespace uit.ooad
             services.AddSingleton<BookingIdInput>();
             services.AddSingleton<ServiceIdInput>();
             services.AddSingleton<ServiceCreateInput>();
+            services.AddSingleton<ServicesDetailIdInput>();
+            services.AddSingleton<ServicesDetailCreateInput>();
 
             services.AddSingleton<BillType>();
             services.AddSingleton<BookingType>();
