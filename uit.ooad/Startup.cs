@@ -1,4 +1,4 @@
-﻿using System.Security.Claims;
+using System.Security.Claims;
 using System.Text;
 using GraphQL;
 using GraphQL.Authorization;
@@ -65,6 +65,10 @@ namespace uit.ooad
             services.AddSingleton<RateCreateInput>();
             services.AddSingleton<RoomKindIdInput>();
             services.AddSingleton<FloorCreateInput>();
+            services.AddSingleton<HouseKeepingCreateInput>();
+            services.AddSingleton<HouseKeepingIdInput>();
+            services.AddSingleton<EmployeeIdInput>();
+            services.AddSingleton<BookingIdInput>();
 
             services.AddSingleton<BillType>();
             services.AddSingleton<BookingType>();

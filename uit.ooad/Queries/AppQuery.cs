@@ -8,13 +8,14 @@ namespace uit.ooad.Queries
         public AppQuery()
         {
             AddFields(
-                new RoomQuery(),
-                new RoomKindQuery(),
-                new FloorQuery(),
                 new EmployeeeQuery(),
-                new PatronQuery(),
+                new FloorQuery(),
+                new HouseKeepingQuery(),
                 new PatronKindQuery(),
-                new RateQuery()
+                new PatronQuery(),
+                new RateQuery(),
+                new RoomKindQuery(),
+                new RoomQuery()
             );
         }
     }

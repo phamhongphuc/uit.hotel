@@ -14,9 +14,9 @@ namespace uit.ooad.Queries
 
                 new EmployeeeMutation(),
                 new FloorMutation(),
+                new HouseKeepingMutation(),
                 new PatronKindMutation(),
                 new PatronMutation(),
-                new PatronKindMutation(),
                 new RateMutation(),
                 new RoomKindMutation(),
                 new RoomMutation()

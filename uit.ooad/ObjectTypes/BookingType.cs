@@ -1,6 +1,7 @@
 using System.Linq;
 using GraphQL.Types;
 using uit.ooad.Models;
+using uit.ooad.Queries.Base;
 
 namespace uit.ooad.ObjectTypes
 {
@@ -41,6 +42,16 @@ namespace uit.ooad.ObjectTypes
                 resolve: context => context.Source.ServicesDetails.ToList(),
                 description: "Danh sách chi tiết sử dụng dịch vụ của khách hàng"
             );
+        }
+    }
+
+    public class BookingIdInput : InputType<Booking>
+    {
+        public BookingIdInput()
+        {
+            Name = _Id;
+            Description = "Input cho một thông tin một đơn đặt phòng";
+            Field(x => x.Id).Description("Id của một đơn đặt phòng");
         }
     }
 }
