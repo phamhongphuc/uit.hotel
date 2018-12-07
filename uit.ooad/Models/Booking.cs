@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Realms;
+using uit.ooad.Businesses;
 
 namespace uit.ooad.Models
 {
@@ -23,5 +24,6 @@ namespace uit.ooad.Models
 
         [Backlink(nameof(ServicesDetail.Booking))]
         public IQueryable<ServicesDetail> ServicesDetails { get; }
+        public Booking GetManaged() => BookingBusiness.Get(Id);
     }
 }

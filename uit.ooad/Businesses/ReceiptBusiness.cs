@@ -14,6 +14,7 @@ namespace uit.ooad.Businesses
 
             return ReceiptDataAccess.Add(receipt);
         }
+
         public static IEnumerable<Receipt> Get() => ReceiptDataAccess.Get();
     }
 }

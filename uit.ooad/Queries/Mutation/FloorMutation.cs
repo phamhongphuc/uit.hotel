@@ -1,4 +1,4 @@
-using GraphQL.Types;
+using uit.ooad.Businesses;
 using uit.ooad.Models;
 using uit.ooad.ObjectTypes;
 using uit.ooad.Queries.Base;
@@ -12,19 +12,9 @@ namespace uit.ooad.Queries.Mutation
             Field<FloorType>(
                 _Creation,
                 "Tạo và trả về một tầng mới",
-                InputArgument<CreateFloorInput>(),
-                context => GetInput(context)
+                InputArgument<FloorCreateInput>(),
+                context => FloorBusiness.Add(GetInput(context))
             );
-        }
-    }
-
-    public class CreateFloorInput : InputType<Floor>
-    {
-        public CreateFloorInput()
-        {
-            Name = _Creation;
-            Field<NonNullGraphType<IntGraphType>>(nameof(Floor.Id));
-            Field<NonNullGraphType<StringGraphType>>(nameof(Floor.Name));
         }
     }
 }

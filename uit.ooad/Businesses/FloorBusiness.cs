@@ -14,6 +14,7 @@ namespace uit.ooad.Businesses
 
             return FloorDataAccess.Add(floor);
         }
+
         public static Floor Get(int floorId) => FloorDataAccess.Get(floorId);
         public static IEnumerable<Floor> Get() => FloorDataAccess.Get();
     }

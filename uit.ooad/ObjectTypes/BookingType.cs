@@ -1,6 +1,7 @@
 using System.Linq;
 using GraphQL.Types;
 using uit.ooad.Models;
+using uit.ooad.Queries.Base;
 
 namespace uit.ooad.ObjectTypes
 {
@@ -17,12 +18,21 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.CreateTime).Description("Thời điểm tạo thông tin thuê phòng");
             Field(x => x.Status).Description("Trạng thái của thông tin thuê phòng");
 
-            Field<EmployeeType>(nameof(Booking.Employee), resolve: context => context.Source.Employee,
-                                description: "Nhân viên thực hiện giao dịch nhận đặt phòng từ khách hàng");
-            Field<BillType>(nameof(Booking.Bill), resolve: context => context.Source.Bill,
-                            description: "Thông tin hóa đơn của thông tin thuê phòng");
-            Field<RoomType>(nameof(Booking.Room), resolve: context => context.Source.Room,
-                            description: "Phòng khách hàng chọn đặt trước");
+            Field<NonNullGraphType<EmployeeType>>(
+                nameof(Booking.Employee),
+            resolve: context => context.Source.Employee,
+            description: "Nhân viên thực hiện giao dịch nhận đặt phòng từ khách hàng"
+            );
+            Field<NonNullGraphType<BillType>>(
+                nameof(Booking.Bill),
+                resolve: context => context.Source.Bill,
+                description: "Thông tin hóa đơn của thông tin thuê phòng"
+            );
+            Field<NonNullGraphType<RoomType>>(
+                nameof(Booking.Room),
+                resolve: context => context.Source.Room,
+                description: "Phòng khách hàng chọn đặt trước"
+            );
 
             Field<ListGraphType<PatronType>>(
                 nameof(Booking.Patrons),
@@ -41,6 +51,16 @@ namespace uit.ooad.ObjectTypes
                 resolve: context => context.Source.ServicesDetails.ToList(),
                 description: "Danh sách chi tiết sử dụng dịch vụ của khách hàng"
             );
+        }
+    }
+
+    public class BookingIdInput : InputType<Booking>
+    {
+        public BookingIdInput()
+        {
+            Name = _Id;
+            Description = "Input cho một thông tin một đơn đặt phòng";
+            Field(x => x.Id).Description("Id của một đơn đặt phòng");
         }
     }
 }

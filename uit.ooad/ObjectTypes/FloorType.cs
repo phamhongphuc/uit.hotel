@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using GraphQL.Types;
 using uit.ooad.Models;
+using uit.ooad.Queries.Base;
 
 namespace uit.ooad.ObjectTypes
 {
@@ -18,6 +19,16 @@ namespace uit.ooad.ObjectTypes
                 resolve: context => context.Source.Rooms.ToList(),
                 description: "Danh sách các phòng có trong tầng"
             );
+        }
+    }
+
+    public class FloorCreateInput : InputType<Floor>
+    {
+        public FloorCreateInput()
+        {
+            Name = _Creation;
+            Field<NonNullGraphType<IntGraphType>>(nameof(Floor.Id));
+            Field<NonNullGraphType<StringGraphType>>(nameof(Floor.Name));
         }
     }
 }

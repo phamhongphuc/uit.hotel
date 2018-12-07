@@ -1,4 +1,4 @@
-﻿using System.Security.Claims;
+using System.Security.Claims;
 using System.Text;
 using GraphQL;
 using GraphQL.Authorization;
@@ -17,7 +17,7 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.IdentityModel.Tokens;
 using uit.ooad.ObjectTypes;
 using uit.ooad.Queries;
-using uit.ooad.Queries.Mutation;
+using uit.ooad.Queries.Authentication;
 using uit.ooad.Schemas;
 
 namespace uit.ooad
@@ -54,12 +54,23 @@ namespace uit.ooad
             services.AddSingleton<IDocumentExecuter, DocumentExecuter>();
             services.AddSingleton<IDocumentWriter, DocumentWriter>();
 
+            services.AddSingleton<AuthenticationHelper>();
+
             services.AddSingleton<AppQuery>();
             services.AddSingleton<AppMutation>();
 
             services.AddSingleton<PatronCreateInput>();
+            services.AddSingleton<PatronKindCreateInput>();
             services.AddSingleton<PatronKindIdInput>();
-            services.AddSingleton<CreateFloorInput>();
+            services.AddSingleton<RateCreateInput>();
+            services.AddSingleton<RoomKindIdInput>();
+            services.AddSingleton<FloorCreateInput>();
+            services.AddSingleton<HouseKeepingCreateInput>();
+            services.AddSingleton<HouseKeepingIdInput>();
+            services.AddSingleton<EmployeeIdInput>();
+            services.AddSingleton<BookingIdInput>();
+            services.AddSingleton<EmployeeCreateInput>();
+            services.AddSingleton<PositionIdInput>();
 
             services.AddSingleton<BillType>();
             services.AddSingleton<BookingType>();

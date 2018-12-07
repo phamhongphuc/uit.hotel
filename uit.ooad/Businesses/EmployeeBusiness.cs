@@ -12,8 +12,10 @@ namespace uit.ooad.Businesses
             var employeeInDatabase = EmployeeDataAccess.Get(employee.Id);
             if (employeeInDatabase != null) return null;
 
+            employee.Position = employee.Position.GetManaged();
             return EmployeeDataAccess.Add(employee);
         }
+
         public static Employee Get(string employeeId) => EmployeeDataAccess.Get(employeeId);
         public static IEnumerable<Employee> Get() => EmployeeDataAccess.Get();
     }

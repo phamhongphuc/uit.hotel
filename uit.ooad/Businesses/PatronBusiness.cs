@@ -15,6 +15,7 @@ namespace uit.ooad.Businesses
             patron.PatronKind = patron.PatronKind.GetManaged();
             return PatronDataAccess.Add(patron);
         }
+
         public static Patron Get(string patronId) => PatronDataAccess.Get(patronId);
         public static IEnumerable<Patron> Get() => PatronDataAccess.Get();
     }

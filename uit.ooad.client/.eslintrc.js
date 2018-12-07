@@ -1,3 +1,5 @@
+const schemaJson = require('./graphql/schema.json');
+
 module.exports = {
     env: {
         node: true,
@@ -6,11 +8,15 @@ module.exports = {
         mocha: true,
     },
     extends: [
+        'airbnb-base',
         'eslint:recommended',
+        'standard',
         'plugin:vue/recommended',
         'plugin:node/recommended',
-        'plugin:import/errors',
         'plugin:import/warnings',
+        'plugin:import/errors',
+        'plugin:prettier/recommended',
+        'prettier/vue',
     ],
     parser: 'vue-eslint-parser',
     parserOptions: {
@@ -22,7 +28,7 @@ module.exports = {
             experimentalObjectRestSpread: true,
         },
     },
-    plugins: ['vue', 'import', 'node', 'graphql'],
+    plugins: ['standard', 'vue', 'import', 'node', 'graphql'],
     settings: {
         'import/resolver': {
             'babel-plugin-root-import': {
@@ -30,68 +36,65 @@ module.exports = {
                 rootPathSuffix: '',
             },
         },
+        'import/core-modules': [
+            'vue',
+            'vuex',
+            '@babel/register',
+            '@babel/polyfill',
+            'chalk',
+        ],
     },
     rules: {
-        'eol-last': 'off',
-        indent: ['warn', 4, { MemberExpression: 1 }],
-        'linebreak-style': ['error', process.platform === 'win32' ? 'windows' : 'unix'],
-        'no-console': 'off',
-        'no-global-assign': [
-            'error',
-            {
-                exceptions: ['Object'],
-            },
-        ],
-        'no-throw-literal': 'off',
-        'no-unused-vars': 'warn',
-        'node/no-deprecated-api': [
-            'warn',
-            {
-                ignoreModuleItems: [],
-                ignoreGlobalItems: [],
-            },
-        ],
-        'node/no-unsupported-features/es-syntax': 'off',
-        'operator-linebreak': 'off',
+        indent: ['error', 4],
+        camelcase: 'error',
+        'eol-last': 'error',
+        'linebreak-style': ['error', 'unix'],
+        'no-console': 'warn',
+        'no-lonely-if': 'error',
         'prefer-const': 'error',
-        quotes: [
-            'warn',
-            'single',
-            {
-                avoidEscape: true,
-                allowTemplateLiterals: true,
-            },
-        ],
-        semi: ['error', 'always'],
         'space-before-function-paren': [
             'error',
-            {
-                anonymous: 'never',
-                named: 'never',
-                asyncArrow: 'always',
-            },
+            { anonymous: 'never', named: 'never', asyncArrow: 'always' },
         ],
-        'vue/html-indent': [
+        'node/no-unsupported-features/es-syntax': 'off',
+        'import/prefer-default-export': 'off',
+        'vue/html-indent': ['error', 4],
+        'vue/html-self-closing': [
             'error',
-            4,
+            { html: { void: 'always', normal: 'always', component: 'always' } },
+        ],
+        'vue/component-name-in-template-casing': ['error', 'kebab-case'],
+        'vue/attributes-order': [
+            'error',
             {
-                attribute: 1,
-                closeBracket: 0,
-                alignAttributesVertically: true,
-                ignores: [],
+                order: [
+                    'DEFINITION', //        is
+                    'LIST_RENDERING', //    v-for
+                    'CONDITIONALS', //      v-if | v-else-if | v-else | v-show | v-cloak
+                    'RENDER_MODIFIERS', //  v-pre | v-once
+                    'GLOBAL', //            id
+                    'UNIQUE', //            ref | key | slot | slot-scope
+                    'TWO_WAY_BINDING', //   v-model
+                    'OTHER_DIRECTIVES', //  v-custom-directive
+                    'OTHER_ATTR', //        custom-prop | v-bind:prop | :prop
+                    'EVENTS', //            v-on:click | @click
+                    'CONTENT', //           v-text | v-html
+                ],
             },
         ],
-        'vue/max-attributes-per-line': [
-            2,
+        'graphql/template-strings': [
+            'error',
             {
-                singleline: 1,
-                multiline: {
-                    max: 1,
-                    allowFirstLine: true,
-                },
+                validators: 'all',
+                env: 'apollo',
+                schemaJson,
             },
         ],
-        'graphql/template-strings': ['error', { validators: 'all', env: 'apollo' }],
-        'graphql/named-operations': ['warn'],
+        'graphql/named-operations': [
+            'warn',
+            {
+                schemaJson,
+            },
+        ],
     },
 };

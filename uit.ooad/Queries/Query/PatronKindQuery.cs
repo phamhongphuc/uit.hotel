@@ -18,10 +18,8 @@ namespace uit.ooad.Queries.Query
             Field<PatronKindType>(
                 _Item,
                 "Trả về thông tin của một loại khách hàng",
-                new QueryArguments(
-                    new QueryArgument<NonNullGraphType<IdGraphType>> { Name = "id" }
-                ),
-                context => PatronKindBusiness.Get(context.GetArgument<int>("id"))
+                IdArgument(),
+                context => PatronKindBusiness.Get(GetId<int>(context))
             );
         }
     }
