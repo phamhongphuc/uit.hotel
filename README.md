@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/phamhongphuc/uit.ooad" target="_blank" rel="noopener noreferrer">
-    <img width="100" src="https://raw.githubusercontent.com/phamhongphuc/uit.ooad/document/readme/logo.png" alt="Vue logo">
+    <img width="100" src="https://raw.githubusercontent.com/phamhongphuc/uit.ooad/master/logo.png" alt="Logo">
   </a>
 </p>
 
