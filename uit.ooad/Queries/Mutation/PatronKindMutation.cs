@@ -13,17 +13,8 @@ namespace uit.ooad.Queries.Mutation
             Field<PatronKindType>(
                 _Creation,
                 "Tạo và trả về một loại khách hàng mới",
-                new QueryArguments(
-                    new QueryArgument<NonNullGraphType<IdGraphType>> { Name = "id" },
-                    new QueryArgument<NonNullGraphType<StringGraphType>> { Name = "name" },
-                    new QueryArgument<NonNullGraphType<StringGraphType>> { Name = "description" }
-                ),
-                context => PatronKindBusiness.Add(new PatronKind
-                {
-                    Id = context.GetArgument<int>("id"),
-                    Name = context.GetArgument<string>("name"),
-                    Description = context.GetArgument<string>("description")
-                })
+                InputArgument<PatronKindCreateInput>(),
+                context => PatronKindBusiness.Add(GetInput(context))
             );
         }
     }
