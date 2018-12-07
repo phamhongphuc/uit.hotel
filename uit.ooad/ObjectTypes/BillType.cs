@@ -39,6 +39,16 @@ namespace uit.ooad.ObjectTypes
         }
     }
 
+    public class BillIdInput : InputType<Bill>
+    {
+        public BillIdInput()
+        {
+            Name = _Id;
+            Description = "Input cho thông tin một hóa đơn";
+
+            Field(x => x.Id).Description("Id của hóa đơn");
+        }
+    }
     public class BillCreateInput : InputType<Bill>
     {
         public BillCreateInput()
