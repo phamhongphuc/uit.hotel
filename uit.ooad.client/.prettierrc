@@ -5,5 +5,12 @@
     "trailingComma": "all",
     "bracketSpacing": true,
     "arrowParens": "avoid",
-    "printWidth": 90
+    "htmlWhitespaceSensitivity": "ignore",
+    "printWidth": 80,
+    "overrides": [
+        {
+            "files": ["*.code-workspace", ".stylelintrc", ".babelrc"],
+            "options": { "parser": "json" }
+        }
+    ]
 }
