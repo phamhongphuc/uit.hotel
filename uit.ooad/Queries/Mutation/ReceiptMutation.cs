@@ -8,17 +8,17 @@ using uit.ooad.Queries.Base;
 
 namespace uit.ooad.Queries.Mutation
 {
-    public class FloorMutation : QueryType<Floor>
+    public class ReceiptMutation : QueryType<Receipt>
     {
-        public FloorMutation()
+        public ReceiptMutation()
         {
-            Field<FloorType>(
+            Field<ReceiptType>(
                 _Creation,
-                "Tạo và trả về một tầng mới",
-                InputArgument<FloorCreateInput>(),
+                "Tạo và trả về một phiếu thu mới",
+                InputArgument<ReceiptCreateInput>(),
                 _CheckPermission(
-                    p => p.PermissionCreateFloor,
-                    context => FloorBusiness.Add(GetInput(context))
+                    p => p.PermissionCreateReceipt,
+                    context => ReceiptBusiness.Add(GetInput(context))
                 )
             );
         }

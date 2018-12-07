@@ -17,6 +17,7 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.IdentityModel.Tokens;
 using uit.ooad.ObjectTypes;
 using uit.ooad.Queries;
+using uit.ooad.Queries.Authentication;
 using uit.ooad.Schemas;
 
 namespace uit.ooad
@@ -53,12 +54,16 @@ namespace uit.ooad
             services.AddSingleton<IDocumentExecuter, DocumentExecuter>();
             services.AddSingleton<IDocumentWriter, DocumentWriter>();
 
+            services.AddSingleton<AuthenticationHelper>();
+
             services.AddSingleton<AppQuery>();
             services.AddSingleton<AppMutation>();
 
             services.AddSingleton<PatronCreateInput>();
             services.AddSingleton<PatronKindCreateInput>();
             services.AddSingleton<PatronKindIdInput>();
+            services.AddSingleton<RateCreateInput>();
+            services.AddSingleton<RoomKindIdInput>();
             services.AddSingleton<FloorCreateInput>();
             services.AddSingleton<HouseKeepingCreateInput>();
             services.AddSingleton<HouseKeepingIdInput>();
@@ -71,7 +76,13 @@ namespace uit.ooad
             services.AddSingleton<ServiceCreateInput>();
             services.AddSingleton<ServicesDetailIdInput>();
             services.AddSingleton<ServicesDetailCreateInput>();
-
+            services.AddSingleton<EmployeeCreateInput>();
+            services.AddSingleton<PositionIdInput>();
+            services.AddSingleton<PositionCreateInput>();
+            services.AddSingleton<PatronIdInput>();
+            services.AddSingleton<BillCreateInput>();
+            services.AddSingleton<BillIdInput>();
+            services.AddSingleton<ReceiptCreateInput>();
             services.AddSingleton<BillType>();
             services.AddSingleton<BookingType>();
             services.AddSingleton<EmployeeType>();

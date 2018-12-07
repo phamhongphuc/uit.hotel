@@ -1,6 +1,7 @@
 using System.Linq;
 using GraphQL.Types;
 using uit.ooad.Models;
+using uit.ooad.Queries.Base;
 
 namespace uit.ooad.ObjectTypes
 {
@@ -13,10 +14,46 @@ namespace uit.ooad.ObjectTypes
 
             Field(x => x.Id).Description("Id của chức vụ");
             Field(x => x.Name).Description("Tên chức vụ");
-            Field(x => x.PermissionCreateAccount).Description("Quyền tạo tài khoản");
+            Field(x => x.PermissionCreateEmployee).Description("Quyền tạo tài khoản nhân viên");
+            Field(x => x.PermissionCreatePatron).Description("Quyền tạo khách hàng");
+            Field(x => x.PermissionCreateBill).Description("Quyền tạo hóa đơn");
+            Field(x => x.PermissionCreateFloor).Description("Quyền tạo tầng");
+            Field(x => x.PermissionCreatePosition).Description("Quyền tạo chức vụ");
+            Field(x => x.PermissionCreateReceipt).Description("Quyền tạo phiếu thu");
 
-            Field<ListGraphType<EmployeeType>>("employees", resolve: context => context.Source.Employees.ToList(),
-                                               description: "Danh sách các nhân viên thuộc quyền này");
+            Field<ListGraphType<EmployeeType>>(
+                nameof(Position.Employees), 
+                resolve: context => context.Source.Employees.ToList(),
+                description: "Danh sách các nhân viên thuộc quyền này"
+            );
+        }
+    }
+
+    public class PositionIdInput : InputType<Position>
+    {
+        public PositionIdInput()
+        {
+            Name = _Id;
+            Description = "Input cho thông tin một chức vụ";
+
+            Field(x => x.Id).Description("Id của chức vụ");
+        }
+    }
+
+    public class PositionCreateInput : InputType<Position>
+    {
+        public PositionCreateInput()
+        {
+            Name = _Creation;
+
+            Field(x => x.Id).Description("Id của chức vụ");
+            Field(x => x.Name).Description("Tên chức vụ");
+            Field(x => x.PermissionCreateEmployee).Description("Quyền tạo tài khoản nhân viên");
+            Field(x => x.PermissionCreatePatron).Description("Quyền tạo khách hàng");
+            Field(x => x.PermissionCreateBill).Description("Quyền tạo hóa đơn");
+            Field(x => x.PermissionCreateFloor).Description("Quyền tạo tầng");
+            Field(x => x.PermissionCreatePosition).Description("Quyền tạo chức vụ");
+            Field(x => x.PermissionCreateReceipt).Description("Quyền tạo phiếu thu");
         }
     }
 }

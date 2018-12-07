@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using Realms;
+using uit.ooad.Businesses;
 
 namespace uit.ooad.Models
 {
@@ -8,9 +9,17 @@ namespace uit.ooad.Models
         [PrimaryKey]
         public int Id { get; set; }
         public string Name { get; set; }
-        public bool PermissionCreateAccount { get; set; }
+        public bool PermissionCreateEmployee { get; set; }
+        public bool PermissionCreatePatron { get; set; }
+        public bool PermissionCreateBill { get; set; }
+        public bool PermissionCreateFloor { get; set; }
+        public bool PermissionCreatePosition { get; set; }
+
+        public bool PermissionCreateReceipt { get; set; }
 
         [Backlink(nameof(Employee.Position))]
         public IQueryable<Employee> Employees { get; }
+
+        public Position GetManaged() => PositionBusiness.Get(Id);
     }
 }

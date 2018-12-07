@@ -12,6 +12,8 @@ namespace uit.ooad.Businesses
             var billInDatabase = BillDataAccess.Get(bill.Id);
             if (billInDatabase != null) return null;
 
+            bill.Patron = bill.Patron.GetManaged();
+            bill.Employee = bill.Employee.GetManaged();
             return BillDataAccess.Add(bill);
         }
 

@@ -1,0 +1,62 @@
+using System;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+using GraphQL.Types;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
+using uit.ooad.Businesses;
+using uit.ooad.GraphQL;
+using uit.ooad.Models;
+
+namespace uit.ooad.Queries.Authentication
+{
+    public class AuthenticationHelper
+    {
+        public static AuthenticationHelper Instance;
+
+        private readonly IConfiguration Configuration;
+
+        public AuthenticationHelper(IConfiguration configuration)
+        {
+            Configuration = configuration;
+            Instance = this;
+        }
+
+        public string TokenBuilder(string id)
+        {
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JWT:key"]));
+            var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+            var token = new JwtSecurityToken(
+                Configuration["JWT:issuer"],
+                Configuration["JWT:audience"],
+                signingCredentials: credentials,
+                expires: DateTime.Now.AddDays(3),
+                claims: new[]
+                {
+                    new Claim(ClaimTypes.Name, id)
+                }
+            );
+
+            return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+
+        public void HasPermission(ResolveFieldContext<object> context, Func<Position, Boolean> getPermission)
+        {
+            if (!(context.UserContext is GraphQLUserContext userContext)) throw new Exception("Lỗi không xác định");
+
+            var name = userContext.User.FindFirst(u => u.Type == ClaimTypes.Name);
+            if (name == null) throw new Exception("Không tìm thấy tên đăng nhập");
+
+            var employee = EmployeeBusiness.Get(name.Value);
+            if (employee == null) throw new Exception("Không tim thấy tên đăng nhập trong hệ thống");
+
+            var position = employee.Position;
+            if (position == null) new Exception("Tài khoản lỗi, vui lòng liên hệ quản trị viên");
+
+            var hasPermission = getPermission(position);
+            if (!hasPermission) throw new Exception("Người dùng không có quyền thực hiện thao tác này");
+        }
+    }
+}
