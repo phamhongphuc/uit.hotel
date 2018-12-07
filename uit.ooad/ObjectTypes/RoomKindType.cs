@@ -1,6 +1,7 @@
 using System.Linq;
 using GraphQL.Types;
 using uit.ooad.Models;
+using uit.ooad.Queries.Base;
 
 namespace uit.ooad.ObjectTypes
 {
@@ -24,6 +25,17 @@ namespace uit.ooad.ObjectTypes
             Field<ListGraphType<VolatilityRateType>>(nameof(RoomKind.VolatilityRates),
                                                      resolve: context => context.Source.VolatilityRates.ToList(),
                                                      description: "Danh sách giá biến động của loại phòng");
+        }
+    }
+
+    public class RoomKindIdInput : InputType<RoomKind>
+    {
+        public RoomKindIdInput()
+        {
+            Name = _Id;
+            Description = "Input cho một thông tin một loại phòng";
+
+            Field(x => x.Id).Description("Id của một loại phòng");
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using Realms;
+using uit.ooad.DataAccesses;
 
 namespace uit.ooad.Models
 {
@@ -21,5 +22,6 @@ namespace uit.ooad.Models
 
         [Backlink(nameof(VolatilityRate.RoomKind))]
         public IQueryable<VolatilityRate> VolatilityRates { get; }
+        public RoomKind GetManaged() => RoomKindDataAccess.Get(Id);
     }
 }

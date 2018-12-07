@@ -8,7 +8,7 @@ namespace uit.ooad.Businesses
     public class RoomKindBusiness
     {
         public static Task<RoomKind> Add(RoomKind roomKind) => RoomKindDataAccess.Add(roomKind);
-        public static RoomKind Get(int roomKindId) => RoomKindDataAccess.GetRoomKind(roomKindId);
-        public static IEnumerable<RoomKind> Get() => RoomKindDataAccess.GetRoomKinds();
+        public static RoomKind Get(int roomKindId) => RoomKindDataAccess.Get(roomKindId);
+        public static IEnumerable<RoomKind> Get() => RoomKindDataAccess.Get();
     }
 }

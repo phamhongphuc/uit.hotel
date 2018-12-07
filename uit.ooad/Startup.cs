@@ -62,6 +62,8 @@ namespace uit.ooad
             services.AddSingleton<FloorCreateInput>();
             services.AddSingleton<HouseKeepingCreateInput>();
             services.AddSingleton<HouseKeepingIdInput>();
+            services.AddSingleton<RoomCreateInput>();
+            services.AddSingleton<RoomKindIdInput>();
             services.AddSingleton<EmployeeIdInput>();
             services.AddSingleton<BookingIdInput>();
 

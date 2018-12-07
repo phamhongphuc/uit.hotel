@@ -12,7 +12,7 @@ namespace uit.ooad.DataAccesses
             return roomKind;
         }
 
-        public static RoomKind GetRoomKind(int roomKindId) => Database.Find<RoomKind>(roomKindId);
-        public static IEnumerable<RoomKind> GetRoomKinds() => Database.All<RoomKind>();
+        public static RoomKind Get(int roomKindId) => Database.Find<RoomKind>(roomKindId);
+        public static IEnumerable<RoomKind> Get() => Database.All<RoomKind>();
     }
 }
