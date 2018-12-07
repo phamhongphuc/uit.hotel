@@ -13,7 +13,8 @@ namespace uit.ooad.Queries
                 new FloorQuery(),
                 new EmployeeeQuery(),
                 new PatronQuery(),
-                new PatronKindQuery()
+                new PatronKindQuery(),
+                new HouseKeepingQuery()
             );
         }
     }

@@ -13,7 +13,8 @@ namespace uit.ooad.Queries
                 new FloorMutation(),
                 new EmployeeeMutation(),
                 new PatronMutation(),
-                new PatronKindMutation()
+                new PatronKindMutation(),
+                new HouseKeepingMutation()
             );
         }
     }
