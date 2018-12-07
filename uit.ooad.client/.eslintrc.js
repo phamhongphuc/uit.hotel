@@ -34,63 +34,41 @@ module.exports = {
         },
     },
     rules: {
-        'eol-last': 'off',
-        indent: ['warn', 4, { MemberExpression: 1 }],
-        'linebreak-style': ['error', process.platform === 'win32' ? 'windows' : 'unix'],
-        'no-console': 'off',
-        'no-global-assign': [
-            'error',
-            {
-                exceptions: ['Object'],
-            },
-        ],
-        'no-throw-literal': 'off',
-        'no-unused-vars': 'warn',
-        'node/no-deprecated-api': [
-            'warn',
-            {
-                ignoreModuleItems: [],
-                ignoreGlobalItems: [],
-            },
-        ],
-        'node/no-unsupported-features/es-syntax': 'off',
-        'operator-linebreak': 'off',
+        indent: ['error', 4],
+        camelcase: 'error',
+        'eol-last': 'error',
+        'linebreak-style': ['error', 'unix'],
+        'no-console': 'warn',
+        'no-lonely-if': 'error',
         'prefer-const': 'error',
-        quotes: [
-            'warn',
-            'single',
-            {
-                avoidEscape: true,
-                allowTemplateLiterals: true,
-            },
-        ],
-        semi: ['error', 'always'],
         'space-before-function-paren': [
             'error',
-            {
-                anonymous: 'never',
-                named: 'never',
-                asyncArrow: 'always',
-            },
+            { anonymous: 'never', named: 'never', asyncArrow: 'always' },
         ],
-        'vue/html-indent': [
+        'node/no-unsupported-features/es-syntax': 'off',
+        'import/prefer-default-export': 'off',
+        'vue/html-indent': ['error', 4],
+        'vue/html-self-closing': [
             'error',
-            4,
-            {
-                attribute: 1,
-                closeBracket: 0,
-                alignAttributesVertically: true,
-                ignores: [],
-            },
+            { html: { void: 'always', normal: 'always', component: 'always' } },
         ],
-        'vue/max-attributes-per-line': [
-            2,
+        'vue/component-name-in-template-casing': ['error', 'kebab-case'],
+        'vue/attributes-order': [
+            'error',
             {
-                singleline: 1,
-                multiline: {
-                    max: 1,
-                    allowFirstLine: true,
-                },
+                order: [
+                    'DEFINITION', //        is
+                    'LIST_RENDERING', //    v-for
+                    'CONDITIONALS', //      v-if | v-else-if | v-else | v-show | v-cloak
+                    'RENDER_MODIFIERS', //  v-pre | v-once
+                    'GLOBAL', //            id
+                    'UNIQUE', //            ref | key | slot | slot-scope
+                    'TWO_WAY_BINDING', //   v-model
+                    'OTHER_DIRECTIVES', //  v-custom-directive
+                    'OTHER_ATTR', //        custom-prop | v-bind:prop | :prop
+                    'EVENTS', //            v-on:click | @click
+                    'CONTENT', //           v-text | v-html
+                ],
             },
         ],
         'graphql/template-strings': [
