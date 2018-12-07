@@ -1,19 +1,22 @@
-﻿using uit.ooad.Queries.Base;
+﻿using Microsoft.Extensions.Configuration;
+using uit.ooad.Queries.Base;
 using uit.ooad.Queries.Mutation;
 
 namespace uit.ooad.Queries
 {
     public class AppMutation : AppType
     {
-        public AppMutation()
+        public AppMutation(IConfiguration configuration)
         {
             AddFields(
-                new RoomMutation(),
-                new RoomKindMutation(),
-                new FloorMutation(),
+                new AuthenticationMutation(configuration),
+
                 new EmployeeeMutation(),
+                new FloorMutation(),
+                new PatronKindMutation(),
                 new PatronMutation(),
-                new PatronKindMutation()
+                new RoomKindMutation(),
+                new RoomMutation()
             );
         }
     }
