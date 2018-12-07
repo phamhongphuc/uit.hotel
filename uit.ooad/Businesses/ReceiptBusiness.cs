@@ -12,8 +12,11 @@ namespace uit.ooad.Businesses
             var receiptInDatabase = ReceiptDataAccess.Get(receipt.Id);
             if (receiptInDatabase != null) return null;
 
+            receipt.Bill = receipt.Bill.GetManaged();
+            receipt.Employee = receipt.Employee.GetManaged();
             return ReceiptDataAccess.Add(receipt);
         }
+        public static Receipt Get(int receiptId) => ReceiptDataAccess.Get(receiptId);
 
         public static IEnumerable<Receipt> Get() => ReceiptDataAccess.Get();
     }
