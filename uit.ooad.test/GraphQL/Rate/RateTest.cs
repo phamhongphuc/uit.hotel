@@ -19,6 +19,14 @@ namespace uit.ooad.test.GraphQL.Rate
     {
         public RateTest()
         {
+            RoomKindBusiness.Add(new Models.RoomKind()
+            {
+                Id = 1,
+                Name = "Tên loại phòng",
+                AmountOfPeople = 1,
+                NumberOfBeds = 1,
+                PriceByDate = 1
+            });
             RateBusiness.Add(new Models.Rate()
             {
                 Id = 1,
@@ -30,7 +38,6 @@ namespace uit.ooad.test.GraphQL.Rate
                 EarlyCheckInFee = 1,
                 EffectiveStartDate = DateTime.Now,
                 CreateDate = DateTime.Now,
-                /*Cần tạo RoomKind */
                 RoomKind = RoomKindBusiness.Get(1)
             });
         }

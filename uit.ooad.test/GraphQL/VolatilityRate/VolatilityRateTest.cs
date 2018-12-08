@@ -19,6 +19,14 @@ namespace uit.ooad.test.GraphQL.VolatilityRate
     {
         public VolatilityRateTest()
         {
+            RoomKindBusiness.Add(new Models.RoomKind()
+            {
+                Id = 1,
+                Name = "Tên loại phòng",
+                AmountOfPeople = 1,
+                NumberOfBeds = 1,
+                PriceByDate = 1
+            });
             VolatilityRateBusiness.Add(new Models.VolatilityRate()
             {
                 Id = 1,
@@ -35,7 +43,6 @@ namespace uit.ooad.test.GraphQL.VolatilityRate
                 EffectiveOnWednesday = true,
                 EffectiveOnThursday = true,
                 CreateDate = DateTime.Now,
-                /*Cần tạo RoomKind */
                 RoomKind = RoomKindBusiness.Get(1)
             });
         }

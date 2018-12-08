@@ -19,7 +19,6 @@ namespace uit.ooad.test.GraphQL.RoomKind
     {
         public RoomKindTest()
         {
-
             RoomKindBusiness.Add(new Models.RoomKind()
             {
                 Id = 1,

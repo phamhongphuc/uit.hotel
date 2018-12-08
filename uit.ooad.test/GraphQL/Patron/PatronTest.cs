@@ -19,6 +19,12 @@ namespace uit.ooad.test.GraphQL.Patron
     {
         public PatronTest()
         {
+            PatronKindBusiness.Add(new Models.PatronKind()
+            {
+                Id = 1,
+                Name = "Tên loại khách hàng",
+                Description = "Mô tả loại khách hàng"
+            });
             PatronBusiness.Add(new Models.Patron()
             {
                 Identification = "Id khách hàng",
@@ -32,7 +38,6 @@ namespace uit.ooad.test.GraphQL.Patron
                 Residence = "Thường trú",
                 Company = "Công ty",
                 Note = "Ghi chú",
-                /*Cần tạo PatronKind */
                 PatronKind = PatronKindBusiness.Get(1)
             });
         }
