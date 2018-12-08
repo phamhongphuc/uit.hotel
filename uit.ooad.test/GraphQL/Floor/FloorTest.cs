@@ -19,14 +19,12 @@ namespace uit.ooad.test.GraphQL.Floor
         public TestContext TestContext { get; set; }
 
         [TestMethod]
-        public void GetListFloor()
+        public void Floors()
         {
-            bool isValid = SchemaHelper.Execute(
+            SchemaHelper.Execute(
                 @"/GraphQL/Floor/query.floors.gql",
                 @"/GraphQL/Floor/query.floors.schema.json"
             );
-
-            Assert.IsTrue(isValid, "floors fail");
         }
     }
 }

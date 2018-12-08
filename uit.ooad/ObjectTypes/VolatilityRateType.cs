@@ -39,7 +39,7 @@ namespace uit.ooad.ObjectTypes
 
     public class VolatilityRateCreateInput : InputType<VolatilityRate>
     {
-        VolatilityRateCreateInput()
+        public VolatilityRateCreateInput()
         {
             Name = _Creation;
             Field(x => x.Id).Description("Id của giá");
@@ -61,7 +61,7 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.CreateDate).Description("Ngày tạo giá");
 
             Field<RoomKindIdInput>(
-                "RoomKind",
+                nameof(VolatilityRate.RoomKind),
                 "Loại phòng"
             );
         }

@@ -48,11 +48,11 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.Number).Description("Số lượng");
 
             Field<BookingIdInput>(
-                "Booking",
+                nameof(ServicesDetail.Booking),
                 "Thuộc thông tin thuê phòng nào"
             );
             Field<ServiceIdInput>(
-                "Service",
+                nameof(ServicesDetail.Service),
                 "Thuộc dịch vụ nào"
             );
         }

@@ -31,12 +31,12 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.Type).Description("Loại hình thức dọn dẹp");
 
             Field<NonNullGraphType<EmployeeIdInput>>(
-                "Employee",
+                nameof(HouseKeeping.Employee),
                 "Nhân viên thực hiện dọn dẹp"
             );
 
             Field<NonNullGraphType<BookingIdInput>>(
-                "Booking",
+                nameof(HouseKeeping.Booking),
                 "Thông tin đơn đặt phòng cần dọn dẹp"
             );
         }
