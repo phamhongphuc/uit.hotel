@@ -13,7 +13,10 @@ namespace uit.ooad.Queries.Mutation
                 _Creation,
                 "Tạo và trả về một dịch vụ mới",
                 InputArgument<ServiceCreateInput>(),
-                context => ServiceBusiness.Add(GetInput(context))
+                _CheckPermission(
+                    p => p.PermissionCreateService,
+                    context => ServiceBusiness.Add(GetInput(context))
+                )
             );
         }
     }
