@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 
-namespace uit.ooad.GraphQL
+namespace uit.ooad.GraphQLHelper
 {
     /**
      * Chỉ dùng để truyền vào bên trong parameter của controller để

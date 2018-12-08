@@ -8,7 +8,7 @@ using GraphQL.Types;
 using GraphQL.Validation;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
-using uit.ooad.GraphQL;
+using uit.ooad.GraphQLHelper;
 
 namespace uit.ooad.Controllers
 {

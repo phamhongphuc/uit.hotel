@@ -20,8 +20,8 @@ namespace uit.ooad.ObjectTypes
 
             Field<NonNullGraphType<EmployeeType>>(
                 nameof(Booking.Employee),
-            resolve: context => context.Source.Employee,
-            description: "Nhân viên thực hiện giao dịch nhận đặt phòng từ khách hàng"
+                resolve: context => context.Source.Employee,
+                description: "Nhân viên thực hiện giao dịch nhận đặt phòng từ khách hàng"
             );
             Field<NonNullGraphType<BillType>>(
                 nameof(Booking.Bill),
@@ -61,6 +61,33 @@ namespace uit.ooad.ObjectTypes
             Name = _Id;
             Description = "Input cho một thông tin một đơn đặt phòng";
             Field(x => x.Id).Description("Id của một đơn đặt phòng");
+        }
+    }
+
+    public class BookingCreateInput : InputType<Booking>
+    {
+        public BookingCreateInput()
+        {
+            Name = _Creation;
+
+            Field(x => x.Id).Description("Id của thông tin thuê phòng");
+            Field(x => x.CheckInTime).Description("Thời điểm nhận phòng dự kiến của khách hàng");
+            Field(x => x.CheckOutTime).Description("Thời điểm trả phòng dự kiến của khách hàng");
+            Field(x => x.CreateTime).Description("Thời điểm tạo thông tin thuê phòng");
+            Field(x => x.Status).Description("Trạng thái của thông tin thuê phòng");
+
+            Field<NonNullGraphType<EmployeeIdInput>>(
+                nameof(Booking.Employee),
+                "Nhân viên thực hiện giao dịch nhận đặt phòng từ khách hàng"
+            );
+            Field<NonNullGraphType<BillIdInput>>(
+                nameof(Booking.Bill),
+                "Thông tin hóa đơn của thông tin thuê phòng"
+            );
+            Field<NonNullGraphType<RoomIdInput>>(
+                nameof(Booking.Room),
+                "Phòng khách hàng chọn đặt trước"
+            );
         }
     }
 }

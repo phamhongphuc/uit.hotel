@@ -1,0 +1,16 @@
+{
+  "definitions": {},
+  "type": "object",
+  "required": ["data"],
+  "properties": {
+    "data": {
+      "type": "object",
+      "required": ["floors"],
+      "properties": {
+        "floors": {
+          "type": "array"
+        }
+      }
+    }
+  }
+}

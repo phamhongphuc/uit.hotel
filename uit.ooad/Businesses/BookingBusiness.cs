@@ -12,6 +12,9 @@ namespace uit.ooad.Businesses
             var bookingInDatabase = BookingDataAccess.Get(booking.Id);
             if (bookingInDatabase != null) return null;
 
+            booking.Employee = booking.Employee.GetManaged();
+            booking.Bill = booking.Bill.GetManaged();
+            booking.Room = booking.Room.GetManaged();
             return BookingDataAccess.Add(booking);
         }
 

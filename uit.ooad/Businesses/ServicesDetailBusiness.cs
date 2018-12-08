@@ -12,6 +12,8 @@ namespace uit.ooad.Businesses
             var servicesDetailInDatabase = ServicesDetailDataAccess.Get(servicesDetail.Id);
             if (servicesDetailInDatabase != null) return null;
 
+            servicesDetail.Service = servicesDetail.Service.GetManaged();
+            servicesDetail.Booking = servicesDetail.Booking.GetManaged();
             return ServicesDetailDataAccess.Add(servicesDetail);
         }
 

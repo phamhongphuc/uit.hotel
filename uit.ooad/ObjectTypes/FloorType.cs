@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using GraphQL.Types;
 using uit.ooad.Models;
 using uit.ooad.Queries.Base;
@@ -22,13 +22,24 @@ namespace uit.ooad.ObjectTypes
         }
     }
 
+    public class FloorIdInput : InputType<Floor>
+    {
+        public FloorIdInput()
+        {
+            Name = _Id;
+            Description = "Input cho một thông tin tầng";
+
+            Field(x => x.Id).Description("Id của tầng");
+        }
+    }
+
     public class FloorCreateInput : InputType<Floor>
     {
         public FloorCreateInput()
         {
             Name = _Creation;
-            Field<NonNullGraphType<IntGraphType>>(nameof(Floor.Id));
-            Field<NonNullGraphType<StringGraphType>>(nameof(Floor.Name));
+            Field(x => x.Id).Description("Id của tầng");
+            Field(x => x.Name).Description("Tên tầng");
         }
     }
 }

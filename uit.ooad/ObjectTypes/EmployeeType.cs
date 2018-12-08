@@ -76,7 +76,7 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.StartingDate).Description("Ngày vào làm");
 
             Field<PositionIdInput>(
-                "Position",
+                nameof(Employee.Position),
                 "Loại chức vụ"
             );
         }
