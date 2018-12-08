@@ -10,7 +10,7 @@ matrix:
     include:
         - language: node_js
           node_js: 8.11.2
-          env: ❤ = Lint
+          env: ❤ = NodeJS Lint + Build + Test
           script:
               - cd uit.ooad.client
               - yarn
@@ -21,6 +21,7 @@ matrix:
         - language: csharp
           os: linux
           mono: none
+          env: ❤ = C# Build + Test
           script:
               - dotnet --info
               - dotnet restore
