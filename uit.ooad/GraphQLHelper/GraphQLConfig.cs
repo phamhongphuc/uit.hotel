@@ -25,10 +25,12 @@ namespace uit.ooad.GraphQLHelper
         {
             services.AddSingleton<BillCreateInput>();
             services.AddSingleton<BillIdInput>();
+            services.AddSingleton<BookingCreateInput>();
             services.AddSingleton<BookingIdInput>();
             services.AddSingleton<EmployeeCreateInput>();
             services.AddSingleton<EmployeeIdInput>();
             services.AddSingleton<FloorCreateInput>();
+            // services.AddSingleton<FloorIdInput>();
             services.AddSingleton<HouseKeepingCreateInput>();
             services.AddSingleton<HouseKeepingIdInput>();
             services.AddSingleton<PatronCreateInput>();
@@ -38,8 +40,11 @@ namespace uit.ooad.GraphQLHelper
             services.AddSingleton<PositionCreateInput>();
             services.AddSingleton<PositionIdInput>();
             services.AddSingleton<RateCreateInput>();
+            // services.AddSingleton<RateIdInput>();
             services.AddSingleton<ReceiptCreateInput>();
+            // services.AddSingleton<ReceiptIdInput>();
             services.AddSingleton<RoomCreateInput>();
+            services.AddSingleton<RoomIdInput>();
             services.AddSingleton<RoomKindCreateInput>();
             services.AddSingleton<RoomKindIdInput>();
             services.AddSingleton<ServiceCreateInput>();

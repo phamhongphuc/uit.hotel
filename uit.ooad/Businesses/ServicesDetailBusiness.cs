@@ -13,6 +13,7 @@ namespace uit.ooad.Businesses
             if (servicesDetailInDatabase != null) return null;
 
             servicesDetail.Service = servicesDetail.Service.GetManaged();
+            servicesDetail.Booking = servicesDetail.Booking.GetManaged();
             return ServicesDetailDataAccess.Add(servicesDetail);
         }
 

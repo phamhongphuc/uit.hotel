@@ -20,7 +20,8 @@ namespace uit.ooad.Queries
                 new RateQuery(),
                 new ReceiptQuery(),
                 new RoomKindQuery(),
-                new RoomQuery()
+                new RoomQuery(),
+                new BookingQuery()
             );
         }
     }

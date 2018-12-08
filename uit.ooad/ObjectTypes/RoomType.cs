@@ -45,4 +45,15 @@ namespace uit.ooad.ObjectTypes
             );
         }
     }
+
+    public class RoomIdInput : InputType<Room>
+    {
+        public RoomIdInput()
+        {
+            Name = _Id;
+            Description = "Input cho thông tin một phòng";
+
+            Field(x => x.Id).Description("Id của phòng");
+        }
+    }
 }

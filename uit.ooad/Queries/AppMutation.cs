@@ -21,7 +21,8 @@ namespace uit.ooad.Queries
                 new RoomKindMutation(),
                 new RoomMutation(),
                 new ServiceMutation(),
-                new ServicesDetailMutation()
+                new ServicesDetailMutation(),
+                new BookingMutation()
             );
         }
     }
