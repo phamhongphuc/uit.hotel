@@ -17,7 +17,6 @@ namespace uit.ooad.test.Helper
         public static ISchema Schema;
 
         [AssemblyInitialize]
-        // [DeploymentItem(@"uit.ooad\appsettings.json")]
         public static void AssemblyInitialize(TestContext TestContext)
         {
             IConfiguration Configuration = new ConfigurationBuilder()
@@ -31,6 +30,9 @@ namespace uit.ooad.test.Helper
                 GraphQLConfig.Input(services);
                 GraphQLConfig.Type(services);
                 GraphQLConfig.App(services);
+
+                GraphQLConfig.DataLoader(services);
+                GraphQLConfig.Auth(services);
             });
 
             Schema = serviceProvider.GetService<ISchema>();
