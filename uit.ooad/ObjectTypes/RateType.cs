@@ -45,7 +45,7 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.CreateDate).Description("Ngày tạo giá");
 
             Field<RoomKindIdInput>(
-                "RoomKind",
+                nameof(Rate.RoomKind),
                 "Loại phòng"
             );
         }

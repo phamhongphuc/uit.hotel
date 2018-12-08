@@ -36,11 +36,11 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.Name).Description("Tên phòng");
 
             Field<FloorIdInput>(
-                "Floor",
+                nameof(Room.Floor),
                 "Phòng thuộc tầng nào"
             );
             Field<RoomKindIdInput>(
-                "RoomKind",
+                nameof(Room.RoomKind),
                 "Loại phòng của phòng"
             );
         }

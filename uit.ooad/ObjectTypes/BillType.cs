@@ -58,12 +58,12 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.Time).Description("Thời điểm in hóa đơn");
 
             Field<PatronIdInput>(
-                "Patron",
+                nameof(Bill.Patron),
                 "Khách hàng"
             );
 
             Field<EmployeeIdInput>(
-                "Employee",
+                nameof(Bill.Employee),
                 "Nhân viên tạo hóa đơn"
             );
         }

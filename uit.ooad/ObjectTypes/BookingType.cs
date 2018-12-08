@@ -77,15 +77,15 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.Status).Description("Trạng thái của thông tin thuê phòng");
 
             Field<NonNullGraphType<EmployeeIdInput>>(
-                "Employee",
+                nameof(Booking.Employee),
                 "Nhân viên thực hiện giao dịch nhận đặt phòng từ khách hàng"
             );
             Field<NonNullGraphType<BillIdInput>>(
-                "Bill",
+                nameof(Booking.Bill),
                 "Thông tin hóa đơn của thông tin thuê phòng"
             );
             Field<NonNullGraphType<RoomIdInput>>(
-                "Room",
+                nameof(Booking.Room),
                 "Phòng khách hàng chọn đặt trước"
             );
         }

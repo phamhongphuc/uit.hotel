@@ -73,7 +73,7 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.Note).Description("Một số chú thích về khách hàng nếu cần thiết");
 
             Field<PatronKindIdInput>(
-                "PatronKind",
+                nameof(Patron.PatronKind),
                 "Loại khách hàng"
             );
         }

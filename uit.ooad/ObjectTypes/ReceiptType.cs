@@ -42,12 +42,12 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.BankAccountNumber, true).Description("Số tài khoản ngân hàng của khách");
 
             Field<BillIdInput>(
-                "Bill",
+                nameof(Receipt.Bill),
                 "Thuộc hóa đơn"
             );
 
             Field<EmployeeIdInput>(
-                "Employee",
+                nameof(Receipt.Employee),
                 "Nhân viên tạo phiếu thu"
             );
         }
