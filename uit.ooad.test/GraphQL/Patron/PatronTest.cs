@@ -32,6 +32,7 @@ namespace uit.ooad.test.GraphQL.Patron
                 Residence = "Thường trú",
                 Company = "Công ty",
                 Note = "Ghi chú",
+                /*Cần tạo PatronKind */
                 PatronKind = PatronKindBusiness.Get(1)
             });
         }
