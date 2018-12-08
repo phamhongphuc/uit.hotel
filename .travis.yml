@@ -6,22 +6,23 @@ dotnet: 2.1.402
 
 cache:
     directories: uit.ooad.client\node_modules
+matrix:
+    include:
+        - language: node_js
+          node_js: 8.11.2
+          env: ❤ = Lint
+          script:
+              - cd uit.ooad.client
+              - yarn
+              - yarn lint
+              - yarn build
+              - yarn test
 
-- language: node_js
-  node_js: 8.11.2
-  env: ❤ = Lint
-  script:
-      - cd uit.ooad.client
-      - yarn
-      - yarn lint
-      - yarn build
-      - yarn test
-
-- language: csharp
-  os: linux
-  mono: none
-  script:
-      - dotnet --info
-      - dotnet restore
-      - dotnet build
-      - dotnet test uit.ooad.test
+        - language: csharp
+          os: linux
+          mono: none
+          script:
+              - dotnet --info
+              - dotnet restore
+              - dotnet build
+              - dotnet test uit.ooad.test
