@@ -1,0 +1,6 @@
+{
+  floors {
+    id
+    name
+  }
+}

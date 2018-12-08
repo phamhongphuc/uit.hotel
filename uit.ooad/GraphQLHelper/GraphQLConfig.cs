@@ -1,3 +1,4 @@
+using System;
 using GraphQL;
 using GraphQL.Authorization;
 using GraphQL.DataLoader;
@@ -52,6 +53,13 @@ namespace uit.ooad.GraphQLHelper
             services.AddSingleton<ServicesDetailCreateInput>();
             services.AddSingleton<ServicesDetailIdInput>();
             services.AddSingleton<VolatilityRateCreateInput>();
+        }
+
+        public static ServiceProvider GetServiceProvider(Action<ServiceCollection> function)
+        {
+            var services = new ServiceCollection();
+            function(services);
+            return services.BuildServiceProvider();
         }
 
         public static void Type(IServiceCollection services)
