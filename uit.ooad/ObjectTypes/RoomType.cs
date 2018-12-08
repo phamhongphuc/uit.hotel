@@ -35,10 +35,10 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.Id).Description("Id của phòng");
             Field(x => x.Name).Description("Tên phòng");
 
-            // Field<FloorIdInput>(
-            //     "Floor",
-            //     "Phòng thuộc tầng nào"
-            // );
+            Field<FloorIdInput>(
+                "Floor",
+                "Phòng thuộc tầng nào"
+            );
             Field<RoomKindIdInput>(
                 "RoomKind",
                 "Loại phòng của phòng"
