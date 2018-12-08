@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using GraphQL.Types;
 using uit.ooad.Models;
 using uit.ooad.Queries.Base;
@@ -19,6 +19,17 @@ namespace uit.ooad.ObjectTypes
                 resolve: context => context.Source.Rooms.ToList(),
                 description: "Danh sách các phòng có trong tầng"
             );
+        }
+    }
+
+    public class FloorIdInput : InputType<Floor>
+    {
+        public FloorIdInput()
+        {
+            Name = _Id;
+            Description = "Input cho một thông tin tầng";
+
+            Field(x => x.Id).Description("Id của tầng");
         }
     }
 
