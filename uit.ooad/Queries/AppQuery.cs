@@ -21,7 +21,8 @@ namespace uit.ooad.Queries
                 new ReceiptQuery(),
                 new RoomKindQuery(),
                 new RoomQuery(),
-                new BookingQuery()
+                new BookingQuery(),
+                new VolatilityRateQuery()
             );
         }
     }
