@@ -14,8 +14,8 @@ namespace uit.ooad.Models
         public bool PermissionCreateBill { get; set; }
         public bool PermissionCreateFloor { get; set; }
         public bool PermissionCreatePosition { get; set; }
-
         public bool PermissionCreateReceipt { get; set; }
+        public bool PermissionCreateRoom { get; set; }
 
         [Backlink(nameof(Employee.Position))]
         public IQueryable<Employee> Employees { get; }

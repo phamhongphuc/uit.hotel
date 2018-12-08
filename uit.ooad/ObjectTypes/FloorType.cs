@@ -21,6 +21,16 @@ namespace uit.ooad.ObjectTypes
             );
         }
     }
+    public class FloorIdInput : InputType<Floor>
+    {
+        public FloorIdInput()
+        {
+            Name = _Id;
+            Description = "Input cho một thông tin tầng";
+
+            Field(x => x.Id).Description("Id của tầng");
+        }
+    }
 
     public class FloorCreateInput : InputType<Floor>
     {
