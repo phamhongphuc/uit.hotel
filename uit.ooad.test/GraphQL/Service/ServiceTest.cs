@@ -26,7 +26,7 @@ namespace uit.ooad.test.GraphQL.Service
                 Id = 1,
                 Name = "Tên dịch vụ",
                 UnitRate = 30000,
-                Unit = "Kg"
+                Unit = "Đơn vị đo"
             });
             SchemaHelper.Execute(
                 @"/GraphQL/Service/query.services.gql",
