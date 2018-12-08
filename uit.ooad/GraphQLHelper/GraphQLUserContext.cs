@@ -1,7 +1,7 @@
 ﻿using System.Security.Claims;
 using GraphQL.Authorization;
 
-namespace uit.ooad.GraphQL
+namespace uit.ooad.GraphQLHelper
 {
     /**
      * Class này được sinh ra để làm trung gian truyền vào trong Controller
