@@ -13,7 +13,10 @@ namespace uit.ooad.Queries.Mutation
                 _Creation,
                 "Tạo và trả về một loại phòng",
                 InputArgument<RoomKindCreateInput>(),
-                context => RoomKindBusiness.Add(GetInput(context))
+                _CheckPermission(
+                    p => p.PermissionCreateRoomKind,
+                    context => RoomKindBusiness.Add(GetInput(context))
+                )
             );
         }
     }
