@@ -1,15 +1,14 @@
-﻿using uit.ooad.Queries.Authentication;
-using uit.ooad.Queries.Base;
+﻿using uit.ooad.Queries.Base;
 using uit.ooad.Queries.Mutation;
 
 namespace uit.ooad.Queries
 {
     public class AppMutation : AppType
     {
-        public AppMutation(AuthenticationHelper authentication)
+        public AppMutation()
         {
             AddFields(
-                new AuthenticationMutation(authentication),
+                new AuthenticationMutation(),
                 new BillMutation(),
                 new EmployeeMutation(),
                 new FloorMutation(),

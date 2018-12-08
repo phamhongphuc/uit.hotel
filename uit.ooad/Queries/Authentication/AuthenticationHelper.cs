@@ -6,24 +6,21 @@ using GraphQL.Types;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using uit.ooad.Businesses;
-using uit.ooad.GraphQL;
+using uit.ooad.GraphQLHelper;
 using uit.ooad.Models;
 
 namespace uit.ooad.Queries.Authentication
 {
-    public class AuthenticationHelper
+    public static class AuthenticationHelper
     {
-        public static AuthenticationHelper Instance;
+        private static IConfiguration Configuration;
 
-        private readonly IConfiguration Configuration;
-
-        public AuthenticationHelper(IConfiguration configuration)
+        public static void Initialize(IConfiguration configuration)
         {
             Configuration = configuration;
-            Instance = this;
         }
 
-        public string TokenBuilder(string id)
+        public static string TokenBuilder(string id)
         {
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JWT:key"]));
             var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
@@ -42,7 +39,7 @@ namespace uit.ooad.Queries.Authentication
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
-        public void HasPermission(ResolveFieldContext<object> context, Func<Position, Boolean> getPermission)
+        public static void HasPermission(ResolveFieldContext<object> context, Func<Position, bool> getPermission)
         {
             if (!(context.UserContext is GraphQLUserContext userContext)) throw new Exception("Lỗi không xác định");
 

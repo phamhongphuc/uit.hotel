@@ -8,8 +8,6 @@ namespace uit.ooad.Queries.Base
 {
     public abstract class QueryType<TModel> : ObjectGraphType
     {
-        private AuthenticationHelper _Authentication => AuthenticationHelper.Instance;
-
         public string _Item => typeof(TModel).Name;
 
         public string _List => typeof(TModel).Name + "s";
@@ -39,12 +37,12 @@ namespace uit.ooad.Queries.Base
             => GetId<int>(context);
 
         public Func<ResolveFieldContext<object>, object> _CheckPermission(
-            Func<Position, Boolean> getPermission,
+            Func<Position, bool> getPermission,
             Func<ResolveFieldContext<object>, Task<TModel>> resolver
         )
             => context =>
             {
-                _Authentication.HasPermission(context, getPermission);
+                AuthenticationHelper.HasPermission(context, getPermission);
                 return resolver(context);
             };
     }

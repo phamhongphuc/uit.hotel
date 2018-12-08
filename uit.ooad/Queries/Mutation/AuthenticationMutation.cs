@@ -7,7 +7,7 @@ namespace uit.ooad.Queries.Mutation
 {
     public class AuthenticationMutation : QueryType<Employee>
     {
-        public AuthenticationMutation(AuthenticationHelper Authentication)
+        public AuthenticationMutation()
         {
             Field<StringGraphType>(
                 "Login",
@@ -19,7 +19,8 @@ namespace uit.ooad.Queries.Mutation
                 context =>
                 {
                     var id = context.GetArgument<string>("id");
-                    return Authentication.TokenBuilder(id);
+
+                    return AuthenticationHelper.TokenBuilder(id);
                 }
             );
         }
