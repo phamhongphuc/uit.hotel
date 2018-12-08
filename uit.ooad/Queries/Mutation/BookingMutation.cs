@@ -13,7 +13,10 @@ namespace uit.ooad.Queries.Mutation
                 _Creation,
                 "Tạo và trả về một đơn đặt phòng",
                 InputArgument<BookingCreateInput>(),
-                context => BookingBusiness.Add(GetInput(context))
+                _CheckPermission(
+                    p => p.PermissionCreateBooking,
+                    context => BookingBusiness.Add(GetInput(context))
+                )
             );
         }
     }
