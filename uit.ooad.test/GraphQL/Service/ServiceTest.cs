@@ -17,9 +17,7 @@ namespace uit.ooad.test.GraphQL.Service
     [TestClass]
     public class ServiceTest
     {
-
-        [TestMethod]
-        public void Services()
+        public ServiceTest()
         {
             ServiceBusiness.Add(new Models.Service()
             {
@@ -28,6 +26,10 @@ namespace uit.ooad.test.GraphQL.Service
                 UnitRate = 30000,
                 Unit = "Đơn vị đo"
             });
+        }
+        [TestMethod]
+        public void Services()
+        {
             SchemaHelper.Execute(
                 @"/GraphQL/Service/query.services.gql",
                 @"/GraphQL/Service/query.services.schema.json"
