@@ -26,17 +26,31 @@ namespace uit.ooad.ObjectTypes
                                                      resolve: context => context.Source.VolatilityRates.ToList(),
                                                      description: "Danh sách giá biến động của loại phòng");
         }
-
     }
-                
+
     public class RoomKindIdInput : InputType<RoomKind>
     {
         public RoomKindIdInput()
         {
             Name = _Id;
-            Description = "Input cho thông tin một loại phòng";
+            Description = "Input cho một thông tin một loại phòng";
+
+            Field(x => x.Id).Description("Id của một loại phòng");
+        }
+    }
+
+    public class RoomKindCreateInput : InputType<RoomKind>
+    {
+        public RoomKindCreateInput()
+        {
+            Name = _Creation;
+            Description = "Input cho việc tạo một loại phòng";
 
             Field(x => x.Id).Description("Id của loại phòng");
+            Field(x => x.Name).Description("Tên loại phòng");
+            Field(x => x.NumberOfBeds).Description("Số giường");
+            Field(x => x.AmountOfPeople).Description("Số người trong một phòng");
+            Field(x => x.PriceByDate).Description("Giá theo ngày");
         }
     }
 }

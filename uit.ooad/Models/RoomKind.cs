@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using Realms;
 using uit.ooad.Businesses;
 

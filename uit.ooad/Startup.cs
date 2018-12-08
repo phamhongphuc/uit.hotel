@@ -67,8 +67,15 @@ namespace uit.ooad
             services.AddSingleton<FloorCreateInput>();
             services.AddSingleton<HouseKeepingCreateInput>();
             services.AddSingleton<HouseKeepingIdInput>();
+            services.AddSingleton<RoomCreateInput>();
+            services.AddSingleton<RoomKindIdInput>();
+            services.AddSingleton<RoomKindCreateInput>();
             services.AddSingleton<EmployeeIdInput>();
             services.AddSingleton<BookingIdInput>();
+            services.AddSingleton<ServiceIdInput>();
+            services.AddSingleton<ServiceCreateInput>();
+            services.AddSingleton<ServicesDetailIdInput>();
+            services.AddSingleton<ServicesDetailCreateInput>();
             services.AddSingleton<EmployeeCreateInput>();
             services.AddSingleton<PositionIdInput>();
             services.AddSingleton<PositionCreateInput>();
@@ -76,7 +83,6 @@ namespace uit.ooad
             services.AddSingleton<BillCreateInput>();
             services.AddSingleton<BillIdInput>();
             services.AddSingleton<ReceiptCreateInput>();
-
             services.AddSingleton<BillType>();
             services.AddSingleton<BookingType>();
             services.AddSingleton<EmployeeType>();

@@ -1,6 +1,7 @@
 using System.Linq;
 using GraphQL.Types;
 using uit.ooad.Models;
+using uit.ooad.Queries.Base;
 
 namespace uit.ooad.ObjectTypes
 {
@@ -22,6 +23,26 @@ namespace uit.ooad.ObjectTypes
             Field<ListGraphType<BookingType>>(nameof(Room.Bookings),
                                               resolve: context => context.Source.Bookings.ToList(),
                                               description: "Danh sách thông tin thuê phòng");
+        }
+    }
+
+    public class RoomCreateInput : InputType<Room>
+    {
+        public RoomCreateInput()
+        {
+            Name = _Creation;
+
+            Field(x => x.Id).Description("Id của phòng");
+            Field(x => x.Name).Description("Tên phòng");
+
+            // Field<FloorIdInput>(
+            //     "Floor",
+            //     "Phòng thuộc tầng nào"
+            // );
+            Field<RoomKindIdInput>(
+                "RoomKind",
+                "Loại phòng của phòng"
+            );
         }
     }
 }
