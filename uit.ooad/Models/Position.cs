@@ -20,6 +20,7 @@ namespace uit.ooad.Models
         public bool PermissionCreateRate { get; set; }
         public bool PermissionCreateVolatilityRate { get; set; }
         public bool PermissionCreateService { get; set; }
+        public bool PermissionCreateServicesDetail { get; set; }
 
         [Backlink(nameof(Employee.Position))]
         public IQueryable<Employee> Employees { get; }

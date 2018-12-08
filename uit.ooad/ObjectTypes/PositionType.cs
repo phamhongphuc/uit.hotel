@@ -64,6 +64,7 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.PermissionCreateRate).Description("Quyền tạo giá cơ bản");
             Field(x => x.PermissionCreateVolatilityRate).Description("Quyền tạo giá biến động");
             Field(x => x.PermissionCreateService).Description("Quyền tạo dịch vụ");
+            Field(x => x.PermissionCreateServicesDetail).Description("Quyền tạo chi tiết dịch vụ");
         }
     }
 }
