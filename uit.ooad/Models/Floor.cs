@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using Realms;
+using uit.ooad.Businesses;
 
 namespace uit.ooad.Models
 {
@@ -17,5 +18,6 @@ namespace uit.ooad.Models
         {
             return Realm.All<Room>().Where(r => r.Floor == this).ToArray();
         }
+        public Floor GetManaged() => FloorBusiness.Get(Id);
     }
 }
