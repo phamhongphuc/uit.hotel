@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
-using uit.ooad.Queries.Authentication;
+﻿using uit.ooad.Queries.Authentication;
 using uit.ooad.Queries.Base;
 using uit.ooad.Queries.Mutation;
 
@@ -22,7 +21,6 @@ namespace uit.ooad.Queries
                 new ReceiptMutation(),
                 new RoomKindMutation(),
                 new RoomMutation(),
-                new HouseKeepingMutation(),
                 new ServiceMutation(),
                 new ServicesDetailMutation()
             );
