@@ -1,6 +1,6 @@
 {
-  floors {
-    id
-    name
-  }
+    floors {
+        id
+        name
+    }
 }
