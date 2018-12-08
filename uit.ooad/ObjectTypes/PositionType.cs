@@ -60,6 +60,7 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.PermissionCreateRoom).Description("Quyền tạo phòng");
             Field(x => x.PermissionCreateRate).Description("Quyền tạo giá cơ bản");
             Field(x => x.PermissionCreateVolatilityRate).Description("Quyền tạo giá biến động");
+            Field(x => x.PermissionCreateRoomKind).Description("Quyền tạo loại phòng");
         }
     }
 }
