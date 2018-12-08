@@ -30,6 +30,7 @@ namespace uit.ooad.test.GraphQL.Rate
                 EarlyCheckInFee = 1,
                 EffectiveStartDate = DateTime.Now,
                 CreateDate = DateTime.Now,
+                /*Cần tạo RoomKind */
                 RoomKind = RoomKindBusiness.Get(1)
             });
         }
