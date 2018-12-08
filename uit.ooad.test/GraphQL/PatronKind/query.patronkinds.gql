@@ -1,0 +1,7 @@
+{
+  patronKinds{
+    id
+    name
+    description
+  }
+}
