@@ -16,6 +16,7 @@ namespace uit.ooad.Businesses
             receipt.Employee = receipt.Employee.GetManaged();
             return ReceiptDataAccess.Add(receipt);
         }
+
         public static Receipt Get(int receiptId) => ReceiptDataAccess.Get(receiptId);
 
         public static IEnumerable<Receipt> Get() => ReceiptDataAccess.Get();

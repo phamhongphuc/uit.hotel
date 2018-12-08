@@ -20,8 +20,8 @@ namespace uit.ooad.ObjectTypes
 
             Field<NonNullGraphType<EmployeeType>>(
                 nameof(Booking.Employee),
-            resolve: context => context.Source.Employee,
-            description: "Nhân viên thực hiện giao dịch nhận đặt phòng từ khách hàng"
+                resolve: context => context.Source.Employee,
+                description: "Nhân viên thực hiện giao dịch nhận đặt phòng từ khách hàng"
             );
             Field<NonNullGraphType<BillType>>(
                 nameof(Booking.Bill),

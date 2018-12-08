@@ -22,7 +22,7 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.PermissionCreateReceipt).Description("Quyền tạo phiếu thu");
 
             Field<ListGraphType<EmployeeType>>(
-                nameof(Position.Employees), 
+                nameof(Position.Employees),
                 resolve: context => context.Source.Employees.ToList(),
                 description: "Danh sách các nhân viên thuộc quyền này"
             );

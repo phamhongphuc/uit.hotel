@@ -25,6 +25,7 @@ namespace uit.ooad.ObjectTypes
                 description: "Thuộc dịch vụ nào");
         }
     }
+
     public class ServicesDetailIdInput : InputType<ServicesDetail>
     {
         public ServicesDetailIdInput()
@@ -35,6 +36,7 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.Id).Description("Id của chi tiết dịch vụ");
         }
     }
+
     public class ServicesDetailCreateInput : InputType<ServicesDetail>
     {
         public ServicesDetailCreateInput()

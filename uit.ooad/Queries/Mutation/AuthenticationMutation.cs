@@ -1,13 +1,5 @@
-using System;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
 using GraphQL.Types;
-using Microsoft.Extensions.Configuration;
-using Microsoft.IdentityModel.Tokens;
-using uit.ooad.Businesses;
 using uit.ooad.Models;
-using uit.ooad.ObjectTypes;
 using uit.ooad.Queries.Authentication;
 using uit.ooad.Queries.Base;
 
@@ -15,7 +7,7 @@ namespace uit.ooad.Queries.Mutation
 {
     public class AuthenticationMutation : QueryType<Employee>
     {
-        public AuthenticationMutation(AuthenticationHelper Authentication)
+        public AuthenticationMutation()
         {
             Field<StringGraphType>(
                 "Login",
@@ -27,7 +19,8 @@ namespace uit.ooad.Queries.Mutation
                 context =>
                 {
                     var id = context.GetArgument<string>("id");
-                    return Authentication.TokenBuilder(id);
+
+                    return AuthenticationHelper.TokenBuilder(id);
                 }
             );
         }

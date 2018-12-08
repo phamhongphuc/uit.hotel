@@ -1,4 +1,3 @@
-using System.Linq;
 using GraphQL.Types;
 using uit.ooad.Models;
 using uit.ooad.Queries.Base;
@@ -16,7 +15,7 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.Money).Description("Số tiền đã thu");
             Field(x => x.Time).Description("Thời gian tạo phiếu thu");
             Field(x => x.TypeOfPayment).Description("Kiểu thanh toán (tiền mặt hoặc chuyển khoản)");
-            Field(x => x.BankAccountNumber, nullable: true).Description("Số tài khoản ngân hàng của khách");
+            Field(x => x.BankAccountNumber, true).Description("Số tài khoản ngân hàng của khách");
 
             Field<NonNullGraphType<BillType>>(
                 nameof(Receipt.Bill),
@@ -40,7 +39,7 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.Money).Description("Số tiền đã thu");
             Field(x => x.Time).Description("Thời gian tạo phiếu thu");
             Field(x => x.TypeOfPayment).Description("Kiểu thanh toán (tiền mặt hoặc chuyển khoản)");
-            Field(x => x.BankAccountNumber, nullable: true).Description("Số tài khoản ngân hàng của khách");
+            Field(x => x.BankAccountNumber, true).Description("Số tài khoản ngân hàng của khách");
 
             Field<BillIdInput>(
                 "Bill",
