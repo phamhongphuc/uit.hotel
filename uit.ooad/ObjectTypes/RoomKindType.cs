@@ -18,13 +18,20 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.AmountOfPeople).Description("Số người trong một phòng");
             Field(x => x.PriceByDate).Description("Giá theo ngày");
 
-            Field<ListGraphType<RoomType>>(nameof(RoomKind.Rooms), resolve: context => context.Source.Rooms.ToList(),
-                                           description: "Danh sách các phòng thuộc loại phòng này");
-            Field<ListGraphType<RateType>>(nameof(RoomKind.Rates), resolve: context => context.Source.Rates.ToList(),
-                                           description: "Danh sách giá cố định của loại phòng");
-            Field<ListGraphType<VolatilityRateType>>(nameof(RoomKind.VolatilityRates),
-                                                     resolve: context => context.Source.VolatilityRates.ToList(),
-                                                     description: "Danh sách giá biến động của loại phòng");
+            Field<ListGraphType<RoomType>>(
+                nameof(RoomKind.Rooms),
+                resolve: context => context.Source.Rooms.ToList(),
+                description: "Danh sách các phòng thuộc loại phòng này");
+
+            Field<ListGraphType<RateType>>(
+                nameof(RoomKind.Rates),
+                resolve: context => context.Source.Rates.ToList(),
+                description: "Danh sách giá cố định của loại phòng");
+
+            Field<ListGraphType<VolatilityRateType>>(
+                nameof(RoomKind.VolatilityRates),
+                resolve: context => context.Source.VolatilityRates.ToList(),
+                description: "Danh sách giá biến động của loại phòng");
         }
     }
 

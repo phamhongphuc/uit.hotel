@@ -13,7 +13,10 @@ namespace uit.ooad.Queries.Mutation
                 _Creation,
                 "Tạo và trả về một loại giá cơ bản mới",
                 InputArgument<RateCreateInput>(),
+                _CheckPermission(
+                    p => p.PermissionCreateRate,
                 context => RateBusiness.Add(GetInput(context))
+                )
             );
         }
     }

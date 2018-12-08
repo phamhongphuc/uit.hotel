@@ -40,9 +40,9 @@ namespace uit.ooad.GraphQLHelper
             services.AddSingleton<PositionCreateInput>();
             services.AddSingleton<PositionIdInput>();
             services.AddSingleton<RateCreateInput>();
-            // services.AddSingleton<RateIdInput>();
+            services.AddSingleton<RateIdInput>();
             services.AddSingleton<ReceiptCreateInput>();
-            // services.AddSingleton<ReceiptIdInput>();
+            services.AddSingleton<ReceiptIdInput>();
             services.AddSingleton<RoomCreateInput>();
             services.AddSingleton<RoomIdInput>();
             services.AddSingleton<RoomKindCreateInput>();
@@ -51,6 +51,7 @@ namespace uit.ooad.GraphQLHelper
             services.AddSingleton<ServiceIdInput>();
             services.AddSingleton<ServicesDetailCreateInput>();
             services.AddSingleton<ServicesDetailIdInput>();
+            services.AddSingleton<VolatilityRateCreateInput>();
         }
 
         public static void Type(IServiceCollection services)

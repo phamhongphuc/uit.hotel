@@ -21,8 +21,11 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.EffectiveStartDate).Description("Ngày giá bắt đầu có hiệu lực");
             Field(x => x.CreateDate).Description("Ngày tạo giá");
 
-            Field<RoomKindType>(nameof(Rate.RoomKind), resolve: context => context.Source.RoomKind,
-                                description: "Thuộc loại phòng");
+            Field<NonNullGraphType<RoomKindType>>(
+                nameof(Rate.RoomKind),
+                resolve: context => context.Source.RoomKind,
+                description: "Thuộc loại phòng"
+            );
         }
     }
 
