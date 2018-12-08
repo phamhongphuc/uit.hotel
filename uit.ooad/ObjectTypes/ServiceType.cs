@@ -24,6 +24,7 @@ namespace uit.ooad.ObjectTypes
             );
         }
     }
+
     public class ServiceCreateInput : InputType<Service>
     {
         public ServiceCreateInput()
@@ -37,6 +38,7 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.Unit).Description("Đơn vị");
         }
     }
+
     public class ServiceIdInput : InputType<Service>
     {
         public ServiceIdInput()

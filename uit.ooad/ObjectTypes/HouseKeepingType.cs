@@ -41,6 +41,7 @@ namespace uit.ooad.ObjectTypes
             );
         }
     }
+
     public class HouseKeepingIdInput : InputType<HouseKeeping>
     {
         public HouseKeepingIdInput()

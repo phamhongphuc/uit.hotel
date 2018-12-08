@@ -53,6 +53,7 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.Identification).Description("Identification của khách hàng");
         }
     }
+
     public class PatronCreateInput : InputType<Patron>
     {
         public PatronCreateInput()
