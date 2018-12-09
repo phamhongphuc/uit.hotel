@@ -1,0 +1,40 @@
+{
+    "definitions": {},
+    "type": "object",
+    "required": ["data"],
+    "properties": {
+        "data": {
+            "type": "object",
+            "required": ["roomKinds"],
+            "properties": {
+                "roomKinds": {
+                    "type": "array",
+                    "items": {
+                        "required": [
+                            "id",
+                            "name",
+                            "numberOfBeds",
+                            "amountOfPeople",
+                            "priceByDate"
+                        ],
+                        "properties": {
+                            "id": {
+                                "type": "integer"
+                            },
+                            "name": {
+                                "pattern": "^(.*)$"
+                            },
+                            "numberOfBeds": {
+                                "type": "integer"
+                            },
+                            "amountOfPeople": {},
+                            "priceByDate": {
+                                "type": "integer"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
