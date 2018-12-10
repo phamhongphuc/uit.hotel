@@ -15,7 +15,7 @@ namespace uit.ooad.Queries.Mutation
                 InputArgument<RateCreateInput>(),
                 _CheckPermission(
                     p => p.PermissionCreateRate,
-                context => RateBusiness.Add(GetInput(context))
+                    context => RateBusiness.Add(GetInput(context))
                 )
             );
         }

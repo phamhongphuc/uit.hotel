@@ -1,0 +1,26 @@
+{
+    "definitions": {},
+    "type": "object",
+    "required": ["data"],
+    "properties": {
+        "data": {
+            "type": "object",
+            "required": ["createFloor"],
+            "properties": {
+                "createFloor": {
+                    "type": "object",
+                    "required": ["name", "id"],
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "id": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

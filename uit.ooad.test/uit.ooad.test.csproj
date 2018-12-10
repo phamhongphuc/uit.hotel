@@ -13,8 +13,8 @@
 
   <ItemGroup>
     <None Update="appsettings.test.json" CopyToOutputDirectory="PreserveNewest" />
-    <Content Include="GraphQL\**\*.gql" CopyToOutputDirectory="Always" />
-    <Content Include="GraphQL\**\*.json" CopyToOutputDirectory="Always" />
+    <Content Include="_GraphQL\**\*.gql" CopyToOutputDirectory="Always" />
+    <Content Include="_GraphQL\**\*.json" CopyToOutputDirectory="Always" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,0 +1,20 @@
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using uit.ooad.Businesses;
+using uit.ooad.Models;
+using uit.ooad.test.Helper;
+
+namespace uit.ooad.test._GraphQL._RoomKind
+{
+    [TestClass]
+    public class _RoomKind
+    {
+        [TestMethod]
+        public void RoomKinds()
+        {
+            SchemaHelper.Execute(
+                @"/_GraphQL/Service/query.services.gql",
+                @"/_GraphQL/Service/query.services.schema.json"
+            );
+        }
+    }
+}

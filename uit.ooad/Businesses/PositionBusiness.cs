@@ -15,6 +15,9 @@ namespace uit.ooad.Businesses
             return PositionDataAccess.Add(position);
         }
 
+        public static void Update(System.Action<Position> setPermission, Position position)
+            => PositionDataAccess.Update(setPermission, position);
+
         public static Position Get(int positionId) => PositionDataAccess.Get(positionId);
         public static IEnumerable<Position> Get() => PositionDataAccess.Get();
     }

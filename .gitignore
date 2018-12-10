@@ -271,3 +271,6 @@ __pycache__/
 coverage
 
 .nyc_output
+
+uit.ooad/Tools/
+uit.ooad.test/Tools/
