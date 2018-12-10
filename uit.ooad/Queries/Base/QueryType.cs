@@ -30,8 +30,8 @@ namespace uit.ooad.Queries.Base
         public TModel GetInput(ResolveFieldContext<object> context)
             => context.GetArgument<TModel>("input");
 
-        public TIntOrNumber GetId<TIntOrNumber>(ResolveFieldContext<object> context)
-            => context.GetArgument<TIntOrNumber>("id");
+        public T GetId<T>(ResolveFieldContext<object> context)
+            => context.GetArgument<T>("id");
 
         public int GetId(ResolveFieldContext<object> context)
             => GetId<int>(context);
