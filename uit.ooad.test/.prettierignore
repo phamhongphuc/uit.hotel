@@ -1,0 +1,12 @@
+/node_modules
+/bin
+/obj
+/.prettierignore
+/yarn.lock
+
+*.xml
+*.log
+*.cs
+*.csproj
+*.csproj.user
+*.dll
