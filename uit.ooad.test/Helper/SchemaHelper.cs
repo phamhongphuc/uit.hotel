@@ -34,7 +34,7 @@ namespace uit.ooad.test.Helper
 
             var position = EmployeeBusiness.Get(Constant.UserName).Position;
 
-            if (setPermission != null) setPermission(position);
+            if (setPermission != null) PositionBusiness.Update(setPermission, position);
 
             var result = Initializer.Schema.Execute(_ =>
             {
@@ -53,9 +53,10 @@ namespace uit.ooad.test.Helper
             var errorMessagesString = string.Join("\n", errorMessages);
             var exceptionMessage = string.Join(
                 Environment.NewLine,
-                "- Query:", query,
-                "- Result:", jsonResult.ToString(),
-                "- Error Messages:", errorMessagesString
+                "",
+                "Query:", query,
+                "Result:", jsonResult.ToString(),
+                "Error Messages:", errorMessagesString
             );
 
             if (!isValid) throw new Exception(exceptionMessage);
