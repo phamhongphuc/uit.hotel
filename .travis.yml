@@ -1,7 +1,3 @@
-stages:
-    - Front-end
-    - Back-end
-
 dotnet: 2.1.402
 
 cache:
