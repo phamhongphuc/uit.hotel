@@ -1,4 +1,5 @@
 const schemaJson = require('./graphql/schema.json');
+const isWin = require('os').platform() === 'win32';
 
 module.exports = {
     env: {
@@ -48,7 +49,7 @@ module.exports = {
         indent: ['error', 4],
         camelcase: 'error',
         'eol-last': 'error',
-        'linebreak-style': ['error', 'unix'],
+        'linebreak-style': ['error', isWin ? 'windows' : 'unix'],
         'no-console': 'warn',
         'no-lonely-if': 'error',
         'prefer-const': 'error',
