@@ -1,15 +1,7 @@
 using System;
-using System.IO;
-using GraphQL;
-using GraphQL.Types;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Newtonsoft.Json.Linq;
 using uit.ooad.Businesses;
-using uit.ooad.GraphQLHelper;
-using uit.ooad.Queries.Authentication;
-using uit.ooad.Schemas;
+using uit.ooad.Models;
 using uit.ooad.test.Helper;
 
 namespace uit.ooad.test._GraphQL._Patron
@@ -19,13 +11,13 @@ namespace uit.ooad.test._GraphQL._Patron
     {
         public _Patron()
         {
-            PatronKindBusiness.Add(new Models.PatronKind()
+            PatronKindBusiness.Add(new PatronKind
             {
                 Id = 1,
                 Name = "Tên loại khách hàng",
                 Description = "Mô tả loại khách hàng"
             });
-            PatronBusiness.Add(new Models.Patron()
+            PatronBusiness.Add(new Patron
             {
                 Identification = "Id khách hàng",
                 Name = "Tên khách hàng",
@@ -41,6 +33,7 @@ namespace uit.ooad.test._GraphQL._Patron
                 PatronKind = PatronKindBusiness.Get(1)
             });
         }
+
         [TestMethod]
         public void Patrons()
         {

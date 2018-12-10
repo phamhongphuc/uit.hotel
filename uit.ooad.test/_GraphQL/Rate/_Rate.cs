@@ -1,15 +1,7 @@
 using System;
-using System.IO;
-using GraphQL;
-using GraphQL.Types;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Newtonsoft.Json.Linq;
 using uit.ooad.Businesses;
-using uit.ooad.GraphQLHelper;
-using uit.ooad.Queries.Authentication;
-using uit.ooad.Schemas;
+using uit.ooad.Models;
 using uit.ooad.test.Helper;
 
 namespace uit.ooad.test._GraphQL._Rate
@@ -19,7 +11,7 @@ namespace uit.ooad.test._GraphQL._Rate
     {
         public _Rate()
         {
-            RoomKindBusiness.Add(new Models.RoomKind()
+            RoomKindBusiness.Add(new RoomKind
             {
                 Id = 1,
                 Name = "Tên loại phòng",
@@ -27,7 +19,7 @@ namespace uit.ooad.test._GraphQL._Rate
                 NumberOfBeds = 1,
                 PriceByDate = 1
             });
-            RateBusiness.Add(new Models.Rate()
+            RateBusiness.Add(new Rate
             {
                 Id = 1,
                 DayRate = 1,
@@ -41,6 +33,7 @@ namespace uit.ooad.test._GraphQL._Rate
                 RoomKind = RoomKindBusiness.Get(1)
             });
         }
+
         [TestMethod]
         public void Rates()
         {

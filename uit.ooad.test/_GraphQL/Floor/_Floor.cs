@@ -1,15 +1,6 @@
-using System;
-using System.IO;
-using GraphQL;
-using GraphQL.Types;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Newtonsoft.Json.Linq;
 using uit.ooad.Businesses;
-using uit.ooad.GraphQLHelper;
-using uit.ooad.Queries.Authentication;
-using uit.ooad.Schemas;
+using uit.ooad.Models;
 using uit.ooad.test.Helper;
 
 namespace uit.ooad.test._GraphQL._Floor
@@ -19,7 +10,7 @@ namespace uit.ooad.test._GraphQL._Floor
     {
         public _Floor()
         {
-            FloorBusiness.Add(new Models.Floor()
+            FloorBusiness.Add(new Floor
             {
                 Id = 1,
                 Name = "Tầng 10"

@@ -1,15 +1,6 @@
-using System;
-using System.IO;
-using GraphQL;
-using GraphQL.Types;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Newtonsoft.Json.Linq;
 using uit.ooad.Businesses;
-using uit.ooad.GraphQLHelper;
-using uit.ooad.Queries.Authentication;
-using uit.ooad.Schemas;
+using uit.ooad.Models;
 using uit.ooad.test.Helper;
 
 namespace uit.ooad.test._GraphQL._Service
@@ -19,7 +10,7 @@ namespace uit.ooad.test._GraphQL._Service
     {
         public _Service()
         {
-            ServiceBusiness.Add(new Models.Service()
+            ServiceBusiness.Add(new Service
             {
                 Id = 1,
                 Name = "Tên dịch vụ",
@@ -27,6 +18,7 @@ namespace uit.ooad.test._GraphQL._Service
                 Unit = "Đơn vị đo"
             });
         }
+
         [TestMethod]
         public void Services()
         {

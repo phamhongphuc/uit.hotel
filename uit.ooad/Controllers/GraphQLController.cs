@@ -51,8 +51,8 @@ namespace uit.ooad.Controllers
             executionOptions.Listeners.Add(_listener);
 
             var result = await _documentExecuter
-                              .ExecuteAsync(executionOptions)
-                              .ConfigureAwait(false);
+                            .ExecuteAsync(executionOptions)
+                            .ConfigureAwait(false);
 
             if (result.Errors?.Count > 0) return BadRequest(result.Errors);
 

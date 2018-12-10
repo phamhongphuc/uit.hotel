@@ -2,14 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using GraphQL;
-using GraphQL.Types;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Schema;
-using uit.ooad.GraphQLHelper;
-using uit.ooad.Queries.Authentication;
 
 namespace uit.ooad.test.Helper
 {
@@ -32,7 +26,7 @@ namespace uit.ooad.test.Helper
 
             var isValid = json.IsValid(jSchema, out IList<string> messages);
 
-            var errorMessage = string.Join("\n", messages) + "\n\n" + json.ToString();
+            var errorMessage = string.Join("\n", messages) + "\n\n" + json;
 
             if (!isValid) throw new Exception(errorMessage);
         }

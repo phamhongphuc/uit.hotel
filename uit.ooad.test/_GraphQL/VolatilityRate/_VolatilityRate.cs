@@ -1,15 +1,7 @@
 using System;
-using System.IO;
-using GraphQL;
-using GraphQL.Types;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Newtonsoft.Json.Linq;
 using uit.ooad.Businesses;
-using uit.ooad.GraphQLHelper;
-using uit.ooad.Queries.Authentication;
-using uit.ooad.Schemas;
+using uit.ooad.Models;
 using uit.ooad.test.Helper;
 
 namespace uit.ooad.test._GraphQL._VolatilityRate
@@ -19,7 +11,7 @@ namespace uit.ooad.test._GraphQL._VolatilityRate
     {
         public _VolatilityRate()
         {
-            RoomKindBusiness.Add(new Models.RoomKind()
+            RoomKindBusiness.Add(new RoomKind
             {
                 Id = 1,
                 Name = "Tên loại phòng",
@@ -27,7 +19,7 @@ namespace uit.ooad.test._GraphQL._VolatilityRate
                 NumberOfBeds = 1,
                 PriceByDate = 1
             });
-            VolatilityRateBusiness.Add(new Models.VolatilityRate()
+            VolatilityRateBusiness.Add(new VolatilityRate
             {
                 Id = 1,
                 DayRate = 1,
@@ -46,6 +38,7 @@ namespace uit.ooad.test._GraphQL._VolatilityRate
                 RoomKind = RoomKindBusiness.Get(1)
             });
         }
+
         [TestMethod]
         public void VolatilityRates()
         {

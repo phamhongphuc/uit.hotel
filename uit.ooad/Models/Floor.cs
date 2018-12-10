@@ -18,6 +18,7 @@ namespace uit.ooad.Models
         {
             return Realm.All<Room>().Where(r => r.Floor == this).ToArray();
         }
+
         public Floor GetManaged() => FloorBusiness.Get(Id);
     }
 }

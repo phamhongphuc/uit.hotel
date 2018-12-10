@@ -61,10 +61,10 @@ namespace uit.ooad
             app.ApplicationServices.GetServices<IValidationRule>();
 
             app.UseCors(x => x
-                            .AllowAnyOrigin()
-                            .AllowAnyMethod()
-                            .AllowAnyHeader()
-                            .AllowCredentials()
+                           .AllowAnyOrigin()
+                           .AllowAnyMethod()
+                           .AllowAnyHeader()
+                           .AllowCredentials()
             );
             app.UseAuthentication();
             app.UseMvc();
