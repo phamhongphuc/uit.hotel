@@ -27,6 +27,8 @@ namespace uit.ooad.test.Helper
             AddVolatilityRate();
 
             AddService();
+
+            AddBill();
         }
 
         private static void ResetDatebase()
@@ -167,6 +169,17 @@ namespace uit.ooad.test.Helper
             {
                 Id = 1,
                 Name = "Tầng 1"
+            });
+        }
+
+        private static void AddBill()
+        {
+            BillBusiness.Add(new Bill
+            {
+                Id = "1",
+                Time = DateTime.Now,
+                Employee = EmployeeBusiness.Get(Constant.UserName),
+                Patron = PatronBusiness.Get("Id khách hàng")
             });
         }
     }
