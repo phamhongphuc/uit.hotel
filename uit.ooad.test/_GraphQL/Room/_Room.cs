@@ -12,7 +12,7 @@ using uit.ooad.Schemas;
 using uit.ooad.test.Helper;
 using uit.ooad.Businesses;
 
-namespace uit.ooad.test.GraphQL._Room
+namespace uit.ooad.test._GraphQL._Room
 {
     [TestClass]
     public class _Room

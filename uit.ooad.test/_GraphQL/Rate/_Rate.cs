@@ -12,12 +12,12 @@ using uit.ooad.Queries.Authentication;
 using uit.ooad.Schemas;
 using uit.ooad.test.Helper;
 
-namespace uit.ooad.test.GraphQL._VolatilityRate
+namespace uit.ooad.test._GraphQL._Rate
 {
     [TestClass]
-    public class _VolatilityRate
+    public class _Rate
     {
-        public _VolatilityRate()
+        public _Rate()
         {
             RoomKindBusiness.Add(new Models.RoomKind()
             {
@@ -27,7 +27,7 @@ namespace uit.ooad.test.GraphQL._VolatilityRate
                 NumberOfBeds = 1,
                 PriceByDate = 1
             });
-            VolatilityRateBusiness.Add(new Models.VolatilityRate()
+            RateBusiness.Add(new Models.Rate()
             {
                 Id = 1,
                 DayRate = 1,
@@ -37,21 +37,16 @@ namespace uit.ooad.test.GraphQL._VolatilityRate
                 LateCheckOutFee = 1,
                 EarlyCheckInFee = 1,
                 EffectiveStartDate = DateTime.Now,
-                EffectiveEndDate = DateTime.Now,
-                EffectiveOnMonday = true,
-                EffectiveOnTuesday = true,
-                EffectiveOnWednesday = true,
-                EffectiveOnThursday = true,
                 CreateDate = DateTime.Now,
                 RoomKind = RoomKindBusiness.Get(1)
             });
         }
         [TestMethod]
-        public void VolatilityRates()
+        public void Rates()
         {
             SchemaHelper.Execute(
-                @"/GraphQL/VolatilityRate/query.volatilityrates.gql",
-                @"/GraphQL/VolatilityRate/query.volatilityrates.schema.json"
+                @"/GraphQL/Rate/query.rates.gql",
+                @"/GraphQL/Rate/query.rates.schema.json"
             );
         }
     }

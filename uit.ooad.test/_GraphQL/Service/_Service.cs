@@ -12,26 +12,27 @@ using uit.ooad.Queries.Authentication;
 using uit.ooad.Schemas;
 using uit.ooad.test.Helper;
 
-namespace uit.ooad.test.GraphQL._Patron
+namespace uit.ooad.test._GraphQL._Service
 {
     [TestClass]
-    public class _PatronKind
+    public class _Service
     {
-        public _PatronKind()
+        public _Service()
         {
-            PatronKindBusiness.Add(new Models.PatronKind()
+            ServiceBusiness.Add(new Models.Service()
             {
                 Id = 1,
-                Name = "Tên loại khách hàng",
-                Description = "Mô tả loại khách hàng"
+                Name = "Tên dịch vụ",
+                UnitRate = 30000,
+                Unit = "Đơn vị đo"
             });
         }
         [TestMethod]
-        public void PatronKinds()
+        public void Services()
         {
             SchemaHelper.Execute(
-                @"/GraphQL/PatronKind/query.patronkinds.gql",
-                @"/GraphQL/PatronKind/query.patronkinds.schema.json"
+                @"/GraphQL/Service/query.services.gql",
+                @"/GraphQL/Service/query.services.schema.json"
             );
         }
     }

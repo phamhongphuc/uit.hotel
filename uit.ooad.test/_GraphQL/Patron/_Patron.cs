@@ -12,7 +12,7 @@ using uit.ooad.Queries.Authentication;
 using uit.ooad.Schemas;
 using uit.ooad.test.Helper;
 
-namespace uit.ooad.test.GraphQL._Patron
+namespace uit.ooad.test._GraphQL._Patron
 {
     [TestClass]
     public class _Patron

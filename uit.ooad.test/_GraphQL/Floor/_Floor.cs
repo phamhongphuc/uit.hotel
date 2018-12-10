@@ -12,27 +12,28 @@ using uit.ooad.Queries.Authentication;
 using uit.ooad.Schemas;
 using uit.ooad.test.Helper;
 
-namespace uit.ooad.test.GraphQL._Service
+namespace uit.ooad.test._GraphQL._Floor
 {
     [TestClass]
-    public class _Service
+    public class _Floor
     {
-        public _Service()
+        public _Floor()
         {
-            ServiceBusiness.Add(new Models.Service()
+            FloorBusiness.Add(new Models.Floor()
             {
                 Id = 1,
-                Name = "Tên dịch vụ",
-                UnitRate = 30000,
-                Unit = "Đơn vị đo"
+                Name = "Tầng 10"
             });
         }
+
+        public TestContext TestContext { get; set; }
+
         [TestMethod]
-        public void Services()
+        public void Floors()
         {
             SchemaHelper.Execute(
-                @"/GraphQL/Service/query.services.gql",
-                @"/GraphQL/Service/query.services.schema.json"
+                @"/GraphQL/Floor/query.floors.gql",
+                @"/GraphQL/Floor/query.floors.schema.json"
             );
         }
     }
