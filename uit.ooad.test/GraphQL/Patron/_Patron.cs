@@ -12,12 +12,12 @@ using uit.ooad.Queries.Authentication;
 using uit.ooad.Schemas;
 using uit.ooad.test.Helper;
 
-namespace uit.ooad.test.GraphQL.Patron
+namespace uit.ooad.test.GraphQL._Patron
 {
     [TestClass]
-    public class PatronTest
+    public class _Patron
     {
-        public PatronTest()
+        public _Patron()
         {
             PatronKindBusiness.Add(new Models.PatronKind()
             {

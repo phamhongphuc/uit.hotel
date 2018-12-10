@@ -12,12 +12,12 @@ using uit.ooad.Queries.Authentication;
 using uit.ooad.Schemas;
 using uit.ooad.test.Helper;
 
-namespace uit.ooad.test.GraphQL.VolatilityRate
+namespace uit.ooad.test.GraphQL._VolatilityRate
 {
     [TestClass]
-    public class VolatilityRateTest
+    public class _VolatilityRate
     {
-        public VolatilityRateTest()
+        public _VolatilityRate()
         {
             RoomKindBusiness.Add(new Models.RoomKind()
             {

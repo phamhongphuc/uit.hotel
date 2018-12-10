@@ -12,12 +12,12 @@ using uit.ooad.Queries.Authentication;
 using uit.ooad.Schemas;
 using uit.ooad.test.Helper;
 
-namespace uit.ooad.test.GraphQL.Rate
+namespace uit.ooad.test.GraphQL._Rate
 {
     [TestClass]
-    public class RateTest
+    public class _Rate
     {
-        public RateTest()
+        public _Rate()
         {
             RoomKindBusiness.Add(new Models.RoomKind()
             {

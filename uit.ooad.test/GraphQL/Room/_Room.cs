@@ -12,12 +12,12 @@ using uit.ooad.Schemas;
 using uit.ooad.test.Helper;
 using uit.ooad.Businesses;
 
-namespace uit.ooad.test.GraphQL.Room
+namespace uit.ooad.test.GraphQL._Room
 {
     [TestClass]
-    public class RoomTest
+    public class _Room
     {
-        public RoomTest()
+        public _Room()
         {
             FloorBusiness.Add(new Models.Floor()
             {
@@ -40,11 +40,11 @@ namespace uit.ooad.test.GraphQL.Room
                 RoomKind = RoomKindBusiness.Get(1)
             });
         }
-        
+
         [TestMethod]
         public void Rooms()
         {
-            
+
             SchemaHelper.Execute(
                 @"/GraphQL/Room/query.rooms.gql",
                 @"/GraphQL/Room/query.rooms.schema.json"
