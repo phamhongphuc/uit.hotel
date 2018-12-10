@@ -33,7 +33,7 @@ namespace uit.ooad.test.Helper
 
             Schema = serviceProvider.GetService<ISchema>();
 
-            TestContext.Properties.Add("schema", Schema);
+            InitializeDatabase.InitializeDatabaseObject();
         }
     }
 }
