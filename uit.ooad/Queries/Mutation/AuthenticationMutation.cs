@@ -1,5 +1,8 @@
+using System.Linq;
 using GraphQL.Types;
+using uit.ooad.Businesses;
 using uit.ooad.Models;
+using uit.ooad.ObjectTypes;
 using uit.ooad.Queries.Authentication;
 using uit.ooad.Queries.Base;
 
@@ -18,9 +21,19 @@ namespace uit.ooad.Queries.Mutation
                 ),
                 context =>
                 {
-                    var id = context.GetArgument<string>("id");
+                    var id = GetId<string>(context);
 
                     return AuthenticationHelper.TokenBuilder(id);
+                }
+            );
+
+            Field<NonNullGraphType<EmployeeType>>(
+                "CreateAdminIfNotExists",
+                "Khởi tạo tài khoản admin",
+                resolve: context =>
+                {
+                    EmployeeBusiness.CreateAdminIfNotExists();
+                    return EmployeeBusiness.Get("admin");
                 }
             );
         }
