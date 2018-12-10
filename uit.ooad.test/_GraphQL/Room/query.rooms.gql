@@ -1,12 +1,12 @@
 {
-	rooms {
+    rooms {
         id
         name
-        floor{
-            id  
-        }
-        roomKind{
+        floor {
             id
         }
-	}
+        roomKind {
+            id
+        }
+    }
 }

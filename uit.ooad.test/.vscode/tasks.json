@@ -5,10 +5,7 @@
             "label": "build",
             "command": "dotnet",
             "type": "process",
-            "args": [
-                "build",
-                "${workspaceFolder}/uit.ooad.test.csproj"
-            ],
+            "args": ["build", "${workspaceFolder}/uit.ooad.test.csproj"],
             "problemMatcher": "$msCompile"
         }
     ]

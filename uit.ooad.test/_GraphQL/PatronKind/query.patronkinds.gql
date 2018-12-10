@@ -1,7 +1,7 @@
 {
-  patronKinds{
-    id
-    name
-    description
-  }
+    patronKinds {
+        id
+        name
+        description
+    }
 }
