@@ -1,0 +1,60 @@
+{
+    "definitions": {},
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "type": "object",
+        "required": [
+          "createBill"
+        ],
+        "properties": {
+          "createBill": {
+            "type": "object",
+            "required": [
+              "id",
+              "time",
+              "patron",
+              "employee"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^(.*)$"
+              },
+              "time": {
+                "type": "string",
+                "pattern": "^(.*)$"
+              },
+              "patron": {
+                "type": "object",
+                "required": [
+                  "identification"
+                ],
+                "properties": {
+                  "identification": {
+                    "type": "string",
+                    "pattern": "^(.*)$"
+                  }
+                }
+              },
+              "employee": {
+                "type": "object",
+                "required": [
+                  "id"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "pattern": "^(.*)$"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
