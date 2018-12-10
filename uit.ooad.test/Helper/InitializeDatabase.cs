@@ -1,13 +1,16 @@
 using System;
 using uit.ooad.Businesses;
+using uit.ooad.DataAccesses;
 using uit.ooad.Models;
 
 namespace uit.ooad.test.Helper
 {
-    public static class InitializeDatabase
+    public class InitializeDatabase : RealmDatabase
     {
         public static void InitializeDatabaseObject()
         {
+            ResetDatebase();
+
             AddPosition();
             AddEmployee();
 
@@ -24,6 +27,11 @@ namespace uit.ooad.test.Helper
             AddVolatilityRate();
 
             AddService();
+        }
+
+        private static void ResetDatebase()
+        {
+            Database.WriteAsync(realm => realm.RemoveAll());
         }
 
         private static void AddPosition()
