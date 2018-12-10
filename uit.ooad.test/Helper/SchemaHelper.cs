@@ -21,14 +21,19 @@ namespace uit.ooad.test.Helper
                 _.Inputs = JObject.Parse(variable).ToInputs();
             });
 
-            var json = JObject.Parse(result);
+            var jsonResult = JObject.Parse(result);
             var jSchema = JSchema.Parse(schema);
 
-            var isValid = json.IsValid(jSchema, out IList<string> messages);
+            var isValid = jsonResult.IsValid(jSchema, out IList<string> errorMessages);
+            var errorMessagesString = string.Join("\n", errorMessages);
+            var exceptionMessage = string.Join(
+                Environment.NewLine,
+                "- Query:", query,
+                "- Result:", jsonResult.ToString(),
+                "- Error Messages:", errorMessagesString
+            );
 
-            var errorMessage = string.Join("\n", messages) + "\n\n" + json;
-
-            if (!isValid) throw new Exception(errorMessage);
+            if (!isValid) throw new Exception(exceptionMessage);
         }
     }
 }
