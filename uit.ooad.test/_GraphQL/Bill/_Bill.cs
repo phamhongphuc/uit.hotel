@@ -16,7 +16,14 @@ namespace uit.ooad.test._GraphQL._Bill
                 @"/_GraphQL/Bill/query.bills.schema.json"
             );
         }
-
+        [TestMethod]
+        public void Bill()
+        {
+            SchemaHelper.Execute(
+                @"/_GraphQL/Bill/query.bill.gql",
+                @"/_GraphQL/Bill/query.bill.schema.json"
+            );
+        }
         [TestMethod]
         public void CreateBill()
         {
