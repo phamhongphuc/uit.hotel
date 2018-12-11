@@ -1,9 +1,9 @@
 {
-    roomKinds{
-      id
-      name
-      numberOfBeds
-      amountOfPeople
-      priceByDate
-  }
+    roomKinds {
+        id
+        name
+        numberOfBeds
+        amountOfPeople
+        priceByDate
+    }
 }

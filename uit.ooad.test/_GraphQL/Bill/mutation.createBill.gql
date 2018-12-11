@@ -1,0 +1,12 @@
+mutation($input: BillCreateInput!) {
+    createBill(input: $input) {
+        id
+        time
+        patron {
+            identification
+        }
+        employee {
+            id
+        }
+    }
+}

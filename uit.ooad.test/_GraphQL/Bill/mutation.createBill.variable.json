@@ -1,0 +1,12 @@
+{
+	"input": {
+		"id": "2",
+		"time": "04-04-2000",
+		"patron": {
+			"identification": "Id khách hàng"
+		},
+		"employee": {
+			"id": "admin"
+		}
+	}
+}
