@@ -16,5 +16,13 @@ namespace uit.ooad.test._GraphQL._Patron
                 @"/_GraphQL/PatronKind/query.patronkinds.schema.json"
             );
         }
+        [TestMethod]
+        public void PatronKind()
+        {
+            SchemaHelper.Execute(
+                @"/_GraphQL/PatronKind/query.patronkind.gql",
+                @"/_GraphQL/PatronKind/query.patronkind.schema.json"
+            );
+        }
     }
 }
