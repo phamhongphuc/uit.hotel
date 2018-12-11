@@ -16,6 +16,14 @@ namespace uit.ooad.test._GraphQL._Floor
                 @"/_GraphQL/Floor/query.floors.schema.json"
             );
         }
+        [TestMethod]
+        public void Floor()
+        {
+            SchemaHelper.Execute(
+                @"/_GraphQL/Floor/query.floor.gql",
+                @"/_GraphQL/Floor/query.floor.schema.json"
+            );
+        }
 
         [TestMethod]
         public void CreateFloor()
