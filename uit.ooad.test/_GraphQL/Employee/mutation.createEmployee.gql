@@ -1,0 +1,14 @@
+mutation($input:EmployeeCreateInput!){
+  createEmployee(input:$input){
+    id
+    name
+    address
+    birthdate
+    phoneNumber
+    startingDate
+    position{
+      id
+      name
+    }
+  }
+}
