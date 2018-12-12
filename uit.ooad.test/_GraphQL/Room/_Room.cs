@@ -16,5 +16,13 @@ namespace uit.ooad.test._GraphQL._Room
                 @"/_GraphQL/Room/query.rooms.schema.json"
             );
         }
+        [TestMethod]
+        public void Room()
+        {
+            SchemaHelper.Execute(
+                @"/_GraphQL/Room/query.room.gql",
+                @"/_GraphQL/Room/query.room.schema.json"
+            );
+        }
     }
 }
