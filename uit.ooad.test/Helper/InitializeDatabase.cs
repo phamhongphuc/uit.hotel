@@ -30,6 +30,7 @@ namespace uit.ooad.test.Helper
 
             AddBill();
             AddBooking();
+            AddHouseKeeping();
         }
 
         private static void ResetDatebase()
@@ -195,6 +196,16 @@ namespace uit.ooad.test.Helper
                 Status = 0,
                 Bill = BillBusiness.Get("1"),
                 Room = RoomBusiness.Get(1),
+                Employee = EmployeeBusiness.Get(Constant.UserName)
+            });
+        }
+        private static void AddHouseKeeping()
+        {
+            HouseKeepingBusiness.Add(new HouseKeeping
+            {
+                Id = 1,
+                Type = 1,
+                Booking = BookingBusiness.Get(1),
                 Employee = EmployeeBusiness.Get(Constant.UserName)
             });
         }
