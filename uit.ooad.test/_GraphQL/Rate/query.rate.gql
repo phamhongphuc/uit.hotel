@@ -1,0 +1,21 @@
+{
+  rate(id:1){
+    id
+    dayRate
+    nightRate
+    weekRate
+    monthRate
+    lateCheckOutFee
+    earlyCheckInFee
+    effectiveStartDate
+    createDate
+    roomKind{
+      id
+      name
+      amountOfPeople
+      numberOfBeds
+      priceByDate
+    }
+    
+  }
+}

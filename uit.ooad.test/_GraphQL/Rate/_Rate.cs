@@ -17,5 +17,13 @@ namespace uit.ooad.test._GraphQL._Rate
                 @"/_GraphQL/Rate/query.rates.schema.json"
             );
         }
+        [TestMethod]
+        public void Rate()
+        {
+            SchemaHelper.Execute(
+                @"/_GraphQL/Rate/query.rate.gql",
+                @"/_GraphQL/Rate/query.rate.schema.json"
+            );
+        }
     }
 }
