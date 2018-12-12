@@ -16,14 +16,14 @@ namespace uit.ooad.test._GraphQL._Position
                 @"/_GraphQL/Position/query.positions.schema.json"
             );
         }
-        // [TestMethod]
-        // public void Position()
-        // {
-        //     SchemaHelper.Execute(
-        //         @"/_GraphQL/Position/query.position.gql",
-        //         @"/_GraphQL/Position/query.position.schema.json"
-        //     );
-        // }
+        [TestMethod]
+        public void Position()
+        {
+            SchemaHelper.Execute(
+                @"/_GraphQL/Position/query.position.gql",
+                @"/_GraphQL/Position/query.position.schema.json"
+            );
+        }
         // [TestMethod]
         // public void CreatePosition()
         // {
