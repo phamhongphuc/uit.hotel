@@ -1,0 +1,16 @@
+{
+  booking(id:1){
+    id
+    checkInTime
+    checkOutTime
+    createTime
+    employee{
+      id
+      name
+    }
+    bill{
+      id
+      time
+    }
+  }
+}

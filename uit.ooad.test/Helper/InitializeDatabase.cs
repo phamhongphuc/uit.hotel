@@ -29,6 +29,7 @@ namespace uit.ooad.test.Helper
             AddService();
 
             AddBill();
+            AddBooking();
         }
 
         private static void ResetDatebase()
@@ -180,6 +181,21 @@ namespace uit.ooad.test.Helper
                 Time = DateTime.Now,
                 Employee = EmployeeBusiness.Get(Constant.UserName),
                 Patron = PatronBusiness.Get("Id khách hàng")
+            });
+        }
+
+        private static void AddBooking()
+        {
+            BookingBusiness.Add(new Booking
+            {
+                Id = 1,
+                CheckInTime = DateTime.Now,
+                CheckOutTime = DateTime.Now,
+                CreateTime = DateTime.Now,
+                Status = 0,
+                Bill = BillBusiness.Get("1"),
+                Room = RoomBusiness.Get(1),
+                Employee = EmployeeBusiness.Get(Constant.UserName)
             });
         }
     }
