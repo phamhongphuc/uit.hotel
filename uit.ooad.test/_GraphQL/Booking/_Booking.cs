@@ -16,14 +16,14 @@ namespace uit.ooad.test._GraphQL._Booking
                 @"/_GraphQL/Booking/query.bookings.schema.json"
             );
         }
-        // [TestMethod]
-        // public void Booking()
-        // {
-        //     SchemaHelper.Execute(
-        //         @"/_GraphQL/Booking/query.booking.gql",
-        //         @"/_GraphQL/Booking/query.booking.schema.json"
-        //     );
-        // }
+        [TestMethod]
+        public void Booking()
+        {
+            SchemaHelper.Execute(
+                @"/_GraphQL/Booking/query.booking.gql",
+                @"/_GraphQL/Booking/query.booking.schema.json"
+            );
+        }
         // [TestMethod]
         // public void CreateBooking()
         // {
