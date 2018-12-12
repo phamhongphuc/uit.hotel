@@ -20,8 +20,8 @@ namespace uit.ooad.test._GraphQL._RoomKind
         public void RoomKind()
         {
             SchemaHelper.Execute(
-                @"/_GraphQL/Service/query.services.gql",
-                @"/_GraphQL/Service/query.services.schema.json"
+                @"/_GraphQL/RoomKind/query.roomKind.gql",
+                @"/_GraphQL/RoomKind/query.roomKind.schema.json"
             );
         }
     }

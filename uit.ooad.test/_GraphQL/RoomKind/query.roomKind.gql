@@ -1,0 +1,9 @@
+{
+  roomKind(id:1){
+  	id
+    name
+    numberOfBeds
+    amountOfPeople
+    priceByDate
+	}
+}
