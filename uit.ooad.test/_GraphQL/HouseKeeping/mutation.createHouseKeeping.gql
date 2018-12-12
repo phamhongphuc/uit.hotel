@@ -1,0 +1,16 @@
+mutation($input:HouseKeepingCreateInput!){
+  createHouseKeeping(input: $input){
+    id
+    type
+    employee{
+      id
+      name
+    }
+    booking{
+      id
+      checkInTime
+      checkOutTime
+      createTime
+    }
+  }
+}
