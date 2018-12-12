@@ -1,0 +1,21 @@
+mutation($input:BookingCreateInput!){
+  createBooking(input:$input){
+    id
+    checkInTime
+    checkOutTime
+    createTime
+    status
+    room{
+      id
+      name
+		}
+    employee{
+      id
+      name
+    }
+    bill{
+      id
+      time
+    }
+  }
+}
