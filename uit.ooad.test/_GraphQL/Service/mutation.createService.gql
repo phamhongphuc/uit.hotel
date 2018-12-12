@@ -1,0 +1,8 @@
+mutation($input:ServiceCreateInput!){
+  createService(input:$input){
+    id
+    name
+    unitRate
+    unit
+  }
+}

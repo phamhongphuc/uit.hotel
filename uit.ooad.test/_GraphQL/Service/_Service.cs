@@ -24,5 +24,15 @@ namespace uit.ooad.test._GraphQL._Service
                 @"/_GraphQL/Service/query.service.schema.json"
             );
         }
+        [TestMethod]
+        public void CreateService()
+        {
+            SchemaHelper.Execute(
+                @"/_GraphQL/Service/mutation.createService.gql",
+                @"/_GraphQL/Service/mutation.createService.schema.json",
+                @"/_GraphQL/Service/mutation.createService.variable.json",
+                p => p.PermissionCreateService = true
+            );
+        }
     }
 }
