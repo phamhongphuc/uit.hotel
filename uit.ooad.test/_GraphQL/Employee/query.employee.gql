@@ -1,0 +1,13 @@
+{
+  employee(id:"admin"){
+    id
+    name
+    address
+    birthdate
+    phoneNumber
+    position{
+      id
+      name
+    }
+  }
+}

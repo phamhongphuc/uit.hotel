@@ -16,14 +16,14 @@ namespace uit.ooad.test._GraphQL.Employee
                 @"/_GraphQL/Employee/query.employees.schema.json"
             );
         }
-        // [TestMethod]
-        // public void Employee()
-        // {
-        //     SchemaHelper.Execute(
-        //         @"/_GraphQL/Employee/query.employee.gql",
-        //         @"/_GraphQL/Employee/query.employee.schema.json"
-        //     );
-        // }
+        [TestMethod]
+        public void Employee()
+        {
+            SchemaHelper.Execute(
+                @"/_GraphQL/Employee/query.employee.gql",
+                @"/_GraphQL/Employee/query.employee.schema.json"
+            );
+        }
         // [TestMethod]
         // public void CreateEmployee()
         // {
