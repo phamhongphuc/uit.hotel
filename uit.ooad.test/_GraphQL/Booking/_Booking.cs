@@ -3,7 +3,7 @@ using uit.ooad.Businesses;
 using uit.ooad.Models;
 using uit.ooad.test.Helper;
 
-namespace uit.ooad.test._GraphQL._Booking
+namespace uit.ooad.test._GraphQL.Booking
 {
     [TestClass]
     public class _Booking
@@ -24,15 +24,15 @@ namespace uit.ooad.test._GraphQL._Booking
                 @"/_GraphQL/Booking/query.booking.schema.json"
             );
         }
-        // [TestMethod]
-        // public void CreateBooking()
-        // {
-        //     SchemaHelper.Execute(
-        //         @"/_GraphQL/Booking/mutation.createBooking.gql",
-        //         @"/_GraphQL/Booking/mutation.createBooking.schema.json",
-        //         @"/_GraphQL/Booking/mutation.createBooking.variable.json",
-        //         p => p.PermissionCreateBooking = true
-        //     );
-        // }
+        [TestMethod]
+        public void CreateBooking()
+        {
+            SchemaHelper.Execute(
+                @"/_GraphQL/Booking/mutation.createBooking.gql",
+                @"/_GraphQL/Booking/mutation.createBooking.schema.json",
+                @"/_GraphQL/Booking/mutation.createBooking.variable.json",
+                p => p.PermissionCreateBooking = true
+            );
+        }
     }
 }
