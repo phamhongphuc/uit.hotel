@@ -16,5 +16,13 @@ namespace uit.ooad.test._GraphQL._Service
                 @"/_GraphQL/Service/query.services.schema.json"
             );
         }
+        [TestMethod]
+        public void Service()
+        {
+            SchemaHelper.Execute(
+                @"/_GraphQL/Service/query.service.gql",
+                @"/_GraphQL/Service/query.service.schema.json"
+            );
+        }
     }
 }
