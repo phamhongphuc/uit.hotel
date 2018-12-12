@@ -1,0 +1,16 @@
+{
+  houseKeeping(id:1){
+    id
+    type
+    employee{
+      id
+      name
+    }
+    booking{
+      id
+      checkInTime
+      checkOutTime
+      createTime
+    }
+  }
+}

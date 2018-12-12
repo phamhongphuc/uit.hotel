@@ -16,14 +16,14 @@ namespace uit.ooad.test._GraphQL._HouseKeeping
                 @"/_GraphQL/HouseKeeping/query.houseKeepings.schema.json"
             );
         }
-        // [TestMethod]
-        // public void HouseKeeping()
-        // {
-        //     SchemaHelper.Execute(
-        //         @"/_GraphQL/HouseKeeping/query.houseKeeping.gql",
-        //         @"/_GraphQL/HouseKeeping/query.houseKeeping.schema.json"
-        //     );
-        // }
+        [TestMethod]
+        public void HouseKeeping()
+        {
+            SchemaHelper.Execute(
+                @"/_GraphQL/HouseKeeping/query.houseKeeping.gql",
+                @"/_GraphQL/HouseKeeping/query.houseKeeping.schema.json"
+            );
+        }
         // [TestMethod]
         // public void CreateHouseKeeping()
         // {
