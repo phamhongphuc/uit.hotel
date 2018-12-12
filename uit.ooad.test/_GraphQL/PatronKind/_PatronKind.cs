@@ -24,5 +24,15 @@ namespace uit.ooad.test._GraphQL._Patron
                 @"/_GraphQL/PatronKind/query.patronkind.schema.json"
             );
         }
+        [TestMethod]
+        public void CreatePatronKind()
+        {
+            SchemaHelper.Execute(
+                @"/_GraphQL/PatronKind/mutation.createPatronKind.gql",
+                @"/_GraphQL/PatronKind/mutation.createPatronKind.schema.json",
+                @"/_GraphQl/PatronKind/mutation.createPatronKind.variable.json",
+                p => p.PermissionCreatePatronKind = true
+            );
+        }
     }
 }
