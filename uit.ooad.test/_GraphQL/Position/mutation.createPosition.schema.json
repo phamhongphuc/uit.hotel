@@ -1,0 +1,181 @@
+{
+    "definitions": {},
+    "type": "object",
+    "title": "The Root Schema",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "type": "object",
+        "title": "The Data Schema",
+        "required": [
+          "createPosition"
+        ],
+        "properties": {
+          "createPosition": {
+            "type": "object",
+            "title": "The Createposition Schema",
+            "required": [
+              "id",
+              "name",
+              "permissionCreatePatronKind",
+              "permissionCreateBill",
+              "permissionCreateBooking",
+              "permissionCreateEmployee",
+              "permissionCreateFloor",
+              "permissionCreateHouseKeeping",
+              "permissionCreatePatron",
+              "permissionCreatePosition",
+              "permissionCreateRate",
+              "permissionCreateReceipt",
+              "permissionCreateRoom",
+              "permissionCreateRoomKind",
+              "permissionCreateService",
+              "permissionCreateServicesDetail",
+              "permissionCreateVolatilityRate"
+            ],
+            "properties": {
+              "id": {
+                "type": "integer",
+                "title": "The Id Schema",
+                "default": 0,
+                "examples": [
+                  2
+                ]
+              },
+              "name": {
+                "type": "string",
+                "title": "The Name Schema",
+                "default": "",
+                "examples": [
+                  "Tên quyền"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "permissionCreatePatronKind": {
+                "type": "boolean",
+                "title": "The Permissioncreatepatronkind Schema",
+                "default": false,
+                "examples": [
+                  false
+                ]
+              },
+              "permissionCreateBill": {
+                "type": "boolean",
+                "title": "The Permissioncreatebill Schema",
+                "default": false,
+                "examples": [
+                  false
+                ]
+              },
+              "permissionCreateBooking": {
+                "type": "boolean",
+                "title": "The Permissioncreatebooking Schema",
+                "default": false,
+                "examples": [
+                  false
+                ]
+              },
+              "permissionCreateEmployee": {
+                "type": "boolean",
+                "title": "The Permissioncreateemployee Schema",
+                "default": false,
+                "examples": [
+                  false
+                ]
+              },
+              "permissionCreateFloor": {
+                "type": "boolean",
+                "title": "The Permissioncreatefloor Schema",
+                "default": false,
+                "examples": [
+                  false
+                ]
+              },
+              "permissionCreateHouseKeeping": {
+                "type": "boolean",
+                "title": "The Permissioncreatehousekeeping Schema",
+                "default": false,
+                "examples": [
+                  false
+                ]
+              },
+              "permissionCreatePatron": {
+                "type": "boolean",
+                "title": "The Permissioncreatepatron Schema",
+                "default": false,
+                "examples": [
+                  false
+                ]
+              },
+              "permissionCreatePosition": {
+                "type": "boolean",
+                "title": "The Permissioncreateposition Schema",
+                "default": false,
+                "examples": [
+                  false
+                ]
+              },
+              "permissionCreateRate": {
+                "type": "boolean",
+                "title": "The Permissioncreaterate Schema",
+                "default": false,
+                "examples": [
+                  false
+                ]
+              },
+              "permissionCreateReceipt": {
+                "type": "boolean",
+                "title": "The Permissioncreatereceipt Schema",
+                "default": false,
+                "examples": [
+                  false
+                ]
+              },
+              "permissionCreateRoom": {
+                "type": "boolean",
+                "title": "The Permissioncreateroom Schema",
+                "default": false,
+                "examples": [
+                  false
+                ]
+              },
+              "permissionCreateRoomKind": {
+                "type": "boolean",
+                "title": "The Permissioncreateroomkind Schema",
+                "default": false,
+                "examples": [
+                  false
+                ]
+              },
+              "permissionCreateService": {
+                "type": "boolean",
+                "title": "The Permissioncreateservice Schema",
+                "default": false,
+                "examples": [
+                  false
+                ]
+              },
+              "permissionCreateServicesDetail": {
+                "type": "boolean",
+                "title": "The Permissioncreateservicesdetail Schema",
+                "default": false,
+                "examples": [
+                  false
+                ]
+              },
+              "permissionCreateVolatilityRate": {
+                "type": "boolean",
+                "title": "The Permissioncreatevolatilityrate Schema",
+                "default": false,
+                "examples": [
+                  false
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
