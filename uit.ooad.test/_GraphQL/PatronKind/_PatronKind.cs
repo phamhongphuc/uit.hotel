@@ -30,7 +30,7 @@ namespace uit.ooad.test._GraphQL._Patron
             SchemaHelper.Execute(
                 @"/_GraphQL/PatronKind/mutation.createPatronKind.gql",
                 @"/_GraphQL/PatronKind/mutation.createPatronKind.schema.json",
-                @"/_GraphQl/PatronKind/mutation.createPatronKind.variable.json",
+                @"/_GraphQL/PatronKind/mutation.createPatronKind.variable.json",
                 p => p.PermissionCreatePatronKind = true
             );
         }
