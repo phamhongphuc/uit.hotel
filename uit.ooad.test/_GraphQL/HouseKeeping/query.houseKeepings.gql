@@ -1,0 +1,20 @@
+{
+  houseKeepings{
+    id
+    type
+    employee{
+      id
+      name
+      birthdate
+      address
+      phoneNumber
+    }
+    booking{
+      id
+      checkInTime
+      checkOutTime
+      createTime
+      status
+    }
+  }
+}
