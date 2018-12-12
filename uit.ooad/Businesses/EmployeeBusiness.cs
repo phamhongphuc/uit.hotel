@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using uit.ooad.DataAccesses;
 using uit.ooad.Models;
+using uit.ooad.Queries.Authentication;
 
 namespace uit.ooad.Businesses
 {
@@ -15,6 +16,9 @@ namespace uit.ooad.Businesses
             if (employeeInDatabase != null) return null;
 
             employee.Position = employee.Position.GetManaged();
+
+            employee.Password = CryptoHelper.Encrypt(employee.Password);
+
             return EmployeeDataAccess.Add(employee);
         }
         public static void ChangePassword(string id, string password, string newPassword)
@@ -44,7 +48,7 @@ namespace uit.ooad.Businesses
         {
             if (Get().Count() != 0) return;
 
-            var position = await PositionBusiness.Add(new Position()
+            var position = await PositionBusiness.Add(new Position
             {
                 Id = 1,
                 Name = "Quản trị viên",
@@ -64,7 +68,7 @@ namespace uit.ooad.Businesses
                 PermissionCreateVolatilityRate = true
             });
 
-            await EmployeeBusiness.Add(new Employee()
+            await Add(new Employee
             {
                 Id = "admin",
                 Name = "Quản trị viên",
@@ -73,7 +77,7 @@ namespace uit.ooad.Businesses
                 PhoneNumber = "Unknown",
                 Birthdate = DateTime.Now,
                 StartingDate = DateTime.Now,
-                Position = position,
+                Position = position
             });
         }
     }
