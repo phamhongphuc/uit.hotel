@@ -24,5 +24,15 @@ namespace uit.ooad.test._GraphQL._RoomKind
                 @"/_GraphQL/RoomKind/query.roomKind.schema.json"
             );
         }
+        [TestMethod]
+        public void CreateRoomKind()
+        {
+            SchemaHelper.Execute(
+                @"/_GraphQL/RoomKind/mutation.createRoomKind.gql",
+                @"/_GraphQL/RoomKind/mutation.createRoomKind.schema.json",
+                @"/_GraphQL/RoomKind/mutation.createRoomKind.variable.json",
+                p => p.PermissionCreateRoomKind = true
+            );
+        }
     }
 }
