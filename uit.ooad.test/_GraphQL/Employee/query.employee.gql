@@ -1,5 +1,5 @@
-{
-  employee(id:"admin"){
+query($id:ID!){
+  employee(id:$id){
     id
     name
     address

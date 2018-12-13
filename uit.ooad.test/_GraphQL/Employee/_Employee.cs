@@ -21,7 +21,8 @@ namespace uit.ooad.test._GraphQL.Employee
         {
             SchemaHelper.Execute(
                 @"/_GraphQL/Employee/query.employee.gql",
-                @"/_GraphQL/Employee/query.employee.schema.json"
+                @"/_GraphQL/Employee/query.employee.schema.json",
+                @"/_GraphQL/Employee/query.employee.variable.json"
             );
         }
         [TestMethod]
