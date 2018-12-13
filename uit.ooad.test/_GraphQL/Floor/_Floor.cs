@@ -21,7 +21,8 @@ namespace uit.ooad.test._GraphQL._Floor
         {
             SchemaHelper.Execute(
                 @"/_GraphQL/Floor/query.floor.gql",
-                @"/_GraphQL/Floor/query.floor.schema.json"
+                @"/_GraphQL/Floor/query.floor.schema.json",
+                @"/_GraphQL/Floor/query.floor.variable.json"
             );
         }
 
