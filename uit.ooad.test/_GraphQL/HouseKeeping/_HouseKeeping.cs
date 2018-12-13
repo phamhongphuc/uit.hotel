@@ -21,7 +21,8 @@ namespace uit.ooad.test._GraphQL._HouseKeeping
         {
             SchemaHelper.Execute(
                 @"/_GraphQL/HouseKeeping/query.houseKeeping.gql",
-                @"/_GraphQL/HouseKeeping/query.houseKeeping.schema.json"
+                @"/_GraphQL/HouseKeeping/query.houseKeeping.schema.json",
+                @"/_GraphQL/HouseKeeping/query.houseKeeping.variable.json"
             );
         }
         [TestMethod]
