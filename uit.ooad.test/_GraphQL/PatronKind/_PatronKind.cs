@@ -20,8 +20,9 @@ namespace uit.ooad.test._GraphQL._Patron
         public void PatronKind()
         {
             SchemaHelper.Execute(
-                @"/_GraphQL/PatronKind/query.patronKinds.gql",
-                @"/_GraphQL/PatronKind/query.patronKinds.schema.json"
+                @"/_GraphQL/PatronKind/query.patronKind.gql",
+                @"/_GraphQL/PatronKind/query.patronKind.schema.json",
+                @"/_GraphQL/PatronKind/query.patronKind.variable.json"
             );
         }
         [TestMethod]
