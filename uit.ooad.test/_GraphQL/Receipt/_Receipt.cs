@@ -25,15 +25,15 @@ namespace uit.ooad.test._GraphQL.Receipt
                 @"/_GraphQL/Receipt/query.receipt.schema.json"
             );
         }
-        // [TestMethod]
-        // public void CreateReceipt()
-        // {
-        //     SchemaHelper.Execute(
-        //         @"/_GraphQL/Receipt/mutation.createReceipt.gql",
-        //         @"/_GraphQL/Receipt/mutation.createReceipt.schema.json",
-        //         @"/_GraphQL/Receipt/mutation.createReceipt.variable.json",
-        //         p => p.PermissionCreateReceipt = true
-        //     );
-        // }
+        [TestMethod]
+        public void CreateReceipt()
+        {
+            SchemaHelper.Execute(
+                @"/_GraphQL/Receipt/mutation.createReceipt.gql",
+                @"/_GraphQL/Receipt/mutation.createReceipt.schema.json",
+                @"/_GraphQL/Receipt/mutation.createReceipt.variable.json",
+                p => p.PermissionCreateReceipt = true
+            );
+        }
     }
 }
