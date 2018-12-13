@@ -1,5 +1,5 @@
-{
-  rate(id:1){
+query($id:ID!){
+  rate(id:$id){
     id
     dayRate
     nightRate
