@@ -21,7 +21,8 @@ namespace uit.ooad.test._GraphQL._RoomKind
         {
             SchemaHelper.Execute(
                 @"/_GraphQL/RoomKind/query.roomKind.gql",
-                @"/_GraphQL/RoomKind/query.roomKind.schema.json"
+                @"/_GraphQL/RoomKind/query.roomKind.schema.json",
+                @"/_GraphQL/RoomKind/query.roomKind.variable.json"
             );
         }
         [TestMethod]
