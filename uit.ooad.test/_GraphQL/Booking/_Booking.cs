@@ -21,7 +21,8 @@ namespace uit.ooad.test._GraphQL.Booking
         {
             SchemaHelper.Execute(
                 @"/_GraphQL/Booking/query.booking.gql",
-                @"/_GraphQL/Booking/query.booking.schema.json"
+                @"/_GraphQL/Booking/query.booking.schema.json",
+                @"/_GraphQL/Booking/query.booking.variable.json"
             );
         }
         [TestMethod]
