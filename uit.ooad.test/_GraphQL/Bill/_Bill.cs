@@ -21,7 +21,8 @@ namespace uit.ooad.test._GraphQL._Bill
         {
             SchemaHelper.Execute(
                 @"/_GraphQL/Bill/query.bill.gql",
-                @"/_GraphQL/Bill/query.bill.schema.json"
+                @"/_GraphQL/Bill/query.bill.schema.json",
+                @"/_GraphQL/Bill/query.bill.variable.json"
             );
         }
         [TestMethod]
