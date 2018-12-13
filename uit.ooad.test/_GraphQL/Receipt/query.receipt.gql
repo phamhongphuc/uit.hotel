@@ -1,5 +1,5 @@
-{
-  receipt(id:1){
+query($id:ID!){
+  receipt(id:$id){
     id
    	time
     money

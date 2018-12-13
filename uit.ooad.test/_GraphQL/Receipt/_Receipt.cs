@@ -22,7 +22,9 @@ namespace uit.ooad.test._GraphQL.Receipt
         {
             SchemaHelper.Execute(
                 @"/_GraphQL/Receipt/query.receipt.gql",
-                @"/_GraphQL/Receipt/query.receipt.schema.json"
+                @"/_GraphQL/Receipt/query.receipt.schema.json",
+                @"/_GraphQL/Receipt/query.receipt.variable.json"
+
             );
         }
         [TestMethod]
