@@ -1,0 +1,120 @@
+{
+    "definitions": {},
+    "type": "object",
+    "title": "The Root Schema",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "type": "object",
+        "title": "The Data Schema",
+        "required": [
+          "servicesDetail"
+        ],
+        "properties": {
+          "servicesDetail": {
+            "type": "object",
+            "title": "The Servicesdetail Schema",
+            "required": [
+              "id",
+              "time",
+              "booking",
+              "number",
+              "service"
+            ],
+            "properties": {
+              "id": {
+                "type": "integer",
+                "title": "The Id Schema",
+                "default": 0,
+                "examples": [
+                  3
+                ]
+              },
+              "time": {
+                "type": "string",
+                "title": "The Time Schema",
+                "default": "",
+                "examples": [
+                  "0001-01-01T00:00:00+00:00"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "booking": {
+                "type": "object",
+                "title": "The Booking Schema",
+                "required": [
+                  "id"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "title": "The Id Schema",
+                    "default": 0,
+                    "examples": [
+                      3
+                    ]
+                  }
+                }
+              },
+              "number": {
+                "type": "integer",
+                "title": "The Number Schema",
+                "default": 0,
+                "examples": [
+                  3
+                ]
+              },
+              "service": {
+                "type": "object",
+                "title": "The Service Schema",
+                "required": [
+                  "id",
+                  "name",
+                  "unit",
+                  "unitRate"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "title": "The Id Schema",
+                    "default": 0,
+                    "examples": [
+                      1
+                    ]
+                  },
+                  "name": {
+                    "type": "string",
+                    "title": "The Name Schema",
+                    "default": "",
+                    "examples": [
+                      "giặt ủi"
+                    ],
+                    "pattern": "^(.*)$"
+                  },
+                  "unit": {
+                    "type": "string",
+                    "title": "The Unit Schema",
+                    "default": "",
+                    "examples": [
+                      "Kg"
+                    ],
+                    "pattern": "^(.*)$"
+                  },
+                  "unitRate": {
+                    "type": "integer",
+                    "title": "The Unitrate Schema",
+                    "default": 0,
+                    "examples": [
+                      30000
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
