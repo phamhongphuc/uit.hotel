@@ -21,7 +21,8 @@ namespace uit.ooad.test._GraphQL._Position
         {
             SchemaHelper.Execute(
                 @"/_GraphQL/Position/query.position.gql",
-                @"/_GraphQL/Position/query.position.schema.json"
+                @"/_GraphQL/Position/query.position.schema.json",
+                @"/_GraphQL/Position/query.position.variable.json"
             );
         }
         [TestMethod]

@@ -1,5 +1,5 @@
-{
-  position(id:1){
+query($id:ID!){
+  position(id:$id){
     id
     name
     permissionCreatePatronKind
