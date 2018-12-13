@@ -31,6 +31,7 @@ namespace uit.ooad.test.Helper
             AddBill();
             AddBooking();
             AddHouseKeeping();
+            AddReceipt();
         }
 
         private static void ResetDatebase()
@@ -206,6 +207,19 @@ namespace uit.ooad.test.Helper
                 Id = 1,
                 Type = 1,
                 Booking = BookingBusiness.Get(1),
+                Employee = EmployeeBusiness.Get(Constant.UserName)
+            });
+        }
+        private static void AddReceipt()
+        {
+            ReceiptBusiness.Add(new Receipt
+            {
+                Id = 1,
+                Time = DateTime.Now,
+                Money = 1,
+                BankAccountNumber = "11111",
+                TypeOfPayment = 1,
+                Bill = BillBusiness.Get("1"),
                 Employee = EmployeeBusiness.Get(Constant.UserName)
             });
         }

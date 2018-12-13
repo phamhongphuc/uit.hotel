@@ -17,14 +17,14 @@ namespace uit.ooad.test._GraphQL.Receipt
                 @"/_GraphQL/Receipt/query.receipts.schema.json"
             );
         }
-        // [TestMethod]
-        // public void Receipt()
-        // {
-        //     SchemaHelper.Execute(
-        //         @"/_GraphQL/Receipt/query.receipt.gql",
-        //         @"/_GraphQL/Receipt/query.receipt.schema.json"
-        //     );
-        // }
+        [TestMethod]
+        public void Receipt()
+        {
+            SchemaHelper.Execute(
+                @"/_GraphQL/Receipt/query.receipt.gql",
+                @"/_GraphQL/Receipt/query.receipt.schema.json"
+            );
+        }
         // [TestMethod]
         // public void CreateReceipt()
         // {
