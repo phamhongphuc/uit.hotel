@@ -1,5 +1,5 @@
-{
-  service(id:1){
+query($id:ID!){
+  service(id:$id){
     id
     name
   }

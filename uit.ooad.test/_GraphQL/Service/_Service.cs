@@ -21,7 +21,8 @@ namespace uit.ooad.test._GraphQL._Service
         {
             SchemaHelper.Execute(
                 @"/_GraphQL/Service/query.service.gql",
-                @"/_GraphQL/Service/query.service.schema.json"
+                @"/_GraphQL/Service/query.service.schema.json",
+                @"/_GraphQL/Service/query.service.variable.json"
             );
         }
         [TestMethod]
