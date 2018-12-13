@@ -22,7 +22,8 @@ namespace uit.ooad.test._GraphQL._VolatilityRate
         {
             SchemaHelper.Execute(
                 @"/_GraphQL/VolatilityRate/query.volatilityRate.gql",
-                @"/_GraphQL/VolatilityRate/query.volatilityRate.schema.json"
+                @"/_GraphQL/VolatilityRate/query.volatilityRate.schema.json",
+                @"/_GraphQL/VolatilityRate/query.volatilityRate.variable.json"
             );
         }
         [TestMethod]

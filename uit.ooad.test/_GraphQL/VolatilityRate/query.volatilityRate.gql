@@ -1,5 +1,5 @@
-{
-  volatilityRate(id:1)
+query($id:ID!){
+  volatilityRate(id:$id)
   {
     id
     dayRate
