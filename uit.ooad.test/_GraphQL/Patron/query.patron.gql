@@ -1,5 +1,5 @@
-{
-  patron(id:"Id khách hàng"){
+query($id:ID!){
+  patron(id:$id){
     identification
     name
     birthdate
