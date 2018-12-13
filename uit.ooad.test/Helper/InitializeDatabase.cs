@@ -21,17 +21,14 @@ namespace uit.ooad.test.Helper
 
             AddPatronKind();
             AddPatron();
-
             AddRate();
-
             AddVolatilityRate();
-
             AddService();
-
             AddBill();
             AddBooking();
             AddHouseKeeping();
             AddReceipt();
+            AddServicesDetail();
         }
 
         private static void ResetDatebase()
@@ -72,6 +69,18 @@ namespace uit.ooad.test.Helper
                 Name = "Tên dịch vụ",
                 UnitRate = 30000,
                 Unit = "Đơn vị đo"
+            });
+        }
+
+        private static void AddServicesDetail()
+        {
+            ServicesDetailBusiness.Add(new ServicesDetail
+            {
+                Id = 1,
+                Time = DateTime.Now,
+                Number = 1,
+                Booking = BookingBusiness.Get(1),
+                Service = ServiceBusiness.Get(1)
             });
         }
 
