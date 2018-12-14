@@ -32,7 +32,7 @@ namespace uit.ooad.Models
 
         public bool IsEqualPassword(string rawPassword)
         {
-            return CryptoHelper.Decrypt(Password).Equals(rawPassword);
+            return CryptoHelper.Encrypt(rawPassword).Equals(Password);
         }
 
         public Employee GetManaged() => EmployeeBusiness.Get(Id);
