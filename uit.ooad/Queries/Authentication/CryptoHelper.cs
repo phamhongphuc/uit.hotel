@@ -7,18 +7,14 @@ namespace uit.ooad.Queries.Authentication
 {
     public static class CryptoHelper
     {
-        private const int Keysize = 256;
-
-        private const int DerivationIterations = 1000;
-
         private const string EncryptionKey = "PassOOAD";
 
-        private static string Encrypt(string plainText, string passPhrase)
+        public static string Encrypt(string password)
         {
-            var clearBytes = Encoding.Unicode.GetBytes(passPhrase);
+            var clearBytes = Encoding.Unicode.GetBytes(password);
             using (var encryptor = Aes.Create())
             {
-                var pdb = new Rfc2898DeriveBytes(plainText, new byte[]
+                var pdb = new Rfc2898DeriveBytes(EncryptionKey, new byte[]
                 {
                     0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76
                 });
@@ -34,17 +30,17 @@ namespace uit.ooad.Queries.Authentication
                         cs.Close();
                     }
 
-                    passPhrase = Convert.ToBase64String(ms.ToArray());
+                    password = Convert.ToBase64String(ms.ToArray());
                 }
             }
 
-            return passPhrase;
+            return password;
         }
 
-        private static string Decrypt(string cipherText, string EncryptionKey)
+        public static string Decrypt(string ciphertext)
         {
-            cipherText = cipherText.Replace(" ", "+");
-            var cipherBytes = Convert.FromBase64String(cipherText);
+            ciphertext = ciphertext.Replace(" ", "+");
+            var cipherBytes = Convert.FromBase64String(ciphertext);
             using (var encryptor = Aes.Create())
             {
                 var pdb = new Rfc2898DeriveBytes(EncryptionKey, new byte[]
@@ -61,21 +57,11 @@ namespace uit.ooad.Queries.Authentication
                         cs.Close();
                     }
 
-                    cipherText = Encoding.Unicode.GetString(ms.ToArray());
+                    ciphertext = Encoding.Unicode.GetString(ms.ToArray());
                 }
             }
 
-            return cipherText;
-        }
-
-        public static string Encrypt(string encryptString)
-        {
-            return Encrypt(EncryptionKey, encryptString);
-        }
-
-        public static string Decrypt(string cipherText)
-        {
-            return Decrypt(cipherText, EncryptionKey);
+            return ciphertext;
         }
     }
 }

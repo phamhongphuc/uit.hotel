@@ -16,7 +16,6 @@ namespace uit.ooad.Businesses
             if (employeeInDatabase != null) return null;
 
             employee.Position = employee.Position.GetManaged();
-
             employee.Password = CryptoHelper.Encrypt(employee.Password);
 
             return EmployeeDataAccess.Add(employee);
@@ -26,7 +25,8 @@ namespace uit.ooad.Businesses
             var employee = EmployeeBusiness.Get(id);
             if (employee == null) throw new Exception("Không tim thấy tên đăng nhập trong hệ thống");
 
-            else if (employee.Password != password) throw new Exception("Mật khẩu không đúng");
+            else if (!employee.IsEqualPassword(password)) throw new Exception("Mật khẩu không đúng");
+            newPassword = CryptoHelper.Encrypt(newPassword);
 
             EmployeeDataAccess.ChangePassword(employee, newPassword);
         }
@@ -34,10 +34,10 @@ namespace uit.ooad.Businesses
         public static void CheckLogin(string id, string password)
         {
             var employee = Get(id);
-            if(employee != null)
+            if (employee != null)
             {
-                if(employee.Password == password) return;
-            } 
+                if (employee.IsEqualPassword(password)) return;
+            }
             throw new Exception("Tài khoản hoặc mật khẩu không chính xác");
         }
         public static Employee Get(string employeeId) => EmployeeDataAccess.Get(employeeId);
