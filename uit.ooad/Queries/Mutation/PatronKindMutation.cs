@@ -13,7 +13,10 @@ namespace uit.ooad.Queries.Mutation
                 _Creation,
                 "Tạo và trả về một loại khách hàng mới",
                 InputArgument<PatronKindCreateInput>(),
-                context => PatronKindBusiness.Add(GetInput(context))
+                _CheckPermission(
+                    p => p.PermissionCreatePatronKind,
+                    context => PatronKindBusiness.Add(GetInput(context))
+                )
             );
         }
     }
