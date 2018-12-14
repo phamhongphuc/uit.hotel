@@ -2,6 +2,7 @@
 using System.Linq;
 using Realms;
 using uit.ooad.Businesses;
+using uit.ooad.Queries.Authentication;
 
 namespace uit.ooad.Models
 {
@@ -28,6 +29,12 @@ namespace uit.ooad.Models
 
         [Backlink(nameof(Booking.Employee))]
         public IQueryable<Booking> Bookings { get; }
+
+        public bool IsEqualPassword(string rawPassword)
+        {
+            return CryptoHelper.Encrypt(rawPassword).Equals(Password);
+        }
+
         public Employee GetManaged() => EmployeeBusiness.Get(Id);
     }
 }
