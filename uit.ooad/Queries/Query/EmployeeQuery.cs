@@ -18,8 +18,8 @@ namespace uit.ooad.Queries.Query
             Field<EmployeeType>(
                 _Item,
                 "Trả về thông tin một nhân viên",
-                IdArgument(),
-                context => EmployeeBusiness.Get(GetId<string>(context))
+                _IdArgument(),
+                context => EmployeeBusiness.Get(_GetId<string>(context))
             );
         }
     }

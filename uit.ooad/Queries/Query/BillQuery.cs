@@ -18,8 +18,8 @@ namespace uit.ooad.Queries.Query
             Field<BillType>(
                 _Item,
                 "Trả về thông tin một hóa đơn",
-                IdArgument(),
-                context => BillBusiness.Get(GetId<string>(context))
+                _IdArgument(),
+                context => BillBusiness.Get(_GetId<string>(context))
             );
         }
     }

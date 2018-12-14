@@ -12,10 +12,10 @@ namespace uit.ooad.Queries.Mutation
             Field<HouseKeepingType>(
                 _Creation,
                 "Tạo và trả về một hình thức dọn dẹp trong một phòng",
-                InputArgument<HouseKeepingCreateInput>(),
+                _InputArgument<HouseKeepingCreateInput>(),
                 _CheckPermission(
                     p => p.PermissionCreateHouseKeeping,
-                    context => HouseKeepingBusiness.Add(GetInput(context))
+                    context => HouseKeepingBusiness.Add(_GetInput(context))
                 )
             );
         }

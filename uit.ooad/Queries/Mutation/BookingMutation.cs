@@ -12,10 +12,10 @@ namespace uit.ooad.Queries.Mutation
             Field<BookingType>(
                 _Creation,
                 "Tạo và trả về một đơn đặt phòng",
-                InputArgument<BookingCreateInput>(),
+                _InputArgument<BookingCreateInput>(),
                 _CheckPermission(
                     p => p.PermissionCreateBooking,
-                    context => BookingBusiness.Add(GetInput(context))
+                    context => BookingBusiness.Add(_GetInput(context))
                 )
             );
         }

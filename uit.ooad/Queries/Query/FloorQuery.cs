@@ -18,8 +18,8 @@ namespace uit.ooad.Queries.Query
             Field<FloorType>(
                 _Item,
                 "Trả về thông tin một tầng",
-                IdArgument(),
-                context => FloorBusiness.Get(GetId<int>(context))
+                _IdArgument(),
+                context => FloorBusiness.Get(_GetId<int>(context))
             );
         }
     }

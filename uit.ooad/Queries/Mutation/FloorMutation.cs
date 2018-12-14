@@ -12,10 +12,10 @@ namespace uit.ooad.Queries.Mutation
             Field<FloorType>(
                 _Creation,
                 "Tạo và trả về một tầng mới",
-                InputArgument<FloorCreateInput>(),
+                _InputArgument<FloorCreateInput>(),
                 _CheckPermission(
                     p => p.PermissionCreateFloor,
-                    context => FloorBusiness.Add(GetInput(context))
+                    context => FloorBusiness.Add(_GetInput(context))
                 )
             );
         }

@@ -12,10 +12,10 @@ namespace uit.ooad.Queries.Mutation
             Field<VolatilityRateType>(
                 _Creation,
                 "Tạo và trả về một giá biến động mới",
-                InputArgument<VolatilityRateCreateInput>(),
+                _InputArgument<VolatilityRateCreateInput>(),
                 _CheckPermission(
                     p => p.PermissionCreateVolatilityRate,
-                    context => VolatilityRateBusiness.Add(GetInput(context))
+                    context => VolatilityRateBusiness.Add(_GetInput(context))
                 )
             );
         }

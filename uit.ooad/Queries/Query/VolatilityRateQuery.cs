@@ -18,8 +18,8 @@ namespace uit.ooad.Queries.Query
             Field<VolatilityRateType>(
                 _Item,
                 "Trả về thông tin một giá biến động",
-                IdArgument(),
-                context => VolatilityRateBusiness.Get(GetId<int>(context))
+                _IdArgument(),
+                context => VolatilityRateBusiness.Get(_GetId<int>(context))
             );
         }
     }

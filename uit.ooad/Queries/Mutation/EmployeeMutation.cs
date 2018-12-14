@@ -12,10 +12,10 @@ namespace uit.ooad.Queries.Mutation
             Field<EmployeeType>(
                 _Creation,
                 "Tạo và trả về một nhân viên mới",
-                InputArgument<EmployeeCreateInput>(),
+                _InputArgument<EmployeeCreateInput>(),
                 _CheckPermission(
                     p => p.PermissionCreateEmployee,
-                    context => EmployeeBusiness.Add(GetInput(context))
+                    context => EmployeeBusiness.Add(_GetInput(context))
                 )
             );
         }

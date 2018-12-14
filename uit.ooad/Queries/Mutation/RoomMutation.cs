@@ -12,10 +12,10 @@ namespace uit.ooad.Queries.Mutation
             Field<RoomType>(
                 _Creation,
                 "Tạo và trả về một phòng mới",
-                InputArgument<RoomCreateInput>(),
+                _InputArgument<RoomCreateInput>(),
                 _CheckPermission(
                     p => p.PermissionCreateRoom,
-                    context => RoomBusiness.Add(GetInput(context))
+                    context => RoomBusiness.Add(_GetInput(context))
                 )
             );
         }

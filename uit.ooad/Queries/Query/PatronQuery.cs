@@ -18,8 +18,8 @@ namespace uit.ooad.Queries.Query
             Field<PatronType>(
                 _Item,
                 "Trả về thông tin một khách hàng",
-                IdArgument(),
-                context => PatronBusiness.Get(GetId<string>(context))
+                _IdArgument(),
+                context => PatronBusiness.Get(_GetId<string>(context))
             );
         }
     }

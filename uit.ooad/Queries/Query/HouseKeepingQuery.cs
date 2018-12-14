@@ -16,8 +16,8 @@ public class HouseKeepingQuery : QueryType<HouseKeeping>
         Field<HouseKeepingType>(
             _Item,
             "Trả về thông tin một công việc dọn dẹp",
-            IdArgument(),
-            context => HouseKeepingBusiness.Get(GetId<int>(context))
+            _IdArgument(),
+            context => HouseKeepingBusiness.Get(_GetId<int>(context))
         );
     }
 }

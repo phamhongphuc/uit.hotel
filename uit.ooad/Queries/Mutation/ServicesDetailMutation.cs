@@ -12,10 +12,10 @@ namespace uit.ooad.Queries.Mutation
             Field<ServicesDetailType>(
                 _Creation,
                 "Tạo và trả về một chi tiết dịch vụ mới",
-                InputArgument<ServicesDetailCreateInput>(),
+                _InputArgument<ServicesDetailCreateInput>(),
                 _CheckPermission(
                     p => p.PermissionCreateServicesDetail,
-                    context => ServicesDetailBusiness.Add(GetInput(context))
+                    context => ServicesDetailBusiness.Add(_GetInput(context))
                 )
             );
         }

@@ -12,10 +12,10 @@ namespace uit.ooad.Queries.Mutation
             Field<BillType>(
                 _Creation,
                 "Tạo và trả về một hóa đơn mới",
-                InputArgument<BillCreateInput>(),
+                _InputArgument<BillCreateInput>(),
                 _CheckPermission(
                     p => p.PermissionCreateBill,
-                    context => BillBusiness.Add(GetInput(context))
+                    context => BillBusiness.Add(_GetInput(context))
                 )
             );
         }

@@ -18,23 +18,17 @@ namespace uit.ooad.Queries.Base
 
         public string _Updation => "Update" + typeof(TModel).Name;
 
-        public Func<ResolveFieldContext<object>, object> _Input
-            => context => context.GetArgument<TModel>("input");
-
-        public QueryArguments InputArgument<TInputGraphType>() where TInputGraphType : InputType<TModel>
+        public QueryArguments _InputArgument<TInputGraphType>() where TInputGraphType : InputType<TModel>
             => new QueryArguments(new QueryArgument<NonNullGraphType<TInputGraphType>> { Name = "input" });
 
-        public QueryArguments IdArgument()
+        public QueryArguments _IdArgument()
             => new QueryArguments(new QueryArgument<NonNullGraphType<IdGraphType>> { Name = "id" });
 
-        public TModel GetInput(ResolveFieldContext<object> context)
+        public TModel _GetInput(ResolveFieldContext<object> context)
             => context.GetArgument<TModel>("input");
 
-        public T GetId<T>(ResolveFieldContext<object> context)
+        public T _GetId<T>(ResolveFieldContext<object> context)
             => context.GetArgument<T>("id");
-
-        public int GetId(ResolveFieldContext<object> context)
-            => GetId<int>(context);
 
         public Func<ResolveFieldContext<object>, object> _CheckPermission(
             Func<Position, bool> getPermission,

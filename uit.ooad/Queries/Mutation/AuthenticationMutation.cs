@@ -11,19 +11,24 @@ namespace uit.ooad.Queries.Mutation
 {
     public class AuthenticationMutation : QueryType<Employee>
     {
+        private static string ID = "id";
+        private static string PASSWORD = "password";
+        private static string NEW_PASSWORD = "newPassword";
+
         public AuthenticationMutation()
         {
             Field<StringGraphType>(
                 "Login",
                 "Đăng nhập nhân viên, trả về cái access token",
                 new QueryArguments(
-                    new QueryArgument<NonNullGraphType<StringGraphType>> { Name = "id" },
-                    new QueryArgument<NonNullGraphType<StringGraphType>> { Name = "password" }
+                    new QueryArgument<NonNullGraphType<StringGraphType>> { Name = ID },
+                    new QueryArgument<NonNullGraphType<StringGraphType>> { Name = PASSWORD }
                 ),
                 context =>
                 {
-                    var id = GetId<string>(context);
-                    var password = context.GetArgument<string>("password");
+                    var id = _GetId<string>(context);
+                    var password = context.GetArgument<string>(PASSWORD);
+
                     EmployeeBusiness.CheckLogin(id, password);
 
                     return AuthenticationHelper.TokenBuilder(id);
@@ -34,15 +39,17 @@ namespace uit.ooad.Queries.Mutation
                 "ChangePassword",
                 "Nhân viên tự đổi mật khẩu cho tài khoản của mình",
                 new QueryArguments(
-                    new QueryArgument<NonNullGraphType<StringGraphType>> { Name = "password" },
-                    new QueryArgument<NonNullGraphType<StringGraphType>> { Name = "newPassword" }
+                    new QueryArgument<NonNullGraphType<StringGraphType>> { Name = PASSWORD },
+                    new QueryArgument<NonNullGraphType<StringGraphType>> { Name = NEW_PASSWORD }
                 ),
                 context =>
                 {
                     var id = AuthenticationHelper.GetEmployeeId(context);
-                    var password = context.GetArgument<string>("password");
-                    var newPassword = context.GetArgument<string>("newPassword");
+                    var password = context.GetArgument<string>(PASSWORD);
+                    var newPassword = context.GetArgument<string>(NEW_PASSWORD);
+
                     EmployeeBusiness.ChangePassword(id, password, newPassword);
+
                     return "Đổi mật khẩu thành công";
                 }
             );

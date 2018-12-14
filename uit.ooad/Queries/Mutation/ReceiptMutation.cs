@@ -12,10 +12,10 @@ namespace uit.ooad.Queries.Mutation
             Field<ReceiptType>(
                 _Creation,
                 "Tạo và trả về một phiếu thu mới",
-                InputArgument<ReceiptCreateInput>(),
+                _InputArgument<ReceiptCreateInput>(),
                 _CheckPermission(
                     p => p.PermissionCreateReceipt,
-                    context => ReceiptBusiness.Add(GetInput(context))
+                    context => ReceiptBusiness.Add(_GetInput(context))
                 )
             );
         }
