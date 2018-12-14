@@ -12,7 +12,7 @@ namespace uit.ooad.Businesses
             var roomInDatabase = RoomDataAccess.Get(room.Id);
             if (roomInDatabase != null) return null;
 
-            // room.Floor = room.Floor.GetManaged();
+            room.Floor = room.Floor.GetManaged();
             room.RoomKind = room.RoomKind.GetManaged();
             return RoomDataAccess.Add(room);
         }

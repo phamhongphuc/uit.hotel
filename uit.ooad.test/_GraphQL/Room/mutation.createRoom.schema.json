@@ -1,0 +1,79 @@
+{
+    "definitions": {},
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "type": "object",
+        "required": [
+          "createRoom"
+        ],
+        "properties": {
+          "createRoom": {
+            "type": "object",
+            "required": [
+              "id",
+              "name",
+              "roomKind",
+              "floor"
+            ],
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "name": {
+                "type": "string",
+                "pattern": "^(.*)$"
+              },
+              "roomKind": {
+                "type": "object",
+                "required": [
+                  "id",
+                  "name",
+                  "numberOfBeds",
+                  "priceByDate",
+                  "amountOfPeople"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  },
+                  "name": {
+                    "type": "string",
+                    "pattern": "^(.*)$"
+                  },
+                  "numberOfBeds": {
+                    "type": "integer"
+                  },
+                  "priceByDate": {
+                    "type": "integer"
+                  },
+                  "amountOfPeople": {
+                    "type": "integer"
+                  }
+                }
+              },
+              "floor": {
+                "type": "object",
+                "required": [
+                  "id",
+                  "name"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  },
+                  "name": {
+                    "type": "string",
+                    "pattern": "^(.*)$"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }

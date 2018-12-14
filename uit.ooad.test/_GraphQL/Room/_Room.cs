@@ -25,5 +25,15 @@ namespace uit.ooad.test._GraphQL._Room
                 @"/_GraphQL/Room/query.room.variable.json"
             );
         }
+        [TestMethod]
+        public void CreateRoom()
+        {
+            SchemaHelper.Execute(
+                @"/_GraphQL/Room/mutation.createRoom.gql",
+                @"/_GraphQL/Room/mutation.createRoom.schema.json",
+                @"/_GraphQL/Room/mutation.createRoom.variable.json",
+                p => p.PermissionCreateRoom = true
+            );
+        }
     }
 }
