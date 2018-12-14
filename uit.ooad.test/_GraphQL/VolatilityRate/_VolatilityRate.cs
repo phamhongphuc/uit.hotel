@@ -13,8 +13,27 @@ namespace uit.ooad.test._GraphQL._VolatilityRate
         public void VolatilityRates()
         {
             SchemaHelper.Execute(
-                @"/_GraphQL/VolatilityRate/query.volatilityrates.gql",
-                @"/_GraphQL/VolatilityRate/query.volatilityrates.schema.json"
+                @"/_GraphQL/VolatilityRate/query.volatilityRates.gql",
+                @"/_GraphQL/VolatilityRate/query.volatilityRates.schema.json"
+            );
+        }
+        [TestMethod]
+        public void VolatilityRate()
+        {
+            SchemaHelper.Execute(
+                @"/_GraphQL/VolatilityRate/query.volatilityRate.gql",
+                @"/_GraphQL/VolatilityRate/query.volatilityRate.schema.json",
+                @"/_GraphQL/VolatilityRate/query.volatilityRate.variable.json"
+            );
+        }
+        [TestMethod]
+        public void CreateVolatilityRate()
+        {
+            SchemaHelper.Execute(
+                @"/_GraphQL/VolatilityRate/mutation.createVolatilityRate.gql",
+                @"/_GraphQL/VolatilityRate/mutation.createVolatilityRate.schema.json",
+                @"/_GraphQL/VolatilityRate/mutation.createVolatilityRate.variable.json",
+                p => p.PermissionCreateVolatilityRate = true
             );
         }
     }

@@ -1,0 +1,16 @@
+query($id:ID!){
+  booking(id:$id){
+    id
+    checkInTime
+    checkOutTime
+    createTime
+    employee{
+      id
+      name
+    }
+    bill{
+      id
+      time
+    }
+  }
+}

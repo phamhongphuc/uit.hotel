@@ -1,0 +1,29 @@
+query($id:ID!){
+  volatilityRate(id:$id)
+  {
+    id
+    dayRate
+    nightRate
+    weekRate
+    monthRate
+    lateCheckOutFee
+    earlyCheckInFee
+    effectiveStartDate
+    effectiveEndDate
+    effectiveOnMonday
+    effectiveOnTuesday
+    effectiveOnWednesday
+    effectiveOnThursday
+    effectiveOnFriday
+    effectiveOnSaturday
+    effectiveOnSunday
+    createDate
+    roomKind{
+			id
+      name
+      amountOfPeople
+      numberOfBeds
+      priceByDate
+    }
+  }
+}

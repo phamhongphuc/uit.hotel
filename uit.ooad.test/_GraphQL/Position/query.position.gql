@@ -1,0 +1,21 @@
+query($id:ID!){
+  position(id:$id){
+    id
+    name
+    permissionCreatePatronKind
+    permissionCreateBill
+    permissionCreateBooking
+    permissionCreateEmployee
+    permissionCreateFloor
+    permissionCreateHouseKeeping
+    permissionCreatePatron
+    permissionCreatePosition
+    permissionCreateRate
+    permissionCreateReceipt
+    permissionCreateRoom
+    permissionCreateRoomKind
+    permissionCreateService
+    permissionCreateServicesDetail
+    permissionCreateVolatilityRate
+  }
+}

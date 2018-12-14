@@ -1,0 +1,21 @@
+{
+	"input": {
+		"id": 2,
+		"name": "Tên quyền",
+		"permissionCreatePatronKind": false,
+		"permissionCreateBill": false,
+		"permissionCreateBooking": false,
+		"permissionCreateEmployee": false,
+		"permissionCreateFloor": false,
+		"permissionCreateHouseKeeping": false,
+		"permissionCreatePatron": false,
+		"permissionCreatePosition": false,
+		"permissionCreateRate": false,
+		"permissionCreateReceipt": false,
+		"permissionCreateRoom": false,
+		"permissionCreateRoomKind": false,
+		"permissionCreateService": false,
+		"permissionCreateServicesDetail": false,
+		"permissionCreateVolatilityRate": false
+	}
+}

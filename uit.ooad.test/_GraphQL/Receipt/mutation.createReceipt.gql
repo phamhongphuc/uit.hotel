@@ -1,0 +1,20 @@
+mutation($input:ReceiptCreateInput!){
+  createReceipt(input:$input){
+    id
+   	time
+    money
+    bankAccountNumber
+    typeOfPayment
+    employee{
+      id
+      name
+      birthdate
+      startingDate
+      address
+    }
+    bill{
+      id
+      time
+    }
+  }
+}

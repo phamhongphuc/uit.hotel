@@ -1,0 +1,165 @@
+{
+  "definitions": {},
+  "type": "object",
+  "title": "The Root Schema",
+  "required": [
+    "data"
+  ],
+  "properties": {
+    "data": {
+      "type": "object",
+      "title": "The Data Schema",
+      "required": [
+        "houseKeepings"
+      ],
+      "properties": {
+        "houseKeepings": {
+          "type": "array",
+          "title": "The Housekeepings Schema",
+          "items": {
+            "type": "object",
+            "title": "The Items Schema",
+            "required": [
+              "id",
+              "type",
+              "employee",
+              "booking"
+            ],
+            "properties": {
+              "id": {
+                "type": "integer",
+                "title": "The Id Schema",
+                "default": 0,
+                "examples": [
+                  3
+                ]
+              },
+              "type": {
+                "type": "integer",
+                "title": "The Type Schema",
+                "default": 0,
+                "examples": [
+                  1
+                ]
+              },
+              "employee": {
+                "type": "object",
+                "title": "The Employee Schema",
+                "required": [
+                  "id",
+                  "name",
+                  "birthdate",
+                  "address",
+                  "phoneNumber"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "title": "The Id Schema",
+                    "default": "",
+                    "examples": [
+                      "1"
+                    ],
+                    "pattern": "^(.*)$"
+                  },
+                  "name": {
+                    "type": "string",
+                    "title": "The Name Schema",
+                    "default": "",
+                    "examples": [
+                      "abc"
+                    ],
+                    "pattern": "^(.*)$"
+                  },
+                  "birthdate": {
+                    "type": "string",
+                    "title": "The Birthdate Schema",
+                    "default": "",
+                    "examples": [
+                      "2018-12-11T09:03:54.21+00:00"
+                    ],
+                    "pattern": "^(.*)$"
+                  },
+                  "address": {
+                    "type": "string",
+                    "title": "The Address Schema",
+                    "default": "",
+                    "examples": [
+                      "ádafd"
+                    ],
+                    "pattern": "^(.*)$"
+                  },
+                  "phoneNumber": {
+                    "type": "string",
+                    "title": "The Phonenumber Schema",
+                    "default": "",
+                    "examples": [
+                      "adsfad"
+                    ],
+                    "pattern": "^(.*)$"
+                  }
+                }
+              },
+              "booking": {
+                "type": "object",
+                "title": "The Booking Schema",
+                "required": [
+                  "id",
+                  "checkInTime",
+                  "checkOutTime",
+                  "createTime",
+                  "status"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "title": "The Id Schema",
+                    "default": 0,
+                    "examples": [
+                      3
+                    ]
+                  },
+                  "checkInTime": {
+                    "type": "string",
+                    "title": "The Checkintime Schema",
+                    "default": "",
+                    "examples": [
+                      "0001-01-01T00:00:00+00:00"
+                    ],
+                    "pattern": "^(.*)$"
+                  },
+                  "checkOutTime": {
+                    "type": "string",
+                    "title": "The Checkouttime Schema",
+                    "default": "",
+                    "examples": [
+                      "0001-01-01T00:00:00+00:00"
+                    ],
+                    "pattern": "^(.*)$"
+                  },
+                  "createTime": {
+                    "type": "string",
+                    "title": "The Createtime Schema",
+                    "default": "",
+                    "examples": [
+                      "0001-01-01T00:00:00+00:00"
+                    ],
+                    "pattern": "^(.*)$"
+                  },
+                  "status": {
+                    "type": "integer",
+                    "title": "The Status Schema",
+                    "default": 0,
+                    "examples": [
+                      0
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

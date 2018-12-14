@@ -1,0 +1,9 @@
+query($id:ID!){
+  roomKind(id:$id){
+  	id
+    name
+    numberOfBeds
+    amountOfPeople
+    priceByDate
+	}
+}

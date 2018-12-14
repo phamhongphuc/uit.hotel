@@ -1,0 +1,14 @@
+{
+	"input": {
+		"id": "test",
+		"name": "Tên nhân viên",
+		"password": "test",
+		"phoneNumber": "5165615",
+		"birthdate": "0001-01-01T00:00:00+00:00",
+		"address": "Địa chỉ nhân viên",
+		"startingDate": "0001-01-01T00:00:00+00:00",
+		"position": {
+			"id": 1
+		}
+	}
+}

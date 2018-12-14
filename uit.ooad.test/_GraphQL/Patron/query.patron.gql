@@ -1,0 +1,20 @@
+query($id:ID!){
+  patron(id:$id){
+    identification
+    name
+    birthdate
+    email
+    gender
+    residence
+    domicile
+    phoneNumber
+    nationality
+    company
+    note
+    patronKind{
+      id
+      name
+      description
+    }
+  }
+}

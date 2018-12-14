@@ -1,0 +1,25 @@
+query($id:ID!){
+  bill(id:$id){
+    id
+    time
+    patron{
+      identification
+      name
+      gender
+      birthdate
+      domicile
+      email
+      residence
+      nationality
+      note
+    }
+    employee{
+      id
+      name
+      address
+      birthdate
+      phoneNumber
+      startingDate
+    }
+  }
+}

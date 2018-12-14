@@ -21,14 +21,14 @@ namespace uit.ooad.test.Helper
 
             AddPatronKind();
             AddPatron();
-
             AddRate();
-
             AddVolatilityRate();
-
             AddService();
-
             AddBill();
+            AddBooking();
+            AddHouseKeeping();
+            AddReceipt();
+            AddServicesDetail();
         }
 
         private static void ResetDatebase()
@@ -69,6 +69,18 @@ namespace uit.ooad.test.Helper
                 Name = "Tên dịch vụ",
                 UnitRate = 30000,
                 Unit = "Đơn vị đo"
+            });
+        }
+
+        private static void AddServicesDetail()
+        {
+            ServicesDetailBusiness.Add(new ServicesDetail
+            {
+                Id = 1,
+                Time = DateTime.Now,
+                Number = 1,
+                Booking = BookingBusiness.Get(1),
+                Service = ServiceBusiness.Get(1)
             });
         }
 
@@ -180,6 +192,44 @@ namespace uit.ooad.test.Helper
                 Time = DateTime.Now,
                 Employee = EmployeeBusiness.Get(Constant.UserName),
                 Patron = PatronBusiness.Get("Id khách hàng")
+            });
+        }
+
+        private static void AddBooking()
+        {
+            BookingBusiness.Add(new Booking
+            {
+                Id = 1,
+                CheckInTime = DateTime.Now,
+                CheckOutTime = DateTime.Now,
+                CreateTime = DateTime.Now,
+                Status = 0,
+                Bill = BillBusiness.Get("1"),
+                Room = RoomBusiness.Get(1),
+                Employee = EmployeeBusiness.Get(Constant.UserName)
+            });
+        }
+        private static void AddHouseKeeping()
+        {
+            HouseKeepingBusiness.Add(new HouseKeeping
+            {
+                Id = 1,
+                Type = 1,
+                Booking = BookingBusiness.Get(1),
+                Employee = EmployeeBusiness.Get(Constant.UserName)
+            });
+        }
+        private static void AddReceipt()
+        {
+            ReceiptBusiness.Add(new Receipt
+            {
+                Id = 1,
+                Time = DateTime.Now,
+                Money = 1,
+                BankAccountNumber = "11111",
+                TypeOfPayment = 1,
+                Bill = BillBusiness.Get("1"),
+                Employee = EmployeeBusiness.Get(Constant.UserName)
             });
         }
     }

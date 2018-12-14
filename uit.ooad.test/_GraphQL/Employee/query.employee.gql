@@ -1,0 +1,13 @@
+query($id:ID!){
+  employee(id:$id){
+    id
+    name
+    address
+    birthdate
+    phoneNumber
+    position{
+      id
+      name
+    }
+  }
+}

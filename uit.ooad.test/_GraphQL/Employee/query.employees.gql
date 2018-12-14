@@ -1,0 +1,13 @@
+{
+  employees{
+    id
+    name
+    address
+    birthdate
+    phoneNumber
+    position{
+      id
+      name
+    }
+  }
+}

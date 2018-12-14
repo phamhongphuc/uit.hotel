@@ -16,5 +16,24 @@ namespace uit.ooad.test._GraphQL._Room
                 @"/_GraphQL/Room/query.rooms.schema.json"
             );
         }
+        [TestMethod]
+        public void Room()
+        {
+            SchemaHelper.Execute(
+                @"/_GraphQL/Room/query.room.gql",
+                @"/_GraphQL/Room/query.room.schema.json",
+                @"/_GraphQL/Room/query.room.variable.json"
+            );
+        }
+        [TestMethod]
+        public void CreateRoom()
+        {
+            SchemaHelper.Execute(
+                @"/_GraphQL/Room/mutation.createRoom.gql",
+                @"/_GraphQL/Room/mutation.createRoom.schema.json",
+                @"/_GraphQL/Room/mutation.createRoom.variable.json",
+                p => p.PermissionCreateRoom = true
+            );
+        }
     }
 }
