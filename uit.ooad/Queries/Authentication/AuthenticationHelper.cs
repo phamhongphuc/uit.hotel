@@ -41,10 +41,7 @@ namespace uit.ooad.Queries.Authentication
 
         public static void HasPermission(ResolveFieldContext<object> context, Func<Position, bool> getPermission)
         {
-            var employeeId = GetEmployeeId(context);
-
-            var employee = EmployeeBusiness.Get(employeeId);
-            if (employee == null) throw new Exception("Không tim thấy tên đăng nhập trong hệ thống");
+            var employee = GetEmployee(context);
 
             var position = employee.Position;
             if (position == null) new Exception("Tài khoản lỗi, vui lòng liên hệ quản trị viên");
@@ -59,7 +56,18 @@ namespace uit.ooad.Queries.Authentication
 
             var employeeId = userContext.User.FindFirst(u => u.Type == ClaimTypes.Name);
             if (employeeId == null) throw new Exception("Không tìm thấy tên đăng nhập");
+            
             return employeeId.Value;
+        }
+
+        public static Employee GetEmployee(ResolveFieldContext<object> context)
+        {
+            var id = GetEmployeeId(context);
+
+            var employee = EmployeeBusiness.Get(id);
+            if (employee == null) throw new Exception("Không tim thấy tên đăng nhập trong hệ thống");
+           
+            return employee;
         }
     }
 }
