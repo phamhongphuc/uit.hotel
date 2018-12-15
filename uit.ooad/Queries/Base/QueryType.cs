@@ -12,6 +12,8 @@ namespace uit.ooad.Queries.Base
 
         public string _List => typeof(TModel).Name + "s";
 
+        public string _Finding => "Finding" + typeof(TModel).Name;
+        
         public string _Creation => "Create" + typeof(TModel).Name;
 
         public string _Deletion => "Delete" + typeof(TModel).Name;
