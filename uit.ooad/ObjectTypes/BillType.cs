@@ -61,11 +61,6 @@ namespace uit.ooad.ObjectTypes
                 nameof(Bill.Patron),
                 "Khách hàng"
             );
-
-            Field<EmployeeIdInput>(
-                nameof(Bill.Employee),
-                "Nhân viên tạo hóa đơn"
-            );
         }
     }
 }

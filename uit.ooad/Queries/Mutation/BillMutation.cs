@@ -1,6 +1,7 @@
 using uit.ooad.Businesses;
 using uit.ooad.Models;
 using uit.ooad.ObjectTypes;
+using uit.ooad.Queries.Authentication;
 using uit.ooad.Queries.Base;
 
 namespace uit.ooad.Queries.Mutation
@@ -15,7 +16,10 @@ namespace uit.ooad.Queries.Mutation
                 _InputArgument<BillCreateInput>(),
                 _CheckPermission(
                     p => p.PermissionCreateBill,
-                    context => BillBusiness.Add(_GetInput(context))
+                    context => {
+                        // var employee = AuthenticationHelper.GetEmployee(context);
+                        return BillBusiness.Add(_GetInput(context));
+                    }
                 )
             );
         }
