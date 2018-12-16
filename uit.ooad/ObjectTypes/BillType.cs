@@ -20,7 +20,7 @@ namespace uit.ooad.ObjectTypes
                 resolve: context => context.Source.Patron,
                 description: "Thông tin khách hàng thanh toán hóa đơn");
 
-            Field<NonNullGraphType<EmployeeType>>(
+            Field<EmployeeType>(
                 nameof(Bill.Employee),
                 resolve: context => context.Source.Employee,
                 description: "Thông tin nhân viên nhận thanh toán hóa đơn");
