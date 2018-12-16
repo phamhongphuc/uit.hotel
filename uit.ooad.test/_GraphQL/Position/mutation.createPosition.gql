@@ -14,7 +14,7 @@ mutation($input:PositionCreateInput!){
     permissionCreateReceipt
     permissionCreateRoom
     permissionCreateRoomKind
-    permissionCreateService
+    permissionCreateOrUpdateService
     permissionCreateServicesDetail
     permissionCreateVolatilityRate
   }

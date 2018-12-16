@@ -11,6 +11,11 @@ namespace uit.ooad.DataAccesses
             await Database.WriteAsync(realm => service = realm.Add(service));
             return service;
         }
+        public static async Task<Service> Update(Service service)
+        {
+            await Database.WriteAsync(realm => service = realm.Add(service, update: true));
+            return service;
+        }
 
         public static Service Get(int serviceId) => Database.Find<Service>(serviceId);
 

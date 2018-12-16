@@ -21,7 +21,7 @@ namespace uit.ooad.Models
         public bool PermissionCreateReceipt { get; set; }
         public bool PermissionCreateRoom { get; set; }
         public bool PermissionCreateRoomKind { get; set; }
-        public bool PermissionCreateService { get; set; }
+        public bool PermissionCreateOrUpdateService { get; set; }
         public bool PermissionCreateServicesDetail { get; set; }
         public bool PermissionCreateVolatilityRate { get; set; }
 

@@ -1,65 +1,46 @@
 {
-    "definitions": {},
-    "type": "object",
-    "title": "The Root Schema",
-    "required": [
-      "data"
-    ],
-    "properties": {
-      "data": {
-        "type": "object",
-        "title": "The Data Schema",
-        "required": [
-          "createService"
-        ],
-        "properties": {
-          "createService": {
-            "type": "object",
-            "title": "The Createservice Schema",
-            "required": [
-              "id",
-              "name",
-              "unitRate",
-              "unit"
-            ],
-            "properties": {
-              "id": {
-                "type": "integer",
-                "title": "The Id Schema",
-                "default": 0,
-                "examples": [
-                  1
-                ]
-              },
-              "name": {
-                "type": "string",
-                "title": "The Name Schema",
-                "default": "",
-                "examples": [
-                  "giặt ủi"
-                ],
-                "pattern": "^(.*)$"
-              },
-              "unitRate": {
-                "type": "integer",
-                "title": "The Unitrate Schema",
-                "default": 0,
-                "examples": [
-                  30000
-                ]
-              },
-              "unit": {
-                "type": "string",
-                "title": "The Unit Schema",
-                "default": "",
-                "examples": [
-                  "Kg"
-                ],
-                "pattern": "^(.*)$"
-              }
+  "definitions": {},
+  "type": "object",
+  "required": [
+    "data"
+  ],
+  "properties": {
+    "data": {
+      "type": "object",
+      "required": [
+        "createService"
+      ],
+      "properties": {
+        "createService": {
+          "type": "object",
+          "required": [
+            "id",
+            "name",
+            "unitRate",
+            "unit",
+            "isActive"
+          ],
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "name": {
+              "type": "string",
+              "pattern": "^(.*)$"
+            },
+            "unitRate": {
+              "type": "integer"
+            },
+            "unit": {
+              "type": "string",
+              "pattern": "^(.*)$"
+            },
+            "isActive": {
+              "type": "boolean"
             }
           }
         }
       }
     }
   }
+}
