@@ -1,13 +1,15 @@
 {
-  employees{
+	employees {
     id
+		password
     name
+    phoneNumber
     address
     birthdate
-    phoneNumber
+    startingDate
+    isActive
     position{
       id
-      name
     }
-  }
+	}
 }
