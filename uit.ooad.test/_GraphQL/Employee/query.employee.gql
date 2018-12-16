@@ -1,13 +1,14 @@
-query($id:ID!){
-  employee(id:$id){
+query($id: ID!){
+  employee(id: $id){
     id
     name
+    phoneNumber
     address
     birthdate
-    phoneNumber
+    startingDate
+    isActive
     position{
       id
-      name
     }
-  }
+	}
 }
