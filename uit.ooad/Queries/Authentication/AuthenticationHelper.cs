@@ -56,7 +56,7 @@ namespace uit.ooad.Queries.Authentication
 
             var employeeId = userContext.User.FindFirst(u => u.Type == ClaimTypes.Name);
             if (employeeId == null) throw new Exception("Không tìm thấy tên đăng nhập");
-            
+
             return employeeId.Value;
         }
 
@@ -66,8 +66,21 @@ namespace uit.ooad.Queries.Authentication
 
             var employee = EmployeeBusiness.Get(id);
             if (employee == null) throw new Exception("Không tim thấy tên đăng nhập trong hệ thống");
-           
+
             return employee;
+        }
+
+        public static string GetRandomString()
+        {
+            StringBuilder builder = new StringBuilder();
+            Random random = new Random();
+            char ch;
+            for (int i = 0; i < 6; i++)
+            {
+                ch = Convert.ToChar(Convert.ToInt32(Math.Floor(26 * random.NextDouble() + 65)));
+                builder.Append(ch);
+            }
+            return builder.ToString();
         }
     }
 }
