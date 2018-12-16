@@ -17,6 +17,7 @@ namespace uit.ooad.Models
         public DateTimeOffset Birthdate { get; set; }
         public DateTimeOffset StartingDate { get; set; }
         public Position Position { get; set; }
+        public bool IsActive { get; set; }
 
         [Backlink(nameof(Bill.Employee))]
         public IQueryable<Bill> Bills { get; }
