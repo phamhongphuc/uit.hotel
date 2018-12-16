@@ -1,8 +1,8 @@
 {
 	"input": {
 		"id": 2,
-		"name": "Tên dịch vụ",
-		"unitRate": 30000,
+		"name": "Cập nhật lại tên dịch vụ",
+		"unitRate": 1,
 		"unit": "Đơn vị tính",
 		"isActive": true
 	}

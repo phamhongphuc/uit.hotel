@@ -1,5 +1,5 @@
 mutation($input:ServiceCreateOrUpdateInput!){
-  createService(input:$input){
+  updateService(input:$input){
     id
     name
     unitRate

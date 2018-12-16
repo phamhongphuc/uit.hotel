@@ -14,7 +14,7 @@
     permissionCreateReceipt
     permissionCreateRoom
     permissionCreateRoomKind
-    permissionCreateService
+    permissionCreateOrUpdateService
     permissionCreateServicesDetail
     permissionCreateVolatilityRate
   }
