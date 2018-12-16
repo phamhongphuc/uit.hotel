@@ -34,7 +34,7 @@
                 "permissionCreateReceipt",
                 "permissionCreateRoom",
                 "permissionCreateRoomKind",
-                "permissionCreateService",
+                "permissionCreateOrUpdateService",
                 "permissionCreateServicesDetail",
                 "permissionCreateVolatilityRate"
               ],
@@ -152,9 +152,9 @@
                     true
                   ]
                 },
-                "permissionCreateService": {
+                "permissionCreateOrUpdateService": {
                   "type": "boolean",
-                  "title": "The Permissioncreateservice Schema",
+                  "title": "The permissionCreateOrUpdateService Schema",
                   "default": false,
                   "examples": [
                     true

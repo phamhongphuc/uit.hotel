@@ -14,7 +14,7 @@
 		"permissionCreateReceipt": false,
 		"permissionCreateRoom": false,
 		"permissionCreateRoomKind": false,
-		"permissionCreateService": false,
+		"permissionCreateOrUpdateService": false,
 		"permissionCreateServicesDetail": false,
 		"permissionCreateVolatilityRate": false
 	}

@@ -1,8 +1,9 @@
-mutation($input:ServiceCreateInput!){
+mutation($input:ServiceCreateOrUpdateInput!){
   createService(input:$input){
     id
     name
     unitRate
     unit
+    isActive
   }
 }

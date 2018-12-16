@@ -32,7 +32,7 @@ namespace uit.ooad.test._GraphQL._Service
                 @"/_GraphQL/Service/mutation.createService.gql",
                 @"/_GraphQL/Service/mutation.createService.schema.json",
                 @"/_GraphQL/Service/mutation.createService.variable.json",
-                p => p.PermissionCreateService = true
+                p => p.PermissionCreateOrUpdateService = true
             );
         }
     }
