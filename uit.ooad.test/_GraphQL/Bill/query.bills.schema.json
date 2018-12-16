@@ -43,16 +43,20 @@
                                 }
                             },
                             "employee": {
-                                "type": "object",
-                                "required": [
-                                    "id"
-                                ],
-                                "properties": {
-                                    "id": {
-                                        "type": "string",
-                                        "pattern": "^(.*)$"
+                                "anyOf": [{
+                                    "type": "object",
+                                    "required": [
+                                        "id"
+                                    ],
+                                    "properties": {
+                                        "id": {
+                                            "type": "string",
+                                            "pattern": "^(.*)$"
+                                        }
                                     }
-                                }
+                                }, {
+                                    "type": "null"
+                                }]
                             }
                         }
                     }

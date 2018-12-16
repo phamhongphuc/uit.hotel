@@ -13,7 +13,8 @@ namespace uit.ooad.Businesses
             if (billInDatabase != null) return null;
 
             bill.Patron = bill.Patron.GetManaged();
-            bill.Employee = bill.Employee.GetManaged();
+            bill.Employee = null;
+
             return BillDataAccess.Add(bill);
         }
 
