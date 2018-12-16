@@ -21,7 +21,7 @@ namespace uit.ooad.Businesses
             var serviceInDatabase = ServiceDataAccess.Get(service.Id);
             if (serviceInDatabase == null)
                 throw new Exception("Mã dịch vụ không hợp lệ!");
-            if (serviceInDatabase.ServicesDetails.Count() >= 0)
+            if (serviceInDatabase.ServicesDetails.Count() > 0)
             {
                 throw new Exception("Dịch vụ này đã được sử dụng, không thể cập nhật!");
             }
