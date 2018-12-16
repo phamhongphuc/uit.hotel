@@ -24,11 +24,11 @@ namespace uit.ooad.Queries.Mutation
                 "CheckIn",
                 "Cập nhật thời gian checkin của phòng",
                 new QueryArguments(
-                    new QueryArgument<NonNullGraphType<IntGraphType>> { Name = "Id" }
+                    new QueryArgument<NonNullGraphType<IntGraphType>> { Name = "id" }
                 ),
                 _CheckPermission(
                     person => person.PermissionCreateBooking,
-                    context => BookingBusiness.CheckIn(GetId<int>(context))
+                    context => BookingBusiness.CheckIn(_GetId<int>(context))
                 )
             );
         }

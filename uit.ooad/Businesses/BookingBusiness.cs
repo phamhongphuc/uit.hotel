@@ -23,12 +23,11 @@ namespace uit.ooad.Businesses
         {
             var Booked = BookingDataAccess.Get(bookingID);
 
-            //if (Booked == null)
-            //    throw new CheckInException("Booking don't exists");
-            //else
-            {
-                return BookingDataAccess.Update(Booked);
-            }
+            if (Booked == null)
+                throw new CheckInException("Booking don't exists");
+
+            Booked.CheckInTime = DateTimeOffset.Now;
+            return BookingDataAccess.Update(Booked);
         }
 
         public static Booking Get(int bookingId) => BookingDataAccess.Get(bookingId);

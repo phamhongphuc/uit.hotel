@@ -21,9 +21,7 @@ namespace uit.ooad.DataAccesses
 
         public static async Task<Booking> Update(Booking booking)
         {
-            var newBooking = Database.All<Booking>().Where(books => books.Id == booking.Id).First();
-
-            await Database.WriteAsync(realm => newBooking.CheckInTime = DateTimeOffset.Now);
+            await Database.WriteAsync(realm => booking = realm.Add(booking, update:true));
             return booking;
 
             // Tại sao cái Tread này lại Throw Exception
