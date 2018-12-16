@@ -20,6 +20,8 @@ namespace uit.ooad.Businesses
 
             return EmployeeDataAccess.Add(employee);
         }
+
+        // password và newPassword đều là chuỗi gốc chưa qua mã hóa
         public static void ChangePassword(string id, string password, string newPassword)
         {
             var employee = EmployeeBusiness.Get(id);
@@ -31,6 +33,17 @@ namespace uit.ooad.Businesses
             EmployeeDataAccess.ChangePassword(employee, newPassword);
         }
 
+        public static string ResetPassword(string id)
+        {
+            var employee = EmployeeBusiness.Get(id);
+            if (employee == null) throw new Exception("Không tim thấy tên đăng nhập trong hệ thống");
+
+            var newPassword = AuthenticationHelper.GetRandomString();
+            EmployeeDataAccess.ChangePassword(employee, CryptoHelper.Encrypt(newPassword));
+
+            return newPassword;
+        }
+        
         public static void CheckLogin(string id, string password)
         {
             var employee = Get(id);
