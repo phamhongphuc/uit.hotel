@@ -37,6 +37,25 @@ namespace uit.ooad.Queries.Mutation
                     return "Mật khẩu mới: " + newPassword;
                 }
             );
+
+            Field<StringGraphType>(
+                "IsActiveAccount",
+                "Vô hiệu hóa/ kích hoạt tài khoản",
+                new QueryArguments(
+                    new QueryArgument<NonNullGraphType<IdGraphType>> { Name = "id" },
+                    new QueryArgument<NonNullGraphType<BooleanGraphType>> { Name = "isActive" }
+                ),
+                context =>
+                {
+                    var id = AuthenticationHelper.GetEmployeeId(context);
+                    var employeeId = context.GetArgument<string>("id");
+                    var isActive = context.GetArgument<bool>("isActive");
+
+                    if (id == employeeId) throw new Exception("Nhân viên không thể tự vô hiệu hóa hoặc kích hoạt tài khoản của chính mình");
+                    EmployeeBusiness.IsActive(employeeId, isActive);
+                    return "Thành công";
+                }
+            );
         }
     }
 }
