@@ -11,6 +11,7 @@ namespace uit.ooad.Models
         public string Name { get; set; }
         public int UnitRate { get; set; }
         public string Unit { get; set; }
+        public bool IsActive { get; set; }
 
         [Backlink(nameof(ServicesDetail.Service))]
         public IQueryable<ServicesDetail> ServicesDetails { get; }
