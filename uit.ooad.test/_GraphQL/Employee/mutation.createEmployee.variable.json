@@ -1,12 +1,13 @@
 {
 	"input": {
-		"id": "test",
-		"name": "Tên nhân viên",
-		"password": "test",
-		"phoneNumber": "5165615",
-		"birthdate": "0001-01-01T00:00:00+00:00",
-		"address": "Địa chỉ nhân viên",
-		"startingDate": "0001-01-01T00:00:00+00:00",
+		"id": "Bang",
+		"password": "123",
+		"name": "Bang",
+		"phoneNumber": "123456789",
+		"address": "164/54",
+		"birthdate": "04-04-1996",
+		"startingDate": "10-10-2015",
+		"isActive": true,
 		"position": {
 			"id": 1
 		}
