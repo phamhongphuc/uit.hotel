@@ -43,7 +43,15 @@ namespace uit.ooad.Businesses
 
             return newPassword;
         }
-        
+
+        public static void IsActive(string id, bool isActive)
+        {
+            var employee = EmployeeBusiness.Get(id);
+            if (employee == null) throw new Exception("Không tim thấy tên đăng nhập trong hệ thống");
+
+            EmployeeDataAccess.IsActive(employee, isActive);
+        }
+
         public static void CheckLogin(string id, string password)
         {
             var employee = Get(id);
@@ -85,12 +93,13 @@ namespace uit.ooad.Businesses
             {
                 Id = "admin",
                 Name = "Quản trị viên",
-                Password = "????",
+                Password = CryptoHelper.Encrypt("admin"),
                 Address = "Unknown",
                 PhoneNumber = "Unknown",
                 Birthdate = DateTime.Now,
                 StartingDate = DateTime.Now,
-                Position = position
+                Position = position,
+                IsActive = true,
             });
         }
     }
