@@ -1,22 +1,29 @@
 {
     "definitions": {},
     "type": "object",
-    "required": ["data"],
+    "required": [
+        "data"
+    ],
     "properties": {
         "data": {
             "type": "object",
-            "required": ["createFloor"],
+            "required": [
+                "createFloor"
+            ],
             "properties": {
                 "createFloor": {
                     "type": "object",
-                    "required": ["name", "id"],
+                    "required": [
+                        "id",
+                        "name"
+                    ],
                     "properties": {
+                        "id": {
+                            "type": "integer"
+                        },
                         "name": {
                             "type": "string",
                             "pattern": "^(.*)$"
-                        },
-                        "id": {
-                            "type": "integer"
                         }
                     }
                 }

@@ -1,6 +1,6 @@
 mutation($input: FloorCreateInput!) {
     createFloor(input: $input) {
-        name
         id
+        name
     }
 }

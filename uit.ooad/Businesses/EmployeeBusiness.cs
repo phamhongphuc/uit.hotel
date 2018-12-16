@@ -93,7 +93,7 @@ namespace uit.ooad.Businesses
             {
                 Id = "admin",
                 Name = "Quản trị viên",
-                Password = CryptoHelper.Encrypt("admin"),
+                Password = "admin",
                 Address = "Unknown",
                 PhoneNumber = "Unknown",
                 Birthdate = DateTime.Now,
