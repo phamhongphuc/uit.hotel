@@ -1,6 +1,5 @@
 {
 	"input": {
-		"id": 2,
 		"name": "Tên quyền",
 		"permissionCreatePatronKind": false,
 		"permissionCreateBill": false,
