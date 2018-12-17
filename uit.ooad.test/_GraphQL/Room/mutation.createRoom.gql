@@ -1,17 +1,12 @@
-mutation($input:RoomCreateInput!){
-  createRoom(input:$input){
-   id
+mutation ($input: RoomCreateInput!) {
+  createRoom(input: $input) {
+    id
     name
-    roomKind{
-      id
-      name
-      numberOfBeds
-      priceByDate
-      amountOfPeople
-    }
     floor{
       id
-      name
+    }
+    roomKind{
+      id
     }
   }
 }

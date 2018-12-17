@@ -15,14 +15,22 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.Id).Description("Id của phòng");
             Field(x => x.Name).Description("Tên phòng");
 
-            Field<FloorType>(nameof(Room.Floor), resolve: context => context.Source.Floor,
-                             description: "Phòng thuộc tầng nào");
-            Field<RoomKindType>(nameof(Room.RoomKind), resolve: context => context.Source.RoomKind,
-                                description: "Loại phòng của phòng");
+            Field<NonNullGraphType<FloorType>>(
+                nameof(Room.Floor),
+                resolve: context => context.Source.Floor,
+                description: "Phòng thuộc tầng nào"
+            );            
+            Field<NonNullGraphType<RoomKindType>>(
+                nameof(Room.RoomKind),
+                resolve: context => context.Source.RoomKind,
+                description: "Loại phòng của phòng"
+            );
 
-            Field<ListGraphType<BookingType>>(nameof(Room.Bookings),
-                                              resolve: context => context.Source.Bookings.ToList(),
-                                              description: "Danh sách thông tin thuê phòng");
+            Field<ListGraphType<BookingType>>(
+                nameof(Room.Bookings),
+                resolve: context => context.Source.Bookings.ToList(),
+                description: "Danh sách thông tin thuê phòng"
+            );
         }
     }
 
@@ -32,14 +40,13 @@ namespace uit.ooad.ObjectTypes
         {
             Name = _Creation;
 
-            Field(x => x.Id).Description("Id của phòng");
             Field(x => x.Name).Description("Tên phòng");
 
-            Field<FloorIdInput>(
+            Field<NonNullGraphType<FloorIdInput>>(
                 nameof(Room.Floor),
                 "Phòng thuộc tầng nào"
             );
-            Field<RoomKindIdInput>(
+            Field<NonNullGraphType<RoomKindIdInput>>(
                 nameof(Room.RoomKind),
                 "Loại phòng của phòng"
             );

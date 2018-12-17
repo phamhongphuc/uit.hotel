@@ -1,21 +1,18 @@
-mutation($input:BookingCreateInput!){
-  createBooking(input:$input){
+mutation ($input: BookingCreateInput!) {
+  createBooking(input: $input) {
     id
-    checkInTime
+		createTime
     checkOutTime
     createTime
     status
-    room{
-      id
-      name
-		}
     employee{
       id
-      name
     }
     bill{
       id
-      time
+    }
+    room{
+      id
     }
   }
 }

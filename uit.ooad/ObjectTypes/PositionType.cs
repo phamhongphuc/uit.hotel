@@ -55,7 +55,6 @@ namespace uit.ooad.ObjectTypes
         {
             Name = _Creation;
 
-            Field(x => x.Id).Description("Id của chức vụ");
             Field(x => x.Name).Description("Tên chức vụ");
             Field(x => x.PermissionCreateEmployee).Description("Quyền tạo tài khoản nhân viên");
             Field(x => x.PermissionCreatePatron).Description("Quyền tạo khách hàng");

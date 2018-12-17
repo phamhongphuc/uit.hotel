@@ -53,7 +53,6 @@ namespace uit.ooad.ObjectTypes
             Name = _Creation;
             Description = "Input cho việc tạo một loại phòng";
 
-            Field(x => x.Id).Description("Id của loại phòng");
             Field(x => x.Name).Description("Tên loại phòng");
             Field(x => x.NumberOfBeds).Description("Số giường");
             Field(x => x.AmountOfPeople).Description("Số người trong một phòng");

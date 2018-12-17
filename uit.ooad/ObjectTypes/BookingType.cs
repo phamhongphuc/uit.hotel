@@ -70,7 +70,6 @@ namespace uit.ooad.ObjectTypes
         {
             Name = _Creation;
 
-            Field(x => x.Id).Description("Id của thông tin thuê phòng");
             Field(x => x.CheckInTime).Description("Thời điểm nhận phòng dự kiến của khách hàng");
             Field(x => x.CheckOutTime).Description("Thời điểm trả phòng dự kiến của khách hàng");
             Field(x => x.CreateTime).Description("Thời điểm tạo thông tin thuê phòng");
