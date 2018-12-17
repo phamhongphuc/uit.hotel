@@ -1,11 +1,10 @@
 {
 	"input": {
-		"id": 2,
-		"name": "Phòng 2",
-		"roomKind": {
+		"name": "Phòng",
+		"floor": {
 			"id": 1
 		},
-		"floor": {
+		"roomKind": {
 			"id": 1
 		}
 	}
