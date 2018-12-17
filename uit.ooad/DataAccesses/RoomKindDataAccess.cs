@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using uit.ooad.Models;
 
@@ -8,7 +9,12 @@ namespace uit.ooad.DataAccesses
     {
         public static async Task<RoomKind> Add(RoomKind roomKind)
         {
-            await Database.WriteAsync(realm => roomKind = realm.Add(roomKind));
+            await Database.WriteAsync(realm =>
+            {
+                roomKind.Id = Get().Count() == 0 ? 1 : Get().Max(f => f.Id) + 1;
+
+                roomKind = realm.Add(roomKind);
+            });
             return roomKind;
         }
 
