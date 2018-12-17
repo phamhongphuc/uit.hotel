@@ -1,3 +1,4 @@
+using GraphQL.Types;
 using uit.ooad.Businesses;
 using uit.ooad.Models;
 using uit.ooad.ObjectTypes;
@@ -27,6 +28,18 @@ namespace uit.ooad.Queries.Mutation
                      context => ServiceBusiness.Update(_GetInput(context))
                  )
              );
+            Field<ServiceType>(
+                "SetIsActiveService",
+                "Cập nhật trạng thái của dịch vụ",
+                new QueryArguments(
+                    new QueryArgument<NonNullGraphType<IntGraphType>> { Name = "id" },
+                    new QueryArgument<NonNullGraphType<BooleanGraphType>> { Name = "isActive" }
+                ),
+                context => ServiceBusiness.SetIsActive(
+                    context.GetArgument<int>("id"),
+                    context.GetArgument<bool>("isActive")
+                )
+            );
         }
     }
 }

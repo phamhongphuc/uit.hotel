@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using uit.ooad.DataAccesses;
@@ -13,6 +14,9 @@ namespace uit.ooad.Businesses
             if (servicesDetailInDatabase != null) return null;
 
             servicesDetail.Service = servicesDetail.Service.GetManaged();
+            if (!servicesDetail.Service.IsActive)
+                throw new Exception("Dịch vụ " + servicesDetail.Service.Name + " đã ngừng cung cấp");
+
             servicesDetail.Booking = servicesDetail.Booking.GetManaged();
             return ServicesDetailDataAccess.Add(servicesDetail);
         }
