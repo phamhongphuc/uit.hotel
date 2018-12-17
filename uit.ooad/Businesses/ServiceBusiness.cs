@@ -27,12 +27,12 @@ namespace uit.ooad.Businesses
             }
             return ServiceDataAccess.Update(service);
         }
-        public static Task<Service> SetIsActive(int serviceId, bool isActive)
+        public static void SetIsActive(int serviceId, bool isActive)
         {
-            var serviceInDatabase = ServiceDataAccess.Get(serviceId);
-            if (serviceInDatabase == null)
-                throw new Exception("Mã dịch vụ không hợp lệ!");
-            return ServiceDataAccess.SetIsActive(serviceInDatabase, isActive);
+            var serviceInDatabase = Get(serviceId);
+            if (serviceInDatabase == null) throw new Exception("Mã dịch vụ không hợp lệ!");
+
+            ServiceDataAccess.SetIsActive(serviceInDatabase, isActive);
         }
 
         public static Service Get(int serviceId) => ServiceDataAccess.Get(serviceId);

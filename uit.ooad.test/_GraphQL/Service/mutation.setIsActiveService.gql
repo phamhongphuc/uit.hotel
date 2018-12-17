@@ -1,9 +1,3 @@
-mutation($id:Int!,$isActive:Boolean!){
-  setIsActiveService(id:$id,isActive:$isActive){
-    id
-    name
-    unitRate
-    unit
-    isActive
-  }
+mutation($id: ID!, $isActive: Boolean!) {
+	setIsActiveService(id: $id, isActive: $isActive)
 }
