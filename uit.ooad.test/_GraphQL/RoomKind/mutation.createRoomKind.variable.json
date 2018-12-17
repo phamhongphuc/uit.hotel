@@ -1,6 +1,5 @@
 {
 	"input": {
-		"id": 2,
 		"name": "Tên loại phòng",
 		"numberOfBeds": 2,
 		"amountOfPeople": 2,
