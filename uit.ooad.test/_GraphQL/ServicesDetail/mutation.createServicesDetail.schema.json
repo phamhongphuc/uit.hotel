@@ -1,154 +1,92 @@
 {
-    "definitions": {},
-    "type": "object",
-    "title": "The Root Schema",
-    "required": [
-      "data"
-    ],
-    "properties": {
-      "data": {
-        "type": "object",
-        "title": "The Data Schema",
-        "required": [
-          "createServicesDetail"
-        ],
-        "properties": {
-          "createServicesDetail": {
-            "type": "object",
-            "title": "The Createservicesdetail Schema",
-            "required": [
-              "id",
-              "time",
-              "number",
-              "booking",
-              "service"
-            ],
-            "properties": {
-              "id": {
-                "type": "integer",
-                "title": "The Id Schema",
-                "default": 0,
-                "examples": [
-                  3
-                ]
-              },
-              "time": {
-                "type": "string",
-                "title": "The Time Schema",
-                "default": "",
-                "examples": [
-                  "0001-01-01T00:00:00+00:00"
-                ],
-                "pattern": "^(.*)$"
-              },
-              "number": {
-                "type": "integer",
-                "title": "The Number Schema",
-                "default": 0,
-                "examples": [
-                  3
-                ]
-              },
-              "booking": {
-                "type": "object",
-                "title": "The Booking Schema",
-                "required": [
-                  "id",
-                  "createTime",
-                  "checkInTime",
-                  "checkOutTime",
-                  "status"
-                ],
-                "properties": {
-                  "id": {
-                    "type": "integer",
-                    "title": "The Id Schema",
-                    "default": 0,
-                    "examples": [
-                      3
-                    ]
-                  },
-                  "createTime": {
-                    "type": "string",
-                    "title": "The Createtime Schema",
-                    "default": "",
-                    "examples": [
-                      "0001-01-01T00:00:00+00:00"
-                    ],
-                    "pattern": "^(.*)$"
-                  },
-                  "checkInTime": {
-                    "type": "string",
-                    "title": "The Checkintime Schema",
-                    "default": "",
-                    "examples": [
-                      "0001-01-01T00:00:00+00:00"
-                    ],
-                    "pattern": "^(.*)$"
-                  },
-                  "checkOutTime": {
-                    "type": "string",
-                    "title": "The Checkouttime Schema",
-                    "default": "",
-                    "examples": [
-                      "0001-01-01T00:00:00+00:00"
-                    ],
-                    "pattern": "^(.*)$"
-                  },
-                  "status": {
-                    "type": "integer",
-                    "title": "The Status Schema",
-                    "default": 0,
-                    "examples": [
-                      0
-                    ]
-                  }
+  "definitions": {},
+  "type": "object",
+  "required": [
+    "data"
+  ],
+  "properties": {
+    "data": {
+      "type": "object",
+      "required": [
+        "createServicesDetail"
+      ],
+      "properties": {
+        "createServicesDetail": {
+          "type": "object",
+          "required": [
+            "id",
+            "time",
+            "number",
+            "booking",
+            "service"
+          ],
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "time": {
+              "type": "string",
+              "pattern": "^(.*)$"
+            },
+            "number": {
+              "type": "integer"
+            },
+            "booking": {
+              "type": "object",
+              "required": [
+                "id",
+                "createTime",
+                "checkInTime",
+                "checkOutTime",
+                "status"
+              ],
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "createTime": {
+                  "type": "string",
+                  "pattern": "^(.*)$"
+                },
+                "checkInTime": {
+                  "type": "string",
+                  "pattern": "^(.*)$"
+                },
+                "checkOutTime": {
+                  "type": "string",
+                  "pattern": "^(.*)$"
+                },
+                "status": {
+                  "type": "integer"
                 }
-              },
-              "service": {
-                "type": "object",
-                "title": "The Service Schema",
-                "required": [
-                  "id",
-                  "name",
-                  "unit",
-                  "unitRate"
-                ],
-                "properties": {
-                  "id": {
-                    "type": "integer",
-                    "title": "The Id Schema",
-                    "default": 0,
-                    "examples": [
-                      1
-                    ]
-                  },
-                  "name": {
-                    "type": "string",
-                    "title": "The Name Schema",
-                    "default": "",
-                    "examples": [
-                      "giặt ủi"
-                    ],
-                    "pattern": "^(.*)$"
-                  },
-                  "unit": {
-                    "type": "string",
-                    "title": "The Unit Schema",
-                    "default": "",
-                    "examples": [
-                      "Kg"
-                    ],
-                    "pattern": "^(.*)$"
-                  },
-                  "unitRate": {
-                    "type": "integer",
-                    "title": "The Unitrate Schema",
-                    "default": 0,
-                    "examples": [
-                      30000
-                    ]
-                  }
+              }
+            },
+            "service": {
+              "type": "object",
+              "required": [
+                "id",
+                "name",
+                "unit",
+                "unitRate",
+                "isActive"
+              ],
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "name": {
+                  "type": "string",
+                  "pattern": "^(.*)$"
+                },
+                "unit": {
+                  "type": "string",
+                  "pattern": "^(.*)$"
+                },
+                "unitRate": {
+                  "type": "integer"
+                },
+                "isActive": {
+                  "type": "boolean"
                 }
               }
             }
@@ -157,3 +95,4 @@
       }
     }
   }
+}

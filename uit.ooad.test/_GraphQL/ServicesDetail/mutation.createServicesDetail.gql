@@ -15,6 +15,7 @@ mutation($input:ServicesDetailCreateInput!){
       name
       unit
       unitRate
+      isActive
     }
   }
 }

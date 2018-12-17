@@ -68,7 +68,8 @@ namespace uit.ooad.test.Helper
                 Id = 1,
                 Name = "Tên dịch vụ",
                 UnitRate = 30000,
-                Unit = "Đơn vị đo"
+                Unit = "Đơn vị đo",
+                IsActive = true
             });
         }
 

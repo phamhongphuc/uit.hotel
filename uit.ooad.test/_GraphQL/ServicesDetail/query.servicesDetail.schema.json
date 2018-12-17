@@ -1,115 +1,92 @@
 {
-    "definitions": {},
-    "type": "object",
-    "title": "The Root Schema",
-    "required": [
-      "data"
-    ],
-    "properties": {
-      "data": {
-        "type": "object",
-        "title": "The Data Schema",
-        "required": [
-          "servicesDetail"
-        ],
-        "properties": {
-          "servicesDetail": {
-            "type": "object",
-            "title": "The Servicesdetail Schema",
-            "required": [
-              "id",
-              "time",
-              "booking",
-              "number",
-              "service"
-            ],
-            "properties": {
-              "id": {
-                "type": "integer",
-                "title": "The Id Schema",
-                "default": 0,
-                "examples": [
-                  3
-                ]
-              },
-              "time": {
-                "type": "string",
-                "title": "The Time Schema",
-                "default": "",
-                "examples": [
-                  "0001-01-01T00:00:00+00:00"
-                ],
-                "pattern": "^(.*)$"
-              },
-              "booking": {
-                "type": "object",
-                "title": "The Booking Schema",
-                "required": [
-                  "id"
-                ],
-                "properties": {
-                  "id": {
-                    "type": "integer",
-                    "title": "The Id Schema",
-                    "default": 0,
-                    "examples": [
-                      3
-                    ]
-                  }
+  "definitions": {},
+  "type": "object",
+  "required": [
+    "data"
+  ],
+  "properties": {
+    "data": {
+      "type": "object",
+      "required": [
+        "servicesDetail"
+      ],
+      "properties": {
+        "servicesDetail": {
+          "type": "object",
+          "required": [
+            "id",
+            "time",
+            "booking",
+            "number",
+            "service"
+          ],
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "time": {
+              "type": "string",
+              "pattern": "^(.*)$"
+            },
+            "booking": {
+              "type": "object",
+              "required": [
+                "id",
+                "createTime",
+                "checkInTime",
+                "checkOutTime",
+                "status"
+              ],
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "createTime": {
+                  "type": "string",
+                  "pattern": "^(.*)$"
+                },
+                "checkInTime": {
+                  "type": "string",
+                  "pattern": "^(.*)$"
+                },
+                "checkOutTime": {
+                  "type": "string",
+                  "pattern": "^(.*)$"
+                },
+                "status": {
+                  "type": "integer"
                 }
-              },
-              "number": {
-                "type": "integer",
-                "title": "The Number Schema",
-                "default": 0,
-                "examples": [
-                  3
-                ]
-              },
-              "service": {
-                "type": "object",
-                "title": "The Service Schema",
-                "required": [
-                  "id",
-                  "name",
-                  "unit",
-                  "unitRate"
-                ],
-                "properties": {
-                  "id": {
-                    "type": "integer",
-                    "title": "The Id Schema",
-                    "default": 0,
-                    "examples": [
-                      1
-                    ]
-                  },
-                  "name": {
-                    "type": "string",
-                    "title": "The Name Schema",
-                    "default": "",
-                    "examples": [
-                      "giặt ủi"
-                    ],
-                    "pattern": "^(.*)$"
-                  },
-                  "unit": {
-                    "type": "string",
-                    "title": "The Unit Schema",
-                    "default": "",
-                    "examples": [
-                      "Kg"
-                    ],
-                    "pattern": "^(.*)$"
-                  },
-                  "unitRate": {
-                    "type": "integer",
-                    "title": "The Unitrate Schema",
-                    "default": 0,
-                    "examples": [
-                      30000
-                    ]
-                  }
+              }
+            },
+            "number": {
+              "type": "integer"
+            },
+            "service": {
+              "type": "object",
+              "required": [
+                "id",
+                "name",
+                "unit",
+                "unitRate",
+                "isActive"
+              ],
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "name": {
+                  "type": "string",
+                  "pattern": "^(.*)$"
+                },
+                "unit": {
+                  "type": "string",
+                  "pattern": "^(.*)$"
+                },
+                "unitRate": {
+                  "type": "integer"
+                },
+                "isActive": {
+                  "type": "boolean"
                 }
               }
             }
@@ -118,3 +95,4 @@
       }
     }
   }
+}
