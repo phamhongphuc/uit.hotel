@@ -17,7 +17,7 @@ namespace uit.ooad.DataAccesses
 
         public static IEnumerable<Employee> Get() => Database.All<Employee>();
         public static async void ChangePassword(Employee employee, string newPassword) => await Database.WriteAsync(realm => employee.Password = newPassword);
-        public static async void IsActive(Employee employee, bool isActive)
+        public static async void SetIsActiveAccount(Employee employee, bool isActive)
         {
             await Database.WriteAsync(realm => employee.IsActive = isActive);
         }

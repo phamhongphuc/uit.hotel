@@ -39,7 +39,7 @@ namespace uit.ooad.Queries.Mutation
             );
 
             Field<StringGraphType>(
-                "IsActiveAccount",
+                "SetIsActiveAccount",
                 "Vô hiệu hóa/ kích hoạt tài khoản",
                 new QueryArguments(
                     new QueryArgument<NonNullGraphType<IdGraphType>> { Name = "id" },
@@ -52,7 +52,7 @@ namespace uit.ooad.Queries.Mutation
                     var isActive = context.GetArgument<bool>("isActive");
 
                     if (id == employeeId) throw new Exception("Nhân viên không thể tự vô hiệu hóa hoặc kích hoạt tài khoản của chính mình");
-                    EmployeeBusiness.IsActive(employeeId, isActive);
+                    EmployeeBusiness.SetIsActiveAccount(employeeId, isActive);
                     return "Thành công";
                 }
             );
