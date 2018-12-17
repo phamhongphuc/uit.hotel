@@ -24,7 +24,7 @@ namespace uit.ooad.Businesses
         // password và newPassword đều là chuỗi gốc chưa qua mã hóa
         public static void ChangePassword(string id, string password, string newPassword)
         {
-            var employee = EmployeeBusiness.Get(id);
+            var employee = Get(id);
             if (employee == null) throw new Exception("Không tim thấy tên đăng nhập trong hệ thống");
 
             else if (!employee.IsEqualPassword(password)) throw new Exception("Mật khẩu không đúng");
@@ -35,7 +35,7 @@ namespace uit.ooad.Businesses
 
         public static string ResetPassword(string id)
         {
-            var employee = EmployeeBusiness.Get(id);
+            var employee = Get(id);
             if (employee == null) throw new Exception("Không tim thấy tên đăng nhập trong hệ thống");
 
             var newPassword = AuthenticationHelper.GetRandomString();
@@ -44,12 +44,12 @@ namespace uit.ooad.Businesses
             return newPassword;
         }
 
-        public static void IsActive(string id, bool isActive)
+        public static void SetIsActiveAccount(string id, bool isActive)
         {
-            var employee = EmployeeBusiness.Get(id);
+            var employee = Get(id);
             if (employee == null) throw new Exception("Không tim thấy tên đăng nhập trong hệ thống");
 
-            EmployeeDataAccess.IsActive(employee, isActive);
+            EmployeeDataAccess.SetIsActiveAccount(employee, isActive);
         }
 
         public static void CheckLogin(string id, string password)
