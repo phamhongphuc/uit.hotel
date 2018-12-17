@@ -19,6 +19,7 @@ namespace uit.ooad.Queries.Mutation
                     context => ServiceBusiness.Add(_GetInput(context))
                 )
             );
+            
             Field<ServiceType>(
                  _Updation,
                  "Cập nhật và trả về một dịch vụ mới cập nhật",
@@ -28,17 +29,22 @@ namespace uit.ooad.Queries.Mutation
                      context => ServiceBusiness.Update(_GetInput(context))
                  )
              );
-            Field<ServiceType>(
+
+            Field<StringGraphType>(
                 "SetIsActiveService",
                 "Cập nhật trạng thái của dịch vụ",
                 new QueryArguments(
-                    new QueryArgument<NonNullGraphType<IntGraphType>> { Name = "id" },
+                    new QueryArgument<NonNullGraphType<IdGraphType>> { Name = "id" },
                     new QueryArgument<NonNullGraphType<BooleanGraphType>> { Name = "isActive" }
                 ),
-                context => ServiceBusiness.SetIsActive(
-                    context.GetArgument<int>("id"),
-                    context.GetArgument<bool>("isActive")
-                )
+                context =>
+                {
+                    var serviceId = context.GetArgument<int>("id");
+                    var isActive = context.GetArgument<bool>("isActive");
+
+                    ServiceBusiness.SetIsActive(serviceId, isActive);
+                    return "Thành công";
+                }
             );
         }
     }
