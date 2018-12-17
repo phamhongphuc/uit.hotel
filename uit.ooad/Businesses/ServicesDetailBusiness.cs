@@ -13,9 +13,10 @@ namespace uit.ooad.Businesses
             var servicesDetailInDatabase = ServicesDetailDataAccess.Get(servicesDetail.Id);
             if (servicesDetailInDatabase != null) return null;
 
-            Service service = servicesDetail.Service = servicesDetail.Service.GetManaged();
-            if (!service.IsActive)
-                throw new Exception("Dịch vụ được chọn có Id=" + service.Id + " đã bị vô hiệu hóa");
+            servicesDetail.Service = servicesDetail.Service.GetManaged();
+            if (!servicesDetail.Service.IsActive)
+                throw new Exception("Dịch vụ " + servicesDetail.Service.Name + " đã ngừng cung cấp");
+
             servicesDetail.Booking = servicesDetail.Booking.GetManaged();
             return ServicesDetailDataAccess.Add(servicesDetail);
         }
