@@ -16,7 +16,11 @@ namespace uit.ooad.DataAccesses
             await Database.WriteAsync(realm => service = realm.Add(service, update: true));
             return service;
         }
-
+        public static async Task<Service> SetIsActive(Service service, bool isActive)
+        {
+            await Database.WriteAsync(realm => service.IsActive = isActive);
+            return service;
+        }
         public static Service Get(int serviceId) => Database.Find<Service>(serviceId);
 
         public static IEnumerable<Service> Get() => Database.All<Service>();
