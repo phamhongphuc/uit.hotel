@@ -1,0 +1,13 @@
+mutation($input:RoomUpdateInput!){
+  updateRoom(input:$input){
+   id
+    name
+    isActive
+    roomKind{
+      id
+    }
+    floor{
+      id
+    }
+  }
+}
