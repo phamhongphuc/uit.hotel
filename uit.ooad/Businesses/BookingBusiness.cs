@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using uit.ooad.DataAccesses;
@@ -18,7 +19,29 @@ namespace uit.ooad.Businesses
             return BookingDataAccess.Add(booking);
         }
 
+        public static Task<Booking> CheckIn(int bookingID)
+        {
+            var booking = BookingDataAccess.Get(bookingID);
+            if (booking == null) throw new Exception("Không tìm thấy booking");
+
+            return BookingDataAccess.CheckIn(booking, DateTimeOffset.Now);
+        }
+
         public static Booking Get(int bookingId) => BookingDataAccess.Get(bookingId);
         public static IEnumerable<Booking> Get() => BookingDataAccess.Get();
+
+
+        public class CheckInException : Exception
+        {
+            public CheckInException()
+            {
+                // Todo Something else
+            }
+
+            public CheckInException(string Messages) : base(Messages)
+            {
+                // Todo fuck me if u want
+            }
+        }
     }
 }

@@ -1,3 +1,4 @@
+using GraphQL.Types;
 using uit.ooad.Businesses;
 using uit.ooad.Models;
 using uit.ooad.ObjectTypes;
@@ -16,6 +17,16 @@ namespace uit.ooad.Queries.Mutation
                 _CheckPermission(
                     p => p.PermissionCreateBooking,
                     context => BookingBusiness.Add(_GetInput(context))
+                )
+            );
+
+            Field<BookingType>(
+                "CheckIn",
+                "Cập nhật thời gian checkin của phòng",
+                _IdArgument(),
+                _CheckPermission(
+                    person => person.PermissionCreateBooking,
+                    context => BookingBusiness.CheckIn(_GetId<int>(context))
                 )
             );
         }
