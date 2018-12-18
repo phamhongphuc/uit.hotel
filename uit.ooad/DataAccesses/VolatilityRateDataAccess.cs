@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using uit.ooad.Models;
 
@@ -8,7 +9,12 @@ namespace uit.ooad.DataAccesses
     {
         public static async Task<VolatilityRate> Add(VolatilityRate volatilityRate)
         {
-            await Database.WriteAsync(realm => volatilityRate = realm.Add(volatilityRate));
+            await Database.WriteAsync(realm =>
+            {
+                volatilityRate.Id = Get().Count() == 0 ? 1 : Get().Max(f => f.Id) + 1;
+
+                volatilityRate = realm.Add(volatilityRate);
+            });
             return volatilityRate;
         }
 
