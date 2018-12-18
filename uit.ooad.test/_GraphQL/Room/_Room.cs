@@ -46,6 +46,16 @@ namespace uit.ooad.test._GraphQL._Room
             );
         }
         [TestMethod]
+        public void DeleteRoom()
+        {
+            SchemaHelper.Execute(
+                @"/_GraphQL/Room/mutation.deleteRoom.gql",
+                @"/_GraphQL/Room/mutation.deleteRoom.schema.json",
+                @"/_GraphQL/Room/mutation.deleteRoom.variable.json",
+                p => p.PermissionCreateOrUpdateRoom = true
+            );
+        }
+        [TestMethod]
         public void SetIsActiveRoom()
         {
             SchemaHelper.Execute(
