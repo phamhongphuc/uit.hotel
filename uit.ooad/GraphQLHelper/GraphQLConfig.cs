@@ -41,15 +41,14 @@ namespace uit.ooad.GraphQLHelper
             services.AddSingleton<PositionCreateInput>();
             services.AddSingleton<PositionIdInput>();
             services.AddSingleton<RateCreateInput>();
-            //services.AddSingleton<RateIdInput>();
             services.AddSingleton<ReceiptCreateInput>();
-            //services.AddSingleton<ReceiptIdInput>();
             services.AddSingleton<RoomCreateInput>();
             services.AddSingleton<RoomIdInput>();
             services.AddSingleton<RoomKindCreateInput>();
             services.AddSingleton<RoomKindIdInput>();
-            services.AddSingleton<ServiceCreateOrUpdateInput>();
             services.AddSingleton<ServiceIdInput>();
+            services.AddSingleton<ServiceCreateInput>();
+            services.AddSingleton<ServiceUpdateInput>();
             services.AddSingleton<ServicesDetailCreateInput>();
             services.AddSingleton<ServicesDetailIdInput>();
             services.AddSingleton<VolatilityRateCreateInput>();
