@@ -13,7 +13,7 @@ namespace uit.ooad.Queries.Mutation
             Field<ServiceType>(
                 _Creation,
                 "Tạo và trả về một dịch vụ mới",
-                _InputArgument<ServiceCreateOrUpdateInput>(),
+                _InputArgument<ServiceCreateInput>(),
                 _CheckPermission(
                     p => p.PermissionCreateOrUpdateService,
                     context => ServiceBusiness.Add(_GetInput(context))
@@ -23,7 +23,7 @@ namespace uit.ooad.Queries.Mutation
             Field<ServiceType>(
                  _Updation,
                  "Cập nhật và trả về một dịch vụ mới cập nhật",
-                 _InputArgument<ServiceCreateOrUpdateInput>(),
+                 _InputArgument<ServiceUpdateInput>(),
                  _CheckPermission(
                      p => p.PermissionCreateOrUpdateService,
                      context => ServiceBusiness.Update(_GetInput(context))

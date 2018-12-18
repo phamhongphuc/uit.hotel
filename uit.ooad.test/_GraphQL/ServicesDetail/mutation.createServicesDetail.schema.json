@@ -34,29 +34,10 @@
             "booking": {
               "type": "object",
               "required": [
-                "id",
-                "createTime",
-                "checkInTime",
-                "checkOutTime",
-                "status"
+                "id"
               ],
               "properties": {
                 "id": {
-                  "type": "integer"
-                },
-                "createTime": {
-                  "type": "string",
-                  "pattern": "^(.*)$"
-                },
-                "checkInTime": {
-                  "type": "string",
-                  "pattern": "^(.*)$"
-                },
-                "checkOutTime": {
-                  "type": "string",
-                  "pattern": "^(.*)$"
-                },
-                "status": {
                   "type": "integer"
                 }
               }
@@ -64,29 +45,11 @@
             "service": {
               "type": "object",
               "required": [
-                "id",
-                "name",
-                "unit",
-                "unitRate",
-                "isActive"
+                "id"
               ],
               "properties": {
                 "id": {
                   "type": "integer"
-                },
-                "name": {
-                  "type": "string",
-                  "pattern": "^(.*)$"
-                },
-                "unit": {
-                  "type": "string",
-                  "pattern": "^(.*)$"
-                },
-                "unitRate": {
-                  "type": "integer"
-                },
-                "isActive": {
-                  "type": "boolean"
                 }
               }
             }

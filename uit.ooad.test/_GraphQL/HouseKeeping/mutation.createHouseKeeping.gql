@@ -4,13 +4,9 @@ mutation($input:HouseKeepingCreateInput!){
     type
     employee{
       id
-      name
     }
     booking{
       id
-      checkInTime
-      checkOutTime
-      createTime
     }
   }
 }

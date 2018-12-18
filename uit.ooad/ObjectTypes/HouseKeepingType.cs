@@ -14,10 +14,14 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.Id).Description("Id của việc dọn dẹp");
             Field(x => x.Type).Description("Hình thức dọn dẹp phòng");
 
-            Field<EmployeeType>(nameof(HouseKeeping.Employee), resolve: context => context.Source.Employee,
-                                description: "Nhân viên thực hiện dọn dẹp");
-            Field<BookingType>(nameof(HouseKeeping.Booking), resolve: context => context.Source.Booking,
-                               description: "Thông tin chi tiết đặt trước của phòng cần chuẩn bị");
+            Field<NonNullGraphType<EmployeeType>>(
+                nameof(HouseKeeping.Employee),
+                resolve: context => context.Source.Employee,
+                description: "Nhân viên thực hiện dọn dẹp");
+            Field<NonNullGraphType<BookingType>>(
+                nameof(HouseKeeping.Booking),
+                resolve: context => context.Source.Booking,
+                description: "Thông tin chi tiết đặt trước của phòng cần chuẩn bị");
         }
     }
 
@@ -27,7 +31,6 @@ namespace uit.ooad.ObjectTypes
         {
             Name = _Creation;
 
-            Field(x => x.Id).Description("Id của một hình thức dọn dẹp tại một phòng");
             Field(x => x.Type).Description("Loại hình thức dọn dẹp");
 
             Field<NonNullGraphType<EmployeeIdInput>>(

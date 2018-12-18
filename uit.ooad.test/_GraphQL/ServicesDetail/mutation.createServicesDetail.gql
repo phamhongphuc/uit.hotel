@@ -5,17 +5,9 @@ mutation($input:ServicesDetailCreateInput!){
     number
     booking{
       id
-      createTime
-      checkInTime
-      checkOutTime
-      status
     }
     service{
       id
-      name
-      unit
-      unitRate
-      isActive
     }
   }
 }

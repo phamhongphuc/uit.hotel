@@ -1,6 +1,6 @@
 mutation($input:VolatilityRateCreateInput!){
   createVolatilityRate(input:$input){
-      id
+    id
     dayRate
     nightRate
     weekRate
@@ -19,10 +19,6 @@ mutation($input:VolatilityRateCreateInput!){
     createDate
     roomKind{
 			id
-      name
-      amountOfPeople
-      numberOfBeds
-      priceByDate
     }
   }
 }

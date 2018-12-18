@@ -8,7 +8,7 @@ namespace uit.ooad.Queries.Base
 
         public string _Creation => typeof(TModel).Name + "CreateInput";
 
-        public string _Updation => typeof(TModel).Name + "CreateInput";
+        public string _Updation => typeof(TModel).Name + "UpdateInput";
 
         public string _Id => typeof(TModel).Name + "Id";
     }

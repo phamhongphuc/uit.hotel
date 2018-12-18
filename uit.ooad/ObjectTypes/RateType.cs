@@ -34,7 +34,6 @@ namespace uit.ooad.ObjectTypes
         public RateCreateInput()
         {
             Name = _Creation;
-            Field(x => x.Id).Description("Id của giá");
             Field(x => x.DayRate).Description("Giá ngày");
             Field(x => x.NightRate).Description("Giá đêm");
             Field(x => x.WeekRate).Description("Giá tuần");
