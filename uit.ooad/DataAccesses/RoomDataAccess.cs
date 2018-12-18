@@ -17,6 +17,21 @@ namespace uit.ooad.DataAccesses
             });
             return room;
         }
+        public static async Task<Room> Update(Room room)
+        {
+            await Database.WriteAsync(realm =>
+            {
+                room = realm.Add(room, update: true);
+            });
+            return room;
+        }
+        public static async void SetIsActive(int roomId, bool roomIsActive)
+        {
+            await Database.WriteAsync(realm =>
+            {
+                Database.Find<Room>(roomId).IsActive = roomIsActive;
+            });
+        }
 
         public static Room Get(int roomId) => Database.Find<Room>(roomId);
 

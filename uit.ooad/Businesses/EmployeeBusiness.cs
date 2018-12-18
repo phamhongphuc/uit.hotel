@@ -82,7 +82,7 @@ namespace uit.ooad.Businesses
                 PermissionCreatePosition = true,
                 PermissionCreateRate = true,
                 PermissionCreateReceipt = true,
-                PermissionCreateRoom = true,
+                PermissionCreateOrUpdateRoom = true,
                 PermissionCreateRoomKind = true,
                 PermissionCreateOrUpdateService = true,
                 PermissionCreateServicesDetail = true,
