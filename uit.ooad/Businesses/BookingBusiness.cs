@@ -21,13 +21,10 @@ namespace uit.ooad.Businesses
 
         public static Task<Booking> CheckIn(int bookingID)
         {
-            var Booked = BookingDataAccess.Get(bookingID);
+            var booking = BookingDataAccess.Get(bookingID);
+            if (booking == null) throw new Exception("Không tìm thấy booking");
 
-            if (Booked == null)
-                throw new CheckInException("Booking don't exists");
-
-            Booked.CheckInTime = DateTimeOffset.Now;
-            return BookingDataAccess.Update(Booked);
+            return BookingDataAccess.CheckIn(booking, DateTimeOffset.Now);
         }
 
         public static Booking Get(int bookingId) => BookingDataAccess.Get(bookingId);

@@ -19,18 +19,14 @@ namespace uit.ooad.DataAccesses
             return Get(bookingID) != null;
         }
 
-        public static async Task<Booking> Update(Booking booking)
+        public static async Task<Booking> CheckIn(Booking booking, DateTimeOffset now)
         {
-            await Database.WriteAsync(realm => booking = realm.Add(booking, update:true));
+            await Database.WriteAsync(realm =>
+            {
+                booking.CheckInTime = now;
+                booking.Status = 1;
+            });
             return booking;
-
-            // Tại sao cái Tread này lại Throw Exception
-            //new Thread(() =>
-            //{
-            //    var theDog = Database.All<Booking>().Where(books => books.Id == booking.Id).First();
-            //    Database.Write(() => booking.CheckInTime = DateTimeOffset.Now);
-
-            //}).Start();
         }
 
         public static Booking Get(int bookingId) => Database.Find<Booking>(bookingId);
