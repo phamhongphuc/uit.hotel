@@ -28,19 +28,6 @@ namespace uit.ooad.Queries.Mutation
                     context => RoomBusiness.Update(_GetInput(context))
                 )
             );
-            Field<RoomType>(
-                _Deletion,
-                "Xóa và trả về một phòng vừa xóa",
-                _IdArgument(),
-                _CheckPermission(
-                    p => p.PermissionCreateOrUpdateRoom,
-                    context =>
-                    {
-                        RoomBusiness.Delete(_GetId<int>(context));
-                        return null;
-                    }
-                )
-            );
             Field<StringGraphType>(
                 "SetIsActiveRoom",
                 "Cập nhật trạng thái của một phòng",

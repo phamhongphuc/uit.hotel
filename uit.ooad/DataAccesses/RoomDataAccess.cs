@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -25,14 +24,6 @@ namespace uit.ooad.DataAccesses
                 room = realm.Add(room, update: true);
             });
             return room;
-        }
-        public static async void Delete(int id)
-        {
-            await Database.WriteAsync(realm =>
-            {
-                var room = Database.Find<Room>(id);
-                realm.Remove(room);
-            });
         }
         public static async void SetIsActive(int roomId, bool roomIsActive)
         {
