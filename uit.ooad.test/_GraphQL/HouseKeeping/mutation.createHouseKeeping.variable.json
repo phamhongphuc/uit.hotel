@@ -1,6 +1,5 @@
 {
 	"input": {
-		"id": 2,
 		"type": 1,
 		"employee": {
 			"id": "admin"
