@@ -11,7 +11,7 @@
 		"permissionCreatePosition": false,
 		"permissionCreateRate": false,
 		"permissionCreateReceipt": false,
-		"permissionCreateRoom": false,
+		"permissionCreateOrUpdateRoom": false,
 		"permissionCreateRoomKind": false,
 		"permissionCreateOrUpdateService": false,
 		"permissionCreateServicesDetail": false,

@@ -26,7 +26,6 @@ namespace uit.ooad.Businesses
             if (roomInDatabase == null) throw new Exception("Id=" + id + " không tồn tại");
             RoomDataAccess.SetIsActive(id, isActive);
         }
-
         public static Room Get(int roomId) => RoomDataAccess.Get(roomId);
         public static IEnumerable<Room> Get() => RoomDataAccess.Get();
     }

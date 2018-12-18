@@ -2,16 +2,12 @@ query($id:ID!){
   room(id:$id){
   	id
     name
+    isActive
     roomKind{
       id
-      name
-      numberOfBeds
-      priceByDate
-      amountOfPeople
     }
     floor{
       id
-      name
     }
 }
 }

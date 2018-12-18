@@ -2,6 +2,7 @@
     rooms {
         id
         name
+        isActive
         floor {
             id
         }

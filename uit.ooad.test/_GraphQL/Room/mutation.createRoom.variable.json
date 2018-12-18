@@ -1,10 +1,11 @@
 {
 	"input": {
-		"name": "Phòng",
-		"floor": {
+		"name": "Phòng 2",
+		"isActive": true,
+		"roomKind": {
 			"id": 1
 		},
-		"roomKind": {
+		"floor": {
 			"id": 1
 		}
 	}

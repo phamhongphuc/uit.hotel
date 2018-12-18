@@ -1,181 +1,93 @@
 {
-    "definitions": {},
-    "type": "object",
-    "title": "The Root Schema",
-    "required": [
-      "data"
-    ],
-    "properties": {
-      "data": {
-        "type": "object",
-        "title": "The Data Schema",
-        "required": [
-          "position"
-        ],
-        "properties": {
-          "position": {
-            "type": "object",
-            "title": "The Position Schema",
-            "required": [
-              "id",
-              "name",
-              "permissionCreatePatronKind",
-              "permissionCreateBill",
-              "permissionCreateBooking",
-              "permissionCreateEmployee",
-              "permissionCreateFloor",
-              "permissionCreateHouseKeeping",
-              "permissionCreatePatron",
-              "permissionCreatePosition",
-              "permissionCreateRate",
-              "permissionCreateReceipt",
-              "permissionCreateRoom",
-              "permissionCreateRoomKind",
-              "permissionCreateOrUpdateService",
-              "permissionCreateServicesDetail",
-              "permissionCreateVolatilityRate"
-            ],
-            "properties": {
-              "id": {
-                "type": "integer",
-                "title": "The Id Schema",
-                "default": 0,
-                "examples": [
-                  1
-                ]
-              },
-              "name": {
-                "type": "string",
-                "title": "The Name Schema",
-                "default": "",
-                "examples": [
-                  "all"
-                ],
-                "pattern": "^(.*)$"
-              },
-              "permissionCreatePatronKind": {
-                "type": "boolean",
-                "title": "The Permissioncreatepatronkind Schema",
-                "default": false,
-                "examples": [
-                  true
-                ]
-              },
-              "permissionCreateBill": {
-                "type": "boolean",
-                "title": "The Permissioncreatebill Schema",
-                "default": false,
-                "examples": [
-                  true
-                ]
-              },
-              "permissionCreateBooking": {
-                "type": "boolean",
-                "title": "The Permissioncreatebooking Schema",
-                "default": false,
-                "examples": [
-                  true
-                ]
-              },
-              "permissionCreateEmployee": {
-                "type": "boolean",
-                "title": "The Permissioncreateemployee Schema",
-                "default": false,
-                "examples": [
-                  true
-                ]
-              },
-              "permissionCreateFloor": {
-                "type": "boolean",
-                "title": "The Permissioncreatefloor Schema",
-                "default": false,
-                "examples": [
-                  true
-                ]
-              },
-              "permissionCreateHouseKeeping": {
-                "type": "boolean",
-                "title": "The Permissioncreatehousekeeping Schema",
-                "default": false,
-                "examples": [
-                  true
-                ]
-              },
-              "permissionCreatePatron": {
-                "type": "boolean",
-                "title": "The Permissioncreatepatron Schema",
-                "default": false,
-                "examples": [
-                  true
-                ]
-              },
-              "permissionCreatePosition": {
-                "type": "boolean",
-                "title": "The Permissioncreateposition Schema",
-                "default": false,
-                "examples": [
-                  true
-                ]
-              },
-              "permissionCreateRate": {
-                "type": "boolean",
-                "title": "The Permissioncreaterate Schema",
-                "default": false,
-                "examples": [
-                  true
-                ]
-              },
-              "permissionCreateReceipt": {
-                "type": "boolean",
-                "title": "The Permissioncreatereceipt Schema",
-                "default": false,
-                "examples": [
-                  true
-                ]
-              },
-              "permissionCreateRoom": {
-                "type": "boolean",
-                "title": "The Permissioncreateroom Schema",
-                "default": false,
-                "examples": [
-                  true
-                ]
-              },
-              "permissionCreateRoomKind": {
-                "type": "boolean",
-                "title": "The Permissioncreateroomkind Schema",
-                "default": false,
-                "examples": [
-                  true
-                ]
-              },
-              "permissionCreateOrUpdateService": {
-                "type": "boolean",
-                "title": "The permissionCreateOrUpdateService Schema",
-                "default": false,
-                "examples": [
-                  true
-                ]
-              },
-              "permissionCreateServicesDetail": {
-                "type": "boolean",
-                "title": "The Permissioncreateservicesdetail Schema",
-                "default": false,
-                "examples": [
-                  true
-                ]
-              },
-              "permissionCreateVolatilityRate": {
-                "type": "boolean",
-                "title": "The Permissioncreatevolatilityrate Schema",
-                "default": false,
-                "examples": [
-                  true
-                ]
-              }
+  "definitions": {},
+  "type": "object",
+  "required": [
+    "data"
+  ],
+  "properties": {
+    "data": {
+      "type": "object",
+      "required": [
+        "position"
+      ],
+      "properties": {
+        "position": {
+          "type": "object",
+          "required": [
+            "id",
+            "name",
+            "permissionCreatePatronKind",
+            "permissionCreateBill",
+            "permissionCreateBooking",
+            "permissionCreateEmployee",
+            "permissionCreateFloor",
+            "permissionCreateHouseKeeping",
+            "permissionCreatePatron",
+            "permissionCreatePosition",
+            "permissionCreateRate",
+            "permissionCreateReceipt",
+            "permissionCreateOrUpdateRoom",
+            "permissionCreateRoomKind",
+            "permissionCreateOrUpdateService",
+            "permissionCreateServicesDetail",
+            "permissionCreateVolatilityRate"
+          ],
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "name": {
+              "type": "string",
+              "pattern": "^(.*)$"
+            },
+            "permissionCreatePatronKind": {
+              "type": "boolean"
+            },
+            "permissionCreateBill": {
+              "type": "boolean"
+            },
+            "permissionCreateBooking": {
+              "type": "boolean"
+            },
+            "permissionCreateEmployee": {
+              "type": "boolean"
+            },
+            "permissionCreateFloor": {
+              "type": "boolean"
+            },
+            "permissionCreateHouseKeeping": {
+              "type": "boolean"
+            },
+            "permissionCreatePatron": {
+              "type": "boolean"
+            },
+            "permissionCreatePosition": {
+              "type": "boolean"
+            },
+            "permissionCreateRate": {
+              "type": "boolean"
+            },
+            "permissionCreateReceipt": {
+              "type": "boolean"
+            },
+            "permissionCreateOrUpdateRoom": {
+              "type": "boolean"
+            },
+            "permissionCreateRoomKind": {
+              "type": "boolean"
+            },
+            "permissionCreateOrUpdateService": {
+              "type": "boolean"
+            },
+            "permissionCreateServicesDetail": {
+              "type": "boolean"
+            },
+            "permissionCreateVolatilityRate": {
+              "type": "boolean"
             }
           }
         }
       }
     }
   }
+}
