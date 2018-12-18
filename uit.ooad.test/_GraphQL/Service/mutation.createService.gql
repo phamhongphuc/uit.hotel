@@ -1,4 +1,4 @@
-mutation($input:ServiceCreateOrUpdateInput!){
+mutation($input: ServiceCreateInput!){
   createService(input:$input){
     id
     name
