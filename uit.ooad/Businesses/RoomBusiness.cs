@@ -26,10 +26,10 @@ namespace uit.ooad.Businesses
         }
         public static void Delete(int id)
         {
-            var roomInDatabase = RoomDataAccess.Get(id);
+            var roomInDatabase = Get(id);
             if (roomInDatabase.Bookings.Count() > 0)
                 throw new Exception("Không thể xóa! Phòng đã có giao dịch trước đó");
-            RoomDataAccess.Delete(id);
+            RoomDataAccess.Delete(roomInDatabase);
         }
         public static void SetIsActive(int id, bool isActive)
         {

@@ -26,11 +26,10 @@ namespace uit.ooad.DataAccesses
             });
             return room;
         }
-        public static async void Delete(int id)
+        public static async void Delete(Room room)
         {
             await Database.WriteAsync(realm =>
             {
-                var room = Database.Find<Room>(id);
                 realm.Remove(room);
             });
         }
