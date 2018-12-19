@@ -1,0 +1,6 @@
+mutation($input:FloorUpdateInput!){
+  updateFloor(input:$input){
+    id
+    name
+  }
+}
