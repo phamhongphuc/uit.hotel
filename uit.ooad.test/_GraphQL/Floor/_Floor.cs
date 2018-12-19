@@ -46,5 +46,15 @@ namespace uit.ooad.test._GraphQL._Floor
                 p => p.PermissionCreateOrUpdateFloor = true
             );
         }
+        [TestMethod]
+        public void SetIsActiveFloor()
+        {
+            SchemaHelper.Execute(
+                @"/_GraphQL/Floor/mutation.setIsActiveFloor.gql",
+                @"/_GraphQL/Floor/mutation.setIsActiveFloor.schema.json",
+                @"/_GraphQL/Floor/mutation.setIsActiveFloor.variable.json",
+                p => p.PermissionCreateOrUpdateFloor = true
+            );
+        }
     }
 }
