@@ -47,6 +47,16 @@ namespace uit.ooad.test._GraphQL._Floor
             );
         }
         [TestMethod]
+        public void DeleteFloor()
+        {
+            SchemaHelper.Execute(
+                @"/_GraphQL/Floor/mutation.deleteFloor.gql",
+                @"/_GraphQL/Floor/mutation.deleteFloor.schema.json",
+                @"/_GraphQL/Floor/mutation.deleteFloor.variable.json",
+                p => p.PermissionCreateOrUpdateFloor = true
+            );
+        }
+        [TestMethod]
         public void SetIsActiveFloor()
         {
             SchemaHelper.Execute(
