@@ -33,7 +33,7 @@ namespace uit.ooad.test._GraphQL._Floor
                 @"/_GraphQL/Floor/mutation.createFloor.gql",
                 @"/_GraphQL/Floor/mutation.createFloor.schema.json",
                 @"/_GraphQL/Floor/mutation.createFloor.variable.json",
-                p => p.PermissionCreateFloor = true
+                p => p.PermissionCreateOrUpdateFloor = true
             );
         }
         [TestMethod]
@@ -43,7 +43,7 @@ namespace uit.ooad.test._GraphQL._Floor
                 @"/_GraphQL/Floor/mutation.updateFloor.gql",
                 @"/_GraphQL/Floor/mutation.updateFloor.schema.json",
                 @"/_GraphQL/Floor/mutation.updateFloor.variable.json",
-                p => p.PermissionCreateFloor = true
+                p => p.PermissionCreateOrUpdateFloor = true
             );
         }
     }

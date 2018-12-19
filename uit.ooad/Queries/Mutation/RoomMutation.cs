@@ -42,7 +42,7 @@ namespace uit.ooad.Queries.Mutation
                 )
             );
             Field<StringGraphType>(
-                "SetIsActiveRoom",
+                _SetIsActive,
                 "Cập nhật trạng thái của một phòng",
                 new QueryArguments(
                     new QueryArgument<NonNullGraphType<IdGraphType>> { Name = "id" },

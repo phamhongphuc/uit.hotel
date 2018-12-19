@@ -25,6 +25,14 @@ namespace uit.ooad.DataAccesses
             });
             return floor;
         }
+        public static async void SetIsActive(int floorId, bool isActive)
+        {
+            await Database.WriteAsync(realm =>
+            {
+                Database.Find<Floor>(floorId).IsActive = isActive;
+
+            });
+        }
 
         public static Floor Get(int floorId) => Database.Find<Floor>(floorId);
 

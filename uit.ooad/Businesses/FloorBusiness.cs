@@ -17,6 +17,13 @@ namespace uit.ooad.Businesses
                 throw new Exception("Tầng đã có phòng. Không thể cập nhật!");
             return FloorDataAccess.Update(floor);
         }
+        public static void SetIsActive(int floorId, bool isActive)
+        {
+            var floorInDatabase = FloorDataAccess.Get(floorId);
+            if (floorInDatabase == null)
+                throw new Exception("Tầng có Id=" + floorId + " không hợp lệ!");
+            FloorDataAccess.SetIsActive(floorId, isActive);
+        }
         public static Floor Get(int floorId) => FloorDataAccess.Get(floorId);
         public static IEnumerable<Floor> Get() => FloorDataAccess.Get();
     }

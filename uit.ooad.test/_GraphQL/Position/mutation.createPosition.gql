@@ -6,7 +6,7 @@ mutation($input:PositionCreateInput!){
     permissionCreateBill
     permissionCreateBooking
     permissionCreateEmployee
-    permissionCreateFloor
+    permissionCreateOrUpdateFloor
     permissionCreateHouseKeeping
     permissionCreatePatron
     permissionCreatePosition
