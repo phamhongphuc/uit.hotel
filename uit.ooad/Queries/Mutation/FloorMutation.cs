@@ -29,6 +29,19 @@ namespace uit.ooad.Queries.Mutation
                 )
             );
             Field<FloorType>(
+                _Deletion,
+                "Xóa một tầng",
+                _IdArgument(),
+                _CheckPermission(
+                    p => p.PermissionCreateOrUpdateFloor,
+                    context =>
+                    {
+                        FloorBusiness.Delete(_GetId<int>(context));
+                        return null;
+                    }
+                )
+            );
+            Field<FloorType>(
                 _SetIsActive,
                 "Cập nhật trạng thái của tầng",
                 new QueryArguments(

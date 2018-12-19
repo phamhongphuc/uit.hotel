@@ -25,6 +25,13 @@ namespace uit.ooad.DataAccesses
             });
             return floor;
         }
+        public static async void Delete(Floor floor)
+        {
+            await Database.WriteAsync(realm =>
+            {
+                realm.Remove(floor);
+            });
+        }
         public static async void SetIsActive(int floorId, bool isActive)
         {
             await Database.WriteAsync(realm =>
