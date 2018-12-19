@@ -18,6 +18,15 @@ namespace uit.ooad.Queries.Mutation
                     context => FloorBusiness.Add(_GetInput(context))
                 )
             );
+            Field<FloorType>(
+                _Updation,
+                "Cập nhật và trả về một tầng vừa cập nhật",
+                _InputArgument<FloorUpdateInput>(),
+                _CheckPermission(
+                    p => p.PermissionCreateFloor,
+                    context => FloorBusiness.Update(_GetInput(context))
+                )
+            );
         }
     }
 }

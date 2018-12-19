@@ -31,6 +31,7 @@ namespace uit.ooad.GraphQLHelper
             services.AddSingleton<EmployeeCreateInput>();
             services.AddSingleton<EmployeeIdInput>();
             services.AddSingleton<FloorCreateInput>();
+            services.AddSingleton<FloorUpdateInput>();
             services.AddSingleton<FloorIdInput>();
             services.AddSingleton<HouseKeepingCreateInput>();
             services.AddSingleton<HouseKeepingIdInput>();

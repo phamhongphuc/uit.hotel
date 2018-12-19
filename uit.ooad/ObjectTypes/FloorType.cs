@@ -41,4 +41,13 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.Name).Description("Tên tầng");
         }
     }
+    public class FloorUpdateInput : InputType<Floor>
+    {
+        public FloorUpdateInput()
+        {
+            Name = _Updation;
+            Field(x => x.Id).Description("Id tầng cần cập nhật");
+            Field(x => x.Name).Description("Tên tầng");
+        }
+    }
 }

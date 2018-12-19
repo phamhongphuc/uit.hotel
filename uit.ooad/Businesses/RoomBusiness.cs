@@ -18,8 +18,8 @@ namespace uit.ooad.Businesses
         public static Task<Room> Update(Room room)
         {
             var roomInDatabase = RoomDataAccess.Get(room.Id);
-            if (roomInDatabase.Bookings.Count() > 0)
-                throw new Exception("Phòng không thể cập nhật! Phòng đã có giao dịch trước đó. Yêu cầu vô hiệu hóa");
+            if (roomInDatabase != null && roomInDatabase.Bookings.Count() > 0)
+                throw new Exception("Không thể cập nhật! Phòng đã có giao dịch trước đó");
             room.Floor = room.Floor.GetManaged();
             room.RoomKind = room.RoomKind.GetManaged();
             return RoomDataAccess.Update(room);
@@ -28,7 +28,7 @@ namespace uit.ooad.Businesses
         {
             var roomInDatabase = RoomDataAccess.Get(id);
             if (roomInDatabase.Bookings.Count() > 0)
-                throw new Exception("Phòng không thể xóa! Phòng đã có giao dịch trước đó. Yêu cầu vô hiệu hóa");
+                throw new Exception("Không thể xóa! Phòng đã có giao dịch trước đó");
             RoomDataAccess.Delete(id);
         }
         public static void SetIsActive(int id, bool isActive)
