@@ -22,7 +22,7 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.PermissionCreatePosition).Description("Quyền tạo chức vụ");
             Field(x => x.PermissionCreateReceipt).Description("Quyền tạo phiếu thu");
             Field(x => x.PermissionCreateOrUpdateRoom).Description("Quyền tạo phòng");
-            Field(x => x.PermissionCreateRoomKind).Description("Quyền tạo loại phòng");
+            Field(x => x.PermissionCreateOrUpdateRoomKind).Description("Quyền tạo loại phòng");
             Field(x => x.PermissionCreateRate).Description("Quyền tạo giá cơ bản");
             Field(x => x.PermissionCreateVolatilityRate).Description("Quyền tạo giá biến động");
             Field(x => x.PermissionCreateOrUpdateService).Description("Quyền tạo dịch vụ");
@@ -64,7 +64,7 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.PermissionCreatePosition).Description("Quyền tạo chức vụ");
             Field(x => x.PermissionCreateReceipt).Description("Quyền tạo phiếu thu");
             Field(x => x.PermissionCreateOrUpdateRoom).Description("Quyền tạo phòng");
-            Field(x => x.PermissionCreateRoomKind).Description("Quyền tạo loại phòng");
+            Field(x => x.PermissionCreateOrUpdateRoomKind).Description("Quyền tạo loại phòng");
             Field(x => x.PermissionCreateRate).Description("Quyền tạo giá cơ bản");
             Field(x => x.PermissionCreateVolatilityRate).Description("Quyền tạo giá biến động");
             Field(x => x.PermissionCreateOrUpdateService).Description("Quyền tạo và cập nhật dịch vụ");

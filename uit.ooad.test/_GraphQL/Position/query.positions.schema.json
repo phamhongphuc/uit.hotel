@@ -29,7 +29,7 @@
               "permissionCreateRate",
               "permissionCreateReceipt",
               "permissionCreateOrUpdateRoom",
-              "permissionCreateRoomKind",
+              "permissionCreateOrUpdateRoomKind",
               "permissionCreateOrUpdateService",
               "permissionCreateServicesDetail",
               "permissionCreateVolatilityRate"
@@ -75,7 +75,7 @@
               "permissionCreateOrUpdateRoom": {
                 "type": "boolean"
               },
-              "permissionCreateRoomKind": {
+              "permissionCreateOrUpdateRoomKind": {
                 "type": "boolean"
               },
               "permissionCreateOrUpdateService": {

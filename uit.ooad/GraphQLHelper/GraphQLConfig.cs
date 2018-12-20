@@ -47,6 +47,7 @@ namespace uit.ooad.GraphQLHelper
             services.AddSingleton<RoomUpdateInput>();
             services.AddSingleton<RoomIdInput>();
             services.AddSingleton<RoomKindCreateInput>();
+            services.AddSingleton<RoomKindUpdateInput>();
             services.AddSingleton<RoomKindIdInput>();
             services.AddSingleton<ServiceIdInput>();
             services.AddSingleton<ServiceCreateInput>();
