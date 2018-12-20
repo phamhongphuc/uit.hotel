@@ -2,6 +2,7 @@ mutation ($input: RoomCreateInput!) {
   createRoom(input: $input) {
     id
     name
+    isActive
     floor{
       id
     }
