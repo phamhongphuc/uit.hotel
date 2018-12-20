@@ -21,7 +21,7 @@
               "permissionCreatePatronKind",
               "permissionCreateBill",
               "permissionCreateBooking",
-              "permissionCreateEmployee",
+              "permissionCreateOrUpdateEmployee",
               "permissionCreateOrUpdateFloor",
               "permissionCreateHouseKeeping",
               "permissionCreatePatron",
@@ -51,7 +51,7 @@
               "permissionCreateBooking": {
                 "type": "boolean"
               },
-              "permissionCreateEmployee": {
+              "permissionCreateOrUpdateEmployee": {
                 "type": "boolean"
               },
               "permissionCreateOrUpdateFloor": {

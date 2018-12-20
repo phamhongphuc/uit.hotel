@@ -5,7 +5,7 @@ query($id:ID!){
     permissionCreatePatronKind
     permissionCreateBill
     permissionCreateBooking
-    permissionCreateEmployee
+    permissionCreateOrUpdateEmployee
     permissionCreateOrUpdateFloor
     permissionCreateHouseKeeping
     permissionCreatePatron
