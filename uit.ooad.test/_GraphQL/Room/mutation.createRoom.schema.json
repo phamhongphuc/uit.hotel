@@ -16,6 +16,7 @@
           "required": [
             "id",
             "name",
+            "isActive",
             "floor",
             "roomKind"
           ],
@@ -26,6 +27,9 @@
             "name": {
               "type": "string",
               "pattern": "^(.*)$"
+            },
+            "isActive": {
+              "type": "boolean"
             },
             "floor": {
               "type": "object",

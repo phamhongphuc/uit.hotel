@@ -17,28 +17,18 @@ namespace uit.ooad.DataAccesses
             });
             return floor;
         }
-        public static async Task<Floor> Update(Floor floor)
+        public static async Task<Floor> Update(Floor floorInDatabase, Floor floor)
         {
-            await Database.WriteAsync(realm =>
-            {
-                floor = realm.Add(floor, update: true);
-            });
-            return floor;
+            await Database.WriteAsync(realm => floorInDatabase.Name = floor.Name);
+            return floorInDatabase;
         }
         public static async void Delete(Floor floor)
         {
-            await Database.WriteAsync(realm =>
-            {
-                realm.Remove(floor);
-            });
+            await Database.WriteAsync(realm => realm.Remove(floor));
         }
-        public static async void SetIsActive(int floorId, bool isActive)
+        public static async void SetIsActive(Floor floor, bool isActive)
         {
-            await Database.WriteAsync(realm =>
-            {
-                Database.Find<Floor>(floorId).IsActive = isActive;
-
-            });
+            await Database.WriteAsync(realm => floor.IsActive = isActive);
         }
 
         public static Floor Get(int floorId) => Database.Find<Floor>(floorId);

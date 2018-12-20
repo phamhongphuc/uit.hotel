@@ -1,6 +1,6 @@
 mutation($input:RoomUpdateInput!){
   updateRoom(input:$input){
-   id
+    id
     name
     isActive
     roomKind{

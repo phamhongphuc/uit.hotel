@@ -12,7 +12,7 @@ namespace uit.ooad.Businesses
     {
         public static Task<Patron> Add(Patron patron)
         {
-            var patronInDatabase = PatronDataAccess.Get(patron.Identification);
+            var patronInDatabase = Get(patron.Identification);
             if (patronInDatabase != null) return null;
 
             patron.PatronKind = patron.PatronKind.GetManaged();

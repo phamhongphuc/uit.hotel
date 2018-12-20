@@ -9,7 +9,7 @@ namespace uit.ooad.Businesses
     {
         public static Task<Bill> Add(Bill bill)
         {
-            var billInDatabase = BillDataAccess.Get(bill.Id);
+            var billInDatabase = Get(bill.Id);
             if (billInDatabase != null) return null;
 
             bill.Patron = bill.Patron.GetManaged();
