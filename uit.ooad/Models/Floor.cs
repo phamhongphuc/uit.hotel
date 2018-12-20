@@ -11,6 +11,8 @@ namespace uit.ooad.Models
 
         public string Name { get; set; }
 
+        public bool IsActive { get; set; }
+
         [Backlink(nameof(Room.Floor))]
         public IQueryable<Room> Rooms { get; }
 

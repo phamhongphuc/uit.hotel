@@ -1,74 +1,55 @@
 {
-    "definitions": {},
-    "type": "object",
-    "required": [
-      "data"
-    ],
-    "properties": {
-      "data": {
-        "type": "object",
-        "required": [
-          "room"
-        ],
-        "properties": {
-          "room": {
-            "type": "object",
-            "required": [
-              "id",
-              "name",
-              "roomKind",
-              "floor"
-            ],
-            "properties": {
-              "id": {
-                "type": "integer"
-              },
-              "name": {
-                "type": "string",
-                "pattern": "^(.*)$"
-              },
-              "roomKind": {
-                "type": "object",
-                "required": [
-                  "id",
-                  "name",
-                  "numberOfBeds",
-                  "priceByDate",
-                  "amountOfPeople"
-                ],
-                "properties": {
-                  "id": {
-                    "type": "integer"
-                  },
-                  "name": {
-                    "type": "string",
-                    "pattern": "^(.*)$"
-                  },
-                  "numberOfBeds": {
-                    "type": "integer"
-                  },
-                  "priceByDate": {
-                    "type": "integer"
-                  },
-                  "amountOfPeople": {
-                    "type": "integer"
-                  }
+  "definitions": {},
+  "type": "object",
+  "required": [
+    "data"
+  ],
+  "properties": {
+    "data": {
+      "type": "object",
+      "required": [
+        "room"
+      ],
+      "properties": {
+        "room": {
+          "type": "object",
+          "required": [
+            "id",
+            "name",
+            "isActive",
+            "roomKind",
+            "floor"
+          ],
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "name": {
+              "type": "string",
+              "pattern": "^(.*)$"
+            },
+            "isActive": {
+              "type": "boolean"
+            },
+            "roomKind": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "integer"
                 }
-              },
-              "floor": {
-                "type": "object",
-                "required": [
-                  "id",
-                  "name"
-                ],
-                "properties": {
-                  "id": {
-                    "type": "integer"
-                  },
-                  "name": {
-                    "type": "string",
-                    "pattern": "^(.*)$"
-                  }
+              }
+            },
+            "floor": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "integer"
                 }
               }
             }
@@ -77,3 +58,4 @@
       }
     }
   }
+}

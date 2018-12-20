@@ -31,6 +31,7 @@ namespace uit.ooad.GraphQLHelper
             services.AddSingleton<EmployeeCreateInput>();
             services.AddSingleton<EmployeeIdInput>();
             services.AddSingleton<FloorCreateInput>();
+            services.AddSingleton<FloorUpdateInput>();
             services.AddSingleton<FloorIdInput>();
             services.AddSingleton<HouseKeepingCreateInput>();
             services.AddSingleton<HouseKeepingIdInput>();
@@ -43,6 +44,7 @@ namespace uit.ooad.GraphQLHelper
             services.AddSingleton<RateCreateInput>();
             services.AddSingleton<ReceiptCreateInput>();
             services.AddSingleton<RoomCreateInput>();
+            services.AddSingleton<RoomUpdateInput>();
             services.AddSingleton<RoomIdInput>();
             services.AddSingleton<RoomKindCreateInput>();
             services.AddSingleton<RoomKindIdInput>();

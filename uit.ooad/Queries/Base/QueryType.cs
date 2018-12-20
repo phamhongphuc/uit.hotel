@@ -13,12 +13,14 @@ namespace uit.ooad.Queries.Base
         public string _List => typeof(TModel).Name + "s";
 
         public string _Finding => "Finding" + typeof(TModel).Name;
-        
+
         public string _Creation => "Create" + typeof(TModel).Name;
 
         public string _Deletion => "Delete" + typeof(TModel).Name;
 
         public string _Updation => "Update" + typeof(TModel).Name;
+
+        public string _SetIsActive => "SetIsActive" + typeof(TModel).Name;
 
         public QueryArguments _InputArgument<TInputGraphType>() where TInputGraphType : InputType<TModel>
             => new QueryArguments(new QueryArgument<NonNullGraphType<TInputGraphType>> { Name = "input" });

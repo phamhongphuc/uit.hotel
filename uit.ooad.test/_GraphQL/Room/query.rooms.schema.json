@@ -11,7 +11,7 @@
                     "type": "array",
                     "items": {
                         "type": "object",
-                        "required": ["id", "name", "floor", "roomKind"],
+                        "required": ["id", "name","isActive", "floor", "roomKind"],
                         "properties": {
                             "id": {
                                 "type": "integer"
@@ -19,6 +19,9 @@
                             "name": {
                                 "type": "string",
                                 "pattern": "^(.*)$"
+                            },
+                            "isActive": {
+                                "type": "boolean"
                             },
                             "floor": {
                                 "type": "object",

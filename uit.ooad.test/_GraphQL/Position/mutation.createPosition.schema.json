@@ -20,13 +20,13 @@
             "permissionCreateBill",
             "permissionCreateBooking",
             "permissionCreateEmployee",
-            "permissionCreateFloor",
+            "permissionCreateOrUpdateFloor",
             "permissionCreateHouseKeeping",
             "permissionCreatePatron",
             "permissionCreatePosition",
             "permissionCreateRate",
             "permissionCreateReceipt",
-            "permissionCreateRoom",
+            "permissionCreateOrUpdateRoom",
             "permissionCreateRoomKind",
             "permissionCreateOrUpdateService",
             "permissionCreateServicesDetail",
@@ -52,7 +52,7 @@
             "permissionCreateEmployee": {
               "type": "boolean"
             },
-            "permissionCreateFloor": {
+            "permissionCreateOrUpdateFloor": {
               "type": "boolean"
             },
             "permissionCreateHouseKeeping": {
@@ -70,7 +70,7 @@
             "permissionCreateReceipt": {
               "type": "boolean"
             },
-            "permissionCreateRoom": {
+            "permissionCreateOrUpdateRoom": {
               "type": "boolean"
             },
             "permissionCreateRoomKind": {
