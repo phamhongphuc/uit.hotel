@@ -1,37 +1,37 @@
 {
-    "definitions": {},
-    "type": "object",
-    "required": [
-      "data"
-    ],
-    "properties": {
-      "data": {
-        "type": "object",
-        "required": [
-          "updateFloor"
-        ],
-        "properties": {
-          "updateFloor": {
-            "type": "object",
-            "required": [
-              "id",
-              "name",
-              "isActive"
-            ],
-            "properties": {
-              "id": {
-                "type": "integer"
-              },
-              "name": {
-                "type": "string",
-                "pattern": "^(.*)$"
-              },
-              "isActive": {
-                "type": "boolean"
-              }
+  "definitions": {},
+  "type": "object",
+  "required": [
+    "data"
+  ],
+  "properties": {
+    "data": {
+      "type": "object",
+      "required": [
+        "updateFloor"
+      ],
+      "properties": {
+        "updateFloor": {
+          "type": "object",
+          "required": [
+            "id",
+            "name",
+            "isActive"
+          ],
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "name": {
+              "type": "string",
+              "pattern": "^(.*)$"
+            },
+            "isActive": {
+              "type": "boolean"
             }
           }
         }
       }
     }
   }
+}
