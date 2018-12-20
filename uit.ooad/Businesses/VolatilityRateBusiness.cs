@@ -9,9 +9,6 @@ namespace uit.ooad.Businesses
     {
         public static Task<VolatilityRate> Add(VolatilityRate volatilityRate)
         {
-            var volatilityRateInDatabase = VolatilityRateDataAccess.Get(volatilityRate.Id);
-            if (volatilityRateInDatabase != null) return null;
-
             volatilityRate.RoomKind = volatilityRate.RoomKind.GetManaged();
             return VolatilityRateDataAccess.Add(volatilityRate);
         }
