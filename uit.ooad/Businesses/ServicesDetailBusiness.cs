@@ -10,9 +10,6 @@ namespace uit.ooad.Businesses
     {
         public static Task<ServicesDetail> Add(ServicesDetail servicesDetail)
         {
-            var servicesDetailInDatabase = ServicesDetailDataAccess.Get(servicesDetail.Id);
-            if (servicesDetailInDatabase != null) return null;
-
             servicesDetail.Service = servicesDetail.Service.GetManaged();
             if (!servicesDetail.Service.IsActive)
                 throw new Exception("Dịch vụ " + servicesDetail.Service.Name + " đã ngừng cung cấp");

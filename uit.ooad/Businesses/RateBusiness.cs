@@ -9,9 +9,6 @@ namespace uit.ooad.Businesses
     {
         public static Task<Rate> Add(Rate rate)
         {
-            var rateInDatabase = RateDataAccess.Get(rate.Id);
-            if (rateInDatabase != null) return null;
-
             rate.RoomKind = rate.RoomKind.GetManaged();
             return RateDataAccess.Add(rate);
         }

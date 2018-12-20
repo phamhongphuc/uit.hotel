@@ -9,9 +9,6 @@ namespace uit.ooad.Businesses
     {
         public static Task<Receipt> Add(Receipt receipt)
         {
-            var receiptInDatabase = ReceiptDataAccess.Get(receipt.Id);
-            if (receiptInDatabase != null) return null;
-
             receipt.Bill = receipt.Bill.GetManaged();
             receipt.Employee = receipt.Employee.GetManaged();
             return ReceiptDataAccess.Add(receipt);

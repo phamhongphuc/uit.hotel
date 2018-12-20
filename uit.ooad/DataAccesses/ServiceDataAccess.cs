@@ -17,10 +17,15 @@ namespace uit.ooad.DataAccesses
             });
             return service;
         }
-        public static async Task<Service> Update(Service service)
+        public static async Task<Service> Update(Service serviceInDatabase, Service service)
         {
-            await Database.WriteAsync(realm => service = realm.Add(service, update: true));
-            return service;
+            await Database.WriteAsync(realm => 
+            {
+                serviceInDatabase.Name = service.Name;
+                serviceInDatabase.UnitRate = service.UnitRate;
+                serviceInDatabase.Unit = service.Unit;
+            });
+            return serviceInDatabase;
         }
         public static async void SetIsActive(Service service, bool isActive)
         {

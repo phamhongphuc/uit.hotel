@@ -50,7 +50,6 @@ namespace uit.ooad.ObjectTypes
             Name = _Updation;
             Field(x => x.Id).Description("Id tầng cần cập nhật");
             Field(x => x.Name).Description("Tên tầng");
-            Field(x => x.IsActive).Description("Trạng thái hoạt động");
         }
     }
 }

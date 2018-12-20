@@ -10,9 +10,6 @@ namespace uit.ooad.Businesses
     {
         public static Task<Booking> Add(Booking booking)
         {
-            var bookingInDatabase = BookingDataAccess.Get(booking.Id);
-            if (bookingInDatabase != null) return null;
-
             booking.Employee = booking.Employee.GetManaged();
             booking.Bill = booking.Bill.GetManaged();
             booking.Room = booking.Room.GetManaged();
@@ -21,7 +18,7 @@ namespace uit.ooad.Businesses
 
         public static Task<Booking> CheckIn(int bookingID)
         {
-            var booking = BookingDataAccess.Get(bookingID);
+            var booking = Get(bookingID);
             if (booking == null) throw new Exception("Không tìm thấy booking");
 
             return BookingDataAccess.CheckIn(booking, DateTimeOffset.Now);
