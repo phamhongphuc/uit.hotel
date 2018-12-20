@@ -18,27 +18,23 @@ namespace uit.ooad.DataAccesses
             });
             return room;
         }
-        public static async Task<Room> Update(Room room)
+        public static async Task<Room> Update(Room roomInDatabase, Room room)
         {
             await Database.WriteAsync(realm =>
             {
-                room = realm.Add(room, update: true);
+                roomInDatabase.Name = room.Name;
+                roomInDatabase.Floor = room.Floor;
+                roomInDatabase.RoomKind = room.RoomKind;
             });
-            return room;
+            return roomInDatabase;
         }
         public static async void Delete(Room room)
         {
-            await Database.WriteAsync(realm =>
-            {
-                realm.Remove(room);
-            });
+            await Database.WriteAsync(realm => realm.Remove(room));
         }
-        public static async void SetIsActive(int roomId, bool roomIsActive)
+        public static async void SetIsActive(Room room, bool roomIsActive)
         {
-            await Database.WriteAsync(realm =>
-            {
-                Database.Find<Room>(roomId).IsActive = roomIsActive;
-            });
+            await Database.WriteAsync(realm => room.IsActive = roomIsActive);
         }
 
         public static Room Get(int roomId) => Database.Find<Room>(roomId);
