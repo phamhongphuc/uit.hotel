@@ -17,8 +17,18 @@ namespace uit.ooad.Queries.Mutation
                 "Tạo và trả về một nhân viên mới",
                 _InputArgument<EmployeeCreateInput>(),
                 _CheckPermission(
-                    p => p.PermissionCreateEmployee,
+                    p => p.PermissionCreateOrUpdateEmployee,
                     context => EmployeeBusiness.Add(_GetInput(context))
+                )
+            );
+            
+            Field<EmployeeType>(
+                _Updation,
+                "Chỉnh sửa thông tin nhân viên",
+                _InputArgument<EmployeeUpdateInput>(),
+                _CheckPermission(
+                    p => p.PermissionCreateOrUpdateEmployee,
+                    context => EmployeeBusiness.Update(_GetInput(context))
                 )
             );
 
