@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using uit.ooad.DataAccesses;
 using uit.ooad.Models;
@@ -9,14 +11,34 @@ namespace uit.ooad.Businesses
     {
         public static Task<Room> Add(Room room)
         {
-            var roomInDatabase = RoomDataAccess.Get(room.Id);
-            if (roomInDatabase != null) return null;
-
             room.Floor = room.Floor.GetManaged();
             room.RoomKind = room.RoomKind.GetManaged();
             return RoomDataAccess.Add(room);
         }
-
+        public static Task<Room> Update(Room room)
+        {
+            var roomInDatabase = RoomDataAccess.Get(room.Id);
+            if (roomInDatabase != null && roomInDatabase.Bookings.Count() > 0)
+                throw new Exception("Không thể cập nhật! Phòng đã có giao dịch trước đó");
+            room.Floor = room.Floor.GetManaged();
+            room.RoomKind = room.RoomKind.GetManaged();
+            return RoomDataAccess.Update(room);
+        }
+        public static void Delete(int id)
+        {
+            var roomInDatabase = Get(id);
+            if (roomInDatabase == null)
+                throw new Exception("Id=" + id + " không tồn tại");
+            if (roomInDatabase.Bookings.Count() > 0)
+                throw new Exception("Không thể xóa! Phòng đã có giao dịch trước đó");
+            RoomDataAccess.Delete(roomInDatabase);
+        }
+        public static void SetIsActive(int id, bool isActive)
+        {
+            var roomInDatabase = RoomDataAccess.Get(id);
+            if (roomInDatabase == null) throw new Exception("Id=" + id + " không tồn tại");
+            RoomDataAccess.SetIsActive(id, isActive);
+        }
         public static Room Get(int roomId) => RoomDataAccess.Get(roomId);
         public static IEnumerable<Room> Get() => RoomDataAccess.Get();
     }

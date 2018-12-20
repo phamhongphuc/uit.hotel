@@ -15,7 +15,8 @@
                     "type": "object",
                     "required": [
                         "id",
-                        "name"
+                        "name",
+                        "isActive"
                     ],
                     "properties": {
                         "id": {
@@ -24,6 +25,9 @@
                         "name": {
                             "type": "string",
                             "pattern": "^(.*)$"
+                        },
+                        "isActive": {
+                            "type": "boolean"
                         }
                     }
                 }

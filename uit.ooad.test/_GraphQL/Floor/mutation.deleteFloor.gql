@@ -1,0 +1,5 @@
+mutation($id:ID!){
+  deleteFloor(id:$id){
+    id
+  }
+}

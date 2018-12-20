@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,6 +17,28 @@ namespace uit.ooad.DataAccesses
                 room = realm.Add(room);
             });
             return room;
+        }
+        public static async Task<Room> Update(Room room)
+        {
+            await Database.WriteAsync(realm =>
+            {
+                room = realm.Add(room, update: true);
+            });
+            return room;
+        }
+        public static async void Delete(Room room)
+        {
+            await Database.WriteAsync(realm =>
+            {
+                realm.Remove(room);
+            });
+        }
+        public static async void SetIsActive(int roomId, bool roomIsActive)
+        {
+            await Database.WriteAsync(realm =>
+            {
+                Database.Find<Room>(roomId).IsActive = roomIsActive;
+            });
         }
 
         public static Room Get(int roomId) => Database.Find<Room>(roomId);

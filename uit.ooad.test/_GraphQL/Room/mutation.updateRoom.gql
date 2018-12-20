@@ -1,6 +1,6 @@
-query($id:ID!){
-  room(id:$id){
-  	id
+mutation($input:RoomUpdateInput!){
+  updateRoom(input:$input){
+   id
     name
     isActive
     roomKind{
@@ -9,5 +9,5 @@ query($id:ID!){
     floor{
       id
     }
-}
+  }
 }

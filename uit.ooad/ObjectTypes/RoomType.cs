@@ -14,12 +14,13 @@ namespace uit.ooad.ObjectTypes
 
             Field(x => x.Id).Description("Id của phòng");
             Field(x => x.Name).Description("Tên phòng");
+            Field(x => x.IsActive).Description("Trạng thái phòng");
 
             Field<NonNullGraphType<FloorType>>(
                 nameof(Room.Floor),
                 resolve: context => context.Source.Floor,
                 description: "Phòng thuộc tầng nào"
-            );            
+            );
             Field<NonNullGraphType<RoomKindType>>(
                 nameof(Room.RoomKind),
                 resolve: context => context.Source.RoomKind,
@@ -41,6 +42,7 @@ namespace uit.ooad.ObjectTypes
             Name = _Creation;
 
             Field(x => x.Name).Description("Tên phòng");
+            Field(x => x.IsActive).Description("Trạng thái phòng");
 
             Field<NonNullGraphType<FloorIdInput>>(
                 nameof(Room.Floor),
@@ -53,6 +55,26 @@ namespace uit.ooad.ObjectTypes
         }
     }
 
+    public class RoomUpdateInput : InputType<Room>
+    {
+        public RoomUpdateInput()
+        {
+            Name = _Updation;
+
+            Field(x => x.Id).Description("Id phòng cần cập nhật");
+            Field(x => x.Name).Description("Tên phòng");
+            Field(x => x.IsActive).Description("Trạng thái phòng");
+
+            Field<NonNullGraphType<FloorIdInput>>(
+                nameof(Room.Floor),
+                "Phòng thuộc tầng nào"
+            );
+            Field<NonNullGraphType<RoomKindIdInput>>(
+                nameof(Room.RoomKind),
+                "Loại phòng của phòng"
+            );
+        }
+    }
     public class RoomIdInput : InputType<Room>
     {
         public RoomIdInput()

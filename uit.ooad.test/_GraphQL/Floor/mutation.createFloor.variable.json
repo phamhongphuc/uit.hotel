@@ -1,5 +1,6 @@
 {
     "input": {
-        "name": "Tầng 7"
+        "name": "Tầng 7",
+        "isActive":true
     }
 }

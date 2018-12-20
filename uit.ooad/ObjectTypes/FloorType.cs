@@ -14,6 +14,7 @@ namespace uit.ooad.ObjectTypes
 
             Field(x => x.Id).Description("Id của tầng");
             Field(x => x.Name).Description("Tên tầng");
+            Field(x => x.IsActive).Description("Trạng thái hoạt động");
             Field<ListGraphType<RoomType>>(
                 nameof(Floor.Rooms),
                 resolve: context => context.Source.Rooms.ToList(),
@@ -39,6 +40,17 @@ namespace uit.ooad.ObjectTypes
         {
             Name = _Creation;
             Field(x => x.Name).Description("Tên tầng");
+            Field(x => x.IsActive).Description("Trạng thái hoạt động");
+        }
+    }
+    public class FloorUpdateInput : InputType<Floor>
+    {
+        public FloorUpdateInput()
+        {
+            Name = _Updation;
+            Field(x => x.Id).Description("Id tầng cần cập nhật");
+            Field(x => x.Name).Description("Tên tầng");
+            Field(x => x.IsActive).Description("Trạng thái hoạt động");
         }
     }
 }

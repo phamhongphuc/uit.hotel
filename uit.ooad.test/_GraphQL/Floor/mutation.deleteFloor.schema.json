@@ -1,0 +1,20 @@
+{
+    "definitions": {},
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "type": "object",
+        "required": [
+          "deleteFloor"
+        ],
+        "properties": {
+          "deleteFloor": {
+            "type": "null"
+          }
+        }
+      }
+    }
+  }

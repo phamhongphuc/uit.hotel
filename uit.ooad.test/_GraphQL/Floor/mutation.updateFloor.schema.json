@@ -8,10 +8,10 @@
       "data": {
         "type": "object",
         "required": [
-          "floor"
+          "updateFloor"
         ],
         "properties": {
-          "floor": {
+          "updateFloor": {
             "type": "object",
             "required": [
               "id",
