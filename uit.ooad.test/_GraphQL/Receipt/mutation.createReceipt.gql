@@ -1,14 +1,14 @@
-mutation($input:ReceiptCreateInput!){
-  createReceipt(input:$input){
+mutation ($input: ReceiptCreateInput!) {
+  createReceipt(input: $input) {
     id
-   	time
-    money
-    bankAccountNumber
+		money
+    time
     typeOfPayment
-    employee{
+    bankAccountNumber
+    bill{
       id
     }
-    bill{
+    employee{
       id
     }
   }
