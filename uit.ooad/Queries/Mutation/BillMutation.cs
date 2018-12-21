@@ -10,18 +10,7 @@ namespace uit.ooad.Queries.Mutation
     {
         public BillMutation()
         {
-            Field<BillType>(
-                _Creation,
-                "Tạo và trả về một hóa đơn mới",
-                _InputArgument<BillCreateInput>(),
-                _CheckPermission(
-                    p => p.PermissionCreateBill,
-                    context => {
-                        // var employee = AuthenticationHelper.GetEmployee(context);
-                        return BillBusiness.Add(_GetInput(context));
-                    }
-                )
-            );
+
         }
     }
 }
