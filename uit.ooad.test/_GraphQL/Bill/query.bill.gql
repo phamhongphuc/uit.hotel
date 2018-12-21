@@ -4,22 +4,6 @@ query($id:ID!){
     time
     patron{
       identification
-      name
-      gender
-      birthdate
-      domicile
-      email
-      residence
-      nationality
-      note
-    }
-    employee{
-      id
-      name
-      address
-      birthdate
-      phoneNumber
-      startingDate
     }
   }
 }

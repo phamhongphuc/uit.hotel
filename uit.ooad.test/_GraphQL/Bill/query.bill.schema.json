@@ -16,13 +16,11 @@
           "required": [
             "id",
             "time",
-            "patron",
-            "employee"
+            "patron"
           ],
           "properties": {
             "id": {
-              "type": "string",
-              "pattern": "^(.*)$"
+              "type": "integer"
             },
             "time": {
               "type": "string",
@@ -31,94 +29,14 @@
             "patron": {
               "type": "object",
               "required": [
-                "identification",
-                "name",
-                "gender",
-                "birthdate",
-                "domicile",
-                "email",
-                "residence",
-                "nationality",
-                "note"
+                "identification"
               ],
               "properties": {
                 "identification": {
                   "type": "string",
                   "pattern": "^(.*)$"
-                },
-                "name": {
-                  "type": "string",
-                  "pattern": "^(.*)$"
-                },
-                "gender": {
-                  "type": "boolean"
-                },
-                "birthdate": {
-                  "type": "string",
-                  "pattern": "^(.*)$"
-                },
-                "domicile": {
-                  "type": "string",
-                  "pattern": "^(.*)$"
-                },
-                "email": {
-                  "type": "string",
-                  "pattern": "^(.*)$"
-                },
-                "residence": {
-                  "type": "string",
-                  "pattern": "^(.*)$"
-                },
-                "nationality": {
-                  "type": "string",
-                  "pattern": "^(.*)$"
-                },
-                "note": {
-                  "type": "string",
-                  "pattern": "^(.*)$"
                 }
               }
-            },
-            "employee": {
-              "anyOf": [{
-                "type": "object",
-                "required": [
-                  "id",
-                  "name",
-                  "address",
-                  "birthdate",
-                  "phoneNumber",
-                  "startingDate"
-                ],
-                "properties": {
-                  "id": {
-                    "type": "string",
-                    "pattern": "^(.*)$"
-                  },
-                  "name": {
-                    "type": "string",
-                    "pattern": "^(.*)$"
-                  },
-                  "address": {
-                    "type": "string",
-                    "pattern": "^(.*)$"
-                  },
-                  "birthdate": {
-                    "type": "string",
-                    "pattern": "^(.*)$"
-                  },
-                  "phoneNumber": {
-                    "type": "string",
-                    "pattern": "^(.*)$"
-                  },
-                  "startingDate": {
-                    "type": "string",
-                    "pattern": "^(.*)$"
-                  }
-                }
-              }, {
-                "type": "null"
-              }]
             }
           }
         }
