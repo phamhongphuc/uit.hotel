@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -30,6 +31,16 @@ namespace uit.ooad.DataAccesses
         }
 
         public static RoomKind Get(int roomKindId) => Database.Find<RoomKind>(roomKindId);
+
+        public static async void Delete(RoomKind roomKind)
+        {
+            await Database.WriteAsync(realm =>
+            {
+                realm.RemoveRange(roomKind.VolatilityRates);
+                realm.Remove(roomKind);
+            });
+        }
+
         public static IEnumerable<RoomKind> Get() => Database.All<RoomKind>();
     }
 }

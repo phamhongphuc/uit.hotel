@@ -18,6 +18,16 @@ namespace uit.ooad.Businesses
                 throw new Exception("Không thể cập nhật! Loại phòng đã có phòng");
             return RoomKindDataAccess.Update(roomKindInDatabase, roomKind);
         }
+
+        public static void Delete(int roomKindId)
+        {
+            var roomKindInDatabase = Get(roomKindId);
+            if (roomKindInDatabase == null)
+                throw new Exception("Không tồn tại loại phòng này");
+            if (roomKindInDatabase.Rooms.Count() > 0)
+                throw new Exception("Loại phòng đã có phòng sử dụng, không thể xóa");
+            RoomKindDataAccess.Delete(roomKindInDatabase);
+        }
         public static RoomKind Get(int roomKindId) => RoomKindDataAccess.Get(roomKindId);
         public static IEnumerable<RoomKind> Get() => RoomKindDataAccess.Get();
     }

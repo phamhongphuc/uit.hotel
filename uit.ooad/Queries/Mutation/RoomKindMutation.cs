@@ -1,3 +1,4 @@
+using GraphQL.Types;
 using uit.ooad.Businesses;
 using uit.ooad.Models;
 using uit.ooad.ObjectTypes;
@@ -25,6 +26,19 @@ namespace uit.ooad.Queries.Mutation
                 _CheckPermission(
                     p => p.PermissionCreateOrUpdateRoomKind,
                     context => RoomKindBusiness.Update(_GetInput(context))
+                )
+            );
+            Field<StringGraphType>(
+                _Deletion,
+                "Xóa một loại phòng",
+                _IdArgument(),
+                _CheckPermission<string>(
+                    p => p.PermissionCreateOrUpdateRoomKind,
+                    context =>
+                    {
+                        RoomKindBusiness.Delete(_GetId<int>(context));
+                        return "Xóa thành công";
+                    }
                 )
             );
         }
