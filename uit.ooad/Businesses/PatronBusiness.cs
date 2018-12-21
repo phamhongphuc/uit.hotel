@@ -18,6 +18,15 @@ namespace uit.ooad.Businesses
             patron.PatronKind = patron.PatronKind.GetManaged();
             return PatronDataAccess.Add(patron);
         }
+        
+        public static Task<Patron> Update(Patron patron)
+        {
+            var patronInDatabase = Get(patron.Identification);
+            if (patronInDatabase == null)
+                throw new Exception("Khách hàng có Id:"+patron.Identification + " không hợp lệ!");
+            patron.PatronKind = patron.PatronKind.GetManaged();
+            return PatronDataAccess.Update(patronInDatabase, patron);
+        }
 
         public static Patron Get(string patronId) => PatronDataAccess.Get(patronId);
         public static IEnumerable<Patron> Get() => PatronDataAccess.Get();

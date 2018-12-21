@@ -8,7 +8,7 @@ query($id:ID!){
     permissionCreateEmployee
     permissionCreateOrUpdateFloor
     permissionCreateHouseKeeping
-    permissionCreatePatron
+    permissionCreateOrUpdatePatron
     permissionCreatePosition
     permissionCreateRate
     permissionCreateReceipt

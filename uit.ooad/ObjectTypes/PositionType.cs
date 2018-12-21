@@ -15,7 +15,7 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.Id).Description("Id của chức vụ");
             Field(x => x.Name).Description("Tên chức vụ");
             Field(x => x.PermissionCreateEmployee).Description("Quyền tạo tài khoản nhân viên");
-            Field(x => x.PermissionCreatePatron).Description("Quyền tạo khách hàng");
+            Field(x => x.PermissionCreateOrUpdatePatron).Description("Quyền tạo khách hàng");
             Field(x => x.PermissionCreatePatronKind).Description("Quyền tạo loại khách hàng");
             Field(x => x.PermissionCreateBill).Description("Quyền tạo hóa đơn");
             Field(x => x.PermissionCreateOrUpdateFloor).Description("Quyền tạo tầng");
@@ -57,7 +57,7 @@ namespace uit.ooad.ObjectTypes
 
             Field(x => x.Name).Description("Tên chức vụ");
             Field(x => x.PermissionCreateEmployee).Description("Quyền tạo tài khoản nhân viên");
-            Field(x => x.PermissionCreatePatron).Description("Quyền tạo khách hàng");
+            Field(x => x.PermissionCreateOrUpdatePatron).Description("Quyền tạo khách hàng");
             Field(x => x.PermissionCreatePatronKind).Description("Quyền tạo loại khách hàng");
             Field(x => x.PermissionCreateBill).Description("Quyền tạo hóa đơn");
             Field(x => x.PermissionCreateOrUpdateFloor).Description("Quyền tạo tầng");

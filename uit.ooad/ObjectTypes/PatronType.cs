@@ -78,4 +78,28 @@ namespace uit.ooad.ObjectTypes
             );
         }
     }
+    public class PatronUpdateInput : InputType<Patron>
+    {
+        public PatronUpdateInput()
+        {
+            Name = _Updation;
+
+            Field(x => x.Identification).Description("Id của khách hàng");
+            Field(x => x.Name).Description("Tên của khách hàng");
+            Field(x => x.Email).Description("Địa chỉ e-mail của khách hàng");
+            Field(x => x.Gender).Description("Giới tính của khách hàng");
+            Field(x => x.Birthdate).Description("Ngày sinh của khách hàng");
+            Field(x => x.PhoneNumber).Description("Số điện thoại của khách hàng");
+            Field(x => x.Nationality).Description("Quốc tịch của khách hàng");
+            Field(x => x.Domicile).Description("Nguyên quán của khách hàng");
+            Field(x => x.Residence).Description("Địa chỉ thường trú của khách hàng");
+            Field(x => x.Company).Description("Công ty mà khách hàng đang làm việc");
+            Field(x => x.Note).Description("Một số chú thích về khách hàng nếu cần thiết");
+
+            Field<PatronKindIdInput>(
+                nameof(Patron.PatronKind),
+                "Loại khách hàng"
+            );
+        }
+    }
 }

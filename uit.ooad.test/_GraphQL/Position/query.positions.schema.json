@@ -24,7 +24,7 @@
               "permissionCreateEmployee",
               "permissionCreateOrUpdateFloor",
               "permissionCreateHouseKeeping",
-              "permissionCreatePatron",
+              "permissionCreateOrUpdatePatron",
               "permissionCreatePosition",
               "permissionCreateRate",
               "permissionCreateReceipt",
@@ -60,7 +60,7 @@
               "permissionCreateHouseKeeping": {
                 "type": "boolean"
               },
-              "permissionCreatePatron": {
+              "permissionCreateOrUpdatePatron": {
                 "type": "boolean"
               },
               "permissionCreatePosition": {
