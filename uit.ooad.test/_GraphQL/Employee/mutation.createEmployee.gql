@@ -1,8 +1,9 @@
 mutation ($input: EmployeeCreateInput!) {
   createEmployee(input: $input) {
     id
-	password
+		password
     name
+    identityCard
     phoneNumber
     address
     birthdate

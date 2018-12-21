@@ -29,6 +29,7 @@ namespace uit.ooad.GraphQLHelper
             services.AddSingleton<BookingCreateInput>();
             services.AddSingleton<BookingIdInput>();
             services.AddSingleton<EmployeeCreateInput>();
+            services.AddSingleton<EmployeeUpdateInput>();
             services.AddSingleton<EmployeeIdInput>();
             services.AddSingleton<FloorCreateInput>();
             services.AddSingleton<FloorUpdateInput>();

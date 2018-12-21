@@ -32,12 +32,12 @@ namespace uit.ooad.Queries.Mutation
                 _Deletion,
                 "Xóa một tầng",
                 _IdArgument(),
-                _CheckPermission(
+                _CheckPermission<string>(
                     p => p.PermissionCreateOrUpdateFloor,
                     context =>
                     {
                         FloorBusiness.Delete(_GetId<int>(context));
-                        return null;
+                        return "Xóa thành công";
                     }
                 )
             );
@@ -55,7 +55,7 @@ namespace uit.ooad.Queries.Mutation
                         var id = context.GetArgument<int>("id");
                         var isActive = context.GetArgument<bool>("isActive");
                         FloorBusiness.SetIsActive(id, isActive);
-                        return null;
+                        return "Cập nhật trạng thái thành công";
                     }
                 )
             );

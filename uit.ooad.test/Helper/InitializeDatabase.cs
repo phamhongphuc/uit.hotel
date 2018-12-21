@@ -54,9 +54,11 @@ namespace uit.ooad.test.Helper
                 Address = "Địa chỉ",
                 Birthdate = DateTime.Now,
                 Name = "Quản trị viên",
+                IdentityCard = "123456789",
                 Password = "12345678",
                 PhoneNumber = "+84 0123456789",
                 Position = PositionBusiness.Get(1),
+                IsActive = true,
                 StartingDate = DateTime.Now
             });
         }

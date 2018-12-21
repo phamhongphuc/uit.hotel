@@ -66,7 +66,7 @@ namespace uit.ooad.ObjectTypes
         public RoomKindUpdateInput()
         {
             Name = _Updation;
-            Description = "Input cho việc tạo một loại phòng";
+            Description = "Input cho việc chỉnh sửa một loại phòng";
 
             Field(x => x.Id).Description("Id loại phòng");
             Field(x => x.Name).Description("Tên loại phòng");

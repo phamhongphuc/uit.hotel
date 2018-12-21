@@ -21,6 +21,15 @@ namespace uit.ooad.Businesses
             return EmployeeDataAccess.Add(employee);
         }
 
+        public static Task<Employee> Update(Employee employee)
+        {
+            var employeeInDatabase = Get(employee.Id);
+            if(employeeInDatabase == null)  throw new Exception("không tồn tại nhân viên này");
+
+            employee.Position = employee.Position.GetManaged();
+            return EmployeeDataAccess.Update(employeeInDatabase, employee);
+        }
+        
         // password và newPassword đều là chuỗi gốc chưa qua mã hóa
         public static void ChangePassword(string id, string password, string newPassword)
         {
@@ -75,7 +84,7 @@ namespace uit.ooad.Businesses
                 Name = "Quản trị viên",
                 PermissionCreateBill = true,
                 PermissionCreateBooking = true,
-                PermissionCreateEmployee = true,
+                PermissionCreateOrUpdateEmployee = true,
                 PermissionCreateOrUpdateFloor = true,
                 PermissionCreateHouseKeeping = true,
                 PermissionCreateOrUpdatePatron = true,
@@ -94,6 +103,7 @@ namespace uit.ooad.Businesses
                 Id = "admin",
                 Name = "Quản trị viên",
                 Password = "admin",
+                IdentityCard = "123456789",
                 Address = "Unknown",
                 PhoneNumber = "Unknown",
                 Birthdate = DateTime.Now,

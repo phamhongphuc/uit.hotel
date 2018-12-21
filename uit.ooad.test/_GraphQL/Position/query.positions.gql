@@ -5,7 +5,7 @@
     permissionCreatePatronKind
     permissionCreateBill
     permissionCreateBooking
-    permissionCreateEmployee
+    permissionCreateOrUpdateEmployee
     permissionCreateOrUpdateFloor
     permissionCreateHouseKeeping
     permissionCreateOrUpdatePatron
