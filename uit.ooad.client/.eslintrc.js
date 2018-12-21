@@ -24,10 +24,6 @@ const config = {
         parser: 'babel-eslint',
         ecmaVersion: 2017,
         sourceType: 'module',
-        ecmaFeatures: {
-            jsx: true,
-            experimentalObjectRestSpread: true,
-        },
     },
     plugins: ['standard', 'vue', 'import', 'node', 'graphql'],
     settings: {
@@ -49,7 +45,7 @@ const config = {
         indent: ['error', 4],
         camelcase: 'error',
         'eol-last': 'error',
-        'linebreak-style': ['error', isWin ? 'windows' : 'unix'],
+        'linebreak-style': ['warn', isWin ? 'windows' : 'unix'],
         'no-console': 'warn',
         'no-lonely-if': 'error',
         'prefer-const': 'error',

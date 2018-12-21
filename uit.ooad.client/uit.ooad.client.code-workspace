@@ -31,7 +31,8 @@
                 "language": "vue",
                 "autoFix": true
             }
-        ]
+        ],
+        "files.eol": "\r\n"
     },
     "extensions": {
         "recommendations": [],
