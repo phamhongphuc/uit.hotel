@@ -7,14 +7,9 @@
     typeOfPayment
     employee{
       id
-      name
-      birthdate
-      startingDate
-      address
     }
     bill{
       id
-      time
     }
   }
 }
