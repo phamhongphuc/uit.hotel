@@ -1,0 +1,40 @@
+{
+    "folders": [
+        {
+            "path": "."
+        },
+        {
+            "path": "node_modules\\bootstrap\\scss"
+        }
+    ],
+    "settings": {
+        "path-autocomplete.pathMappings": {
+            "~": "${folder}/client"
+        },
+        "javascript.suggest.paths": false,
+        "typescript.suggest.paths": false,
+        "stylelint.configOverrides": {
+            "ignoreFiles": "**/bootstrap/scss/**"
+        },
+        "html-css-class-completion.includeGlobPattern": "**/*.{scss,css,html}",
+        "prettier.disableLanguages": [],
+        "vetur.format.options.tabSize": 4,
+        "vetur.format.options.useTabs": false,
+        "vetur.format.defaultFormatter.html": "none",
+        "eslint.validate": [
+            "javascript",
+            {
+                "language": "html",
+                "autoFix": true
+            },
+            {
+                "language": "vue",
+                "autoFix": true
+            }
+        ]
+    },
+    "extensions": {
+        "recommendations": [],
+        "unwantedRecommendations": []
+    }
+}
