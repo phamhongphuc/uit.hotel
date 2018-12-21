@@ -12,7 +12,7 @@ namespace uit.ooad.DataAccesses
             return bill;
         }
 
-        public static Bill Get(string billId) => Database.Find<Bill>(billId);
+        public static Bill Get(int billId) => Database.Find<Bill>(billId);
 
         public static IEnumerable<Bill> Get() => Database.All<Bill>();
     }

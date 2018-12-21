@@ -18,7 +18,7 @@ namespace uit.ooad.Businesses
             return BillDataAccess.Add(bill);
         }
 
-        public static Bill Get(string billId) => BillDataAccess.Get(billId);
+        public static Bill Get(int billId) => BillDataAccess.Get(billId);
         public static IEnumerable<Bill> Get() => BillDataAccess.Get();
     }
 }
