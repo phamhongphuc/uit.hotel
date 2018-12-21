@@ -191,7 +191,7 @@ namespace uit.ooad.test.Helper
         {
             BillBusiness.Add(new Bill
             {
-                Id = "1",
+                Id = 1,
                 Time = DateTime.Now,
                 Employee = EmployeeBusiness.Get(Constant.UserName),
                 Patron = PatronBusiness.Get("Id khách hàng")
@@ -207,7 +207,7 @@ namespace uit.ooad.test.Helper
                 CheckOutTime = DateTime.Now,
                 CreateTime = DateTime.Now,
                 Status = 0,
-                Bill = BillBusiness.Get("1"),
+                Bill = BillBusiness.Get(1),
                 Room = RoomBusiness.Get(1),
                 Employee = EmployeeBusiness.Get(Constant.UserName)
             });
@@ -231,7 +231,7 @@ namespace uit.ooad.test.Helper
                 Money = 1,
                 BankAccountNumber = "11111",
                 TypeOfPayment = 1,
-                Bill = BillBusiness.Get("1"),
+                Bill = BillBusiness.Get(1),
                 Employee = EmployeeBusiness.Get(Constant.UserName)
             });
         }
