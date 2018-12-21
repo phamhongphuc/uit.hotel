@@ -2,66 +2,48 @@
     "definitions": {},
     "type": "object",
     "required": [
-        "data"
+      "data"
     ],
     "properties": {
-        "data": {
-            "type": "object",
-            "required": [
-                "bills"
-            ],
-            "properties": {
-                "bills": {
-                    "type": "array",
-                    "items": {
-                        "type": "object",
-                        "required": [
-                            "id",
-                            "time",
-                            "patron",
-                            "employee"
-                        ],
-                        "properties": {
-                            "id": {
-                                "type": "string",
-                                "pattern": "^(.*)$"
-                            },
-                            "time": {
-                                "type": "string",
-                                "pattern": "^(.*)$"
-                            },
-                            "patron": {
-                                "type": "object",
-                                "required": [
-                                    "identification"
-                                ],
-                                "properties": {
-                                    "identification": {
-                                        "type": "string",
-                                        "pattern": "^(.*)$"
-                                    }
-                                }
-                            },
-                            "employee": {
-                                "anyOf": [{
-                                    "type": "object",
-                                    "required": [
-                                        "id"
-                                    ],
-                                    "properties": {
-                                        "id": {
-                                            "type": "string",
-                                            "pattern": "^(.*)$"
-                                        }
-                                    }
-                                }, {
-                                    "type": "null"
-                                }]
-                            }
-                        }
+      "data": {
+        "type": "object",
+        "required": [
+          "bills"
+        ],
+        "properties": {
+          "bills": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id",
+                "time",
+                "patron"
+              ],
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "time": {
+                  "type": "string",
+                  "pattern": "^(.*)$"
+                },
+                "patron": {
+                  "type": "object",
+                  "required": [
+                    "identification"
+                  ],
+                  "properties": {
+                    "identification": {
+                      "type": "string",
+                      "pattern": "^(.*)$"
                     }
+                  }
                 }
+              }
             }
+          }
         }
+      }
     }
-}
+  }
