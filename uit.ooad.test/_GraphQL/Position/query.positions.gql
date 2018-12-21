@@ -8,7 +8,7 @@
     permissionCreateOrUpdateEmployee
     permissionCreateOrUpdateFloor
     permissionCreateHouseKeeping
-    permissionCreatePatron
+    permissionCreateOrUpdatePatron
     permissionCreatePosition
     permissionCreateRate
     permissionCreateReceipt

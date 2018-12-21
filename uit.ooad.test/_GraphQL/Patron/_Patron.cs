@@ -31,7 +31,18 @@ namespace uit.ooad.test._GraphQL._Patron
                 @"/_GraphQL/Patron/mutation.createPatron.gql",
                 @"/_GraphQL/Patron/mutation.createPatron.schema.json",
                 @"/_GraphQL/Patron/mutation.createPatron.variable.json",
-                p => p.PermissionCreatePatron = true
+                p => p.PermissionCreateOrUpdatePatron = true
+            );
+        }
+        
+        [TestMethod]
+        public void UpdatePatron()
+        {
+            SchemaHelper.Execute(
+                @"/_GraphQL/Patron/mutation.updatePatron.gql",
+                @"/_GraphQL/Patron/mutation.updatePatron.schema.json",
+                @"/_GraphQL/Patron/mutation.updatePatron.variable.json",
+                p => p.PermissionCreateOrUpdatePatron = true
             );
         }
     }

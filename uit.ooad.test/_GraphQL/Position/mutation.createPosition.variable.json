@@ -7,7 +7,7 @@
 		"permissionCreateOrUpdateEmployee": false,
 		"permissionCreateOrUpdateFloor": false,
 		"permissionCreateHouseKeeping": false,
-		"permissionCreatePatron": false,
+		"permissionCreateOrUpdatePatron": false,
 		"permissionCreatePosition": false,
 		"permissionCreateRate": false,
 		"permissionCreateReceipt": false,
