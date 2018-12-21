@@ -17,6 +17,7 @@
                         "id",
                         "password",
                         "name",
+                        "identityCard",
                         "phoneNumber",
                         "address",
                         "birthdate",
@@ -34,6 +35,10 @@
                             "pattern": "^(.*)$"
                         },
                         "name": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "identityCard": {
                             "type": "string",
                             "pattern": "^(.*)$"
                         },
