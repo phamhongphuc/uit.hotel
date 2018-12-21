@@ -1,7 +1,7 @@
 const schemaJson = require('./graphql/schema.json');
 const isWin = require('os').platform() === 'win32';
 
-module.exports = {
+const config = {
     env: {
         node: true,
         browser: true,
@@ -99,3 +99,9 @@ module.exports = {
         ],
     },
 };
+
+if (process.env.NODE_ENV == 'development') {
+    config.plugins.push('only-warn');
+}
+
+module.exports = config;
