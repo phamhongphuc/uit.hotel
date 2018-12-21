@@ -1,0 +1,37 @@
+// Use Lab ( x , 0 , -9 )
+$darkest: #000818;
+$darker: #101621;
+$dark: #181e2a;
+$mix: #dbdde0;
+$light: #717786;
+
+$main: #25c7b7;
+
+$dribbble: #ea4c89;
+$facebook: #4267b2;
+$netlify: #25c7b7;
+
+$body-bg: #f2f2f2;
+$body-color: lighten(#212529, 25%);
+
+$black: black;
+$white: white;
+
+$red: #eb4d4b;
+
+$theme-colors: (
+    'darkest': $darkest,
+    'darker': $darker,
+    'dark': $dark,
+    'mix': $mix,
+    'light': $light,
+    'main': $main,
+    'white': $white,
+    'black': $black,
+    'dribbble': $dribbble,
+    'facebook': $facebook,
+    'netlify': $netlify,
+);
+
+$link-color: inherit;
+$link-hover-color: inherit;

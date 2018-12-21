@@ -34,18 +34,18 @@ module.exports = {
     modules: [
         '@nuxtjs/apollo',
         ['bootstrap-vue/nuxt', { css: false }],
-        // 'nuxt-sass-resources-loader',
-        // [
-        // 'assets/scss/before/_before.scss',
-        // 'bootstrap/scss/_functions.scss',
-        // 'bootstrap/scss/_variables.scss',
-        // 'bootstrap/scss/_mixins.scss',
-        // 'assets/scss/after/_after.scss',
-        // ],
+        [
+            'nuxt-sass-resources-loader',
+            [
+                'assets/scss/before/_before.scss',
+                'bootstrap/scss/_functions.scss',
+                'bootstrap/scss/_variables.scss',
+                'bootstrap/scss/_mixins.scss',
+                'assets/scss/after/_after.scss',
+            ],
+        ],
     ],
-    plugins: [
-        // { src: '~/plugins/global', ssr: false }
-    ],
+    plugins: [{ src: '~/plugins/global', ssr: false }],
     apollo: {
         clientConfigs: {
             default: {

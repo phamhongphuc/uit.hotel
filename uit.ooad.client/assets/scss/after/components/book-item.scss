@@ -1,0 +1,54 @@
+$book-item-highlight-color: $main;
+
+$book-item-space: 0.75rem;
+
+$book-item-img-rw: 852;
+$book-item-img-rh: 1200;
+$book-item-img-r: $book-item-img-rw / $book-item-img-rh;
+
+$book-item-title-height: 2rem;
+$book-item-tags-height: 1.5rem;
+$book-item-description-line-height: 1.25rem;
+$book-item-description-margin-bottom: 0.25rem;
+$book-item-chapter-height: 1.5rem;
+
+$book-item-box-padding-top: $book-item-space;
+$book-item-box-padding-bottom: $book-item-space * 1.5;
+$book-item-box-padding-y: $book-item-box-padding-bottom +
+    $book-item-box-padding-top;
+
+@mixin book-item-grid($book-item-description-lines: 3) {
+    $book-item-description-height: $book-item-description-margin-bottom +
+        $book-item-description-line-height * $book-item-description-lines;
+
+    $book-item-box-vh: $book-item-title-height + $book-item-tags-height +
+        $book-item-description-height + $book-item-chapter-height +
+        $book-item-box-padding-y;
+
+    $book-item-img-vh: $book-item-box-vh;
+    $book-item-img-vw: $book-item-img-vh * $book-item-img-r;
+
+    height: $book-item-box-vh + $book-item-space;
+    > div {
+        grid-template-columns:
+            [left-img] $book-item-space
+            [left-box] #{$book-item-img-vw - $book-item-space}
+            [right-img] $book-item-space * 1.5
+            [left-text] auto
+            [right-text] $book-item-space * 1.5
+            [right-box];
+        grid-template-rows:
+            [top-img] $book-item-space
+            [top-box] $book-item-box-padding-top
+            [top-text] auto
+            [bottom-text] #{$book-item-box-padding-bottom - $book-item-space}
+            [bottom-img] $book-item-space
+            [bottom-box];
+    }
+}
+
+@mixin book-item-grid-up($book-item-description-lines, $up: null) {
+    @include media-breakpoint-up($up) {
+        @include book-item-grid($book-item-description-lines);
+    }
+}
