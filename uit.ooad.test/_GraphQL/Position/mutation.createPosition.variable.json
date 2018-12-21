@@ -12,7 +12,7 @@
 		"permissionCreateRate": false,
 		"permissionCreateReceipt": false,
 		"permissionCreateOrUpdateRoom": false,
-		"permissionCreateRoomKind": false,
+		"permissionCreateOrUpdateRoomKind": false,
 		"permissionCreateOrUpdateService": false,
 		"permissionCreateServicesDetail": false,
 		"permissionCreateVolatilityRate": false

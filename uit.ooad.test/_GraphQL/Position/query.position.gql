@@ -13,7 +13,7 @@ query($id:ID!){
     permissionCreateRate
     permissionCreateReceipt
     permissionCreateOrUpdateRoom
-    permissionCreateRoomKind
+    permissionCreateOrUpdateRoomKind
     permissionCreateOrUpdateService
     permissionCreateServicesDetail
     permissionCreateVolatilityRate

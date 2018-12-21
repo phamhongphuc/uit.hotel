@@ -17,6 +17,17 @@ namespace uit.ooad.DataAccesses
             });
             return roomKind;
         }
+        public static async Task<RoomKind> Update(RoomKind roomKindInDatabase, RoomKind roomKind)
+        {
+            await Database.WriteAsync(realm =>
+            {
+                roomKindInDatabase.Name = roomKind.Name;
+                roomKindInDatabase.NumberOfBeds = roomKind.NumberOfBeds;
+                roomKindInDatabase.AmountOfPeople = roomKind.AmountOfPeople;
+                roomKindInDatabase.PriceByDate = roomKind.PriceByDate;
+            });
+            return roomKindInDatabase;
+        }
 
         public static RoomKind Get(int roomKindId) => Database.Find<RoomKind>(roomKindId);
         public static IEnumerable<RoomKind> Get() => Database.All<RoomKind>();
