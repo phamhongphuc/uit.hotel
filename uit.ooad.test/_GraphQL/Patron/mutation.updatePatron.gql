@@ -1,0 +1,18 @@
+mutation($input:PatronUpdateInput!){
+  updatePatron(input:$input){
+    identification
+    name
+    birthdate
+    email
+    gender
+    residence
+    domicile
+    phoneNumber
+    nationality
+    company
+    note
+    patronKind{
+      id
+    }
+  }
+}
