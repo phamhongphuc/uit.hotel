@@ -30,3 +30,5 @@
 
 *.realm
 *.realm.lock
+
+*.sh
