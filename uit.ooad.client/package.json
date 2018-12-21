@@ -13,7 +13,7 @@
         "precommit": "yarn lint",
         "gql": "bash ./graphql/fetch.sh",
         "prettier:fix": "prettier ** --write",
-        "lint:js": "eslint --ext .js,.vue,.gql,.graphql --ignore-path .gitignore .",
+        "lint:js": "eslint --ext .ts,.js,.vue,.gql,.graphql --ignore-path .gitignore .",
         "lint:css": "stylelint **/*.{vue,scss}",
         "lint": "run-s lint:*",
         "type:fix": "run-s prettier:fix \"lint:* --fix\"",
@@ -22,20 +22,23 @@
     "dependencies": {
         "@nuxtjs/apollo": "^4.0.0-rc2.3",
         "autoprefixer": "^9.4.3",
-        "axios": "^0.18.0",
         "bluebird": "^3.5.3",
         "bootstrap-vue": "^2.0.0-rc.11",
         "graphql-tag": "^2.10.0",
         "moment": "^2.23.0",
         "nuxt": "^2.3.4",
+        "nuxt-property-decorator": "^1.3.1",
         "nuxt-sass-resources-loader": "^2.0.5",
+        "nuxt-typescript": "^0.11.0",
         "source-map-support": "^0.5.9",
-        "vue-import-loader": "phamhongphuc/vue-import-loader#v0.2.0"
+        "vue-import-loader": "phamhongphuc/vue-import-loader#v0.2.0",
+        "vuex-class": "^0.3.1"
     },
     "devDependencies": {
         "@babel/polyfill": "^7.2.3",
         "@babel/register": "7.0.0",
         "@playlyfe/gql": "^2.6.1",
+        "@types/node": "^10.12.18",
         "babel-eslint": "^10.0.1",
         "babel-plugin-root-import": "^6.1.0",
         "chai": "^4.2.0",
@@ -54,6 +57,7 @@
         "eslint-plugin-prettier": "^3.0.0",
         "eslint-plugin-promise": "^4.0.1",
         "eslint-plugin-standard": "^4.0.0",
+        "eslint-plugin-typescript": "^0.14.0",
         "eslint-plugin-vue": "^5.0.0",
         "graphql-cli": "^3.0.3",
         "mocha": "^5.2.0",
@@ -66,6 +70,9 @@
         "stylelint-config-prettier": "^4.0.0",
         "stylelint-config-recommended-scss": "^3.2.0",
         "stylelint-config-standard": "^18.2.0",
-        "stylelint-scss": "^3.4.2"
+        "stylelint-scss": "^3.4.2",
+        "ts-loader": "^5.3.2",
+        "typescript": "^3.2.2",
+        "typescript-eslint-parser": "^21.0.2"
     }
 }
