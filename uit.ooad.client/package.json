@@ -12,10 +12,11 @@
         "heroku-postbuild": "yarn build",
         "precommit": "yarn lint",
         "gql": "bash ./graphql/fetch.sh",
-        "lint": "eslint --ext .js,.vue,.gql,.graphql --ignore-path .gitignore .",
-        "lint:fix": "eslint --ext .js,.vue --ignore-path .gitignore . --fix",
-        "prettier:fix": "prettier --write api/** components/** layouts/** pages/** plugins/** !**/node_modules/** !./node_modules/**",
-        "type:fix": "run-s lint:fix prettier:fix",
+        "prettier:fix": "prettier ** --write",
+        "lint:js": "eslint --ext .js,.vue,.gql,.graphql --ignore-path .gitignore .",
+        "lint:css": "stylelint **/*.{vue,scss}",
+        "lint": "run-s lint:*",
+        "type:fix": "run-s prettier:fix \"lint:* --fix\"",
         "test": "mocha test --recursive --exit --require mocha-babel"
     },
     "dependencies": {
