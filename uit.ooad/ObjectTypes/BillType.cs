@@ -54,7 +54,6 @@ namespace uit.ooad.ObjectTypes
     {
         public BillCreateInput()
         {
-            Field(x => x.Id).Description("Id của hóa đơn");
             Field(x => x.Time).Description("Thời điểm in hóa đơn");
 
             Field<PatronIdInput>(

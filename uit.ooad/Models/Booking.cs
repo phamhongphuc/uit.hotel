@@ -14,6 +14,7 @@ namespace uit.ooad.Models
         public DateTimeOffset CheckOutTime { get; set; }
         public DateTimeOffset CreateTime { get; set; }
         public int Status { get; set; }
+        //sẽ tạo thêm 2 trường nhân viên nữa, để lưu nv đặt, nv check-in, nv check-out
         public Employee Employee { get; set; }
         public Bill Bill { get; set; }
         public Room Room { get; set; }

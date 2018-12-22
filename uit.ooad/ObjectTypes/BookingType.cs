@@ -34,7 +34,7 @@ namespace uit.ooad.ObjectTypes
                 description: "Phòng khách hàng chọn đặt trước"
             );
 
-            Field<ListGraphType<PatronType>>(
+            Field<NonNullGraphType<ListGraphType<PatronType>>>(
                 nameof(Booking.Patrons),
                 resolve: context => context.Source.Patrons.ToList(),
                 description: "Danh sách khách hàng yêu cầu đặt phòng"
@@ -70,15 +70,15 @@ namespace uit.ooad.ObjectTypes
         {
             Name = _Creation;
 
-            Field(x => x.CheckInTime).Description("Thời điểm nhận phòng dự kiến của khách hàng");
-            Field(x => x.CheckOutTime).Description("Thời điểm trả phòng dự kiến của khách hàng");
-            Field(x => x.CreateTime).Description("Thời điểm tạo thông tin thuê phòng");
+            // Field(x => x.CheckInTime).Description("Thời điểm nhận phòng dự kiến của khách hàng");
+            // Field(x => x.CheckOutTime).Description("Thời điểm trả phòng dự kiến của khách hàng");
+            // Field(x => x.CreateTime).Description("Thời điểm tạo thông tin thuê phòng");
             Field(x => x.Status).Description("Trạng thái của thông tin thuê phòng");
 
-            Field<NonNullGraphType<EmployeeIdInput>>(
-                nameof(Booking.Employee),
-                "Nhân viên thực hiện giao dịch nhận đặt phòng từ khách hàng"
-            );
+            // Field<NonNullGraphType<EmployeeIdInput>>(
+            //     nameof(Booking.Employee),
+            //     "Nhân viên thực hiện giao dịch nhận đặt phòng từ khách hàng"
+            // );
             Field<NonNullGraphType<BillIdInput>>(
                 nameof(Booking.Bill),
                 "Thông tin hóa đơn của thông tin thuê phòng"
@@ -86,6 +86,10 @@ namespace uit.ooad.ObjectTypes
             Field<NonNullGraphType<RoomIdInput>>(
                 nameof(Booking.Room),
                 "Phòng khách hàng chọn đặt trước"
+            );
+            Field<NonNullGraphType<ListGraphType<PatronIdInput>>>(
+                nameof(Booking.Patrons),
+                "Danh sách khách hàng"
             );
         }
     }

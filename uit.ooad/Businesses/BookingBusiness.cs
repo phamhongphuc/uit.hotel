@@ -8,11 +8,20 @@ namespace uit.ooad.Businesses
 {
     public class BookingBusiness
     {
-        public static Task<Booking> Add(Booking booking)
+        public static Task<Booking> Add(Bill bill, Booking booking, Employee employee)
         {
-            booking.Employee = booking.Employee.GetManaged();
-            booking.Bill = booking.Bill.GetManaged();
+            booking.Employee = employee;
+            booking.Bill = bill;
             booking.Room = booking.Room.GetManaged();
+
+            var patrons = new List<Patron>();
+            foreach (var patron in booking.Patrons)
+            {
+                patrons.Add(patron.GetManaged());
+                booking.Patrons.Remove(patron);
+            }
+            foreach (var patron in patrons) booking.Patrons.Add(patron);
+            
             return BookingDataAccess.Add(booking);
         }
 
