@@ -8,6 +8,18 @@ namespace uit.ooad.Models
 {
     public class Booking : RealmObject
     {
+        [Ignored]
+        public List<Patron> ListOfPatrons
+        {
+            set
+            {
+                if (IsManaged)
+                    throw new Exception("Chỉ tạo setter cho trường dữ liệu này đối với đối tượng chưa được quản lý.");
+                foreach (var patron in value)
+                    Patrons.Add(patron.GetManaged());
+            }
+        }
+
         [PrimaryKey]
         public int Id { get; set; }
         public DateTimeOffset CheckInTime { get; set; }
