@@ -21,11 +21,14 @@ const config = {
     ],
     parser: 'vue-eslint-parser',
     parserOptions: {
-        parser: 'babel-eslint',
-        ecmaVersion: 2017,
+        parser: 'typescript-eslint-parser',
         sourceType: 'module',
+        ecmaVersion: 2017,
+        ecmaFeatures: {
+            jsx: false,
+        },
     },
-    plugins: ['standard', 'vue', 'import', 'node', 'graphql'],
+    plugins: ['standard', 'vue', 'import', 'node', 'graphql', 'typescript'],
     settings: {
         'import/resolver': {
             'babel-plugin-root-import': {
@@ -48,6 +51,16 @@ const config = {
         'linebreak-style': ['warn', isWin ? 'windows' : 'unix'],
         'no-console': 'warn',
         'no-lonely-if': 'error',
+
+        'typescript/no-unused-vars': 'error',
+        'typescript/class-name-casing': 'error',
+        'typescript/explicit-function-return-type': 'error',
+        'typescript/generic-type-naming': 'error',
+        'typescript/interface-name-prefix': 'error',
+        'typescript/member-ordering': 'error',
+        'typescript/no-use-before-define': 'error',
+        'typescript/no-use-before-define': 'error',
+
         'prefer-const': 'error',
         'space-before-function-paren': [
             'error',
