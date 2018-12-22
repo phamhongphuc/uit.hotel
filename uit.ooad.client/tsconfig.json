@@ -1,0 +1,30 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "lib": ["dom", "es2015"],
+        "module": "es2015",
+        "moduleResolution": "node",
+        "experimentalDecorators": true,
+        "noImplicitAny": false,
+        "noImplicitThis": false,
+        "strictNullChecks": true,
+        "removeComments": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "allowSyntheticDefaultImports": true,
+        "allowJs": true,
+        "baseUrl": ".",
+        "paths": {
+            "~/*": ["./*"]
+        }
+    },
+    "compileOnSave": false,
+    "exclude": [
+        "node_modules",
+        ".nuxt",
+        "dist",
+        "mocha-babel.js",
+        "modules/typescript.js",
+        "nuxt.config.js",
+        "test"
+    ]
+}

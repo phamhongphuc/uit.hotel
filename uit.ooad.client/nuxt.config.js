@@ -33,6 +33,7 @@ module.exports = {
     loading: { color: '#3B8070' },
     modules: [
         '@nuxtjs/apollo',
+        'nuxt-typescript',
         ['bootstrap-vue/nuxt', { css: false }],
         [
             'nuxt-sass-resources-loader',
@@ -64,21 +65,6 @@ module.exports = {
                     exclude: /(node_modules)/,
                 });
             }
-
-            const vueLoader = config.module.rules.find(
-                rule => rule.loader === 'vue-loader',
-            );
-
-            vueLoader.use = [
-                { loader: vueLoader.loader, options: vueLoader.options },
-                {
-                    loader: 'vue-import-loader',
-                    options: { allowPath: 'client' },
-                },
-            ];
-
-            delete vueLoader.options;
-            delete vueLoader.loader;
         },
         postcss: [autoprefixer()],
     },
