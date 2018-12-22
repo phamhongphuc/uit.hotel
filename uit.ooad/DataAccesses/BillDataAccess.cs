@@ -7,13 +7,18 @@ namespace uit.ooad.DataAccesses
 {
     public class BillDataAccess : RealmDatabase
     {
-        public static async Task<Bill> Add(Bill bill)
+        public static async Task<Bill> Book(Bill bill, List<Booking> bookings)
         {
             await Database.WriteAsync(realm =>
             {
-                bill.Id = Get().Count() == 0 ? 1 : Get().Max(f => f.Id) + 1;
-
+                bill.Id = NextId;
                 bill = realm.Add(bill);
+
+                foreach (var booking in bookings)
+                {
+                    booking.Bill = bill;
+                    BookingDataAccess.Add(realm, booking);
+                }
             });
             return bill;
         }

@@ -22,6 +22,12 @@ namespace uit.ooad.Models
 
         [PrimaryKey]
         public int Id { get; set; }
+
+        public void CheckValidBeforeCreate()
+        {
+            // Kiểm tra các điều kiện thực thi trong này.
+        }
+
         public DateTimeOffset CheckInTime { get; set; }
         public DateTimeOffset CheckOutTime { get; set; }
         public DateTimeOffset CreateTime { get; set; }

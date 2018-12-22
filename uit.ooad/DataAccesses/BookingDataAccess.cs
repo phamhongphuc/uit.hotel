@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Realms;
 using uit.ooad.Models;
 
 namespace uit.ooad.DataAccesses
@@ -10,18 +11,14 @@ namespace uit.ooad.DataAccesses
     {
         public static async Task<Booking> Add(Booking booking)
         {
-            await Database.WriteAsync(realm =>
-            {
-                booking.Id = Get().Count() == 0 ? 1 : Get().Max(f => f.Id) + 1;
-
-                booking = realm.Add(booking);
-            });
+            await Database.WriteAsync(realm => Add(realm, booking));
             return booking;
         }
 
-        public static bool CheckBooking(int bookingID)
+        public static Booking Add(Realm realm, Booking booking)
         {
-            return Get(bookingID) != null;
+            booking.Id = NextId;
+            return realm.Add(booking);
         }
         public static int NextId => Get().Count() == 0 ? 1 : Get().Max(f => f.Id) + 1;
 

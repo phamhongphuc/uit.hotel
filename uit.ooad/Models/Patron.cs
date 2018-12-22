@@ -28,6 +28,12 @@ namespace uit.ooad.Models
 
         [Backlink(nameof(Booking.Patrons))]
         public IQueryable<Booking> Bookings { get; }
-        public Patron GetManaged() => PatronBusiness.Get(Identification);
+        public Patron GetManaged()
+        {
+            var patronInDatabase = PatronBusiness.Get(Identification);
+            if (patronInDatabase == null)
+                throw new Exception("Không tìm thấy khách hàng có id là " + Identification);
+            return patronInDatabase;
+        }
     }
 }

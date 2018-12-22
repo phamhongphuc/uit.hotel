@@ -9,16 +9,22 @@ namespace uit.ooad.Businesses
 {
     public class BillBusiness
     {
-        public static Task<Bill> Add(Employee employee, Bill bill)
+        public static Task<Bill> Book(Employee employee, Bill bill, List<Booking> bookings)
         {
             bill.Patron = bill.Patron.GetManaged();
             bill.Employee = employee;
 
-            return BillDataAccess.Add(bill);
+            foreach (var booking in bookings)
+            {
+                booking.Employee = employee;
+                booking.Room = booking.Room.GetManaged();
+                booking.CheckValidBeforeCreate();
+            }
+
+            return BillDataAccess.Book(bill, bookings);
         }
 
         public static Bill Get(int billId) => BillDataAccess.Get(billId);
         public static IEnumerable<Bill> Get() => BillDataAccess.Get();
-
     }
 }
