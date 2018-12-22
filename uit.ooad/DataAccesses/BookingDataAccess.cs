@@ -23,6 +23,7 @@ namespace uit.ooad.DataAccesses
         {
             return Get(bookingID) != null;
         }
+        public static int NextId => Get().Count() == 0 ? 1 : Get().Max(f => f.Id) + 1;
 
         public static async Task<Booking> CheckIn(Booking booking, DateTimeOffset now)
         {
