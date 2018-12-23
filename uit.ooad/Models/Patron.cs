@@ -9,6 +9,7 @@ namespace uit.ooad.Models
     {
         [Indexed]
         [PrimaryKey]
+        public int Id { get; set; }
         // Định danh: Số an sinh xã hội / Số chứng minh nhân dân / Số passport
         public string Identification { get; set; }
         public string Name { get; set; }
