@@ -15,14 +15,9 @@
     "eslint.enable": true,
     "eslint.validate": [
         "javascript",
-        {
-            "language": "html",
-            "autoFix": true
-        },
-        {
-            "language": "vue",
-            "autoFix": true
-        }
+        { "language": "html", "autoFix": true },
+        { "language": "vue", "autoFix": true },
+        { "language": "typescript", "autoFix": true }
     ],
     "editor.tabSize": 4,
     "editor.insertSpaces": true,

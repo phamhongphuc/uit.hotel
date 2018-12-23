@@ -69,8 +69,6 @@
         "shinnn.stylelint",
         // Travis CI Status
         "felixrieseberg.vsc-travis-ci-status",
-        // TSLint
-        "eg2.tslint",
         // TypeScript Importer
         "pmneo.tsimporter",
         // Vetur
