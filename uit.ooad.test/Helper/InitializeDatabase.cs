@@ -2,6 +2,7 @@ using System;
 using uit.ooad.Businesses;
 using uit.ooad.DataAccesses;
 using uit.ooad.Models;
+using System.Collections.Generic;
 
 namespace uit.ooad.test.Helper
 {
@@ -25,7 +26,7 @@ namespace uit.ooad.test.Helper
             AddVolatilityRate();
             AddService();
             AddBill();
-            AddBooking();
+            // AddBooking();
             AddHouseKeeping();
             AddReceipt();
             AddServicesDetail();
@@ -130,7 +131,7 @@ namespace uit.ooad.test.Helper
         {
             PatronBusiness.Add(new Patron
             {
-                Identification = "Id khách hàng",
+                Identification = "123456789",
                 Name = "Tên khách hàng",
                 Email = "Email khách hàng",
                 Gender = true,
@@ -149,7 +150,6 @@ namespace uit.ooad.test.Helper
         {
             PatronKindBusiness.Add(new PatronKind
             {
-                Id = 1,
                 Name = "Tên loại khách hàng",
                 Description = "Mô tả loại khách hàng"
             });
@@ -189,29 +189,44 @@ namespace uit.ooad.test.Helper
 
         private static void AddBill()
         {
-            BillBusiness.Add(new Bill
+            BillBusiness.Book(EmployeeBusiness.Get(Constant.UserName), new Bill
             {
-                Id = "1",
                 Time = DateTime.Now,
-                Employee = EmployeeBusiness.Get(Constant.UserName),
-                Patron = PatronBusiness.Get("Id khách hàng")
+                Patron = PatronBusiness.Get("123456789")
+            },
+            new List<Booking>
+            {
+                new Booking
+                {
+                    CheckInTime = DateTime.Now,
+                    CheckOutTime = DateTime.Now,
+                    CreateTime = DateTime.Now,
+                    Status = 0,
+                    Room = RoomBusiness.Get(1),
+                    ListOfPatrons = new List<Patron>
+                    {
+                        new Patron{
+                            Identification = "123456789"
+                        }
+                    }
+                }
             });
         }
 
-        private static void AddBooking()
-        {
-            BookingBusiness.Add(new Booking
-            {
-                Id = 1,
-                CheckInTime = DateTime.Now,
-                CheckOutTime = DateTime.Now,
-                CreateTime = DateTime.Now,
-                Status = 0,
-                Bill = BillBusiness.Get("1"),
-                Room = RoomBusiness.Get(1),
-                Employee = EmployeeBusiness.Get(Constant.UserName)
-            });
-        }
+        // private static void AddBooking()
+        // {
+        //     BookingBusiness.Add(new Booking
+        //     {
+        //         Id = 1,
+        //         CheckInTime = DateTime.Now,
+        //         CheckOutTime = DateTime.Now,
+        //         CreateTime = DateTime.Now,
+        //         Status = 0,
+        //         Bill = BillBusiness.Get(1),
+        //         Room = RoomBusiness.Get(1),
+        //         Employee = EmployeeBusiness.Get(Constant.UserName)
+        //     });
+        // }
         private static void AddHouseKeeping()
         {
             HouseKeepingBusiness.Add(new HouseKeeping
@@ -231,7 +246,7 @@ namespace uit.ooad.test.Helper
                 Money = 1,
                 BankAccountNumber = "11111",
                 TypeOfPayment = 1,
-                Bill = BillBusiness.Get("1"),
+                Bill = BillBusiness.Get(1),
                 Employee = EmployeeBusiness.Get(Constant.UserName)
             });
         }

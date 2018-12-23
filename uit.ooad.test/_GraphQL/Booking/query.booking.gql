@@ -6,11 +6,12 @@ query($id:ID!){
     createTime
     employee{
       id
-      name
     }
     bill{
       id
-      time
+    }
+    patrons{
+      identification
     }
   }
 }

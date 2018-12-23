@@ -17,12 +17,12 @@
             "id",
             "time",
             "patron",
-            "employee"
+            "employee",
+            "bookings"
           ],
           "properties": {
             "id": {
-              "type": "string",
-              "pattern": "^(.*)$"
+              "type": "integer"
             },
             "time": {
               "type": "string",
@@ -41,20 +41,30 @@
               }
             },
             "employee": {
-              "anyOf": [{
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^(.*)$"
+                }
+              }
+            },
+            "bookings": {
+              "type": "array",
+              "items": {
                 "type": "object",
                 "required": [
                   "id"
                 ],
                 "properties": {
                   "id": {
-                    "type": "string",
-                    "pattern": "^(.*)$"
+                    "type": "integer"
                   }
                 }
-              }, {
-                "type": "null"
-              }]
+              }
             }
           }
         }

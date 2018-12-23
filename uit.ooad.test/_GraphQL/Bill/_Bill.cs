@@ -25,15 +25,15 @@ namespace uit.ooad.test._GraphQL._Bill
                 @"/_GraphQL/Bill/query.bill.variable.json"
             );
         }
-        [TestMethod]
-        public void CreateBill()
-        {
-            SchemaHelper.Execute(
-                @"/_GraphQL/Bill/mutation.createBill.gql",
-                @"/_GraphQL/Bill/mutation.createBill.schema.json",
-                @"/_GraphQL/Bill/mutation.createBill.variable.json",
-                p => p.PermissionCreateBill = true
-            );
-        }
+        // [TestMethod]
+        // public void CreateBill()
+        // {
+        //     SchemaHelper.Execute(
+        //         @"/_GraphQL/Bill/mutation.createBill.gql",
+        //         @"/_GraphQL/Bill/mutation.createBill.schema.json",
+        //         @"/_GraphQL/Bill/mutation.createBill.variable.json",
+        //         p => p.PermissionCreateBill = true
+        //     );
+        // }
     }
 }

@@ -1,7 +1,9 @@
+using System.Collections.Generic;
 using GraphQL.Types;
 using uit.ooad.Businesses;
 using uit.ooad.Models;
 using uit.ooad.ObjectTypes;
+using uit.ooad.Queries.Authentication;
 using uit.ooad.Queries.Base;
 
 namespace uit.ooad.Queries.Mutation
@@ -10,16 +12,6 @@ namespace uit.ooad.Queries.Mutation
     {
         public BookingMutation()
         {
-            Field<BookingType>(
-                _Creation,
-                "Tạo và trả về một đơn đặt phòng",
-                _InputArgument<BookingCreateInput>(),
-                _CheckPermission(
-                    p => p.PermissionCreateBooking,
-                    context => BookingBusiness.Add(_GetInput(context))
-                )
-            );
-
             Field<BookingType>(
                 "CheckIn",
                 "Cập nhật thời gian checkin của phòng",

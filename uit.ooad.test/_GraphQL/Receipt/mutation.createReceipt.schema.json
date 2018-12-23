@@ -15,44 +15,43 @@
           "type": "object",
           "required": [
             "id",
-            "time",
             "money",
-            "bankAccountNumber",
+            "time",
             "typeOfPayment",
-            "employee",
-            "bill"
+            "bankAccountNumber",
+            "bill",
+            "employee"
           ],
           "properties": {
             "id": {
+              "type": "integer"
+            },
+            "money": {
               "type": "integer"
             },
             "time": {
               "type": "string",
               "pattern": "^(.*)$"
             },
-            "money": {
+            "typeOfPayment": {
               "type": "integer"
             },
             "bankAccountNumber": {
               "type": "string",
               "pattern": "^(.*)$"
             },
-            "typeOfPayment": {
-              "type": "integer"
-            },
-            "employee": {
+            "bill": {
               "type": "object",
               "required": [
                 "id"
               ],
               "properties": {
                 "id": {
-                  "type": "string",
-                  "pattern": "^(.*)$"
+                  "type": "integer"
                 }
               }
             },
-            "bill": {
+            "employee": {
               "type": "object",
               "required": [
                 "id"

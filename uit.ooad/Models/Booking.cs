@@ -8,12 +8,31 @@ namespace uit.ooad.Models
 {
     public class Booking : RealmObject
     {
+        [Ignored]
+        public List<Patron> ListOfPatrons
+        {
+            set
+            {
+                if (IsManaged)
+                    throw new Exception("Chỉ tạo setter cho trường dữ liệu này đối với đối tượng chưa được quản lý.");
+                foreach (var patron in value)
+                    Patrons.Add(patron.GetManaged());
+            }
+        }
+
         [PrimaryKey]
         public int Id { get; set; }
+
+        public void CheckValidBeforeCreate()
+        {
+            // Kiểm tra các điều kiện thực thi trong này.
+        }
+
         public DateTimeOffset CheckInTime { get; set; }
         public DateTimeOffset CheckOutTime { get; set; }
         public DateTimeOffset CreateTime { get; set; }
         public int Status { get; set; }
+        //sẽ tạo thêm 2 trường nhân viên nữa, để lưu nv đặt, nv check-in, nv check-out
         public Employee Employee { get; set; }
         public Bill Bill { get; set; }
         public Room Room { get; set; }

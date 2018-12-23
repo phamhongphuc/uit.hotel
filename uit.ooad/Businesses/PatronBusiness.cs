@@ -13,22 +13,25 @@ namespace uit.ooad.Businesses
         public static Task<Patron> Add(Patron patron)
         {
             var patronInDatabase = Get(patron.Identification);
-            if (patronInDatabase != null) return null;
+            if (patronInDatabase != null) throw new Exception("Số Identification: " + patron.Identification + " đã được đăng ký");
 
             patron.PatronKind = patron.PatronKind.GetManaged();
             return PatronDataAccess.Add(patron);
         }
         
-        public static Task<Patron> Update(Patron patron)
+        public static Task<Patron> Update(string identification, Patron patron)
         {
-            var patronInDatabase = Get(patron.Identification);
+            var patronInDatabase = Get(identification);
+
             if (patronInDatabase == null)
-                throw new Exception("Khách hàng có Id:"+patron.Identification + " không hợp lệ!");
+                throw new Exception("Không tồn tại khách hàng có Identification: " + identification);
+                
             patron.PatronKind = patron.PatronKind.GetManaged();
             return PatronDataAccess.Update(patronInDatabase, patron);
         }
 
-        public static Patron Get(string patronId) => PatronDataAccess.Get(patronId);
+        public static Patron Get(int patronId) => PatronDataAccess.Get(patronId);
+        public static Patron Get(string patronIdentification) => PatronDataAccess.Get(patronIdentification);
         public static IEnumerable<Patron> Get() => PatronDataAccess.Get();
         public static IEnumerable<Patron> Query(string query)
         {
