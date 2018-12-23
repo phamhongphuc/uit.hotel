@@ -1,6 +1,7 @@
 {
-	"input": {
-		"identification": "2",
+	"identification": "2",
+	"patronUpdateInput": {
+		"identification": "123456789",
 		"name": "Tên khách hàng đã sửa",
 		"email": "email khách hàng",
 		"gender": true,

@@ -1,5 +1,6 @@
-mutation($input:PatronUpdateInput!){
-  updatePatron(input:$input){
+mutation($identification: String!, $patronUpdateInput: PatronUpdateInput!){
+  updatePatron(identification: $identification, patronUpdateInput: $patronUpdateInput){
+    id
     identification
     name
     birthdate
