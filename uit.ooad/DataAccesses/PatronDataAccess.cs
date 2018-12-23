@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using uit.ooad.Models;
 
@@ -8,7 +9,11 @@ namespace uit.ooad.DataAccesses
     {
         public static async Task<Patron> Add(Patron patron)
         {
-            await Database.WriteAsync(realm => patron = realm.Add(patron));
+            await Database.WriteAsync(realm =>
+            {
+                patron.Id = NextId;
+                patron = realm.Add(patron);
+            });
             return patron;
         }
 
@@ -16,6 +21,7 @@ namespace uit.ooad.DataAccesses
         {
             await Database.WriteAsync(realm =>
             {
+                patronInDatabase.Identification = patron.Identification;
                 patronInDatabase.Name = patron.Name;
                 patronInDatabase.Email = patron.Email;
                 patronInDatabase.Gender = patron.Gender;
@@ -30,8 +36,12 @@ namespace uit.ooad.DataAccesses
             });
             return patronInDatabase;
         }
-        public static Patron Get(string patronId) => Database.Find<Patron>(patronId);
+        public static Patron Get(int patronId) => Database.Find<Patron>(patronId);
+        public static Patron Get(string patronIdentification) => Get().Where(p => p.Identification == patronIdentification).FirstOrDefault();
 
         public static IEnumerable<Patron> Get() => Database.All<Patron>();
+
+        private static int NextId => Get().Count() == 0 ? 1 : Get().Max(i => i.Id) + 1;
+
     }
 }
