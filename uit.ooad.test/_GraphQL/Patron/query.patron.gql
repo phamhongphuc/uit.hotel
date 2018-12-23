@@ -1,5 +1,6 @@
-query($id:ID!){
-  patron(id:$id){
+query ($identification: String!) {
+  patron(identification: $identification) {
+    id
     identification
     name
     birthdate
@@ -11,7 +12,7 @@ query($id:ID!){
     nationality
     company
     note
-    patronKind{
+    patronKind {
       id
       name
       description
