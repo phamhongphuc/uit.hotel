@@ -1,3 +1,4 @@
+using GraphQL.Types;
 using uit.ooad.Businesses;
 using uit.ooad.Models;
 using uit.ooad.ObjectTypes;
@@ -21,10 +22,19 @@ namespace uit.ooad.Queries.Mutation
             Field<PatronType>(
                 _Updation,
                 "Cập nhật và trả về một khách hàng vừa cập nhật",
-                _InputArgument<PatronUpdateInput>(),
+                new QueryArguments(
+                    new QueryArgument<NonNullGraphType<PatronUpdateInput>> { Name = "patronUpdateInput" },
+                    new QueryArgument<NonNullGraphType<StringGraphType>> { Name = "identification" }
+                ),
                 _CheckPermission(
                     p => p.PermissionCreateOrUpdatePatron,
-                    context => PatronBusiness.Update(_GetInput(context))
+                    context =>
+                    {
+                        var patronUpdateInput = context.GetArgument<Patron>("patronUpdateInput");
+                        var identification = context.GetArgument<string>("identification");
+                        
+                        return PatronBusiness.Update(identification, patronUpdateInput);
+                    }
                 )
             );
         }
