@@ -1,20 +1,12 @@
-import path from 'path';
+import * as path from 'path';
 import chalk from 'chalk';
-/**
- *
- * @param {String} name
- */
+
 const root = process.cwd();
-export function filename(name) {
+export function filename(name: string): string {
     return chalk.bold.magenta(path.relative(root, name));
 }
 
-/**
- *
- * @param {String} method
- * @param {String} description
- */
-export function itname(method, description) {
+export function itname(method: string, description: string): string {
     const log = ` ${method} `
         .replace(/ ([A-Z][a-z]+)(?=\.)/, ` ${chalk.bold.green('$1')}`)
         .replace(/\.([a-z]\w+)(?=\s)/, `.${chalk.bold.yellow('$1 ')}`)
