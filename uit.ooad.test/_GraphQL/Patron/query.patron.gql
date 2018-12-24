@@ -1,5 +1,5 @@
-query ($identification: String!) {
-  patron(identification: $identification) {
+query ($id: ID!) {
+  patron(id: $id) {
     id
     identification
     name
@@ -8,7 +8,7 @@ query ($identification: String!) {
     gender
     residence
     domicile
-    phoneNumber
+    phoneNumbers
     nationality
     company
     note
