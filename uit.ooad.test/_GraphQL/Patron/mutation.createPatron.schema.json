@@ -14,6 +14,7 @@
         "createPatron": {
           "type": "object",
           "required": [
+            "id",
             "identification",
             "name",
             "birthdate",
@@ -21,13 +22,16 @@
             "gender",
             "residence",
             "domicile",
-            "phoneNumber",
+            "phoneNumbers",
             "nationality",
             "company",
             "note",
             "patronKind"
           ],
           "properties": {
+            "id": {
+              "type": "integer"
+            },
             "identification": {
               "type": "string",
               "pattern": "^(.*)$"
@@ -55,8 +59,12 @@
               "type": "string",
               "pattern": "^(.*)$"
             },
-            "phoneNumber": {
-              "type": "integer"
+            "phoneNumbers": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^(.*)$"
+              }
             },
             "nationality": {
               "type": "string",
