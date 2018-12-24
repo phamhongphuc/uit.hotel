@@ -26,18 +26,23 @@ namespace uit.ooad.DataAccesses
                 patronInDatabase.Email = patron.Email;
                 patronInDatabase.Gender = patron.Gender;
                 patronInDatabase.Birthdate = patron.Birthdate;
-                patronInDatabase.PhoneNumber = patron.PhoneNumber;
                 patronInDatabase.Nationality = patron.Nationality;
                 patronInDatabase.Domicile = patron.Domicile;
                 patronInDatabase.Residence = patron.Residence;
                 patronInDatabase.Company = patron.Company;
                 patronInDatabase.Note = patron.Note;
                 patronInDatabase.PatronKind = patron.PatronKind;
+
+                patronInDatabase.PhoneNumbers.Clear();
+                foreach(var p in patron.PhoneNumbers)
+                {
+                    patronInDatabase.PhoneNumbers.Add(p);
+                }
             });
             return patronInDatabase;
         }
         public static Patron Get(int patronId) => Database.Find<Patron>(patronId);
-        public static Patron Get(string patronIdentification) => Get().Where(p => p.Identification == patronIdentification).FirstOrDefault();
+        public static Patron GetByIdentification(string patronIdentification) => Get().Where(p => p.Identification == patronIdentification).FirstOrDefault();
 
         public static IEnumerable<Patron> Get() => Database.All<Patron>();
 

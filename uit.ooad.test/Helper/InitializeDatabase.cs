@@ -68,7 +68,6 @@ namespace uit.ooad.test.Helper
         {
             ServiceBusiness.Add(new Service
             {
-                Id = 1,
                 Name = "Tên dịch vụ",
                 UnitRate = 30000,
                 Unit = "Đơn vị đo",
@@ -80,7 +79,6 @@ namespace uit.ooad.test.Helper
         {
             ServicesDetailBusiness.Add(new ServicesDetail
             {
-                Id = 1,
                 Time = DateTime.Now,
                 Number = 1,
                 Booking = BookingBusiness.Get(1),
@@ -92,7 +90,6 @@ namespace uit.ooad.test.Helper
         {
             VolatilityRateBusiness.Add(new VolatilityRate
             {
-                Id = 1,
                 DayRate = 1,
                 NightRate = 1,
                 WeekRate = 1,
@@ -114,7 +111,6 @@ namespace uit.ooad.test.Helper
         {
             RateBusiness.Add(new Rate
             {
-                Id = 1,
                 DayRate = 1,
                 NightRate = 1,
                 WeekRate = 1,
@@ -136,13 +132,17 @@ namespace uit.ooad.test.Helper
                 Email = "Email khách hàng",
                 Gender = true,
                 Birthdate = DateTime.Now,
-                PhoneNumber = 0123456,
                 Nationality = "Quốc tịch",
                 Domicile = "Nguyên quán",
                 Residence = "Thường trú",
                 Company = "Công ty",
                 Note = "Ghi chú",
-                PatronKind = PatronKindBusiness.Get(1)
+                PatronKind = PatronKindBusiness.Get(1),
+                ListOfPhoneNumbers = new List<string>
+                {
+                    "12324234",
+                    "1234"
+                }
             });
         }
 
@@ -159,7 +159,6 @@ namespace uit.ooad.test.Helper
         {
             RoomBusiness.Add(new Room
             {
-                Id = 1,
                 Name = "Phòng 1",
                 Floor = FloorBusiness.Get(1),
                 RoomKind = RoomKindBusiness.Get(1)
@@ -170,7 +169,6 @@ namespace uit.ooad.test.Helper
         {
             RoomKindBusiness.Add(new RoomKind
             {
-                Id = 1,
                 Name = "Tên loại phòng",
                 AmountOfPeople = 1,
                 NumberOfBeds = 1,
@@ -182,7 +180,6 @@ namespace uit.ooad.test.Helper
         {
             FloorBusiness.Add(new Floor
             {
-                Id = 1,
                 Name = "Tầng 1"
             });
         }
@@ -192,7 +189,7 @@ namespace uit.ooad.test.Helper
             BillBusiness.Book(EmployeeBusiness.Get(Constant.UserName), new Bill
             {
                 Time = DateTime.Now,
-                Patron = PatronBusiness.Get("123456789")
+                Patron = PatronBusiness.Get(1)
             },
             new List<Booking>
             {
@@ -206,7 +203,7 @@ namespace uit.ooad.test.Helper
                     ListOfPatrons = new List<Patron>
                     {
                         new Patron{
-                            Identification = "123456789"
+                            Id = 1
                         }
                     }
                 }
@@ -231,7 +228,6 @@ namespace uit.ooad.test.Helper
         {
             HouseKeepingBusiness.Add(new HouseKeeping
             {
-                Id = 1,
                 Type = 1,
                 Booking = BookingBusiness.Get(1),
                 Employee = EmployeeBusiness.Get(Constant.UserName)
@@ -241,7 +237,6 @@ namespace uit.ooad.test.Helper
         {
             ReceiptBusiness.Add(new Receipt
             {
-                Id = 1,
                 Time = DateTime.Now,
                 Money = 1,
                 BankAccountNumber = "11111",

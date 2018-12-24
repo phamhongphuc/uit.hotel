@@ -22,7 +22,7 @@
             "gender",
             "residence",
             "domicile",
-            "phoneNumber",
+            "phoneNumbers",
             "nationality",
             "company",
             "note",
@@ -59,8 +59,12 @@
               "type": "string",
               "pattern": "^(.*)$"
             },
-            "phoneNumber": {
-              "type": "integer"
+            "phoneNumbers": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^(.*)$"
+              }
             },
             "nationality": {
               "type": "string",

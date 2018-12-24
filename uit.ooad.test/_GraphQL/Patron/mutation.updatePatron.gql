@@ -1,5 +1,5 @@
-mutation($identification: String!, $patronUpdateInput: PatronUpdateInput!){
-  updatePatron(identification: $identification, patronUpdateInput: $patronUpdateInput){
+mutation($input: PatronUpdateInput!){
+  updatePatron(input: $input){
     id
     identification
     name
@@ -8,7 +8,7 @@ mutation($identification: String!, $patronUpdateInput: PatronUpdateInput!){
     gender
     residence
     domicile
-    phoneNumber
+    phoneNumbers
     nationality
     company
     note

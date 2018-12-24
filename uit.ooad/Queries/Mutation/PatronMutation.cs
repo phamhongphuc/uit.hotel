@@ -22,19 +22,10 @@ namespace uit.ooad.Queries.Mutation
             Field<PatronType>(
                 _Updation,
                 "Cập nhật và trả về một khách hàng vừa cập nhật",
-                new QueryArguments(
-                    new QueryArgument<NonNullGraphType<PatronUpdateInput>> { Name = "patronUpdateInput" },
-                    new QueryArgument<NonNullGraphType<StringGraphType>> { Name = "identification" }
-                ),
+                _InputArgument<PatronUpdateInput>(),
                 _CheckPermission(
                     p => p.PermissionCreateOrUpdatePatron,
-                    context =>
-                    {
-                        var patronUpdateInput = context.GetArgument<Patron>("patronUpdateInput");
-                        var identification = context.GetArgument<string>("identification");
-                        
-                        return PatronBusiness.Update(identification, patronUpdateInput);
-                    }
+                    context => PatronBusiness.Update(_GetInput(context))
                 )
             );
         }

@@ -1,6 +1,6 @@
 {
-	"identification": "2",
-	"patronUpdateInput": {
+	"input": {
+		"id": 1,
 		"identification": "123456789",
 		"name": "Tên khách hàng đã sửa",
 		"email": "email khách hàng",
@@ -8,7 +8,9 @@
 		"birthdate": "0001-01-01T00:00:00+00:00",
 		"residence": "Hộ khẩu",
 		"domicile": "Nguyên quán",
-		"phoneNumber": 321,
+		"listOfPhoneNumbers": [
+			"1234"
+		],
 		"nationality": "Quốc tịch",
 		"company": "công ty",
 		"note": "Ghi chú",

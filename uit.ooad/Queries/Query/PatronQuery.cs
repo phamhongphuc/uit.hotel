@@ -19,8 +19,8 @@ namespace uit.ooad.Queries.Query
             Field<PatronType>(
                 _Item,
                 "Trả về thông tin một khách hàng",
-                new QueryArguments(new QueryArgument<NonNullGraphType<StringGraphType>> { Name = "identification" }),
-                context => PatronBusiness.Get(context.GetArgument<string>("identification"))
+                _IdArgument(),
+                context => PatronBusiness.Get(_GetId<int>(context))
             );
 
             Field<ListGraphType<PatronType>>(
