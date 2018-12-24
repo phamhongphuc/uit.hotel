@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Realms;
 using uit.ooad.Businesses;
@@ -7,6 +8,18 @@ namespace uit.ooad.Models
 {
     public class Patron : RealmObject
     {
+        [Ignored]
+        public List<String> ListOfPhoneNumbers
+        {
+            set
+            {
+                if (IsManaged)
+                    throw new Exception("Chỉ tạo setter cho trường dữ liệu này đối với đối tượng chưa được quản lý.");
+                foreach (var phoneNumber in value)
+                    PhoneNumbers.Add(phoneNumber);
+            }
+        }
+
         [Indexed]
         [PrimaryKey]
         public int Id { get; set; }
@@ -16,7 +29,7 @@ namespace uit.ooad.Models
         public string Email { get; set; }
         public bool Gender { get; set; }
         public DateTimeOffset Birthdate { get; set; }
-        public long PhoneNumber { get; set; }
+        public IList<string> PhoneNumbers { get; }
         public string Nationality { get; set; } // Quốc tịch
         public string Domicile { get; set; } // Nguyên quán
         public string Residence { get; set; } // Thường trú
@@ -31,9 +44,9 @@ namespace uit.ooad.Models
         public IQueryable<Booking> Bookings { get; }
         public Patron GetManaged()
         {
-            var patronInDatabase = PatronBusiness.Get(Identification);
+            var patronInDatabase = PatronBusiness.Get(Id);
             if (patronInDatabase == null)
-                throw new Exception("Không tìm thấy khách hàng có id là " + Identification);
+                throw new Exception("Không tìm thấy khách hàng có Id là " + Id);
             return patronInDatabase;
         }
     }
