@@ -11,20 +11,21 @@
         "removeComments": true,
         "suppressImplicitAnyIndexErrors": true,
         "allowSyntheticDefaultImports": true,
+        "sourceMap": true,
         "allowJs": true,
         "baseUrl": ".",
         "paths": {
             "~/*": ["./*"]
-        }
+        },
+        "types": ["node", "mocha", "chai"]
     },
     "compileOnSave": false,
     "exclude": [
         "node_modules",
         ".nuxt",
         "dist",
-        "mocha-babel.js",
         "modules/typescript.js",
-        "nuxt.config.js",
-        "test"
+        "test/ts-register.js",
+        "nuxt.config.js"
     ]
 }

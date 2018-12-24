@@ -1,8 +1,8 @@
-const autoprefixer = require('autoprefixer');
+import autoprefixer from 'autoprefixer';
 
 const LOCALHOST = `http://localhost:3000`;
 
-module.exports = {
+export default {
     head: {
         title: 'uit.ooad.client',
         meta: [
