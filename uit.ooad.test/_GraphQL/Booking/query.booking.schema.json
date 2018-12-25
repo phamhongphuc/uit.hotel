@@ -15,10 +15,16 @@
           "type": "object",
           "required": [
             "id",
-            "checkInTime",
-            "checkOutTime",
+            "bookCheckInTime",
+            "bookCheckOutTime",
+            "realCheckInTime",
+            "realCheckOutTime",
             "createTime",
-            "employee",
+            "status",
+            "room",
+            "employeeBooking",
+            "employeeCheckIn",
+            "employeeCheckOut",
             "bill",
             "patrons"
           ],
@@ -26,11 +32,19 @@
             "id": {
               "type": "integer"
             },
-            "checkInTime": {
+            "bookCheckInTime": {
               "type": "string",
               "pattern": "^(.*)$"
             },
-            "checkOutTime": {
+            "bookCheckOutTime": {
+              "type": "string",
+              "pattern": "^(.*)$"
+            },
+            "realCheckInTime": {
+              "type": "string",
+              "pattern": "^(.*)$"
+            },
+            "realCheckOutTime": {
               "type": "string",
               "pattern": "^(.*)$"
             },
@@ -38,7 +52,21 @@
               "type": "string",
               "pattern": "^(.*)$"
             },
-            "employee": {
+            "status": {
+              "type": "integer"
+            },
+            "room": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "integer"
+                }
+              }
+            },
+            "employeeBooking": {
               "type": "object",
               "required": [
                 "id"
@@ -49,6 +77,12 @@
                   "pattern": "^(.*)$"
                 }
               }
+            },
+            "employeeCheckIn": {
+              "type": "null"
+            },
+            "employeeCheckOut": {
+              "type": "null"
             },
             "bill": {
               "type": "object",
@@ -66,12 +100,11 @@
               "items": {
                 "type": "object",
                 "required": [
-                  "identification"
+                  "id"
                 ],
                 "properties": {
-                  "identification": {
-                    "type": "string",
-                    "pattern": "^(.*)$"
+                  "id": {
+                    "type": "integer"
                   }
                 }
               }

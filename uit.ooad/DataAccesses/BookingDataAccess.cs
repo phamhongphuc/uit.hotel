@@ -18,6 +18,8 @@ namespace uit.ooad.DataAccesses
         public static Booking Add(Realm realm, Booking booking)
         {
             booking.Id = NextId;
+            booking.CreateTime = DateTimeOffset.Now;
+            booking.Status = 1;
             return realm.Add(booking);
         }
         public static int NextId => Get().Count() == 0 ? 1 : Get().Max(f => f.Id) + 1;
@@ -26,7 +28,7 @@ namespace uit.ooad.DataAccesses
         {
             await Database.WriteAsync(realm =>
             {
-                booking.CheckInTime = now;
+                booking.RealCheckInTime = now;
                 booking.Status = 1;
             });
             return booking;

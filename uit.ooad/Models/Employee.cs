@@ -29,9 +29,15 @@ namespace uit.ooad.Models
         [Backlink(nameof(HouseKeeping.Employee))]
         public IQueryable<HouseKeeping> HouseKeepings { get; }
 
-        [Backlink(nameof(Booking.Employee))]
+        [Backlink(nameof(Booking.EmployeeBooking))]
         public IQueryable<Booking> Bookings { get; }
 
+        [Backlink(nameof(Booking.EmployeeCheckIn))]
+        public IQueryable<Booking> CheckIns { get; }
+
+        [Backlink(nameof(Booking.EmployeeCheckOut))]
+        public IQueryable<Booking> CheckOuts { get; }
+        
         public bool IsEqualPassword(string rawPassword)
         {
             return CryptoHelper.Encrypt(rawPassword).Equals(Password);

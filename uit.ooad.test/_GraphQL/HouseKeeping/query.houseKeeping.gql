@@ -1,16 +1,12 @@
-query($id:ID!){
-  houseKeeping(id:$id){
+query ($id: ID!) {
+  houseKeeping(id: $id) {
     id
     type
-    employee{
+    employee {
       id
-      name
     }
-    booking{
+    booking {
       id
-      checkInTime
-      checkOutTime
-      createTime
     }
   }
 }

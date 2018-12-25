@@ -13,16 +13,29 @@ namespace uit.ooad.ObjectTypes
             Description = "Một thông tin thuê phòng của khách hàng";
 
             Field(x => x.Id).Description("Id của thông tin thuê phòng");
-            Field(x => x.CheckInTime).Description("Thời điểm nhận phòng dự kiến của khách hàng");
-            Field(x => x.CheckOutTime).Description("Thời điểm trả phòng dự kiến của khách hàng");
+            Field(x => x.BookCheckInTime, nullable: true).Description("Thời điểm nhận phòng dự kiến của khách hàng");
+            Field(x => x.BookCheckOutTime, nullable: true).Description("Thời điểm trả phòng dự kiến của khách hàng");
+            Field(x => x.RealCheckInTime, nullable: true).Description("Thời điểm nhận phòng của khách hàng");
+            Field(x => x.RealCheckOutTime, nullable: true).Description("Thời điểm trả phòng của khách hàng");
             Field(x => x.CreateTime).Description("Thời điểm tạo thông tin thuê phòng");
             Field(x => x.Status).Description("Trạng thái của thông tin thuê phòng");
 
-            Field<NonNullGraphType<EmployeeType>>(
-                nameof(Booking.Employee),
-                resolve: context => context.Source.Employee,
+            Field<EmployeeType>(
+                nameof(Booking.EmployeeBooking),
+                resolve: context => context.Source.EmployeeBooking,
                 description: "Nhân viên thực hiện giao dịch nhận đặt phòng từ khách hàng"
             );
+            Field<EmployeeType>(
+                nameof(Booking.EmployeeCheckIn),
+                resolve: context => context.Source.EmployeeCheckIn,
+                description: "Nhân viên thực hiện giao dịch nhận đặt phòng từ khách hàng"
+            );
+            Field<EmployeeType>(
+                nameof(Booking.EmployeeCheckOut),
+                resolve: context => context.Source.EmployeeCheckOut,
+                description: "Nhân viên thực hiện giao dịch nhận đặt phòng từ khách hàng"
+            );
+
             Field<NonNullGraphType<BillType>>(
                 nameof(Booking.Bill),
                 resolve: context => context.Source.Bill,
@@ -70,10 +83,8 @@ namespace uit.ooad.ObjectTypes
         {
             Name = _Creation;
 
-            Field(x => x.CheckInTime).Description("Thời điểm nhận phòng dự kiến của khách hàng");
-            Field(x => x.CheckOutTime).Description("Thời điểm trả phòng dự kiến của khách hàng");
-            Field(x => x.CreateTime).Description("Thời điểm tạo thông tin thuê phòng");
-            Field(x => x.Status).Description("Trạng thái của thông tin thuê phòng");
+            Field(x => x.BookCheckInTime, nullable: true).Description("Thời điểm nhận phòng dự kiến của khách hàng");
+            Field(x => x.BookCheckOutTime, nullable: true).Description("Thời điểm trả phòng dự kiến của khách hàng");
 
             Field<NonNullGraphType<RoomIdInput>>(
                 nameof(Booking.Room),
@@ -83,6 +94,17 @@ namespace uit.ooad.ObjectTypes
                 nameof(Booking.ListOfPatrons),
                 "Danh sách khách hàng"
             );
+        }
+    }
+
+    public class CheckInCreateInput : InputType<Booking>
+    {
+        public CheckInCreateInput()
+        {
+            Name = _Creation;
+
+            Field(x => x.RealCheckInTime, nullable: true).Description("Thời điểm nhận phòng của khách hàng");
+            Field(x => x.RealCheckOutTime, nullable: true).Description("Thời điểm trả phòng của khách hàng");
         }
     }
 }

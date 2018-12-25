@@ -28,12 +28,21 @@ namespace uit.ooad.Models
             // Kiểm tra các điều kiện thực thi trong này.
         }
 
-        public DateTimeOffset CheckInTime { get; set; }
-        public DateTimeOffset CheckOutTime { get; set; }
-        public DateTimeOffset CreateTime { get; set; }
+        /*
+        1: Đặt phòng
+        2: Đã nhận phòng
+        3: Đã trả phòng
+        4: Đã thanh toán
+        */
         public int Status { get; set; }
-        //sẽ tạo thêm 2 trường nhân viên nữa, để lưu nv đặt, nv check-in, nv check-out
-        public Employee Employee { get; set; }
+        public DateTimeOffset BookCheckInTime { get; set; }
+        public DateTimeOffset BookCheckOutTime { get; set; }
+        public DateTimeOffset RealCheckInTime { get; set; }
+        public DateTimeOffset RealCheckOutTime { get; set; }
+        public DateTimeOffset CreateTime { get; set; }
+        public Employee EmployeeBooking { get; set; }
+        public Employee EmployeeCheckIn { get; set; }
+        public Employee EmployeeCheckOut { get; set; }
         public Bill Bill { get; set; }
         public Room Room { get; set; }
         public IList<Patron> Patrons { get; }
