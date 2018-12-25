@@ -18,6 +18,7 @@
             "required": [
               "id",
               "name",
+              "permissionGetRooms",
               "permissionCreatePatronKind",
               "permissionCreateBill",
               "permissionCreateBooking",
@@ -40,6 +41,9 @@
               "name": {
                 "type": "string",
                 "pattern": "^(.*)$"
+              },
+              "permissionGetRooms":{
+                "type": "boolean"
               },
               "permissionCreatePatronKind": {
                 "type": "boolean"

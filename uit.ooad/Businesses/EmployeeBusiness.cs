@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -91,6 +91,7 @@ namespace uit.ooad.Businesses
                 Id = 1,
                 Name = "Quản trị viên",
                 PermissionUpdateGroundPlan = true,
+                PermissionGetRooms = true,
                 PermissionCreateBill = true,
                 PermissionCreateBooking = true,
                 PermissionCreateOrUpdateEmployee = true,

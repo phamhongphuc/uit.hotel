@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using GraphQL.Types;
 using uit.ooad.Businesses;
 using uit.ooad.Models;
@@ -13,7 +14,10 @@ namespace uit.ooad.Queries.Query
             Field<ListGraphType<RoomType>>(
                 _List,
                 "Trả về một danh sách các phòng",
-                resolve: context => RoomBusiness.Get()
+                resolve: _CheckPermission<IEnumerable<Room>>(
+                    p => p.PermissionGetRooms,
+                     context => RoomBusiness.Get()
+                )
             );
             Field<RoomType>(
                 _Item,
