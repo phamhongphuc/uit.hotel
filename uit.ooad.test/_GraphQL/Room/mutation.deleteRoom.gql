@@ -1,5 +1,3 @@
-mutation($id:ID!){
-  deleteRoom(id:$id){
-    id
-  }
+mutation($id: ID!){
+  deleteRoom(id: $id)
 }

@@ -1,20 +1,21 @@
 {
-    "definitions": {},
-    "type": "object",
-    "required": [
-      "data"
-    ],
-    "properties": {
-      "data": {
-        "type": "object",
-        "required": [
-          "deleteRoom"
-        ],
-        "properties": {
-          "deleteRoom": {
-            "type": "null"
-          }
+  "definitions": {},
+  "type": "object",
+  "required": [
+    "data"
+  ],
+  "properties": {
+    "data": {
+      "type": "object",
+      "required": [
+        "deleteRoom"
+      ],
+      "properties": {
+        "deleteRoom": {
+          "type": "string",
+          "pattern": "^(.*)$"
         }
       }
     }
   }
+}
