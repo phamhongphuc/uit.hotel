@@ -1,8 +1,12 @@
 import { MutationTree, ActionTree } from 'vuex';
 
-class StateStyle {
-    breakpoint: string = 'md';
+interface StateStyle {
+    breakpoint: string;
 }
+
+export const state = (): StateStyle => ({
+    breakpoint: '',
+});
 
 export const mutations: MutationTree<StateStyle> = {
     setBreakpoint(state, text) {
@@ -24,5 +28,3 @@ export const actions: ActionTree<StateStyle, StateStyle> = {
         }
     },
 };
-
-export const state = (): StateStyle => new StateStyle();

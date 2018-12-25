@@ -46,7 +46,10 @@ export default {
             ],
         ],
     ],
-    plugins: [{ src: '~/plugins/global', ssr: false }],
+    plugins: [
+        { src: '~/plugins/style', ssr: false },
+        { src: '~/plugins/component' },
+    ],
     apollo: {
         clientConfigs: {
             default: {
