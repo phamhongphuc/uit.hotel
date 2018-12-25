@@ -18,7 +18,8 @@
             "name",
             "numberOfBeds",
             "amountOfPeople",
-            "priceByDate"
+            "priceByDate",
+            "isActive"
           ],
           "properties": {
             "id": {
@@ -36,6 +37,9 @@
             },
             "priceByDate": {
               "type": "integer"
+            },
+            "isActive": {
+              "type": "boolean"
             }
           }
         }

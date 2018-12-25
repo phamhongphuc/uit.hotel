@@ -161,7 +161,8 @@ namespace uit.ooad.test.Helper
             {
                 Name = "Phòng 1",
                 Floor = FloorBusiness.Get(1),
-                RoomKind = RoomKindBusiness.Get(1)
+                RoomKind = RoomKindBusiness.Get(1),
+                IsActive = true
             });
         }
 
@@ -172,7 +173,8 @@ namespace uit.ooad.test.Helper
                 Name = "Tên loại phòng",
                 AmountOfPeople = 1,
                 NumberOfBeds = 1,
-                PriceByDate = 1
+                PriceByDate = 1,
+                IsActive = true
             });
         }
 
@@ -180,7 +182,8 @@ namespace uit.ooad.test.Helper
         {
             FloorBusiness.Add(new Floor
             {
-                Name = "Tầng 1"
+                Name = "Tầng 1",
+                IsActive = true
             });
         }
 

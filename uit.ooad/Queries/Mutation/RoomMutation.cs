@@ -28,7 +28,7 @@ namespace uit.ooad.Queries.Mutation
                     context => RoomBusiness.Update(_GetInput(context))
                 )
             );
-            Field<RoomType>(
+            Field<StringGraphType>(
                 _Deletion,
                 "Xóa và trả về một phòng vừa xóa",
                 _IdArgument(),
@@ -37,7 +37,7 @@ namespace uit.ooad.Queries.Mutation
                     context =>
                     {
                         RoomBusiness.Delete(_GetId<int>(context));
-                        return null;
+                        return "Xóa thành công";
                     }
                 )
             );
@@ -53,8 +53,7 @@ namespace uit.ooad.Queries.Mutation
                           int id = context.GetArgument<int>("id");
                           bool isActive = context.GetArgument<bool>("isActive");
                           RoomBusiness.SetIsActive(id, isActive);
-                          //Không cần trả về Object
-                          return null;
+                          return "Cập nhật trạng thái thành công";
                       }
                 )
             );

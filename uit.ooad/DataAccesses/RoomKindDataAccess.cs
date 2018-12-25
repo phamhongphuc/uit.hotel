@@ -30,6 +30,11 @@ namespace uit.ooad.DataAccesses
             return roomKindInDatabase;
         }
 
+        internal static async void SetIsActive(RoomKind roomKind, bool isActive)
+        {
+            await Database.WriteAsync(realm => roomKind.IsActive = isActive);
+        }
+
         public static RoomKind Get(int roomKindId) => Database.Find<RoomKind>(roomKindId);
 
         public static async void Delete(RoomKind roomKind)

@@ -56,7 +56,7 @@ namespace uit.ooad.ObjectTypes
             Name = _Id;
             Description = "Input cho thông tin một khách hàng";
 
-            Field(x => x.Identification).Description("Số an sinh xã hội / Số chứng minh nhân dân / Số passport của khách hàng");
+            Field(x => x.Id).Description("Id của khách hàng");
         }
     }
 

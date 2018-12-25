@@ -5,5 +5,6 @@ query($id:ID!){
     numberOfBeds
     amountOfPeople
     priceByDate
+    isActive
 	}
 }

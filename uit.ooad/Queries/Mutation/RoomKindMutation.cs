@@ -41,6 +41,24 @@ namespace uit.ooad.Queries.Mutation
                     }
                 )
             );
+            Field<StringGraphType>(
+                _SetIsActive,
+                "Cập nhật trạng thái của loại phòng",
+                new QueryArguments(
+                    new QueryArgument<NonNullGraphType<IdGraphType>> { Name = "id" },
+                    new QueryArgument<NonNullGraphType<BooleanGraphType>> { Name = "isActive" }
+                ),
+                _CheckPermission(
+                    p => p.PermissionCreateOrUpdateRoomKind,
+                    context =>
+                    {
+                        var id = context.GetArgument<int>("id");
+                        var isActive = context.GetArgument<bool>("isActive");
+                        RoomKindBusiness.SetIsActive(id, isActive);
+                        return "Cập nhật trạng thái thành công";
+                    }
+                )
+            );
         }
     }
 }

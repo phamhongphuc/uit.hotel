@@ -28,7 +28,7 @@ namespace uit.ooad.Queries.Mutation
                     context => FloorBusiness.Update(_GetInput(context))
                 )
             );
-            Field<FloorType>(
+            Field<StringGraphType>(
                 _Deletion,
                 "Xóa một tầng",
                 _IdArgument(),
@@ -41,7 +41,7 @@ namespace uit.ooad.Queries.Mutation
                     }
                 )
             );
-            Field<FloorType>(
+            Field<StringGraphType>(
                 _SetIsActive,
                 "Cập nhật trạng thái của tầng",
                 new QueryArguments(

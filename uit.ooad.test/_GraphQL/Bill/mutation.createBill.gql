@@ -3,7 +3,7 @@ mutation ($bookings: [BookingCreateInput!]!, $bill: BillCreateInput!) {
     id
     time
     patron {
-      identification
+      id
     }
     employee {
       id

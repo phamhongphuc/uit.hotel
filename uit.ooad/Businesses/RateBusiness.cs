@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using uit.ooad.DataAccesses;
@@ -10,6 +11,9 @@ namespace uit.ooad.Businesses
         public static Task<Rate> Add(Rate rate)
         {
             rate.RoomKind = rate.RoomKind.GetManaged();
+            if(!rate.RoomKind.IsActive)
+                throw new Exception("Loại phòng " + rate.RoomKind.Name + " đã ngưng hoại động");
+                
             return RateDataAccess.Add(rate);
         }
 

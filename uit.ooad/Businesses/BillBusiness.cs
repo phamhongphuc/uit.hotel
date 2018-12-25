@@ -18,6 +18,9 @@ namespace uit.ooad.Businesses
             {
                 booking.Employee = employee;
                 booking.Room = booking.Room.GetManaged();
+                if(!booking.Room.IsActive)
+                    throw new Exception("Phòng " + booking.Room.Id + " đã ngừng hoạt động");
+
                 booking.CheckValidBeforeCreate();
             }
 

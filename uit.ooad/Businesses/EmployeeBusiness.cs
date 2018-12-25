@@ -13,7 +13,8 @@ namespace uit.ooad.Businesses
         public static Task<Employee> Add(Employee employee)
         {
             var employeeInDatabase = Get(employee.Id);
-            if (employeeInDatabase != null) return null;
+            if (employeeInDatabase != null)
+                throw new Exception("Id: " + employee.Id + " đã có người sử dụng");
 
             employee.Position = employee.Position.GetManaged();
             employee.Password = CryptoHelper.Encrypt(employee.Password);
@@ -26,6 +27,9 @@ namespace uit.ooad.Businesses
             var employeeInDatabase = Get(employee.Id);
             if(employeeInDatabase == null)  throw new Exception("không tồn tại nhân viên này");
 
+            if(!employee.IsActive)
+                throw new Exception("Tài khoản " + employee.Id + " đã bị vô hiệu hóa");
+                
             employee.Position = employee.Position.GetManaged();
             return EmployeeDataAccess.Update(employeeInDatabase, employee);
         }
@@ -64,6 +68,10 @@ namespace uit.ooad.Businesses
         public static void CheckLogin(string id, string password)
         {
             var employee = Get(id);
+
+            if(!employee.IsActive)
+                throw new Exception("Tài khoản " + id + " đã bị vô hiệu hóa");
+                
             if (employee != null)
             {
                 if (employee.IsEqualPassword(password)) return;

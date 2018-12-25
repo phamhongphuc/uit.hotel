@@ -8,10 +8,10 @@
     "data": {
       "type": "object",
       "required": [
-        "deleteFloor"
+        "setIsActiveRoomKind"
       ],
       "properties": {
-        "deleteFloor": {
+        "setIsActiveRoomKind": {
           "type": "string",
           "pattern": "^(.*)$"
         }
