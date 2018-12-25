@@ -6,16 +6,15 @@
     permissionCreateBill
     permissionCreateBooking
     permissionCreateOrUpdateEmployee
-    permissionCreateOrUpdateFloor
-    permissionCreateHouseKeeping
+    permissionAssignHouseKeeping
     permissionCreateOrUpdatePatron
     permissionCreatePosition
-    permissionCreateRate
+    permissionCreateOrUpdateRate
     permissionCreateReceipt
-    permissionCreateOrUpdateRoom
+    permissionUpdateGroundPlan
     permissionCreateOrUpdateRoomKind
     permissionCreateOrUpdateService
     permissionCreateServicesDetail
-    permissionCreateVolatilityRate
+    permissionCreateOrUpdateVolatilityRate
   }
 }

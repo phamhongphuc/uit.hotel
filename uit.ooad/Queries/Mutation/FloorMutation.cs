@@ -15,7 +15,7 @@ namespace uit.ooad.Queries.Mutation
                 "Tạo và trả về một tầng mới",
                 _InputArgument<FloorCreateInput>(),
                 _CheckPermission(
-                    p => p.PermissionCreateOrUpdateFloor,
+                    p => p.PermissionUpdateGroundPlan,
                     context => FloorBusiness.Add(_GetInput(context))
                 )
             );
@@ -24,7 +24,7 @@ namespace uit.ooad.Queries.Mutation
                 "Cập nhật và trả về một tầng vừa cập nhật",
                 _InputArgument<FloorUpdateInput>(),
                 _CheckPermission(
-                    p => p.PermissionCreateOrUpdateFloor,
+                    p => p.PermissionUpdateGroundPlan,
                     context => FloorBusiness.Update(_GetInput(context))
                 )
             );
@@ -33,7 +33,7 @@ namespace uit.ooad.Queries.Mutation
                 "Xóa một tầng",
                 _IdArgument(),
                 _CheckPermission<string>(
-                    p => p.PermissionCreateOrUpdateFloor,
+                    p => p.PermissionUpdateGroundPlan,
                     context =>
                     {
                         FloorBusiness.Delete(_GetId<int>(context));
@@ -49,7 +49,7 @@ namespace uit.ooad.Queries.Mutation
                     new QueryArgument<NonNullGraphType<BooleanGraphType>> { Name = "isActive" }
                 ),
                 _CheckPermission(
-                    p => p.PermissionCreateOrUpdateFloor,
+                    p => p.PermissionUpdateGroundPlan,
                     context =>
                     {
                         var id = context.GetArgument<int>("id");
