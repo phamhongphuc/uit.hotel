@@ -1,8 +1,9 @@
 {
 	"input": {
-		"name": "Tên loại phòng",
+		"name": "Loại 2",
 		"numberOfBeds": 2,
 		"amountOfPeople": 2,
-		"priceByDate": 1000
+		"priceByDate": 1000,
+		"isActive": true
 	}
 }
