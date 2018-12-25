@@ -9,17 +9,17 @@ namespace uit.ooad.Models
         [PrimaryKey]
         public int Id { get; set; }
         public string Name { get; set; }
+
+        public bool PermissionUpdateGroundPlan { get; set; }
         public bool PermissionCreateBill { get; set; }
         public bool PermissionCreateBooking { get; set; }
         public bool PermissionCreateOrUpdateEmployee { get; set; }
-        public bool PermissionCreateOrUpdateFloor { get; set; }
         public bool PermissionCreateHouseKeeping { get; set; }
         public bool PermissionCreateOrUpdatePatron { get; set; }
         public bool PermissionCreatePatronKind { get; set; }
         public bool PermissionCreatePosition { get; set; }
         public bool PermissionCreateRate { get; set; }
         public bool PermissionCreateReceipt { get; set; }
-        public bool PermissionCreateOrUpdateRoom { get; set; }
         public bool PermissionCreateOrUpdateRoomKind { get; set; }
         public bool PermissionCreateOrUpdateService { get; set; }
         public bool PermissionCreateServicesDetail { get; set; }

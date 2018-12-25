@@ -20,13 +20,12 @@
             "permissionCreateBill",
             "permissionCreateBooking",
             "permissionCreateOrUpdateEmployee",
-            "permissionCreateOrUpdateFloor",
             "permissionCreateHouseKeeping",
             "permissionCreateOrUpdatePatron",
             "permissionCreatePosition",
             "permissionCreateRate",
             "permissionCreateReceipt",
-            "permissionCreateOrUpdateRoom",
+            "permissionUpdateGroundPlan",
             "permissionCreateOrUpdateRoomKind",
             "permissionCreateOrUpdateService",
             "permissionCreateServicesDetail",
@@ -52,9 +51,6 @@
             "permissionCreateOrUpdateEmployee": {
               "type": "boolean"
             },
-            "permissionCreateOrUpdateFloor": {
-              "type": "boolean"
-            },
             "permissionCreateHouseKeeping": {
               "type": "boolean"
             },
@@ -70,7 +66,7 @@
             "permissionCreateReceipt": {
               "type": "boolean"
             },
-            "permissionCreateOrUpdateRoom": {
+            "permissionUpdateGroundPlan": {
               "type": "boolean"
             },
             "permissionCreateOrUpdateRoomKind": {

@@ -6,13 +6,12 @@ query($id:ID!){
     permissionCreateBill
     permissionCreateBooking
     permissionCreateOrUpdateEmployee
-    permissionCreateOrUpdateFloor
     permissionCreateHouseKeeping
     permissionCreateOrUpdatePatron
     permissionCreatePosition
     permissionCreateRate
     permissionCreateReceipt
-    permissionCreateOrUpdateRoom
+    permissionUpdateGroundPlan
     permissionCreateOrUpdateRoomKind
     permissionCreateOrUpdateService
     permissionCreateServicesDetail

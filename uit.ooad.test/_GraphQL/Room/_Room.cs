@@ -32,7 +32,7 @@ namespace uit.ooad.test._GraphQL._Room
                 @"/_GraphQL/Room/mutation.createRoom.gql",
                 @"/_GraphQL/Room/mutation.createRoom.schema.json",
                 @"/_GraphQL/Room/mutation.createRoom.variable.json",
-                p => p.PermissionCreateOrUpdateRoom = true
+                p => p.PermissionUpdateGroundPlan = true
             );
         }
         [TestMethod]
@@ -42,7 +42,7 @@ namespace uit.ooad.test._GraphQL._Room
                 @"/_GraphQL/Room/mutation.updateRoom.gql",
                 @"/_GraphQL/Room/mutation.updateRoom.schema.json",
                 @"/_GraphQL/Room/mutation.updateRoom.variable.json",
-                p => p.PermissionCreateOrUpdateRoom = true
+                p => p.PermissionUpdateGroundPlan = true
             );
         }
         [TestMethod]
@@ -52,7 +52,7 @@ namespace uit.ooad.test._GraphQL._Room
                 @"/_GraphQL/Room/mutation.deleteRoom.gql",
                 @"/_GraphQL/Room/mutation.deleteRoom.schema.json",
                 @"/_GraphQL/Room/mutation.deleteRoom.variable.json",
-                p => p.PermissionCreateOrUpdateRoom = true
+                p => p.PermissionUpdateGroundPlan = true
             );
         }
         [TestMethod]
@@ -62,7 +62,7 @@ namespace uit.ooad.test._GraphQL._Room
                 @"/_GraphQL/Room/mutation.setIsActiveRoom.gql",
                 @"/_GraphQL/Room/mutation.setIsActiveRoom.schema.json",
                 @"/_GraphQL/Room/mutation.setIsActiveRoom.variable.json",
-                p => p.PermissionCreateOrUpdateRoom = true
+                p => p.PermissionUpdateGroundPlan = true
             );
         }
     }
