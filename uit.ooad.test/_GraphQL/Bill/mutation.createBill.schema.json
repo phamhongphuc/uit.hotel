@@ -31,12 +31,11 @@
             "patron": {
               "type": "object",
               "required": [
-                "identification"
+                "id"
               ],
               "properties": {
-                "identification": {
-                  "type": "string",
-                  "pattern": "^(.*)$"
+                "id": {
+                  "type": "integer"
                 }
               }
             },

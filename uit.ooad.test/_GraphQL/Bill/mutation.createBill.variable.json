@@ -1,24 +1,20 @@
 {
-	"bookings": [
-		{
-			"checkInTime": "0001-01-01T00:00:00+00:00",
-			"checkOutTime": "0001-01-01T00:00:00+00:00",
-			"createTime": "0001-01-01T00:00:00+00:00",
-			"status": 0,
-			"room": {
-				"id": 1
-			},
-			"listOfPatrons": [
-				{
-					"identification": "2"
-				}
-			]
-		}
-	],
+	"bookings": [{
+		"checkInTime": "0001-01-01T00:00:00+00:00",
+		"checkOutTime": "0001-01-01T00:00:00+00:00",
+		"createTime": "0001-01-01T00:00:00+00:00",
+		"status": 0,
+		"room": {
+			"id": 1
+		},
+		"listOfPatrons": [{
+			"id": 1
+		}]
+	}],
 	"bill": {
 		"time": "02-02-2000",
 		"patron": {
-			"identification": "2"
+			"id": 1
 		}
 	}
 }
