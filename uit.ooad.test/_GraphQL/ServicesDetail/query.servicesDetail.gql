@@ -4,18 +4,10 @@ query($id:ID!){
     time
     booking{
       id
-      createTime
-      checkInTime
-      checkOutTime
-      status
     }
     number
     service{
       id
-      name
-      unit
-      unitRate
-      isActive
     }
   }
 }
