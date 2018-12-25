@@ -1,20 +1,21 @@
 {
-    "definitions": {},
-    "type": "object",
-    "required": [
-      "data"
-    ],
-    "properties": {
-      "data": {
-        "type": "object",
-        "required": [
-          "setIsActiveFloor"
-        ],
-        "properties": {
-          "setIsActiveFloor": {
-            "type": "null"
-          }
+  "definitions": {},
+  "type": "object",
+  "required": [
+    "data"
+  ],
+  "properties": {
+    "data": {
+      "type": "object",
+      "required": [
+        "setIsActiveFloor"
+      ],
+      "properties": {
+        "setIsActiveFloor": {
+          "type": "string",
+          "pattern": "^(.*)$"
         }
       }
     }
   }
+}

@@ -1,6 +1,3 @@
 mutation($id:ID!,$isActive:Boolean!){
-  setIsActiveFloor(id:$id,isActive:$isActive){
-    id
-    name
-  }
+  setIsActiveFloor(id:$id,isActive:$isActive)
 }
