@@ -58,7 +58,7 @@ const config = {
         'typescript/camelcase': 'error',
         'typescript/class-name-casing': 'error',
         'typescript/explicit-function-return-type': 'warn',
-        'typescript/explicit-member-accessibility': 'error',
+        'typescript/explicit-member-accessibility': 'off',
         indent: 'off',
         'typescript/indent': 'error',
         'typescript/interface-name-prefix': 'error',
