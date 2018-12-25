@@ -22,6 +22,13 @@ namespace uit.ooad.Businesses
             RoomKind roomKindInDatabase = CheckValid(roomKindId);
             RoomKindDataAccess.Delete(roomKindInDatabase);
         }
+        public static void SetIsActive(int roomKindId, bool isActive)
+        {
+            var roomKindInDatabase = Get(roomKindId);
+            if (roomKindInDatabase == null)
+                throw new Exception("Tầng có Id: " + roomKindId + " không hợp lệ!");
+            RoomKindDataAccess.SetIsActive(roomKindInDatabase, isActive);
+        }
 
         private static RoomKind CheckValid(int roomKindId)
         {
