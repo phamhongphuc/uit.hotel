@@ -32,7 +32,7 @@ namespace uit.ooad.test._GraphQL._HouseKeeping
                 @"/_GraphQL/HouseKeeping/mutation.createHouseKeeping.gql",
                 @"/_GraphQL/HouseKeeping/mutation.createHouseKeeping.schema.json",
                 @"/_GraphQL/HouseKeeping/mutation.createHouseKeeping.variable.json",
-                p => p.PermissionCreateHouseKeeping = true
+                p => p.PermissionAssignHouseKeeping = true
             );
         }
     }

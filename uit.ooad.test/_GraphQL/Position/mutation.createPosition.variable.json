@@ -5,16 +5,15 @@
 		"permissionCreateBill": false,
 		"permissionCreateBooking": false,
 		"permissionCreateOrUpdateEmployee": false,
-		"permissionCreateOrUpdateFloor": false,
-		"permissionCreateHouseKeeping": false,
+		"permissionAssignHouseKeeping": false,
 		"permissionCreateOrUpdatePatron": false,
 		"permissionCreatePosition": false,
-		"permissionCreateRate": false,
+		"permissionCreateOrUpdateRate": false,
 		"permissionCreateReceipt": false,
-		"permissionCreateOrUpdateRoom": false,
+		"permissionUpdateGroundPlan": false,
 		"permissionCreateOrUpdateRoomKind": false,
 		"permissionCreateOrUpdateService": false,
 		"permissionCreateServicesDetail": false,
-		"permissionCreateVolatilityRate": false
+		"permissionCreateOrUpdateVolatilityRate": false
 	}
 }

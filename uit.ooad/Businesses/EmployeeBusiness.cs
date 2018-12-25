@@ -90,20 +90,19 @@ namespace uit.ooad.Businesses
             {
                 Id = 1,
                 Name = "Quản trị viên",
+                PermissionUpdateGroundPlan = true,
                 PermissionCreateBill = true,
                 PermissionCreateBooking = true,
                 PermissionCreateOrUpdateEmployee = true,
-                PermissionCreateOrUpdateFloor = true,
-                PermissionCreateHouseKeeping = true,
+                PermissionAssignHouseKeeping = true,
                 PermissionCreateOrUpdatePatron = true,
                 PermissionCreatePosition = true,
-                PermissionCreateRate = true,
+                PermissionCreateOrUpdateRate = true,
                 PermissionCreateReceipt = true,
-                PermissionCreateOrUpdateRoom = true,
                 PermissionCreateOrUpdateRoomKind = true,
                 PermissionCreateOrUpdateService = true,
                 PermissionCreateServicesDetail = true,
-                PermissionCreateVolatilityRate = true
+                PermissionCreateOrUpdateVolatilityRate = true
             });
 
             await Add(new Employee

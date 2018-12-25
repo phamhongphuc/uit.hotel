@@ -22,17 +22,16 @@
               "permissionCreateBill",
               "permissionCreateBooking",
               "permissionCreateOrUpdateEmployee",
-              "permissionCreateOrUpdateFloor",
-              "permissionCreateHouseKeeping",
+              "permissionAssignHouseKeeping",
               "permissionCreateOrUpdatePatron",
               "permissionCreatePosition",
-              "permissionCreateRate",
+              "permissionCreateOrUpdateRate",
               "permissionCreateReceipt",
-              "permissionCreateOrUpdateRoom",
+              "permissionUpdateGroundPlan",
               "permissionCreateOrUpdateRoomKind",
               "permissionCreateOrUpdateService",
               "permissionCreateServicesDetail",
-              "permissionCreateVolatilityRate"
+              "permissionCreateOrUpdateVolatilityRate"
             ],
             "properties": {
               "id": {
@@ -54,10 +53,7 @@
               "permissionCreateOrUpdateEmployee": {
                 "type": "boolean"
               },
-              "permissionCreateOrUpdateFloor": {
-                "type": "boolean"
-              },
-              "permissionCreateHouseKeeping": {
+              "permissionAssignHouseKeeping": {
                 "type": "boolean"
               },
               "permissionCreateOrUpdatePatron": {
@@ -66,13 +62,13 @@
               "permissionCreatePosition": {
                 "type": "boolean"
               },
-              "permissionCreateRate": {
+              "permissionCreateOrUpdateRate": {
                 "type": "boolean"
               },
               "permissionCreateReceipt": {
                 "type": "boolean"
               },
-              "permissionCreateOrUpdateRoom": {
+              "permissionUpdateGroundPlan": {
                 "type": "boolean"
               },
               "permissionCreateOrUpdateRoomKind": {
@@ -84,7 +80,7 @@
               "permissionCreateServicesDetail": {
                 "type": "boolean"
               },
-              "permissionCreateVolatilityRate": {
+              "permissionCreateOrUpdateVolatilityRate": {
                 "type": "boolean"
               }
             }
