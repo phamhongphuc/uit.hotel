@@ -16,9 +16,9 @@ namespace uit.ooad.Businesses
 
             foreach (var booking in bookings)
             {
-                booking.Employee = employee;
+                booking.EmployeeBooking = employee;
                 booking.Room = booking.Room.GetManaged();
-                if(!booking.Room.IsActive)
+                if (!booking.Room.IsActive)
                     throw new Exception("Phòng " + booking.Room.Id + " đã ngừng hoạt động");
 
                 booking.CheckValidBeforeCreate();
