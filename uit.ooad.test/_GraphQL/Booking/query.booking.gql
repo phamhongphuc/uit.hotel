@@ -1,17 +1,29 @@
-query($id:ID!){
-  booking(id:$id){
+query ($id: ID!) {
+  booking(id: $id) {
     id
-    checkInTime
-    checkOutTime
+    bookCheckInTime
+    bookCheckOutTime
+    realCheckInTime
+    realCheckOutTime
     createTime
-    employee{
+    status
+    room {
       id
     }
-    bill{
+    employeeBooking {
       id
     }
-    patrons{
-      identification
+    employeeCheckIn {
+      id
+    }
+    employeeCheckOut {
+      id
+    }
+    bill {
+      id
+    }
+    patrons {
+      id
     }
   }
 }
