@@ -9,7 +9,7 @@
     ],
     "settings": {
         "path-autocomplete.pathMappings": {
-            "~": "${folder}/client"
+            "~": "${folder}"
         },
         "javascript.suggest.paths": false,
         "typescript.suggest.paths": false,

@@ -67,7 +67,7 @@ const config = {
         'no-array-constructor': 'off',
         'typescript/no-array-constructor': 'error',
         'typescript/no-empty-interface': 'error',
-        'typescript/no-explicit-any': 'warn',
+        'typescript/no-explicit-any': 'off',
         'typescript/no-inferrable-types': 'error',
         'typescript/no-misused-new': 'error',
         'typescript/no-namespace': 'error',

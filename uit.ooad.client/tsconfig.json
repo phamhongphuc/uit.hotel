@@ -17,7 +17,7 @@
         "paths": {
             "~/*": ["./*"]
         },
-        "types": ["node", "mocha", "chai"]
+        "types": ["node", "mocha", "chai", "webpack-env"]
     },
     "compileOnSave": false,
     "exclude": [
