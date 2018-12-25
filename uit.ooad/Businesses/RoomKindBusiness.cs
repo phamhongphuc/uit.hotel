@@ -13,21 +13,30 @@ namespace uit.ooad.Businesses
 
         public static Task<RoomKind> Update(RoomKind roomKind)
         {
-            var roomKindInDatabase = Get(roomKind.Id);
-            if (roomKindInDatabase != null && roomKindInDatabase.Rooms.Count() > 0)
-                throw new Exception("Không thể cập nhật! Loại phòng đã có phòng");
+            RoomKind roomKindInDatabase = CheckValid(roomKind.Id);
             return RoomKindDataAccess.Update(roomKindInDatabase, roomKind);
         }
 
         public static void Delete(int roomKindId)
         {
-            var roomKindInDatabase = Get(roomKindId);
-            if (roomKindInDatabase == null)
-                throw new Exception("Không tồn tại loại phòng này");
-            if (roomKindInDatabase.Rooms.Count() > 0)
-                throw new Exception("Loại phòng đã có phòng sử dụng, không thể xóa");
+            RoomKind roomKindInDatabase = CheckValid(roomKindId);
             RoomKindDataAccess.Delete(roomKindInDatabase);
         }
+
+        private static RoomKind CheckValid(int roomKindId)
+        {
+            var roomKindInDatabase = Get(roomKindId);
+            if (roomKindInDatabase == null)
+                throw new Exception("Loại phòng có Id: " + roomKindId + " không tồn tại");
+
+            if (!roomKindInDatabase.IsActive)
+                throw new Exception("Loại phòng có Id: " + roomKindId + " đã ngừng cung cấp. Không thể cập nhật/xóa!");
+
+            if (roomKindInDatabase.Rooms.Count() > 0)
+                throw new Exception("Loại phòng đã có phòng sử dụng, không thể cập nhật/xóa!");
+            return roomKindInDatabase;
+        }
+
         public static RoomKind Get(int roomKindId) => RoomKindDataAccess.Get(roomKindId);
         public static IEnumerable<RoomKind> Get() => RoomKindDataAccess.Get();
     }
