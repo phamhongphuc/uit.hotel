@@ -14,7 +14,7 @@ namespace uit.ooad.Queries.Mutation
                 "Tạo và trả về một hình thức dọn dẹp trong một phòng",
                 _InputArgument<HouseKeepingCreateInput>(),
                 _CheckPermission(
-                    p => p.PermissionCreateHouseKeeping,
+                    p => p.PermissionAssignHouseKeeping,
                     context => HouseKeepingBusiness.Add(_GetInput(context))
                 )
             );

@@ -28,7 +28,7 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.PermissionCreateOrUpdateService).Description("Quyền tạo dịch vụ");
             Field(x => x.PermissionCreateServicesDetail).Description("Quyền tạo chi tiết dịch vụ");
             Field(x => x.PermissionCreateBooking).Description("Quyền tạo đơn đặt phòng");
-            Field(x => x.PermissionCreateHouseKeeping).Description("Quyền tạo công việc dọn phòng");
+            Field(x => x.PermissionAssignHouseKeeping).Description("Quyền tạo công việc dọn phòng");
 
             Field<ListGraphType<EmployeeType>>(
                 nameof(Position.Employees),
@@ -70,7 +70,7 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.PermissionCreateOrUpdateService).Description("Quyền tạo và cập nhật dịch vụ");
             Field(x => x.PermissionCreateServicesDetail).Description("Quyền tạo chi tiết dịch vụ");
             Field(x => x.PermissionCreateBooking).Description("Quyền tạo đơn đặt phòng");
-            Field(x => x.PermissionCreateHouseKeeping).Description("Quyền tạo công việc dọn phòng");
+            Field(x => x.PermissionAssignHouseKeeping).Description("Quyền tạo công việc dọn phòng");
         }
     }
 }

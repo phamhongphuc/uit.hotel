@@ -94,7 +94,7 @@ namespace uit.ooad.Businesses
                 PermissionCreateBill = true,
                 PermissionCreateBooking = true,
                 PermissionCreateOrUpdateEmployee = true,
-                PermissionCreateHouseKeeping = true,
+                PermissionAssignHouseKeeping = true,
                 PermissionCreateOrUpdatePatron = true,
                 PermissionCreatePosition = true,
                 PermissionCreateOrUpdateRate = true,

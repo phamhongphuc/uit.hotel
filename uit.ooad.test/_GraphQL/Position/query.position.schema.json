@@ -20,7 +20,7 @@
             "permissionCreateBill",
             "permissionCreateBooking",
             "permissionCreateOrUpdateEmployee",
-            "permissionCreateHouseKeeping",
+            "permissionAssignHouseKeeping",
             "permissionCreateOrUpdatePatron",
             "permissionCreatePosition",
             "permissionCreateOrUpdateRate",
@@ -54,7 +54,7 @@
             "permissionUpdateGroundPlan": {
               "type": "boolean"
             },
-            "permissionCreateHouseKeeping": {
+            "permissionAssignHouseKeeping": {
               "type": "boolean"
             },
             "permissionCreateOrUpdatePatron": {

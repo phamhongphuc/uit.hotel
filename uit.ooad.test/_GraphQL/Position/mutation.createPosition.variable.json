@@ -5,7 +5,7 @@
 		"permissionCreateBill": false,
 		"permissionCreateBooking": false,
 		"permissionCreateOrUpdateEmployee": false,
-		"permissionCreateHouseKeeping": false,
+		"permissionAssignHouseKeeping": false,
 		"permissionCreateOrUpdatePatron": false,
 		"permissionCreatePosition": false,
 		"permissionCreateOrUpdateRate": false,
