@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -97,7 +97,7 @@ namespace uit.ooad.Businesses
                 PermissionCreateHouseKeeping = true,
                 PermissionCreateOrUpdatePatron = true,
                 PermissionCreatePosition = true,
-                PermissionCreateRate = true,
+                PermissionCreateOrUpdateRate = true,
                 PermissionCreateReceipt = true,
                 PermissionCreateOrUpdateRoomKind = true,
                 PermissionCreateOrUpdateService = true,

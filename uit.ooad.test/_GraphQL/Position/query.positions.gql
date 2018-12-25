@@ -9,7 +9,7 @@
     permissionCreateHouseKeeping
     permissionCreateOrUpdatePatron
     permissionCreatePosition
-    permissionCreateRate
+    permissionCreateOrUpdateRate
     permissionCreateReceipt
     permissionUpdateGroundPlan
     permissionCreateOrUpdateRoomKind

@@ -8,7 +8,7 @@
 		"permissionCreateHouseKeeping": false,
 		"permissionCreateOrUpdatePatron": false,
 		"permissionCreatePosition": false,
-		"permissionCreateRate": false,
+		"permissionCreateOrUpdateRate": false,
 		"permissionCreateReceipt": false,
 		"permissionUpdateGroundPlan": false,
 		"permissionCreateOrUpdateRoomKind": false,
