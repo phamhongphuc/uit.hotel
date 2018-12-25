@@ -22,6 +22,5 @@
     "editor.tabSize": 4,
     "editor.insertSpaces": true,
     "editor.detectIndentation": false,
-    "files.eol": "\r\n",
-    "mocha.requires": ["@babel/register", "@babel/polyfill"]
+    "files.eol": "\r\n"
 }
