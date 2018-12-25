@@ -198,10 +198,10 @@ namespace uit.ooad.test.Helper
             {
                 new Booking
                 {
-                    CheckInTime = DateTime.Now,
-                    CheckOutTime = DateTime.Now,
+                    BookCheckInTime = DateTime.Now,
+                    BookCheckOutTime = DateTime.Now,
                     CreateTime = DateTime.Now,
-                    Status = 0,
+                    Status = 1,
                     Room = RoomBusiness.Get(1),
                     ListOfPatrons = new List<Patron>
                     {
