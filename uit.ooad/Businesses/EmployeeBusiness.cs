@@ -102,7 +102,7 @@ namespace uit.ooad.Businesses
                 PermissionCreateOrUpdateRoomKind = true,
                 PermissionCreateOrUpdateService = true,
                 PermissionCreateServicesDetail = true,
-                PermissionCreateVolatilityRate = true
+                PermissionCreateOrUpdateVolatilityRate = true
             });
 
             await Add(new Employee

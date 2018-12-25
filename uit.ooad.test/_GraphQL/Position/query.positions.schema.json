@@ -31,7 +31,7 @@
               "permissionCreateOrUpdateRoomKind",
               "permissionCreateOrUpdateService",
               "permissionCreateServicesDetail",
-              "permissionCreateVolatilityRate"
+              "permissionCreateOrUpdateVolatilityRate"
             ],
             "properties": {
               "id": {
@@ -80,7 +80,7 @@
               "permissionCreateServicesDetail": {
                 "type": "boolean"
               },
-              "permissionCreateVolatilityRate": {
+              "permissionCreateOrUpdateVolatilityRate": {
                 "type": "boolean"
               }
             }
