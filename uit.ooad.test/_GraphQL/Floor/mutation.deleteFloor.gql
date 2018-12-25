@@ -1,5 +1,3 @@
-mutation($id:ID!){
-  deleteFloor(id:$id){
-    id
-  }
+mutation($id: ID!){
+  deleteFloor(id: $id)
 }

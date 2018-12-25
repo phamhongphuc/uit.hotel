@@ -1,20 +1,21 @@
 {
-    "definitions": {},
-    "type": "object",
-    "required": [
-      "data"
-    ],
-    "properties": {
-      "data": {
-        "type": "object",
-        "required": [
-          "deleteFloor"
-        ],
-        "properties": {
-          "deleteFloor": {
-            "type": "null"
-          }
+  "definitions": {},
+  "type": "object",
+  "required": [
+    "data"
+  ],
+  "properties": {
+    "data": {
+      "type": "object",
+      "required": [
+        "deleteFloor"
+      ],
+      "properties": {
+        "deleteFloor": {
+          "type": "string",
+          "pattern": "^(.*)$"
         }
       }
     }
   }
+}
