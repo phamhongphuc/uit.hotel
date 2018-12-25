@@ -21,7 +21,7 @@ namespace uit.ooad.Queries.Mutation
                     context => EmployeeBusiness.Add(_GetInput(context))
                 )
             );
-            
+
             Field<EmployeeType>(
                 _Updation,
                 "Chỉnh sửa thông tin nhân viên",
@@ -55,16 +55,19 @@ namespace uit.ooad.Queries.Mutation
                     new QueryArgument<NonNullGraphType<IdGraphType>> { Name = "id" },
                     new QueryArgument<NonNullGraphType<BooleanGraphType>> { Name = "isActive" }
                 ),
-                context =>
-                {
-                    var id = AuthenticationHelper.GetEmployeeId(context);
-                    var employeeId = context.GetArgument<string>("id");
-                    var isActive = context.GetArgument<bool>("isActive");
+                _CheckPermission(
+                    p => p.PermissionCreateOrUpdateEmployee,
+                    context =>
+                    {
+                        var id = AuthenticationHelper.GetEmployeeId(context);
+                        var employeeId = context.GetArgument<string>("id");
+                        var isActive = context.GetArgument<bool>("isActive");
 
-                    if (id == employeeId) throw new Exception("Nhân viên không thể tự vô hiệu hóa hoặc kích hoạt tài khoản của chính mình");
-                    EmployeeBusiness.SetIsActiveAccount(employeeId, isActive);
-                    return "Thành công";
-                }
+                        if (id == employeeId) throw new Exception("Nhân viên không thể tự vô hiệu hóa hoặc kích hoạt tài khoản của chính mình");
+                        EmployeeBusiness.SetIsActiveAccount(employeeId, isActive);
+                        return "Thành công";
+                    }
+                )
             );
         }
     }
