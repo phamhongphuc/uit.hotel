@@ -1,17 +1,28 @@
 {
-  bookings{
-   	id
-    checkInTime
-    checkOutTime
+  bookings {
+    id
+    bookCheckInTime
+    bookCheckOutTime
+    realCheckInTime
+    realCheckOutTime
     createTime
     status
-    room{
+    room {
       id
     }
-    employee{
+    employeeBooking {
       id
     }
-    bill{
+    employeeCheckIn {
+      id
+    }
+    employeeCheckOut {
+      id
+    }
+    bill {
+      id
+    }
+    patrons{
       id
     }
   }
