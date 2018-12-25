@@ -35,5 +35,15 @@ namespace uit.ooad.test._GraphQL._RoomKind
                 p => p.PermissionCreateOrUpdateRoomKind = true
             );
         }
+        [TestMethod]
+        public void SetIsActiveRoomKind()
+        {
+            SchemaHelper.Execute(
+                @"/_GraphQL/RoomKind/mutation.setIsActiveRoomKind.gql",
+                @"/_GraphQL/RoomKind/mutation.setIsActiveRoomKind.schema.json",
+                @"/_GraphQL/RoomKind/mutation.setIsActiveRoomKind.variable.json",
+                p => p.PermissionCreateOrUpdateRoomKind = true
+            );
+        }
     }
 }
