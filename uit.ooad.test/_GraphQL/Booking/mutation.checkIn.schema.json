@@ -8,58 +8,52 @@
     "data": {
       "type": "object",
       "required": [
-        "createBooking"
+        "checkIn"
       ],
       "properties": {
-        "createBooking": {
+        "checkIn": {
           "type": "object",
           "required": [
             "id",
+            "bookCheckInTime",
+            "bookCheckOutTime",
+            "realCheckInTime",
+            "realCheckOutTime",
             "createTime",
-            "checkOutTime",
             "status",
-            "employee",
+            "room",
+            "employeeBooking",
+            "employeeCheckIn",
+            "employeeCheckOut",
             "bill",
-            "room"
+            "patrons"
           ],
           "properties": {
             "id": {
               "type": "integer"
             },
-            "createTime": {
+            "bookCheckInTime": {
               "type": "string",
               "pattern": "^(.*)$"
             },
-            "checkOutTime": {
+            "bookCheckOutTime": {
+              "type": "string",
+              "pattern": "^(.*)$"
+            },
+            "realCheckInTime": {
+              "type": "string",
+              "pattern": "^(.*)$"
+            },
+            "realCheckOutTime": {
+              "type": "string",
+              "pattern": "^(.*)$"
+            },
+            "createTime": {
               "type": "string",
               "pattern": "^(.*)$"
             },
             "status": {
               "type": "integer"
-            },
-            "employee": {
-              "type": "object",
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string",
-                  "pattern": "^(.*)$"
-                }
-              }
-            },
-            "bill": {
-              "type": "object",
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string",
-                  "pattern": "^(.*)$"
-                }
-              }
             },
             "room": {
               "type": "object",
@@ -69,6 +63,58 @@
               "properties": {
                 "id": {
                   "type": "integer"
+                }
+              }
+            },
+            "employeeBooking": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^(.*)$"
+                }
+              }
+            },
+            "employeeCheckIn": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^(.*)$"
+                }
+              }
+            },
+            "employeeCheckOut": {
+              "type": "null"
+            },
+            "bill": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "integer"
+                }
+              }
+            },
+            "patrons": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "id"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  }
                 }
               }
             }

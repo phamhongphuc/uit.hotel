@@ -25,15 +25,15 @@ namespace uit.ooad.test._GraphQL.Booking
                 @"/_GraphQL/Booking/query.booking.variable.json"
             );
         }
-        // [TestMethod]
-        // public void CreateBooking()
-        // {
-        //     SchemaHelper.Execute(
-        //         @"/_GraphQL/Booking/mutation.createBooking.gql",
-        //         @"/_GraphQL/Booking/mutation.createBooking.schema.json",
-        //         @"/_GraphQL/Booking/mutation.createBooking.variable.json",
-        //         p => p.PermissionCreateBooking = true
-        //     );
-        // }
+        [TestMethod]
+        public void CheckIn()
+        {
+            SchemaHelper.Execute(
+                @"/_GraphQL/Booking/mutation.checkIn.gql",
+                @"/_GraphQL/Booking/mutation.checkIn.schema.json",
+                @"/_GraphQL/Booking/mutation.checkIn.variable.json",
+                p => p.PermissionCreateBooking = true
+            );
+        }
     }
 }
