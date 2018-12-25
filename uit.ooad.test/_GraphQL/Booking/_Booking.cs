@@ -32,7 +32,7 @@ namespace uit.ooad.test._GraphQL.Booking
         //         @"/_GraphQL/Booking/mutation.createBooking.gql",
         //         @"/_GraphQL/Booking/mutation.createBooking.schema.json",
         //         @"/_GraphQL/Booking/mutation.createBooking.variable.json",
-        //         p => p.PermissionCreateBooking = true
+        //         p => p.PermissionManageHiringRooms = true
         //     );
         // }
     }

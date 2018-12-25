@@ -17,7 +17,7 @@ namespace uit.ooad.Queries.Mutation
                 "Cập nhật thời gian checkin của phòng",
                 _IdArgument(),
                 _CheckPermission(
-                    person => person.PermissionCreateBooking,
+                    person => person.PermissionManageHiringRooms,
                     context => BookingBusiness.CheckIn(_GetId<int>(context))
                 )
             );

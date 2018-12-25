@@ -40,7 +40,10 @@
               "type": "string",
               "pattern": "^(.*)$"
             },
-            "permissionGetRooms":{
+            "permissionGetRooms": {
+              "type": "boolean"
+            },
+            "permissionManageHiringRooms": {
               "type": "boolean"
             },
             "permissionCreatePatronKind": {

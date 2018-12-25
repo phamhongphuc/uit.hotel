@@ -2,6 +2,7 @@
 	"input": {
 		"name": "Tên quyền",
 		"permissionGetRooms": false,
+		"permissionManageHiringRooms": false,
 		"permissionCreatePatronKind": false,
 		"permissionCreateBill": false,
 		"permissionCreateBooking": false,
