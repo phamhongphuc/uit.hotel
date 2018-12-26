@@ -14,7 +14,7 @@ namespace uit.ooad.Queries.Mutation
                 "Tạo và trả về một chi tiết dịch vụ mới",
                 _InputArgument<ServicesDetailCreateInput>(),
                 _CheckPermission(
-                    p => p.PermissionCreateServicesDetail,
+                    p => p.PermissionHandleBills,
                     context => ServicesDetailBusiness.Add(_GetInput(context))
                 )
             );
