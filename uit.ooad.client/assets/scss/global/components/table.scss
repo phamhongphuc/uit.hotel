@@ -1,0 +1,38 @@
+.table {
+    margin-bottom: 0;
+}
+
+.table-cell-middle {
+    td {
+        vertical-align: middle;
+    }
+}
+
+.table-border-inside {
+    th {
+        border-bottom-color: $main !important;
+    }
+
+    th,
+    td {
+        border: 1px solid $table-border-color;
+    }
+    tr:first-child th {
+        border-top: 0;
+    }
+    tr:last-child td {
+        border-bottom: 0;
+    }
+    tr td:first-child,
+    tr th:first-child {
+        border-left: 0;
+    }
+    tr td:last-child,
+    tr th:last-child {
+        border-right: 0;
+    }
+}
+
+.table-cell-id {
+    min-width: 3rem !important;
+}

@@ -1,0 +1,31 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "lib": ["dom", "es2015"],
+        "module": "es2015",
+        "moduleResolution": "node",
+        "experimentalDecorators": true,
+        "noImplicitAny": false,
+        "noImplicitThis": false,
+        "strictNullChecks": true,
+        "removeComments": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "allowSyntheticDefaultImports": true,
+        "sourceMap": true,
+        "allowJs": true,
+        "baseUrl": ".",
+        "paths": {
+            "~/*": ["./*"]
+        },
+        "types": ["node", "mocha", "chai", "webpack-env"]
+    },
+    "compileOnSave": false,
+    "exclude": [
+        "node_modules",
+        ".nuxt",
+        "dist",
+        "modules/typescript.js",
+        "test/ts-register.js",
+        "nuxt.config.js"
+    ]
+}

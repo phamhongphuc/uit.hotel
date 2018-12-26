@@ -1,0 +1,32 @@
+$border-shadow-size: 1rem / 16 * 2;
+$border-shadow-color: rgba($black, 0.075);
+
+$border-shadow-map: (
+    'top': (
+        0,
+        -1,
+    ),
+    'bottom': (
+        0,
+        1,
+    ),
+    'left': (
+        -1,
+        0,
+    ),
+    'right': (
+        1,
+        0,
+    ),
+);
+
+@each $key, $value in $border-shadow-map {
+    .border-shadow-#{$key} {
+        box-shadow: #{nth($value, 1) *
+            $border-shadow-size}
+            #{nth($value, 2) *
+            $border-shadow-size}
+            $border-shadow-size
+            $border-shadow-color;
+    }
+}

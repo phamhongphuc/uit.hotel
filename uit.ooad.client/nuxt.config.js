@@ -1,4 +1,8 @@
-module.exports = {
+import autoprefixer from 'autoprefixer';
+
+const LOCALHOST = `http://localhost:3000`;
+
+export default {
     head: {
         title: 'uit.ooad.client',
         meta: [
@@ -13,13 +17,47 @@ module.exports = {
                 content: 'Nuxt.js project',
             },
         ],
-        link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+        link: [
+            {
+                rel: 'stylesheet',
+                href: 'https://fonts.googleapis.com/css?family=Pacifico',
+            },
+            { rel: 'icon', type: 'image/png', href: '/favicon.png' },
+        ],
     },
     server: {
         port: 8080,
     },
-    css: [{ src: 'bootstrap/scss/bootstrap.scss', lang: 'scss' }],
+    env: {},
+    css: [{ src: '~/assets/scss/main.scss', lang: 'scss' }],
     loading: { color: '#3B8070' },
+    modules: [
+        '@nuxtjs/apollo',
+        'nuxt-typescript',
+        ['bootstrap-vue/nuxt', { css: false }],
+        [
+            'nuxt-sass-resources-loader',
+            [
+                'assets/scss/before/_before.scss',
+                'bootstrap/scss/_functions.scss',
+                'bootstrap/scss/_variables.scss',
+                'bootstrap/scss/_mixins.scss',
+                'assets/scss/after/_after.scss',
+            ],
+        ],
+    ],
+    plugins: [
+        { src: '~/plugins/style', ssr: false },
+        { src: '~/plugins/component' },
+    ],
+    apollo: {
+        clientConfigs: {
+            default: {
+                httpEndpoint: `${process.env.HTTP_ENDPOINT ||
+                    LOCALHOST}/api/graphql`,
+            },
+        },
+    },
     build: {
         extend(config, { isDev, isClient }) {
             if (isDev && isClient) {
@@ -31,13 +69,6 @@ module.exports = {
                 });
             }
         },
-    },
-    modules: ['@nuxtjs/apollo'],
-    apollo: {
-        clientConfigs: {
-            default: {
-                httpEndpoint: 'http://localhost:3000/api/graphql',
-            },
-        },
+        postcss: [autoprefixer()],
     },
 };
