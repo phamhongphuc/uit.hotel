@@ -3,6 +3,7 @@
 		"name": "Tên quyền",
 		"permissionGetRooms": false,
 		"permissionManagePatrons": false,
+		"permissionManagePatronKinds": false,
 		"permissionHandleBills": false,
 		"permissionManageHiringRooms": false,
 		"permissionGetHouseKeepings": false,

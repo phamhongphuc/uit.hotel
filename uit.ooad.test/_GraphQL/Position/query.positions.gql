@@ -4,6 +4,7 @@
     name
     permissionGetRooms
     permissionManagePatrons
+    permissionManagePatronKinds
     permissionHandleBills
     permissionManageHiringRooms
     permissionGetHouseKeepings

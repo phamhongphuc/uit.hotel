@@ -48,6 +48,9 @@
             "permissionManagePatrons": {
               "type": "boolean"
             },
+            "permissionManagePatronKinds": {
+              "type": "boolean"
+            },
             "permissionHandleBills": {
               "type": "boolean"
             },

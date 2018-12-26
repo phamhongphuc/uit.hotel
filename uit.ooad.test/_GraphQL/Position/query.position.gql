@@ -4,6 +4,7 @@ query($id:ID!){
     name
     permissionGetRooms
     permissionManagePatrons
+    permissionManagePatronKinds
     permissionHandleBills
     permissionManageHiringRooms
     permissionGetHouseKeepings

@@ -20,6 +20,7 @@
               "name",
               "permissionGetRooms",
               "permissionManagePatrons",
+              "permissionManagePatronKinds",
               "permissionHandleBills",
               "permissionManageHiringRooms",
               "permissionGetHouseKeepings",
@@ -50,6 +51,9 @@
                 "type": "boolean"
               },
               "permissionManagePatrons": {
+                "type": "boolean"
+              },
+              "permissionManagePatronKinds": {
                 "type": "boolean"
               },
               "permissionHandleBills": {

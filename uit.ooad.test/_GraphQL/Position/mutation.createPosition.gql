@@ -4,6 +4,7 @@ mutation($input:PositionCreateInput!){
     name
     permissionGetRooms
     permissionManagePatrons
+    permissionManagePatronKinds
     permissionHandleBills
     permissionManageHiringRooms
     permissionGetHouseKeepings
