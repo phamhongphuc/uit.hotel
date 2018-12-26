@@ -22,13 +22,18 @@ namespace uit.ooad.Queries.Helper
 
             AddPatronKind();
             AddPatron();
+
             AddRate();
             AddVolatilityRate();
+
             AddService();
+
             AddBill();
             AddCheckedInBill();
+
             AddHouseKeeping();
             AddReceipt();
+
             AddServicesDetail();
         }
 
@@ -50,7 +55,7 @@ namespace uit.ooad.Queries.Helper
                 PermissionCreateBill = true,
                 PermissionCreateBooking = true,
                 PermissionCreateOrUpdateEmployee = true,
-                PermissionAssignHouseKeeping = true,
+                PermissionCleaning = true,
                 PermissionCreateOrUpdatePatron = true,
                 PermissionCreatePosition = true,
                 PermissionCreateOrUpdateRate = true,

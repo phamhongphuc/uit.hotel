@@ -25,7 +25,7 @@ namespace uit.ooad.Businesses
         public static Employee GetFreeEmployee()
         {
             return EmployeeBusiness.Get()
-                .Where(e => e.Position.PermissionAssignHouseKeeping)
+                .Where(e => e.Position.PermissionCleaning)
                 .FirstOrDefault();
         }
     }
