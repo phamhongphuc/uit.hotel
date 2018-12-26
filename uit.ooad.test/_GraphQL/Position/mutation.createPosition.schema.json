@@ -17,6 +17,7 @@
             "id",
             "name",
             "permissionGetRooms",
+            "permissionManagePatrons",
             "permissionManageHiringRooms",
             "permissionCreatePatronKind",
             "permissionCreateBill",
@@ -42,6 +43,9 @@
               "pattern": "^(.*)$"
             },
             "permissionGetRooms": {
+              "type": "boolean"
+            },
+            "permissionManagePatrons": {
               "type": "boolean"
             },
             "permissionHandleBills": {

@@ -91,6 +91,7 @@ namespace uit.ooad.Businesses
                 Id = 1,
                 Name = "Quản trị viên",
                 PermissionUpdateGroundPlan = true,
+                PermissionManagePatrons = true,
                 PermissionGetRooms = true,
                 PermissionHandleBills = true,
                 PermissionManageHiringRooms = true,

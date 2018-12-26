@@ -17,6 +17,7 @@
             "id",
             "name",
             "permissionGetRooms",
+            "permissionManagePatrons",
             "permissionCreatePatronKind",
             "permissionCreateBill",
             "permissionCreateBooking",
