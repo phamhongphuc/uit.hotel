@@ -20,7 +20,7 @@ namespace uit.ooad.Models
         public bool PermissionCreateBill { get; set; }
         public bool PermissionCreateBooking { get; set; }
         public bool PermissionCreateOrUpdateEmployee { get; set; }
-        public bool PermissionAssignHouseKeeping { get; set; }
+        public bool PermissionCleaning { get; set; }
         public bool PermissionCreateOrUpdatePatron { get; set; }
         public bool PermissionCreatePatronKind { get; set; }
         public bool PermissionCreatePosition { get; set; }

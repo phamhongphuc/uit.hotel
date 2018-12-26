@@ -81,49 +81,5 @@ namespace uit.ooad.Businesses
         public static Employee Get(string employeeId) => EmployeeDataAccess.Get(employeeId);
 
         public static IEnumerable<Employee> Get() => EmployeeDataAccess.Get();
-
-        public static async void CreateAdminIfNotExists()
-        {
-            if (Get().Count() != 0) return;
-
-            var position = await PositionBusiness.Add(new Position
-            {
-                Id = 1,
-                Name = "Quản trị viên",
-                PermissionUpdateGroundPlan = true,
-                PermissionManagePatrons = true,
-                PermissionManagePatronKinds = true,
-                PermissionGetRooms = true,
-                PermissionHandleBills = true,
-                PermissionManageHiringRooms = true,
-                PermissionGetHouseKeepings = true,
-                PermissionCreateBill = true,
-                PermissionCreateBooking = true,
-                PermissionCreateOrUpdateEmployee = true,
-                PermissionAssignHouseKeeping = true,
-                PermissionCreateOrUpdatePatron = true,
-                PermissionCreatePosition = true,
-                PermissionCreateOrUpdateRate = true,
-                PermissionCreateReceipt = true,
-                PermissionCreateOrUpdateRoomKind = true,
-                PermissionCreateOrUpdateService = true,
-                PermissionCreateServicesDetail = true,
-                PermissionCreateOrUpdateVolatilityRate = true
-            });
-
-            await Add(new Employee
-            {
-                Id = "admin",
-                Name = "Quản trị viên",
-                Password = "admin",
-                IdentityCard = "123456789",
-                Address = "Unknown",
-                PhoneNumber = "Unknown",
-                Birthdate = DateTime.Now,
-                StartingDate = DateTime.Now,
-                Position = position,
-                IsActive = true,
-            });
-        }
     }
 }
