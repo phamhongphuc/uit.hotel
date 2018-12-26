@@ -6,6 +6,7 @@ using uit.ooad.Models;
 using uit.ooad.ObjectTypes;
 using uit.ooad.Queries.Authentication;
 using uit.ooad.Queries.Base;
+using uit.ooad.Queries.Helper;
 
 namespace uit.ooad.Queries.Mutation
 {
@@ -54,13 +55,13 @@ namespace uit.ooad.Queries.Mutation
                 }
             );
 
-            Field<NonNullGraphType<EmployeeType>>(
-                "CreateAdminIfNotExists",
-                "Khởi tạo tài khoản admin",
+            Field<NonNullGraphType<StringGraphType>>(
+                "InitializeDatabase",
+                "Khởi tạo dữ liệu",
                 resolve: context =>
                 {
-                    EmployeeBusiness.CreateAdminIfNotExists();
-                    return EmployeeBusiness.Get("admin");
+                    InitializeDatabase.InitializeDatabaseObject();
+                    return "Tạo cơ sở dữ liệu thành công";
                 }
             );
         }

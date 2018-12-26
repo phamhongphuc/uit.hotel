@@ -97,9 +97,9 @@ namespace uit.ooad.ObjectTypes
         }
     }
 
-    public class CheckInCreateInput : InputType<Booking>
+    public class CheckOutCreateInput : InputType<Booking>
     {
-        public CheckInCreateInput()
+        public CheckOutCreateInput()
         {
             Name = _Creation;
 

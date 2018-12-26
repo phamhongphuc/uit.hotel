@@ -1,4 +1,4 @@
-namespace uit.ooad.test.Helper
+namespace uit.ooad.Queries.Helper
 {
     public static class Constant
     {

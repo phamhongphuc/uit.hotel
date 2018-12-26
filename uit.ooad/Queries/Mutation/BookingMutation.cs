@@ -17,11 +17,24 @@ namespace uit.ooad.Queries.Mutation
                 "Cập nhật thời gian checkin của phòng",
                 _IdArgument(),
                 _CheckPermission(
-                    person => person.PermissionManageHiringRooms,
+                    p => p.PermissionManageHiringRooms,
                     context =>
                     {
                         var employee = AuthenticationHelper.GetEmployee(context);
                         return BookingBusiness.CheckIn(employee, _GetId<int>(context));
+                    }
+                )
+            );
+            Field<BookingType>(
+                "RequestCheckOut",
+                "Yêu cầu kiểm tra khi trả phòng",
+                _IdArgument(),
+                _CheckPermission(
+                    p => p.PermissionManageHiringRooms,
+                    context =>
+                    {
+                        var employee = AuthenticationHelper.GetEmployee(context);
+                        return BookingBusiness.RequestCheckOut(employee, _GetId<int>(context));
                     }
                 )
             );
