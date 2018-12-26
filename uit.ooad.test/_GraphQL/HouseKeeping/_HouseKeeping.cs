@@ -25,15 +25,15 @@ namespace uit.ooad.test._GraphQL._HouseKeeping
                 @"/_GraphQL/HouseKeeping/query.houseKeeping.variable.json"
             );
         }
-        // [TestMethod]
-        // public void CreateHouseKeeping()
-        // {
-        //     SchemaHelper.Execute(
-        //         @"/_GraphQL/HouseKeeping/mutation.createHouseKeeping.gql",
-        //         @"/_GraphQL/HouseKeeping/mutation.createHouseKeeping.schema.json",
-        //         @"/_GraphQL/HouseKeeping/mutation.createHouseKeeping.variable.json",
-        //         p => p.PermissionCleaning = true
-        //     );
-        // }
+        [TestMethod]
+        public void AssignCleaningService()
+        {
+            SchemaHelper.Execute(
+                @"/_GraphQL/HouseKeeping/mutation.assignCleaningService.gql",
+                @"/_GraphQL/HouseKeeping/mutation.assignCleaningService.schema.json",
+                @"/_GraphQL/HouseKeeping/mutation.assignCleaningService.variable.json",
+                p => p.PermissionCleaning = true
+            );
+        }
     }
 }

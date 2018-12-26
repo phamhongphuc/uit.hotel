@@ -1,5 +1,5 @@
-query ($id: ID!) {
-  houseKeeping(id: $id) {
+mutation ($id: ID!) {
+  assignCleaningService(id: $id) {
     id
     type
     status
