@@ -2,6 +2,8 @@
   positions{
     id
     name
+    permissionGetRooms
+    permissionManageHiringRooms
     permissionCreatePatronKind
     permissionCreateBill
     permissionCreateBooking

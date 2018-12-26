@@ -2,6 +2,8 @@ mutation($input:PositionCreateInput!){
   createPosition(input:$input){
     id
     name
+    permissionGetRooms
+    permissionManageHiringRooms
     permissionCreatePatronKind
     permissionCreateBill
     permissionCreateBooking

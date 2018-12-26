@@ -20,7 +20,7 @@ namespace uit.ooad.Queries.Mutation
                     new QueryArgument<NonNullGraphType<BillCreateInput>> { Name = "bill" }
                 ),
                 _CheckPermission(
-                    p => p.PermissionCreateBooking,
+                    p => p.PermissionManageHiringRooms,
                     async context =>
                     {
                         var employee = AuthenticationHelper.GetEmployee(context);

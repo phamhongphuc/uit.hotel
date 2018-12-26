@@ -2,6 +2,8 @@ query($id:ID!){
   position(id:$id){
     id
     name
+    permissionGetRooms
+    permissionManageHiringRooms
     permissionCreatePatronKind
     permissionCreateBill
     permissionCreateBooking

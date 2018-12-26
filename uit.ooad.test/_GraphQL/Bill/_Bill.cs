@@ -32,7 +32,7 @@ namespace uit.ooad.test._GraphQL._Bill
         //         @"/_GraphQL/Bill/mutation.createBill.gql",
         //         @"/_GraphQL/Bill/mutation.createBill.schema.json",
         //         @"/_GraphQL/Bill/mutation.createBill.variable.json",
-        //         p => p.PermissionCreateBill = true
+        //         p => p.PermissionManageHiringRooms = true
         //     );
         // }
     }

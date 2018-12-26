@@ -13,7 +13,9 @@ namespace uit.ooad.test._GraphQL._Room
         {
             SchemaHelper.Execute(
                 @"/_GraphQL/Room/query.rooms.gql",
-                @"/_GraphQL/Room/query.rooms.schema.json"
+                @"/_GraphQL/Room/query.rooms.schema.json",
+                null,
+                p => p.PermissionGetRooms = true
             );
         }
         [TestMethod]
