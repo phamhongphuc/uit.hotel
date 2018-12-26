@@ -35,5 +35,15 @@ namespace uit.ooad.test._GraphQL._HouseKeeping
                 p => p.PermissionCleaning = true
             );
         }
+        [TestMethod]
+        public void ConfirmCleaned()
+        {
+            SchemaHelper.Execute(
+                @"/_GraphQL/HouseKeeping/mutation.confirmCleaned.gql",
+                @"/_GraphQL/HouseKeeping/mutation.confirmCleaned.schema.json",
+                @"/_GraphQL/HouseKeeping/mutation.confirmCleaned.variable.json",
+                p => p.PermissionCleaning = true
+            );
+        }
     }
 }
