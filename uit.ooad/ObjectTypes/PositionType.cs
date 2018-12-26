@@ -15,6 +15,7 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.Id).Description("Id của chức vụ");
             Field(x => x.Name).Description("Tên chức vụ");
             Field(x => x.PermissionUpdateGroundPlan).Description("Quyền chỉnh sửa sơ đồ");
+            Field(x => x.PermissionHandleBills).Description("Quyền thao tác hóa đơn");
             Field(x => x.PermissionGetRooms).Description("Quyền lấy danh sách phòng và hiện trạng từng phòng");
             Field(x => x.PermissionManageHiringRooms).Description("Quyền quản lý thuê phòng");
             Field(x => x.PermissionGetHouseKeepings).Description("Quyền tra cứu lịch sử dọn phòng");
@@ -60,6 +61,7 @@ namespace uit.ooad.ObjectTypes
 
             Field(x => x.Name).Description("Tên chức vụ");
             Field(x => x.PermissionUpdateGroundPlan).Description("Quyền chỉnh sửa sơ đồ");
+            Field(x => x.PermissionHandleBills).Description("Quyền thao tác hóa đơn");
             Field(x => x.PermissionGetRooms).Description("Quyền lấy danh sách phòng và hiện trạng từng phòng");
             Field(x => x.PermissionManageHiringRooms).Description("Quyền quản lý thuê phòng");
             Field(x => x.PermissionGetHouseKeepings).Description("Quyền tra cứu lịch sử dọn phòng");

@@ -2,6 +2,7 @@
 	"input": {
 		"name": "Tên quyền",
 		"permissionGetRooms": false,
+		"permissionHandleBills": false,
 		"permissionManageHiringRooms": false,
 		"permissionGetHouseKeepings": false,
 		"permissionCreatePatronKind": false,

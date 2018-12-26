@@ -3,6 +3,7 @@
     id
     name
     permissionGetRooms
+    permissionHandleBills
     permissionManageHiringRooms
     permissionGetHouseKeepings
     permissionCreatePatronKind

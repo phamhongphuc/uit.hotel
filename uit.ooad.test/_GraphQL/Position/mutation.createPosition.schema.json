@@ -44,6 +44,9 @@
             "permissionGetRooms": {
               "type": "boolean"
             },
+            "permissionHandleBills": {
+              "type": "boolean"
+            },
             "permissionManageHiringRooms": {
               "type": "boolean"
             },
