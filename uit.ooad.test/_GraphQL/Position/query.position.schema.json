@@ -17,6 +17,8 @@
             "id",
             "name",
             "permissionGetRooms",
+            "permissionManagePatrons",
+            "permissionManagePatronKinds",
             "permissionCreatePatronKind",
             "permissionCreateBill",
             "permissionCreateBooking",
@@ -39,6 +41,12 @@
             "name": {
               "type": "string",
               "pattern": "^(.*)$"
+            },
+            "permissionManagePatrons": {
+              "type": "boolean"
+            },
+            "permissionManagePatronKinds": {
+              "type": "boolean"
             },
             "permissionGetRooms": {
               "type": "boolean"
@@ -77,9 +85,6 @@
               "type": "boolean"
             },
             "permissionCreateReceipt": {
-              "type": "boolean"
-            },
-            "permissionUpdateGroundPlan": {
               "type": "boolean"
             },
             "permissionCreateOrUpdateRoomKind": {

@@ -3,6 +3,8 @@ query($id:ID!){
     id
     name
     permissionGetRooms
+    permissionManagePatrons
+    permissionManagePatronKinds
     permissionHandleBills
     permissionManageHiringRooms
     permissionGetHouseKeepings
