@@ -1,5 +1,5 @@
 <template>
-    <b-nav-item :to="to" class="nav-item-icon">
+    <b-nav-item :to="to" class="nav-item-icon" :exact="exact">
         <div v-if="icon !== ''" class="icon">{{ icon }}</div>
         <div v-else-if="image !== ''" class="icon">
             <image-
@@ -44,5 +44,8 @@ export default class extends Vue {
 
     @Prop({ default: '' })
     text: string;
+
+    @Prop({ default: false })
+    exact: boolean;
 }
 </script>
