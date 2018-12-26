@@ -7,6 +7,13 @@
                 <div class="container-staff"><nuxt /></div>
             </div>
         </main>
+        <no-ssr>
+            <notifications
+                animation-type="velocity"
+                position="left bottom"
+                :duration="1500"
+            />
+        </no-ssr>
     </div>
 </template>
 <style lang="scss">

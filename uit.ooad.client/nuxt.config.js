@@ -48,7 +48,9 @@ export default {
     ],
     plugins: [
         { src: '~/plugins/style', ssr: false },
+        { src: '~/plugins/notification', ssr: false },
         { src: '~/plugins/component' },
+        { src: '~/plugins/global' },
     ],
     apollo: {
         clientConfigs: {
