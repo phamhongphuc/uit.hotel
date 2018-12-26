@@ -19,21 +19,40 @@ namespace uit.ooad.DataAccesses
         {
             booking.Id = NextId;
             booking.CreateTime = DateTimeOffset.Now;
-            booking.Status = 1;
+            booking.Status = (int)Booking.StatusEnum.Booked;
             return realm.Add(booking);
         }
         public static int NextId => Get().Count() == 0 ? 1 : Get().Max(f => f.Id) + 1;
 
-        public static async Task<Booking> CheckIn(Employee employee, Booking bookingInDatabase)
+        public static async Task<Booking> CheckIn(Employee employee, Booking bookingInDatabase, HouseKeeping houseKeeping)
         {
             await Database.WriteAsync(realm =>
             {
                 bookingInDatabase.EmployeeCheckIn = employee;
                 bookingInDatabase.RealCheckInTime = DateTimeOffset.Now;
-                bookingInDatabase.Status = 2;
+                bookingInDatabase.Status = (int)Booking.StatusEnum.CheckedIn;
+
+                HouseKeepingDataAccess.Add(realm, houseKeeping);
             });
             return bookingInDatabase;
         }
+
+        internal static async Task<Booking> RequestCheckOut(Employee employee, Booking bookingInDatabase, HouseKeeping houseKeeping)
+        {
+            await Database.WriteAsync(realm =>
+            {
+                bookingInDatabase.EmployeeCheckOut = employee;
+                bookingInDatabase.Status = (int)Booking.StatusEnum.RequestedCheckOut;
+
+                HouseKeepingDataAccess.Add(realm, houseKeeping);
+            });
+            return bookingInDatabase;
+        }
+
+        // internal static Task<Booking> CheckOut(Booking bookingInDatabase, List<ServicesDetail> servicesDetails)
+        // {
+        //     throw new NotImplementedException();
+        // }
 
         public static Booking Get(int bookingId) => Database.Find<Booking>(bookingId);
 

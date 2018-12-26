@@ -26,6 +26,7 @@ namespace uit.ooad.Queries.Helper
             AddVolatilityRate();
             AddService();
             AddBill();
+            AddCheckedInBill();
             AddHouseKeeping();
             AddReceipt();
             AddServicesDetail();
@@ -212,8 +213,6 @@ namespace uit.ooad.Queries.Helper
                 {
                     BookCheckInTime = DateTime.Now,
                     BookCheckOutTime = DateTime.Now,
-                    CreateTime = DateTime.Now,
-                    Status = 1,
                     Room = RoomBusiness.Get(1),
                     ListOfPatrons = new List<Patron>
                     {
@@ -225,11 +224,17 @@ namespace uit.ooad.Queries.Helper
             });
         }
 
+        private static void AddCheckedInBill()
+        {
+            AddBill();
+            BookingBusiness.CheckIn(EmployeeBusiness.Get(Constant.UserName), 2);
+        }
+
         private static void AddHouseKeeping()
         {
             HouseKeepingBusiness.Add(new HouseKeeping
             {
-                Type = 1,
+                Type = (int)HouseKeeping.TypeEnum.MakeUpRoom,
                 Booking = BookingBusiness.Get(1),
                 Employee = EmployeeBusiness.Get(Constant.UserName)
             });

@@ -8,6 +8,13 @@ namespace uit.ooad.Models
 {
     public class Booking : RealmObject
     {
+        public enum StatusEnum {
+            Booked,
+            CheckedIn,
+            RequestedCheckOut,
+            CheckedOut
+        }
+
         [Ignored]
         public List<Patron> ListOfPatrons
         {
@@ -28,12 +35,6 @@ namespace uit.ooad.Models
             // Kiểm tra các điều kiện thực thi trong này.
         }
 
-        /*
-        1: Đặt phòng
-        2: Đã nhận phòng
-        3: Đã trả phòng
-        4: Đã thanh toán
-        */
         public int Status { get; set; }
         public DateTimeOffset BookCheckInTime { get; set; }
         public DateTimeOffset BookCheckOutTime { get; set; }
