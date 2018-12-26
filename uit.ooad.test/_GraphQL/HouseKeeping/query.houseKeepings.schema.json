@@ -18,6 +18,7 @@
             "required": [
               "id",
               "type",
+              "status",
               "employee",
               "booking"
             ],
@@ -28,17 +29,26 @@
               "type": {
                 "type": "integer"
               },
+              "status": {
+                "type": "integer"
+              },
               "employee": {
-                "type": "object",
-                "required": [
-                  "id"
-                ],
-                "properties": {
-                  "id": {
-                    "type": "string",
-                    "pattern": "^(.*)$"
+                "anyOf": [{
+                    "type": "null"
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "id"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "pattern": "^(.*)$"
+                      }
+                    }
                   }
-                }
+                ]
               },
               "booking": {
                 "type": "object",

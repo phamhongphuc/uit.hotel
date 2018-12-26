@@ -8,10 +8,10 @@
     "data": {
       "type": "object",
       "required": [
-        "houseKeeping"
+        "confirmCleaned"
       ],
       "properties": {
-        "houseKeeping": {
+        "confirmCleaned": {
           "type": "object",
           "required": [
             "id",
@@ -31,22 +31,16 @@
               "type": "integer"
             },
             "employee": {
-              "anyOf": [{
-                  "type": "null"
-                },
-                {
-                  "type": "object",
-                  "required": [
-                    "id"
-                  ],
-                  "properties": {
-                    "id": {
-                      "type": "string",
-                      "pattern": "^(.*)$"
-                    }
-                  }
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^(.*)$"
                 }
-              ]
+              }
             },
             "booking": {
               "type": "object",

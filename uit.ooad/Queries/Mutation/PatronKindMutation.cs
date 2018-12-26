@@ -14,7 +14,7 @@ namespace uit.ooad.Queries.Mutation
                 "Tạo và trả về một loại khách hàng mới",
                 _InputArgument<PatronKindCreateInput>(),
                 _CheckPermission(
-                    p => p.PermissionCreatePatronKind,
+                    p => p.PermissionManagePatronKinds,
                     context => PatronKindBusiness.Add(_GetInput(context))
                 )
             );

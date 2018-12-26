@@ -8,14 +8,15 @@
     "data": {
       "type": "object",
       "required": [
-        "createHouseKeeping"
+        "assignCleaningService"
       ],
       "properties": {
-        "createHouseKeeping": {
+        "assignCleaningService": {
           "type": "object",
           "required": [
             "id",
             "type",
+            "status",
             "employee",
             "booking"
           ],
@@ -24,6 +25,9 @@
               "type": "integer"
             },
             "type": {
+              "type": "integer"
+            },
+            "status": {
               "type": "integer"
             },
             "employee": {

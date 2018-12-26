@@ -69,22 +69,58 @@
                 }
               },
               "employeeBooking": {
-                "type": "object",
-                "required": [
-                  "id"
-                ],
-                "properties": {
-                  "id": {
-                    "type": "string",
-                    "pattern": "^(.*)$"
+                "anyOf": [{
+                    "type": "null"
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "id"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "pattern": "^(.*)$"
+                      }
+                    }
                   }
-                }
+                ]
               },
               "employeeCheckIn": {
-                "type": "null"
+                "anyOf": [{
+                    "type": "null"
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "id"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "pattern": "^(.*)$"
+                      }
+                    }
+                  }
+                ]
               },
               "employeeCheckOut": {
-                "type": "null"
+                "anyOf": [{
+                    "type": "null"
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "id"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "pattern": "^(.*)$"
+                      }
+                    }
+                  }
+                ]
               },
               "bill": {
                 "type": "object",

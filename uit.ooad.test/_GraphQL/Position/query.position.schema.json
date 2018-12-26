@@ -17,11 +17,13 @@
             "id",
             "name",
             "permissionGetRooms",
+            "permissionManagePatrons",
+            "permissionManagePatronKinds",
             "permissionCreatePatronKind",
             "permissionCreateBill",
             "permissionCreateBooking",
             "permissionCreateOrUpdateEmployee",
-            "permissionAssignHouseKeeping",
+            "permissionCleaning",
             "permissionCreateOrUpdatePatron",
             "permissionCreatePosition",
             "permissionCreateOrUpdateRate",
@@ -40,10 +42,22 @@
               "type": "string",
               "pattern": "^(.*)$"
             },
+            "permissionManagePatrons": {
+              "type": "boolean"
+            },
+            "permissionManagePatronKinds": {
+              "type": "boolean"
+            },
             "permissionGetRooms": {
               "type": "boolean"
             },
+            "permissionHandleBills": {
+              "type": "boolean"
+            },
             "permissionManageHiringRooms": {
+              "type": "boolean"
+            },
+            "permissionGetHouseKeepings": {
               "type": "boolean"
             },
             "permissionCreatePatronKind": {
@@ -58,10 +72,7 @@
             "permissionCreateOrUpdateEmployee": {
               "type": "boolean"
             },
-            "permissionUpdateGroundPlan": {
-              "type": "boolean"
-            },
-            "permissionAssignHouseKeeping": {
+            "permissionCleaning": {
               "type": "boolean"
             },
             "permissionCreateOrUpdatePatron": {
@@ -74,9 +85,6 @@
               "type": "boolean"
             },
             "permissionCreateReceipt": {
-              "type": "boolean"
-            },
-            "permissionUpdateGroundPlan": {
               "type": "boolean"
             },
             "permissionCreateOrUpdateRoomKind": {

@@ -22,12 +22,19 @@ namespace uit.ooad.Queries.Helper
 
             AddPatronKind();
             AddPatron();
+
             AddRate();
             AddVolatilityRate();
+
             AddService();
+
             AddBill();
-            AddHouseKeeping();
+            AddCheckedInBill();
+            AddRequestCheckOutBill();
+
+            AddConfirmCleaned();
             AddReceipt();
+
             AddServicesDetail();
         }
 
@@ -42,12 +49,16 @@ namespace uit.ooad.Queries.Helper
             {
                 Name = "Quản trị viên",
                 PermissionUpdateGroundPlan = true,
+                PermissionManagePatrons = true,
+                PermissionManagePatronKinds = true,
+                PermissionHandleBills = true,
                 PermissionGetRooms = true,
                 PermissionManageHiringRooms = true,
+                PermissionGetHouseKeepings = true,
                 PermissionCreateBill = true,
                 PermissionCreateBooking = true,
                 PermissionCreateOrUpdateEmployee = true,
-                PermissionAssignHouseKeeping = true,
+                PermissionCleaning = true,
                 PermissionCreateOrUpdatePatron = true,
                 PermissionCreatePosition = true,
                 PermissionCreateOrUpdateRate = true,
@@ -212,8 +223,6 @@ namespace uit.ooad.Queries.Helper
                 {
                     BookCheckInTime = DateTime.Now,
                     BookCheckOutTime = DateTime.Now,
-                    CreateTime = DateTime.Now,
-                    Status = 1,
                     Room = RoomBusiness.Get(1),
                     ListOfPatrons = new List<Patron>
                     {
@@ -225,14 +234,21 @@ namespace uit.ooad.Queries.Helper
             });
         }
 
-        private static void AddHouseKeeping()
+        private static void AddCheckedInBill()
         {
-            HouseKeepingBusiness.Add(new HouseKeeping
-            {
-                Type = 1,
-                Booking = BookingBusiness.Get(1),
-                Employee = EmployeeBusiness.Get(Constant.UserName)
-            });
+            AddBill();
+            BookingBusiness.CheckIn(EmployeeBusiness.Get(Constant.UserName), 2);
+        }
+
+        private static void AddRequestCheckOutBill()
+        {
+            AddBill();
+            BookingBusiness.CheckIn(EmployeeBusiness.Get(Constant.UserName), 3);
+            BookingBusiness.RequestCheckOut(EmployeeBusiness.Get(Constant.UserName), 3);
+        }
+        private static void AddConfirmCleaned()
+        {
+            HouseKeepingBusiness.AssignCleaningService(EmployeeBusiness.Get(Constant.UserName), 2);
         }
         private static void AddReceipt()
         {
