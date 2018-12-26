@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -29,5 +30,24 @@ namespace uit.ooad.DataAccesses
         public static IEnumerable<HouseKeeping> Get() => Database.All<HouseKeeping>();
 
         private static int NextId => Get().Count() == 0 ? 1 : Get().Max(i => i.Id) + 1;
+
+        public static async Task<HouseKeeping> AssignCleaningService(Employee employee, HouseKeeping houseKeepingInDatabase)
+        {
+            await Database.WriteAsync(realm =>
+            {
+                houseKeepingInDatabase.Employee = employee;
+                houseKeepingInDatabase.Status = (int)HouseKeeping.StatusEnum.Cleaning;
+            });
+            return houseKeepingInDatabase;
+        }
+
+        public static async Task<HouseKeeping> ConfirmCleaned(HouseKeeping houseKeepingInDatabase)
+        {
+            await Database.WriteAsync(realm =>
+            {
+                houseKeepingInDatabase.Status = (int)HouseKeeping.StatusEnum.Cleaned;
+            });
+            return houseKeepingInDatabase;
+        }
     }
 }

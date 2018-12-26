@@ -22,13 +22,19 @@ namespace uit.ooad.Queries.Helper
 
             AddPatronKind();
             AddPatron();
+
             AddRate();
             AddVolatilityRate();
+
             AddService();
+
             AddBill();
             AddCheckedInBill();
-            AddHouseKeeping();
+            AddRequestCheckOutBill();
+
+            AddConfirmCleaned();
             AddReceipt();
+
             AddServicesDetail();
         }
 
@@ -50,7 +56,7 @@ namespace uit.ooad.Queries.Helper
                 PermissionCreateBill = true,
                 PermissionCreateBooking = true,
                 PermissionCreateOrUpdateEmployee = true,
-                PermissionAssignHouseKeeping = true,
+                PermissionCleaning = true,
                 PermissionCreateOrUpdatePatron = true,
                 PermissionCreatePosition = true,
                 PermissionCreateOrUpdateRate = true,
@@ -232,14 +238,15 @@ namespace uit.ooad.Queries.Helper
             BookingBusiness.CheckIn(EmployeeBusiness.Get(Constant.UserName), 2);
         }
 
-        private static void AddHouseKeeping()
+        private static void AddRequestCheckOutBill()
         {
-            HouseKeepingBusiness.Add(new HouseKeeping
-            {
-                Type = (int)HouseKeeping.TypeEnum.MakeUpRoom,
-                Booking = BookingBusiness.Get(1),
-                Employee = EmployeeBusiness.Get(Constant.UserName)
-            });
+            AddBill();
+            BookingBusiness.CheckIn(EmployeeBusiness.Get(Constant.UserName), 3);
+            BookingBusiness.RequestCheckOut(EmployeeBusiness.Get(Constant.UserName), 3);
+        }
+        private static void AddConfirmCleaned()
+        {
+            HouseKeepingBusiness.AssignCleaningService(EmployeeBusiness.Get(Constant.UserName), 2);
         }
         private static void AddReceipt()
         {

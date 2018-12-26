@@ -10,7 +10,7 @@ query($id:ID!){
     permissionCreateBill
     permissionCreateBooking
     permissionCreateOrUpdateEmployee
-    permissionAssignHouseKeeping
+    permissionCleaning
     permissionCreateOrUpdatePatron
     permissionCreatePosition
     permissionCreateOrUpdateRate
