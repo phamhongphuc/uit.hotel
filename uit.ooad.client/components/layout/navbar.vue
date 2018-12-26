@@ -12,7 +12,7 @@
                 class="font-pacifico font-size-bigger ml-md-2 mx-auto"
                 to="/"
             >
-                Hotel Management {{ breakpoint }}
+                Quản lý khách sạn
             </b-nav-item>
             <b-nav-item-icon-
                 class="d-md-none mx-1"
@@ -33,7 +33,7 @@
                 <b-nav-item-input-
                     class="flex-fill"
                     reverse-when="md"
-                    placeholder="Search..."
+                    placeholder="Tìm kiếm..."
                     icon=""
                     :focus.sync="isInputFocus"
                 />

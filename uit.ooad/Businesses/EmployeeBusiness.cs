@@ -69,12 +69,10 @@ namespace uit.ooad.Businesses
         {
             var employee = Get(id);
 
-            if (!employee.IsActive)
-                throw new Exception("Tài khoản " + id + " đã bị vô hiệu hóa");
-
             if (employee != null)
             {
                 if (employee.IsEqualPassword(password)) return;
+                if (!employee.IsActive) throw new Exception("Tài khoản " + id + " đã bị vô hiệu hóa");
             }
             throw new Exception("Tài khoản hoặc mật khẩu không chính xác");
         }

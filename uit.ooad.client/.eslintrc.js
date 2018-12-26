@@ -40,9 +40,12 @@ const config = {
         'import/core-modules': [
             'vue',
             'vuex',
+            'vue-router',
             '@babel/register',
             '@babel/polyfill',
             'chalk',
+            'apollo-client',
+            'apollo-cache-inmemory',
         ],
     },
     rules: {

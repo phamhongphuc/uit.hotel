@@ -1,7 +1,7 @@
 <template>
     <b-navbar id="sidebar">
         <b-navbar-nav>
-            <b-nav-item-icon- to="/dashboard" icon="" text="Bảng điều khiển" />
+            <b-nav-item-icon- to="/" icon="" text="Bảng điều khiển" exact />
         </b-navbar-nav>
     </b-navbar>
 </template>
