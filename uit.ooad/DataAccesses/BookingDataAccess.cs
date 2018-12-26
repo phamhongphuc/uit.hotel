@@ -24,14 +24,15 @@ namespace uit.ooad.DataAccesses
         }
         public static int NextId => Get().Count() == 0 ? 1 : Get().Max(f => f.Id) + 1;
 
-        public static async Task<Booking> CheckIn(Booking booking, DateTimeOffset now)
+        public static async Task<Booking> CheckIn(Employee employee, Booking bookingInDatabase)
         {
             await Database.WriteAsync(realm =>
             {
-                booking.RealCheckInTime = now;
-                booking.Status = 1;
+                bookingInDatabase.EmployeeCheckIn = employee;
+                bookingInDatabase.RealCheckInTime = DateTimeOffset.Now;
+                bookingInDatabase.Status = 2;
             });
-            return booking;
+            return bookingInDatabase;
         }
 
         public static Booking Get(int bookingId) => Database.Find<Booking>(bookingId);

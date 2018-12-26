@@ -18,7 +18,11 @@ namespace uit.ooad.Queries.Mutation
                 _IdArgument(),
                 _CheckPermission(
                     person => person.PermissionCreateBooking,
-                    context => BookingBusiness.CheckIn(_GetId<int>(context))
+                    context =>
+                    {
+                        var employee = AuthenticationHelper.GetEmployee(context);
+                        return BookingBusiness.CheckIn(employee, _GetId<int>(context));
+                    }
                 )
             );
         }
