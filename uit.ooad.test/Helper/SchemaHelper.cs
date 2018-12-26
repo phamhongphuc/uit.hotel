@@ -8,6 +8,7 @@ using Newtonsoft.Json.Schema;
 using uit.ooad.Businesses;
 using uit.ooad.GraphQLHelper;
 using uit.ooad.Models;
+using uit.ooad.Queries.Helper;
 
 namespace uit.ooad.test.Helper
 {
