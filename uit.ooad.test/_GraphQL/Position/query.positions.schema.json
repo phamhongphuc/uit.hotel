@@ -19,7 +19,9 @@
               "id",
               "name",
               "permissionGetRooms",
+              "permissionHandleBills",
               "permissionManageHiringRooms",
+              "permissionGetHouseKeepings",
               "permissionCreatePatronKind",
               "permissionCreateBill",
               "permissionCreateBooking",
@@ -46,7 +48,13 @@
               "permissionGetRooms":{
                 "type": "boolean"
               },
+              "permissionHandleBills": {
+                "type": "boolean"
+              },
               "permissionManageHiringRooms": {
+                "type": "boolean"
+              },
+              "permissionGetHouseKeepings": {
                 "type": "boolean"
               },
               "permissionCreatePatronKind": {
