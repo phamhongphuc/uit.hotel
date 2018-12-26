@@ -4,7 +4,7 @@ using uit.ooad.DataAccesses;
 using uit.ooad.Models;
 using System.Collections.Generic;
 
-namespace uit.ooad.test.Helper
+namespace uit.ooad.Queries.Helper
 {
     public class InitializeDatabase : RealmDatabase
     {
@@ -26,7 +26,6 @@ namespace uit.ooad.test.Helper
             AddVolatilityRate();
             AddService();
             AddBill();
-            // AddBooking();
             AddHouseKeeping();
             AddReceipt();
             AddServicesDetail();
@@ -41,9 +40,22 @@ namespace uit.ooad.test.Helper
         {
             PositionBusiness.Add(new Position()
             {
-                Id = 1,
-                Name = "Chức vụ quản trị",
-                // Không thêm các quyền vào trong này
+                Name = "Quản trị viên",
+                PermissionUpdateGroundPlan = true,
+                PermissionGetRooms = true,
+                PermissionManageHiringRooms = true,
+                PermissionCreateBill = true,
+                PermissionCreateBooking = true,
+                PermissionCreateOrUpdateEmployee = true,
+                PermissionAssignHouseKeeping = true,
+                PermissionCreateOrUpdatePatron = true,
+                PermissionCreatePosition = true,
+                PermissionCreateOrUpdateRate = true,
+                PermissionCreateReceipt = true,
+                PermissionCreateOrUpdateRoomKind = true,
+                PermissionCreateOrUpdateService = true,
+                PermissionCreateServicesDetail = true,
+                PermissionCreateOrUpdateVolatilityRate = true
             });
         }
 
@@ -213,20 +225,6 @@ namespace uit.ooad.test.Helper
             });
         }
 
-        // private static void AddBooking()
-        // {
-        //     BookingBusiness.Add(new Booking
-        //     {
-        //         Id = 1,
-        //         CheckInTime = DateTime.Now,
-        //         CheckOutTime = DateTime.Now,
-        //         CreateTime = DateTime.Now,
-        //         Status = 0,
-        //         Bill = BillBusiness.Get(1),
-        //         Room = RoomBusiness.Get(1),
-        //         Employee = EmployeeBusiness.Get(Constant.UserName)
-        //     });
-        // }
         private static void AddHouseKeeping()
         {
             HouseKeepingBusiness.Add(new HouseKeeping
