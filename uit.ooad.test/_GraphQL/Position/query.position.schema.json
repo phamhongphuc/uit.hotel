@@ -64,9 +64,6 @@
             "permissionCreateOrUpdateEmployee": {
               "type": "boolean"
             },
-            "permissionUpdateGroundPlan": {
-              "type": "boolean"
-            },
             "permissionCleaning": {
               "type": "boolean"
             },
