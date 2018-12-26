@@ -45,6 +45,7 @@ namespace uit.ooad.Queries.Helper
                 PermissionUpdateGroundPlan = true,
                 PermissionGetRooms = true,
                 PermissionManageHiringRooms = true,
+                PermissionGetHouseKeepings = true,
                 PermissionCreateBill = true,
                 PermissionCreateBooking = true,
                 PermissionCreateOrUpdateEmployee = true,

@@ -46,6 +46,9 @@
             "permissionManageHiringRooms": {
               "type": "boolean"
             },
+            "permissionGetHouseKeepings": {
+              "type": "boolean"
+            },
             "permissionCreatePatronKind": {
               "type": "boolean"
             },
