@@ -30,8 +30,9 @@ namespace uit.ooad.Queries.Helper
 
             AddBill();
             AddCheckedInBill();
+            AddRequestCheckOutBill();
 
-            AddHouseKeeping();
+            AddConfirmCleaned();
             AddReceipt();
 
             AddServicesDetail();
@@ -237,14 +238,15 @@ namespace uit.ooad.Queries.Helper
             BookingBusiness.CheckIn(EmployeeBusiness.Get(Constant.UserName), 2);
         }
 
-        private static void AddHouseKeeping()
+        private static void AddRequestCheckOutBill()
         {
-            HouseKeepingBusiness.Add(new HouseKeeping
-            {
-                Type = (int)HouseKeeping.TypeEnum.MakeUpRoom,
-                Status = (int)HouseKeeping.StatusEnum.Pending,
-                Booking = BookingBusiness.Get(1)
-            });
+            AddBill();
+            BookingBusiness.CheckIn(EmployeeBusiness.Get(Constant.UserName), 3);
+            BookingBusiness.RequestCheckOut(EmployeeBusiness.Get(Constant.UserName), 3);
+        }
+        private static void AddConfirmCleaned()
+        {
+            HouseKeepingBusiness.AssignCleaningService(EmployeeBusiness.Get(Constant.UserName), 2);
         }
         private static void AddReceipt()
         {

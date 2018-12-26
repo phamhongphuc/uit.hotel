@@ -31,12 +31,21 @@ namespace uit.ooad.DataAccesses
 
         private static int NextId => Get().Count() == 0 ? 1 : Get().Max(i => i.Id) + 1;
 
-        internal static async Task<HouseKeeping> AssignCleaningServiceAsync(Employee employee, HouseKeeping houseKeepingInDatabase)
+        public static async Task<HouseKeeping> AssignCleaningService(Employee employee, HouseKeeping houseKeepingInDatabase)
         {
             await Database.WriteAsync(realm =>
             {
                 houseKeepingInDatabase.Employee = employee;
                 houseKeepingInDatabase.Status = (int)HouseKeeping.StatusEnum.Cleaning;
+            });
+            return houseKeepingInDatabase;
+        }
+
+        public static async Task<HouseKeeping> ConfirmCleaned(HouseKeeping houseKeepingInDatabase)
+        {
+            await Database.WriteAsync(realm =>
+            {
+                houseKeepingInDatabase.Status = (int)HouseKeeping.StatusEnum.Cleaned;
             });
             return houseKeepingInDatabase;
         }

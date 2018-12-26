@@ -25,17 +25,21 @@ namespace uit.ooad.Queries.Mutation
             );
 
             Field<HouseKeepingType>(
-                "ConfirmCleaning",
+                "ConfirmCleaned",
                 "Nhân viên xác nhận đã dọn xong",
-                _InputArgument<HouseKeepingCreateInput>(),
+                _IdArgument(),
                 _CheckPermission(
                     p => p.PermissionCleaning,
-                    context => HouseKeepingBusiness.Add(_GetInput(context))
+                    context =>
+                    {
+                        var employee = AuthenticationHelper.GetEmployee(context);
+                        return HouseKeepingBusiness.ConfirmCleaned(employee, _GetId<int>(context));
+                    }
                 )
             );
 
             Field<HouseKeepingType>(
-                "ConfirmCleaningAndServices",
+                "ConfirmCleanedAndServices",
                 "Nhân viên xác nhận và gửi thông tin kiểm tra phòng check-out",
                 _InputArgument<HouseKeepingCreateInput>(),
                 _CheckPermission(
