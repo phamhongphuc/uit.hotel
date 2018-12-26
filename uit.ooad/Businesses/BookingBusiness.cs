@@ -18,7 +18,7 @@ namespace uit.ooad.Businesses
 
             var houseKeeping = new HouseKeeping();
             houseKeeping.Type = (int)HouseKeeping.TypeEnum.ExpectedArrival;
-            houseKeeping.Employee = HouseKeepingBusiness.GetFreeEmployee();
+            houseKeeping.Status = (int)HouseKeeping.StatusEnum.Pending;
             houseKeeping.Booking = bookingInDatabase;
 
             return BookingDataAccess.CheckIn(employee, bookingInDatabase, houseKeeping);
@@ -35,7 +35,7 @@ namespace uit.ooad.Businesses
 
             var houseKeeping = new HouseKeeping();
             houseKeeping.Type = (int)HouseKeeping.TypeEnum.ExpectedDeparture;
-            houseKeeping.Employee = HouseKeepingBusiness.GetFreeEmployee();
+            houseKeeping.Status = (int)HouseKeeping.StatusEnum.Pending;
             houseKeeping.Booking = bookingInDatabase;
 
             return BookingDataAccess.RequestCheckOut(employee, bookingInDatabase, houseKeeping);

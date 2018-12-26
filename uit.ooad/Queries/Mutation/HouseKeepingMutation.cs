@@ -1,6 +1,7 @@
 using uit.ooad.Businesses;
 using uit.ooad.Models;
 using uit.ooad.ObjectTypes;
+using uit.ooad.Queries.Authentication;
 using uit.ooad.Queries.Base;
 
 namespace uit.ooad.Queries.Mutation
@@ -12,10 +13,14 @@ namespace uit.ooad.Queries.Mutation
             Field<HouseKeepingType>(
                 "AssignCleaningService",
                 "Nhân viên nhận phòng để dọn dẹp",
-                _InputArgument<HouseKeepingCreateInput>(),
+                _IdArgument(),
                 _CheckPermission(
                     p => p.PermissionCleaning,
-                    context => HouseKeepingBusiness.Add(_GetInput(context))
+                    context =>
+                    {
+                        var employee = AuthenticationHelper.GetEmployee(context);
+                        return HouseKeepingBusiness.AssignCleaningService(employee, _GetId<int>(context));
+                    }
                 )
             );
 

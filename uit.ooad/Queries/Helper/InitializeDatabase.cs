@@ -242,8 +242,8 @@ namespace uit.ooad.Queries.Helper
             HouseKeepingBusiness.Add(new HouseKeeping
             {
                 Type = (int)HouseKeeping.TypeEnum.MakeUpRoom,
-                Booking = BookingBusiness.Get(1),
-                Employee = EmployeeBusiness.Get(Constant.UserName)
+                Status = (int)HouseKeeping.StatusEnum.Pending,
+                Booking = BookingBusiness.Get(1)
             });
         }
         private static void AddReceipt()
