@@ -46,10 +46,17 @@ namespace uit.ooad.Businesses
             EmployeeDataAccess.ChangePassword(employee, newPassword);
         }
 
+        public static string CheckIsActive(Employee employee)
+        {
+            if (!employee.IsActive) throw new Exception("Tài khoản " + employee.Id + " đã bị vô hiệu hóa");
+            
+            return "Đăng nhập thành công";
+        }
+
         public static string ResetPassword(string id)
         {
             var employee = Get(id);
-            if (employee == null) throw new Exception("Không tim thấy tên đăng nhập trong hệ thống");
+            if (employee == null) throw new Exception("Không tìm thấy tên đăng nhập trong hệ thống");
 
             var newPassword = AuthenticationHelper.GetRandomString();
             EmployeeDataAccess.ChangePassword(employee, CryptoHelper.Encrypt(newPassword));
@@ -60,7 +67,7 @@ namespace uit.ooad.Businesses
         public static void SetIsActiveAccount(string id, bool isActive)
         {
             var employee = Get(id);
-            if (employee == null) throw new Exception("Không tim thấy tên đăng nhập trong hệ thống");
+            if (employee == null) throw new Exception("Không tìm thấy tên đăng nhập trong hệ thống");
 
             EmployeeDataAccess.SetIsActiveAccount(employee, isActive);
         }
@@ -72,7 +79,7 @@ namespace uit.ooad.Businesses
             if (employee != null)
             {
                 if (employee.IsEqualPassword(password)) return;
-                if (!employee.IsActive) throw new Exception("Tài khoản " + id + " đã bị vô hiệu hóa");
+                CheckIsActive(employee);
             }
             throw new Exception("Tài khoản hoặc mật khẩu không chính xác");
         }

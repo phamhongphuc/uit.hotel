@@ -68,7 +68,7 @@ namespace uit.ooad.Queries.Authentication
             var id = GetEmployeeId(context);
 
             var employee = EmployeeBusiness.Get(id);
-            if (employee == null) throw new Exception("Không tim thấy tên đăng nhập trong hệ thống");
+            if (employee == null) throw new Exception("Không tìm thấy tên đăng nhập trong hệ thống");
 
             return employee;
         }

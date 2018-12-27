@@ -37,6 +37,16 @@ namespace uit.ooad.Queries.Mutation
             );
 
             Field<StringGraphType>(
+                "CheckLogin",
+                "Kiểm tra đăng nhập",
+                resolve: context => 
+                {
+                    var employee = AuthenticationHelper.GetEmployee(context);
+                    return EmployeeBusiness.CheckIsActive(employee);
+                }
+            );
+
+            Field<StringGraphType>(
                 "ChangePassword",
                 "Nhân viên tự đổi mật khẩu cho tài khoản của mình",
                 new QueryArguments(
