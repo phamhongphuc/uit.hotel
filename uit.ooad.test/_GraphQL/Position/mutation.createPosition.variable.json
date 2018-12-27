@@ -1,6 +1,8 @@
 {
 	"input": {
 		"name": "Tên quyền",
+		"permissionReferRevenues": false,
+		"permissionManageEmployees": false,
 		"permissionGetRooms": false,
 		"permissionManagePatrons": false,
 		"permissionManagePatronKinds": false,

@@ -48,6 +48,8 @@ namespace uit.ooad.Queries.Helper
             {
                 Name = "Quản trị viên",
                 PermissionUpdateGroundPlan = true,
+                PermissionManageEmployees = true,
+                PermissionReferRevenues = true,
                 PermissionManagePatrons = true,
                 PermissionManagePatronKinds = true,
                 PermissionHandleBills = true,

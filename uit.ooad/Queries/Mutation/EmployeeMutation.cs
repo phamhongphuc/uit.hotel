@@ -17,7 +17,7 @@ namespace uit.ooad.Queries.Mutation
                 "Tạo và trả về một nhân viên mới",
                 _InputArgument<EmployeeCreateInput>(),
                 _CheckPermission(
-                    p => p.PermissionCreateOrUpdateEmployee,
+                    p => p.PermissionManageEmployees,
                     context => EmployeeBusiness.Add(_GetInput(context))
                 )
             );
@@ -27,7 +27,7 @@ namespace uit.ooad.Queries.Mutation
                 "Chỉnh sửa thông tin nhân viên",
                 _InputArgument<EmployeeUpdateInput>(),
                 _CheckPermission(
-                    p => p.PermissionCreateOrUpdateEmployee,
+                    p => p.PermissionManageEmployees,
                     context => EmployeeBusiness.Update(_GetInput(context))
                 )
             );
@@ -36,16 +36,19 @@ namespace uit.ooad.Queries.Mutation
                 "ResetPassword",
                 "Reset lại mật khẩu cho nhân viên khi quên mật khẩu",
                 _IdArgument(),
-                context =>
-                {
-                    var id = AuthenticationHelper.GetEmployeeId(context);
-                    var employeeId = context.GetArgument<string>("id");
+                _CheckPermission(
+                    p => p.PermissionManageEmployees,
+                    context =>
+                    {
+                        var id = AuthenticationHelper.GetEmployeeId(context);
+                        var employeeId = context.GetArgument<string>("id");
 
-                    if (id == employeeId) throw new Exception("Nhân viên không thể tự reset mật khẩu của chính mình");
-                    var newPassword = EmployeeBusiness.ResetPassword(employeeId);
+                        if (id == employeeId) throw new Exception("Nhân viên không thể tự reset mật khẩu của chính mình");
+                        var newPassword = EmployeeBusiness.ResetPassword(employeeId);
 
-                    return "Mật khẩu mới: " + newPassword;
-                }
+                        return "Mật khẩu mới: " + newPassword;
+                    }
+                )
             );
 
             Field<StringGraphType>(
@@ -56,7 +59,7 @@ namespace uit.ooad.Queries.Mutation
                     new QueryArgument<NonNullGraphType<BooleanGraphType>> { Name = "isActive" }
                 ),
                 _CheckPermission(
-                    p => p.PermissionCreateOrUpdateEmployee,
+                    p => p.PermissionManageEmployees,
                     context =>
                     {
                         var id = AuthenticationHelper.GetEmployeeId(context);

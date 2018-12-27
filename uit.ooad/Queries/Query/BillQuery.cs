@@ -13,7 +13,10 @@ namespace uit.ooad.Queries.Query
             Field<ListGraphType<BillType>>(
                 _List,
                 "Trả về một danh sách các hóa đơn",
-                resolve: context => BillBusiness.Get()
+                resolve: _CheckPermission(
+                    p => p.PermissionReferRevenues,
+                    context => BillBusiness.Get()
+                )
             );
             Field<BillType>(
                 _Item,
