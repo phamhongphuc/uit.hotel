@@ -73,7 +73,7 @@ const config = {
         'typescript/no-explicit-any': 'off',
         'typescript/no-inferrable-types': 'error',
         'typescript/no-misused-new': 'error',
-        'typescript/no-namespace': 'error',
+        'typescript/no-namespace': 'off',
         'typescript/no-non-null-assertion': 'error',
         'typescript/no-object-literal-type-assertion': 'error',
         'typescript/no-parameter-properties': 'error',
@@ -82,7 +82,7 @@ const config = {
         'typescript/no-unused-vars': 'warn',
         'typescript/no-use-before-define': 'error',
         'typescript/no-var-requires': 'error',
-        'typescript/prefer-interface': 'error',
+        'typescript/prefer-interface': 'off',
         'typescript/prefer-namespace-keyword': 'error',
         'typescript/type-annotation-spacing': 'error',
 
