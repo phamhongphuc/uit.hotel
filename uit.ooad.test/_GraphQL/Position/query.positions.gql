@@ -3,6 +3,7 @@
     id
     name
     permissionReferRevenues
+    permissionManageEmployees
     permissionGetRooms
     permissionManagePatrons
     permissionManagePatronKinds

@@ -19,6 +19,7 @@
               "id",
               "name",
               "permissionReferRevenues",
+              "permissionManageEmployees",
               "permissionGetRooms",
               "permissionManagePatrons",
               "permissionManagePatronKinds",
@@ -47,6 +48,9 @@
               "name": {
                 "type": "string",
                 "pattern": "^(.*)$"
+              },
+              "permissionManageEmployees": {
+                "type": "boolean"
               },
               "permissionReferRevenues": {
                 "type": "boolean"
