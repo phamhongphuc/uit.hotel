@@ -46,5 +46,16 @@ namespace uit.ooad.test._GraphQL.Booking
                 p => p.PermissionManageHiringRooms = true
             );
         }
+
+        [TestMethod]
+        public void CheckOut()
+        {
+            SchemaHelper.Execute(
+                @"/_GraphQL/Booking/mutation.checkOut.gql",
+                @"/_GraphQL/Booking/mutation.checkOut.schema.json",
+                @"/_GraphQL/Booking/mutation.checkOut.variable.json",
+                p => p.PermissionManageHiringRooms = true
+            );
+        }
     }
 }
