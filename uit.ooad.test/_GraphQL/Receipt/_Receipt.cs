@@ -1,7 +1,4 @@
-using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using uit.ooad.Businesses;
-using uit.ooad.Models;
 using uit.ooad.test.Helper;
 
 namespace uit.ooad.test._GraphQL.Receipt
@@ -17,6 +14,7 @@ namespace uit.ooad.test._GraphQL.Receipt
                 @"/_GraphQL/Receipt/query.receipts.schema.json"
             );
         }
+
         [TestMethod]
         public void Receipt()
         {
@@ -24,9 +22,9 @@ namespace uit.ooad.test._GraphQL.Receipt
                 @"/_GraphQL/Receipt/query.receipt.gql",
                 @"/_GraphQL/Receipt/query.receipt.schema.json",
                 @"/_GraphQL/Receipt/query.receipt.variable.json"
-
             );
         }
+
         [TestMethod]
         public void CreateReceipt()
         {

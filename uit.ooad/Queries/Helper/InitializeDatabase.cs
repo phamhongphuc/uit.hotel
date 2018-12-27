@@ -1,8 +1,8 @@
 using System;
+using System.Collections.Generic;
 using uit.ooad.Businesses;
 using uit.ooad.DataAccesses;
 using uit.ooad.Models;
-using System.Collections.Generic;
 
 namespace uit.ooad.Queries.Helper
 {
@@ -44,7 +44,7 @@ namespace uit.ooad.Queries.Helper
 
         private static void AddPosition()
         {
-            PositionBusiness.Add(new Position()
+            PositionBusiness.Add(new Position
             {
                 Name = "Quản trị viên",
                 PermissionUpdateGroundPlan = true,
@@ -73,7 +73,7 @@ namespace uit.ooad.Queries.Helper
 
         private static void AddEmployee()
         {
-            EmployeeBusiness.Add(new Employee()
+            EmployeeBusiness.Add(new Employee
             {
                 Id = Constant.UserName,
                 Address = "Địa chỉ",
@@ -203,25 +203,26 @@ namespace uit.ooad.Queries.Helper
         private static void AddBill()
         {
             BillBusiness.Book(EmployeeBusiness.Get(Constant.UserName), new Bill
-            {
-                Time = DateTime.Now,
-                Patron = PatronBusiness.Get(1)
-            },
-            new List<Booking>
-            {
-                new Booking
-                {
-                    BookCheckInTime = DateTime.Now,
-                    BookCheckOutTime = DateTime.Now,
-                    Room = RoomBusiness.Get(1),
-                    ListOfPatrons = new List<Patron>
-                    {
-                        new Patron{
-                            Id = 1
-                        }
-                    }
-                }
-            });
+                              {
+                                  Time = DateTime.Now,
+                                  Patron = PatronBusiness.Get(1)
+                              },
+                              new List<Booking>
+                              {
+                                  new Booking
+                                  {
+                                      BookCheckInTime = DateTime.Now,
+                                      BookCheckOutTime = DateTime.Now,
+                                      Room = RoomBusiness.Get(1),
+                                      ListOfPatrons = new List<Patron>
+                                      {
+                                          new Patron
+                                          {
+                                              Id = 1
+                                          }
+                                      }
+                                  }
+                              });
         }
 
         private static void AddCheckedInBill()
@@ -237,10 +238,12 @@ namespace uit.ooad.Queries.Helper
             BookingBusiness.RequestCheckOut(EmployeeBusiness.Get(Constant.UserName), 3);
             HouseKeepingBusiness.AssignCleaningService(EmployeeBusiness.Get(Constant.UserName), 3);
         }
+
         private static void AddConfirmCleaned()
         {
             HouseKeepingBusiness.AssignCleaningService(EmployeeBusiness.Get(Constant.UserName), 2);
         }
+
         private static void AddConfirmCleanedAndServices()
         {
             AddBill();
@@ -248,24 +251,27 @@ namespace uit.ooad.Queries.Helper
             BookingBusiness.RequestCheckOut(EmployeeBusiness.Get(Constant.UserName), 4);
             HouseKeepingBusiness.AssignCleaningService(EmployeeBusiness.Get(Constant.UserName), 5);
             HouseKeepingBusiness.ConfirmCleanedAndServices(EmployeeBusiness.Get(Constant.UserName),
-            new List<ServicesDetail>
-            {
-                new ServicesDetail
-                {
-                    Number = 1,
-                    Service = new Service{
-                        Id = 1
-                    }
-                },
-                new ServicesDetail
-                {
-                    Number = 1,
-                    Service = new Service{
-                        Id = 1
-                    }
-                }
-            }, 5);
+                                                           new List<ServicesDetail>
+                                                           {
+                                                               new ServicesDetail
+                                                               {
+                                                                   Number = 1,
+                                                                   Service = new Service
+                                                                   {
+                                                                       Id = 1
+                                                                   }
+                                                               },
+                                                               new ServicesDetail
+                                                               {
+                                                                   Number = 1,
+                                                                   Service = new Service
+                                                                   {
+                                                                       Id = 1
+                                                                   }
+                                                               }
+                                                           }, 5);
         }
+
         private static void AddReceipt()
         {
             ReceiptBusiness.Add(new Receipt

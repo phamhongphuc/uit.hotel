@@ -13,13 +13,13 @@ namespace uit.ooad.Businesses
 
         public static Task<Floor> Update(Floor floor)
         {
-            Floor floorInDatabase = GetAndCheckValid(floor.Id);
+            var floorInDatabase = GetAndCheckValid(floor.Id);
             return FloorDataAccess.Update(floorInDatabase, floor);
         }
 
         public static void Delete(int floorId)
         {
-            Floor floorInDatabase = GetAndCheckValid(floorId);
+            var floorInDatabase = GetAndCheckValid(floorId);
             FloorDataAccess.Delete(floorInDatabase);
         }
 
@@ -30,7 +30,7 @@ namespace uit.ooad.Businesses
                 throw new Exception("Tầng có Id: " + floorId + " không hợp lệ!");
             FloorDataAccess.SetIsActive(floorInDatabase, isActive);
         }
-        
+
         private static Floor GetAndCheckValid(int floorId)
         {
             var floorInDatabase = Get(floorId);
@@ -45,6 +45,7 @@ namespace uit.ooad.Businesses
                 throw new Exception("Tầng đã có phòng. Không thể cập nhật/xóa!");
             return floorInDatabase;
         }
+
         public static Floor Get(int floorId) => FloorDataAccess.Get(floorId);
         public static IEnumerable<Floor> Get() => FloorDataAccess.Get();
     }

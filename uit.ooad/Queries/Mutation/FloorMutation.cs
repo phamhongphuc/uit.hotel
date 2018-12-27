@@ -32,7 +32,7 @@ namespace uit.ooad.Queries.Mutation
                 _Deletion,
                 "Xóa một tầng",
                 _IdArgument(),
-                _CheckPermission<string>(
+                _CheckPermission(
                     p => p.PermissionUpdateGroundPlan,
                     context =>
                     {

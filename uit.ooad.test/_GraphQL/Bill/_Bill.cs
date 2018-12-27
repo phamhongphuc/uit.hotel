@@ -1,6 +1,4 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using uit.ooad.Businesses;
-using uit.ooad.Models;
 using uit.ooad.test.Helper;
 
 namespace uit.ooad.test._GraphQL._Bill
@@ -16,6 +14,7 @@ namespace uit.ooad.test._GraphQL._Bill
                 @"/_GraphQL/Bill/query.bills.schema.json"
             );
         }
+
         [TestMethod]
         public void Bill()
         {
@@ -25,6 +24,7 @@ namespace uit.ooad.test._GraphQL._Bill
                 @"/_GraphQL/Bill/query.bill.variable.json"
             );
         }
+
         // [TestMethod]
         // public void CreateBill()
         // {

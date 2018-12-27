@@ -1,5 +1,3 @@
-using System;
-using System.Linq;
 using GraphQL.Types;
 using uit.ooad.Businesses;
 using uit.ooad.Models;
@@ -12,9 +10,9 @@ namespace uit.ooad.Queries.Mutation
 {
     public class AuthenticationMutation : QueryType<Employee>
     {
-        private static string ID = "id";
-        private static string PASSWORD = "password";
-        private static string NEW_PASSWORD = "newPassword";
+        private static readonly string ID = "id";
+        private static readonly string PASSWORD = "password";
+        private static readonly string NEW_PASSWORD = "newPassword";
 
         public AuthenticationMutation()
         {

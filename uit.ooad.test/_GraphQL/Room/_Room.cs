@@ -1,6 +1,4 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using uit.ooad.Businesses;
-using uit.ooad.Models;
 using uit.ooad.test.Helper;
 
 namespace uit.ooad.test._GraphQL._Room
@@ -18,6 +16,7 @@ namespace uit.ooad.test._GraphQL._Room
                 p => p.PermissionGetRooms = true
             );
         }
+
         [TestMethod]
         public void Room()
         {
@@ -27,6 +26,7 @@ namespace uit.ooad.test._GraphQL._Room
                 @"/_GraphQL/Room/query.room.variable.json"
             );
         }
+
         [TestMethod]
         public void CreateRoom()
         {
@@ -37,6 +37,7 @@ namespace uit.ooad.test._GraphQL._Room
                 p => p.PermissionUpdateGroundPlan = true
             );
         }
+
         [TestMethod]
         public void UpdateRoom()
         {
@@ -47,6 +48,7 @@ namespace uit.ooad.test._GraphQL._Room
                 p => p.PermissionUpdateGroundPlan = true
             );
         }
+
         [TestMethod]
         public void DeleteRoom()
         {
@@ -57,6 +59,7 @@ namespace uit.ooad.test._GraphQL._Room
                 p => p.PermissionUpdateGroundPlan = true
             );
         }
+
         [TestMethod]
         public void SetIsActiveRoom()
         {

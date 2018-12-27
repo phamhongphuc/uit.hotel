@@ -32,7 +32,7 @@ namespace uit.ooad.Queries.Mutation
                 _Deletion,
                 "Xóa một loại phòng",
                 _IdArgument(),
-                _CheckPermission<string>(
+                _CheckPermission(
                     p => p.PermissionCreateOrUpdateRoomKind,
                     context =>
                     {

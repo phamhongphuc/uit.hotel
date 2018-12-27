@@ -49,12 +49,12 @@ namespace uit.ooad.Queries.Mutation
                     new QueryArgument<NonNullGraphType<BooleanGraphType>> { Name = "isActive" }
                 ),
                 _CheckPermission(p => p.PermissionUpdateGroundPlan, context =>
-                      {
-                          int id = context.GetArgument<int>("id");
-                          bool isActive = context.GetArgument<bool>("isActive");
-                          RoomBusiness.SetIsActive(id, isActive);
-                          return "Cập nhật trạng thái thành công";
-                      }
+                    {
+                        var id = context.GetArgument<int>("id");
+                        var isActive = context.GetArgument<bool>("isActive");
+                        RoomBusiness.SetIsActive(id, isActive);
+                        return "Cập nhật trạng thái thành công";
+                    }
                 )
             );
         }

@@ -74,6 +74,7 @@ namespace uit.ooad.ObjectTypes
             );
         }
     }
+
     public class RoomIdInput : InputType<Room>
     {
         public RoomIdInput()

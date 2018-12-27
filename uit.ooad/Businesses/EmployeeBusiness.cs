@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using uit.ooad.DataAccesses;
 using uit.ooad.Models;
@@ -41,7 +40,7 @@ namespace uit.ooad.Businesses
             var employee = Get(id);
             if (employee == null) throw new Exception("Không tim thấy tên đăng nhập trong hệ thống");
 
-            else if (!employee.IsEqualPassword(password)) throw new Exception("Mật khẩu không đúng");
+            if (!employee.IsEqualPassword(password)) throw new Exception("Mật khẩu không đúng");
             newPassword = CryptoHelper.Encrypt(newPassword);
 
             EmployeeDataAccess.ChangePassword(employee, newPassword);
@@ -73,7 +72,7 @@ namespace uit.ooad.Businesses
 
         public static object GetAuthenticationObject(string id, string password)
         {
-            var employee = EmployeeBusiness.GetAndCheckLogin(id, password);
+            var employee = GetAndCheckLogin(id, password);
             return new AuthenticationObject
             {
                 Token = AuthenticationHelper.TokenBuilder(employee.Id),
@@ -93,6 +92,7 @@ namespace uit.ooad.Businesses
                 CheckIsActive(employee);
                 return employee;
             }
+
             throw new Exception("Tài khoản hoặc mật khẩu không chính xác");
         }
     }

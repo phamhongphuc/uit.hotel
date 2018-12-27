@@ -43,15 +43,15 @@ namespace uit.ooad.Queries.Base
                 AuthenticationHelper.HasPermission(context, getPermission);
                 return resolver(context);
             };
-            
+
         public Func<ResolveFieldContext<object>, object> _CheckPermission<TReturn>(
-        Func<Position, bool> getPermission,
-        Func<ResolveFieldContext<object>, TReturn> resolver
-    )
-        => context =>
-        {
-            AuthenticationHelper.HasPermission(context, getPermission);
-            return resolver(context);
-        };
+            Func<Position, bool> getPermission,
+            Func<ResolveFieldContext<object>, TReturn> resolver
+        )
+            => context =>
+            {
+                AuthenticationHelper.HasPermission(context, getPermission);
+                return resolver(context);
+            };
     }
 }

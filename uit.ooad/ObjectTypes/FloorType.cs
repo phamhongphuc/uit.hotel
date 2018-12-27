@@ -43,6 +43,7 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.IsActive).Description("Trạng thái hoạt động");
         }
     }
+
     public class FloorUpdateInput : InputType<Floor>
     {
         public FloorUpdateInput()

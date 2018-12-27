@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using uit.ooad.DataAccesses;
 using uit.ooad.Models;
-using uit.ooad.ObjectTypes;
 
 namespace uit.ooad.Businesses
 {

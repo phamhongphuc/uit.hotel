@@ -1,6 +1,4 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using uit.ooad.Businesses;
-using uit.ooad.Models;
 using uit.ooad.test.Helper;
 
 namespace uit.ooad.test._GraphQL.Booking
@@ -16,6 +14,7 @@ namespace uit.ooad.test._GraphQL.Booking
                 @"/_GraphQL/Booking/query.bookings.schema.json"
             );
         }
+
         [TestMethod]
         public void Booking()
         {
@@ -25,6 +24,7 @@ namespace uit.ooad.test._GraphQL.Booking
                 @"/_GraphQL/Booking/query.booking.variable.json"
             );
         }
+
         [TestMethod]
         public void CheckIn()
         {
@@ -35,6 +35,7 @@ namespace uit.ooad.test._GraphQL.Booking
                 p => p.PermissionManageHiringRooms = true
             );
         }
+
         [TestMethod]
         public void RequestCheckOut()
         {

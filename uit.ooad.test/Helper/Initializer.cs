@@ -3,8 +3,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using uit.ooad.GraphQLHelper;
-using uit.ooad.Queries.Helper;
 using uit.ooad.Queries.Authentication;
+using uit.ooad.Queries.Helper;
 
 namespace uit.ooad.test.Helper
 {

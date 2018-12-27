@@ -1,6 +1,4 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using uit.ooad.Businesses;
-using uit.ooad.Models;
 using uit.ooad.test.Helper;
 
 namespace uit.ooad.test._GraphQL._RoomKind
@@ -16,6 +14,7 @@ namespace uit.ooad.test._GraphQL._RoomKind
                 @"/_GraphQL/RoomKind/query.roomKinds.schema.json"
             );
         }
+
         [TestMethod]
         public void RoomKind()
         {
@@ -25,6 +24,7 @@ namespace uit.ooad.test._GraphQL._RoomKind
                 @"/_GraphQL/RoomKind/query.roomKind.variable.json"
             );
         }
+
         [TestMethod]
         public void CreateRoomKind()
         {
@@ -35,6 +35,7 @@ namespace uit.ooad.test._GraphQL._RoomKind
                 p => p.PermissionCreateOrUpdateRoomKind = true
             );
         }
+
         [TestMethod]
         public void SetIsActiveRoomKind()
         {

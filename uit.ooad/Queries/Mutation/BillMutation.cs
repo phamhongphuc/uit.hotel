@@ -27,12 +27,11 @@ namespace uit.ooad.Queries.Mutation
                         var bill = context.GetArgument<Bill>("bill");
                         var bookings = context.GetArgument<List<Booking>>("bookings");
 
-                        Bill billInDatabase = await BillBusiness.Book(employee, bill, bookings);
+                        var billInDatabase = await BillBusiness.Book(employee, bill, bookings);
                         return billInDatabase;
                     }
                 )
             );
-
         }
     }
 }

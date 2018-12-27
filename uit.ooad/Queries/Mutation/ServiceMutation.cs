@@ -19,16 +19,16 @@ namespace uit.ooad.Queries.Mutation
                     context => ServiceBusiness.Add(_GetInput(context))
                 )
             );
-            
+
             Field<ServiceType>(
-                 _Updation,
-                 "Cập nhật và trả về một dịch vụ mới cập nhật",
-                 _InputArgument<ServiceUpdateInput>(),
-                 _CheckPermission(
-                     p => p.PermissionCreateOrUpdateService,
-                     context => ServiceBusiness.Update(_GetInput(context))
-                 )
-             );
+                _Updation,
+                "Cập nhật và trả về một dịch vụ mới cập nhật",
+                _InputArgument<ServiceUpdateInput>(),
+                _CheckPermission(
+                    p => p.PermissionCreateOrUpdateService,
+                    context => ServiceBusiness.Update(_GetInput(context))
+                )
+            );
 
             Field<StringGraphType>(
                 "SetIsActiveService",

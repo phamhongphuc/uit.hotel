@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,6 +17,7 @@ namespace uit.ooad.DataAccesses
             });
             return roomKind;
         }
+
         public static async Task<RoomKind> Update(RoomKind roomKindInDatabase, RoomKind roomKind)
         {
             await Database.WriteAsync(realm =>

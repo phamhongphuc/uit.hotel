@@ -1,6 +1,4 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using uit.ooad.Businesses;
-using uit.ooad.Models;
 using uit.ooad.test.Helper;
 
 namespace uit.ooad.test._GraphQL._Floor
@@ -16,6 +14,7 @@ namespace uit.ooad.test._GraphQL._Floor
                 @"/_GraphQL/Floor/query.floors.schema.json"
             );
         }
+
         [TestMethod]
         public void Floor()
         {
@@ -36,6 +35,7 @@ namespace uit.ooad.test._GraphQL._Floor
                 p => p.PermissionUpdateGroundPlan = true
             );
         }
+
         [TestMethod]
         public void UpdateFloor()
         {
@@ -46,6 +46,7 @@ namespace uit.ooad.test._GraphQL._Floor
                 p => p.PermissionUpdateGroundPlan = true
             );
         }
+
         [TestMethod]
         public void DeleteFloor()
         {
@@ -56,6 +57,7 @@ namespace uit.ooad.test._GraphQL._Floor
                 p => p.PermissionUpdateGroundPlan = true
             );
         }
+
         [TestMethod]
         public void SetIsActiveFloor()
         {

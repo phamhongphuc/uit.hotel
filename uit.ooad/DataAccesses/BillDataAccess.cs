@@ -7,6 +7,8 @@ namespace uit.ooad.DataAccesses
 {
     public class BillDataAccess : RealmDatabase
     {
+        private static int NextId => Get().Count() == 0 ? 1 : Get().Max(i => i.Id) + 1;
+
         public static async Task<Bill> Book(Bill bill, List<Booking> bookings)
         {
             await Database.WriteAsync(realm =>
@@ -26,7 +28,5 @@ namespace uit.ooad.DataAccesses
         public static Bill Get(int billId) => Database.Find<Bill>(billId);
 
         public static IEnumerable<Bill> Get() => Database.All<Bill>();
-
-        private static int NextId => Get().Count() == 0 ? 1 : Get().Max(i => i.Id) + 1;
     }
 }

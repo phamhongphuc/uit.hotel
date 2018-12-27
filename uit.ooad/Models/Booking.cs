@@ -8,7 +8,8 @@ namespace uit.ooad.Models
 {
     public class Booking : RealmObject
     {
-        public enum StatusEnum {
+        public enum StatusEnum
+        {
             Booked,
             CheckedIn,
             RequestedCheckOut,
@@ -30,11 +31,6 @@ namespace uit.ooad.Models
         [PrimaryKey]
         public int Id { get; set; }
 
-        public void CheckValidBeforeCreate()
-        {
-            // Kiểm tra các điều kiện thực thi trong này.
-        }
-
         public int Status { get; set; }
         public DateTimeOffset BookCheckInTime { get; set; }
         public DateTimeOffset BookCheckOutTime { get; set; }
@@ -53,6 +49,12 @@ namespace uit.ooad.Models
 
         [Backlink(nameof(ServicesDetail.Booking))]
         public IQueryable<ServicesDetail> ServicesDetails { get; }
+
+        public void CheckValidBeforeCreate()
+        {
+            // Kiểm tra các điều kiện thực thi trong này.
+        }
+
         public Booking GetManaged() => BookingBusiness.Get(Id);
     }
 }
