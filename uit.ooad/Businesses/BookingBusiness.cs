@@ -54,6 +54,20 @@ namespace uit.ooad.Businesses
             return BookingDataAccess.CheckOut(bookingInDatabase);
         }
 
+        public static Task<Booking> Add(Employee employee, int billId, Booking booking)
+        {
+            var bill = BillBusiness.Get(billId);
+            if(bill == null) throw new Exception("Mã hóa đơn không tồn tại.");
+
+            booking.Room = booking.Room.GetManaged();
+            if(booking.Room == null)
+                throw new Exception("Mã phòng không tồn tại");
+            if(!booking.Room.IsActive)
+                throw new Exception("Phòng có Id: " + booking.Room.Id + " đã ngưng hoạt động");
+            
+            return BookingDataAccess.Add(employee, bill, booking);
+        }
+
         public static Booking Get(int bookingId) => BookingDataAccess.Get(bookingId);
         public static IEnumerable<Booking> Get() => BookingDataAccess.Get();
     }

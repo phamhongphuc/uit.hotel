@@ -11,9 +11,14 @@ namespace uit.ooad.DataAccesses
     {
         public static int NextId => Get().Count() == 0 ? 1 : Get().Max(f => f.Id) + 1;
 
-        public static async Task<Booking> Add(Booking booking)
+        public static async Task<Booking> Add(Employee employee, Bill bill, Booking booking)
         {
-            await Database.WriteAsync(realm => Add(realm, booking));
+            await Database.WriteAsync(realm =>
+            {
+                booking.EmployeeBooking = employee;
+                booking.Bill = bill;
+                Add(realm, booking);
+            });
             return booking;
         }
 
