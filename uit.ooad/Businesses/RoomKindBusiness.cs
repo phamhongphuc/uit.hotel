@@ -13,13 +13,13 @@ namespace uit.ooad.Businesses
 
         public static Task<RoomKind> Update(RoomKind roomKind)
         {
-            RoomKind roomKindInDatabase = CheckValid(roomKind.Id);
+            RoomKind roomKindInDatabase = GetAndCheckValid(roomKind.Id);
             return RoomKindDataAccess.Update(roomKindInDatabase, roomKind);
         }
 
         public static void Delete(int roomKindId)
         {
-            RoomKind roomKindInDatabase = CheckValid(roomKindId);
+            RoomKind roomKindInDatabase = GetAndCheckValid(roomKindId);
             RoomKindDataAccess.Delete(roomKindInDatabase);
         }
         public static void SetIsActive(int roomKindId, bool isActive)
@@ -30,7 +30,7 @@ namespace uit.ooad.Businesses
             RoomKindDataAccess.SetIsActive(roomKindInDatabase, isActive);
         }
 
-        private static RoomKind CheckValid(int roomKindId)
+        private static RoomKind GetAndCheckValid(int roomKindId)
         {
             var roomKindInDatabase = Get(roomKindId);
             if (roomKindInDatabase == null)

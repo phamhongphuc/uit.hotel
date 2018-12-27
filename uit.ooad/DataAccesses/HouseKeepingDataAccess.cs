@@ -49,5 +49,19 @@ namespace uit.ooad.DataAccesses
             });
             return houseKeepingInDatabase;
         }
+
+        public static async Task<HouseKeeping> ConfirmCleanedAndServices(HouseKeeping houseKeepingInDatabase, List<ServicesDetail> servicesDetails)
+        {
+            await Database.WriteAsync(realm =>
+            {
+                foreach(var servicesDetail in servicesDetails)
+                {
+                    servicesDetail.Booking = houseKeepingInDatabase.Booking;
+                    ServicesDetailDataAccess.Add(realm, servicesDetail);
+                }
+                houseKeepingInDatabase.Status = (int)HouseKeeping.StatusEnum.Cleaned;
+            });
+            return houseKeepingInDatabase;
+        }
     }
 }

@@ -13,13 +13,13 @@ namespace uit.ooad.Businesses
 
         public static Task<Floor> Update(Floor floor)
         {
-            Floor floorInDatabase = CheckValid(floor.Id);
+            Floor floorInDatabase = GetAndCheckValid(floor.Id);
             return FloorDataAccess.Update(floorInDatabase, floor);
         }
 
         public static void Delete(int floorId)
         {
-            Floor floorInDatabase = CheckValid(floorId);
+            Floor floorInDatabase = GetAndCheckValid(floorId);
             FloorDataAccess.Delete(floorInDatabase);
         }
 
@@ -31,7 +31,7 @@ namespace uit.ooad.Businesses
             FloorDataAccess.SetIsActive(floorInDatabase, isActive);
         }
         
-        private static Floor CheckValid(int floorId)
+        private static Floor GetAndCheckValid(int floorId)
         {
             var floorInDatabase = Get(floorId);
 

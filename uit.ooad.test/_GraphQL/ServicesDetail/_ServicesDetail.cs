@@ -25,15 +25,5 @@ namespace uit.ooad.test._GraphQL._ServicesDetail
                 @"/_GraphQL/ServicesDetail/query.servicesDetail.variable.json"
             );
         }
-        [TestMethod]
-        public void CreateServicesDetail()
-        {
-            SchemaHelper.Execute(
-                @"/_GraphQL/ServicesDetail/mutation.createServicesDetail.gql",
-                @"/_GraphQL/ServicesDetail/mutation.createServicesDetail.schema.json",
-                @"/_GraphQL/ServicesDetail/mutation.createServicesDetail.variable.json",
-                p => p.PermissionHandleBills = true
-            );
-        }
     }
 }

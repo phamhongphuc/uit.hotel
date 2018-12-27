@@ -13,7 +13,7 @@ namespace uit.ooad.Businesses
 
         public static Task<Service> Update(Service service)
         {
-            Service serviceInDatabase = CheckValid(service.Id);
+            Service serviceInDatabase = GetAndCheckValid(service.Id);
 
             return ServiceDataAccess.Update(serviceInDatabase, service);
         }
@@ -27,7 +27,7 @@ namespace uit.ooad.Businesses
             ServiceDataAccess.SetIsActive(serviceInDatabase, isActive);
         }
         
-        private static Service CheckValid(int serviceId)
+        private static Service GetAndCheckValid(int serviceId)
         {
             var serviceInDatabase = Get(serviceId);
             if (serviceInDatabase == null)

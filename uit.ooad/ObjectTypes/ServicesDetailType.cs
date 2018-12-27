@@ -43,13 +43,8 @@ namespace uit.ooad.ObjectTypes
         {
             Name = _Creation;
 
-            Field(x => x.Time).Description("Thời gian tạo");
             Field(x => x.Number).Description("Số lượng");
 
-            Field<NonNullGraphType<BookingIdInput>>(
-                nameof(ServicesDetail.Booking),
-                "Thuộc thông tin thuê phòng nào"
-            );
             Field<NonNullGraphType<ServiceIdInput>>(
                 nameof(ServicesDetail.Service),
                 "Thuộc dịch vụ nào"
