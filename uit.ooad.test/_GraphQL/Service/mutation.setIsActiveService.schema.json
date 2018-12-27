@@ -1,21 +1,17 @@
 {
-  "definitions": {},
-  "type": "object",
-  "required": [
-    "data"
-  ],
-  "properties": {
-    "data": {
-      "type": "object",
-      "required": [
-        "setIsActiveService"
-      ],
-      "properties": {
-        "setIsActiveService": {
-          "type": "string",
-          "pattern": "^(.*)$"
+    "definitions": {},
+    "type": "object",
+    "required": ["data"],
+    "properties": {
+        "data": {
+            "type": "object",
+            "required": ["setIsActiveService"],
+            "properties": {
+                "setIsActiveService": {
+                    "type": "string",
+                    "pattern": "^(.*)$"
+                }
+            }
         }
-      }
     }
-  }
 }

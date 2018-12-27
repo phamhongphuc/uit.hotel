@@ -1,15 +1,15 @@
-query($id:ID!){
-  receipt(id:$id){
-    id
-   	time
-    money
-    bankAccountNumber
-    typeOfPayment
-    employee{
-      id
+query($id: ID!) {
+    receipt(id: $id) {
+        id
+        time
+        money
+        bankAccountNumber
+        typeOfPayment
+        employee {
+            id
+        }
+        bill {
+            id
+        }
     }
-    bill{
-      id
-    }
-  }
 }

@@ -1,126 +1,112 @@
 {
-  "definitions": {},
-  "type": "object",
-  "required": [
-    "data"
-  ],
-  "properties": {
-    "data": {
-      "type": "object",
-      "required": [
-        "checkIn"
-      ],
-      "properties": {
-        "checkIn": {
-          "type": "object",
-          "required": [
-            "id",
-            "bookCheckInTime",
-            "bookCheckOutTime",
-            "realCheckInTime",
-            "realCheckOutTime",
-            "createTime",
-            "status",
-            "room",
-            "employeeBooking",
-            "employeeCheckIn",
-            "employeeCheckOut",
-            "bill",
-            "patrons"
-          ],
-          "properties": {
-            "id": {
-              "type": "integer"
-            },
-            "bookCheckInTime": {
-              "type": "string",
-              "pattern": "^(.*)$"
-            },
-            "bookCheckOutTime": {
-              "type": "string",
-              "pattern": "^(.*)$"
-            },
-            "realCheckInTime": {
-              "type": "string",
-              "pattern": "^(.*)$"
-            },
-            "realCheckOutTime": {
-              "type": "string",
-              "pattern": "^(.*)$"
-            },
-            "createTime": {
-              "type": "string",
-              "pattern": "^(.*)$"
-            },
-            "status": {
-              "type": "integer"
-            },
-            "room": {
-              "type": "object",
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "integer"
+    "definitions": {},
+    "type": "object",
+    "required": ["data"],
+    "properties": {
+        "data": {
+            "type": "object",
+            "required": ["checkIn"],
+            "properties": {
+                "checkIn": {
+                    "type": "object",
+                    "required": [
+                        "id",
+                        "bookCheckInTime",
+                        "bookCheckOutTime",
+                        "realCheckInTime",
+                        "realCheckOutTime",
+                        "createTime",
+                        "status",
+                        "room",
+                        "employeeBooking",
+                        "employeeCheckIn",
+                        "employeeCheckOut",
+                        "bill",
+                        "patrons"
+                    ],
+                    "properties": {
+                        "id": {
+                            "type": "integer"
+                        },
+                        "bookCheckInTime": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "bookCheckOutTime": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "realCheckInTime": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "realCheckOutTime": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "createTime": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "status": {
+                            "type": "integer"
+                        },
+                        "room": {
+                            "type": "object",
+                            "required": ["id"],
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                }
+                            }
+                        },
+                        "employeeBooking": {
+                            "type": "object",
+                            "required": ["id"],
+                            "properties": {
+                                "id": {
+                                    "type": "string",
+                                    "pattern": "^(.*)$"
+                                }
+                            }
+                        },
+                        "employeeCheckIn": {
+                            "type": "object",
+                            "required": ["id"],
+                            "properties": {
+                                "id": {
+                                    "type": "string",
+                                    "pattern": "^(.*)$"
+                                }
+                            }
+                        },
+                        "employeeCheckOut": {
+                            "type": "null"
+                        },
+                        "bill": {
+                            "type": "object",
+                            "required": ["id"],
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                }
+                            }
+                        },
+                        "patrons": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "required": ["id"],
+                                "properties": {
+                                    "id": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
-              }
-            },
-            "employeeBooking": {
-              "type": "object",
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string",
-                  "pattern": "^(.*)$"
-                }
-              }
-            },
-            "employeeCheckIn": {
-              "type": "object",
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string",
-                  "pattern": "^(.*)$"
-                }
-              }
-            },
-            "employeeCheckOut": {
-              "type": "null"
-            },
-            "bill": {
-              "type": "object",
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "integer"
-                }
-              }
-            },
-            "patrons": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "required": [
-                  "id"
-                ],
-                "properties": {
-                  "id": {
-                    "type": "integer"
-                  }
-                }
-              }
             }
-          }
         }
-      }
     }
-  }
 }

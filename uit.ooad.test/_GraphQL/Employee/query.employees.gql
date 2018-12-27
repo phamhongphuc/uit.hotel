@@ -1,15 +1,15 @@
 {
-	employees {
-    id
-		password
-    name
-    phoneNumber
-    address
-    birthdate
-    startingDate
-    isActive
-    position{
-      id
+    employees {
+        id
+        password
+        name
+        phoneNumber
+        address
+        birthdate
+        startingDate
+        isActive
+        position {
+            id
+        }
     }
-	}
 }

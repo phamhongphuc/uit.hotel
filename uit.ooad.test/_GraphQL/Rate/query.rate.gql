@@ -1,21 +1,20 @@
-query($id:ID!){
-  rate(id:$id){
-    id
-    dayRate
-    nightRate
-    weekRate
-    monthRate
-    lateCheckOutFee
-    earlyCheckInFee
-    effectiveStartDate
-    createDate
-    roomKind{
-      id
-      name
-      amountOfPeople
-      numberOfBeds
-      priceByDate
+query($id: ID!) {
+    rate(id: $id) {
+        id
+        dayRate
+        nightRate
+        weekRate
+        monthRate
+        lateCheckOutFee
+        earlyCheckInFee
+        effectiveStartDate
+        createDate
+        roomKind {
+            id
+            name
+            amountOfPeople
+            numberOfBeds
+            priceByDate
+        }
     }
-    
-  }
 }

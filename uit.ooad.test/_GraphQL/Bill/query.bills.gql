@@ -1,12 +1,12 @@
 {
-	bills {
-        id,
-        time,
-        patron{
+    bills {
+        id
+        time
+        patron {
             identification
         }
-        employee{
+        employee {
             id
         }
-	}
+    }
 }

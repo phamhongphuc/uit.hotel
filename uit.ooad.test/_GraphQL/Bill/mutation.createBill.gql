@@ -1,15 +1,15 @@
-mutation ($bookings: [BookingCreateInput!]!, $bill: BillCreateInput!) {
-  createBill(bookings: $bookings, bill: $bill) {
-    id
-    time
-    patron {
-      id
+mutation($bookings: [BookingCreateInput!]!, $bill: BillCreateInput!) {
+    createBill(bookings: $bookings, bill: $bill) {
+        id
+        time
+        patron {
+            id
+        }
+        employee {
+            id
+        }
+        bookings {
+            id
+        }
     }
-    employee {
-      id
-    }
-    bookings {
-      id
-    }
-  }
 }

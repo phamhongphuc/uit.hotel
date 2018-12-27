@@ -1,8 +1,8 @@
 {
-	"input": {
-		"name": "Tên dịch vụ",
-		"unitRate": 30000,
-		"unit": "Đơn vị tính",
-		"isActive": true
-	}
+    "input": {
+        "name": "Tên dịch vụ",
+        "unitRate": 30000,
+        "unit": "Đơn vị tính",
+        "isActive": true
+    }
 }
