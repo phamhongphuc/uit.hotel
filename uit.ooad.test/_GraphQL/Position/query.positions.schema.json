@@ -15,6 +15,7 @@
                             "id",
                             "name",
                             "permissionReferRevenues",
+                            "permissionChangePersonalPassword",
                             "permissionManagePositions",
                             "permissionManageEmployees",
                             "permissionGetRooms",
@@ -47,6 +48,9 @@
                                 "pattern": "^(.*)$"
                             },
                             "permissionReferRevenues": {
+                                "type": "boolean"
+                            },
+                            "permissionChangePersonalPassword": {
                                 "type": "boolean"
                             },
                             "permissionManagePositions": {
