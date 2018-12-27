@@ -18,6 +18,7 @@
             "required": [
               "id",
               "name",
+              "permissionReferRevenues",
               "permissionGetRooms",
               "permissionManagePatrons",
               "permissionManagePatronKinds",
@@ -46,6 +47,9 @@
               "name": {
                 "type": "string",
                 "pattern": "^(.*)$"
+              },
+              "permissionReferRevenues": {
+                "type": "boolean"
               },
               "permissionGetRooms":{
                 "type": "boolean"
