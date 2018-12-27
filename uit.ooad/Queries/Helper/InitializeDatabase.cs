@@ -33,9 +33,8 @@ namespace uit.ooad.Queries.Helper
             AddRequestCheckOutBill();
 
             AddConfirmCleaned();
+            AddConfirmCleanedAndServices();
             AddReceipt();
-
-            AddServicesDetail();
         }
 
         private static void ResetDatebase()
@@ -95,17 +94,6 @@ namespace uit.ooad.Queries.Helper
                 UnitRate = 30000,
                 Unit = "Đơn vị đo",
                 IsActive = true
-            });
-        }
-
-        private static void AddServicesDetail()
-        {
-            ServicesDetailBusiness.Add(new ServicesDetail
-            {
-                Time = DateTime.Now,
-                Number = 1,
-                Booking = BookingBusiness.Get(1),
-                Service = ServiceBusiness.Get(1)
             });
         }
 
@@ -245,10 +233,36 @@ namespace uit.ooad.Queries.Helper
             AddBill();
             BookingBusiness.CheckIn(EmployeeBusiness.Get(Constant.UserName), 3);
             BookingBusiness.RequestCheckOut(EmployeeBusiness.Get(Constant.UserName), 3);
+            HouseKeepingBusiness.AssignCleaningService(EmployeeBusiness.Get(Constant.UserName), 3);
         }
         private static void AddConfirmCleaned()
         {
             HouseKeepingBusiness.AssignCleaningService(EmployeeBusiness.Get(Constant.UserName), 2);
+        }
+        private static void AddConfirmCleanedAndServices()
+        {
+            AddBill();
+            BookingBusiness.CheckIn(EmployeeBusiness.Get(Constant.UserName), 4);
+            BookingBusiness.RequestCheckOut(EmployeeBusiness.Get(Constant.UserName), 4);
+            HouseKeepingBusiness.AssignCleaningService(EmployeeBusiness.Get(Constant.UserName), 5);
+            HouseKeepingBusiness.ConfirmCleanedAndServices(EmployeeBusiness.Get(Constant.UserName),
+            new List<ServicesDetail>
+            {
+                new ServicesDetail
+                {
+                    Number = 1,
+                    Service = new Service{
+                        Id = 1
+                    }
+                },
+                new ServicesDetail
+                {
+                    Number = 1,
+                    Service = new Service{
+                        Id = 1
+                    }
+                }
+            }, 5);
         }
         private static void AddReceipt()
         {

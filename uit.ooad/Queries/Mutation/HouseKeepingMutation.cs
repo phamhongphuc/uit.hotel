@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using GraphQL.Types;
 using uit.ooad.Businesses;
 using uit.ooad.Models;
 using uit.ooad.ObjectTypes;
@@ -41,10 +43,20 @@ namespace uit.ooad.Queries.Mutation
             Field<HouseKeepingType>(
                 "ConfirmCleanedAndServices",
                 "Nhân viên xác nhận và gửi thông tin kiểm tra phòng check-out",
-                _InputArgument<HouseKeepingCreateInput>(),
+                new QueryArguments(
+                    new QueryArgument<NonNullGraphType<ListGraphType<NonNullGraphType<ServicesDetailCreateInput>>>> { Name = "servicesDetails" },
+                    new QueryArgument<NonNullGraphType<IdGraphType>> { Name = "houseKeepingId" }
+                ),
                 _CheckPermission(
                     p => p.PermissionCleaning,
-                    context => HouseKeepingBusiness.Add(_GetInput(context))
+                    context =>
+                    {
+                        var employee = AuthenticationHelper.GetEmployee(context);
+                        var servicesDetails = context.GetArgument<List<ServicesDetail>>("servicesDetails");
+                        var houseKeepingId = context.GetArgument<int>("houseKeepingId");
+
+                        return HouseKeepingBusiness.ConfirmCleanedAndServices(employee, servicesDetails, houseKeepingId);
+                    }
                 )
             );
         }
