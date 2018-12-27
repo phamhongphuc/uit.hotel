@@ -36,6 +36,19 @@ namespace uit.ooad.Queries.Mutation
                     }
                 )
             );
+            Field<BookingType>(
+                "CheckOut",
+                "Thực hiện xác nhận trả phòng",
+                _IdArgument(),
+                _CheckPermission_Object(
+                    p => p.PermissionManageHiringRooms,
+                    context => 
+                    {
+                        var employee = AuthenticationHelper.GetEmployee(context);
+                        return BookingBusiness.CheckOut(employee, _GetId<int>(context));                        
+                    }
+                )
+            );
         }
     }
 }
