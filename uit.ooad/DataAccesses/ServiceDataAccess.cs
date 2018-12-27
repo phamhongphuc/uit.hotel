@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Realms;
 using uit.ooad.Models;
 
 namespace uit.ooad.DataAccesses
@@ -11,15 +13,16 @@ namespace uit.ooad.DataAccesses
         {
             await Database.WriteAsync(realm =>
             {
-                service.Id = Get().Count() == 0 ? 1 : Get().Max(f => f.Id) + 1;
+                service.Id = NextId;
 
                 service = realm.Add(service);
             });
             return service;
         }
+
         public static async Task<Service> Update(Service serviceInDatabase, Service service)
         {
-            await Database.WriteAsync(realm => 
+            await Database.WriteAsync(realm =>
             {
                 serviceInDatabase.Name = service.Name;
                 serviceInDatabase.UnitRate = service.UnitRate;
@@ -34,5 +37,7 @@ namespace uit.ooad.DataAccesses
         public static Service Get(int serviceId) => Database.Find<Service>(serviceId);
 
         public static IEnumerable<Service> Get() => Database.All<Service>();
+
+        public static int NextId => Get().Count() == 0 ? 1 : Get().Max(i => i.Id) + 1;
     }
 }

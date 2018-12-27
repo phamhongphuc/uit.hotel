@@ -23,7 +23,7 @@ namespace uit.ooad.Businesses
         }
         public static Task<Room> Update(Room room)
         {
-            Room roomInDatabase = CheckValid(room.Id);
+            Room roomInDatabase = GetAndCheckValid(room.Id);
 
             room.Floor = room.Floor.GetManaged();
             if (!room.Floor.IsActive)
@@ -38,7 +38,7 @@ namespace uit.ooad.Businesses
 
         public static void Delete(int id)
         {
-            Room roomInDatabase = CheckValid(id);
+            Room roomInDatabase = GetAndCheckValid(id);
             RoomDataAccess.Delete(roomInDatabase);
         }
         public static void SetIsActive(int id, bool isActive)
@@ -48,7 +48,7 @@ namespace uit.ooad.Businesses
             RoomDataAccess.SetIsActive(roomInDatabase, isActive);
         }
 
-        private static Room CheckValid(int roomId)
+        private static Room GetAndCheckValid(int roomId)
         {
             var roomInDatabase = Get(roomId);
             if (roomInDatabase == null)
