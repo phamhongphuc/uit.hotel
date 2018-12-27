@@ -16,10 +16,11 @@ namespace uit.ooad.Queries.Mutation
                 _Creation,
                 "Tạo và trả về một đơn đặt phòng",
                 new QueryArguments(
-                    new QueryArgument<NonNullGraphType<ListGraphType<NonNullGraphType<BookingCreateInput>>>> { Name = "bookings" },
+                    new QueryArgument<NonNullGraphType<ListGraphType<NonNullGraphType<BookingCreateInput>>>>
+                        { Name = "bookings" },
                     new QueryArgument<NonNullGraphType<BillCreateInput>> { Name = "bill" }
                 ),
-                _CheckPermission(
+                _CheckPermission_Object(
                     p => p.PermissionManageHiringRooms,
                     async context =>
                     {

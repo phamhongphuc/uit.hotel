@@ -16,7 +16,7 @@ namespace uit.ooad.Queries.Mutation
                 _Creation,
                 "Tạo và trả về một nhân viên mới",
                 _InputArgument<EmployeeCreateInput>(),
-                _CheckPermission(
+                _CheckPermission_Object(
                     p => p.PermissionManageEmployees,
                     context => EmployeeBusiness.Add(_GetInput(context))
                 )
@@ -26,7 +26,7 @@ namespace uit.ooad.Queries.Mutation
                 _Updation,
                 "Chỉnh sửa thông tin nhân viên",
                 _InputArgument<EmployeeUpdateInput>(),
-                _CheckPermission(
+                _CheckPermission_Object(
                     p => p.PermissionManageEmployees,
                     context => EmployeeBusiness.Update(_GetInput(context))
                 )
@@ -36,7 +36,7 @@ namespace uit.ooad.Queries.Mutation
                 "ResetPassword",
                 "Reset lại mật khẩu cho nhân viên khi quên mật khẩu",
                 _IdArgument(),
-                _CheckPermission(
+                _CheckPermission_String(
                     p => p.PermissionManageEmployees,
                     context =>
                     {
@@ -59,7 +59,7 @@ namespace uit.ooad.Queries.Mutation
                     new QueryArgument<NonNullGraphType<IdGraphType>> { Name = "id" },
                     new QueryArgument<NonNullGraphType<BooleanGraphType>> { Name = "isActive" }
                 ),
-                _CheckPermission(
+                _CheckPermission_String(
                     p => p.PermissionManageEmployees,
                     context =>
                     {
@@ -68,8 +68,11 @@ namespace uit.ooad.Queries.Mutation
                         var isActive = context.GetArgument<bool>("isActive");
 
                         if (id == employeeId)
+                        {
                             throw new Exception(
                                 "Nhân viên không thể tự vô hiệu hóa hoặc kích hoạt tài khoản của chính mình");
+                        }
+
                         EmployeeBusiness.SetIsActiveAccount(employeeId, isActive);
                         return "Thành công";
                     }

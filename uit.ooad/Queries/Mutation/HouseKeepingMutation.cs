@@ -16,7 +16,7 @@ namespace uit.ooad.Queries.Mutation
                 "AssignCleaningService",
                 "Nhân viên nhận phòng để dọn dẹp",
                 _IdArgument(),
-                _CheckPermission(
+                _CheckPermission_Object(
                     p => p.PermissionCleaning,
                     context =>
                     {
@@ -30,7 +30,7 @@ namespace uit.ooad.Queries.Mutation
                 "ConfirmCleaned",
                 "Nhân viên xác nhận đã dọn xong",
                 _IdArgument(),
-                _CheckPermission(
+                _CheckPermission_Object(
                     p => p.PermissionCleaning,
                     context =>
                     {
@@ -48,7 +48,7 @@ namespace uit.ooad.Queries.Mutation
                         { Name = "servicesDetails" },
                     new QueryArgument<NonNullGraphType<IdGraphType>> { Name = "houseKeepingId" }
                 ),
-                _CheckPermission(
+                _CheckPermission_Object(
                     p => p.PermissionCleaning,
                     context =>
                     {

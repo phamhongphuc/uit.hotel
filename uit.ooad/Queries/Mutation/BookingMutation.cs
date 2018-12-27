@@ -14,7 +14,7 @@ namespace uit.ooad.Queries.Mutation
                 "CheckIn",
                 "Cập nhật thời gian checkin của phòng",
                 _IdArgument(),
-                _CheckPermission(
+                _CheckPermission_Object(
                     p => p.PermissionManageHiringRooms,
                     context =>
                     {
@@ -27,7 +27,7 @@ namespace uit.ooad.Queries.Mutation
                 "RequestCheckOut",
                 "Yêu cầu kiểm tra khi trả phòng",
                 _IdArgument(),
-                _CheckPermission(
+                _CheckPermission_Object(
                     p => p.PermissionManageHiringRooms,
                     context =>
                     {

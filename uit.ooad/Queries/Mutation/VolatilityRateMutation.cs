@@ -13,7 +13,7 @@ namespace uit.ooad.Queries.Mutation
                 _Creation,
                 "Tạo và trả về một giá biến động mới",
                 _InputArgument<VolatilityRateCreateInput>(),
-                _CheckPermission(
+                _CheckPermission_Object(
                     p => p.PermissionCreateOrUpdateVolatilityRate,
                     context => VolatilityRateBusiness.Add(_GetInput(context))
                 )

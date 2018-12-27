@@ -34,8 +34,10 @@ namespace uit.ooad.Businesses
                 throw new Exception("Mã dịch vụ không hợp lệ!");
 
             if (!serviceInDatabase.IsActive)
+            {
                 throw new Exception("Dịch vụ " + serviceInDatabase.Name +
                                     " đã ngừng cung cấp. Không thể cập nhật/xóa!");
+            }
 
             if (serviceInDatabase.ServicesDetails.Count() > 0)
                 throw new Exception("Dịch vụ này đã được sử dụng. Không thể cập nhật/xóa!");

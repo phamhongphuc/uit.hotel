@@ -13,7 +13,7 @@ namespace uit.ooad.Queries.Query
             Field<ListGraphType<RoomType>>(
                 _List,
                 "Trả về một danh sách các phòng",
-                resolve: _CheckPermission(
+                resolve: _CheckPermission_List(
                     p => p.PermissionGetRooms,
                     context => RoomBusiness.Get()
                 )

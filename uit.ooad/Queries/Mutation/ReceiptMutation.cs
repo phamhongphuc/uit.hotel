@@ -13,7 +13,7 @@ namespace uit.ooad.Queries.Mutation
                 _Creation,
                 "Tạo và trả về một phiếu thu mới",
                 _InputArgument<ReceiptCreateInput>(),
-                _CheckPermission(
+                _CheckPermission_Object(
                     p => p.PermissionCreateReceipt,
                     context => ReceiptBusiness.Add(_GetInput(context))
                 )

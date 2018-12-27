@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using GraphQL.Types;
 using uit.ooad.Models;
@@ -34,9 +35,9 @@ namespace uit.ooad.Queries.Base
         public T _GetId<T>(ResolveFieldContext<object> context)
             => context.GetArgument<T>("id");
 
-        public Func<ResolveFieldContext<object>, object> _CheckPermission(
+        private Func<ResolveFieldContext<object>, object> _CheckPermissionWithType<TType>(
             Func<Position, bool> getPermission,
-            Func<ResolveFieldContext<object>, Task<TModel>> resolver
+            Func<ResolveFieldContext<object>, TType> resolver
         )
             => context =>
             {
@@ -44,14 +45,19 @@ namespace uit.ooad.Queries.Base
                 return resolver(context);
             };
 
-        public Func<ResolveFieldContext<object>, object> _CheckPermission<TReturn>(
+        public Func<ResolveFieldContext<object>, object> _CheckPermission_Object(
             Func<Position, bool> getPermission,
-            Func<ResolveFieldContext<object>, TReturn> resolver
-        )
-            => context =>
-            {
-                AuthenticationHelper.HasPermission(context, getPermission);
-                return resolver(context);
-            };
+            Func<ResolveFieldContext<object>, Task<TModel>> resolver
+        ) => _CheckPermissionWithType(getPermission, resolver);
+
+        public Func<ResolveFieldContext<object>, object> _CheckPermission_String(
+            Func<Position, bool> getPermission,
+            Func<ResolveFieldContext<object>, string> resolver
+        ) => _CheckPermissionWithType(getPermission, resolver);
+
+        public Func<ResolveFieldContext<object>, object> _CheckPermission_List(
+            Func<Position, bool> getPermission,
+            Func<ResolveFieldContext<object>, IEnumerable<TModel>> resolver
+        ) => _CheckPermissionWithType(getPermission, resolver);
     }
 }
