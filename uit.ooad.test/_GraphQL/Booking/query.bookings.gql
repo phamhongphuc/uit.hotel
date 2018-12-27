@@ -1,29 +1,29 @@
 {
-  bookings {
-    id
-    bookCheckInTime
-    bookCheckOutTime
-    realCheckInTime
-    realCheckOutTime
-    createTime
-    status
-    room {
-      id
+    bookings {
+        id
+        bookCheckInTime
+        bookCheckOutTime
+        realCheckInTime
+        realCheckOutTime
+        createTime
+        status
+        room {
+            id
+        }
+        employeeBooking {
+            id
+        }
+        employeeCheckIn {
+            id
+        }
+        employeeCheckOut {
+            id
+        }
+        bill {
+            id
+        }
+        patrons {
+            id
+        }
     }
-    employeeBooking {
-      id
-    }
-    employeeCheckIn {
-      id
-    }
-    employeeCheckOut {
-      id
-    }
-    bill {
-      id
-    }
-    patrons{
-      id
-    }
-  }
 }

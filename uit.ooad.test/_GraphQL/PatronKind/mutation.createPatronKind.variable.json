@@ -1,6 +1,6 @@
 {
-	"input": {
-		"name": "Tên loại khách hàng",
-		"description": "Mô tả"
-	}
+    "input": {
+        "name": "Tên loại khách hàng",
+        "description": "Mô tả"
+    }
 }

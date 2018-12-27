@@ -1,13 +1,13 @@
-mutation ($input: RoomCreateInput!) {
-  createRoom(input: $input) {
-    id
-    name
-    isActive
-    floor{
-      id
+mutation($input: RoomCreateInput!) {
+    createRoom(input: $input) {
+        id
+        name
+        isActive
+        floor {
+            id
+        }
+        roomKind {
+            id
+        }
     }
-    roomKind{
-      id
-    }
-  }
 }

@@ -1,13 +1,13 @@
-mutation ($id: ID!) {
-  assignCleaningService(id: $id) {
-    id
-    type
-    status
-    employee {
-      id
+mutation($id: ID!) {
+    assignCleaningService(id: $id) {
+        id
+        type
+        status
+        employee {
+            id
+        }
+        booking {
+            id
+        }
     }
-    booking {
-      id
-    }
-  }
 }

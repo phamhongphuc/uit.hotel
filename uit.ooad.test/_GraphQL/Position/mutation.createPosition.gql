@@ -1,26 +1,26 @@
-mutation($input:PositionCreateInput!){
-  createPosition(input:$input){
-    id
-    name
-    permissionGetRooms
-    permissionManagePatrons
-    permissionManagePatronKinds
-    permissionHandleBills
-    permissionManageHiringRooms
-    permissionGetHouseKeepings
-    permissionCreatePatronKind
-    permissionCreateBill
-    permissionCreateBooking
-    permissionCreateOrUpdateEmployee
-    permissionCleaning
-    permissionCreateOrUpdatePatron
-    permissionCreatePosition
-    permissionCreateOrUpdateRate
-    permissionCreateReceipt
-    permissionUpdateGroundPlan
-    permissionCreateOrUpdateRoomKind
-    permissionCreateOrUpdateService
-    permissionCreateServicesDetail
-    permissionCreateOrUpdateVolatilityRate
-  }
+mutation($input: PositionCreateInput!) {
+    createPosition(input: $input) {
+        id
+        name
+        permissionGetRooms
+        permissionManagePatrons
+        permissionManagePatronKinds
+        permissionHandleBills
+        permissionManageHiringRooms
+        permissionGetHouseKeepings
+        permissionCreatePatronKind
+        permissionCreateBill
+        permissionCreateBooking
+        permissionCreateOrUpdateEmployee
+        permissionCleaning
+        permissionCreateOrUpdatePatron
+        permissionCreatePosition
+        permissionCreateOrUpdateRate
+        permissionCreateReceipt
+        permissionUpdateGroundPlan
+        permissionCreateOrUpdateRoomKind
+        permissionCreateOrUpdateService
+        permissionCreateServicesDetail
+        permissionCreateOrUpdateVolatilityRate
+    }
 }

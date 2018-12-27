@@ -1,61 +1,47 @@
 {
-  "definitions": {},
-  "type": "object",
-  "required": [
-    "data"
-  ],
-  "properties": {
-    "data": {
-      "type": "object",
-      "required": [
-        "room"
-      ],
-      "properties": {
-        "room": {
-          "type": "object",
-          "required": [
-            "id",
-            "name",
-            "isActive",
-            "roomKind",
-            "floor"
-          ],
-          "properties": {
-            "id": {
-              "type": "integer"
-            },
-            "name": {
-              "type": "string",
-              "pattern": "^(.*)$"
-            },
-            "isActive": {
-              "type": "boolean"
-            },
-            "roomKind": {
-              "type": "object",
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "integer"
+    "definitions": {},
+    "type": "object",
+    "required": ["data"],
+    "properties": {
+        "data": {
+            "type": "object",
+            "required": ["room"],
+            "properties": {
+                "room": {
+                    "type": "object",
+                    "required": ["id", "name", "isActive", "roomKind", "floor"],
+                    "properties": {
+                        "id": {
+                            "type": "integer"
+                        },
+                        "name": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "isActive": {
+                            "type": "boolean"
+                        },
+                        "roomKind": {
+                            "type": "object",
+                            "required": ["id"],
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                }
+                            }
+                        },
+                        "floor": {
+                            "type": "object",
+                            "required": ["id"],
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    }
                 }
-              }
-            },
-            "floor": {
-              "type": "object",
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "integer"
-                }
-              }
             }
-          }
         }
-      }
     }
-  }
 }
