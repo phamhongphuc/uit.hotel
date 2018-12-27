@@ -5,6 +5,7 @@
         "bin": true,
         "obj": true,
         "Tools": true,
-        ".vscode": true
+        ".vscode": true,
+        "node_modules": true
     }
 }

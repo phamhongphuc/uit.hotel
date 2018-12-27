@@ -1,21 +1,21 @@
-mutation($input:PatronCreateInput!){
-  createPatron(input:$input){
-    id
-    identification
-    name
-    birthdate
-    email
-    gender
-    residence
-    domicile
-    phoneNumbers
-    nationality
-    company
-    note
-    patronKind{
-      id
-      name
-      description
+mutation($input: PatronCreateInput!) {
+    createPatron(input: $input) {
+        id
+        identification
+        name
+        birthdate
+        email
+        gender
+        residence
+        domicile
+        phoneNumbers
+        nationality
+        company
+        note
+        patronKind {
+            id
+            name
+            description
+        }
     }
-  }
 }

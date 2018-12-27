@@ -1,13 +1,13 @@
 {
-  houseKeepings{
-    id
-    type
-    status
-    employee{
-      id
+    houseKeepings {
+        id
+        type
+        status
+        employee {
+            id
+        }
+        booking {
+            id
+        }
     }
-    booking{
-      id
-    }
-  }
 }

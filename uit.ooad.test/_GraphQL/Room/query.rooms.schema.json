@@ -11,7 +11,13 @@
                     "type": "array",
                     "items": {
                         "type": "object",
-                        "required": ["id", "name","isActive", "floor", "roomKind"],
+                        "required": [
+                            "id",
+                            "name",
+                            "isActive",
+                            "floor",
+                            "roomKind"
+                        ],
                         "properties": {
                             "id": {
                                 "type": "integer"

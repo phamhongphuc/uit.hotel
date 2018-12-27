@@ -1,24 +1,24 @@
-mutation($input:VolatilityRateCreateInput!){
-  createVolatilityRate(input:$input){
-    id
-    dayRate
-    nightRate
-    weekRate
-    monthRate
-    lateCheckOutFee
-    earlyCheckInFee
-    effectiveStartDate
-    effectiveEndDate
-    effectiveOnMonday
-    effectiveOnTuesday
-    effectiveOnWednesday
-    effectiveOnThursday
-    effectiveOnFriday
-    effectiveOnSaturday
-    effectiveOnSunday
-    createDate
-    roomKind{
-			id
+mutation($input: VolatilityRateCreateInput!) {
+    createVolatilityRate(input: $input) {
+        id
+        dayRate
+        nightRate
+        weekRate
+        monthRate
+        lateCheckOutFee
+        earlyCheckInFee
+        effectiveStartDate
+        effectiveEndDate
+        effectiveOnMonday
+        effectiveOnTuesday
+        effectiveOnWednesday
+        effectiveOnThursday
+        effectiveOnFriday
+        effectiveOnSaturday
+        effectiveOnSunday
+        createDate
+        roomKind {
+            id
+        }
     }
-  }
 }

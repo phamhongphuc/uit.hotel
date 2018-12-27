@@ -1,46 +1,36 @@
 {
-  "definitions": {},
-  "type": "object",
-  "required": [
-    "data"
-  ],
-  "properties": {
-    "data": {
-      "type": "object",
-      "required": [
-        "bill"
-      ],
-      "properties": {
-        "bill": {
-          "type": "object",
-          "required": [
-            "id",
-            "time",
-            "patron"
-          ],
-          "properties": {
-            "id": {
-              "type": "integer"
-            },
-            "time": {
-              "type": "string",
-              "pattern": "^(.*)$"
-            },
-            "patron": {
-              "type": "object",
-              "required": [
-                "identification"
-              ],
-              "properties": {
-                "identification": {
-                  "type": "string",
-                  "pattern": "^(.*)$"
+    "definitions": {},
+    "type": "object",
+    "required": ["data"],
+    "properties": {
+        "data": {
+            "type": "object",
+            "required": ["bill"],
+            "properties": {
+                "bill": {
+                    "type": "object",
+                    "required": ["id", "time", "patron"],
+                    "properties": {
+                        "id": {
+                            "type": "integer"
+                        },
+                        "time": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "patron": {
+                            "type": "object",
+                            "required": ["identification"],
+                            "properties": {
+                                "identification": {
+                                    "type": "string",
+                                    "pattern": "^(.*)$"
+                                }
+                            }
+                        }
+                    }
                 }
-              }
             }
-          }
         }
-      }
     }
-  }
 }

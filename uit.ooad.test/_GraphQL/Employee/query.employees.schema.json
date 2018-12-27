@@ -1,15 +1,11 @@
 {
     "definitions": {},
     "type": "object",
-    "required": [
-        "data"
-    ],
+    "required": ["data"],
     "properties": {
         "data": {
             "type": "object",
-            "required": [
-                "employees"
-            ],
+            "required": ["employees"],
             "properties": {
                 "employees": {
                     "type": "array",
@@ -60,9 +56,7 @@
                             },
                             "position": {
                                 "type": "object",
-                                "required": [
-                                    "id"
-                                ],
+                                "required": ["id"],
                                 "properties": {
                                     "id": {
                                         "type": "integer"

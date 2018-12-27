@@ -1,61 +1,47 @@
 {
-  "definitions": {},
-  "type": "object",
-  "required": [
-    "data"
-  ],
-  "properties": {
-    "data": {
-      "type": "object",
-      "required": [
-        "createRoom"
-      ],
-      "properties": {
-        "createRoom": {
-          "type": "object",
-          "required": [
-            "id",
-            "name",
-            "isActive",
-            "floor",
-            "roomKind"
-          ],
-          "properties": {
-            "id": {
-              "type": "integer"
-            },
-            "name": {
-              "type": "string",
-              "pattern": "^(.*)$"
-            },
-            "isActive": {
-              "type": "boolean"
-            },
-            "floor": {
-              "type": "object",
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "integer"
+    "definitions": {},
+    "type": "object",
+    "required": ["data"],
+    "properties": {
+        "data": {
+            "type": "object",
+            "required": ["createRoom"],
+            "properties": {
+                "createRoom": {
+                    "type": "object",
+                    "required": ["id", "name", "isActive", "floor", "roomKind"],
+                    "properties": {
+                        "id": {
+                            "type": "integer"
+                        },
+                        "name": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "isActive": {
+                            "type": "boolean"
+                        },
+                        "floor": {
+                            "type": "object",
+                            "required": ["id"],
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                }
+                            }
+                        },
+                        "roomKind": {
+                            "type": "object",
+                            "required": ["id"],
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    }
                 }
-              }
-            },
-            "roomKind": {
-              "type": "object",
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "integer"
-                }
-              }
             }
-          }
         }
-      }
     }
-  }
 }

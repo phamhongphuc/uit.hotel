@@ -1,38 +1,30 @@
 {
-  "definitions": {},
-  "type": "object",
-  "required": [
-    "data"
-  ],
-  "properties": {
-    "data": {
-      "type": "object",
-      "required": [
-        "createPatronKind"
-      ],
-      "properties": {
-        "createPatronKind": {
-          "type": "object",
-          "required": [
-            "id",
-            "name",
-            "description"
-          ],
-          "properties": {
-            "id": {
-              "type": "integer"
-            },
-            "name": {
-              "type": "string",
-              "pattern": "^(.*)$"
-            },
-            "description": {
-              "type": "string",
-              "pattern": "^(.*)$"
+    "definitions": {},
+    "type": "object",
+    "required": ["data"],
+    "properties": {
+        "data": {
+            "type": "object",
+            "required": ["createPatronKind"],
+            "properties": {
+                "createPatronKind": {
+                    "type": "object",
+                    "required": ["id", "name", "description"],
+                    "properties": {
+                        "id": {
+                            "type": "integer"
+                        },
+                        "name": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "description": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        }
+                    }
+                }
             }
-          }
         }
-      }
     }
-  }
 }
