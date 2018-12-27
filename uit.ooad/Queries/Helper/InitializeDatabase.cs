@@ -48,6 +48,7 @@ namespace uit.ooad.Queries.Helper
             {
                 Name = "Quản trị viên",
                 PermissionUpdateGroundPlan = true,
+                PermissionManagePositions = true,
                 PermissionManageEmployees = true,
                 PermissionReferRevenues = true,
                 PermissionManagePatrons = true,
@@ -203,10 +204,10 @@ namespace uit.ooad.Queries.Helper
         private static void AddBill()
         {
             BillBusiness.Book(EmployeeBusiness.Get(Constant.UserName), new Bill
-                              {
-                                  Time = DateTime.Now,
-                                  Patron = PatronBusiness.Get(1)
-                              },
+            {
+                Time = DateTime.Now,
+                Patron = PatronBusiness.Get(1)
+            },
                               new List<Booking>
                               {
                                   new Booking

@@ -32,7 +32,7 @@ namespace uit.ooad.test._GraphQL._Position
                 @"/_GraphQL/Position/mutation.createPosition.gql",
                 @"/_GraphQL/Position/mutation.createPosition.schema.json",
                 @"/_GraphQL/Position/mutation.createPosition.variable.json",
-                p => p.PermissionCreatePosition = true
+                p => p.PermissionManagePositions = true
             );
         }
     }
