@@ -18,9 +18,9 @@ namespace uit.ooad.Queries.Mutation
 
         public AuthenticationMutation()
         {
-            Field<StringGraphType>(
+            Field<AuthenticationType>(
                 "Login",
-                "Đăng nhập nhân viên, trả về cái access token",
+                "Đăng nhập mới",
                 new QueryArguments(
                     new QueryArgument<NonNullGraphType<StringGraphType>> { Name = ID },
                     new QueryArgument<NonNullGraphType<StringGraphType>> { Name = PASSWORD }
@@ -29,20 +29,18 @@ namespace uit.ooad.Queries.Mutation
                 {
                     var id = _GetId<string>(context);
                     var password = context.GetArgument<string>(PASSWORD);
-
-                    EmployeeBusiness.CheckLogin(id, password);
-
-                    return AuthenticationHelper.TokenBuilder(id);
+                    return EmployeeBusiness.GetAuthenticationObject(id, password);
                 }
             );
 
-            Field<StringGraphType>(
+            Field<EmployeeType>(
                 "CheckLogin",
                 "Kiểm tra đăng nhập",
-                resolve: context => 
+                resolve: context =>
                 {
                     var employee = AuthenticationHelper.GetEmployee(context);
-                    return EmployeeBusiness.CheckIsActive(employee);
+                    EmployeeBusiness.CheckIsActive(employee);
+                    return employee;
                 }
             );
 

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using uit.ooad.DataAccesses;
 using uit.ooad.Models;
+using uit.ooad.ObjectTypes;
 using uit.ooad.Queries.Authentication;
 
 namespace uit.ooad.Businesses
@@ -46,11 +47,9 @@ namespace uit.ooad.Businesses
             EmployeeDataAccess.ChangePassword(employee, newPassword);
         }
 
-        public static string CheckIsActive(Employee employee)
+        public static void CheckIsActive(Employee employee)
         {
             if (!employee.IsActive) throw new Exception("Tài khoản " + employee.Id + " đã bị vô hiệu hóa");
-            
-            return "Đăng nhập thành công";
         }
 
         public static string ResetPassword(string id)
@@ -72,19 +71,29 @@ namespace uit.ooad.Businesses
             EmployeeDataAccess.SetIsActiveAccount(employee, isActive);
         }
 
-        public static void CheckLogin(string id, string password)
+        public static object GetAuthenticationObject(string id, string password)
         {
-            var employee = Get(id);
-
-            if (employee != null)
+            var employee = EmployeeBusiness.GetAndCheckLogin(id, password);
+            return new AuthenticationObject
             {
-                if (employee.IsEqualPassword(password)) return;
-                CheckIsActive(employee);
-            }
-            throw new Exception("Tài khoản hoặc mật khẩu không chính xác");
+                Token = AuthenticationHelper.TokenBuilder(employee.Id),
+                Employee = employee
+            };
         }
+
         public static Employee Get(string employeeId) => EmployeeDataAccess.Get(employeeId);
 
         public static IEnumerable<Employee> Get() => EmployeeDataAccess.Get();
+
+        private static Employee GetAndCheckLogin(string id, string password)
+        {
+            var employee = Get(id);
+            if (employee != null && employee.IsEqualPassword(password))
+            {
+                CheckIsActive(employee);
+                return employee;
+            }
+            throw new Exception("Tài khoản hoặc mật khẩu không chính xác");
+        }
     }
 }

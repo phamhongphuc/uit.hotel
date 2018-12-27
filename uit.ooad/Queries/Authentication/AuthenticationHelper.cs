@@ -43,9 +43,9 @@ namespace uit.ooad.Queries.Authentication
         {
             var employee = GetEmployee(context);
 
-            if(!employee.IsActive)
+            if (!employee.IsActive)
                 throw new Exception("Tài khoản " + employee.Id + " đã bị vô hiệu hóa");
-                
+
             var position = employee.Position;
             if (position == null) new Exception("Tài khoản lỗi, vui lòng liên hệ quản trị viên");
 
