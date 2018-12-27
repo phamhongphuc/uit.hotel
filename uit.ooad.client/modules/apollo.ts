@@ -6,18 +6,21 @@ export default async function(store: any, action: Action): Promise<void> {
     try {
         await action(store.app.apolloProvider.defaultClient);
     } catch (error) {
-        if (error instanceof ApolloError) {
-            if (error.networkError !== null) {
-                Vue.notify({
-                    title: 'Lỗi',
-                    type: 'error',
-                    text: (error.networkError as ServerError).result[0]
-                        .InnerException.Message,
-                });
-            }
+        if (
+            error instanceof ApolloError &&
+            error.networkError !== null &&
+            (error.networkError as ServerError).result !== undefined
+        ) {
+            Vue.notify({
+                title: 'Lỗi',
+                type: 'error',
+                text: (error.networkError as ServerError).result[0]
+                    .InnerException.Message,
+            });
         } else {
             Vue.notify({
                 title: 'Lỗi không xác định',
+                type: 'error',
                 text: error.message,
             });
         }
