@@ -1,112 +1,108 @@
 {
-  "definitions": {},
-  "type": "object",
-  "required": [
-    "data"
-  ],
-  "properties": {
-    "data": {
-      "type": "object",
-      "required": [
-        "position"
-      ],
-      "properties": {
-        "position": {
-          "type": "object",
-          "required": [
-            "id",
-            "name",
-            "permissionReferRevenues",
-            "permissionManageEmployees",
-            "permissionGetRooms",
-            "permissionManagePatrons",
-            "permissionManagePatronKinds",
-            "permissionCreatePatronKind",
-            "permissionCreateBill",
-            "permissionCreateBooking",
-            "permissionCreateOrUpdateEmployee",
-            "permissionCleaning",
-            "permissionCreateOrUpdatePatron",
-            "permissionCreatePosition",
-            "permissionCreateOrUpdateRate",
-            "permissionCreateReceipt",
-            "permissionUpdateGroundPlan",
-            "permissionCreateOrUpdateRoomKind",
-            "permissionCreateOrUpdateService",
-            "permissionCreateServicesDetail",
-            "permissionCreateOrUpdateVolatilityRate"
-          ],
-          "properties": {
-            "id": {
-              "type": "integer"
-            },
-            "name": {
-              "type": "string",
-              "pattern": "^(.*)$"
-            },
-            "permissionReferRevenues": {
-              "type": "boolean"
-            },
-            "permissionManagePatrons": {
-              "type": "boolean"
-            },
-            "permissionManagePatronKinds": {
-              "type": "boolean"
-            },
-            "permissionGetRooms": {
-              "type": "boolean"
-            },
-            "permissionHandleBills": {
-              "type": "boolean"
-            },
-            "permissionManageHiringRooms": {
-              "type": "boolean"
-            },
-            "permissionGetHouseKeepings": {
-              "type": "boolean"
-            },
-            "permissionCreatePatronKind": {
-              "type": "boolean"
-            },
-            "permissionCreateBill": {
-              "type": "boolean"
-            },
-            "permissionCreateBooking": {
-              "type": "boolean"
-            },
-            "permissionCreateOrUpdateEmployee": {
-              "type": "boolean"
-            },
-            "permissionCleaning": {
-              "type": "boolean"
-            },
-            "permissionCreateOrUpdatePatron": {
-              "type": "boolean"
-            },
-            "permissionCreatePosition": {
-              "type": "boolean"
-            },
-            "permissionCreateOrUpdateRate": {
-              "type": "boolean"
-            },
-            "permissionCreateReceipt": {
-              "type": "boolean"
-            },
-            "permissionCreateOrUpdateRoomKind": {
-              "type": "boolean"
-            },
-            "permissionCreateOrUpdateService": {
-              "type": "boolean"
-            },
-            "permissionCreateServicesDetail": {
-              "type": "boolean"
-            },
-            "permissionCreateOrUpdateVolatilityRate": {
-              "type": "boolean"
+    "definitions": {},
+    "type": "object",
+    "required": ["data"],
+    "properties": {
+        "data": {
+            "type": "object",
+            "required": ["position"],
+            "properties": {
+                "position": {
+                    "type": "object",
+                    "required": [
+                        "id",
+                        "name",
+                        "permissionReferRevenues",
+                        "permissionManageEmployees",
+                        "permissionGetRooms",
+                        "permissionManagePatrons",
+                        "permissionManagePatronKinds",
+                        "permissionCreatePatronKind",
+                        "permissionCreateBill",
+                        "permissionCreateBooking",
+                        "permissionCreateOrUpdateEmployee",
+                        "permissionCleaning",
+                        "permissionCreateOrUpdatePatron",
+                        "permissionCreatePosition",
+                        "permissionCreateOrUpdateRate",
+                        "permissionCreateReceipt",
+                        "permissionUpdateGroundPlan",
+                        "permissionCreateOrUpdateRoomKind",
+                        "permissionCreateOrUpdateService",
+                        "permissionCreateServicesDetail",
+                        "permissionCreateOrUpdateVolatilityRate"
+                    ],
+                    "properties": {
+                        "id": {
+                            "type": "integer"
+                        },
+                        "name": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "permissionReferRevenues": {
+                            "type": "boolean"
+                        },
+                        "permissionManagePatrons": {
+                            "type": "boolean"
+                        },
+                        "permissionManagePatronKinds": {
+                            "type": "boolean"
+                        },
+                        "permissionGetRooms": {
+                            "type": "boolean"
+                        },
+                        "permissionHandleBills": {
+                            "type": "boolean"
+                        },
+                        "permissionManageHiringRooms": {
+                            "type": "boolean"
+                        },
+                        "permissionGetHouseKeepings": {
+                            "type": "boolean"
+                        },
+                        "permissionCreatePatronKind": {
+                            "type": "boolean"
+                        },
+                        "permissionCreateBill": {
+                            "type": "boolean"
+                        },
+                        "permissionCreateBooking": {
+                            "type": "boolean"
+                        },
+                        "permissionCreateOrUpdateEmployee": {
+                            "type": "boolean"
+                        },
+                        "permissionCleaning": {
+                            "type": "boolean"
+                        },
+                        "permissionCreateOrUpdatePatron": {
+                            "type": "boolean"
+                        },
+                        "permissionCreatePosition": {
+                            "type": "boolean"
+                        },
+                        "permissionCreateOrUpdateRate": {
+                            "type": "boolean"
+                        },
+                        "permissionCreateReceipt": {
+                            "type": "boolean"
+                        },
+                        "permissionCreateOrUpdateRoomKind": {
+                            "type": "boolean"
+                        },
+                        "permissionCreateOrUpdateService": {
+                            "type": "boolean"
+                        },
+                        "permissionCreateServicesDetail": {
+                            "type": "boolean"
+                        },
+                        "permissionCreateOrUpdateVolatilityRate": {
+                            "type": "boolean"
+                        }
+                    }
+                }
             }
-          }
         }
-      }
     }
-  }
 }

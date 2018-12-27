@@ -1,9 +1,9 @@
-query($id:ID!){
-  bill(id:$id){
-    id
-    time
-    patron{
-      identification
+query($id: ID!) {
+    bill(id: $id) {
+        id
+        time
+        patron {
+            identification
+        }
     }
-  }
 }

@@ -1,6 +1,4 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using uit.ooad.Businesses;
-using uit.ooad.Models;
 using uit.ooad.test.Helper;
 
 namespace uit.ooad.test._GraphQL._Position
@@ -16,6 +14,7 @@ namespace uit.ooad.test._GraphQL._Position
                 @"/_GraphQL/Position/query.positions.schema.json"
             );
         }
+
         [TestMethod]
         public void Position()
         {
@@ -25,6 +24,7 @@ namespace uit.ooad.test._GraphQL._Position
                 @"/_GraphQL/Position/query.position.variable.json"
             );
         }
+
         [TestMethod]
         public void CreatePosition()
         {

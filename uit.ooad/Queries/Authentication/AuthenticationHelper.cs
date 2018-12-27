@@ -43,9 +43,9 @@ namespace uit.ooad.Queries.Authentication
         {
             var employee = GetEmployee(context);
 
-            if(!employee.IsActive)
+            if (!employee.IsActive)
                 throw new Exception("Tài khoản " + employee.Id + " đã bị vô hiệu hóa");
-                
+
             var position = employee.Position;
             if (position == null) new Exception("Tài khoản lỗi, vui lòng liên hệ quản trị viên");
 
@@ -68,21 +68,22 @@ namespace uit.ooad.Queries.Authentication
             var id = GetEmployeeId(context);
 
             var employee = EmployeeBusiness.Get(id);
-            if (employee == null) throw new Exception("Không tim thấy tên đăng nhập trong hệ thống");
+            if (employee == null) throw new Exception("Không tìm thấy tên đăng nhập trong hệ thống");
 
             return employee;
         }
 
         public static string GetRandomString()
         {
-            StringBuilder builder = new StringBuilder();
-            Random random = new Random();
+            var builder = new StringBuilder();
+            var random = new Random();
             char ch;
-            for (int i = 0; i < 6; i++)
+            for (var i = 0; i < 6; i++)
             {
                 ch = Convert.ToChar(Convert.ToInt32(Math.Floor(26 * random.NextDouble() + 65)));
                 builder.Append(ch);
             }
+
             return builder.ToString();
         }
     }

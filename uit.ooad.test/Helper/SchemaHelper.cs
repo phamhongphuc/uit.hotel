@@ -27,7 +27,8 @@ namespace uit.ooad.test.Helper
 
             var User = new ClaimsPrincipal(
                 new ClaimsIdentity(
-                    new[] {
+                    new[]
+                    {
                         new Claim(ClaimTypes.Name, Constant.UserName)
                     }
                 )

@@ -1,7 +1,4 @@
-using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using uit.ooad.Businesses;
-using uit.ooad.Models;
 using uit.ooad.test.Helper;
 
 namespace uit.ooad.test._GraphQL._VolatilityRate
@@ -17,6 +14,7 @@ namespace uit.ooad.test._GraphQL._VolatilityRate
                 @"/_GraphQL/VolatilityRate/query.volatilityRates.schema.json"
             );
         }
+
         [TestMethod]
         public void VolatilityRate()
         {
@@ -26,6 +24,7 @@ namespace uit.ooad.test._GraphQL._VolatilityRate
                 @"/_GraphQL/VolatilityRate/query.volatilityRate.variable.json"
             );
         }
+
         [TestMethod]
         public void CreateVolatilityRate()
         {

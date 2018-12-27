@@ -1,61 +1,47 @@
 {
-  "definitions": {},
-  "type": "object",
-  "required": [
-    "data"
-  ],
-  "properties": {
-    "data": {
-      "type": "object",
-      "required": [
-        "servicesDetail"
-      ],
-      "properties": {
-        "servicesDetail": {
-          "type": "object",
-          "required": [
-            "id",
-            "time",
-            "booking",
-            "number",
-            "service"
-          ],
-          "properties": {
-            "id": {
-              "type": "integer"
-            },
-            "time": {
-              "type": "string",
-              "pattern": "^(.*)$"
-            },
-            "booking": {
-              "type": "object",
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "integer"
+    "definitions": {},
+    "type": "object",
+    "required": ["data"],
+    "properties": {
+        "data": {
+            "type": "object",
+            "required": ["servicesDetail"],
+            "properties": {
+                "servicesDetail": {
+                    "type": "object",
+                    "required": ["id", "time", "booking", "number", "service"],
+                    "properties": {
+                        "id": {
+                            "type": "integer"
+                        },
+                        "time": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "booking": {
+                            "type": "object",
+                            "required": ["id"],
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                }
+                            }
+                        },
+                        "number": {
+                            "type": "integer"
+                        },
+                        "service": {
+                            "type": "object",
+                            "required": ["id"],
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    }
                 }
-              }
-            },
-            "number": {
-              "type": "integer"
-            },
-            "service": {
-              "type": "object",
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "integer"
-                }
-              }
             }
-          }
         }
-      }
     }
-  }
 }

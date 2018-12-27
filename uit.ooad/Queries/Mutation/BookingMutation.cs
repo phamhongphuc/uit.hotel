@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using GraphQL.Types;
 using uit.ooad.Businesses;
 using uit.ooad.Models;
 using uit.ooad.ObjectTypes;
@@ -16,7 +14,7 @@ namespace uit.ooad.Queries.Mutation
                 "CheckIn",
                 "Cập nhật thời gian checkin của phòng",
                 _IdArgument(),
-                _CheckPermission(
+                _CheckPermission_Object(
                     p => p.PermissionManageHiringRooms,
                     context =>
                     {
@@ -29,12 +27,25 @@ namespace uit.ooad.Queries.Mutation
                 "RequestCheckOut",
                 "Yêu cầu kiểm tra khi trả phòng",
                 _IdArgument(),
-                _CheckPermission(
+                _CheckPermission_Object(
                     p => p.PermissionManageHiringRooms,
                     context =>
                     {
                         var employee = AuthenticationHelper.GetEmployee(context);
                         return BookingBusiness.RequestCheckOut(employee, _GetId<int>(context));
+                    }
+                )
+            );
+            Field<BookingType>(
+                "CheckOut",
+                "Thực hiện xác nhận trả phòng",
+                _IdArgument(),
+                _CheckPermission_Object(
+                    p => p.PermissionManageHiringRooms,
+                    context => 
+                    {
+                        var employee = AuthenticationHelper.GetEmployee(context);
+                        return BookingBusiness.CheckOut(employee, _GetId<int>(context));                        
                     }
                 )
             );

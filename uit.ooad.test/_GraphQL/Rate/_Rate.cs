@@ -1,7 +1,4 @@
-using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using uit.ooad.Businesses;
-using uit.ooad.Models;
 using uit.ooad.test.Helper;
 
 namespace uit.ooad.test._GraphQL._Rate
@@ -17,6 +14,7 @@ namespace uit.ooad.test._GraphQL._Rate
                 @"/_GraphQL/Rate/query.rates.schema.json"
             );
         }
+
         [TestMethod]
         public void Rate()
         {
@@ -26,6 +24,7 @@ namespace uit.ooad.test._GraphQL._Rate
                 @"/_GraphQL/Rate/query.rate.variable.json"
             );
         }
+
         [TestMethod]
         public void CreateRate()
         {

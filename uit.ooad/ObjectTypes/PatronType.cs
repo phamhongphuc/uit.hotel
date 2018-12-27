@@ -13,7 +13,8 @@ namespace uit.ooad.ObjectTypes
             Description = "Thông tin  một khách hàng của khách sạn";
 
             Field(x => x.Id).Description("Id của khách hàng");
-            Field(x => x.Identification).Description("Số an sinh xã hội / Số chứng minh nhân dân / Số passport của khách hàng");
+            Field(x => x.Identification)
+               .Description("Số an sinh xã hội / Số chứng minh nhân dân / Số passport của khách hàng");
             Field(x => x.Name).Description("Tên của khách hàng");
             Field(x => x.Email).Description("Địa chỉ e-mail của khách hàng");
             Field(x => x.Gender).Description("Giới tính của khách hàng");
@@ -66,7 +67,8 @@ namespace uit.ooad.ObjectTypes
         {
             Name = _Creation;
 
-            Field(x => x.Identification).Description("Số an sinh xã hội / Số chứng minh nhân dân / Số passport của khách hàng");
+            Field(x => x.Identification)
+               .Description("Số an sinh xã hội / Số chứng minh nhân dân / Số passport của khách hàng");
             Field(x => x.Name).Description("Tên của khách hàng");
             Field(x => x.Email).Description("Địa chỉ e-mail của khách hàng");
             Field(x => x.Gender).Description("Giới tính của khách hàng");
@@ -87,6 +89,7 @@ namespace uit.ooad.ObjectTypes
             );
         }
     }
+
     public class PatronUpdateInput : InputType<Patron>
     {
         public PatronUpdateInput()
@@ -94,7 +97,8 @@ namespace uit.ooad.ObjectTypes
             Name = _Updation;
 
             Field(x => x.Id).Description("Id của khách hàng");
-            Field(x => x.Identification).Description("Số an sinh xã hội / Số chứng minh nhân dân / Số passport của khách hàng");
+            Field(x => x.Identification)
+               .Description("Số an sinh xã hội / Số chứng minh nhân dân / Số passport của khách hàng");
             Field(x => x.Name).Description("Tên của khách hàng");
             Field(x => x.Email).Description("Địa chỉ e-mail của khách hàng");
             Field(x => x.Gender).Description("Giới tính của khách hàng");

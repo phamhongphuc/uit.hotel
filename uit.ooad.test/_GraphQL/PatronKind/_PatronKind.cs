@@ -1,6 +1,4 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using uit.ooad.Businesses;
-using uit.ooad.Models;
 using uit.ooad.test.Helper;
 
 namespace uit.ooad.test._GraphQL._Patron
@@ -16,6 +14,7 @@ namespace uit.ooad.test._GraphQL._Patron
                 @"/_GraphQL/PatronKind/query.patronKinds.schema.json"
             );
         }
+
         [TestMethod]
         public void PatronKind()
         {
@@ -25,6 +24,7 @@ namespace uit.ooad.test._GraphQL._Patron
                 @"/_GraphQL/PatronKind/query.patronKind.variable.json"
             );
         }
+
         [TestMethod]
         public void CreatePatronKind()
         {

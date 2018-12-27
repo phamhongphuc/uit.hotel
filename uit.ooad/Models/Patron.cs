@@ -9,7 +9,7 @@ namespace uit.ooad.Models
     public class Patron : RealmObject
     {
         [Ignored]
-        public List<String> ListOfPhoneNumbers
+        public List<string> ListOfPhoneNumbers
         {
             set
             {
@@ -42,6 +42,7 @@ namespace uit.ooad.Models
 
         [Backlink(nameof(Booking.Patrons))]
         public IQueryable<Booking> Bookings { get; }
+
         public Patron GetManaged()
         {
             var patronInDatabase = PatronBusiness.Get(Id);

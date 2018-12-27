@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using uit.ooad.Models;
@@ -18,15 +17,18 @@ namespace uit.ooad.DataAccesses
             });
             return floor;
         }
+
         public static async Task<Floor> Update(Floor floorInDatabase, Floor floor)
         {
             await Database.WriteAsync(realm => floorInDatabase.Name = floor.Name);
             return floorInDatabase;
         }
+
         public static async void Delete(Floor floor)
         {
             await Database.WriteAsync(realm => realm.Remove(floor));
         }
+
         public static async void SetIsActive(Floor floor, bool isActive)
         {
             await Database.WriteAsync(realm => floor.IsActive = isActive);

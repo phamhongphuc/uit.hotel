@@ -1,21 +1,17 @@
 {
-  "definitions": {},
-  "type": "object",
-  "required": [
-    "data"
-  ],
-  "properties": {
-    "data": {
-      "type": "object",
-      "required": [
-        "setIsActiveRoomKind"
-      ],
-      "properties": {
-        "setIsActiveRoomKind": {
-          "type": "string",
-          "pattern": "^(.*)$"
+    "definitions": {},
+    "type": "object",
+    "required": ["data"],
+    "properties": {
+        "data": {
+            "type": "object",
+            "required": ["setIsActiveRoomKind"],
+            "properties": {
+                "setIsActiveRoomKind": {
+                    "type": "string",
+                    "pattern": "^(.*)$"
+                }
+            }
         }
-      }
     }
-  }
 }

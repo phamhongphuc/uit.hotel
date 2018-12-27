@@ -1,7 +1,7 @@
-mutation($input:FloorUpdateInput!){
-  updateFloor(input:$input){
-    id
-    name
-    isActive
-  }
+mutation($input: FloorUpdateInput!) {
+    updateFloor(input: $input) {
+        id
+        name
+        isActive
+    }
 }

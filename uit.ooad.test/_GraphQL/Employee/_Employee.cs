@@ -1,6 +1,4 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using uit.ooad.Businesses;
-using uit.ooad.Models;
 using uit.ooad.test.Helper;
 
 namespace uit.ooad.test._GraphQL.Employee
@@ -16,6 +14,7 @@ namespace uit.ooad.test._GraphQL.Employee
                 @"/_GraphQL/Employee/query.employees.schema.json"
             );
         }
+
         [TestMethod]
         public void Employee()
         {
@@ -25,6 +24,7 @@ namespace uit.ooad.test._GraphQL.Employee
                 @"/_GraphQL/Employee/query.employee.variable.json"
             );
         }
+
         [TestMethod]
         public void CreateEmployee()
         {

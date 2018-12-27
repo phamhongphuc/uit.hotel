@@ -14,6 +14,7 @@ namespace uit.ooad.test._GraphQL._Patron
                 @"/_GraphQL/Patron/query.patrons.schema.json"
             );
         }
+
         [TestMethod]
         public void Patron()
         {

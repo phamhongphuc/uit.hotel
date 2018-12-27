@@ -1,5 +1,3 @@
-using System;
-using System.Linq;
 using GraphQL.Types;
 using uit.ooad.Businesses;
 using uit.ooad.Models;
@@ -12,15 +10,15 @@ namespace uit.ooad.Queries.Mutation
 {
     public class AuthenticationMutation : QueryType<Employee>
     {
-        private static string ID = "id";
-        private static string PASSWORD = "password";
-        private static string NEW_PASSWORD = "newPassword";
+        private static readonly string ID = "id";
+        private static readonly string PASSWORD = "password";
+        private static readonly string NEW_PASSWORD = "newPassword";
 
         public AuthenticationMutation()
         {
-            Field<StringGraphType>(
+            Field<AuthenticationType>(
                 "Login",
-                "Đăng nhập nhân viên, trả về cái access token",
+                "Đăng nhập mới",
                 new QueryArguments(
                     new QueryArgument<NonNullGraphType<StringGraphType>> { Name = ID },
                     new QueryArgument<NonNullGraphType<StringGraphType>> { Name = PASSWORD }
@@ -29,10 +27,18 @@ namespace uit.ooad.Queries.Mutation
                 {
                     var id = _GetId<string>(context);
                     var password = context.GetArgument<string>(PASSWORD);
+                    return EmployeeBusiness.GetAuthenticationObject(id, password);
+                }
+            );
 
-                    EmployeeBusiness.CheckLogin(id, password);
-
-                    return AuthenticationHelper.TokenBuilder(id);
+            Field<EmployeeType>(
+                "CheckLogin",
+                "Kiểm tra đăng nhập",
+                resolve: context =>
+                {
+                    var employee = AuthenticationHelper.GetEmployee(context);
+                    EmployeeBusiness.CheckIsActive(employee);
+                    return employee;
                 }
             );
 

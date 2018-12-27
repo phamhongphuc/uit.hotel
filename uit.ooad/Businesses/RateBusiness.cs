@@ -11,9 +11,9 @@ namespace uit.ooad.Businesses
         public static Task<Rate> Add(Rate rate)
         {
             rate.RoomKind = rate.RoomKind.GetManaged();
-            if(!rate.RoomKind.IsActive)
+            if (!rate.RoomKind.IsActive)
                 throw new Exception("Loại phòng " + rate.RoomKind.Name + " đã ngưng hoại động");
-                
+
             return RateDataAccess.Add(rate);
         }
 

@@ -1,64 +1,56 @@
 {
-  "definitions": {},
-  "type": "object",
-  "required": [
-    "data"
-  ],
-  "properties": {
-    "data": {
-      "type": "object",
-      "required": [
-        "servicesDetails"
-      ],
-      "properties": {
-        "servicesDetails": {
-          "type": "array",
-          "items": {
+    "definitions": {},
+    "type": "object",
+    "required": ["data"],
+    "properties": {
+        "data": {
             "type": "object",
-            "required": [
-              "id",
-              "time",
-              "number",
-              "booking",
-              "service"
-            ],
+            "required": ["servicesDetails"],
             "properties": {
-              "id": {
-                "type": "integer"
-              },
-              "time": {
-                "type": "string",
-                "pattern": "^(.*)$"
-              },
-              "number": {
-                "type": "integer"
-              },
-              "booking": {
-                "type": "object",
-                "required": [
-                  "id"
-                ],
-                "properties": {
-                  "id": {
-                    "type": "integer"
-                  }
+                "servicesDetails": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "id",
+                            "time",
+                            "number",
+                            "booking",
+                            "service"
+                        ],
+                        "properties": {
+                            "id": {
+                                "type": "integer"
+                            },
+                            "time": {
+                                "type": "string",
+                                "pattern": "^(.*)$"
+                            },
+                            "number": {
+                                "type": "integer"
+                            },
+                            "booking": {
+                                "type": "object",
+                                "required": ["id"],
+                                "properties": {
+                                    "id": {
+                                        "type": "integer"
+                                    }
+                                }
+                            },
+                            "service": {
+                                "type": "object",
+                                "required": ["id"],
+                                "properties": {
+                                    "id": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
-              },
-              "service": {
-                "type": "object",
-                "required": [
-                  "id"
-                ],
-                "properties": {
-                  "id": {
-                    "type": "integer"
-                  }
-                }
-              }
             }
-          }
         }
-      }
     }
-  }
 }

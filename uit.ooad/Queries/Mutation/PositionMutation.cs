@@ -13,7 +13,7 @@ namespace uit.ooad.Queries.Mutation
                 _Creation,
                 "Tạo và trả về một chức vụ mới",
                 _InputArgument<PositionCreateInput>(),
-                _CheckPermission(
+                _CheckPermission_Object(
                     p => p.PermissionCreatePosition,
                     context => PositionBusiness.Add(_GetInput(context))
                 )

@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,6 +8,8 @@ namespace uit.ooad.DataAccesses
 {
     public class HouseKeepingDataAccess : RealmDatabase
     {
+        private static int NextId => Get().Count() == 0 ? 1 : Get().Max(i => i.Id) + 1;
+
         public static async Task<HouseKeeping> Add(HouseKeeping houseKeeping)
         {
             await Database.WriteAsync(realm =>
@@ -29,14 +30,13 @@ namespace uit.ooad.DataAccesses
 
         public static IEnumerable<HouseKeeping> Get() => Database.All<HouseKeeping>();
 
-        private static int NextId => Get().Count() == 0 ? 1 : Get().Max(i => i.Id) + 1;
-
-        public static async Task<HouseKeeping> AssignCleaningService(Employee employee, HouseKeeping houseKeepingInDatabase)
+        public static async Task<HouseKeeping> AssignCleaningService(Employee employee,
+                                                                     HouseKeeping houseKeepingInDatabase)
         {
             await Database.WriteAsync(realm =>
             {
                 houseKeepingInDatabase.Employee = employee;
-                houseKeepingInDatabase.Status = (int)HouseKeeping.StatusEnum.Cleaning;
+                houseKeepingInDatabase.Status = (int) HouseKeeping.StatusEnum.Cleaning;
             });
             return houseKeepingInDatabase;
         }
@@ -45,21 +45,23 @@ namespace uit.ooad.DataAccesses
         {
             await Database.WriteAsync(realm =>
             {
-                houseKeepingInDatabase.Status = (int)HouseKeeping.StatusEnum.Cleaned;
+                houseKeepingInDatabase.Status = (int) HouseKeeping.StatusEnum.Cleaned;
             });
             return houseKeepingInDatabase;
         }
 
-        public static async Task<HouseKeeping> ConfirmCleanedAndServices(HouseKeeping houseKeepingInDatabase, List<ServicesDetail> servicesDetails)
+        public static async Task<HouseKeeping> ConfirmCleanedAndServices(
+            HouseKeeping houseKeepingInDatabase, List<ServicesDetail> servicesDetails)
         {
             await Database.WriteAsync(realm =>
             {
-                foreach(var servicesDetail in servicesDetails)
+                foreach (var servicesDetail in servicesDetails)
                 {
                     servicesDetail.Booking = houseKeepingInDatabase.Booking;
                     ServicesDetailDataAccess.Add(realm, servicesDetail);
                 }
-                houseKeepingInDatabase.Status = (int)HouseKeeping.StatusEnum.Cleaned;
+
+                houseKeepingInDatabase.Status = (int) HouseKeeping.StatusEnum.Cleaned;
             });
             return houseKeepingInDatabase;
         }

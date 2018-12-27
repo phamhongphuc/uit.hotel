@@ -1,16 +1,16 @@
-mutation ($input: EmployeeCreateInput!) {
-  createEmployee(input: $input) {
-    id
-		password
-    name
-    identityCard
-    phoneNumber
-    address
-    birthdate
-    startingDate
-    isActive
-    position{
-      id
+mutation($input: EmployeeCreateInput!) {
+    createEmployee(input: $input) {
+        id
+        password
+        name
+        identityCard
+        phoneNumber
+        address
+        birthdate
+        startingDate
+        isActive
+        position {
+            id
+        }
     }
-  }
 }

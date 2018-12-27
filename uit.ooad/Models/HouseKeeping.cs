@@ -4,17 +4,18 @@ namespace uit.ooad.Models
 {
     public class HouseKeeping : RealmObject
     {
+        public enum StatusEnum
+        {
+            Pending, // Chờ dọn
+            Cleaning, // Đang dọn
+            Cleaned // Đã dọn
+        }
+
         public enum TypeEnum
         {
             MakeUpRoom, // Phòng cần làm sạch
             ExpectedArrival, // Phòng khách sắp đến
             ExpectedDeparture // Phòng khách sắp đi
-        }
-        public enum StatusEnum
-        {
-            Pending, // Chờ dọn
-            Cleaning, // Đang dọn
-            Cleaned, // Đã dọn
         }
 
         [PrimaryKey]

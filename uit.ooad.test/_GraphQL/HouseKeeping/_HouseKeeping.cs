@@ -1,6 +1,4 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using uit.ooad.Businesses;
-using uit.ooad.Models;
 using uit.ooad.test.Helper;
 
 namespace uit.ooad.test._GraphQL._HouseKeeping
@@ -16,6 +14,7 @@ namespace uit.ooad.test._GraphQL._HouseKeeping
                 @"/_GraphQL/HouseKeeping/query.houseKeepings.schema.json"
             );
         }
+
         [TestMethod]
         public void HouseKeeping()
         {
@@ -25,6 +24,7 @@ namespace uit.ooad.test._GraphQL._HouseKeeping
                 @"/_GraphQL/HouseKeeping/query.houseKeeping.variable.json"
             );
         }
+
         [TestMethod]
         public void AssignCleaningService()
         {
@@ -35,6 +35,7 @@ namespace uit.ooad.test._GraphQL._HouseKeeping
                 p => p.PermissionCleaning = true
             );
         }
+
         [TestMethod]
         public void ConfirmCleaned()
         {
@@ -45,6 +46,7 @@ namespace uit.ooad.test._GraphQL._HouseKeeping
                 p => p.PermissionCleaning = true
             );
         }
+
         [TestMethod]
         public void ConfirmCleanedAndServices()
         {

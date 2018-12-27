@@ -37,7 +37,7 @@ namespace uit.ooad.Models
 
         [Backlink(nameof(Booking.EmployeeCheckOut))]
         public IQueryable<Booking> CheckOuts { get; }
-        
+
         public bool IsEqualPassword(string rawPassword)
         {
             return CryptoHelper.Encrypt(rawPassword).Equals(Password);

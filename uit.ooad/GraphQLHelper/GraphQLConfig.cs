@@ -68,6 +68,7 @@ namespace uit.ooad.GraphQLHelper
 
         public static void Type(IServiceCollection services)
         {
+            services.AddSingleton<AuthenticationType>();
             services.AddSingleton<BillType>();
             services.AddSingleton<BookingType>();
             services.AddSingleton<EmployeeType>();

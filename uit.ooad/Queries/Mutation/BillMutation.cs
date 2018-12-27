@@ -16,10 +16,11 @@ namespace uit.ooad.Queries.Mutation
                 _Creation,
                 "Tạo và trả về một đơn đặt phòng",
                 new QueryArguments(
-                    new QueryArgument<NonNullGraphType<ListGraphType<NonNullGraphType<BookingCreateInput>>>> { Name = "bookings" },
+                    new QueryArgument<NonNullGraphType<ListGraphType<NonNullGraphType<BookingCreateInput>>>>
+                        { Name = "bookings" },
                     new QueryArgument<NonNullGraphType<BillCreateInput>> { Name = "bill" }
                 ),
-                _CheckPermission(
+                _CheckPermission_Object(
                     p => p.PermissionManageHiringRooms,
                     async context =>
                     {
@@ -27,12 +28,11 @@ namespace uit.ooad.Queries.Mutation
                         var bill = context.GetArgument<Bill>("bill");
                         var bookings = context.GetArgument<List<Booking>>("bookings");
 
-                        Bill billInDatabase = await BillBusiness.Book(employee, bill, bookings);
+                        var billInDatabase = await BillBusiness.Book(employee, bill, bookings);
                         return billInDatabase;
                     }
                 )
             );
-
         }
     }
 }

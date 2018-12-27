@@ -9,6 +9,8 @@ namespace uit.ooad.DataAccesses
 {
     public class BookingDataAccess : RealmDatabase
     {
+        public static int NextId => Get().Count() == 0 ? 1 : Get().Max(f => f.Id) + 1;
+
         public static async Task<Booking> Add(Booking booking)
         {
             await Database.WriteAsync(realm => Add(realm, booking));
@@ -22,9 +24,9 @@ namespace uit.ooad.DataAccesses
             booking.Status = (int)Booking.StatusEnum.Booked;
             return realm.Add(booking);
         }
-        public static int NextId => Get().Count() == 0 ? 1 : Get().Max(f => f.Id) + 1;
 
-        public static async Task<Booking> CheckIn(Employee employee, Booking bookingInDatabase, HouseKeeping houseKeeping)
+        public static async Task<Booking> CheckIn(Employee employee, Booking bookingInDatabase,
+                                                  HouseKeeping houseKeeping)
         {
             await Database.WriteAsync(realm =>
             {
@@ -37,7 +39,8 @@ namespace uit.ooad.DataAccesses
             return bookingInDatabase;
         }
 
-        internal static async Task<Booking> RequestCheckOut(Employee employee, Booking bookingInDatabase, HouseKeeping houseKeeping)
+        public static async Task<Booking> RequestCheckOut(Employee employee, Booking bookingInDatabase,
+                                                            HouseKeeping houseKeeping)
         {
             await Database.WriteAsync(realm =>
             {
@@ -49,10 +52,15 @@ namespace uit.ooad.DataAccesses
             return bookingInDatabase;
         }
 
-        // internal static Task<Booking> CheckOut(Booking bookingInDatabase, List<ServicesDetail> servicesDetails)
-        // {
-        //     throw new NotImplementedException();
-        // }
+        public static async Task<Booking> CheckOut(Booking bookingInDatabase)
+        {
+            await Database.WriteAsync(realm =>
+            {
+                bookingInDatabase.RealCheckOutTime = DateTimeOffset.Now;
+                bookingInDatabase.Status = (int)Booking.StatusEnum.CheckedOut;
+            });
+            return bookingInDatabase;
+        }
 
         public static Booking Get(int bookingId) => Database.Find<Booking>(bookingId);
 

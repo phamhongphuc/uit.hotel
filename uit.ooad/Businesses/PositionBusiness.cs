@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using uit.ooad.DataAccesses;
@@ -15,7 +16,7 @@ namespace uit.ooad.Businesses
             return PositionDataAccess.Add(position);
         }
 
-        public static void Update(System.Action<Position> setPermission, Position position)
+        public static void Update(Action<Position> setPermission, Position position)
             => PositionDataAccess.Update(setPermission, position);
 
         public static Position Get(int positionId) => PositionDataAccess.Get(positionId);

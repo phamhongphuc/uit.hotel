@@ -13,7 +13,7 @@ namespace uit.ooad.Businesses
 
         public static Task<Service> Update(Service service)
         {
-            Service serviceInDatabase = GetAndCheckValid(service.Id);
+            var serviceInDatabase = GetAndCheckValid(service.Id);
 
             return ServiceDataAccess.Update(serviceInDatabase, service);
         }
@@ -26,7 +26,7 @@ namespace uit.ooad.Businesses
 
             ServiceDataAccess.SetIsActive(serviceInDatabase, isActive);
         }
-        
+
         private static Service GetAndCheckValid(int serviceId)
         {
             var serviceInDatabase = Get(serviceId);
@@ -34,12 +34,16 @@ namespace uit.ooad.Businesses
                 throw new Exception("Mã dịch vụ không hợp lệ!");
 
             if (!serviceInDatabase.IsActive)
-                throw new Exception("Dịch vụ " + serviceInDatabase.Name + " đã ngừng cung cấp. Không thể cập nhật/xóa!");
+            {
+                throw new Exception("Dịch vụ " + serviceInDatabase.Name +
+                                    " đã ngừng cung cấp. Không thể cập nhật/xóa!");
+            }
 
             if (serviceInDatabase.ServicesDetails.Count() > 0)
                 throw new Exception("Dịch vụ này đã được sử dụng. Không thể cập nhật/xóa!");
             return serviceInDatabase;
         }
+
         public static Service Get(int serviceId) => ServiceDataAccess.Get(serviceId);
         public static IEnumerable<Service> Get() => ServiceDataAccess.Get();
     }

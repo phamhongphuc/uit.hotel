@@ -39,6 +39,7 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.IsActive).Description("Trạng thái hoạt động");
         }
     }
+
     public class ServiceUpdateInput : InputType<Service>
     {
         public ServiceUpdateInput()
@@ -52,6 +53,7 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.Unit).Description("Đơn vị");
         }
     }
+
     public class ServiceIdInput : InputType<Service>
     {
         public ServiceIdInput()

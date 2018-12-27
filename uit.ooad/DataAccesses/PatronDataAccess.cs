@@ -7,6 +7,8 @@ namespace uit.ooad.DataAccesses
 {
     public class PatronDataAccess : RealmDatabase
     {
+        private static int NextId => Get().Count() == 0 ? 1 : Get().Max(i => i.Id) + 1;
+
         public static async Task<Patron> Add(Patron patron)
         {
             await Database.WriteAsync(realm =>
@@ -34,19 +36,16 @@ namespace uit.ooad.DataAccesses
                 patronInDatabase.PatronKind = patron.PatronKind;
 
                 patronInDatabase.PhoneNumbers.Clear();
-                foreach(var p in patron.PhoneNumbers)
-                {
-                    patronInDatabase.PhoneNumbers.Add(p);
-                }
+                foreach (var p in patron.PhoneNumbers) patronInDatabase.PhoneNumbers.Add(p);
             });
             return patronInDatabase;
         }
+
         public static Patron Get(int patronId) => Database.Find<Patron>(patronId);
-        public static Patron GetByIdentification(string patronIdentification) => Get().Where(p => p.Identification == patronIdentification).FirstOrDefault();
+
+        public static Patron GetByIdentification(string patronIdentification) =>
+            Get().Where(p => p.Identification == patronIdentification).FirstOrDefault();
 
         public static IEnumerable<Patron> Get() => Database.All<Patron>();
-
-        private static int NextId => Get().Count() == 0 ? 1 : Get().Max(i => i.Id) + 1;
-
     }
 }
