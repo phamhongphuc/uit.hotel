@@ -42,8 +42,6 @@ namespace uit.ooad.Businesses
             foreach (var servicesDetail in servicesDetails)
             {
                 servicesDetail.Service = servicesDetail.Service.GetManaged();
-                if (servicesDetail.Service == null)
-                    throw new Exception("Mã dịch vụ không tồn tại");
                 if (!servicesDetail.Service.IsActive)
                     throw new Exception("Dịch vụ " + servicesDetail.Service.Name + " đã ngừng cung cấp");
             }
