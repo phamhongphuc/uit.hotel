@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Realms;
 using uit.ooad.Businesses;
@@ -15,6 +16,12 @@ namespace uit.ooad.Models
 
         [Backlink(nameof(ServicesDetail.Service))]
         public IQueryable<ServicesDetail> ServicesDetails { get; }
-        public Service GetManaged() => ServiceBusiness.Get(Id);
+        public Service GetManaged()
+        {
+            var service = ServiceBusiness.Get(Id);
+            if (service == null)
+                throw new Exception("Mã dịch vụ không tồn tại");
+            return service;
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Realms;
 using uit.ooad.Businesses;
 
@@ -21,6 +22,12 @@ namespace uit.ooad.Models
             return Realm.All<Room>().Where(r => r.Floor == this).ToArray();
         }
 
-        public Floor GetManaged() => FloorBusiness.Get(Id);
+        public Floor GetManaged()
+        {
+            var floor = FloorBusiness.Get(Id);
+            if (floor == null)
+                throw new Exception("Mã tầng không tồn tại");
+            return floor;
+        }
     }
 }

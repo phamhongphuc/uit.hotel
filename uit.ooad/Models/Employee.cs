@@ -43,6 +43,12 @@ namespace uit.ooad.Models
             return CryptoHelper.Encrypt(rawPassword).Equals(Password);
         }
 
-        public Employee GetManaged() => EmployeeBusiness.Get(Id);
+        public Employee GetManaged()
+        {
+            var employee = EmployeeBusiness.Get(Id);
+            if (employee == null)
+                throw new Exception("Tên đăng nhập không tồn tại");
+            return employee;
+        }
     }
 }

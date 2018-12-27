@@ -60,8 +60,6 @@ namespace uit.ooad.Businesses
             if(bill == null) throw new Exception("Mã hóa đơn không tồn tại.");
 
             booking.Room = booking.Room.GetManaged();
-            if(booking.Room == null)
-                throw new Exception("Mã phòng không tồn tại");
             if(!booking.Room.IsActive)
                 throw new Exception("Phòng có Id: " + booking.Room.Id + " đã ngưng hoạt động");
             

@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Realms;
 using uit.ooad.Businesses;
@@ -24,6 +25,12 @@ namespace uit.ooad.Models
         [Backlink(nameof(VolatilityRate.RoomKind))]
         public IQueryable<VolatilityRate> VolatilityRates { get; }
 
-        public RoomKind GetManaged() => RoomKindBusiness.Get(Id);
+        public RoomKind GetManaged()
+        {
+            var roomKind = RoomKindBusiness.Get(Id);
+            if (roomKind == null)
+                throw new Exception("Mã loại phòng không tồn tại");
+            return roomKind;
+        }
     }
 }
