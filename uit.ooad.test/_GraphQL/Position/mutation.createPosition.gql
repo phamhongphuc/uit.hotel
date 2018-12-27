@@ -3,6 +3,7 @@ mutation($input:PositionCreateInput!) {
         id
         name
         permissionReferRevenues
+        permissionReferDebt
         permissionChangePersonalPassword
         permissionManagePositions
         permissionManageEmployees
