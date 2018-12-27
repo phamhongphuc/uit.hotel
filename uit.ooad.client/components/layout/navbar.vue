@@ -16,8 +16,8 @@
             </b-nav-item>
             <b-nav-item-icon-
                 class="d-md-none mx-1"
-                to="/profile"
                 image="/favicon.png"
+                @click.native="toggle"
             />
         </b-navbar-nav>
 
@@ -38,12 +38,12 @@
                     :focus.sync="isInputFocus"
                 />
                 <b-nav-item-icon-
-                    to="/profile"
                     image="/favicon.png"
                     text="Tên người dùng"
                     text-class="d-md-none"
                     class="d-none d-md-block"
                     :class="isInputFocus ? 'w-0 h-0' : ''"
+                    @click.native="toggle"
                 />
             </b-navbar-nav>
         </b-collapse>
@@ -56,6 +56,10 @@ import { Vue, namespace, Component } from 'nuxt-property-decorator';
 export default class extends Vue {
     isInputFocus = false;
 
-    @namespace('style').State breakpoint;
+    @namespace('style').State
+    breakpoint;
+
+    @namespace('view').Action
+    toggle;
 }
 </script>
