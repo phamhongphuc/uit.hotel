@@ -39,6 +39,10 @@ export const actions: ActionTree<UserState, UserState> = {
         });
     },
 
+    logout({ commit }) {
+        commit('setToken', null);
+    },
+
     checkLogin({ state }) {
         return state.token !== null;
     },
