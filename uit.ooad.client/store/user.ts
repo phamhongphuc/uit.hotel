@@ -6,27 +6,27 @@ import { GraphqlResult } from '../graphql/graphqlHelper';
 interface UserState {
     token: null | string;
 }
+
 export const state = (): UserState => ({
     token: null,
 });
 
 export const mutations: MutationTree<UserState> = {
-    login(state, token: string) {
+    setToken(state, token: string) {
         state.token = token;
     },
 };
 
 export const actions: ActionTree<UserState, UserState> = {
-    login(
+    async login(
         { state, commit },
         { id, password }: { id: string; password: string },
-    ): Promise<void> | void {
+    ): Promise<void> {
         if (state.token !== null) return;
 
-        return apollo(this, async apolloClient => {
-            const result: GraphqlResult<{
-                login: string;
-            }> = await apolloClient.mutate({
+        await apollo(this, async apolloClient => {
+            type LoginResult = GraphqlResult<{ login: string }>;
+            const result: LoginResult = await apolloClient.mutate({
                 mutation: gql`
                     mutation login($id: String!, $password: String!) {
                         login(id: $id, password: $password)
@@ -35,8 +35,12 @@ export const actions: ActionTree<UserState, UserState> = {
                 variables: { id, password },
             });
 
-            commit('login', result.data.login);
+            commit('setToken', result.data.login);
         });
+    },
+
+    logout({ commit }) {
+        commit('setToken', null);
     },
 
     checkLogin({ state }) {

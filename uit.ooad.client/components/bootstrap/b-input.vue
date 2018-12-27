@@ -2,7 +2,7 @@
     <div class="b-input">
         <div class="icon">{{ icon }}</div>
         <input
-            class="pl-0 pr-3"
+            class="pr-3"
             :type="type"
             :placeholder="placeholder"
             :value="value"
@@ -36,7 +36,10 @@ export default class extends Vue {
     transition: border 0.2s;
     border-radius: 0.5 * $input-size;
     display: flex;
+    overflow: hidden;
+    position: relative;
     > .icon {
+        position: absolute;
         display: block;
         text-align: center;
         font-size: 1rem;
@@ -52,6 +55,7 @@ export default class extends Vue {
         outline: none;
         height: $input-size;
         border: none;
+        padding-left: 1.1 * $input-size;
         padding-top: 0;
         padding-bottom: 0;
         min-width: 0;
