@@ -57,5 +57,16 @@ namespace uit.ooad.test._GraphQL.Booking
                 p => p.PermissionManageHiringRooms = true
             );
         }
+
+        [TestMethod]
+        public void AddBookingToBill()
+        {
+            SchemaHelper.Execute(
+                @"/_GraphQL/Booking/mutation.addBookingToBill.gql",
+                @"/_GraphQL/Booking/mutation.addBookingToBill.schema.json",
+                @"/_GraphQL/Booking/mutation.addBookingToBill.variable.json",
+                p => p.PermissionManageHiringRooms = true
+            );
+        }
     }
 }
