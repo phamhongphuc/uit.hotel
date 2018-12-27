@@ -49,9 +49,9 @@ export default {
     plugins: [
         { src: '~/plugins/localStorage', ssr: false },
         { src: '~/plugins/notification', ssr: false },
-        { src: '~/plugins/style', ssr: false },
+        { src: '~/plugins/global', ssr: false },
         { src: '~/plugins/component' },
-        { src: '~/plugins/global' },
+        { src: '~/plugins/types' },
     ],
     apollo: {
         clientConfigs: {
