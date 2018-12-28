@@ -53,7 +53,7 @@ namespace uit.ooad.Queries.Helper
                 PermissionManagePositions = true,
                 PermissionManageEmployees = true,
                 PermissionReferRevenues = true,
-                PermissionManagePatrons = true,
+                PermissionManagePatron = true,
                 PermissionManagePatronKinds = true,
                 PermissionGetRooms = true,
                 PermissionManageHiringRoom = true,
