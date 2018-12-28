@@ -3,7 +3,7 @@
 		"name": "Tên quyền",
 		"permissionReferRevenues": false,
 		"permissionReferDebt": false,
-		"permissionChangePersonalPassword": false,
+		"permissionManageAccount": false,
 		"permissionManagePosition": false,
 		"permissionManageEmployee": false,
 		"permissionGetRooms": false,

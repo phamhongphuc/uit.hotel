@@ -18,7 +18,7 @@
             "name",
             "permissionReferRevenues",
             "permissionReferDebt",
-            "permissionChangePersonalPassword",
+            "permissionManageAccount",
             "permissionManagePosition",
             "permissionManageEmployee",
             "permissionGetRooms",
@@ -54,7 +54,7 @@
             "permissionReferDebt": {
               "type": "boolean"
             },
-            "permissionChangePersonalPassword": {
+            "permissionManageAccount": {
               "type": "boolean"
             },
             "permissionManagePosition": {
