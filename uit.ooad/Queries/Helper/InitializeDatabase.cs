@@ -51,7 +51,7 @@ namespace uit.ooad.Queries.Helper
                 PermissionReferDebt = true,
                 PermissionChangePersonalPassword = true,
                 PermissionManagePosition = true,
-                PermissionManageEmployees = true,
+                PermissionManageEmployee = true,
                 PermissionReferRevenues = true,
                 PermissionManagePatron = true,
                 PermissionManagePatronKind = true,

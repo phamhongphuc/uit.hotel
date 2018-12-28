@@ -17,7 +17,7 @@ namespace uit.ooad.Queries.Mutation
                 "Tạo và trả về một nhân viên mới",
                 _InputArgument<EmployeeCreateInput>(),
                 _CheckPermission_TaskObject(
-                    p => p.PermissionManageEmployees,
+                    p => p.PermissionManageEmployee,
                     context => EmployeeBusiness.Add(_GetInput(context))
                 )
             );
@@ -27,7 +27,7 @@ namespace uit.ooad.Queries.Mutation
                 "Chỉnh sửa thông tin nhân viên",
                 _InputArgument<EmployeeUpdateInput>(),
                 _CheckPermission_TaskObject(
-                    p => p.PermissionManageEmployees,
+                    p => p.PermissionManageEmployee,
                     context => EmployeeBusiness.Update(_GetInput(context))
                 )
             );
@@ -37,7 +37,7 @@ namespace uit.ooad.Queries.Mutation
                 "Reset lại mật khẩu cho nhân viên khi quên mật khẩu",
                 _IdArgument(),
                 _CheckPermission_String(
-                    p => p.PermissionManageEmployees,
+                    p => p.PermissionManageEmployee,
                     context =>
                     {
                         var id = AuthenticationHelper.GetEmployeeId(context);
@@ -60,7 +60,7 @@ namespace uit.ooad.Queries.Mutation
                     new QueryArgument<NonNullGraphType<BooleanGraphType>> { Name = "isActive" }
                 ),
                 _CheckPermission_String(
-                    p => p.PermissionManageEmployees,
+                    p => p.PermissionManageEmployee,
                     context =>
                     {
                         var id = AuthenticationHelper.GetEmployeeId(context);
