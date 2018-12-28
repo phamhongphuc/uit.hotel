@@ -16,7 +16,7 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.Name).Description("Tên chức vụ");
             Field(x => x.PermissionUpdateGroundPlan).Description("Quyền chỉnh sửa sơ đồ");
             Field(x => x.PermissionReferDebt).Description("Quyền tra cứu công nợ");
-            Field(x => x.PermissionChangePersonalPassword).Description("Quyền thay đổi mật khẩu cá nhân");
+            Field(x => x.PermissionManageAccount).Description("Quyền thay đổi mật khẩu cá nhân");
             Field(x => x.PermissionManagePosition).Description("Quyền quản lý chức vụ");
             Field(x => x.PermissionManageEmployee).Description("Quyền quản lý thông tin nhân viên");
             Field(x => x.PermissionReferRevenues).Description("Quyền xem thống kê và chi tiết doanh thu");
@@ -67,7 +67,7 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.Name).Description("Tên chức vụ");
             Field(x => x.PermissionUpdateGroundPlan).Description("Quyền chỉnh sửa sơ đồ");
             Field(x => x.PermissionReferDebt).Description("Quyền tra cứu công nợ");
-            Field(x => x.PermissionChangePersonalPassword).Description("Quyền thay đổi mật khẩu cá nhân");
+            Field(x => x.PermissionManageAccount).Description("Quyền thay đổi mật khẩu cá nhân");
             Field(x => x.PermissionManagePosition).Description("Quyền quản lý chức vụ");
             Field(x => x.PermissionManageEmployee).Description("Quyền quản lý thông tin nhân viên");
             Field(x => x.PermissionReferRevenues).Description("Quyền xem thống kê và chi tiết doanh thu");

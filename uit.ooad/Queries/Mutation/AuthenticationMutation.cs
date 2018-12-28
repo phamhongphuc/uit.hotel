@@ -49,16 +49,19 @@ namespace uit.ooad.Queries.Mutation
                     new QueryArgument<NonNullGraphType<StringGraphType>> { Name = PASSWORD },
                     new QueryArgument<NonNullGraphType<StringGraphType>> { Name = NEW_PASSWORD }
                 ),
-                context =>
-                {
-                    var id = AuthenticationHelper.GetEmployeeId(context);
-                    var password = context.GetArgument<string>(PASSWORD);
-                    var newPassword = context.GetArgument<string>(NEW_PASSWORD);
+                _CheckPermission_String(
+                    p => p.PermissionManageAccount,
+                    context =>
+                    {
+                        var id = AuthenticationHelper.GetEmployeeId(context);
+                        var password = context.GetArgument<string>(PASSWORD);
+                        var newPassword = context.GetArgument<string>(NEW_PASSWORD);
 
-                    EmployeeBusiness.ChangePassword(id, password, newPassword);
+                        EmployeeBusiness.ChangePassword(id, password, newPassword);
 
-                    return "Đổi mật khẩu thành công";
-                }
+                        return "Đổi mật khẩu thành công";
+                    }
+                )
             );
 
             Field<NonNullGraphType<StringGraphType>>(

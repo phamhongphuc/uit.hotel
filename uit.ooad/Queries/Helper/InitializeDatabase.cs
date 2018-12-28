@@ -49,7 +49,7 @@ namespace uit.ooad.Queries.Helper
                 Name = "Quản trị viên",
                 PermissionUpdateGroundPlan = true,
                 PermissionReferDebt = true,
-                PermissionChangePersonalPassword = true,
+                PermissionManageAccount = true,
                 PermissionManagePosition = true,
                 PermissionManageEmployee = true,
                 PermissionReferRevenues = true,
