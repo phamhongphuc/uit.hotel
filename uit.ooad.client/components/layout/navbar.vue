@@ -43,8 +43,29 @@
                     text-class="d-md-none"
                     class="d-none d-md-block"
                     :class="isInputFocus ? 'w-0 h-0' : ''"
-                    @click.native="toggle"
                 />
+                <b-dropdown
+                    class="navar-dropdown"
+                    variant="link"
+                    size="md"
+                    no-caret
+                    right
+                    toggle-class="p-0 border-0 nav-item-icon d-flex"
+                    menu-class="border-0 shadow rounded mt-3 p-0"
+                >
+                    <template slot="button-content">
+                        <div class="icon">
+                            <image-
+                                class="m-2 rounded-circle"
+                                source="https://api.adorable.io/avatars/40/admin"
+                                height="24"
+                                width="24"
+                            />
+                        </div>
+                    </template>
+                    <b-dropdown-item href="#">Action</b-dropdown-item>
+                    <b-dropdown-item @click="logout">Đăng xuất</b-dropdown-item>
+                </b-dropdown>
             </b-navbar-nav>
         </b-collapse>
     </b-navbar>
@@ -61,7 +82,14 @@ export default class extends Vue {
     @namespace('style').State
     breakpoint;
 
-    @namespace('view').Action
-    toggle;
+    @namespace('user').Action
+    logout;
 }
 </script>
+<style lang="scss">
+.navar-dropdown {
+    .dropdown-item {
+        display: flex;
+    }
+}
+</style>
