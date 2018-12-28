@@ -58,17 +58,11 @@ namespace uit.ooad.Queries.Helper
                 PermissionGetRooms = true,
                 PermissionManageHiringRoom = true,
                 PermissionGetHouseKeeping = true,
-                PermissionCreateBill = true,
-                PermissionCreateBooking = true,
-                PermissionCreateOrUpdateEmployee = true,
                 PermissionCleaning = true,
-                PermissionCreateOrUpdatePatron = true,
-                PermissionCreatePosition = true,
                 PermissionManageRate = true,
                 PermissionCreateReceipt = true,
                 PermissionManageRoomKind = true,
-                PermissionManageService = true,
-                PermissionCreateServicesDetail = true
+                PermissionManageService = true
             });
         }
 

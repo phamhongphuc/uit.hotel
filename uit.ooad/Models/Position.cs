@@ -24,16 +24,10 @@ namespace uit.ooad.Models
         public bool PermissionManagePosition { get; set; }
         public bool PermissionManageEmployee { get; set; }
         public bool PermissionManageAccount { get; set; }
+
         public bool PermissionReferDebt { get; set; }
         public bool PermissionReferRevenues { get; set; }
-        public bool PermissionCreateBill { get; set; }
-        public bool PermissionCreateBooking { get; set; }
-        public bool PermissionCreateOrUpdateEmployee { get; set; }
-        public bool PermissionCreateOrUpdatePatron { get; set; }
-        public bool PermissionCreatePatronKind { get; set; }
-        public bool PermissionCreatePosition { get; set; }
         public bool PermissionCreateReceipt { get; set; }
-        public bool PermissionCreateServicesDetail { get; set; }
 
         [Backlink(nameof(Employee.Position))]
         public IQueryable<Employee> Employees { get; }
