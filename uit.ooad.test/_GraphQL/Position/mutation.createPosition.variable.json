@@ -2,6 +2,9 @@
 	"input": {
 		"name": "Tên quyền",
 		"permissionReferRevenues": false,
+		"permissionReferDebt": false,
+		"permissionChangePersonalPassword": false,
+		"permissionManagePositions": false,
 		"permissionManageEmployees": false,
 		"permissionGetRooms": false,
 		"permissionManagePatrons": false,
