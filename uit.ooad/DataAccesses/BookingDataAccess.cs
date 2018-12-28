@@ -36,7 +36,17 @@ namespace uit.ooad.DataAccesses
             booking.CreateTime = DateTimeOffset.Now;
             booking.RealCheckInTime = DateTimeOffset.Now;
             booking.Status = (int)Booking.StatusEnum.CheckedIn;
-            return realm.Add(booking);
+
+            booking = realm.Add(booking);
+
+            var houseKeeping = new HouseKeeping();
+            houseKeeping.Type = (int)HouseKeeping.TypeEnum.ExpectedArrival;
+            houseKeeping.Status = (int)HouseKeeping.StatusEnum.Pending;
+            houseKeeping.Booking = booking;
+
+            HouseKeepingDataAccess.Add(realm, houseKeeping);
+
+            return booking;
         }
 
         public static async Task<Booking> CheckIn(Employee employee, Booking bookingInDatabase,
