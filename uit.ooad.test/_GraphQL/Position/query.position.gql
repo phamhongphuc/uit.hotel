@@ -11,7 +11,7 @@ query($id: ID!) {
         permissionManagePatrons
         permissionManagePatronKinds
         permissionHandleBills
-        permissionManageHiringRooms
+        permissionManageHiringRoom
         permissionGetHouseKeeping
         permissionCreatePatronKind
         permissionCreateBill

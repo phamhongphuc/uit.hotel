@@ -32,7 +32,7 @@ namespace uit.ooad.test._GraphQL.Booking
                 @"/_GraphQL/Booking/mutation.checkIn.gql",
                 @"/_GraphQL/Booking/mutation.checkIn.schema.json",
                 @"/_GraphQL/Booking/mutation.checkIn.variable.json",
-                p => p.PermissionManageHiringRooms = true
+                p => p.PermissionManageHiringRoom = true
             );
         }
 
@@ -43,7 +43,7 @@ namespace uit.ooad.test._GraphQL.Booking
                 @"/_GraphQL/Booking/mutation.requestCheckOut.gql",
                 @"/_GraphQL/Booking/mutation.requestCheckOut.schema.json",
                 @"/_GraphQL/Booking/mutation.requestCheckOut.variable.json",
-                p => p.PermissionManageHiringRooms = true
+                p => p.PermissionManageHiringRoom = true
             );
         }
 
@@ -54,7 +54,7 @@ namespace uit.ooad.test._GraphQL.Booking
                 @"/_GraphQL/Booking/mutation.checkOut.gql",
                 @"/_GraphQL/Booking/mutation.checkOut.schema.json",
                 @"/_GraphQL/Booking/mutation.checkOut.variable.json",
-                p => p.PermissionManageHiringRooms = true
+                p => p.PermissionManageHiringRoom = true
             );
         }
 
@@ -65,7 +65,7 @@ namespace uit.ooad.test._GraphQL.Booking
                 @"/_GraphQL/Booking/mutation.addBookingToBill.gql",
                 @"/_GraphQL/Booking/mutation.addBookingToBill.schema.json",
                 @"/_GraphQL/Booking/mutation.addBookingToBill.variable.json",
-                p => p.PermissionManageHiringRooms = true
+                p => p.PermissionManageHiringRoom = true
             );
         }
     }
