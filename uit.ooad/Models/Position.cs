@@ -26,7 +26,6 @@ namespace uit.ooad.Models
         public bool PermissionReferRevenues { get; set; }
         public bool PermissionManagePatrons { get; set; }
         public bool PermissionManagePatronKinds { get; set; }
-        public bool PermissionHandleBills { get; set; }
         public bool PermissionCreateBill { get; set; }
         public bool PermissionCreateBooking { get; set; }
         public bool PermissionCreateOrUpdateEmployee { get; set; }
