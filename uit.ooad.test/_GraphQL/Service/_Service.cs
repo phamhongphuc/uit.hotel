@@ -32,7 +32,7 @@ namespace uit.ooad.test._GraphQL._Service
                 @"/_GraphQL/Service/mutation.createService.gql",
                 @"/_GraphQL/Service/mutation.createService.schema.json",
                 @"/_GraphQL/Service/mutation.createService.variable.json",
-                p => p.PermissionCreateOrUpdateService = true
+                p => p.PermissionManageService = true
             );
         }
 
@@ -43,7 +43,7 @@ namespace uit.ooad.test._GraphQL._Service
                 @"/_GraphQL/Service/mutation.updateService.gql",
                 @"/_GraphQL/Service/mutation.updateService.schema.json",
                 @"/_GraphQL/Service/mutation.updateService.variable.json",
-                p => p.PermissionCreateOrUpdateService = true
+                p => p.PermissionManageService = true
             );
         }
 
@@ -54,7 +54,7 @@ namespace uit.ooad.test._GraphQL._Service
                 @"/_GraphQL/Service/mutation.setIsActiveService.gql",
                 @"/_GraphQL/Service/mutation.setIsActiveService.schema.json",
                 @"/_GraphQL/Service/mutation.setIsActiveService.variable.json",
-                p => p.PermissionCreateOrUpdateService = true
+                p => p.PermissionManageService = true
             );
         }
     }

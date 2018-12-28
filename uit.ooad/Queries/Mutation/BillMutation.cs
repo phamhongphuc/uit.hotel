@@ -12,7 +12,7 @@ namespace uit.ooad.Queries.Mutation
     {
         public BillMutation()
         {
-            Field<BillType>(
+            Field<NonNullGraphType<BillType>>(
                 _Creation,
                 "Tạo và trả về một đơn đặt phòng",
                 new QueryArguments(
@@ -20,8 +20,8 @@ namespace uit.ooad.Queries.Mutation
                         { Name = "bookings" },
                     new QueryArgument<NonNullGraphType<BillCreateInput>> { Name = "bill" }
                 ),
-                _CheckPermission_Object(
-                    p => p.PermissionManageHiringRooms,
+                _CheckPermission_TaskObject(
+                    p => p.PermissionManageHiringRoom,
                     async context =>
                     {
                         var employee = AuthenticationHelper.GetEmployee(context);
@@ -33,7 +33,8 @@ namespace uit.ooad.Queries.Mutation
                     }
                 )
             );
-            Field<BillType>(
+            
+            Field<NonNullGraphType<BillType>>(
                 "BookAndCheckIn",
                 "Đặt và nhận phòng ngay tại khách sạn",
                 new QueryArguments(
@@ -41,8 +42,8 @@ namespace uit.ooad.Queries.Mutation
                         { Name = "bookings" },
                     new QueryArgument<NonNullGraphType<BillCreateInput>> { Name = "bill" }
                 ),
-                _CheckPermission_Object(
-                    p => p.PermissionManageHiringRooms,
+                _CheckPermission_TaskObject(
+                    p => p.PermissionManageHiringRoom,
                     async context =>
                     {
                         var employee = AuthenticationHelper.GetEmployee(context);

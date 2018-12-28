@@ -10,12 +10,13 @@ namespace uit.ooad.Queries.Query
     {
         public EmployeeQuery()
         {
-            Field<ListGraphType<EmployeeType>>(
+            Field<NonNullGraphType<ListGraphType<NonNullGraphType<EmployeeType>>>>(
                 _List,
                 "Trả về một danh sách các nhân viên",
                 resolve: context => EmployeeBusiness.Get()
             );
-            Field<EmployeeType>(
+            
+            Field<NonNullGraphType<EmployeeType>>(
                 _Item,
                 "Trả về thông tin một nhân viên",
                 _IdArgument(),

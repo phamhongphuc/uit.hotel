@@ -12,32 +12,32 @@ namespace uit.ooad.Queries.Mutation
     {
         public EmployeeMutation()
         {
-            Field<EmployeeType>(
+            Field<NonNullGraphType<EmployeeType>>(
                 _Creation,
                 "Tạo và trả về một nhân viên mới",
                 _InputArgument<EmployeeCreateInput>(),
-                _CheckPermission_Object(
-                    p => p.PermissionManageEmployees,
+                _CheckPermission_TaskObject(
+                    p => p.PermissionManageEmployee,
                     context => EmployeeBusiness.Add(_GetInput(context))
                 )
             );
 
-            Field<EmployeeType>(
+            Field<NonNullGraphType<EmployeeType>>(
                 _Updation,
                 "Chỉnh sửa thông tin nhân viên",
                 _InputArgument<EmployeeUpdateInput>(),
-                _CheckPermission_Object(
-                    p => p.PermissionManageEmployees,
+                _CheckPermission_TaskObject(
+                    p => p.PermissionManageEmployee,
                     context => EmployeeBusiness.Update(_GetInput(context))
                 )
             );
 
-            Field<StringGraphType>(
+            Field<NonNullGraphType<StringGraphType>>(
                 "ResetPassword",
                 "Reset lại mật khẩu cho nhân viên khi quên mật khẩu",
                 _IdArgument(),
                 _CheckPermission_String(
-                    p => p.PermissionManageEmployees,
+                    p => p.PermissionManageEmployee,
                     context =>
                     {
                         var id = AuthenticationHelper.GetEmployeeId(context);
@@ -52,7 +52,7 @@ namespace uit.ooad.Queries.Mutation
                 )
             );
 
-            Field<StringGraphType>(
+            Field<NonNullGraphType<StringGraphType>>(
                 "SetIsActiveAccount",
                 "Vô hiệu hóa/ kích hoạt tài khoản",
                 new QueryArguments(
@@ -60,7 +60,7 @@ namespace uit.ooad.Queries.Mutation
                     new QueryArgument<NonNullGraphType<BooleanGraphType>> { Name = "isActive" }
                 ),
                 _CheckPermission_String(
-                    p => p.PermissionManageEmployees,
+                    p => p.PermissionManageEmployee,
                     context =>
                     {
                         var id = AuthenticationHelper.GetEmployeeId(context);

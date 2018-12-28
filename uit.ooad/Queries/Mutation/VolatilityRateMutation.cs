@@ -1,3 +1,4 @@
+using GraphQL.Types;
 using uit.ooad.Businesses;
 using uit.ooad.Models;
 using uit.ooad.ObjectTypes;
@@ -9,12 +10,12 @@ namespace uit.ooad.Queries.Mutation
     {
         public VolatilityRateMutation()
         {
-            Field<VolatilityRateType>(
+            Field<NonNullGraphType<VolatilityRateType>>(
                 _Creation,
                 "Tạo và trả về một giá biến động mới",
                 _InputArgument<VolatilityRateCreateInput>(),
-                _CheckPermission_Object(
-                    p => p.PermissionCreateOrUpdateVolatilityRate,
+                _CheckPermission_TaskObject(
+                    p => p.PermissionManageRate,
                     context => VolatilityRateBusiness.Add(_GetInput(context))
                 )
             );

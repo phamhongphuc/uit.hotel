@@ -4,28 +4,18 @@ mutation($input: PositionCreateInput!) {
         name
         permissionReferRevenues
         permissionReferDebt
-        permissionChangePersonalPassword
-        permissionManagePositions
-        permissionManageEmployees
+        permissionManageAccount
+        permissionManagePosition
+        permissionManageEmployee
         permissionGetRooms
-        permissionManagePatrons
-        permissionManagePatronKinds
-        permissionHandleBills
-        permissionManageHiringRooms
-        permissionGetHouseKeepings
-        permissionCreatePatronKind
-        permissionCreateBill
-        permissionCreateBooking
-        permissionCreateOrUpdateEmployee
-        permissionCleaning
-        permissionCreateOrUpdatePatron
-        permissionCreatePosition
-        permissionCreateOrUpdateRate
+        permissionManagePatron
+        permissionManagePatronKind
+        permissionManageHiringRoom
+        permissionGetHouseKeeping
+        permissionManageRate
         permissionCreateReceipt
         permissionUpdateGroundPlan
-        permissionCreateOrUpdateRoomKind
-        permissionCreateOrUpdateService
-        permissionCreateServicesDetail
-        permissionCreateOrUpdateVolatilityRate
+        permissionManageRoomKind
+        permissionManageService
     }
 }
