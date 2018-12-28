@@ -5,7 +5,7 @@ mutation($input: PositionCreateInput!) {
         permissionReferRevenues
         permissionReferDebt
         permissionChangePersonalPassword
-        permissionManagePositions
+        permissionManagePosition
         permissionManageEmployees
         permissionGetRooms
         permissionManagePatron

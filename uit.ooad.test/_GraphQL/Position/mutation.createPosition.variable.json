@@ -4,7 +4,7 @@
 		"permissionReferRevenues": false,
 		"permissionReferDebt": false,
 		"permissionChangePersonalPassword": false,
-		"permissionManagePositions": false,
+		"permissionManagePosition": false,
 		"permissionManageEmployees": false,
 		"permissionGetRooms": false,
 		"permissionManagePatron": false,
