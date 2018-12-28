@@ -4,8 +4,17 @@ schema {
 }
 
 type AppMutation {
-    # Khởi tạo tài khoản admin
-    createAdminIfNotExists: Employee!
+    # Nhân viên nhận phòng để dọn dẹp
+    assignCleaningService(id: ID!): HouseKeeping
+
+    # Nhân viên xác nhận đã dọn xong
+    confirmCleaned(id: ID!): HouseKeeping
+
+    # Nhân viên xác nhận và gửi thông tin kiểm tra phòng check-out
+    confirmCleanedAndServices(
+        servicesDetails: [ServicesDetailCreateInput!]!
+        houseKeepingId: ID!
+    ): HouseKeeping
 
     # Tạo và trả về một đơn đặt phòng
     createBill(bookings: [BookingCreateInput!]!, bill: BillCreateInput!): Bill
@@ -15,9 +24,6 @@ type AppMutation {
 
     # Tạo và trả về một tầng mới
     createFloor(input: FloorCreateInput!): Floor
-
-    # Tạo và trả về một hình thức dọn dẹp trong một phòng
-    createHouseKeeping(input: HouseKeepingCreateInput!): HouseKeeping
 
     # Tạo và trả về một khách hàng mới
     createPatron(input: PatronCreateInput!): Patron
@@ -43,9 +49,6 @@ type AppMutation {
     # Tạo và trả về một dịch vụ mới
     createService(input: ServiceCreateInput!): Service
 
-    # Tạo và trả về một chi tiết dịch vụ mới
-    createServicesDetail(input: ServicesDetailCreateInput!): ServicesDetail
-
     # Tạo và trả về một giá biến động mới
     createVolatilityRate(input: VolatilityRateCreateInput!): VolatilityRate
 
@@ -54,6 +57,9 @@ type AppMutation {
 
     # Cập nhật thời gian checkin của phòng
     checkIn(id: ID!): Booking
+
+    # Kiểm tra đăng nhập
+    checkLogin: Employee
 
     # Xóa một tầng
     deleteFloor(id: ID!): String
@@ -64,8 +70,14 @@ type AppMutation {
     # Xóa một loại phòng
     deleteRoomKind(id: ID!): String
 
-    # Đăng nhập nhân viên, trả về cái access token
-    login(id: String!, password: String!): String
+    # Khởi tạo dữ liệu
+    initializeDatabase: String!
+
+    # Đăng nhập mới
+    login(id: String!, password: String!): AuthenticationObject
+
+    # Yêu cầu kiểm tra khi trả phòng
+    requestCheckOut(id: ID!): Booking
 
     # Reset lại mật khẩu cho nhân viên khi quên mật khẩu
     resetPassword(id: ID!): String
@@ -199,6 +211,15 @@ type AppQuery {
     volatilityRates: [VolatilityRate]
 }
 
+# Một đối tượng đăng nhập
+type AuthenticationObject {
+    # Thông tin nhân viên đăng nhập
+    employee: Employee!
+
+    # Token đăng nhập
+    token: String!
+}
+
 # Một phiếu hóa đơn của khách hàng
 type Bill {
     # Danh sách các thông tin đặt trước của hóa đơn
@@ -294,12 +315,6 @@ input BookingCreateInput {
 
     # Danh sách khách hàng
     listOfPatrons: [PatronId!]!
-}
-
-# Input cho một thông tin một đơn đặt phòng
-input BookingId {
-    # Id của một đơn đặt phòng
-    id: Int!
 }
 
 # The `Date` scalar type represents a year, month and day in accordance with the
@@ -470,24 +485,16 @@ type HouseKeeping {
     booking: Booking!
 
     # Nhân viên thực hiện dọn dẹp
-    employee: Employee!
+    employee: Employee
 
     # Id của việc dọn dẹp
     id: Int!
 
+    # Trạng thái dọn phòng
+    status: Int!
+
     # Hình thức dọn dẹp phòng
     type: Int!
-}
-
-input HouseKeepingCreateInput {
-    # Loại hình thức dọn dẹp
-    type: Int!
-
-    # Nhân viên thực hiện dọn dẹp
-    employee: EmployeeId!
-
-    # Thông tin đơn đặt phòng cần dọn dẹp
-    booking: BookingId!
 }
 
 # The `Milliseconds` scalar type represents a period of time represented as the total number of milliseconds.
@@ -666,8 +673,8 @@ type Position {
     # Tên chức vụ
     name: String!
 
-    # Quyền tạo công việc dọn phòng
-    permissionAssignHouseKeeping: Boolean!
+    # Quyền thao tác dọn phòng
+    permissionCleaning: Boolean!
 
     # Quyền tạo hóa đơn
     permissionCreateBill: Boolean!
@@ -705,11 +712,29 @@ type Position {
     # Quyền tạo chi tiết dịch vụ
     permissionCreateServicesDetail: Boolean!
 
+    # Quyền tra cứu lịch sử dọn phòng
+    permissionGetHouseKeepings: Boolean!
+
     # Quyền lấy danh sách phòng và hiện trạng từng phòng
     permissionGetRooms: Boolean!
 
+    # Quyền thao tác hóa đơn
+    permissionHandleBills: Boolean!
+
+    # Quyền quản lý thông tin nhân viên
+    permissionManageEmployees: Boolean!
+
     # Quyền quản lý thuê phòng
     permissionManageHiringRooms: Boolean!
+
+    # Quyền quản lý loại khách hàng
+    permissionManagePatronKinds: Boolean!
+
+    # Quyền quản lý khách hàng
+    permissionManagePatrons: Boolean!
+
+    # Quyền xem thống kê và chi tiết doanh thu
+    permissionReferRevenues: Boolean!
 
     # Quyền chỉnh sửa sơ đồ
     permissionUpdateGroundPlan: Boolean!
@@ -722,11 +747,32 @@ input PositionCreateInput {
     # Quyền chỉnh sửa sơ đồ
     permissionUpdateGroundPlan: Boolean!
 
+    # Quyền quản lý thông tin nhân viên
+    permissionManageEmployees: Boolean!
+
+    # Quyền xem thống kê và chi tiết doanh thu
+    permissionReferRevenues: Boolean!
+
+    # Quyền thao tác hóa đơn
+    permissionHandleBills: Boolean!
+
     # Quyền lấy danh sách phòng và hiện trạng từng phòng
     permissionGetRooms: Boolean!
 
     # Quyền quản lý thuê phòng
     permissionManageHiringRooms: Boolean!
+
+    # Quyền tra cứu lịch sử dọn phòng
+    permissionGetHouseKeepings: Boolean!
+
+    # Quyền quản lý khách hàng
+    permissionManagePatrons: Boolean!
+
+    # Quyền quản lý loại khách hàng
+    permissionManagePatronKinds: Boolean!
+
+    # Quyền thao tác dọn phòng
+    permissionCleaning: Boolean!
 
     # Quyền tạo hoặc chỉnh sửa khách hàng
     permissionCreateOrUpdatePatron: Boolean!
@@ -763,9 +809,6 @@ input PositionCreateInput {
 
     # Quyền tạo đơn đặt phòng
     permissionCreateBooking: Boolean!
-
-    # Quyền tạo công việc dọn phòng
-    permissionAssignHouseKeeping: Boolean!
 }
 
 # Input cho thông tin một chức vụ
@@ -1071,14 +1114,8 @@ type ServicesDetail {
 }
 
 input ServicesDetailCreateInput {
-    # Thời gian tạo
-    time: DateTimeOffset!
-
     # Số lượng
     number: Int!
-
-    # Thuộc thông tin thuê phòng nào
-    booking: BookingId!
 
     # Thuộc dịch vụ nào
     service: ServiceId!

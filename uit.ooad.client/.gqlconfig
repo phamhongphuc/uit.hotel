@@ -1,6 +1,6 @@
 {
     "schema": {
-        "files": "graphql/schema.gql"
+        "files": "graphql/schema.graphql"
     },
     "query": {
         "files": [

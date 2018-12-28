@@ -1,10 +1,22 @@
 export type Maybe<T> = T | null;
 
+export interface ServicesDetailCreateInput {
+    /** Số lượng */
+    number: number;
+    /** Thuộc dịch vụ nào */
+    service: ServiceId;
+}
+/** Input cho một thông tin dịch vụ */
+export interface ServiceId {
+    /** Id của dịch vụ */
+    id: number;
+}
+
 export interface BookingCreateInput {
     /** Thời điểm nhận phòng dự kiến của khách hàng */
-    bookCheckInTime?: Maybe<DateTimeOffset>;
+    bookCheckInTime: Maybe<DateTimeOffset>;
     /** Thời điểm trả phòng dự kiến của khách hàng */
-    bookCheckOutTime?: Maybe<DateTimeOffset>;
+    bookCheckOutTime: Maybe<DateTimeOffset>;
     /** Phòng khách hàng chọn đặt trước */
     room: RoomId;
     /** Danh sách khách hàng */
@@ -25,7 +37,7 @@ export interface BillCreateInput {
     /** Thời điểm in hóa đơn */
     time: DateTimeOffset;
     /** Khách hàng */
-    patron?: Maybe<PatronId>;
+    patron: Maybe<PatronId>;
 }
 
 export interface EmployeeCreateInput {
@@ -48,7 +60,7 @@ export interface EmployeeCreateInput {
     /** Tài khoản còn hiệu lực hay không */
     isActive: boolean;
     /** Loại chức vụ */
-    position?: Maybe<PositionId>;
+    position: Maybe<PositionId>;
 }
 /** Input cho thông tin một chức vụ */
 export interface PositionId {
@@ -61,25 +73,6 @@ export interface FloorCreateInput {
     name: string;
     /** Trạng thái hoạt động */
     isActive: boolean;
-}
-
-export interface HouseKeepingCreateInput {
-    /** Loại hình thức dọn dẹp */
-    type: number;
-    /** Nhân viên thực hiện dọn dẹp */
-    employee: EmployeeId;
-    /** Thông tin đơn đặt phòng cần dọn dẹp */
-    booking: BookingId;
-}
-/** Input cho thông tin một nhân viên */
-export interface EmployeeId {
-    /** Id của một nhân viên */
-    id: string;
-}
-/** Input cho một thông tin một đơn đặt phòng */
-export interface BookingId {
-    /** Id của một đơn đặt phòng */
-    id: number;
 }
 
 export interface PatronCreateInput {
@@ -104,9 +97,9 @@ export interface PatronCreateInput {
     /** Một số chú thích về khách hàng nếu cần thiết */
     note: string;
     /** Danh sách số điện thoại của khách hàng */
-    listOfPhoneNumbers?: Maybe<(Maybe<string>)[]>;
+    listOfPhoneNumbers: Maybe<(Maybe<string>)[]>;
     /** Loại khách hàng */
-    patronKind?: Maybe<PatronKindId>;
+    patronKind: Maybe<PatronKindId>;
 }
 /** Input cho thông tin  một loại khách hàng */
 export interface PatronKindId {
@@ -126,10 +119,24 @@ export interface PositionCreateInput {
     name: string;
     /** Quyền chỉnh sửa sơ đồ */
     permissionUpdateGroundPlan: boolean;
+    /** Quyền quản lý thông tin nhân viên */
+    permissionManageEmployees: boolean;
+    /** Quyền xem thống kê và chi tiết doanh thu */
+    permissionReferRevenues: boolean;
+    /** Quyền thao tác hóa đơn */
+    permissionHandleBills: boolean;
     /** Quyền lấy danh sách phòng và hiện trạng từng phòng */
     permissionGetRooms: boolean;
     /** Quyền quản lý thuê phòng */
     permissionManageHiringRooms: boolean;
+    /** Quyền tra cứu lịch sử dọn phòng */
+    permissionGetHouseKeepings: boolean;
+    /** Quyền quản lý khách hàng */
+    permissionManagePatrons: boolean;
+    /** Quyền quản lý loại khách hàng */
+    permissionManagePatronKinds: boolean;
+    /** Quyền thao tác dọn phòng */
+    permissionCleaning: boolean;
     /** Quyền tạo hoặc chỉnh sửa khách hàng */
     permissionCreateOrUpdatePatron: boolean;
     /** Quyền tạo hoặc chỉnh sửa tài khoản nhân viên */
@@ -154,8 +161,6 @@ export interface PositionCreateInput {
     permissionCreateServicesDetail: boolean;
     /** Quyền tạo đơn đặt phòng */
     permissionCreateBooking: boolean;
-    /** Quyền tạo công việc dọn phòng */
-    permissionAssignHouseKeeping: boolean;
 }
 
 export interface RateCreateInput {
@@ -176,7 +181,7 @@ export interface RateCreateInput {
     /** Ngày tạo giá */
     createDate: DateTimeOffset;
     /** Loại phòng */
-    roomKind?: Maybe<RoomKindId>;
+    roomKind: Maybe<RoomKindId>;
 }
 /** Input cho một thông tin một loại phòng */
 export interface RoomKindId {
@@ -192,16 +197,21 @@ export interface ReceiptCreateInput {
     /** Kiểu thanh toán (tiền mặt hoặc chuyển khoản) */
     typeOfPayment: number;
     /** Số tài khoản ngân hàng của khách */
-    bankAccountNumber?: Maybe<string>;
+    bankAccountNumber: Maybe<string>;
     /** Thuộc hóa đơn */
-    bill?: Maybe<BillId>;
+    bill: Maybe<BillId>;
     /** Nhân viên tạo phiếu thu */
-    employee?: Maybe<EmployeeId>;
+    employee: Maybe<EmployeeId>;
 }
 /** Input cho thông tin một hóa đơn */
 export interface BillId {
     /** Id của hóa đơn */
     id: number;
+}
+/** Input cho thông tin một nhân viên */
+export interface EmployeeId {
+    /** Id của một nhân viên */
+    id: string;
 }
 
 export interface RoomCreateInput {
@@ -242,22 +252,6 @@ export interface ServiceCreateInput {
     unit: string;
     /** Trạng thái hoạt động */
     isActive: boolean;
-}
-
-export interface ServicesDetailCreateInput {
-    /** Thời gian tạo */
-    time: DateTimeOffset;
-    /** Số lượng */
-    number: number;
-    /** Thuộc thông tin thuê phòng nào */
-    booking: BookingId;
-    /** Thuộc dịch vụ nào */
-    service: ServiceId;
-}
-/** Input cho một thông tin dịch vụ */
-export interface ServiceId {
-    /** Id của dịch vụ */
-    id: number;
 }
 
 export interface VolatilityRateCreateInput {
@@ -313,7 +307,7 @@ export interface EmployeeUpdateInput {
     /** Ngày vào làm */
     startingDate: DateTimeOffset;
     /** Loại chức vụ */
-    position?: Maybe<PositionId>;
+    position: Maybe<PositionId>;
 }
 
 export interface FloorUpdateInput {
@@ -347,9 +341,9 @@ export interface PatronUpdateInput {
     /** Một số chú thích về khách hàng nếu cần thiết */
     note: string;
     /** Danh sách số điện thoại của khách hàng */
-    listOfPhoneNumbers?: Maybe<(Maybe<string>)[]>;
+    listOfPhoneNumbers: Maybe<(Maybe<string>)[]>;
     /** Loại khách hàng */
-    patronKind?: Maybe<PatronKindId>;
+    patronKind: Maybe<PatronKindId>;
 }
 
 export interface RoomUpdateInput {
@@ -358,9 +352,9 @@ export interface RoomUpdateInput {
     /** Tên phòng */
     name: string;
     /** Phòng thuộc tầng nào */
-    floor?: Maybe<FloorId>;
+    floor: Maybe<FloorId>;
     /** Loại phòng của phòng */
-    roomKind?: Maybe<RoomKindId>;
+    roomKind: Maybe<RoomKindId>;
 }
 /** Input cho việc chỉnh sửa một loại phòng */
 export interface RoomKindUpdateInput {
@@ -403,3 +397,54 @@ export type Milliseconds = any;
 
 /** The `Seconds` scalar type represents a period of time represented as the total number of seconds. */
 export type Seconds = any;
+
+// ====================================================
+// Documents
+// ====================================================
+
+export namespace UserLogin {
+    export type Variables = {
+        id: string;
+        password: string;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        login: Maybe<Login>;
+    };
+
+    export type Login = {
+        __typename?: 'AuthenticationObject';
+
+        token: string;
+
+        employee: Employee;
+    };
+
+    export type Employee = {
+        __typename?: 'Employee';
+
+        id: string;
+
+        name: string;
+    };
+}
+
+export namespace UserCheckLogin {
+    export type Variables = {};
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        checkLogin: Maybe<CheckLogin>;
+    };
+
+    export type CheckLogin = {
+        __typename?: 'Employee';
+
+        id: string;
+
+        name: string;
+    };
+}

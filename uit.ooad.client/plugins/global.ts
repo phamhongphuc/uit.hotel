@@ -1,6 +1,7 @@
-import Vue, { ComponentOptions } from 'vue';
+import Vue from 'vue';
+import { StoreSelf } from '~/utils/store';
 
-export default function({ app }: { app: ComponentOptions<Vue> }): void {
+export default function({ app }: StoreSelf): void {
     if (!app.mixins) app.mixins = [];
     app.mixins.push({
         async mounted() {
@@ -12,18 +13,8 @@ export default function({ app }: { app: ComponentOptions<Vue> }): void {
             updateBreakpoint();
 
             // Route
-            (this as Vue).$store.watch(
-                state => state.user.token,
-                async () => {
-                    const isLogin = await (this as Vue).$store.dispatch(
-                        'user/checkLogin',
-                    );
-                    if (!isLogin) (this as Vue).$router.push('/login');
-                    else if ((this as Vue).$route.name === 'login') {
-                        (this as Vue).$router.push('/');
-                    }
-                },
-            );
+            await Vue.nextTick();
+            await (this as Vue).$store.dispatch('user/checkLogin');
         },
     });
 }

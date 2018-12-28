@@ -1,6 +1,5 @@
 $border-shadow-size: 1rem / 16 * 2;
 $border-shadow-color: rgba($black, 0.075);
-
 $border-shadow-map: (
     'top': (
         0,
@@ -19,7 +18,6 @@ $border-shadow-map: (
         0,
     ),
 );
-
 @each $key, $value in $border-shadow-map {
     .border-shadow-#{$key} {
         box-shadow: #{nth($value, 1) *
