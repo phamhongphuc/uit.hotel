@@ -32,7 +32,7 @@ namespace uit.ooad.test._GraphQL._VolatilityRate
                 @"/_GraphQL/VolatilityRate/mutation.createVolatilityRate.gql",
                 @"/_GraphQL/VolatilityRate/mutation.createVolatilityRate.schema.json",
                 @"/_GraphQL/VolatilityRate/mutation.createVolatilityRate.variable.json",
-                p => p.PermissionCreateOrUpdateVolatilityRate = true
+                p => p.PermissionManageRate = true
             );
         }
     }

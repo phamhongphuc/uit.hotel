@@ -1,132 +1,132 @@
 {
     "definitions": {},
     "type": "object",
-    "required": ["data"],
+    "required": [
+      "data"
+    ],
     "properties": {
-        "data": {
-            "type": "object",
-            "required": ["positions"],
-            "properties": {
-                "positions": {
-                    "type": "array",
-                    "items": {
-                        "type": "object",
-                        "required": [
-                            "id",
-                            "name",
-                            "permissionReferRevenues",
-                            "permissionReferDebt",
-                            "permissionChangePersonalPassword",
-                            "permissionManagePositions",
-                            "permissionManageEmployees",
-                            "permissionGetRooms",
-                            "permissionManagePatrons",
-                            "permissionManagePatronKinds",
-                            "permissionHandleBills",
-                            "permissionManageHiringRooms",
-                            "permissionGetHouseKeepings",
-                            "permissionCreatePatronKind",
-                            "permissionCreateBill",
-                            "permissionCreateBooking",
-                            "permissionCreateOrUpdateEmployee",
-                            "permissionCleaning",
-                            "permissionCreateOrUpdatePatron",
-                            "permissionCreatePosition",
-                            "permissionCreateOrUpdateRate",
-                            "permissionCreateReceipt",
-                            "permissionUpdateGroundPlan",
-                            "permissionCreateOrUpdateRoomKind",
-                            "permissionCreateOrUpdateService",
-                            "permissionCreateServicesDetail",
-                            "permissionCreateOrUpdateVolatilityRate"
-                        ],
-                        "properties": {
-                            "id": {
-                                "type": "integer"
-                            },
-                            "name": {
-                                "type": "string",
-                                "pattern": "^(.*)$"
-                            },
-                            "permissionReferRevenues": {
-                                "type": "boolean"
-                            },
-                            "permissionReferDebt": {
-                                "type": "boolean"
-                            },
-                            "permissionChangePersonalPassword": {
-                                "type": "boolean"
-                            },
-                            "permissionManagePositions": {
-                                "type": "boolean"
-                            },
-                            "permissionManageEmployees": {
-                                "type": "boolean"
-                            },
-                            "permissionGetRooms": {
-                                "type": "boolean"
-                            },
-                            "permissionManagePatrons": {
-                                "type": "boolean"
-                            },
-                            "permissionManagePatronKinds": {
-                                "type": "boolean"
-                            },
-                            "permissionHandleBills": {
-                                "type": "boolean"
-                            },
-                            "permissionManageHiringRooms": {
-                                "type": "boolean"
-                            },
-                            "permissionGetHouseKeepings": {
-                                "type": "boolean"
-                            },
-                            "permissionCreatePatronKind": {
-                                "type": "boolean"
-                            },
-                            "permissionCreateBill": {
-                                "type": "boolean"
-                            },
-                            "permissionCreateBooking": {
-                                "type": "boolean"
-                            },
-                            "permissionCreateOrUpdateEmployee": {
-                                "type": "boolean"
-                            },
-                            "permissionCleaning": {
-                                "type": "boolean"
-                            },
-                            "permissionCreateOrUpdatePatron": {
-                                "type": "boolean"
-                            },
-                            "permissionCreatePosition": {
-                                "type": "boolean"
-                            },
-                            "permissionCreateOrUpdateRate": {
-                                "type": "boolean"
-                            },
-                            "permissionCreateReceipt": {
-                                "type": "boolean"
-                            },
-                            "permissionUpdateGroundPlan": {
-                                "type": "boolean"
-                            },
-                            "permissionCreateOrUpdateRoomKind": {
-                                "type": "boolean"
-                            },
-                            "permissionCreateOrUpdateService": {
-                                "type": "boolean"
-                            },
-                            "permissionCreateServicesDetail": {
-                                "type": "boolean"
-                            },
-                            "permissionCreateOrUpdateVolatilityRate": {
-                                "type": "boolean"
-                            }
-                        }
-                    }
+      "data": {
+        "type": "object",
+        "required": [
+          "positions"
+        ],
+        "properties": {
+          "positions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id",
+                "name",
+                "permissionReferRevenues",
+                "permissionReferDebt",
+                "permissionChangePersonalPassword",
+                "permissionManagePositions",
+                "permissionManageEmployees",
+                "permissionGetRooms",
+                "permissionManagePatrons",
+                "permissionManagePatronKinds",
+                "permissionHandleBills",
+                "permissionManageHiringRooms",
+                "permissionGetHouseKeepings",
+                "permissionCreatePatronKind",
+                "permissionCreateBill",
+                "permissionCreateBooking",
+                "permissionCreateOrUpdateEmployee",
+                "permissionCleaning",
+                "permissionCreateOrUpdatePatron",
+                "permissionCreatePosition",
+                "permissionManageRate",
+                "permissionCreateReceipt",
+                "permissionUpdateGroundPlan",
+                "permissionManageRoomKind",
+                "permissionCreateOrUpdateService",
+                "permissionCreateServicesDetail"
+              ],
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "name": {
+                  "type": "string",
+                  "pattern": "^(.*)$"
+                },
+                "permissionReferRevenues": {
+                  "type": "boolean"
+                },
+                "permissionReferDebt": {
+                  "type": "boolean"
+                },
+                "permissionChangePersonalPassword": {
+                  "type": "boolean"
+                },
+                "permissionManagePositions": {
+                  "type": "boolean"
+                },
+                "permissionManageEmployees": {
+                  "type": "boolean"
+                },
+                "permissionGetRooms": {
+                  "type": "boolean"
+                },
+                "permissionManagePatrons": {
+                  "type": "boolean"
+                },
+                "permissionManagePatronKinds": {
+                  "type": "boolean"
+                },
+                "permissionHandleBills": {
+                  "type": "boolean"
+                },
+                "permissionManageHiringRooms": {
+                  "type": "boolean"
+                },
+                "permissionGetHouseKeepings": {
+                  "type": "boolean"
+                },
+                "permissionCreatePatronKind": {
+                  "type": "boolean"
+                },
+                "permissionCreateBill": {
+                  "type": "boolean"
+                },
+                "permissionCreateBooking": {
+                  "type": "boolean"
+                },
+                "permissionCreateOrUpdateEmployee": {
+                  "type": "boolean"
+                },
+                "permissionCleaning": {
+                  "type": "boolean"
+                },
+                "permissionCreateOrUpdatePatron": {
+                  "type": "boolean"
+                },
+                "permissionCreatePosition": {
+                  "type": "boolean"
+                },
+                "permissionManageRate": {
+                  "type": "boolean"
+                },
+                "permissionCreateReceipt": {
+                  "type": "boolean"
+                },
+                "permissionUpdateGroundPlan": {
+                  "type": "boolean"
+                },
+                "permissionManageRoomKind": {
+                  "type": "boolean"
+                },
+                "permissionCreateOrUpdateService": {
+                  "type": "boolean"
+                },
+                "permissionCreateServicesDetail": {
+                  "type": "boolean"
                 }
+              }
             }
+          }
         }
+      }
     }
-}
+  }

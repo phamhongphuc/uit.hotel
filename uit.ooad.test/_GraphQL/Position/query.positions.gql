@@ -20,12 +20,11 @@
         permissionCleaning
         permissionCreateOrUpdatePatron
         permissionCreatePosition
-        permissionCreateOrUpdateRate
+        permissionManageRate
         permissionCreateReceipt
         permissionUpdateGroundPlan
-        permissionCreateOrUpdateRoomKind
+        permissionManageRoomKind
         permissionCreateOrUpdateService
         permissionCreateServicesDetail
-        permissionCreateOrUpdateVolatilityRate
     }
 }
