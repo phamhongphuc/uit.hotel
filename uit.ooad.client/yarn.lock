@@ -2961,10 +2961,6 @@ cssesc@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/cssesc/-/cssesc-0.1.0.tgz#c814903e45623371a0477b40109aaafbeeaddbb4"
 
-cssesc@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/cssesc/-/cssesc-1.0.1.tgz#ef7bd8d0229ed6a3a7051ff7771265fe7330e0a8"
-
 cssesc@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/cssesc/-/cssesc-2.0.0.tgz#3b13bd1bb1cb36e1bcb5a4dcd27f54c5dcb35703"
@@ -7615,15 +7611,7 @@ postcss-selector-parser@^3.0.0, postcss-selector-parser@^3.1.0, postcss-selector
     indexes-of "^1.0.1"
     uniq "^1.0.1"
 
-postcss-selector-parser@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/postcss-selector-parser/-/postcss-selector-parser-4.0.0.tgz#50c6570f40579036d8e63f23e6c0626fe5743527"
-  dependencies:
-    cssesc "^1.0.1"
-    indexes-of "^1.0.1"
-    uniq "^1.0.1"
-
-postcss-selector-parser@^5.0.0-rc.3, postcss-selector-parser@^5.0.0-rc.4:
+postcss-selector-parser@^5.0.0, postcss-selector-parser@^5.0.0-rc.3, postcss-selector-parser@^5.0.0-rc.4:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/postcss-selector-parser/-/postcss-selector-parser-5.0.0.tgz#249044356697b33b64f1a8f7c80922dddee7195c"
   dependencies:
@@ -8940,13 +8928,13 @@ stylelint-config-standard@^18.2.0:
     stylelint-config-recommended "^2.1.0"
 
 stylelint-scss@^3.4.2:
-  version "3.4.3"
-  resolved "https://registry.yarnpkg.com/stylelint-scss/-/stylelint-scss-3.4.3.tgz#9427ad4d5f29c3bb90252a45df5a91824228d5b3"
+  version "3.4.4"
+  resolved "https://registry.yarnpkg.com/stylelint-scss/-/stylelint-scss-3.4.4.tgz#29e724e5e6c21f1c61fd90ad14f91533c2cf28f4"
   dependencies:
     lodash "^4.17.11"
     postcss-media-query-parser "^0.2.3"
     postcss-resolve-nested-selector "^0.1.1"
-    postcss-selector-parser "^4.0.0"
+    postcss-selector-parser "^5.0.0"
     postcss-value-parser "^3.3.1"
 
 stylelint@^9.9.0:
