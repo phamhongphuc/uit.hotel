@@ -1,17 +1,5 @@
 export type Maybe<T> = T | null;
 
-export interface ServicesDetailCreateInput {
-    /** Số lượng */
-    number: number;
-    /** Thuộc dịch vụ nào */
-    service: ServiceId;
-}
-/** Input cho một thông tin dịch vụ */
-export interface ServiceId {
-    /** Id của dịch vụ */
-    id: number;
-}
-
 export interface BookingCreateInput {
     /** Thời điểm nhận phòng dự kiến của khách hàng */
     bookCheckInTime: Maybe<DateTimeOffset>;
@@ -34,10 +22,20 @@ export interface PatronId {
 }
 
 export interface BillCreateInput {
-    /** Thời điểm in hóa đơn */
-    time: DateTimeOffset;
     /** Khách hàng */
     patron: Maybe<PatronId>;
+}
+
+export interface ServicesDetailCreateInput {
+    /** Số lượng */
+    number: number;
+    /** Thuộc dịch vụ nào */
+    service: ServiceId;
+}
+/** Input cho một thông tin dịch vụ */
+export interface ServiceId {
+    /** Id của dịch vụ */
+    id: number;
 }
 
 export interface EmployeeCreateInput {
@@ -119,6 +117,12 @@ export interface PositionCreateInput {
     name: string;
     /** Quyền chỉnh sửa sơ đồ */
     permissionUpdateGroundPlan: boolean;
+    /** Quyền tra cứu công nợ */
+    permissionReferDebt: boolean;
+    /** Quyền thay đổi mật khẩu cá nhân */
+    permissionChangePersonalPassword: boolean;
+    /** Quyền quản lý chức vụ */
+    permissionManagePositions: boolean;
     /** Quyền quản lý thông tin nhân viên */
     permissionManageEmployees: boolean;
     /** Quyền xem thống kê và chi tiết doanh thu */

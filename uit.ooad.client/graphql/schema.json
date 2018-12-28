@@ -1655,6 +1655,22 @@
                         "deprecationReason": null
                     },
                     {
+                        "name": "permissionChangePersonalPassword",
+                        "description": "Quyền thay đổi mật khẩu cá nhân",
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Boolean",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
                         "name": "permissionGetHouseKeepings",
                         "description": "Quyền tra cứu lịch sử dọn phòng",
                         "args": [],
@@ -1753,6 +1769,38 @@
                     {
                         "name": "permissionManagePatrons",
                         "description": "Quyền quản lý khách hàng",
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Boolean",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "permissionManagePositions",
+                        "description": "Quyền quản lý chức vụ",
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Boolean",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "permissionReferDebt",
+                        "description": "Quyền tra cứu công nợ",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -3260,6 +3308,47 @@
                 "description": "",
                 "fields": [
                     {
+                        "name": "addBookingToBill",
+                        "description": "Thêm phòng khách đoàn",
+                        "args": [
+                            {
+                                "name": "billId",
+                                "description": "",
+                                "type": {
+                                    "kind": "NON_NULL",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "SCALAR",
+                                        "name": "ID",
+                                        "ofType": null
+                                    }
+                                },
+                                "defaultValue": null
+                            },
+                            {
+                                "name": "booking",
+                                "description": "",
+                                "type": {
+                                    "kind": "NON_NULL",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "INPUT_OBJECT",
+                                        "name": "BookingCreateInput",
+                                        "ofType": null
+                                    }
+                                },
+                                "defaultValue": null
+                            }
+                        ],
+                        "type": {
+                            "kind": "OBJECT",
+                            "name": "Booking",
+                            "ofType": null
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
                         "name": "assignCleaningService",
                         "description": "Nhân viên nhận phòng để dọn dẹp",
                         "args": [
@@ -3281,6 +3370,55 @@
                         "type": {
                             "kind": "OBJECT",
                             "name": "HouseKeeping",
+                            "ofType": null
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "bookAndCheckIn",
+                        "description": "Đặt và nhận phòng ngay tại khách sạn",
+                        "args": [
+                            {
+                                "name": "bookings",
+                                "description": "",
+                                "type": {
+                                    "kind": "NON_NULL",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "LIST",
+                                        "name": null,
+                                        "ofType": {
+                                            "kind": "NON_NULL",
+                                            "name": null,
+                                            "ofType": {
+                                                "kind": "INPUT_OBJECT",
+                                                "name": "BookingCreateInput",
+                                                "ofType": null
+                                            }
+                                        }
+                                    }
+                                },
+                                "defaultValue": null
+                            },
+                            {
+                                "name": "bill",
+                                "description": "",
+                                "type": {
+                                    "kind": "NON_NULL",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "INPUT_OBJECT",
+                                        "name": "BillCreateInput",
+                                        "ofType": null
+                                    }
+                                },
+                                "defaultValue": null
+                            }
+                        ],
+                        "type": {
+                            "kind": "OBJECT",
+                            "name": "Bill",
                             "ofType": null
                         },
                         "isDeprecated": false,
@@ -3783,6 +3921,33 @@
                         "type": {
                             "kind": "OBJECT",
                             "name": "Employee",
+                            "ofType": null
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "checkOut",
+                        "description": "Thực hiện xác nhận trả phòng",
+                        "args": [
+                            {
+                                "name": "id",
+                                "description": "",
+                                "type": {
+                                    "kind": "NON_NULL",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "SCALAR",
+                                        "name": "ID",
+                                        "ofType": null
+                                    }
+                                },
+                                "defaultValue": null
+                            }
+                        ],
+                        "type": {
+                            "kind": "OBJECT",
+                            "name": "Booking",
                             "ofType": null
                         },
                         "isDeprecated": false,
@@ -4355,70 +4520,6 @@
             },
             {
                 "kind": "INPUT_OBJECT",
-                "name": "ServicesDetailCreateInput",
-                "description": "",
-                "fields": null,
-                "inputFields": [
-                    {
-                        "name": "number",
-                        "description": "Số lượng",
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Int",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "service",
-                        "description": "Thuộc dịch vụ nào",
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "INPUT_OBJECT",
-                                "name": "ServiceId",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    }
-                ],
-                "interfaces": null,
-                "enumValues": null,
-                "possibleTypes": null
-            },
-            {
-                "kind": "INPUT_OBJECT",
-                "name": "ServiceId",
-                "description": "Input cho một thông tin dịch vụ",
-                "fields": null,
-                "inputFields": [
-                    {
-                        "name": "id",
-                        "description": "Id của dịch vụ",
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Int",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    }
-                ],
-                "interfaces": null,
-                "enumValues": null,
-                "possibleTypes": null
-            },
-            {
-                "kind": "INPUT_OBJECT",
                 "name": "BookingCreateInput",
                 "description": "",
                 "fields": null,
@@ -4541,20 +4642,6 @@
                 "fields": null,
                 "inputFields": [
                     {
-                        "name": "time",
-                        "description": "Thời điểm in hóa đơn",
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "DateTimeOffset",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
                         "name": "patron",
                         "description": "Khách hàng",
                         "type": {
@@ -4563,6 +4650,70 @@
                             "ofType": null
                         },
                         "defaultValue": "null"
+                    }
+                ],
+                "interfaces": null,
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "INPUT_OBJECT",
+                "name": "ServicesDetailCreateInput",
+                "description": "",
+                "fields": null,
+                "inputFields": [
+                    {
+                        "name": "number",
+                        "description": "Số lượng",
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Int",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "service",
+                        "description": "Thuộc dịch vụ nào",
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "INPUT_OBJECT",
+                                "name": "ServiceId",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    }
+                ],
+                "interfaces": null,
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "INPUT_OBJECT",
+                "name": "ServiceId",
+                "description": "Input cho một thông tin dịch vụ",
+                "fields": null,
+                "inputFields": [
+                    {
+                        "name": "id",
+                        "description": "Id của dịch vụ",
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Int",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
                     }
                 ],
                 "interfaces": null,
@@ -5042,6 +5193,48 @@
                     {
                         "name": "permissionUpdateGroundPlan",
                         "description": "Quyền chỉnh sửa sơ đồ",
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Boolean",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "permissionReferDebt",
+                        "description": "Quyền tra cứu công nợ",
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Boolean",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "permissionChangePersonalPassword",
+                        "description": "Quyền thay đổi mật khẩu cá nhân",
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Boolean",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "permissionManagePositions",
+                        "description": "Quyền quản lý chức vụ",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,

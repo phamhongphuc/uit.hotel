@@ -4,8 +4,17 @@ schema {
 }
 
 type AppMutation {
+    # Thêm phòng khách đoàn
+    addBookingToBill(billId: ID!, booking: BookingCreateInput!): Booking
+
     # Nhân viên nhận phòng để dọn dẹp
     assignCleaningService(id: ID!): HouseKeeping
+
+    # Đặt và nhận phòng ngay tại khách sạn
+    bookAndCheckIn(
+        bookings: [BookingCreateInput!]!
+        bill: BillCreateInput!
+    ): Bill
 
     # Nhân viên xác nhận đã dọn xong
     confirmCleaned(id: ID!): HouseKeeping
@@ -60,6 +69,9 @@ type AppMutation {
 
     # Kiểm tra đăng nhập
     checkLogin: Employee
+
+    # Thực hiện xác nhận trả phòng
+    checkOut(id: ID!): Booking
 
     # Xóa một tầng
     deleteFloor(id: ID!): String
@@ -242,9 +254,6 @@ type Bill {
 }
 
 input BillCreateInput {
-    # Thời điểm in hóa đơn
-    time: DateTimeOffset!
-
     # Khách hàng
     patron: PatronId = null
 }
@@ -712,6 +721,9 @@ type Position {
     # Quyền tạo chi tiết dịch vụ
     permissionCreateServicesDetail: Boolean!
 
+    # Quyền thay đổi mật khẩu cá nhân
+    permissionChangePersonalPassword: Boolean!
+
     # Quyền tra cứu lịch sử dọn phòng
     permissionGetHouseKeepings: Boolean!
 
@@ -733,6 +745,12 @@ type Position {
     # Quyền quản lý khách hàng
     permissionManagePatrons: Boolean!
 
+    # Quyền quản lý chức vụ
+    permissionManagePositions: Boolean!
+
+    # Quyền tra cứu công nợ
+    permissionReferDebt: Boolean!
+
     # Quyền xem thống kê và chi tiết doanh thu
     permissionReferRevenues: Boolean!
 
@@ -746,6 +764,15 @@ input PositionCreateInput {
 
     # Quyền chỉnh sửa sơ đồ
     permissionUpdateGroundPlan: Boolean!
+
+    # Quyền tra cứu công nợ
+    permissionReferDebt: Boolean!
+
+    # Quyền thay đổi mật khẩu cá nhân
+    permissionChangePersonalPassword: Boolean!
+
+    # Quyền quản lý chức vụ
+    permissionManagePositions: Boolean!
 
     # Quyền quản lý thông tin nhân viên
     permissionManageEmployees: Boolean!
