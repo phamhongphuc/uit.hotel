@@ -15,7 +15,7 @@ namespace uit.ooad.Queries.Mutation
                 "CheckIn",
                 "Cập nhật thời gian checkin của phòng",
                 _IdArgument(),
-                _CheckPermission_Object(
+                _CheckPermission_TaskObject(
                     p => p.PermissionManageHiringRooms,
                     context =>
                     {
@@ -29,7 +29,7 @@ namespace uit.ooad.Queries.Mutation
                 "RequestCheckOut",
                 "Yêu cầu kiểm tra khi trả phòng",
                 _IdArgument(),
-                _CheckPermission_Object(
+                _CheckPermission_TaskObject(
                     p => p.PermissionManageHiringRooms,
                     context =>
                     {
@@ -43,7 +43,7 @@ namespace uit.ooad.Queries.Mutation
                 "CheckOut",
                 "Thực hiện xác nhận trả phòng",
                 _IdArgument(),
-                _CheckPermission_Object(
+                _CheckPermission_TaskObject(
                     p => p.PermissionManageHiringRooms,
                     context =>
                     {
@@ -60,7 +60,7 @@ namespace uit.ooad.Queries.Mutation
                     new QueryArgument<NonNullGraphType<IdGraphType>> { Name = "billId" },
                     new QueryArgument<NonNullGraphType<BookingCreateInput>> { Name = "booking" }
                 ),
-                _CheckPermission_Object(
+                _CheckPermission_TaskObject(
                     p => p.PermissionManageHiringRooms,
                     context =>
                     {

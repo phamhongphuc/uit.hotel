@@ -14,7 +14,7 @@ namespace uit.ooad.Queries.Mutation
                 _Creation,
                 "Tạo và trả về một dịch vụ mới",
                 _InputArgument<ServiceCreateInput>(),
-                _CheckPermission_Object(
+                _CheckPermission_TaskObject(
                     p => p.PermissionCreateOrUpdateService,
                     context => ServiceBusiness.Add(_GetInput(context))
                 )
@@ -24,7 +24,7 @@ namespace uit.ooad.Queries.Mutation
                 _Updation,
                 "Cập nhật và trả về một dịch vụ mới cập nhật",
                 _InputArgument<ServiceUpdateInput>(),
-                _CheckPermission_Object(
+                _CheckPermission_TaskObject(
                     p => p.PermissionCreateOrUpdateService,
                     context => ServiceBusiness.Update(_GetInput(context))
                 )

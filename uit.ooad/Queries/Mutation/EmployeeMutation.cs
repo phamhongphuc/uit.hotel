@@ -16,7 +16,7 @@ namespace uit.ooad.Queries.Mutation
                 _Creation,
                 "Tạo và trả về một nhân viên mới",
                 _InputArgument<EmployeeCreateInput>(),
-                _CheckPermission_Object(
+                _CheckPermission_TaskObject(
                     p => p.PermissionManageEmployees,
                     context => EmployeeBusiness.Add(_GetInput(context))
                 )
@@ -26,7 +26,7 @@ namespace uit.ooad.Queries.Mutation
                 _Updation,
                 "Chỉnh sửa thông tin nhân viên",
                 _InputArgument<EmployeeUpdateInput>(),
-                _CheckPermission_Object(
+                _CheckPermission_TaskObject(
                     p => p.PermissionManageEmployees,
                     context => EmployeeBusiness.Update(_GetInput(context))
                 )

@@ -14,7 +14,7 @@ namespace uit.ooad.Queries.Mutation
                 _Creation,
                 "Tạo và trả về một khách hàng mới",
                 _InputArgument<PatronCreateInput>(),
-                _CheckPermission_Object(
+                _CheckPermission_TaskObject(
                     p => p.PermissionManagePatrons,
                     context => PatronBusiness.Add(_GetInput(context))
                 )
@@ -24,7 +24,7 @@ namespace uit.ooad.Queries.Mutation
                 _Updation,
                 "Cập nhật và trả về một khách hàng vừa cập nhật",
                 _InputArgument<PatronUpdateInput>(),
-                _CheckPermission_Object(
+                _CheckPermission_TaskObject(
                     p => p.PermissionManagePatrons,
                     context => PatronBusiness.Update(_GetInput(context))
                 )

@@ -20,7 +20,7 @@ namespace uit.ooad.Queries.Mutation
                         { Name = "bookings" },
                     new QueryArgument<NonNullGraphType<BillCreateInput>> { Name = "bill" }
                 ),
-                _CheckPermission_Object(
+                _CheckPermission_TaskObject(
                     p => p.PermissionManageHiringRooms,
                     async context =>
                     {
@@ -42,7 +42,7 @@ namespace uit.ooad.Queries.Mutation
                         { Name = "bookings" },
                     new QueryArgument<NonNullGraphType<BillCreateInput>> { Name = "bill" }
                 ),
-                _CheckPermission_Object(
+                _CheckPermission_TaskObject(
                     p => p.PermissionManageHiringRooms,
                     async context =>
                     {

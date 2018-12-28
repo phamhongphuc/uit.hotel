@@ -14,7 +14,7 @@ namespace uit.ooad.Queries.Mutation
                 _Creation,
                 "Tạo và trả về một loại phòng",
                 _InputArgument<RoomKindCreateInput>(),
-                _CheckPermission_Object(
+                _CheckPermission_TaskObject(
                     p => p.PermissionCreateOrUpdateRoomKind,
                     context => RoomKindBusiness.Add(_GetInput(context))
                 )
@@ -24,7 +24,7 @@ namespace uit.ooad.Queries.Mutation
                 _Updation,
                 "Cập nhật và trả về loại phòng vừa cập nhật",
                 _InputArgument<RoomKindUpdateInput>(),
-                _CheckPermission_Object(
+                _CheckPermission_TaskObject(
                     p => p.PermissionCreateOrUpdateRoomKind,
                     context => RoomKindBusiness.Update(_GetInput(context))
                 )

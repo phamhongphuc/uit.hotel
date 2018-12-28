@@ -14,7 +14,7 @@ namespace uit.ooad.Queries.Mutation
                 _Creation,
                 "Tạo và trả về một tầng mới",
                 _InputArgument<FloorCreateInput>(),
-                _CheckPermission_Object(
+                _CheckPermission_TaskObject(
                     p => p.PermissionUpdateGroundPlan,
                     context => FloorBusiness.Add(_GetInput(context))
                 )
@@ -24,7 +24,7 @@ namespace uit.ooad.Queries.Mutation
                 _Updation,
                 "Cập nhật và trả về một tầng vừa cập nhật",
                 _InputArgument<FloorUpdateInput>(),
-                _CheckPermission_Object(
+                _CheckPermission_TaskObject(
                     p => p.PermissionUpdateGroundPlan,
                     context => FloorBusiness.Update(_GetInput(context))
                 )
