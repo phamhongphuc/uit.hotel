@@ -3,6 +3,8 @@ schema: 'http://localhost:3000/api/graphql'
 documents: store/*.ts
 generates:
     graphql/types.ts:
+        config:
+            avoidOptionals: true
         plugins:
             - 'typescript-common'
             - 'typescript-client'
