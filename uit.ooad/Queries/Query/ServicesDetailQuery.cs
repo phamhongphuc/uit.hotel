@@ -10,12 +10,13 @@ namespace uit.ooad.Queries.Query
     {
         public ServicesDetailQuery()
         {
-            Field<ListGraphType<ServicesDetailType>>(
+            Field<NonNullGraphType<ListGraphType<NonNullGraphType<ServicesDetailType>>>>(
                 _List,
                 "Trả về một danh sách các chi tiết dịch vụ",
                 resolve: context => ServicesDetailBusiness.Get()
             );
-            Field<ServicesDetailType>(
+            
+            Field<NonNullGraphType<ServicesDetailType>>(
                 _Item,
                 "Trả về thông tin một chi tiết dịch vụ",
                 _IdArgument(),

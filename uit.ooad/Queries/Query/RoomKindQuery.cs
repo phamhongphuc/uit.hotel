@@ -10,12 +10,13 @@ namespace uit.ooad.Queries.Query
     {
         public RoomKindQuery()
         {
-            Field<ListGraphType<RoomKindType>>(
+            Field<NonNullGraphType<ListGraphType<NonNullGraphType<RoomKindType>>>>(
                 _List,
                 "Trả về một danh sách các loại phòng",
                 resolve: context => RoomKindBusiness.Get()
             );
-            Field<RoomKindType>(
+            
+            Field<NonNullGraphType<RoomKindType>>(
                 nameof(RoomKind),
                 "Trả về thông tin của một loại phòng",
                 _IdArgument(),

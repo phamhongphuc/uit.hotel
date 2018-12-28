@@ -10,7 +10,7 @@ namespace uit.ooad.Queries.Query
     {
         public BillQuery()
         {
-            Field<ListGraphType<BillType>>(
+            Field<NonNullGraphType<ListGraphType<NonNullGraphType<BillType>>>>(
                 _List,
                 "Trả về một danh sách các hóa đơn",
                 resolve: _CheckPermission_List(
@@ -18,7 +18,8 @@ namespace uit.ooad.Queries.Query
                     context => BillBusiness.Get()
                 )
             );
-            Field<BillType>(
+            
+            Field<NonNullGraphType<BillType>>(
                 _Item,
                 "Trả về thông tin một hóa đơn",
                 _IdArgument(),

@@ -10,12 +10,13 @@ namespace uit.ooad.Queries.Query
     {
         public ReceiptQuery()
         {
-            Field<ListGraphType<ReceiptType>>(
+            Field<NonNullGraphType<ListGraphType<NonNullGraphType<ReceiptType>>>>(
                 _List,
                 "Trả về một danh sách các phiếu thu",
                 resolve: context => ReceiptBusiness.Get()
             );
-            Field<ReceiptType>(
+            
+            Field<NonNullGraphType<ReceiptType>>(
                 _Item,
                 "Trả về thông tin một phiếu thu",
                 _IdArgument(),

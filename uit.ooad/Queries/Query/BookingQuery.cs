@@ -10,12 +10,13 @@ namespace uit.ooad.Queries.Query
     {
         public BookingQuery()
         {
-            Field<ListGraphType<BookingType>>(
+            Field<NonNullGraphType<ListGraphType<NonNullGraphType<BookingType>>>>(
                 _List,
                 "Trả về một danh sách các đơn đặt phòng",
                 resolve: context => BookingBusiness.Get()
             );
-            Field<BookingType>(
+            
+            Field<NonNullGraphType<BookingType>>(
                 _Item,
                 "Trả về thông tin một đơn đặt phòng",
                 _IdArgument(),

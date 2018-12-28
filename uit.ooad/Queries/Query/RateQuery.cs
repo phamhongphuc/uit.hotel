@@ -10,12 +10,13 @@ namespace uit.ooad.Queries.Query
     {
         public RateQuery()
         {
-            Field<ListGraphType<RateType>>(
+            Field<NonNullGraphType<ListGraphType<NonNullGraphType<RateType>>>>(
                 _List,
                 "Trả về một danh sách các loại giá cơ bản",
                 resolve: context => RateBusiness.Get()
             );
-            Field<RateType>(
+            
+            Field<NonNullGraphType<RateType>>(
                 _Item,
                 "Trả về thông tin một loại giá cơ bản",
                 _IdArgument(),

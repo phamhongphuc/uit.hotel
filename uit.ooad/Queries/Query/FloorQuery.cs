@@ -10,12 +10,13 @@ namespace uit.ooad.Queries.Query
     {
         public FloorQuery()
         {
-            Field<ListGraphType<FloorType>>(
+            Field<NonNullGraphType<ListGraphType<NonNullGraphType<FloorType>>>>(
                 _List,
                 "Trả về một danh sách các tầng",
                 resolve: context => FloorBusiness.Get()
             );
-            Field<FloorType>(
+            
+            Field<NonNullGraphType<FloorType>>(
                 _Item,
                 "Trả về thông tin một tầng",
                 _IdArgument(),
