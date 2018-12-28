@@ -52,7 +52,9 @@
 <script lang="ts">
 import { Vue, namespace, Component } from 'nuxt-property-decorator';
 
-@Component
+@Component({
+    name: 'navbar-',
+})
 export default class extends Vue {
     isInputFocus = false;
 

@@ -50,7 +50,9 @@
 <script lang="ts">
 import { Vue, Component, namespace } from 'nuxt-property-decorator';
 
-@Component
+@Component({
+    name: 'login-',
+})
 export default class extends Vue {
     id = '';
     password = '';

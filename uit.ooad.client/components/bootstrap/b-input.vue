@@ -15,7 +15,9 @@
 <script lang="ts">
 import { Vue, Prop, Component } from 'nuxt-property-decorator';
 
-@Component
+@Component({
+    name: 'b-input-',
+})
 export default class extends Vue {
     @Prop({ default: '' })
     value: string;

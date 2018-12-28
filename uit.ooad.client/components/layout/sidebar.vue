@@ -12,7 +12,10 @@
 </template>
 <script lang="ts">
 import { Vue, Component, namespace } from 'nuxt-property-decorator';
-@Component
+
+@Component({
+    name: 'sidebar-',
+})
 export default class extends Vue {
     @namespace('user').Action
     logout;

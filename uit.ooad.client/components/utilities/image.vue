@@ -2,7 +2,9 @@
 import { VNode, CreateElement } from 'vue';
 import { Vue, Prop, Component } from 'nuxt-property-decorator';
 
-@Component
+@Component({
+    name: 'image-',
+})
 export default class extends Vue {
     isError = false;
     isLoad = false;

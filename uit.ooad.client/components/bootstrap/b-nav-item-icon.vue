@@ -16,7 +16,9 @@
 <script lang="ts">
 import { Vue, Prop, Component } from 'nuxt-property-decorator';
 
-@Component
+@Component({
+    name: 'b-nav-item-icon-',
+})
 export default class extends Vue {
     @Prop({ default: '' })
     to: string;
