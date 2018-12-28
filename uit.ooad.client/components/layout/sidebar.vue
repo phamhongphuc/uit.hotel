@@ -2,24 +2,16 @@
     <b-navbar id="sidebar">
         <b-navbar-nav>
             <b-nav-item-icon- to="/" icon="" text="Bảng điều khiển" exact />
-            <b-nav-item-icon-
-                icon=""
-                text="Đăng xuất"
-                @click.native="logout"
-            />
         </b-navbar-nav>
     </b-navbar>
 </template>
 <script lang="ts">
-import { Vue, Component, namespace } from 'nuxt-property-decorator';
+import { Vue, Component } from 'nuxt-property-decorator';
 
 @Component({
     name: 'sidebar-',
 })
-export default class extends Vue {
-    @namespace('user').Action
-    logout;
-}
+export default class extends Vue {}
 </script>
 <style lang="scss">
 #sidebar {
