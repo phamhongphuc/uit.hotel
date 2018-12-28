@@ -34,9 +34,8 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.PermissionCreateBill).Description("Quyền tạo hóa đơn");
             Field(x => x.PermissionCreatePosition).Description("Quyền tạo chức vụ");
             Field(x => x.PermissionCreateReceipt).Description("Quyền tạo phiếu thu");
-            Field(x => x.PermissionCreateOrUpdateRoomKind).Description("Quyền tạo hoặc chỉnh sửa loại phòng");
-            Field(x => x.PermissionCreateOrUpdateRate).Description("Quyền tạo giá cơ bản");
-            Field(x => x.PermissionCreateOrUpdateVolatilityRate).Description("Quyền tạo giá biến động");
+            Field(x => x.PermissionManageRoomKind).Description("Quyền quản lý loại phòng (thêm, xóa, sửa, kích hoạt/vô hiệu hóa)");
+            Field(x => x.PermissionManageRate).Description("Quyền tạo giá cơ bản");
             Field(x => x.PermissionCreateOrUpdateService).Description("Quyền tạo dịch vụ");
             Field(x => x.PermissionCreateServicesDetail).Description("Quyền tạo chi tiết dịch vụ");
             Field(x => x.PermissionCreateBooking).Description("Quyền tạo đơn đặt phòng");
@@ -87,9 +86,8 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.PermissionCreateBill).Description("Quyền tạo hóa đơn");
             Field(x => x.PermissionCreatePosition).Description("Quyền tạo chức vụ");
             Field(x => x.PermissionCreateReceipt).Description("Quyền tạo phiếu thu");
-            Field(x => x.PermissionCreateOrUpdateRoomKind).Description("Quyền tạo hoặc chỉnh sửa loại phòng");
-            Field(x => x.PermissionCreateOrUpdateRate).Description("Quyền tạo giá cơ bản");
-            Field(x => x.PermissionCreateOrUpdateVolatilityRate).Description("Quyền tạo giá biến động");
+            Field(x => x.PermissionManageRoomKind).Description("Quyền quản lý loại phòng (thêm, xóa, sửa, kích hoạt/vô hiệu hóa)");
+            Field(x => x.PermissionManageRate).Description("Quyền quản lý giá cơ bản và giá biến động");
             Field(x => x.PermissionCreateOrUpdateService).Description("Quyền tạo và cập nhật dịch vụ");
             Field(x => x.PermissionCreateServicesDetail).Description("Quyền tạo chi tiết dịch vụ");
             Field(x => x.PermissionCreateBooking).Description("Quyền tạo đơn đặt phòng");

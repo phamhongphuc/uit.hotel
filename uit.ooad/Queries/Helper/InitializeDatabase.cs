@@ -65,12 +65,11 @@ namespace uit.ooad.Queries.Helper
                 PermissionCleaning = true,
                 PermissionCreateOrUpdatePatron = true,
                 PermissionCreatePosition = true,
-                PermissionCreateOrUpdateRate = true,
+                PermissionManageRate = true,
                 PermissionCreateReceipt = true,
-                PermissionCreateOrUpdateRoomKind = true,
+                PermissionManageRoomKind = true,
                 PermissionCreateOrUpdateService = true,
-                PermissionCreateServicesDetail = true,
-                PermissionCreateOrUpdateVolatilityRate = true
+                PermissionCreateServicesDetail = true
             });
         }
 

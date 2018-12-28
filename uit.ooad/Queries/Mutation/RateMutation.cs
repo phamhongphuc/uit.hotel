@@ -15,7 +15,7 @@ namespace uit.ooad.Queries.Mutation
                 "Tạo và trả về một loại giá cơ bản mới",
                 _InputArgument<RateCreateInput>(),
                 _CheckPermission_TaskObject(
-                    p => p.PermissionCreateOrUpdateRate,
+                    p => p.PermissionManageRate,
                     context => RateBusiness.Add(_GetInput(context))
                 )
             );
