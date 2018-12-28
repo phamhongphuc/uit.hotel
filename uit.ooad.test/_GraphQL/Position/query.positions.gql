@@ -12,18 +12,10 @@
         permissionManagePatronKind
         permissionManageHiringRoom
         permissionGetHouseKeeping
-        permissionCreatePatronKind
-        permissionCreateBill
-        permissionCreateBooking
-        permissionCreateOrUpdateEmployee
-        permissionCleaning
-        permissionCreateOrUpdatePatron
-        permissionCreatePosition
         permissionManageRate
         permissionCreateReceipt
         permissionUpdateGroundPlan
         permissionManageRoomKind
         permissionManageService
-        permissionCreateServicesDetail
     }
 }

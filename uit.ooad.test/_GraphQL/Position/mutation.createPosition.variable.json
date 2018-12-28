@@ -11,18 +11,11 @@
 		"permissionManagePatronKind": false,
 		"permissionManageHiringRoom": false,
 		"permissionGetHouseKeeping": false,
-		"permissionCreatePatronKind": false,
-		"permissionCreateBill": false,
-		"permissionCreateBooking": false,
-		"permissionCreateOrUpdateEmployee": false,
 		"permissionCleaning": false,
-		"permissionCreateOrUpdatePatron": false,
-		"permissionCreatePosition": false,
 		"permissionManageRate": false,
 		"permissionCreateReceipt": false,
 		"permissionUpdateGroundPlan": false,
 		"permissionManageRoomKind": false,
-		"permissionManageService": false,
-		"permissionCreateServicesDetail": false
+		"permissionManageService": false
 	}
 }

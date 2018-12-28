@@ -28,19 +28,11 @@
               "permissionManagePatronKind",
               "permissionManageHiringRoom",
               "permissionGetHouseKeeping",
-              "permissionCreatePatronKind",
-              "permissionCreateBill",
-              "permissionCreateBooking",
-              "permissionCreateOrUpdateEmployee",
-              "permissionCleaning",
-              "permissionCreateOrUpdatePatron",
-              "permissionCreatePosition",
               "permissionManageRate",
               "permissionCreateReceipt",
               "permissionUpdateGroundPlan",
               "permissionManageRoomKind",
-              "permissionManageService",
-              "permissionCreateServicesDetail"
+              "permissionManageService"
             ],
             "properties": {
               "id": {
@@ -80,27 +72,6 @@
               "permissionGetHouseKeeping": {
                 "type": "boolean"
               },
-              "permissionCreatePatronKind": {
-                "type": "boolean"
-              },
-              "permissionCreateBill": {
-                "type": "boolean"
-              },
-              "permissionCreateBooking": {
-                "type": "boolean"
-              },
-              "permissionCreateOrUpdateEmployee": {
-                "type": "boolean"
-              },
-              "permissionCleaning": {
-                "type": "boolean"
-              },
-              "permissionCreateOrUpdatePatron": {
-                "type": "boolean"
-              },
-              "permissionCreatePosition": {
-                "type": "boolean"
-              },
               "permissionManageRate": {
                 "type": "boolean"
               },
@@ -114,9 +85,6 @@
                 "type": "boolean"
               },
               "permissionManageService": {
-                "type": "boolean"
-              },
-              "permissionCreateServicesDetail": {
                 "type": "boolean"
               }
             }
