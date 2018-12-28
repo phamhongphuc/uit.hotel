@@ -8,7 +8,7 @@ mutation($input: PositionCreateInput!) {
         permissionManagePositions
         permissionManageEmployees
         permissionGetRooms
-        permissionManagePatrons
+        permissionManagePatron
         permissionManagePatronKinds
         permissionManageHiringRoom
         permissionGetHouseKeeping

@@ -7,7 +7,7 @@
 		"permissionManagePositions": false,
 		"permissionManageEmployees": false,
 		"permissionGetRooms": false,
-		"permissionManagePatrons": false,
+		"permissionManagePatron": false,
 		"permissionManagePatronKinds": false,
 		"permissionManageHiringRoom": false,
 		"permissionGetHouseKeeping": false,
