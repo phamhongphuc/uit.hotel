@@ -1,17 +1,5 @@
 export type Maybe<T> = T | null;
 
-export interface ServicesDetailCreateInput {
-    /** Số lượng */
-    number: number;
-    /** Thuộc dịch vụ nào */
-    service: ServiceId;
-}
-/** Input cho một thông tin dịch vụ */
-export interface ServiceId {
-    /** Id của dịch vụ */
-    id: number;
-}
-
 export interface BookingCreateInput {
     /** Thời điểm nhận phòng dự kiến của khách hàng */
     bookCheckInTime: Maybe<DateTimeOffset>;
@@ -34,10 +22,20 @@ export interface PatronId {
 }
 
 export interface BillCreateInput {
-    /** Thời điểm in hóa đơn */
-    time: DateTimeOffset;
     /** Khách hàng */
     patron: Maybe<PatronId>;
+}
+
+export interface ServicesDetailCreateInput {
+    /** Số lượng */
+    number: number;
+    /** Thuộc dịch vụ nào */
+    service: ServiceId;
+}
+/** Input cho một thông tin dịch vụ */
+export interface ServiceId {
+    /** Id của dịch vụ */
+    id: number;
 }
 
 export interface EmployeeCreateInput {
@@ -119,48 +117,36 @@ export interface PositionCreateInput {
     name: string;
     /** Quyền chỉnh sửa sơ đồ */
     permissionUpdateGroundPlan: boolean;
+    /** Quyền tra cứu công nợ */
+    permissionReferDebt: boolean;
+    /** Quyền thay đổi mật khẩu cá nhân */
+    permissionManageAccount: boolean;
+    /** Quyền quản lý chức vụ */
+    permissionManagePosition: boolean;
     /** Quyền quản lý thông tin nhân viên */
-    permissionManageEmployees: boolean;
+    permissionManageEmployee: boolean;
     /** Quyền xem thống kê và chi tiết doanh thu */
     permissionReferRevenues: boolean;
-    /** Quyền thao tác hóa đơn */
-    permissionHandleBills: boolean;
     /** Quyền lấy danh sách phòng và hiện trạng từng phòng */
     permissionGetRooms: boolean;
     /** Quyền quản lý thuê phòng */
-    permissionManageHiringRooms: boolean;
+    permissionManageHiringRoom: boolean;
     /** Quyền tra cứu lịch sử dọn phòng */
-    permissionGetHouseKeepings: boolean;
+    permissionGetHouseKeeping: boolean;
     /** Quyền quản lý khách hàng */
-    permissionManagePatrons: boolean;
+    permissionManagePatron: boolean;
     /** Quyền quản lý loại khách hàng */
-    permissionManagePatronKinds: boolean;
+    permissionManagePatronKind: boolean;
     /** Quyền thao tác dọn phòng */
     permissionCleaning: boolean;
-    /** Quyền tạo hoặc chỉnh sửa khách hàng */
-    permissionCreateOrUpdatePatron: boolean;
-    /** Quyền tạo hoặc chỉnh sửa tài khoản nhân viên */
-    permissionCreateOrUpdateEmployee: boolean;
-    /** Quyền tạo loại khách hàng */
-    permissionCreatePatronKind: boolean;
-    /** Quyền tạo hóa đơn */
-    permissionCreateBill: boolean;
-    /** Quyền tạo chức vụ */
-    permissionCreatePosition: boolean;
     /** Quyền tạo phiếu thu */
     permissionCreateReceipt: boolean;
-    /** Quyền tạo hoặc chỉnh sửa loại phòng */
-    permissionCreateOrUpdateRoomKind: boolean;
-    /** Quyền tạo giá cơ bản */
-    permissionCreateOrUpdateRate: boolean;
-    /** Quyền tạo giá biến động */
-    permissionCreateOrUpdateVolatilityRate: boolean;
-    /** Quyền tạo và cập nhật dịch vụ */
-    permissionCreateOrUpdateService: boolean;
-    /** Quyền tạo chi tiết dịch vụ */
-    permissionCreateServicesDetail: boolean;
-    /** Quyền tạo đơn đặt phòng */
-    permissionCreateBooking: boolean;
+    /** Quyền quản lý loại phòng */
+    permissionManageRoomKind: boolean;
+    /** Quyền quản lý giá cơ bản và giá biến động */
+    permissionManageRate: boolean;
+    /** Quyền quản lý dịch vụ */
+    permissionManageService: boolean;
 }
 
 export interface RateCreateInput {
@@ -411,7 +397,7 @@ export namespace UserLogin {
     export type Mutation = {
         __typename?: 'Mutation';
 
-        login: Maybe<Login>;
+        login: Login;
     };
 
     export type Login = {
@@ -428,6 +414,14 @@ export namespace UserLogin {
         id: string;
 
         name: string;
+
+        position: Position;
+    };
+
+    export type Position = {
+        __typename?: 'Position';
+
+        name: string;
     };
 }
 
@@ -437,13 +431,21 @@ export namespace UserCheckLogin {
     export type Mutation = {
         __typename?: 'Mutation';
 
-        checkLogin: Maybe<CheckLogin>;
+        checkLogin: CheckLogin;
     };
 
     export type CheckLogin = {
         __typename?: 'Employee';
 
         id: string;
+
+        name: string;
+
+        position: Position;
+    };
+
+    export type Position = {
+        __typename?: 'Position';
 
         name: string;
     };

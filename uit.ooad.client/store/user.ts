@@ -1,25 +1,39 @@
 import gql from 'graphql-tag';
-import Vue from 'vue';
-import { ActionTree, MutationTree } from 'vuex';
+import { ActionTree, MutationTree, GetterTree } from 'vuex';
 import { UserCheckLogin, UserLogin } from '~/graphql/types';
 import {
     apolloClient,
-    apolloHelpers,
     apolloClientNotify,
+    apolloHelpers,
 } from '~/modules/apollo';
-import { router, route } from '~/utils/store';
+import { notify } from '~/plugins/notify';
+import { route, router } from '~/utils/store';
 
-interface UserState {
+export interface UserState {
     token: undefined | string;
+    employee?: UserLogin.Employee;
 }
 
 export const state = (): UserState => ({
     token: undefined,
+    employee: undefined,
 });
+
+export const getters: GetterTree<UserState, UserState> = {};
 
 export const mutations: MutationTree<UserState> = {
     setToken(state, token: string) {
         state.token = token;
+    },
+    login(state, { token, employee }: UserLogin.Login) {
+        apolloHelpers(this).onLogin(token);
+        state.token = token;
+        state.employee = employee;
+    },
+    logout(state) {
+        apolloHelpers(this).onLogout();
+        state.token = undefined;
+        state.employee = undefined;
     },
 };
 
@@ -36,35 +50,27 @@ export const actions: ActionTree<UserState, UserState> = {
                         employee {
                             id
                             name
+                            position {
+                                name
+                            }
                         }
                     }
                 }
             `,
             variables,
-            errorPolicy: 'none',
         });
 
         if (result.data === undefined || result.data.login === null) return;
 
-        const token = result.data.login.token;
-        apolloHelpers(this).onLogin(token);
-        commit('setToken', result.data.login.token);
-
-        Vue.notify({
-            title: 'Đăng nhập thành công',
-        });
+        commit('login', result.data.login);
         router(this).push('/');
+        notify.success({ title: 'Thông báo', text: 'Đăng nhập thành công' });
     },
 
     async logout({ commit }) {
-        apolloHelpers(this).onLogout();
-        commit('setToken', undefined);
+        commit('logout');
         router(this).push('/login');
-
-        await Vue.nextTick();
-        Vue.notify({
-            title: 'Đăng xuất thành công',
-        });
+        notify.success({ title: 'Thông báo', text: 'Đăng xuất thành công' });
     },
 
     async checkLogin({ state, commit }) {
@@ -72,26 +78,39 @@ export const actions: ActionTree<UserState, UserState> = {
 
         if (typeof token === 'string') {
             try {
-                await apolloClient(this).mutate<UserCheckLogin.Mutation>({
+                const result = await apolloClient(this).mutate<
+                    UserCheckLogin.Mutation
+                >({
                     mutation: gql`
                         mutation userCheckLogin {
                             checkLogin {
                                 id
                                 name
+                                position {
+                                    name
+                                }
                             }
                         }
                     `,
                 });
-                apolloHelpers(this).onLogin(token);
-                commit('setToken', token);
 
-                if (route(this).name === 'login') {
-                    router(this).push('/');
+                if (result.data === undefined) {
+                    throw new Error('Lỗi không xác định');
                 }
+                const loginArgs: UserLogin.Login = {
+                    token,
+                    employee: result.data.checkLogin,
+                };
+                commit('login', loginArgs);
+
+                if (route(this).name === 'login') router(this).push('/');
             } catch (e) {
-                apolloHelpers(this).onLogout();
-                commit('setToken', undefined);
+                commit('logout');
                 router(this).push('/login');
+                notify.error({
+                    title: 'Lỗi xác thực',
+                    text: 'Vui lòng đăng nhập lại',
+                });
             }
         } else {
             router(this).push('/login');

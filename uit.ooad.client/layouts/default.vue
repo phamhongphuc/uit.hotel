@@ -10,7 +10,7 @@
         <no-ssr>
             <notifications
                 animation-type="velocity"
-                position="left bottom"
+                position="right bottom"
                 :duration="1500"
             />
         </no-ssr>

@@ -29,9 +29,13 @@
                             }
                         ],
                         "type": {
-                            "kind": "OBJECT",
-                            "name": "Bill",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "OBJECT",
+                                "name": "Bill",
+                                "ofType": null
+                            }
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -41,12 +45,20 @@
                         "description": "Trả về một danh sách các hóa đơn",
                         "args": [],
                         "type": {
-                            "kind": "LIST",
+                            "kind": "NON_NULL",
                             "name": null,
                             "ofType": {
-                                "kind": "OBJECT",
-                                "name": "Bill",
-                                "ofType": null
+                                "kind": "LIST",
+                                "name": null,
+                                "ofType": {
+                                    "kind": "NON_NULL",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "OBJECT",
+                                        "name": "Bill",
+                                        "ofType": null
+                                    }
+                                }
                             }
                         },
                         "isDeprecated": false,
@@ -72,9 +84,13 @@
                             }
                         ],
                         "type": {
-                            "kind": "OBJECT",
-                            "name": "Booking",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "OBJECT",
+                                "name": "Booking",
+                                "ofType": null
+                            }
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -84,12 +100,20 @@
                         "description": "Trả về một danh sách các đơn đặt phòng",
                         "args": [],
                         "type": {
-                            "kind": "LIST",
+                            "kind": "NON_NULL",
                             "name": null,
                             "ofType": {
-                                "kind": "OBJECT",
-                                "name": "Booking",
-                                "ofType": null
+                                "kind": "LIST",
+                                "name": null,
+                                "ofType": {
+                                    "kind": "NON_NULL",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "OBJECT",
+                                        "name": "Booking",
+                                        "ofType": null
+                                    }
+                                }
                             }
                         },
                         "isDeprecated": false,
@@ -115,9 +139,13 @@
                             }
                         ],
                         "type": {
-                            "kind": "OBJECT",
-                            "name": "Employee",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "OBJECT",
+                                "name": "Employee",
+                                "ofType": null
+                            }
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -127,12 +155,20 @@
                         "description": "Trả về một danh sách các nhân viên",
                         "args": [],
                         "type": {
-                            "kind": "LIST",
+                            "kind": "NON_NULL",
                             "name": null,
                             "ofType": {
-                                "kind": "OBJECT",
-                                "name": "Employee",
-                                "ofType": null
+                                "kind": "LIST",
+                                "name": null,
+                                "ofType": {
+                                    "kind": "NON_NULL",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "OBJECT",
+                                        "name": "Employee",
+                                        "ofType": null
+                                    }
+                                }
                             }
                         },
                         "isDeprecated": false,
@@ -158,12 +194,20 @@
                             }
                         ],
                         "type": {
-                            "kind": "LIST",
+                            "kind": "NON_NULL",
                             "name": null,
                             "ofType": {
-                                "kind": "OBJECT",
-                                "name": "Patron",
-                                "ofType": null
+                                "kind": "LIST",
+                                "name": null,
+                                "ofType": {
+                                    "kind": "NON_NULL",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "OBJECT",
+                                        "name": "Patron",
+                                        "ofType": null
+                                    }
+                                }
                             }
                         },
                         "isDeprecated": false,
@@ -189,9 +233,13 @@
                             }
                         ],
                         "type": {
-                            "kind": "OBJECT",
-                            "name": "Floor",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "OBJECT",
+                                "name": "Floor",
+                                "ofType": null
+                            }
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -201,12 +249,20 @@
                         "description": "Trả về một danh sách các tầng",
                         "args": [],
                         "type": {
-                            "kind": "LIST",
+                            "kind": "NON_NULL",
                             "name": null,
                             "ofType": {
-                                "kind": "OBJECT",
-                                "name": "Floor",
-                                "ofType": null
+                                "kind": "LIST",
+                                "name": null,
+                                "ofType": {
+                                    "kind": "NON_NULL",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "OBJECT",
+                                        "name": "Floor",
+                                        "ofType": null
+                                    }
+                                }
                             }
                         },
                         "isDeprecated": false,
@@ -232,9 +288,13 @@
                             }
                         ],
                         "type": {
-                            "kind": "OBJECT",
-                            "name": "HouseKeeping",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "OBJECT",
+                                "name": "HouseKeeping",
+                                "ofType": null
+                            }
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -244,12 +304,20 @@
                         "description": "Trả về một danh sách các công việc dọn dẹp",
                         "args": [],
                         "type": {
-                            "kind": "LIST",
+                            "kind": "NON_NULL",
                             "name": null,
                             "ofType": {
-                                "kind": "OBJECT",
-                                "name": "HouseKeeping",
-                                "ofType": null
+                                "kind": "LIST",
+                                "name": null,
+                                "ofType": {
+                                    "kind": "NON_NULL",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "OBJECT",
+                                        "name": "HouseKeeping",
+                                        "ofType": null
+                                    }
+                                }
                             }
                         },
                         "isDeprecated": false,
@@ -275,9 +343,13 @@
                             }
                         ],
                         "type": {
-                            "kind": "OBJECT",
-                            "name": "Patron",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "OBJECT",
+                                "name": "Patron",
+                                "ofType": null
+                            }
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -302,19 +374,7 @@
                             }
                         ],
                         "type": {
-                            "kind": "OBJECT",
-                            "name": "PatronKind",
-                            "ofType": null
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "patronKinds",
-                        "description": "Trả về một danh sách các loại khách hàng có trong hệ thống",
-                        "args": [],
-                        "type": {
-                            "kind": "LIST",
+                            "kind": "NON_NULL",
                             "name": null,
                             "ofType": {
                                 "kind": "OBJECT",
@@ -326,16 +386,48 @@
                         "deprecationReason": null
                     },
                     {
+                        "name": "patronKinds",
+                        "description": "Trả về một danh sách các loại khách hàng có trong hệ thống",
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "LIST",
+                                "name": null,
+                                "ofType": {
+                                    "kind": "NON_NULL",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "OBJECT",
+                                        "name": "PatronKind",
+                                        "ofType": null
+                                    }
+                                }
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
                         "name": "patrons",
                         "description": "Trả về một danh sách các khách hàng",
                         "args": [],
                         "type": {
-                            "kind": "LIST",
+                            "kind": "NON_NULL",
                             "name": null,
                             "ofType": {
-                                "kind": "OBJECT",
-                                "name": "Patron",
-                                "ofType": null
+                                "kind": "LIST",
+                                "name": null,
+                                "ofType": {
+                                    "kind": "NON_NULL",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "OBJECT",
+                                        "name": "Patron",
+                                        "ofType": null
+                                    }
+                                }
                             }
                         },
                         "isDeprecated": false,
@@ -361,9 +453,13 @@
                             }
                         ],
                         "type": {
-                            "kind": "OBJECT",
-                            "name": "Position",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "OBJECT",
+                                "name": "Position",
+                                "ofType": null
+                            }
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -373,12 +469,20 @@
                         "description": "Trả về một danh sách các chức vụ",
                         "args": [],
                         "type": {
-                            "kind": "LIST",
+                            "kind": "NON_NULL",
                             "name": null,
                             "ofType": {
-                                "kind": "OBJECT",
-                                "name": "Position",
-                                "ofType": null
+                                "kind": "LIST",
+                                "name": null,
+                                "ofType": {
+                                    "kind": "NON_NULL",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "OBJECT",
+                                        "name": "Position",
+                                        "ofType": null
+                                    }
+                                }
                             }
                         },
                         "isDeprecated": false,
@@ -404,9 +508,13 @@
                             }
                         ],
                         "type": {
-                            "kind": "OBJECT",
-                            "name": "Rate",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "OBJECT",
+                                "name": "Rate",
+                                "ofType": null
+                            }
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -416,12 +524,20 @@
                         "description": "Trả về một danh sách các loại giá cơ bản",
                         "args": [],
                         "type": {
-                            "kind": "LIST",
+                            "kind": "NON_NULL",
                             "name": null,
                             "ofType": {
-                                "kind": "OBJECT",
-                                "name": "Rate",
-                                "ofType": null
+                                "kind": "LIST",
+                                "name": null,
+                                "ofType": {
+                                    "kind": "NON_NULL",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "OBJECT",
+                                        "name": "Rate",
+                                        "ofType": null
+                                    }
+                                }
                             }
                         },
                         "isDeprecated": false,
@@ -447,9 +563,13 @@
                             }
                         ],
                         "type": {
-                            "kind": "OBJECT",
-                            "name": "Receipt",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "OBJECT",
+                                "name": "Receipt",
+                                "ofType": null
+                            }
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -459,12 +579,20 @@
                         "description": "Trả về một danh sách các phiếu thu",
                         "args": [],
                         "type": {
-                            "kind": "LIST",
+                            "kind": "NON_NULL",
                             "name": null,
                             "ofType": {
-                                "kind": "OBJECT",
-                                "name": "Receipt",
-                                "ofType": null
+                                "kind": "LIST",
+                                "name": null,
+                                "ofType": {
+                                    "kind": "NON_NULL",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "OBJECT",
+                                        "name": "Receipt",
+                                        "ofType": null
+                                    }
+                                }
                             }
                         },
                         "isDeprecated": false,
@@ -490,9 +618,13 @@
                             }
                         ],
                         "type": {
-                            "kind": "OBJECT",
-                            "name": "Room",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "OBJECT",
+                                "name": "Room",
+                                "ofType": null
+                            }
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -517,19 +649,7 @@
                             }
                         ],
                         "type": {
-                            "kind": "OBJECT",
-                            "name": "RoomKind",
-                            "ofType": null
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "roomKinds",
-                        "description": "Trả về một danh sách các loại phòng",
-                        "args": [],
-                        "type": {
-                            "kind": "LIST",
+                            "kind": "NON_NULL",
                             "name": null,
                             "ofType": {
                                 "kind": "OBJECT",
@@ -541,16 +661,48 @@
                         "deprecationReason": null
                     },
                     {
+                        "name": "roomKinds",
+                        "description": "Trả về một danh sách các loại phòng",
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "LIST",
+                                "name": null,
+                                "ofType": {
+                                    "kind": "NON_NULL",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "OBJECT",
+                                        "name": "RoomKind",
+                                        "ofType": null
+                                    }
+                                }
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
                         "name": "rooms",
                         "description": "Trả về một danh sách các phòng",
                         "args": [],
                         "type": {
-                            "kind": "LIST",
+                            "kind": "NON_NULL",
                             "name": null,
                             "ofType": {
-                                "kind": "OBJECT",
-                                "name": "Room",
-                                "ofType": null
+                                "kind": "LIST",
+                                "name": null,
+                                "ofType": {
+                                    "kind": "NON_NULL",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "OBJECT",
+                                        "name": "Room",
+                                        "ofType": null
+                                    }
+                                }
                             }
                         },
                         "isDeprecated": false,
@@ -576,9 +728,13 @@
                             }
                         ],
                         "type": {
-                            "kind": "OBJECT",
-                            "name": "Service",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "OBJECT",
+                                "name": "Service",
+                                "ofType": null
+                            }
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -588,12 +744,20 @@
                         "description": "Trả về một danh sách các dịch vụ",
                         "args": [],
                         "type": {
-                            "kind": "LIST",
+                            "kind": "NON_NULL",
                             "name": null,
                             "ofType": {
-                                "kind": "OBJECT",
-                                "name": "Service",
-                                "ofType": null
+                                "kind": "LIST",
+                                "name": null,
+                                "ofType": {
+                                    "kind": "NON_NULL",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "OBJECT",
+                                        "name": "Service",
+                                        "ofType": null
+                                    }
+                                }
                             }
                         },
                         "isDeprecated": false,
@@ -619,9 +783,13 @@
                             }
                         ],
                         "type": {
-                            "kind": "OBJECT",
-                            "name": "ServicesDetail",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "OBJECT",
+                                "name": "ServicesDetail",
+                                "ofType": null
+                            }
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -631,12 +799,20 @@
                         "description": "Trả về một danh sách các chi tiết dịch vụ",
                         "args": [],
                         "type": {
-                            "kind": "LIST",
+                            "kind": "NON_NULL",
                             "name": null,
                             "ofType": {
-                                "kind": "OBJECT",
-                                "name": "ServicesDetail",
-                                "ofType": null
+                                "kind": "LIST",
+                                "name": null,
+                                "ofType": {
+                                    "kind": "NON_NULL",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "OBJECT",
+                                        "name": "ServicesDetail",
+                                        "ofType": null
+                                    }
+                                }
                             }
                         },
                         "isDeprecated": false,
@@ -662,9 +838,13 @@
                             }
                         ],
                         "type": {
-                            "kind": "OBJECT",
-                            "name": "VolatilityRate",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "OBJECT",
+                                "name": "VolatilityRate",
+                                "ofType": null
+                            }
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -674,12 +854,20 @@
                         "description": "Trả về một danh sách các giá biến động",
                         "args": [],
                         "type": {
-                            "kind": "LIST",
+                            "kind": "NON_NULL",
                             "name": null,
                             "ofType": {
-                                "kind": "OBJECT",
-                                "name": "VolatilityRate",
-                                "ofType": null
+                                "kind": "LIST",
+                                "name": null,
+                                "ofType": {
+                                    "kind": "NON_NULL",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "OBJECT",
+                                        "name": "VolatilityRate",
+                                        "ofType": null
+                                    }
+                                }
                             }
                         },
                         "isDeprecated": false,
@@ -1463,166 +1651,6 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "permissionCreateBill",
-                        "description": "Quyền tạo hóa đơn",
-                        "args": [],
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Boolean",
-                                "ofType": null
-                            }
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "permissionCreateBooking",
-                        "description": "Quyền tạo đơn đặt phòng",
-                        "args": [],
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Boolean",
-                                "ofType": null
-                            }
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "permissionCreateOrUpdateEmployee",
-                        "description": "Quyền tạo hoặc chỉnh sửa tài khoản nhân viên",
-                        "args": [],
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Boolean",
-                                "ofType": null
-                            }
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "permissionCreateOrUpdatePatron",
-                        "description": "Quyền tạo hoặc chỉnh sửa khách hàng",
-                        "args": [],
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Boolean",
-                                "ofType": null
-                            }
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "permissionCreateOrUpdateRate",
-                        "description": "Quyền tạo giá cơ bản",
-                        "args": [],
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Boolean",
-                                "ofType": null
-                            }
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "permissionCreateOrUpdateRoomKind",
-                        "description": "Quyền tạo hoặc chỉnh sửa loại phòng",
-                        "args": [],
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Boolean",
-                                "ofType": null
-                            }
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "permissionCreateOrUpdateService",
-                        "description": "Quyền tạo dịch vụ",
-                        "args": [],
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Boolean",
-                                "ofType": null
-                            }
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "permissionCreateOrUpdateVolatilityRate",
-                        "description": "Quyền tạo giá biến động",
-                        "args": [],
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Boolean",
-                                "ofType": null
-                            }
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "permissionCreatePatronKind",
-                        "description": "Quyền tạo loại khách hàng",
-                        "args": [],
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Boolean",
-                                "ofType": null
-                            }
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "permissionCreatePosition",
-                        "description": "Quyền tạo chức vụ",
-                        "args": [],
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Boolean",
-                                "ofType": null
-                            }
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
                         "name": "permissionCreateReceipt",
                         "description": "Quyền tạo phiếu thu",
                         "args": [],
@@ -1639,23 +1667,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "permissionCreateServicesDetail",
-                        "description": "Quyền tạo chi tiết dịch vụ",
-                        "args": [],
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Boolean",
-                                "ofType": null
-                            }
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "permissionGetHouseKeepings",
+                        "name": "permissionGetHouseKeeping",
                         "description": "Quyền tra cứu lịch sử dọn phòng",
                         "args": [],
                         "type": {
@@ -1687,8 +1699,8 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "permissionHandleBills",
-                        "description": "Quyền thao tác hóa đơn",
+                        "name": "permissionManageAccount",
+                        "description": "Quyền thay đổi mật khẩu cá nhân",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -1703,7 +1715,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "permissionManageEmployees",
+                        "name": "permissionManageEmployee",
                         "description": "Quyền quản lý thông tin nhân viên",
                         "args": [],
                         "type": {
@@ -1719,7 +1731,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "permissionManageHiringRooms",
+                        "name": "permissionManageHiringRoom",
                         "description": "Quyền quản lý thuê phòng",
                         "args": [],
                         "type": {
@@ -1735,7 +1747,23 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "permissionManagePatronKinds",
+                        "name": "permissionManagePatron",
+                        "description": "Quyền quản lý khách hàng",
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Boolean",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "permissionManagePatronKind",
                         "description": "Quyền quản lý loại khách hàng",
                         "args": [],
                         "type": {
@@ -1751,8 +1779,72 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "permissionManagePatrons",
-                        "description": "Quyền quản lý khách hàng",
+                        "name": "permissionManagePosition",
+                        "description": "Quyền quản lý chức vụ",
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Boolean",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "permissionManageRate",
+                        "description": "Quyền quản lý giá cơ bản và giá biến động",
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Boolean",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "permissionManageRoomKind",
+                        "description": "Quyền quản lý loại phòng",
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Boolean",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "permissionManageService",
+                        "description": "Quyền quản lý dịch vụ",
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Boolean",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "permissionReferDebt",
+                        "description": "Quyền tra cứu công nợ",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -3260,6 +3352,51 @@
                 "description": "",
                 "fields": [
                     {
+                        "name": "addBookingToBill",
+                        "description": "Thêm phòng khách đoàn",
+                        "args": [
+                            {
+                                "name": "billId",
+                                "description": "",
+                                "type": {
+                                    "kind": "NON_NULL",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "SCALAR",
+                                        "name": "ID",
+                                        "ofType": null
+                                    }
+                                },
+                                "defaultValue": null
+                            },
+                            {
+                                "name": "booking",
+                                "description": "",
+                                "type": {
+                                    "kind": "NON_NULL",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "INPUT_OBJECT",
+                                        "name": "BookingCreateInput",
+                                        "ofType": null
+                                    }
+                                },
+                                "defaultValue": null
+                            }
+                        ],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "OBJECT",
+                                "name": "Booking",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
                         "name": "assignCleaningService",
                         "description": "Nhân viên nhận phòng để dọn dẹp",
                         "args": [
@@ -3279,9 +3416,66 @@
                             }
                         ],
                         "type": {
-                            "kind": "OBJECT",
-                            "name": "HouseKeeping",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "OBJECT",
+                                "name": "HouseKeeping",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "bookAndCheckIn",
+                        "description": "Đặt và nhận phòng ngay tại khách sạn",
+                        "args": [
+                            {
+                                "name": "bookings",
+                                "description": "",
+                                "type": {
+                                    "kind": "NON_NULL",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "LIST",
+                                        "name": null,
+                                        "ofType": {
+                                            "kind": "NON_NULL",
+                                            "name": null,
+                                            "ofType": {
+                                                "kind": "INPUT_OBJECT",
+                                                "name": "BookingCreateInput",
+                                                "ofType": null
+                                            }
+                                        }
+                                    }
+                                },
+                                "defaultValue": null
+                            },
+                            {
+                                "name": "bill",
+                                "description": "",
+                                "type": {
+                                    "kind": "NON_NULL",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "INPUT_OBJECT",
+                                        "name": "BillCreateInput",
+                                        "ofType": null
+                                    }
+                                },
+                                "defaultValue": null
+                            }
+                        ],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "OBJECT",
+                                "name": "Bill",
+                                "ofType": null
+                            }
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -3306,9 +3500,13 @@
                             }
                         ],
                         "type": {
-                            "kind": "OBJECT",
-                            "name": "HouseKeeping",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "OBJECT",
+                                "name": "HouseKeeping",
+                                "ofType": null
+                            }
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -3355,9 +3553,13 @@
                             }
                         ],
                         "type": {
-                            "kind": "OBJECT",
-                            "name": "HouseKeeping",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "OBJECT",
+                                "name": "HouseKeeping",
+                                "ofType": null
+                            }
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -3404,9 +3606,13 @@
                             }
                         ],
                         "type": {
-                            "kind": "OBJECT",
-                            "name": "Bill",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "OBJECT",
+                                "name": "Bill",
+                                "ofType": null
+                            }
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -3431,9 +3637,13 @@
                             }
                         ],
                         "type": {
-                            "kind": "OBJECT",
-                            "name": "Employee",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "OBJECT",
+                                "name": "Employee",
+                                "ofType": null
+                            }
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -3458,9 +3668,13 @@
                             }
                         ],
                         "type": {
-                            "kind": "OBJECT",
-                            "name": "Floor",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "OBJECT",
+                                "name": "Floor",
+                                "ofType": null
+                            }
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -3485,9 +3699,13 @@
                             }
                         ],
                         "type": {
-                            "kind": "OBJECT",
-                            "name": "Patron",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "OBJECT",
+                                "name": "Patron",
+                                "ofType": null
+                            }
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -3512,9 +3730,13 @@
                             }
                         ],
                         "type": {
-                            "kind": "OBJECT",
-                            "name": "PatronKind",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "OBJECT",
+                                "name": "PatronKind",
+                                "ofType": null
+                            }
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -3539,9 +3761,13 @@
                             }
                         ],
                         "type": {
-                            "kind": "OBJECT",
-                            "name": "Position",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "OBJECT",
+                                "name": "Position",
+                                "ofType": null
+                            }
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -3566,9 +3792,13 @@
                             }
                         ],
                         "type": {
-                            "kind": "OBJECT",
-                            "name": "Rate",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "OBJECT",
+                                "name": "Rate",
+                                "ofType": null
+                            }
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -3593,9 +3823,13 @@
                             }
                         ],
                         "type": {
-                            "kind": "OBJECT",
-                            "name": "Receipt",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "OBJECT",
+                                "name": "Receipt",
+                                "ofType": null
+                            }
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -3620,9 +3854,13 @@
                             }
                         ],
                         "type": {
-                            "kind": "OBJECT",
-                            "name": "Room",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "OBJECT",
+                                "name": "Room",
+                                "ofType": null
+                            }
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -3647,9 +3885,13 @@
                             }
                         ],
                         "type": {
-                            "kind": "OBJECT",
-                            "name": "RoomKind",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "OBJECT",
+                                "name": "RoomKind",
+                                "ofType": null
+                            }
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -3674,9 +3916,13 @@
                             }
                         ],
                         "type": {
-                            "kind": "OBJECT",
-                            "name": "Service",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "OBJECT",
+                                "name": "Service",
+                                "ofType": null
+                            }
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -3701,9 +3947,13 @@
                             }
                         ],
                         "type": {
-                            "kind": "OBJECT",
-                            "name": "VolatilityRate",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "OBJECT",
+                                "name": "VolatilityRate",
+                                "ofType": null
+                            }
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -3742,9 +3992,13 @@
                             }
                         ],
                         "type": {
-                            "kind": "SCALAR",
-                            "name": "String",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -3769,9 +4023,13 @@
                             }
                         ],
                         "type": {
-                            "kind": "OBJECT",
-                            "name": "Booking",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "OBJECT",
+                                "name": "Booking",
+                                "ofType": null
+                            }
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -3781,9 +4039,44 @@
                         "description": "Kiểm tra đăng nhập",
                         "args": [],
                         "type": {
-                            "kind": "OBJECT",
-                            "name": "Employee",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "OBJECT",
+                                "name": "Employee",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "checkOut",
+                        "description": "Thực hiện xác nhận trả phòng",
+                        "args": [
+                            {
+                                "name": "id",
+                                "description": "",
+                                "type": {
+                                    "kind": "NON_NULL",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "SCALAR",
+                                        "name": "ID",
+                                        "ofType": null
+                                    }
+                                },
+                                "defaultValue": null
+                            }
+                        ],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "OBJECT",
+                                "name": "Booking",
+                                "ofType": null
+                            }
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -3808,9 +4101,13 @@
                             }
                         ],
                         "type": {
-                            "kind": "SCALAR",
-                            "name": "String",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -3835,9 +4132,13 @@
                             }
                         ],
                         "type": {
-                            "kind": "SCALAR",
-                            "name": "String",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -3862,9 +4163,13 @@
                             }
                         ],
                         "type": {
-                            "kind": "SCALAR",
-                            "name": "String",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -3919,9 +4224,13 @@
                             }
                         ],
                         "type": {
-                            "kind": "OBJECT",
-                            "name": "AuthenticationObject",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "OBJECT",
+                                "name": "AuthenticationObject",
+                                "ofType": null
+                            }
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -3946,9 +4255,13 @@
                             }
                         ],
                         "type": {
-                            "kind": "OBJECT",
-                            "name": "Booking",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "OBJECT",
+                                "name": "Booking",
+                                "ofType": null
+                            }
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -3973,9 +4286,13 @@
                             }
                         ],
                         "type": {
-                            "kind": "SCALAR",
-                            "name": "String",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -4014,9 +4331,13 @@
                             }
                         ],
                         "type": {
-                            "kind": "SCALAR",
-                            "name": "String",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -4055,9 +4376,13 @@
                             }
                         ],
                         "type": {
-                            "kind": "SCALAR",
-                            "name": "String",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -4096,9 +4421,13 @@
                             }
                         ],
                         "type": {
-                            "kind": "SCALAR",
-                            "name": "String",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -4137,9 +4466,13 @@
                             }
                         ],
                         "type": {
-                            "kind": "SCALAR",
-                            "name": "String",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -4178,9 +4511,13 @@
                             }
                         ],
                         "type": {
-                            "kind": "SCALAR",
-                            "name": "String",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -4205,9 +4542,13 @@
                             }
                         ],
                         "type": {
-                            "kind": "OBJECT",
-                            "name": "Employee",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "OBJECT",
+                                "name": "Employee",
+                                "ofType": null
+                            }
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -4232,9 +4573,13 @@
                             }
                         ],
                         "type": {
-                            "kind": "OBJECT",
-                            "name": "Floor",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "OBJECT",
+                                "name": "Floor",
+                                "ofType": null
+                            }
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -4259,9 +4604,13 @@
                             }
                         ],
                         "type": {
-                            "kind": "OBJECT",
-                            "name": "Patron",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "OBJECT",
+                                "name": "Patron",
+                                "ofType": null
+                            }
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -4286,9 +4635,13 @@
                             }
                         ],
                         "type": {
-                            "kind": "OBJECT",
-                            "name": "Room",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "OBJECT",
+                                "name": "Room",
+                                "ofType": null
+                            }
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -4313,9 +4666,13 @@
                             }
                         ],
                         "type": {
-                            "kind": "OBJECT",
-                            "name": "RoomKind",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "OBJECT",
+                                "name": "RoomKind",
+                                "ofType": null
+                            }
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -4340,9 +4697,13 @@
                             }
                         ],
                         "type": {
-                            "kind": "OBJECT",
-                            "name": "Service",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "OBJECT",
+                                "name": "Service",
+                                "ofType": null
+                            }
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -4350,70 +4711,6 @@
                 ],
                 "inputFields": null,
                 "interfaces": [],
-                "enumValues": null,
-                "possibleTypes": null
-            },
-            {
-                "kind": "INPUT_OBJECT",
-                "name": "ServicesDetailCreateInput",
-                "description": "",
-                "fields": null,
-                "inputFields": [
-                    {
-                        "name": "number",
-                        "description": "Số lượng",
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Int",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "service",
-                        "description": "Thuộc dịch vụ nào",
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "INPUT_OBJECT",
-                                "name": "ServiceId",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    }
-                ],
-                "interfaces": null,
-                "enumValues": null,
-                "possibleTypes": null
-            },
-            {
-                "kind": "INPUT_OBJECT",
-                "name": "ServiceId",
-                "description": "Input cho một thông tin dịch vụ",
-                "fields": null,
-                "inputFields": [
-                    {
-                        "name": "id",
-                        "description": "Id của dịch vụ",
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Int",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    }
-                ],
-                "interfaces": null,
                 "enumValues": null,
                 "possibleTypes": null
             },
@@ -4541,20 +4838,6 @@
                 "fields": null,
                 "inputFields": [
                     {
-                        "name": "time",
-                        "description": "Thời điểm in hóa đơn",
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "DateTimeOffset",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
                         "name": "patron",
                         "description": "Khách hàng",
                         "type": {
@@ -4563,6 +4846,70 @@
                             "ofType": null
                         },
                         "defaultValue": "null"
+                    }
+                ],
+                "interfaces": null,
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "INPUT_OBJECT",
+                "name": "ServicesDetailCreateInput",
+                "description": "",
+                "fields": null,
+                "inputFields": [
+                    {
+                        "name": "number",
+                        "description": "Số lượng",
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Int",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "service",
+                        "description": "Thuộc dịch vụ nào",
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "INPUT_OBJECT",
+                                "name": "ServiceId",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    }
+                ],
+                "interfaces": null,
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "INPUT_OBJECT",
+                "name": "ServiceId",
+                "description": "Input cho một thông tin dịch vụ",
+                "fields": null,
+                "inputFields": [
+                    {
+                        "name": "id",
+                        "description": "Id của dịch vụ",
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Int",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
                     }
                 ],
                 "interfaces": null,
@@ -5054,7 +5401,49 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "permissionManageEmployees",
+                        "name": "permissionReferDebt",
+                        "description": "Quyền tra cứu công nợ",
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Boolean",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "permissionManageAccount",
+                        "description": "Quyền thay đổi mật khẩu cá nhân",
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Boolean",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "permissionManagePosition",
+                        "description": "Quyền quản lý chức vụ",
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Boolean",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "permissionManageEmployee",
                         "description": "Quyền quản lý thông tin nhân viên",
                         "type": {
                             "kind": "NON_NULL",
@@ -5082,20 +5471,6 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "permissionHandleBills",
-                        "description": "Quyền thao tác hóa đơn",
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Boolean",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
                         "name": "permissionGetRooms",
                         "description": "Quyền lấy danh sách phòng và hiện trạng từng phòng",
                         "type": {
@@ -5110,7 +5485,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "permissionManageHiringRooms",
+                        "name": "permissionManageHiringRoom",
                         "description": "Quyền quản lý thuê phòng",
                         "type": {
                             "kind": "NON_NULL",
@@ -5124,7 +5499,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "permissionGetHouseKeepings",
+                        "name": "permissionGetHouseKeeping",
                         "description": "Quyền tra cứu lịch sử dọn phòng",
                         "type": {
                             "kind": "NON_NULL",
@@ -5138,7 +5513,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "permissionManagePatrons",
+                        "name": "permissionManagePatron",
                         "description": "Quyền quản lý khách hàng",
                         "type": {
                             "kind": "NON_NULL",
@@ -5152,7 +5527,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "permissionManagePatronKinds",
+                        "name": "permissionManagePatronKind",
                         "description": "Quyền quản lý loại khách hàng",
                         "type": {
                             "kind": "NON_NULL",
@@ -5180,76 +5555,6 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "permissionCreateOrUpdatePatron",
-                        "description": "Quyền tạo hoặc chỉnh sửa khách hàng",
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Boolean",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "permissionCreateOrUpdateEmployee",
-                        "description": "Quyền tạo hoặc chỉnh sửa tài khoản nhân viên",
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Boolean",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "permissionCreatePatronKind",
-                        "description": "Quyền tạo loại khách hàng",
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Boolean",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "permissionCreateBill",
-                        "description": "Quyền tạo hóa đơn",
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Boolean",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "permissionCreatePosition",
-                        "description": "Quyền tạo chức vụ",
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Boolean",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
                         "name": "permissionCreateReceipt",
                         "description": "Quyền tạo phiếu thu",
                         "type": {
@@ -5264,8 +5569,8 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "permissionCreateOrUpdateRoomKind",
-                        "description": "Quyền tạo hoặc chỉnh sửa loại phòng",
+                        "name": "permissionManageRoomKind",
+                        "description": "Quyền quản lý loại phòng",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -5278,8 +5583,8 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "permissionCreateOrUpdateRate",
-                        "description": "Quyền tạo giá cơ bản",
+                        "name": "permissionManageRate",
+                        "description": "Quyền quản lý giá cơ bản và giá biến động",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -5292,50 +5597,8 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "permissionCreateOrUpdateVolatilityRate",
-                        "description": "Quyền tạo giá biến động",
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Boolean",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "permissionCreateOrUpdateService",
-                        "description": "Quyền tạo và cập nhật dịch vụ",
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Boolean",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "permissionCreateServicesDetail",
-                        "description": "Quyền tạo chi tiết dịch vụ",
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Boolean",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "permissionCreateBooking",
-                        "description": "Quyền tạo đơn đặt phòng",
+                        "name": "permissionManageService",
+                        "description": "Quyền quản lý dịch vụ",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,

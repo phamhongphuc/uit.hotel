@@ -1,3 +1,4 @@
+import { notify } from '~/plugins/notify';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { ApolloClient, ApolloError, MutationOptions } from 'apollo-client';
 import { FetchResult } from 'apollo-link';
@@ -26,14 +27,13 @@ export function apolloClientNotify(store: any): ApolloNotify {
                     error.networkError !== null &&
                     (error.networkError as ServerError).result !== undefined
                 ) {
-                    Vue.notify({
+                    notify.error({
                         title: 'Lỗi',
-                        type: 'error',
                         text: (error.networkError as ServerError).result[0]
                             .InnerException.Message,
                     });
                 } else {
-                    Vue.notify({
+                    notify.error({
                         title: 'Lỗi không xác định',
                         type: 'error',
                         text: error.message,

@@ -1,7 +1,7 @@
 <template>
-    <b-nav-item
+    <b-dropdown-item
         :to="to"
-        class="nav-item-icon"
+        class="dropdown-item-icon"
         :exact="exact"
         @click="$emit('click')"
     >
@@ -16,13 +16,13 @@
             />
         </div>
         <div v-if="text !== ''" :class="textClass">{{ text }}</div>
-    </b-nav-item>
+    </b-dropdown-item>
 </template>
 <script lang="ts">
 import { Vue, Prop, Component } from 'nuxt-property-decorator';
 
 @Component({
-    name: 'b-nav-item-icon-',
+    name: 'b-dropdown-item-icon-',
 })
 export default class extends Vue {
     @Prop({ default: '' })

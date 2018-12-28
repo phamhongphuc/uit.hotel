@@ -4,211 +4,223 @@ schema {
 }
 
 type AppMutation {
+    # Thêm phòng khách đoàn
+    addBookingToBill(billId: ID!, booking: BookingCreateInput!): Booking!
+
     # Nhân viên nhận phòng để dọn dẹp
-    assignCleaningService(id: ID!): HouseKeeping
+    assignCleaningService(id: ID!): HouseKeeping!
+
+    # Đặt và nhận phòng ngay tại khách sạn
+    bookAndCheckIn(
+        bookings: [BookingCreateInput!]!
+        bill: BillCreateInput!
+    ): Bill!
 
     # Nhân viên xác nhận đã dọn xong
-    confirmCleaned(id: ID!): HouseKeeping
+    confirmCleaned(id: ID!): HouseKeeping!
 
     # Nhân viên xác nhận và gửi thông tin kiểm tra phòng check-out
     confirmCleanedAndServices(
         servicesDetails: [ServicesDetailCreateInput!]!
         houseKeepingId: ID!
-    ): HouseKeeping
+    ): HouseKeeping!
 
     # Tạo và trả về một đơn đặt phòng
-    createBill(bookings: [BookingCreateInput!]!, bill: BillCreateInput!): Bill
+    createBill(bookings: [BookingCreateInput!]!, bill: BillCreateInput!): Bill!
 
     # Tạo và trả về một nhân viên mới
-    createEmployee(input: EmployeeCreateInput!): Employee
+    createEmployee(input: EmployeeCreateInput!): Employee!
 
     # Tạo và trả về một tầng mới
-    createFloor(input: FloorCreateInput!): Floor
+    createFloor(input: FloorCreateInput!): Floor!
 
     # Tạo và trả về một khách hàng mới
-    createPatron(input: PatronCreateInput!): Patron
+    createPatron(input: PatronCreateInput!): Patron!
 
     # Tạo và trả về một loại khách hàng mới
-    createPatronKind(input: PatronKindCreateInput!): PatronKind
+    createPatronKind(input: PatronKindCreateInput!): PatronKind!
 
     # Tạo và trả về một chức vụ mới
-    createPosition(input: PositionCreateInput!): Position
+    createPosition(input: PositionCreateInput!): Position!
 
     # Tạo và trả về một loại giá cơ bản mới
-    createRate(input: RateCreateInput!): Rate
+    createRate(input: RateCreateInput!): Rate!
 
     # Tạo và trả về một phiếu thu mới
-    createReceipt(input: ReceiptCreateInput!): Receipt
+    createReceipt(input: ReceiptCreateInput!): Receipt!
 
     # Tạo và trả về một phòng mới
-    createRoom(input: RoomCreateInput!): Room
+    createRoom(input: RoomCreateInput!): Room!
 
     # Tạo và trả về một loại phòng
-    createRoomKind(input: RoomKindCreateInput!): RoomKind
+    createRoomKind(input: RoomKindCreateInput!): RoomKind!
 
     # Tạo và trả về một dịch vụ mới
-    createService(input: ServiceCreateInput!): Service
+    createService(input: ServiceCreateInput!): Service!
 
     # Tạo và trả về một giá biến động mới
-    createVolatilityRate(input: VolatilityRateCreateInput!): VolatilityRate
+    createVolatilityRate(input: VolatilityRateCreateInput!): VolatilityRate!
 
     # Nhân viên tự đổi mật khẩu cho tài khoản của mình
-    changePassword(password: String!, newPassword: String!): String
+    changePassword(password: String!, newPassword: String!): String!
 
     # Cập nhật thời gian checkin của phòng
-    checkIn(id: ID!): Booking
+    checkIn(id: ID!): Booking!
 
     # Kiểm tra đăng nhập
-    checkLogin: Employee
+    checkLogin: Employee!
+
+    # Thực hiện xác nhận trả phòng
+    checkOut(id: ID!): Booking!
 
     # Xóa một tầng
-    deleteFloor(id: ID!): String
+    deleteFloor(id: ID!): String!
 
     # Xóa và trả về một phòng vừa xóa
-    deleteRoom(id: ID!): String
+    deleteRoom(id: ID!): String!
 
     # Xóa một loại phòng
-    deleteRoomKind(id: ID!): String
+    deleteRoomKind(id: ID!): String!
 
     # Khởi tạo dữ liệu
     initializeDatabase: String!
 
     # Đăng nhập mới
-    login(id: String!, password: String!): AuthenticationObject
+    login(id: String!, password: String!): AuthenticationObject!
 
     # Yêu cầu kiểm tra khi trả phòng
-    requestCheckOut(id: ID!): Booking
+    requestCheckOut(id: ID!): Booking!
 
     # Reset lại mật khẩu cho nhân viên khi quên mật khẩu
-    resetPassword(id: ID!): String
+    resetPassword(id: ID!): String!
 
     # Vô hiệu hóa/ kích hoạt tài khoản
-    setIsActiveAccount(id: ID!, isActive: Boolean!): String
+    setIsActiveAccount(id: ID!, isActive: Boolean!): String!
 
     # Cập nhật trạng thái của tầng
-    setIsActiveFloor(id: ID!, isActive: Boolean!): String
+    setIsActiveFloor(id: ID!, isActive: Boolean!): String!
 
     # Cập nhật trạng thái của một phòng
-    setIsActiveRoom(id: ID!, isActive: Boolean!): String
+    setIsActiveRoom(id: ID!, isActive: Boolean!): String!
 
     # Cập nhật trạng thái của loại phòng
-    setIsActiveRoomKind(id: ID!, isActive: Boolean!): String
+    setIsActiveRoomKind(id: ID!, isActive: Boolean!): String!
 
     # Cập nhật trạng thái của dịch vụ
-    setIsActiveService(id: ID!, isActive: Boolean!): String
+    setIsActiveService(id: ID!, isActive: Boolean!): String!
 
     # Chỉnh sửa thông tin nhân viên
-    updateEmployee(input: EmployeeUpdateInput!): Employee
+    updateEmployee(input: EmployeeUpdateInput!): Employee!
 
     # Cập nhật và trả về một tầng vừa cập nhật
-    updateFloor(input: FloorUpdateInput!): Floor
+    updateFloor(input: FloorUpdateInput!): Floor!
 
     # Cập nhật và trả về một khách hàng vừa cập nhật
-    updatePatron(input: PatronUpdateInput!): Patron
+    updatePatron(input: PatronUpdateInput!): Patron!
 
     # Cập nhật và trả về một phòng vừa cập nhật
-    updateRoom(input: RoomUpdateInput!): Room
+    updateRoom(input: RoomUpdateInput!): Room!
 
     # Cập nhật và trả về loại phòng vừa cập nhật
-    updateRoomKind(input: RoomKindUpdateInput!): RoomKind
+    updateRoomKind(input: RoomKindUpdateInput!): RoomKind!
 
     # Cập nhật và trả về một dịch vụ mới cập nhật
-    updateService(input: ServiceUpdateInput!): Service
+    updateService(input: ServiceUpdateInput!): Service!
 }
 
 type AppQuery {
     # Trả về thông tin một hóa đơn
-    bill(id: ID!): Bill
+    bill(id: ID!): Bill!
 
     # Trả về một danh sách các hóa đơn
-    bills: [Bill]
+    bills: [Bill!]!
 
     # Trả về thông tin một đơn đặt phòng
-    booking(id: ID!): Booking
+    booking(id: ID!): Booking!
 
     # Trả về một danh sách các đơn đặt phòng
-    bookings: [Booking]
+    bookings: [Booking!]!
 
     # Trả về thông tin một nhân viên
-    employee(id: ID!): Employee
+    employee(id: ID!): Employee!
 
     # Trả về một danh sách các nhân viên
-    employees: [Employee]
+    employees: [Employee!]!
 
     # Trả về danh sách khách hàng theo từ khóa tìm kiếm
-    findingPatron(id: ID!): [Patron]
+    findingPatron(id: ID!): [Patron!]!
 
     # Trả về thông tin một tầng
-    floor(id: ID!): Floor
+    floor(id: ID!): Floor!
 
     # Trả về một danh sách các tầng
-    floors: [Floor]
+    floors: [Floor!]!
 
     # Trả về thông tin một công việc dọn dẹp
-    houseKeeping(id: ID!): HouseKeeping
+    houseKeeping(id: ID!): HouseKeeping!
 
     # Trả về một danh sách các công việc dọn dẹp
-    houseKeepings: [HouseKeeping]
+    houseKeepings: [HouseKeeping!]!
 
     # Trả về thông tin một khách hàng
-    patron(id: ID!): Patron
+    patron(id: ID!): Patron!
 
     # Trả về thông tin của một loại khách hàng
-    patronKind(id: ID!): PatronKind
+    patronKind(id: ID!): PatronKind!
 
     # Trả về một danh sách các loại khách hàng có trong hệ thống
-    patronKinds: [PatronKind]
+    patronKinds: [PatronKind!]!
 
     # Trả về một danh sách các khách hàng
-    patrons: [Patron]
+    patrons: [Patron!]!
 
     # Trả về thông tin một chức vụ
-    position(id: ID!): Position
+    position(id: ID!): Position!
 
     # Trả về một danh sách các chức vụ
-    positions: [Position]
+    positions: [Position!]!
 
     # Trả về thông tin một loại giá cơ bản
-    rate(id: ID!): Rate
+    rate(id: ID!): Rate!
 
     # Trả về một danh sách các loại giá cơ bản
-    rates: [Rate]
+    rates: [Rate!]!
 
     # Trả về thông tin một phiếu thu
-    receipt(id: ID!): Receipt
+    receipt(id: ID!): Receipt!
 
     # Trả về một danh sách các phiếu thu
-    receipts: [Receipt]
+    receipts: [Receipt!]!
 
     # Trả về thông tin của một phòng
-    room(id: ID!): Room
+    room(id: ID!): Room!
 
     # Trả về thông tin của một loại phòng
-    roomKind(id: ID!): RoomKind
+    roomKind(id: ID!): RoomKind!
 
     # Trả về một danh sách các loại phòng
-    roomKinds: [RoomKind]
+    roomKinds: [RoomKind!]!
 
     # Trả về một danh sách các phòng
-    rooms: [Room]
+    rooms: [Room!]!
 
     # Trả về thông tin một dịch vụ
-    service(id: ID!): Service
+    service(id: ID!): Service!
 
     # Trả về một danh sách các dịch vụ
-    services: [Service]
+    services: [Service!]!
 
     # Trả về thông tin một chi tiết dịch vụ
-    servicesDetail(id: ID!): ServicesDetail
+    servicesDetail(id: ID!): ServicesDetail!
 
     # Trả về một danh sách các chi tiết dịch vụ
-    servicesDetails: [ServicesDetail]
+    servicesDetails: [ServicesDetail!]!
 
     # Trả về thông tin một giá biến động
-    volatilityRate(id: ID!): VolatilityRate
+    volatilityRate(id: ID!): VolatilityRate!
 
     # Trả về một danh sách các giá biến động
-    volatilityRates: [VolatilityRate]
+    volatilityRates: [VolatilityRate!]!
 }
 
 # Một đối tượng đăng nhập
@@ -242,9 +254,6 @@ type Bill {
 }
 
 input BillCreateInput {
-    # Thời điểm in hóa đơn
-    time: DateTimeOffset!
-
     # Khách hàng
     patron: PatronId = null
 }
@@ -676,62 +685,44 @@ type Position {
     # Quyền thao tác dọn phòng
     permissionCleaning: Boolean!
 
-    # Quyền tạo hóa đơn
-    permissionCreateBill: Boolean!
-
-    # Quyền tạo đơn đặt phòng
-    permissionCreateBooking: Boolean!
-
-    # Quyền tạo hoặc chỉnh sửa tài khoản nhân viên
-    permissionCreateOrUpdateEmployee: Boolean!
-
-    # Quyền tạo hoặc chỉnh sửa khách hàng
-    permissionCreateOrUpdatePatron: Boolean!
-
-    # Quyền tạo giá cơ bản
-    permissionCreateOrUpdateRate: Boolean!
-
-    # Quyền tạo hoặc chỉnh sửa loại phòng
-    permissionCreateOrUpdateRoomKind: Boolean!
-
-    # Quyền tạo dịch vụ
-    permissionCreateOrUpdateService: Boolean!
-
-    # Quyền tạo giá biến động
-    permissionCreateOrUpdateVolatilityRate: Boolean!
-
-    # Quyền tạo loại khách hàng
-    permissionCreatePatronKind: Boolean!
-
-    # Quyền tạo chức vụ
-    permissionCreatePosition: Boolean!
-
     # Quyền tạo phiếu thu
     permissionCreateReceipt: Boolean!
 
-    # Quyền tạo chi tiết dịch vụ
-    permissionCreateServicesDetail: Boolean!
-
     # Quyền tra cứu lịch sử dọn phòng
-    permissionGetHouseKeepings: Boolean!
+    permissionGetHouseKeeping: Boolean!
 
     # Quyền lấy danh sách phòng và hiện trạng từng phòng
     permissionGetRooms: Boolean!
 
-    # Quyền thao tác hóa đơn
-    permissionHandleBills: Boolean!
+    # Quyền thay đổi mật khẩu cá nhân
+    permissionManageAccount: Boolean!
 
     # Quyền quản lý thông tin nhân viên
-    permissionManageEmployees: Boolean!
+    permissionManageEmployee: Boolean!
 
     # Quyền quản lý thuê phòng
-    permissionManageHiringRooms: Boolean!
-
-    # Quyền quản lý loại khách hàng
-    permissionManagePatronKinds: Boolean!
+    permissionManageHiringRoom: Boolean!
 
     # Quyền quản lý khách hàng
-    permissionManagePatrons: Boolean!
+    permissionManagePatron: Boolean!
+
+    # Quyền quản lý loại khách hàng
+    permissionManagePatronKind: Boolean!
+
+    # Quyền quản lý chức vụ
+    permissionManagePosition: Boolean!
+
+    # Quyền quản lý giá cơ bản và giá biến động
+    permissionManageRate: Boolean!
+
+    # Quyền quản lý loại phòng
+    permissionManageRoomKind: Boolean!
+
+    # Quyền quản lý dịch vụ
+    permissionManageService: Boolean!
+
+    # Quyền tra cứu công nợ
+    permissionReferDebt: Boolean!
 
     # Quyền xem thống kê và chi tiết doanh thu
     permissionReferRevenues: Boolean!
@@ -747,68 +738,50 @@ input PositionCreateInput {
     # Quyền chỉnh sửa sơ đồ
     permissionUpdateGroundPlan: Boolean!
 
+    # Quyền tra cứu công nợ
+    permissionReferDebt: Boolean!
+
+    # Quyền thay đổi mật khẩu cá nhân
+    permissionManageAccount: Boolean!
+
+    # Quyền quản lý chức vụ
+    permissionManagePosition: Boolean!
+
     # Quyền quản lý thông tin nhân viên
-    permissionManageEmployees: Boolean!
+    permissionManageEmployee: Boolean!
 
     # Quyền xem thống kê và chi tiết doanh thu
     permissionReferRevenues: Boolean!
-
-    # Quyền thao tác hóa đơn
-    permissionHandleBills: Boolean!
 
     # Quyền lấy danh sách phòng và hiện trạng từng phòng
     permissionGetRooms: Boolean!
 
     # Quyền quản lý thuê phòng
-    permissionManageHiringRooms: Boolean!
+    permissionManageHiringRoom: Boolean!
 
     # Quyền tra cứu lịch sử dọn phòng
-    permissionGetHouseKeepings: Boolean!
+    permissionGetHouseKeeping: Boolean!
 
     # Quyền quản lý khách hàng
-    permissionManagePatrons: Boolean!
+    permissionManagePatron: Boolean!
 
     # Quyền quản lý loại khách hàng
-    permissionManagePatronKinds: Boolean!
+    permissionManagePatronKind: Boolean!
 
     # Quyền thao tác dọn phòng
     permissionCleaning: Boolean!
 
-    # Quyền tạo hoặc chỉnh sửa khách hàng
-    permissionCreateOrUpdatePatron: Boolean!
-
-    # Quyền tạo hoặc chỉnh sửa tài khoản nhân viên
-    permissionCreateOrUpdateEmployee: Boolean!
-
-    # Quyền tạo loại khách hàng
-    permissionCreatePatronKind: Boolean!
-
-    # Quyền tạo hóa đơn
-    permissionCreateBill: Boolean!
-
-    # Quyền tạo chức vụ
-    permissionCreatePosition: Boolean!
-
     # Quyền tạo phiếu thu
     permissionCreateReceipt: Boolean!
 
-    # Quyền tạo hoặc chỉnh sửa loại phòng
-    permissionCreateOrUpdateRoomKind: Boolean!
+    # Quyền quản lý loại phòng
+    permissionManageRoomKind: Boolean!
 
-    # Quyền tạo giá cơ bản
-    permissionCreateOrUpdateRate: Boolean!
+    # Quyền quản lý giá cơ bản và giá biến động
+    permissionManageRate: Boolean!
 
-    # Quyền tạo giá biến động
-    permissionCreateOrUpdateVolatilityRate: Boolean!
-
-    # Quyền tạo và cập nhật dịch vụ
-    permissionCreateOrUpdateService: Boolean!
-
-    # Quyền tạo chi tiết dịch vụ
-    permissionCreateServicesDetail: Boolean!
-
-    # Quyền tạo đơn đặt phòng
-    permissionCreateBooking: Boolean!
+    # Quyền quản lý dịch vụ
+    permissionManageService: Boolean!
 }
 
 # Input cho thông tin một chức vụ
