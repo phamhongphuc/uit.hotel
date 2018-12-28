@@ -9,7 +9,6 @@
 		"permissionGetRooms": false,
 		"permissionManagePatrons": false,
 		"permissionManagePatronKinds": false,
-		"permissionHandleBills": false,
 		"permissionManageHiringRoom": false,
 		"permissionGetHouseKeeping": false,
 		"permissionCreatePatronKind": false,

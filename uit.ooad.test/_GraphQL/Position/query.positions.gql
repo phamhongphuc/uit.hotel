@@ -10,7 +10,6 @@
         permissionGetRooms
         permissionManagePatrons
         permissionManagePatronKinds
-        permissionHandleBills
         permissionManageHiringRoom
         permissionGetHouseKeeping
         permissionCreatePatronKind
