@@ -45,6 +45,7 @@ const config = {
             '@babel/polyfill',
             'chalk',
             'apollo-client',
+            'apollo-link',
             'apollo-cache-inmemory',
         ],
     },
@@ -132,6 +133,14 @@ const config = {
             },
         ],
     },
+    overrides: [
+        {
+            files: ['graphql/types.ts'],
+            rules: {
+                'import/export': 'off',
+            },
+        },
+    ],
 };
 
 if (process.env.NODE_ENV == 'development') {
