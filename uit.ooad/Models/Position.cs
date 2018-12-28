@@ -15,6 +15,8 @@ namespace uit.ooad.Models
         public bool PermissionGetRooms { get; set; }
         public bool PermissionManageRoomKind { get; set; }
         public bool PermissionManageRate { get; set; }
+        public bool PermissionManageService { get; set; }
+        public bool PermissionGetHouseKeeping { get; set; }
         public bool PermissionManagePositions { get; set; }
         public bool PermissionReferDebt { get; set; }
         public bool PermissionChangePersonalPassword { get; set; }
@@ -24,7 +26,6 @@ namespace uit.ooad.Models
         public bool PermissionManagePatronKinds { get; set; }
         public bool PermissionHandleBills { get; set; }
         public bool PermissionManageHiringRooms { get; set; }
-        public bool PermissionGetHouseKeepings { get; set; }
         public bool PermissionCreateBill { get; set; }
         public bool PermissionCreateBooking { get; set; }
         public bool PermissionCreateOrUpdateEmployee { get; set; }
@@ -33,7 +34,6 @@ namespace uit.ooad.Models
         public bool PermissionCreatePatronKind { get; set; }
         public bool PermissionCreatePosition { get; set; }
         public bool PermissionCreateReceipt { get; set; }
-        public bool PermissionCreateOrUpdateService { get; set; }
         public bool PermissionCreateServicesDetail { get; set; }
 
         [Backlink(nameof(Employee.Position))]

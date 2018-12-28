@@ -15,7 +15,7 @@ namespace uit.ooad.Queries.Mutation
                 "Tạo và trả về một dịch vụ mới",
                 _InputArgument<ServiceCreateInput>(),
                 _CheckPermission_TaskObject(
-                    p => p.PermissionCreateOrUpdateService,
+                    p => p.PermissionManageService,
                     context => ServiceBusiness.Add(_GetInput(context))
                 )
             );
@@ -25,7 +25,7 @@ namespace uit.ooad.Queries.Mutation
                 "Cập nhật và trả về một dịch vụ mới cập nhật",
                 _InputArgument<ServiceUpdateInput>(),
                 _CheckPermission_TaskObject(
-                    p => p.PermissionCreateOrUpdateService,
+                    p => p.PermissionManageService,
                     context => ServiceBusiness.Update(_GetInput(context))
                 )
             );
@@ -37,14 +37,17 @@ namespace uit.ooad.Queries.Mutation
                     new QueryArgument<NonNullGraphType<IdGraphType>> { Name = "id" },
                     new QueryArgument<NonNullGraphType<BooleanGraphType>> { Name = "isActive" }
                 ),
-                context =>
-                {
-                    var serviceId = context.GetArgument<int>("id");
-                    var isActive = context.GetArgument<bool>("isActive");
+                _CheckPermission_String(
+                    p => p.PermissionManageService,
+                    context =>
+                    {
+                        var serviceId = context.GetArgument<int>("id");
+                        var isActive = context.GetArgument<bool>("isActive");
 
-                    ServiceBusiness.SetIsActive(serviceId, isActive);
-                    return "Thành công";
-                }
+                        ServiceBusiness.SetIsActive(serviceId, isActive);
+                        return "Thành công";
+                    }
+                )
             );
         }
     }

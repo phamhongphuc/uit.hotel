@@ -23,7 +23,7 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.PermissionHandleBills).Description("Quyền thao tác hóa đơn");
             Field(x => x.PermissionGetRooms).Description("Quyền lấy danh sách phòng và hiện trạng từng phòng");
             Field(x => x.PermissionManageHiringRooms).Description("Quyền quản lý thuê phòng");
-            Field(x => x.PermissionGetHouseKeepings).Description("Quyền tra cứu lịch sử dọn phòng");
+            Field(x => x.PermissionGetHouseKeeping).Description("Quyền tra cứu lịch sử dọn phòng");
             Field(x => x.PermissionManagePatrons).Description("Quyền quản lý khách hàng");
             Field(x => x.PermissionManagePatronKinds).Description("Quyền quản lý loại khách hàng");
             Field(x => x.PermissionCleaning).Description("Quyền thao tác dọn phòng");
@@ -34,9 +34,9 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.PermissionCreateBill).Description("Quyền tạo hóa đơn");
             Field(x => x.PermissionCreatePosition).Description("Quyền tạo chức vụ");
             Field(x => x.PermissionCreateReceipt).Description("Quyền tạo phiếu thu");
-            Field(x => x.PermissionManageRoomKind).Description("Quyền quản lý loại phòng (thêm, xóa, sửa, kích hoạt/vô hiệu hóa)");
-            Field(x => x.PermissionManageRate).Description("Quyền tạo giá cơ bản");
-            Field(x => x.PermissionCreateOrUpdateService).Description("Quyền tạo dịch vụ");
+            Field(x => x.PermissionManageRoomKind).Description("Quyền quản lý loại phòng");
+            Field(x => x.PermissionManageRate).Description("Quyền quản lý giá cơ bản và giá biến động");
+            Field(x => x.PermissionManageService).Description("Quyền quản lý dịch vụ");
             Field(x => x.PermissionCreateServicesDetail).Description("Quyền tạo chi tiết dịch vụ");
             Field(x => x.PermissionCreateBooking).Description("Quyền tạo đơn đặt phòng");
 
@@ -75,7 +75,7 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.PermissionHandleBills).Description("Quyền thao tác hóa đơn");
             Field(x => x.PermissionGetRooms).Description("Quyền lấy danh sách phòng và hiện trạng từng phòng");
             Field(x => x.PermissionManageHiringRooms).Description("Quyền quản lý thuê phòng");
-            Field(x => x.PermissionGetHouseKeepings).Description("Quyền tra cứu lịch sử dọn phòng");
+            Field(x => x.PermissionGetHouseKeeping).Description("Quyền tra cứu lịch sử dọn phòng");
             Field(x => x.PermissionManagePatrons).Description("Quyền quản lý khách hàng");
             Field(x => x.PermissionManagePatronKinds).Description("Quyền quản lý loại khách hàng");
             Field(x => x.PermissionCleaning).Description("Quyền thao tác dọn phòng");
@@ -86,9 +86,9 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.PermissionCreateBill).Description("Quyền tạo hóa đơn");
             Field(x => x.PermissionCreatePosition).Description("Quyền tạo chức vụ");
             Field(x => x.PermissionCreateReceipt).Description("Quyền tạo phiếu thu");
-            Field(x => x.PermissionManageRoomKind).Description("Quyền quản lý loại phòng (thêm, xóa, sửa, kích hoạt/vô hiệu hóa)");
+            Field(x => x.PermissionManageRoomKind).Description("Quyền quản lý loại phòng");
             Field(x => x.PermissionManageRate).Description("Quyền quản lý giá cơ bản và giá biến động");
-            Field(x => x.PermissionCreateOrUpdateService).Description("Quyền tạo và cập nhật dịch vụ");
+            Field(x => x.PermissionManageService).Description("Quyền quản lý dịch vụ");
             Field(x => x.PermissionCreateServicesDetail).Description("Quyền tạo chi tiết dịch vụ");
             Field(x => x.PermissionCreateBooking).Description("Quyền tạo đơn đặt phòng");
         }
