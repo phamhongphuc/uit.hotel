@@ -4,10 +4,11 @@ import { ActionTree, MutationTree } from 'vuex';
 import { UserCheckLogin, UserLogin } from '~/graphql/types';
 import {
     apolloClient,
-    apolloHelpers,
     apolloClientNotify,
+    apolloHelpers,
 } from '~/modules/apollo';
-import { router, route } from '~/utils/store';
+import { route, router } from '~/utils/store';
+import { notify } from '~/plugins/notify';
 
 interface UserState {
     token: undefined | string;
@@ -50,9 +51,7 @@ export const actions: ActionTree<UserState, UserState> = {
         apolloHelpers(this).onLogin(token);
         commit('setToken', result.data.login.token);
 
-        Vue.notify({
-            title: 'Đăng nhập thành công',
-        });
+        notify.success({ title: 'Thông báo', text: 'Đăng nhập thành công' });
         router(this).push('/');
     },
 
@@ -60,11 +59,7 @@ export const actions: ActionTree<UserState, UserState> = {
         apolloHelpers(this).onLogout();
         commit('setToken', undefined);
         router(this).push('/login');
-
-        await Vue.nextTick();
-        Vue.notify({
-            title: 'Đăng xuất thành công',
-        });
+        notify.success({ title: 'Thông báo', text: 'Đăng xuất thành công' });
     },
 
     async checkLogin({ state, commit }) {
@@ -92,6 +87,10 @@ export const actions: ActionTree<UserState, UserState> = {
                 apolloHelpers(this).onLogout();
                 commit('setToken', undefined);
                 router(this).push('/login');
+                notify.error({
+                    title: 'Lỗi xác thực',
+                    text: 'Vui lòng đăng nhập lại',
+                });
             }
         } else {
             router(this).push('/login');
