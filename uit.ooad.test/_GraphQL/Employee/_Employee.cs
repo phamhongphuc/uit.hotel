@@ -32,7 +32,7 @@ namespace uit.ooad.test._GraphQL.Employee
                 @"/_GraphQL/Employee/mutation.createEmployee.gql",
                 @"/_GraphQL/Employee/mutation.createEmployee.schema.json",
                 @"/_GraphQL/Employee/mutation.createEmployee.variable.json",
-                p => p.PermissionManageEmployees = true
+                p => p.PermissionManageEmployee = true
             );
         }
     }

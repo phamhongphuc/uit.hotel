@@ -6,7 +6,7 @@
         permissionReferDebt
         permissionChangePersonalPassword
         permissionManagePosition
-        permissionManageEmployees
+        permissionManageEmployee
         permissionGetRooms
         permissionManagePatron
         permissionManagePatronKind

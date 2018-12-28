@@ -21,7 +21,7 @@
             "permissionReferDebt",
             "permissionChangePersonalPassword",
             "permissionManagePosition",
-            "permissionManageEmployees",
+            "permissionManageEmployee",
             "permissionGetRooms",
             "permissionManagePatron",
             "permissionManagePatronKind",
@@ -61,7 +61,7 @@
             "permissionManagePosition": {
               "type": "boolean"
             },
-            "permissionManageEmployees": {
+            "permissionManageEmployee": {
               "type": "boolean"
             },
             "permissionGetRooms": {
