@@ -22,7 +22,8 @@ namespace uit.ooad.test._GraphQL._Authentication
             SchemaHelper.Execute(
                 @"/_GraphQL/Authentication/mutation.changePassword.gql",
                 @"/_GraphQL/Authentication/mutation.changePassword.schema.json",
-                @"/_GraphQL/Authentication/mutation.changePassword.variable.json"
+                @"/_GraphQL/Authentication/mutation.changePassword.variable.json",
+                p => p.PermissionManageAccount = true
             );
         }
     }

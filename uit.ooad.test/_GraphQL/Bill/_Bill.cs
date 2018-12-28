@@ -32,7 +32,7 @@ namespace uit.ooad.test._GraphQL._Bill
                 @"/_GraphQL/Bill/mutation.createBill.gql",
                 @"/_GraphQL/Bill/mutation.createBill.schema.json",
                 @"/_GraphQL/Bill/mutation.createBill.variable.json",
-                p => p.PermissionManageHiringRooms = true
+                p => p.PermissionManageHiringRoom = true
             );
         }
 
@@ -43,7 +43,7 @@ namespace uit.ooad.test._GraphQL._Bill
                 @"/_GraphQL/Bill/mutation.bookAndCheckIn.gql",
                 @"/_GraphQL/Bill/mutation.bookAndCheckIn.schema.json",
                 @"/_GraphQL/Bill/mutation.bookAndCheckIn.variable.json",
-                p => p.PermissionManageHiringRooms = true
+                p => p.PermissionManageHiringRoom = true
             );
         }
     }

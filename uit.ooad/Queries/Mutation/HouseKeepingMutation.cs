@@ -12,11 +12,11 @@ namespace uit.ooad.Queries.Mutation
     {
         public HouseKeepingMutation()
         {
-            Field<HouseKeepingType>(
+            Field<NonNullGraphType<HouseKeepingType>>(
                 "AssignCleaningService",
                 "Nhân viên nhận phòng để dọn dẹp",
                 _IdArgument(),
-                _CheckPermission_Object(
+                _CheckPermission_TaskObject(
                     p => p.PermissionCleaning,
                     context =>
                     {
@@ -26,11 +26,11 @@ namespace uit.ooad.Queries.Mutation
                 )
             );
 
-            Field<HouseKeepingType>(
+            Field<NonNullGraphType<HouseKeepingType>>(
                 "ConfirmCleaned",
                 "Nhân viên xác nhận đã dọn xong",
                 _IdArgument(),
-                _CheckPermission_Object(
+                _CheckPermission_TaskObject(
                     p => p.PermissionCleaning,
                     context =>
                     {
@@ -40,7 +40,7 @@ namespace uit.ooad.Queries.Mutation
                 )
             );
 
-            Field<HouseKeepingType>(
+            Field<NonNullGraphType<HouseKeepingType>>(
                 "ConfirmCleanedAndServices",
                 "Nhân viên xác nhận và gửi thông tin kiểm tra phòng check-out",
                 new QueryArguments(
@@ -48,7 +48,7 @@ namespace uit.ooad.Queries.Mutation
                         { Name = "servicesDetails" },
                     new QueryArgument<NonNullGraphType<IdGraphType>> { Name = "houseKeepingId" }
                 ),
-                _CheckPermission_Object(
+                _CheckPermission_TaskObject(
                     p => p.PermissionCleaning,
                     context =>
                     {

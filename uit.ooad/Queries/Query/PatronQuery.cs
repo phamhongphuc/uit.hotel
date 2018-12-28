@@ -10,20 +10,20 @@ namespace uit.ooad.Queries.Query
     {
         public PatronQuery()
         {
-            Field<ListGraphType<PatronType>>(
+            Field<NonNullGraphType<ListGraphType<NonNullGraphType<PatronType>>>>(
                 _List,
                 "Trả về một danh sách các khách hàng",
                 resolve: context => PatronBusiness.Get()
             );
 
-            Field<PatronType>(
+            Field<NonNullGraphType<PatronType>>(
                 _Item,
                 "Trả về thông tin một khách hàng",
                 _IdArgument(),
                 context => PatronBusiness.Get(_GetId<int>(context))
             );
 
-            Field<ListGraphType<PatronType>>(
+            Field<NonNullGraphType<ListGraphType<NonNullGraphType<PatronType>>>>(
                 _Finding,
                 "Trả về danh sách khách hàng theo từ khóa tìm kiếm",
                 new QueryArguments(new QueryArgument<NonNullGraphType<IdGraphType>> { Name = "id" }),

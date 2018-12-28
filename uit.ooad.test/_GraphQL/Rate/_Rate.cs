@@ -32,7 +32,7 @@ namespace uit.ooad.test._GraphQL._Rate
                 @"/_GraphQL/Rate/mutation.createRate.gql",
                 @"/_GraphQL/Rate/mutation.createRate.schema.json",
                 @"/_GraphQL/Rate/mutation.createRate.variable.json",
-                p => p.PermissionCreateOrUpdateRate = true
+                p => p.PermissionManageRate = true
             );
         }
     }

@@ -11,12 +11,12 @@ namespace uit.ooad.Queries.Mutation
     {
         public BookingMutation()
         {
-            Field<BookingType>(
+            Field<NonNullGraphType<BookingType>>(
                 "CheckIn",
                 "Cập nhật thời gian checkin của phòng",
                 _IdArgument(),
-                _CheckPermission_Object(
-                    p => p.PermissionManageHiringRooms,
+                _CheckPermission_TaskObject(
+                    p => p.PermissionManageHiringRoom,
                     context =>
                     {
                         var employee = AuthenticationHelper.GetEmployee(context);
@@ -24,12 +24,13 @@ namespace uit.ooad.Queries.Mutation
                     }
                 )
             );
-            Field<BookingType>(
+
+            Field<NonNullGraphType<BookingType>>(
                 "RequestCheckOut",
                 "Yêu cầu kiểm tra khi trả phòng",
                 _IdArgument(),
-                _CheckPermission_Object(
-                    p => p.PermissionManageHiringRooms,
+                _CheckPermission_TaskObject(
+                    p => p.PermissionManageHiringRoom,
                     context =>
                     {
                         var employee = AuthenticationHelper.GetEmployee(context);
@@ -37,12 +38,13 @@ namespace uit.ooad.Queries.Mutation
                     }
                 )
             );
-            Field<BookingType>(
+
+            Field<NonNullGraphType<BookingType>>(
                 "CheckOut",
                 "Thực hiện xác nhận trả phòng",
                 _IdArgument(),
-                _CheckPermission_Object(
-                    p => p.PermissionManageHiringRooms,
+                _CheckPermission_TaskObject(
+                    p => p.PermissionManageHiringRoom,
                     context =>
                     {
                         var employee = AuthenticationHelper.GetEmployee(context);
@@ -50,15 +52,16 @@ namespace uit.ooad.Queries.Mutation
                     }
                 )
             );
-            Field<BookingType>(
+            
+            Field<NonNullGraphType<BookingType>>(
                 "AddBookingToBill",
                 "Thêm phòng khách đoàn",
                 new QueryArguments(
                     new QueryArgument<NonNullGraphType<IdGraphType>> { Name = "billId" },
                     new QueryArgument<NonNullGraphType<BookingCreateInput>> { Name = "booking" }
                 ),
-                _CheckPermission_Object(
-                    p => p.PermissionManageHiringRooms,
+                _CheckPermission_TaskObject(
+                    p => p.PermissionManageHiringRoom,
                     context =>
                     {
                         var employee = AuthenticationHelper.GetEmployee(context);

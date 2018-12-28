@@ -16,7 +16,7 @@ namespace uit.ooad.Queries.Mutation
 
         public AuthenticationMutation()
         {
-            Field<AuthenticationType>(
+            Field<NonNullGraphType<AuthenticationType>>(
                 "Login",
                 "Đăng nhập mới",
                 new QueryArguments(
@@ -31,7 +31,7 @@ namespace uit.ooad.Queries.Mutation
                 }
             );
 
-            Field<EmployeeType>(
+            Field<NonNullGraphType<EmployeeType>>(
                 "CheckLogin",
                 "Kiểm tra đăng nhập",
                 resolve: context =>
@@ -42,23 +42,26 @@ namespace uit.ooad.Queries.Mutation
                 }
             );
 
-            Field<StringGraphType>(
+            Field<NonNullGraphType<StringGraphType>>(
                 "ChangePassword",
                 "Nhân viên tự đổi mật khẩu cho tài khoản của mình",
                 new QueryArguments(
                     new QueryArgument<NonNullGraphType<StringGraphType>> { Name = PASSWORD },
                     new QueryArgument<NonNullGraphType<StringGraphType>> { Name = NEW_PASSWORD }
                 ),
-                context =>
-                {
-                    var id = AuthenticationHelper.GetEmployeeId(context);
-                    var password = context.GetArgument<string>(PASSWORD);
-                    var newPassword = context.GetArgument<string>(NEW_PASSWORD);
+                _CheckPermission_String(
+                    p => p.PermissionManageAccount,
+                    context =>
+                    {
+                        var id = AuthenticationHelper.GetEmployeeId(context);
+                        var password = context.GetArgument<string>(PASSWORD);
+                        var newPassword = context.GetArgument<string>(NEW_PASSWORD);
 
-                    EmployeeBusiness.ChangePassword(id, password, newPassword);
+                        EmployeeBusiness.ChangePassword(id, password, newPassword);
 
-                    return "Đổi mật khẩu thành công";
-                }
+                        return "Đổi mật khẩu thành công";
+                    }
+                )
             );
 
             Field<NonNullGraphType<StringGraphType>>(
