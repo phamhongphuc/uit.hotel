@@ -12,7 +12,7 @@ query($id: ID!) {
         permissionManagePatronKinds
         permissionHandleBills
         permissionManageHiringRooms
-        permissionGetHouseKeepings
+        permissionGetHouseKeeping
         permissionCreatePatronKind
         permissionCreateBill
         permissionCreateBooking
@@ -24,7 +24,7 @@ query($id: ID!) {
         permissionCreateReceipt
         permissionUpdateGroundPlan
         permissionManageRoomKind
-        permissionCreateOrUpdateService
+        permissionManageService
         permissionCreateServicesDetail
     }
 }

@@ -12,7 +12,7 @@
         permissionManagePatronKinds
         permissionHandleBills
         permissionManageHiringRooms
-        permissionGetHouseKeepings
+        permissionGetHouseKeeping
         permissionCreatePatronKind
         permissionCreateBill
         permissionCreateBooking
@@ -24,7 +24,7 @@
         permissionCreateReceipt
         permissionUpdateGroundPlan
         permissionManageRoomKind
-        permissionCreateOrUpdateService
+        permissionManageService
         permissionCreateServicesDetail
     }
 }

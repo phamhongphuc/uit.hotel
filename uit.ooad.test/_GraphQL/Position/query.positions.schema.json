@@ -28,7 +28,7 @@
                 "permissionManagePatronKinds",
                 "permissionHandleBills",
                 "permissionManageHiringRooms",
-                "permissionGetHouseKeepings",
+                "permissionGetHouseKeeping",
                 "permissionCreatePatronKind",
                 "permissionCreateBill",
                 "permissionCreateBooking",
@@ -40,7 +40,7 @@
                 "permissionCreateReceipt",
                 "permissionUpdateGroundPlan",
                 "permissionManageRoomKind",
-                "permissionCreateOrUpdateService",
+                "permissionManageService",
                 "permissionCreateServicesDetail"
               ],
               "properties": {
@@ -81,7 +81,7 @@
                 "permissionManageHiringRooms": {
                   "type": "boolean"
                 },
-                "permissionGetHouseKeepings": {
+                "permissionGetHouseKeeping": {
                   "type": "boolean"
                 },
                 "permissionCreatePatronKind": {
@@ -117,7 +117,7 @@
                 "permissionManageRoomKind": {
                   "type": "boolean"
                 },
-                "permissionCreateOrUpdateService": {
+                "permissionManageService": {
                   "type": "boolean"
                 },
                 "permissionCreateServicesDetail": {

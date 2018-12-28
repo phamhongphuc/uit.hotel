@@ -11,7 +11,7 @@
 		"permissionManagePatronKinds": false,
 		"permissionHandleBills": false,
 		"permissionManageHiringRooms": false,
-		"permissionGetHouseKeepings": false,
+		"permissionGetHouseKeeping": false,
 		"permissionCreatePatronKind": false,
 		"permissionCreateBill": false,
 		"permissionCreateBooking": false,
@@ -23,7 +23,7 @@
 		"permissionCreateReceipt": false,
 		"permissionUpdateGroundPlan": false,
 		"permissionManageRoomKind": false,
-		"permissionCreateOrUpdateService": false,
+		"permissionManageService": false,
 		"permissionCreateServicesDetail": false
 	}
 }

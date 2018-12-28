@@ -12,7 +12,7 @@ mutation($input: PositionCreateInput!) {
         permissionManagePatronKinds
         permissionHandleBills
         permissionManageHiringRooms
-        permissionGetHouseKeepings
+        permissionGetHouseKeeping
         permissionCreatePatronKind
         permissionCreateBill
         permissionCreateBooking
@@ -24,7 +24,7 @@ mutation($input: PositionCreateInput!) {
         permissionCreateReceipt
         permissionUpdateGroundPlan
         permissionManageRoomKind
-        permissionCreateOrUpdateService
+        permissionManageService
         permissionCreateServicesDetail
     }
 }
