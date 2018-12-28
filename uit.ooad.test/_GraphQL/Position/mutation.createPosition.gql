@@ -1,5 +1,5 @@
-mutation($input:PositionCreateInput!) {
-    createPosition(input:$input){
+mutation($input: PositionCreateInput!) {
+    createPosition(input: $input) {
         id
         name
         permissionReferRevenues

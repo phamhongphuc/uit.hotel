@@ -17,10 +17,11 @@ namespace uit.ooad.Models
 
         [Backlink(nameof(Booking.Room))]
         public IQueryable<Booking> Bookings { get; }
-        public Room GetManaged() 
+
+        public Room GetManaged()
         {
             var room = RoomBusiness.Get(Id);
-            if(room == null)
+            if (room == null)
                 throw new Exception("Mã phòng không tồn tại");
             return room;
         }

@@ -16,6 +16,7 @@ namespace uit.ooad.Models
 
         [Backlink(nameof(ServicesDetail.Service))]
         public IQueryable<ServicesDetail> ServicesDetails { get; }
+
         public Service GetManaged()
         {
             var service = ServiceBusiness.Get(Id);

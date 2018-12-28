@@ -205,27 +205,30 @@ namespace uit.ooad.Queries.Helper
 
         private static void AddBill()
         {
-            BillBusiness.Book(EmployeeBusiness.Get(Constant.UserName), new Bill
-            {
-                Time = DateTime.Now,
-                Patron = PatronBusiness.Get(1)
-            },
-                              new List<Booking>
-                              {
-                                  new Booking
-                                  {
-                                      BookCheckInTime = DateTime.Now,
-                                      BookCheckOutTime = DateTime.Now,
-                                      Room = RoomBusiness.Get(1),
-                                      ListOfPatrons = new List<Patron>
-                                      {
-                                          new Patron
-                                          {
-                                              Id = 1
-                                          }
-                                      }
-                                  }
-                              });
+            BillBusiness.Book(
+                EmployeeBusiness.Get(Constant.UserName),
+                new Bill
+                {
+                    Time = DateTime.Now,
+                    Patron = PatronBusiness.Get(1)
+                },
+                new List<Booking>
+                {
+                    new Booking
+                    {
+                        BookCheckInTime = DateTime.Now,
+                        BookCheckOutTime = DateTime.Now,
+                        Room = RoomBusiness.Get(1),
+                        ListOfPatrons = new List<Patron>
+                        {
+                            new Patron
+                            {
+                                Id = 1
+                            }
+                        }
+                    }
+                }
+            );
         }
 
         private static void AddCheckedInBill()

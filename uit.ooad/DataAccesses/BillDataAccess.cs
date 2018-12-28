@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -41,6 +40,7 @@ namespace uit.ooad.DataAccesses
             });
             return bill;
         }
+
         public static Bill Get(int billId) => Database.Find<Bill>(billId);
 
         public static IEnumerable<Bill> Get() => Database.All<Bill>();

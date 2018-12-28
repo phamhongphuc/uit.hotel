@@ -42,6 +42,7 @@ namespace uit.ooad.Businesses
 
             return BillDataAccess.BookAndCheckIn(bill, bookings);
         }
+
         public static Bill Get(int billId) => BillDataAccess.Get(billId);
         public static IEnumerable<Bill> Get() => BillDataAccess.Get();
     }
