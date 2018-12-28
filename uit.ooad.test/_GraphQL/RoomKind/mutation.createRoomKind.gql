@@ -1,0 +1,10 @@
+mutation($input: RoomKindCreateInput!) {
+    createRoomKind(input: $input) {
+        id
+        name
+        numberOfBeds
+        amountOfPeople
+        priceByDate
+        isActive
+    }
+}

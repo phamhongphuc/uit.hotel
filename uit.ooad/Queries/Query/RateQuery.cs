@@ -18,8 +18,8 @@ namespace uit.ooad.Queries.Query
             Field<RateType>(
                 _Item,
                 "Trả về thông tin một loại giá cơ bản",
-                IdArgument(),
-                context => RateBusiness.Get(GetId<int>(context))
+                _IdArgument(),
+                context => RateBusiness.Get(_GetId<int>(context))
             );
         }
     }

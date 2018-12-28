@@ -12,17 +12,24 @@ namespace uit.ooad.ObjectTypes
             Name = nameof(Patron);
             Description = "Thông tin  một khách hàng của khách sạn";
 
-            Field(x => x.Identification).Description("Id của khách hàng");
+            Field(x => x.Id).Description("Id của khách hàng");
+            Field(x => x.Identification)
+               .Description("Số an sinh xã hội / Số chứng minh nhân dân / Số passport của khách hàng");
             Field(x => x.Name).Description("Tên của khách hàng");
             Field(x => x.Email).Description("Địa chỉ e-mail của khách hàng");
             Field(x => x.Gender).Description("Giới tính của khách hàng");
             Field(x => x.Birthdate).Description("Ngày sinh của khách hàng");
-            Field(x => x.PhoneNumber).Description("Số điện thoại của khách hàng");
             Field(x => x.Nationality).Description("Quốc tịch của khách hàng");
             Field(x => x.Domicile).Description("Nguyên quán của khách hàng");
             Field(x => x.Residence).Description("Địa chỉ thường trú của khách hàng");
             Field(x => x.Company).Description("Công ty mà khách hàng đang làm việc");
             Field(x => x.Note).Description("Một số chú thích về khách hàng nếu cần thiết");
+
+            Field<ListGraphType<StringGraphType>>(
+                nameof(Patron.PhoneNumbers),
+                resolve: context => context.Source.PhoneNumbers.ToList(),
+                description: "Danh sách số điện thoại của khách hàng"
+            );
 
             Field<NonNullGraphType<PatronKindType>>(
                 nameof(Patron.PatronKind),
@@ -50,7 +57,7 @@ namespace uit.ooad.ObjectTypes
             Name = _Id;
             Description = "Input cho thông tin một khách hàng";
 
-            Field(x => x.Identification).Description("Identification của khách hàng");
+            Field(x => x.Id).Description("Id của khách hàng");
         }
     }
 
@@ -60,18 +67,52 @@ namespace uit.ooad.ObjectTypes
         {
             Name = _Creation;
 
-            Field(x => x.Identification).Description("Id của khách hàng");
+            Field(x => x.Identification)
+               .Description("Số an sinh xã hội / Số chứng minh nhân dân / Số passport của khách hàng");
             Field(x => x.Name).Description("Tên của khách hàng");
             Field(x => x.Email).Description("Địa chỉ e-mail của khách hàng");
             Field(x => x.Gender).Description("Giới tính của khách hàng");
             Field(x => x.Birthdate).Description("Ngày sinh của khách hàng");
-            Field(x => x.PhoneNumber).Description("Số điện thoại của khách hàng");
             Field(x => x.Nationality).Description("Quốc tịch của khách hàng");
             Field(x => x.Domicile).Description("Nguyên quán của khách hàng");
             Field(x => x.Residence).Description("Địa chỉ thường trú của khách hàng");
             Field(x => x.Company).Description("Công ty mà khách hàng đang làm việc");
             Field(x => x.Note).Description("Một số chú thích về khách hàng nếu cần thiết");
 
+            Field<ListGraphType<StringGraphType>>(
+                nameof(Patron.ListOfPhoneNumbers),
+                "Danh sách số điện thoại của khách hàng"
+            );
+            Field<PatronKindIdInput>(
+                nameof(Patron.PatronKind),
+                "Loại khách hàng"
+            );
+        }
+    }
+
+    public class PatronUpdateInput : InputType<Patron>
+    {
+        public PatronUpdateInput()
+        {
+            Name = _Updation;
+
+            Field(x => x.Id).Description("Id của khách hàng");
+            Field(x => x.Identification)
+               .Description("Số an sinh xã hội / Số chứng minh nhân dân / Số passport của khách hàng");
+            Field(x => x.Name).Description("Tên của khách hàng");
+            Field(x => x.Email).Description("Địa chỉ e-mail của khách hàng");
+            Field(x => x.Gender).Description("Giới tính của khách hàng");
+            Field(x => x.Birthdate).Description("Ngày sinh của khách hàng");
+            Field(x => x.Nationality).Description("Quốc tịch của khách hàng");
+            Field(x => x.Domicile).Description("Nguyên quán của khách hàng");
+            Field(x => x.Residence).Description("Địa chỉ thường trú của khách hàng");
+            Field(x => x.Company).Description("Công ty mà khách hàng đang làm việc");
+            Field(x => x.Note).Description("Một số chú thích về khách hàng nếu cần thiết");
+
+            Field<ListGraphType<StringGraphType>>(
+                nameof(Patron.ListOfPhoneNumbers),
+                "Danh sách số điện thoại của khách hàng"
+            );
             Field<PatronKindIdInput>(
                 nameof(Patron.PatronKind),
                 "Loại khách hàng"

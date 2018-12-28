@@ -1,0 +1,28 @@
+@mixin icon {
+    font-family: 'ai-web-font', serif !important;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    user-select: none;
+    // line-height: 1;
+    -webkit-user-select: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin transition-all {
+    transition: all 0.2s;
+}
+
+@mixin white-card {
+    box-shadow: $box-shadow;
+    background: $white;
+    border-radius: $border-radius;
+}
+
+@mixin fit-image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}

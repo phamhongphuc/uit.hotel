@@ -1,0 +1,33 @@
+{
+    "definitions": {},
+    "type": "object",
+    "required": ["data"],
+    "properties": {
+        "data": {
+            "type": "object",
+            "required": ["patronKinds"],
+            "properties": {
+                "patronKinds": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "required": ["id", "name", "description"],
+                        "properties": {
+                            "id": {
+                                "type": "integer"
+                            },
+                            "name": {
+                                "type": "string",
+                                "pattern": "^(.*)$"
+                            },
+                            "description": {
+                                "type": "string",
+                                "pattern": "^(.*)$"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

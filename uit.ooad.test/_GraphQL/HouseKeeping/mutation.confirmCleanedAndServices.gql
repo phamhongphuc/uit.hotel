@@ -1,0 +1,19 @@
+mutation(
+    $servicesDetails: [ServicesDetailCreateInput!]!
+    $houseKeepingId: ID!
+) {
+    confirmCleanedAndServices(
+        servicesDetails: $servicesDetails
+        houseKeepingId: $houseKeepingId
+    ) {
+        id
+        type
+        status
+        employee {
+            id
+        }
+        booking {
+            id
+        }
+    }
+}

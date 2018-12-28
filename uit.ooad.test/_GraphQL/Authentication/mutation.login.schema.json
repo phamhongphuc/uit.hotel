@@ -1,0 +1,47 @@
+{
+    "definitions": {},
+    "type": "object",
+    "required": ["data"],
+    "properties": {
+        "data": {
+            "type": "object",
+            "required": ["login"],
+            "properties": {
+                "login": {
+                    "type": "object",
+                    "required": ["token", "employee"],
+                    "properties": {
+                        "token": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "employee": {
+                            "type": "object",
+                            "required": ["id", "name", "position"],
+                            "properties": {
+                                "id": {
+                                    "type": "string",
+                                    "pattern": "^(.*)$"
+                                },
+                                "name": {
+                                    "type": "string",
+                                    "pattern": "^(.*)$"
+                                },
+                                "position": {
+                                    "type": "object",
+                                    "required": ["name"],
+                                    "properties": {
+                                        "name": {
+                                            "type": "string",
+                                            "pattern": "^(.*)$"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

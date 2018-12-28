@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using uit.ooad.DataAccesses;
@@ -7,17 +8,25 @@ namespace uit.ooad.Businesses
 {
     public class BillBusiness
     {
-        public static Task<Bill> Add(Bill bill)
+        public static Task<Bill> Book(Employee employee, Bill bill, List<Booking> bookings)
         {
-            var billInDatabase = BillDataAccess.Get(bill.Id);
-            if (billInDatabase != null) return null;
-
             bill.Patron = bill.Patron.GetManaged();
-            bill.Employee = bill.Employee.GetManaged();
-            return BillDataAccess.Add(bill);
+            bill.Employee = employee;
+
+            foreach (var booking in bookings)
+            {
+                booking.EmployeeBooking = employee;
+                booking.Room = booking.Room.GetManaged();
+                if (!booking.Room.IsActive)
+                    throw new Exception("Phòng " + booking.Room.Id + " đã ngừng hoạt động");
+
+                booking.CheckValidBeforeCreate();
+            }
+
+            return BillDataAccess.Book(bill, bookings);
         }
 
-        public static Bill Get(string billId) => BillDataAccess.Get(billId);
+        public static Bill Get(int billId) => BillDataAccess.Get(billId);
         public static IEnumerable<Bill> Get() => BillDataAccess.Get();
     }
 }

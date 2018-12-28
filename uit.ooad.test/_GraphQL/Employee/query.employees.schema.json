@@ -1,0 +1,72 @@
+{
+    "definitions": {},
+    "type": "object",
+    "required": ["data"],
+    "properties": {
+        "data": {
+            "type": "object",
+            "required": ["employees"],
+            "properties": {
+                "employees": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "id",
+                            "password",
+                            "name",
+                            "phoneNumber",
+                            "address",
+                            "birthdate",
+                            "startingDate",
+                            "isActive",
+                            "position"
+                        ],
+                        "properties": {
+                            "id": {
+                                "type": "string",
+                                "pattern": "^(.*)$"
+                            },
+                            "password": {
+                                "type": "string",
+                                "pattern": "^(.*)$"
+                            },
+                            "name": {
+                                "type": "string",
+                                "pattern": "^(.*)$"
+                            },
+                            "phoneNumber": {
+                                "type": "string",
+                                "pattern": "^(.*)$"
+                            },
+                            "address": {
+                                "type": "string",
+                                "pattern": "^(.*)$"
+                            },
+                            "birthdate": {
+                                "type": "string",
+                                "pattern": "^(.*)$"
+                            },
+                            "startingDate": {
+                                "type": "string",
+                                "pattern": "^(.*)$"
+                            },
+                            "isActive": {
+                                "type": "boolean"
+                            },
+                            "position": {
+                                "type": "object",
+                                "required": ["id"],
+                                "properties": {
+                                    "id": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

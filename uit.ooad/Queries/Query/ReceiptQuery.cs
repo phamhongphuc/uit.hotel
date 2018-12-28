@@ -18,8 +18,8 @@ namespace uit.ooad.Queries.Query
             Field<ReceiptType>(
                 _Item,
                 "Trả về thông tin một phiếu thu",
-                IdArgument(),
-                context => ReceiptBusiness.Get(GetId<int>(context))
+                _IdArgument(),
+                context => ReceiptBusiness.Get(_GetId<int>(context))
             );
         }
     }

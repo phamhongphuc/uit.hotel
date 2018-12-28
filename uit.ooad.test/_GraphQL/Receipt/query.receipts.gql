@@ -1,0 +1,15 @@
+{
+    receipts {
+        id
+        time
+        money
+        bankAccountNumber
+        typeOfPayment
+        employee {
+            id
+        }
+        bill {
+            id
+        }
+    }
+}

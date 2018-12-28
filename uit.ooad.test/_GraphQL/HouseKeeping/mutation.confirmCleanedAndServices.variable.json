@@ -1,0 +1,17 @@
+{
+    "servicesDetails": [
+        {
+            "number": 1,
+            "service": {
+                "id": 1
+            }
+        },
+        {
+            "number": 2,
+            "service": {
+                "id": 1
+            }
+        }
+    ],
+    "houseKeepingId": 3
+}

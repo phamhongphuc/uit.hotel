@@ -12,10 +12,10 @@ namespace uit.ooad.Queries.Mutation
             Field<RateType>(
                 _Creation,
                 "Tạo và trả về một loại giá cơ bản mới",
-                InputArgument<RateCreateInput>(),
-                _CheckPermission(
-                    p => p.PermissionCreateRate,
-                context => RateBusiness.Add(GetInput(context))
+                _InputArgument<RateCreateInput>(),
+                _CheckPermission_Object(
+                    p => p.PermissionCreateOrUpdateRate,
+                    context => RateBusiness.Add(_GetInput(context))
                 )
             );
         }

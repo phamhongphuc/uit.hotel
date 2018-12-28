@@ -1,0 +1,11 @@
+.pagination-border-inside {
+    .page-link {
+        border-width: 0 1px;
+    }
+    > .page-item:first-child > .page-link {
+        border-left-width: 0;
+    }
+    > .page-item:last-child > .page-link {
+        border-right-width: 0;
+    }
+}

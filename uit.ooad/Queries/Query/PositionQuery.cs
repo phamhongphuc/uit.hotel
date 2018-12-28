@@ -18,8 +18,8 @@ namespace uit.ooad.Queries.Query
             Field<PositionType>(
                 _Item,
                 "Trả về thông tin một chức vụ",
-                IdArgument(),
-                context => PositionBusiness.Get(GetId<int>(context))
+                _IdArgument(),
+                context => PositionBusiness.Get(_GetId<int>(context))
             );
         }
     }

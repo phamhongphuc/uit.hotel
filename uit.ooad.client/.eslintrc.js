@@ -1,6 +1,7 @@
 const schemaJson = require('./graphql/schema.json');
+const isWin = require('os').platform() === 'win32';
 
-module.exports = {
+const config = {
     env: {
         node: true,
         browser: true,
@@ -20,37 +21,71 @@ module.exports = {
     ],
     parser: 'vue-eslint-parser',
     parserOptions: {
-        parser: 'babel-eslint',
-        ecmaVersion: 2017,
+        parser: 'eslint-plugin-typescript/parser',
         sourceType: 'module',
+        ecmaVersion: 2017,
         ecmaFeatures: {
-            jsx: true,
-            experimentalObjectRestSpread: true,
+            jsx: false,
         },
     },
-    plugins: ['standard', 'vue', 'import', 'node', 'graphql'],
+    plugins: ['standard', 'vue', 'import', 'node', 'graphql', 'typescript'],
     settings: {
         'import/resolver': {
             'babel-plugin-root-import': {
                 rootPathPrefix: '~',
                 rootPathSuffix: '',
             },
+            typescript: {},
         },
         'import/core-modules': [
             'vue',
             'vuex',
+            'vue-router',
             '@babel/register',
             '@babel/polyfill',
             'chalk',
+            'apollo-client',
+            'apollo-cache-inmemory',
         ],
     },
     rules: {
-        indent: ['error', 4],
-        camelcase: 'error',
         'eol-last': 'error',
-        'linebreak-style': ['error', 'unix'],
+        'linebreak-style': ['warn', isWin ? 'windows' : 'unix'],
         'no-console': 'warn',
         'no-lonely-if': 'error',
+
+        'typescript/adjacent-overload-signatures': 'error',
+        'typescript/array-type': 'error',
+        'typescript/ban-types': 'error',
+        camelcase: 'off',
+        'typescript/camelcase': 'error',
+        'typescript/class-name-casing': 'error',
+        'typescript/explicit-function-return-type': 'warn',
+        'typescript/explicit-member-accessibility': 'off',
+        indent: 'off',
+        'typescript/indent': 'error',
+        'typescript/interface-name-prefix': 'error',
+        'typescript/member-delimiter-style': 'error',
+        'typescript/no-angle-bracket-type-assertion': 'error',
+        'no-array-constructor': 'off',
+        'typescript/no-array-constructor': 'error',
+        'typescript/no-empty-interface': 'error',
+        'typescript/no-explicit-any': 'off',
+        'typescript/no-inferrable-types': 'error',
+        'typescript/no-misused-new': 'error',
+        'typescript/no-namespace': 'error',
+        'typescript/no-non-null-assertion': 'error',
+        'typescript/no-object-literal-type-assertion': 'error',
+        'typescript/no-parameter-properties': 'error',
+        'typescript/no-triple-slash-reference': 'error',
+        'no-unused-vars': 'off',
+        'typescript/no-unused-vars': 'warn',
+        'typescript/no-use-before-define': 'error',
+        'typescript/no-var-requires': 'error',
+        'typescript/prefer-interface': 'error',
+        'typescript/prefer-namespace-keyword': 'error',
+        'typescript/type-annotation-spacing': 'error',
+
         'prefer-const': 'error',
         'space-before-function-paren': [
             'error',
@@ -98,3 +133,9 @@ module.exports = {
         ],
     },
 };
+
+if (process.env.NODE_ENV == 'development') {
+    config.plugins.push('only-warn');
+}
+
+module.exports = config;

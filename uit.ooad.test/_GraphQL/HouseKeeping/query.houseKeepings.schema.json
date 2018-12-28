@@ -1,0 +1,63 @@
+{
+    "definitions": {},
+    "type": "object",
+    "required": ["data"],
+    "properties": {
+        "data": {
+            "type": "object",
+            "required": ["houseKeepings"],
+            "properties": {
+                "houseKeepings": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "id",
+                            "type",
+                            "status",
+                            "employee",
+                            "booking"
+                        ],
+                        "properties": {
+                            "id": {
+                                "type": "integer"
+                            },
+                            "type": {
+                                "type": "integer"
+                            },
+                            "status": {
+                                "type": "integer"
+                            },
+                            "employee": {
+                                "anyOf": [
+                                    {
+                                        "type": "null"
+                                    },
+                                    {
+                                        "type": "object",
+                                        "required": ["id"],
+                                        "properties": {
+                                            "id": {
+                                                "type": "string",
+                                                "pattern": "^(.*)$"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "booking": {
+                                "type": "object",
+                                "required": ["id"],
+                                "properties": {
+                                    "id": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

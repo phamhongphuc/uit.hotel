@@ -1,3 +1,4 @@
+using GraphQL.Types;
 using uit.ooad.Businesses;
 using uit.ooad.Models;
 using uit.ooad.ObjectTypes;
@@ -12,10 +13,50 @@ namespace uit.ooad.Queries.Mutation
             Field<RoomKindType>(
                 _Creation,
                 "Tạo và trả về một loại phòng",
-                InputArgument<RoomKindCreateInput>(),
-                _CheckPermission(
-                    p => p.PermissionCreateRoomKind,
-                    context => RoomKindBusiness.Add(GetInput(context))
+                _InputArgument<RoomKindCreateInput>(),
+                _CheckPermission_Object(
+                    p => p.PermissionCreateOrUpdateRoomKind,
+                    context => RoomKindBusiness.Add(_GetInput(context))
+                )
+            );
+            Field<RoomKindType>(
+                _Updation,
+                "Cập nhật và trả về loại phòng vừa cập nhật",
+                _InputArgument<RoomKindUpdateInput>(),
+                _CheckPermission_Object(
+                    p => p.PermissionCreateOrUpdateRoomKind,
+                    context => RoomKindBusiness.Update(_GetInput(context))
+                )
+            );
+            Field<StringGraphType>(
+                _Deletion,
+                "Xóa một loại phòng",
+                _IdArgument(),
+                _CheckPermission_String(
+                    p => p.PermissionCreateOrUpdateRoomKind,
+                    context =>
+                    {
+                        RoomKindBusiness.Delete(_GetId<int>(context));
+                        return "Xóa thành công";
+                    }
+                )
+            );
+            Field<StringGraphType>(
+                _SetIsActive,
+                "Cập nhật trạng thái của loại phòng",
+                new QueryArguments(
+                    new QueryArgument<NonNullGraphType<IdGraphType>> { Name = "id" },
+                    new QueryArgument<NonNullGraphType<BooleanGraphType>> { Name = "isActive" }
+                ),
+                _CheckPermission_String(
+                    p => p.PermissionCreateOrUpdateRoomKind,
+                    context =>
+                    {
+                        var id = context.GetArgument<int>("id");
+                        var isActive = context.GetArgument<bool>("isActive");
+                        RoomKindBusiness.SetIsActive(id, isActive);
+                        return "Cập nhật trạng thái thành công";
+                    }
                 )
             );
         }

@@ -1,0 +1,63 @@
+{
+    "definitions": {},
+    "type": "object",
+    "required": ["data"],
+    "properties": {
+        "data": {
+            "type": "object",
+            "required": ["createReceipt"],
+            "properties": {
+                "createReceipt": {
+                    "type": "object",
+                    "required": [
+                        "id",
+                        "money",
+                        "time",
+                        "typeOfPayment",
+                        "bankAccountNumber",
+                        "bill",
+                        "employee"
+                    ],
+                    "properties": {
+                        "id": {
+                            "type": "integer"
+                        },
+                        "money": {
+                            "type": "integer"
+                        },
+                        "time": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "typeOfPayment": {
+                            "type": "integer"
+                        },
+                        "bankAccountNumber": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "bill": {
+                            "type": "object",
+                            "required": ["id"],
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                }
+                            }
+                        },
+                        "employee": {
+                            "type": "object",
+                            "required": ["id"],
+                            "properties": {
+                                "id": {
+                                    "type": "string",
+                                    "pattern": "^(.*)$"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

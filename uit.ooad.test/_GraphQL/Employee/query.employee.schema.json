@@ -1,0 +1,64 @@
+{
+    "definitions": {},
+    "type": "object",
+    "required": ["data"],
+    "properties": {
+        "data": {
+            "type": "object",
+            "required": ["employee"],
+            "properties": {
+                "employee": {
+                    "type": "object",
+                    "required": [
+                        "id",
+                        "name",
+                        "phoneNumber",
+                        "address",
+                        "birthdate",
+                        "startingDate",
+                        "isActive",
+                        "position"
+                    ],
+                    "properties": {
+                        "id": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "name": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "phoneNumber": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "address": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "birthdate": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "startingDate": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "isActive": {
+                            "type": "boolean"
+                        },
+                        "position": {
+                            "type": "object",
+                            "required": ["id"],
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

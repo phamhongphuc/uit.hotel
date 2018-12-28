@@ -18,8 +18,8 @@ namespace uit.ooad.Queries.Query
             Field<BookingType>(
                 _Item,
                 "Trả về thông tin một đơn đặt phòng",
-                IdArgument(),
-                context => BookingBusiness.Get(GetId<int>(context))
+                _IdArgument(),
+                context => BookingBusiness.Get(_GetId<int>(context))
             );
         }
     }

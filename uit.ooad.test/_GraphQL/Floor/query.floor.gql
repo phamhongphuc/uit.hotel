@@ -1,0 +1,7 @@
+query($id: ID!) {
+    floor(id: $id) {
+        id
+        name
+        isActive
+    }
+}

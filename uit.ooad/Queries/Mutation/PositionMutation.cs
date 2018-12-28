@@ -12,10 +12,10 @@ namespace uit.ooad.Queries.Mutation
             Field<PositionType>(
                 _Creation,
                 "Tạo và trả về một chức vụ mới",
-                InputArgument<PositionCreateInput>(),
-                _CheckPermission(
+                _InputArgument<PositionCreateInput>(),
+                _CheckPermission_Object(
                     p => p.PermissionCreatePosition,
-                    context => PositionBusiness.Add(GetInput(context))
+                    context => PositionBusiness.Add(_GetInput(context))
                 )
             );
         }

@@ -29,27 +29,31 @@ namespace uit.ooad.GraphQLHelper
             services.AddSingleton<BookingCreateInput>();
             services.AddSingleton<BookingIdInput>();
             services.AddSingleton<EmployeeCreateInput>();
+            services.AddSingleton<EmployeeUpdateInput>();
             services.AddSingleton<EmployeeIdInput>();
             services.AddSingleton<FloorCreateInput>();
+            services.AddSingleton<FloorUpdateInput>();
             services.AddSingleton<FloorIdInput>();
             services.AddSingleton<HouseKeepingCreateInput>();
             services.AddSingleton<HouseKeepingIdInput>();
             services.AddSingleton<PatronCreateInput>();
+            services.AddSingleton<PatronUpdateInput>();
             services.AddSingleton<PatronIdInput>();
             services.AddSingleton<PatronKindCreateInput>();
             services.AddSingleton<PatronKindIdInput>();
             services.AddSingleton<PositionCreateInput>();
             services.AddSingleton<PositionIdInput>();
             services.AddSingleton<RateCreateInput>();
-            //services.AddSingleton<RateIdInput>();
             services.AddSingleton<ReceiptCreateInput>();
-            //services.AddSingleton<ReceiptIdInput>();
             services.AddSingleton<RoomCreateInput>();
+            services.AddSingleton<RoomUpdateInput>();
             services.AddSingleton<RoomIdInput>();
             services.AddSingleton<RoomKindCreateInput>();
+            services.AddSingleton<RoomKindUpdateInput>();
             services.AddSingleton<RoomKindIdInput>();
-            services.AddSingleton<ServiceCreateInput>();
             services.AddSingleton<ServiceIdInput>();
+            services.AddSingleton<ServiceCreateInput>();
+            services.AddSingleton<ServiceUpdateInput>();
             services.AddSingleton<ServicesDetailCreateInput>();
             services.AddSingleton<ServicesDetailIdInput>();
             services.AddSingleton<VolatilityRateCreateInput>();
@@ -64,6 +68,7 @@ namespace uit.ooad.GraphQLHelper
 
         public static void Type(IServiceCollection services)
         {
+            services.AddSingleton<AuthenticationType>();
             services.AddSingleton<BillType>();
             services.AddSingleton<BookingType>();
             services.AddSingleton<EmployeeType>();

@@ -1,0 +1,190 @@
+{
+    "definitions": {},
+    "type": "object",
+    "title": "The Root Schema",
+    "required": ["data"],
+    "properties": {
+        "data": {
+            "type": "object",
+            "title": "The Data Schema",
+            "required": ["volatilityRate"],
+            "properties": {
+                "volatilityRate": {
+                    "type": "object",
+                    "title": "The Volatilityrate Schema",
+                    "required": [
+                        "id",
+                        "dayRate",
+                        "nightRate",
+                        "weekRate",
+                        "monthRate",
+                        "lateCheckOutFee",
+                        "earlyCheckInFee",
+                        "effectiveStartDate",
+                        "effectiveEndDate",
+                        "effectiveOnMonday",
+                        "effectiveOnTuesday",
+                        "effectiveOnWednesday",
+                        "effectiveOnThursday",
+                        "effectiveOnFriday",
+                        "effectiveOnSaturday",
+                        "effectiveOnSunday",
+                        "createDate",
+                        "roomKind"
+                    ],
+                    "properties": {
+                        "id": {
+                            "type": "integer",
+                            "title": "The Id Schema",
+                            "default": 0,
+                            "examples": [2]
+                        },
+                        "dayRate": {
+                            "type": "integer",
+                            "title": "The Dayrate Schema",
+                            "default": 0,
+                            "examples": [1]
+                        },
+                        "nightRate": {
+                            "type": "integer",
+                            "title": "The Nightrate Schema",
+                            "default": 0,
+                            "examples": [1]
+                        },
+                        "weekRate": {
+                            "type": "integer",
+                            "title": "The Weekrate Schema",
+                            "default": 0,
+                            "examples": [1]
+                        },
+                        "monthRate": {
+                            "type": "integer",
+                            "title": "The Monthrate Schema",
+                            "default": 0,
+                            "examples": [1]
+                        },
+                        "lateCheckOutFee": {
+                            "type": "integer",
+                            "title": "The Latecheckoutfee Schema",
+                            "default": 0,
+                            "examples": [1]
+                        },
+                        "earlyCheckInFee": {
+                            "type": "integer",
+                            "title": "The Earlycheckinfee Schema",
+                            "default": 0,
+                            "examples": [1]
+                        },
+                        "effectiveStartDate": {
+                            "type": "string",
+                            "title": "The Effectivestartdate Schema",
+                            "default": "",
+                            "examples": ["0001-01-01T00:00:00+00:00"],
+                            "pattern": "^(.*)$"
+                        },
+                        "effectiveEndDate": {
+                            "type": "string",
+                            "title": "The Effectiveenddate Schema",
+                            "default": "",
+                            "examples": ["0001-01-01T00:00:00+00:00"],
+                            "pattern": "^(.*)$"
+                        },
+                        "effectiveOnMonday": {
+                            "type": "boolean",
+                            "title": "The Effectiveonmonday Schema",
+                            "default": false,
+                            "examples": [true]
+                        },
+                        "effectiveOnTuesday": {
+                            "type": "boolean",
+                            "title": "The Effectiveontuesday Schema",
+                            "default": false,
+                            "examples": [true]
+                        },
+                        "effectiveOnWednesday": {
+                            "type": "boolean",
+                            "title": "The Effectiveonwednesday Schema",
+                            "default": false,
+                            "examples": [true]
+                        },
+                        "effectiveOnThursday": {
+                            "type": "boolean",
+                            "title": "The Effectiveonthursday Schema",
+                            "default": false,
+                            "examples": [true]
+                        },
+                        "effectiveOnFriday": {
+                            "type": "boolean",
+                            "title": "The Effectiveonfriday Schema",
+                            "default": false,
+                            "examples": [true]
+                        },
+                        "effectiveOnSaturday": {
+                            "type": "boolean",
+                            "title": "The Effectiveonsaturday Schema",
+                            "default": false,
+                            "examples": [true]
+                        },
+                        "effectiveOnSunday": {
+                            "type": "boolean",
+                            "title": "The Effectiveonsunday Schema",
+                            "default": false,
+                            "examples": [true]
+                        },
+                        "createDate": {
+                            "type": "string",
+                            "title": "The Createdate Schema",
+                            "default": "",
+                            "examples": ["0001-01-01T00:00:00+00:00"],
+                            "pattern": "^(.*)$"
+                        },
+                        "roomKind": {
+                            "type": "object",
+                            "title": "The Roomkind Schema",
+                            "required": [
+                                "id",
+                                "name",
+                                "amountOfPeople",
+                                "numberOfBeds",
+                                "priceByDate"
+                            ],
+                            "properties": {
+                                "id": {
+                                    "type": "integer",
+                                    "title": "The Id Schema",
+                                    "default": 0,
+                                    "examples": [1]
+                                },
+                                "name": {
+                                    "type": "string",
+                                    "title": "The Name Schema",
+                                    "default": "",
+                                    "examples": ["Luxury"],
+                                    "pattern": "^(.*)$"
+                                },
+                                "amountOfPeople": {
+                                    "type": "integer",
+                                    "title": "The Amountofpeople Schema",
+                                    "default": 0,
+                                    "examples": [2]
+                                },
+                                "numberOfBeds": {
+                                    "type": "integer",
+                                    "title": "The Numberofbeds Schema",
+                                    "default": 0,
+                                    "examples": [2]
+                                },
+                                "priceByDate": {
+                                    "type": "integer",
+                                    "title": "The Pricebydate Schema",
+                                    "default": 0,
+                                    "examples": [1000]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

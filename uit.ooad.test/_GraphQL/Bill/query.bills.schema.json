@@ -1,0 +1,39 @@
+{
+    "definitions": {},
+    "type": "object",
+    "required": ["data"],
+    "properties": {
+        "data": {
+            "type": "object",
+            "required": ["bills"],
+            "properties": {
+                "bills": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "required": ["id", "time", "patron"],
+                        "properties": {
+                            "id": {
+                                "type": "integer"
+                            },
+                            "time": {
+                                "type": "string",
+                                "pattern": "^(.*)$"
+                            },
+                            "patron": {
+                                "type": "object",
+                                "required": ["identification"],
+                                "properties": {
+                                    "identification": {
+                                        "type": "string",
+                                        "pattern": "^(.*)$"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,13 @@
+query($id: ID!) {
+    servicesDetail(id: $id) {
+        id
+        time
+        booking {
+            id
+        }
+        number
+        service {
+            id
+        }
+    }
+}

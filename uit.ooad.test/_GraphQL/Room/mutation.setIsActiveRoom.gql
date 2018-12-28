@@ -1,0 +1,3 @@
+mutation($id: ID!, $isActive: Boolean!) {
+    setIsActiveRoom(id: $id, isActive: $isActive)
+}

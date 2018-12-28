@@ -15,11 +15,11 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.Time).Description("Thời gian tạo");
             Field(x => x.Number).Description("Số lượng");
 
-            Field<BookingType>(
+            Field<NonNullGraphType<BookingType>>(
                 nameof(ServicesDetail.Booking),
                 resolve: context => context.Source.Booking,
                 description: "Thuộc thông tin thuê phòng nào");
-            Field<ServiceType>(
+            Field<NonNullGraphType<ServiceType>>(
                 nameof(ServicesDetail.Service),
                 resolve: context => context.Source.Service,
                 description: "Thuộc dịch vụ nào");
@@ -43,15 +43,9 @@ namespace uit.ooad.ObjectTypes
         {
             Name = _Creation;
 
-            Field(x => x.Id).Description("Id của chi tiết dịch vụ");
-            Field(x => x.Time).Description("Thời gian tạo");
             Field(x => x.Number).Description("Số lượng");
 
-            Field<BookingIdInput>(
-                nameof(ServicesDetail.Booking),
-                "Thuộc thông tin thuê phòng nào"
-            );
-            Field<ServiceIdInput>(
+            Field<NonNullGraphType<ServiceIdInput>>(
                 nameof(ServicesDetail.Service),
                 "Thuộc dịch vụ nào"
             );

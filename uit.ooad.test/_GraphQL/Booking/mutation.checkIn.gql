@@ -1,0 +1,29 @@
+mutation($id: ID!) {
+    checkIn(id: $id) {
+        id
+        bookCheckInTime
+        bookCheckOutTime
+        realCheckInTime
+        realCheckOutTime
+        createTime
+        status
+        room {
+            id
+        }
+        employeeBooking {
+            id
+        }
+        employeeCheckIn {
+            id
+        }
+        employeeCheckOut {
+            id
+        }
+        bill {
+            id
+        }
+        patrons {
+            id
+        }
+    }
+}

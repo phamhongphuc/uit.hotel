@@ -1,0 +1,7 @@
+mutation($input: FloorCreateInput!) {
+    createFloor(input: $input) {
+        id
+        name
+        isActive
+    }
+}

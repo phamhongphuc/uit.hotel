@@ -1,4 +1,11 @@
 {
     "editor.tabSize": 4,
-    "prettier.tabWidth": 4
+    "prettier.tabWidth": 4,
+    "files.exclude": {
+        "bin": true,
+        "obj": true,
+        "Tools": true,
+        ".vscode": true,
+        "node_modules": true
+    }
 }

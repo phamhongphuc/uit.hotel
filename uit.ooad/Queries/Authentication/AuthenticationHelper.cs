@@ -41,19 +41,50 @@ namespace uit.ooad.Queries.Authentication
 
         public static void HasPermission(ResolveFieldContext<object> context, Func<Position, bool> getPermission)
         {
-            if (!(context.UserContext is GraphQLUserContext userContext)) throw new Exception("Lỗi không xác định");
+            var employee = GetEmployee(context);
 
-            var name = userContext.User.FindFirst(u => u.Type == ClaimTypes.Name);
-            if (name == null) throw new Exception("Không tìm thấy tên đăng nhập");
-
-            var employee = EmployeeBusiness.Get(name.Value);
-            if (employee == null) throw new Exception("Không tim thấy tên đăng nhập trong hệ thống");
+            if (!employee.IsActive)
+                throw new Exception("Tài khoản " + employee.Id + " đã bị vô hiệu hóa");
 
             var position = employee.Position;
             if (position == null) new Exception("Tài khoản lỗi, vui lòng liên hệ quản trị viên");
 
             var hasPermission = getPermission(position);
             if (!hasPermission) throw new Exception("Người dùng không có quyền thực hiện thao tác này");
+        }
+
+        public static string GetEmployeeId(ResolveFieldContext<object> context)
+        {
+            if (!(context.UserContext is GraphQLUserContext userContext)) throw new Exception("Lỗi không xác định");
+
+            var employeeId = userContext.User.FindFirst(u => u.Type == ClaimTypes.Name);
+            if (employeeId == null) throw new Exception("Không tìm thấy tên đăng nhập");
+
+            return employeeId.Value;
+        }
+
+        public static Employee GetEmployee(ResolveFieldContext<object> context)
+        {
+            var id = GetEmployeeId(context);
+
+            var employee = EmployeeBusiness.Get(id);
+            if (employee == null) throw new Exception("Không tìm thấy tên đăng nhập trong hệ thống");
+
+            return employee;
+        }
+
+        public static string GetRandomString()
+        {
+            var builder = new StringBuilder();
+            var random = new Random();
+            char ch;
+            for (var i = 0; i < 6; i++)
+            {
+                ch = Convert.ToChar(Convert.ToInt32(Math.Floor(26 * random.NextDouble() + 65)));
+                builder.Append(ch);
+            }
+
+            return builder.ToString();
         }
     }
 }

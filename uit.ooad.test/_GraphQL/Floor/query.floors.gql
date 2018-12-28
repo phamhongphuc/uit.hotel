@@ -1,0 +1,7 @@
+{
+    floors {
+        id
+        name
+        isActive
+    }
+}

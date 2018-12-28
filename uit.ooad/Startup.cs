@@ -1,5 +1,4 @@
 using System.Text;
-using GraphQL.Validation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -43,7 +42,6 @@ namespace uit.ooad
                     };
                 });
 
-            // services.AddSingleton<>();
             // GraphQL
             GraphQLConfig.Config(services);
             GraphQLConfig.Input(services);
@@ -58,14 +56,13 @@ namespace uit.ooad
         {
             if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
 
-            app.ApplicationServices.GetServices<IValidationRule>();
-
             app.UseCors(x => x
-                            .AllowAnyOrigin()
-                            .AllowAnyMethod()
-                            .AllowAnyHeader()
-                            .AllowCredentials()
+                           .AllowAnyOrigin()
+                           .AllowAnyMethod()
+                           .AllowAnyHeader()
+                           .AllowCredentials()
             );
+
             app.UseAuthentication();
             app.UseMvc();
         }

@@ -1,0 +1,6 @@
+query($id: ID!) {
+    service(id: $id) {
+        id
+        name
+    }
+}

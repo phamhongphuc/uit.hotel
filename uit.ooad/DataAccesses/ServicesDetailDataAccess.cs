@@ -1,15 +1,20 @@
+using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
+using System.Linq;
+using Realms;
 using uit.ooad.Models;
 
 namespace uit.ooad.DataAccesses
 {
     public class ServicesDetailDataAccess : RealmDatabase
     {
-        public static async Task<ServicesDetail> Add(ServicesDetail servicesDetail)
+        public static int NextId => Get().Count() == 0 ? 1 : Get().Max(i => i.Id) + 1;
+
+        public static ServicesDetail Add(Realm realm, ServicesDetail servicesDetail)
         {
-            await Database.WriteAsync(realm => servicesDetail = realm.Add(servicesDetail));
-            return servicesDetail;
+            servicesDetail.Id = NextId;
+            servicesDetail.Time = DateTimeOffset.Now;
+            return realm.Add(servicesDetail);
         }
 
         public static ServicesDetail Get(int servicesDetailId) => Database.Find<ServicesDetail>(servicesDetailId);

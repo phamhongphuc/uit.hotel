@@ -1,0 +1,36 @@
+{
+    "definitions": {},
+    "type": "object",
+    "required": ["data"],
+    "properties": {
+        "data": {
+            "type": "object",
+            "required": ["updateService"],
+            "properties": {
+                "updateService": {
+                    "type": "object",
+                    "required": ["id", "name", "unitRate", "unit", "isActive"],
+                    "properties": {
+                        "id": {
+                            "type": "integer"
+                        },
+                        "name": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "unitRate": {
+                            "type": "integer"
+                        },
+                        "unit": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "isActive": {
+                            "type": "boolean"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

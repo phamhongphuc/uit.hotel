@@ -1,0 +1,8 @@
+{
+    services {
+        id
+        name
+        unitRate
+        unit
+    }
+}

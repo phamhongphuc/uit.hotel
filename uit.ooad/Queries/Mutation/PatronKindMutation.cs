@@ -12,8 +12,11 @@ namespace uit.ooad.Queries.Mutation
             Field<PatronKindType>(
                 _Creation,
                 "Tạo và trả về một loại khách hàng mới",
-                InputArgument<PatronKindCreateInput>(),
-                context => PatronKindBusiness.Add(GetInput(context))
+                _InputArgument<PatronKindCreateInput>(),
+                _CheckPermission_Object(
+                    p => p.PermissionManagePatronKinds,
+                    context => PatronKindBusiness.Add(_GetInput(context))
+                )
             );
         }
     }

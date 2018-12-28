@@ -1,0 +1,7 @@
+mutation($input: PatronKindCreateInput!) {
+    createPatronKind(input: $input) {
+        id
+        name
+        description
+    }
+}

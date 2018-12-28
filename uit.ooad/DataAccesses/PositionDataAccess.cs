@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using uit.ooad.Models;
 
@@ -8,11 +10,19 @@ namespace uit.ooad.DataAccesses
     {
         public static async Task<Position> Add(Position position)
         {
-            await Database.WriteAsync(realm => position = realm.Add(position));
+            await Database.WriteAsync(realm =>
+            {
+                position.Id = Get().Count() == 0 ? 1 : Get().Max(f => f.Id) + 1;
+
+                position = realm.Add(position);
+            });
             return position;
         }
 
         public static Position Get(int positionId) => Database.Find<Position>(positionId);
+
+        public static async void Update(Action<Position> setPermission, Position position)
+            => await Database.WriteAsync(realm => { setPermission(position); });
 
         public static IEnumerable<Position> Get() => Database.All<Position>();
     }

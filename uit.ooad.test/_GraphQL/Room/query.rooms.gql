@@ -1,0 +1,13 @@
+{
+    rooms {
+        id
+        name
+        isActive
+        floor {
+            id
+        }
+        roomKind {
+            id
+        }
+    }
+}

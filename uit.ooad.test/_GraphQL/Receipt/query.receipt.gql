@@ -1,0 +1,15 @@
+query($id: ID!) {
+    receipt(id: $id) {
+        id
+        time
+        money
+        bankAccountNumber
+        typeOfPayment
+        employee {
+            id
+        }
+        bill {
+            id
+        }
+    }
+}

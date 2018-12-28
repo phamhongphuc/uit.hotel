@@ -1,0 +1,29 @@
+{
+    "definitions": {},
+    "type": "object",
+    "required": ["data"],
+    "properties": {
+        "data": {
+            "type": "object",
+            "required": ["createFloor"],
+            "properties": {
+                "createFloor": {
+                    "type": "object",
+                    "required": ["id", "name", "isActive"],
+                    "properties": {
+                        "id": {
+                            "type": "integer"
+                        },
+                        "name": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "isActive": {
+                            "type": "boolean"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

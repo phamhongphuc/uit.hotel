@@ -1,0 +1,13 @@
+query($id: ID!) {
+    houseKeeping(id: $id) {
+        id
+        type
+        status
+        employee {
+            id
+        }
+        booking {
+            id
+        }
+    }
+}

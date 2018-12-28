@@ -11,13 +11,16 @@ public class HouseKeepingQuery : QueryType<HouseKeeping>
         Field<ListGraphType<HouseKeepingType>>(
             _List,
             "Trả về một danh sách các công việc dọn dẹp",
-            resolve: context => HouseKeepingBusiness.Get()
+            resolve: _CheckPermission_List(
+                p => p.PermissionGetHouseKeepings,
+                context => HouseKeepingBusiness.Get()
+            )
         );
         Field<HouseKeepingType>(
             _Item,
             "Trả về thông tin một công việc dọn dẹp",
-            IdArgument(),
-            context => HouseKeepingBusiness.Get(GetId<int>(context))
+            _IdArgument(),
+            context => HouseKeepingBusiness.Get(_GetId<int>(context))
         );
     }
 }

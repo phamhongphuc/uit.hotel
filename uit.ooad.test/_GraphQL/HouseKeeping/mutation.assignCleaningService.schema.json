@@ -1,0 +1,47 @@
+{
+    "definitions": {},
+    "type": "object",
+    "required": ["data"],
+    "properties": {
+        "data": {
+            "type": "object",
+            "required": ["assignCleaningService"],
+            "properties": {
+                "assignCleaningService": {
+                    "type": "object",
+                    "required": ["id", "type", "status", "employee", "booking"],
+                    "properties": {
+                        "id": {
+                            "type": "integer"
+                        },
+                        "type": {
+                            "type": "integer"
+                        },
+                        "status": {
+                            "type": "integer"
+                        },
+                        "employee": {
+                            "type": "object",
+                            "required": ["id"],
+                            "properties": {
+                                "id": {
+                                    "type": "string",
+                                    "pattern": "^(.*)$"
+                                }
+                            }
+                        },
+                        "booking": {
+                            "type": "object",
+                            "required": ["id"],
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

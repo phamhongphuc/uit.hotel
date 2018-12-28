@@ -1,3 +1,4 @@
+using GraphQL.Types;
 using uit.ooad.Businesses;
 using uit.ooad.Models;
 using uit.ooad.ObjectTypes;
@@ -12,10 +13,50 @@ namespace uit.ooad.Queries.Mutation
             Field<FloorType>(
                 _Creation,
                 "Tạo và trả về một tầng mới",
-                InputArgument<FloorCreateInput>(),
-                _CheckPermission(
-                    p => p.PermissionCreateFloor,
-                    context => FloorBusiness.Add(GetInput(context))
+                _InputArgument<FloorCreateInput>(),
+                _CheckPermission_Object(
+                    p => p.PermissionUpdateGroundPlan,
+                    context => FloorBusiness.Add(_GetInput(context))
+                )
+            );
+            Field<FloorType>(
+                _Updation,
+                "Cập nhật và trả về một tầng vừa cập nhật",
+                _InputArgument<FloorUpdateInput>(),
+                _CheckPermission_Object(
+                    p => p.PermissionUpdateGroundPlan,
+                    context => FloorBusiness.Update(_GetInput(context))
+                )
+            );
+            Field<StringGraphType>(
+                _Deletion,
+                "Xóa một tầng",
+                _IdArgument(),
+                _CheckPermission_String(
+                    p => p.PermissionUpdateGroundPlan,
+                    context =>
+                    {
+                        FloorBusiness.Delete(_GetId<int>(context));
+                        return "Xóa thành công";
+                    }
+                )
+            );
+            Field<StringGraphType>(
+                _SetIsActive,
+                "Cập nhật trạng thái của tầng",
+                new QueryArguments(
+                    new QueryArgument<NonNullGraphType<IdGraphType>> { Name = "id" },
+                    new QueryArgument<NonNullGraphType<BooleanGraphType>> { Name = "isActive" }
+                ),
+                _CheckPermission_String(
+                    p => p.PermissionUpdateGroundPlan,
+                    context =>
+                    {
+                        var id = context.GetArgument<int>("id");
+                        var isActive = context.GetArgument<bool>("isActive");
+                        FloorBusiness.SetIsActive(id, isActive);
+                        return "Cập nhật trạng thái thành công";
+                    }
                 )
             );
         }

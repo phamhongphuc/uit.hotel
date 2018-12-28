@@ -15,10 +15,12 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.Id).Description("Id của nhân viên");
             Field(x => x.Password).Description("Mật khẩu của tài khoản nhân viên");
             Field(x => x.Name).Description("Tên nhân viên");
+            Field(x => x.IdentityCard).Description("Chứng minh nhân dân");
             Field(x => x.PhoneNumber).Description("Số điện thoại của nhân viên");
             Field(x => x.Address).Description("Địa chỉ của nhân viên");
             Field(x => x.Birthdate).Description("Ngày sinh của nhân viên");
             Field(x => x.StartingDate).Description("Ngày vào làm");
+            Field(x => x.IsActive).Description("Tài khoản còn hiệu lực hay không");
 
             Field<NonNullGraphType<PositionType>>(
                 nameof(Employee.Position),
@@ -70,6 +72,28 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.Id).Description("Id của nhân viên");
             Field(x => x.Password).Description("Mật khẩu của tài khoản nhân viên");
             Field(x => x.Name).Description("Tên nhân viên");
+            Field(x => x.IdentityCard).Description("Chứng minh nhân dân");
+            Field(x => x.PhoneNumber).Description("Số điện thoại của nhân viên");
+            Field(x => x.Address).Description("Địa chỉ của nhân viên");
+            Field(x => x.Birthdate).Description("Ngày sinh của nhân viên");
+            Field(x => x.StartingDate).Description("Ngày vào làm");
+            Field(x => x.IsActive).Description("Tài khoản còn hiệu lực hay không");
+
+            Field<PositionIdInput>(
+                nameof(Employee.Position),
+                "Loại chức vụ"
+            );
+        }
+    }
+
+    public class EmployeeUpdateInput : InputType<Employee>
+    {
+        public EmployeeUpdateInput()
+        {
+            Name = _Updation;
+            Field(x => x.Id).Description("Id của nhân viên");
+            Field(x => x.Name).Description("Tên nhân viên");
+            Field(x => x.IdentityCard).Description("Chứng minh nhân dân");
             Field(x => x.PhoneNumber).Description("Số điện thoại của nhân viên");
             Field(x => x.Address).Description("Địa chỉ của nhân viên");
             Field(x => x.Birthdate).Description("Ngày sinh của nhân viên");

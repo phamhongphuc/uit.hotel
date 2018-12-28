@@ -14,19 +14,29 @@ namespace uit.ooad.ObjectTypes
 
             Field(x => x.Id).Description("Id của chức vụ");
             Field(x => x.Name).Description("Tên chức vụ");
-            Field(x => x.PermissionCreateEmployee).Description("Quyền tạo tài khoản nhân viên");
-            Field(x => x.PermissionCreatePatron).Description("Quyền tạo khách hàng");
+            Field(x => x.PermissionUpdateGroundPlan).Description("Quyền chỉnh sửa sơ đồ");
+            Field(x => x.PermissionManageEmployees).Description("Quyền quản lý thông tin nhân viên");
+            Field(x => x.PermissionReferRevenues).Description("Quyền xem thống kê và chi tiết doanh thu");
+            Field(x => x.PermissionHandleBills).Description("Quyền thao tác hóa đơn");
+            Field(x => x.PermissionGetRooms).Description("Quyền lấy danh sách phòng và hiện trạng từng phòng");
+            Field(x => x.PermissionManageHiringRooms).Description("Quyền quản lý thuê phòng");
+            Field(x => x.PermissionGetHouseKeepings).Description("Quyền tra cứu lịch sử dọn phòng");
+            Field(x => x.PermissionManagePatrons).Description("Quyền quản lý khách hàng");
+            Field(x => x.PermissionManagePatronKinds).Description("Quyền quản lý loại khách hàng");
+            Field(x => x.PermissionCleaning).Description("Quyền thao tác dọn phòng");
+
+            Field(x => x.PermissionCreateOrUpdatePatron).Description("Quyền tạo hoặc chỉnh sửa khách hàng");
+            Field(x => x.PermissionCreateOrUpdateEmployee).Description("Quyền tạo hoặc chỉnh sửa tài khoản nhân viên");
+            Field(x => x.PermissionCreatePatronKind).Description("Quyền tạo loại khách hàng");
             Field(x => x.PermissionCreateBill).Description("Quyền tạo hóa đơn");
-            Field(x => x.PermissionCreateFloor).Description("Quyền tạo tầng");
             Field(x => x.PermissionCreatePosition).Description("Quyền tạo chức vụ");
             Field(x => x.PermissionCreateReceipt).Description("Quyền tạo phiếu thu");
-            Field(x => x.PermissionCreateRoom).Description("Quyền tạo phòng");
-            Field(x => x.PermissionCreateRoomKind).Description("Quyền tạo loại phòng");
-            Field(x => x.PermissionCreateRate).Description("Quyền tạo giá cơ bản");
-            Field(x => x.PermissionCreateVolatilityRate).Description("Quyền tạo giá biến động");
-            Field(x => x.PermissionCreateService).Description("Quyền tạo dịch vụ");
+            Field(x => x.PermissionCreateOrUpdateRoomKind).Description("Quyền tạo hoặc chỉnh sửa loại phòng");
+            Field(x => x.PermissionCreateOrUpdateRate).Description("Quyền tạo giá cơ bản");
+            Field(x => x.PermissionCreateOrUpdateVolatilityRate).Description("Quyền tạo giá biến động");
+            Field(x => x.PermissionCreateOrUpdateService).Description("Quyền tạo dịch vụ");
+            Field(x => x.PermissionCreateServicesDetail).Description("Quyền tạo chi tiết dịch vụ");
             Field(x => x.PermissionCreateBooking).Description("Quyền tạo đơn đặt phòng");
-            Field(x => x.PermissionCreateHouseKeeping).Description("Quyền tạo công việc dọn phòng");
 
             Field<ListGraphType<EmployeeType>>(
                 nameof(Position.Employees),
@@ -53,22 +63,30 @@ namespace uit.ooad.ObjectTypes
         {
             Name = _Creation;
 
-            Field(x => x.Id).Description("Id của chức vụ");
             Field(x => x.Name).Description("Tên chức vụ");
-            Field(x => x.PermissionCreateEmployee).Description("Quyền tạo tài khoản nhân viên");
-            Field(x => x.PermissionCreatePatron).Description("Quyền tạo khách hàng");
+            Field(x => x.PermissionUpdateGroundPlan).Description("Quyền chỉnh sửa sơ đồ");
+            Field(x => x.PermissionManageEmployees).Description("Quyền quản lý thông tin nhân viên");
+            Field(x => x.PermissionReferRevenues).Description("Quyền xem thống kê và chi tiết doanh thu");
+            Field(x => x.PermissionHandleBills).Description("Quyền thao tác hóa đơn");
+            Field(x => x.PermissionGetRooms).Description("Quyền lấy danh sách phòng và hiện trạng từng phòng");
+            Field(x => x.PermissionManageHiringRooms).Description("Quyền quản lý thuê phòng");
+            Field(x => x.PermissionGetHouseKeepings).Description("Quyền tra cứu lịch sử dọn phòng");
+            Field(x => x.PermissionManagePatrons).Description("Quyền quản lý khách hàng");
+            Field(x => x.PermissionManagePatronKinds).Description("Quyền quản lý loại khách hàng");
+            Field(x => x.PermissionCleaning).Description("Quyền thao tác dọn phòng");
+
+            Field(x => x.PermissionCreateOrUpdatePatron).Description("Quyền tạo hoặc chỉnh sửa khách hàng");
+            Field(x => x.PermissionCreateOrUpdateEmployee).Description("Quyền tạo hoặc chỉnh sửa tài khoản nhân viên");
+            Field(x => x.PermissionCreatePatronKind).Description("Quyền tạo loại khách hàng");
             Field(x => x.PermissionCreateBill).Description("Quyền tạo hóa đơn");
-            Field(x => x.PermissionCreateFloor).Description("Quyền tạo tầng");
             Field(x => x.PermissionCreatePosition).Description("Quyền tạo chức vụ");
             Field(x => x.PermissionCreateReceipt).Description("Quyền tạo phiếu thu");
-            Field(x => x.PermissionCreateRoom).Description("Quyền tạo phòng");
-            Field(x => x.PermissionCreateRoomKind).Description("Quyền tạo loại phòng");
-            Field(x => x.PermissionCreateRate).Description("Quyền tạo giá cơ bản");
-            Field(x => x.PermissionCreateVolatilityRate).Description("Quyền tạo giá biến động");
-            Field(x => x.PermissionCreateService).Description("Quyền tạo dịch vụ");
+            Field(x => x.PermissionCreateOrUpdateRoomKind).Description("Quyền tạo hoặc chỉnh sửa loại phòng");
+            Field(x => x.PermissionCreateOrUpdateRate).Description("Quyền tạo giá cơ bản");
+            Field(x => x.PermissionCreateOrUpdateVolatilityRate).Description("Quyền tạo giá biến động");
+            Field(x => x.PermissionCreateOrUpdateService).Description("Quyền tạo và cập nhật dịch vụ");
             Field(x => x.PermissionCreateServicesDetail).Description("Quyền tạo chi tiết dịch vụ");
             Field(x => x.PermissionCreateBooking).Description("Quyền tạo đơn đặt phòng");
-            Field(x => x.PermissionCreateHouseKeeping).Description("Quyền tạo công việc dọn phòng");
         }
     }
 }

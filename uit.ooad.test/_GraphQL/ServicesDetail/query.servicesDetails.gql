@@ -1,0 +1,13 @@
+{
+    servicesDetails {
+        id
+        time
+        number
+        booking {
+            id
+        }
+        service {
+            id
+        }
+    }
+}

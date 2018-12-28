@@ -1,0 +1,66 @@
+{
+    "definitions": {},
+    "type": "object",
+    "required": ["data"],
+    "properties": {
+        "data": {
+            "type": "object",
+            "required": ["receipts"],
+            "properties": {
+                "receipts": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "id",
+                            "time",
+                            "money",
+                            "bankAccountNumber",
+                            "typeOfPayment",
+                            "employee",
+                            "bill"
+                        ],
+                        "properties": {
+                            "id": {
+                                "type": "integer"
+                            },
+                            "time": {
+                                "type": "string",
+                                "pattern": "^(.*)$"
+                            },
+                            "money": {
+                                "type": "integer"
+                            },
+                            "bankAccountNumber": {
+                                "type": "string",
+                                "pattern": "^(.*)$"
+                            },
+                            "typeOfPayment": {
+                                "type": "integer"
+                            },
+                            "employee": {
+                                "type": "object",
+                                "required": ["id"],
+                                "properties": {
+                                    "id": {
+                                        "type": "string",
+                                        "pattern": "^(.*)$"
+                                    }
+                                }
+                            },
+                            "bill": {
+                                "type": "object",
+                                "required": ["id"],
+                                "properties": {
+                                    "id": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

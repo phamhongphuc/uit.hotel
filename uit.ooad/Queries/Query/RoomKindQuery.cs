@@ -18,8 +18,8 @@ namespace uit.ooad.Queries.Query
             Field<RoomKindType>(
                 nameof(RoomKind),
                 "Trả về thông tin của một loại phòng",
-                IdArgument(),
-                context => RoomKindBusiness.Get(GetId<int>(context))
+                _IdArgument(),
+                context => RoomKindBusiness.Get(_GetId<int>(context))
             );
         }
     }

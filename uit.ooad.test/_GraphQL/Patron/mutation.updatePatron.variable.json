@@ -1,0 +1,19 @@
+{
+    "input": {
+        "id": 1,
+        "identification": "123456789",
+        "name": "Tên khách hàng đã sửa",
+        "email": "email khách hàng",
+        "gender": true,
+        "birthdate": "0001-01-01T00:00:00+00:00",
+        "residence": "Hộ khẩu",
+        "domicile": "Nguyên quán",
+        "listOfPhoneNumbers": ["1234"],
+        "nationality": "Quốc tịch",
+        "company": "công ty",
+        "note": "Ghi chú",
+        "patronKind": {
+            "id": 1
+        }
+    }
+}

@@ -1,0 +1,13 @@
+{
+    houseKeepings {
+        id
+        type
+        status
+        employee {
+            id
+        }
+        booking {
+            id
+        }
+    }
+}

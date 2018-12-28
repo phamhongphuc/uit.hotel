@@ -1,0 +1,13 @@
+query($id: ID!) {
+    room(id: $id) {
+        id
+        name
+        isActive
+        roomKind {
+            id
+        }
+        floor {
+            id
+        }
+    }
+}

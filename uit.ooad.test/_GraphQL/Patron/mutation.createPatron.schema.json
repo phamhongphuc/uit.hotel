@@ -1,0 +1,99 @@
+{
+    "definitions": {},
+    "type": "object",
+    "required": ["data"],
+    "properties": {
+        "data": {
+            "type": "object",
+            "required": ["createPatron"],
+            "properties": {
+                "createPatron": {
+                    "type": "object",
+                    "required": [
+                        "id",
+                        "identification",
+                        "name",
+                        "birthdate",
+                        "email",
+                        "gender",
+                        "residence",
+                        "domicile",
+                        "phoneNumbers",
+                        "nationality",
+                        "company",
+                        "note",
+                        "patronKind"
+                    ],
+                    "properties": {
+                        "id": {
+                            "type": "integer"
+                        },
+                        "identification": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "name": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "birthdate": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "email": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "gender": {
+                            "type": "boolean"
+                        },
+                        "residence": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "domicile": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "phoneNumbers": {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "pattern": "^(.*)$"
+                            }
+                        },
+                        "nationality": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "company": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "note": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "patronKind": {
+                            "type": "object",
+                            "required": ["id", "name", "description"],
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "name": {
+                                    "type": "string",
+                                    "pattern": "^(.*)$"
+                                },
+                                "description": {
+                                    "type": "string",
+                                    "pattern": "^(.*)$"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

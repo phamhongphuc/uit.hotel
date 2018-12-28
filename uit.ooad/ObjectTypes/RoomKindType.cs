@@ -17,6 +17,7 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.NumberOfBeds).Description("Số giường");
             Field(x => x.AmountOfPeople).Description("Số người trong một phòng");
             Field(x => x.PriceByDate).Description("Giá theo ngày");
+            Field(x => x.IsActive).Description("Trạng thái phòng");
 
             Field<ListGraphType<RoomType>>(
                 nameof(RoomKind.Rooms),
@@ -53,7 +54,22 @@ namespace uit.ooad.ObjectTypes
             Name = _Creation;
             Description = "Input cho việc tạo một loại phòng";
 
-            Field(x => x.Id).Description("Id của loại phòng");
+            Field(x => x.Name).Description("Tên loại phòng");
+            Field(x => x.NumberOfBeds).Description("Số giường");
+            Field(x => x.AmountOfPeople).Description("Số người trong một phòng");
+            Field(x => x.PriceByDate).Description("Giá theo ngày");
+            Field(x => x.IsActive).Description("Trạng thái phòng");
+        }
+    }
+
+    public class RoomKindUpdateInput : InputType<RoomKind>
+    {
+        public RoomKindUpdateInput()
+        {
+            Name = _Updation;
+            Description = "Input cho việc chỉnh sửa một loại phòng";
+
+            Field(x => x.Id).Description("Id loại phòng");
             Field(x => x.Name).Description("Tên loại phòng");
             Field(x => x.NumberOfBeds).Description("Số giường");
             Field(x => x.AmountOfPeople).Description("Số người trong một phòng");

@@ -11,6 +11,8 @@ namespace uit.ooad.Models
 
         public string Name { get; set; }
 
+        public bool IsActive { get; set; }
+
         [Backlink(nameof(Room.Floor))]
         public IQueryable<Room> Rooms { get; }
 
@@ -18,6 +20,7 @@ namespace uit.ooad.Models
         {
             return Realm.All<Room>().Where(r => r.Floor == this).ToArray();
         }
+
         public Floor GetManaged() => FloorBusiness.Get(Id);
     }
 }
