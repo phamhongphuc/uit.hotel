@@ -9,7 +9,7 @@
         permissionManageEmployees
         permissionGetRooms
         permissionManagePatron
-        permissionManagePatronKinds
+        permissionManagePatronKind
         permissionManageHiringRoom
         permissionGetHouseKeeping
         permissionCreatePatronKind

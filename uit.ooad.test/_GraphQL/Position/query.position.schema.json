@@ -23,7 +23,7 @@
             "permissionManageEmployees",
             "permissionGetRooms",
             "permissionManagePatron",
-            "permissionManagePatronKinds",
+            "permissionManagePatronKind",
             "permissionManageHiringRoom",
             "permissionGetHouseKeeping",
             "permissionCreatePatronKind",
@@ -69,7 +69,7 @@
             "permissionManagePatron": {
               "type": "boolean"
             },
-            "permissionManagePatronKinds": {
+            "permissionManagePatronKind": {
               "type": "boolean"
             },
             "permissionManageHiringRoom": {
