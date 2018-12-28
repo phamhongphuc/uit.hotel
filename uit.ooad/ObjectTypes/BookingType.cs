@@ -96,15 +96,4 @@ namespace uit.ooad.ObjectTypes
             );
         }
     }
-
-    public class CheckOutCreateInput : InputType<Booking>
-    {
-        public CheckOutCreateInput()
-        {
-            Name = _Creation;
-
-            Field(x => x.RealCheckInTime, true).Description("Thời điểm nhận phòng của khách hàng");
-            Field(x => x.RealCheckOutTime, true).Description("Thời điểm trả phòng của khách hàng");
-        }
-    }
 }

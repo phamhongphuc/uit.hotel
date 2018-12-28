@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Realms;
 using uit.ooad.Businesses;
 
@@ -16,6 +17,12 @@ namespace uit.ooad.Models
 
         [Backlink(nameof(Booking.Room))]
         public IQueryable<Booking> Bookings { get; }
-        public Room GetManaged() => RoomBusiness.Get(Id);
+        public Room GetManaged() 
+        {
+            var room = RoomBusiness.Get(Id);
+            if(room == null)
+                throw new Exception("Mã phòng không tồn tại");
+            return room;
+        }
     }
 }

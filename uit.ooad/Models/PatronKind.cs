@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Realms;
 using uit.ooad.Businesses;
@@ -14,6 +15,12 @@ namespace uit.ooad.Models
         [Backlink(nameof(Patron.PatronKind))]
         public IQueryable<Patron> Patrons { get; }
 
-        public PatronKind GetManaged() => PatronKindBusiness.Get(Id);
+        public PatronKind GetManaged()
+        {
+            var patronKind = PatronKindBusiness.Get(Id);
+            if (patronKind == null)
+                throw new Exception("Mã loại khách hàng không tồn tại");
+            return patronKind;
+        }
     }
 }

@@ -33,6 +33,26 @@ namespace uit.ooad.Queries.Mutation
                     }
                 )
             );
+            Field<BillType>(
+                "BookAndCheckIn",
+                "Đặt và nhận phòng ngay tại khách sạn",
+                new QueryArguments(
+                    new QueryArgument<NonNullGraphType<ListGraphType<NonNullGraphType<BookingCreateInput>>>>
+                        { Name = "bookings" },
+                    new QueryArgument<NonNullGraphType<BillCreateInput>> { Name = "bill" }
+                ),
+                _CheckPermission_Object(
+                    p => p.PermissionManageHiringRooms,
+                    async context =>
+                    {
+                        var employee = AuthenticationHelper.GetEmployee(context);
+                        var bill = context.GetArgument<Bill>("bill");
+                        var bookings = context.GetArgument<List<Booking>>("bookings");
+
+                        return await BillBusiness.BookAndCheckIn(employee, bill, bookings);
+                    }
+                )
+            );
         }
     }
 }

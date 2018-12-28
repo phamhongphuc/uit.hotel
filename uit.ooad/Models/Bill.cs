@@ -19,6 +19,12 @@ namespace uit.ooad.Models
         [Backlink(nameof(Booking.Bill))]
         public IQueryable<Booking> Bookings { get; }
 
-        public Bill GetManaged() => BillBusiness.Get(Id);
+        public Bill GetManaged()
+        {
+            var bill = BillBusiness.Get(Id);
+            if (bill == null)
+                throw new Exception("Mã hóa đơn không tồn tại");
+            return bill;
+        }
     }
 }

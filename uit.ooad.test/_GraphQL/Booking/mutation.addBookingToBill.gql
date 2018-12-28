@@ -1,0 +1,29 @@
+mutation ($booking: BookingCreateInput!, $billId: ID!) {
+  addBookingToBill(booking: $booking, billId: $billId) {
+    id
+    bookCheckInTime
+    bookCheckOutTime
+    realCheckInTime
+    realCheckOutTime
+    createTime
+    status
+    room {
+      id
+    }
+    employeeBooking {
+      id
+    }
+    employeeCheckIn {
+      id
+    }
+    employeeCheckOut {
+      id
+    }
+    bill {
+      id
+    }
+    patrons {
+      id
+    }
+  }
+}

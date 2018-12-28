@@ -25,15 +25,26 @@ namespace uit.ooad.test._GraphQL._Bill
             );
         }
 
-        // [TestMethod]
-        // public void CreateBill()
-        // {
-        //     SchemaHelper.Execute(
-        //         @"/_GraphQL/Bill/mutation.createBill.gql",
-        //         @"/_GraphQL/Bill/mutation.createBill.schema.json",
-        //         @"/_GraphQL/Bill/mutation.createBill.variable.json",
-        //         p => p.PermissionManageHiringRooms = true
-        //     );
-        // }
+        [TestMethod]
+        public void CreateBill()
+        {
+            SchemaHelper.Execute(
+                @"/_GraphQL/Bill/mutation.createBill.gql",
+                @"/_GraphQL/Bill/mutation.createBill.schema.json",
+                @"/_GraphQL/Bill/mutation.createBill.variable.json",
+                p => p.PermissionManageHiringRooms = true
+            );
+        }
+
+        [TestMethod]
+        public void BookAndCheckIn()
+        {
+            SchemaHelper.Execute(
+                @"/_GraphQL/Bill/mutation.bookAndCheckIn.gql",
+                @"/_GraphQL/Bill/mutation.bookAndCheckIn.schema.json",
+                @"/_GraphQL/Bill/mutation.bookAndCheckIn.variable.json",
+                p => p.PermissionManageHiringRooms = true
+            );
+        }
     }
 }

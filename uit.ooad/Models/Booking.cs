@@ -55,6 +55,12 @@ namespace uit.ooad.Models
             // Kiểm tra các điều kiện thực thi trong này.
         }
 
-        public Booking GetManaged() => BookingBusiness.Get(Id);
+        public Booking GetManaged()
+        {
+            var booking = BookingBusiness.Get(Id);
+            if (booking == null)
+                throw new Exception("Mã booking không tồn tại");
+            return booking;
+        }
     }
 }

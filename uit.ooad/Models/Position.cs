@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Realms;
 using uit.ooad.Businesses;
 
@@ -39,6 +40,12 @@ namespace uit.ooad.Models
         [Backlink(nameof(Employee.Position))]
         public IQueryable<Employee> Employees { get; }
 
-        public Position GetManaged() => PositionBusiness.Get(Id);
+        public Position GetManaged()
+        {
+            var position = PositionBusiness.Get(Id);
+            if (position == null)
+                throw new Exception("Mã chức vụ không tồn tại");
+            return position;
+        }
     }
 }

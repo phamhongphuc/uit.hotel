@@ -26,6 +26,22 @@ namespace uit.ooad.Businesses
             return BillDataAccess.Book(bill, bookings);
         }
 
+        public static Task<Bill> BookAndCheckIn(Employee employee, Bill bill, List<Booking> bookings)
+        {
+            bill.Patron = bill.Patron.GetManaged();
+            bill.Employee = employee;
+
+            foreach (var booking in bookings)
+            {
+                booking.EmployeeBooking = employee;
+                booking.EmployeeCheckIn = employee;
+                booking.Room = booking.Room.GetManaged();
+                if (!booking.Room.IsActive)
+                    throw new Exception("Phòng " + booking.Room.Id + " đã ngừng hoạt động");
+            }
+
+            return BillDataAccess.BookAndCheckIn(bill, bookings);
+        }
         public static Bill Get(int billId) => BillDataAccess.Get(billId);
         public static IEnumerable<Bill> Get() => BillDataAccess.Get();
     }

@@ -1,3 +1,4 @@
+using GraphQL.Types;
 using uit.ooad.Businesses;
 using uit.ooad.Models;
 using uit.ooad.ObjectTypes;
@@ -42,10 +43,29 @@ namespace uit.ooad.Queries.Mutation
                 _IdArgument(),
                 _CheckPermission_Object(
                     p => p.PermissionManageHiringRooms,
-                    context => 
+                    context =>
                     {
                         var employee = AuthenticationHelper.GetEmployee(context);
-                        return BookingBusiness.CheckOut(employee, _GetId<int>(context));                        
+                        return BookingBusiness.CheckOut(employee, _GetId<int>(context));
+                    }
+                )
+            );
+            Field<BookingType>(
+                "AddBookingToBill",
+                "Thêm phòng khách đoàn",
+                new QueryArguments(
+                    new QueryArgument<NonNullGraphType<IdGraphType>> { Name = "billId" },
+                    new QueryArgument<NonNullGraphType<BookingCreateInput>> { Name = "booking" }
+                ),
+                _CheckPermission_Object(
+                    p => p.PermissionManageHiringRooms,
+                    context =>
+                    {
+                        var employee = AuthenticationHelper.GetEmployee(context);
+                        var billId = context.GetArgument<int>("billId");
+                        var booking = context.GetArgument<Booking>("booking");
+
+                        return BookingBusiness.Add(employee, billId, booking);
                     }
                 )
             );
