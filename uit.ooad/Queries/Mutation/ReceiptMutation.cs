@@ -1,3 +1,4 @@
+using GraphQL.Types;
 using uit.ooad.Businesses;
 using uit.ooad.Models;
 using uit.ooad.ObjectTypes;
@@ -9,7 +10,7 @@ namespace uit.ooad.Queries.Mutation
     {
         public ReceiptMutation()
         {
-            Field<ReceiptType>(
+            Field<NonNullGraphType<ReceiptType>>(
                 _Creation,
                 "Tạo và trả về một phiếu thu mới",
                 _InputArgument<ReceiptCreateInput>(),

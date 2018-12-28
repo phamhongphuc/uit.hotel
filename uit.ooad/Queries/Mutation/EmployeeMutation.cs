@@ -12,7 +12,7 @@ namespace uit.ooad.Queries.Mutation
     {
         public EmployeeMutation()
         {
-            Field<EmployeeType>(
+            Field<NonNullGraphType<EmployeeType>>(
                 _Creation,
                 "Tạo và trả về một nhân viên mới",
                 _InputArgument<EmployeeCreateInput>(),
@@ -22,7 +22,7 @@ namespace uit.ooad.Queries.Mutation
                 )
             );
 
-            Field<EmployeeType>(
+            Field<NonNullGraphType<EmployeeType>>(
                 _Updation,
                 "Chỉnh sửa thông tin nhân viên",
                 _InputArgument<EmployeeUpdateInput>(),
@@ -32,7 +32,7 @@ namespace uit.ooad.Queries.Mutation
                 )
             );
 
-            Field<StringGraphType>(
+            Field<NonNullGraphType<StringGraphType>>(
                 "ResetPassword",
                 "Reset lại mật khẩu cho nhân viên khi quên mật khẩu",
                 _IdArgument(),
@@ -52,7 +52,7 @@ namespace uit.ooad.Queries.Mutation
                 )
             );
 
-            Field<StringGraphType>(
+            Field<NonNullGraphType<StringGraphType>>(
                 "SetIsActiveAccount",
                 "Vô hiệu hóa/ kích hoạt tài khoản",
                 new QueryArguments(

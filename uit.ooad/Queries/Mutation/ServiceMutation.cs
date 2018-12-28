@@ -10,7 +10,7 @@ namespace uit.ooad.Queries.Mutation
     {
         public ServiceMutation()
         {
-            Field<ServiceType>(
+            Field<NonNullGraphType<ServiceType>>(
                 _Creation,
                 "Tạo và trả về một dịch vụ mới",
                 _InputArgument<ServiceCreateInput>(),
@@ -20,7 +20,7 @@ namespace uit.ooad.Queries.Mutation
                 )
             );
 
-            Field<ServiceType>(
+            Field<NonNullGraphType<ServiceType>>(
                 _Updation,
                 "Cập nhật và trả về một dịch vụ mới cập nhật",
                 _InputArgument<ServiceUpdateInput>(),
@@ -30,7 +30,7 @@ namespace uit.ooad.Queries.Mutation
                 )
             );
 
-            Field<StringGraphType>(
+            Field<NonNullGraphType<StringGraphType>>(
                 "SetIsActiveService",
                 "Cập nhật trạng thái của dịch vụ",
                 new QueryArguments(

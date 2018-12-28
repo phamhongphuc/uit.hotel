@@ -1,3 +1,4 @@
+using GraphQL.Types;
 using uit.ooad.Businesses;
 using uit.ooad.Models;
 using uit.ooad.ObjectTypes;
@@ -9,7 +10,7 @@ namespace uit.ooad.Queries.Mutation
     {
         public PositionMutation()
         {
-            Field<PositionType>(
+            Field<NonNullGraphType<PositionType>>(
                 _Creation,
                 "Tạo và trả về một chức vụ mới",
                 _InputArgument<PositionCreateInput>(),

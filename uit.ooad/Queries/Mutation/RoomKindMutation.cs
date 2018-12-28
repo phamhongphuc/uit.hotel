@@ -10,7 +10,7 @@ namespace uit.ooad.Queries.Mutation
     {
         public RoomKindMutation()
         {
-            Field<RoomKindType>(
+            Field<NonNullGraphType<RoomKindType>>(
                 _Creation,
                 "Tạo và trả về một loại phòng",
                 _InputArgument<RoomKindCreateInput>(),
@@ -19,7 +19,8 @@ namespace uit.ooad.Queries.Mutation
                     context => RoomKindBusiness.Add(_GetInput(context))
                 )
             );
-            Field<RoomKindType>(
+
+            Field<NonNullGraphType<RoomKindType>>(
                 _Updation,
                 "Cập nhật và trả về loại phòng vừa cập nhật",
                 _InputArgument<RoomKindUpdateInput>(),
@@ -28,7 +29,8 @@ namespace uit.ooad.Queries.Mutation
                     context => RoomKindBusiness.Update(_GetInput(context))
                 )
             );
-            Field<StringGraphType>(
+
+            Field<NonNullGraphType<StringGraphType>>(
                 _Deletion,
                 "Xóa một loại phòng",
                 _IdArgument(),
@@ -41,7 +43,8 @@ namespace uit.ooad.Queries.Mutation
                     }
                 )
             );
-            Field<StringGraphType>(
+            
+            Field<NonNullGraphType<StringGraphType>>(
                 _SetIsActive,
                 "Cập nhật trạng thái của loại phòng",
                 new QueryArguments(

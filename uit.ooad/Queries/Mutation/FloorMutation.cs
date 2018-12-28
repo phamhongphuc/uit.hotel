@@ -10,7 +10,7 @@ namespace uit.ooad.Queries.Mutation
     {
         public FloorMutation()
         {
-            Field<FloorType>(
+            Field<NonNullGraphType<FloorType>>(
                 _Creation,
                 "Tạo và trả về một tầng mới",
                 _InputArgument<FloorCreateInput>(),
@@ -19,7 +19,8 @@ namespace uit.ooad.Queries.Mutation
                     context => FloorBusiness.Add(_GetInput(context))
                 )
             );
-            Field<FloorType>(
+
+            Field<NonNullGraphType<FloorType>>(
                 _Updation,
                 "Cập nhật và trả về một tầng vừa cập nhật",
                 _InputArgument<FloorUpdateInput>(),
@@ -28,7 +29,8 @@ namespace uit.ooad.Queries.Mutation
                     context => FloorBusiness.Update(_GetInput(context))
                 )
             );
-            Field<StringGraphType>(
+
+            Field<NonNullGraphType<StringGraphType>>(
                 _Deletion,
                 "Xóa một tầng",
                 _IdArgument(),
@@ -41,7 +43,8 @@ namespace uit.ooad.Queries.Mutation
                     }
                 )
             );
-            Field<StringGraphType>(
+
+            Field<NonNullGraphType<StringGraphType>>(
                 _SetIsActive,
                 "Cập nhật trạng thái của tầng",
                 new QueryArguments(
