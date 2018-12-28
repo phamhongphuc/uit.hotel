@@ -16,7 +16,7 @@ namespace uit.ooad.Queries.Mutation
                 "Cập nhật thời gian checkin của phòng",
                 _IdArgument(),
                 _CheckPermission_TaskObject(
-                    p => p.PermissionManageHiringRooms,
+                    p => p.PermissionManageHiringRoom,
                     context =>
                     {
                         var employee = AuthenticationHelper.GetEmployee(context);
@@ -30,7 +30,7 @@ namespace uit.ooad.Queries.Mutation
                 "Yêu cầu kiểm tra khi trả phòng",
                 _IdArgument(),
                 _CheckPermission_TaskObject(
-                    p => p.PermissionManageHiringRooms,
+                    p => p.PermissionManageHiringRoom,
                     context =>
                     {
                         var employee = AuthenticationHelper.GetEmployee(context);
@@ -44,7 +44,7 @@ namespace uit.ooad.Queries.Mutation
                 "Thực hiện xác nhận trả phòng",
                 _IdArgument(),
                 _CheckPermission_TaskObject(
-                    p => p.PermissionManageHiringRooms,
+                    p => p.PermissionManageHiringRoom,
                     context =>
                     {
                         var employee = AuthenticationHelper.GetEmployee(context);
@@ -61,7 +61,7 @@ namespace uit.ooad.Queries.Mutation
                     new QueryArgument<NonNullGraphType<BookingCreateInput>> { Name = "booking" }
                 ),
                 _CheckPermission_TaskObject(
-                    p => p.PermissionManageHiringRooms,
+                    p => p.PermissionManageHiringRoom,
                     context =>
                     {
                         var employee = AuthenticationHelper.GetEmployee(context);

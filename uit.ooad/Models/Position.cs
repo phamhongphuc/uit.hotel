@@ -17,6 +17,8 @@ namespace uit.ooad.Models
         public bool PermissionManageRate { get; set; }
         public bool PermissionManageService { get; set; }
         public bool PermissionGetHouseKeeping { get; set; }
+        public bool PermissionCleaning { get; set; }
+        public bool PermissionManageHiringRoom { get; set; }
         public bool PermissionManagePositions { get; set; }
         public bool PermissionReferDebt { get; set; }
         public bool PermissionChangePersonalPassword { get; set; }
@@ -25,11 +27,9 @@ namespace uit.ooad.Models
         public bool PermissionManagePatrons { get; set; }
         public bool PermissionManagePatronKinds { get; set; }
         public bool PermissionHandleBills { get; set; }
-        public bool PermissionManageHiringRooms { get; set; }
         public bool PermissionCreateBill { get; set; }
         public bool PermissionCreateBooking { get; set; }
         public bool PermissionCreateOrUpdateEmployee { get; set; }
-        public bool PermissionCleaning { get; set; }
         public bool PermissionCreateOrUpdatePatron { get; set; }
         public bool PermissionCreatePatronKind { get; set; }
         public bool PermissionCreatePosition { get; set; }

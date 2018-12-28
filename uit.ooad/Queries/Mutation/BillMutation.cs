@@ -21,7 +21,7 @@ namespace uit.ooad.Queries.Mutation
                     new QueryArgument<NonNullGraphType<BillCreateInput>> { Name = "bill" }
                 ),
                 _CheckPermission_TaskObject(
-                    p => p.PermissionManageHiringRooms,
+                    p => p.PermissionManageHiringRoom,
                     async context =>
                     {
                         var employee = AuthenticationHelper.GetEmployee(context);
@@ -43,7 +43,7 @@ namespace uit.ooad.Queries.Mutation
                     new QueryArgument<NonNullGraphType<BillCreateInput>> { Name = "bill" }
                 ),
                 _CheckPermission_TaskObject(
-                    p => p.PermissionManageHiringRooms,
+                    p => p.PermissionManageHiringRoom,
                     async context =>
                     {
                         var employee = AuthenticationHelper.GetEmployee(context);
