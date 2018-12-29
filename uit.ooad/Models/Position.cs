@@ -12,7 +12,7 @@ namespace uit.ooad.Models
         public string Name { get; set; }
 
         public bool PermissionUpdateGroundPlan { get; set; }
-        public bool PermissionGetRooms { get; set; }
+        public bool PermissionGetGroundPlan { get; set; }
         public bool PermissionManageRoomKind { get; set; }
         public bool PermissionManageRate { get; set; }
         public bool PermissionManageService { get; set; }
@@ -21,6 +21,7 @@ namespace uit.ooad.Models
         public bool PermissionManageHiringRoom { get; set; }
         public bool PermissionManagePatron { get; set; }
         public bool PermissionManagePatronKind { get; set; }
+        public bool PermissionGetPatronKind { get; set; }
         public bool PermissionManagePosition { get; set; }
         public bool PermissionManageEmployee { get; set; }
         public bool PermissionManageAccount { get; set; }
