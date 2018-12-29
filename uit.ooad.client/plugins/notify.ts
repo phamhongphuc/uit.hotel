@@ -1,22 +1,22 @@
 import { NotificationOptions } from 'vue-notification/dist/ssr';
 import Vue from 'vue';
 
-function show(
-    options: NotificationOptions | string,
-    delay: number,
-    type: string,
-): void {
+const defaultDelay = 400;
+
+type Options = NotificationOptions | string;
+
+function show(options: Options, delay: number, type: string): void {
     setTimeout(() => Vue.notify({ ...options, type }), delay);
 }
 
 export const notify = {
-    warn(options: NotificationOptions | string, delay: number = 250) {
+    warn(options: Options, delay = defaultDelay) {
         show(options, delay, 'warn');
     },
-    error(options: NotificationOptions | string, delay: number = 250) {
+    error(options: Options, delay = defaultDelay) {
         show(options, delay, 'error');
     },
-    success(options: NotificationOptions | string, delay: number = 250) {
+    success(options: Options, delay = defaultDelay) {
         show(options, delay, 'success');
     },
 };
