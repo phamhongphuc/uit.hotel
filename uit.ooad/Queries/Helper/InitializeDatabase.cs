@@ -55,6 +55,7 @@ namespace uit.ooad.Queries.Helper
                 PermissionCleaning = true,
                 PermissionManageHiringRoom = true,
                 PermissionManagePatron = true,
+                PermissionGetPatron = true,
                 PermissionManagePatronKind = true,
                 PermissionGetPatronKind = true,
                 PermissionManagePosition = true,

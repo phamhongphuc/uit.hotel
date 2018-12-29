@@ -22,6 +22,7 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.PermissionCleaning).Description("Quyền thao tác dọn phòng");
             Field(x => x.PermissionManageHiringRoom).Description("Quyền quản lý thuê phòng");
             Field(x => x.PermissionManagePatron).Description("Quyền quản lý khách hàng");
+            Field(x => x.PermissionGetPatron).Description("Quyền xem thông tin khách hàng");
             Field(x => x.PermissionManagePatronKind).Description("Quyền quản lý loại khách hàng");
             Field(x => x.PermissionGetPatronKind).Description("Quyền xem loại khách hàng");
             Field(x => x.PermissionManagePosition).Description("Quyền quản lý chức vụ");
@@ -66,6 +67,7 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.PermissionCleaning).Description("Quyền thao tác dọn phòng");
             Field(x => x.PermissionManageHiringRoom).Description("Quyền quản lý thuê phòng");
             Field(x => x.PermissionManagePatron).Description("Quyền quản lý khách hàng");
+            Field(x => x.PermissionGetPatron).Description("Quyền xem thông tin khách hàng");
             Field(x => x.PermissionManagePatronKind).Description("Quyền quản lý loại khách hàng");
             Field(x => x.PermissionGetPatronKind).Description("Quyền xem loại khách hàng");
             Field(x => x.PermissionManagePosition).Description("Quyền quản lý chức vụ");
