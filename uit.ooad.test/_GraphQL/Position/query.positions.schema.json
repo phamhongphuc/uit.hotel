@@ -22,6 +22,7 @@
               "permissionGetGroundPlan",
               "permissionManageRoomKind",
               "permissionManageRate",
+              "permissionGetRate",
               "permissionGetHouseKeeping",
               "permissionCleaning",
               "permissionManageHiringRoom",
@@ -56,6 +57,9 @@
                 "type": "boolean"
               },
               "permissionManageRate": {
+                "type": "boolean"
+              },
+              "permissionGetRate": {
                 "type": "boolean"
               },
               "permissionGetHouseKeeping": {

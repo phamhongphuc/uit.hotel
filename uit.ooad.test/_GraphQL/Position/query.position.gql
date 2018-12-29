@@ -6,6 +6,7 @@ query ($id: ID!) {
     permissionGetGroundPlan
     permissionManageRoomKind
     permissionManageRate
+    permissionGetRate
     permissionGetHouseKeeping
     permissionCleaning
     permissionManageHiringRoom

@@ -13,14 +13,20 @@ namespace uit.ooad.Queries.Query
             Field<NonNullGraphType<ListGraphType<NonNullGraphType<RateType>>>>(
                 _List,
                 "Trả về một danh sách các loại giá cơ bản",
-                resolve: context => RateBusiness.Get()
+                resolve: _CheckPermission_List(
+                    p => p.PermissionGetRate,
+                    context => RateBusiness.Get()
+                )
             );
             
             Field<NonNullGraphType<RateType>>(
                 _Item,
                 "Trả về thông tin một loại giá cơ bản",
                 _IdArgument(),
-                context => RateBusiness.Get(_GetId<int>(context))
+                _CheckPermission_Object(
+                    p => p.PermissionGetRate,
+                    context => RateBusiness.Get(_GetId<int>(context))
+                )
             );
         }
     }

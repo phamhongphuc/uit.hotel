@@ -5,6 +5,7 @@
 		"permissionGetGroundPlan": true,
 		"permissionManageRoomKind": true,
 		"permissionManageRate": true,
+		"permissionGetRate": true,
 		"permissionGetHouseKeeping": true,
 		"permissionCleaning": true,
 		"permissionManageHiringRoom": true,

@@ -51,6 +51,7 @@ namespace uit.ooad.Queries.Helper
                 PermissionGetGroundPlan = true,
                 PermissionManageRoomKind = true,
                 PermissionManageRate = true,
+                PermissionGetRate = true,
                 PermissionGetHouseKeeping = true,
                 PermissionCleaning = true,
                 PermissionManageHiringRoom = true,
