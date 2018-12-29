@@ -1,7 +1,13 @@
 <template>
     <b-navbar id="sidebar">
         <b-navbar-nav>
-            <b-nav-item-icon- to="/" icon="" text="Bảng điều khiển" exact />
+            <b-nav-item-icon- to="/" icon="" text="Sơ đồ khách sạn" exact />
+            <b-nav-item-icon-
+                to="/manage/floor-room"
+                icon=""
+                text="Quản lý tầng phòng"
+                exact
+            />
         </b-navbar-nav>
     </b-navbar>
 </template>

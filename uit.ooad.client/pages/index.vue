@@ -23,16 +23,20 @@
                             :key="floor.id"
                             class="row hotel-map-floor my-2"
                         >
-                            <div class="hotel-map-floor-name">
+                            <b-button
+                                class="hotel-map-floor-name shadow"
+                                variant="main"
+                            >
                                 {{ floor.name }}
-                            </div>
-                            <div
+                            </b-button>
+                            <b-button
                                 v-for="room in floor.rooms"
                                 :key="room.id"
-                                class="hotel-map-floor-room"
+                                class="hotel-map-floor-room shadow"
+                                variant="white"
                             >
                                 {{ room.name }}
-                            </div>
+                            </b-button>
                         </div>
                     </template>
                 </gql-query->
@@ -48,6 +52,12 @@ import gql from 'graphql-tag';
     name: 'index-',
 })
 export default class extends Vue {
+    head() {
+        return {
+            title: 'Sơ đồ khách sạn',
+        };
+    }
+
     @namespace('style').State
     breakpoint;
 
@@ -72,21 +82,13 @@ export default class extends Vue {
 <style lang="scss">
 .hotel-map {
     .hotel-map-floor {
-        > div {
-            padding: 1rem;
-            cursor: pointer;
-            @include white-card;
+        > button {
+            padding: 0.75rem;
         }
         > .hotel-map-floor-name {
             width: 100px;
             margin-right: 0.5rem;
-            background: $main;
-            color: white;
         }
-        > .hotel-map-floor-room {
-            //
-        }
-        // background: red;
     }
 }
 </style>

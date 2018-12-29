@@ -49,10 +49,10 @@
                     <template slot="button-content">
                         <div class="icon">
                             <image-
-                                class="m-2 rounded-circle"
-                                source="https://cdn2.iconfinder.com/data/icons/rcons-user/32/male-circle-48.png"
-                                height="24"
-                                width="24"
+                                class="m-1 rounded-circle"
+                                source="/black.png"
+                                height="32"
+                                width="32"
                             />
                         </div>
                     </template>
@@ -62,7 +62,7 @@
                     >
                         <image-
                             class="rounded-circle"
-                            source="https://cdn2.iconfinder.com/data/icons/rcons-user/32/male-circle-48.png"
+                            source="/black.png"
                             height="48"
                             width="48"
                         />
