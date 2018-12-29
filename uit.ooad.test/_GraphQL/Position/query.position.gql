@@ -5,6 +5,7 @@ query ($id: ID!) {
     permissionUpdateGroundPlan
     permissionGetGroundPlan
     permissionManageRoomKind
+    permissionGetRoomKind
     permissionManageRate
     permissionGetRate
     permissionGetHouseKeeping
@@ -18,9 +19,8 @@ query ($id: ID!) {
     permissionGetPosition
     permissionManageEmployee
     permissionManageAccount
-    permissionReferDebt
-    permissionReferRevenues
-    permissionCreateReceipt
     permissionManageService
+    permissionGetService
+    permissionGetVoucher
   }
 }

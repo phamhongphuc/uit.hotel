@@ -21,6 +21,7 @@
               "permissionUpdateGroundPlan",
               "permissionGetGroundPlan",
               "permissionManageRoomKind",
+              "permissionGetRoomKind",
               "permissionManageRate",
               "permissionGetRate",
               "permissionGetHouseKeeping",
@@ -34,10 +35,9 @@
               "permissionGetPosition",
               "permissionManageEmployee",
               "permissionManageAccount",
-              "permissionReferDebt",
-              "permissionReferRevenues",
-              "permissionCreateReceipt",
-              "permissionManageService"
+              "permissionManageService",
+              "permissionGetService",
+              "permissionGetVoucher"
             ],
             "properties": {
               "id": {
@@ -54,6 +54,9 @@
                 "type": "boolean"
               },
               "permissionManageRoomKind": {
+                "type": "boolean"
+              },
+              "permissionGetRoomKind": {
                 "type": "boolean"
               },
               "permissionManageRate": {
@@ -95,16 +98,13 @@
               "permissionManageAccount": {
                 "type": "boolean"
               },
-              "permissionReferDebt": {
-                "type": "boolean"
-              },
-              "permissionReferRevenues": {
-                "type": "boolean"
-              },
-              "permissionCreateReceipt": {
-                "type": "boolean"
-              },
               "permissionManageService": {
+                "type": "boolean"
+              },
+              "permissionGetService": {
+                "type": "boolean"
+              },
+              "permissionGetVoucher": {
                 "type": "boolean"
               }
             }

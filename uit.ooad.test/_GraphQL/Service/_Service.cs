@@ -11,7 +11,9 @@ namespace uit.ooad.test._GraphQL._Service
         {
             SchemaHelper.Execute(
                 @"/_GraphQL/Service/query.services.gql",
-                @"/_GraphQL/Service/query.services.schema.json"
+                @"/_GraphQL/Service/query.services.schema.json",
+                null,
+                p => p.PermissionGetService = true
             );
         }
 
@@ -21,7 +23,8 @@ namespace uit.ooad.test._GraphQL._Service
             SchemaHelper.Execute(
                 @"/_GraphQL/Service/query.service.gql",
                 @"/_GraphQL/Service/query.service.schema.json",
-                @"/_GraphQL/Service/query.service.variable.json"
+                @"/_GraphQL/Service/query.service.variable.json",
+                p => p.PermissionGetService = true
             );
         }
 

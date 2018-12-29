@@ -11,7 +11,9 @@ namespace uit.ooad.test._GraphQL.Receipt
         {
             SchemaHelper.Execute(
                 @"/_GraphQL/Receipt/query.receipts.gql",
-                @"/_GraphQL/Receipt/query.receipts.schema.json"
+                @"/_GraphQL/Receipt/query.receipts.schema.json",
+                null,
+                p => p.PermissionGetVoucher = true
             );
         }
 
@@ -21,7 +23,8 @@ namespace uit.ooad.test._GraphQL.Receipt
             SchemaHelper.Execute(
                 @"/_GraphQL/Receipt/query.receipt.gql",
                 @"/_GraphQL/Receipt/query.receipt.schema.json",
-                @"/_GraphQL/Receipt/query.receipt.variable.json"
+                @"/_GraphQL/Receipt/query.receipt.variable.json",
+                p => p.PermissionGetVoucher = true
             );
         }
 
@@ -32,7 +35,7 @@ namespace uit.ooad.test._GraphQL.Receipt
                 @"/_GraphQL/Receipt/mutation.createReceipt.gql",
                 @"/_GraphQL/Receipt/mutation.createReceipt.schema.json",
                 @"/_GraphQL/Receipt/mutation.createReceipt.variable.json",
-                p => p.PermissionCreateReceipt = true
+                p => p.PermissionManageHiringRoom = true
             );
         }
     }

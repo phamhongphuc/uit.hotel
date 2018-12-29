@@ -4,6 +4,7 @@
 		"permissionUpdateGroundPlan": true,
 		"permissionGetGroundPlan": true,
 		"permissionManageRoomKind": true,
+		"permissionGetRoomKind": true,
 		"permissionManageRate": true,
 		"permissionGetRate": true,
 		"permissionGetHouseKeeping": true,
@@ -17,9 +18,8 @@
 		"permissionGetPosition": true,
 		"permissionManageEmployee": true,
 		"permissionManageAccount": true,
-		"permissionReferDebt": true,
-		"permissionReferRevenues": true,
-		"permissionCreateReceipt": true,
-		"permissionManageService": true
+		"permissionManageService": true,
+		"permissionGetService": true,
+		"permissionGetVoucher": true
 	}
 }

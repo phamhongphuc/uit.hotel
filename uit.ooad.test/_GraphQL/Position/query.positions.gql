@@ -5,6 +5,7 @@
     permissionUpdateGroundPlan
     permissionGetGroundPlan
     permissionManageRoomKind
+    permissionGetRoomKind
     permissionManageRate
     permissionGetRate
     permissionGetHouseKeeping
@@ -18,9 +19,8 @@
     permissionGetPosition
     permissionManageEmployee
     permissionManageAccount
-    permissionReferDebt
-    permissionReferRevenues
-    permissionCreateReceipt
     permissionManageService
+    permissionGetService
+    permissionGetVoucher
   }
 }

@@ -5,6 +5,7 @@ mutation ($input: PositionCreateInput!) {
     permissionUpdateGroundPlan
     permissionGetGroundPlan
     permissionManageRoomKind
+    permissionGetRoomKind
     permissionManageRate
     permissionGetRate
     permissionGetHouseKeeping
@@ -18,9 +19,8 @@ mutation ($input: PositionCreateInput!) {
     permissionGetPosition
     permissionManageEmployee
     permissionManageAccount
-    permissionReferDebt
-    permissionReferRevenues
-    permissionCreateReceipt
     permissionManageService
+    permissionGetService
+    permissionGetVoucher
   }
 }
