@@ -450,3 +450,41 @@ export namespace UserCheckLogin {
         name: string;
     };
 }
+
+export namespace GetFloors {
+    export type Variables = {};
+
+    export type Query = {
+        __typename?: 'Query';
+
+        floors: Floors[];
+    };
+
+    export type Floors = {
+        __typename?: 'Floor';
+
+        id: number;
+
+        name: string;
+
+        isActive: boolean;
+
+        rooms: Maybe<(Maybe<Rooms>)[]>;
+    };
+
+    export type Rooms = {
+        __typename?: 'Room';
+
+        id: number;
+
+        name: string;
+
+        roomKind: RoomKind;
+    };
+
+    export type RoomKind = {
+        __typename?: 'RoomKind';
+
+        name: string;
+    };
+}
