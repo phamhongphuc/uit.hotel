@@ -14,9 +14,11 @@ namespace uit.ooad.Models
         public bool PermissionUpdateGroundPlan { get; set; }
         public bool PermissionGetGroundPlan { get; set; }
         public bool PermissionManageRoomKind { get; set; }
+        public bool PermissionGetRoomKind { get; set; }
         public bool PermissionManageRate { get; set; }
         public bool PermissionGetRate { get; set; }
         public bool PermissionManageService { get; set; }
+        public bool PermissionGetService { get; set; }
         public bool PermissionGetHouseKeeping { get; set; }
         public bool PermissionCleaning { get; set; }
         public bool PermissionManageHiringRoom { get; set; }
@@ -28,10 +30,7 @@ namespace uit.ooad.Models
         public bool PermissionGetPosition { get; set; }
         public bool PermissionManageEmployee { get; set; }
         public bool PermissionManageAccount { get; set; }
-
-        public bool PermissionReferDebt { get; set; }
-        public bool PermissionReferRevenues { get; set; }
-        public bool PermissionCreateReceipt { get; set; }
+        public bool PermissionGetVoucher { get; set; }
 
         [Backlink(nameof(Employee.Position))]
         public IQueryable<Employee> Employees { get; }

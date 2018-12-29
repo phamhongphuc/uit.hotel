@@ -15,7 +15,7 @@ namespace uit.ooad.Queries.Mutation
                 "Tạo và trả về một phiếu thu mới",
                 _InputArgument<ReceiptCreateInput>(),
                 _CheckPermission_TaskObject(
-                    p => p.PermissionCreateReceipt,
+                    p => p.PermissionManageHiringRoom,
                     context => ReceiptBusiness.Add(_GetInput(context))
                 )
             );

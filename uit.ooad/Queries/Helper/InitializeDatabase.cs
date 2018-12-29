@@ -50,6 +50,7 @@ namespace uit.ooad.Queries.Helper
                 PermissionUpdateGroundPlan = true,
                 PermissionGetGroundPlan = true,
                 PermissionManageRoomKind = true,
+                PermissionGetRoomKind = true,
                 PermissionManageRate = true,
                 PermissionGetRate = true,
                 PermissionGetHouseKeeping = true,
@@ -63,10 +64,9 @@ namespace uit.ooad.Queries.Helper
                 PermissionGetPosition = true,
                 PermissionManageEmployee = true,
                 PermissionManageAccount = true,
-                PermissionReferDebt = true,
-                PermissionReferRevenues = true,
-                PermissionCreateReceipt = true,
-                PermissionManageService = true
+                PermissionManageService = true,
+                PermissionGetService = true,
+                PermissionGetVoucher = true
             });
         }
 

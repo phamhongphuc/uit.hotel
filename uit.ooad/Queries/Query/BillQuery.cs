@@ -14,7 +14,7 @@ namespace uit.ooad.Queries.Query
                 _List,
                 "Trả về một danh sách các hóa đơn",
                 resolve: _CheckPermission_List(
-                    p => p.PermissionReferRevenues,
+                    p => p.PermissionGetVoucher,
                     context => BillBusiness.Get()
                 )
             );
@@ -23,7 +23,10 @@ namespace uit.ooad.Queries.Query
                 _Item,
                 "Trả về thông tin một hóa đơn",
                 _IdArgument(),
-                context => BillBusiness.Get(_GetId<int>(context))
+                _CheckPermission_Object(
+                    p => p.PermissionGetVoucher,
+                    context => BillBusiness.Get(_GetId<int>(context))
+                )
             );
         }
     }
