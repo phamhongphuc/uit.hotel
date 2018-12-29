@@ -44,6 +44,7 @@ const config = {
             '@babel/register',
             '@babel/polyfill',
             'chalk',
+            'graphql',
             'apollo-client',
             'apollo-link',
             'apollo-cache-inmemory',

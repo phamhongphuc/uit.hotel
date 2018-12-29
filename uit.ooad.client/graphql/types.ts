@@ -450,3 +450,107 @@ export namespace UserCheckLogin {
         name: string;
     };
 }
+
+export namespace GetFloors {
+    export type Variables = {};
+
+    export type Query = {
+        __typename?: 'Query';
+
+        floors: Floors[];
+    };
+
+    export type Floors = {
+        __typename?: 'Floor';
+
+        id: number;
+
+        name: string;
+
+        isActive: boolean;
+
+        rooms: Maybe<(Maybe<Rooms>)[]>;
+    };
+
+    export type Rooms = {
+        __typename?: 'Room';
+
+        id: number;
+
+        name: string;
+
+        roomKind: RoomKind;
+    };
+
+    export type RoomKind = {
+        __typename?: 'RoomKind';
+
+        id: number;
+
+        name: string;
+    };
+}
+
+export namespace CreateRoom {
+    export type Variables = {
+        input: RoomCreateInput;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        createRoom: CreateRoom;
+    };
+
+    export type CreateRoom = {
+        __typename?: 'Room';
+
+        id: number;
+    };
+}
+
+export namespace DeleteRoom {
+    export type Variables = {
+        id: string;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        deleteRoom: string;
+    };
+}
+
+export namespace CreateFloor {
+    export type Variables = {
+        input: FloorCreateInput;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        createFloor: CreateFloor;
+    };
+
+    export type CreateFloor = {
+        __typename?: 'Floor';
+
+        id: number;
+
+        name: string;
+
+        isActive: boolean;
+    };
+}
+
+export namespace DeleteFloor {
+    export type Variables = {
+        id: string;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        deleteFloor: string;
+    };
+}

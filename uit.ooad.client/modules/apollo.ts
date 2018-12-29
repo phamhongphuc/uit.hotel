@@ -4,15 +4,27 @@ import { ApolloClient, ApolloError, MutationOptions } from 'apollo-client';
 import { FetchResult } from 'apollo-link';
 import Vue from 'vue';
 
-export function apolloClient(store: any): ApolloClient<InMemoryCache> {
-    return store.app.apolloProvider.defaultClient;
+declare module 'vue/types/vue' {
+    interface Vue {
+        $apolloHelpers: ApolloHelpers;
+        $apolloProvider: {
+            defaultClient: ApolloClient<InMemoryCache>;
+        };
+    }
 }
 
-export function apolloHelpers(store: any): ApolloHelpers {
+export function apolloClient(store: any): ApolloClient<InMemoryCache> {
+    if (store.app.apolloProvider) return store.app.apolloProvider.defaultClient;
+    else if (store.app.$apolloProvider)
+        return store.app.$apolloProvider.defaultClient;
+    throw new Error('Không thể tìm thấy apolloProvider hoặc $apolloProvider');
+}
+
+export function apolloHelpers(store: { app: Vue }): ApolloHelpers {
     return store.app.$apolloHelpers;
 }
 
-export function apolloClientNotify(store: any): ApolloNotify {
+export function apolloClientNotify(store: { app: Vue }): ApolloNotify {
     const client = apolloClient(store);
     return {
         async mutate<TType, TVariables>(

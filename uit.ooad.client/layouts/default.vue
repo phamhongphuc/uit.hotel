@@ -3,9 +3,7 @@
         <navbar- />
         <main>
             <sidebar- />
-            <div class="content">
-                <div class="container-staff"><nuxt /></div>
-            </div>
+            <nuxt class="content" />
         </main>
         <no-ssr>
             <notifications
@@ -29,20 +27,19 @@
         max-height: calc(100% - 3.5rem);
         .content {
             flex: 1;
-            padding: 0.75rem 0;
-            overflow-y: scroll;
+            padding: 0.5rem calc(0.5rem + 15px);
+            display: flex;
+            flex-direction: column;
+
+            @include make-container();
+            @include make-container-max-widths(
+                (
+                    md: 720px - 100px,
+                    lg: 960px - 200px,
+                    xl: 1140px - 200px,
+                )
+            );
         }
     }
-}
-
-.container-staff {
-    @include make-container();
-    @include make-container-max-widths(
-        (
-            md: 720px - 100px,
-            lg: 960px - 200px,
-            xl: 1140px - 200px,
-        )
-    );
 }
 </style>
