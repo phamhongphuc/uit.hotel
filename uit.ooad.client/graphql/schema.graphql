@@ -685,16 +685,34 @@ type Position {
     # Quyền thao tác dọn phòng
     permissionCleaning: Boolean!
 
-    # Quyền tạo phiếu thu
-    permissionCreateReceipt: Boolean!
+    # Quyền lấy thông tin tầng, phòng
+    permissionGetGroundPlan: Boolean!
 
     # Quyền tra cứu lịch sử dọn phòng
     permissionGetHouseKeeping: Boolean!
 
-    # Quyền lấy danh sách phòng và hiện trạng từng phòng
-    permissionGetRooms: Boolean!
+    # Quyền lấy thông tin khách hàng
+    permissionGetPatron: Boolean!
 
-    # Quyền thay đổi mật khẩu cá nhân
+    # Quyền lấy thông tin loại khách hàng
+    permissionGetPatronKind: Boolean!
+
+    # Quyền lấy thông tin chức vụ
+    permissionGetPosition: Boolean!
+
+    # Quyền lấy thông tin giá cơ bản và giá biến động
+    permissionGetRate: Boolean!
+
+    # Quyền lấy thông tin loại phòng
+    permissionGetRoomKind: Boolean!
+
+    # Quyền lấy thông tin dịch vụ
+    permissionGetService: Boolean!
+
+    # Quyền lấy thông tin các chứng từ (hóa đơn, phiếu thu)
+    permissionGetVoucher: Boolean!
+
+    # Quyền quản lý tài khoản cá nhân
     permissionManageAccount: Boolean!
 
     # Quyền quản lý thông tin nhân viên
@@ -720,12 +738,6 @@ type Position {
 
     # Quyền quản lý dịch vụ
     permissionManageService: Boolean!
-
-    # Quyền tra cứu công nợ
-    permissionReferDebt: Boolean!
-
-    # Quyền xem thống kê và chi tiết doanh thu
-    permissionReferRevenues: Boolean!
 
     # Quyền chỉnh sửa sơ đồ
     permissionUpdateGroundPlan: Boolean!
@@ -738,50 +750,62 @@ input PositionCreateInput {
     # Quyền chỉnh sửa sơ đồ
     permissionUpdateGroundPlan: Boolean!
 
-    # Quyền tra cứu công nợ
-    permissionReferDebt: Boolean!
-
-    # Quyền thay đổi mật khẩu cá nhân
-    permissionManageAccount: Boolean!
-
-    # Quyền quản lý chức vụ
-    permissionManagePosition: Boolean!
-
-    # Quyền quản lý thông tin nhân viên
-    permissionManageEmployee: Boolean!
-
-    # Quyền xem thống kê và chi tiết doanh thu
-    permissionReferRevenues: Boolean!
-
-    # Quyền lấy danh sách phòng và hiện trạng từng phòng
-    permissionGetRooms: Boolean!
-
-    # Quyền quản lý thuê phòng
-    permissionManageHiringRoom: Boolean!
-
-    # Quyền tra cứu lịch sử dọn phòng
-    permissionGetHouseKeeping: Boolean!
-
-    # Quyền quản lý khách hàng
-    permissionManagePatron: Boolean!
-
-    # Quyền quản lý loại khách hàng
-    permissionManagePatronKind: Boolean!
-
-    # Quyền thao tác dọn phòng
-    permissionCleaning: Boolean!
-
-    # Quyền tạo phiếu thu
-    permissionCreateReceipt: Boolean!
+    # Quyền lấy thông tin tầng, phòng
+    permissionGetGroundPlan: Boolean!
 
     # Quyền quản lý loại phòng
     permissionManageRoomKind: Boolean!
 
+    # Quyền lấy thông tin loại phòng
+    permissionGetRoomKind: Boolean!
+
     # Quyền quản lý giá cơ bản và giá biến động
     permissionManageRate: Boolean!
 
+    # Quyền lấy thông tin giá cơ bản và giá biến động
+    permissionGetRate: Boolean!
+
+    # Quyền thao tác dọn phòng
+    permissionCleaning: Boolean!
+
+    # Quyền tra cứu lịch sử dọn phòng
+    permissionGetHouseKeeping: Boolean!
+
+    # Quyền quản lý thuê phòng
+    permissionManageHiringRoom: Boolean!
+
+    # Quyền quản lý khách hàng
+    permissionManagePatron: Boolean!
+
+    # Quyền lấy thông tin khách hàng
+    permissionGetPatron: Boolean!
+
+    # Quyền quản lý loại khách hàng
+    permissionManagePatronKind: Boolean!
+
+    # Quyền lấy thông tin loại khách hàng
+    permissionGetPatronKind: Boolean!
+
+    # Quyền quản lý chức vụ
+    permissionManagePosition: Boolean!
+
+    # Quyền lấy thông tin chức vụ
+    permissionGetPosition: Boolean!
+
+    # Quyền quản lý thông tin nhân viên
+    permissionManageEmployee: Boolean!
+
+    # Quyền quản lý tài khoản cá nhân
+    permissionManageAccount: Boolean!
+
     # Quyền quản lý dịch vụ
     permissionManageService: Boolean!
+
+    # Quyền lấy thông tin dịch vụ
+    permissionGetService: Boolean!
+
+    # Quyền lấy thông tin các chứng từ (hóa đơn, phiếu thu)
+    permissionGetVoucher: Boolean!
 }
 
 # Input cho thông tin một chức vụ

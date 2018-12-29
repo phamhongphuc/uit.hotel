@@ -117,36 +117,44 @@ export interface PositionCreateInput {
     name: string;
     /** Quyền chỉnh sửa sơ đồ */
     permissionUpdateGroundPlan: boolean;
-    /** Quyền tra cứu công nợ */
-    permissionReferDebt: boolean;
-    /** Quyền thay đổi mật khẩu cá nhân */
-    permissionManageAccount: boolean;
-    /** Quyền quản lý chức vụ */
-    permissionManagePosition: boolean;
-    /** Quyền quản lý thông tin nhân viên */
-    permissionManageEmployee: boolean;
-    /** Quyền xem thống kê và chi tiết doanh thu */
-    permissionReferRevenues: boolean;
-    /** Quyền lấy danh sách phòng và hiện trạng từng phòng */
-    permissionGetRooms: boolean;
-    /** Quyền quản lý thuê phòng */
-    permissionManageHiringRoom: boolean;
-    /** Quyền tra cứu lịch sử dọn phòng */
-    permissionGetHouseKeeping: boolean;
-    /** Quyền quản lý khách hàng */
-    permissionManagePatron: boolean;
-    /** Quyền quản lý loại khách hàng */
-    permissionManagePatronKind: boolean;
-    /** Quyền thao tác dọn phòng */
-    permissionCleaning: boolean;
-    /** Quyền tạo phiếu thu */
-    permissionCreateReceipt: boolean;
+    /** Quyền lấy thông tin tầng, phòng */
+    permissionGetGroundPlan: boolean;
     /** Quyền quản lý loại phòng */
     permissionManageRoomKind: boolean;
+    /** Quyền lấy thông tin loại phòng */
+    permissionGetRoomKind: boolean;
     /** Quyền quản lý giá cơ bản và giá biến động */
     permissionManageRate: boolean;
+    /** Quyền lấy thông tin giá cơ bản và giá biến động */
+    permissionGetRate: boolean;
+    /** Quyền thao tác dọn phòng */
+    permissionCleaning: boolean;
+    /** Quyền tra cứu lịch sử dọn phòng */
+    permissionGetHouseKeeping: boolean;
+    /** Quyền quản lý thuê phòng */
+    permissionManageHiringRoom: boolean;
+    /** Quyền quản lý khách hàng */
+    permissionManagePatron: boolean;
+    /** Quyền lấy thông tin khách hàng */
+    permissionGetPatron: boolean;
+    /** Quyền quản lý loại khách hàng */
+    permissionManagePatronKind: boolean;
+    /** Quyền lấy thông tin loại khách hàng */
+    permissionGetPatronKind: boolean;
+    /** Quyền quản lý chức vụ */
+    permissionManagePosition: boolean;
+    /** Quyền lấy thông tin chức vụ */
+    permissionGetPosition: boolean;
+    /** Quyền quản lý thông tin nhân viên */
+    permissionManageEmployee: boolean;
+    /** Quyền quản lý tài khoản cá nhân */
+    permissionManageAccount: boolean;
     /** Quyền quản lý dịch vụ */
     permissionManageService: boolean;
+    /** Quyền lấy thông tin dịch vụ */
+    permissionGetService: boolean;
+    /** Quyền lấy thông tin các chứng từ (hóa đơn, phiếu thu) */
+    permissionGetVoucher: boolean;
 }
 
 export interface RateCreateInput {
