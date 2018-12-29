@@ -9,6 +9,7 @@
 		"permissionCleaning": true,
 		"permissionManageHiringRoom": true,
 		"permissionManagePatron": true,
+    	"permissionGetPatron": true,
 		"permissionManagePatronKind": true,
 		"permissionGetPatronKind": true,
 		"permissionManagePosition": true,

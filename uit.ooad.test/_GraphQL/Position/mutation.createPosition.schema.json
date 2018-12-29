@@ -24,6 +24,7 @@
             "permissionCleaning",
             "permissionManageHiringRoom",
             "permissionManagePatron",
+            "permissionGetPatron",
             "permissionManagePatronKind",
             "permissionGetPatronKind",
             "permissionManagePosition",
@@ -64,6 +65,9 @@
               "type": "boolean"
             },
             "permissionManagePatron": {
+              "type": "boolean"
+            },
+            "permissionGetPatron": {
               "type": "boolean"
             },
             "permissionManagePatronKind": {
