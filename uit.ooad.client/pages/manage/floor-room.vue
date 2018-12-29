@@ -1,17 +1,28 @@
 <template>
     <div>
         <div class="row">
-            <b-button class="m-2 shadow" size="md" variant="white">
-                <span class="icon mr-1"></span>
-                <span>Hiện phòng và tầng đã bị vô hiệu hóa</span>
+            <b-button
+                class="m-2 shadow"
+                size="md"
+                variant="white"
+                @click="showDisable = !showDisable"
+            >
+                <span class="icon mr-1">{{ showDisable ? '' : '' }}</span>
+                <span>
+                    {{
+                        showDisable
+                            ? 'Đang hiện phòng và tầng đã bị vô hiệu hóa'
+                            : 'Đang ẩn phòng và tầng đã bị vô hiệu hóa'
+                    }}
+                </span>
             </b-button>
         </div>
-        <div class="row flex-fill p-2">
+        <div class="row flex-1 p-2">
             <div class="col bg-white shadow rounded overflow-auto">
                 <gql-query- :query="getFloors" class="row hotel-map">
                     <div slot-scope="{ data }" class="m-3">
                         <div
-                            v-for="floor in data.floors"
+                            v-for="floor in floorsFilter(data.floors)"
                             :key="floor.id"
                             class="d-flex hotel-map-floor flex-nowrap"
                         >
@@ -22,10 +33,10 @@
                                     $refs.floor_context.open($event, floor)
                                 "
                             >
-                                {{ floor.name }}
+                                {{ floor.name }} {{ floor.isActive }}
                             </b-button>
                             <b-button
-                                v-for="room in floor.rooms"
+                                v-for="room in roomsFilter(floor.rooms)"
                                 :key="room.id"
                                 class="hotel-map-floor-room"
                                 variant="white"
@@ -33,7 +44,7 @@
                                     $refs.room_context.open($event, room)
                                 "
                             >
-                                {{ room.name }}
+                                {{ room.name }} {{ room.isActive }}
                             </b-button>
                             <b-button-mutate-
                                 class="hotel-map-floor-room button-new"
@@ -84,6 +95,17 @@
                 <div class="context-hr" />
                 <b-nav-item-icon- icon="" text="Sửa thông tin phòng" />
                 <b-nav-item-icon-mutate-
+                    :mutation="setIsActiveRoom"
+                    :variables="{ id: data.id, isActive: !data.isActive }"
+                    :icon="data.isActive ? '' : ''"
+                    :text="
+                        data.isActive
+                            ? 'Vô hiệu hóa phòng'
+                            : 'Kích hoạt lại phòng'
+                    "
+                    @click="action(mutate)"
+                />
+                <b-nav-item-icon-mutate-
                     :mutation="deleteRoom"
                     :variables="{ id: data.id }"
                     icon=""
@@ -95,6 +117,17 @@
         <context- ref="floor_context">
             <template slot-scope="{ data }">
                 <b-nav-item-icon- icon="" text="Sửa thông tin tầng" />
+                <b-nav-item-icon-mutate-
+                    :mutation="setIsActiveFloor"
+                    :variables="{ id: data.id, isActive: !data.isActive }"
+                    :icon="data.isActive ? '' : ''"
+                    :text="
+                        data.isActive
+                            ? 'Vô hiệu hóa tầng'
+                            : 'Kích hoạt lại tầng'
+                    "
+                    @click="action(mutate)"
+                />
                 <b-nav-item-icon-mutate-
                     :mutation="deleteFloor"
                     :variables="{ id: data.id }"
@@ -110,6 +143,7 @@
 import { Vue, Component } from 'nuxt-property-decorator';
 import * as mutation from '~/graphql/documents/floor-room';
 import { mixinData } from '~/components/mixins/mutable';
+import { GetFloors } from '~/graphql/types';
 
 @Component({
     name: 'index-',
@@ -121,6 +155,18 @@ export default class extends Vue {
             title: 'Sơ đồ khách sạn',
         };
     }
+
+    floorsFilter(floors: GetFloors.Floors[]): GetFloors.Floors[] {
+        if (this.showDisable) return floors;
+        return floors.filter(f => f.isActive);
+    }
+
+    roomsFilter(rooms: GetFloors.Rooms[]): GetFloors.Rooms[] {
+        if (this.showDisable) return rooms;
+        return rooms.filter(r => r.isActive);
+    }
+
+    showDisable: boolean = false;
 }
 </script>
 <style lang="scss">

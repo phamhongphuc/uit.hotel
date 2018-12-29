@@ -487,6 +487,8 @@ export namespace GetFloors {
 
         name: string;
 
+        isActive: boolean;
+
         roomKind: RoomKind;
     };
 
@@ -560,5 +562,31 @@ export namespace DeleteFloor {
         __typename?: 'Mutation';
 
         deleteFloor: string;
+    };
+}
+
+export namespace SetIsActiveFloor {
+    export type Variables = {
+        id: string;
+        isActive: boolean;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        setIsActiveFloor: string;
+    };
+}
+
+export namespace SetIsActiveRoom {
+    export type Variables = {
+        id: string;
+        isActive: boolean;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        setIsActiveRoom: string;
     };
 }

@@ -11,6 +11,10 @@
     margin-right: $grid-gutter-width / -2;
 }
 
+.flex-1 {
+    flex: 1 !important;
+}
+
 .t-0 {
     top: 0;
 }

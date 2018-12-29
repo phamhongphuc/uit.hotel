@@ -45,8 +45,8 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, namespace } from 'nuxt-property-decorator';
-import gql from 'graphql-tag';
+import { Vue, Component } from 'nuxt-property-decorator';
+import { getFloors } from '~/graphql/documents/floor-room';
 
 @Component({
     name: 'index-',
@@ -58,25 +58,7 @@ export default class extends Vue {
         };
     }
 
-    @namespace('style').State
-    breakpoint;
-
-    getFloors = gql`
-        query getFloors {
-            floors {
-                id
-                name
-                isActive
-                rooms {
-                    id
-                    name
-                    roomKind {
-                        name
-                    }
-                }
-            }
-        }
-    `;
+    getFloors = getFloors;
 }
 </script>
 <style lang="scss">
