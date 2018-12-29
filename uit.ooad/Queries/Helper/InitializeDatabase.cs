@@ -48,21 +48,25 @@ namespace uit.ooad.Queries.Helper
             {
                 Name = "Quản trị viên",
                 PermissionUpdateGroundPlan = true,
-                PermissionReferDebt = true,
-                PermissionManageAccount = true,
-                PermissionManagePosition = true,
-                PermissionManageEmployee = true,
-                PermissionReferRevenues = true,
-                PermissionManagePatron = true,
-                PermissionManagePatronKind = true,
-                PermissionGetRooms = true,
-                PermissionManageHiringRoom = true,
+                PermissionGetGroundPlan = true,
+                PermissionManageRoomKind = true,
+                PermissionGetRoomKind = true,
+                PermissionManageRate = true,
+                PermissionGetRate = true,
                 PermissionGetHouseKeeping = true,
                 PermissionCleaning = true,
-                PermissionManageRate = true,
-                PermissionCreateReceipt = true,
-                PermissionManageRoomKind = true,
-                PermissionManageService = true
+                PermissionManageHiringRoom = true,
+                PermissionManagePatron = true,
+                PermissionGetPatron = true,
+                PermissionManagePatronKind = true,
+                PermissionGetPatronKind = true,
+                PermissionManagePosition = true,
+                PermissionGetPosition = true,
+                PermissionManageEmployee = true,
+                PermissionManageAccount = true,
+                PermissionManageService = true,
+                PermissionGetService = true,
+                PermissionGetVoucher = true
             });
         }
 

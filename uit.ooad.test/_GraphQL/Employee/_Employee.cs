@@ -11,7 +11,9 @@ namespace uit.ooad.test._GraphQL.Employee
         {
             SchemaHelper.Execute(
                 @"/_GraphQL/Employee/query.employees.gql",
-                @"/_GraphQL/Employee/query.employees.schema.json"
+                @"/_GraphQL/Employee/query.employees.schema.json",
+                null,
+                p => p.PermissionManageEmployee = true
             );
         }
 
@@ -21,7 +23,8 @@ namespace uit.ooad.test._GraphQL.Employee
             SchemaHelper.Execute(
                 @"/_GraphQL/Employee/query.employee.gql",
                 @"/_GraphQL/Employee/query.employee.schema.json",
-                @"/_GraphQL/Employee/query.employee.variable.json"
+                @"/_GraphQL/Employee/query.employee.variable.json",
+                p => p.PermissionManageEmployee = true
             );
         }
 

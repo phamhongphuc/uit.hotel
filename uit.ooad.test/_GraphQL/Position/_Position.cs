@@ -11,7 +11,9 @@ namespace uit.ooad.test._GraphQL._Position
         {
             SchemaHelper.Execute(
                 @"/_GraphQL/Position/query.positions.gql",
-                @"/_GraphQL/Position/query.positions.schema.json"
+                @"/_GraphQL/Position/query.positions.schema.json",
+                null,
+                p => p.PermissionGetPosition = true
             );
         }
 
@@ -21,7 +23,8 @@ namespace uit.ooad.test._GraphQL._Position
             SchemaHelper.Execute(
                 @"/_GraphQL/Position/query.position.gql",
                 @"/_GraphQL/Position/query.position.schema.json",
-                @"/_GraphQL/Position/query.position.variable.json"
+                @"/_GraphQL/Position/query.position.variable.json",
+                p => p.PermissionGetPosition = true
             );
         }
 

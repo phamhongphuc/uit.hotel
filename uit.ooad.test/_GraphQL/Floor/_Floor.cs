@@ -11,7 +11,9 @@ namespace uit.ooad.test._GraphQL._Floor
         {
             SchemaHelper.Execute(
                 @"/_GraphQL/Floor/query.floors.gql",
-                @"/_GraphQL/Floor/query.floors.schema.json"
+                @"/_GraphQL/Floor/query.floors.schema.json",
+                null,
+                p => p.PermissionGetGroundPlan = true
             );
         }
 
@@ -21,7 +23,8 @@ namespace uit.ooad.test._GraphQL._Floor
             SchemaHelper.Execute(
                 @"/_GraphQL/Floor/query.floor.gql",
                 @"/_GraphQL/Floor/query.floor.schema.json",
-                @"/_GraphQL/Floor/query.floor.variable.json"
+                @"/_GraphQL/Floor/query.floor.variable.json",
+                p => p.PermissionGetGroundPlan = true
             );
         }
 

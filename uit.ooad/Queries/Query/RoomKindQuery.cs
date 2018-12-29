@@ -13,14 +13,20 @@ namespace uit.ooad.Queries.Query
             Field<NonNullGraphType<ListGraphType<NonNullGraphType<RoomKindType>>>>(
                 _List,
                 "Trả về một danh sách các loại phòng",
-                resolve: context => RoomKindBusiness.Get()
+                resolve: _CheckPermission_List(
+                    p => p.PermissionGetRoomKind,
+                    context => RoomKindBusiness.Get()
+                )
             );
             
             Field<NonNullGraphType<RoomKindType>>(
                 nameof(RoomKind),
                 "Trả về thông tin của một loại phòng",
                 _IdArgument(),
-                context => RoomKindBusiness.Get(_GetId<int>(context))
+                _CheckPermission_Object(
+                    p => p.PermissionGetRoomKind,
+                    context => RoomKindBusiness.Get(_GetId<int>(context))
+                )
             );
         }
     }

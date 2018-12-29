@@ -1,21 +1,26 @@
 {
-    positions {
-        id
-        name
-        permissionReferRevenues
-        permissionReferDebt
-        permissionManageAccount
-        permissionManagePosition
-        permissionManageEmployee
-        permissionGetRooms
-        permissionManagePatron
-        permissionManagePatronKind
-        permissionManageHiringRoom
-        permissionGetHouseKeeping
-        permissionManageRate
-        permissionCreateReceipt
-        permissionUpdateGroundPlan
-        permissionManageRoomKind
-        permissionManageService
-    }
+  positions {
+    id
+    name
+    permissionUpdateGroundPlan
+    permissionGetGroundPlan
+    permissionManageRoomKind
+    permissionGetRoomKind
+    permissionManageRate
+    permissionGetRate
+    permissionGetHouseKeeping
+    permissionCleaning
+    permissionManageHiringRoom
+    permissionManagePatron
+    permissionGetPatron
+    permissionManagePatronKind
+    permissionGetPatronKind
+    permissionManagePosition
+    permissionGetPosition
+    permissionManageEmployee
+    permissionManageAccount
+    permissionManageService
+    permissionGetService
+    permissionGetVoucher
+  }
 }

@@ -13,14 +13,20 @@ namespace uit.ooad.Queries.Query
             Field<NonNullGraphType<ListGraphType<NonNullGraphType<ServicesDetailType>>>>(
                 _List,
                 "Trả về một danh sách các chi tiết dịch vụ",
-                resolve: context => ServicesDetailBusiness.Get()
+                resolve: _CheckPermission_List(
+                    p => p.PermissionGetService,
+                    context => ServicesDetailBusiness.Get()
+                )
             );
             
             Field<NonNullGraphType<ServicesDetailType>>(
                 _Item,
                 "Trả về thông tin một chi tiết dịch vụ",
                 _IdArgument(),
-                context => ServicesDetailBusiness.Get(_GetId<int>(context))
+                _CheckPermission_Object(
+                    p => p.PermissionGetService,
+                    context => ServicesDetailBusiness.Get(_GetId<int>(context))
+                )
             );
         }
     }

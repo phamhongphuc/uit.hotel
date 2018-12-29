@@ -16,21 +16,26 @@
           "required": [
             "id",
             "name",
-            "permissionReferRevenues",
-            "permissionReferDebt",
-            "permissionManageAccount",
-            "permissionManagePosition",
-            "permissionManageEmployee",
-            "permissionGetRooms",
-            "permissionManagePatron",
-            "permissionManagePatronKind",
-            "permissionManageHiringRoom",
-            "permissionGetHouseKeeping",
-            "permissionManageRate",
-            "permissionCreateReceipt",
             "permissionUpdateGroundPlan",
+            "permissionGetGroundPlan",
             "permissionManageRoomKind",
-            "permissionManageService"
+            "permissionGetRoomKind",
+            "permissionManageRate",
+            "permissionGetRate",
+            "permissionGetHouseKeeping",
+            "permissionCleaning",
+            "permissionManageHiringRoom",
+            "permissionManagePatron",
+            "permissionGetPatron",
+            "permissionManagePatronKind",
+            "permissionGetPatronKind",
+            "permissionManagePosition",
+            "permissionGetPosition",
+            "permissionManageEmployee",
+            "permissionManageAccount",
+            "permissionManageService",
+            "permissionGetService",
+            "permissionGetVoucher"
           ],
           "properties": {
             "id": {
@@ -40,49 +45,64 @@
               "type": "string",
               "pattern": "^(.*)$"
             },
-            "permissionReferRevenues": {
-              "type": "boolean"
-            },
-            "permissionReferDebt": {
-              "type": "boolean"
-            },
-            "permissionManageAccount": {
-              "type": "boolean"
-            },
-            "permissionManagePosition": {
-              "type": "boolean"
-            },
-            "permissionManageEmployee": {
-              "type": "boolean"
-            },
-            "permissionGetRooms": {
-              "type": "boolean"
-            },
-            "permissionManagePatron": {
-              "type": "boolean"
-            },
-            "permissionManagePatronKind": {
-              "type": "boolean"
-            },
-            "permissionManageHiringRoom": {
-              "type": "boolean"
-            },
-            "permissionGetHouseKeeping": {
-              "type": "boolean"
-            },
-            "permissionManageRate": {
-              "type": "boolean"
-            },
-            "permissionCreateReceipt": {
-              "type": "boolean"
-            },
             "permissionUpdateGroundPlan": {
+              "type": "boolean"
+            },
+            "permissionGetGroundPlan": {
               "type": "boolean"
             },
             "permissionManageRoomKind": {
               "type": "boolean"
             },
+            "permissionGetRoomKind": {
+              "type": "boolean"
+            },
+            "permissionManageRate": {
+              "type": "boolean"
+            },
+            "permissionGetRate": {
+              "type": "boolean"
+            },
+            "permissionGetHouseKeeping": {
+              "type": "boolean"
+            },
+            "permissionCleaning": {
+              "type": "boolean"
+            },
+            "permissionManageHiringRoom": {
+              "type": "boolean"
+            },
+            "permissionManagePatron": {
+              "type": "boolean"
+            },
+            "permissionGetPatron": {
+              "type": "boolean"
+            },
+            "permissionManagePatronKind": {
+              "type": "boolean"
+            },
+            "permissionGetPatronKind": {
+              "type": "boolean"
+            },
+            "permissionManagePosition": {
+              "type": "boolean"
+            },
+            "permissionGetPosition": {
+              "type": "boolean"
+            },
+            "permissionManageEmployee": {
+              "type": "boolean"
+            },
+            "permissionManageAccount": {
+              "type": "boolean"
+            },
             "permissionManageService": {
+              "type": "boolean"
+            },
+            "permissionGetService": {
+              "type": "boolean"
+            },
+            "permissionGetVoucher": {
               "type": "boolean"
             }
           }

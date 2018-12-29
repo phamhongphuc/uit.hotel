@@ -11,7 +11,9 @@ namespace uit.ooad.test._GraphQL._Patron
         {
             SchemaHelper.Execute(
                 @"/_GraphQL/Patron/query.patrons.gql",
-                @"/_GraphQL/Patron/query.patrons.schema.json"
+                @"/_GraphQL/Patron/query.patrons.schema.json",
+                null,
+                p => p.PermissionGetPatron = true
             );
         }
 
@@ -21,7 +23,8 @@ namespace uit.ooad.test._GraphQL._Patron
             SchemaHelper.Execute(
                 @"/_GraphQL/Patron/query.patron.gql",
                 @"/_GraphQL/Patron/query.patron.schema.json",
-                @"/_GraphQL/Patron/query.patron.variable.json"
+                @"/_GraphQL/Patron/query.patron.variable.json",
+                p => p.PermissionGetPatron = true
             );
         }
 

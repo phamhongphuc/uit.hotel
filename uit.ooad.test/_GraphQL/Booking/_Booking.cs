@@ -11,7 +11,9 @@ namespace uit.ooad.test._GraphQL.Booking
         {
             SchemaHelper.Execute(
                 @"/_GraphQL/Booking/query.bookings.gql",
-                @"/_GraphQL/Booking/query.bookings.schema.json"
+                @"/_GraphQL/Booking/query.bookings.schema.json",
+                null,
+                p => p.PermissionManageHiringRoom = true
             );
         }
 
@@ -21,7 +23,8 @@ namespace uit.ooad.test._GraphQL.Booking
             SchemaHelper.Execute(
                 @"/_GraphQL/Booking/query.booking.gql",
                 @"/_GraphQL/Booking/query.booking.schema.json",
-                @"/_GraphQL/Booking/query.booking.variable.json"
+                @"/_GraphQL/Booking/query.booking.variable.json",
+                p => p.PermissionManageHiringRoom = true
             );
         }
 
