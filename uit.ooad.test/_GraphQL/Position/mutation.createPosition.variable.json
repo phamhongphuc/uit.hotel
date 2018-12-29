@@ -1,21 +1,22 @@
 {
 	"input": {
 		"name": "Tên quyền",
-		"permissionReferRevenues": false,
-		"permissionReferDebt": false,
-		"permissionManageAccount": false,
-		"permissionManagePosition": false,
-		"permissionManageEmployee": false,
-		"permissionGetRooms": false,
-		"permissionManagePatron": false,
-		"permissionManagePatronKind": false,
-		"permissionManageHiringRoom": false,
-		"permissionGetHouseKeeping": false,
-		"permissionCleaning": false,
-		"permissionManageRate": false,
-		"permissionCreateReceipt": false,
-		"permissionUpdateGroundPlan": false,
-		"permissionManageRoomKind": false,
-		"permissionManageService": false
+		"permissionUpdateGroundPlan": true,
+		"permissionGetGroundPlan": true,
+		"permissionManageRoomKind": true,
+		"permissionManageRate": true,
+		"permissionGetHouseKeeping": true,
+		"permissionCleaning": true,
+		"permissionManageHiringRoom": true,
+		"permissionManagePatron": true,
+		"permissionManagePatronKind": true,
+		"permissionGetPatronKind": true,
+		"permissionManagePosition": true,
+		"permissionManageEmployee": true,
+		"permissionManageAccount": true,
+		"permissionReferDebt": true,
+		"permissionReferRevenues": true,
+		"permissionCreateReceipt": true,
+		"permissionManageService": true
 	}
 }

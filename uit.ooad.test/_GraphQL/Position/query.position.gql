@@ -2,20 +2,22 @@ query($id: ID!) {
     position(id: $id) {
         id
         name
-        permissionReferRevenues
-        permissionReferDebt
-        permissionManageAccount
-        permissionManagePosition
-        permissionManageEmployee
-        permissionGetRooms
+        permissionUpdateGroundPlan
+        permissionGetGroundPlan
+        permissionManageRoomKind
+        permissionManageRate
+        permissionGetHouseKeeping
+        permissionCleaning
+        permissionManageHiringRoom
         permissionManagePatron
         permissionManagePatronKind
-        permissionManageHiringRoom
-        permissionGetHouseKeeping
-        permissionManageRate
+        permissionGetPatronKind
+        permissionManagePosition
+        permissionManageEmployee
+        permissionManageAccount
+        permissionReferDebt
+        permissionReferRevenues
         permissionCreateReceipt
-        permissionUpdateGroundPlan
-        permissionManageRoomKind
         permissionManageService
     }
 }

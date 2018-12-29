@@ -16,20 +16,22 @@
           "required": [
             "id",
             "name",
-            "permissionReferRevenues",
-            "permissionReferDebt",
-            "permissionManageAccount",
-            "permissionManagePosition",
-            "permissionManageEmployee",
-            "permissionGetRooms",
+            "permissionUpdateGroundPlan",
+            "permissionGetGroundPlan",
+            "permissionManageRoomKind",
+            "permissionManageRate",
+            "permissionGetHouseKeeping",
+            "permissionCleaning",
+            "permissionManageHiringRoom",
             "permissionManagePatron",
             "permissionManagePatronKind",
-            "permissionManageHiringRoom",
-            "permissionGetHouseKeeping",
-            "permissionManageRate",
+            "permissionGetPatronKind",
+            "permissionManagePosition",
+            "permissionManageEmployee",
+            "permissionManageAccount",
+            "permissionReferDebt",
+            "permissionReferRevenues",
             "permissionCreateReceipt",
-            "permissionUpdateGroundPlan",
-            "permissionManageRoomKind",
             "permissionManageService"
           ],
           "properties": {
@@ -40,22 +42,25 @@
               "type": "string",
               "pattern": "^(.*)$"
             },
-            "permissionReferRevenues": {
+            "permissionUpdateGroundPlan": {
               "type": "boolean"
             },
-            "permissionReferDebt": {
+            "permissionGetGroundPlan": {
               "type": "boolean"
             },
-            "permissionManageAccount": {
+            "permissionManageRoomKind": {
               "type": "boolean"
             },
-            "permissionManagePosition": {
+            "permissionManageRate": {
               "type": "boolean"
             },
-            "permissionManageEmployee": {
+            "permissionGetHouseKeeping": {
               "type": "boolean"
             },
-            "permissionGetRooms": {
+            "permissionCleaning": {
+              "type": "boolean"
+            },
+            "permissionManageHiringRoom": {
               "type": "boolean"
             },
             "permissionManagePatron": {
@@ -64,22 +69,25 @@
             "permissionManagePatronKind": {
               "type": "boolean"
             },
-            "permissionManageHiringRoom": {
+            "permissionGetPatronKind": {
               "type": "boolean"
             },
-            "permissionGetHouseKeeping": {
+            "permissionManagePosition": {
               "type": "boolean"
             },
-            "permissionManageRate": {
+            "permissionManageEmployee": {
+              "type": "boolean"
+            },
+            "permissionManageAccount": {
+              "type": "boolean"
+            },
+            "permissionReferDebt": {
+              "type": "boolean"
+            },
+            "permissionReferRevenues": {
               "type": "boolean"
             },
             "permissionCreateReceipt": {
-              "type": "boolean"
-            },
-            "permissionUpdateGroundPlan": {
-              "type": "boolean"
-            },
-            "permissionManageRoomKind": {
               "type": "boolean"
             },
             "permissionManageService": {
