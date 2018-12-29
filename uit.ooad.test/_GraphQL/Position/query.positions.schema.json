@@ -30,6 +30,7 @@
               "permissionManagePatronKind",
               "permissionGetPatronKind",
               "permissionManagePosition",
+              "permissionGetPosition",
               "permissionManageEmployee",
               "permissionManageAccount",
               "permissionReferDebt",
@@ -79,6 +80,9 @@
                 "type": "boolean"
               },
               "permissionManagePosition": {
+                "type": "boolean"
+              },
+              "permissionGetPosition": {
                 "type": "boolean"
               },
               "permissionManageEmployee": {

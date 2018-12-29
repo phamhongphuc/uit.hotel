@@ -14,6 +14,7 @@
     permissionManagePatronKind
     permissionGetPatronKind
     permissionManagePosition
+    permissionGetPosition
     permissionManageEmployee
     permissionManageAccount
     permissionReferDebt
