@@ -5897,7 +5897,7 @@ longest@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/longest/-/longest-1.0.1.tgz#30a0b2da38f73770e8294a0d22e6625ed77d0097"
 
-loose-envify@^1.0.0:
+loose-envify@^1.0.0, loose-envify@^1.2.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/loose-envify/-/loose-envify-1.4.0.tgz#71ee51fa7be4caec1a63839f7e682d8132d30caf"
   dependencies:
@@ -9748,7 +9748,7 @@ vue-apollo@3.0.0-beta.19:
   dependencies:
     throttle-debounce "^2.0.0"
 
-vue-class-component@6.3.2:
+vue-class-component@6.3.2, vue-class-component@^6.1.0:
   version "6.3.2"
   resolved "https://registry.yarnpkg.com/vue-class-component/-/vue-class-component-6.3.2.tgz#e6037e84d1df2af3bde4f455e50ca1b9eec02be6"
 
@@ -9776,6 +9776,12 @@ vue-cli-plugin-apollo@0.17.1:
     nodemon "^1.18.4"
     subscriptions-transport-ws "^0.9.15"
     ts-node "^7.0.1"
+
+vue-clickaway@^2.2.2:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/vue-clickaway/-/vue-clickaway-2.2.2.tgz#cecf6839575e8b2afc5d3edb3efb616d293dbb44"
+  dependencies:
+    loose-envify "^1.2.0"
 
 vue-eslint-parser@^4.0.2:
   version "4.0.3"
@@ -9821,6 +9827,12 @@ vue-meta@^1.5.6:
     lodash.isplainobject "^4.0.6"
     lodash.uniqueid "^4.0.1"
     object-assign "^4.1.1"
+
+vue-mixin-decorator@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/vue-mixin-decorator/-/vue-mixin-decorator-1.0.0.tgz#f0aca2c6cd57429c09192e500391619e9b262d0d"
+  dependencies:
+    vue-class-component "^6.1.0"
 
 vue-no-ssr@^1.1.0:
   version "1.1.1"
