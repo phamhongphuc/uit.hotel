@@ -27,6 +27,7 @@ namespace uit.ooad.Queries.Helper
             AddVolatilityRate();
 
             AddService();
+            AddService();
 
             AddBill();
             AddCheckedInBill();
