@@ -26,13 +26,26 @@ namespace uit.ooad.Businesses
             var rateInDatabase = GetAndCheckValid(rateId);
             RateDataAccess.Delete(rateInDatabase);
         }
+
+        public static Task<Rate> Update(Employee employee, Rate rate)
+        {
+            var rateInDatabase = GetAndCheckValid(rate.Id);
+
+            rate.Employee = employee;
+            rate.RoomKind = rate.RoomKind.GetManaged();
+            if (!rate.RoomKind.IsActive)
+                throw new Exception("Loại phòng " + rate.RoomKind.Name + " đã ngưng hoại động");
+
+            return RateDataAccess.Update(rateInDatabase, rate);
+        }
+
         private static Rate GetAndCheckValid(int rateId)
         {
             var rateInDatabase = Get(rateId);
 
             if (rateInDatabase == null)
                 throw new Exception("Giá có Id: " + rateId + " không hợp lệ!");
-                
+
             //TODO: kiểm tra điều kiện xóa sửa ở đây
 
             return rateInDatabase;

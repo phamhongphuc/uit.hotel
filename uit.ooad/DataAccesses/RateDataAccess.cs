@@ -33,5 +33,23 @@ namespace uit.ooad.DataAccesses
         {
             await Database.WriteAsync(realm => realm.Remove(rateInDatabase));
         }
+
+        internal static async Task<Rate> Update(Rate rateInDatabase, Rate rate)
+        {
+            await Database.WriteAsync(realm =>
+            {
+                rateInDatabase.DayRate = rate.DayRate;
+                rateInDatabase.NightRate = rate.NightRate;
+                rateInDatabase.WeekRate = rate.WeekRate;
+                rateInDatabase.MonthRate = rate.MonthRate;
+                rateInDatabase.LateCheckOutFee = rate.LateCheckOutFee;
+                rateInDatabase.EarlyCheckInFee = rate.EarlyCheckInFee;
+                rateInDatabase.EffectiveStartDate = rate.EffectiveStartDate;
+                rateInDatabase.CreateDate = DateTimeOffset.Now;
+                rateInDatabase.Employee = rate.Employee;
+                rateInDatabase.RoomKind = rate.RoomKind;
+            });
+            return rateInDatabase;
+        }
     }
 }

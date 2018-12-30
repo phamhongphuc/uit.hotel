@@ -24,9 +24,24 @@ namespace uit.ooad.Queries.Mutation
                     }
                 )
             );
+
+            Field<NonNullGraphType<RateType>>(
+                _Updation,
+                "Cập nhật và trả về một giá cơ bản vừa cập nhật",
+                _InputArgument<RateUpdateInput>(),
+                _CheckPermission_TaskObject(
+                    p => p.PermissionManageRate,
+                    context =>
+                    {
+                        var employee = AuthenticationHelper.GetEmployee(context);
+                        return RateBusiness.Update(employee, _GetInput(context));
+                    }
+                )
+            );
+
             Field<NonNullGraphType<StringGraphType>>(
                 _Deletion,
-                "Xóa một tầng",
+                "Xóa một giá cơ bản",
                 _IdArgument(),
                 _CheckPermission_String(
                     p => p.PermissionManageRate,
