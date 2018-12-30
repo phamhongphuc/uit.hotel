@@ -10,7 +10,7 @@ namespace uit.ooad.Models
         [PrimaryKey]
         public int Id { get; set; }
         public string Name { get; set; }
-        public int UnitRate { get; set; }
+        public long UnitRate { get; set; }
         public string Unit { get; set; }
         public bool IsActive { get; set; }
 

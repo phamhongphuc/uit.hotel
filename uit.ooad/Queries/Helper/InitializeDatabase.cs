@@ -76,14 +76,14 @@ namespace uit.ooad.Queries.Helper
             {
                 Id = Constant.UserName,
                 Address = "Địa chỉ",
-                Birthdate = DateTime.Now,
+                Birthdate = DateTimeOffset.Now,
                 Name = "Quản trị viên",
                 IdentityCard = "123456789",
                 Password = "12345678",
                 PhoneNumber = "+84 0123456789",
                 Position = PositionBusiness.Get(1),
                 IsActive = true,
-                StartingDate = DateTime.Now
+                StartingDate = DateTimeOffset.Now
             });
         }
 
@@ -108,13 +108,13 @@ namespace uit.ooad.Queries.Helper
                 MonthRate = 1,
                 LateCheckOutFee = 1,
                 EarlyCheckInFee = 1,
-                EffectiveStartDate = DateTime.Now,
-                EffectiveEndDate = DateTime.Now,
+                EffectiveStartDate = DateTimeOffset.Now,
+                EffectiveEndDate = DateTimeOffset.Now,
                 EffectiveOnMonday = true,
                 EffectiveOnTuesday = true,
                 EffectiveOnWednesday = true,
                 EffectiveOnThursday = true,
-                CreateDate = DateTime.Now,
+                CreateDate = DateTimeOffset.Now,
                 RoomKind = RoomKindBusiness.Get(1)
             });
         }
@@ -129,8 +129,8 @@ namespace uit.ooad.Queries.Helper
                 MonthRate = 1,
                 LateCheckOutFee = 1,
                 EarlyCheckInFee = 1,
-                EffectiveStartDate = DateTime.Now,
-                CreateDate = DateTime.Now,
+                EffectiveStartDate = DateTimeOffset.MinValue,
+                CreateDate = DateTimeOffset.Now,
                 RoomKind = RoomKindBusiness.Get(1)
             });
         }
@@ -143,7 +143,7 @@ namespace uit.ooad.Queries.Helper
                 Name = "Tên khách hàng",
                 Email = "Email khách hàng",
                 Gender = true,
-                Birthdate = DateTime.Now,
+                Birthdate = DateTimeOffset.Now,
                 Nationality = "Quốc tịch",
                 Domicile = "Nguyên quán",
                 Residence = "Thường trú",
@@ -205,15 +205,15 @@ namespace uit.ooad.Queries.Helper
                 EmployeeBusiness.Get(Constant.UserName),
                 new Bill
                 {
-                    Time = DateTime.Now,
+                    Time = DateTimeOffset.Now,
                     Patron = PatronBusiness.Get(1)
                 },
                 new List<Booking>
                 {
                     new Booking
                     {
-                        BookCheckInTime = DateTime.Now,
-                        BookCheckOutTime = DateTime.Now,
+                        BookCheckInTime = DateTimeOffset.Now,
+                        BookCheckOutTime = DateTimeOffset.Now,
                         Room = RoomBusiness.Get(1),
                         ListOfPatrons = new List<Patron>
                         {
@@ -278,7 +278,7 @@ namespace uit.ooad.Queries.Helper
         {
             ReceiptBusiness.Add(new Receipt
             {
-                Time = DateTime.Now,
+                Time = DateTimeOffset.Now,
                 Money = 1,
                 BankAccountNumber = "11111",
                 TypeOfPayment = 1,

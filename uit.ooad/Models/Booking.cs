@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Realms;
 using uit.ooad.Businesses;
+using uit.ooad.Queries.Helper;
 
 namespace uit.ooad.Models
 {
@@ -53,6 +54,66 @@ namespace uit.ooad.Models
         public void CheckValidBeforeCreate()
         {
             // Kiểm tra các điều kiện thực thi trong này.
+        }
+
+        public long Total
+        {
+            get
+            {
+                long total = 0;
+                total += TotalServicesDetails;
+                total += TotalRates;
+                return total;
+            }
+        }
+
+        public long TotalServicesDetails
+        {
+            get
+            {
+                long total = 0;
+                foreach (var s in ServicesDetails) total += s.Total;
+                return total;
+            }
+        }
+
+        public long TotalRates
+        {
+            get
+            {
+                long total = 0;
+                DateTimeOffset date = RealCheckInTime;
+                while (date <= RealCheckOutTime)
+                {
+                    var remain = RealCheckOutTime.Subtract(date).Days;
+                    var rate = Room.RoomKind.GetRate(date);
+                    if (remain >= 30)
+                    {
+                        total += rate.MonthRate;
+                        date = date.AddDays(30);
+                    }
+                    else if (remain >= 7)
+                    {
+                        total += rate.WeekRate;
+                        date = date.AddDays(7);
+                    }
+                    else
+                    {
+                        total += rate.DayRate;
+                        date = date.AddDays(1);
+                    }
+                }
+                return total;
+            }
+        }
+
+        public long TotalVolatilityRate
+        {
+            get
+            {
+                long total = 0;
+                return total;
+            }
         }
 
         public Booking GetManaged()

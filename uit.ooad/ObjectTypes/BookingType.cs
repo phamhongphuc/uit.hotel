@@ -19,6 +19,7 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.RealCheckOutTime, true).Description("Thời điểm trả phòng của khách hàng");
             Field(x => x.CreateTime).Description("Thời điểm tạo thông tin thuê phòng");
             Field(x => x.Status).Description("Trạng thái của thông tin thuê phòng");
+            Field(x => x.Total).Description("Tổng tiền của booking");
 
             Field<EmployeeType>(
                 nameof(Booking.EmployeeBooking),
