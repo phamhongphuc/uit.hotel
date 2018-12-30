@@ -56,6 +56,7 @@ namespace uit.ooad.GraphQLHelper
             services.AddSingleton<ServiceCreateInput>();
             services.AddSingleton<ServiceUpdateInput>();
             services.AddSingleton<ServicesDetailCreateInput>();
+            services.AddSingleton<ServicesDetailUpdateInput>();
             services.AddSingleton<ServicesDetailIdInput>();
             services.AddSingleton<VolatilityRateCreateInput>();
             services.AddSingleton<VolatilityRateUpdateInput>();
