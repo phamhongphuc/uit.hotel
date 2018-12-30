@@ -1,0 +1,69 @@
+{
+    "definitions": {},
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "type": "object",
+        "required": [
+          "updateServicesDetail"
+        ],
+        "properties": {
+          "updateServicesDetail": {
+            "type": "object",
+            "required": [
+              "id",
+              "time",
+              "number",
+              "total",
+              "booking",
+              "service"
+            ],
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "time": {
+                "type": "string",
+                "pattern": "^(.*)$"
+              },
+              "number": {
+                "type": "integer"
+              },
+              "total": {
+                "type": "integer"
+              },
+              "booking": {
+                "type": "object",
+                "required": [
+                  "id"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  }
+                }
+              },
+              "service": {
+                "type": "object",
+                "required": [
+                  "id",
+                  "unitRate"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  },
+                  "unitRate": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
