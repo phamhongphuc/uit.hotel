@@ -15,7 +15,7 @@ namespace uit.ooad.DataAccesses
             await Database.WriteAsync(realm =>
             {
                 rate.Id = NextId;
-
+                rate.CreateDate = DateTimeOffset.Now;
                 rate = realm.Add(rate);
             });
             return rate;
@@ -34,7 +34,7 @@ namespace uit.ooad.DataAccesses
             await Database.WriteAsync(realm => realm.Remove(rateInDatabase));
         }
 
-        internal static async Task<Rate> Update(Rate rateInDatabase, Rate rate)
+        public static async Task<Rate> Update(Rate rateInDatabase, Rate rate)
         {
             await Database.WriteAsync(realm =>
             {
