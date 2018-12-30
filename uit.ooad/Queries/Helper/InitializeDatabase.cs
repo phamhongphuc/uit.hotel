@@ -100,7 +100,7 @@ namespace uit.ooad.Queries.Helper
 
         private static void AddVolatilityRate()
         {
-            VolatilityRateBusiness.Add(EmployeeBusiness.Get(Constant.UserName),new VolatilityRate
+            VolatilityRateBusiness.Add(EmployeeBusiness.Get(Constant.UserName), new VolatilityRate
             {
                 DayRate = 10,
                 NightRate = 5,
@@ -276,7 +276,7 @@ namespace uit.ooad.Queries.Helper
 
         private static void AddReceipt()
         {
-            ReceiptBusiness.Add(new Receipt
+            ReceiptBusiness.Add(EmployeeBusiness.Get(Constant.UserName), new Receipt
             {
                 Time = DateTimeOffset.Now,
                 Money = 1,

@@ -62,6 +62,7 @@ namespace uit.ooad.DataAccesses
             await Database.WriteAsync(realm =>
             {
                 realm.RemoveRange(roomKind.VolatilityRates);
+                realm.RemoveRange(roomKind.Rates);
                 realm.Remove(roomKind);
             });
         }

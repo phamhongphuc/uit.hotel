@@ -44,11 +44,6 @@ namespace uit.ooad.ObjectTypes
                 nameof(Receipt.Bill),
                 "Thuộc hóa đơn"
             );
-
-            Field<EmployeeIdInput>(
-                nameof(Receipt.Employee),
-                "Nhân viên tạo phiếu thu"
-            );
         }
     }
 }
