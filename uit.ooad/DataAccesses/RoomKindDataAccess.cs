@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,11 +8,27 @@ namespace uit.ooad.DataAccesses
 {
     public class RoomKindDataAccess : RealmDatabase
     {
+        public static int NextId => Get().Count() == 0 ? 1 : Get().Max(i => i.Id) + 1;
         public static async Task<RoomKind> Add(RoomKind roomKind)
         {
             await Database.WriteAsync(realm =>
             {
-                roomKind.Id = Get().Count() == 0 ? 1 : Get().Max(f => f.Id) + 1;
+                roomKind.Id = NextId;
+                roomKind.IsActive = true;
+
+                var rate = new Rate
+                {
+                    DayRate = 0,
+                    NightRate = 0,
+                    WeekRate = 0,
+                    MonthRate = 0,
+                    LateCheckOutFee = 0,
+                    EarlyCheckInFee = 0,
+                    EffectiveStartDate = DateTimeOffset.MinValue,
+                    CreateDate = DateTimeOffset.MinValue,
+                    RoomKind = roomKind
+                };
+                RateDataAccess.Add(realm, rate);
 
                 roomKind = realm.Add(roomKind);
             });

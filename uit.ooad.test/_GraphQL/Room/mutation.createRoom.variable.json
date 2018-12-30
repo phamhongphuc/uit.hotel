@@ -1,7 +1,6 @@
 {
     "input": {
         "name": "Phòng 2",
-        "isActive": true,
         "roomKind": {
             "id": 1
         },

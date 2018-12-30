@@ -7,12 +7,12 @@ namespace uit.ooad.DataAccesses
 {
     public class ReceiptDataAccess : RealmDatabase
     {
+        private static int NextId => Get().Count() == 0 ? 1 : Get().Max(i => i.Id) + 1;
         public static async Task<Receipt> Add(Receipt receipt)
         {
             await Database.WriteAsync(realm =>
             {
-                receipt.Id = Get().Count() == 0 ? 1 : Get().Max(f => f.Id) + 1;
-
+                receipt.Id = NextId;
                 receipt = realm.Add(receipt);
             });
             return receipt;

@@ -36,7 +36,6 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.Name).Description("Tên dịch vụ");
             Field(x => x.UnitRate).Description("Đơn giá");
             Field(x => x.Unit).Description("Đơn vị");
-            Field(x => x.IsActive).Description("Trạng thái hoạt động");
         }
     }
 

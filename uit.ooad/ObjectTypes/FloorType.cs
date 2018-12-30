@@ -40,7 +40,6 @@ namespace uit.ooad.ObjectTypes
         {
             Name = _Creation;
             Field(x => x.Name).Description("Tên tầng");
-            Field(x => x.IsActive).Description("Trạng thái hoạt động");
         }
     }
 

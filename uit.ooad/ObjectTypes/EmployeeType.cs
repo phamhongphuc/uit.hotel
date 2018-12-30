@@ -77,7 +77,6 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.Address).Description("Địa chỉ của nhân viên");
             Field(x => x.Birthdate).Description("Ngày sinh của nhân viên");
             Field(x => x.StartingDate).Description("Ngày vào làm");
-            Field(x => x.IsActive).Description("Tài khoản còn hiệu lực hay không");
 
             Field<PositionIdInput>(
                 nameof(Employee.Position),

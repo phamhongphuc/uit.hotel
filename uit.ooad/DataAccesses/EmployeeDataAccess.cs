@@ -8,7 +8,11 @@ namespace uit.ooad.DataAccesses
     {
         public static async Task<Employee> Add(Employee employee)
         {
-            await Database.WriteAsync(realm => employee = realm.Add(employee));
+            await Database.WriteAsync(realm =>
+            {
+                employee.IsActive = true;
+                employee = realm.Add(employee);
+            });
             return employee;
         }
 

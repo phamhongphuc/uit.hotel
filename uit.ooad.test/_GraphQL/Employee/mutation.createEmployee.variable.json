@@ -8,7 +8,6 @@
         "address": "164/54",
         "birthdate": "04-04-1996",
         "startingDate": "10-10-2015",
-        "isActive": true,
         "position": {
             "id": 1
         }
