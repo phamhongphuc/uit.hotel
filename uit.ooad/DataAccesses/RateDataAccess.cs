@@ -23,6 +23,7 @@ namespace uit.ooad.DataAccesses
         public static Rate Add(Realm realm, Rate rate)
         {
             rate.Id = NextId;
+            rate.CreateDate = DateTimeOffset.MinValue;
             return realm.Add(rate);
         }
         public static Rate Get(int rateId) => Database.Find<Rate>(rateId);

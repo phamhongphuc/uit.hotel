@@ -9,7 +9,6 @@ namespace uit.ooad.Models
     {
         [PrimaryKey]
         public int Id { get; set; }
-
         public string Name { get; set; }
         public int NumberOfBeds { get; set; }
         public int AmountOfPeople { get; set; }

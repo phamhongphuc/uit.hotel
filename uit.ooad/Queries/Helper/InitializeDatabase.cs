@@ -114,7 +114,6 @@ namespace uit.ooad.Queries.Helper
                 EffectiveOnTuesday = true,
                 EffectiveOnWednesday = true,
                 EffectiveOnThursday = true,
-                CreateDate = DateTimeOffset.Now,
                 RoomKind = RoomKindBusiness.Get(1)
             });
         }
@@ -130,7 +129,6 @@ namespace uit.ooad.Queries.Helper
                 LateCheckOutFee = 10000,
                 EarlyCheckInFee = 10000,
                 EffectiveStartDate = DateTimeOffset.MinValue,
-                CreateDate = DateTimeOffset.Now,
                 RoomKind = RoomKindBusiness.Get(1)
             });
         }
@@ -278,7 +276,6 @@ namespace uit.ooad.Queries.Helper
         {
             ReceiptBusiness.Add(EmployeeBusiness.Get(Constant.UserName), new Receipt
             {
-                Time = DateTimeOffset.Now,
                 Money = 1,
                 BankAccountNumber = "11111",
                 TypeOfPayment = 1,

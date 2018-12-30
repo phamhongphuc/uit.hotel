@@ -27,7 +27,6 @@ namespace uit.ooad.DataAccesses
                     LateCheckOutFee = 0,
                     EarlyCheckInFee = 0,
                     EffectiveStartDate = DateTimeOffset.MinValue,
-                    CreateDate = DateTimeOffset.MinValue,
                     Employee = null,
                     RoomKind = roomKind
                 };
