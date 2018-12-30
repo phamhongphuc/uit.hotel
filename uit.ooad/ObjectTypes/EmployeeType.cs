@@ -40,6 +40,18 @@ namespace uit.ooad.ObjectTypes
                 description: "Danh sách các Phiếu thu mà nhân viên tạo"
             );
 
+            Field<ListGraphType<RateType>>(
+                nameof(Employee.Rates),
+                resolve: context => context.Source.Rates.ToList(),
+                description: "Danh sách các Giá cơ bản mà nhân viên tạo"
+            );
+
+            Field<ListGraphType<VolatilityRateType>>(
+                nameof(Employee.VolatilityRates),
+                resolve: context => context.Source.VolatilityRates.ToList(),
+                description: "Danh sách các Giá biến động mà nhân viên tạo"
+            );
+
             Field<ListGraphType<HouseKeepingType>>(
                 nameof(Employee.HouseKeepings),
                 resolve: context => context.Source.HouseKeepings.ToList(),

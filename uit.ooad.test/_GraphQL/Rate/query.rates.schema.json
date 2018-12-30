@@ -1,11 +1,15 @@
 {
     "definitions": {},
     "type": "object",
-    "required": ["data"],
+    "required": [
+        "data"
+    ],
     "properties": {
         "data": {
             "type": "object",
-            "required": ["rates"],
+            "required": [
+                "rates"
+            ],
             "properties": {
                 "rates": {
                     "type": "array",
@@ -21,6 +25,7 @@
                             "earlyCheckInFee",
                             "effectiveStartDate",
                             "createDate",
+                            "employee",
                             "roomKind"
                         ],
                         "properties": {
@@ -53,30 +58,29 @@
                                 "type": "string",
                                 "pattern": "^(.*)$"
                             },
+                            "employee": {
+                                "anyOf": [{
+                                        "type": "null"
+                                    },
+                                    {
+                                        "type": "object",
+                                        "required": ["id"],
+                                        "properties": {
+                                            "id": {
+                                                "type": "string",
+                                                "pattern": "^(.*)$"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
                             "roomKind": {
                                 "type": "object",
                                 "required": [
-                                    "id",
-                                    "name",
-                                    "amountOfPeople",
-                                    "numberOfBeds",
-                                    "priceByDate"
+                                    "id"
                                 ],
                                 "properties": {
                                     "id": {
-                                        "type": "integer"
-                                    },
-                                    "name": {
-                                        "type": "string",
-                                        "pattern": "^(.*)$"
-                                    },
-                                    "amountOfPeople": {
-                                        "type": "integer"
-                                    },
-                                    "numberOfBeds": {
-                                        "type": "integer"
-                                    },
-                                    "priceByDate": {
                                         "type": "integer"
                                     }
                                 }

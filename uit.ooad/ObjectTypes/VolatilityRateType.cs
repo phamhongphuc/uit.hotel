@@ -34,6 +34,12 @@ namespace uit.ooad.ObjectTypes
                 resolve: context => context.Source.RoomKind,
                 description: "Thuộc loại phòng"
             );
+
+            Field<EmployeeType>(
+                nameof(VolatilityRate.Employee),
+                resolve: context => context.Source.Employee,
+                description: "Nhân viên tạo giá"
+            );
         }
     }
 

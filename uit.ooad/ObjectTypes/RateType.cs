@@ -25,6 +25,12 @@ namespace uit.ooad.ObjectTypes
                 nameof(Rate.RoomKind),
                 resolve: context => context.Source.RoomKind,
                 description: "Thuộc loại phòng"
+            );            
+            
+            Field<EmployeeType>(
+                nameof(Rate.Employee),
+                resolve: context => context.Source.Employee,
+                description: "Nhân viên tạo giá"
             );
         }
     }
@@ -43,7 +49,7 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.EffectiveStartDate).Description("Ngày giá bắt đầu có hiệu lực");
             Field(x => x.CreateDate).Description("Ngày tạo giá");
 
-            Field<RoomKindIdInput>(
+            Field<NonNullGraphType<RoomKindIdInput>>(
                 nameof(Rate.RoomKind),
                 "Loại phòng"
             );

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using uit.ooad.DataAccesses;
@@ -7,9 +8,13 @@ namespace uit.ooad.Businesses
 {
     public class VolatilityRateBusiness
     {
-        public static Task<VolatilityRate> Add(VolatilityRate volatilityRate)
+        public static Task<VolatilityRate> Add(Employee employee, VolatilityRate volatilityRate)
         {
+            volatilityRate.Employee = employee;
             volatilityRate.RoomKind = volatilityRate.RoomKind.GetManaged();
+            if (!volatilityRate.RoomKind.IsActive)
+                throw new Exception("Loại phòng " + volatilityRate.RoomKind.Name + " đã ngưng hoại động");
+
             return VolatilityRateDataAccess.Add(volatilityRate);
         }
 

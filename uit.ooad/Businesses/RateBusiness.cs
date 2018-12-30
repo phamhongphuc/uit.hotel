@@ -8,8 +8,9 @@ namespace uit.ooad.Businesses
 {
     public class RateBusiness
     {
-        public static Task<Rate> Add(Rate rate)
+        public static Task<Rate> Add(Employee employee, Rate rate)
         {
+            rate.Employee = employee;
             rate.RoomKind = rate.RoomKind.GetManaged();
             if (!rate.RoomKind.IsActive)
                 throw new Exception("Loại phòng " + rate.RoomKind.Name + " đã ngưng hoại động");

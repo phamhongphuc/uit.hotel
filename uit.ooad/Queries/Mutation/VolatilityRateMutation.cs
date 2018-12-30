@@ -2,6 +2,7 @@ using GraphQL.Types;
 using uit.ooad.Businesses;
 using uit.ooad.Models;
 using uit.ooad.ObjectTypes;
+using uit.ooad.Queries.Authentication;
 using uit.ooad.Queries.Base;
 
 namespace uit.ooad.Queries.Mutation
@@ -16,7 +17,11 @@ namespace uit.ooad.Queries.Mutation
                 _InputArgument<VolatilityRateCreateInput>(),
                 _CheckPermission_TaskObject(
                     p => p.PermissionManageRate,
-                    context => VolatilityRateBusiness.Add(_GetInput(context))
+                    context =>
+                    {
+                        var employee = AuthenticationHelper.GetEmployee(context);
+                        return VolatilityRateBusiness.Add(employee, _GetInput(context));
+                    }
                 )
             );
         }
