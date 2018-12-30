@@ -19,6 +19,16 @@ namespace uit.ooad.Models
         [Backlink(nameof(Booking.Bill))]
         public IQueryable<Booking> Bookings { get; }
 
+        public long Total
+        {
+            get
+            {
+                long total = 0;
+                foreach (var b in Bookings) total += b.Total;
+                return total;
+            }
+        }
+        
         public Bill GetManaged()
         {
             var bill = BillBusiness.Get(Id);

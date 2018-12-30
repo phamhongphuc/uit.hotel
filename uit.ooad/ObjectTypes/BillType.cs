@@ -14,6 +14,7 @@ namespace uit.ooad.ObjectTypes
 
             Field(x => x.Id).Description("Id của hóa đơn");
             Field(x => x.Time).Description("Thời điểm in hóa đơn");
+            Field(x => x.Total).Description("Tổng giá trị hóa đơn");
 
             Field<NonNullGraphType<PatronType>>(
                 nameof(Bill.Patron),

@@ -20,6 +20,9 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.CreateTime).Description("Thời điểm tạo thông tin thuê phòng");
             Field(x => x.Status).Description("Trạng thái của thông tin thuê phòng");
             Field(x => x.Total).Description("Tổng tiền của booking");
+            Field(x => x.TotalRates).Description("Tổng tiền của booking");
+            Field(x => x.TotalVolatilityRate).Description("Tổng tiền của booking");
+            Field(x => x.TotalServicesDetails).Description("Tổng tiền của booking");
 
             Field<EmployeeType>(
                 nameof(Booking.EmployeeBooking),
