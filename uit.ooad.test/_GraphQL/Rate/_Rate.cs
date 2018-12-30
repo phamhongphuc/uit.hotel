@@ -38,5 +38,16 @@ namespace uit.ooad.test._GraphQL._Rate
                 p => p.PermissionManageRate = true
             );
         }
+
+        [TestMethod]
+        public void DeleteRate()
+        {
+            SchemaHelper.Execute(
+                @"/_GraphQL/Rate/mutation.deleteRate.gql",
+                @"/_GraphQL/Rate/mutation.deleteRate.schema.json",
+                @"/_GraphQL/Rate/mutation.deleteRate.variable.json",
+                p => p.PermissionManageRate = true
+            );
+        }
     }
 }
