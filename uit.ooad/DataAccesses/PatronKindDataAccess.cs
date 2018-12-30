@@ -7,12 +7,12 @@ namespace uit.ooad.DataAccesses
 {
     public class PatronKindDataAccess : RealmDatabase
     {
+        private static int NextId => Get().Count() == 0 ? 1 : Get().Max(i => i.Id) + 1;
         public static async Task<PatronKind> Add(PatronKind patronKind)
         {
             await Database.WriteAsync(realm =>
             {
-                patronKind.Id = Get().Count() == 0 ? 1 : Get().Max(f => f.Id) + 1;
-
+                patronKind.Id = NextId;
                 patronKind = realm.Add(patronKind);
             });
             return patronKind;
