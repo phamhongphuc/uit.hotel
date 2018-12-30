@@ -14,17 +14,20 @@ namespace uit.ooad.DataAccesses
             await Database.WriteAsync(realm =>
             {
                 roomKind.Id = NextId;
+                roomKind.IsActive = true;
 
-                var rate = new Rate();
-                rate.DayRate = 0;
-                rate.NightRate = 0;
-                rate.WeekRate = 0;
-                rate.MonthRate = 0;
-                rate.LateCheckOutFee = 0;
-                rate.EarlyCheckInFee = 0;
-                rate.EffectiveStartDate = DateTimeOffset.MinValue;
-                rate.CreateDate = DateTimeOffset.MinValue;
-                rate.RoomKind = roomKind;
+                var rate = new Rate
+                {
+                    DayRate = 0,
+                    NightRate = 0,
+                    WeekRate = 0,
+                    MonthRate = 0,
+                    LateCheckOutFee = 0,
+                    EarlyCheckInFee = 0,
+                    EffectiveStartDate = DateTimeOffset.MinValue,
+                    CreateDate = DateTimeOffset.MinValue,
+                    RoomKind = roomKind
+                };
                 RateDataAccess.Add(realm, rate);
 
                 roomKind = realm.Add(roomKind);

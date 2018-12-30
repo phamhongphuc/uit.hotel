@@ -42,7 +42,6 @@ namespace uit.ooad.ObjectTypes
             Name = _Creation;
 
             Field(x => x.Name).Description("Tên phòng");
-            Field(x => x.IsActive).Description("Trạng thái phòng");
 
             Field<NonNullGraphType<FloorIdInput>>(
                 nameof(Room.Floor),

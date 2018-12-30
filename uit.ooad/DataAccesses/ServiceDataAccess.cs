@@ -14,7 +14,7 @@ namespace uit.ooad.DataAccesses
             await Database.WriteAsync(realm =>
             {
                 service.Id = NextId;
-
+                service.IsActive = true;
                 service = realm.Add(service);
             });
             return service;
