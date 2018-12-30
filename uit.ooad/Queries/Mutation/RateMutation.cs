@@ -17,10 +17,23 @@ namespace uit.ooad.Queries.Mutation
                 _InputArgument<RateCreateInput>(),
                 _CheckPermission_TaskObject(
                     p => p.PermissionManageRate,
-                    context => 
+                    context =>
                     {
                         var employee = AuthenticationHelper.GetEmployee(context);
                         return RateBusiness.Add(employee, _GetInput(context));
+                    }
+                )
+            );
+            Field<NonNullGraphType<StringGraphType>>(
+                _Deletion,
+                "Xóa một tầng",
+                _IdArgument(),
+                _CheckPermission_String(
+                    p => p.PermissionManageRate,
+                    context =>
+                    {
+                        RateBusiness.Delete(_GetId<int>(context));
+                        return "Xóa thành công";
                     }
                 )
             );

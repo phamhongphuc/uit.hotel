@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -27,5 +28,10 @@ namespace uit.ooad.DataAccesses
         public static Rate Get(int rateId) => Database.Find<Rate>(rateId);
 
         public static IEnumerable<Rate> Get() => Database.All<Rate>();
+
+        public static async void Delete(Rate rateInDatabase)
+        {
+            await Database.WriteAsync(realm => realm.Remove(rateInDatabase));
+        }
     }
 }

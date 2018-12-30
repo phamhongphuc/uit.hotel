@@ -20,5 +20,22 @@ namespace uit.ooad.Businesses
 
         public static Rate Get(int rateId) => RateDataAccess.Get(rateId);
         public static IEnumerable<Rate> Get() => RateDataAccess.Get();
+
+        public static void Delete(int rateId)
+        {
+            var rateInDatabase = GetAndCheckValid(rateId);
+            RateDataAccess.Delete(rateInDatabase);
+        }
+        private static Rate GetAndCheckValid(int rateId)
+        {
+            var rateInDatabase = Get(rateId);
+
+            if (rateInDatabase == null)
+                throw new Exception("Giá có Id: " + rateId + " không hợp lệ!");
+                
+            //TODO: kiểm tra điều kiện xóa sửa ở đây
+
+            return rateInDatabase;
+        }
     }
 }
