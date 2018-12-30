@@ -1,0 +1,21 @@
+{
+    "definitions": {},
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "type": "object",
+        "required": [
+          "deleteVolatilityRate"
+        ],
+        "properties": {
+          "deleteVolatilityRate": {
+            "type": "string",
+            "pattern": "^(.*)$"
+          }
+        }
+      }
+    }
+  }

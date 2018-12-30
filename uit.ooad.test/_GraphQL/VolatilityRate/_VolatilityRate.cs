@@ -38,5 +38,16 @@ namespace uit.ooad.test._GraphQL._VolatilityRate
                 p => p.PermissionManageRate = true
             );
         }
+
+        [TestMethod]
+        public void UpdateVolatilityRate()
+        {
+            SchemaHelper.Execute(
+                @"/_GraphQL/VolatilityRate/mutation.updateVolatilityRate.gql",
+                @"/_GraphQL/VolatilityRate/mutation.updateVolatilityRate.schema.json",
+                @"/_GraphQL/VolatilityRate/mutation.updateVolatilityRate.variable.json",
+                p => p.PermissionManageRate = true
+            );
+        }
     }
 }
