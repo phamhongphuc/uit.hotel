@@ -62,6 +62,17 @@ namespace uit.ooad.test._GraphQL._Position
         }
 
         [TestMethod]
+        public void SetIsActivePositionAndMoveEmployee()
+        {
+            SchemaHelper.Execute(
+                @"/_GraphQL/Position/mutation.setIsActivePositionAndMoveEmployee.gql",
+                @"/_GraphQL/Position/mutation.setIsActivePositionAndMoveEmployee.schema.json",
+                @"/_GraphQL/Position/mutation.setIsActivePositionAndMoveEmployee.variable.json",
+                p => p.PermissionManagePosition = true
+            );
+        }
+
+        [TestMethod]
         public void DeletePosition()
         {
             SchemaHelper.Execute(
