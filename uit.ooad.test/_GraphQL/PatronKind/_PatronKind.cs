@@ -38,5 +38,27 @@ namespace uit.ooad.test._GraphQL._Patron
                 p => p.PermissionManagePatronKind = true
             );
         }
+
+        [TestMethod]
+        public void UpdatePatronKind()
+        {
+            SchemaHelper.Execute(
+                @"/_GraphQL/PatronKind/mutation.updatePatronKind.gql",
+                @"/_GraphQL/PatronKind/mutation.updatePatronKind.schema.json",
+                @"/_GraphQL/PatronKind/mutation.updatePatronKind.variable.json",
+                p => p.PermissionManagePatronKind = true
+            );
+        }
+
+        [TestMethod]
+        public void DeletePatronKind()
+        {
+            SchemaHelper.Execute(
+                @"/_GraphQL/PatronKind/mutation.deletePatronKind.gql",
+                @"/_GraphQL/PatronKind/mutation.deletePatronKind.schema.json",
+                @"/_GraphQL/PatronKind/mutation.deletePatronKind.variable.json",
+                p => p.PermissionManagePatronKind = true
+            );
+        }
     }
 }

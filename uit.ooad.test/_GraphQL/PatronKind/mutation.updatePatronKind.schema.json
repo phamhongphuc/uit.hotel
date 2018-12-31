@@ -1,0 +1,38 @@
+{
+    "definitions": {},
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "type": "object",
+        "required": [
+          "updatePatronKind"
+        ],
+        "properties": {
+          "updatePatronKind": {
+            "type": "object",
+            "required": [
+              "id",
+              "name",
+              "description"
+            ],
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "name": {
+                "type": "string",
+                "pattern": "^(.*)$"
+              },
+              "description": {
+                "type": "string",
+                "pattern": "^(.*)$"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
