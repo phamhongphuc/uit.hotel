@@ -11,6 +11,16 @@ namespace uit.ooad.DataAccesses
     {
         public static int NextId => Get().Count() == 0 ? 1 : Get().Max(i => i.Id) + 1;
 
+        public static async Task<ServicesDetail> Add(ServicesDetail servicesDetail)
+        {
+            await Database.WriteAsync(realm =>
+            {
+                servicesDetail.Id = NextId;
+                servicesDetail.Time = DateTimeOffset.Now;
+                servicesDetail = realm.Add(servicesDetail);
+            });
+            return servicesDetail;
+        }
         public static ServicesDetail Add(Realm realm, ServicesDetail servicesDetail)
         {
             servicesDetail.Id = NextId;
@@ -31,6 +41,11 @@ namespace uit.ooad.DataAccesses
                 servicesDetailInDatabase.Service = servicesDetail.Service;
             });
             return servicesDetailInDatabase;
+        }
+
+        public static async void Delete(ServicesDetail servicesDetailInDatabase)
+        {
+            await Database.WriteAsync(realm => realm.Remove(servicesDetailInDatabase));
         }
     }
 }
