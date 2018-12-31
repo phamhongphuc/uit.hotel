@@ -19,10 +19,6 @@ namespace uit.ooad.DataAccesses
             return patronKind;
         }
 
-        public static PatronKind Get(int patronKindId) => Database.Find<PatronKind>(patronKindId);
-
-        public static IEnumerable<PatronKind> Get() => Database.All<PatronKind>();
-
         public static async Task<PatronKind> Update(PatronKind patronKindInDatabase, PatronKind patronKind)
         {
             await Database.WriteAsync(realm =>
@@ -37,5 +33,8 @@ namespace uit.ooad.DataAccesses
         {
             await Database.WriteAsync(realm => realm.Remove(patronKind));
         }
+        public static PatronKind Get(int patronKindId) => Database.Find<PatronKind>(patronKindId);
+
+        public static IEnumerable<PatronKind> Get() => Database.All<PatronKind>();
     }
 }

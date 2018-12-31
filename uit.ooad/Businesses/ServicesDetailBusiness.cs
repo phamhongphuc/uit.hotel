@@ -8,8 +8,6 @@ namespace uit.ooad.Businesses
 {
     public class ServicesDetailBusiness
     {
-        public static ServicesDetail Get(int servicesDetailId) => ServicesDetailDataAccess.Get(servicesDetailId);
-        public static IEnumerable<ServicesDetail> Get() => ServicesDetailDataAccess.Get();
         public static Task<ServicesDetail> Add(ServicesDetail servicesDetail)
         {
             servicesDetail.Booking = servicesDetail.Booking.GetManaged();
@@ -30,6 +28,12 @@ namespace uit.ooad.Businesses
             return ServicesDetailDataAccess.Update(servicesDetailInDatabase, servicesDetail);
         }
 
+        public static void Delete(int servicesDetailId)
+        {
+            var servicesDetailInDatabase = GetAndCheckValid(servicesDetailId);
+            ServicesDetailDataAccess.Delete(servicesDetailInDatabase);
+        }
+
         private static ServicesDetail GetAndCheckValid(int servicesDetailId)
         {
             var servicesDetailInDatabase = Get(servicesDetailId);
@@ -41,10 +45,7 @@ namespace uit.ooad.Businesses
             return servicesDetailInDatabase;
         }
 
-        public static void Delete(int servicesDetailId)
-        {
-            var servicesDetailInDatabase = GetAndCheckValid(servicesDetailId);
-            ServicesDetailDataAccess.Delete(servicesDetailInDatabase);
-        }
+        public static ServicesDetail Get(int servicesDetailId) => ServicesDetailDataAccess.Get(servicesDetailId);
+        public static IEnumerable<ServicesDetail> Get() => ServicesDetailDataAccess.Get();
     }
 }

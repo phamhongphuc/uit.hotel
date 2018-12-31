@@ -19,11 +19,6 @@ namespace uit.ooad.DataAccesses
             });
             return volatilityRate;
         }
-
-        public static VolatilityRate Get(int volatilityRateId) => Database.Find<VolatilityRate>(volatilityRateId);
-
-        public static IEnumerable<VolatilityRate> Get() => Database.All<VolatilityRate>();
-
         public static async Task<VolatilityRate> Update(VolatilityRate volatilityRateInDatabase, VolatilityRate volatilityRate)
         {
             await Database.WriteAsync(realm =>
@@ -54,5 +49,7 @@ namespace uit.ooad.DataAccesses
         {
             await Database.WriteAsync(realm => realm.Remove(volatilityRateInDatabase));
         }
+        public static VolatilityRate Get(int volatilityRateId) => Database.Find<VolatilityRate>(volatilityRateId);
+        public static IEnumerable<VolatilityRate> Get() => Database.All<VolatilityRate>();
     }
 }

@@ -18,15 +18,6 @@ namespace uit.ooad.Businesses
             return RateDataAccess.Add(rate);
         }
 
-        public static Rate Get(int rateId) => RateDataAccess.Get(rateId);
-        public static IEnumerable<Rate> Get() => RateDataAccess.Get();
-
-        public static void Delete(int rateId)
-        {
-            var rateInDatabase = GetAndCheckValid(rateId);
-            RateDataAccess.Delete(rateInDatabase);
-        }
-
         public static Task<Rate> Update(Employee employee, Rate rate)
         {
             var rateInDatabase = GetAndCheckValid(rate.Id);
@@ -37,6 +28,12 @@ namespace uit.ooad.Businesses
                 throw new Exception("Loại phòng " + rate.RoomKind.Name + " đã ngưng hoại động");
 
             return RateDataAccess.Update(rateInDatabase, rate);
+        }
+
+        public static void Delete(int rateId)
+        {
+            var rateInDatabase = GetAndCheckValid(rateId);
+            RateDataAccess.Delete(rateInDatabase);
         }
 
         private static Rate GetAndCheckValid(int rateId)
@@ -50,5 +47,7 @@ namespace uit.ooad.Businesses
 
             return rateInDatabase;
         }
+        public static Rate Get(int rateId) => RateDataAccess.Get(rateId);
+        public static IEnumerable<Rate> Get() => RateDataAccess.Get();
     }
 }

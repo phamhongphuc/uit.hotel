@@ -21,16 +21,13 @@ namespace uit.ooad.DataAccesses
             });
             return servicesDetail;
         }
+        
         public static ServicesDetail Add(Realm realm, ServicesDetail servicesDetail)
         {
             servicesDetail.Id = NextId;
             servicesDetail.Time = DateTimeOffset.Now;
             return realm.Add(servicesDetail);
         }
-
-        public static ServicesDetail Get(int servicesDetailId) => Database.Find<ServicesDetail>(servicesDetailId);
-
-        public static IEnumerable<ServicesDetail> Get() => Database.All<ServicesDetail>();
 
         public static async Task<ServicesDetail> Update(ServicesDetail servicesDetailInDatabase, ServicesDetail servicesDetail)
         {
@@ -47,5 +44,10 @@ namespace uit.ooad.DataAccesses
         {
             await Database.WriteAsync(realm => realm.Remove(servicesDetailInDatabase));
         }
+
+        public static ServicesDetail Get(int servicesDetailId) => Database.Find<ServicesDetail>(servicesDetailId);
+
+        public static IEnumerable<ServicesDetail> Get() => Database.All<ServicesDetail>();
+
     }
 }
