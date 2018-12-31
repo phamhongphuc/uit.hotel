@@ -31,6 +31,20 @@ namespace uit.ooad.Queries.Mutation
             );
 
             Field<NonNullGraphType<StringGraphType>>(
+                _Deletion,
+                "Xóa một dịch vụ",
+                _IdArgument(),
+                _CheckPermission_String(
+                    p => p.PermissionManageService,
+                    context =>
+                    {
+                        ServiceBusiness.Delete(_GetId<int>(context));
+                        return "Xóa thành công";
+                    }
+                )
+            );
+
+            Field<NonNullGraphType<StringGraphType>>(
                 "SetIsActiveService",
                 "Cập nhật trạng thái của dịch vụ",
                 new QueryArguments(

@@ -52,4 +52,20 @@ namespace uit.ooad.ObjectTypes
             );
         }
     }
+
+    public class ServicesDetailUpdateInput : InputType<ServicesDetail>
+    {
+        public ServicesDetailUpdateInput()
+        {
+            Name = _Updation;
+
+            Field(x => x.Id).Description("Id của chi tiết dịch vụ cần cập nhật");
+            Field(x => x.Number).Description("Số lượng");
+
+            Field<NonNullGraphType<ServiceIdInput>>(
+                nameof(ServicesDetail.Service),
+                "Thuộc dịch vụ nào"
+            );
+        }
+    }
 }

@@ -26,6 +26,12 @@ namespace uit.ooad.Models
         [Backlink(nameof(Receipt.Employee))]
         public IQueryable<Receipt> Receipts { get; }
 
+        [Backlink(nameof(Rate.Employee))]
+        public IQueryable<Rate> Rates { get; }
+
+        [Backlink(nameof(VolatilityRate.Employee))]
+        public IQueryable<Rate> VolatilityRates { get; }
+
         [Backlink(nameof(HouseKeeping.Employee))]
         public IQueryable<HouseKeeping> HouseKeepings { get; }
 

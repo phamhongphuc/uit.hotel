@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using uit.ooad.Businesses;
 using uit.ooad.Models;
+using uit.ooad.Queries.Helper;
 
 namespace uit.ooad.DataAccesses
 {
@@ -25,7 +27,7 @@ namespace uit.ooad.DataAccesses
                     LateCheckOutFee = 0,
                     EarlyCheckInFee = 0,
                     EffectiveStartDate = DateTimeOffset.MinValue,
-                    CreateDate = DateTimeOffset.MinValue,
+                    Employee = null,
                     RoomKind = roomKind
                 };
                 RateDataAccess.Add(realm, rate);
@@ -59,6 +61,7 @@ namespace uit.ooad.DataAccesses
             await Database.WriteAsync(realm =>
             {
                 realm.RemoveRange(roomKind.VolatilityRates);
+                realm.RemoveRange(roomKind.Rates);
                 realm.Remove(roomKind);
             });
         }

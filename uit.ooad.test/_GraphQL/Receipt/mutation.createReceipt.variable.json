@@ -1,14 +1,10 @@
 {
     "input": {
         "money": 1000,
-        "time": "04-04-1996",
         "typeOfPayment": 1,
         "bankAccountNumber": "10-10-2015",
         "bill": {
             "id": 1
-        },
-        "employee": {
-            "id": "admin"
         }
     }
 }

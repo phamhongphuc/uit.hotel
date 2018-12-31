@@ -26,6 +26,12 @@ namespace uit.ooad.ObjectTypes
                 resolve: context => context.Source.RoomKind,
                 description: "Thuộc loại phòng"
             );
+
+            Field<EmployeeType>(
+                nameof(Rate.Employee),
+                resolve: context => context.Source.Employee,
+                description: "Nhân viên tạo giá"
+            );
         }
     }
 
@@ -41,7 +47,27 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.LateCheckOutFee).Description("Phí check-out muộn");
             Field(x => x.EarlyCheckInFee).Description("Phí check-out sớm");
             Field(x => x.EffectiveStartDate).Description("Ngày giá bắt đầu có hiệu lực");
-            Field(x => x.CreateDate).Description("Ngày tạo giá");
+
+            Field<NonNullGraphType<RoomKindIdInput>>(
+                nameof(Rate.RoomKind),
+                "Loại phòng"
+            );
+        }
+    }
+
+    public class RateUpdateInput : InputType<Rate>
+    {
+        public RateUpdateInput()
+        {
+            Name = _Updation;
+            Field(x => x.Id).Description("Id của giá cần cập nhật");
+            Field(x => x.DayRate).Description("Giá ngày");
+            Field(x => x.NightRate).Description("Giá đêm");
+            Field(x => x.WeekRate).Description("Giá tuần");
+            Field(x => x.MonthRate).Description("Giá tháng");
+            Field(x => x.LateCheckOutFee).Description("Phí check-out muộn");
+            Field(x => x.EarlyCheckInFee).Description("Phí check-out sớm");
+            Field(x => x.EffectiveStartDate).Description("Ngày giá bắt đầu có hiệu lực");
 
             Field<RoomKindIdInput>(
                 nameof(Rate.RoomKind),

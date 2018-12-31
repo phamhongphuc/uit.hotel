@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -34,6 +35,11 @@ namespace uit.ooad.DataAccesses
         public static async void SetIsActive(Service service, bool isActive)
         {
             await Database.WriteAsync(realm => service.IsActive = isActive);
+        }
+
+        public static async void Delete(Service serviceInDatabase)
+        {
+            await Database.WriteAsync(realm => realm.Remove(serviceInDatabase));
         }
 
         public static Service Get(int serviceId) => Database.Find<Service>(serviceId);

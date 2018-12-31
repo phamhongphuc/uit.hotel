@@ -27,6 +27,7 @@ namespace uit.ooad.Queries.Helper
             AddVolatilityRate();
 
             AddService();
+            AddService();
 
             AddBill();
             AddCheckedInBill();
@@ -100,37 +101,35 @@ namespace uit.ooad.Queries.Helper
 
         private static void AddVolatilityRate()
         {
-            VolatilityRateBusiness.Add(new VolatilityRate
+            VolatilityRateBusiness.Add(EmployeeBusiness.Get(Constant.UserName), new VolatilityRate
             {
-                DayRate = 1,
-                NightRate = 1,
-                WeekRate = 1,
-                MonthRate = 1,
-                LateCheckOutFee = 1,
-                EarlyCheckInFee = 1,
+                DayRate = 10,
+                NightRate = 5,
+                WeekRate = 50,
+                MonthRate = 200,
+                LateCheckOutFee = 2,
+                EarlyCheckInFee = 2,
                 EffectiveStartDate = DateTimeOffset.Now,
                 EffectiveEndDate = DateTimeOffset.Now,
                 EffectiveOnMonday = true,
                 EffectiveOnTuesday = true,
                 EffectiveOnWednesday = true,
                 EffectiveOnThursday = true,
-                CreateDate = DateTimeOffset.Now,
                 RoomKind = RoomKindBusiness.Get(1)
             });
         }
 
         private static void AddRate()
         {
-            RateBusiness.Add(new Rate
+            RateBusiness.Add(EmployeeBusiness.Get(Constant.UserName), new Rate
             {
-                DayRate = 1,
-                NightRate = 1,
-                WeekRate = 1,
-                MonthRate = 1,
-                LateCheckOutFee = 1,
-                EarlyCheckInFee = 1,
+                DayRate = 100000,
+                NightRate = 60000,
+                WeekRate = 500000,
+                MonthRate = 2000000,
+                LateCheckOutFee = 10000,
+                EarlyCheckInFee = 10000,
                 EffectiveStartDate = DateTimeOffset.MinValue,
-                CreateDate = DateTimeOffset.Now,
                 RoomKind = RoomKindBusiness.Get(1)
             });
         }
@@ -276,9 +275,8 @@ namespace uit.ooad.Queries.Helper
 
         private static void AddReceipt()
         {
-            ReceiptBusiness.Add(new Receipt
+            ReceiptBusiness.Add(EmployeeBusiness.Get(Constant.UserName), new Receipt
             {
-                Time = DateTimeOffset.Now,
                 Money = 1,
                 BankAccountNumber = "11111",
                 TypeOfPayment = 1,

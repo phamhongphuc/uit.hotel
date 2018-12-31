@@ -27,6 +27,12 @@ namespace uit.ooad.Businesses
             ServiceDataAccess.SetIsActive(serviceInDatabase, isActive);
         }
 
+        public static void Delete(int serviceId)
+        {
+            var serviceInDatabase = GetAndCheckValid(serviceId);
+            ServiceDataAccess.Delete(serviceInDatabase);
+        }
+
         private static Service GetAndCheckValid(int serviceId)
         {
             var serviceInDatabase = Get(serviceId);

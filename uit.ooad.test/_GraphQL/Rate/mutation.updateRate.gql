@@ -1,5 +1,5 @@
-{
-  rates {
+mutation ($input: RateUpdateInput!) {
+  updateRate(input: $input) {
     id
     dayRate
     nightRate

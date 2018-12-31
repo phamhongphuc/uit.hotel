@@ -51,6 +51,17 @@ namespace uit.ooad.test._GraphQL._Service
         }
 
         [TestMethod]
+        public void DeleteService()
+        {
+            SchemaHelper.Execute(
+                @"/_GraphQL/Service/mutation.deleteService.gql",
+                @"/_GraphQL/Service/mutation.deleteService.schema.json",
+                @"/_GraphQL/Service/mutation.deleteService.variable.json",
+                p => p.PermissionManageService = true
+            );
+        }
+
+        [TestMethod]
         public void SetIsActiveService()
         {
             SchemaHelper.Execute(

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Realms;
 using uit.ooad.Models;
 
@@ -20,5 +21,16 @@ namespace uit.ooad.DataAccesses
         public static ServicesDetail Get(int servicesDetailId) => Database.Find<ServicesDetail>(servicesDetailId);
 
         public static IEnumerable<ServicesDetail> Get() => Database.All<ServicesDetail>();
+
+        public static async Task<ServicesDetail> Update(ServicesDetail servicesDetailInDatabase, ServicesDetail servicesDetail)
+        {
+            await Database.WriteAsync(realm =>
+            {
+                servicesDetailInDatabase.Time = DateTimeOffset.Now;
+                servicesDetailInDatabase.Number = servicesDetail.Number;
+                servicesDetailInDatabase.Service = servicesDetail.Service;
+            });
+            return servicesDetailInDatabase;
+        }
     }
 }

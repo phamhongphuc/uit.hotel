@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,7 +15,7 @@ namespace uit.ooad.DataAccesses
             await Database.WriteAsync(realm =>
             {
                 rate.Id = NextId;
-
+                rate.CreateDate = DateTimeOffset.Now;
                 rate = realm.Add(rate);
             });
             return rate;
@@ -22,10 +23,34 @@ namespace uit.ooad.DataAccesses
         public static Rate Add(Realm realm, Rate rate)
         {
             rate.Id = NextId;
+            rate.CreateDate = DateTimeOffset.MinValue;
             return realm.Add(rate);
         }
         public static Rate Get(int rateId) => Database.Find<Rate>(rateId);
 
         public static IEnumerable<Rate> Get() => Database.All<Rate>();
+
+        public static async void Delete(Rate rateInDatabase)
+        {
+            await Database.WriteAsync(realm => realm.Remove(rateInDatabase));
+        }
+
+        public static async Task<Rate> Update(Rate rateInDatabase, Rate rate)
+        {
+            await Database.WriteAsync(realm =>
+            {
+                rateInDatabase.DayRate = rate.DayRate;
+                rateInDatabase.NightRate = rate.NightRate;
+                rateInDatabase.WeekRate = rate.WeekRate;
+                rateInDatabase.MonthRate = rate.MonthRate;
+                rateInDatabase.LateCheckOutFee = rate.LateCheckOutFee;
+                rateInDatabase.EarlyCheckInFee = rate.EarlyCheckInFee;
+                rateInDatabase.EffectiveStartDate = rate.EffectiveStartDate;
+                rateInDatabase.CreateDate = DateTimeOffset.Now;
+                rateInDatabase.Employee = rate.Employee;
+                rateInDatabase.RoomKind = rate.RoomKind;
+            });
+            return rateInDatabase;
+        }
     }
 }

@@ -16,6 +16,7 @@ namespace uit.ooad.Models
         [Indexed]
         public DateTimeOffset EffectiveStartDate { get; set; }
         public DateTimeOffset CreateDate { get; set; }
+        public Employee Employee { get; set; }
         public RoomKind RoomKind { get; set; }
     }
 }

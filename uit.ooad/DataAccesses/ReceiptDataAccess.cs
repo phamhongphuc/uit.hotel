@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ namespace uit.ooad.DataAccesses
             await Database.WriteAsync(realm =>
             {
                 receipt.Id = NextId;
+                receipt.Time = DateTimeOffset.Now;
                 receipt = realm.Add(receipt);
             });
             return receipt;
