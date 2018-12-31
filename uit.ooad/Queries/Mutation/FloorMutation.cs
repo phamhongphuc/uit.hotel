@@ -46,7 +46,7 @@ namespace uit.ooad.Queries.Mutation
 
             Field<NonNullGraphType<StringGraphType>>(
                 _SetIsActive,
-                "Cập nhật trạng thái của tầng",
+                "Cập nhật trạng thái hoạt động của tầng",
                 new QueryArguments(
                     new QueryArgument<NonNullGraphType<IdGraphType>> { Name = "id" },
                     new QueryArgument<NonNullGraphType<BooleanGraphType>> { Name = "isActive" }
