@@ -1,11 +1,15 @@
 {
     "definitions": {},
     "type": "object",
-    "required": ["data"],
+    "required": [
+        "data"
+    ],
     "properties": {
         "data": {
             "type": "object",
-            "required": ["createEmployee"],
+            "required": [
+                "createEmployee"
+            ],
             "properties": {
                 "createEmployee": {
                     "type": "object",
@@ -16,6 +20,8 @@
                         "identityCard",
                         "phoneNumber",
                         "address",
+                        "email",
+                        "gender",
                         "birthdate",
                         "startingDate",
                         "isActive",
@@ -46,6 +52,13 @@
                             "type": "string",
                             "pattern": "^(.*)$"
                         },
+                        "email": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "gender": {
+                            "type": "boolean"
+                        },
                         "birthdate": {
                             "type": "string",
                             "pattern": "^(.*)$"
@@ -59,7 +72,9 @@
                         },
                         "position": {
                             "type": "object",
-                            "required": ["id"],
+                            "required": [
+                                "id"
+                            ],
                             "properties": {
                                 "id": {
                                     "type": "integer"
