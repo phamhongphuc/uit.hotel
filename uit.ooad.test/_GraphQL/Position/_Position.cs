@@ -38,5 +38,27 @@ namespace uit.ooad.test._GraphQL._Position
                 p => p.PermissionManagePosition = true
             );
         }
+
+        [TestMethod]
+        public void UpdatePosition()
+        {
+            SchemaHelper.Execute(
+                @"/_GraphQL/Position/mutation.updatePosition.gql",
+                @"/_GraphQL/Position/mutation.updatePosition.schema.json",
+                @"/_GraphQL/Position/mutation.updatePosition.variable.json",
+                p => p.PermissionManagePosition = true
+            );
+        }
+
+        [TestMethod]
+        public void DeletePosition()
+        {
+            SchemaHelper.Execute(
+                @"/_GraphQL/Position/mutation.deletePosition.gql",
+                @"/_GraphQL/Position/mutation.deletePosition.schema.json",
+                @"/_GraphQL/Position/mutation.deletePosition.variable.json",
+                p => p.PermissionManagePosition = true
+            );
+        }
     }
 }
