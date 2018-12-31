@@ -18,6 +18,8 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.IdentityCard).Description("Chứng minh nhân dân");
             Field(x => x.PhoneNumber).Description("Số điện thoại của nhân viên");
             Field(x => x.Address).Description("Địa chỉ của nhân viên");
+            Field(x => x.Email).Description("Email của nhân viên");
+            Field(x => x.Gender).Description("Giới tính của nhân viên");
             Field(x => x.Birthdate).Description("Ngày sinh của nhân viên");
             Field(x => x.StartingDate).Description("Ngày vào làm");
             Field(x => x.IsActive).Description("Tài khoản còn hiệu lực hay không");
@@ -87,7 +89,9 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.IdentityCard).Description("Chứng minh nhân dân");
             Field(x => x.PhoneNumber).Description("Số điện thoại của nhân viên");
             Field(x => x.Address).Description("Địa chỉ của nhân viên");
+            Field(x => x.Email).Description("Email của nhân viên");
             Field(x => x.Birthdate).Description("Ngày sinh của nhân viên");
+            Field(x => x.Gender).Description("Giới tính của nhân viên");
             Field(x => x.StartingDate).Description("Ngày vào làm");
 
             Field<PositionIdInput>(
@@ -107,6 +111,8 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.IdentityCard).Description("Chứng minh nhân dân");
             Field(x => x.PhoneNumber).Description("Số điện thoại của nhân viên");
             Field(x => x.Address).Description("Địa chỉ của nhân viên");
+            Field(x => x.Email).Description("Email của nhân viên");
+            Field(x => x.Gender).Description("Giới tính của nhân viên");
             Field(x => x.Birthdate).Description("Ngày sinh của nhân viên");
             Field(x => x.StartingDate).Description("Ngày vào làm");
 

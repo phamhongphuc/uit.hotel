@@ -40,8 +40,10 @@ namespace uit.ooad.GraphQLHelper
             services.AddSingleton<PatronUpdateInput>();
             services.AddSingleton<PatronIdInput>();
             services.AddSingleton<PatronKindCreateInput>();
+            services.AddSingleton<PatronKindUpdateInput>();
             services.AddSingleton<PatronKindIdInput>();
             services.AddSingleton<PositionCreateInput>();
+            services.AddSingleton<PositionUpdateInput>();
             services.AddSingleton<PositionIdInput>();
             services.AddSingleton<RateCreateInput>();
             services.AddSingleton<RateUpdateInput>();
@@ -55,6 +57,7 @@ namespace uit.ooad.GraphQLHelper
             services.AddSingleton<ServiceIdInput>();
             services.AddSingleton<ServiceCreateInput>();
             services.AddSingleton<ServiceUpdateInput>();
+            services.AddSingleton<ServicesDetailHouseKeepingInput>();
             services.AddSingleton<ServicesDetailCreateInput>();
             services.AddSingleton<ServicesDetailUpdateInput>();
             services.AddSingleton<ServicesDetailIdInput>();

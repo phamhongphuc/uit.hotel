@@ -14,15 +14,66 @@ namespace uit.ooad.DataAccesses
             await Database.WriteAsync(realm =>
             {
                 position.Id = NextId;
+                position.IsActive = true;
                 position = realm.Add(position);
             });
             return position;
         }
 
-        public static Position Get(int positionId) => Database.Find<Position>(positionId);
+        public static async Task<Position> Update(Position positionInDatabase, Position position)
+        {
+            await Database.WriteAsync(realm =>
+            {
+                positionInDatabase.PermissionUpdateGroundPlan = position.PermissionUpdateGroundPlan;
+                positionInDatabase.PermissionGetGroundPlan = position.PermissionGetGroundPlan;
+                positionInDatabase.PermissionManageRoomKind = position.PermissionManageRoomKind;
+                positionInDatabase.PermissionGetRoomKind = position.PermissionGetRoomKind;
+                positionInDatabase.PermissionManageRate = position.PermissionManageRate;
+                positionInDatabase.PermissionGetRate = position.PermissionGetRate;
+                positionInDatabase.PermissionGetHouseKeeping = position.PermissionGetHouseKeeping;
+                positionInDatabase.PermissionCleaning = position.PermissionCleaning;
+                positionInDatabase.PermissionManageHiringRoom = position.PermissionManageHiringRoom;
+                positionInDatabase.PermissionManagePatron = position.PermissionManagePatron;
+                positionInDatabase.PermissionGetPatron = position.PermissionGetPatron;
+                positionInDatabase.PermissionManagePatronKind = position.PermissionManagePatronKind;
+                positionInDatabase.PermissionGetPatronKind = position.PermissionGetPatronKind;
+                positionInDatabase.PermissionManagePosition = position.PermissionManagePosition;
+                positionInDatabase.PermissionGetPosition = position.PermissionGetPosition;
+                positionInDatabase.PermissionManageEmployee = position.PermissionManageEmployee;
+                positionInDatabase.PermissionManageAccount = position.PermissionManageAccount;
+                positionInDatabase.PermissionManageService = position.PermissionManageService;
+                positionInDatabase.PermissionGetService = position.PermissionGetService;
+                positionInDatabase.PermissionGetVoucher = position.PermissionGetVoucher;
+            });
+            return positionInDatabase;
+        }
 
-        public static async void Update(Action<Position> setPermission, Position position)
+        public static async void SetIsActive(Position positionInDatabase, bool isActive)
+        {
+            await Database.WriteAsync(realm => positionInDatabase.IsActive = isActive);
+        }
+
+        public static async void SetIsActiveAndMoveEmployee(Position positionInDatabase, Position positionNew)
+        {
+            await Database.WriteAsync(realm =>
+            {
+                foreach (var employee in positionInDatabase.Employees)
+                {
+                    if (employee.IsActive) employee.Position = positionNew;
+                }
+                positionInDatabase.IsActive = false;
+            });
+        }
+
+        public static async void Delete(Position positionInDatabase)
+        {
+            await Database.WriteAsync(realm => realm.Remove(positionInDatabase));
+        }
+
+        public static async void UpdateForHelper(Action<Position> setPermission, Position position)
             => await Database.WriteAsync(realm => { setPermission(position); });
+
+        public static Position Get(int positionId) => Database.Find<Position>(positionId);
 
         public static IEnumerable<Position> Get() => Database.All<Position>();
     }

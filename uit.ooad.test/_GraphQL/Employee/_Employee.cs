@@ -38,5 +38,16 @@ namespace uit.ooad.test._GraphQL.Employee
                 p => p.PermissionManageEmployee = true
             );
         }
+
+        [TestMethod]
+        public void UpdateEmployee()
+        {
+            SchemaHelper.Execute(
+                @"/_GraphQL/Employee/mutation.updateEmployee.gql",
+                @"/_GraphQL/Employee/mutation.updateEmployee.schema.json",
+                @"/_GraphQL/Employee/mutation.updateEmployee.variable.json",
+                p => p.PermissionManageEmployee = true
+            );
+        }
     }
 }

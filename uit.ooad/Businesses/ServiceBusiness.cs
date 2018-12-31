@@ -14,7 +14,6 @@ namespace uit.ooad.Businesses
         public static Task<Service> Update(Service service)
         {
             var serviceInDatabase = GetAndCheckValid(service.Id);
-
             return ServiceDataAccess.Update(serviceInDatabase, service);
         }
 

@@ -32,7 +32,7 @@ namespace uit.ooad.Queries.Mutation
 
             Field<NonNullGraphType<StringGraphType>>(
                 _Deletion,
-                "Xóa và trả về một phòng vừa xóa",
+                "Xóa một phòng",
                 _IdArgument(),
                 _CheckPermission_String(
                     p => p.PermissionUpdateGroundPlan,
@@ -46,7 +46,7 @@ namespace uit.ooad.Queries.Mutation
 
             Field<NonNullGraphType<StringGraphType>>(
                 _SetIsActive,
-                "Cập nhật trạng thái của một phòng",
+                "Cập nhật trạng thái hoạt động của một phòng",
                 new QueryArguments(
                     new QueryArgument<NonNullGraphType<IdGraphType>> { Name = "id" },
                     new QueryArgument<NonNullGraphType<BooleanGraphType>> { Name = "isActive" }

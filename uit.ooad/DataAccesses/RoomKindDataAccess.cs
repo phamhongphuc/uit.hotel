@@ -54,8 +54,6 @@ namespace uit.ooad.DataAccesses
             await Database.WriteAsync(realm => roomKind.IsActive = isActive);
         }
 
-        public static RoomKind Get(int roomKindId) => Database.Find<RoomKind>(roomKindId);
-
         public static async void Delete(RoomKind roomKind)
         {
             await Database.WriteAsync(realm =>
@@ -65,6 +63,8 @@ namespace uit.ooad.DataAccesses
                 realm.Remove(roomKind);
             });
         }
+
+        public static RoomKind Get(int roomKindId) => Database.Find<RoomKind>(roomKindId);
 
         public static IEnumerable<RoomKind> Get() => Database.All<RoomKind>();
     }

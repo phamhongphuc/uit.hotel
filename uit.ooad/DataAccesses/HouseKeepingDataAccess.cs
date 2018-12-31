@@ -26,17 +26,13 @@ namespace uit.ooad.DataAccesses
             return realm.Add(houseKeeping);
         }
 
-        public static HouseKeeping Get(int houseKeepingId) => Database.Find<HouseKeeping>(houseKeepingId);
-
-        public static IEnumerable<HouseKeeping> Get() => Database.All<HouseKeeping>();
-
         public static async Task<HouseKeeping> AssignCleaningService(Employee employee,
                                                                      HouseKeeping houseKeepingInDatabase)
         {
             await Database.WriteAsync(realm =>
             {
                 houseKeepingInDatabase.Employee = employee;
-                houseKeepingInDatabase.Status = (int) HouseKeeping.StatusEnum.Cleaning;
+                houseKeepingInDatabase.Status = (int)HouseKeeping.StatusEnum.Cleaning;
             });
             return houseKeepingInDatabase;
         }
@@ -45,7 +41,7 @@ namespace uit.ooad.DataAccesses
         {
             await Database.WriteAsync(realm =>
             {
-                houseKeepingInDatabase.Status = (int) HouseKeeping.StatusEnum.Cleaned;
+                houseKeepingInDatabase.Status = (int)HouseKeeping.StatusEnum.Cleaned;
             });
             return houseKeepingInDatabase;
         }
@@ -61,9 +57,12 @@ namespace uit.ooad.DataAccesses
                     ServicesDetailDataAccess.Add(realm, servicesDetail);
                 }
 
-                houseKeepingInDatabase.Status = (int) HouseKeeping.StatusEnum.Cleaned;
+                houseKeepingInDatabase.Status = (int)HouseKeeping.StatusEnum.Cleaned;
             });
             return houseKeepingInDatabase;
         }
+        public static HouseKeeping Get(int houseKeepingId) => Database.Find<HouseKeeping>(houseKeepingId);
+
+        public static IEnumerable<HouseKeeping> Get() => Database.All<HouseKeeping>();
     }
 }

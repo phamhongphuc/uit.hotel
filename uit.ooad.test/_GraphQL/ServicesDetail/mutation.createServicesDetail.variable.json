@@ -1,0 +1,11 @@
+{
+	"input": {
+		"number": 1,
+		"service": {
+			"id": 1
+		},
+		"booking": {
+			"id": 1
+		}
+	}
+}

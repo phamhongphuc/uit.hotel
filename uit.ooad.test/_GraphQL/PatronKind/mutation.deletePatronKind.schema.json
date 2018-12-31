@@ -1,0 +1,21 @@
+{
+    "definitions": {},
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "type": "object",
+        "required": [
+          "deletePatronKind"
+        ],
+        "properties": {
+          "deletePatronKind": {
+            "type": "string",
+            "pattern": "^(.*)$"
+          }
+        }
+      }
+    }
+  }

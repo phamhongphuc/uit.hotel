@@ -20,15 +20,13 @@ namespace uit.ooad.DataAccesses
             });
             return rate;
         }
+
         public static Rate Add(Realm realm, Rate rate)
         {
             rate.Id = NextId;
             rate.CreateDate = DateTimeOffset.MinValue;
             return realm.Add(rate);
         }
-        public static Rate Get(int rateId) => Database.Find<Rate>(rateId);
-
-        public static IEnumerable<Rate> Get() => Database.All<Rate>();
 
         public static async void Delete(Rate rateInDatabase)
         {
@@ -52,5 +50,8 @@ namespace uit.ooad.DataAccesses
             });
             return rateInDatabase;
         }
+        public static Rate Get(int rateId) => Database.Find<Rate>(rateId);
+
+        public static IEnumerable<Rate> Get() => Database.All<Rate>();
     }
 }

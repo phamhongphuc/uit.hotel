@@ -27,8 +27,8 @@ namespace uit.ooad.Businesses
             var employeeInDatabase = Get(employee.Id);
             if (employeeInDatabase == null) throw new Exception("không tồn tại nhân viên này");
 
-            if (!employee.IsActive)
-                throw new Exception("Tài khoản " + employee.Id + " đã bị vô hiệu hóa");
+            if (!employeeInDatabase.IsActive)
+                throw new Exception("Tài khoản " + employeeInDatabase.Id + " đã bị vô hiệu hóa");
 
             employee.Position = employee.Position.GetManaged();
             return EmployeeDataAccess.Update(employeeInDatabase, employee);
@@ -80,10 +80,6 @@ namespace uit.ooad.Businesses
             };
         }
 
-        public static Employee Get(string employeeId) => EmployeeDataAccess.Get(employeeId);
-
-        public static IEnumerable<Employee> Get() => EmployeeDataAccess.Get();
-
         private static Employee GetAndCheckLogin(string id, string password)
         {
             var employee = Get(id);
@@ -95,5 +91,8 @@ namespace uit.ooad.Businesses
 
             throw new Exception("Tài khoản hoặc mật khẩu không chính xác");
         }
+        public static Employee Get(string employeeId) => EmployeeDataAccess.Get(employeeId);
+
+        public static IEnumerable<Employee> Get() => EmployeeDataAccess.Get();
     }
 }

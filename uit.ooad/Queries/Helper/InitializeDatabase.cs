@@ -13,6 +13,7 @@ namespace uit.ooad.Queries.Helper
             ResetDatebase();
 
             AddPosition();
+            AddPosition();
             AddEmployee();
 
             AddFloor();
@@ -78,6 +79,8 @@ namespace uit.ooad.Queries.Helper
                 Id = Constant.UserName,
                 Address = "Địa chỉ",
                 Birthdate = DateTimeOffset.Now,
+                Email = "email@gmail.com",
+                Gender = true,
                 Name = "Quản trị viên",
                 IdentityCard = "123456789",
                 Password = "12345678",

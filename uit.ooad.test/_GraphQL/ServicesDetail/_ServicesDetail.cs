@@ -29,12 +29,34 @@ namespace uit.ooad.test._GraphQL._ServicesDetail
         }
 
         [TestMethod]
+        public void CreateServicesDetail()
+        {
+            SchemaHelper.Execute(
+                @"/_GraphQL/ServicesDetail/mutation.createServicesDetail.gql",
+                @"/_GraphQL/ServicesDetail/mutation.createServicesDetail.schema.json",
+                @"/_GraphQL/ServicesDetail/mutation.createServicesDetail.variable.json",
+                p => p.PermissionManageHiringRoom = true
+            );
+        }
+
+        [TestMethod]
         public void UpdateServicesDetail()
         {
             SchemaHelper.Execute(
                 @"/_GraphQL/ServicesDetail/mutation.updateServicesDetail.gql",
                 @"/_GraphQL/ServicesDetail/mutation.updateServicesDetail.schema.json",
                 @"/_GraphQL/ServicesDetail/mutation.updateServicesDetail.variable.json",
+                p => p.PermissionCleaning = true
+            );
+        }
+
+        [TestMethod]
+        public void DeleteServicesDetail()
+        {
+            SchemaHelper.Execute(
+                @"/_GraphQL/ServicesDetail/mutation.deleteServicesDetail.gql",
+                @"/_GraphQL/ServicesDetail/mutation.deleteServicesDetail.schema.json",
+                @"/_GraphQL/ServicesDetail/mutation.deleteServicesDetail.variable.json",
                 p => p.PermissionCleaning = true
             );
         }

@@ -31,6 +31,7 @@ namespace uit.ooad.Models
         public bool PermissionManageEmployee { get; set; }
         public bool PermissionManageAccount { get; set; }
         public bool PermissionGetVoucher { get; set; }
+        public bool IsActive { get; set; }
 
         [Backlink(nameof(Employee.Position))]
         public IQueryable<Employee> Employees { get; }

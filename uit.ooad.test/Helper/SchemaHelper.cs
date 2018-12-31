@@ -36,7 +36,7 @@ namespace uit.ooad.test.Helper
 
             var position = EmployeeBusiness.Get(Constant.UserName).Position;
 
-            if (setPermission != null) PositionBusiness.Update(setPermission, position);
+            if (setPermission != null) PositionBusiness.UpdateForHelper(setPermission, position);
 
             var result = Initializer.Schema.Execute(_ =>
             {

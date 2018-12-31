@@ -38,6 +38,21 @@ namespace uit.ooad.ObjectTypes
         }
     }
 
+    public class ServicesDetailHouseKeepingInput : InputType<ServicesDetail>
+    {
+        public ServicesDetailHouseKeepingInput()
+        {
+            Name = "ServicesDetailHouseKeepingInput";
+
+            Field(x => x.Number).Description("Số lượng");
+
+            Field<NonNullGraphType<ServiceIdInput>>(
+                nameof(ServicesDetail.Service),
+                "Thuộc dịch vụ nào"
+            );
+        }
+    }
+
     public class ServicesDetailCreateInput : InputType<ServicesDetail>
     {
         public ServicesDetailCreateInput()
@@ -50,6 +65,11 @@ namespace uit.ooad.ObjectTypes
                 nameof(ServicesDetail.Service),
                 "Thuộc dịch vụ nào"
             );
+
+            Field<NonNullGraphType<BookingIdInput>>(
+                nameof(ServicesDetail.Booking),
+               "Thuộc booking nào"
+            );  
         }
     }
 

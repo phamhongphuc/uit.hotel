@@ -18,9 +18,6 @@ namespace uit.ooad.Businesses
             return VolatilityRateDataAccess.Add(volatilityRate);
         }
 
-        public static VolatilityRate Get(int volatilityRateId) => VolatilityRateDataAccess.Get(volatilityRateId);
-        public static IEnumerable<VolatilityRate> Get() => VolatilityRateDataAccess.Get();
-
         public static Task<VolatilityRate> Update(Employee employee, VolatilityRate volatilityRate)
         {
             var volatilityRateInDatabase = GetAndCheckValid(volatilityRate.Id);
@@ -31,6 +28,12 @@ namespace uit.ooad.Businesses
                 throw new Exception("Loại phòng " + volatilityRate.RoomKind.Name + " đã ngưng hoại động");
 
             return VolatilityRateDataAccess.Update(volatilityRateInDatabase, volatilityRate);
+        }
+
+        public static void Delete(int volatilityRateId)
+        {
+            var volatilityRateInDatabase = GetAndCheckValid(volatilityRateId);
+            VolatilityRateDataAccess.Delete(volatilityRateInDatabase);
         }
 
         private static VolatilityRate GetAndCheckValid(int volatilityRateId)
@@ -44,11 +47,8 @@ namespace uit.ooad.Businesses
 
             return volatilityRateInDatabase;
         }
+        public static VolatilityRate Get(int volatilityRateId) => VolatilityRateDataAccess.Get(volatilityRateId);
+        public static IEnumerable<VolatilityRate> Get() => VolatilityRateDataAccess.Get();
 
-        public static void Delete(int volatilityRateId)
-        {
-            var volatilityRateInDatabase = GetAndCheckValid(volatilityRateId);
-            VolatilityRateDataAccess.Delete(volatilityRateInDatabase);
-        }
     }
 }
