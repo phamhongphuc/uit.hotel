@@ -53,14 +53,26 @@ namespace uit.ooad.DataAccesses
             await Database.WriteAsync(realm => positionInDatabase.IsActive = isActive);
         }
 
+        public static async void SetIsActiveAndMoveEmployee(Position positionInDatabase, Position positionNew)
+        {
+            await Database.WriteAsync(realm =>
+            {
+                foreach (var employee in positionInDatabase.Employees)
+                {
+                    if (employee.IsActive) employee.Position = positionNew;
+                }
+                positionInDatabase.IsActive = false;
+            });
+        }
+
         public static async void Delete(Position positionInDatabase)
         {
             await Database.WriteAsync(realm => realm.Remove(positionInDatabase));
         }
-        
+
         public static async void UpdateForHelper(Action<Position> setPermission, Position position)
             => await Database.WriteAsync(realm => { setPermission(position); });
-            
+
         public static Position Get(int positionId) => Database.Find<Position>(positionId);
 
         public static IEnumerable<Position> Get() => Database.All<Position>();

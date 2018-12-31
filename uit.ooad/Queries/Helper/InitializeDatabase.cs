@@ -13,6 +13,7 @@ namespace uit.ooad.Queries.Helper
             ResetDatebase();
 
             AddPosition();
+            AddPosition();
             AddEmployee();
 
             AddFloor();

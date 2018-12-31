@@ -19,7 +19,7 @@ namespace uit.ooad.Queries.Mutation
                     context => PositionBusiness.Add(_GetInput(context))
                 )
             );
-            
+
             Field<NonNullGraphType<PositionType>>(
                 _Updation,
                 "Cập nhật và trả về một chức vụ vừa cập nhật",
@@ -63,8 +63,26 @@ namespace uit.ooad.Queries.Mutation
                 )
             );
 
-            //đặt tên : setIsActivePosition
-            // setIsActivePositionAndMoveEmployee
+            Field<NonNullGraphType<StringGraphType>>(
+                "SetIsActivePositionAndMoveEmployee",
+                "Vô hiệu hóa chức vụ và chuyển nhân viên sang chức vụ mới",
+                new QueryArguments(
+                    new QueryArgument<NonNullGraphType<IdGraphType>> { Name = "id" },
+                    new QueryArgument<NonNullGraphType<IdGraphType>> { Name = "newId" },
+                    new QueryArgument<NonNullGraphType<BooleanGraphType>> { Name = "isActive" }
+                ),
+                _CheckPermission_String(
+                    p => p.PermissionManagePosition,
+                    context =>
+                    {
+                        var id = context.GetArgument<int>("id");
+                        var newId = context.GetArgument<int>("newId");
+                        var isActive = context.GetArgument<bool>("isActive");
+                        PositionBusiness.SetIsActiveAndMoveEmployee(id, newId, isActive);
+                        return "Cập nhật trạng thái và chuyển nhân viên thành công";
+                    }
+                )
+            );
         }
     }
 }
