@@ -32,7 +32,7 @@ namespace uit.ooad.Queries.Mutation
 
             Field<NonNullGraphType<StringGraphType>>(
                 _Deletion,
-                "Xóa và trả về một phòng vừa xóa",
+                "Xóa một phòng",
                 _IdArgument(),
                 _CheckPermission_String(
                     p => p.PermissionUpdateGroundPlan,

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -21,5 +22,20 @@ namespace uit.ooad.DataAccesses
         public static PatronKind Get(int patronKindId) => Database.Find<PatronKind>(patronKindId);
 
         public static IEnumerable<PatronKind> Get() => Database.All<PatronKind>();
+
+        public static async Task<PatronKind> Update(PatronKind patronKindInDatabase, PatronKind patronKind)
+        {
+            await Database.WriteAsync(realm =>
+            {
+                patronKindInDatabase.Name = patronKind.Name;
+                patronKindInDatabase.Description = patronKind.Description;
+            });
+            return patronKindInDatabase;
+        }
+
+        public static async void Delete(PatronKind patronKind)
+        {
+            await Database.WriteAsync(realm => realm.Remove(patronKind));
+        }
     }
 }

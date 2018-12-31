@@ -21,6 +21,7 @@ namespace uit.ooad.Queries.Helper
             AddRoom();
 
             AddPatronKind();
+            AddPatronKind();
             AddPatron();
 
             AddRate();

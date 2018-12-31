@@ -40,6 +40,7 @@ namespace uit.ooad.GraphQLHelper
             services.AddSingleton<PatronUpdateInput>();
             services.AddSingleton<PatronIdInput>();
             services.AddSingleton<PatronKindCreateInput>();
+            services.AddSingleton<PatronKindUpdateInput>();
             services.AddSingleton<PatronKindIdInput>();
             services.AddSingleton<PositionCreateInput>();
             services.AddSingleton<PositionIdInput>();
