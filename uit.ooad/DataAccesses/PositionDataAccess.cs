@@ -48,6 +48,11 @@ namespace uit.ooad.DataAccesses
             return positionInDatabase;
         }
 
+        public static async void SetIsActive(Position positionInDatabase, bool isActive)
+        {
+            await Database.WriteAsync(realm => positionInDatabase.IsActive = isActive);
+        }
+
         public static async void Delete(Position positionInDatabase)
         {
             await Database.WriteAsync(realm => realm.Remove(positionInDatabase));

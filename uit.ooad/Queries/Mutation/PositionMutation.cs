@@ -43,6 +43,28 @@ namespace uit.ooad.Queries.Mutation
                     }
                 )
             );
+
+            Field<NonNullGraphType<StringGraphType>>(
+                _SetIsActive,
+                "Cập nhật trạng thái hoạt động của chức vụ",
+                new QueryArguments(
+                    new QueryArgument<NonNullGraphType<IdGraphType>> { Name = "id" },
+                    new QueryArgument<NonNullGraphType<BooleanGraphType>> { Name = "isActive" }
+                ),
+                _CheckPermission_String(
+                    p => p.PermissionManagePosition,
+                    context =>
+                    {
+                        var id = context.GetArgument<int>("id");
+                        var isActive = context.GetArgument<bool>("isActive");
+                        PositionBusiness.SetIsActive(id, isActive);
+                        return "Cập nhật trạng thái thành công";
+                    }
+                )
+            );
+
+            //đặt tên : setIsActivePosition
+            // setIsActivePositionAndMoveEmployee
         }
     }
 }

@@ -24,6 +24,18 @@ namespace uit.ooad.Businesses
             PositionDataAccess.Delete(positionInDatabase);
         }
 
+        public static void SetIsActive(int positionId, bool isActive)
+        {
+            var positionInDatabase = Get(positionId);
+            if (positionInDatabase == null)
+                throw new Exception("Chức vụ có ID: " + positionId + " không tồn tại");
+
+            if (!isActive && positionInDatabase.Employees.Where(e => e.IsActive).Count() > 0)
+                throw new Exception("Chức vụ này còn nhân viên đang hoạt động sử dụng");
+
+            PositionDataAccess.SetIsActive(positionInDatabase, isActive);
+        }
+
         private static Position GetAndCheckValid(int positionId)
         {
             var positionInDatabase = Get(positionId);
@@ -40,7 +52,7 @@ namespace uit.ooad.Businesses
             => PositionDataAccess.UpdateForHelper(setPermission, position);
 
         public static Position Get(int positionId) => PositionDataAccess.Get(positionId);
-        
+
         public static IEnumerable<Position> Get() => PositionDataAccess.Get();
     }
 }
