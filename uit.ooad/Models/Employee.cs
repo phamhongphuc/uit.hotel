@@ -15,6 +15,8 @@ namespace uit.ooad.Models
         public string IdentityCard { get; set; }
         public string PhoneNumber { get; set; }
         public string Address { get; set; }
+        public string Email { get; set; }
+        public bool Gender { get; set; }
         public DateTimeOffset Birthdate { get; set; }
         public DateTimeOffset StartingDate { get; set; }
         public Position Position { get; set; }
