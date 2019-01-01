@@ -27,9 +27,9 @@
         <div class="row flex-1 p-2">
             <div class="col bg-white shadow-sm rounded overflow-auto">
                 <query- :query="getFloors" class="row hotel-map">
-                    <div slot-scope="{ data }" class="m-3">
+                    <div slot-scope="{ data: { floors } }" class="m-3">
                         <div
-                            v-for="floor in floorsFilter(data.floors)"
+                            v-for="floor in floorsFilter(floors)"
                             :key="floor.id"
                             class="d-flex flex-nowrap"
                         >
@@ -37,7 +37,7 @@
                                 :variant="floor.isActive ? 'main' : 'gray'"
                                 @contextmenu.prevent="
                                     $refs.context_floor.open($event, {
-                                        floors: data.floors,
+                                        floors: floors,
                                         floor,
                                     })
                                 "
@@ -49,7 +49,11 @@
                                 :key="room.id"
                                 :variant="room.isActive ? 'blue' : 'gray'"
                                 @contextmenu.prevent="
-                                    $refs.context_room.open($event, room)
+                                    $refs.context_room.open($event, {
+                                        room,
+                                        floor,
+                                        floors,
+                                    })
                                 "
                             >
                                 {{ room.name }}
@@ -59,9 +63,10 @@
                 </query->
             </div>
         </div>
-        <context-manage-room- ref="context_room" />
+        <context-manage-room- ref="context_room" :refs="$refs" />
         <context-manage-floor- ref="context_floor" :refs="$refs" />
         <popup-room-add- ref="room_add" />
+        <popup-room-update- ref="room_update" />
         <popup-floor-add- ref="floor_add" />
         <popup-floor-update- ref="floor_update" />
     </div>

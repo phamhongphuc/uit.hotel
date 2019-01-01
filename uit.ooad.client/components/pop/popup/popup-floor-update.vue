@@ -28,7 +28,7 @@
                     @click="close"
                 >
                     <span class="icon"></span>
-                    <span>Sửa</span>
+                    <span>Cập nhật</span>
                 </b-button>
             </div>
         </form-mutate->

@@ -653,6 +653,24 @@ export namespace DeleteRoom {
     };
 }
 
+export namespace UpdateRoom {
+    export type Variables = {
+        input: RoomUpdateInput;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        updateRoom: UpdateRoom;
+    };
+
+    export type UpdateRoom = {
+        __typename?: 'Room';
+
+        id: number;
+    };
+}
+
 export namespace CreateFloor {
     export type Variables = {
         input: FloorCreateInput;
@@ -668,10 +686,6 @@ export namespace CreateFloor {
         __typename?: 'Floor';
 
         id: number;
-
-        name: string;
-
-        isActive: boolean;
     };
 }
 
@@ -702,10 +716,6 @@ export namespace UpdateFloor {
         __typename?: 'Floor';
 
         id: number;
-
-        name: string;
-
-        isActive: boolean;
     };
 }
 

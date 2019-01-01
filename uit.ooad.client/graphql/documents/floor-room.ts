@@ -33,12 +33,18 @@ export const deleteRoom = gql`
     }
 `;
 
+export const updateRoom = gql`
+    mutation updateRoom($input: RoomUpdateInput!) {
+        updateRoom(input: $input) {
+            id
+        }
+    }
+`;
+
 export const createFloor = gql`
     mutation createFloor($input: FloorCreateInput!) {
         createFloor(input: $input) {
             id
-            name
-            isActive
         }
     }
 `;
@@ -53,8 +59,6 @@ export const updateFloor = gql`
     mutation updateFloor($input: FloorUpdateInput!) {
         updateFloor(input: $input) {
             id
-            name
-            isActive
         }
     }
 `;
