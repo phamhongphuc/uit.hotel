@@ -3,22 +3,30 @@
         :query="query"
         :variables="variables"
         :poll-interval="500"
-        class="gql-query"
+        class="query"
     >
         <template slot-scope="{ result: { loading, error, data } }">
-            <div v-if="loading" class="loading">Đang tải...</div>
-            <div v-else-if="error" class="error">Đã có lỗi xảy ra!</div>
-            <div v-else-if="data"><slot :data="data" /></div>
-            <div v-else class="no-result">
+            <div v-if="loading" class="query-text loading">
                 <span class="icon"></span>
                 Đang tải dữ liệu...
+            </div>
+            <div v-else-if="error" class="query-text text-red">
+                <span class="icon"></span>
+                Đã có lỗi xảy ra!
+            </div>
+            <div v-else-if="data"><slot :data="data" /></div>
+            <div v-else class="query-text no-result">
+                <span class="icon"></span>
+                Đang yêu cầu dữ liệu...
             </div>
         </template>
     </apollo-query>
 </template>
 <script lang="ts">
 import { Vue, Component, Prop } from 'nuxt-property-decorator';
-@Component
+@Component({
+    name: 'query-',
+})
 export default class extends Vue {
     @Prop({ required: true })
     query: string;
@@ -28,9 +36,12 @@ export default class extends Vue {
 }
 </script>
 <style lang="scss">
-.gql-query {
+.query {
     min-height: 100%;
-    // justify-content: center;
-    // align-items: center;
+    > .query-text {
+        width: 100%;
+        text-align: center;
+        align-self: center;
+    }
 }
 </style>
