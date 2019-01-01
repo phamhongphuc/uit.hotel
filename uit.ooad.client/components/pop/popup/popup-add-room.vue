@@ -7,12 +7,11 @@
             :variables="{
                 input: {
                     name: roomName,
-                    isActive: true,
                     floor: {
                         id: floorId,
                     },
                     roomKind: {
-                        id: 1,
+                        id: roomKindId,
                     },
                 },
             }"
@@ -23,7 +22,7 @@
                     v-model="floorId"
                     value-field="id"
                     text-field="name"
-                    :value="1"
+                    :state="!$v.floorId.$invalid"
                     :options="floors"
                     class="rounded"
                 />
@@ -35,7 +34,7 @@
                         v-model="roomKindId"
                         value-field="id"
                         text-field="name"
-                        :value="1"
+                        :state="!$v.roomKindId.$invalid"
                         :options="data.roomKinds"
                         class="rounded"
                     />
@@ -45,6 +44,7 @@
             <b-input-
                 ref="autoFocus"
                 v-model="roomName"
+                :state="!$v.roomName.$invalid"
                 class="m-3 rounded"
                 icon=""
             />
@@ -53,6 +53,7 @@
                     class="ml-auto"
                     variant="main"
                     type="submit"
+                    :disabled="$v.$invalid"
                     @click="close"
                 >
                     <span class="icon"></span>
@@ -68,10 +69,22 @@ import { PopupMixin } from '~/components/mixins/popup';
 import { createRoom, getRoomKinds } from '~/graphql/documents/floor-room';
 import { GetFloors } from '~/graphql/types';
 import { mixinData } from '~/components/mixins/mutable';
+import { required, minLength } from 'vuelidate/lib/validators';
 
 @Component({
     mixins: [PopupMixin, mixinData({ createRoom, getRoomKinds })],
     name: 'popup-add-room-',
+    validations: {
+        roomName: {
+            required,
+        },
+        floorId: {
+            required,
+        },
+        roomKindId: {
+            required,
+        },
+    },
 })
 export default class extends PopupMixin {
     roomName: string = '';

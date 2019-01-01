@@ -7,7 +7,6 @@
             :variables="{
                 input: {
                     name: floorName,
-                    isActive: true,
                 },
             }"
         >
@@ -15,6 +14,7 @@
             <b-input-
                 ref="autoFocus"
                 v-model="floorName"
+                :state="!$v.floorName.$invalid"
                 class="m-3 rounded"
                 icon=""
             />
@@ -23,6 +23,7 @@
                     class="ml-auto"
                     variant="main"
                     type="submit"
+                    :disabled="$v.$invalid"
                     @click="close"
                 >
                     <span class="icon"></span>
@@ -37,10 +38,17 @@ import { Component } from 'nuxt-property-decorator';
 import { mixinData } from '~/components/mixins/mutable';
 import { PopupMixin } from '~/components/mixins/popup';
 import { createFloor } from '~/graphql/documents/floor-room';
+import { required, minLength } from 'vuelidate/lib/validators';
 
 @Component({
     mixins: [PopupMixin, mixinData({ createFloor })],
     name: 'popup-add-floor-',
+    validations: {
+        floorName: {
+            required,
+            minLength: minLength(1),
+        },
+    },
 })
 export default class extends PopupMixin {
     floorName: string = '';

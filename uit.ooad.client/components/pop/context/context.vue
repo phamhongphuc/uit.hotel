@@ -114,7 +114,7 @@ export default class extends Vue {
             this.positionMenu(event.clientY, event.clientX);
             (this.$el as HTMLElement).focus();
             this.$emit('open', event, this.data, this.top, this.left);
-            (event.toElement as HTMLElement).focus();
+            (event.target as HTMLElement).focus();
         });
     }
 }

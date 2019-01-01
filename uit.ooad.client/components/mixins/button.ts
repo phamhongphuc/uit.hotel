@@ -128,6 +128,12 @@ export class InputProps extends Vue {
 }
 
 @Mixin
+export class StateProps extends Vue {
+    @Prop({ default: null })
+    state: [boolean, string];
+}
+
+@Mixin
 export class TextProps extends Vue {
     @Prop({ default: '' })
     textClass: string;
