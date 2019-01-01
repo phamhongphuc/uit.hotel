@@ -60,3 +60,13 @@ export const setIsActiveRoom = gql`
         setIsActiveRoom(id: $id, isActive: $isActive)
     }
 `;
+
+export const getRoomKinds = gql`
+    query getRoomKinds {
+        roomKinds {
+            id
+            name
+            isActive
+        }
+    }
+`;
