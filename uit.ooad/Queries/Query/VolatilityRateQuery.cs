@@ -18,7 +18,7 @@ namespace uit.ooad.Queries.Query
                     context => VolatilityRateBusiness.Get()
                 )
             );
-            
+
             Field<NonNullGraphType<VolatilityRateType>>(
                 _Item,
                 "Trả về thông tin một giá biến động",

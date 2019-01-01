@@ -18,7 +18,7 @@ namespace uit.ooad.Queries.Query
                     context => PatronKindBusiness.Get()
                 )
             );
-            
+
             Field<NonNullGraphType<PatronKindType>>(
                 _Item,
                 "Trả về thông tin của một loại khách hàng",

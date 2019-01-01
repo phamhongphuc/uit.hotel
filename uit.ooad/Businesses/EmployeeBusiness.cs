@@ -91,6 +91,7 @@ namespace uit.ooad.Businesses
 
             throw new Exception("Tài khoản hoặc mật khẩu không chính xác");
         }
+
         public static Employee Get(string employeeId) => EmployeeDataAccess.Get(employeeId);
 
         public static IEnumerable<Employee> Get() => EmployeeDataAccess.Get();

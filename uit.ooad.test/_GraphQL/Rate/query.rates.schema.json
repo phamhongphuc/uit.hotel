@@ -1,15 +1,11 @@
 {
     "definitions": {},
     "type": "object",
-    "required": [
-        "data"
-    ],
+    "required": ["data"],
     "properties": {
         "data": {
             "type": "object",
-            "required": [
-                "rates"
-            ],
+            "required": ["rates"],
             "properties": {
                 "rates": {
                     "type": "array",
@@ -59,7 +55,8 @@
                                 "pattern": "^(.*)$"
                             },
                             "employee": {
-                                "anyOf": [{
+                                "anyOf": [
+                                    {
                                         "type": "null"
                                     },
                                     {
@@ -76,9 +73,7 @@
                             },
                             "roomKind": {
                                 "type": "object",
-                                "required": [
-                                    "id"
-                                ],
+                                "required": ["id"],
                                 "properties": {
                                     "id": {
                                         "type": "integer"

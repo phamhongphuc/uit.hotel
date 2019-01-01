@@ -1,26 +1,26 @@
-query ($id: ID!) {
-  position(id: $id) {
-    id
-    name
-    permissionUpdateGroundPlan
-    permissionGetGroundPlan
-    permissionManageRoomKind
-    permissionGetRoomKind
-    permissionManageRate
-    permissionGetRate
-    permissionGetHouseKeeping
-    permissionCleaning
-    permissionManageHiringRoom
-    permissionManagePatron
-    permissionGetPatron
-    permissionManagePatronKind
-    permissionGetPatronKind
-    permissionManagePosition
-    permissionGetPosition
-    permissionManageEmployee
-    permissionManageAccount
-    permissionManageService
-    permissionGetService
-    permissionGetVoucher
-  }
+query($id: ID!) {
+    position(id: $id) {
+        id
+        name
+        permissionUpdateGroundPlan
+        permissionGetGroundPlan
+        permissionManageRoomKind
+        permissionGetRoomKind
+        permissionManageRate
+        permissionGetRate
+        permissionGetHouseKeeping
+        permissionCleaning
+        permissionManageHiringRoom
+        permissionManagePatron
+        permissionGetPatron
+        permissionManagePatronKind
+        permissionGetPatronKind
+        permissionManagePosition
+        permissionGetPosition
+        permissionManageEmployee
+        permissionManageAccount
+        permissionManageService
+        permissionGetService
+        permissionGetVoucher
+    }
 }

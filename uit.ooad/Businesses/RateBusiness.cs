@@ -47,6 +47,7 @@ namespace uit.ooad.Businesses
 
             return rateInDatabase;
         }
+
         public static Rate Get(int rateId) => RateDataAccess.Get(rateId);
         public static IEnumerable<Rate> Get() => RateDataAccess.Get();
     }

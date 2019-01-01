@@ -1,7 +1,7 @@
 {
-	"input": {
-		"id": 2,
-		"name": "Loại khách 2",
-		"description": "Loại khách 2"
-	}
+    "input": {
+        "id": 2,
+        "name": "Loại khách 2",
+        "description": "Loại khách 2"
+    }
 }

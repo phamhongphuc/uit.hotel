@@ -13,7 +13,7 @@ namespace uit.ooad.Businesses
 
         public static Task<PatronKind> Update(PatronKind patronKind)
         {
-            PatronKind patronKindInDatabase = GetAndCheckValid(patronKind.Id);
+            var patronKindInDatabase = GetAndCheckValid(patronKind.Id);
             return PatronKindDataAccess.Update(patronKindInDatabase, patronKind);
         }
 
@@ -33,6 +33,7 @@ namespace uit.ooad.Businesses
                 throw new Exception("Loại khách hàng có ID: " + patronKindId + " không tồn tại");
             return patronKindInDatabase;
         }
+
         public static PatronKind Get(int patronKindId) => PatronKindDataAccess.Get(patronKindId);
         public static IEnumerable<PatronKind> Get() => PatronKindDataAccess.Get();
     }

@@ -47,8 +47,8 @@ namespace uit.ooad.Businesses
 
             return volatilityRateInDatabase;
         }
+
         public static VolatilityRate Get(int volatilityRateId) => VolatilityRateDataAccess.Get(volatilityRateId);
         public static IEnumerable<VolatilityRate> Get() => VolatilityRateDataAccess.Get();
-
     }
 }

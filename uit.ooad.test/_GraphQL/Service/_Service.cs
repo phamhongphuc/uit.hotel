@@ -60,7 +60,7 @@ namespace uit.ooad.test._GraphQL._Service
                 p => p.PermissionManageService = true
             );
         }
-        
+
         [TestMethod]
         public void DeleteService()
         {

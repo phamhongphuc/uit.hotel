@@ -40,6 +40,7 @@ namespace uit.ooad.DataAccesses
         {
             await Database.WriteAsync(realm => employee.IsActive = isActive);
         }
+
         public static Employee Get(string employeeId) => Database.Find<Employee>(employeeId);
         public static IEnumerable<Employee> Get() => Database.All<Employee>();
     }

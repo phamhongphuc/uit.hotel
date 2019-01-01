@@ -18,7 +18,7 @@ namespace uit.ooad.Queries.Query
                     context => BillBusiness.Get()
                 )
             );
-            
+
             Field<NonNullGraphType<BillType>>(
                 _Item,
                 "Trả về thông tin một hóa đơn",

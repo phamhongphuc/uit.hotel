@@ -18,7 +18,7 @@ namespace uit.ooad.Queries.Query
                     context => ServicesDetailBusiness.Get()
                 )
             );
-            
+
             Field<NonNullGraphType<ServicesDetailType>>(
                 _Item,
                 "Trả về thông tin một chi tiết dịch vụ",

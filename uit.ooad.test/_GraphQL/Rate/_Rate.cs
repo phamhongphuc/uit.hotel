@@ -38,7 +38,7 @@ namespace uit.ooad.test._GraphQL._Rate
                 p => p.PermissionManageRate = true
             );
         }
-                
+
         [TestMethod]
         public void UpdateRate()
         {

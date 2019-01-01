@@ -18,7 +18,7 @@ namespace uit.ooad.Queries.Query
                     context => RoomKindBusiness.Get()
                 )
             );
-            
+
             Field<NonNullGraphType<RoomKindType>>(
                 nameof(RoomKind),
                 "Trả về thông tin của một loại phòng",

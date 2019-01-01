@@ -2,15 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using uit.ooad.Businesses;
 using uit.ooad.Models;
-using uit.ooad.Queries.Helper;
 
 namespace uit.ooad.DataAccesses
 {
     public class RoomKindDataAccess : RealmDatabase
     {
         public static int NextId => Get().Count() == 0 ? 1 : Get().Max(i => i.Id) + 1;
+
         public static async Task<RoomKind> Add(RoomKind roomKind)
         {
             await Database.WriteAsync(realm =>

@@ -68,8 +68,8 @@ namespace uit.ooad.ObjectTypes
 
             Field<NonNullGraphType<BookingIdInput>>(
                 nameof(ServicesDetail.Booking),
-               "Thuộc booking nào"
-            );  
+                "Thuộc booking nào"
+            );
         }
     }
 

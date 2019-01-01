@@ -19,7 +19,7 @@ namespace uit.ooad.Queries.Mutation
                     context => PatronBusiness.Add(_GetInput(context))
                 )
             );
-            
+
             Field<NonNullGraphType<PatronType>>(
                 _Updation,
                 "Cập nhật và trả về một khách hàng vừa cập nhật",

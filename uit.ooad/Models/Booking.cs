@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Realms;
 using uit.ooad.Businesses;
-using uit.ooad.Queries.Helper;
 
 namespace uit.ooad.Models
 {
@@ -51,11 +50,6 @@ namespace uit.ooad.Models
         [Backlink(nameof(ServicesDetail.Booking))]
         public IQueryable<ServicesDetail> ServicesDetails { get; }
 
-        public void CheckValidBeforeCreate()
-        {
-            // Kiểm tra các điều kiện thực thi trong này.
-        }
-
         public long Total
         {
             get
@@ -82,7 +76,7 @@ namespace uit.ooad.Models
             get
             {
                 long total = 0;
-                DateTimeOffset date = RealCheckInTime;
+                var date = RealCheckInTime;
                 while (date <= RealCheckOutTime)
                 {
                     var remain = RealCheckOutTime.Subtract(date).Days;
@@ -103,6 +97,7 @@ namespace uit.ooad.Models
                         date = date.AddDays(1);
                     }
                 }
+
                 return total;
             }
         }
@@ -114,6 +109,11 @@ namespace uit.ooad.Models
                 long total = 0;
                 return total;
             }
+        }
+
+        public void CheckValidBeforeCreate()
+        {
+            // Kiểm tra các điều kiện thực thi trong này.
         }
 
         public Booking GetManaged()

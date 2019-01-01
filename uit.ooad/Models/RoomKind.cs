@@ -28,16 +28,15 @@ namespace uit.ooad.Models
         {
             Rate select = null;
             foreach (var rate in Rates)
-            {
                 if (
                     date >= rate.EffectiveStartDate &&
                     (select == null || select.EffectiveStartDate < rate.EffectiveStartDate)
                 )
                     select = rate;
-            }
             if (select == null) throw new Exception("Loại phòng này chưa được cài đặt giá");
             return select;
         }
+
         public RoomKind GetManaged()
         {
             var roomKind = RoomKindBusiness.Get(Id);

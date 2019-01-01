@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,6 +8,7 @@ namespace uit.ooad.DataAccesses
     public class PatronKindDataAccess : RealmDatabase
     {
         private static int NextId => Get().Count() == 0 ? 1 : Get().Max(i => i.Id) + 1;
+
         public static async Task<PatronKind> Add(PatronKind patronKind)
         {
             await Database.WriteAsync(realm =>
@@ -33,6 +33,7 @@ namespace uit.ooad.DataAccesses
         {
             await Database.WriteAsync(realm => realm.Remove(patronKind));
         }
+
         public static PatronKind Get(int patronKindId) => Database.Find<PatronKind>(patronKindId);
 
         public static IEnumerable<PatronKind> Get() => Database.All<PatronKind>();

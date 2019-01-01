@@ -10,6 +10,7 @@ namespace uit.ooad.DataAccesses
     public class RateDataAccess : RealmDatabase
     {
         public static int NextId => Get().Count() == 0 ? 1 : Get().Max(i => i.Id) + 1;
+
         public static async Task<Rate> Add(Rate rate)
         {
             await Database.WriteAsync(realm =>
@@ -50,6 +51,7 @@ namespace uit.ooad.DataAccesses
             });
             return rateInDatabase;
         }
+
         public static Rate Get(int rateId) => Database.Find<Rate>(rateId);
 
         public static IEnumerable<Rate> Get() => Database.All<Rate>();

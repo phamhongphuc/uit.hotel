@@ -18,7 +18,7 @@ namespace uit.ooad.Queries.Query
                     context => RateBusiness.Get()
                 )
             );
-            
+
             Field<NonNullGraphType<RateType>>(
                 _Item,
                 "Trả về thông tin một loại giá cơ bản",

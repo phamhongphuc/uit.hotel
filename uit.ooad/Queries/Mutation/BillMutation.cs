@@ -33,7 +33,7 @@ namespace uit.ooad.Queries.Mutation
                     }
                 )
             );
-            
+
             Field<NonNullGraphType<BillType>>(
                 "BookAndCheckIn",
                 "Đặt và nhận phòng ngay tại khách sạn",

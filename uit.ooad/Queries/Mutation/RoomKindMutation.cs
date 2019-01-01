@@ -43,7 +43,7 @@ namespace uit.ooad.Queries.Mutation
                     }
                 )
             );
-            
+
             Field<NonNullGraphType<StringGraphType>>(
                 _SetIsActive,
                 "Cập nhật trạng thái hoạt động của loại phòng",

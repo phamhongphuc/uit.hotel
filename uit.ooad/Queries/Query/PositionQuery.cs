@@ -18,7 +18,7 @@ namespace uit.ooad.Queries.Query
                     context => PositionBusiness.Get()
                 )
             );
-            
+
             Field<NonNullGraphType<PositionType>>(
                 _Item,
                 "Trả về thông tin một chức vụ",

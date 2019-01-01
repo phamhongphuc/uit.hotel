@@ -1,19 +1,19 @@
-mutation ($input: RateUpdateInput!) {
-  updateRate(input: $input) {
-    id
-    dayRate
-    nightRate
-    weekRate
-    monthRate
-    lateCheckOutFee
-    earlyCheckInFee
-    effectiveStartDate
-    createDate
-    employee {
-      id
+mutation($input: RateUpdateInput!) {
+    updateRate(input: $input) {
+        id
+        dayRate
+        nightRate
+        weekRate
+        monthRate
+        lateCheckOutFee
+        earlyCheckInFee
+        effectiveStartDate
+        createDate
+        employee {
+            id
+        }
+        roomKind {
+            id
+        }
     }
-    roomKind {
-      id
-    }
-  }
 }

@@ -13,7 +13,7 @@ namespace uit.ooad.Businesses
 
         public static Task<Position> Update(Position position)
         {
-            Position positionInDatabase = GetAndCheckValid(position.Id);
+            var positionInDatabase = GetAndCheckValid(position.Id);
 
             return PositionDataAccess.Update(positionInDatabase, position);
         }

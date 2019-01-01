@@ -28,7 +28,7 @@ namespace uit.ooad.Models
                 return total;
             }
         }
-        
+
         public Bill GetManaged()
         {
             var bill = BillBusiness.Get(Id);

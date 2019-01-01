@@ -1,19 +1,19 @@
 {
-  rates {
-    id
-    dayRate
-    nightRate
-    weekRate
-    monthRate
-    lateCheckOutFee
-    earlyCheckInFee
-    effectiveStartDate
-    createDate
-    employee {
-      id
+    rates {
+        id
+        dayRate
+        nightRate
+        weekRate
+        monthRate
+        lateCheckOutFee
+        earlyCheckInFee
+        effectiveStartDate
+        createDate
+        employee {
+            id
+        }
+        roomKind {
+            id
+        }
     }
-    roomKind {
-      id
-    }
-  }
 }

@@ -70,6 +70,7 @@ namespace uit.ooad.ObjectTypes
             );
         }
     }
+
     public class VolatilityRateUpdateInput : InputType<VolatilityRate>
     {
         public VolatilityRateUpdateInput()

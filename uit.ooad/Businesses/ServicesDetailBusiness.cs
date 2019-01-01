@@ -17,9 +17,10 @@ namespace uit.ooad.Businesses
 
             return ServicesDetailDataAccess.Add(servicesDetail);
         }
+
         public static Task<ServicesDetail> Update(ServicesDetail servicesDetail)
         {
-            ServicesDetail servicesDetailInDatabase = GetAndCheckValid(servicesDetail.Id);
+            var servicesDetailInDatabase = GetAndCheckValid(servicesDetail.Id);
 
             servicesDetail.Service = servicesDetail.Service.GetManaged();
             if (!servicesDetail.Service.IsActive)
@@ -40,7 +41,7 @@ namespace uit.ooad.Businesses
             if (servicesDetailInDatabase == null)
                 throw new Exception("Mã chi tiết dịch vụ không tồn tại");
 
-            if (servicesDetailInDatabase.Booking.Status == (int)Booking.StatusEnum.CheckedOut)
+            if (servicesDetailInDatabase.Booking.Status == (int) Booking.StatusEnum.CheckedOut)
                 throw new Exception("Phòng đã check-out. Không thể cập nhật/xóa chi tiết dịch vụ.");
             return servicesDetailInDatabase;
         }

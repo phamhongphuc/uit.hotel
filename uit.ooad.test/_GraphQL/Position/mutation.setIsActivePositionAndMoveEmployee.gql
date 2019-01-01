@@ -1,3 +1,7 @@
 mutation($id: ID!, $newId: ID!, $isActive: Boolean!) {
-	setIsActivePositionAndMoveEmployee(id: $id, newId: $newId, isActive: $isActive)
+    setIsActivePositionAndMoveEmployee(
+        id: $id
+        newId: $newId
+        isActive: $isActive
+    )
 }
