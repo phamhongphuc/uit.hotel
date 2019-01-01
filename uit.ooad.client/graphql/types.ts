@@ -687,6 +687,28 @@ export namespace DeleteFloor {
     };
 }
 
+export namespace UpdateFloor {
+    export type Variables = {
+        input: FloorUpdateInput;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        updateFloor: UpdateFloor;
+    };
+
+    export type UpdateFloor = {
+        __typename?: 'Floor';
+
+        id: number;
+
+        name: string;
+
+        isActive: boolean;
+    };
+}
+
 export namespace SetIsActiveFloor {
     export type Variables = {
         id: string;

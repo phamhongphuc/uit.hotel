@@ -49,6 +49,16 @@ export const deleteFloor = gql`
     }
 `;
 
+export const updateFloor = gql`
+    mutation updateFloor($input: FloorUpdateInput!) {
+        updateFloor(input: $input) {
+            id
+            name
+            isActive
+        }
+    }
+`;
+
 export const setIsActiveFloor = gql`
     mutation setIsActiveFloor($id: ID!, $isActive: Boolean!) {
         setIsActiveFloor(id: $id, isActive: $isActive)

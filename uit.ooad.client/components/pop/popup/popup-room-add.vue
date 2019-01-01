@@ -1,7 +1,7 @@
 <template>
     <popup- ref="popup" title="Thêm phòng">
         <form-mutate-
-            slot-scope="{ data: { floor, floors }, close }"
+            slot-scope="{ data: { floors }, close }"
             success="Thêm phòng mới thành công"
             :mutation="createRoom"
             :variables="{
@@ -29,13 +29,13 @@
             </div>
             <div class="input-label">Loại phòng</div>
             <query- :query="getRoomKinds" class="m-3" :poll-interval="0">
-                <div slot-scope="{ data }">
+                <div slot-scope="{ data: { roomKinds } }">
                     <b-form-select
                         v-model="roomKindId"
                         value-field="id"
                         text-field="name"
                         :state="!$v.roomKindId.$invalid"
-                        :options="data.roomKinds"
+                        :options="roomKinds"
                         class="rounded"
                     />
                 </div>
@@ -69,11 +69,11 @@ import { PopupMixin } from '~/components/mixins/popup';
 import { createRoom, getRoomKinds } from '~/graphql/documents/floor-room';
 import { GetFloors } from '~/graphql/types';
 import { mixinData } from '~/components/mixins/mutable';
-import { required, minLength } from 'vuelidate/lib/validators';
+import { required } from 'vuelidate/lib/validators';
 
 @Component({
     mixins: [PopupMixin, mixinData({ createRoom, getRoomKinds })],
-    name: 'popup-add-room-',
+    name: 'popup-room-add-',
     validations: {
         roomName: {
             required,

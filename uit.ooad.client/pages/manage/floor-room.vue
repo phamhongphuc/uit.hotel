@@ -4,7 +4,7 @@
             <b-button
                 class="m-2"
                 variant="white"
-                @click="$refs.add_floor.open()"
+                @click="$refs.floor_add.open()"
             >
                 <span class="icon"></span>
                 <span>Thêm tầng mới</span>
@@ -61,8 +61,9 @@
         </div>
         <context-manage-room- ref="context_room" />
         <context-manage-floor- ref="context_floor" :refs="$refs" />
-        <popup-add-room- ref="add_room" />
-        <popup-add-floor- ref="add_floor" />
+        <popup-room-add- ref="room_add" />
+        <popup-floor-add- ref="floor_add" />
+        <popup-floor-update- ref="floor_update" />
     </div>
 </template>
 <script lang="ts">
