@@ -26,19 +26,12 @@
         flex: 1;
         max-height: calc(100% - 3.5rem);
         .content {
+            overflow: hidden;
+            position: relative;
             flex: 1;
             padding: 0.5rem calc(0.5rem + 15px);
             display: flex;
             flex-direction: column;
-
-            @include make-container();
-            @include make-container-max-widths(
-                (
-                    md: 720px - 100px,
-                    lg: 960px - 200px,
-                    xl: 1140px - 200px,
-                )
-            );
         }
     }
 }
