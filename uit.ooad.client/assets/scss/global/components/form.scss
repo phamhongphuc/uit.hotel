@@ -1,0 +1,13 @@
+.btn {
+    display: flex;
+    justify-content: center;
+    > span {
+        display: block;
+        max-height: $input-btn-font-size * $input-btn-line-height;
+        line-height: $input-btn-font-size * $input-btn-line-height;
+        &.icon {
+            width: $input-btn-font-size * $input-btn-line-height;
+            margin-left: -0.25rem;
+        }
+    }
+}
