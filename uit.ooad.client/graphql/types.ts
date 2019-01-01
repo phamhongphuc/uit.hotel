@@ -590,3 +590,23 @@ export namespace SetIsActiveRoom {
         setIsActiveRoom: string;
     };
 }
+
+export namespace GetRoomKinds {
+    export type Variables = {};
+
+    export type Query = {
+        __typename?: 'Query';
+
+        roomKinds: RoomKinds[];
+    };
+
+    export type RoomKinds = {
+        __typename?: 'RoomKind';
+
+        id: number;
+
+        name: string;
+
+        isActive: boolean;
+    };
+}

@@ -1,8 +1,5 @@
 // Use Lab ( x , 0 , -9 )
-$darkest: #000818;
-$darker: #101621;
 $dark: #181e2a;
-$mix: #dbdde0;
 $light: #717786;
 
 $main: #4398d1;
@@ -13,25 +10,28 @@ $netlify: #25c7b7;
 
 $body-bg: #f2f2f2;
 $body-color: lighten(#212529, 25%);
+$gray: #f5f6fa;
+$blue: #e6efff;
+$red: #eb4d4b;
 
 $black: black;
 $white: white;
 
-$red: #eb4d4b;
 
 $theme-colors: (
-    'darkest': $darkest,
-    'darker': $darker,
     'dark': $dark,
-    'mix': $mix,
     'light': $light,
     'main': $main,
     'white': $white,
     'black': $black,
+    'blue': $blue,
+    'gray': $gray,
     'dribbble': $dribbble,
     'facebook': $facebook,
     'netlify': $netlify,
+    'red': $red,
 );
 
 $link-color: inherit;
 $link-hover-color: inherit;
+$input-bg: rgba($black, 0.1);
