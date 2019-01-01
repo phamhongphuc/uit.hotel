@@ -16,37 +16,34 @@
         </div>
         <div class="row flex-fill">
             <div class="m-2 col-12 hotel-map">
-                <gql-query- :query="getFloors">
+                <query- :query="getFloors">
                     <template slot-scope="{ data }">
                         <div
                             v-for="floor in data.floors"
                             :key="floor.id"
-                            class="row hotel-map-floor my-2"
+                            class="row my-2"
                         >
-                            <b-button
-                                class="hotel-map-floor-name shadow"
-                                variant="main"
-                            >
+                            <b-button class="shadow" variant="main">
                                 {{ floor.name }}
                             </b-button>
                             <b-button
                                 v-for="room in floor.rooms"
                                 :key="room.id"
-                                class="hotel-map-floor-room shadow"
+                                class="shadow"
                                 variant="white"
                             >
                                 {{ room.name }}
                             </b-button>
                         </div>
                     </template>
-                </gql-query->
+                </query->
             </div>
         </div>
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, namespace } from 'nuxt-property-decorator';
-import gql from 'graphql-tag';
+import { Vue, Component } from 'nuxt-property-decorator';
+import { getFloors } from '~/graphql/documents/floor-room';
 
 @Component({
     name: 'index-',
@@ -58,37 +55,6 @@ export default class extends Vue {
         };
     }
 
-    @namespace('style').State
-    breakpoint;
-
-    getFloors = gql`
-        query getFloors {
-            floors {
-                id
-                name
-                isActive
-                rooms {
-                    id
-                    name
-                    roomKind {
-                        name
-                    }
-                }
-            }
-        }
-    `;
+    getFloors = getFloors;
 }
 </script>
-<style lang="scss">
-.hotel-map {
-    .hotel-map-floor {
-        > button {
-            padding: 0.75rem;
-        }
-        > .hotel-map-floor-name {
-            width: 100px;
-            margin-right: 0.5rem;
-        }
-    }
-}
-</style>

@@ -9,6 +9,7 @@ export const getFloors = gql`
             rooms {
                 id
                 name
+                isActive
                 roomKind {
                     id
                     name
@@ -45,5 +46,27 @@ export const createFloor = gql`
 export const deleteFloor = gql`
     mutation deleteFloor($id: ID!) {
         deleteFloor(id: $id)
+    }
+`;
+
+export const setIsActiveFloor = gql`
+    mutation setIsActiveFloor($id: ID!, $isActive: Boolean!) {
+        setIsActiveFloor(id: $id, isActive: $isActive)
+    }
+`;
+
+export const setIsActiveRoom = gql`
+    mutation setIsActiveRoom($id: ID!, $isActive: Boolean!) {
+        setIsActiveRoom(id: $id, isActive: $isActive)
+    }
+`;
+
+export const getRoomKinds = gql`
+    query getRoomKinds {
+        roomKinds {
+            id
+            name
+            isActive
+        }
     }
 `;

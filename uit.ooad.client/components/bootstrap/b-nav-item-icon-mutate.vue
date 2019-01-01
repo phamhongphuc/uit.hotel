@@ -14,11 +14,11 @@
 <script lang="ts">
 import { Vue, Component } from 'nuxt-property-decorator';
 import mutable from '~/components/mixins/mutable';
-import { ButtonIconProps, ButtonImageProps } from '~/components/mixins/button';
+import { IconProps, TextProps, ImageProps } from '~/components/mixins/button';
 
 @Component({
     name: 'b-nav-item-icon-mutate-',
-    mixins: [mutable, ButtonIconProps, ButtonImageProps],
+    mixins: [mutable, IconProps, TextProps, ImageProps],
 })
 export default class extends Vue {}
 </script>

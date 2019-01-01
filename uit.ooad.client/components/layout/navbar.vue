@@ -61,10 +61,10 @@
                         class="d-flex dropdown-profile"
                     >
                         <image-
-                            class="rounded-circle"
+                            class="rounded-circle m-1"
                             source="/black.png"
-                            height="48"
-                            width="48"
+                            height="40"
+                            width="40"
                         />
                         <div class="dropdown-profile-detail">
                             <div class="dropdown-profile-detail-name">
@@ -75,6 +75,7 @@
                             </div>
                         </div>
                     </b-dropdown-item>
+                    <div class="hr line" />
                     <b-dropdown-item-icon-
                         text="Đăng xuất"
                         icon=""
@@ -110,10 +111,11 @@ export default class extends Vue {
 </script>
 <style lang="scss">
 .dropdown-profile {
-    padding: 1rem 1rem;
+    padding: 1rem;
+    margin-top: -0.5rem;
     > .dropdown-profile-detail {
         height: 3rem;
-        margin-left: 1rem;
+        margin-left: 0.75rem;
         margin-right: 2.5rem;
         > .dropdown-profile-detail-name {
             margin-top: 0.25rem;

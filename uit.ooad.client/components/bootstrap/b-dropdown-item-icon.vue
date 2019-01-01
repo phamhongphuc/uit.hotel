@@ -33,13 +33,14 @@
 import { Vue, Component } from 'nuxt-property-decorator';
 import {
     LinkProps,
-    ButtonIconProps,
-    ButtonImageProps,
+    IconProps,
+    TextProps,
+    ImageProps,
 } from '~/components/mixins/button';
 
 @Component({
     name: 'b-dropdown-item-icon-',
-    mixins: [LinkProps, ButtonIconProps, ButtonImageProps],
+    mixins: [LinkProps, IconProps, TextProps, ImageProps],
 })
 export default class extends Vue {}
 </script>

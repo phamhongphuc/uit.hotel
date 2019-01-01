@@ -8,12 +8,7 @@
         <h4 class="font-pacifico text-center mb-5">Quản lý khách sạn</h4>
         <b-form
             class="flex-fill d-flex flex-column my-5"
-            @submit="
-                event => {
-                    event.preventDefault();
-                    login({ id, password });
-                }
-            "
+            @submit.prevent="login({ id, password })"
         >
             <b-input-
                 v-model="id"
@@ -21,6 +16,7 @@
                 type="text"
                 placeholder="Tên đăng nhập"
                 icon=""
+                class="circle"
             />
             <b-input-
                 v-model="password"
@@ -28,7 +24,7 @@
                 type="password"
                 placeholder="Mật khẩu"
                 icon=""
-                class="my-2"
+                class="my-2 circle"
             />
             <b-button
                 variant="main"

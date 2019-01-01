@@ -1,7 +1,10 @@
+@import 'components/dropdown';
+@import 'components/footer';
+@import 'components/form';
 @import 'components/nav';
 @import 'components/navbar';
-@import 'components/footer';
 @import 'components/pagination';
-@import 'components/dropdown';
 
 @import 'variables/color';
+
+$enable-shadows: true;

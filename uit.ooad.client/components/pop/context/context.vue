@@ -2,13 +2,13 @@
     <b-nav
         v-show="show"
         v-on-clickaway="close"
-        class="v-context"
+        class="context-menu"
         :style="style"
         tabindex="-1"
         @click="onClick"
         @contextmenu.capture.prevent
     >
-        <slot v-if="data" :data="data" />
+        <slot v-if="data" :data="data" :refs="refs" />
     </b-nav>
 </template>
 
@@ -16,13 +16,19 @@
 import { Vue, Component, Prop, Watch } from 'nuxt-property-decorator';
 import { mixin as clickaway } from 'vue-clickaway';
 
-@Component({ mixins: [clickaway] })
+@Component({
+    mixins: [clickaway],
+    name: 'context-',
+})
 export default class extends Vue {
     @Prop({ default: true })
     closeOnClick: boolean;
 
     @Prop({ default: true })
     closeOnScroll: boolean;
+
+    @Prop({ default: undefined })
+    refs: any;
 
     top: number = 0;
     left: number = 0;
@@ -108,12 +114,13 @@ export default class extends Vue {
             this.positionMenu(event.clientY, event.clientX);
             (this.$el as HTMLElement).focus();
             this.$emit('open', event, this.data, this.top, this.left);
+            (event.toElement as HTMLElement).focus();
         });
     }
 }
 </script>
 <style lang="scss">
-.v-context {
+.context-menu {
     background: $white;
     box-shadow: $box-shadow-context;
     border-radius: $border-radius;
@@ -138,6 +145,7 @@ export default class extends Vue {
                 width: $context-size;
                 min-width: $context-size;
                 min-height: $context-size;
+                line-height: $context-size;
             }
         }
     }

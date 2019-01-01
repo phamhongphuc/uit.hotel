@@ -1,67 +1,81 @@
 <template>
-    <div class="b-input">
-        <div class="icon">{{ icon }}</div>
-        <input
-            class="pr-3"
-            :type="type"
-            :placeholder="placeholder"
+    <div class="b-input" :class="{ 'has-icon': icon !== null }">
+        <div v-if="icon" class="icon">{{ icon }}</div>
+        <b-input
+            ref="input"
             :value="value"
-            @input="$emit('input', $event.target.value)"
+            :type="type"
+            :aria-invalid="ariaInvalid"
+            :readonly="readonly"
+            :plaintext="plaintext"
+            :autocomplete="autocomplete"
+            :placeholder="placeholder"
+            :formatter="formatter"
+            :lazy-formatter="lazyFormatter"
+            @input="$emit('input', $event)"
             @focus="$emit('update:focus', true)"
             @blur="$emit('update:focus', false)"
         />
     </div>
 </template>
 <script lang="ts">
-import { Vue, Prop, Component } from 'nuxt-property-decorator';
+import { Vue, Component, Prop } from 'nuxt-property-decorator';
+import { IconProps, InputProps } from '../mixins/button';
 
 @Component({
     name: 'b-input-',
+    mixins: [IconProps, InputProps],
 })
 export default class extends Vue {
-    @Prop({ default: '' })
-    value: string;
-
-    @Prop({ default: 'text' })
-    type: string;
-
-    @Prop({ default: '' })
-    placeholder: string;
-
-    @Prop({ default: '', validator: icon => icon.length === 1 })
-    icon: string;
+    @Prop({ default: null })
+    title: string;
 }
 </script>
 <style lang="scss">
+$input-icon-margin-left: 0.25rem;
+
 .b-input {
-    background: rgba(black, 0.1);
     transition: border 0.2s;
-    border-radius: 0.5 * $input-size;
     display: flex;
-    overflow: hidden;
     position: relative;
     > .icon {
         position: absolute;
         display: block;
         text-align: center;
         font-size: 1rem;
-        margin-left: $input-size / 10;
-        padding: 0;
-        width: $input-size;
-        min-width: $input-size;
-        min-height: $input-size;
-        line-height: $input-size;
+        width: $input-height;
+        min-width: $input-height;
+        min-height: $input-height;
+        line-height: $input-height;
     }
+
     > input {
-        background: transparent;
         outline: none;
-        height: $input-size;
         border: none;
-        padding-left: 1.1 * $input-size;
-        padding-top: 0;
-        padding-bottom: 0;
         min-width: 0;
         flex-grow: 1;
+        padding-left: calc(
+            #{$input-height-inner} + #{$input-height-border} - 0.125rem
+        );
+        &:focus {
+            outline: none;
+        }
+    }
+    &.circle {
+        &,
+        input {
+            border-radius: calc(0.5 * #{$input-height});
+        }
+        > .icon {
+            margin-left: $input-icon-margin-left;
+        }
+        &.has-icon {
+            > input {
+                padding-left: calc(
+                    #{$input-height-inner} + #{$input-height-border} + #{$input-icon-margin-left}
+                );
+            }
+        }
     }
 }
 </style>

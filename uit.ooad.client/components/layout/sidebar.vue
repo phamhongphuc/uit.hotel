@@ -1,15 +1,20 @@
 <template>
-    <b-navbar id="sidebar">
-        <b-navbar-nav>
-            <b-nav-item-icon- to="/" icon="" text="Sơ đồ khách sạn" exact />
-            <b-nav-item-icon-
-                to="/manage/floor-room"
-                icon=""
-                text="Quản lý tầng phòng"
-                exact
-            />
-        </b-navbar-nav>
-    </b-navbar>
+    <b-navbar-nav id="sidebar">
+        <b-nav-item-icon- to="/" icon="" text="Sơ đồ khách sạn" exact />
+        <b-nav-item-icon-
+            to="/manage/floor-room"
+            icon=""
+            text="Quản lý tầng phòng"
+            exact
+        />
+        <b-nav-item-icon-
+            to="/help"
+            icon=""
+            text="Thông tin"
+            exact
+            class="mt-auto"
+        />
+    </b-navbar-nav>
 </template>
 <script lang="ts">
 import { Vue, Component } from 'nuxt-property-decorator';
@@ -23,8 +28,8 @@ export default class extends Vue {}
 #sidebar {
     flex-direction: column;
     justify-content: flex-start;
-    padding: 1rem 1rem 0 0;
-    background-color: #fff;
+    padding: 1rem 1rem 1rem 0;
+    background-color: $white;
     box-shadow: $box-shadow-sm-right;
 
     .nav-item-icon {
