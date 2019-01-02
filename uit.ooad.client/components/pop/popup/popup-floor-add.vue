@@ -10,7 +10,7 @@
                 },
             }"
         >
-            <div class="mt-2 mx-3 p-1 nmb-3">Tên tầng</div>
+            <div class="input-label">Tên tầng</div>
             <b-input-
                 ref="autoFocus"
                 v-model="floorName"
