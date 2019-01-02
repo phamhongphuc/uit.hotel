@@ -32,11 +32,11 @@
 <script lang="ts">
 import { Vue, Component } from 'nuxt-property-decorator';
 import {
-    LinkProps,
     IconProps,
-    TextProps,
     ImageProps,
-} from '~/components/mixins/button';
+    LinkProps,
+    TextProps,
+} from '~/components/mixins/props';
 
 @Component({
     name: 'b-nav-item-icon-',

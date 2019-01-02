@@ -14,7 +14,7 @@
 <script lang="ts">
 import { Vue, Component } from 'nuxt-property-decorator';
 import mutable from '~/components/mixins/mutable';
-import { ButtonProps } from '../mixins/button';
+import { ButtonProps } from '~/components/mixins/props';
 
 @Component({
     mixins: [mutable, ButtonProps],
