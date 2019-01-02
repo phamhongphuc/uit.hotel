@@ -17,6 +17,16 @@ namespace uit.ooad.test._GraphQL._Authentication
         }
 
         [TestMethod]
+        public void Login_InValidPassword()
+        {
+            SchemaHelper.ExecuteAndExpectError(
+                "Tài khoản hoặc mật khẩu không chính xác",
+                @"/_GraphQL/Authentication/mutation.login.gql",
+                @"/_GraphQL/Authentication/mutation.login.variable.fail.json"
+            );
+        }
+
+        [TestMethod]
         public void ChangePassword()
         {
             SchemaHelper.Execute(
