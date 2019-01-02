@@ -30,7 +30,7 @@
 <script lang="ts">
 import { Component } from 'nuxt-property-decorator';
 import { ContextMixin } from '~/components/mixins/context';
-import { setIsActiveRoom, deleteRoom } from '~/graphql/documents/floor-room';
+import { setIsActiveRoom, deleteRoom } from '~/graphql/documents/room';
 import { mixinData } from '~/components/mixins/mutable';
 
 @Component({

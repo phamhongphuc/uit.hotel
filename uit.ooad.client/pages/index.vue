@@ -43,7 +43,7 @@
 </template>
 <script lang="ts">
 import { Vue, Component } from 'nuxt-property-decorator';
-import { getFloors } from '~/graphql/documents/floor-room';
+import { getFloors } from '~/graphql/documents/floor';
 
 @Component({
     name: 'index-',

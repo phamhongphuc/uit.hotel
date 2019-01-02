@@ -66,7 +66,8 @@
 <script lang="ts">
 import { Component } from 'nuxt-property-decorator';
 import { PopupMixin } from '~/components/mixins/popup';
-import { createRoom, getRoomKinds } from '~/graphql/documents/floor-room';
+import { createRoom } from '~/graphql/documents/room';
+import { getRoomKinds } from '~/graphql/documents/room-kind';
 import { GetFloors } from '~/graphql/types';
 import { mixinData } from '~/components/mixins/mutable';
 import { required } from 'vuelidate/lib/validators';

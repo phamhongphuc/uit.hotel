@@ -38,7 +38,7 @@
 import { Component } from 'nuxt-property-decorator';
 import { mixinData } from '~/components/mixins/mutable';
 import { PopupMixin } from '~/components/mixins/popup';
-import { updateFloor } from '~/graphql/documents/floor-room';
+import { updateFloor } from '~/graphql/documents/floor';
 import { required, minLength } from 'vuelidate/lib/validators';
 
 @Component({
