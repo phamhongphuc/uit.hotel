@@ -43,7 +43,6 @@ namespace uit.ooad.DataAccesses
                 roomKindInDatabase.Name = roomKind.Name;
                 roomKindInDatabase.NumberOfBeds = roomKind.NumberOfBeds;
                 roomKindInDatabase.AmountOfPeople = roomKind.AmountOfPeople;
-                roomKindInDatabase.PriceByDate = roomKind.PriceByDate;
             });
             return roomKindInDatabase;
         }

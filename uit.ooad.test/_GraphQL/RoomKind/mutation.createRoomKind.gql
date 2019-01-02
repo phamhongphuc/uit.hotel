@@ -4,7 +4,6 @@ mutation($input: RoomKindCreateInput!) {
         name
         numberOfBeds
         amountOfPeople
-        priceByDate
         isActive
     }
 }
