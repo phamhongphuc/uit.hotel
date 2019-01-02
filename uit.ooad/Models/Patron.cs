@@ -47,7 +47,7 @@ namespace uit.ooad.Models
         {
             var patronInDatabase = PatronBusiness.Get(Id);
             if (patronInDatabase == null)
-                throw new Exception("Không tìm thấy khách hàng có Id là " + Id);
+                throw new Exception("Mã khách hàng không tồn tại");
             return patronInDatabase;
         }
     }

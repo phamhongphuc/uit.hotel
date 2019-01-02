@@ -1,0 +1,33 @@
+{
+    "bookings": [
+        {
+            "bookCheckInTime": "2-2-2000",
+            "bookCheckOutTime": "3-2-2000",
+            "room": {
+                "id": 7
+            },
+            "listOfPatrons": [
+                {
+                    "id": 1
+                }
+            ]
+        },
+        {
+            "bookCheckInTime": "2-2-2000",
+            "bookCheckOutTime": "3-2-2000",
+            "room": {
+                "id": 1
+            },
+            "listOfPatrons": [
+                {
+                    "id": 1
+                }
+            ]
+        }
+    ],
+    "bill": {
+        "patron": {
+            "id": 1
+        }
+    }
+}
