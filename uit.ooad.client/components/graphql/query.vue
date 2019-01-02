@@ -8,7 +8,7 @@
         <template slot-scope="{ result: { loading, error, data } }">
             <div :class="childClass">
                 <slot v-if="data" :data="data" />
-                <div v-else class="query-text">
+                <div v-else class="query-text p-5">
                     <span v-if="loading">
                         <span class="icon"></span>
                         Đang tải dữ liệu...

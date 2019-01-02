@@ -8,9 +8,16 @@
     }
 }
 
-.table-border-inside {
+.table-cell-disable {
+    text-decoration: line-through
+}
+
+.table-style {
+    cursor: pointer;
+
     th {
         border-bottom-color: $main !important;
+        white-space: nowrap;
     }
 
     th,
@@ -30,6 +37,16 @@
     tr td:last-child,
     tr th:last-child {
         border-right: 0;
+    }
+
+    tr {
+        &:hover {
+            background: rgba($black, 0.05);
+        }
+        &:focus {
+            outline: 0;
+            background: rgba($black, 0.075);
+        }
     }
 }
 
