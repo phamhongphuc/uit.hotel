@@ -623,54 +623,6 @@ export namespace GetFloors {
     };
 }
 
-export namespace CreateRoom {
-    export type Variables = {
-        input: RoomCreateInput;
-    };
-
-    export type Mutation = {
-        __typename?: 'Mutation';
-
-        createRoom: CreateRoom;
-    };
-
-    export type CreateRoom = {
-        __typename?: 'Room';
-
-        id: number;
-    };
-}
-
-export namespace DeleteRoom {
-    export type Variables = {
-        id: string;
-    };
-
-    export type Mutation = {
-        __typename?: 'Mutation';
-
-        deleteRoom: string;
-    };
-}
-
-export namespace UpdateRoom {
-    export type Variables = {
-        input: RoomUpdateInput;
-    };
-
-    export type Mutation = {
-        __typename?: 'Mutation';
-
-        updateRoom: UpdateRoom;
-    };
-
-    export type UpdateRoom = {
-        __typename?: 'Room';
-
-        id: number;
-    };
-}
-
 export namespace CreateFloor {
     export type Variables = {
         input: FloorCreateInput;
@@ -686,18 +638,6 @@ export namespace CreateFloor {
         __typename?: 'Floor';
 
         id: number;
-    };
-}
-
-export namespace DeleteFloor {
-    export type Variables = {
-        id: string;
-    };
-
-    export type Mutation = {
-        __typename?: 'Mutation';
-
-        deleteFloor: string;
     };
 }
 
@@ -719,6 +659,18 @@ export namespace UpdateFloor {
     };
 }
 
+export namespace DeleteFloor {
+    export type Variables = {
+        id: string;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        deleteFloor: string;
+    };
+}
+
 export namespace SetIsActiveFloor {
     export type Variables = {
         id: string;
@@ -729,19 +681,6 @@ export namespace SetIsActiveFloor {
         __typename?: 'Mutation';
 
         setIsActiveFloor: string;
-    };
-}
-
-export namespace SetIsActiveRoom {
-    export type Variables = {
-        id: string;
-        isActive: boolean;
-    };
-
-    export type Mutation = {
-        __typename?: 'Mutation';
-
-        setIsActiveRoom: string;
     };
 }
 
@@ -762,5 +701,66 @@ export namespace GetRoomKinds {
         name: string;
 
         isActive: boolean;
+    };
+}
+
+export namespace CreateRoom {
+    export type Variables = {
+        input: RoomCreateInput;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        createRoom: CreateRoom;
+    };
+
+    export type CreateRoom = {
+        __typename?: 'Room';
+
+        id: number;
+    };
+}
+
+export namespace UpdateRoom {
+    export type Variables = {
+        input: RoomUpdateInput;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        updateRoom: UpdateRoom;
+    };
+
+    export type UpdateRoom = {
+        __typename?: 'Room';
+
+        id: number;
+    };
+}
+
+export namespace DeleteRoom {
+    export type Variables = {
+        id: string;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        deleteRoom: string;
+    };
+}
+
+export namespace SetIsActiveRoom {
+    export type Variables = {
+        id: string;
+        isActive: boolean;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        setIsActiveRoom: string;
     };
 }
