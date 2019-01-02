@@ -1,40 +1,34 @@
 <template>
     <b-navbar-nav id="sidebar">
         <b-nav-item-icon-
+            v-b-toggle.collapse_dashboard
             icon=""
             text="Nghiệp vụ lễ tân"
             class="header-item"
         />
+        <b-collapse id="collapse_dashboard" v-model="showDashboard">
+            <b-nav-item-icon- to="/" icon="" text="Sơ đồ khách sạn" exact />
+        </b-collapse>
         <b-nav-item-icon-
             v-b-toggle.collapse_manage
             icon=""
             text="Cài đặt khách sạn"
             class="header-item"
         />
-        <!-- <b-nav-item-icon- to="/" icon="" text="Sơ đồ khách sạn" exact /> -->
-        <b-collapse id="collapse_manage" visible>
+        <b-collapse id="collapse_manage" v-model="showManage">
             <b-nav-item-icon-
                 to="/manage/floor-room"
                 icon=""
                 text="Quản lý tầng phòng"
                 exact
             />
+            <b-nav-item-icon-
+                to="/manage/room-kind"
+                icon=""
+                text="Quản lý loại phòng"
+                exact
+            />
         </b-collapse>
-        <!-- <b-nav-item-icon-
-            to="/manage/room-kind"
-            icon=""
-            text="Quản lý loại phòng"
-            class="child"
-            exact
-        /> -->
-
-        <!-- <b-nav-item-icon-
-            to="/help"
-            icon=""
-            text="Thông tin"
-            exact
-            class="mt-auto"
-        /> -->
     </b-navbar-nav>
 </template>
 <script lang="ts">
@@ -43,7 +37,18 @@ import { Vue, Component } from 'nuxt-property-decorator';
 @Component({
     name: 'sidebar-',
 })
-export default class extends Vue {}
+export default class extends Vue {
+    showManage: boolean = false;
+    showDashboard: boolean = false;
+
+    mounted() {
+        if (this.$route !== undefined) {
+            if (this.$route.path.indexOf('/manage') === 0) {
+                this.showManage = true;
+            }
+        }
+    }
+}
 </script>
 <style lang="scss">
 #sidebar {
