@@ -173,7 +173,7 @@ namespace uit.ooad.Queries.Helper
         {
             RoomBusiness.Add(new Room
             {
-                Name = "Phòng 1",
+                Name = "101",
                 Floor = FloorBusiness.Get(1),
                 RoomKind = RoomKindBusiness.Get(1),
                 IsActive = true
@@ -196,7 +196,7 @@ namespace uit.ooad.Queries.Helper
         {
             FloorBusiness.Add(new Floor
             {
-                Name = "Tầng 1",
+                Name = "1",
                 IsActive = true
             });
         }

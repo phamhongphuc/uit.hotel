@@ -28,6 +28,8 @@ namespace uit.ooad.Businesses
             var floorInDatabase = Get(floorId);
             if (floorInDatabase == null)
                 throw new Exception("Tầng có Id: " + floorId + " không hợp lệ!");
+            if (!isActive && floorInDatabase.Rooms.Where(r => r.IsActive).Count() > 0)
+                throw new Exception("Tầng này còn phòng đang hoạt động, không thể vô hiệu hóa");
             FloorDataAccess.SetIsActive(floorInDatabase, isActive);
         }
 
