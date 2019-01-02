@@ -1,0 +1,19 @@
+.hotel-map {
+    button {
+        display: block;
+        margin: 0.25rem;
+        width: 10rem;
+        min-width: 10rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        height: 5rem;
+        &.btn-blue {
+            color: #507af2;
+            border-color: rgba(#507af2, 0.5);
+        }
+        &.btn-gray {
+            border-color: rgba($black, 0.1);
+        }
+    }
+}

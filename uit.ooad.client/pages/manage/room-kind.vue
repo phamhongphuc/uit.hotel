@@ -26,7 +26,7 @@
         </div>
         <query-
             :query="getRoomKinds"
-            class="hotel-map row"
+            class="row"
             child-class="col m-2 p-0 bg-white rounded shadow-sm overflow-auto"
         >
             <b-table
@@ -134,24 +134,3 @@ export default class extends Vue {
     console = console;
 }
 </script>
-<style lang="scss">
-.hotel-map {
-    button {
-        display: block;
-        margin: 0.25rem;
-        width: 10rem;
-        min-width: 10rem;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        height: 3.5rem;
-        &.btn-blue {
-            color: #507af2;
-            border-color: rgba(#507af2, 0.5);
-        }
-        &.btn-gray {
-            border-color: rgba($black, 0.1);
-        }
-    }
-}
-</style>
