@@ -19,26 +19,18 @@ export const getFloors = gql`
     }
 `;
 
-export const createRoom = gql`
-    mutation createRoom($input: RoomCreateInput!) {
-        createRoom(input: $input) {
+export const createFloor = gql`
+    mutation createFloor($input: FloorCreateInput!) {
+        createFloor(input: $input) {
             id
         }
     }
 `;
 
-export const deleteRoom = gql`
-    mutation deleteRoom($id: ID!) {
-        deleteRoom(id: $id)
-    }
-`;
-
-export const createFloor = gql`
-    mutation createFloor($input: FloorCreateInput!) {
-        createFloor(input: $input) {
+export const updateFloor = gql`
+    mutation updateFloor($input: FloorUpdateInput!) {
+        updateFloor(input: $input) {
             id
-            name
-            isActive
         }
     }
 `;
@@ -52,21 +44,5 @@ export const deleteFloor = gql`
 export const setIsActiveFloor = gql`
     mutation setIsActiveFloor($id: ID!, $isActive: Boolean!) {
         setIsActiveFloor(id: $id, isActive: $isActive)
-    }
-`;
-
-export const setIsActiveRoom = gql`
-    mutation setIsActiveRoom($id: ID!, $isActive: Boolean!) {
-        setIsActiveRoom(id: $id, isActive: $isActive)
-    }
-`;
-
-export const getRoomKinds = gql`
-    query getRoomKinds {
-        roomKinds {
-            id
-            name
-            isActive
-        }
     }
 `;

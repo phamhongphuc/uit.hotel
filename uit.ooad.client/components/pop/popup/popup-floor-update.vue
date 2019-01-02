@@ -1,13 +1,13 @@
 <template>
-    <popup- ref="popup" title="Thêm tầng" no-data="true">
+    <popup- ref="popup" title="Sửa tầng">
         <form-mutate-
-            slot-scope="{ data, close }"
-            success="Thêm tầng mới thành công"
-            :mutation="createFloor"
+            slot-scope="{ data: { floor }, close }"
+            success="Cập nhật thông tin tầng thành công"
+            :mutation="updateFloor"
             :variables="{
                 input: {
+                    id: floor.id,
                     name: floorName,
-                    isActive: true,
                 },
             }"
         >
@@ -15,6 +15,7 @@
             <b-input-
                 ref="autoFocus"
                 v-model="floorName"
+                :state="!$v.floorName.$invalid"
                 class="m-3 rounded"
                 icon=""
             />
@@ -23,10 +24,11 @@
                     class="ml-auto"
                     variant="main"
                     type="submit"
+                    :disabled="$v.$invalid"
                     @click="close"
                 >
-                    <span class="icon"></span>
-                    <span>Thêm</span>
+                    <span class="icon"></span>
+                    <span>Cập nhật</span>
                 </b-button>
             </div>
         </form-mutate->
@@ -36,17 +38,24 @@
 import { Component } from 'nuxt-property-decorator';
 import { mixinData } from '~/components/mixins/mutable';
 import { PopupMixin } from '~/components/mixins/popup';
-import { createFloor } from '~/graphql/documents/floor-room';
+import { updateFloor } from '~/graphql/documents/floor';
+import { required, minLength } from 'vuelidate/lib/validators';
 
 @Component({
-    mixins: [PopupMixin, mixinData({ createFloor })],
-    name: 'popup-add-floor-',
+    mixins: [PopupMixin, mixinData({ updateFloor })],
+    name: 'popup-floor-update-',
+    validations: {
+        floorName: {
+            required,
+            minLength: minLength(1),
+        },
+    },
 })
 export default class extends PopupMixin {
     floorName: string = '';
 
     onOpen() {
-        this.floorName = '';
+        this.floorName = this.data.floor.name;
     }
 }
 </script>

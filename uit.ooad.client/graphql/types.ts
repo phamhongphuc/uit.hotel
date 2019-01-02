@@ -26,7 +26,7 @@ export interface BillCreateInput {
     patron: Maybe<PatronId>;
 }
 
-export interface ServicesDetailCreateInput {
+export interface ServicesDetailHouseKeepingInput {
     /** Số lượng */
     number: number;
     /** Thuộc dịch vụ nào */
@@ -51,12 +51,14 @@ export interface EmployeeCreateInput {
     phoneNumber: string;
     /** Địa chỉ của nhân viên */
     address: string;
+    /** Email của nhân viên */
+    email: string;
     /** Ngày sinh của nhân viên */
     birthdate: DateTimeOffset;
+    /** Giới tính của nhân viên */
+    gender: boolean;
     /** Ngày vào làm */
     startingDate: DateTimeOffset;
-    /** Tài khoản còn hiệu lực hay không */
-    isActive: boolean;
     /** Loại chức vụ */
     position: Maybe<PositionId>;
 }
@@ -69,8 +71,6 @@ export interface PositionId {
 export interface FloorCreateInput {
     /** Tên tầng */
     name: string;
-    /** Trạng thái hoạt động */
-    isActive: boolean;
 }
 
 export interface PatronCreateInput {
@@ -172,10 +172,8 @@ export interface RateCreateInput {
     earlyCheckInFee: number;
     /** Ngày giá bắt đầu có hiệu lực */
     effectiveStartDate: DateTimeOffset;
-    /** Ngày tạo giá */
-    createDate: DateTimeOffset;
     /** Loại phòng */
-    roomKind: Maybe<RoomKindId>;
+    roomKind: RoomKindId;
 }
 /** Input cho một thông tin một loại phòng */
 export interface RoomKindId {
@@ -186,33 +184,22 @@ export interface RoomKindId {
 export interface ReceiptCreateInput {
     /** Số tiền đã thu */
     money: number;
-    /** Thời gian tạo phiếu thu */
-    time: DateTimeOffset;
     /** Kiểu thanh toán (tiền mặt hoặc chuyển khoản) */
     typeOfPayment: number;
     /** Số tài khoản ngân hàng của khách */
     bankAccountNumber: Maybe<string>;
     /** Thuộc hóa đơn */
     bill: Maybe<BillId>;
-    /** Nhân viên tạo phiếu thu */
-    employee: Maybe<EmployeeId>;
 }
 /** Input cho thông tin một hóa đơn */
 export interface BillId {
     /** Id của hóa đơn */
     id: number;
 }
-/** Input cho thông tin một nhân viên */
-export interface EmployeeId {
-    /** Id của một nhân viên */
-    id: string;
-}
 
 export interface RoomCreateInput {
     /** Tên phòng */
     name: string;
-    /** Trạng thái phòng */
-    isActive: boolean;
     /** Phòng thuộc tầng nào */
     floor: FloorId;
     /** Loại phòng của phòng */
@@ -233,8 +220,6 @@ export interface RoomKindCreateInput {
     amountOfPeople: number;
     /** Giá theo ngày */
     priceByDate: number;
-    /** Trạng thái phòng */
-    isActive: boolean;
 }
 /** Input cho một thông tin dịch vụ cần tạo mới */
 export interface ServiceCreateInput {
@@ -244,8 +229,20 @@ export interface ServiceCreateInput {
     unitRate: number;
     /** Đơn vị */
     unit: string;
-    /** Trạng thái hoạt động */
-    isActive: boolean;
+}
+
+export interface ServicesDetailCreateInput {
+    /** Số lượng */
+    number: number;
+    /** Thuộc dịch vụ nào */
+    service: ServiceId;
+    /** Thuộc booking nào */
+    booking: BookingId;
+}
+/** Input cho một thông tin một đơn đặt phòng */
+export interface BookingId {
+    /** Id của một đơn đặt phòng */
+    id: number;
 }
 
 export interface VolatilityRateCreateInput {
@@ -279,8 +276,6 @@ export interface VolatilityRateCreateInput {
     effectiveOnSaturday: boolean;
     /** Giá có hiệu lực vào ngày Chủ Nhật */
     effectiveOnSunday: boolean;
-    /** Ngày tạo giá */
-    createDate: DateTimeOffset;
     /** Loại phòng */
     roomKind: RoomKindId;
 }
@@ -296,6 +291,10 @@ export interface EmployeeUpdateInput {
     phoneNumber: string;
     /** Địa chỉ của nhân viên */
     address: string;
+    /** Email của nhân viên */
+    email: string;
+    /** Giới tính của nhân viên */
+    gender: boolean;
     /** Ngày sinh của nhân viên */
     birthdate: DateTimeOffset;
     /** Ngày vào làm */
@@ -340,6 +339,83 @@ export interface PatronUpdateInput {
     patronKind: Maybe<PatronKindId>;
 }
 
+export interface PatronKindUpdateInput {
+    /** Id của loại khách hàng */
+    id: number;
+    /** Tên loại khách hàng */
+    name: string;
+    /** Thông tin mô tả loại khách hàng */
+    description: string;
+}
+
+export interface PositionUpdateInput {
+    /** Id của chức vụ */
+    id: number;
+    /** Tên chức vụ */
+    name: string;
+    /** Quyền chỉnh sửa sơ đồ */
+    permissionUpdateGroundPlan: boolean;
+    /** Quyền lấy thông tin tầng, phòng */
+    permissionGetGroundPlan: boolean;
+    /** Quyền quản lý loại phòng */
+    permissionManageRoomKind: boolean;
+    /** Quyền lấy thông tin loại phòng */
+    permissionGetRoomKind: boolean;
+    /** Quyền quản lý giá cơ bản và giá biến động */
+    permissionManageRate: boolean;
+    /** Quyền lấy thông tin giá cơ bản và giá biến động */
+    permissionGetRate: boolean;
+    /** Quyền thao tác dọn phòng */
+    permissionCleaning: boolean;
+    /** Quyền tra cứu lịch sử dọn phòng */
+    permissionGetHouseKeeping: boolean;
+    /** Quyền quản lý thuê phòng */
+    permissionManageHiringRoom: boolean;
+    /** Quyền quản lý khách hàng */
+    permissionManagePatron: boolean;
+    /** Quyền lấy thông tin khách hàng */
+    permissionGetPatron: boolean;
+    /** Quyền quản lý loại khách hàng */
+    permissionManagePatronKind: boolean;
+    /** Quyền lấy thông tin loại khách hàng */
+    permissionGetPatronKind: boolean;
+    /** Quyền quản lý chức vụ */
+    permissionManagePosition: boolean;
+    /** Quyền lấy thông tin chức vụ */
+    permissionGetPosition: boolean;
+    /** Quyền quản lý thông tin nhân viên */
+    permissionManageEmployee: boolean;
+    /** Quyền quản lý tài khoản cá nhân */
+    permissionManageAccount: boolean;
+    /** Quyền quản lý dịch vụ */
+    permissionManageService: boolean;
+    /** Quyền lấy thông tin dịch vụ */
+    permissionGetService: boolean;
+    /** Quyền lấy thông tin các chứng từ (hóa đơn, phiếu thu) */
+    permissionGetVoucher: boolean;
+}
+
+export interface RateUpdateInput {
+    /** Id của giá cần cập nhật */
+    id: number;
+    /** Giá ngày */
+    dayRate: number;
+    /** Giá đêm */
+    nightRate: number;
+    /** Giá tuần */
+    weekRate: number;
+    /** Giá tháng */
+    monthRate: number;
+    /** Phí check-out muộn */
+    lateCheckOutFee: number;
+    /** Phí check-out sớm */
+    earlyCheckInFee: number;
+    /** Ngày giá bắt đầu có hiệu lực */
+    effectiveStartDate: DateTimeOffset;
+    /** Loại phòng */
+    roomKind: Maybe<RoomKindId>;
+}
+
 export interface RoomUpdateInput {
     /** Id phòng cần cập nhật */
     id: number;
@@ -373,6 +449,52 @@ export interface ServiceUpdateInput {
     unitRate: number;
     /** Đơn vị */
     unit: string;
+}
+
+export interface ServicesDetailUpdateInput {
+    /** Id của chi tiết dịch vụ cần cập nhật */
+    id: number;
+    /** Số lượng */
+    number: number;
+    /** Thuộc dịch vụ nào */
+    service: ServiceId;
+}
+
+export interface VolatilityRateUpdateInput {
+    /** Id của giá cần cập nhật */
+    id: number;
+    /** Giá ngày */
+    dayRate: number;
+    /** Giá đêm */
+    nightRate: number;
+    /** Giá tuần */
+    weekRate: number;
+    /** Giá tháng */
+    monthRate: number;
+    /** Phí check-out muộn */
+    lateCheckOutFee: number;
+    /** Phí check-out sớm */
+    earlyCheckInFee: number;
+    /** Ngày giá bắt đầu có hiệu lực */
+    effectiveStartDate: DateTimeOffset;
+    /** Ngày giá hết hiệu lực */
+    effectiveEndDate: DateTimeOffset;
+    /** Giá có hiệu lực vào ngày Thứ 2 */
+    effectiveOnMonday: boolean;
+    /** Giá có hiệu lực vào ngày Thứ 3 */
+    effectiveOnTuesday: boolean;
+    /** Giá có hiệu lực vào ngày Thứ 4 */
+    effectiveOnWednesday: boolean;
+    /** Giá có hiệu lực vào ngày Thứ 5 */
+    effectiveOnThursday: boolean;
+    /** Giá có hiệu lực vào ngày Thứ 6 */
+    effectiveOnFriday: boolean;
+    /** Giá có hiệu lực vào ngày Thứ 7 */
+    effectiveOnSaturday: boolean;
+    /** Giá có hiệu lực vào ngày Chủ Nhật */
+    effectiveOnSunday: boolean;
+    /** Loại phòng */
+    roomKind: RoomKindId;
 }
 
 /** The `DateTimeOffset` scalar type represents a date, time and offset from UTC. `DateTimeOffset` expects timestamps to be formatted in accordance with the [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) standard. */
@@ -531,6 +653,24 @@ export namespace DeleteRoom {
     };
 }
 
+export namespace UpdateRoom {
+    export type Variables = {
+        input: RoomUpdateInput;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        updateRoom: UpdateRoom;
+    };
+
+    export type UpdateRoom = {
+        __typename?: 'Room';
+
+        id: number;
+    };
+}
+
 export namespace CreateFloor {
     export type Variables = {
         input: FloorCreateInput;
@@ -546,10 +686,6 @@ export namespace CreateFloor {
         __typename?: 'Floor';
 
         id: number;
-
-        name: string;
-
-        isActive: boolean;
     };
 }
 
@@ -562,6 +698,24 @@ export namespace DeleteFloor {
         __typename?: 'Mutation';
 
         deleteFloor: string;
+    };
+}
+
+export namespace UpdateFloor {
+    export type Variables = {
+        input: FloorUpdateInput;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        updateFloor: UpdateFloor;
+    };
+
+    export type UpdateFloor = {
+        __typename?: 'Floor';
+
+        id: number;
     };
 }
 

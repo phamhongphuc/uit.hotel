@@ -14,11 +14,7 @@
             >
                 Quản lý khách sạn
             </b-nav-item>
-            <b-nav-item-icon-
-                class="d-md-none mx-1"
-                image="/favicon.png"
-                @click.native="toggle"
-            />
+            <b-nav-item-icon- class="d-md-none mx-1" image="/favicon.png" />
         </b-navbar-nav>
 
         <b-collapse
@@ -38,7 +34,7 @@
                     :focus.sync="isInputFocus"
                 />
                 <b-dropdown
-                    class="navar-dropdown"
+                    class="navar-dropdown d-none d-md-block"
                     variant="link"
                     size="md"
                     no-caret

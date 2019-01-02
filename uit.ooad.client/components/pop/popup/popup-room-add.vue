@@ -1,18 +1,17 @@
 <template>
     <popup- ref="popup" title="Thêm phòng">
         <form-mutate-
-            slot-scope="{ data: { floor, floors }, close }"
+            slot-scope="{ data: { floors }, close }"
             success="Thêm phòng mới thành công"
             :mutation="createRoom"
             :variables="{
                 input: {
                     name: roomName,
-                    isActive: true,
                     floor: {
                         id: floorId,
                     },
                     roomKind: {
-                        id: 1,
+                        id: roomKindId,
                     },
                 },
             }"
@@ -23,20 +22,20 @@
                     v-model="floorId"
                     value-field="id"
                     text-field="name"
-                    :value="1"
+                    :state="!$v.floorId.$invalid"
                     :options="floors"
                     class="rounded"
                 />
             </div>
             <div class="input-label">Loại phòng</div>
             <query- :query="getRoomKinds" class="m-3" :poll-interval="0">
-                <div slot-scope="{ data }">
+                <div slot-scope="{ data: { roomKinds } }">
                     <b-form-select
                         v-model="roomKindId"
                         value-field="id"
                         text-field="name"
-                        :value="1"
-                        :options="data.roomKinds"
+                        :state="!$v.roomKindId.$invalid"
+                        :options="roomKinds"
                         class="rounded"
                     />
                 </div>
@@ -45,6 +44,7 @@
             <b-input-
                 ref="autoFocus"
                 v-model="roomName"
+                :state="!$v.roomName.$invalid"
                 class="m-3 rounded"
                 icon=""
             />
@@ -53,6 +53,7 @@
                     class="ml-auto"
                     variant="main"
                     type="submit"
+                    :disabled="$v.$invalid"
                     @click="close"
                 >
                     <span class="icon"></span>
@@ -65,13 +66,26 @@
 <script lang="ts">
 import { Component } from 'nuxt-property-decorator';
 import { PopupMixin } from '~/components/mixins/popup';
-import { createRoom, getRoomKinds } from '~/graphql/documents/floor-room';
+import { createRoom } from '~/graphql/documents/room';
+import { getRoomKinds } from '~/graphql/documents/room-kind';
 import { GetFloors } from '~/graphql/types';
 import { mixinData } from '~/components/mixins/mutable';
+import { required } from 'vuelidate/lib/validators';
 
 @Component({
     mixins: [PopupMixin, mixinData({ createRoom, getRoomKinds })],
-    name: 'popup-add-room-',
+    name: 'popup-room-add-',
+    validations: {
+        roomName: {
+            required,
+        },
+        floorId: {
+            required,
+        },
+        roomKindId: {
+            required,
+        },
+    },
 })
 export default class extends PopupMixin {
     roomName: string = '';

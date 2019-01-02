@@ -1,19 +1,34 @@
 <template>
     <b-navbar-nav id="sidebar">
-        <b-nav-item-icon- to="/" icon="" text="Sơ đồ khách sạn" exact />
         <b-nav-item-icon-
-            to="/manage/floor-room"
-            icon=""
-            text="Quản lý tầng phòng"
-            exact
+            v-b-toggle.collapse_dashboard
+            icon=""
+            text="Nghiệp vụ lễ tân"
+            class="header-item"
         />
+        <b-collapse id="collapse_dashboard" v-model="showDashboard">
+            <b-nav-item-icon- to="/" icon="" text="Sơ đồ khách sạn" exact />
+        </b-collapse>
         <b-nav-item-icon-
-            to="/help"
-            icon=""
-            text="Thông tin"
-            exact
-            class="mt-auto"
+            v-b-toggle.collapse_manage
+            icon=""
+            text="Cài đặt khách sạn"
+            class="header-item"
         />
+        <b-collapse id="collapse_manage" v-model="showManage">
+            <b-nav-item-icon-
+                to="/manage/floor-room"
+                icon=""
+                text="Quản lý tầng phòng"
+                exact
+            />
+            <b-nav-item-icon-
+                to="/manage/room-kind"
+                icon=""
+                text="Quản lý loại phòng"
+                exact
+            />
+        </b-collapse>
     </b-navbar-nav>
 </template>
 <script lang="ts">
@@ -22,33 +37,71 @@ import { Vue, Component } from 'nuxt-property-decorator';
 @Component({
     name: 'sidebar-',
 })
-export default class extends Vue {}
+export default class extends Vue {
+    showManage: boolean = false;
+    showDashboard: boolean = false;
+
+    mounted() {
+        if (this.$route !== undefined) {
+            if (this.$route.path.indexOf('/manage') === 0) {
+                this.showManage = true;
+            }
+        }
+    }
+}
 </script>
 <style lang="scss">
 #sidebar {
     flex-direction: column;
     justify-content: flex-start;
-    padding: 1rem 1rem 1rem 0;
+    padding: 1rem;
     background-color: $white;
     box-shadow: $box-shadow-sm-right;
 
-    .nav-item-icon {
+    > .header-item {
+        border-radius: 0 0.25rem 0.25rem 0;
+        text-transform: uppercase;
+        color: $light;
+        font-weight: bold;
+        font-size: 0.8rem;
+        line-height: 2rem;
+        height: 2rem;
         > .nav-link {
-            padding-right: 1.5rem;
-            padding-left: 0.5rem;
-            border-radius: 0 1.25rem 1.25rem 0;
-            font-weight: 600;
-            transition: all 0.25s;
-            &:hover {
-                color: $main;
-            }
-            &.active {
-                background: $main;
-                color: $white;
+            flex-direction: row-reverse;
+            > .icon {
+                line-height: 2rem;
+                min-height: 2rem;
+                height: 2rem;
+                margin-left: auto;
             }
         }
-        .icon {
-            font-size: 1.25rem;
+    }
+    > :not(.header-item) {
+        margin-right: 0.75rem;
+        margin-left: -0.5rem;
+        &.collapse:not(.show) {
+            display: block !important;
+            overflow: hidden;
+            height: 0;
+        }
+        .nav-item-icon {
+            transition: all 0.2s;
+            overflow: hidden;
+            height: $navbar-size;
+            > .nav-link {
+                display: flex;
+                font-weight: 600;
+                transition: all 0.25s;
+                &:hover {
+                    color: $main;
+                }
+                &.active {
+                    color: $main;
+                }
+                > .icon {
+                    font-size: 1.25rem;
+                }
+            }
         }
     }
 }

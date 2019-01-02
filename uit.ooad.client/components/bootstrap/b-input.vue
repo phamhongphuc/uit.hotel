@@ -12,6 +12,7 @@
             :placeholder="placeholder"
             :formatter="formatter"
             :lazy-formatter="lazyFormatter"
+            :state="state"
             @input="$emit('input', $event)"
             @focus="$emit('update:focus', true)"
             @blur="$emit('update:focus', false)"
@@ -20,11 +21,11 @@
 </template>
 <script lang="ts">
 import { Vue, Component, Prop } from 'nuxt-property-decorator';
-import { IconProps, InputProps } from '../mixins/button';
+import { IconProps, InputProps, StateProps } from '../mixins/button';
 
 @Component({
     name: 'b-input-',
-    mixins: [IconProps, InputProps],
+    mixins: [IconProps, InputProps, StateProps],
 })
 export default class extends Vue {
     @Prop({ default: null })

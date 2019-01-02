@@ -24,12 +24,11 @@
                 </span>
             </b-button>
         </div>
-        <query-
-            :query="getFloors"
-            class="hotel-map row flex-1"
-            child-class="col m-2 p-3 bg-white rounded shadow-sm overflow-auto"
-        >
-            <div slot-scope="{ data: { floors } }">
+        <query- :query="getFloors" class="hotel-map row flex-1">
+            <div
+                slot-scope="{ data: { floors } }"
+                class="col m-2 p-3 bg-white rounded shadow-sm overflow-auto"
+            >
                 <div
                     v-for="floor in floorsFilter(floors)"
                     :key="floor.id"
@@ -78,7 +77,7 @@ import { mixinData } from '~/components/mixins/mutable';
 import { GetFloors } from '~/graphql/types';
 
 @Component({
-    name: 'floor-room-',
+    name: 'room-kind-',
     mixins: [mixinData({ getFloors })],
 })
 export default class extends Vue {

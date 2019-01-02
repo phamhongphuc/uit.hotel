@@ -52,6 +52,7 @@ export default {
         { src: '~/plugins/notify', ssr: false },
         { src: '~/plugins/global', ssr: false },
         { src: '~/plugins/component' },
+        { src: '~/plugins/vuelidate' },
     ],
     apollo: {
         clientConfigs: {
