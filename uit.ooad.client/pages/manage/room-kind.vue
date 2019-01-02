@@ -1,84 +1,104 @@
 <template>
-    <div>
+    <div @contextmenu.prevent="tableContext">
         <div class="row">
             <b-button
                 class="m-2"
                 variant="white"
-                @click="$refs.floor_add.open()"
+                @click="$refs.room_kind_add.open()"
             >
                 <span class="icon"></span>
-                <span>Thêm tầng mới</span>
+                <span>Thêm loại phòng mới</span>
             </b-button>
             <b-button
                 class="m-2 ml-auto"
                 variant="white"
-                @click="showDisable = !showDisable"
+                @click="showInactive = !showInactive"
             >
-                <span class="icon mr-1">{{ showDisable ? '' : '' }}</span>
+                <span class="icon mr-1">{{ showInactive ? '' : '' }}</span>
                 <span>
                     {{
                         `Đang ${
-                            showDisable ? 'hiện' : 'ẩn'
-                        } phòng và tầng đã bị vô hiệu hóa`
+                            showInactive ? 'hiện' : 'ẩn'
+                        } loại phòng đã bị vô hiệu hóa`
                     }}
                 </span>
             </b-button>
         </div>
-        <query- :query="getFloors" class="hotel-map row flex-1">
-            <div
-                slot-scope="{ data: { floors } }"
-                class="col m-2 p-3 bg-white rounded shadow-sm overflow-auto"
+        <query-
+            :query="getRoomKinds"
+            class="hotel-map row"
+            child-class="col m-2 p-0 bg-white rounded shadow-sm overflow-auto"
+        >
+            <b-table
+                slot-scope="{ data: { roomKinds } }"
+                class="table-style"
+                :items="roomKindsFilter(roomKinds)"
+                :fields="[
+                    {
+                        key: 'index',
+                        label: '#',
+                        class: 'table-cell-id text-center',
+                        sortable: true,
+                    },
+                    {
+                        key: 'name',
+                        label: 'Tên loại phòng',
+                        tdClass: (value, key, row) => {
+                            if (!row.isActive)
+                                return 'table-cell-disable w-100';
+                            return 'w-100';
+                        },
+                        sortable: true,
+                    },
+                    {
+                        key: 'rooms',
+                        label: 'Số phòng',
+                        tdClass: 'text-center',
+                        sortable: true,
+                    },
+                    {
+                        key: 'numberOfBeds',
+                        label: 'Số giường',
+                        tdClass: 'text-right',
+                    },
+                    {
+                        key: 'amountOfPeople',
+                        label: 'Số người tối đa',
+                        tdClass: 'text-right',
+                    },
+                ]"
+                @row-clicked="
+                    (roomKind, $index, $event) => {
+                        $event.stopPropagation();
+                        $refs.context_room_kind.open(currentEvent || $event, {
+                            roomKind,
+                        });
+                        currentEvent = null;
+                    }
+                "
             >
-                <div
-                    v-for="floor in floorsFilter(floors)"
-                    :key="floor.id"
-                    class="d-flex flex-nowrap"
-                >
-                    <b-button
-                        :variant="floor.isActive ? 'main' : 'gray'"
-                        @contextmenu.prevent="
-                            $refs.context_floor.open($event, {
-                                floors: floors,
-                                floor,
-                            })
-                        "
-                    >
-                        Tầng {{ floor.name }}
-                    </b-button>
-                    <b-button
-                        v-for="room in roomsFilter(floor.rooms)"
-                        :key="room.id"
-                        :variant="room.isActive ? 'blue' : 'gray'"
-                        @contextmenu.prevent="
-                            $refs.context_room.open($event, {
-                                room,
-                                floor,
-                                floors,
-                            })
-                        "
-                    >
-                        {{ room.name }}
-                    </b-button>
-                </div>
-            </div>
+                <template slot="index" slot-scope="data">
+                    {{ data.index + 1 }}
+                </template>
+                <template slot="rooms" slot-scope="{ value }" class="wtf">
+                    {{ value.length }} phòng
+                </template>
+            </b-table>
         </query->
-        <context-manage-room- ref="context_room" :refs="$refs" />
-        <context-manage-floor- ref="context_floor" :refs="$refs" />
-        <popup-room-add- ref="room_add" />
-        <popup-room-update- ref="room_update" />
-        <popup-floor-add- ref="floor_add" />
-        <popup-floor-update- ref="floor_update" />
+        <context-manage-room-kind- ref="context_room_kind" :refs="$refs" />
+        <popup-room-kind-add- ref="room_kind_add" />
+        <popup-room-kind-update- ref="room_kind_update" />
     </div>
 </template>
 <script lang="ts">
 import { Vue, Component } from 'nuxt-property-decorator';
-import { getFloors } from '~/graphql/documents/floor';
+import { getRoomKinds } from '~/graphql/documents/room-kind';
 import { mixinData } from '~/components/mixins/mutable';
-import { GetFloors } from '~/graphql/types';
+import { GetRoomKinds } from '~/graphql/types';
 
 @Component({
-    name: 'room-kind-',
-    mixins: [mixinData({ getFloors })],
+    name: 'floor-room-',
+    mixins: [mixinData({ getRoomKinds })],
 })
 export default class extends Vue {
     head() {
@@ -87,17 +107,31 @@ export default class extends Vue {
         };
     }
 
-    floorsFilter(floors: GetFloors.Floors[]): GetFloors.Floors[] {
-        if (this.showDisable) return floors;
-        return floors.filter(f => f.isActive);
+    roomKindsFilter(
+        roomKinds: GetRoomKinds.RoomKinds[],
+    ): GetRoomKinds.RoomKinds[] {
+        if (this.showInactive) return roomKinds;
+        return roomKinds.filter(rk => rk.isActive);
     }
 
-    roomsFilter(rooms: GetFloors.Rooms[]): GetFloors.Rooms[] {
-        if (this.showDisable) return rooms;
-        return rooms.filter(r => r.isActive);
+    // roomsFilter(rooms: GetFloors.Rooms[]): GetFloors.Rooms[] {
+    //     if (this.showInactive) return rooms;
+    //     return rooms.filter(r => r.isActive);
+    // }
+
+    tableContext(event: MouseEvent) {
+        const tr = (event.target as HTMLElement).closest('tr');
+        if (tr !== null) {
+            this.currentEvent = event;
+            tr.click();
+        }
     }
 
-    showDisable: boolean = false;
+    currentEvent: MouseEvent | null = null;
+
+    showInactive: boolean = false;
+
+    console = console;
 }
 </script>
 <style lang="scss">
