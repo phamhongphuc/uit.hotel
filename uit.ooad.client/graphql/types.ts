@@ -218,8 +218,6 @@ export interface RoomKindCreateInput {
     numberOfBeds: number;
     /** Số người trong một phòng */
     amountOfPeople: number;
-    /** Giá theo ngày */
-    priceByDate: number;
 }
 /** Input cho một thông tin dịch vụ cần tạo mới */
 export interface ServiceCreateInput {
@@ -436,8 +434,6 @@ export interface RoomKindUpdateInput {
     numberOfBeds: number;
     /** Số người trong một phòng */
     amountOfPeople: number;
-    /** Giá theo ngày */
-    priceByDate: number;
 }
 /** Input cho một thông tin dịch vụ cần cập nhật */
 export interface ServiceUpdateInput {
@@ -701,6 +697,87 @@ export namespace GetRoomKinds {
         name: string;
 
         isActive: boolean;
+
+        amountOfPeople: number;
+
+        numberOfBeds: number;
+
+        rooms: Maybe<(Maybe<Rooms>)[]>;
+    };
+
+    export type Rooms = {
+        __typename?: 'Room';
+
+        id: number;
+    };
+}
+
+export namespace CreateRoomKind {
+    export type Variables = {
+        input: RoomKindCreateInput;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        createRoomKind: CreateRoomKind;
+    };
+
+    export type CreateRoomKind = {
+        __typename?: 'RoomKind';
+
+        id: number;
+
+        name: string;
+
+        numberOfBeds: number;
+
+        amountOfPeople: number;
+
+        isActive: boolean;
+    };
+}
+
+export namespace UpdateRoomKind {
+    export type Variables = {
+        input: RoomKindUpdateInput;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        updateRoomKind: UpdateRoomKind;
+    };
+
+    export type UpdateRoomKind = {
+        __typename?: 'RoomKind';
+
+        id: number;
+    };
+}
+
+export namespace DeleteRoomKind {
+    export type Variables = {
+        id: string;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        deleteRoomKind: string;
+    };
+}
+
+export namespace SetIsActiveRoomKind {
+    export type Variables = {
+        id: string;
+        isActive: boolean;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        setIsActiveRoomKind: string;
     };
 }
 
