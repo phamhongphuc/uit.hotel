@@ -10,24 +10,64 @@
                 },
             }"
         >
-            <div class="input-label">Tên vị trí</div>
-            <b-input-
-                ref="autoFocus"
-                v-model="positionName"
-                :state="!$v.positionName.$invalid"
-                class="m-3 rounded"
-                icon=""
-            />
-            <div class="input-label">Quyền</div>
-            <b-form-checkbox-group
-                v-model="selected"
-                class="m-3"
-                buttons
-                stacked
-                size="sm"
-                button-variant="main"
-                :options="positionOptions"
-            />
+            <div class="d-flex">
+                <div>
+                    <div class="input-label">Tên vị trí</div>
+                    <b-input-
+                        ref="autoFocus"
+                        v-model="positionName"
+                        :state="!$v.positionName.$invalid"
+                        class="m-3 rounded"
+                        icon=""
+                    />
+                    <div class="input-label">
+                        Nhóm quyền của nhân viên kinh doanh
+                    </div>
+                    <b-form-checkbox-group
+                        v-model="selected"
+                        class="h-auto m-3"
+                        stacked
+                        size="sm"
+                        button-variant="white"
+                        :options="positionOptionsBusiness"
+                    />
+                    <div class="input-label">
+                        Nhóm quyền của nhân viên hành chính
+                    </div>
+                    <b-form-checkbox-group
+                        v-model="selected"
+                        class="h-auto m-3"
+                        stacked
+                        size="sm"
+                        button-variant="white"
+                        :options="positionOptionsAdministrative"
+                    />
+                </div>
+                <div>
+                    <div class="input-label">
+                        Nhóm quyền của nhân viên lễ tân
+                    </div>
+                    <b-form-checkbox-group
+                        v-model="selected"
+                        class="h-auto m-3"
+                        stacked
+                        size="sm"
+                        button-variant="white"
+                        :options="positionOptionsReceptionist"
+                    />
+                    <div class="input-label">
+                        Nhóm quyền của nhân viên dọn dẹp
+                    </div>
+                    <b-form-checkbox-group
+                        v-model="selected"
+                        class="h-auto m-3"
+                        stacked
+                        size="sm"
+                        button-variant="white"
+                        :options="positionOptionsHouseKeeping"
+                    />
+                </div>
+            </div>
             <div class="m-3">
                 <b-button
                     class="ml-auto"
@@ -46,9 +86,16 @@
 <script lang="ts">
 import { Component } from 'nuxt-property-decorator';
 import { PopupMixin } from '~/components/mixins/popup';
-import { createPosition, positionOptions } from '~/graphql/documents/position';
+import {
+    createPosition,
+    positionOptionsAdministrative,
+    positionOptionsBusiness,
+    positionOptionsReceptionist,
+    positionOptionsHouseKeeping,
+} from '~/graphql/documents/position';
 import { mixinData } from '~/components/mixins/mutable';
 import { required } from 'vuelidate/lib/validators';
+import { CheckboxOption } from '~/utils/components';
 
 @Component({
     mixins: [PopupMixin, mixinData({ createPosition })],
@@ -63,7 +110,17 @@ export default class extends PopupMixin {
     positionName: string = '';
     selected = [];
 
-    positionOptions = positionOptions;
+    positionOptionsAdministrative: CheckboxOption[] = [];
+    positionOptionsBusiness: CheckboxOption[] = [];
+    positionOptionsReceptionist: CheckboxOption[] = [];
+    positionOptionsHouseKeeping: CheckboxOption[] = [];
+
+    mounted() {
+        this.positionOptionsAdministrative = positionOptionsAdministrative;
+        this.positionOptionsBusiness = positionOptionsBusiness;
+        this.positionOptionsReceptionist = positionOptionsReceptionist;
+        this.positionOptionsHouseKeeping = positionOptionsHouseKeeping;
+    }
 
     onOpen() {
         this.positionName = '';

@@ -21,6 +21,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+    user-select: none;
     > main {
         display: flex;
         flex: 1;
