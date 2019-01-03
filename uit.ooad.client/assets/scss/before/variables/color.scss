@@ -12,6 +12,7 @@ $body-bg: #f2f2f2;
 $body-color: lighten(#212529, 25%);
 $gray: #f5f6fa;
 $blue: #507af2;
+$light-blue: #e6efff;
 $red: #eb4d4b;
 
 $black: black;
@@ -24,6 +25,7 @@ $theme-colors: (
     'white': $white,
     'black': $black,
     'blue': $blue,
+    'light-blue': $light-blue,
     'gray': $gray,
     'dribbble': $dribbble,
     'facebook': $facebook,

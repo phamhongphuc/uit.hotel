@@ -49,7 +49,7 @@
                     <b-button
                         v-for="room in roomsFilter(floor.rooms)"
                         :key="room.id"
-                        :variant="room.isActive ? 'blue' : 'gray'"
+                        :variant="room.isActive ? 'light-blue' : 'gray'"
                         @contextmenu.prevent="
                             $refs.context_room.open($event, {
                                 room,

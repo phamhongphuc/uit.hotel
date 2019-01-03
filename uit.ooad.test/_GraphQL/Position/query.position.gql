@@ -7,7 +7,6 @@ query($id: ID!) {
         permissionGetHouseKeeping
         permissionGetMap
         permissionGetPatron
-        permissionGetPosition
         permissionGetRate
         permissionGetService
         permissionManageEmployee

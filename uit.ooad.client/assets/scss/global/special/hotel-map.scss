@@ -8,7 +8,8 @@
         text-overflow: ellipsis;
         white-space: nowrap;
         height: 5rem;
-        &.btn-blue {
+
+        &.btn-light-blue {
             color: $blue;
             border-color: rgba($blue, 0.5);
         }

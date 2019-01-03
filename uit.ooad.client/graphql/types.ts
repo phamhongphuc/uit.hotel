@@ -125,8 +125,6 @@ export interface PositionCreateInput {
     permissionGetMap: boolean;
     /** Quyền lấy thông tin khách hàng */
     permissionGetPatron: boolean;
-    /** Quyền lấy thông tin chức vụ */
-    permissionGetPosition: boolean;
     /** Quyền lấy thông tin giá cơ bản và giá biến động */
     permissionGetRate: boolean;
     /** Quyền lấy thông tin dịch vụ */
@@ -143,8 +141,6 @@ export interface PositionCreateInput {
     permissionManagePosition: boolean;
     /** Quyền quản lý giá cơ bản và giá biến động */
     permissionManageRate: boolean;
-    /** Quyền quản lý loại phòng */
-    permissionManageRoomKind: boolean;
     /** Quyền quản lý dịch vụ */
     permissionManageService: boolean;
     /** Quyền chỉnh sửa sơ đồ */
@@ -353,8 +349,6 @@ export interface PositionUpdateInput {
     permissionGetHouseKeeping: boolean;
     /** Quyền lấy thông tin khách hàng */
     permissionGetPatron: boolean;
-    /** Quyền lấy thông tin chức vụ */
-    permissionGetPosition: boolean;
     /** Quyền lấy thông tin giá cơ bản và giá biến động */
     permissionGetRate: boolean;
     /** Quyền lấy thông tin dịch vụ */
@@ -365,6 +359,8 @@ export interface PositionUpdateInput {
     permissionManageEmployee: boolean;
     /** Quyền quản lý thuê phòng */
     permissionManageHiringRoom: boolean;
+    /** Quyền chỉnh sửa sơ đồ */
+    permissionManageMap: boolean;
     /** Quyền quản lý khách hàng */
     permissionManagePatron: boolean;
     /** Quyền quản lý loại khách hàng */
@@ -373,12 +369,8 @@ export interface PositionUpdateInput {
     permissionManagePosition: boolean;
     /** Quyền quản lý giá cơ bản và giá biến động */
     permissionManageRate: boolean;
-    /** Quyền quản lý loại phòng */
-    permissionManageRoomKind: boolean;
     /** Quyền quản lý dịch vụ */
     permissionManageService: boolean;
-    /** Quyền chỉnh sửa sơ đồ */
-    permissionManageMap: boolean;
 }
 
 export interface RateUpdateInput {
@@ -888,8 +880,6 @@ export namespace GetPositions {
 
         permissionGetPatron: boolean;
 
-        permissionGetPosition: boolean;
-
         permissionGetRate: boolean;
 
         permissionGetService: boolean;
@@ -897,6 +887,8 @@ export namespace GetPositions {
         permissionManageEmployee: boolean;
 
         permissionManageHiringRoom: boolean;
+
+        permissionManageMap: boolean;
 
         permissionManagePatron: boolean;
 
@@ -906,11 +898,7 @@ export namespace GetPositions {
 
         permissionManageRate: boolean;
 
-        permissionManageRoomKind: boolean;
-
         permissionManageService: boolean;
-
-        permissionManageMap: boolean;
 
         isActive: boolean;
 

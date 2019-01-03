@@ -21,7 +21,6 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.PermissionGetHouseKeeping).Description("Quyền tra cứu lịch sử dọn phòng");
             Field(x => x.PermissionGetMap).Description("Quyền lấy thông tin tầng, phòng");
             Field(x => x.PermissionGetPatron).Description("Quyền lấy thông tin khách hàng");
-            Field(x => x.PermissionGetPosition).Description("Quyền lấy thông tin chức vụ");
             Field(x => x.PermissionGetRate).Description("Quyền lấy thông tin giá cơ bản và giá biến động");
             Field(x => x.PermissionGetService).Description("Quyền lấy thông tin dịch vụ");
 
@@ -65,7 +64,6 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.PermissionGetHouseKeeping).Description("Quyền tra cứu lịch sử dọn phòng");
             Field(x => x.PermissionGetMap).Description("Quyền lấy thông tin tầng, phòng");
             Field(x => x.PermissionGetPatron).Description("Quyền lấy thông tin khách hàng");
-            Field(x => x.PermissionGetPosition).Description("Quyền lấy thông tin chức vụ");
             Field(x => x.PermissionGetRate).Description("Quyền lấy thông tin giá cơ bản và giá biến động");
             Field(x => x.PermissionGetService).Description("Quyền lấy thông tin dịch vụ");
 
@@ -92,7 +90,6 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.PermissionGetMap).Description("Quyền lấy thông tin tầng, phòng");
             Field(x => x.PermissionGetHouseKeeping).Description("Quyền tra cứu lịch sử dọn phòng");
             Field(x => x.PermissionGetPatron).Description("Quyền lấy thông tin khách hàng");
-            Field(x => x.PermissionGetPosition).Description("Quyền lấy thông tin chức vụ");
             Field(x => x.PermissionGetRate).Description("Quyền lấy thông tin giá cơ bản và giá biến động");
             Field(x => x.PermissionGetService).Description("Quyền lấy thông tin dịch vụ");
             Field(x => x.PermissionGetAccountingVoucher).Description("Quyền lấy thông tin các chứng từ (hóa đơn, phiếu thu)");

@@ -1875,22 +1875,6 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "permissionGetPosition",
-                        "description": "Quyền lấy thông tin chức vụ",
-                        "args": [],
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Boolean",
-                                "ofType": null
-                            }
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
                         "name": "permissionGetRate",
                         "description": "Quyền lấy thông tin giá cơ bản và giá biến động",
                         "args": [],
@@ -2021,22 +2005,6 @@
                     {
                         "name": "permissionManageRate",
                         "description": "Quyền quản lý giá cơ bản và giá biến động",
-                        "args": [],
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Boolean",
-                                "ofType": null
-                            }
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "permissionManageRoomKind",
-                        "description": "Quyền quản lý loại phòng",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -6133,20 +6101,6 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "permissionGetPosition",
-                        "description": "Quyền lấy thông tin chức vụ",
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Boolean",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
                         "name": "permissionGetRate",
                         "description": "Quyền lấy thông tin giá cơ bản và giá biến động",
                         "type": {
@@ -6247,20 +6201,6 @@
                     {
                         "name": "permissionManageRate",
                         "description": "Quyền quản lý giá cơ bản và giá biến động",
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Boolean",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "permissionManageRoomKind",
-                        "description": "Quyền quản lý loại phòng",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -7596,20 +7536,6 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "permissionGetPosition",
-                        "description": "Quyền lấy thông tin chức vụ",
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Boolean",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
                         "name": "permissionGetRate",
                         "description": "Quyền lấy thông tin giá cơ bản và giá biến động",
                         "type": {
@@ -7680,6 +7606,20 @@
                         "defaultValue": null
                     },
                     {
+                        "name": "permissionManageMap",
+                        "description": "Quyền chỉnh sửa sơ đồ",
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Boolean",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
                         "name": "permissionManagePatron",
                         "description": "Quyền quản lý khách hàng",
                         "type": {
@@ -7736,36 +7676,8 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "permissionManageRoomKind",
-                        "description": "Quyền quản lý loại phòng",
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Boolean",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
                         "name": "permissionManageService",
                         "description": "Quyền quản lý dịch vụ",
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Boolean",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "permissionManageMap",
-                        "description": "Quyền chỉnh sửa sơ đồ",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
