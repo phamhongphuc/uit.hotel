@@ -27,7 +27,6 @@ namespace uit.ooad.DataAccesses
             {
                 positionInDatabase.PermissionManageMap = position.PermissionManageMap;
                 positionInDatabase.PermissionGetMap = position.PermissionGetMap;
-                positionInDatabase.PermissionManageRoomKind = position.PermissionManageRoomKind;
                 positionInDatabase.PermissionGetMap = position.PermissionGetMap;
                 positionInDatabase.PermissionManageRate = position.PermissionManageRate;
                 positionInDatabase.PermissionGetRate = position.PermissionGetRate;

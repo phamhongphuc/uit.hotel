@@ -15,7 +15,7 @@ namespace uit.ooad.Queries.Mutation
                 "Tạo và trả về một loại phòng",
                 _InputArgument<RoomKindCreateInput>(),
                 _CheckPermission_TaskObject(
-                    p => p.PermissionManageRoomKind,
+                    p => p.PermissionManageMap,
                     context => RoomKindBusiness.Add(_GetInput(context))
                 )
             );
@@ -25,7 +25,7 @@ namespace uit.ooad.Queries.Mutation
                 "Cập nhật và trả về loại phòng vừa cập nhật",
                 _InputArgument<RoomKindUpdateInput>(),
                 _CheckPermission_TaskObject(
-                    p => p.PermissionManageRoomKind,
+                    p => p.PermissionManageMap,
                     context => RoomKindBusiness.Update(_GetInput(context))
                 )
             );
@@ -35,7 +35,7 @@ namespace uit.ooad.Queries.Mutation
                 "Xóa một loại phòng",
                 _IdArgument(),
                 _CheckPermission_String(
-                    p => p.PermissionManageRoomKind,
+                    p => p.PermissionManageMap,
                     context =>
                     {
                         RoomKindBusiness.Delete(_GetId<int>(context));
@@ -52,7 +52,7 @@ namespace uit.ooad.Queries.Mutation
                     new QueryArgument<NonNullGraphType<BooleanGraphType>> { Name = "isActive" }
                 ),
                 _CheckPermission_String(
-                    p => p.PermissionManageRoomKind,
+                    p => p.PermissionManageMap,
                     context =>
                     {
                         var id = context.GetArgument<int>("id");

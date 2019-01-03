@@ -12,12 +12,11 @@
         "permissionGetService": true,
         "permissionManageEmployee": true,
         "permissionManageHiringRoom": false,
+        "permissionManageMap": true,
         "permissionManagePatron": true,
         "permissionManagePatronKind": true,
         "permissionManagePosition": true,
         "permissionManageRate": true,
-        "permissionManageRoomKind": true,
-        "permissionManageService": true,
-        "permissionManageMap": true
+        "permissionManageService": true
     }
 }
