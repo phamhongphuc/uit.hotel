@@ -17,7 +17,6 @@
         "permissionManagePosition": true,
         "permissionGetPosition": true,
         "permissionManageEmployee": true,
-        "permissionManageAccount": true,
         "permissionManageService": true,
         "permissionGetService": true,
         "permissionGetVoucher": true

@@ -18,7 +18,6 @@ mutation($input: PositionUpdateInput!) {
         permissionManagePosition
         permissionGetPosition
         permissionManageEmployee
-        permissionManageAccount
         permissionManageService
         permissionGetService
         permissionGetVoucher

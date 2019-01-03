@@ -41,7 +41,6 @@ namespace uit.ooad.DataAccesses
                 positionInDatabase.PermissionManagePosition = position.PermissionManagePosition;
                 positionInDatabase.PermissionGetPosition = position.PermissionGetPosition;
                 positionInDatabase.PermissionManageEmployee = position.PermissionManageEmployee;
-                positionInDatabase.PermissionManageAccount = position.PermissionManageAccount;
                 positionInDatabase.PermissionManageService = position.PermissionManageService;
                 positionInDatabase.PermissionGetService = position.PermissionGetService;
                 positionInDatabase.PermissionGetVoucher = position.PermissionGetVoucher;

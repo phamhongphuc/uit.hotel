@@ -28,7 +28,6 @@
                         "permissionManagePosition",
                         "permissionGetPosition",
                         "permissionManageEmployee",
-                        "permissionManageAccount",
                         "permissionManageService",
                         "permissionGetService",
                         "permissionGetVoucher"
@@ -87,9 +86,6 @@
                             "type": "boolean"
                         },
                         "permissionManageEmployee": {
-                            "type": "boolean"
-                        },
-                        "permissionManageAccount": {
                             "type": "boolean"
                         },
                         "permissionManageService": {

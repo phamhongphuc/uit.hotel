@@ -65,7 +65,6 @@ namespace uit.ooad.Queries.Helper
                 PermissionManagePosition = true,
                 PermissionGetPosition = true,
                 PermissionManageEmployee = true,
-                PermissionManageAccount = true,
                 PermissionManageService = true,
                 PermissionGetService = true,
                 PermissionGetVoucher = true
