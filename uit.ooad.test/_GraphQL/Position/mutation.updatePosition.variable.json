@@ -13,7 +13,6 @@
         "permissionManagePatron": true,
         "permissionGetPatron": true,
         "permissionManagePatronKind": true,
-        "permissionGetPatronKind": true,
         "permissionManagePosition": true,
         "permissionGetPosition": true,
         "permissionManageEmployee": true,

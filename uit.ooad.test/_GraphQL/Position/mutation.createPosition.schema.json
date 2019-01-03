@@ -23,7 +23,6 @@
                         "permissionManagePatron",
                         "permissionGetPatron",
                         "permissionManagePatronKind",
-                        "permissionGetPatronKind",
                         "permissionManagePosition",
                         "permissionGetPosition",
                         "permissionManageEmployee",
@@ -70,9 +69,6 @@
                             "type": "boolean"
                         },
                         "permissionManagePatronKind": {
-                            "type": "boolean"
-                        },
-                        "permissionGetPatronKind": {
                             "type": "boolean"
                         },
                         "permissionManagePosition": {

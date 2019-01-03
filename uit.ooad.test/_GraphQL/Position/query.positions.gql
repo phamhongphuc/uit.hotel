@@ -13,7 +13,6 @@
         permissionManagePatron
         permissionGetPatron
         permissionManagePatronKind
-        permissionGetPatronKind
         permissionManagePosition
         permissionGetPosition
         permissionManageEmployee

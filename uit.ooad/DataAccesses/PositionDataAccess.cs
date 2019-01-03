@@ -37,7 +37,6 @@ namespace uit.ooad.DataAccesses
                 positionInDatabase.PermissionManagePatron = position.PermissionManagePatron;
                 positionInDatabase.PermissionGetPatron = position.PermissionGetPatron;
                 positionInDatabase.PermissionManagePatronKind = position.PermissionManagePatronKind;
-                positionInDatabase.PermissionGetPatronKind = position.PermissionGetPatronKind;
                 positionInDatabase.PermissionManagePosition = position.PermissionManagePosition;
                 positionInDatabase.PermissionGetPosition = position.PermissionGetPosition;
                 positionInDatabase.PermissionManageEmployee = position.PermissionManageEmployee;

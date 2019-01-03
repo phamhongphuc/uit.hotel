@@ -54,7 +54,6 @@ namespace uit.ooad.Queries.Helper
                 PermissionGetHouseKeeping = true,
                 PermissionGetMap = true,
                 PermissionGetPatron = true,
-                PermissionGetPatronKind = true,
                 PermissionGetPosition = true,
                 PermissionGetRate = true,
                 PermissionGetService = true,

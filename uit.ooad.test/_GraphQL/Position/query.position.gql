@@ -13,7 +13,6 @@ query($id: ID!) {
         permissionManagePatron
         permissionGetPatron
         permissionManagePatronKind
-        permissionGetPatronKind
         permissionManagePosition
         permissionGetPosition
         permissionManageEmployee
