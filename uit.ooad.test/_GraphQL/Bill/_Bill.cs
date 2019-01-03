@@ -13,7 +13,7 @@ namespace uit.ooad.test._GraphQL._Bill
                 @"/_GraphQL/Bill/query.bills.gql",
                 @"/_GraphQL/Bill/query.bills.schema.json",
                 null,
-                p => p.PermissionGetVoucher = true
+                p => p.PermissionGetAccountingVoucher = true
             );
         }
 
@@ -24,7 +24,7 @@ namespace uit.ooad.test._GraphQL._Bill
                 @"/_GraphQL/Bill/query.bill.gql",
                 @"/_GraphQL/Bill/query.bill.schema.json",
                 @"/_GraphQL/Bill/query.bill.variable.json",
-                p => p.PermissionGetVoucher = true
+                p => p.PermissionGetAccountingVoucher = true
             );
         }
 

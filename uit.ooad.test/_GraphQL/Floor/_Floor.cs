@@ -13,7 +13,7 @@ namespace uit.ooad.test._GraphQL._Floor
                 @"/_GraphQL/Floor/query.floors.gql",
                 @"/_GraphQL/Floor/query.floors.schema.json",
                 null,
-                p => p.PermissionGetGroundPlan = true
+                p => p.PermissionGetMap = true
             );
         }
 
@@ -24,7 +24,7 @@ namespace uit.ooad.test._GraphQL._Floor
                 @"/_GraphQL/Floor/query.floor.gql",
                 @"/_GraphQL/Floor/query.floor.schema.json",
                 @"/_GraphQL/Floor/query.floor.variable.json",
-                p => p.PermissionGetGroundPlan = true
+                p => p.PermissionGetMap = true
             );
         }
 

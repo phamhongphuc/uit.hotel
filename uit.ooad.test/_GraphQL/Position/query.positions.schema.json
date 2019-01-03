@@ -15,9 +15,8 @@
                             "id",
                             "name",
                             "permissionUpdateGroundPlan",
-                            "permissionGetGroundPlan",
+                            "permissionGetMap",
                             "permissionManageRoomKind",
-                            "permissionGetRoomKind",
                             "permissionManageRate",
                             "permissionGetRate",
                             "permissionGetHouseKeeping",
@@ -32,7 +31,7 @@
                             "permissionManageEmployee",
                             "permissionManageService",
                             "permissionGetService",
-                            "permissionGetVoucher"
+                            "permissionGetAccountingVoucher"
                         ],
                         "properties": {
                             "id": {
@@ -45,13 +44,10 @@
                             "permissionUpdateGroundPlan": {
                                 "type": "boolean"
                             },
-                            "permissionGetGroundPlan": {
+                            "permissionGetMap": {
                                 "type": "boolean"
                             },
                             "permissionManageRoomKind": {
-                                "type": "boolean"
-                            },
-                            "permissionGetRoomKind": {
                                 "type": "boolean"
                             },
                             "permissionManageRate": {
@@ -96,7 +92,7 @@
                             "permissionGetService": {
                                 "type": "boolean"
                             },
-                            "permissionGetVoucher": {
+                            "permissionGetAccountingVoucher": {
                                 "type": "boolean"
                             }
                         }

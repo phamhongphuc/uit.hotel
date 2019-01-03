@@ -14,7 +14,7 @@ namespace uit.ooad.Queries.Query
                 _List,
                 "Trả về một danh sách các phòng",
                 resolve: _CheckPermission_List(
-                    p => p.PermissionGetGroundPlan,
+                    p => p.PermissionGetMap,
                     context => RoomBusiness.Get()
                 )
             );
@@ -24,7 +24,7 @@ namespace uit.ooad.Queries.Query
                 "Trả về thông tin của một phòng",
                 _IdArgument(),
                 _CheckPermission_Object(
-                    p => p.PermissionGetGroundPlan,
+                    p => p.PermissionGetMap,
                     context => RoomBusiness.Get(_GetId<int>(context))
                 )
             );

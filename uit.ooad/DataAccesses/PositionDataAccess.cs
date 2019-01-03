@@ -26,9 +26,9 @@ namespace uit.ooad.DataAccesses
             await Database.WriteAsync(realm =>
             {
                 positionInDatabase.PermissionUpdateGroundPlan = position.PermissionUpdateGroundPlan;
-                positionInDatabase.PermissionGetGroundPlan = position.PermissionGetGroundPlan;
+                positionInDatabase.PermissionGetMap = position.PermissionGetMap;
                 positionInDatabase.PermissionManageRoomKind = position.PermissionManageRoomKind;
-                positionInDatabase.PermissionGetRoomKind = position.PermissionGetRoomKind;
+                positionInDatabase.PermissionGetMap = position.PermissionGetMap;
                 positionInDatabase.PermissionManageRate = position.PermissionManageRate;
                 positionInDatabase.PermissionGetRate = position.PermissionGetRate;
                 positionInDatabase.PermissionGetHouseKeeping = position.PermissionGetHouseKeeping;
@@ -43,7 +43,7 @@ namespace uit.ooad.DataAccesses
                 positionInDatabase.PermissionManageEmployee = position.PermissionManageEmployee;
                 positionInDatabase.PermissionManageService = position.PermissionManageService;
                 positionInDatabase.PermissionGetService = position.PermissionGetService;
-                positionInDatabase.PermissionGetVoucher = position.PermissionGetVoucher;
+                positionInDatabase.PermissionGetAccountingVoucher = position.PermissionGetAccountingVoucher;
             });
             return positionInDatabase;
         }

@@ -3,9 +3,8 @@
         "id": 2,
         "name": "Tên quyền",
         "permissionUpdateGroundPlan": true,
-        "permissionGetGroundPlan": true,
+        "permissionGetMap": true,
         "permissionManageRoomKind": true,
-        "permissionGetRoomKind": true,
         "permissionManageRate": true,
         "permissionGetRate": true,
         "permissionGetHouseKeeping": true,
@@ -20,6 +19,6 @@
         "permissionManageEmployee": true,
         "permissionManageService": true,
         "permissionGetService": true,
-        "permissionGetVoucher": true
+        "permissionGetAccountingVoucher": true
     }
 }

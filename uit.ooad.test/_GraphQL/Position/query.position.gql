@@ -3,9 +3,8 @@ query($id: ID!) {
         id
         name
         permissionUpdateGroundPlan
-        permissionGetGroundPlan
+        permissionGetMap
         permissionManageRoomKind
-        permissionGetRoomKind
         permissionManageRate
         permissionGetRate
         permissionGetHouseKeeping
@@ -20,6 +19,6 @@ query($id: ID!) {
         permissionManageEmployee
         permissionManageService
         permissionGetService
-        permissionGetVoucher
+        permissionGetAccountingVoucher
     }
 }

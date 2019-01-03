@@ -3,9 +3,8 @@ mutation($input: PositionCreateInput!) {
         id
         name
         permissionUpdateGroundPlan
-        permissionGetGroundPlan
+        permissionGetMap
         permissionManageRoomKind
-        permissionGetRoomKind
         permissionManageRate
         permissionGetRate
         permissionGetHouseKeeping
@@ -20,6 +19,6 @@ mutation($input: PositionCreateInput!) {
         permissionManageEmployee
         permissionManageService
         permissionGetService
-        permissionGetVoucher
+        permissionGetAccountingVoucher
     }
 }
