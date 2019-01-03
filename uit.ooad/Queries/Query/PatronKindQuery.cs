@@ -14,7 +14,7 @@ namespace uit.ooad.Queries.Query
                 _List,
                 "Trả về một danh sách các loại khách hàng có trong hệ thống",
                 resolve: _CheckPermission_List(
-                    p => p.PermissionGetPatronKind,
+                    p => p.PermissionGetPatron,
                     context => PatronKindBusiness.Get()
                 )
             );
@@ -24,7 +24,7 @@ namespace uit.ooad.Queries.Query
                 "Trả về thông tin của một loại khách hàng",
                 _IdArgument(),
                 _CheckPermission_Object(
-                    p => p.PermissionGetPatronKind,
+                    p => p.PermissionGetPatron,
                     context => PatronKindBusiness.Get(_GetId<int>(context))
                 )
             );

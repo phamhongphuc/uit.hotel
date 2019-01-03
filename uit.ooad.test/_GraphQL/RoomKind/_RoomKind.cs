@@ -13,7 +13,7 @@ namespace uit.ooad.test._GraphQL._RoomKind
                 @"/_GraphQL/RoomKind/query.roomKinds.gql",
                 @"/_GraphQL/RoomKind/query.roomKinds.schema.json",
                 null,
-                p => p.PermissionGetRoomKind = true
+                p => p.PermissionGetMap = true
             );
         }
 
@@ -24,7 +24,7 @@ namespace uit.ooad.test._GraphQL._RoomKind
                 @"/_GraphQL/RoomKind/query.roomKind.gql",
                 @"/_GraphQL/RoomKind/query.roomKind.schema.json",
                 @"/_GraphQL/RoomKind/query.roomKind.variable.json",
-                p => p.PermissionGetRoomKind = true
+                p => p.PermissionGetMap = true
             );
         }
 

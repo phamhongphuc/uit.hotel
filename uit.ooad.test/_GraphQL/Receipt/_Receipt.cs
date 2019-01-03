@@ -13,7 +13,7 @@ namespace uit.ooad.test._GraphQL.Receipt
                 @"/_GraphQL/Receipt/query.receipts.gql",
                 @"/_GraphQL/Receipt/query.receipts.schema.json",
                 null,
-                p => p.PermissionGetVoucher = true
+                p => p.PermissionGetAccountingVoucher = true
             );
         }
 
@@ -24,7 +24,7 @@ namespace uit.ooad.test._GraphQL.Receipt
                 @"/_GraphQL/Receipt/query.receipt.gql",
                 @"/_GraphQL/Receipt/query.receipt.schema.json",
                 @"/_GraphQL/Receipt/query.receipt.variable.json",
-                p => p.PermissionGetVoucher = true
+                p => p.PermissionGetAccountingVoucher = true
             );
         }
 

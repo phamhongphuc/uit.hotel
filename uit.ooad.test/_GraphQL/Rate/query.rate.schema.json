@@ -57,7 +57,7 @@
                                 "id",
                                 "name",
                                 "amountOfPeople",
-                                "numberOfBeds",
+                                "numberOfBeds"
                             ],
                             "properties": {
                                 "id": {

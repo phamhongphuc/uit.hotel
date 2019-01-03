@@ -5,29 +5,27 @@ export const getPositions = gql`
         positions {
             id
             name
-            permissionUpdateGroundPlan
-            permissionGetGroundPlan
-            permissionManageRoomKind
-            permissionGetRoomKind
-            permissionManageRate
-            permissionGetRate
-            permissionGetHouseKeeping
             permissionCleaning
+            permissionGetAccountingVoucher
+            permissionGetHouseKeeping
+            permissionGetMap
+            permissionGetPatron
+            permissionGetPosition
+            permissionGetRate
+            permissionGetService
+            permissionManageEmployee
             permissionManageHiringRoom
             permissionManagePatron
-            permissionGetPatron
             permissionManagePatronKind
-            permissionGetPatronKind
             permissionManagePosition
-            permissionGetPosition
-            permissionManageEmployee
-            permissionManageAccount
+            permissionManageRate
+            permissionManageRoomKind
             permissionManageService
-            permissionGetService
-            permissionGetVoucher
+            permissionManageMap
             isActive
             employees {
                 id
+                isActive
             }
         }
     }
@@ -74,3 +72,7 @@ export const setIsActivePositionAndMoveEmployee = gql`
         )
     }
 `;
+
+export const positionOptions = [
+    //
+];

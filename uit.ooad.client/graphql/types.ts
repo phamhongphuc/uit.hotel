@@ -115,46 +115,40 @@ export interface PatronKindCreateInput {
 export interface PositionCreateInput {
     /** Tên chức vụ */
     name: string;
-    /** Quyền chỉnh sửa sơ đồ */
-    permissionUpdateGroundPlan: boolean;
-    /** Quyền lấy thông tin tầng, phòng */
-    permissionGetGroundPlan: boolean;
-    /** Quyền quản lý loại phòng */
-    permissionManageRoomKind: boolean;
-    /** Quyền lấy thông tin loại phòng */
-    permissionGetRoomKind: boolean;
-    /** Quyền quản lý giá cơ bản và giá biến động */
-    permissionManageRate: boolean;
-    /** Quyền lấy thông tin giá cơ bản và giá biến động */
-    permissionGetRate: boolean;
     /** Quyền thao tác dọn phòng */
     permissionCleaning: boolean;
+    /** Quyền lấy thông tin các chứng từ (hóa đơn, phiếu thu) */
+    permissionGetAccountingVoucher: boolean;
     /** Quyền tra cứu lịch sử dọn phòng */
     permissionGetHouseKeeping: boolean;
+    /** Quyền lấy thông tin tầng, phòng */
+    permissionGetMap: boolean;
+    /** Quyền lấy thông tin khách hàng */
+    permissionGetPatron: boolean;
+    /** Quyền lấy thông tin chức vụ */
+    permissionGetPosition: boolean;
+    /** Quyền lấy thông tin giá cơ bản và giá biến động */
+    permissionGetRate: boolean;
+    /** Quyền lấy thông tin dịch vụ */
+    permissionGetService: boolean;
+    /** Quyền quản lý thông tin nhân viên */
+    permissionManageEmployee: boolean;
     /** Quyền quản lý thuê phòng */
     permissionManageHiringRoom: boolean;
     /** Quyền quản lý khách hàng */
     permissionManagePatron: boolean;
-    /** Quyền lấy thông tin khách hàng */
-    permissionGetPatron: boolean;
     /** Quyền quản lý loại khách hàng */
     permissionManagePatronKind: boolean;
-    /** Quyền lấy thông tin loại khách hàng */
-    permissionGetPatronKind: boolean;
     /** Quyền quản lý chức vụ */
     permissionManagePosition: boolean;
-    /** Quyền lấy thông tin chức vụ */
-    permissionGetPosition: boolean;
-    /** Quyền quản lý thông tin nhân viên */
-    permissionManageEmployee: boolean;
-    /** Quyền quản lý tài khoản cá nhân */
-    permissionManageAccount: boolean;
+    /** Quyền quản lý giá cơ bản và giá biến động */
+    permissionManageRate: boolean;
+    /** Quyền quản lý loại phòng */
+    permissionManageRoomKind: boolean;
     /** Quyền quản lý dịch vụ */
     permissionManageService: boolean;
-    /** Quyền lấy thông tin dịch vụ */
-    permissionGetService: boolean;
-    /** Quyền lấy thông tin các chứng từ (hóa đơn, phiếu thu) */
-    permissionGetVoucher: boolean;
+    /** Quyền chỉnh sửa sơ đồ */
+    permissionManageMap: boolean;
 }
 
 export interface RateCreateInput {
@@ -351,46 +345,40 @@ export interface PositionUpdateInput {
     id: number;
     /** Tên chức vụ */
     name: string;
-    /** Quyền chỉnh sửa sơ đồ */
-    permissionUpdateGroundPlan: boolean;
-    /** Quyền lấy thông tin tầng, phòng */
-    permissionGetGroundPlan: boolean;
-    /** Quyền quản lý loại phòng */
-    permissionManageRoomKind: boolean;
-    /** Quyền lấy thông tin loại phòng */
-    permissionGetRoomKind: boolean;
-    /** Quyền quản lý giá cơ bản và giá biến động */
-    permissionManageRate: boolean;
-    /** Quyền lấy thông tin giá cơ bản và giá biến động */
-    permissionGetRate: boolean;
     /** Quyền thao tác dọn phòng */
     permissionCleaning: boolean;
+    /** Quyền lấy thông tin tầng, phòng */
+    permissionGetMap: boolean;
     /** Quyền tra cứu lịch sử dọn phòng */
     permissionGetHouseKeeping: boolean;
+    /** Quyền lấy thông tin khách hàng */
+    permissionGetPatron: boolean;
+    /** Quyền lấy thông tin chức vụ */
+    permissionGetPosition: boolean;
+    /** Quyền lấy thông tin giá cơ bản và giá biến động */
+    permissionGetRate: boolean;
+    /** Quyền lấy thông tin dịch vụ */
+    permissionGetService: boolean;
+    /** Quyền lấy thông tin các chứng từ (hóa đơn, phiếu thu) */
+    permissionGetAccountingVoucher: boolean;
+    /** Quyền quản lý thông tin nhân viên */
+    permissionManageEmployee: boolean;
     /** Quyền quản lý thuê phòng */
     permissionManageHiringRoom: boolean;
     /** Quyền quản lý khách hàng */
     permissionManagePatron: boolean;
-    /** Quyền lấy thông tin khách hàng */
-    permissionGetPatron: boolean;
     /** Quyền quản lý loại khách hàng */
     permissionManagePatronKind: boolean;
-    /** Quyền lấy thông tin loại khách hàng */
-    permissionGetPatronKind: boolean;
     /** Quyền quản lý chức vụ */
     permissionManagePosition: boolean;
-    /** Quyền lấy thông tin chức vụ */
-    permissionGetPosition: boolean;
-    /** Quyền quản lý thông tin nhân viên */
-    permissionManageEmployee: boolean;
-    /** Quyền quản lý tài khoản cá nhân */
-    permissionManageAccount: boolean;
+    /** Quyền quản lý giá cơ bản và giá biến động */
+    permissionManageRate: boolean;
+    /** Quyền quản lý loại phòng */
+    permissionManageRoomKind: boolean;
     /** Quyền quản lý dịch vụ */
     permissionManageService: boolean;
-    /** Quyền lấy thông tin dịch vụ */
-    permissionGetService: boolean;
-    /** Quyền lấy thông tin các chứng từ (hóa đơn, phiếu thu) */
-    permissionGetVoucher: boolean;
+    /** Quyền chỉnh sửa sơ đồ */
+    permissionManageMap: boolean;
 }
 
 export interface RateUpdateInput {
@@ -577,6 +565,118 @@ export namespace UserCheckLogin {
     };
 }
 
+export namespace GetEmployees {
+    export type Variables = {};
+
+    export type Query = {
+        __typename?: 'Query';
+
+        employees: Employees[];
+    };
+
+    export type Employees = {
+        __typename?: 'Employee';
+
+        id: string;
+
+        password: string;
+
+        name: string;
+
+        phoneNumber: string;
+
+        address: string;
+
+        birthdate: DateTimeOffset;
+
+        startingDate: DateTimeOffset;
+
+        isActive: boolean;
+
+        position: Position;
+    };
+
+    export type Position = {
+        __typename?: 'Position';
+
+        id: number;
+    };
+}
+
+export namespace CreateEmployee {
+    export type Variables = {
+        input: EmployeeCreateInput;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        createEmployee: CreateEmployee;
+    };
+
+    export type CreateEmployee = {
+        __typename?: 'Employee';
+
+        id: string;
+    };
+}
+
+export namespace UpdateEmployee {
+    export type Variables = {
+        input: EmployeeUpdateInput;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        updateEmployee: UpdateEmployee;
+    };
+
+    export type UpdateEmployee = {
+        __typename?: 'Employee';
+
+        id: string;
+    };
+}
+
+export namespace ResetPassword {
+    export type Variables = {
+        id: string;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        resetPassword: string;
+    };
+}
+
+export namespace SetIsActiveAccount {
+    export type Variables = {
+        id: string;
+        isActive: boolean;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        setIsActiveAccount: string;
+    };
+}
+
+export namespace ChangePassword {
+    export type Variables = {
+        password: string;
+        newPassword: string;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        changePassword: string;
+    };
+}
+
 export namespace GetFloors {
     export type Variables = {};
 
@@ -677,6 +777,227 @@ export namespace SetIsActiveFloor {
         __typename?: 'Mutation';
 
         setIsActiveFloor: string;
+    };
+}
+
+export namespace GetPatrons {
+    export type Variables = {};
+
+    export type Query = {
+        __typename?: 'Query';
+
+        patrons: Patrons[];
+    };
+
+    export type Patrons = {
+        __typename?: 'Patron';
+
+        id: number;
+
+        identification: string;
+
+        name: string;
+
+        birthdate: DateTimeOffset;
+
+        email: string;
+
+        gender: boolean;
+
+        residence: string;
+
+        domicile: string;
+
+        phoneNumbers: Maybe<(Maybe<string>)[]>;
+
+        nationality: string;
+
+        company: string;
+
+        note: string;
+
+        patronKind: PatronKind;
+    };
+
+    export type PatronKind = {
+        __typename?: 'PatronKind';
+
+        id: number;
+    };
+}
+
+export namespace CreatePatron {
+    export type Variables = {
+        input: PatronCreateInput;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        createPatron: CreatePatron;
+    };
+
+    export type CreatePatron = {
+        __typename?: 'Patron';
+
+        id: number;
+    };
+}
+
+export namespace UpdatePatron {
+    export type Variables = {
+        input: PatronUpdateInput;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        updatePatron: UpdatePatron;
+    };
+
+    export type UpdatePatron = {
+        __typename?: 'Patron';
+
+        id: number;
+    };
+}
+
+export namespace GetPositions {
+    export type Variables = {};
+
+    export type Query = {
+        __typename?: 'Query';
+
+        positions: Positions[];
+    };
+
+    export type Positions = {
+        __typename?: 'Position';
+
+        id: number;
+
+        name: string;
+
+        permissionCleaning: boolean;
+
+        permissionGetAccountingVoucher: boolean;
+
+        permissionGetHouseKeeping: boolean;
+
+        permissionGetMap: boolean;
+
+        permissionGetPatron: boolean;
+
+        permissionGetPosition: boolean;
+
+        permissionGetRate: boolean;
+
+        permissionGetService: boolean;
+
+        permissionManageEmployee: boolean;
+
+        permissionManageHiringRoom: boolean;
+
+        permissionManagePatron: boolean;
+
+        permissionManagePatronKind: boolean;
+
+        permissionManagePosition: boolean;
+
+        permissionManageRate: boolean;
+
+        permissionManageRoomKind: boolean;
+
+        permissionManageService: boolean;
+
+        permissionManageMap: boolean;
+
+        isActive: boolean;
+
+        employees: Maybe<(Maybe<Employees>)[]>;
+    };
+
+    export type Employees = {
+        __typename?: 'Employee';
+
+        id: string;
+
+        isActive: boolean;
+    };
+}
+
+export namespace CreatePosition {
+    export type Variables = {
+        input: PositionCreateInput;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        createPosition: CreatePosition;
+    };
+
+    export type CreatePosition = {
+        __typename?: 'Position';
+
+        id: number;
+    };
+}
+
+export namespace UpdatePosition {
+    export type Variables = {
+        input: PositionUpdateInput;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        updatePosition: UpdatePosition;
+    };
+
+    export type UpdatePosition = {
+        __typename?: 'Position';
+
+        id: number;
+    };
+}
+
+export namespace DeletePosition {
+    export type Variables = {
+        id: string;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        deletePosition: string;
+    };
+}
+
+export namespace SetIsActivePosition {
+    export type Variables = {
+        id: string;
+        isActive: boolean;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        setIsActivePosition: string;
+    };
+}
+
+export namespace SetIsActivePositionAndMoveEmployee {
+    export type Variables = {
+        id: string;
+        newId: string;
+        isActive: boolean;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        setIsActivePositionAndMoveEmployee: string;
     };
 }
 
@@ -839,5 +1160,77 @@ export namespace SetIsActiveRoom {
         __typename?: 'Mutation';
 
         setIsActiveRoom: string;
+    };
+}
+
+export namespace GetServices {
+    export type Variables = {};
+
+    export type Query = {
+        __typename?: 'Query';
+
+        services: Services[];
+    };
+
+    export type Services = {
+        __typename?: 'Service';
+
+        id: number;
+
+        name: string;
+
+        unitRate: number;
+
+        unit: string;
+
+        isActive: boolean;
+    };
+}
+
+export namespace CreateService {
+    export type Variables = {
+        input: ServiceCreateInput;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        createService: CreateService;
+    };
+
+    export type CreateService = {
+        __typename?: 'Service';
+
+        id: number;
+    };
+}
+
+export namespace UpdateService {
+    export type Variables = {
+        input: ServiceUpdateInput;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        updateService: UpdateService;
+    };
+
+    export type UpdateService = {
+        __typename?: 'Service';
+
+        id: number;
+    };
+}
+
+export namespace DeleteService {
+    export type Variables = {
+        id: string;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        deleteService: string;
     };
 }

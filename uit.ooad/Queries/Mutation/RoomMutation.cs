@@ -15,7 +15,7 @@ namespace uit.ooad.Queries.Mutation
                 "Tạo và trả về một phòng mới",
                 _InputArgument<RoomCreateInput>(),
                 _CheckPermission_TaskObject(
-                    p => p.PermissionUpdateGroundPlan,
+                    p => p.PermissionManageMap,
                     context => RoomBusiness.Add(_GetInput(context))
                 )
             );
@@ -25,7 +25,7 @@ namespace uit.ooad.Queries.Mutation
                 "Cập nhật và trả về một phòng vừa cập nhật",
                 _InputArgument<RoomUpdateInput>(),
                 _CheckPermission_TaskObject(
-                    p => p.PermissionUpdateGroundPlan,
+                    p => p.PermissionManageMap,
                     context => RoomBusiness.Update(_GetInput(context))
                 )
             );
@@ -35,7 +35,7 @@ namespace uit.ooad.Queries.Mutation
                 "Xóa một phòng",
                 _IdArgument(),
                 _CheckPermission_String(
-                    p => p.PermissionUpdateGroundPlan,
+                    p => p.PermissionManageMap,
                     context =>
                     {
                         RoomBusiness.Delete(_GetId<int>(context));
@@ -52,7 +52,7 @@ namespace uit.ooad.Queries.Mutation
                     new QueryArgument<NonNullGraphType<BooleanGraphType>> { Name = "isActive" }
                 ),
                 _CheckPermission_String(
-                    p => p.PermissionUpdateGroundPlan,
+                    p => p.PermissionManageMap,
                     context =>
                     {
                         var id = context.GetArgument<int>("id");

@@ -14,7 +14,7 @@ namespace uit.ooad.Queries.Query
                 _List,
                 "Trả về một danh sách các phiếu thu",
                 resolve: _CheckPermission_List(
-                    p => p.PermissionGetVoucher,
+                    p => p.PermissionGetAccountingVoucher,
                     context => ReceiptBusiness.Get()
                 )
             );
@@ -24,7 +24,7 @@ namespace uit.ooad.Queries.Query
                 "Trả về thông tin một phiếu thu",
                 _IdArgument(),
                 _CheckPermission_Object(
-                    p => p.PermissionGetVoucher,
+                    p => p.PermissionGetAccountingVoucher,
                     context => ReceiptBusiness.Get(_GetId<int>(context))
                 )
             );

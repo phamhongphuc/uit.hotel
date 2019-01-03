@@ -12,26 +12,23 @@
                     "required": [
                         "id",
                         "name",
-                        "permissionUpdateGroundPlan",
-                        "permissionGetGroundPlan",
-                        "permissionManageRoomKind",
-                        "permissionGetRoomKind",
-                        "permissionManageRate",
-                        "permissionGetRate",
-                        "permissionGetHouseKeeping",
                         "permissionCleaning",
+                        "permissionGetAccountingVoucher",
+                        "permissionGetHouseKeeping",
+                        "permissionGetMap",
+                        "permissionGetPatron",
+                        "permissionGetPosition",
+                        "permissionGetRate",
+                        "permissionGetService",
+                        "permissionManageEmployee",
                         "permissionManageHiringRoom",
                         "permissionManagePatron",
-                        "permissionGetPatron",
                         "permissionManagePatronKind",
-                        "permissionGetPatronKind",
                         "permissionManagePosition",
-                        "permissionGetPosition",
-                        "permissionManageEmployee",
-                        "permissionManageAccount",
+                        "permissionManageRate",
+                        "permissionManageRoomKind",
                         "permissionManageService",
-                        "permissionGetService",
-                        "permissionGetVoucher"
+                        "permissionManageMap"
                     ],
                     "properties": {
                         "id": {
@@ -41,16 +38,13 @@
                             "type": "string",
                             "pattern": "^(.*)$"
                         },
-                        "permissionUpdateGroundPlan": {
-                            "type": "boolean"
-                        },
-                        "permissionGetGroundPlan": {
+                        "permissionManageMap": {
                             "type": "boolean"
                         },
                         "permissionManageRoomKind": {
                             "type": "boolean"
                         },
-                        "permissionGetRoomKind": {
+                        "permissionGetMap": {
                             "type": "boolean"
                         },
                         "permissionManageRate": {
@@ -77,9 +71,6 @@
                         "permissionManagePatronKind": {
                             "type": "boolean"
                         },
-                        "permissionGetPatronKind": {
-                            "type": "boolean"
-                        },
                         "permissionManagePosition": {
                             "type": "boolean"
                         },
@@ -89,16 +80,13 @@
                         "permissionManageEmployee": {
                             "type": "boolean"
                         },
-                        "permissionManageAccount": {
-                            "type": "boolean"
-                        },
                         "permissionManageService": {
                             "type": "boolean"
                         },
                         "permissionGetService": {
                             "type": "boolean"
                         },
-                        "permissionGetVoucher": {
+                        "permissionGetAccountingVoucher": {
                             "type": "boolean"
                         }
                     }

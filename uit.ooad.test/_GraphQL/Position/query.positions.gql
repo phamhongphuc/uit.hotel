@@ -2,10 +2,9 @@
     positions {
         id
         name
-        permissionUpdateGroundPlan
-        permissionGetGroundPlan
+        permissionManageMap
+        permissionGetMap
         permissionManageRoomKind
-        permissionGetRoomKind
         permissionManageRate
         permissionGetRate
         permissionGetHouseKeeping
@@ -14,13 +13,11 @@
         permissionManagePatron
         permissionGetPatron
         permissionManagePatronKind
-        permissionGetPatronKind
         permissionManagePosition
         permissionGetPosition
         permissionManageEmployee
-        permissionManageAccount
         permissionManageService
         permissionGetService
-        permissionGetVoucher
+        permissionGetAccountingVoucher
     }
 }

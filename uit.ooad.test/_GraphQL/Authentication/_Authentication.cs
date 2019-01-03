@@ -32,8 +32,7 @@ namespace uit.ooad.test._GraphQL._Authentication
             SchemaHelper.Execute(
                 @"/_GraphQL/Authentication/mutation.changePassword.gql",
                 @"/_GraphQL/Authentication/mutation.changePassword.schema.json",
-                @"/_GraphQL/Authentication/mutation.changePassword.variable.json",
-                p => p.PermissionManageAccount = true
+                @"/_GraphQL/Authentication/mutation.changePassword.variable.json"
             );
         }
 
@@ -43,8 +42,7 @@ namespace uit.ooad.test._GraphQL._Authentication
             SchemaHelper.ExecuteAndExpectError(
                 "Mật khẩu không chính xác",
                 @"/_GraphQL/Authentication/mutation.changePassword.gql",
-                @"/_GraphQL/Authentication/mutation.changePassword.variable.in_valid_password.json",
-                p => p.PermissionManageAccount = true
+                @"/_GraphQL/Authentication/mutation.changePassword.variable.in_valid_password.json"
             );
         }
     }

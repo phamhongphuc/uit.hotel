@@ -49,26 +49,23 @@ namespace uit.ooad.Queries.Helper
             PositionBusiness.Add(new Position
             {
                 Name = "Quản trị viên",
-                PermissionUpdateGroundPlan = true,
-                PermissionGetGroundPlan = true,
-                PermissionManageRoomKind = true,
-                PermissionGetRoomKind = true,
-                PermissionManageRate = true,
-                PermissionGetRate = true,
-                PermissionGetHouseKeeping = true,
                 PermissionCleaning = true,
+                PermissionGetAccountingVoucher = true,
+                PermissionGetHouseKeeping = true,
+                PermissionGetMap = true,
+                PermissionGetPatron = true,
+                PermissionGetPosition = true,
+                PermissionGetRate = true,
+                PermissionGetService = true,
+                PermissionManageEmployee = true,
                 PermissionManageHiringRoom = true,
                 PermissionManagePatron = true,
-                PermissionGetPatron = true,
                 PermissionManagePatronKind = true,
-                PermissionGetPatronKind = true,
                 PermissionManagePosition = true,
-                PermissionGetPosition = true,
-                PermissionManageEmployee = true,
-                PermissionManageAccount = true,
+                PermissionManageRate = true,
+                PermissionManageRoomKind = true,
                 PermissionManageService = true,
-                PermissionGetService = true,
-                PermissionGetVoucher = true
+                PermissionManageMap = true,
             });
         }
 

@@ -4,10 +4,10 @@
             <b-button
                 class="m-2"
                 variant="white"
-                @click="$refs.room_kind_add.open()"
+                @click="$refs.position_add.open()"
             >
                 <span class="icon"></span>
-                <span>Thêm loại phòng mới</span>
+                <span>Thêm vị trí mới</span>
             </b-button>
             <b-button
                 class="m-2 ml-auto"
@@ -19,20 +19,20 @@
                     {{
                         `Đang ${
                             showInactive ? 'hiện' : 'ẩn'
-                        } loại phòng đã bị vô hiệu hóa`
+                        } vị trí đã bị vô hiệu hóa`
                     }}
                 </span>
             </b-button>
         </div>
         <query-
-            :query="getRoomKinds"
+            :query="getPositions"
             class="row"
             child-class="col m-2 p-0 bg-white rounded shadow-sm overflow-auto"
         >
             <b-table
-                slot-scope="{ data: { roomKinds } }"
+                slot-scope="{ data: { positions } }"
                 class="table-style"
-                :items="roomKindsFilter(roomKinds)"
+                :items="positionsFilter(positions)"
                 :fields="[
                     {
                         key: 'index',
@@ -42,7 +42,7 @@
                     },
                     {
                         key: 'name',
-                        label: 'Tên loại phòng',
+                        label: 'Tên vị trí',
                         tdClass: (value, key, row) => {
                             if (!row.isActive)
                                 return 'table-cell-disable w-100';
@@ -51,27 +51,29 @@
                         sortable: true,
                     },
                     {
-                        key: 'rooms',
-                        label: 'Số phòng',
+                        key: 'employeesActive',
+                        label: 'Hoạt động',
                         tdClass: 'text-center',
                         sortable: true,
                     },
                     {
-                        key: 'numberOfBeds',
-                        label: 'Số giường',
-                        tdClass: 'text-right',
+                        key: 'employeesInactive',
+                        label: 'Ngưng hoạt động',
+                        tdClass: 'text-center',
+                        sortable: true,
                     },
                     {
-                        key: 'amountOfPeople',
-                        label: 'Số người tối đa',
-                        tdClass: 'text-right',
+                        key: 'employees',
+                        label: 'Tổng cộng',
+                        tdClass: 'text-center',
+                        sortable: true,
                     },
                 ]"
                 @row-clicked="
-                    (roomKind, $index, $event) => {
+                    (position, $index, $event) => {
                         $event.stopPropagation();
-                        $refs.context_room_kind.open(currentEvent || $event, {
-                            roomKind,
+                        $refs.context_position.open(currentEvent || $event, {
+                            position,
                         });
                         currentEvent = null;
                     }
@@ -80,25 +82,31 @@
                 <template slot="index" slot-scope="data">
                     {{ data.index + 1 }}
                 </template>
-                <template slot="rooms" slot-scope="{ value }">
-                    {{ value.length }} phòng
+                <template slot="employeesActive" slot-scope="{ item }">
+                    {{ item.employees.filter(e => e.isActive).length }} người
+                </template>
+                <template slot="employeesInactive" slot-scope="{ item }">
+                    {{ item.employees.filter(e => !e.isActive).length }} người
+                </template>
+                <template slot="employees" slot-scope="{ value }">
+                    {{ value.length }} người
                 </template>
             </b-table>
         </query->
-        <context-manage-room-kind- ref="context_room_kind" :refs="$refs" />
-        <popup-room-kind-add- ref="room_kind_add" />
-        <popup-room-kind-update- ref="room_kind_update" />
+        <!-- <context-manage-position- ref="context_position" :refs="$refs" /> -->
+        <popup-position-add- ref="position_add" />
+        <!-- <popup-position-update- ref="position_update" /> -->
     </div>
 </template>
 <script lang="ts">
 import { Vue, Component } from 'nuxt-property-decorator';
-import { getRoomKinds } from '~/graphql/documents/room-kind';
+import { getPositions } from '~/graphql/documents/position';
 import { mixinData } from '~/components/mixins/mutable';
-import { GetRoomKinds } from '~/graphql/types';
+import { GetPositions } from '~/graphql/types';
 
 @Component({
     name: 'floor-room-',
-    mixins: [mixinData({ getRoomKinds })],
+    mixins: [mixinData({ getPositions })],
 })
 export default class extends Vue {
     head() {
@@ -107,11 +115,11 @@ export default class extends Vue {
         };
     }
 
-    roomKindsFilter(
-        roomKinds: GetRoomKinds.RoomKinds[],
-    ): GetRoomKinds.RoomKinds[] {
-        if (this.showInactive) return roomKinds;
-        return roomKinds.filter(rk => rk.isActive);
+    positionsFilter(
+        positions: GetPositions.Positions[],
+    ): GetPositions.Positions[] {
+        if (this.showInactive) return positions;
+        return positions.filter(rk => rk.isActive);
     }
 
     tableContext(event: MouseEvent) {

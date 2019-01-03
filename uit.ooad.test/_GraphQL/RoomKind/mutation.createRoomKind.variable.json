@@ -2,6 +2,6 @@
     "input": {
         "name": "Loại 2",
         "numberOfBeds": 2,
-        "amountOfPeople": 2,
+        "amountOfPeople": 2
     }
 }
