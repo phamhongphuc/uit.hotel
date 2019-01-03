@@ -38,9 +38,7 @@ namespace uit.ooad.Businesses
         public static void ChangePassword(string id, string password, string newPassword)
         {
             var employee = Get(id);
-            if (employee == null) throw new Exception("Không tim thấy tên đăng nhập trong hệ thống");
-
-            if (!employee.IsEqualPassword(password)) throw new Exception("Mật khẩu không đúng");
+            if (!employee.IsEqualPassword(password)) throw new Exception("Mật khẩu không chính xác");
             newPassword = CryptoHelper.Encrypt(newPassword);
 
             EmployeeDataAccess.ChangePassword(employee, newPassword);
