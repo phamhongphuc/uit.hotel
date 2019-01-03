@@ -2035,22 +2035,6 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "permissionManageRoomKind",
-                        "description": "Quyền quản lý loại phòng",
-                        "args": [],
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Boolean",
-                                "ofType": null
-                            }
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
                         "name": "permissionManageService",
                         "description": "Quyền quản lý dịch vụ",
                         "args": [],
@@ -6259,20 +6243,6 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "permissionManageRoomKind",
-                        "description": "Quyền quản lý loại phòng",
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Boolean",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
                         "name": "permissionManageService",
                         "description": "Quyền quản lý dịch vụ",
                         "type": {
@@ -7680,6 +7650,20 @@
                         "defaultValue": null
                     },
                     {
+                        "name": "permissionManageMap",
+                        "description": "Quyền chỉnh sửa sơ đồ",
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Boolean",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
                         "name": "permissionManagePatron",
                         "description": "Quyền quản lý khách hàng",
                         "type": {
@@ -7736,36 +7720,8 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "permissionManageRoomKind",
-                        "description": "Quyền quản lý loại phòng",
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Boolean",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
                         "name": "permissionManageService",
                         "description": "Quyền quản lý dịch vụ",
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Boolean",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "permissionManageMap",
-                        "description": "Quyền chỉnh sửa sơ đồ",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,

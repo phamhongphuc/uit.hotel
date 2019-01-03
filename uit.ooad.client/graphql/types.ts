@@ -143,8 +143,6 @@ export interface PositionCreateInput {
     permissionManagePosition: boolean;
     /** Quyền quản lý giá cơ bản và giá biến động */
     permissionManageRate: boolean;
-    /** Quyền quản lý loại phòng */
-    permissionManageRoomKind: boolean;
     /** Quyền quản lý dịch vụ */
     permissionManageService: boolean;
     /** Quyền chỉnh sửa sơ đồ */
@@ -365,6 +363,8 @@ export interface PositionUpdateInput {
     permissionManageEmployee: boolean;
     /** Quyền quản lý thuê phòng */
     permissionManageHiringRoom: boolean;
+    /** Quyền chỉnh sửa sơ đồ */
+    permissionManageMap: boolean;
     /** Quyền quản lý khách hàng */
     permissionManagePatron: boolean;
     /** Quyền quản lý loại khách hàng */
@@ -373,12 +373,8 @@ export interface PositionUpdateInput {
     permissionManagePosition: boolean;
     /** Quyền quản lý giá cơ bản và giá biến động */
     permissionManageRate: boolean;
-    /** Quyền quản lý loại phòng */
-    permissionManageRoomKind: boolean;
     /** Quyền quản lý dịch vụ */
     permissionManageService: boolean;
-    /** Quyền chỉnh sửa sơ đồ */
-    permissionManageMap: boolean;
 }
 
 export interface RateUpdateInput {
@@ -898,6 +894,8 @@ export namespace GetPositions {
 
         permissionManageHiringRoom: boolean;
 
+        permissionManageMap: boolean;
+
         permissionManagePatron: boolean;
 
         permissionManagePatronKind: boolean;
@@ -906,11 +904,7 @@ export namespace GetPositions {
 
         permissionManageRate: boolean;
 
-        permissionManageRoomKind: boolean;
-
         permissionManageService: boolean;
-
-        permissionManageMap: boolean;
 
         isActive: boolean;
 

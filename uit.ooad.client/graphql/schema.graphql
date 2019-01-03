@@ -820,9 +820,6 @@ type Position {
     # Quyền quản lý giá cơ bản và giá biến động
     permissionManageRate: Boolean!
 
-    # Quyền quản lý loại phòng
-    permissionManageRoomKind: Boolean!
-
     # Quyền quản lý dịch vụ
     permissionManageService: Boolean!
 }
@@ -872,9 +869,6 @@ input PositionCreateInput {
 
     # Quyền quản lý giá cơ bản và giá biến động
     permissionManageRate: Boolean!
-
-    # Quyền quản lý loại phòng
-    permissionManageRoomKind: Boolean!
 
     # Quyền quản lý dịch vụ
     permissionManageService: Boolean!
@@ -926,6 +920,9 @@ input PositionUpdateInput {
     # Quyền quản lý thuê phòng
     permissionManageHiringRoom: Boolean!
 
+    # Quyền chỉnh sửa sơ đồ
+    permissionManageMap: Boolean!
+
     # Quyền quản lý khách hàng
     permissionManagePatron: Boolean!
 
@@ -938,14 +935,8 @@ input PositionUpdateInput {
     # Quyền quản lý giá cơ bản và giá biến động
     permissionManageRate: Boolean!
 
-    # Quyền quản lý loại phòng
-    permissionManageRoomKind: Boolean!
-
     # Quyền quản lý dịch vụ
     permissionManageService: Boolean!
-
-    # Quyền chỉnh sửa sơ đồ
-    permissionManageMap: Boolean!
 }
 
 # Giá cố định của một loại phòng
