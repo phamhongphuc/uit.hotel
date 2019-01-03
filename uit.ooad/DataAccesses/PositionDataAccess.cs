@@ -25,23 +25,22 @@ namespace uit.ooad.DataAccesses
         {
             await Database.WriteAsync(realm =>
             {
-                positionInDatabase.PermissionManageMap = position.PermissionManageMap;
-                positionInDatabase.PermissionGetMap = position.PermissionGetMap;
-                positionInDatabase.PermissionGetMap = position.PermissionGetMap;
-                positionInDatabase.PermissionManageRate = position.PermissionManageRate;
-                positionInDatabase.PermissionGetRate = position.PermissionGetRate;
-                positionInDatabase.PermissionGetHouseKeeping = position.PermissionGetHouseKeeping;
                 positionInDatabase.PermissionCleaning = position.PermissionCleaning;
-                positionInDatabase.PermissionManageHiringRoom = position.PermissionManageHiringRoom;
-                positionInDatabase.PermissionManagePatron = position.PermissionManagePatron;
+                positionInDatabase.PermissionGetAccountingVoucher = position.PermissionGetAccountingVoucher;
+                positionInDatabase.PermissionGetHouseKeeping = position.PermissionGetHouseKeeping;
+                positionInDatabase.PermissionGetMap = position.PermissionGetMap;
+                positionInDatabase.PermissionGetMap = position.PermissionGetMap;
                 positionInDatabase.PermissionGetPatron = position.PermissionGetPatron;
+                positionInDatabase.PermissionGetRate = position.PermissionGetRate;
+                positionInDatabase.PermissionGetService = position.PermissionGetService;
+                positionInDatabase.PermissionManageEmployee = position.PermissionManageEmployee;
+                positionInDatabase.PermissionManageHiringRoom = position.PermissionManageHiringRoom;
+                positionInDatabase.PermissionManageMap = position.PermissionManageMap;
+                positionInDatabase.PermissionManagePatron = position.PermissionManagePatron;
                 positionInDatabase.PermissionManagePatronKind = position.PermissionManagePatronKind;
                 positionInDatabase.PermissionManagePosition = position.PermissionManagePosition;
-                positionInDatabase.PermissionGetPosition = position.PermissionGetPosition;
-                positionInDatabase.PermissionManageEmployee = position.PermissionManageEmployee;
+                positionInDatabase.PermissionManageRate = position.PermissionManageRate;
                 positionInDatabase.PermissionManageService = position.PermissionManageService;
-                positionInDatabase.PermissionGetService = position.PermissionGetService;
-                positionInDatabase.PermissionGetAccountingVoucher = position.PermissionGetAccountingVoucher;
             });
             return positionInDatabase;
         }

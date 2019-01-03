@@ -6,7 +6,6 @@
         "permissionGetHouseKeeping": true,
         "permissionGetMap": true,
         "permissionGetPatron": true,
-        "permissionGetPosition": true,
         "permissionGetRate": true,
         "permissionGetService": true,
         "permissionManageEmployee": true,

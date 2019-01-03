@@ -19,7 +19,6 @@
                             "permissionGetHouseKeeping",
                             "permissionGetMap",
                             "permissionGetPatron",
-                            "permissionGetPosition",
                             "permissionGetRate",
                             "permissionGetService",
                             "permissionManageEmployee",
@@ -38,9 +37,6 @@
                             "name": {
                                 "type": "string",
                                 "pattern": "^(.*)$"
-                            },
-                            "permissionManageMap": {
-                                "type": "boolean"
                             },
                             "permissionGetMap": {
                                 "type": "boolean"
@@ -73,9 +69,6 @@
                                 "type": "boolean"
                             },
                             "permissionManagePosition": {
-                                "type": "boolean"
-                            },
-                            "permissionGetPosition": {
                                 "type": "boolean"
                             },
                             "permissionManageEmployee": {

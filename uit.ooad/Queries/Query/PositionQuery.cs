@@ -14,7 +14,7 @@ namespace uit.ooad.Queries.Query
                 _List,
                 "Trả về một danh sách các chức vụ",
                 resolve: _CheckPermission_List(
-                    p => p.PermissionGetPosition,
+                    p => p.PermissionManagePosition,
                     context => PositionBusiness.Get()
                 )
             );
@@ -24,7 +24,7 @@ namespace uit.ooad.Queries.Query
                 "Trả về thông tin một chức vụ",
                 _IdArgument(),
                 _CheckPermission_Object(
-                    p => p.PermissionGetPosition,
+                    p => p.PermissionManagePosition,
                     context => PositionBusiness.Get(_GetId<int>(context))
                 )
             );

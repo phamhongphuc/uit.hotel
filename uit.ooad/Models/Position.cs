@@ -16,7 +16,6 @@ namespace uit.ooad.Models
         public bool PermissionGetHouseKeeping { get; set; }
         public bool PermissionGetMap { get; set; }
         public bool PermissionGetPatron { get; set; }
-        public bool PermissionGetPosition { get; set; }
         public bool PermissionGetRate { get; set; }
         public bool PermissionGetService { get; set; }
         public bool PermissionManageEmployee { get; set; }
