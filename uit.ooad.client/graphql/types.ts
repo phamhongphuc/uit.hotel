@@ -125,8 +125,6 @@ export interface PositionCreateInput {
     permissionGetMap: boolean;
     /** Quyền lấy thông tin khách hàng */
     permissionGetPatron: boolean;
-    /** Quyền lấy thông tin chức vụ */
-    permissionGetPosition: boolean;
     /** Quyền lấy thông tin giá cơ bản và giá biến động */
     permissionGetRate: boolean;
     /** Quyền lấy thông tin dịch vụ */
@@ -351,8 +349,6 @@ export interface PositionUpdateInput {
     permissionGetHouseKeeping: boolean;
     /** Quyền lấy thông tin khách hàng */
     permissionGetPatron: boolean;
-    /** Quyền lấy thông tin chức vụ */
-    permissionGetPosition: boolean;
     /** Quyền lấy thông tin giá cơ bản và giá biến động */
     permissionGetRate: boolean;
     /** Quyền lấy thông tin dịch vụ */
@@ -883,8 +879,6 @@ export namespace GetPositions {
         permissionGetMap: boolean;
 
         permissionGetPatron: boolean;
-
-        permissionGetPosition: boolean;
 
         permissionGetRate: boolean;
 

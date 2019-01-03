@@ -1875,22 +1875,6 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "permissionGetPosition",
-                        "description": "Quyền lấy thông tin chức vụ",
-                        "args": [],
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Boolean",
-                                "ofType": null
-                            }
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
                         "name": "permissionGetRate",
                         "description": "Quyền lấy thông tin giá cơ bản và giá biến động",
                         "args": [],
@@ -6117,20 +6101,6 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "permissionGetPosition",
-                        "description": "Quyền lấy thông tin chức vụ",
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Boolean",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
                         "name": "permissionGetRate",
                         "description": "Quyền lấy thông tin giá cơ bản và giá biến động",
                         "type": {
@@ -7554,20 +7524,6 @@
                     {
                         "name": "permissionGetPatron",
                         "description": "Quyền lấy thông tin khách hàng",
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Boolean",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "permissionGetPosition",
-                        "description": "Quyền lấy thông tin chức vụ",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,

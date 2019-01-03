@@ -790,9 +790,6 @@ type Position {
     # Quyền lấy thông tin khách hàng
     permissionGetPatron: Boolean!
 
-    # Quyền lấy thông tin chức vụ
-    permissionGetPosition: Boolean!
-
     # Quyền lấy thông tin giá cơ bản và giá biến động
     permissionGetRate: Boolean!
 
@@ -842,9 +839,6 @@ input PositionCreateInput {
 
     # Quyền lấy thông tin khách hàng
     permissionGetPatron: Boolean!
-
-    # Quyền lấy thông tin chức vụ
-    permissionGetPosition: Boolean!
 
     # Quyền lấy thông tin giá cơ bản và giá biến động
     permissionGetRate: Boolean!
@@ -901,9 +895,6 @@ input PositionUpdateInput {
 
     # Quyền lấy thông tin khách hàng
     permissionGetPatron: Boolean!
-
-    # Quyền lấy thông tin chức vụ
-    permissionGetPosition: Boolean!
 
     # Quyền lấy thông tin giá cơ bản và giá biến động
     permissionGetRate: Boolean!
