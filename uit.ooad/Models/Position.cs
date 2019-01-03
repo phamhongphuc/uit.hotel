@@ -11,23 +11,22 @@ namespace uit.ooad.Models
         public int Id { get; set; }
         public string Name { get; set; }
 
-        public bool PermissionManageMap { get; set; }
-        public bool PermissionGetMap { get; set; }
-        public bool PermissionManageRoomKind { get; set; }
-        public bool PermissionManageRate { get; set; }
-        public bool PermissionGetRate { get; set; }
-        public bool PermissionManageService { get; set; }
-        public bool PermissionGetService { get; set; }
-        public bool PermissionGetHouseKeeping { get; set; }
         public bool PermissionCleaning { get; set; }
-        public bool PermissionManageHiringRoom { get; set; }
-        public bool PermissionManagePatron { get; set; }
+        public bool PermissionGetAccountingVoucher { get; set; }
+        public bool PermissionGetHouseKeeping { get; set; }
+        public bool PermissionGetMap { get; set; }
         public bool PermissionGetPatron { get; set; }
+        public bool PermissionGetPosition { get; set; }
+        public bool PermissionGetRate { get; set; }
+        public bool PermissionGetService { get; set; }
+        public bool PermissionManageEmployee { get; set; }
+        public bool PermissionManageHiringRoom { get; set; }
+        public bool PermissionManageMap { get; set; }
+        public bool PermissionManagePatron { get; set; }
         public bool PermissionManagePatronKind { get; set; }
         public bool PermissionManagePosition { get; set; }
-        public bool PermissionGetPosition { get; set; }
-        public bool PermissionManageEmployee { get; set; }
-        public bool PermissionGetAccountingVoucher { get; set; }
+        public bool PermissionManageRate { get; set; }
+        public bool PermissionManageService { get; set; }
         public bool IsActive { get; set; }
 
         [Backlink(nameof(Employee.Position))]

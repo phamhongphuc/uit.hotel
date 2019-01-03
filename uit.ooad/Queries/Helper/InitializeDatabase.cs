@@ -63,9 +63,8 @@ namespace uit.ooad.Queries.Helper
                 PermissionManagePatronKind = true,
                 PermissionManagePosition = true,
                 PermissionManageRate = true,
-                PermissionManageRoomKind = true,
-                PermissionManageService = true,
                 PermissionManageMap = true,
+                PermissionManageService = true,
             });
         }
 

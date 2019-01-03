@@ -23,13 +23,12 @@
                         "permissionGetService",
                         "permissionManageEmployee",
                         "permissionManageHiringRoom",
+                        "permissionManageMap",
                         "permissionManagePatron",
                         "permissionManagePatronKind",
                         "permissionManagePosition",
                         "permissionManageRate",
-                        "permissionManageRoomKind",
-                        "permissionManageService",
-                        "permissionManageMap"
+                        "permissionManageService"
                     ],
                     "properties": {
                         "id": {
@@ -43,9 +42,6 @@
                             "type": "boolean"
                         },
                         "permissionGetMap": {
-                            "type": "boolean"
-                        },
-                        "permissionManageRoomKind": {
                             "type": "boolean"
                         },
                         "permissionManageRate": {

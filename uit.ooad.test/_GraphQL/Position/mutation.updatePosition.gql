@@ -13,12 +13,11 @@ mutation($input: PositionUpdateInput!) {
         permissionGetService
         permissionManageEmployee
         permissionManageHiringRoom
+        permissionManageMap
         permissionManagePatron
         permissionManagePatronKind
         permissionManagePosition
         permissionManageRate
-        permissionManageRoomKind
         permissionManageService
-        permissionManageMap
     }
 }

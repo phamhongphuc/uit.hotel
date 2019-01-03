@@ -35,7 +35,7 @@ namespace uit.ooad.test._GraphQL._RoomKind
                 @"/_GraphQL/RoomKind/mutation.createRoomKind.gql",
                 @"/_GraphQL/RoomKind/mutation.createRoomKind.schema.json",
                 @"/_GraphQL/RoomKind/mutation.createRoomKind.variable.json",
-                p => p.PermissionManageRoomKind = true
+                p => p.PermissionManageMap = true
             );
         }
 
@@ -46,7 +46,7 @@ namespace uit.ooad.test._GraphQL._RoomKind
                 @"/_GraphQL/RoomKind/mutation.setIsActiveRoomKind.gql",
                 @"/_GraphQL/RoomKind/mutation.setIsActiveRoomKind.schema.json",
                 @"/_GraphQL/RoomKind/mutation.setIsActiveRoomKind.variable.json",
-                p => p.PermissionManageRoomKind = true
+                p => p.PermissionManageMap = true
             );
         }
     }
