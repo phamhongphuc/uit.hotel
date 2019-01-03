@@ -47,6 +47,8 @@ namespace uit.ooad.Businesses
         {
             var roomInDatabase = Get(id);
             if (roomInDatabase == null) throw new Exception("Id: " + id + " không tồn tại");
+            if(isActive && !roomInDatabase.Floor.IsActive)
+                throw new Exception("Loại phòng thuộc tầng đã bị vô hiệu hóa. Không thể kích hoạt");
             RoomDataAccess.SetIsActive(roomInDatabase, isActive);
         }
 
