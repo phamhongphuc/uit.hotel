@@ -2,22 +2,22 @@
     "input": {
         "id": 2,
         "name": "Tên quyền",
-        "permissionUpdateGroundPlan": true,
-        "permissionGetMap": true,
-        "permissionManageRoomKind": true,
-        "permissionManageRate": true,
-        "permissionGetRate": true,
-        "permissionGetHouseKeeping": true,
         "permissionCleaning": true,
+        "permissionGetAccountingVoucher": true,
+        "permissionGetHouseKeeping": true,
+        "permissionGetMap": true,
+        "permissionGetPatron": true,
+        "permissionGetPosition": true,
+        "permissionGetRate": true,
+        "permissionGetService": true,
+        "permissionManageEmployee": true,
         "permissionManageHiringRoom": false,
         "permissionManagePatron": true,
-        "permissionGetPatron": true,
         "permissionManagePatronKind": true,
         "permissionManagePosition": true,
-        "permissionGetPosition": true,
-        "permissionManageEmployee": true,
+        "permissionManageRate": true,
+        "permissionManageRoomKind": true,
         "permissionManageService": true,
-        "permissionGetService": true,
-        "permissionGetAccountingVoucher": true
+        "permissionUpdateGroundPlan": true
     }
 }

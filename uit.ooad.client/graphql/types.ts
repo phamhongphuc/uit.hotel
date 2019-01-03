@@ -115,46 +115,40 @@ export interface PatronKindCreateInput {
 export interface PositionCreateInput {
     /** Tên chức vụ */
     name: string;
-    /** Quyền chỉnh sửa sơ đồ */
-    permissionUpdateGroundPlan: boolean;
-    /** Quyền lấy thông tin tầng, phòng */
-    permissionGetGroundPlan: boolean;
-    /** Quyền quản lý loại phòng */
-    permissionManageRoomKind: boolean;
-    /** Quyền lấy thông tin loại phòng */
-    permissionGetRoomKind: boolean;
-    /** Quyền quản lý giá cơ bản và giá biến động */
-    permissionManageRate: boolean;
-    /** Quyền lấy thông tin giá cơ bản và giá biến động */
-    permissionGetRate: boolean;
     /** Quyền thao tác dọn phòng */
     permissionCleaning: boolean;
+    /** Quyền lấy thông tin các chứng từ (hóa đơn, phiếu thu) */
+    permissionGetAccountingVoucher: boolean;
     /** Quyền tra cứu lịch sử dọn phòng */
     permissionGetHouseKeeping: boolean;
+    /** Quyền lấy thông tin tầng, phòng */
+    permissionGetMap: boolean;
+    /** Quyền lấy thông tin khách hàng */
+    permissionGetPatron: boolean;
+    /** Quyền lấy thông tin chức vụ */
+    permissionGetPosition: boolean;
+    /** Quyền lấy thông tin giá cơ bản và giá biến động */
+    permissionGetRate: boolean;
+    /** Quyền lấy thông tin dịch vụ */
+    permissionGetService: boolean;
+    /** Quyền quản lý thông tin nhân viên */
+    permissionManageEmployee: boolean;
     /** Quyền quản lý thuê phòng */
     permissionManageHiringRoom: boolean;
     /** Quyền quản lý khách hàng */
     permissionManagePatron: boolean;
-    /** Quyền lấy thông tin khách hàng */
-    permissionGetPatron: boolean;
     /** Quyền quản lý loại khách hàng */
     permissionManagePatronKind: boolean;
-    /** Quyền lấy thông tin loại khách hàng */
-    permissionGetPatronKind: boolean;
     /** Quyền quản lý chức vụ */
     permissionManagePosition: boolean;
-    /** Quyền lấy thông tin chức vụ */
-    permissionGetPosition: boolean;
-    /** Quyền quản lý thông tin nhân viên */
-    permissionManageEmployee: boolean;
-    /** Quyền quản lý tài khoản cá nhân */
-    permissionManageAccount: boolean;
+    /** Quyền quản lý giá cơ bản và giá biến động */
+    permissionManageRate: boolean;
+    /** Quyền quản lý loại phòng */
+    permissionManageRoomKind: boolean;
     /** Quyền quản lý dịch vụ */
     permissionManageService: boolean;
-    /** Quyền lấy thông tin dịch vụ */
-    permissionGetService: boolean;
-    /** Quyền lấy thông tin các chứng từ (hóa đơn, phiếu thu) */
-    permissionGetVoucher: boolean;
+    /** Quyền chỉnh sửa sơ đồ */
+    permissionUpdateGroundPlan: boolean;
 }
 
 export interface RateCreateInput {
@@ -351,46 +345,40 @@ export interface PositionUpdateInput {
     id: number;
     /** Tên chức vụ */
     name: string;
-    /** Quyền chỉnh sửa sơ đồ */
-    permissionUpdateGroundPlan: boolean;
-    /** Quyền lấy thông tin tầng, phòng */
-    permissionGetGroundPlan: boolean;
-    /** Quyền quản lý loại phòng */
-    permissionManageRoomKind: boolean;
-    /** Quyền lấy thông tin loại phòng */
-    permissionGetRoomKind: boolean;
-    /** Quyền quản lý giá cơ bản và giá biến động */
-    permissionManageRate: boolean;
-    /** Quyền lấy thông tin giá cơ bản và giá biến động */
-    permissionGetRate: boolean;
     /** Quyền thao tác dọn phòng */
     permissionCleaning: boolean;
+    /** Quyền lấy thông tin tầng, phòng */
+    permissionGetMap: boolean;
     /** Quyền tra cứu lịch sử dọn phòng */
     permissionGetHouseKeeping: boolean;
+    /** Quyền lấy thông tin khách hàng */
+    permissionGetPatron: boolean;
+    /** Quyền lấy thông tin chức vụ */
+    permissionGetPosition: boolean;
+    /** Quyền lấy thông tin giá cơ bản và giá biến động */
+    permissionGetRate: boolean;
+    /** Quyền lấy thông tin dịch vụ */
+    permissionGetService: boolean;
+    /** Quyền lấy thông tin các chứng từ (hóa đơn, phiếu thu) */
+    permissionGetAccountingVoucher: boolean;
+    /** Quyền quản lý thông tin nhân viên */
+    permissionManageEmployee: boolean;
     /** Quyền quản lý thuê phòng */
     permissionManageHiringRoom: boolean;
     /** Quyền quản lý khách hàng */
     permissionManagePatron: boolean;
-    /** Quyền lấy thông tin khách hàng */
-    permissionGetPatron: boolean;
     /** Quyền quản lý loại khách hàng */
     permissionManagePatronKind: boolean;
-    /** Quyền lấy thông tin loại khách hàng */
-    permissionGetPatronKind: boolean;
     /** Quyền quản lý chức vụ */
     permissionManagePosition: boolean;
-    /** Quyền lấy thông tin chức vụ */
-    permissionGetPosition: boolean;
-    /** Quyền quản lý thông tin nhân viên */
-    permissionManageEmployee: boolean;
-    /** Quyền quản lý tài khoản cá nhân */
-    permissionManageAccount: boolean;
+    /** Quyền quản lý giá cơ bản và giá biến động */
+    permissionManageRate: boolean;
+    /** Quyền quản lý loại phòng */
+    permissionManageRoomKind: boolean;
     /** Quyền quản lý dịch vụ */
     permissionManageService: boolean;
-    /** Quyền lấy thông tin dịch vụ */
-    permissionGetService: boolean;
-    /** Quyền lấy thông tin các chứng từ (hóa đơn, phiếu thu) */
-    permissionGetVoucher: boolean;
+    /** Quyền chỉnh sửa sơ đồ */
+    permissionUpdateGroundPlan: boolean;
 }
 
 export interface RateUpdateInput {
@@ -892,11 +880,9 @@ export namespace GetPositions {
 
         permissionUpdateGroundPlan: boolean;
 
-        permissionGetGroundPlan: boolean;
+        permissionGetMap: boolean;
 
         permissionManageRoomKind: boolean;
-
-        permissionGetRoomKind: boolean;
 
         permissionManageRate: boolean;
 
@@ -914,21 +900,17 @@ export namespace GetPositions {
 
         permissionManagePatronKind: boolean;
 
-        permissionGetPatronKind: boolean;
-
         permissionManagePosition: boolean;
 
         permissionGetPosition: boolean;
 
         permissionManageEmployee: boolean;
 
-        permissionManageAccount: boolean;
-
         permissionManageService: boolean;
 
         permissionGetService: boolean;
 
-        permissionGetVoucher: boolean;
+        permissionGetAccountingVoucher: boolean;
 
         isActive: boolean;
 
@@ -939,6 +921,8 @@ export namespace GetPositions {
         __typename?: 'Employee';
 
         id: string;
+
+        isActive: boolean;
     };
 }
 
