@@ -30,7 +30,7 @@
                             "permissionManageRate",
                             "permissionManageRoomKind",
                             "permissionManageService",
-                            "permissionUpdateGroundPlan"
+                            "permissionManageMap"
                         ],
                         "properties": {
                             "id": {
@@ -40,7 +40,7 @@
                                 "type": "string",
                                 "pattern": "^(.*)$"
                             },
-                            "permissionUpdateGroundPlan": {
+                            "permissionManageMap": {
                                 "type": "boolean"
                             },
                             "permissionGetMap": {

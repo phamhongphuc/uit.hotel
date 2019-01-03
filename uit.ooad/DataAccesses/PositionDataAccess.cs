@@ -25,7 +25,7 @@ namespace uit.ooad.DataAccesses
         {
             await Database.WriteAsync(realm =>
             {
-                positionInDatabase.PermissionUpdateGroundPlan = position.PermissionUpdateGroundPlan;
+                positionInDatabase.PermissionManageMap = position.PermissionManageMap;
                 positionInDatabase.PermissionGetMap = position.PermissionGetMap;
                 positionInDatabase.PermissionManageRoomKind = position.PermissionManageRoomKind;
                 positionInDatabase.PermissionGetMap = position.PermissionGetMap;

@@ -2,7 +2,7 @@
     positions {
         id
         name
-        permissionUpdateGroundPlan
+        permissionManageMap
         permissionGetMap
         permissionManageRoomKind
         permissionManageRate

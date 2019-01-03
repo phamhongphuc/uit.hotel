@@ -11,7 +11,7 @@ namespace uit.ooad.Models
         public int Id { get; set; }
         public string Name { get; set; }
 
-        public bool PermissionUpdateGroundPlan { get; set; }
+        public bool PermissionManageMap { get; set; }
         public bool PermissionGetMap { get; set; }
         public bool PermissionManageRoomKind { get; set; }
         public bool PermissionManageRate { get; set; }

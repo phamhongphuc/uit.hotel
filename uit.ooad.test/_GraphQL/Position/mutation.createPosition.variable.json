@@ -17,6 +17,6 @@
         "permissionManageRate": true,
         "permissionManageRoomKind": true,
         "permissionManageService": true,
-        "permissionUpdateGroundPlan": true
+        "permissionManageMap": true
     }
 }

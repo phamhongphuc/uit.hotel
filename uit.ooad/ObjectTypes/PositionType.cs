@@ -33,7 +33,7 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.PermissionManageRate).Description("Quyền quản lý giá cơ bản và giá biến động");
             Field(x => x.PermissionManageRoomKind).Description("Quyền quản lý loại phòng");
             Field(x => x.PermissionManageService).Description("Quyền quản lý dịch vụ");
-            Field(x => x.PermissionUpdateGroundPlan).Description("Quyền chỉnh sửa sơ đồ");
+            Field(x => x.PermissionManageMap).Description("Quyền chỉnh sửa sơ đồ");
 
             Field<ListGraphType<EmployeeType>>(
                 nameof(Position.Employees),
@@ -78,7 +78,7 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.PermissionManageRate).Description("Quyền quản lý giá cơ bản và giá biến động");
             Field(x => x.PermissionManageRoomKind).Description("Quyền quản lý loại phòng");
             Field(x => x.PermissionManageService).Description("Quyền quản lý dịch vụ");
-            Field(x => x.PermissionUpdateGroundPlan).Description("Quyền chỉnh sửa sơ đồ");
+            Field(x => x.PermissionManageMap).Description("Quyền chỉnh sửa sơ đồ");
         }
     }
 
@@ -107,7 +107,7 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.PermissionManageRate).Description("Quyền quản lý giá cơ bản và giá biến động");
             Field(x => x.PermissionManageRoomKind).Description("Quyền quản lý loại phòng");
             Field(x => x.PermissionManageService).Description("Quyền quản lý dịch vụ");
-            Field(x => x.PermissionUpdateGroundPlan).Description("Quyền chỉnh sửa sơ đồ");
+            Field(x => x.PermissionManageMap).Description("Quyền chỉnh sửa sơ đồ");
         }
     }
 }

@@ -21,7 +21,7 @@ export const getPositions = gql`
             permissionManageRate
             permissionManageRoomKind
             permissionManageService
-            permissionUpdateGroundPlan
+            permissionManageMap
             isActive
             employees {
                 id

@@ -19,6 +19,6 @@ mutation($input: PositionUpdateInput!) {
         permissionManageRate
         permissionManageRoomKind
         permissionManageService
-        permissionUpdateGroundPlan
+        permissionManageMap
     }
 }

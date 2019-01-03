@@ -805,6 +805,9 @@ type Position {
     # Quyền quản lý thuê phòng
     permissionManageHiringRoom: Boolean!
 
+    # Quyền chỉnh sửa sơ đồ
+    permissionManageMap: Boolean!
+
     # Quyền quản lý khách hàng
     permissionManagePatron: Boolean!
 
@@ -822,9 +825,6 @@ type Position {
 
     # Quyền quản lý dịch vụ
     permissionManageService: Boolean!
-
-    # Quyền chỉnh sửa sơ đồ
-    permissionUpdateGroundPlan: Boolean!
 }
 
 input PositionCreateInput {
@@ -880,7 +880,7 @@ input PositionCreateInput {
     permissionManageService: Boolean!
 
     # Quyền chỉnh sửa sơ đồ
-    permissionUpdateGroundPlan: Boolean!
+    permissionManageMap: Boolean!
 }
 
 # Input cho thông tin một chức vụ
@@ -945,7 +945,7 @@ input PositionUpdateInput {
     permissionManageService: Boolean!
 
     # Quyền chỉnh sửa sơ đồ
-    permissionUpdateGroundPlan: Boolean!
+    permissionManageMap: Boolean!
 }
 
 # Giá cố định của một loại phòng

@@ -1955,6 +1955,22 @@
                         "deprecationReason": null
                     },
                     {
+                        "name": "permissionManageMap",
+                        "description": "Quyền chỉnh sửa sơ đồ",
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Boolean",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
                         "name": "permissionManagePatron",
                         "description": "Quyền quản lý khách hàng",
                         "args": [],
@@ -2037,22 +2053,6 @@
                     {
                         "name": "permissionManageService",
                         "description": "Quyền quản lý dịch vụ",
-                        "args": [],
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Boolean",
-                                "ofType": null
-                            }
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "permissionUpdateGroundPlan",
-                        "description": "Quyền chỉnh sửa sơ đồ",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -6287,7 +6287,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "permissionUpdateGroundPlan",
+                        "name": "permissionManageMap",
                         "description": "Quyền chỉnh sửa sơ đồ",
                         "type": {
                             "kind": "NON_NULL",
@@ -7764,7 +7764,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "permissionUpdateGroundPlan",
+                        "name": "permissionManageMap",
                         "description": "Quyền chỉnh sửa sơ đồ",
                         "type": {
                             "kind": "NON_NULL",

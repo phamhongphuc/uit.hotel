@@ -148,7 +148,7 @@ export interface PositionCreateInput {
     /** Quyền quản lý dịch vụ */
     permissionManageService: boolean;
     /** Quyền chỉnh sửa sơ đồ */
-    permissionUpdateGroundPlan: boolean;
+    permissionManageMap: boolean;
 }
 
 export interface RateCreateInput {
@@ -378,7 +378,7 @@ export interface PositionUpdateInput {
     /** Quyền quản lý dịch vụ */
     permissionManageService: boolean;
     /** Quyền chỉnh sửa sơ đồ */
-    permissionUpdateGroundPlan: boolean;
+    permissionManageMap: boolean;
 }
 
 export interface RateUpdateInput {
@@ -878,39 +878,39 @@ export namespace GetPositions {
 
         name: string;
 
-        permissionUpdateGroundPlan: boolean;
+        permissionCleaning: boolean;
 
-        permissionGetMap: boolean;
-
-        permissionManageRoomKind: boolean;
-
-        permissionManageRate: boolean;
-
-        permissionGetRate: boolean;
+        permissionGetAccountingVoucher: boolean;
 
         permissionGetHouseKeeping: boolean;
 
-        permissionCleaning: boolean;
+        permissionGetMap: boolean;
+
+        permissionGetPatron: boolean;
+
+        permissionGetPosition: boolean;
+
+        permissionGetRate: boolean;
+
+        permissionGetService: boolean;
+
+        permissionManageEmployee: boolean;
 
         permissionManageHiringRoom: boolean;
 
         permissionManagePatron: boolean;
 
-        permissionGetPatron: boolean;
-
         permissionManagePatronKind: boolean;
 
         permissionManagePosition: boolean;
 
-        permissionGetPosition: boolean;
+        permissionManageRate: boolean;
 
-        permissionManageEmployee: boolean;
+        permissionManageRoomKind: boolean;
 
         permissionManageService: boolean;
 
-        permissionGetService: boolean;
-
-        permissionGetAccountingVoucher: boolean;
+        permissionManageMap: boolean;
 
         isActive: boolean;
 
