@@ -187,7 +187,6 @@ namespace uit.ooad.Queries.Helper
                 Name = "Tên loại phòng",
                 AmountOfPeople = 1,
                 NumberOfBeds = 1,
-                PriceByDate = 1,
                 IsActive = true
             });
         }

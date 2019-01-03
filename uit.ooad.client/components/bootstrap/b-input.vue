@@ -21,7 +21,7 @@
 </template>
 <script lang="ts">
 import { Vue, Component, Prop } from 'nuxt-property-decorator';
-import { IconProps, InputProps, StateProps } from '../mixins/button';
+import { InputProps, IconProps, StateProps } from '~/components/mixins/props';
 
 @Component({
     name: 'b-input-',

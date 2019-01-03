@@ -19,14 +19,12 @@
                 :text="
                     floor.isActive ? 'Vô hiệu hóa tầng' : 'Kích hoạt lại tầng'
                 "
-                @click="action(mutate)"
             />
             <b-nav-item-icon-mutate-
                 :mutation="deleteFloor"
                 :variables="{ id: floor.id }"
                 icon=""
                 text="Xóa tầng"
-                @click="action(mutate)"
             />
         </template>
     </context->

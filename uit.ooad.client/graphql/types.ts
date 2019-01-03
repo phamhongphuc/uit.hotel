@@ -218,8 +218,6 @@ export interface RoomKindCreateInput {
     numberOfBeds: number;
     /** Số người trong một phòng */
     amountOfPeople: number;
-    /** Giá theo ngày */
-    priceByDate: number;
 }
 /** Input cho một thông tin dịch vụ cần tạo mới */
 export interface ServiceCreateInput {
@@ -436,8 +434,6 @@ export interface RoomKindUpdateInput {
     numberOfBeds: number;
     /** Số người trong một phòng */
     amountOfPeople: number;
-    /** Giá theo ngày */
-    priceByDate: number;
 }
 /** Input cho một thông tin dịch vụ cần cập nhật */
 export interface ServiceUpdateInput {
@@ -623,54 +619,6 @@ export namespace GetFloors {
     };
 }
 
-export namespace CreateRoom {
-    export type Variables = {
-        input: RoomCreateInput;
-    };
-
-    export type Mutation = {
-        __typename?: 'Mutation';
-
-        createRoom: CreateRoom;
-    };
-
-    export type CreateRoom = {
-        __typename?: 'Room';
-
-        id: number;
-    };
-}
-
-export namespace DeleteRoom {
-    export type Variables = {
-        id: string;
-    };
-
-    export type Mutation = {
-        __typename?: 'Mutation';
-
-        deleteRoom: string;
-    };
-}
-
-export namespace UpdateRoom {
-    export type Variables = {
-        input: RoomUpdateInput;
-    };
-
-    export type Mutation = {
-        __typename?: 'Mutation';
-
-        updateRoom: UpdateRoom;
-    };
-
-    export type UpdateRoom = {
-        __typename?: 'Room';
-
-        id: number;
-    };
-}
-
 export namespace CreateFloor {
     export type Variables = {
         input: FloorCreateInput;
@@ -686,18 +634,6 @@ export namespace CreateFloor {
         __typename?: 'Floor';
 
         id: number;
-    };
-}
-
-export namespace DeleteFloor {
-    export type Variables = {
-        id: string;
-    };
-
-    export type Mutation = {
-        __typename?: 'Mutation';
-
-        deleteFloor: string;
     };
 }
 
@@ -719,6 +655,18 @@ export namespace UpdateFloor {
     };
 }
 
+export namespace DeleteFloor {
+    export type Variables = {
+        id: string;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        deleteFloor: string;
+    };
+}
+
 export namespace SetIsActiveFloor {
     export type Variables = {
         id: string;
@@ -729,19 +677,6 @@ export namespace SetIsActiveFloor {
         __typename?: 'Mutation';
 
         setIsActiveFloor: string;
-    };
-}
-
-export namespace SetIsActiveRoom {
-    export type Variables = {
-        id: string;
-        isActive: boolean;
-    };
-
-    export type Mutation = {
-        __typename?: 'Mutation';
-
-        setIsActiveRoom: string;
     };
 }
 
@@ -762,5 +697,147 @@ export namespace GetRoomKinds {
         name: string;
 
         isActive: boolean;
+
+        amountOfPeople: number;
+
+        numberOfBeds: number;
+
+        rooms: Maybe<(Maybe<Rooms>)[]>;
+    };
+
+    export type Rooms = {
+        __typename?: 'Room';
+
+        id: number;
+    };
+}
+
+export namespace CreateRoomKind {
+    export type Variables = {
+        input: RoomKindCreateInput;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        createRoomKind: CreateRoomKind;
+    };
+
+    export type CreateRoomKind = {
+        __typename?: 'RoomKind';
+
+        id: number;
+
+        name: string;
+
+        numberOfBeds: number;
+
+        amountOfPeople: number;
+
+        isActive: boolean;
+    };
+}
+
+export namespace UpdateRoomKind {
+    export type Variables = {
+        input: RoomKindUpdateInput;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        updateRoomKind: UpdateRoomKind;
+    };
+
+    export type UpdateRoomKind = {
+        __typename?: 'RoomKind';
+
+        id: number;
+    };
+}
+
+export namespace DeleteRoomKind {
+    export type Variables = {
+        id: string;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        deleteRoomKind: string;
+    };
+}
+
+export namespace SetIsActiveRoomKind {
+    export type Variables = {
+        id: string;
+        isActive: boolean;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        setIsActiveRoomKind: string;
+    };
+}
+
+export namespace CreateRoom {
+    export type Variables = {
+        input: RoomCreateInput;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        createRoom: CreateRoom;
+    };
+
+    export type CreateRoom = {
+        __typename?: 'Room';
+
+        id: number;
+    };
+}
+
+export namespace UpdateRoom {
+    export type Variables = {
+        input: RoomUpdateInput;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        updateRoom: UpdateRoom;
+    };
+
+    export type UpdateRoom = {
+        __typename?: 'Room';
+
+        id: number;
+    };
+}
+
+export namespace DeleteRoom {
+    export type Variables = {
+        id: string;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        deleteRoom: string;
+    };
+}
+
+export namespace SetIsActiveRoom {
+    export type Variables = {
+        id: string;
+        isActive: boolean;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        setIsActiveRoom: string;
     };
 }

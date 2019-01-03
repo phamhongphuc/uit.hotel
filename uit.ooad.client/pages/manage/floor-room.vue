@@ -12,13 +12,13 @@
             <b-button
                 class="m-2 ml-auto"
                 variant="white"
-                @click="showDisable = !showDisable"
+                @click="showInactive = !showInactive"
             >
-                <span class="icon mr-1">{{ showDisable ? '' : '' }}</span>
+                <span class="icon mr-1">{{ showInactive ? '' : '' }}</span>
                 <span>
                     {{
                         `Đang ${
-                            showDisable ? 'hiện' : 'ẩn'
+                            showInactive ? 'hiện' : 'ẩn'
                         } phòng và tầng đã bị vô hiệu hóa`
                     }}
                 </span>
@@ -59,6 +59,8 @@
                         "
                     >
                         {{ room.name }}
+                        <br />
+                        {{ room.roomKind.name }}
                     </b-button>
                 </div>
             </div>
@@ -89,36 +91,19 @@ export default class extends Vue {
     }
 
     floorsFilter(floors: GetFloors.Floors[]): GetFloors.Floors[] {
-        if (this.showDisable) return floors;
-        return floors.filter(f => f.isActive);
+        if (this.showInactive) return floors;
+        return floors
+            .filter(f => f.isActive)
+            .sort((a, b) => (a.name > b.name ? 1 : -1));
     }
 
     roomsFilter(rooms: GetFloors.Rooms[]): GetFloors.Rooms[] {
-        if (this.showDisable) return rooms;
-        return rooms.filter(r => r.isActive);
+        if (this.showInactive) return rooms;
+        return rooms
+            .filter(r => r.isActive)
+            .sort((a, b) => (a.name > b.name ? 1 : -1));
     }
 
-    showDisable: boolean = false;
+    showInactive: boolean = false;
 }
 </script>
-<style lang="scss">
-.hotel-map {
-    button {
-        display: block;
-        margin: 0.25rem;
-        width: 10rem;
-        min-width: 10rem;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        height: 3.5rem;
-        &.btn-blue {
-            color: #507af2;
-            border-color: rgba(#507af2, 0.5);
-        }
-        &.btn-gray {
-            border-color: rgba($black, 0.1);
-        }
-    }
-}
-</style>

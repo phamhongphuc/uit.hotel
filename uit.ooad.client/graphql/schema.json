@@ -2389,22 +2389,6 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "priceByDate",
-                        "description": "Giá theo ngày",
-                        "args": [],
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Int",
-                                "ofType": null
-                            }
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
                         "name": "rates",
                         "description": "Danh sách giá cố định của loại phòng",
                         "args": [],
@@ -6768,20 +6752,6 @@
                             }
                         },
                         "defaultValue": null
-                    },
-                    {
-                        "name": "priceByDate",
-                        "description": "Giá theo ngày",
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Int",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
                     }
                 ],
                 "interfaces": null,
@@ -8187,20 +8157,6 @@
                     {
                         "name": "amountOfPeople",
                         "description": "Số người trong một phòng",
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Int",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "priceByDate",
-                        "description": "Giá theo ngày",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,

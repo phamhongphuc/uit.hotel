@@ -14,7 +14,7 @@
 </template>
 <script lang="ts">
 import { Vue, Prop, Component } from 'nuxt-property-decorator';
-import { IconProps, InputProps } from '../mixins/button';
+import { IconProps, InputProps } from '~/components/mixins/props';
 
 @Component({
     name: 'b-nav-item-input-',

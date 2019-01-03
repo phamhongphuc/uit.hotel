@@ -22,7 +22,6 @@
             name
             amountOfPeople
             numberOfBeds
-            priceByDate
         }
     }
 }

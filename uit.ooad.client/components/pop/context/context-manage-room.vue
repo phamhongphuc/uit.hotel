@@ -15,14 +15,12 @@
                 :text="
                     room.isActive ? 'Vô hiệu hóa phòng' : 'Kích hoạt lại phòng'
                 "
-                @click="action(mutate)"
             />
             <b-nav-item-icon-mutate-
                 :mutation="deleteRoom"
                 :variables="{ id: room.id }"
                 icon=""
                 text="Xóa phòng"
-                @click="action(mutate)"
             />
         </template>
     </context->

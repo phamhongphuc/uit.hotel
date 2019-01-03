@@ -16,7 +16,6 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.Name).Description("Tên loại phòng");
             Field(x => x.NumberOfBeds).Description("Số giường");
             Field(x => x.AmountOfPeople).Description("Số người trong một phòng");
-            Field(x => x.PriceByDate).Description("Giá theo ngày");
             Field(x => x.IsActive).Description("Trạng thái phòng");
 
             Field<ListGraphType<RoomType>>(
@@ -57,7 +56,6 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.Name).Description("Tên loại phòng");
             Field(x => x.NumberOfBeds).Description("Số giường");
             Field(x => x.AmountOfPeople).Description("Số người trong một phòng");
-            Field(x => x.PriceByDate).Description("Giá theo ngày");
         }
     }
 
@@ -72,7 +70,6 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.Name).Description("Tên loại phòng");
             Field(x => x.NumberOfBeds).Description("Số giường");
             Field(x => x.AmountOfPeople).Description("Số người trong một phòng");
-            Field(x => x.PriceByDate).Description("Giá theo ngày");
         }
     }
 }
