@@ -49,7 +49,7 @@
                 class="m-3 rounded"
                 icon=""
             />
-            <div class="m-3 d-flex">
+            <div class="m-3">
                 <b-button
                     class="ml-auto"
                     variant="main"
@@ -104,13 +104,3 @@ export default class extends PopupMixin {
     }
 }
 </script>
-<style lang="scss">
-.input-label {
-    padding: 0.25rem;
-    margin: -0.5rem 1rem -1rem;
-
-    &:first-child {
-        margin-top: 0.5rem;
-    }
-}
-</style>

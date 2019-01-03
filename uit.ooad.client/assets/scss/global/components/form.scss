@@ -11,3 +11,12 @@
         }
     }
 }
+
+.input-label {
+    padding: 0.25rem;
+    margin: -0.5rem 1rem -1rem;
+
+    &:first-child {
+        margin-top: 0.5rem;
+    }
+}
