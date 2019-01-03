@@ -36,6 +36,7 @@ namespace uit.ooad.Queries.Helper
 
             AddConfirmCleaned();
             AddConfirmCleanedAndServices();
+            AddBill();
             AddReceipt();
         }
 

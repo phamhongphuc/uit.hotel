@@ -40,12 +40,56 @@ namespace uit.ooad.test._GraphQL.Booking
         }
 
         [TestMethod]
+        public void CheckIn_InValidId()
+        {
+            SchemaHelper.ExecuteAndExpectError(
+                "Mã Booking không tồn tại",
+                @"/_GraphQL/Booking/mutation.checkIn.gql",
+                @"/_GraphQL/Booking/mutation.checkIn.variable.in_valid_id.json",
+                p => p.PermissionManageHiringRoom = true
+            );
+        }
+
+        [TestMethod]
+        public void CheckIn_InValidBookingStatus()
+        {
+            SchemaHelper.ExecuteAndExpectError(
+                "Phòng đã được check-in, không thể check-in lại.",
+                @"/_GraphQL/Booking/mutation.checkIn.gql",
+                @"/_GraphQL/Booking/mutation.checkIn.variable.in_valid_booking_status.json",
+                p => p.PermissionManageHiringRoom = true
+            );
+        }
+
+        [TestMethod]
         public void RequestCheckOut()
         {
             SchemaHelper.Execute(
                 @"/_GraphQL/Booking/mutation.requestCheckOut.gql",
                 @"/_GraphQL/Booking/mutation.requestCheckOut.schema.json",
                 @"/_GraphQL/Booking/mutation.requestCheckOut.variable.json",
+                p => p.PermissionManageHiringRoom = true
+            );
+        }
+
+        [TestMethod]
+        public void RequestCheckOut_InValidId()
+        {
+            SchemaHelper.ExecuteAndExpectError(
+                "Mã Booking không tồn tại",
+                @"/_GraphQL/Booking/mutation.requestCheckOut.gql",
+                @"/_GraphQL/Booking/mutation.requestCheckOut.variable.in_valid_id.json",
+                p => p.PermissionManageHiringRoom = true
+            );
+        }
+
+        [TestMethod]
+        public void RequestCheckOut_InValidBookingStatus()
+        {
+            SchemaHelper.ExecuteAndExpectError(
+                "Không thể yêu cầu trả phòng",
+                @"/_GraphQL/Booking/mutation.requestCheckOut.gql",
+                @"/_GraphQL/Booking/mutation.requestCheckOut.variable.in_valid_booking_status.json",
                 p => p.PermissionManageHiringRoom = true
             );
         }
@@ -62,12 +106,45 @@ namespace uit.ooad.test._GraphQL.Booking
         }
 
         [TestMethod]
+        public void CheckOut_InValidId()
+        {
+            SchemaHelper.ExecuteAndExpectError(
+                "Mã Booking không tồn tại.",
+                @"/_GraphQL/Booking/mutation.checkOut.gql",
+                @"/_GraphQL/Booking/mutation.checkOut.variable.in_valid_id.json",
+                p => p.PermissionManageHiringRoom = true
+            );
+        }
+
+        [TestMethod]
+        public void CheckOut_InValidBookingStatus()
+        {
+            SchemaHelper.ExecuteAndExpectError(
+                "Không thể Check-out.",
+                @"/_GraphQL/Booking/mutation.checkOut.gql",
+                @"/_GraphQL/Booking/mutation.checkOut.variable.in_valid_booking_status.json",
+                p => p.PermissionManageHiringRoom = true
+            );
+        }
+
+        [TestMethod]
         public void AddBookingToBill()
         {
             SchemaHelper.Execute(
                 @"/_GraphQL/Booking/mutation.addBookingToBill.gql",
                 @"/_GraphQL/Booking/mutation.addBookingToBill.schema.json",
                 @"/_GraphQL/Booking/mutation.addBookingToBill.variable.json",
+                p => p.PermissionManageHiringRoom = true
+            );
+        }
+        
+        [TestMethod]
+        public void AddBookingToBill_InValidBill()
+        {
+            SchemaHelper.ExecuteAndExpectError(
+                "Mã hóa đơn không tồn tại.",
+                @"/_GraphQL/Booking/mutation.addBookingToBill.gql",
+                @"/_GraphQL/Booking/mutation.addBookingToBill.variable.in_valid_bill.json",
                 p => p.PermissionManageHiringRoom = true
             );
         }
