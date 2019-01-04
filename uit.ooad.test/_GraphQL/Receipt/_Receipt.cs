@@ -31,7 +31,7 @@ namespace uit.ooad.test._GraphQL
                 BankAccountNumber = "11111",
                 TypeOfPayment = 1,
                 Bill = BillBusiness.Get(1),
-                Employee = EmployeeBusiness.Get(Constant.UserName)
+                Employee = EmployeeBusiness.Get(Constant.adminName)
             })).Wait();
             SchemaHelper.Execute(
                     @"/_GraphQL/Receipt/query.receipt.gql",

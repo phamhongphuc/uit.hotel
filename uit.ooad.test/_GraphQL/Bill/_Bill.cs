@@ -17,7 +17,19 @@ namespace uit.ooad.test._GraphQL
             SchemaHelper.Execute(
                 @"/_GraphQL/Bill/mutation.bookAndCheckIn.gql",
                 @"/_GraphQL/Bill/mutation.bookAndCheckIn.schema.json",
-                @"/_GraphQL/Bill/mutation.bookAndCheckIn.variable.json",
+                new
+                {
+                    bookings = new[]
+                    {
+                        new
+                        {
+                            bookCheckOutTime = DateTimeOffset.Now.AddDays(2),
+                            room = new { id = 1 },
+                            listOfPatrons = new[] { new { id = 1 } },
+                        }
+                    },
+                    bill = new { patron = new { id = 1 } }
+                },
                 p => p.PermissionManageHiringRoom = true
             );
         }
@@ -28,7 +40,19 @@ namespace uit.ooad.test._GraphQL
             SchemaHelper.ExecuteAndExpectError(
                 "Mã khách hàng không tồn tại",
                 @"/_GraphQL/Bill/mutation.bookAndCheckIn.gql",
-                @"/_GraphQL/Bill/mutation.bookAndCheckIn.variable.invalid_patron.json",
+                new
+                {
+                    bookings = new[]
+                    {
+                        new
+                        {
+                            bookCheckOutTime = DateTimeOffset.Now.AddDays(2),
+                            room = new { id = 1 },
+                            listOfPatrons = new[] { new { id = 1 } },
+                        }
+                    },
+                    bill = new { patron = new { id = 100 } }
+                },
                 p => p.PermissionManageHiringRoom = true
             );
         }
@@ -38,7 +62,19 @@ namespace uit.ooad.test._GraphQL
             SchemaHelper.ExecuteAndExpectError(
                 "Mã phòng không tồn tại",
                 @"/_GraphQL/Bill/mutation.bookAndCheckIn.gql",
-                @"/_GraphQL/Bill/mutation.bookAndCheckIn.variable.invalid_room.json",
+                new
+                {
+                    bookings = new[]
+                    {
+                        new
+                        {
+                            bookCheckOutTime = DateTimeOffset.Now.AddDays(2),
+                            room = new { id = 100 },
+                            listOfPatrons = new[] { new { id = 1 } },
+                        }
+                    },
+                    bill = new { patron = new { id = 1 } }
+                },
                 p => p.PermissionManageHiringRoom = true
             );
         }
@@ -49,7 +85,23 @@ namespace uit.ooad.test._GraphQL
             SchemaHelper.Execute(
                 @"/_GraphQL/Bill/mutation.createBill.gql",
                 @"/_GraphQL/Bill/mutation.createBill.schema.json",
-                @"/_GraphQL/Bill/mutation.createBill.variable.json",
+                new
+                {
+                    bookings = new[]
+                    {
+                        new
+                        {
+                            bookCheckInTime = DateTimeOffset.Now.AddDays(1),
+                            bookCheckOutTime = DateTimeOffset.Now.AddDays(2),
+                            room = new { id = 1 },
+                            listOfPatrons = new[] { new { id = 1 } },
+                        }
+                    },
+                    bill = new
+                    {
+                        patron = new { id = 1 }
+                    }
+                },
                 p => p.PermissionManageHiringRoom = true
             );
         }
@@ -60,7 +112,23 @@ namespace uit.ooad.test._GraphQL
             SchemaHelper.ExecuteAndExpectError(
                 "Mã khách hàng không tồn tại",
                 @"/_GraphQL/Bill/mutation.createBill.gql",
-                @"/_GraphQL/Bill/mutation.createBill.variable.invalid_patron.json",
+                new
+                {
+                    bookings = new[]
+                    {
+                        new
+                        {
+                            bookCheckInTime = DateTimeOffset.Now.AddDays(1),
+                            bookCheckOutTime = DateTimeOffset.Now.AddDays(2),
+                            room = new { id = 1 },
+                            listOfPatrons = new[] { new { id = 1 } },
+                        }
+                    },
+                    bill = new
+                    {
+                        patron = new { id = 100 }
+                    }
+                },
                 p => p.PermissionManageHiringRoom = true
             );
         }
@@ -71,7 +139,23 @@ namespace uit.ooad.test._GraphQL
             SchemaHelper.ExecuteAndExpectError(
                 "Mã phòng không tồn tại",
                 @"/_GraphQL/Bill/mutation.createBill.gql",
-                @"/_GraphQL/Bill/mutation.createBill.variable.invalid_room.json",
+                new
+                {
+                    bookings = new[]
+                    {
+                        new
+                        {
+                            bookCheckInTime = DateTimeOffset.Now.AddDays(1),
+                            bookCheckOutTime = DateTimeOffset.Now.AddDays(2),
+                            room = new { id = 100 },
+                            listOfPatrons = new[] { new { id = 1 } },
+                        }
+                    },
+                    bill = new
+                    {
+                        patron = new { id = 1 }
+                    }
+                },
                 p => p.PermissionManageHiringRoom = true
             );
         }
@@ -88,7 +172,7 @@ namespace uit.ooad.test._GraphQL
             SchemaHelper.Execute(
                 @"/_GraphQL/Bill/query.bill.gql",
                 @"/_GraphQL/Bill/query.bill.schema.json",
-                @"/_GraphQL/Bill/query.bill.variable.json",
+                new { id = 10 },
                 p => p.PermissionGetAccountingVoucher = true
             );
         }

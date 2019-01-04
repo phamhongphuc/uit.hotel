@@ -17,7 +17,11 @@ namespace uit.ooad.test._GraphQL
             SchemaHelper.Execute(
                 @"/_GraphQL/Authentication/mutation.changePassword.gql",
                 @"/_GraphQL/Authentication/mutation.changePassword.schema.json",
-                @"/_GraphQL/Authentication/mutation.changePassword.variable.json"
+                new
+                {
+                    password = "12345678",
+                    newPassword = "777"
+                }
             );
         }
 
@@ -27,7 +31,11 @@ namespace uit.ooad.test._GraphQL
             SchemaHelper.ExecuteAndExpectError(
                 "Mật khẩu không chính xác",
                 @"/_GraphQL/Authentication/mutation.changePassword.gql",
-                @"/_GraphQL/Authentication/mutation.changePassword.variable.invalid_password.json"
+                new
+                {
+                    password = "không phải là mật khẩu cũ",
+                    newPassword = "777"
+                }
             );
         }
 
@@ -47,13 +55,6 @@ namespace uit.ooad.test._GraphQL
 
             Database.WriteAsync(realm =>
             {
-                var position = realm.Add(new Position
-                {
-                    Id = 2,
-                    Name = "Quản trị viên",
-                    IsActive = true,
-                });
-
                 realm.Add(new Employee
                 {
                     Id = "user",
@@ -66,15 +67,18 @@ namespace uit.ooad.test._GraphQL
                     IdentityCard = "123456789",
                     Password = CryptoHelper.Encrypt("123"),
                     PhoneNumber = "+84 0123456789",
-                    Position = position,
+                    Position = PositionDataAccess.Get(1),
                     StartingDate = DateTimeOffset.Now
                 });
             }).Wait();
-
             SchemaHelper.Execute(
                 @"/_GraphQL/Authentication/mutation.login.gql",
                 @"/_GraphQL/Authentication/mutation.login.schema.json",
-                @"/_GraphQL/Authentication/mutation.login.variable.json"
+                new
+                {
+                    id = "user",
+                    password = "123"
+                }
             );
         }
 
@@ -84,7 +88,11 @@ namespace uit.ooad.test._GraphQL
             SchemaHelper.ExecuteAndExpectError(
                 "Tài khoản hoặc mật khẩu không chính xác",
                 @"/_GraphQL/Authentication/mutation.login.gql",
-                @"/_GraphQL/Authentication/mutation.login.variable.invalid_password.json"
+                new
+                {
+                    id = "user",
+                    password = "not a valid password"
+                }
             );
         }
     }

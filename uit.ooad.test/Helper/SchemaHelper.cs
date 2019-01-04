@@ -21,11 +21,11 @@ namespace uit.ooad.test.Helper
         public static void Execute(
             string queryPath,
             string schemaPath,
-            object variablePath = null,
+            object variable = null,
             Action<Position> setPermission = null
         )
         {
-            var result = ExecuteAsync(queryPath, variablePath, setPermission).GetAwaiter().GetResult();
+            var result = ExecuteAsync(queryPath, variable, setPermission).GetAwaiter().GetResult();
             var jsonResult = getJsonResultOrThrow(result);
             var jSchema = JSchema.Parse(
                 File.ReadAllText(schemaPath.TrimStart('/'))
@@ -79,11 +79,11 @@ namespace uit.ooad.test.Helper
         public static void ExecuteAndExpectError(
             string expectErrorMessage,
             string queryPath,
-            string variablePath = null,
+            object variable = null,
             Action<Position> setPermission = null
         )
         {
-            var result = ExecuteAsync(queryPath, variablePath, setPermission).GetAwaiter().GetResult();
+            var result = ExecuteAsync(queryPath, variable, setPermission).GetAwaiter().GetResult();
             try
             {
                 getJsonResultOrThrow(result);
@@ -101,28 +101,28 @@ namespace uit.ooad.test.Helper
 
         private static async Task<ExecuteAsyncResult> ExecuteAsync(
             string queryPath,
-            object variablePath = null,
+            object variableObject = null,
             Action<Position> setPermission = null
         )
         {
             string variable = "{}";
-            if (variablePath is string)
+            if (variableObject is string)
             {
-                variable = File.ReadAllText(((string)variablePath).TrimStart('/'));
+                variable = File.ReadAllText(((string)variableObject).TrimStart('/'));
             }
-            else if (variablePath != null)
+            else if (variableObject != null)
             {
-                variable = JsonConvert.SerializeObject(variablePath);
+                variable = JsonConvert.SerializeObject(variableObject);
             }
             var query = File.ReadAllText(queryPath.TrimStart('/'));
 
             var User = new ClaimsPrincipal(
                 new ClaimsIdentity(
-                    new[] { new Claim(ClaimTypes.Name, Constant.UserName) }
+                    new[] { new Claim(ClaimTypes.Name, Constant.adminName) }
                 )
             );
 
-            var position = EmployeeBusiness.Get(Constant.UserName).Position;
+            var position = EmployeeBusiness.Get(Constant.adminName).Position;
 
             if (setPermission != null) PositionBusiness.UpdateForHelper(setPermission, position);
 
