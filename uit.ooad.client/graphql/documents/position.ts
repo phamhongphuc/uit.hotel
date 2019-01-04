@@ -78,10 +78,6 @@ export const positionOptionsAdministrative: CheckboxOption[] = [
         value: 'permissionManagePosition',
     },
     {
-        text: 'Lấy thông tin chức vụ',
-        value: 'permissionGetPosition',
-    },
-    {
         text: 'Quản lý thông tin nhân viên',
         value: 'permissionManageEmployee',
     },

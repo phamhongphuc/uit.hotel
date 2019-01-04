@@ -105,7 +105,7 @@ import { mixinData } from '~/components/mixins/mutable';
 import { GetPositions } from '~/graphql/types';
 
 @Component({
-    name: 'floor-room-',
+    name: 'position-',
     mixins: [mixinData({ getPositions })],
 })
 export default class extends Vue {
