@@ -1,35 +1,35 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using uit.ooad.test.Helper;
 
-namespace uit.ooad.test._GraphQL.Booking
+namespace uit.ooad.test._GraphQL
 {
     [TestClass]
     public class _Booking
     {
         [TestMethod]
-        public void Bookings()
+        public void Mutation_AddBookingToBill()
         {
             SchemaHelper.Execute(
-                @"/_GraphQL/Booking/query.bookings.gql",
-                @"/_GraphQL/Booking/query.bookings.schema.json",
-                null,
+                @"/_GraphQL/Booking/mutation.addBookingToBill.gql",
+                @"/_GraphQL/Booking/mutation.addBookingToBill.schema.json",
+                @"/_GraphQL/Booking/mutation.addBookingToBill.variable.json",
                 p => p.PermissionManageHiringRoom = true
             );
         }
 
         [TestMethod]
-        public void Booking()
+        public void Mutation_AddBookingToBill_InvalidBill()
         {
-            SchemaHelper.Execute(
-                @"/_GraphQL/Booking/query.booking.gql",
-                @"/_GraphQL/Booking/query.booking.schema.json",
-                @"/_GraphQL/Booking/query.booking.variable.json",
+            SchemaHelper.ExecuteAndExpectError(
+                "Mã hóa đơn không tồn tại.",
+                @"/_GraphQL/Booking/mutation.addBookingToBill.gql",
+                @"/_GraphQL/Booking/mutation.addBookingToBill.variable.invalid_bill.json",
                 p => p.PermissionManageHiringRoom = true
             );
         }
 
         [TestMethod]
-        public void CheckIn()
+        public void Mutation_CheckIn()
         {
             SchemaHelper.Execute(
                 @"/_GraphQL/Booking/mutation.checkIn.gql",
@@ -40,62 +40,28 @@ namespace uit.ooad.test._GraphQL.Booking
         }
 
         [TestMethod]
-        public void CheckIn_InValidId()
-        {
-            SchemaHelper.ExecuteAndExpectError(
-                "Mã Booking không tồn tại",
-                @"/_GraphQL/Booking/mutation.checkIn.gql",
-                @"/_GraphQL/Booking/mutation.checkIn.variable.in_valid_id.json",
-                p => p.PermissionManageHiringRoom = true
-            );
-        }
-
-        [TestMethod]
-        public void CheckIn_InValidBookingStatus()
+        public void Mutation_CheckIn_InvalidBookingStatus()
         {
             SchemaHelper.ExecuteAndExpectError(
                 "Phòng đã được check-in, không thể check-in lại.",
                 @"/_GraphQL/Booking/mutation.checkIn.gql",
-                @"/_GraphQL/Booking/mutation.checkIn.variable.in_valid_booking_status.json",
+                @"/_GraphQL/Booking/mutation.checkIn.variable.invalid_booking_status.json",
                 p => p.PermissionManageHiringRoom = true
             );
         }
 
         [TestMethod]
-        public void RequestCheckOut()
-        {
-            SchemaHelper.Execute(
-                @"/_GraphQL/Booking/mutation.requestCheckOut.gql",
-                @"/_GraphQL/Booking/mutation.requestCheckOut.schema.json",
-                @"/_GraphQL/Booking/mutation.requestCheckOut.variable.json",
-                p => p.PermissionManageHiringRoom = true
-            );
-        }
-
-        [TestMethod]
-        public void RequestCheckOut_InValidId()
+        public void Mutation_CheckIn_InvalidId()
         {
             SchemaHelper.ExecuteAndExpectError(
                 "Mã Booking không tồn tại",
-                @"/_GraphQL/Booking/mutation.requestCheckOut.gql",
-                @"/_GraphQL/Booking/mutation.requestCheckOut.variable.in_valid_id.json",
+                @"/_GraphQL/Booking/mutation.checkIn.gql",
+                @"/_GraphQL/Booking/mutation.checkIn.variable.invalid_id.json",
                 p => p.PermissionManageHiringRoom = true
             );
         }
-
         [TestMethod]
-        public void RequestCheckOut_InValidBookingStatus()
-        {
-            SchemaHelper.ExecuteAndExpectError(
-                "Không thể yêu cầu trả phòng",
-                @"/_GraphQL/Booking/mutation.requestCheckOut.gql",
-                @"/_GraphQL/Booking/mutation.requestCheckOut.variable.in_valid_booking_status.json",
-                p => p.PermissionManageHiringRoom = true
-            );
-        }
-
-        [TestMethod]
-        public void CheckOut()
+        public void Mutation_CheckOut()
         {
             SchemaHelper.Execute(
                 @"/_GraphQL/Booking/mutation.checkOut.gql",
@@ -106,45 +72,77 @@ namespace uit.ooad.test._GraphQL.Booking
         }
 
         [TestMethod]
-        public void CheckOut_InValidId()
-        {
-            SchemaHelper.ExecuteAndExpectError(
-                "Mã Booking không tồn tại.",
-                @"/_GraphQL/Booking/mutation.checkOut.gql",
-                @"/_GraphQL/Booking/mutation.checkOut.variable.in_valid_id.json",
-                p => p.PermissionManageHiringRoom = true
-            );
-        }
-
-        [TestMethod]
-        public void CheckOut_InValidBookingStatus()
+        public void Mutation_CheckOut_InvalidBookingStatus()
         {
             SchemaHelper.ExecuteAndExpectError(
                 "Không thể Check-out.",
                 @"/_GraphQL/Booking/mutation.checkOut.gql",
-                @"/_GraphQL/Booking/mutation.checkOut.variable.in_valid_booking_status.json",
+                @"/_GraphQL/Booking/mutation.checkOut.variable.invalid_booking_status.json",
                 p => p.PermissionManageHiringRoom = true
             );
         }
 
         [TestMethod]
-        public void AddBookingToBill()
+        public void Mutation_CheckOut_InvalidId()
         {
-            SchemaHelper.Execute(
-                @"/_GraphQL/Booking/mutation.addBookingToBill.gql",
-                @"/_GraphQL/Booking/mutation.addBookingToBill.schema.json",
-                @"/_GraphQL/Booking/mutation.addBookingToBill.variable.json",
+            SchemaHelper.ExecuteAndExpectError(
+                "Mã Booking không tồn tại.",
+                @"/_GraphQL/Booking/mutation.checkOut.gql",
+                @"/_GraphQL/Booking/mutation.checkOut.variable.invalid_id.json",
                 p => p.PermissionManageHiringRoom = true
             );
         }
-        
+
         [TestMethod]
-        public void AddBookingToBill_InValidBill()
+        public void Mutation_RequestCheckOut()
+        {
+            SchemaHelper.Execute(
+                @"/_GraphQL/Booking/mutation.requestCheckOut.gql",
+                @"/_GraphQL/Booking/mutation.requestCheckOut.schema.json",
+                @"/_GraphQL/Booking/mutation.requestCheckOut.variable.json",
+                p => p.PermissionManageHiringRoom = true
+            );
+        }
+
+        [TestMethod]
+        public void Mutation_RequestCheckOut_InvalidBookingStatus()
         {
             SchemaHelper.ExecuteAndExpectError(
-                "Mã hóa đơn không tồn tại.",
-                @"/_GraphQL/Booking/mutation.addBookingToBill.gql",
-                @"/_GraphQL/Booking/mutation.addBookingToBill.variable.in_valid_bill.json",
+                "Không thể yêu cầu trả phòng",
+                @"/_GraphQL/Booking/mutation.requestCheckOut.gql",
+                @"/_GraphQL/Booking/mutation.requestCheckOut.variable.invalid_booking_status.json",
+                p => p.PermissionManageHiringRoom = true
+            );
+        }
+
+        [TestMethod]
+        public void Mutation_RequestCheckOut_InvalidId()
+        {
+            SchemaHelper.ExecuteAndExpectError(
+                "Mã Booking không tồn tại",
+                @"/_GraphQL/Booking/mutation.requestCheckOut.gql",
+                @"/_GraphQL/Booking/mutation.requestCheckOut.variable.invalid_id.json",
+                p => p.PermissionManageHiringRoom = true
+            );
+        }
+        [TestMethod]
+        public void Query_Booking()
+        {
+            SchemaHelper.Execute(
+                @"/_GraphQL/Booking/query.booking.gql",
+                @"/_GraphQL/Booking/query.booking.schema.json",
+                @"/_GraphQL/Booking/query.booking.variable.json",
+                p => p.PermissionManageHiringRoom = true
+            );
+        }
+
+        [TestMethod]
+        public void Query_Bookings()
+        {
+            SchemaHelper.Execute(
+                @"/_GraphQL/Booking/query.bookings.gql",
+                @"/_GraphQL/Booking/query.bookings.schema.json",
+                null,
                 p => p.PermissionManageHiringRoom = true
             );
         }
