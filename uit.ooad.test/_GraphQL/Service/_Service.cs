@@ -1,7 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using uit.ooad.test.Helper;
 
-namespace uit.ooad.test._GraphQL._Service
+namespace uit.ooad.test._GraphQL
 {
     [TestClass]
     public class _Service

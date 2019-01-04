@@ -40,7 +40,7 @@ namespace uit.ooad.test._GraphQL.Booking
         }
 
         [TestMethod]
-        public void CheckIn_InValidId()
+        public void CheckIn_InvalidId()
         {
             SchemaHelper.ExecuteAndExpectError(
                 "Mã Booking không tồn tại",
@@ -51,7 +51,7 @@ namespace uit.ooad.test._GraphQL.Booking
         }
 
         [TestMethod]
-        public void CheckIn_InValidBookingStatus()
+        public void CheckIn_InvalidBookingStatus()
         {
             SchemaHelper.ExecuteAndExpectError(
                 "Phòng đã được check-in, không thể check-in lại.",
@@ -73,7 +73,7 @@ namespace uit.ooad.test._GraphQL.Booking
         }
 
         [TestMethod]
-        public void RequestCheckOut_InValidId()
+        public void RequestCheckOut_InvalidId()
         {
             SchemaHelper.ExecuteAndExpectError(
                 "Mã Booking không tồn tại",
@@ -84,7 +84,7 @@ namespace uit.ooad.test._GraphQL.Booking
         }
 
         [TestMethod]
-        public void RequestCheckOut_InValidBookingStatus()
+        public void RequestCheckOut_InvalidBookingStatus()
         {
             SchemaHelper.ExecuteAndExpectError(
                 "Không thể yêu cầu trả phòng",
@@ -106,7 +106,7 @@ namespace uit.ooad.test._GraphQL.Booking
         }
 
         [TestMethod]
-        public void CheckOut_InValidId()
+        public void CheckOut_InvalidId()
         {
             SchemaHelper.ExecuteAndExpectError(
                 "Mã Booking không tồn tại.",
@@ -117,7 +117,7 @@ namespace uit.ooad.test._GraphQL.Booking
         }
 
         [TestMethod]
-        public void CheckOut_InValidBookingStatus()
+        public void CheckOut_InvalidBookingStatus()
         {
             SchemaHelper.ExecuteAndExpectError(
                 "Không thể Check-out.",
@@ -137,9 +137,9 @@ namespace uit.ooad.test._GraphQL.Booking
                 p => p.PermissionManageHiringRoom = true
             );
         }
-        
+
         [TestMethod]
-        public void AddBookingToBill_InValidBill()
+        public void AddBookingToBill_InvalidBill()
         {
             SchemaHelper.ExecuteAndExpectError(
                 "Mã hóa đơn không tồn tại.",

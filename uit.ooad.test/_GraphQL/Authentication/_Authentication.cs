@@ -1,7 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using uit.ooad.test.Helper;
 
-namespace uit.ooad.test._GraphQL._Authentication
+namespace uit.ooad.test._GraphQL
 {
     [TestClass]
     public class _Authentication
@@ -17,12 +17,22 @@ namespace uit.ooad.test._GraphQL._Authentication
         }
 
         [TestMethod]
-        public void Login_InValidPassword()
+        public void Login_InvalidPassword()
         {
             SchemaHelper.ExecuteAndExpectError(
                 "Tài khoản hoặc mật khẩu không chính xác",
                 @"/_GraphQL/Authentication/mutation.login.gql",
                 @"/_GraphQL/Authentication/mutation.login.variable.in_valid_password.json"
+            );
+        }
+
+        [TestMethod]
+        public void CheckLogin()
+        {
+            SchemaHelper.Execute(
+                @"/_GraphQL/Authentication/mutation.checkLogin.gql",
+                @"/_GraphQL/Authentication/mutation.checkLogin.schema.json",
+                null
             );
         }
 
@@ -37,7 +47,7 @@ namespace uit.ooad.test._GraphQL._Authentication
         }
 
         [TestMethod]
-        public void ChangePassword_InValidPassword()
+        public void ChangePassword_InvalidPassword()
         {
             SchemaHelper.ExecuteAndExpectError(
                 "Mật khẩu không chính xác",

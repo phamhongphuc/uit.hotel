@@ -1,7 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using uit.ooad.test.Helper;
 
-namespace uit.ooad.test._GraphQL._Bill
+namespace uit.ooad.test._GraphQL
 {
     [TestClass]
     public class _Bill
@@ -40,7 +40,7 @@ namespace uit.ooad.test._GraphQL._Bill
         }
 
         [TestMethod]
-        public void CreateBill_InValidPatron()
+        public void CreateBill_InvalidPatron()
         {
             SchemaHelper.ExecuteAndExpectError(
                 "Exception has been thrown by the target of an invocation.",
@@ -51,7 +51,7 @@ namespace uit.ooad.test._GraphQL._Bill
         }
 
         [TestMethod]
-        public void CreateBill_InValidRoom()
+        public void CreateBill_InvalidRoom()
         {
             SchemaHelper.ExecuteAndExpectError(
                 "Mã phòng không tồn tại",
@@ -73,7 +73,7 @@ namespace uit.ooad.test._GraphQL._Bill
         }
 
         [TestMethod]
-        public void BookAndCheckIn_InValidRoom()
+        public void BookAndCheckIn_InvalidRoom()
         {
             SchemaHelper.ExecuteAndExpectError(
                 "Mã phòng không tồn tại",
@@ -84,7 +84,7 @@ namespace uit.ooad.test._GraphQL._Bill
         }
 
         [TestMethod]
-        public void BookAndCheckIn_InValidPatron()
+        public void BookAndCheckIn_InvalidPatron()
         {
             SchemaHelper.ExecuteAndExpectError(
                 "Exception has been thrown by the target of an invocation.",
