@@ -5,9 +5,7 @@
             success="Thêm vị trí mới thành công"
             :mutation="createPosition"
             :variables="{
-                input: {
-                    name: positionName,
-                },
+                input: input,
             }"
         >
             <div class="d-flex">
@@ -108,18 +106,40 @@ import { CheckboxOption } from '~/utils/components';
 })
 export default class extends PopupMixin {
     positionName: string = '';
-    selected = [];
+
+    selected: string[] = [];
 
     positionOptionsAdministrative: CheckboxOption[] = [];
     positionOptionsBusiness: CheckboxOption[] = [];
     positionOptionsReceptionist: CheckboxOption[] = [];
     positionOptionsHouseKeeping: CheckboxOption[] = [];
 
+    get input() {
+        return {
+            name: this.positionName,
+            ...this.positionOptions,
+        };
+    }
+
     mounted() {
         this.positionOptionsAdministrative = positionOptionsAdministrative;
         this.positionOptionsBusiness = positionOptionsBusiness;
         this.positionOptionsReceptionist = positionOptionsReceptionist;
         this.positionOptionsHouseKeeping = positionOptionsHouseKeeping;
+    }
+
+    get positionOptions() {
+        const options = {};
+
+        const eachOption = option => {
+            options[option.value] = this.selected.indexOf(option.value) !== -1;
+        };
+        this.positionOptionsAdministrative.forEach(eachOption);
+        this.positionOptionsBusiness.forEach(eachOption);
+        this.positionOptionsReceptionist.forEach(eachOption);
+        this.positionOptionsHouseKeeping.forEach(eachOption);
+
+        return options;
     }
 
     onOpen() {

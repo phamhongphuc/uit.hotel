@@ -8,7 +8,7 @@
         <template slot-scope="{ result: { loading, error, data } }">
             <div :class="childClass">
                 <slot v-if="data" :data="data" />
-                <div v-else class="query-text p-5">
+                <div v-else class="query-text">
                     <span v-if="loading">
                         <span class="icon"></span>
                         Đang tải dữ liệu...
@@ -47,6 +47,7 @@ export default class extends Vue {
     > div > .query-text {
         display: flex;
         height: 100%;
+        padding: 2rem;
         justify-content: center;
         align-items: center;
     }
