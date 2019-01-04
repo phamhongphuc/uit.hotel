@@ -45,7 +45,7 @@ namespace uit.ooad.test._GraphQL
             SchemaHelper.ExecuteAndExpectError(
                 "Exception has been thrown by the target of an invocation.",
                 @"/_GraphQL/Bill/mutation.createBill.gql",
-                @"/_GraphQL/Bill/mutation.createBill.variable.in_valid_patron.json",
+                @"/_GraphQL/Bill/mutation.createBill.variable.invalid_patron.json",
                 p => p.PermissionManageHiringRoom = true
             );
         }
@@ -56,7 +56,7 @@ namespace uit.ooad.test._GraphQL
             SchemaHelper.ExecuteAndExpectError(
                 "Mã phòng không tồn tại",
                 @"/_GraphQL/Bill/mutation.createBill.gql",
-                @"/_GraphQL/Bill/mutation.createBill.variable.in_valid_room.json",
+                @"/_GraphQL/Bill/mutation.createBill.variable.invalid_room.json",
                 p => p.PermissionManageHiringRoom = true
             );
         }
@@ -78,7 +78,7 @@ namespace uit.ooad.test._GraphQL
             SchemaHelper.ExecuteAndExpectError(
                 "Mã phòng không tồn tại",
                 @"/_GraphQL/Bill/mutation.bookAndCheckIn.gql",
-                @"/_GraphQL/Bill/mutation.bookAndCheckIn.variable.in_valid_room.json",
+                @"/_GraphQL/Bill/mutation.bookAndCheckIn.variable.invalid_room.json",
                 p => p.PermissionManageHiringRoom = true
             );
         }
@@ -89,7 +89,7 @@ namespace uit.ooad.test._GraphQL
             SchemaHelper.ExecuteAndExpectError(
                 "Exception has been thrown by the target of an invocation.",
                 @"/_GraphQL/Bill/mutation.bookAndCheckIn.gql",
-                @"/_GraphQL/Bill/mutation.bookAndCheckIn.variable.in_valid_patron.json",
+                @"/_GraphQL/Bill/mutation.bookAndCheckIn.variable.invalid_patron.json",
                 p => p.PermissionManageHiringRoom = true
             );
         }

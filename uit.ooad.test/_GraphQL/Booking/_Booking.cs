@@ -1,7 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using uit.ooad.test.Helper;
 
-namespace uit.ooad.test._GraphQL.Booking
+namespace uit.ooad.test._GraphQL
 {
     [TestClass]
     public class _Booking
@@ -45,7 +45,7 @@ namespace uit.ooad.test._GraphQL.Booking
             SchemaHelper.ExecuteAndExpectError(
                 "Mã Booking không tồn tại",
                 @"/_GraphQL/Booking/mutation.checkIn.gql",
-                @"/_GraphQL/Booking/mutation.checkIn.variable.in_valid_id.json",
+                @"/_GraphQL/Booking/mutation.checkIn.variable.invalid_id.json",
                 p => p.PermissionManageHiringRoom = true
             );
         }
@@ -56,7 +56,7 @@ namespace uit.ooad.test._GraphQL.Booking
             SchemaHelper.ExecuteAndExpectError(
                 "Phòng đã được check-in, không thể check-in lại.",
                 @"/_GraphQL/Booking/mutation.checkIn.gql",
-                @"/_GraphQL/Booking/mutation.checkIn.variable.in_valid_booking_status.json",
+                @"/_GraphQL/Booking/mutation.checkIn.variable.invalid_booking_status.json",
                 p => p.PermissionManageHiringRoom = true
             );
         }
@@ -78,7 +78,7 @@ namespace uit.ooad.test._GraphQL.Booking
             SchemaHelper.ExecuteAndExpectError(
                 "Mã Booking không tồn tại",
                 @"/_GraphQL/Booking/mutation.requestCheckOut.gql",
-                @"/_GraphQL/Booking/mutation.requestCheckOut.variable.in_valid_id.json",
+                @"/_GraphQL/Booking/mutation.requestCheckOut.variable.invalid_id.json",
                 p => p.PermissionManageHiringRoom = true
             );
         }
@@ -89,7 +89,7 @@ namespace uit.ooad.test._GraphQL.Booking
             SchemaHelper.ExecuteAndExpectError(
                 "Không thể yêu cầu trả phòng",
                 @"/_GraphQL/Booking/mutation.requestCheckOut.gql",
-                @"/_GraphQL/Booking/mutation.requestCheckOut.variable.in_valid_booking_status.json",
+                @"/_GraphQL/Booking/mutation.requestCheckOut.variable.invalid_booking_status.json",
                 p => p.PermissionManageHiringRoom = true
             );
         }
@@ -111,7 +111,7 @@ namespace uit.ooad.test._GraphQL.Booking
             SchemaHelper.ExecuteAndExpectError(
                 "Mã Booking không tồn tại.",
                 @"/_GraphQL/Booking/mutation.checkOut.gql",
-                @"/_GraphQL/Booking/mutation.checkOut.variable.in_valid_id.json",
+                @"/_GraphQL/Booking/mutation.checkOut.variable.invalid_id.json",
                 p => p.PermissionManageHiringRoom = true
             );
         }
@@ -122,7 +122,7 @@ namespace uit.ooad.test._GraphQL.Booking
             SchemaHelper.ExecuteAndExpectError(
                 "Không thể Check-out.",
                 @"/_GraphQL/Booking/mutation.checkOut.gql",
-                @"/_GraphQL/Booking/mutation.checkOut.variable.in_valid_booking_status.json",
+                @"/_GraphQL/Booking/mutation.checkOut.variable.invalid_booking_status.json",
                 p => p.PermissionManageHiringRoom = true
             );
         }
@@ -144,7 +144,7 @@ namespace uit.ooad.test._GraphQL.Booking
             SchemaHelper.ExecuteAndExpectError(
                 "Mã hóa đơn không tồn tại.",
                 @"/_GraphQL/Booking/mutation.addBookingToBill.gql",
-                @"/_GraphQL/Booking/mutation.addBookingToBill.variable.in_valid_bill.json",
+                @"/_GraphQL/Booking/mutation.addBookingToBill.variable.invalid_bill.json",
                 p => p.PermissionManageHiringRoom = true
             );
         }

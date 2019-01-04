@@ -22,7 +22,7 @@ namespace uit.ooad.test._GraphQL
             SchemaHelper.ExecuteAndExpectError(
                 "Tài khoản hoặc mật khẩu không chính xác",
                 @"/_GraphQL/Authentication/mutation.login.gql",
-                @"/_GraphQL/Authentication/mutation.login.variable.in_valid_password.json"
+                @"/_GraphQL/Authentication/mutation.login.variable.invalid_password.json"
             );
         }
 
@@ -52,7 +52,7 @@ namespace uit.ooad.test._GraphQL
             SchemaHelper.ExecuteAndExpectError(
                 "Mật khẩu không chính xác",
                 @"/_GraphQL/Authentication/mutation.changePassword.gql",
-                @"/_GraphQL/Authentication/mutation.changePassword.variable.in_valid_password.json"
+                @"/_GraphQL/Authentication/mutation.changePassword.variable.invalid_password.json"
             );
         }
     }

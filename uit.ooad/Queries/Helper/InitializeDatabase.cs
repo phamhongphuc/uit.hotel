@@ -30,6 +30,7 @@ namespace uit.ooad.Queries.Helper
             AddService();
             AddService();
 
+
             AddBill();
             AddCheckedInBill();
             AddRequestCheckOutBill();
@@ -38,6 +39,8 @@ namespace uit.ooad.Queries.Helper
             AddConfirmCleanedAndServices();
             AddBill();
             AddReceipt();
+
+            AddServiceDetail();
         }
 
         private static void ResetDatebase()
@@ -97,6 +100,18 @@ namespace uit.ooad.Queries.Helper
                 IsActive = true
             });
         }
+
+        private static void AddServiceDetail()
+        {
+            ServicesDetailBusiness.Add(new ServicesDetail
+            {
+                Time = DateTimeOffset.Now,
+                Number = 12,
+                Booking = BookingBusiness.Get(1),
+                Service = ServiceBusiness.Get(1)
+            });
+        }
+
 
         private static void AddVolatilityRate()
         {
