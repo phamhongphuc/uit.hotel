@@ -26,13 +26,12 @@ namespace uit.ooad.test._GraphQL
         public void Mutation_BookAndCheckIn_InvalidPatron()
         {
             SchemaHelper.ExecuteAndExpectError(
-                "Exception has been thrown by the target of an invocation.",
+                "Mã khách hàng không tồn tại",
                 @"/_GraphQL/Bill/mutation.bookAndCheckIn.gql",
                 @"/_GraphQL/Bill/mutation.bookAndCheckIn.variable.invalid_patron.json",
                 p => p.PermissionManageHiringRoom = true
             );
         }
-
         [TestMethod]
         public void Mutation_BookAndCheckIn_InvalidRoom()
         {
@@ -59,7 +58,7 @@ namespace uit.ooad.test._GraphQL
         public void Mutation_CreateBill_InvalidPatron()
         {
             SchemaHelper.ExecuteAndExpectError(
-                "Exception has been thrown by the target of an invocation.",
+                "Mã khách hàng không tồn tại",
                 @"/_GraphQL/Bill/mutation.createBill.gql",
                 @"/_GraphQL/Bill/mutation.createBill.variable.invalid_patron.json",
                 p => p.PermissionManageHiringRoom = true
@@ -84,10 +83,7 @@ namespace uit.ooad.test._GraphQL
             {
                 Id = 10,
                 Time = DateTimeOffset.Now,
-                Patron = new Patron
-                {
-                    Identification = "123456789",
-                }
+                Patron = PatronBusiness.Get(1)
             })).Wait();
             SchemaHelper.Execute(
                 @"/_GraphQL/Bill/query.bill.gql",

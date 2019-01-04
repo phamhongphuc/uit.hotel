@@ -28,7 +28,7 @@ namespace uit.ooad.test._GraphQL
                 Id = 10,
                 Name = "Tầng tạo ra để xóa",
                 IsActive = true,
-            }));
+            })).Wait();
             SchemaHelper.Execute(
                 @"/_GraphQL/Floor/mutation.deleteFloor.gql",
                 @"/_GraphQL/Floor/mutation.deleteFloor.schema.json",
@@ -45,7 +45,7 @@ namespace uit.ooad.test._GraphQL
                 Id = 30,
                 Name = "Tầng tạo ra để vô hiệu",
                 IsActive = true,
-            }));
+            })).Wait();
             SchemaHelper.Execute(
                 @"/_GraphQL/Floor/mutation.setIsActiveFloor.gql",
                 @"/_GraphQL/Floor/mutation.setIsActiveFloor.schema.json",
@@ -62,7 +62,7 @@ namespace uit.ooad.test._GraphQL
                 Id = 40,
                 Name = "Tầng tạo ra để vô hiệu",
                 IsActive = true,
-            }));
+            })).Wait();
             SchemaHelper.Execute(
                 @"/_GraphQL/Floor/mutation.updateFloor.gql",
                 @"/_GraphQL/Floor/mutation.updateFloor.schema.json",
@@ -90,7 +90,7 @@ namespace uit.ooad.test._GraphQL
                 Id = 20,
                 Name = "Tầng tạo ra để gọi",
                 IsActive = true,
-            }));
+            })).Wait();
             SchemaHelper.Execute(
                 @"/_GraphQL/Floor/query.floor.gql",
                 @"/_GraphQL/Floor/query.floor.schema.json",
