@@ -36,20 +36,17 @@ namespace uit.ooad.ObjectTypes
 
             Field<NonNullGraphType<FloorType>>(
                 nameof(Room.Floor),
-                resolve: context => context.Source.Floor,
-                description: "Phòng thuộc tầng nào"
-            );
+                "Phòng thuộc tầng nào",
+                resolve: context => context.Source.Floor);
             Field<NonNullGraphType<RoomKindType>>(
                 nameof(Room.RoomKind),
-                resolve: context => context.Source.RoomKind,
-                description: "Loại phòng của phòng"
-            );
+                "Loại phòng của phòng",
+                resolve: context => context.Source.RoomKind);
 
             Field<ListGraphType<BookingType>>(
                 nameof(Room.Bookings),
-                resolve: context => context.Source.Bookings.ToList(),
-                description: "Danh sách thông tin thuê phòng"
-            );
+                "Danh sách thông tin thuê phòng",
+                resolve: context => context.Source.Bookings.ToList());
         }
     }
 
