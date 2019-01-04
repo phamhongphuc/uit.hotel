@@ -51,6 +51,17 @@ namespace uit.ooad.test._GraphQL._Bill
         }
 
         [TestMethod]
+        public void CreateBill_InValidRoom()
+        {
+            SchemaHelper.ExecuteAndExpectError(
+                "Mã phòng không tồn tại",
+                @"/_GraphQL/Bill/mutation.createBill.gql",
+                @"/_GraphQL/Bill/mutation.createBill.variable.in_valid_room.json",
+                p => p.PermissionManageHiringRoom = true
+            );
+        }
+
+        [TestMethod]
         public void BookAndCheckIn()
         {
             SchemaHelper.Execute(
