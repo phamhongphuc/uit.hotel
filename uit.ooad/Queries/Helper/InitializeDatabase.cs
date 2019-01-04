@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using uit.ooad.Businesses;
 using uit.ooad.DataAccesses;
 using uit.ooad.Models;
+using uit.ooad.Queries.Authentication;
 
 namespace uit.ooad.Queries.Helper
 {
@@ -12,37 +13,134 @@ namespace uit.ooad.Queries.Helper
         {
             ResetDatebase();
 
-            AddPosition();
-            AddPosition();
-            AddEmployee();
+            Database.WriteAsync(realm =>
+            {
+                var position = realm.Add(new Position
+                {
+                    Id = 1,
+                    Name = "Quản trị viên",
+                    IsActive = true,
+                    PermissionCleaning = true,
+                    PermissionGetAccountingVoucher = true,
+                    PermissionGetHouseKeeping = true,
+                    PermissionGetMap = true,
+                    PermissionGetPatron = true,
+                    PermissionGetRate = true,
+                    PermissionGetService = true,
+                    PermissionManageEmployee = true,
+                    PermissionManageHiringRoom = true,
+                    PermissionManagePatron = true,
+                    PermissionManagePatronKind = true,
+                    PermissionManagePosition = true,
+                    PermissionManageRate = true,
+                    PermissionManageMap = true,
+                    PermissionManageService = true,
+                });
 
-            AddFloor();
+                realm.Add(new Employee
+                {
+                    Id = "admin",
+                    Address = "Địa chỉ",
+                    IsActive = true,
+                    Birthdate = DateTimeOffset.Now,
+                    Email = "email@gmail.com",
+                    Gender = true,
+                    Name = "Quản trị viên",
+                    IdentityCard = "123456789",
+                    Password = CryptoHelper.Encrypt("12345678"),
+                    PhoneNumber = "+84 0123456789",
+                    Position = position,
+                    StartingDate = DateTimeOffset.Now
+                });
 
-            AddRoomKind();
-            AddRoom();
+                var roomKind = realm.Add(new RoomKind
+                {
+                    Id = 1,
+                    Name = "Tên loại phòng",
+                    AmountOfPeople = 1,
+                    NumberOfBeds = 1,
+                    IsActive = true
+                });
 
-            AddPatronKind();
-            AddPatron();
+                var floor = realm.Add(new Floor
+                {
+                    Name = "1",
+                    IsActive = true
+                });
 
-            AddRate();
-            AddVolatilityRate();
+                var room = realm.Add(new Room
+                {
+                    Id = 1,
+                    Name = "101",
+                    Floor = floor,
+                    RoomKind = roomKind,
+                    IsActive = true
+                });
 
-            AddService();
-            AddService();
+                var patronKind = realm.Add(new PatronKind
+                {
+                    Id = 1,
+                    Name = "Tên loại khách hàng",
+                    Description = "Mô tả loại khách hàng"
+                });
+
+                var patron = realm.Add(new Patron
+                {
+                    Id = 1,
+                    Identification = "123456789",
+                    Name = "Tên khách hàng",
+                    Email = "Email khách hàng",
+                    Gender = true,
+                    Birthdate = DateTimeOffset.Now,
+                    Nationality = "Quốc tịch",
+                    Domicile = "Nguyên quán",
+                    Residence = "Thường trú",
+                    Company = "Công ty",
+                    Note = "Ghi chú",
+                    PatronKind = patronKind,
+                    ListOfPhoneNumbers = new List<string>
+                    {
+                        "12324234",
+                        "1234"
+                    }
+                });
+
+            }).Wait();
+
+            // AddEmployee();
+
+            // AddFloor();
+
+            // AddRoomKind();
+            // AddRoom();
+
+            // AddPatronKind();
+            // AddPatron();
+
+            // AddRate();
+            // AddVolatilityRate();
+
+            // AddService();
+            // AddService();
 
 
-            AddBill();
-            AddCheckedInBill();
-            AddRequestCheckOutBill();
+            // AddBill();
+            // AddCheckedInBill();
+            // AddRequestCheckOutBill();
 
-            AddConfirmCleaned();
-            AddConfirmCleanedAndServices();
-            AddBill();
-            AddReceipt();
+            // AddConfirmCleaned();
+            // AddConfirmCleanedAndServices();
+            // AddBill();
+            // AddReceipt();
 
-            AddServiceDetail();
+            // AddServiceDetail();
 
-            AddInactiveEmployee();
+            // AddInactiveEmployee();
+        }
+
+        private static void ResetDatebase()
+        {
+            Database.WriteAsync(realm => realm.RemoveAll());
         }
 
         private static void AddInactiveEmployee()
@@ -63,34 +161,6 @@ namespace uit.ooad.Queries.Helper
             }).GetAwaiter().GetResult();
 
             Database.WriteAsync(realm => inactive.IsActive = false);
-        }
-
-        private static void ResetDatebase()
-        {
-            Database.WriteAsync(realm => realm.RemoveAll());
-        }
-
-        private static void AddPosition()
-        {
-            PositionBusiness.Add(new Position
-            {
-                Name = "Quản trị viên",
-                PermissionCleaning = true,
-                PermissionGetAccountingVoucher = true,
-                PermissionGetHouseKeeping = true,
-                PermissionGetMap = true,
-                PermissionGetPatron = true,
-                PermissionGetRate = true,
-                PermissionGetService = true,
-                PermissionManageEmployee = true,
-                PermissionManageHiringRoom = true,
-                PermissionManagePatron = true,
-                PermissionManagePatronKind = true,
-                PermissionManagePosition = true,
-                PermissionManageRate = true,
-                PermissionManageMap = true,
-                PermissionManageService = true,
-            });
         }
 
         private static void AddEmployee()
