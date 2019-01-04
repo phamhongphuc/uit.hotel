@@ -7,7 +7,7 @@ using uit.ooad.Models;
 
 namespace uit.ooad.Businesses
 {
-    public class RoomKindBusiness
+    public static class RoomKindBusiness
     {
         public static Task<RoomKind> Add(RoomKind roomKind) => RoomKindDataAccess.Add(roomKind);
 

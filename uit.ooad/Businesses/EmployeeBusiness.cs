@@ -8,7 +8,7 @@ using uit.ooad.Queries.Authentication;
 
 namespace uit.ooad.Businesses
 {
-    public class EmployeeBusiness
+    public static class EmployeeBusiness
     {
         public static Task<Employee> Add(Employee employee)
         {

@@ -7,7 +7,7 @@ using uit.ooad.Models;
 
 namespace uit.ooad.Businesses
 {
-    public class ServiceBusiness
+    public static class ServiceBusiness
     {
         public static Task<Service> Add(Service service) => ServiceDataAccess.Add(service);
 

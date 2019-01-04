@@ -6,7 +6,7 @@ using uit.ooad.Models;
 
 namespace uit.ooad.Businesses
 {
-    public class ServicesDetailBusiness
+    public static class ServicesDetailBusiness
     {
         public static Task<ServicesDetail> Add(ServicesDetail servicesDetail)
         {

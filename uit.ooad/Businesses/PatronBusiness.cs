@@ -7,7 +7,7 @@ using uit.ooad.Models;
 
 namespace uit.ooad.Businesses
 {
-    public class PatronBusiness
+    public static class PatronBusiness
     {
         public static Task<Patron> Add(Patron patron)
         {

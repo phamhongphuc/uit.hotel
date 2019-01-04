@@ -6,7 +6,7 @@ using uit.ooad.Models;
 
 namespace uit.ooad.Businesses
 {
-    public class BookingBusiness
+    public static class BookingBusiness
     {
         public static Task<Booking> CheckIn(Employee employee, int bookingId)
         {
