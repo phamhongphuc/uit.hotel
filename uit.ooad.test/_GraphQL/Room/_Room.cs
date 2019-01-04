@@ -30,7 +30,7 @@ namespace uit.ooad.test._GraphQL
                 Name = "Tên phòng",
                 Floor = FloorBusiness.Get(1),
                 RoomKind = RoomKindBusiness.Get(1)
-            }));
+            })).Wait();
             SchemaHelper.Execute(
                 @"/_GraphQL/Room/mutation.deleteRoom.gql",
                 @"/_GraphQL/Room/mutation.deleteRoom.schema.json",
@@ -49,7 +49,7 @@ namespace uit.ooad.test._GraphQL
                 Name = "Tên phòng",
                 Floor = FloorBusiness.Get(1),
                 RoomKind = RoomKindBusiness.Get(1)
-            }));
+            })).Wait();
             SchemaHelper.Execute(
                 @"/_GraphQL/Room/mutation.setIsActiveRoom.gql",
                 @"/_GraphQL/Room/mutation.setIsActiveRoom.schema.json",
@@ -68,7 +68,7 @@ namespace uit.ooad.test._GraphQL
                 Name = "Tên phòng",
                 Floor = FloorBusiness.Get(1),
                 RoomKind = RoomKindBusiness.Get(1)
-            }));
+            })).Wait();
             SchemaHelper.Execute(
                 @"/_GraphQL/Room/mutation.updateRoom.gql",
                 @"/_GraphQL/Room/mutation.updateRoom.schema.json",

@@ -68,10 +68,18 @@ namespace uit.ooad.test._GraphQL
         [TestMethod]
         public void Query_HouseKeeping()
         {
+            Database.WriteAsync(realm => realm.Add(new HouseKeeping
+            {
+                Id = 40,
+                Status = (int)HouseKeeping.StatusEnum.Cleaning,
+                Type = (int)HouseKeeping.TypeEnum.ExpectedDeparture,
+                Employee = EmployeeBusiness.Get("admin"),
+                Booking = BookingBusiness.Get(1)
+            })).Wait();
             SchemaHelper.Execute(
                 @"/_GraphQL/HouseKeeping/query.houseKeeping.gql",
                 @"/_GraphQL/HouseKeeping/query.houseKeeping.schema.json",
-                @"/_GraphQL/HouseKeeping/query.houseKeeping.variable.json"
+                new { id = 40 }
             );
         }
 

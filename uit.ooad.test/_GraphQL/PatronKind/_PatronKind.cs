@@ -26,7 +26,7 @@ namespace uit.ooad.test._GraphQL
                 Id = 10,
                 Name = "Tên loại khách hàng",
                 Description = "Mô tả loại khách hàng"
-            }));
+            })).Wait();
             SchemaHelper.Execute(
                 @"/_GraphQL/PatronKind/mutation.deletePatronKind.gql",
                 @"/_GraphQL/PatronKind/mutation.deletePatronKind.schema.json",
@@ -43,7 +43,7 @@ namespace uit.ooad.test._GraphQL
                 Id = 20,
                 Name = "Tên loại khách hàng",
                 Description = "Mô tả loại khách hàng"
-            }));
+            })).Wait();
             SchemaHelper.Execute(
                 @"/_GraphQL/PatronKind/mutation.updatePatronKind.gql",
                 @"/_GraphQL/PatronKind/mutation.updatePatronKind.schema.json",
