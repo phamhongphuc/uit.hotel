@@ -87,8 +87,27 @@ namespace uit.ooad.ObjectTypes
         {
             Name = _Creation;
 
-            Field(x => x.BookCheckInTime, true).Description("Thời điểm nhận phòng dự kiến của khách hàng");
-            Field(x => x.BookCheckOutTime, true).Description("Thời điểm trả phòng dự kiến của khách hàng");
+            Field(x => x.BookCheckInTime).Description("Thời điểm nhận phòng dự kiến của khách hàng");
+            Field(x => x.BookCheckOutTime).Description("Thời điểm trả phòng dự kiến của khách hàng");
+
+            Field<NonNullGraphType<RoomIdInput>>(
+                nameof(Booking.Room),
+                "Phòng khách hàng chọn đặt trước"
+            );
+            Field<NonNullGraphType<ListGraphType<NonNullGraphType<PatronIdInput>>>>(
+                nameof(Booking.ListOfPatrons),
+                "Danh sách khách hàng"
+            );
+        }
+    }
+
+    public class BookAndCheckInCreateInput : InputType<Booking>
+    {
+        public BookAndCheckInCreateInput()
+        {
+            Name = "BookAndCheckInCreateInput";
+
+            Field(x => x.BookCheckOutTime).Description("Thời điểm trả phòng dự kiến của khách hàng");
 
             Field<NonNullGraphType<RoomIdInput>>(
                 nameof(Booking.Room),

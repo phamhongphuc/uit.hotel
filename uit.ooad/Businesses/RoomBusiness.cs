@@ -4,10 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using uit.ooad.DataAccesses;
 using uit.ooad.Models;
+using uit.ooad.Queries.Helper;
 
 namespace uit.ooad.Businesses
 {
-    public class RoomBusiness
+    public static class RoomBusiness
     {
         public static Task<Room> Add(Room room)
         {
@@ -47,7 +48,7 @@ namespace uit.ooad.Businesses
         {
             var roomInDatabase = Get(id);
             if (roomInDatabase == null) throw new Exception("Id: " + id + " không tồn tại");
-            if(isActive && !roomInDatabase.Floor.IsActive)
+            if (isActive && !roomInDatabase.Floor.IsActive)
                 throw new Exception("Loại phòng thuộc tầng đã bị vô hiệu hóa. Không thể kích hoạt");
             RoomDataAccess.SetIsActive(roomInDatabase, isActive);
         }
@@ -67,6 +68,37 @@ namespace uit.ooad.Businesses
             return roomInDatabase;
         }
 
+        public static bool IsEmptyRoom(this Room room, DateTimeOffset from, DateTimeOffset to)
+        {
+            if (from > to) throw new Exception("Ngày đến < ngày đi");
+            foreach (var booking in room.Bookings)
+            {
+                int status = booking.Status;
+                DateTimeOffset bookingFrom;
+                DateTimeOffset bookingTo;
+                switch (status)
+                {
+                    case (int)Booking.StatusEnum.Booked:
+                        bookingFrom = booking.BookCheckInTime;
+                        bookingTo = booking.BookCheckOutTime;
+                        break;
+                    case 1:
+                        bookingFrom = booking.RealCheckInTime;
+                        bookingTo = booking.BookCheckOutTime;
+                        break;
+                    case 2:
+                        bookingFrom = booking.RealCheckInTime;
+                        bookingTo = booking.BookCheckOutTime;
+                        break;
+                    default:
+                        bookingFrom = booking.RealCheckInTime;
+                        bookingTo = booking.RealCheckOutTime;
+                        break;
+                }
+                if (DateTimeHelper.IsTwoDateRangesOverlap(bookingFrom, bookingTo, from, to)) return false;
+            }
+            return true;
+        }
         public static Room Get(int roomId) => RoomDataAccess.Get(roomId);
         public static IEnumerable<Room> Get() => RoomDataAccess.Get();
     }

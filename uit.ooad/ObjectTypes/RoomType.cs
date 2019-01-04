@@ -1,7 +1,10 @@
+using System;
 using System.Linq;
 using GraphQL.Types;
+using uit.ooad.Businesses;
 using uit.ooad.Models;
 using uit.ooad.Queries.Base;
+using uit.ooad.Queries.Helper;
 
 namespace uit.ooad.ObjectTypes
 {
@@ -15,6 +18,21 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.Id).Description("Id của phòng");
             Field(x => x.Name).Description("Tên phòng");
             Field(x => x.IsActive).Description("Trạng thái phòng");
+
+            Field<NonNullGraphType<BooleanGraphType>>(
+                "isEmpty",
+                "Phòng trống",
+                new QueryArguments{
+                    new QueryArgument<NonNullGraphType<DateTimeOffsetGraphType>> { Name = "from" },
+                    new QueryArgument<NonNullGraphType<DateTimeOffsetGraphType>> { Name = "to" }
+                },
+                context =>
+                {
+                    var from = context.GetArgument<DateTimeOffset>("from");
+                    var to = context.GetArgument<DateTimeOffset>("to");
+                    return context.Source.IsEmptyRoom(from, to);
+                }
+            );
 
             Field<NonNullGraphType<FloorType>>(
                 nameof(Room.Floor),
