@@ -12,7 +12,26 @@ namespace uit.ooad.test._GraphQL
             SchemaHelper.Execute(
                 @"/_GraphQL/Employee/mutation.createEmployee.gql",
                 @"/_GraphQL/Employee/mutation.createEmployee.schema.json",
-                @"/_GraphQL/Employee/mutation.createEmployee.variable.json",
+                new
+                {
+                    input = new
+                    {
+                        id = "donphong",
+                        password = "123",
+                        name = "Bang",
+                        identityCard = "12345678",
+                        gender = true,
+                        email = "email@gmail.com",
+                        phoneNumber = "123456789",
+                        address = "164/54",
+                        birthdate = "04-04-1996",
+                        startingDate = "10-10-2015",
+                        position = new
+                        {
+                            id = 1
+                        }
+                    }
+                },
                 p => p.PermissionManageEmployee = true
             );
         }
@@ -42,7 +61,7 @@ namespace uit.ooad.test._GraphQL
         [TestMethod]
         public void Mutation_UpdateEmployee_Inactive_Employee()
         {
-            
+
             SchemaHelper.ExecuteAndExpectError(
                 "Tài khoản inactive đã bị vô hiệu hóa",
                 @"/_GraphQL/Employee/mutation.updateEmployee.gql",

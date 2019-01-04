@@ -23,10 +23,7 @@ namespace uit.ooad.test._GraphQL
                     {
                         bookCheckInTime = DateTimeOffset.Now.AddDays(1).ToString("s"),
                         bookCheckOutTime = DateTimeOffset.Now.AddDays(2).ToString("s"),
-                        room = new
-                        {
-                            id = 1,
-                        },
+                        room = new { id = 1 },
                         listOfPatrons = new[]{
                             new { id = 1 },
                         },
@@ -49,10 +46,7 @@ namespace uit.ooad.test._GraphQL
                     {
                         bookCheckInTime = DateTimeOffset.Now.AddDays(1).ToString("s"),
                         bookCheckOutTime = DateTimeOffset.Now.AddDays(2).ToString("s"),
-                        room = new
-                        {
-                            id = 1,
-                        },
+                        room = new { id = 1 },
                         listOfPatrons = new[]{
                             new { id = 1 },
                         },
@@ -76,6 +70,7 @@ namespace uit.ooad.test._GraphQL
                 Bill = BillDataAccess.Get(1),
                 Room = RoomDataAccess.Get(1),
             })).Wait();
+
             SchemaHelper.Execute(
                 @"/_GraphQL/Booking/mutation.checkIn.gql",
                 @"/_GraphQL/Booking/mutation.checkIn.schema.json",
@@ -97,6 +92,7 @@ namespace uit.ooad.test._GraphQL
                 Bill = BillDataAccess.Get(1),
                 Room = RoomDataAccess.Get(1),
             })).Wait();
+
             SchemaHelper.ExecuteAndExpectError(
                 "Phòng đã được check-in, không thể check-in lại",
                 @"/_GraphQL/Booking/mutation.checkIn.gql",
@@ -128,6 +124,7 @@ namespace uit.ooad.test._GraphQL
                 Bill = BillDataAccess.Get(1),
                 Room = RoomDataAccess.Get(1),
             })).Wait();
+
             SchemaHelper.Execute(
                 @"/_GraphQL/Booking/mutation.checkOut.gql",
                 @"/_GraphQL/Booking/mutation.checkOut.schema.json",
@@ -202,6 +199,7 @@ namespace uit.ooad.test._GraphQL
                 Bill = BillDataAccess.Get(1),
                 Room = RoomDataAccess.Get(1),
             })).Wait();
+
             SchemaHelper.ExecuteAndExpectError(
                 "Không thể yêu cầu trả phòng",
                 @"/_GraphQL/Booking/mutation.requestCheckOut.gql",

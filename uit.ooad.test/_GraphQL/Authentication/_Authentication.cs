@@ -71,6 +71,7 @@ namespace uit.ooad.test._GraphQL
                     StartingDate = DateTimeOffset.Now
                 });
             }).Wait();
+
             SchemaHelper.Execute(
                 @"/_GraphQL/Authentication/mutation.login.gql",
                 @"/_GraphQL/Authentication/mutation.login.schema.json",

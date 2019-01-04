@@ -169,6 +169,7 @@ namespace uit.ooad.test._GraphQL
                 Time = DateTimeOffset.Now,
                 Patron = PatronBusiness.Get(1)
             })).Wait();
+
             SchemaHelper.Execute(
                 @"/_GraphQL/Bill/query.bill.gql",
                 @"/_GraphQL/Bill/query.bill.schema.json",
