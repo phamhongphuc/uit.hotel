@@ -27,26 +27,22 @@ namespace uit.ooad.ObjectTypes
 
             Field<ListGraphType<StringGraphType>>(
                 nameof(Patron.PhoneNumbers),
-                resolve: context => context.Source.PhoneNumbers.ToList(),
-                description: "Danh sách số điện thoại của khách hàng"
-            );
+                "Danh sách số điện thoại của khách hàng",
+                resolve: context => context.Source.PhoneNumbers.ToList());
 
             Field<NonNullGraphType<PatronKindType>>(
                 nameof(Patron.PatronKind),
-                resolve: context => context.Source.PatronKind,
-                description: "Loại khách hàng"
-            );
+                "Loại khách hàng",
+                resolve: context => context.Source.PatronKind);
 
             Field<ListGraphType<BillType>>(
                 nameof(Patron.Bills),
-                resolve: context => context.Source.Bills.ToList(),
-                description: "Danh sách các số hóa đơn của khách hàng"
-            );
+                "Danh sách các số hóa đơn của khách hàng",
+                resolve: context => context.Source.Bills.ToList());
             Field<ListGraphType<BookingType>>(
                 nameof(Patron.Bookings),
-                resolve: context => context.Source.Bookings.ToList(),
-                description: "Danh sách các đơn đặt trước của khách hàng"
-            );
+                "Danh sách các đơn đặt trước của khách hàng",
+                resolve: context => context.Source.Bookings.ToList());
         }
     }
 

@@ -17,13 +17,13 @@ namespace uit.ooad.ObjectTypes
 
             Field<EmployeeType>(
                 nameof(HouseKeeping.Employee),
-                resolve: context => context.Source.Employee,
-                description: "Nhân viên thực hiện dọn dẹp");
+                "Nhân viên thực hiện dọn dẹp",
+                resolve: context => context.Source.Employee);
 
             Field<NonNullGraphType<BookingType>>(
                 nameof(HouseKeeping.Booking),
-                resolve: context => context.Source.Booking,
-                description: "Thông tin chi tiết đặt trước của phòng cần chuẩn bị");
+                "Thông tin chi tiết đặt trước của phòng cần chuẩn bị",
+                resolve: context => context.Source.Booking);
         }
     }
 
