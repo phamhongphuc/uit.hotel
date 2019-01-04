@@ -20,6 +20,9 @@ namespace uit.ooad.Businesses
                 if (!booking.Room.IsActive)
                     throw new Exception("Phòng " + booking.Room.Id + " đã ngừng hoạt động");
 
+                if (booking.BookCheckInTime > booking.BookCheckOutTime || booking.BookCheckInTime < DateTimeOffset.Now)
+                    throw new Exception("Ngày check-in, check-out dự kiến không hợp lệ");
+
                 booking.CheckValidBeforeCreate();
             }
 
@@ -38,6 +41,9 @@ namespace uit.ooad.Businesses
                 booking.Room = booking.Room.GetManaged();
                 if (!booking.Room.IsActive)
                     throw new Exception("Phòng " + booking.Room.Id + " đã ngừng hoạt động");
+
+                if (booking.BookCheckOutTime < DateTimeOffset.Now)
+                    throw new Exception("Ngày check-out dự kiến không hợp lệ");
             }
 
             return BillDataAccess.BookAndCheckIn(bill, bookings);

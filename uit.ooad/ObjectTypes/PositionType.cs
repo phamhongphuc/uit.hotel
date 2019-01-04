@@ -35,9 +35,13 @@ namespace uit.ooad.ObjectTypes
 
             Field<ListGraphType<EmployeeType>>(
                 nameof(Position.Employees),
-                resolve: context => context.Source.Employees.ToList(),
-                description: "Danh sách các nhân viên thuộc quyền này"
-            );
+                "Danh sách các nhân viên thuộc quyền này",
+                resolve: context => context.Source.Employees.ToList());
+
+            Field<NonNullGraphType<IntGraphType>>(
+                "employeesCount",
+                "Số nhân viên",
+                resolve: context => context.Source.Employees.Count());
         }
     }
 

@@ -31,15 +31,13 @@ namespace uit.ooad.ObjectTypes
 
             Field<NonNullGraphType<RoomKindType>>(
                 nameof(VolatilityRate.RoomKind),
-                resolve: context => context.Source.RoomKind,
-                description: "Thuộc loại phòng"
-            );
+                "Thuộc loại phòng",
+                resolve: context => context.Source.RoomKind);
 
             Field<EmployeeType>(
                 nameof(VolatilityRate.Employee),
-                resolve: context => context.Source.Employee,
-                description: "Nhân viên tạo giá"
-            );
+                "Nhân viên tạo giá",
+                resolve: context => context.Source.Employee);
         }
     }
 

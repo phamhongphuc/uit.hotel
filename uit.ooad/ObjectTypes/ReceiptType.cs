@@ -19,15 +19,13 @@ namespace uit.ooad.ObjectTypes
 
             Field<NonNullGraphType<BillType>>(
                 nameof(Receipt.Bill),
-                resolve: context => context.Source.Bill,
-                description: "Phiếu thu thuộc hóa đơn nào"
-            );
+                "Phiếu thu thuộc hóa đơn nào",
+                resolve: context => context.Source.Bill);
 
             Field<NonNullGraphType<EmployeeType>>(
                 nameof(Receipt.Employee),
-                resolve: context => context.Source.Employee,
-                description: "Nhân viên tạo phiếu thu"
-            );
+                "Nhân viên tạo phiếu thu",
+                resolve: context => context.Source.Employee);
         }
     }
 

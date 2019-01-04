@@ -26,48 +26,40 @@ namespace uit.ooad.ObjectTypes
 
             Field<EmployeeType>(
                 nameof(Booking.EmployeeBooking),
-                resolve: context => context.Source.EmployeeBooking,
-                description: "Nhân viên thực hiện giao dịch nhận đặt phòng từ khách hàng"
-            );
+                "Nhân viên thực hiện giao dịch nhận đặt phòng từ khách hàng",
+                resolve: context => context.Source.EmployeeBooking);
             Field<EmployeeType>(
                 nameof(Booking.EmployeeCheckIn),
-                resolve: context => context.Source.EmployeeCheckIn,
-                description: "Nhân viên thực hiện giao dịch nhận đặt phòng từ khách hàng"
-            );
+                "Nhân viên thực hiện check-in cho khách hàng",
+                resolve: context => context.Source.EmployeeCheckIn);
             Field<EmployeeType>(
                 nameof(Booking.EmployeeCheckOut),
-                resolve: context => context.Source.EmployeeCheckOut,
-                description: "Nhân viên thực hiện giao dịch nhận đặt phòng từ khách hàng"
-            );
+                "Nhân viên thực hiện check-out cho khách hàng",
+                resolve: context => context.Source.EmployeeCheckOut);
 
             Field<NonNullGraphType<BillType>>(
                 nameof(Booking.Bill),
-                resolve: context => context.Source.Bill,
-                description: "Thông tin hóa đơn của thông tin thuê phòng"
-            );
+                "Thông tin hóa đơn của thông tin thuê phòng",
+                resolve: context => context.Source.Bill);
             Field<NonNullGraphType<RoomType>>(
                 nameof(Booking.Room),
-                resolve: context => context.Source.Room,
-                description: "Phòng khách hàng chọn đặt trước"
-            );
+                "Phòng khách hàng chọn đặt trước",
+                resolve: context => context.Source.Room);
 
             Field<NonNullGraphType<ListGraphType<PatronType>>>(
                 nameof(Booking.Patrons),
-                resolve: context => context.Source.Patrons.ToList(),
-                description: "Danh sách khách hàng yêu cầu đặt phòng"
-            );
+                "Danh sách khách hàng yêu cầu đặt phòng",
+                resolve: context => context.Source.Patrons.ToList());
 
             Field<ListGraphType<HouseKeepingType>>(
                 nameof(Booking.HouseKeepings),
-                resolve: context => context.Source.HouseKeepings.ToList(),
-                description: "Danh sách nhân viên dọn phòng cho phòng đã đặt này"
-            );
+                "Danh sách nhân viên dọn phòng cho phòng đã đặt này",
+                resolve: context => context.Source.HouseKeepings.ToList());
 
             Field<ListGraphType<ServicesDetailType>>(
                 nameof(Booking.ServicesDetails),
-                resolve: context => context.Source.ServicesDetails.ToList(),
-                description: "Danh sách chi tiết sử dụng dịch vụ của khách hàng"
-            );
+                "Danh sách chi tiết sử dụng dịch vụ của khách hàng",
+                resolve: context => context.Source.ServicesDetails.ToList());
         }
     }
 
@@ -87,8 +79,27 @@ namespace uit.ooad.ObjectTypes
         {
             Name = _Creation;
 
-            Field(x => x.BookCheckInTime, true).Description("Thời điểm nhận phòng dự kiến của khách hàng");
-            Field(x => x.BookCheckOutTime, true).Description("Thời điểm trả phòng dự kiến của khách hàng");
+            Field(x => x.BookCheckInTime).Description("Thời điểm nhận phòng dự kiến của khách hàng");
+            Field(x => x.BookCheckOutTime).Description("Thời điểm trả phòng dự kiến của khách hàng");
+
+            Field<NonNullGraphType<RoomIdInput>>(
+                nameof(Booking.Room),
+                "Phòng khách hàng chọn đặt trước"
+            );
+            Field<NonNullGraphType<ListGraphType<NonNullGraphType<PatronIdInput>>>>(
+                nameof(Booking.ListOfPatrons),
+                "Danh sách khách hàng"
+            );
+        }
+    }
+
+    public class BookAndCheckInCreateInput : InputType<Booking>
+    {
+        public BookAndCheckInCreateInput()
+        {
+            Name = "BookAndCheckInCreateInput";
+
+            Field(x => x.BookCheckOutTime).Description("Thời điểm trả phòng dự kiến của khách hàng");
 
             Field<NonNullGraphType<RoomIdInput>>(
                 nameof(Booking.Room),

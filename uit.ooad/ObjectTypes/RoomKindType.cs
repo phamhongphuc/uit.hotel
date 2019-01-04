@@ -20,18 +20,18 @@ namespace uit.ooad.ObjectTypes
 
             Field<ListGraphType<RoomType>>(
                 nameof(RoomKind.Rooms),
-                resolve: context => context.Source.Rooms.ToList(),
-                description: "Danh sách các phòng thuộc loại phòng này");
+                "Danh sách các phòng thuộc loại phòng này",
+                resolve: context => context.Source.Rooms.ToList());
 
             Field<ListGraphType<RateType>>(
                 nameof(RoomKind.Rates),
-                resolve: context => context.Source.Rates.ToList(),
-                description: "Danh sách giá cố định của loại phòng");
+                "Danh sách giá cố định của loại phòng",
+                resolve: context => context.Source.Rates.ToList());
 
             Field<ListGraphType<VolatilityRateType>>(
                 nameof(RoomKind.VolatilityRates),
-                resolve: context => context.Source.VolatilityRates.ToList(),
-                description: "Danh sách giá biến động của loại phòng");
+                "Danh sách giá biến động của loại phòng",
+                resolve: context => context.Source.VolatilityRates.ToList());
         }
     }
 

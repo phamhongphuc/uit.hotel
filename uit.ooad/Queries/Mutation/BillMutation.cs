@@ -38,7 +38,7 @@ namespace uit.ooad.Queries.Mutation
                 "BookAndCheckIn",
                 "Đặt và nhận phòng ngay tại khách sạn",
                 new QueryArguments(
-                    new QueryArgument<NonNullGraphType<ListGraphType<NonNullGraphType<BookingCreateInput>>>>
+                    new QueryArgument<NonNullGraphType<ListGraphType<NonNullGraphType<BookAndCheckInCreateInput>>>>
                         { Name = "bookings" },
                     new QueryArgument<NonNullGraphType<BillCreateInput>> { Name = "bill" }
                 ),
