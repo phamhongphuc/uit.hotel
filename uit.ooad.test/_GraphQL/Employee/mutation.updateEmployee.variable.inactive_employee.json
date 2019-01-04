@@ -1,8 +1,7 @@
 {
     "input": {
-        "id": "admin",
-        "password": "123",
-        "name": "Bang",
+        "id": "inactive",
+        "name": "tennhanvien",
         "identityCard": "12345678",
         "gender": true,
         "email": "email@gmail.com",

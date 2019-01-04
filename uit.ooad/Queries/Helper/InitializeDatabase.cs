@@ -41,6 +41,28 @@ namespace uit.ooad.Queries.Helper
             AddReceipt();
 
             AddServiceDetail();
+
+            AddInactiveEmployee();
+        }
+
+        private static void AddInactiveEmployee()
+        {
+            var inactive = EmployeeBusiness.Add(new Employee
+            {
+                Id = "inactive",
+                Address = "Địa chỉ",
+                Birthdate = DateTimeOffset.Now,
+                Email = "email@gmail.com",
+                Gender = true,
+                Name = "Quản trị viên",
+                IdentityCard = "123456789",
+                Password = "12345678",
+                PhoneNumber = "+84 0123456789",
+                Position = PositionBusiness.Get(1),
+                StartingDate = DateTimeOffset.Now
+            }).GetAwaiter().GetResult();
+
+            Database.WriteAsync(realm => inactive.IsActive = false);
         }
 
         private static void ResetDatebase()
@@ -85,7 +107,6 @@ namespace uit.ooad.Queries.Helper
                 Password = "12345678",
                 PhoneNumber = "+84 0123456789",
                 Position = PositionBusiness.Get(1),
-                IsActive = true,
                 StartingDate = DateTimeOffset.Now
             });
         }
