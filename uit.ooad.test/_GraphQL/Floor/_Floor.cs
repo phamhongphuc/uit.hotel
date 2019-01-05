@@ -1,14 +1,13 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using uit.ooad.test.Helper;
 using uit.ooad.DataAccesses;
 using uit.ooad.Models;
+using uit.ooad.test.Helper;
 
 namespace uit.ooad.test._GraphQL
 {
     [TestClass]
     public class _Floor : RealmDatabase
     {
-
         [TestMethod]
         public void Mutation_CreateFloor()
         {
@@ -33,7 +32,7 @@ namespace uit.ooad.test._GraphQL
             {
                 Id = 10,
                 Name = "Tầng tạo ra để xóa",
-                IsActive = true,
+                IsActive = true
             })).Wait();
             SchemaHelper.Execute(
                 @"/_GraphQL/Floor/mutation.deleteFloor.gql",
@@ -50,7 +49,7 @@ namespace uit.ooad.test._GraphQL
             {
                 Id = 30,
                 Name = "Tầng tạo ra để vô hiệu",
-                IsActive = true,
+                IsActive = true
             })).Wait();
             SchemaHelper.Execute(
                 @"/_GraphQL/Floor/mutation.setIsActiveFloor.gql",
@@ -67,7 +66,7 @@ namespace uit.ooad.test._GraphQL
             {
                 Id = 40,
                 Name = "Tầng tạo ra để cập nhật",
-                IsActive = true,
+                IsActive = true
             })).Wait();
             SchemaHelper.Execute(
                 @"/_GraphQL/Floor/mutation.updateFloor.gql",
@@ -91,7 +90,7 @@ namespace uit.ooad.test._GraphQL
             {
                 Id = 20,
                 Name = "Tầng tạo ra để gọi",
-                IsActive = true,
+                IsActive = true
             })).Wait();
             SchemaHelper.Execute(
                 @"/_GraphQL/Floor/query.floor.gql",

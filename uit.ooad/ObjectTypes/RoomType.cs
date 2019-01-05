@@ -4,7 +4,6 @@ using GraphQL.Types;
 using uit.ooad.Businesses;
 using uit.ooad.Models;
 using uit.ooad.Queries.Base;
-using uit.ooad.Queries.Helper;
 
 namespace uit.ooad.ObjectTypes
 {
@@ -22,7 +21,8 @@ namespace uit.ooad.ObjectTypes
             Field<NonNullGraphType<BooleanGraphType>>(
                 "isEmpty",
                 "Phòng trống",
-                new QueryArguments{
+                new QueryArguments
+                {
                     new QueryArgument<NonNullGraphType<DateTimeOffsetGraphType>> { Name = "from" },
                     new QueryArgument<NonNullGraphType<DateTimeOffsetGraphType>> { Name = "to" }
                 },

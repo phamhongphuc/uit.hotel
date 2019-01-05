@@ -73,12 +73,12 @@ namespace uit.ooad.Businesses
             if (from > to) throw new Exception("Ngày đến < ngày đi");
             foreach (var booking in room.Bookings)
             {
-                int status = booking.Status;
+                var status = booking.Status;
                 DateTimeOffset bookingFrom;
                 DateTimeOffset bookingTo;
                 switch (status)
                 {
-                    case (int)Booking.StatusEnum.Booked:
+                    case (int) Booking.StatusEnum.Booked:
                         bookingFrom = booking.BookCheckInTime;
                         bookingTo = booking.BookCheckOutTime;
                         break;
@@ -95,10 +95,13 @@ namespace uit.ooad.Businesses
                         bookingTo = booking.RealCheckOutTime;
                         break;
                 }
+
                 if (DateTimeHelper.IsTwoDateRangesOverlap(bookingFrom, bookingTo, from, to)) return false;
             }
+
             return true;
         }
+
         public static Room Get(int roomId) => RoomDataAccess.Get(roomId);
         public static IEnumerable<Room> Get() => RoomDataAccess.Get();
     }

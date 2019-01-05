@@ -47,7 +47,7 @@ namespace uit.ooad.test._GraphQL
             {
                 Id = 10,
                 Name = "Quản trị viên",
-                IsActive = true,
+                IsActive = true
             })).Wait();
 
             SchemaHelper.Execute(
@@ -57,6 +57,7 @@ namespace uit.ooad.test._GraphQL
                 p => p.PermissionManagePosition = true
             );
         }
+
         [TestMethod]
         public void Mutation_SetIsActivePosition()
         {
@@ -64,7 +65,7 @@ namespace uit.ooad.test._GraphQL
             {
                 Id = 20,
                 Name = "Quản trị viên",
-                IsActive = true,
+                IsActive = true
             })).Wait();
 
             SchemaHelper.Execute(
@@ -82,7 +83,7 @@ namespace uit.ooad.test._GraphQL
             {
                 Id = 30,
                 Name = "Quản trị viên",
-                IsActive = true,
+                IsActive = true
             })).Wait();
 
             SchemaHelper.Execute(
@@ -105,7 +106,7 @@ namespace uit.ooad.test._GraphQL
             {
                 Id = 40,
                 Name = "Quản trị viên",
-                IsActive = true,
+                IsActive = true
             })).Wait();
 
             SchemaHelper.Execute(
@@ -137,6 +138,7 @@ namespace uit.ooad.test._GraphQL
                 p => p.PermissionManagePosition = true
             );
         }
+
         [TestMethod]
         public void Query_Position()
         {

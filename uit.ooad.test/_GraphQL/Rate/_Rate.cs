@@ -36,6 +36,7 @@ namespace uit.ooad.test._GraphQL
                 p => p.PermissionManageRate = true
             );
         }
+
         [TestMethod]
         public void Mutation_DeleteRate()
         {

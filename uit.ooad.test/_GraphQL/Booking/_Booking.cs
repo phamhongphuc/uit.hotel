@@ -1,10 +1,8 @@
 using System;
-using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using uit.ooad.Businesses;
 using uit.ooad.DataAccesses;
 using uit.ooad.Models;
-using uit.ooad.Queries.Helper;
 using uit.ooad.test.Helper;
 
 namespace uit.ooad.test._GraphQL
@@ -34,9 +32,10 @@ namespace uit.ooad.test._GraphQL
                         bookCheckInTime = DateTimeOffset.Now.AddDays(1).ToString("s"),
                         bookCheckOutTime = DateTimeOffset.Now.AddDays(2).ToString("s"),
                         room = new { id = 120 },
-                        listOfPatrons = new[]{
-                            new { id = 1 },
-                        },
+                        listOfPatrons = new[]
+                        {
+                            new { id = 1 }
+                        }
                     },
                     billId = 1
                 },
@@ -66,9 +65,10 @@ namespace uit.ooad.test._GraphQL
                         bookCheckInTime = DateTimeOffset.Now.AddDays(1).ToString("s"),
                         bookCheckOutTime = DateTimeOffset.Now.AddDays(2).ToString("s"),
                         room = new { id = 121 },
-                        listOfPatrons = new[]{
-                            new { id = 1 },
-                        },
+                        listOfPatrons = new[]
+                        {
+                            new { id = 1 }
+                        }
                     },
                     billId = 1
                 },
@@ -82,12 +82,12 @@ namespace uit.ooad.test._GraphQL
             Database.WriteAsync(realm => realm.Add(new Booking
             {
                 Id = 10,
-                Status = (int)Booking.StatusEnum.Booked,
+                Status = (int) Booking.StatusEnum.Booked,
                 EmployeeBooking = EmployeeDataAccess.Get("admin"),
                 EmployeeCheckIn = null,
                 EmployeeCheckOut = null,
                 Bill = BillDataAccess.Get(1),
-                Room = RoomDataAccess.Get(1),
+                Room = RoomDataAccess.Get(1)
             })).Wait();
 
             SchemaHelper.Execute(
@@ -104,12 +104,12 @@ namespace uit.ooad.test._GraphQL
             Database.WriteAsync(realm => realm.Add(new Booking
             {
                 Id = 11,
-                Status = (int)Booking.StatusEnum.CheckedIn,
+                Status = (int) Booking.StatusEnum.CheckedIn,
                 EmployeeBooking = EmployeeDataAccess.Get("admin"),
                 EmployeeCheckIn = null,
                 EmployeeCheckOut = null,
                 Bill = BillDataAccess.Get(1),
-                Room = RoomDataAccess.Get(1),
+                Room = RoomDataAccess.Get(1)
             })).Wait();
 
             SchemaHelper.ExecuteAndExpectError(
@@ -130,18 +130,19 @@ namespace uit.ooad.test._GraphQL
                 p => p.PermissionManageHiringRoom = true
             );
         }
+
         [TestMethod]
         public void Mutation_CheckOut()
         {
             Database.WriteAsync(realm => realm.Add(new Booking
             {
                 Id = 20,
-                Status = (int)Booking.StatusEnum.RequestedCheckOut,
+                Status = (int) Booking.StatusEnum.RequestedCheckOut,
                 EmployeeBooking = EmployeeDataAccess.Get("admin"),
                 EmployeeCheckIn = EmployeeDataAccess.Get("admin"),
                 EmployeeCheckOut = EmployeeDataAccess.Get("admin"),
                 Bill = BillDataAccess.Get(1),
-                Room = RoomDataAccess.Get(1),
+                Room = RoomDataAccess.Get(1)
             })).Wait();
 
             SchemaHelper.Execute(
@@ -158,12 +159,12 @@ namespace uit.ooad.test._GraphQL
             Database.WriteAsync(realm => realm.Add(new Booking
             {
                 Id = 21,
-                Status = (int)Booking.StatusEnum.CheckedIn,
+                Status = (int) Booking.StatusEnum.CheckedIn,
                 EmployeeBooking = EmployeeDataAccess.Get("admin"),
                 EmployeeCheckIn = EmployeeDataAccess.Get("admin"),
                 EmployeeCheckOut = EmployeeDataAccess.Get("admin"),
                 Bill = BillDataAccess.Get(1),
-                Room = RoomDataAccess.Get(1),
+                Room = RoomDataAccess.Get(1)
             })).Wait();
             SchemaHelper.ExecuteAndExpectError(
                 "Booking chưa thực hiện yêu cầu check-out",
@@ -190,12 +191,12 @@ namespace uit.ooad.test._GraphQL
             Database.WriteAsync(realm => realm.Add(new Booking
             {
                 Id = 30,
-                Status = (int)Booking.StatusEnum.CheckedIn,
+                Status = (int) Booking.StatusEnum.CheckedIn,
                 EmployeeBooking = EmployeeDataAccess.Get("admin"),
                 EmployeeCheckIn = EmployeeDataAccess.Get("admin"),
                 EmployeeCheckOut = EmployeeDataAccess.Get("admin"),
                 Bill = BillDataAccess.Get(1),
-                Room = RoomDataAccess.Get(1),
+                Room = RoomDataAccess.Get(1)
             })).Wait();
             SchemaHelper.Execute(
                 @"/_GraphQL/Booking/mutation.requestCheckOut.gql",
@@ -211,12 +212,12 @@ namespace uit.ooad.test._GraphQL
             Database.WriteAsync(realm => realm.Add(new Booking
             {
                 Id = 31,
-                Status = (int)Booking.StatusEnum.CheckedOut,
+                Status = (int) Booking.StatusEnum.CheckedOut,
                 EmployeeBooking = EmployeeDataAccess.Get("admin"),
                 EmployeeCheckIn = EmployeeDataAccess.Get("admin"),
                 EmployeeCheckOut = EmployeeDataAccess.Get("admin"),
                 Bill = BillDataAccess.Get(1),
-                Room = RoomDataAccess.Get(1),
+                Room = RoomDataAccess.Get(1)
             })).Wait();
 
             SchemaHelper.ExecuteAndExpectError(
@@ -237,6 +238,7 @@ namespace uit.ooad.test._GraphQL
                 p => p.PermissionManageHiringRoom = true
             );
         }
+
         [TestMethod]
         public void Query_Booking()
         {

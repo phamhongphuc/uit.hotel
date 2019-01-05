@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using uit.ooad.Businesses;
 using uit.ooad.DataAccesses;
@@ -25,7 +24,7 @@ namespace uit.ooad.test._GraphQL
                         {
                             bookCheckOutTime = DateTimeOffset.Now.AddDays(2),
                             room = new { id = 1 },
-                            listOfPatrons = new[] { new { id = 1 } },
+                            listOfPatrons = new[] { new { id = 1 } }
                         }
                     },
                     bill = new { patron = new { id = 1 } }
@@ -48,7 +47,7 @@ namespace uit.ooad.test._GraphQL
                         {
                             bookCheckOutTime = DateTimeOffset.Now.AddDays(2),
                             room = new { id = 1 },
-                            listOfPatrons = new[] { new { id = 1 } },
+                            listOfPatrons = new[] { new { id = 1 } }
                         }
                     },
                     bill = new { patron = new { id = 100 } }
@@ -56,6 +55,7 @@ namespace uit.ooad.test._GraphQL
                 p => p.PermissionManageHiringRoom = true
             );
         }
+
         [TestMethod]
         public void Mutation_BookAndCheckIn_InvalidRoom()
         {
@@ -70,7 +70,7 @@ namespace uit.ooad.test._GraphQL
                         {
                             bookCheckOutTime = DateTimeOffset.Now.AddDays(2),
                             room = new { id = 100 },
-                            listOfPatrons = new[] { new { id = 1 } },
+                            listOfPatrons = new[] { new { id = 1 } }
                         }
                     },
                     bill = new { patron = new { id = 1 } }
@@ -103,7 +103,7 @@ namespace uit.ooad.test._GraphQL
                             bookCheckInTime = DateTimeOffset.Now.AddDays(1),
                             bookCheckOutTime = DateTimeOffset.Now.AddDays(2),
                             room = new { id = 110 },
-                            listOfPatrons = new[] { new { id = 1 } },
+                            listOfPatrons = new[] { new { id = 1 } }
                         }
                     },
                     bill = new
@@ -130,7 +130,7 @@ namespace uit.ooad.test._GraphQL
                             bookCheckInTime = DateTimeOffset.Now.AddDays(1),
                             bookCheckOutTime = DateTimeOffset.Now.AddDays(2),
                             room = new { id = 1 },
-                            listOfPatrons = new[] { new { id = 1 } },
+                            listOfPatrons = new[] { new { id = 1 } }
                         }
                     },
                     bill = new
@@ -157,7 +157,7 @@ namespace uit.ooad.test._GraphQL
                             bookCheckInTime = DateTimeOffset.Now.AddDays(1),
                             bookCheckOutTime = DateTimeOffset.Now.AddDays(2),
                             room = new { id = 100 },
-                            listOfPatrons = new[] { new { id = 1 } },
+                            listOfPatrons = new[] { new { id = 1 } }
                         }
                     },
                     bill = new

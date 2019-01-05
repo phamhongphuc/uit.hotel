@@ -1,10 +1,9 @@
+using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using uit.ooad.test.Helper;
 using uit.ooad.DataAccesses;
 using uit.ooad.Models;
-using System;
 using uit.ooad.Queries.Authentication;
-using uit.ooad.Businesses;
+using uit.ooad.test.Helper;
 
 namespace uit.ooad.test._GraphQL
 {
@@ -52,7 +51,6 @@ namespace uit.ooad.test._GraphQL
         [TestMethod]
         public void Mutation_Login()
         {
-
             Database.WriteAsync(realm =>
             {
                 realm.Add(new Employee

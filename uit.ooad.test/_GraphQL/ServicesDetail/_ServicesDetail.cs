@@ -40,14 +40,14 @@ namespace uit.ooad.test._GraphQL
             Database.WriteAsync(realm => realm.Add(new ServicesDetail
             {
                 Id = 10,
-                Booking = BookingBusiness.Get(1),
+                Booking = BookingBusiness.Get(1)
             })).Wait();
             SchemaHelper.Execute(
-                    @"/_GraphQL/ServicesDetail/mutation.deleteServicesDetail.gql",
-                    @"/_GraphQL/ServicesDetail/mutation.deleteServicesDetail.schema.json",
-                    new { id = 10 },
-                    p => p.PermissionCleaning = true
-                );
+                @"/_GraphQL/ServicesDetail/mutation.deleteServicesDetail.gql",
+                @"/_GraphQL/ServicesDetail/mutation.deleteServicesDetail.schema.json",
+                new { id = 10 },
+                p => p.PermissionCleaning = true
+            );
         }
 
         [TestMethod]
@@ -71,6 +71,7 @@ namespace uit.ooad.test._GraphQL
                 p => p.PermissionCleaning = true
             );
         }
+
         [TestMethod]
         public void Query_ServicesDetail()
         {

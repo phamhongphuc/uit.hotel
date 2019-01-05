@@ -48,7 +48,7 @@ namespace uit.ooad.Businesses
                 bookings.ToList().Distinct(new EqualityBooking(Booking.StatusEnum.CheckedIn)).Count()
             )
                 throw new Exception("Có booking trùng nhau");
-                
+
             foreach (var booking in bookings)
             {
                 booking.EmployeeBooking = employee;
@@ -87,9 +87,9 @@ namespace uit.ooad.Businesses
             {
                 if (x.Room.Id != y.Room.Id) return false;
                 if (!DateTimeHelper.IsTwoDateRangesOverlap(
-                    x.BookCheckInTime, x.BookCheckOutTime,
-                    y.BookCheckInTime, y.BookCheckOutTime
-                ))
+                        x.BookCheckInTime, x.BookCheckOutTime,
+                        y.BookCheckInTime, y.BookCheckOutTime
+                    ))
                     return false;
             }
             else if (Kind == Booking.StatusEnum.CheckedIn)
@@ -97,12 +97,13 @@ namespace uit.ooad.Businesses
                 if (x.Room.Id != y.Room.Id) return false;
             }
             else throw new Exception("Lỗi hệ thống: Kind phải là Booked hoặc CheckedIn");
+
             return true;
         }
 
         public int GetHashCode(Booking obj)
         {
-            return String.Format(
+            return string.Format(
                 "{0} {1} {2}", obj.Room.Id,
                 obj.BookCheckInTime.Ticks, obj.BookCheckOutTime.Ticks
             ).GetHashCode();

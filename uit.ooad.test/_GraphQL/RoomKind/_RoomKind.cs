@@ -30,7 +30,6 @@ namespace uit.ooad.test._GraphQL
         [TestMethod]
         public void Mutation_SetIsActiveRoomKind()
         {
-
             Database.WriteAsync(realm => realm.Add(new RoomKind
             {
                 Id = 10,

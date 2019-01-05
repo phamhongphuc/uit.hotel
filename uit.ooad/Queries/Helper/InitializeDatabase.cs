@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using uit.ooad.Businesses;
 using uit.ooad.DataAccesses;
 using uit.ooad.Models;
 using uit.ooad.Queries.Authentication;
@@ -34,7 +33,7 @@ namespace uit.ooad.Queries.Helper
                     PermissionManagePosition = true,
                     PermissionManageRate = true,
                     PermissionManageMap = true,
-                    PermissionManageService = true,
+                    PermissionManageService = true
                 });
 
                 var admin = realm.Add(new Employee
@@ -132,12 +131,12 @@ namespace uit.ooad.Queries.Helper
                 var booking = realm.Add(new Booking
                 {
                     Id = 1,
-                    Status = (int)Booking.StatusEnum.CheckedIn,
+                    Status = (int) Booking.StatusEnum.CheckedIn,
                     EmployeeBooking = admin,
                     EmployeeCheckIn = null,
                     EmployeeCheckOut = null,
                     Bill = bill,
-                    Room = room,
+                    Room = room
                 });
 
                 booking.Patrons.Add(patron);
@@ -148,7 +147,7 @@ namespace uit.ooad.Queries.Helper
                     Name = "Dịch vụ",
                     UnitRate = 10000,
                     Unit = "Lần",
-                    IsActive = true,
+                    IsActive = true
                 });
 
                 var servicesDetail = realm.Add(new ServicesDetail
@@ -156,7 +155,7 @@ namespace uit.ooad.Queries.Helper
                     Id = 1,
                     Number = 7,
                     Booking = booking,
-                    Service = service,
+                    Service = service
                 });
 
                 var Rate = realm.Add(new Rate
@@ -171,7 +170,7 @@ namespace uit.ooad.Queries.Helper
                     EffectiveStartDate = DateTimeOffset.MinValue,
                     CreateDate = DateTimeOffset.Now.AddDays(-1),
                     Employee = admin,
-                    RoomKind = roomKind,
+                    RoomKind = roomKind
                 });
             }).Wait();
         }

@@ -105,6 +105,7 @@ namespace uit.ooad.test._GraphQL
                 p => p.PermissionManageMap = true
             );
         }
+
         [TestMethod]
         public void Query_Room()
         {

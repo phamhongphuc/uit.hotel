@@ -44,11 +44,11 @@ namespace uit.ooad.test._GraphQL
                 Employee = EmployeeBusiness.Get(Constant.adminName)
             })).Wait();
             SchemaHelper.Execute(
-                    @"/_GraphQL/Receipt/query.receipt.gql",
-                    @"/_GraphQL/Receipt/query.receipt.schema.json",
-                    new { id = 10 },
-                    p => p.PermissionGetAccountingVoucher = true
-                );
+                @"/_GraphQL/Receipt/query.receipt.gql",
+                @"/_GraphQL/Receipt/query.receipt.schema.json",
+                new { id = 10 },
+                p => p.PermissionGetAccountingVoucher = true
+            );
         }
 
         [TestMethod]

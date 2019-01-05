@@ -25,6 +25,7 @@ namespace uit.ooad.test._GraphQL
                 p => p.PermissionManagePatronKind = true
             );
         }
+
         [TestMethod]
         public void Mutation_DeletePatronKind()
         {

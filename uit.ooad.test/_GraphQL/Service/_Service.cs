@@ -33,7 +33,7 @@ namespace uit.ooad.test._GraphQL
             Database.WriteAsync(realm => realm.Add(new Service
             {
                 Id = 10,
-                IsActive = true,
+                IsActive = true
             })).Wait();
             SchemaHelper.Execute(
                 @"/_GraphQL/Service/mutation.deleteService.gql",
@@ -87,6 +87,7 @@ namespace uit.ooad.test._GraphQL
                 p => p.PermissionManageService = true
             );
         }
+
         [TestMethod]
         public void Query_Service()
         {

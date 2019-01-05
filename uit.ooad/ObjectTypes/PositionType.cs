@@ -17,7 +17,8 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.IsActive).Description("Trạng thái kích hoạt/vô hiệu hóa chức vụ");
 
             Field(x => x.PermissionCleaning).Description("Quyền thao tác dọn phòng");
-            Field(x => x.PermissionGetAccountingVoucher).Description("Quyền lấy thông tin các chứng từ (hóa đơn, phiếu thu)");
+            Field(x => x.PermissionGetAccountingVoucher)
+               .Description("Quyền lấy thông tin các chứng từ (hóa đơn, phiếu thu)");
             Field(x => x.PermissionGetHouseKeeping).Description("Quyền tra cứu lịch sử dọn phòng");
             Field(x => x.PermissionGetMap).Description("Quyền lấy thông tin tầng, phòng");
             Field(x => x.PermissionGetPatron).Description("Quyền lấy thông tin khách hàng");
@@ -74,7 +75,8 @@ namespace uit.ooad.ObjectTypes
 
             Field(x => x.Name).Description("Tên chức vụ");
             Field(x => x.PermissionCleaning).Description("Quyền thao tác dọn phòng");
-            Field(x => x.PermissionGetAccountingVoucher).Description("Quyền lấy thông tin các chứng từ (hóa đơn, phiếu thu)");
+            Field(x => x.PermissionGetAccountingVoucher)
+               .Description("Quyền lấy thông tin các chứng từ (hóa đơn, phiếu thu)");
             Field(x => x.PermissionGetHouseKeeping).Description("Quyền tra cứu lịch sử dọn phòng");
             Field(x => x.PermissionGetMap).Description("Quyền lấy thông tin tầng, phòng");
             Field(x => x.PermissionGetPatron).Description("Quyền lấy thông tin khách hàng");
@@ -106,7 +108,8 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.PermissionGetPatron).Description("Quyền lấy thông tin khách hàng");
             Field(x => x.PermissionGetRate).Description("Quyền lấy thông tin giá cơ bản và giá biến động");
             Field(x => x.PermissionGetService).Description("Quyền lấy thông tin dịch vụ");
-            Field(x => x.PermissionGetAccountingVoucher).Description("Quyền lấy thông tin các chứng từ (hóa đơn, phiếu thu)");
+            Field(x => x.PermissionGetAccountingVoucher)
+               .Description("Quyền lấy thông tin các chứng từ (hóa đơn, phiếu thu)");
 
             Field(x => x.PermissionManageEmployee).Description("Quyền quản lý thông tin nhân viên");
             Field(x => x.PermissionManageHiringRoom).Description("Quyền quản lý thuê phòng");

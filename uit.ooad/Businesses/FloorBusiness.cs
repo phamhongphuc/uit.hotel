@@ -49,6 +49,7 @@ namespace uit.ooad.Businesses
             notNull(floorId, floor);
             return floor;
         }
+
         public static IEnumerable<Floor> Get() => FloorDataAccess.Get();
 
         private static void notHasRoom(Floor floorInDatabase)

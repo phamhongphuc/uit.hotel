@@ -86,7 +86,7 @@ namespace uit.ooad.test._GraphQL
                         gender = true,
                         phoneNumber = "123456789",
                         startingDate = DateTimeOffset.Now,
-                        position = new { id = 1 },
+                        position = new { id = 1 }
                     }
                 },
                 p => p.PermissionManageEmployee = true
@@ -96,7 +96,6 @@ namespace uit.ooad.test._GraphQL
         [TestMethod]
         public void Mutation_UpdateEmployee_Inactive_Employee()
         {
-
             SchemaHelper.ExecuteAndExpectError(
                 "Tài khoản inactive đã bị vô hiệu hóa",
                 @"/_GraphQL/Employee/mutation.updateEmployee.gql",
@@ -145,6 +144,7 @@ namespace uit.ooad.test._GraphQL
                 p => p.PermissionManageEmployee = true
             );
         }
+
         [TestMethod]
         public void Mutation_UpdateEmployee_InvalidPositionId()
         {

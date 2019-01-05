@@ -49,10 +49,10 @@ namespace uit.ooad.test.Helper
         private static JObject getJsonResultOrThrow(ExecuteAsyncResult result)
         {
             var jsonResult = JObject.Parse(
-                            JsonConvert.SerializeObject(
-                                new { data = result.Result.Data }
-                            )
-                        );
+                JsonConvert.SerializeObject(
+                    new { data = result.Result.Data }
+                )
+            );
             if (result.Result.Errors != null)
             {
                 Exception error = result.Result.Errors[0];
@@ -62,6 +62,7 @@ namespace uit.ooad.test.Helper
                     message = error.Message;
                     error = error.InnerException;
                 }
+
                 var errorMessage = string.Join(
                     Environment.NewLine,
                     "",
@@ -92,10 +93,7 @@ namespace uit.ooad.test.Helper
             {
                 if (error.InnerException == null) throw error;
                 var message = error.InnerException.Message;
-                if (!message.Equals(expectErrorMessage))
-                {
-                    throw error;
-                }
+                if (!message.Equals(expectErrorMessage)) throw error;
             }
         }
 
@@ -105,15 +103,10 @@ namespace uit.ooad.test.Helper
             Action<Position> setPermission = null
         )
         {
-            string variable = "{}";
+            var variable = "{}";
             if (variableObject is string)
-            {
-                variable = File.ReadAllText(((string)variableObject).TrimStart('/'));
-            }
-            else if (variableObject != null)
-            {
-                variable = JsonConvert.SerializeObject(variableObject);
-            }
+                variable = File.ReadAllText(((string) variableObject).TrimStart('/'));
+            else if (variableObject != null) variable = JsonConvert.SerializeObject(variableObject);
             var query = File.ReadAllText(queryPath.TrimStart('/'));
 
             var User = new ClaimsPrincipal(

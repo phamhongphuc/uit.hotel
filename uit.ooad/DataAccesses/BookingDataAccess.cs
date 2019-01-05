@@ -26,7 +26,7 @@ namespace uit.ooad.DataAccesses
         {
             booking.Id = NextId;
             booking.CreateTime = DateTimeOffset.Now;
-            booking.Status = (int)Booking.StatusEnum.Booked;
+            booking.Status = (int) Booking.StatusEnum.Booked;
             return realm.Add(booking);
         }
 
@@ -36,13 +36,13 @@ namespace uit.ooad.DataAccesses
             booking.CreateTime = DateTimeOffset.Now;
             booking.BookCheckInTime = DateTimeOffset.Now;
             booking.RealCheckInTime = DateTimeOffset.Now;
-            booking.Status = (int)Booking.StatusEnum.CheckedIn;
+            booking.Status = (int) Booking.StatusEnum.CheckedIn;
 
             booking = realm.Add(booking);
 
             var houseKeeping = new HouseKeeping();
-            houseKeeping.Type = (int)HouseKeeping.TypeEnum.ExpectedArrival;
-            houseKeeping.Status = (int)HouseKeeping.StatusEnum.Pending;
+            houseKeeping.Type = (int) HouseKeeping.TypeEnum.ExpectedArrival;
+            houseKeeping.Status = (int) HouseKeeping.StatusEnum.Pending;
             houseKeeping.Booking = booking;
 
             HouseKeepingDataAccess.Add(realm, houseKeeping);
@@ -57,7 +57,7 @@ namespace uit.ooad.DataAccesses
             {
                 bookingInDatabase.EmployeeCheckIn = employee;
                 bookingInDatabase.RealCheckInTime = DateTimeOffset.Now;
-                bookingInDatabase.Status = (int)Booking.StatusEnum.CheckedIn;
+                bookingInDatabase.Status = (int) Booking.StatusEnum.CheckedIn;
 
                 HouseKeepingDataAccess.Add(realm, houseKeeping);
             });
@@ -70,7 +70,7 @@ namespace uit.ooad.DataAccesses
             await Database.WriteAsync(realm =>
             {
                 bookingInDatabase.EmployeeCheckOut = employee;
-                bookingInDatabase.Status = (int)Booking.StatusEnum.RequestedCheckOut;
+                bookingInDatabase.Status = (int) Booking.StatusEnum.RequestedCheckOut;
 
                 HouseKeepingDataAccess.Add(realm, houseKeeping);
             });
@@ -82,7 +82,7 @@ namespace uit.ooad.DataAccesses
             await Database.WriteAsync(realm =>
             {
                 bookingInDatabase.RealCheckOutTime = DateTimeOffset.Now;
-                bookingInDatabase.Status = (int)Booking.StatusEnum.CheckedOut;
+                bookingInDatabase.Status = (int) Booking.StatusEnum.CheckedOut;
             });
             return bookingInDatabase;
         }

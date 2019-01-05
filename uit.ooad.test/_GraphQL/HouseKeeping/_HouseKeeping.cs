@@ -1,5 +1,4 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Newtonsoft.Json;
 using uit.ooad.Businesses;
 using uit.ooad.DataAccesses;
 using uit.ooad.Models;
@@ -16,7 +15,7 @@ namespace uit.ooad.test._GraphQL
             Database.WriteAsync(realm => realm.Add(new HouseKeeping
             {
                 Id = 10,
-                Status = (int)HouseKeeping.StatusEnum.Pending,
+                Status = (int) HouseKeeping.StatusEnum.Pending,
                 Employee = EmployeeBusiness.Get("admin"),
                 Booking = BookingBusiness.Get(1)
             })).Wait();
@@ -34,7 +33,7 @@ namespace uit.ooad.test._GraphQL
             Database.WriteAsync(realm => realm.Add(new HouseKeeping
             {
                 Id = 20,
-                Status = (int)HouseKeeping.StatusEnum.Cleaning,
+                Status = (int) HouseKeeping.StatusEnum.Cleaning,
                 Employee = EmployeeBusiness.Get("admin"),
                 Booking = BookingBusiness.Get(1)
             })).Wait();
@@ -52,8 +51,8 @@ namespace uit.ooad.test._GraphQL
             Database.WriteAsync(realm => realm.Add(new HouseKeeping
             {
                 Id = 30,
-                Status = (int)HouseKeeping.StatusEnum.Cleaning,
-                Type = (int)HouseKeeping.TypeEnum.ExpectedDeparture,
+                Status = (int) HouseKeeping.StatusEnum.Cleaning,
+                Type = (int) HouseKeeping.TypeEnum.ExpectedDeparture,
                 Employee = EmployeeBusiness.Get("admin"),
                 Booking = BookingBusiness.Get(1)
             })).Wait();
@@ -64,7 +63,8 @@ namespace uit.ooad.test._GraphQL
                 {
                     servicesDetails = new[]
                     {
-                        new {
+                        new
+                        {
                             number = 1,
                             service = new { id = 1 }
                         },
@@ -86,8 +86,8 @@ namespace uit.ooad.test._GraphQL
             Database.WriteAsync(realm => realm.Add(new HouseKeeping
             {
                 Id = 40,
-                Status = (int)HouseKeeping.StatusEnum.Cleaning,
-                Type = (int)HouseKeeping.TypeEnum.ExpectedDeparture,
+                Status = (int) HouseKeeping.StatusEnum.Cleaning,
+                Type = (int) HouseKeeping.TypeEnum.ExpectedDeparture,
                 Employee = EmployeeBusiness.Get("admin"),
                 Booking = BookingBusiness.Get(1)
             })).Wait();

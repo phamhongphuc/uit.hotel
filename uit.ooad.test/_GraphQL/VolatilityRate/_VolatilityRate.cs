@@ -48,7 +48,7 @@ namespace uit.ooad.test._GraphQL
         {
             Database.WriteAsync(realm => realm.Add(new VolatilityRate
             {
-                Id = 10,
+                Id = 10
             })).Wait();
             SchemaHelper.Execute(
                 @"/_GraphQL/VolatilityRate/mutation.updateVolatilityRate.gql",
@@ -82,6 +82,7 @@ namespace uit.ooad.test._GraphQL
                 p => p.PermissionManageRate = true
             );
         }
+
         [TestMethod]
         public void Query_VolatilityRate()
         {

@@ -89,6 +89,7 @@ namespace uit.ooad.test._GraphQL
                 p => p.PermissionManagePatron = true
             );
         }
+
         [TestMethod]
         public void Query_Patron()
         {
