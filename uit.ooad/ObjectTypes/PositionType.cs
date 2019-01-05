@@ -39,7 +39,17 @@ namespace uit.ooad.ObjectTypes
                 resolve: context => context.Source.Employees.ToList());
 
             Field<NonNullGraphType<IntGraphType>>(
-                "employeesCount",
+                "countActiveEmployees",
+                "Số nhân viên còn hoạt động",
+                resolve: context => context.Source.Employees.Where(e => e.IsActive).Count());
+
+            Field<NonNullGraphType<IntGraphType>>(
+                "countInActiveEmployees",
+                "Số nhân viên ngưng hoạt động",
+                resolve: context => context.Source.Employees.Where(e => !e.IsActive).Count());
+
+            Field<NonNullGraphType<IntGraphType>>(
+                "countEmployees",
                 "Số nhân viên",
                 resolve: context => context.Source.Employees.Count());
         }

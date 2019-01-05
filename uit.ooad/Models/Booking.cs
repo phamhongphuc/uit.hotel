@@ -111,11 +111,6 @@ namespace uit.ooad.Models
             }
         }
 
-        public void CheckValidBeforeCreate()
-        {
-            // Kiểm tra các điều kiện thực thi trong này.
-        }
-
         public Booking GetManaged()
         {
             var booking = BookingBusiness.Get(Id);

@@ -7,7 +7,7 @@ using uit.ooad.Models;
 
 namespace uit.ooad.Businesses
 {
-    public class FloorBusiness
+    public static class FloorBusiness
     {
         public static Task<Floor> Add(Floor floor) => FloorDataAccess.Add(floor);
 

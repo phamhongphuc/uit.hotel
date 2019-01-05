@@ -6,7 +6,7 @@ using uit.ooad.Models;
 
 namespace uit.ooad.Businesses
 {
-    public class VolatilityRateBusiness
+    public static class VolatilityRateBusiness
     {
         public static Task<VolatilityRate> Add(Employee employee, VolatilityRate volatilityRate)
         {

@@ -6,7 +6,7 @@ using uit.ooad.Models;
 
 namespace uit.ooad.Businesses
 {
-    public class HouseKeepingBusiness
+    public static class HouseKeepingBusiness
     {
         public static Task<HouseKeeping> AssignCleaningService(Employee employee, int houseKeepingId)
         {

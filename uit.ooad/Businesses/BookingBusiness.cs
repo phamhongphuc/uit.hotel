@@ -6,7 +6,7 @@ using uit.ooad.Models;
 
 namespace uit.ooad.Businesses
 {
-    public class BookingBusiness
+    public static class BookingBusiness
     {
         public static Task<Booking> CheckIn(Employee employee, int bookingId)
         {
@@ -60,11 +60,15 @@ namespace uit.ooad.Businesses
             if (bill == null) throw new Exception("Mã hóa đơn không tồn tại");
 
             booking.Room = booking.Room.GetManaged();
+
             if (!booking.Room.IsActive)
                 throw new Exception("Phòng có Id: " + booking.Room.Id + " đã ngưng hoạt động");
 
-            if (booking.BookCheckInTime > booking.BookCheckOutTime || booking.BookCheckInTime < DateTimeOffset.Now)
+            if (booking.BookCheckInTime >= booking.BookCheckOutTime || booking.BookCheckInTime < DateTimeOffset.Now)
                 throw new Exception("Ngày check-in, check-out dự kiến không hợp lệ");
+            
+            if (!booking.Room.IsEmptyRoom(booking.BookCheckInTime, booking.BookCheckOutTime))
+                throw new Exception("Phòng đã được đặt hoặc đang được sử dụng");
 
             return BookingDataAccess.Add(employee, bill, booking);
         }

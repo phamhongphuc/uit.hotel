@@ -5,7 +5,7 @@ using uit.ooad.Models;
 
 namespace uit.ooad.Businesses
 {
-    public class ReceiptBusiness
+    public static class ReceiptBusiness
     {
         public static Task<Receipt> Add(Employee employee, Receipt receipt)
         {
