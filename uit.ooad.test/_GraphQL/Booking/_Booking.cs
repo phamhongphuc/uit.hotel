@@ -15,7 +15,7 @@ namespace uit.ooad.test._GraphQL
         {
             Database.WriteAsync(realm => realm.Add(new Room
             {
-                Id = 120,
+                Id = 200,
                 IsActive = true,
                 Name = "Tên phòng",
                 Floor = FloorBusiness.Get(1),
@@ -31,7 +31,7 @@ namespace uit.ooad.test._GraphQL
                     {
                         bookCheckInTime = DateTimeOffset.Now.AddDays(1).ToString("s"),
                         bookCheckOutTime = DateTimeOffset.Now.AddDays(2).ToString("s"),
-                        room = new { id = 120 },
+                        room = new { id = 200 },
                         listOfPatrons = new[]
                         {
                             new { id = 1 }
@@ -48,7 +48,7 @@ namespace uit.ooad.test._GraphQL
         {
             Database.WriteAsync(realm => realm.Add(new Room
             {
-                Id = 121,
+                Id = 201,
                 IsActive = true,
                 Name = "Tên phòng",
                 Floor = FloorBusiness.Get(1),
@@ -64,7 +64,7 @@ namespace uit.ooad.test._GraphQL
                     {
                         bookCheckInTime = DateTimeOffset.Now.AddDays(1).ToString("s"),
                         bookCheckOutTime = DateTimeOffset.Now.AddDays(2).ToString("s"),
-                        room = new { id = 121 },
+                        room = new { id = 201 },
                         listOfPatrons = new[]
                         {
                             new { id = 1 }
