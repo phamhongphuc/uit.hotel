@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using uit.ooad.DataAccesses;
 using uit.ooad.Models;
+using uit.ooad.Queries.Helper;
 
 namespace uit.ooad.Businesses
 {
@@ -13,6 +15,9 @@ namespace uit.ooad.Businesses
             bill.Patron = bill.Patron.GetManaged();
             bill.Employee = employee;
 
+            if (bookings.Count() != bookings.ToList().Distinct(new EqualityBooking()).Count())
+                throw new Exception("Có booking trùng nhau");
+
             foreach (var booking in bookings)
             {
                 booking.EmployeeBooking = employee;
@@ -20,12 +25,11 @@ namespace uit.ooad.Businesses
                 if (!booking.Room.IsActive)
                     throw new Exception("Phòng " + booking.Room.Id + " đã ngừng hoạt động");
 
-                if (booking.BookCheckInTime > booking.BookCheckOutTime || booking.BookCheckInTime < DateTimeOffset.Now)
+                if (booking.BookCheckInTime >= booking.BookCheckOutTime || booking.BookCheckInTime < DateTimeOffset.Now)
                     throw new Exception("Ngày check-in, check-out dự kiến không hợp lệ");
 
                 if (!booking.Room.IsEmptyRoom(booking.BookCheckInTime, booking.BookCheckOutTime))
                     throw new Exception("Phòng đã được đặt hoạc đang được sử dụng");
-                booking.CheckValidBeforeCreate();
             }
 
             return BillDataAccess.Book(bill, bookings);
@@ -56,5 +60,28 @@ namespace uit.ooad.Businesses
 
         public static Bill Get(int billId) => BillDataAccess.Get(billId);
         public static IEnumerable<Bill> Get() => BillDataAccess.Get();
+    }
+
+    public class EqualityBooking : IEqualityComparer<Booking>
+    {
+        //kiểm tra trùng -> true
+        public bool Equals(Booking x, Booking y)
+        {
+            if (x.Room.Id != y.Room.Id) return false;
+            if (DateTimeHelper.IsTwoDateRangesOverlap(
+                x.BookCheckInTime, x.BookCheckOutTime,
+                y.BookCheckInTime, y.BookCheckOutTime
+            ))
+                return true;
+            return false;
+        }
+
+        public int GetHashCode(Booking obj)
+        {
+            return String.Format(
+                "{0} {1} {2}", obj.Room.Id,
+                obj.BookCheckInTime.Ticks, obj.BookCheckOutTime.Ticks
+            ).GetHashCode();
+        }
     }
 }
