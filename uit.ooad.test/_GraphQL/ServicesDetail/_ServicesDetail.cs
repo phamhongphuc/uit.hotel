@@ -15,7 +15,21 @@ namespace uit.ooad.test._GraphQL
             SchemaHelper.Execute(
                 @"/_GraphQL/ServicesDetail/mutation.createServicesDetail.gql",
                 @"/_GraphQL/ServicesDetail/mutation.createServicesDetail.schema.json",
-                @"/_GraphQL/ServicesDetail/mutation.createServicesDetail.variable.json",
+                new
+                {
+                    input = new
+                    {
+                        number = 1,
+                        service = new
+                        {
+                            id = 1
+                        },
+                        booking = new
+                        {
+                            id = 1
+                        }
+                    }
+                },
                 p => p.PermissionManageHiringRoom = true
             );
         }
@@ -31,7 +45,7 @@ namespace uit.ooad.test._GraphQL
             SchemaHelper.Execute(
                     @"/_GraphQL/ServicesDetail/mutation.deleteServicesDetail.gql",
                     @"/_GraphQL/ServicesDetail/mutation.deleteServicesDetail.schema.json",
-                    @"/_GraphQL/ServicesDetail/mutation.deleteServicesDetail.variable.json",
+                    new { id = 10 },
                     p => p.PermissionCleaning = true
                 );
         }
@@ -42,7 +56,18 @@ namespace uit.ooad.test._GraphQL
             SchemaHelper.Execute(
                 @"/_GraphQL/ServicesDetail/mutation.updateServicesDetail.gql",
                 @"/_GraphQL/ServicesDetail/mutation.updateServicesDetail.schema.json",
-                @"/_GraphQL/ServicesDetail/mutation.updateServicesDetail.variable.json",
+                new
+                {
+                    input = new
+                    {
+                        id = 2,
+                        number = 2,
+                        service = new
+                        {
+                            id = 1
+                        }
+                    }
+                },
                 p => p.PermissionCleaning = true
             );
         }
@@ -52,7 +77,7 @@ namespace uit.ooad.test._GraphQL
             SchemaHelper.Execute(
                 @"/_GraphQL/ServicesDetail/query.servicesDetail.gql",
                 @"/_GraphQL/ServicesDetail/query.servicesDetail.schema.json",
-                @"/_GraphQL/ServicesDetail/query.servicesDetail.variable.json",
+                new { id = 1 },
                 p => p.PermissionGetService = true
             );
         }

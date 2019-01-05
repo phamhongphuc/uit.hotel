@@ -14,7 +14,14 @@ namespace uit.ooad.test._GraphQL
             SchemaHelper.Execute(
                 @"/_GraphQL/PatronKind/mutation.createPatronKind.gql",
                 @"/_GraphQL/PatronKind/mutation.createPatronKind.schema.json",
-                @"/_GraphQL/PatronKind/mutation.createPatronKind.variable.json",
+                new
+                {
+                    input = new
+                    {
+                        name = "Tên loại khách hàng",
+                        description = "Mô tả"
+                    }
+                },
                 p => p.PermissionManagePatronKind = true
             );
         }
@@ -30,7 +37,7 @@ namespace uit.ooad.test._GraphQL
             SchemaHelper.Execute(
                 @"/_GraphQL/PatronKind/mutation.deletePatronKind.gql",
                 @"/_GraphQL/PatronKind/mutation.deletePatronKind.schema.json",
-                @"/_GraphQL/PatronKind/mutation.deletePatronKind.variable.json",
+                new { id = 10 },
                 p => p.PermissionManagePatronKind = true
             );
         }
@@ -47,7 +54,15 @@ namespace uit.ooad.test._GraphQL
             SchemaHelper.Execute(
                 @"/_GraphQL/PatronKind/mutation.updatePatronKind.gql",
                 @"/_GraphQL/PatronKind/mutation.updatePatronKind.schema.json",
-                @"/_GraphQL/PatronKind/mutation.updatePatronKind.variable.json",
+                new
+                {
+                    input = new
+                    {
+                        id = 20,
+                        name = "Loại khách 2",
+                        description = "Loại khách 2"
+                    }
+                },
                 p => p.PermissionManagePatronKind = true
             );
         }
@@ -58,7 +73,7 @@ namespace uit.ooad.test._GraphQL
             SchemaHelper.Execute(
                 @"/_GraphQL/PatronKind/query.patronKind.gql",
                 @"/_GraphQL/PatronKind/query.patronKind.schema.json",
-                @"/_GraphQL/PatronKind/query.patronKind.variable.json",
+                new { id = 1 },
                 p => p.PermissionGetPatron = true
             );
         }

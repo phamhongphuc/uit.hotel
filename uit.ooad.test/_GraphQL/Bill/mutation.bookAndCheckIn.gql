@@ -1,4 +1,4 @@
-mutation($bookings: [BookingCreateInput!]!, $bill: BillCreateInput!) {
+mutation($bookings: [BookAndCheckInCreateInput!]!, $bill: BillCreateInput!) {
     bookAndCheckIn(bookings: $bookings, bill: $bill) {
         id
         time

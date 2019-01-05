@@ -15,7 +15,21 @@ namespace uit.ooad.test._GraphQL
             SchemaHelper.Execute(
                 @"/_GraphQL/Room/mutation.createRoom.gql",
                 @"/_GraphQL/Room/mutation.createRoom.schema.json",
-                @"/_GraphQL/Room/mutation.createRoom.variable.json",
+                new
+                {
+                    input = new
+                    {
+                        name = "Phòng 2",
+                        roomKind = new
+                        {
+                            id = 1
+                        },
+                        floor = new
+                        {
+                            id = 1
+                        }
+                    }
+                },
                 p => p.PermissionManageMap = true
             );
         }
@@ -34,7 +48,7 @@ namespace uit.ooad.test._GraphQL
             SchemaHelper.Execute(
                 @"/_GraphQL/Room/mutation.deleteRoom.gql",
                 @"/_GraphQL/Room/mutation.deleteRoom.schema.json",
-                @"/_GraphQL/Room/mutation.deleteRoom.variable.json",
+                new { id = 10 },
                 p => p.PermissionManageMap = true
             );
         }
@@ -72,7 +86,22 @@ namespace uit.ooad.test._GraphQL
             SchemaHelper.Execute(
                 @"/_GraphQL/Room/mutation.updateRoom.gql",
                 @"/_GraphQL/Room/mutation.updateRoom.schema.json",
-                @"/_GraphQL/Room/mutation.updateRoom.variable.json",
+                new
+                {
+                    input = new
+                    {
+                        id = 30,
+                        name = "Phòng 2",
+                        roomKind = new
+                        {
+                            id = 1
+                        },
+                        floor = new
+                        {
+                            id = 1
+                        }
+                    }
+                },
                 p => p.PermissionManageMap = true
             );
         }
@@ -82,7 +111,7 @@ namespace uit.ooad.test._GraphQL
             SchemaHelper.Execute(
                 @"/_GraphQL/Room/query.room.gql",
                 @"/_GraphQL/Room/query.room.schema.json",
-                @"/_GraphQL/Room/query.room.variable.json",
+                new { id = 1 },
                 p => p.PermissionGetMap = true
             );
         }
