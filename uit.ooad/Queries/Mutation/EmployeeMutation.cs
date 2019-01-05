@@ -41,11 +41,8 @@ namespace uit.ooad.Queries.Mutation
                     context =>
                     {
                         var id = AuthenticationHelper.GetEmployeeId(context);
-                        var employeeId = context.GetArgument<string>("id");
-
-                        if (id == employeeId)
-                            throw new Exception("Nhân viên không thể tự reset mật khẩu của chính mình");
-                        var newPassword = EmployeeBusiness.ResetPassword(employeeId);
+                        
+                        var newPassword = EmployeeBusiness.ResetPassword(id, _GetId<string>(context));
 
                         return "Mật khẩu mới: " + newPassword;
                     }
