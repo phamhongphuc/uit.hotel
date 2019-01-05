@@ -14,7 +14,15 @@ namespace uit.ooad.test._GraphQL
             SchemaHelper.Execute(
                 @"/_GraphQL/Service/mutation.createService.gql",
                 @"/_GraphQL/Service/mutation.createService.schema.json",
-                @"/_GraphQL/Service/mutation.createService.variable.json",
+                new
+                {
+                    input = new
+                    {
+                        name = "Tên dịch vụ",
+                        unitRate = 30000,
+                        unit = "Đơn vị tính"
+                    }
+                },
                 p => p.PermissionManageService = true
             );
         }
@@ -30,7 +38,7 @@ namespace uit.ooad.test._GraphQL
             SchemaHelper.Execute(
                 @"/_GraphQL/Service/mutation.deleteService.gql",
                 @"/_GraphQL/Service/mutation.deleteService.schema.json",
-                @"/_GraphQL/Service/mutation.deleteService.variable.json",
+                new { id = 10 },
                 p => p.PermissionManageService = true
             );
         }
@@ -48,7 +56,7 @@ namespace uit.ooad.test._GraphQL
             SchemaHelper.Execute(
                 @"/_GraphQL/Service/mutation.setIsActiveService.gql",
                 @"/_GraphQL/Service/mutation.setIsActiveService.schema.json",
-                @"/_GraphQL/Service/mutation.setIsActiveService.variable.json",
+                new { id = 20, isActive = false },
                 p => p.PermissionManageService = true
             );
         }
@@ -66,7 +74,16 @@ namespace uit.ooad.test._GraphQL
             SchemaHelper.Execute(
                 @"/_GraphQL/Service/mutation.updateService.gql",
                 @"/_GraphQL/Service/mutation.updateService.schema.json",
-                @"/_GraphQL/Service/mutation.updateService.variable.json",
+                new
+                {
+                    input = new
+                    {
+                        id = 30,
+                        name = "Tên dịch vụ",
+                        unitRate = 30000,
+                        unit = "Đơn vị tính"
+                    }
+                },
                 p => p.PermissionManageService = true
             );
         }
@@ -76,7 +93,7 @@ namespace uit.ooad.test._GraphQL
             SchemaHelper.Execute(
                 @"/_GraphQL/Service/query.service.gql",
                 @"/_GraphQL/Service/query.service.schema.json",
-                @"/_GraphQL/Service/query.service.variable.json",
+                new { id = 1 },
                 p => p.PermissionGetService = true
             );
         }

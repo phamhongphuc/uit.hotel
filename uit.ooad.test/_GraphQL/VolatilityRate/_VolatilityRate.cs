@@ -14,7 +14,31 @@ namespace uit.ooad.test._GraphQL
             SchemaHelper.Execute(
                 @"/_GraphQL/VolatilityRate/mutation.createVolatilityRate.gql",
                 @"/_GraphQL/VolatilityRate/mutation.createVolatilityRate.schema.json",
-                @"/_GraphQL/VolatilityRate/mutation.createVolatilityRate.variable.json",
+                new
+                {
+                    input = new
+                    {
+                        dayRate = 1,
+                        nightRate = 1,
+                        weekRate = 1,
+                        monthRate = 1,
+                        lateCheckOutFee = 1,
+                        earlyCheckInFee = 1,
+                        effectiveStartDate = "0001-01-01T00:00:00+00:00",
+                        effectiveEndDate = "0001-01-01T00:00:00+00:00",
+                        effectiveOnMonday = true,
+                        effectiveOnTuesday = true,
+                        effectiveOnWednesday = true,
+                        effectiveOnThursday = true,
+                        effectiveOnFriday = true,
+                        effectiveOnSaturday = true,
+                        effectiveOnSunday = true,
+                        roomKind = new
+                        {
+                            id = 1
+                        }
+                    }
+                },
                 p => p.PermissionManageRate = true
             );
         }
@@ -29,7 +53,32 @@ namespace uit.ooad.test._GraphQL
             SchemaHelper.Execute(
                 @"/_GraphQL/VolatilityRate/mutation.updateVolatilityRate.gql",
                 @"/_GraphQL/VolatilityRate/mutation.updateVolatilityRate.schema.json",
-                @"/_GraphQL/VolatilityRate/mutation.updateVolatilityRate.variable.json",
+                new
+                {
+                    input = new
+                    {
+                        id = 10,
+                        dayRate = 1,
+                        nightRate = 1,
+                        weekRate = 1,
+                        monthRate = 1,
+                        lateCheckOutFee = 1,
+                        earlyCheckInFee = 1,
+                        effectiveStartDate = "0001-01-01T00:00:00+00:00",
+                        effectiveEndDate = "0001-01-01T00:00:00+00:00",
+                        effectiveOnMonday = true,
+                        effectiveOnTuesday = true,
+                        effectiveOnWednesday = true,
+                        effectiveOnThursday = true,
+                        effectiveOnFriday = true,
+                        effectiveOnSaturday = true,
+                        effectiveOnSunday = true,
+                        roomKind = new
+                        {
+                            id = 1
+                        }
+                    }
+                },
                 p => p.PermissionManageRate = true
             );
         }
@@ -39,7 +88,7 @@ namespace uit.ooad.test._GraphQL
             SchemaHelper.Execute(
                 @"/_GraphQL/VolatilityRate/query.volatilityRate.gql",
                 @"/_GraphQL/VolatilityRate/query.volatilityRate.schema.json",
-                @"/_GraphQL/VolatilityRate/query.volatilityRate.variable.json",
+                new { id = 1 },
                 p => p.PermissionGetRate = true
             );
         }

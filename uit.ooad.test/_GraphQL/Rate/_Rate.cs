@@ -1,3 +1,4 @@
+using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using uit.ooad.Businesses;
 using uit.ooad.DataAccesses;
@@ -15,7 +16,23 @@ namespace uit.ooad.test._GraphQL
             SchemaHelper.Execute(
                 @"/_GraphQL/Rate/mutation.createRate.gql",
                 @"/_GraphQL/Rate/mutation.createRate.schema.json",
-                @"/_GraphQL/Rate/mutation.createRate.variable.json",
+                new
+                {
+                    input = new
+                    {
+                        dayRate = 1,
+                        nightRate = 1,
+                        weekRate = 1,
+                        monthRate = 1,
+                        lateCheckOutFee = 1,
+                        earlyCheckInFee = 1,
+                        effectiveStartDate = "0001-01-01T00:00:00+00:00",
+                        roomKind = new
+                        {
+                            id = 1
+                        }
+                    }
+                },
                 p => p.PermissionManageRate = true
             );
         }
@@ -31,7 +48,10 @@ namespace uit.ooad.test._GraphQL
             SchemaHelper.Execute(
                 @"/_GraphQL/Rate/mutation.deleteRate.gql",
                 @"/_GraphQL/Rate/mutation.deleteRate.schema.json",
-                @"/_GraphQL/Rate/mutation.deleteRate.variable.json",
+                new
+                {
+                    id = 10
+                },
                 p => p.PermissionManageRate = true
             );
         }
@@ -48,7 +68,24 @@ namespace uit.ooad.test._GraphQL
             SchemaHelper.Execute(
                 @"/_GraphQL/Rate/mutation.updateRate.gql",
                 @"/_GraphQL/Rate/mutation.updateRate.schema.json",
-                @"/_GraphQL/Rate/mutation.updateRate.variable.json",
+                new
+                {
+                    input = new
+                    {
+                        id = 20,
+                        dayRate = 5,
+                        nightRate = 5,
+                        weekRate = 5,
+                        monthRate = 5,
+                        lateCheckOutFee = 5,
+                        earlyCheckInFee = 5,
+                        effectiveStartDate = DateTimeOffset.MinValue,
+                        roomKind = new
+                        {
+                            id = 1
+                        }
+                    }
+                },
                 p => p.PermissionManageRate = true
             );
         }
@@ -65,7 +102,7 @@ namespace uit.ooad.test._GraphQL
             SchemaHelper.Execute(
                 @"/_GraphQL/Rate/query.rate.gql",
                 @"/_GraphQL/Rate/query.rate.schema.json",
-                @"/_GraphQL/Rate/query.rate.variable.json",
+                new { id = 30 },
                 p => p.PermissionGetRate = true
             );
         }

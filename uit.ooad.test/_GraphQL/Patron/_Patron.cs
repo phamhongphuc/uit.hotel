@@ -17,7 +17,27 @@ namespace uit.ooad.test._GraphQL
             SchemaHelper.Execute(
                 @"/_GraphQL/Patron/mutation.createPatron.gql",
                 @"/_GraphQL/Patron/mutation.createPatron.schema.json",
-                @"/_GraphQL/Patron/mutation.createPatron.variable.json",
+                new
+                {
+                    input = new
+                    {
+                        identification = "1234243",
+                        name = "Tên khách hàng",
+                        email = "email khách hàng",
+                        gender = true,
+                        birthdate = DateTimeOffset.FromUnixTimeSeconds(857293200),
+                        residence = "Hộ khẩu",
+                        domicile = "Nguyên quán",
+                        listOfPhoneNumbers = new[] { "1234", "123445" },
+                        nationality = "Quốc tịch",
+                        company = "BOSCH",
+                        note = "Ghi chú",
+                        patronKind = new
+                        {
+                            id = 1
+                        }
+                    }
+                },
                 p => p.PermissionManagePatron = true
             );
         }
@@ -39,12 +59,33 @@ namespace uit.ooad.test._GraphQL
                 Company = "Công ty",
                 Note = "Ghi chú",
                 PatronKind = PatronKindBusiness.Get(1),
-                ListOfPhoneNumbers = new List<string> { "12324234", }
+                ListOfPhoneNumbers = new List<string> { "12324234" }
             })).Wait();
             SchemaHelper.Execute(
                 @"/_GraphQL/Patron/mutation.updatePatron.gql",
                 @"/_GraphQL/Patron/mutation.updatePatron.schema.json",
-                @"/_GraphQL/Patron/mutation.updatePatron.variable.json",
+                new
+                {
+                    input = new
+                    {
+                        id = 10,
+                        identification = "1234243",
+                        name = "Tên khách hàng",
+                        email = "email khách hàng",
+                        gender = true,
+                        birthdate = DateTimeOffset.FromUnixTimeSeconds(857293200),
+                        residence = "Hộ khẩu",
+                        domicile = "Nguyên quán",
+                        listOfPhoneNumbers = new[] { "1234", "123445" },
+                        nationality = "Quốc tịch",
+                        company = "BOSCH",
+                        note = "Ghi chú",
+                        patronKind = new
+                        {
+                            id = 1
+                        }
+                    }
+                },
                 p => p.PermissionManagePatron = true
             );
         }
@@ -54,7 +95,7 @@ namespace uit.ooad.test._GraphQL
             SchemaHelper.Execute(
                 @"/_GraphQL/Patron/query.patron.gql",
                 @"/_GraphQL/Patron/query.patron.schema.json",
-                @"/_GraphQL/Patron/query.patron.variable.json",
+                new { id = 1 },
                 p => p.PermissionGetPatron = true
             );
         }

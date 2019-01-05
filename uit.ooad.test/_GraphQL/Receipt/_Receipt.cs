@@ -16,7 +16,19 @@ namespace uit.ooad.test._GraphQL
             SchemaHelper.Execute(
                 @"/_GraphQL/Receipt/mutation.createReceipt.gql",
                 @"/_GraphQL/Receipt/mutation.createReceipt.schema.json",
-                @"/_GraphQL/Receipt/mutation.createReceipt.variable.json",
+                new
+                {
+                    input = new
+                    {
+                        money = 1000,
+                        typeOfPayment = 1,
+                        bankAccountNumber = "10-10-2015",
+                        bill = new
+                        {
+                            id = 1
+                        }
+                    }
+                },
                 p => p.PermissionManageHiringRoom = true
             );
         }
@@ -36,7 +48,7 @@ namespace uit.ooad.test._GraphQL
             SchemaHelper.Execute(
                     @"/_GraphQL/Receipt/query.receipt.gql",
                     @"/_GraphQL/Receipt/query.receipt.schema.json",
-                    @"/_GraphQL/Receipt/query.receipt.variable.json",
+                    new { id = 10 },
                     p => p.PermissionGetAccountingVoucher = true
                 );
         }
