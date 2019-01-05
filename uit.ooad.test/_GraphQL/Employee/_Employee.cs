@@ -1,11 +1,15 @@
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using uit.ooad.Businesses;
+using uit.ooad.DataAccesses;
+using uit.ooad.Models;
+using uit.ooad.Queries.Authentication;
 using uit.ooad.test.Helper;
 
 namespace uit.ooad.test._GraphQL
 {
     [TestClass]
-    public class _Employee
+    public class _Employee : RealmDatabase
     {
         [TestMethod]
         public void Mutation_CreateEmployee()
@@ -63,6 +67,88 @@ namespace uit.ooad.test._GraphQL
                         }
                     }
                 },
+                p => p.PermissionManageEmployee = true
+            );
+        }
+
+        [TestMethod]
+        public void Mutation_CreateEmployee_InvalidPosition()
+        {
+            SchemaHelper.ExecuteAndExpectError(
+                "Mã chức vụ không tồn tại",
+                @"/_GraphQL/Employee/mutation.createEmployee.gql",
+                new
+                {
+                    input = new
+                    {
+                        id = "thaotram",
+                        password = "123",
+                        name = "Tên nhân viên",
+                        identityCard = "12345678",
+                        gender = true,
+                        email = "email@gmail.com",
+                        phoneNumber = "123456789",
+                        address = "164/54",
+                        birthdate = "04-04-1996",
+                        startingDate = "10-10-2015",
+                        position = new
+                        {
+                            id = 100
+                        }
+                    }
+                },
+                p => p.PermissionManageEmployee = true
+            );
+        }
+
+        [TestMethod]
+        public void Mutation_ResetPassword()
+        {
+            Database.WriteAsync(realm =>
+            {
+                realm.Add(new Employee
+                {
+                    Id = "abc",
+                    Address = "Địa chỉ",
+                    IsActive = true,
+                    Birthdate = DateTimeOffset.Now,
+                    Email = "email@gmail.com",
+                    Gender = true,
+                    Name = "Quản trị viên",
+                    IdentityCard = "123456789",
+                    Password = CryptoHelper.Encrypt("12345678"),
+                    PhoneNumber = "+84 0123456789",
+                    Position = PositionBusiness.Get(1),
+                    StartingDate = DateTimeOffset.Now
+                });
+            }).Wait();
+
+            SchemaHelper.Execute(
+                @"/_GraphQL/Employee/mutation.resetPassword.gql",
+                @"/_GraphQL/Employee/mutation.resetPassword.schema.json",
+                new { id = "abc" },
+                p => p.PermissionManageEmployee = true
+            );
+        }
+
+        [TestMethod]
+        public void Mutation_ResetPassword_InvalidEmployee()
+        {
+            SchemaHelper.ExecuteAndExpectError(
+                "Nhân viên không thể tự reset mật khẩu của chính mình",
+                @"/_GraphQL/Employee/mutation.resetPassword.gql",
+                new { id = "admin" },
+                p => p.PermissionManageEmployee = true
+            );
+        }
+
+        [TestMethod]
+        public void Mutation_ResetPassword_InvalidEmployeeId()
+        {
+            SchemaHelper.ExecuteAndExpectError(
+                "Không tìm thấy tên đăng nhập trong hệ thống",
+                @"/_GraphQL/Employee/mutation.resetPassword.gql",
+                new { id = "xyz" },
                 p => p.PermissionManageEmployee = true
             );
         }
@@ -140,8 +226,7 @@ namespace uit.ooad.test._GraphQL
                         startingDate = "10-10-2015",
                         position = new { id = 1 }
                     }
-                },
-                p => p.PermissionManageEmployee = true
+                }, p => p.PermissionManageEmployee = true
             );
         }
 
