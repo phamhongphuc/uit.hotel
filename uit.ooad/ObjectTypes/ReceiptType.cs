@@ -14,7 +14,6 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.Id).Description("Id của phiếu thu");
             Field(x => x.Money).Description("Số tiền đã thu");
             Field(x => x.Time).Description("Thời gian tạo phiếu thu");
-            Field(x => x.TypeOfPayment).Description("Kiểu thanh toán (tiền mặt hoặc chuyển khoản)");
             Field(x => x.BankAccountNumber, true).Description("Số tài khoản ngân hàng của khách");
 
             Field<NonNullGraphType<BillType>>(
@@ -34,7 +33,6 @@ namespace uit.ooad.ObjectTypes
         public ReceiptCreateInput()
         {
             Field(x => x.Money).Description("Số tiền đã thu");
-            Field(x => x.TypeOfPayment).Description("Kiểu thanh toán (tiền mặt hoặc chuyển khoản)");
             Field(x => x.BankAccountNumber, true).Description("Số tài khoản ngân hàng của khách");
 
             Field<BillIdInput>(
