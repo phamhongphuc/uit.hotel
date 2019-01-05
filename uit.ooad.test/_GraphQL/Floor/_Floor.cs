@@ -34,10 +34,51 @@ namespace uit.ooad.test._GraphQL
                 Name = "Tầng tạo ra để xóa",
                 IsActive = true
             })).Wait();
+
             SchemaHelper.Execute(
                 @"/_GraphQL/Floor/mutation.deleteFloor.gql",
                 @"/_GraphQL/Floor/mutation.deleteFloor.schema.json",
                 new { id = 10 },
+                p => p.PermissionManageMap = true
+            );
+        }
+
+        [TestMethod]
+        public void Mutation_DeleteFloor_InvalidFloor_InActive()
+        {
+            Database.WriteAsync(realm => realm.Add(new Floor
+            {
+                Id = 11,
+                Name = "Tầng tạo ra để xóa",
+                IsActive = false
+            })).Wait();
+
+            SchemaHelper.ExecuteAndExpectError(
+                "Tầng 11 đã ngưng hoạt động. Không thể cập nhật/xóa!",
+                @"/_GraphQL/Floor/mutation.deleteFloor.gql",
+                new { id = 11 },
+                p => p.PermissionManageMap = true
+            );
+        }
+
+        [TestMethod]
+        public void Mutation_DeleteFloor_InvalidId()
+        {
+            SchemaHelper.ExecuteAndExpectError(
+                "Tầng có Id: 100 không hợp lệ!",
+                @"/_GraphQL/Floor/mutation.deleteFloor.gql",
+                new { id = 100 },
+                p => p.PermissionManageMap = true
+            );
+        }
+
+        [TestMethod]
+        public void Mutation_DeleteFloor_InvalidRoom()
+        {
+            SchemaHelper.ExecuteAndExpectError(
+                "Tầng đã có phòng. Không thể cập nhật/xóa!",
+                @"/_GraphQL/Floor/mutation.deleteFloor.gql",
+                new { id = 1 },
                 p => p.PermissionManageMap = true
             );
         }
@@ -60,6 +101,28 @@ namespace uit.ooad.test._GraphQL
         }
 
         [TestMethod]
+        public void Mutation_SetIsActiveFloor_InvalidId()
+        {
+            SchemaHelper.ExecuteAndExpectError(
+                "Tầng có Id: 100 không hợp lệ!",
+                @"/_GraphQL/Floor/mutation.setIsActiveFloor.gql",
+                new { id = 100, isActive = false },
+                p => p.PermissionManageMap = true
+            );
+        }
+
+        [TestMethod]
+        public void Mutation_SetIsActiveFloor_InvalidRoomActive()
+        {
+            SchemaHelper.ExecuteAndExpectError(
+                "Tầng này còn phòng đang hoạt động, không thể vô hiệu hóa",
+                @"/_GraphQL/Floor/mutation.setIsActiveFloor.gql",
+                new { id = 1, isActive = false },
+                p => p.PermissionManageMap = true
+            );
+        }
+
+        [TestMethod]
         public void Mutation_UpdateFloor()
         {
             Database.WriteAsync(realm => realm.Add(new Floor
@@ -68,6 +131,7 @@ namespace uit.ooad.test._GraphQL
                 Name = "Tầng tạo ra để cập nhật",
                 IsActive = true
             })).Wait();
+
             SchemaHelper.Execute(
                 @"/_GraphQL/Floor/mutation.updateFloor.gql",
                 @"/_GraphQL/Floor/mutation.updateFloor.schema.json",
@@ -76,6 +140,67 @@ namespace uit.ooad.test._GraphQL
                     input = new
                     {
                         id = 40,
+                        name = "Tên tầng đã được cập nhật"
+                    }
+                },
+                p => p.PermissionManageMap = true
+            );
+        }
+
+        [TestMethod]
+        public void Mutation_UpdateFloor_InvalidFloor_InActive()
+        {
+            Database.WriteAsync(realm => realm.Add(new Floor
+            {
+                Id = 41,
+                Name = "Tầng tạo ra để cập nhật",
+                IsActive = false
+            })).Wait();
+
+            SchemaHelper.ExecuteAndExpectError(
+                "Tầng 41 đã ngưng hoạt động. Không thể cập nhật/xóa!",
+                @"/_GraphQL/Floor/mutation.updateFloor.gql",
+                new
+                {
+                    input = new
+                    {
+                        id = 41,
+                        name = "Tên tầng đã được cập nhật"
+                    }
+                },
+                p => p.PermissionManageMap = true
+            );
+        }
+
+        [TestMethod]
+        public void Mutation_UpdateFloor_InvalidId()
+        {
+            SchemaHelper.ExecuteAndExpectError(
+                "Tầng có Id: 100 không hợp lệ!",
+                @"/_GraphQL/Floor/mutation.updateFloor.gql",
+                new
+                {
+                    input = new
+                    {
+                        id = 100,
+                        name = "Tên tầng đã được cập nhật"
+                    }
+                },
+                p => p.PermissionManageMap = true
+            );
+        }
+
+        [TestMethod]
+        public void Mutation_UpdateFloor_InvalidRoom()
+        {
+            SchemaHelper.ExecuteAndExpectError(
+                "Tầng đã có phòng. Không thể cập nhật/xóa!",
+                @"/_GraphQL/Floor/mutation.updateFloor.gql",
+                new
+                {
+                    input = new
+                    {
+                        id = 1,
                         name = "Tên tầng đã được cập nhật"
                     }
                 },
