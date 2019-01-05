@@ -17,6 +17,7 @@ import mutable from '~/components/mixins/mutable';
 import { ButtonProps } from '~/components/mixins/props';
 
 @Component({
+    name: 'b-button-mutate-',
     mixins: [mutable, ButtonProps],
 })
 export default class extends Vue {}
