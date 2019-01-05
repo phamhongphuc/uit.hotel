@@ -1083,7 +1083,7 @@
                     },
                     {
                         "name": "employeeCheckIn",
-                        "description": "Nhân viên thực hiện giao dịch nhận đặt phòng từ khách hàng",
+                        "description": "Nhân viên thực hiện check-in cho khách hàng",
                         "args": [],
                         "type": {
                             "kind": "OBJECT",
@@ -1095,7 +1095,7 @@
                     },
                     {
                         "name": "employeeCheckOut",
-                        "description": "Nhân viên thực hiện giao dịch nhận đặt phòng từ khách hàng",
+                        "description": "Nhân viên thực hiện check-out cho khách hàng",
                         "args": [],
                         "type": {
                             "kind": "OBJECT",
@@ -1730,6 +1730,54 @@
                 "name": "Position",
                 "description": "Một chức vụ trong khách sạn",
                 "fields": [
+                    {
+                        "name": "countActiveEmployees",
+                        "description": "Số nhân viên còn hoạt động",
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Int",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "countEmployees",
+                        "description": "Số nhân viên",
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Int",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "countInActiveEmployees",
+                        "description": "Số nhân viên ngưng hoạt động",
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Int",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
                     {
                         "name": "employees",
                         "description": "Danh sách các nhân viên thuộc quyền này",
@@ -2432,6 +2480,51 @@
                         "deprecationReason": null
                     },
                     {
+                        "name": "isEmpty",
+                        "description": "Phòng trống",
+                        "args": [
+                            {
+                                "name": "from",
+                                "description": "",
+                                "type": {
+                                    "kind": "NON_NULL",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "SCALAR",
+                                        "name": "DateTimeOffset",
+                                        "ofType": null
+                                    }
+                                },
+                                "defaultValue": null
+                            },
+                            {
+                                "name": "to",
+                                "description": "",
+                                "type": {
+                                    "kind": "NON_NULL",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "SCALAR",
+                                        "name": "DateTimeOffset",
+                                        "ofType": null
+                                    }
+                                },
+                                "defaultValue": null
+                            }
+                        ],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Boolean",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
                         "name": "name",
                         "description": "Tên phòng",
                         "args": [],
@@ -2946,22 +3039,6 @@
                             "ofType": {
                                 "kind": "SCALAR",
                                 "name": "DateTimeOffset",
-                                "ofType": null
-                            }
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "typeOfPayment",
-                        "description": "Kiểu thanh toán (tiền mặt hoặc chuyển khoản)",
-                        "args": [],
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Int",
                                 "ofType": null
                             }
                         },
@@ -3613,7 +3690,7 @@
                                             "name": null,
                                             "ofType": {
                                                 "kind": "INPUT_OBJECT",
-                                                "name": "BookingCreateInput",
+                                                "name": "BookAndCheckInCreateInput",
                                                 "ofType": null
                                             }
                                         }
@@ -5368,21 +5445,29 @@
                         "name": "bookCheckInTime",
                         "description": "Thời điểm nhận phòng dự kiến của khách hàng",
                         "type": {
-                            "kind": "SCALAR",
-                            "name": "DateTimeOffset",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "DateTimeOffset",
+                                "ofType": null
+                            }
                         },
-                        "defaultValue": "null"
+                        "defaultValue": null
                     },
                     {
                         "name": "bookCheckOutTime",
                         "description": "Thời điểm trả phòng dự kiến của khách hàng",
                         "type": {
-                            "kind": "SCALAR",
-                            "name": "DateTimeOffset",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "DateTimeOffset",
+                                "ofType": null
+                            }
                         },
-                        "defaultValue": "null"
+                        "defaultValue": null
                     },
                     {
                         "name": "room",
@@ -5466,6 +5551,67 @@
                                 "kind": "SCALAR",
                                 "name": "Int",
                                 "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    }
+                ],
+                "interfaces": null,
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "INPUT_OBJECT",
+                "name": "BookAndCheckInCreateInput",
+                "description": "",
+                "fields": null,
+                "inputFields": [
+                    {
+                        "name": "bookCheckOutTime",
+                        "description": "Thời điểm trả phòng dự kiến của khách hàng",
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "DateTimeOffset",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "room",
+                        "description": "Phòng khách hàng chọn đặt trước",
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "INPUT_OBJECT",
+                                "name": "RoomId",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "listOfPatrons",
+                        "description": "Danh sách khách hàng",
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "LIST",
+                                "name": null,
+                                "ofType": {
+                                    "kind": "NON_NULL",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "INPUT_OBJECT",
+                                        "name": "PatronId",
+                                        "ofType": null
+                                    }
+                                }
                             }
                         },
                         "defaultValue": null
@@ -6414,20 +6560,6 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "typeOfPayment",
-                        "description": "Kiểu thanh toán (tiền mặt hoặc chuyển khoản)",
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Int",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
                         "name": "bankAccountNumber",
                         "description": "Số tài khoản ngân hàng của khách",
                         "type": {
@@ -7066,8 +7198,8 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "phoneNumber",
-                        "description": "Số điện thoại của nhân viên",
+                        "name": "address",
+                        "description": "Địa chỉ của nhân viên",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -7080,14 +7212,14 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "address",
-                        "description": "Địa chỉ của nhân viên",
+                        "name": "birthdate",
+                        "description": "Ngày sinh của nhân viên",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
                             "ofType": {
                                 "kind": "SCALAR",
-                                "name": "String",
+                                "name": "DateTimeOffset",
                                 "ofType": null
                             }
                         },
@@ -7122,14 +7254,14 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "birthdate",
-                        "description": "Ngày sinh của nhân viên",
+                        "name": "phoneNumber",
+                        "description": "Số điện thoại của nhân viên",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
                             "ofType": {
                                 "kind": "SCALAR",
-                                "name": "DateTimeOffset",
+                                "name": "String",
                                 "ofType": null
                             }
                         },
