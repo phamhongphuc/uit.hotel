@@ -63,10 +63,13 @@ namespace uit.ooad.Businesses
             return newPassword;
         }
 
-        public static void SetIsActiveAccount(string id, bool isActive)
+        public static void SetIsActiveAccount(string id, string employeeId, bool isActive)
         {
-            var employee = Get(id);
+            var employee = Get(employeeId);
             if (employee == null) throw new Exception("Không tìm thấy tên đăng nhập trong hệ thống");
+
+            if (id == employeeId)
+                throw new Exception("Nhân viên không thể tự vô hiệu hóa hoặc kích hoạt tài khoản của chính mình");
 
             EmployeeDataAccess.SetIsActiveAccount(employee, isActive);
         }
