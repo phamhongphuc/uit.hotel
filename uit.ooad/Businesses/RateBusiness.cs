@@ -13,7 +13,7 @@ namespace uit.ooad.Businesses
             rate.Employee = employee;
             rate.RoomKind = rate.RoomKind.GetManaged();
             if (!rate.RoomKind.IsActive)
-                throw new Exception("Loại phòng " + rate.RoomKind.Name + " đã ngưng hoại động");
+                throw new Exception("Loại phòng có ID: " + rate.RoomKind.Id + " đã ngưng hoại động");
 
             return RateDataAccess.Add(rate);
         }
@@ -25,7 +25,7 @@ namespace uit.ooad.Businesses
             rate.Employee = employee;
             rate.RoomKind = rate.RoomKind.GetManaged();
             if (!rate.RoomKind.IsActive)
-                throw new Exception("Loại phòng " + rate.RoomKind.Name + " đã ngưng hoại động");
+                throw new Exception("Loại phòng " + rate.RoomKind.Id + " đã ngưng hoại động");
 
             return RateDataAccess.Update(rateInDatabase, rate);
         }
