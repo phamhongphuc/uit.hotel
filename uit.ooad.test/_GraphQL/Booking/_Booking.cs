@@ -287,7 +287,7 @@ namespace uit.ooad.test._GraphQL
             {
                 realm.Add(new Employee
                 {
-                    Id = "abc",
+                    Id = "nhanvien_1",
                     Address = "Địa chỉ",
                     IsActive = true,
                     Birthdate = DateTimeOffset.Now,
@@ -306,7 +306,7 @@ namespace uit.ooad.test._GraphQL
                     Status = (int)Booking.StatusEnum.RequestedCheckOut,
                     EmployeeBooking = EmployeeDataAccess.Get("admin"),
                     EmployeeCheckIn = EmployeeDataAccess.Get("admin"),
-                    EmployeeCheckOut = EmployeeDataAccess.Get("abc"),
+                    EmployeeCheckOut = EmployeeDataAccess.Get("nhanvien_1"),
                     Bill = BillDataAccess.Get(1),
                     Room = RoomDataAccess.Get(1)
                 });

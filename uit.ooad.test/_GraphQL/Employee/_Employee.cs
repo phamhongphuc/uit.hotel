@@ -108,7 +108,7 @@ namespace uit.ooad.test._GraphQL
             {
                 realm.Add(new Employee
                 {
-                    Id = "abc",
+                    Id = "nhanvien_2",
                     Address = "Địa chỉ",
                     IsActive = true,
                     Birthdate = DateTimeOffset.Now,
@@ -126,7 +126,7 @@ namespace uit.ooad.test._GraphQL
             SchemaHelper.Execute(
                 @"/_GraphQL/Employee/mutation.resetPassword.gql",
                 @"/_GraphQL/Employee/mutation.resetPassword.schema.json",
-                new { id = "abc" },
+                new { id = "nhanvien_2" },
                 p => p.PermissionManageEmployee = true
             );
         }
@@ -149,6 +149,51 @@ namespace uit.ooad.test._GraphQL
                 "Không tìm thấy tên đăng nhập trong hệ thống",
                 @"/_GraphQL/Employee/mutation.resetPassword.gql",
                 new { id = "xyz" },
+                p => p.PermissionManageEmployee = true
+            );
+        }
+
+        [TestMethod]
+        public void Mutation_SetIsActiveAccount()
+        {
+            SchemaHelper.Execute(
+                @"/_GraphQL/Employee/mutation.setIsActiveAccount.gql",
+                @"/_GraphQL/Employee/mutation.setIsActiveAccount.schema.json",
+                new
+                {
+                    id = "inactive",
+                    isActive = false
+                },
+                p => p.PermissionManageEmployee = true
+            );
+        }
+
+        [TestMethod]
+        public void Mutation_SetIsActiveAccount_InvalidEmployee()
+        {
+            SchemaHelper.ExecuteAndExpectError(
+                "Nhân viên không thể tự vô hiệu hóa hoặc kích hoạt tài khoản của chính mình",
+                @"/_GraphQL/Employee/mutation.setIsActiveAccount.gql",
+                new
+                {
+                    id = "admin",
+                    isActive = false
+                },
+                p => p.PermissionManageEmployee = true
+            );
+        }
+
+        [TestMethod]
+        public void Mutation_SetIsActiveAccount_InvalidEmployeeId()
+        {
+            SchemaHelper.ExecuteAndExpectError(
+                "Không tìm thấy tên đăng nhập trong hệ thống",
+                @"/_GraphQL/Employee/mutation.setIsActiveAccount.gql",
+                new
+                {
+                    id = "xyz",
+                    isActive = false
+                },
                 p => p.PermissionManageEmployee = true
             );
         }
