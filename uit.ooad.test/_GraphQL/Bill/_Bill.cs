@@ -82,6 +82,15 @@ namespace uit.ooad.test._GraphQL
         [TestMethod]
         public void Mutation_CreateBill()
         {
+            Database.WriteAsync(realm => realm.Add(new Room
+            {
+                Id = 110,
+                IsActive = true,
+                Name = "Tên phòng",
+                Floor = FloorBusiness.Get(1),
+                RoomKind = RoomKindBusiness.Get(1)
+            })).Wait();
+
             SchemaHelper.Execute(
                 @"/_GraphQL/Bill/mutation.createBill.gql",
                 @"/_GraphQL/Bill/mutation.createBill.schema.json",
@@ -93,7 +102,7 @@ namespace uit.ooad.test._GraphQL
                         {
                             bookCheckInTime = DateTimeOffset.Now.AddDays(1),
                             bookCheckOutTime = DateTimeOffset.Now.AddDays(2),
-                            room = new { id = 1 },
+                            room = new { id = 110 },
                             listOfPatrons = new[] { new { id = 1 } },
                         }
                     },

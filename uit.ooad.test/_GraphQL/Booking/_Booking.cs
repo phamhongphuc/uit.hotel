@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using uit.ooad.Businesses;
 using uit.ooad.DataAccesses;
 using uit.ooad.Models;
 using uit.ooad.Queries.Helper;
@@ -14,6 +15,15 @@ namespace uit.ooad.test._GraphQL
         [TestMethod]
         public void Mutation_AddBookingToBill()
         {
+            Database.WriteAsync(realm => realm.Add(new Room
+            {
+                Id = 120,
+                IsActive = true,
+                Name = "Tên phòng",
+                Floor = FloorBusiness.Get(1),
+                RoomKind = RoomKindBusiness.Get(1)
+            })).Wait();
+
             SchemaHelper.Execute(
                 @"/_GraphQL/Booking/mutation.addBookingToBill.gql",
                 @"/_GraphQL/Booking/mutation.addBookingToBill.schema.json",
@@ -23,7 +33,7 @@ namespace uit.ooad.test._GraphQL
                     {
                         bookCheckInTime = DateTimeOffset.Now.AddDays(1).ToString("s"),
                         bookCheckOutTime = DateTimeOffset.Now.AddDays(2).ToString("s"),
-                        room = new { id = 1 },
+                        room = new { id = 120 },
                         listOfPatrons = new[]{
                             new { id = 1 },
                         },
@@ -37,6 +47,15 @@ namespace uit.ooad.test._GraphQL
         [TestMethod]
         public void Mutation_AddBookingToBill_InvalidBill()
         {
+            Database.WriteAsync(realm => realm.Add(new Room
+            {
+                Id = 121,
+                IsActive = true,
+                Name = "Tên phòng",
+                Floor = FloorBusiness.Get(1),
+                RoomKind = RoomKindBusiness.Get(1)
+            })).Wait();
+
             SchemaHelper.ExecuteAndExpectError(
                 "Mã hóa đơn không tồn tại",
                 @"/_GraphQL/Booking/mutation.addBookingToBill.gql",
@@ -46,7 +65,7 @@ namespace uit.ooad.test._GraphQL
                     {
                         bookCheckInTime = DateTimeOffset.Now.AddDays(1).ToString("s"),
                         bookCheckOutTime = DateTimeOffset.Now.AddDays(2).ToString("s"),
-                        room = new { id = 1 },
+                        room = new { id = 121 },
                         listOfPatrons = new[]{
                             new { id = 1 },
                         },
