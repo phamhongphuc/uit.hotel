@@ -4,7 +4,6 @@ query($id: ID!) {
         time
         money
         bankAccountNumber
-        typeOfPayment
         employee {
             id
         }

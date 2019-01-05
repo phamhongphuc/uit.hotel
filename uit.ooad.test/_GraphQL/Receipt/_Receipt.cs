@@ -21,7 +21,6 @@ namespace uit.ooad.test._GraphQL
                     input = new
                     {
                         money = 1000,
-                        typeOfPayment = 1,
                         bankAccountNumber = "10-10-2015",
                         bill = new
                         {
@@ -41,7 +40,6 @@ namespace uit.ooad.test._GraphQL
                 Id = 10,
                 Money = 1,
                 BankAccountNumber = "11111",
-                TypeOfPayment = 1,
                 Bill = BillBusiness.Get(1),
                 Employee = EmployeeBusiness.Get(Constant.adminName)
             })).Wait();
