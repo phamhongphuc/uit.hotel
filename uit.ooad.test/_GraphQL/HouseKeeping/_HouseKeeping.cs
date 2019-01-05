@@ -60,7 +60,22 @@ namespace uit.ooad.test._GraphQL
             SchemaHelper.Execute(
                 @"/_GraphQL/HouseKeeping/mutation.confirmCleanedAndServices.gql",
                 @"/_GraphQL/HouseKeeping/mutation.confirmCleanedAndServices.schema.json",
-                @"/_GraphQL/HouseKeeping/mutation.confirmCleanedAndServices.variable.json",
+                new
+                {
+                    servicesDetails = new[]
+                    {
+                        new {
+                            number = 1,
+                            service = new { id = 1 }
+                        },
+                        new
+                        {
+                            number = 2,
+                            service = new { id = 1 }
+                        }
+                    },
+                    houseKeepingId = 30
+                },
                 p => p.PermissionCleaning = true
             );
         }

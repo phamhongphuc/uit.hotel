@@ -21,7 +21,7 @@ namespace uit.ooad.Businesses
         {
             var patronKindInDatabase = GetAndCheckValid(patronKindId);
             if (patronKindInDatabase.Patrons.Count() > 0)
-                throw new Exception("Loại khách hàng đang được sử dụng. Không thể cập xóa.");
+                throw new Exception("Loại khách hàng đang được sử dụng. Không thể cập xóa");
 
             PatronKindDataAccess.Delete(patronKindInDatabase);
         }

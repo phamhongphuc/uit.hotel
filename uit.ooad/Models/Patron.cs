@@ -14,7 +14,7 @@ namespace uit.ooad.Models
             set
             {
                 if (IsManaged)
-                    throw new Exception("Chỉ tạo setter cho trường dữ liệu này đối với đối tượng chưa được quản lý.");
+                    throw new Exception("Chỉ tạo setter cho trường dữ liệu này đối với đối tượng chưa được quản lý");
                 foreach (var phoneNumber in value)
                     PhoneNumbers.Add(phoneNumber);
             }

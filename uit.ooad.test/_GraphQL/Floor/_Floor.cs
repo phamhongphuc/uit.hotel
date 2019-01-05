@@ -15,7 +15,13 @@ namespace uit.ooad.test._GraphQL
             SchemaHelper.Execute(
                 @"/_GraphQL/Floor/mutation.createFloor.gql",
                 @"/_GraphQL/Floor/mutation.createFloor.schema.json",
-                @"/_GraphQL/Floor/mutation.createFloor.variable.json",
+                new
+                {
+                    input = new
+                    {
+                        name = "Tầng 7"
+                    }
+                },
                 p => p.PermissionManageMap = true
             );
         }
@@ -32,7 +38,7 @@ namespace uit.ooad.test._GraphQL
             SchemaHelper.Execute(
                 @"/_GraphQL/Floor/mutation.deleteFloor.gql",
                 @"/_GraphQL/Floor/mutation.deleteFloor.schema.json",
-                @"/_GraphQL/Floor/mutation.deleteFloor.variable.json",
+                new { id = 10 },
                 p => p.PermissionManageMap = true
             );
         }
@@ -49,7 +55,7 @@ namespace uit.ooad.test._GraphQL
             SchemaHelper.Execute(
                 @"/_GraphQL/Floor/mutation.setIsActiveFloor.gql",
                 @"/_GraphQL/Floor/mutation.setIsActiveFloor.schema.json",
-                @"/_GraphQL/Floor/mutation.setIsActiveFloor.variable.json",
+                new { id = 30, isActive = false },
                 p => p.PermissionManageMap = true
             );
         }
@@ -60,25 +66,21 @@ namespace uit.ooad.test._GraphQL
             Database.WriteAsync(realm => realm.Add(new Floor
             {
                 Id = 40,
-                Name = "Tầng tạo ra để vô hiệu",
+                Name = "Tầng tạo ra để cập nhật",
                 IsActive = true,
             })).Wait();
             SchemaHelper.Execute(
                 @"/_GraphQL/Floor/mutation.updateFloor.gql",
                 @"/_GraphQL/Floor/mutation.updateFloor.schema.json",
-                @"/_GraphQL/Floor/mutation.updateFloor.variable.json",
+                new
+                {
+                    input = new
+                    {
+                        id = 40,
+                        name = "Tên tầng đã được cập nhật"
+                    }
+                },
                 p => p.PermissionManageMap = true
-            );
-        }
-
-        [TestMethod]
-        public void Query_Floors()
-        {
-            SchemaHelper.Execute(
-                @"/_GraphQL/Floor/query.floors.gql",
-                @"/_GraphQL/Floor/query.floors.schema.json",
-                null,
-                p => p.PermissionGetMap = true
             );
         }
 
@@ -94,7 +96,7 @@ namespace uit.ooad.test._GraphQL
             SchemaHelper.Execute(
                 @"/_GraphQL/Floor/query.floor.gql",
                 @"/_GraphQL/Floor/query.floor.schema.json",
-                @"/_GraphQL/Floor/query.floor.variable.json",
+                new { id = 20 },
                 p => p.PermissionGetMap = true
             );
         }
@@ -105,7 +107,18 @@ namespace uit.ooad.test._GraphQL
             SchemaHelper.ExecuteAndExpectError(
                 "Tầng có Id: 100 không hợp lệ!",
                 @"/_GraphQL/Floor/query.floor.gql",
-                @"/_GraphQL/Floor/query.floor.variable.invalid_id.json",
+                new { id = 100 },
+                p => p.PermissionGetMap = true
+            );
+        }
+
+        [TestMethod]
+        public void Query_Floors()
+        {
+            SchemaHelper.Execute(
+                @"/_GraphQL/Floor/query.floors.gql",
+                @"/_GraphQL/Floor/query.floors.schema.json",
+                null,
                 p => p.PermissionGetMap = true
             );
         }

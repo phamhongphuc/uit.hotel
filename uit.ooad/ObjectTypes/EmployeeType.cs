@@ -102,11 +102,11 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.Id).Description("Id của nhân viên");
             Field(x => x.Name).Description("Tên nhân viên");
             Field(x => x.IdentityCard).Description("Chứng minh nhân dân");
-            Field(x => x.PhoneNumber).Description("Số điện thoại của nhân viên");
             Field(x => x.Address).Description("Địa chỉ của nhân viên");
+            Field(x => x.Birthdate).Description("Ngày sinh của nhân viên");
             Field(x => x.Email).Description("Email của nhân viên");
             Field(x => x.Gender).Description("Giới tính của nhân viên");
-            Field(x => x.Birthdate).Description("Ngày sinh của nhân viên");
+            Field(x => x.PhoneNumber).Description("Số điện thoại của nhân viên");
             Field(x => x.StartingDate).Description("Ngày vào làm");
 
             Field<PositionIdInput>(

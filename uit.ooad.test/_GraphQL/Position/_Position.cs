@@ -14,7 +14,28 @@ namespace uit.ooad.test._GraphQL
             SchemaHelper.Execute(
                 @"/_GraphQL/Position/mutation.createPosition.gql",
                 @"/_GraphQL/Position/mutation.createPosition.schema.json",
-                @"/_GraphQL/Position/mutation.createPosition.variable.json",
+                new
+                {
+                    input = new
+                    {
+                        name = "Tên quyền",
+                        permissionCleaning = true,
+                        permissionGetAccountingVoucher = true,
+                        permissionGetHouseKeeping = true,
+                        permissionGetMap = true,
+                        permissionGetPatron = true,
+                        permissionGetRate = true,
+                        permissionGetService = true,
+                        permissionManageEmployee = true,
+                        permissionManageHiringRoom = true,
+                        permissionManageMap = true,
+                        permissionManagePatron = true,
+                        permissionManagePatronKind = true,
+                        permissionManagePosition = true,
+                        permissionManageRate = true,
+                        permissionManageService = true
+                    }
+                },
                 p => p.PermissionManagePosition = true
             );
         }
@@ -32,7 +53,7 @@ namespace uit.ooad.test._GraphQL
             SchemaHelper.Execute(
                 @"/_GraphQL/Position/mutation.deletePosition.gql",
                 @"/_GraphQL/Position/mutation.deletePosition.schema.json",
-                @"/_GraphQL/Position/mutation.deletePosition.variable.json",
+                new { id = 10 },
                 p => p.PermissionManagePosition = true
             );
         }
@@ -49,7 +70,7 @@ namespace uit.ooad.test._GraphQL
             SchemaHelper.Execute(
                 @"/_GraphQL/Position/mutation.setIsActivePosition.gql",
                 @"/_GraphQL/Position/mutation.setIsActivePosition.schema.json",
-                @"/_GraphQL/Position/mutation.setIsActivePosition.variable.json",
+                new { id = 20, isActive = true },
                 p => p.PermissionManagePosition = true
             );
         }
@@ -67,7 +88,12 @@ namespace uit.ooad.test._GraphQL
             SchemaHelper.Execute(
                 @"/_GraphQL/Position/mutation.setIsActivePositionAndMoveEmployee.gql",
                 @"/_GraphQL/Position/mutation.setIsActivePositionAndMoveEmployee.schema.json",
-                @"/_GraphQL/Position/mutation.setIsActivePositionAndMoveEmployee.variable.json",
+                new
+                {
+                    id = 30,
+                    newId = 2,
+                    isActive = false
+                },
                 p => p.PermissionManagePosition = true
             );
         }
@@ -85,7 +111,29 @@ namespace uit.ooad.test._GraphQL
             SchemaHelper.Execute(
                 @"/_GraphQL/Position/mutation.updatePosition.gql",
                 @"/_GraphQL/Position/mutation.updatePosition.schema.json",
-                @"/_GraphQL/Position/mutation.updatePosition.variable.json",
+                new
+                {
+                    input = new
+                    {
+                        id = 40,
+                        name = "Tên quyền",
+                        permissionCleaning = true,
+                        permissionGetAccountingVoucher = true,
+                        permissionGetHouseKeeping = true,
+                        permissionGetMap = true,
+                        permissionGetPatron = true,
+                        permissionGetRate = true,
+                        permissionGetService = true,
+                        permissionManageEmployee = true,
+                        permissionManageHiringRoom = false,
+                        permissionManageMap = true,
+                        permissionManagePatron = true,
+                        permissionManagePatronKind = true,
+                        permissionManagePosition = true,
+                        permissionManageRate = true,
+                        permissionManageService = true
+                    }
+                },
                 p => p.PermissionManagePosition = true
             );
         }
@@ -95,7 +143,7 @@ namespace uit.ooad.test._GraphQL
             SchemaHelper.Execute(
                 @"/_GraphQL/Position/query.position.gql",
                 @"/_GraphQL/Position/query.position.schema.json",
-                @"/_GraphQL/Position/query.position.variable.json",
+                new { id = 1 },
                 p => p.PermissionManagePosition = true
             );
         }

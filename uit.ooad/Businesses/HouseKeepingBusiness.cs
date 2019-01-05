@@ -14,8 +14,8 @@ namespace uit.ooad.Businesses
             if (houseKeepingInDatabase == null)
                 throw new Exception("Mã dọn phòng không tồn tại");
 
-            if (houseKeepingInDatabase.Status != (int) HouseKeeping.StatusEnum.Pending)
-                throw new Exception("Không thể nhận phòng này. Phòng đã hoặc đang được dọn.");
+            if (houseKeepingInDatabase.Status != (int)HouseKeeping.StatusEnum.Pending)
+                throw new Exception("Không thể nhận phòng này. Phòng đã hoặc đang được dọn");
 
             return HouseKeepingDataAccess.AssignCleaningService(employee, houseKeepingInDatabase);
         }
@@ -24,8 +24,8 @@ namespace uit.ooad.Businesses
         {
             var houseKeepingInDatabase = GetAndCheckValid(employee, houseKeepingId);
 
-            if (houseKeepingInDatabase.Type == (int) HouseKeeping.TypeEnum.ExpectedDeparture)
-                throw new Exception("Không thể sử dụng kiểu xác nhận này đối với phòng check-out.");
+            if (houseKeepingInDatabase.Type == (int)HouseKeeping.TypeEnum.ExpectedDeparture)
+                throw new Exception("Không thể sử dụng kiểu xác nhận này đối với phòng check-out");
 
             return HouseKeepingDataAccess.ConfirmCleaned(houseKeepingInDatabase);
         }
@@ -36,8 +36,8 @@ namespace uit.ooad.Businesses
         {
             var houseKeepingInDatabase = GetAndCheckValid(employee, houseKeepingId);
 
-            if (houseKeepingInDatabase.Type != (int) HouseKeeping.TypeEnum.ExpectedDeparture)
-                throw new Exception("Chỉ được sử dụng kiểu xác nhận này đối với phòng check-out.");
+            if (houseKeepingInDatabase.Type != (int)HouseKeeping.TypeEnum.ExpectedDeparture)
+                throw new Exception("Chỉ được sử dụng kiểu xác nhận này đối với phòng check-out");
 
             foreach (var servicesDetail in servicesDetails)
             {
@@ -55,11 +55,11 @@ namespace uit.ooad.Businesses
             if (houseKeepingInDatabase == null)
                 throw new Exception("Mã dọn phòng không tồn tại");
 
-            if (houseKeepingInDatabase.Status != (int) HouseKeeping.StatusEnum.Cleaning)
-                throw new Exception("Không thể xác nhận dọn phòng.");
+            if (houseKeepingInDatabase.Status != (int)HouseKeeping.StatusEnum.Cleaning)
+                throw new Exception("Không thể xác nhận dọn phòng");
 
             if (!houseKeepingInDatabase.Employee.Equals(employee))
-                throw new Exception("Nhân viên không được phép xác nhận dọn.");
+                throw new Exception("Nhân viên không được phép xác nhận dọn");
             return houseKeepingInDatabase;
         }
 
