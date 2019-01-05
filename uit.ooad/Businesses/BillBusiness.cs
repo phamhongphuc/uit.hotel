@@ -32,7 +32,7 @@ namespace uit.ooad.Businesses
                     throw new Exception("Ngày check-in, check-out dự kiến không hợp lệ");
 
                 if (!booking.Room.IsEmptyRoom(booking.BookCheckInTime, booking.BookCheckOutTime))
-                    throw new Exception("Phòng đã được đặt hoạc đang được sử dụng");
+                    throw new Exception("Phòng đã được đặt hoặc đang được sử dụng");
             }
 
             return BillDataAccess.Book(bill, bookings);
@@ -61,7 +61,7 @@ namespace uit.ooad.Businesses
                     throw new Exception("Ngày check-out dự kiến không hợp lệ");
 
                 if (!booking.Room.IsEmptyRoom(DateTimeOffset.Now, booking.BookCheckOutTime))
-                    throw new Exception("Phòng đã được đặt hoạc đang được sử dụng");
+                    throw new Exception("Phòng đã được đặt hoặc đang được sử dụng");
             }
 
             return BillDataAccess.BookAndCheckIn(bill, bookings);
