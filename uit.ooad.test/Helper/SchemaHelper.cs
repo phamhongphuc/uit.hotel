@@ -21,16 +21,12 @@ namespace uit.ooad.test.Helper
         public static void Execute(
             string queryPath,
             string schemaPath,
-            string variablePath = null,
+            object variable = null,
             Action<Position> setPermission = null
         )
         {
-            var result = ExecuteAsync(queryPath, variablePath, setPermission).GetAwaiter().GetResult();
-            var jsonResult = JObject.Parse(
-                JsonConvert.SerializeObject(
-                    new { data = result.Result.Data }
-                )
-            );
+            var result = ExecuteAsync(queryPath, variable, setPermission).GetAwaiter().GetResult();
+            var jsonResult = getJsonResultOrThrow(result);
             var jSchema = JSchema.Parse(
                 File.ReadAllText(schemaPath.TrimStart('/'))
             );
@@ -50,61 +46,83 @@ namespace uit.ooad.test.Helper
             }
         }
 
+        private static JObject getJsonResultOrThrow(ExecuteAsyncResult result)
+        {
+            var jsonResult = JObject.Parse(
+                            JsonConvert.SerializeObject(
+                                new { data = result.Result.Data }
+                            )
+                        );
+            if (result.Result.Errors != null)
+            {
+                Exception error = result.Result.Errors[0];
+                var message = "";
+                while (error != null)
+                {
+                    message = error.Message;
+                    error = error.InnerException;
+                }
+                var errorMessage = string.Join(
+                    Environment.NewLine,
+                    "",
+                    "Query:", result.Query,
+                    "Variable:", result.Variable,
+                    "Result:", jsonResult.ToString(),
+                    "Error Messages:", message
+                );
+                throw new Exception(errorMessage, new Exception(message));
+            }
+
+            return jsonResult;
+        }
+
         public static void ExecuteAndExpectError(
             string expectErrorMessage,
             string queryPath,
-            string variablePath = null,
+            object variable = null,
             Action<Position> setPermission = null
         )
         {
-            var result = ExecuteAsync(queryPath, variablePath, setPermission).GetAwaiter().GetResult();
-            var message = "";
+            var result = ExecuteAsync(queryPath, variable, setPermission).GetAwaiter().GetResult();
             try
             {
-                message = result.Result.Errors[0].InnerException.Message;
+                getJsonResultOrThrow(result);
             }
-            catch (Exception e)
+            catch (Exception error)
             {
-                var errorMessage = string.Join(
-                    Environment.NewLine,
-                    "",
-                    "Query:", result.Query,
-                    "Variable:", result.Variable,
-                    "Exception:", e.ToString()
-                );
-                throw new Exception(errorMessage);
-            }
-
-            if (!message.Equals(expectErrorMessage))
-            {
-                var errorMessage = string.Join(
-                    Environment.NewLine,
-                    "",
-                    "Query:", result.Query,
-                    "Variable:", result.Variable,
-                    "Error Messages:", message,
-                    "Expect Error Message: ", expectErrorMessage
-                );
-                throw new Exception(errorMessage);
+                if (error.InnerException == null) throw error;
+                var message = error.InnerException.Message;
+                if (!message.Equals(expectErrorMessage))
+                {
+                    throw error;
+                }
             }
         }
 
         private static async Task<ExecuteAsyncResult> ExecuteAsync(
             string queryPath,
-            string variablePath = null,
+            object variableObject = null,
             Action<Position> setPermission = null
         )
         {
-            var variable = variablePath == null ? "{}" : File.ReadAllText(variablePath.TrimStart('/'));
+            string variable = "{}";
+            if (variableObject is string)
+            {
+                variable = File.ReadAllText(((string)variableObject).TrimStart('/'));
+            }
+            else if (variableObject != null)
+            {
+                variable = JsonConvert.SerializeObject(variableObject);
+            }
             var query = File.ReadAllText(queryPath.TrimStart('/'));
 
             var User = new ClaimsPrincipal(
                 new ClaimsIdentity(
-                    new[] { new Claim(ClaimTypes.Name, Constant.UserName) }
+                    new[] { new Claim(ClaimTypes.Name, Constant.adminName) }
                 )
             );
 
-            var position = EmployeeBusiness.Get(Constant.UserName).Position;
+            var position = EmployeeBusiness.Get(Constant.adminName).Position;
 
             if (setPermission != null) PositionBusiness.UpdateForHelper(setPermission, position);
 

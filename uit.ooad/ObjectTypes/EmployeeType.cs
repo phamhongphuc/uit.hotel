@@ -26,45 +26,38 @@ namespace uit.ooad.ObjectTypes
 
             Field<NonNullGraphType<PositionType>>(
                 nameof(Employee.Position),
-                resolve: context => context.Source.Position,
-                description: "Chức vụ"
-            );
+                "Chức vụ",
+                resolve: context => context.Source.Position);
 
             Field<ListGraphType<BillType>>(
                 nameof(Employee.Bills),
-                resolve: context => context.Source.Bills.ToList(),
-                description: "Danh sách các Hóa đơn mà nhân viên tạo"
-            );
+                "Danh sách các Hóa đơn mà nhân viên tạo",
+                resolve: context => context.Source.Bills.ToList());
 
             Field<ListGraphType<ReceiptType>>(
                 nameof(Employee.Receipts),
-                resolve: context => context.Source.Receipts.ToList(),
-                description: "Danh sách các Phiếu thu mà nhân viên tạo"
-            );
+                "Danh sách các Phiếu thu mà nhân viên tạo",
+                resolve: context => context.Source.Receipts.ToList());
 
             Field<ListGraphType<RateType>>(
                 nameof(Employee.Rates),
-                resolve: context => context.Source.Rates.ToList(),
-                description: "Danh sách các Giá cơ bản mà nhân viên tạo"
-            );
+                "Danh sách các Giá cơ bản mà nhân viên tạo",
+                resolve: context => context.Source.Rates.ToList());
 
             Field<ListGraphType<VolatilityRateType>>(
                 nameof(Employee.VolatilityRates),
-                resolve: context => context.Source.VolatilityRates.ToList(),
-                description: "Danh sách các Giá biến động mà nhân viên tạo"
-            );
+                "Danh sách các Giá biến động mà nhân viên tạo",
+                resolve: context => context.Source.VolatilityRates.ToList());
 
             Field<ListGraphType<HouseKeepingType>>(
                 nameof(Employee.HouseKeepings),
-                resolve: context => context.Source.HouseKeepings.ToList(),
-                description: "Danh sách các Phòng mà nhân viên dọn"
-            );
+                "Danh sách các Phòng mà nhân viên dọn",
+                resolve: context => context.Source.HouseKeepings.ToList());
 
             Field<ListGraphType<BookingType>>(
                 nameof(Employee.Bookings),
-                resolve: context => context.Source.Bookings.ToList(),
-                description: "Danh sách các Thông tin thuê phòng mà nhân viên tạo"
-            );
+                "Danh sách các Thông tin thuê phòng mà nhân viên tạo",
+                resolve: context => context.Source.Bookings.ToList());
         }
     }
 
@@ -109,11 +102,11 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.Id).Description("Id của nhân viên");
             Field(x => x.Name).Description("Tên nhân viên");
             Field(x => x.IdentityCard).Description("Chứng minh nhân dân");
-            Field(x => x.PhoneNumber).Description("Số điện thoại của nhân viên");
             Field(x => x.Address).Description("Địa chỉ của nhân viên");
+            Field(x => x.Birthdate).Description("Ngày sinh của nhân viên");
             Field(x => x.Email).Description("Email của nhân viên");
             Field(x => x.Gender).Description("Giới tính của nhân viên");
-            Field(x => x.Birthdate).Description("Ngày sinh của nhân viên");
+            Field(x => x.PhoneNumber).Description("Số điện thoại của nhân viên");
             Field(x => x.StartingDate).Description("Ngày vào làm");
 
             Field<PositionIdInput>(

@@ -8,7 +8,7 @@ using uit.ooad.Queries.Authentication;
 
 namespace uit.ooad.Businesses
 {
-    public class EmployeeBusiness
+    public static class EmployeeBusiness
     {
         public static Task<Employee> Add(Employee employee)
         {
@@ -25,7 +25,7 @@ namespace uit.ooad.Businesses
         public static Task<Employee> Update(Employee employee)
         {
             var employeeInDatabase = Get(employee.Id);
-            if (employeeInDatabase == null) throw new Exception("không tồn tại nhân viên này");
+            if (employeeInDatabase == null) throw new Exception("Không tồn tại nhân viên này");
 
             if (!employeeInDatabase.IsActive)
                 throw new Exception("Tài khoản " + employeeInDatabase.Id + " đã bị vô hiệu hóa");

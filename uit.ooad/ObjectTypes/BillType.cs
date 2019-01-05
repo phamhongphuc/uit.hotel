@@ -18,25 +18,23 @@ namespace uit.ooad.ObjectTypes
 
             Field<NonNullGraphType<PatronType>>(
                 nameof(Bill.Patron),
-                resolve: context => context.Source.Patron,
-                description: "Thông tin khách hàng thanh toán hóa đơn");
+                "Thông tin khách hàng thanh toán hóa đơn",
+                resolve: context => context.Source.Patron);
 
             Field<EmployeeType>(
                 nameof(Bill.Employee),
-                resolve: context => context.Source.Employee,
-                description: "Thông tin nhân viên nhận thanh toán hóa đơn");
+                "Thông tin nhân viên nhận thanh toán hóa đơn",
+                resolve: context => context.Source.Employee);
 
             Field<ListGraphType<ReceiptType>>(
                 nameof(Bill.Receipts),
-                resolve: context =>
-                    context.Source.Receipts.ToList(),
-                description: "Danh sách các biên nhận cho hóa đơn");
+                "Danh sách các biên nhận cho hóa đơn",
+                resolve: context => context.Source.Receipts.ToList());
 
             Field<ListGraphType<BookingType>>(
                 nameof(Bill.Bookings),
-                resolve: context => context.Source.Bookings.ToList(),
-                description: "Danh sách các thông tin đặt trước của hóa đơn"
-            );
+                "Danh sách các thông tin đặt trước của hóa đơn",
+                resolve: context => context.Source.Bookings.ToList());
         }
     }
 

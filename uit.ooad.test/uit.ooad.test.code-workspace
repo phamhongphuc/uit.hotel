@@ -1,0 +1,18 @@
+{
+    "folders": [
+        {
+            "path": "."
+        },
+        {
+            "path": "E:\\Code\\OnGoing\\uit.ooad\\uit.ooad"
+        }
+    ],
+    "settings": {
+        "open-file-from-path.searchExclusion": [
+            "**/node_modules/**",
+            "**/.vscode/**",
+            "**/bin/**"
+        ],
+        "open-file-from-path.startingPath": "/_GraphQL"
+    }
+}

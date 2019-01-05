@@ -6,19 +6,19 @@ using uit.ooad.Models;
 
 namespace uit.ooad.Businesses
 {
-    public class BookingBusiness
+    public static class BookingBusiness
     {
         public static Task<Booking> CheckIn(Employee employee, int bookingId)
         {
             var bookingInDatabase = Get(bookingId);
             if (bookingInDatabase == null)
                 throw new Exception("Mã Booking không tồn tại");
-            if (bookingInDatabase.Status != (int) Booking.StatusEnum.Booked)
-                throw new Exception("Phòng đã được check-in, không thể check-in lại.");
+            if (bookingInDatabase.Status != (int)Booking.StatusEnum.Booked)
+                throw new Exception("Phòng đã được check-in, không thể check-in lại");
 
             var houseKeeping = new HouseKeeping();
-            houseKeeping.Type = (int) HouseKeeping.TypeEnum.ExpectedArrival;
-            houseKeeping.Status = (int) HouseKeeping.StatusEnum.Pending;
+            houseKeeping.Type = (int)HouseKeeping.TypeEnum.ExpectedArrival;
+            houseKeeping.Status = (int)HouseKeeping.StatusEnum.Pending;
             houseKeeping.Booking = bookingInDatabase;
 
             return BookingDataAccess.CheckIn(employee, bookingInDatabase, houseKeeping);
@@ -30,12 +30,12 @@ namespace uit.ooad.Businesses
 
             if (bookingInDatabase == null)
                 throw new Exception("Mã Booking không tồn tại");
-            if (bookingInDatabase.Status != (int) Booking.StatusEnum.CheckedIn)
+            if (bookingInDatabase.Status != (int)Booking.StatusEnum.CheckedIn)
                 throw new Exception("Không thể yêu cầu trả phòng");
 
             var houseKeeping = new HouseKeeping();
-            houseKeeping.Type = (int) HouseKeeping.TypeEnum.ExpectedDeparture;
-            houseKeeping.Status = (int) HouseKeeping.StatusEnum.Pending;
+            houseKeeping.Type = (int)HouseKeeping.TypeEnum.ExpectedDeparture;
+            houseKeeping.Status = (int)HouseKeeping.StatusEnum.Pending;
             houseKeeping.Booking = bookingInDatabase;
 
             return BookingDataAccess.RequestCheckOut(employee, bookingInDatabase, houseKeeping);
@@ -45,11 +45,11 @@ namespace uit.ooad.Businesses
         {
             var bookingInDatabase = Get(bookingId);
             if (bookingInDatabase == null)
-                throw new Exception("Mã Booking không tồn tại.");
-            if (bookingInDatabase.Status != (int) Booking.StatusEnum.RequestedCheckOut)
-                throw new Exception("Không thể Check-out.");
+                throw new Exception("Mã Booking không tồn tại");
+            if (bookingInDatabase.Status != (int)Booking.StatusEnum.RequestedCheckOut)
+                throw new Exception("Booking chưa thực hiện yêu cầu check-out");
             if (!bookingInDatabase.EmployeeCheckOut.Equals(employee))
-                throw new Exception("Nhân viên không được phép check-out.");
+                throw new Exception("Nhân viên không được phép check-out");
 
             return BookingDataAccess.CheckOut(bookingInDatabase);
         }
@@ -57,11 +57,18 @@ namespace uit.ooad.Businesses
         public static Task<Booking> Add(Employee employee, int billId, Booking booking)
         {
             var bill = BillBusiness.Get(billId);
-            if (bill == null) throw new Exception("Mã hóa đơn không tồn tại.");
+            if (bill == null) throw new Exception("Mã hóa đơn không tồn tại");
 
             booking.Room = booking.Room.GetManaged();
+
             if (!booking.Room.IsActive)
                 throw new Exception("Phòng có Id: " + booking.Room.Id + " đã ngưng hoạt động");
+
+            if (booking.BookCheckInTime >= booking.BookCheckOutTime || booking.BookCheckInTime < DateTimeOffset.Now)
+                throw new Exception("Ngày check-in, check-out dự kiến không hợp lệ");
+            
+            if (!booking.Room.IsEmptyRoom(booking.BookCheckInTime, booking.BookCheckOutTime))
+                throw new Exception("Phòng đã được đặt hoặc đang được sử dụng");
 
             return BookingDataAccess.Add(employee, bill, booking);
         }

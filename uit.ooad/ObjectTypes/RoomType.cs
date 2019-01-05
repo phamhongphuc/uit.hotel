@@ -1,7 +1,10 @@
+using System;
 using System.Linq;
 using GraphQL.Types;
+using uit.ooad.Businesses;
 using uit.ooad.Models;
 using uit.ooad.Queries.Base;
+using uit.ooad.Queries.Helper;
 
 namespace uit.ooad.ObjectTypes
 {
@@ -16,22 +19,34 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.Name).Description("Tên phòng");
             Field(x => x.IsActive).Description("Trạng thái phòng");
 
+            Field<NonNullGraphType<BooleanGraphType>>(
+                "isEmpty",
+                "Phòng trống",
+                new QueryArguments{
+                    new QueryArgument<NonNullGraphType<DateTimeOffsetGraphType>> { Name = "from" },
+                    new QueryArgument<NonNullGraphType<DateTimeOffsetGraphType>> { Name = "to" }
+                },
+                context =>
+                {
+                    var from = context.GetArgument<DateTimeOffset>("from");
+                    var to = context.GetArgument<DateTimeOffset>("to");
+                    return context.Source.IsEmptyRoom(from, to);
+                }
+            );
+
             Field<NonNullGraphType<FloorType>>(
                 nameof(Room.Floor),
-                resolve: context => context.Source.Floor,
-                description: "Phòng thuộc tầng nào"
-            );
+                "Phòng thuộc tầng nào",
+                resolve: context => context.Source.Floor);
             Field<NonNullGraphType<RoomKindType>>(
                 nameof(Room.RoomKind),
-                resolve: context => context.Source.RoomKind,
-                description: "Loại phòng của phòng"
-            );
+                "Loại phòng của phòng",
+                resolve: context => context.Source.RoomKind);
 
             Field<ListGraphType<BookingType>>(
                 nameof(Room.Bookings),
-                resolve: context => context.Source.Bookings.ToList(),
-                description: "Danh sách thông tin thuê phòng"
-            );
+                "Danh sách thông tin thuê phòng",
+                resolve: context => context.Source.Bookings.ToList());
         }
     }
 

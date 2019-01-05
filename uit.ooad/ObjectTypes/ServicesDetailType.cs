@@ -18,12 +18,12 @@ namespace uit.ooad.ObjectTypes
 
             Field<NonNullGraphType<BookingType>>(
                 nameof(ServicesDetail.Booking),
-                resolve: context => context.Source.Booking,
-                description: "Thuộc thông tin thuê phòng nào");
+                "Thuộc thông tin thuê phòng nào",
+                resolve: context => context.Source.Booking);
             Field<NonNullGraphType<ServiceType>>(
                 nameof(ServicesDetail.Service),
-                resolve: context => context.Source.Service,
-                description: "Thuộc dịch vụ nào");
+                "Thuộc dịch vụ nào",
+                resolve: context => context.Source.Service);
         }
     }
 

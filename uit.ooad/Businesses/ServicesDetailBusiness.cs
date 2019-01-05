@@ -6,7 +6,7 @@ using uit.ooad.Models;
 
 namespace uit.ooad.Businesses
 {
-    public class ServicesDetailBusiness
+    public static class ServicesDetailBusiness
     {
         public static Task<ServicesDetail> Add(ServicesDetail servicesDetail)
         {
@@ -41,8 +41,8 @@ namespace uit.ooad.Businesses
             if (servicesDetailInDatabase == null)
                 throw new Exception("Mã chi tiết dịch vụ không tồn tại");
 
-            if (servicesDetailInDatabase.Booking.Status == (int) Booking.StatusEnum.CheckedOut)
-                throw new Exception("Phòng đã check-out. Không thể cập nhật/xóa chi tiết dịch vụ.");
+            if (servicesDetailInDatabase.Booking.Status == (int)Booking.StatusEnum.CheckedOut)
+                throw new Exception("Phòng đã check-out. Không thể cập nhật/xóa chi tiết dịch vụ");
             return servicesDetailInDatabase;
         }
 

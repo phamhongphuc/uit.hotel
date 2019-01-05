@@ -18,9 +18,8 @@ namespace uit.ooad.ObjectTypes
 
             Field<ListGraphType<PatronType>>(
                 nameof(PatronKind.Patrons),
-                resolve: context => context.Source.Patrons.ToList(),
-                description: "Danh sách các khách hàng thuộc loại khách hàng"
-            );
+                "Danh sách các khách hàng thuộc loại khách hàng",
+                resolve: context => context.Source.Patrons.ToList());
         }
     }
 

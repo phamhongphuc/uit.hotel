@@ -13,8 +13,9 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.Token).Description("Token đăng nhập");
             Field<NonNullGraphType<EmployeeType>>(
                 nameof(AuthenticationObject.Employee),
-                resolve: context => context.Source.Employee,
-                description: "Thông tin nhân viên đăng nhập");
+                "Thông tin nhân viên đăng nhập",
+                resolve: context => context.Source.Employee
+            );
         }
     }
 

@@ -7,7 +7,7 @@ using uit.ooad.Models;
 
 namespace uit.ooad.Businesses
 {
-    public class PositionBusiness
+    public static class PositionBusiness
     {
         public static Task<Position> Add(Position position) => PositionDataAccess.Add(position);
 
@@ -46,12 +46,12 @@ namespace uit.ooad.Businesses
             if (positionNew == null)
                 throw new Exception("Chức vụ có ID: " + newId + " không tồn tại");
             if (!positionNew.IsActive)
-                throw new Exception("Chức vụ có ID: " + newId + " đã bị vô hiệu hóa.");
+                throw new Exception("Chức vụ có ID: " + newId + " đã bị vô hiệu hóa");
 
             if (id == newId)
                 throw new Exception("Chức vụ trùng nhau. Không thể chuyển");
 
-            if (isActive) throw new Exception("Chức năng này chỉ được dùng để vô hiệu hóa chức vụ.");
+            if (isActive) throw new Exception("Chức năng này chỉ được dùng để vô hiệu hóa chức vụ");
 
             PositionDataAccess.SetIsActiveAndMoveEmployee(positionInDatabase, positionNew);
         }
