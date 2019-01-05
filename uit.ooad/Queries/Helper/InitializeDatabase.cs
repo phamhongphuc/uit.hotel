@@ -158,6 +158,21 @@ namespace uit.ooad.Queries.Helper
                     Booking = booking,
                     Service = service,
                 });
+
+                var Rate = realm.Add(new Rate
+                {
+                    Id = 1,
+                    DayRate = 100000,
+                    NightRate = 80000,
+                    WeekRate = 600000,
+                    MonthRate = 2500000,
+                    LateCheckOutFee = 30000,
+                    EarlyCheckInFee = 30000,
+                    EffectiveStartDate = DateTimeOffset.MinValue,
+                    CreateDate = DateTimeOffset.Now.AddDays(-1),
+                    Employee = admin,
+                    RoomKind = roomKind,
+                });
             }).Wait();
         }
 
