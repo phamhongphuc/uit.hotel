@@ -7,9 +7,11 @@
                     
                 </b-button>
             </div>
-            <div class="popup-modal-content">
-                <slot v-if="noData || data" :data="data" :close="close" />
-            </div>
+            <no-ssr>
+                <div class="popup-modal-content">
+                    <slot v-if="noData || data" :data="data" :close="close" />
+                </div>
+            </no-ssr>
         </div>
     </div>
 </template>

@@ -3,7 +3,6 @@
         <template slot-scope="{ data: { roomKind } }">
             <b-nav-item-icon- icon="" text="Xem thông tin chi tiết" />
             <div class="context-hr" />
-            <!-- {{ roomKind }} -->
             <b-nav-item-icon-
                 icon=""
                 text="Sửa thông tin phòng"

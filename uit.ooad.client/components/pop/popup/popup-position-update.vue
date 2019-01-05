@@ -1,11 +1,11 @@
 <template>
-    <popup- ref="popup" title="Thêm vị trí" no-data="true">
+    <popup- ref="popup" title="Cập nhật vị trí">
         <form-mutate-
-            slot-scope="{ close }"
-            success="Thêm vị trí mới thành công"
-            :mutation="createPosition"
+            slot-scope="{ data: { position }, close }"
+            success="Cập nhật vị trí mới thành công"
+            :mutation="updatePosition"
             :variables="{
-                input: input,
+                input,
             }"
         >
             <div class="d-flex">
@@ -51,7 +51,7 @@
                     @click="close"
                 >
                     <span class="icon"></span>
-                    <span>Thêm</span>
+                    <span>Cập nhật</span>
                 </b-button>
             </div>
         </form-mutate->
@@ -61,7 +61,7 @@
 import { Component } from 'nuxt-property-decorator';
 import { PopupMixin } from '~/components/mixins/popup';
 import {
-    createPosition,
+    updatePosition,
     positionOptionsAdministrative,
     positionOptionsBusiness,
     positionOptionsReceptionist,
@@ -72,8 +72,8 @@ import { required } from 'vuelidate/lib/validators';
 import { CheckboxOption } from '~/utils/components';
 
 @Component({
-    mixins: [PopupMixin, mixinData({ createPosition })],
-    name: 'popup-position-add-',
+    mixins: [PopupMixin, mixinData({ updatePosition })],
+    name: 'popup-position-update-',
     validations: {
         positionName: {
             required,
@@ -92,6 +92,7 @@ export default class extends PopupMixin {
 
     get input() {
         return {
+            id: this.data.position.id,
             name: this.positionName,
             ...this.positionOptions,
         };
@@ -119,8 +120,18 @@ export default class extends PopupMixin {
     }
 
     onOpen() {
-        this.positionName = '';
+        this.positionName = this.data.position.name;
+
+        const permission = [
+            ...positionOptionsAdministrative,
+            ...positionOptionsBusiness,
+            ...positionOptionsReceptionist,
+            ...positionOptionsHouseKeeping,
+        ].map(p => p.value);
         this.selected = [];
+        permission.forEach(p => {
+            if (this.data.position[p]) this.selected.push(p);
+        });
     }
 
     toggleAll(checked: boolean, options: CheckboxOption[]) {

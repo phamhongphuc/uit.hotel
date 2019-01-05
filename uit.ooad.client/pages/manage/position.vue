@@ -74,6 +74,7 @@
                         $event.stopPropagation();
                         $refs.context_position.open(currentEvent || $event, {
                             position,
+                            positions,
                         });
                         currentEvent = null;
                     }
@@ -93,9 +94,9 @@
                 </template>
             </b-table>
         </query->
-        <!-- <context-manage-position- ref="context_position" :refs="$refs" /> -->
+        <context-manage-position- ref="context_position" :refs="$refs" />
         <popup-position-add- ref="position_add" />
-        <!-- <popup-position-update- ref="position_update" /> -->
+        <popup-position-update- ref="position_update" />
     </div>
 </template>
 <script lang="ts">
