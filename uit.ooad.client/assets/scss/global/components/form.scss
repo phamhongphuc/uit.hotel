@@ -20,3 +20,16 @@
         margin-top: 0.5rem;
     }
 }
+
+.inline-checkbox {
+    display: block;
+    margin: 0 1.5rem -1rem;
+    &:first-child {
+        margin-top: 1rem;
+    }
+}
+
+.custom-select {
+    background-color: #e5e5e5 !important;
+    border: 0;
+}

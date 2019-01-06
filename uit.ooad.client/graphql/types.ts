@@ -2,9 +2,9 @@ export type Maybe<T> = T | null;
 
 export interface BookingCreateInput {
     /** Thời điểm nhận phòng dự kiến của khách hàng */
-    bookCheckInTime: Maybe<DateTimeOffset>;
+    bookCheckInTime: DateTimeOffset;
     /** Thời điểm trả phòng dự kiến của khách hàng */
-    bookCheckOutTime: Maybe<DateTimeOffset>;
+    bookCheckOutTime: DateTimeOffset;
     /** Phòng khách hàng chọn đặt trước */
     room: RoomId;
     /** Danh sách khách hàng */
@@ -19,6 +19,15 @@ export interface RoomId {
 export interface PatronId {
     /** Id của khách hàng */
     id: number;
+}
+
+export interface BookAndCheckInCreateInput {
+    /** Thời điểm trả phòng dự kiến của khách hàng */
+    bookCheckOutTime: DateTimeOffset;
+    /** Phòng khách hàng chọn đặt trước */
+    room: RoomId;
+    /** Danh sách khách hàng */
+    listOfPatrons: PatronId[];
 }
 
 export interface BillCreateInput {
@@ -174,8 +183,6 @@ export interface RoomKindId {
 export interface ReceiptCreateInput {
     /** Số tiền đã thu */
     money: number;
-    /** Kiểu thanh toán (tiền mặt hoặc chuyển khoản) */
-    typeOfPayment: number;
     /** Số tài khoản ngân hàng của khách */
     bankAccountNumber: Maybe<string>;
     /** Thuộc hóa đơn */
@@ -275,16 +282,16 @@ export interface EmployeeUpdateInput {
     name: string;
     /** Chứng minh nhân dân */
     identityCard: string;
-    /** Số điện thoại của nhân viên */
-    phoneNumber: string;
     /** Địa chỉ của nhân viên */
     address: string;
+    /** Ngày sinh của nhân viên */
+    birthdate: DateTimeOffset;
     /** Email của nhân viên */
     email: string;
     /** Giới tính của nhân viên */
     gender: boolean;
-    /** Ngày sinh của nhân viên */
-    birthdate: DateTimeOffset;
+    /** Số điện thoại của nhân viên */
+    phoneNumber: string;
     /** Ngày vào làm */
     startingDate: DateTimeOffset;
     /** Loại chức vụ */

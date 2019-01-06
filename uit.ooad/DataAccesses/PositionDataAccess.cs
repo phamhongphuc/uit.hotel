@@ -25,6 +25,7 @@ namespace uit.ooad.DataAccesses
         {
             await Database.WriteAsync(realm =>
             {
+                positionInDatabase.Name = position.Name;
                 positionInDatabase.PermissionCleaning = position.PermissionCleaning;
                 positionInDatabase.PermissionGetAccountingVoucher = position.PermissionGetAccountingVoucher;
                 positionInDatabase.PermissionGetHouseKeeping = position.PermissionGetHouseKeeping;

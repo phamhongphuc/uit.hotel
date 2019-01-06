@@ -4,10 +4,10 @@
             <b-button
                 class="m-2"
                 variant="white"
-                @click="$refs.position_add.open()"
+                @click="$refs.employee_add.open()"
             >
                 <span class="icon"></span>
-                <span>Thêm vị trí mới</span>
+                <span>Thêm nhân viên mới</span>
             </b-button>
             <b-button
                 class="m-2 ml-auto"
@@ -19,20 +19,20 @@
                     {{
                         `Đang ${
                             showInactive ? 'hiện' : 'ẩn'
-                        } vị trí đã bị vô hiệu hóa`
+                        } nhân viên đã bị vô hiệu hóa`
                     }}
                 </span>
             </b-button>
         </div>
         <query-
-            :query="getPositions"
+            :query="getEmployees"
             class="row"
             child-class="col m-2 p-0 bg-white rounded shadow-sm overflow-auto"
         >
             <b-table
-                slot-scope="{ data: { positions } }"
+                slot-scope="{ data: { employees } }"
                 class="table-style"
-                :items="positionsFilter(positions)"
+                :items="employeesFilter(employees)"
                 :fields="[
                     {
                         key: 'index',
@@ -42,7 +42,7 @@
                     },
                     {
                         key: 'name',
-                        label: 'Tên vị trí',
+                        label: 'Tên nhân viên',
                         tdClass: (value, key, row) => {
                             if (!row.isActive)
                                 return 'table-cell-disable w-100';
@@ -51,30 +51,23 @@
                         sortable: true,
                     },
                     {
-                        key: 'employeesActive',
-                        label: 'Hoạt động',
-                        tdClass: 'text-center',
+                        key: 'phoneNumber',
+                        label: 'Số điện thoại',
+                        tdClass: 'text-center text-nowrap',
                         sortable: true,
                     },
                     {
-                        key: 'employeesInactive',
-                        label: 'Ngưng hoạt động',
-                        tdClass: 'text-center',
-                        sortable: true,
-                    },
-                    {
-                        key: 'employees',
-                        label: 'Tổng cộng',
-                        tdClass: 'text-center',
+                        key: 'position',
+                        label: 'Vị trí',
+                        tdClass: 'text-center text-nowrap',
                         sortable: true,
                     },
                 ]"
                 @row-clicked="
-                    (position, $index, $event) => {
+                    (employee, $index, $event) => {
                         $event.stopPropagation();
-                        $refs.context_position.open(currentEvent || $event, {
-                            position,
-                            positions,
+                        $refs.context_employee.open(currentEvent || $event, {
+                            employee,
                         });
                         currentEvent = null;
                     }
@@ -83,31 +76,28 @@
                 <template slot="index" slot-scope="data">
                     {{ data.index + 1 }}
                 </template>
-                <template slot="employeesActive" slot-scope="{ item }">
-                    {{ item.employees.filter(e => e.isActive).length }} người
+                <template slot="phoneNumber" slot-scope="{ value }">
+                    <a :href="`tel:${value}`" @click.stop>{{ value }}</a>
                 </template>
-                <template slot="employeesInactive" slot-scope="{ item }">
-                    {{ item.employees.filter(e => !e.isActive).length }} người
-                </template>
-                <template slot="employees" slot-scope="{ value }">
-                    {{ value.length }} người
+                <template slot="position" slot-scope="{ value }">
+                    {{ value.name }}
                 </template>
             </b-table>
         </query->
-        <context-manage-position- ref="context_position" :refs="$refs" />
-        <popup-position-add- ref="position_add" />
-        <popup-position-update- ref="position_update" />
+        <context-manage-employee- ref="context_employee" :refs="$refs" />
+        <popup-employee-add- ref="employee_add" />
+        <popup-employee-update- ref="employee_update" />
     </div>
 </template>
 <script lang="ts">
 import { Vue, Component } from 'nuxt-property-decorator';
-import { getPositions } from '~/graphql/documents/position';
+import { getEmployees } from '~/graphql/documents/employee';
 import { mixinData } from '~/components/mixins/mutable';
-import { GetPositions } from '~/graphql/types';
+import { GetEmployees } from '~/graphql/types';
 
 @Component({
-    name: 'position-',
-    mixins: [mixinData({ getPositions })],
+    name: 'employee-',
+    mixins: [mixinData({ getEmployees })],
 })
 export default class extends Vue {
     head() {
@@ -116,11 +106,12 @@ export default class extends Vue {
         };
     }
 
-    positionsFilter(
-        positions: GetPositions.Positions[],
-    ): GetPositions.Positions[] {
-        if (this.showInactive) return positions;
-        return positions.filter(rk => rk.isActive);
+    employeesFilter(
+        employees: GetEmployees.Employees[],
+    ): GetEmployees.Employees[] {
+        if (this.showInactive) return employees;
+        if (employees === undefined) return [];
+        return employees.filter(rk => rk.isActive);
     }
 
     tableContext(event: MouseEvent) {

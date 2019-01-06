@@ -25,6 +25,7 @@
         "node_modules",
         ".nuxt",
         "dist",
+        "coverage",
         "modules/typescript.js",
         "test/ts-register.js",
         "nuxt.config.js"

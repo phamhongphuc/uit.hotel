@@ -26,7 +26,7 @@ export default {
         ],
     },
     server: {
-        port: 8080,
+        port: process.env.PORT || 8080,
     },
     env: {},
     css: [{ src: '~/assets/scss/main.scss', lang: 'scss' }],

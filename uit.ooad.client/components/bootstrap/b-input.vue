@@ -13,6 +13,7 @@
             :formatter="formatter"
             :lazy-formatter="lazyFormatter"
             :state="state"
+            :disabled="disabled"
             @input="$emit('input', $event)"
             @focus="$emit('update:focus', true)"
             @blur="$emit('update:focus', false)"

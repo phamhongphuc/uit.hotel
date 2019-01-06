@@ -34,6 +34,12 @@
                 text="Quản lý phân quyền"
                 exact
             />
+            <b-nav-item-icon-
+                to="/manage/employee"
+                icon=""
+                text="Quản lý nhân viên"
+                exact
+            />
         </b-collapse>
     </b-navbar-nav>
 </template>

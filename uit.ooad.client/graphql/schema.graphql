@@ -12,7 +12,7 @@ type AppMutation {
 
     # Đặt và nhận phòng ngay tại khách sạn
     bookAndCheckIn(
-        bookings: [BookingCreateInput!]!
+        bookings: [BookAndCheckInCreateInput!]!
         bill: BillCreateInput!
     ): Bill!
 
@@ -313,6 +313,17 @@ input BillId {
     id: Int!
 }
 
+input BookAndCheckInCreateInput {
+    # Thời điểm trả phòng dự kiến của khách hàng
+    bookCheckOutTime: DateTimeOffset!
+
+    # Phòng khách hàng chọn đặt trước
+    room: RoomId!
+
+    # Danh sách khách hàng
+    listOfPatrons: [PatronId!]!
+}
+
 # Một thông tin thuê phòng của khách hàng
 type Booking {
     # Thông tin hóa đơn của thông tin thuê phòng
@@ -330,10 +341,10 @@ type Booking {
     # Nhân viên thực hiện giao dịch nhận đặt phòng từ khách hàng
     employeeBooking: Employee
 
-    # Nhân viên thực hiện giao dịch nhận đặt phòng từ khách hàng
+    # Nhân viên thực hiện check-in cho khách hàng
     employeeCheckIn: Employee
 
-    # Nhân viên thực hiện giao dịch nhận đặt phòng từ khách hàng
+    # Nhân viên thực hiện check-out cho khách hàng
     employeeCheckOut: Employee
 
     # Danh sách nhân viên dọn phòng cho phòng đã đặt này
@@ -375,10 +386,10 @@ type Booking {
 
 input BookingCreateInput {
     # Thời điểm nhận phòng dự kiến của khách hàng
-    bookCheckInTime: DateTimeOffset = null
+    bookCheckInTime: DateTimeOffset!
 
     # Thời điểm trả phòng dự kiến của khách hàng
-    bookCheckOutTime: DateTimeOffset = null
+    bookCheckOutTime: DateTimeOffset!
 
     # Phòng khách hàng chọn đặt trước
     room: RoomId!
@@ -511,11 +522,11 @@ input EmployeeUpdateInput {
     # Chứng minh nhân dân
     identityCard: String!
 
-    # Số điện thoại của nhân viên
-    phoneNumber: String!
-
     # Địa chỉ của nhân viên
     address: String!
+
+    # Ngày sinh của nhân viên
+    birthdate: DateTimeOffset!
 
     # Email của nhân viên
     email: String!
@@ -523,8 +534,8 @@ input EmployeeUpdateInput {
     # Giới tính của nhân viên
     gender: Boolean!
 
-    # Ngày sinh của nhân viên
-    birthdate: DateTimeOffset!
+    # Số điện thoại của nhân viên
+    phoneNumber: String!
 
     # Ngày vào làm
     startingDate: DateTimeOffset!
@@ -763,6 +774,15 @@ input PatronUpdateInput {
 
 # Một chức vụ trong khách sạn
 type Position {
+    # Số nhân viên còn hoạt động
+    countActiveEmployees: Int!
+
+    # Số nhân viên
+    countEmployees: Int!
+
+    # Số nhân viên ngưng hoạt động
+    countInActiveEmployees: Int!
+
     # Danh sách các nhân viên thuộc quyền này
     employees: [Employee]
 
@@ -1040,17 +1060,11 @@ type Receipt {
 
     # Thời gian tạo phiếu thu
     time: DateTimeOffset!
-
-    # Kiểu thanh toán (tiền mặt hoặc chuyển khoản)
-    typeOfPayment: Int!
 }
 
 input ReceiptCreateInput {
     # Số tiền đã thu
     money: Int!
-
-    # Kiểu thanh toán (tiền mặt hoặc chuyển khoản)
-    typeOfPayment: Int!
 
     # Số tài khoản ngân hàng của khách
     bankAccountNumber: String = null
@@ -1072,6 +1086,9 @@ type Room {
 
     # Trạng thái phòng
     isActive: Boolean!
+
+    # Phòng trống
+    isEmpty(from: DateTimeOffset!, to: DateTimeOffset!): Boolean!
 
     # Tên phòng
     name: String!
