@@ -65,7 +65,7 @@ const config = {
         'typescript/explicit-function-return-type': 'warn',
         'typescript/explicit-member-accessibility': 'off',
         indent: 'off',
-        'typescript/indent': 'error',
+        'typescript/indent': 'off', // because of prettier
         'typescript/interface-name-prefix': 'error',
         'typescript/member-delimiter-style': 'error',
         'typescript/no-angle-bracket-type-assertion': 'error',
