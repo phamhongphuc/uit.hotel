@@ -6,6 +6,10 @@ export const getPatronKinds = gql`
             id
             name
             description
+            patrons {
+                id
+                name
+            }
         }
     }
 `;

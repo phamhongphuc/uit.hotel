@@ -41,6 +41,12 @@
                 exact
             />
             <b-nav-item-icon-
+                to="/manage/patron-kind"
+                icon=""
+                text="Quản lý loại khách hàng"
+                exact
+            />
+            <b-nav-item-icon-
                 to="/manage/patron"
                 icon=""
                 text="Quản lý khách hàng"
