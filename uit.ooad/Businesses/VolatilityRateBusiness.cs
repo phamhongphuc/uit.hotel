@@ -13,7 +13,7 @@ namespace uit.ooad.Businesses
             volatilityRate.Employee = employee;
             volatilityRate.RoomKind = volatilityRate.RoomKind.GetManaged();
             if (!volatilityRate.RoomKind.IsActive)
-                throw new Exception("Loại phòng " + volatilityRate.RoomKind.Name + " đã ngưng hoại động");
+                throw new Exception("Loại phòng " + volatilityRate.RoomKind.Id + " đã ngưng hoại động");
 
             return VolatilityRateDataAccess.Add(volatilityRate);
         }
@@ -25,7 +25,7 @@ namespace uit.ooad.Businesses
             volatilityRate.Employee = employee;
             volatilityRate.RoomKind = volatilityRate.RoomKind.GetManaged();
             if (!volatilityRate.RoomKind.IsActive)
-                throw new Exception("Loại phòng " + volatilityRate.RoomKind.Name + " đã ngưng hoại động");
+                throw new Exception("Loại phòng " + volatilityRate.RoomKind.Id + " đã ngưng hoại động");
 
             return VolatilityRateDataAccess.Update(volatilityRateInDatabase, volatilityRate);
         }
