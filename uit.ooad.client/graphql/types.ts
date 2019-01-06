@@ -534,6 +534,8 @@ export namespace UserLogin {
     export type Position = {
         __typename?: 'Position';
 
+        id: number;
+
         name: string;
     };
 }
@@ -560,6 +562,8 @@ export namespace UserCheckLogin {
     export type Position = {
         __typename?: 'Position';
 
+        id: number;
+
         name: string;
     };
 }
@@ -578,15 +582,19 @@ export namespace GetEmployees {
 
         id: string;
 
-        password: string;
-
         name: string;
+
+        identityCard: string;
 
         phoneNumber: string;
 
         address: string;
 
+        email: string;
+
         birthdate: DateTimeOffset;
+
+        gender: boolean;
 
         startingDate: DateTimeOffset;
 
@@ -599,6 +607,8 @@ export namespace GetEmployees {
         __typename?: 'Position';
 
         id: number;
+
+        name: string;
     };
 }
 
@@ -856,6 +866,62 @@ export namespace UpdatePatron {
 
     export type UpdatePatron = {
         __typename?: 'Patron';
+
+        id: number;
+    };
+}
+
+export namespace GetPatronKinds {
+    export type Variables = {};
+
+    export type Query = {
+        __typename?: 'Query';
+
+        patronKinds: PatronKinds[];
+    };
+
+    export type PatronKinds = {
+        __typename?: 'PatronKind';
+
+        id: number;
+
+        name: string;
+
+        description: string;
+    };
+}
+
+export namespace CreatePatronKind {
+    export type Variables = {
+        input: PatronKindCreateInput;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        createPatronKind: CreatePatronKind;
+    };
+
+    export type CreatePatronKind = {
+        __typename?: 'PatronKind';
+
+        id: number;
+    };
+}
+
+export namespace UpdatePatronKind {
+    export type Variables = {
+        input: PatronKindUpdateInput;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        updatePatronKind: UpdatePatronKind;
+    };
+
+    export type UpdatePatronKind = {
+        __typename?: 'PatronKind';
 
         id: number;
     };
