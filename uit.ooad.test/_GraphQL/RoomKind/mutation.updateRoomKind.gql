@@ -1,0 +1,9 @@
+mutation($input: RoomKindUpdateInput!) {
+    updateRoomKind(input: $input) {
+        id
+        name
+        numberOfBeds
+        amountOfPeople
+        isActive
+    }
+}
