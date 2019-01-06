@@ -13,7 +13,7 @@ namespace uit.ooad.Businesses
             servicesDetail.Booking = servicesDetail.Booking.GetManaged();
             servicesDetail.Service = servicesDetail.Service.GetManaged();
             if (!servicesDetail.Service.IsActive)
-                throw new Exception("Dịch vụ " + servicesDetail.Service.Name + " đã ngừng cung cấp");
+                throw new Exception("Dịch vụ " + servicesDetail.Service.Id + " đã ngừng cung cấp");
 
             return ServicesDetailDataAccess.Add(servicesDetail);
         }
@@ -24,7 +24,7 @@ namespace uit.ooad.Businesses
 
             servicesDetail.Service = servicesDetail.Service.GetManaged();
             if (!servicesDetail.Service.IsActive)
-                throw new Exception("Dịch vụ " + servicesDetail.Service.Name + " đã ngừng cung cấp");
+                throw new Exception("Dịch vụ " + servicesDetail.Service.Id + " đã ngừng cung cấp");
 
             return ServicesDetailDataAccess.Update(servicesDetailInDatabase, servicesDetail);
         }
