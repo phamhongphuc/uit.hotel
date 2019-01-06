@@ -51,6 +51,7 @@ export const actions: ActionTree<UserState, UserState> = {
                             id
                             name
                             position {
+                                id
                                 name
                             }
                         }
@@ -87,6 +88,7 @@ export const actions: ActionTree<UserState, UserState> = {
                                 id
                                 name
                                 position {
+                                    id
                                     name
                                 }
                             }

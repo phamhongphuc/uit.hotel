@@ -4,15 +4,18 @@ export const getEmployees = gql`
     query getEmployees {
         employees {
             id
-            password
             name
+            identityCard
             phoneNumber
             address
+            email
             birthdate
+            gender
             startingDate
             isActive
             position {
                 id
+                name
             }
         }
     }
