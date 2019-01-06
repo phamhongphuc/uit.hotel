@@ -54,4 +54,7 @@ export class InputProps extends Vue {
 
     @Prop({ default: false })
     lazyFormatter: boolean;
+
+    @Prop({ default: false })
+    disabled: boolean;
 }

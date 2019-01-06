@@ -2,8 +2,8 @@ import { DocumentNode } from 'graphql';
 import { Prop } from 'nuxt-property-decorator';
 import Vue, { ComponentOptions } from 'vue';
 import { Mixin } from 'vue-mixin-decorator';
-import { apolloClientNotify } from '../../modules/apollo';
-import { notify } from '../../plugins/notify';
+import { apolloClientNotify } from '~/modules/apollo';
+import { notify } from '~/plugins/notify';
 
 @Mixin
 export default class extends Vue {
