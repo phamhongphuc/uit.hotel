@@ -14,11 +14,11 @@ namespace uit.ooad.Businesses
         {
             room.Floor = room.Floor.GetManaged();
             if (!room.Floor.IsActive)
-                throw new Exception("Tầng " + room.Floor.Name + " đã ngưng hoại động");
+                throw new Exception("Tầng có ID: " + room.Floor.Id + " đã ngưng hoại động");
 
             room.RoomKind = room.RoomKind.GetManaged();
             if (!room.RoomKind.IsActive)
-                throw new Exception("Loại phòng " + room.RoomKind.Name + " đã ngưng hoại động");
+                throw new Exception("Loại phòng có ID: " + room.RoomKind.Id + " đã ngưng hoại động");
 
             return RoomDataAccess.Add(room);
         }
@@ -29,11 +29,11 @@ namespace uit.ooad.Businesses
 
             room.Floor = room.Floor.GetManaged();
             if (!room.Floor.IsActive)
-                throw new Exception("Tầng " + room.Floor.Name + " đã ngưng hoại động");
+                throw new Exception("Tầng có ID: " + room.Floor.Id + " đã ngưng hoại động");
 
             room.RoomKind = room.RoomKind.GetManaged();
             if (!room.RoomKind.IsActive)
-                throw new Exception("Loại phòng " + room.RoomKind.Name + " đã ngưng hoại động");
+                throw new Exception("Loại phòng có ID: " + room.RoomKind.Id + " đã ngưng hoại động");
 
             return RoomDataAccess.Update(roomInDatabase, room);
         }
@@ -60,7 +60,7 @@ namespace uit.ooad.Businesses
                 throw new Exception("Phòng có Id: " + roomId + " không tồn tại");
 
             if (!roomInDatabase.IsActive)
-                throw new Exception("Phòng " + roomInDatabase.Name + " đã ngưng hoại động. Không thể cập nhật/xóa!");
+                throw new Exception("Phòng " + roomInDatabase.Id + " đã ngưng hoại động. Không thể cập nhật/xóa!");
 
             if (roomInDatabase.Bookings.Count() > 0)
                 throw new Exception("Phòng đã có giao dịch trước đó. Không thể cập nhật/xóa!");

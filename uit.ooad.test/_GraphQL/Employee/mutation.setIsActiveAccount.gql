@@ -1,0 +1,3 @@
+mutation($id: ID!, $isActive: Boolean!) {
+	setIsActiveAccount(id: $id, isActive: $isActive)
+}

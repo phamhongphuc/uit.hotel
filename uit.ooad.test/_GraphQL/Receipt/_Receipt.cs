@@ -33,6 +33,28 @@ namespace uit.ooad.test._GraphQL
         }
 
         [TestMethod]
+        public void Mutation_CreateReceipt_InvalidBill()
+        {
+            SchemaHelper.ExecuteAndExpectError(
+                "Mã hóa đơn không tồn tại",
+                @"/_GraphQL/Receipt/mutation.createReceipt.gql",
+                new
+                {
+                    input = new
+                    {
+                        money = 1000,
+                        bankAccountNumber = "10-10-2015",
+                        bill = new
+                        {
+                            id = 100
+                        }
+                    }
+                },
+                p => p.PermissionManageHiringRoom = true
+            );
+        }
+
+        [TestMethod]
         public void Query_Receipt()
         {
             Database.WriteAsync(realm => realm.Add(new Receipt

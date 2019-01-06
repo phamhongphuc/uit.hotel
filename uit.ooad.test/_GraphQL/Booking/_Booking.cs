@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using uit.ooad.Businesses;
 using uit.ooad.DataAccesses;
 using uit.ooad.Models;
+using uit.ooad.Queries.Authentication;
 using uit.ooad.test.Helper;
 
 namespace uit.ooad.test._GraphQL
@@ -15,7 +16,7 @@ namespace uit.ooad.test._GraphQL
         {
             Database.WriteAsync(realm => realm.Add(new Room
             {
-                Id = 120,
+                Id = 200,
                 IsActive = true,
                 Name = "Tên phòng",
                 Floor = FloorBusiness.Get(1),
@@ -29,9 +30,9 @@ namespace uit.ooad.test._GraphQL
                 {
                     booking = new
                     {
-                        bookCheckInTime = DateTimeOffset.Now.AddDays(1).ToString("s"),
-                        bookCheckOutTime = DateTimeOffset.Now.AddDays(2).ToString("s"),
-                        room = new { id = 120 },
+                        bookCheckInTime = DateTimeOffset.Now.AddDays(1),
+                        bookCheckOutTime = DateTimeOffset.Now.AddDays(2),
+                        room = new { id = 200 },
                         listOfPatrons = new[]
                         {
                             new { id = 1 }
@@ -48,7 +49,7 @@ namespace uit.ooad.test._GraphQL
         {
             Database.WriteAsync(realm => realm.Add(new Room
             {
-                Id = 121,
+                Id = 201,
                 IsActive = true,
                 Name = "Tên phòng",
                 Floor = FloorBusiness.Get(1),
@@ -62,9 +63,114 @@ namespace uit.ooad.test._GraphQL
                 {
                     booking = new
                     {
-                        bookCheckInTime = DateTimeOffset.Now.AddDays(1).ToString("s"),
-                        bookCheckOutTime = DateTimeOffset.Now.AddDays(2).ToString("s"),
-                        room = new { id = 121 },
+                        bookCheckInTime = DateTimeOffset.Now.AddDays(1),
+                        bookCheckOutTime = DateTimeOffset.Now.AddDays(2),
+                        room = new { id = 201 },
+                        listOfPatrons = new[]
+                        {
+                            new { id = 1 }
+                        }
+                    },
+                    billId = 1
+                },
+                p => p.PermissionManageHiringRoom = true
+            );
+        }
+
+        [TestMethod]
+        public void Mutation_AddBookingToBill_InvalidDate()
+        {
+            SchemaHelper.ExecuteAndExpectError(
+                "Ngày check-in, check-out dự kiến không hợp lệ",
+                @"/_GraphQL/Booking/mutation.addBookingToBill.gql",
+                new
+                {
+                    booking = new
+                    {
+                        bookCheckInTime = DateTimeOffset.Now.AddDays(5),
+                        bookCheckOutTime = DateTimeOffset.Now.AddDays(2),
+                        room = new { id = 1 },
+                        listOfPatrons = new[]
+                        {
+                            new { id = 1 }
+                        }
+                    },
+                    billId = 1
+                },
+                p => p.PermissionManageHiringRoom = true
+            );
+        }
+
+        [TestMethod]
+        public void Mutation_AddBookingToBill_InvalidRoom()
+        {
+            SchemaHelper.ExecuteAndExpectError(
+                "Mã phòng không tồn tại",
+                @"/_GraphQL/Booking/mutation.addBookingToBill.gql",
+                new
+                {
+                    booking = new
+                    {
+                        bookCheckInTime = DateTimeOffset.Now.AddDays(1),
+                        bookCheckOutTime = DateTimeOffset.Now.AddDays(2),
+                        room = new { id = 100 },
+                        listOfPatrons = new[]
+                        {
+                            new { id = 1 }
+                        }
+                    },
+                    billId = 1
+                },
+                p => p.PermissionManageHiringRoom = true
+            );
+        }
+
+        [TestMethod]
+        public void Mutation_AddBookingToBill_InvalidRoom_InActive()
+        {
+            Database.WriteAsync(realm => realm.Add(new Room
+            {
+                Id = 202,
+                IsActive = false,
+                Name = "Tên phòng",
+                Floor = FloorBusiness.Get(1),
+                RoomKind = RoomKindBusiness.Get(1)
+            })).Wait();
+
+            SchemaHelper.ExecuteAndExpectError(
+                "Phòng có Id: 202 đã ngưng hoạt động",
+                @"/_GraphQL/Booking/mutation.addBookingToBill.gql",
+                new
+                {
+                    booking = new
+                    {
+                        bookCheckInTime = DateTimeOffset.Now.AddDays(1),
+                        bookCheckOutTime = DateTimeOffset.Now.AddDays(2),
+                        room = new { id = 202 },
+                        listOfPatrons = new[]
+                        {
+                            new { id = 1 }
+                        }
+                    },
+                    billId = 1
+                },
+                p => p.PermissionManageHiringRoom = true
+            );
+        }
+
+        [TestMethod]
+        public void Mutation_AddBookingToBill_InvalidRoom_Empty()
+        {
+            SchemaHelper.ExecuteAndExpectError(
+                "Phòng đã được đặt hoặc đang được sử dụng",
+                @"/_GraphQL/Booking/mutation.addBookingToBill.gql",
+                new
+                {
+                    booking = new
+                    {
+                        bookCheckInTime = DateTimeOffset.Now.AddDays(1),
+                        bookCheckOutTime = DateTimeOffset.Now.AddDays(2),
+                        room = new { id = 1 },
                         listOfPatrons = new[]
                         {
                             new { id = 1 }
@@ -82,7 +188,7 @@ namespace uit.ooad.test._GraphQL
             Database.WriteAsync(realm => realm.Add(new Booking
             {
                 Id = 10,
-                Status = (int) Booking.StatusEnum.Booked,
+                Status = (int)Booking.StatusEnum.Booked,
                 EmployeeBooking = EmployeeDataAccess.Get("admin"),
                 EmployeeCheckIn = null,
                 EmployeeCheckOut = null,
@@ -104,7 +210,7 @@ namespace uit.ooad.test._GraphQL
             Database.WriteAsync(realm => realm.Add(new Booking
             {
                 Id = 11,
-                Status = (int) Booking.StatusEnum.CheckedIn,
+                Status = (int)Booking.StatusEnum.CheckedIn,
                 EmployeeBooking = EmployeeDataAccess.Get("admin"),
                 EmployeeCheckIn = null,
                 EmployeeCheckOut = null,
@@ -137,7 +243,7 @@ namespace uit.ooad.test._GraphQL
             Database.WriteAsync(realm => realm.Add(new Booking
             {
                 Id = 20,
-                Status = (int) Booking.StatusEnum.RequestedCheckOut,
+                Status = (int)Booking.StatusEnum.RequestedCheckOut,
                 EmployeeBooking = EmployeeDataAccess.Get("admin"),
                 EmployeeCheckIn = EmployeeDataAccess.Get("admin"),
                 EmployeeCheckOut = EmployeeDataAccess.Get("admin"),
@@ -159,7 +265,7 @@ namespace uit.ooad.test._GraphQL
             Database.WriteAsync(realm => realm.Add(new Booking
             {
                 Id = 21,
-                Status = (int) Booking.StatusEnum.CheckedIn,
+                Status = (int)Booking.StatusEnum.CheckedIn,
                 EmployeeBooking = EmployeeDataAccess.Get("admin"),
                 EmployeeCheckIn = EmployeeDataAccess.Get("admin"),
                 EmployeeCheckOut = EmployeeDataAccess.Get("admin"),
@@ -174,6 +280,46 @@ namespace uit.ooad.test._GraphQL
             );
         }
 
+        [TestMethod]
+        public void Mutation_CheckOut_InvalidEmployee()
+        {
+            Database.WriteAsync(realm =>
+            {
+                realm.Add(new Employee
+                {
+                    Id = "nhanvien_1",
+                    Address = "Địa chỉ",
+                    IsActive = true,
+                    Birthdate = DateTimeOffset.Now,
+                    Email = "email@gmail.com",
+                    Gender = true,
+                    Name = "Quản trị viên",
+                    IdentityCard = "123456789",
+                    Password = CryptoHelper.Encrypt("12345678"),
+                    PhoneNumber = "+84 0123456789",
+                    Position = PositionBusiness.Get(1),
+                    StartingDate = DateTimeOffset.Now
+                });
+                realm.Add(new Booking
+                {
+                    Id = 22,
+                    Status = (int)Booking.StatusEnum.RequestedCheckOut,
+                    EmployeeBooking = EmployeeDataAccess.Get("admin"),
+                    EmployeeCheckIn = EmployeeDataAccess.Get("admin"),
+                    EmployeeCheckOut = EmployeeDataAccess.Get("nhanvien_1"),
+                    Bill = BillDataAccess.Get(1),
+                    Room = RoomDataAccess.Get(1)
+                });
+            }).Wait();
+
+            SchemaHelper.ExecuteAndExpectError(
+                "Nhân viên không được phép check-out",
+                @"/_GraphQL/Booking/mutation.checkOut.gql",
+                new { id = 22 },
+                p => p.PermissionManageHiringRoom = true
+            );
+        }
+        
         [TestMethod]
         public void Mutation_CheckOut_InvalidId()
         {
@@ -191,7 +337,7 @@ namespace uit.ooad.test._GraphQL
             Database.WriteAsync(realm => realm.Add(new Booking
             {
                 Id = 30,
-                Status = (int) Booking.StatusEnum.CheckedIn,
+                Status = (int)Booking.StatusEnum.CheckedIn,
                 EmployeeBooking = EmployeeDataAccess.Get("admin"),
                 EmployeeCheckIn = EmployeeDataAccess.Get("admin"),
                 EmployeeCheckOut = EmployeeDataAccess.Get("admin"),
@@ -212,7 +358,7 @@ namespace uit.ooad.test._GraphQL
             Database.WriteAsync(realm => realm.Add(new Booking
             {
                 Id = 31,
-                Status = (int) Booking.StatusEnum.CheckedOut,
+                Status = (int)Booking.StatusEnum.CheckedOut,
                 EmployeeBooking = EmployeeDataAccess.Get("admin"),
                 EmployeeCheckIn = EmployeeDataAccess.Get("admin"),
                 EmployeeCheckOut = EmployeeDataAccess.Get("admin"),

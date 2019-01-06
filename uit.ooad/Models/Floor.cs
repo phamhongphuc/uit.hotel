@@ -20,8 +20,6 @@ namespace uit.ooad.Models
         public Floor GetManaged()
         {
             var floor = FloorBusiness.Get(Id);
-            if (floor == null)
-                throw new Exception("Mã tầng không tồn tại");
             return floor;
         }
     }

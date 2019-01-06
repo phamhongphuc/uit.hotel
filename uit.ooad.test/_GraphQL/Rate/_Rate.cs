@@ -38,6 +38,69 @@ namespace uit.ooad.test._GraphQL
         }
 
         [TestMethod]
+        public void Mutation_CreateRate_InvalidRoomKind()
+        {
+            SchemaHelper.ExecuteAndExpectError(
+                "Mã loại phòng không tồn tại",
+                @"/_GraphQL/Rate/mutation.createRate.gql",
+                new
+                {
+                    input = new
+                    {
+                        dayRate = 1,
+                        nightRate = 1,
+                        weekRate = 1,
+                        monthRate = 1,
+                        lateCheckOutFee = 1,
+                        earlyCheckInFee = 1,
+                        effectiveStartDate = "0001-01-01T00:00:00+00:00",
+                        roomKind = new
+                        {
+                            id = 100
+                        }
+                    }
+                },
+                p => p.PermissionManageRate = true
+            );
+        }
+
+        [TestMethod]
+        public void Mutation_CreateRate_InvalidRoomKind_InActive()
+        {
+            Database.WriteAsync(realm => realm.Add(new RoomKind
+            {
+                Id = 101,
+                Name = "Tên loại phòng",
+                AmountOfPeople = 1,
+                NumberOfBeds = 1,
+                IsActive = false
+            })).Wait();
+
+            SchemaHelper.ExecuteAndExpectError(
+                "Loại phòng có ID: 101 đã ngưng hoại động",
+                @"/_GraphQL/Rate/mutation.createRate.gql",
+                new
+                {
+                    input = new
+                    {
+                        dayRate = 1,
+                        nightRate = 1,
+                        weekRate = 1,
+                        monthRate = 1,
+                        lateCheckOutFee = 1,
+                        earlyCheckInFee = 1,
+                        effectiveStartDate = "0001-01-01T00:00:00+00:00",
+                        roomKind = new
+                        {
+                            id = 101
+                        }
+                    }
+                },
+                p => p.PermissionManageRate = true
+            );
+        }
+
+        [TestMethod]
         public void Mutation_DeleteRate()
         {
             Database.WriteAsync(realm => realm.Add(new Rate
@@ -52,6 +115,20 @@ namespace uit.ooad.test._GraphQL
                 new
                 {
                     id = 10
+                },
+                p => p.PermissionManageRate = true
+            );
+        }
+
+        [TestMethod]
+        public void Mutation_DeleteRate_InvalidId()
+        {
+            SchemaHelper.ExecuteAndExpectError(
+                "Giá có Id: 100 không hợp lệ!",
+                @"/_GraphQL/Rate/mutation.deleteRate.gql",
+                new
+                {
+                    id = 100
                 },
                 p => p.PermissionManageRate = true
             );
@@ -84,6 +161,115 @@ namespace uit.ooad.test._GraphQL
                         roomKind = new
                         {
                             id = 1
+                        }
+                    }
+                },
+                p => p.PermissionManageRate = true
+            );
+        }
+
+        [TestMethod]
+        public void Mutation_UpdateRate_InvalidId()
+        {
+            SchemaHelper.ExecuteAndExpectError(
+                "Giá có Id: 100 không hợp lệ!",
+                @"/_GraphQL/Rate/mutation.updateRate.gql",
+                new
+                {
+                    input = new
+                    {
+                        id = 100,
+                        dayRate = 5,
+                        nightRate = 5,
+                        weekRate = 5,
+                        monthRate = 5,
+                        lateCheckOutFee = 5,
+                        earlyCheckInFee = 5,
+                        effectiveStartDate = DateTimeOffset.MinValue,
+                        roomKind = new
+                        {
+                            id = 1
+                        }
+                    }
+                },
+                p => p.PermissionManageRate = true
+            );
+        }
+
+        [TestMethod]
+        public void Mutation_UpdateRate_InvalidRoomKind()
+        {
+            Database.WriteAsync(realm => realm.Add(new Rate
+            {
+                Id = 21,
+                RoomKind = RoomKindBusiness.Get(1),
+                Employee = EmployeeBusiness.Get("admin")
+            })).Wait();
+
+            SchemaHelper.ExecuteAndExpectError(
+                "Mã loại phòng không tồn tại",
+                @"/_GraphQL/Rate/mutation.updateRate.gql",
+                new
+                {
+                    input = new
+                    {
+                        id = 21,
+                        dayRate = 5,
+                        nightRate = 5,
+                        weekRate = 5,
+                        monthRate = 5,
+                        lateCheckOutFee = 5,
+                        earlyCheckInFee = 5,
+                        effectiveStartDate = DateTimeOffset.MinValue,
+                        roomKind = new
+                        {
+                            id = 100
+                        }
+                    }
+                },
+                p => p.PermissionManageRate = true
+            );
+        }
+
+        [TestMethod]
+        public void Mutation_UpdateRate_InvalidRoomKind_InActive()
+        {
+            Database.WriteAsync(realm =>
+            {
+                realm.Add(new Rate
+                {
+                    Id = 22,
+                    RoomKind = RoomKindBusiness.Get(1),
+                    Employee = EmployeeBusiness.Get("admin")
+                });
+                realm.Add(new RoomKind
+                {
+                    Id = 110,
+                    Name = "Tên loại phòng",
+                    AmountOfPeople = 1,
+                    NumberOfBeds = 1,
+                    IsActive = false
+                });
+            }).Wait();
+
+            SchemaHelper.ExecuteAndExpectError(
+                "Loại phòng 110 đã ngưng hoại động",
+                @"/_GraphQL/Rate/mutation.updateRate.gql",
+                new
+                {
+                    input = new
+                    {
+                        id = 22,
+                        dayRate = 5,
+                        nightRate = 5,
+                        weekRate = 5,
+                        monthRate = 5,
+                        lateCheckOutFee = 5,
+                        earlyCheckInFee = 5,
+                        effectiveStartDate = DateTimeOffset.MinValue,
+                        roomKind = new
+                        {
+                            id = 110
                         }
                     }
                 },

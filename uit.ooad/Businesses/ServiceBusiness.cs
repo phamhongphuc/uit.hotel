@@ -40,7 +40,7 @@ namespace uit.ooad.Businesses
 
             if (!serviceInDatabase.IsActive)
             {
-                throw new Exception("Dịch vụ " + serviceInDatabase.Name +
+                throw new Exception("Dịch vụ " + serviceInDatabase.Id +
                                     " đã ngừng cung cấp. Không thể cập nhật/xóa!");
             }
 

@@ -44,6 +44,28 @@ namespace uit.ooad.test._GraphQL
         }
 
         [TestMethod]
+        public void Mutation_DeletePatronKind_ValidId()
+        {
+            SchemaHelper.ExecuteAndExpectError(
+                "Loại khách hàng có ID: 100 không tồn tại",
+                @"/_GraphQL/PatronKind/mutation.deletePatronKind.gql",
+                new { id = 100 },
+                p => p.PermissionManagePatronKind = true
+            );
+        }
+
+        [TestMethod]
+        public void Mutation_DeletePatronKind_ValidHasPatron()
+        {
+            SchemaHelper.ExecuteAndExpectError(
+                "Loại khách hàng đang được sử dụng. Không thể cập xóa",
+                @"/_GraphQL/PatronKind/mutation.deletePatronKind.gql",
+                new { id = 1 },
+                p => p.PermissionManagePatronKind = true
+            );
+        }
+
+        [TestMethod]
         public void Mutation_UpdatePatronKind()
         {
             Database.WriteAsync(realm => realm.Add(new PatronKind
@@ -60,6 +82,25 @@ namespace uit.ooad.test._GraphQL
                     input = new
                     {
                         id = 20,
+                        name = "Loại khách 2",
+                        description = "Loại khách 2"
+                    }
+                },
+                p => p.PermissionManagePatronKind = true
+            );
+        }
+
+        [TestMethod]
+        public void Mutation_UpdatePatronKind_InvalidId()
+        {
+            SchemaHelper.ExecuteAndExpectError(
+                "Loại khách hàng có ID: 100 không tồn tại",
+                @"/_GraphQL/PatronKind/mutation.updatePatronKind.gql",
+                new
+                {
+                    input = new
+                    {
+                        id = 100,
                         name = "Loại khách 2",
                         description = "Loại khách 2"
                     }
