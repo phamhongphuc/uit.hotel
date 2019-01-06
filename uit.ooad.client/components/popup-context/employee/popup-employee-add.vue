@@ -49,7 +49,7 @@
                                 v-model="input.position.id"
                                 value-field="id"
                                 text-field="name"
-                                :state="!$v.input.positionId"
+                                :state="!$v.input.position.id.$invalid"
                                 :options="positions"
                                 class="rounded"
                             />
@@ -173,7 +173,10 @@ import { EmployeeCreateInput } from 'graphql/types';
             address: { required },
             email: { required, email },
             birthdate: { required },
-            positionId: { required },
+
+            position: {
+                id: { required },
+            },
         },
         rePassword: {
             required,

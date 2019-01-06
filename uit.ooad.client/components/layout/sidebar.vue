@@ -40,6 +40,12 @@
                 text="Quản lý nhân viên"
                 exact
             />
+            <b-nav-item-icon-
+                to="/manage/patron"
+                icon=""
+                text="Quản lý khách hàng"
+                exact
+            />
         </b-collapse>
     </b-navbar-nav>
 </template>
