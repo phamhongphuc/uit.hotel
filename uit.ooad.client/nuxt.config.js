@@ -71,6 +71,7 @@ export default {
                     test: /\.(ts|js|vue)$/,
                     loader: 'eslint-loader',
                     exclude: /(node_modules)/,
+                    options: { cache: true },
                 });
             }
         },
