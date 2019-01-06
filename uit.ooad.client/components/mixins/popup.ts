@@ -2,8 +2,9 @@ import Vue from 'vue';
 import { Mixin } from 'vue-mixin-decorator';
 
 @Mixin
-export class PopupMixin extends Vue {
-    data: any = null;
+export class PopupMixin<TData, TInput> extends Vue {
+    data: TData = null;
+    input: TInput | null = null;
 
     async open(data: any): Promise<void> {
         const popup: any = this.$refs.popup;

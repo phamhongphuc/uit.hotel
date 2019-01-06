@@ -5,12 +5,7 @@
             success="Cập nhật loại phòng mới thành công"
             :mutation="updateRoomKind"
             :variables="{
-                input: {
-                    id: roomKind.id,
-                    name: roomKindName,
-                    numberOfBeds,
-                    amountOfPeople,
-                },
+                input,
             }"
         >
             <div class="input-label">Tên loại phòng</div>
@@ -59,7 +54,7 @@
 <script lang="ts">
 import { Component } from 'nuxt-property-decorator';
 import { mixinData } from '~/components/mixins/mutable';
-import { GetRoomKinds } from '~/graphql/types';
+import { GetRoomKinds, RoomKindUpdateInput } from '~/graphql/types';
 import { PopupMixin } from '~/components/mixins/popup';
 import { updateRoomKind } from '~/graphql/documents/room-kind';
 import { required, minLength, between } from 'vuelidate/lib/validators';
@@ -68,32 +63,29 @@ import { required, minLength, between } from 'vuelidate/lib/validators';
     mixins: [PopupMixin, mixinData({ updateRoomKind })],
     name: 'popup-room-kind-add-',
     validations: {
-        roomKindName: {
-            required,
-            minLength: minLength(1),
-        },
-        numberOfBeds: {
-            required,
-            between: between(1, 5),
-        },
-        amountOfPeople: {
-            required,
-            between: between(1, 10),
+        input: {
+            name: {
+                required,
+                minLength: minLength(1),
+            },
+            numberOfBeds: {
+                required,
+                between: between(1, 5),
+            },
+            amountOfPeople: {
+                required,
+                between: between(1, 10),
+            },
         },
     },
 })
-export default class extends PopupMixin {
-    roomKindName: string = '';
-    numberOfBeds: number = 1;
-    amountOfPeople: number = 1;
-
+export default class extends PopupMixin<
+    { roomKind: GetRoomKinds.RoomKinds },
+    RoomKindUpdateInput
+> {
     onOpen() {
-        const { roomKind } = this.data as {
-            roomKind: GetRoomKinds.RoomKinds;
-        };
-        this.roomKindName = roomKind.name;
-        this.numberOfBeds = roomKind.numberOfBeds;
-        this.amountOfPeople = roomKind.amountOfPeople;
+        const { id, name, numberOfBeds, amountOfPeople } = this.data.roomKind;
+        this.input = { id, name, numberOfBeds, amountOfPeople };
     }
 }
 </script>

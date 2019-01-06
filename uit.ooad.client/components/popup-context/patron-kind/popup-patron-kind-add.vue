@@ -57,9 +57,7 @@ import { PatronKindCreateInput } from 'graphql/types';
         },
     },
 })
-export default class extends PopupMixin {
-    input: PatronKindCreateInput | null = null;
-
+export default class extends PopupMixin<void, PatronKindCreateInput> {
     onOpen() {
         this.input = {
             name: '',

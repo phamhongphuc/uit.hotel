@@ -10,7 +10,7 @@
                 v-if="floor.isActive"
                 text="Thêm phòng"
                 icon=""
-                @click="refs.room_add.open({ floor, floors })"
+                @click="refs.room_add.open({ floor })"
             />
             <b-nav-item-icon-mutate-
                 :mutation="setIsActiveFloor"
@@ -33,13 +33,11 @@
 import { Component } from 'nuxt-property-decorator';
 import { ContextMixin } from '~/components/mixins/context';
 import { setIsActiveFloor, deleteFloor } from '~/graphql/documents/floor';
+import { mixinData } from '~/components/mixins/mutable';
 
 @Component({
     name: 'context-manage-floor-',
-    mixins: [ContextMixin],
+    mixins: [ContextMixin, mixinData({ setIsActiveFloor, deleteFloor })],
 })
-export default class extends ContextMixin {
-    setIsActiveFloor = setIsActiveFloor;
-    deleteFloor = deleteFloor;
-}
+export default class extends ContextMixin {}
 </script>

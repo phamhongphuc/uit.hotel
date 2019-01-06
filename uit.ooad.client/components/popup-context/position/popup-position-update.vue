@@ -70,6 +70,7 @@ import {
 import { mixinData } from '~/components/mixins/mutable';
 import { required } from 'vuelidate/lib/validators';
 import { CheckboxOption } from '~/utils/components';
+import { GetPositions } from 'graphql/types';
 
 @Component({
     mixins: [PopupMixin, mixinData({ updatePosition })],
@@ -80,7 +81,10 @@ import { CheckboxOption } from '~/utils/components';
         },
     },
 })
-export default class extends PopupMixin {
+export default class extends PopupMixin<
+    { position: GetPositions.Positions },
+    any
+> {
     positionName: string = '';
 
     selected: string[] = [];
@@ -89,14 +93,6 @@ export default class extends PopupMixin {
     positionOptionsBusiness: CheckboxOption[] = [];
     positionOptionsReceptionist: CheckboxOption[] = [];
     positionOptionsHouseKeeping: CheckboxOption[] = [];
-
-    get input() {
-        return {
-            id: this.data.position.id,
-            name: this.positionName,
-            ...this.positionOptions,
-        };
-    }
 
     mounted() {
         this.positionOptionsAdministrative = positionOptionsAdministrative;
@@ -132,6 +128,12 @@ export default class extends PopupMixin {
         permission.forEach(p => {
             if (this.data.position[p]) this.selected.push(p);
         });
+
+        this.input = {
+            id: this.data.position.id,
+            name: this.positionName,
+            ...this.positionOptions,
+        };
     }
 
     toggleAll(checked: boolean, options: CheckboxOption[]) {

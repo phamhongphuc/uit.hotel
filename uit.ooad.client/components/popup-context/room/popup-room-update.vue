@@ -5,16 +5,7 @@
             success="Cập nhật phòng mới thành công"
             :mutation="updateRoom"
             :variables="{
-                input: {
-                    id: room.id,
-                    name: roomName,
-                    floor: {
-                        id: floorId,
-                    },
-                    roomKind: {
-                        id: roomKindId,
-                    },
-                },
+                input,
             }"
         >
             <div class="input-label">Tầng</div>
@@ -67,11 +58,17 @@
 <script lang="ts">
 import { Component } from 'nuxt-property-decorator';
 import { PopupMixin } from '~/components/mixins/popup';
-import { GetFloors } from '~/graphql/types';
+import { GetFloors, RoomUpdateInput } from '~/graphql/types';
 import { mixinData } from '~/components/mixins/mutable';
 import { required } from 'vuelidate/lib/validators';
 import { updateRoom } from '~/graphql/documents/room';
 import { getRoomKinds } from '~/graphql/documents/room-kind';
+
+interface PopupRoomUpdateInput {
+    room: GetFloors.Rooms;
+    floor: GetFloors.Floors;
+    floors: GetFloors.Floors[];
+}
 
 @Component({
     mixins: [PopupMixin, mixinData({ updateRoom, getRoomKinds })],
@@ -88,19 +85,30 @@ import { getRoomKinds } from '~/graphql/documents/room-kind';
         },
     },
 })
-export default class extends PopupMixin {
-    roomName: string = '';
-    floorId: number | null = null;
-    roomKindId: number | null = null;
-
+export default class extends PopupMixin<PopupRoomUpdateInput, RoomUpdateInput> {
     onOpen() {
-        const data = this.data as {
-            room: GetFloors.Rooms;
-            floor: GetFloors.Floors;
+        const {
+            room: { id, name, roomKind },
+            floor,
+        } = this.data;
+
+        this.input = {
+            id,
+            name,
+            floor: {
+                id: floor.id,
+            },
+            roomKind: {
+                id: roomKind.id,
+            },
         };
-        this.floorId = data.floor.id;
-        this.roomKindId = data.room.roomKind.id;
-        this.roomName = data.room.name;
+        // const data = this.data as {
+        //     room: GetFloors.Rooms;
+        //     floor: GetFloors.Floors;
+        // };
+        // this.floorId = data.floor.id;
+        // this.roomKindId = data.room.roomKind.id;
+        // this.roomName = data.room.name;
     }
 }
 </script>

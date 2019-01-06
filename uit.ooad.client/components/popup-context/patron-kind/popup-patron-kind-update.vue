@@ -56,10 +56,11 @@ import { PatronKindUpdateInput, GetPatronKinds } from 'graphql/types';
         },
     },
 })
-export default class extends PopupMixin {
-    input: PatronKindUpdateInput | null = null;
+export default class extends PopupMixin<
+    { patronKind: GetPatronKinds.PatronKinds },
+    PatronKindUpdateInput
+> {
     phoneNumbers: string = '';
-
     onOpen() {
         const patronKind: GetPatronKinds.PatronKinds = this.data.patronKind;
         this.input = {

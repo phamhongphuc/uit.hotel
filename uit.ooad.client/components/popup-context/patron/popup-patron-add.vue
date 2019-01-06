@@ -180,8 +180,7 @@ import { PatronCreateInput } from 'graphql/types';
         },
     },
 })
-export default class extends PopupMixin {
-    input: PatronCreateInput | null = null;
+export default class extends PopupMixin<void, PatronCreateInput> {
     phoneNumbers: string = '';
 
     onOpen() {

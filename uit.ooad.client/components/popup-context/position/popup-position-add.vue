@@ -5,7 +5,7 @@
             success="Thêm vị trí mới thành công"
             :mutation="createPosition"
             :variables="{
-                input: input,
+                input,
             }"
         >
             <div class="d-flex">
@@ -80,7 +80,7 @@ import { CheckboxOption } from '~/utils/components';
         },
     },
 })
-export default class extends PopupMixin {
+export default class extends PopupMixin<void, any> {
     positionName: string = '';
 
     selected: string[] = [];

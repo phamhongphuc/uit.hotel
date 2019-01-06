@@ -5,11 +5,7 @@
             success="Thêm loại phòng mới thành công"
             :mutation="createRoomKind"
             :variables="{
-                input: {
-                    name: roomKindName,
-                    numberOfBeds,
-                    amountOfPeople,
-                },
+                input,
             }"
         >
             <div class="input-label">Tên loại phòng</div>
@@ -58,6 +54,7 @@
 <script lang="ts">
 import { Component } from 'nuxt-property-decorator';
 import { mixinData } from '~/components/mixins/mutable';
+import { RoomKindCreateInput } from '~/graphql/types';
 import { PopupMixin } from '~/components/mixins/popup';
 import { createRoomKind } from '~/graphql/documents/room-kind';
 import { required, minLength, between } from 'vuelidate/lib/validators';
@@ -66,29 +63,29 @@ import { required, minLength, between } from 'vuelidate/lib/validators';
     mixins: [PopupMixin, mixinData({ createRoomKind })],
     name: 'popup-room-kind-add-',
     validations: {
-        roomKindName: {
-            required,
-            minLength: minLength(1),
-        },
-        numberOfBeds: {
-            required,
-            between: between(1, 5),
-        },
-        amountOfPeople: {
-            required,
-            between: between(1, 10),
+        input: {
+            name: {
+                required,
+                minLength: minLength(1),
+            },
+            numberOfBeds: {
+                required,
+                between: between(1, 5),
+            },
+            amountOfPeople: {
+                required,
+                between: between(1, 10),
+            },
         },
     },
 })
-export default class extends PopupMixin {
-    roomKindName: string = '';
-    numberOfBeds: number = 1;
-    amountOfPeople: number = 1;
-
+export default class extends PopupMixin<void, RoomKindCreateInput> {
     onOpen() {
-        this.roomKindName = '';
-        this.numberOfBeds = 1;
-        this.amountOfPeople = 1;
+        this.input = {
+            name: '',
+            numberOfBeds: 1,
+            amountOfPeople: 1,
+        };
     }
 }
 </script>

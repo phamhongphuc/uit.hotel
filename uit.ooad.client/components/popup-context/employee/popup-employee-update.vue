@@ -141,7 +141,7 @@ import { updateEmployee } from '~/graphql/documents/employee';
 import { getPositions } from '~/graphql/documents/position';
 import { mixinData } from '~/components/mixins/mutable';
 import { required, email, alphaNum } from 'vuelidate/lib/validators';
-import { EmployeeUpdateInput } from 'graphql/types';
+import { EmployeeUpdateInput, GetEmployees } from 'graphql/types';
 
 @Component({
     mixins: [PopupMixin, mixinData({ updateEmployee, getPositions })],
@@ -164,23 +164,36 @@ import { EmployeeUpdateInput } from 'graphql/types';
         },
     },
 })
-export default class extends PopupMixin {
-    input: EmployeeUpdateInput | null = null;
-
+export default class extends PopupMixin<
+    { employee: GetEmployees.Employees },
+    EmployeeUpdateInput
+> {
     onOpen() {
-        const employee = this.data.employee;
+        const {
+            id,
+            name,
+            identityCard,
+            phoneNumber,
+            address,
+            email,
+            birthdate,
+            gender,
+            startingDate,
+            position,
+        } = this.data.employee;
+
         this.input = {
-            id: employee.id,
-            name: employee.name,
-            identityCard: employee.identityCard,
-            phoneNumber: employee.phoneNumber,
-            address: employee.address,
-            email: employee.email,
-            birthdate: employee.birthdate,
-            gender: employee.gender,
-            startingDate: employee.startingDate,
+            id,
+            name,
+            identityCard,
+            phoneNumber,
+            address,
+            email,
+            birthdate,
+            gender,
+            startingDate,
             position: {
-                id: employee.position.id,
+                id: position.id,
             },
         };
     }

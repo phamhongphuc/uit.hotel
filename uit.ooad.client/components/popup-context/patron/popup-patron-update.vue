@@ -179,31 +179,48 @@ import { PatronUpdateInput, GetPatrons } from 'graphql/types';
         },
     },
 })
-export default class extends PopupMixin {
-    input: PatronUpdateInput | null = null;
+export default class extends PopupMixin<
+    { patron: GetPatrons.Patrons },
+    PatronUpdateInput
+> {
     phoneNumbers: string = '';
 
     onOpen() {
-        const patron: GetPatrons.Patrons = this.data.patron;
+        const {
+            id,
+            identification,
+            name,
+            email,
+            gender,
+            nationality,
+            birthdate,
+            domicile,
+            residence,
+            company,
+            note,
+            phoneNumbers,
+            patronKind,
+        } = this.data.patron;
         const self = this;
-        this.phoneNumbers = patron.phoneNumbers.join(' ');
+
+        this.phoneNumbers = phoneNumbers.join(' ');
         this.input = {
-            id: patron.id,
-            identification: patron.identification,
-            name: patron.name,
-            email: patron.email,
-            gender: patron.gender,
-            nationality: patron.nationality,
-            birthdate: patron.birthdate,
-            domicile: patron.domicile,
-            residence: patron.residence,
-            company: patron.company,
-            note: patron.note,
+            id,
+            identification,
+            name,
+            email,
+            gender,
+            nationality,
+            birthdate,
+            domicile,
+            residence,
+            company,
+            note,
             get listOfPhoneNumbers() {
                 return self.phoneNumbers.split(/\s*/);
             },
             patronKind: {
-                id: patron.patronKind.id,
+                id: patronKind.id,
             },
         };
     }

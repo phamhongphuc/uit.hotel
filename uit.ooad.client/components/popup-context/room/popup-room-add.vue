@@ -5,15 +5,7 @@
             success="Thêm phòng mới thành công"
             :mutation="createRoom"
             :variables="{
-                input: {
-                    name: roomName,
-                    floor: {
-                        id: floorId,
-                    },
-                    roomKind: {
-                        id: roomKindId,
-                    },
-                },
+                input,
             }"
         >
             <div class="input-label">Tầng</div>
@@ -68,7 +60,7 @@ import { Component } from 'nuxt-property-decorator';
 import { PopupMixin } from '~/components/mixins/popup';
 import { createRoom } from '~/graphql/documents/room';
 import { getRoomKinds } from '~/graphql/documents/room-kind';
-import { GetFloors } from '~/graphql/types';
+import { GetFloors, RoomCreateInput } from '~/graphql/types';
 import { mixinData } from '~/components/mixins/mutable';
 import { required } from 'vuelidate/lib/validators';
 
@@ -87,18 +79,20 @@ import { required } from 'vuelidate/lib/validators';
         },
     },
 })
-export default class extends PopupMixin {
-    roomName: string = '';
-    floorId: number | null = null;
-    roomKindId: number | null = null;
-
+export default class extends PopupMixin<
+    { floor: GetFloors.Floors },
+    RoomCreateInput
+> {
     onOpen() {
-        const data = this.data as {
-            floor: GetFloors.Floors;
-            floors: GetFloors.Floors[];
+        this.input = {
+            name: '',
+            floor: {
+                id: this.data.floor.id,
+            },
+            roomKind: {
+                id: 1,
+            },
         };
-        this.floorId = data.floor.id;
-        this.roomName = '';
     }
 }
 </script>

@@ -40,22 +40,29 @@ import { mixinData } from '~/components/mixins/mutable';
 import { PopupMixin } from '~/components/mixins/popup';
 import { updateFloor } from '~/graphql/documents/floor';
 import { required, minLength } from 'vuelidate/lib/validators';
+import { FloorUpdateInput, GetFloors } from 'graphql/types';
 
 @Component({
     mixins: [PopupMixin, mixinData({ updateFloor })],
     name: 'popup-floor-update-',
     validations: {
-        floorName: {
-            required,
-            minLength: minLength(1),
+        input: {
+            name: {
+                required,
+                minLength: minLength(1),
+            },
         },
     },
 })
-export default class extends PopupMixin {
-    floorName: string = '';
-
+export default class extends PopupMixin<
+    { floor: GetFloors.Floors },
+    FloorUpdateInput
+> {
     onOpen() {
-        this.floorName = this.data.floor.name;
+        this.input = {
+            id: this.data.floor.id,
+            name: this.data.floor.name,
+        };
     }
 }
 </script>

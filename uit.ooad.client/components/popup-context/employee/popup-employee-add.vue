@@ -186,7 +186,7 @@ import { EmployeeCreateInput } from 'graphql/types';
         },
     },
 })
-export default class extends PopupMixin {
+export default class extends PopupMixin<void, EmployeeCreateInput> {
     input: EmployeeCreateInput | null = null;
     rePassword: string = '';
 

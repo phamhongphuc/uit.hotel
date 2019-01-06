@@ -24,12 +24,11 @@
 import { Component } from 'nuxt-property-decorator';
 import { ContextMixin } from '~/components/mixins/context';
 import { setIsActiveAccount } from '~/graphql/documents/employee';
+import { mixinData } from '~/components/mixins/mutable';
 
 @Component({
     name: 'context-manage-employee-',
-    mixins: [ContextMixin],
+    mixins: [ContextMixin, mixinData(setIsActiveAccount)],
 })
-export default class extends ContextMixin {
-    setIsActiveAccount = setIsActiveAccount;
-}
+export default class extends ContextMixin {}
 </script>
