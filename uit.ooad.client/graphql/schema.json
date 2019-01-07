@@ -1491,22 +1491,6 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "password",
-                        "description": "Mật khẩu của tài khoản nhân viên",
-                        "args": [],
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "String",
-                                "ofType": null
-                            }
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
                         "name": "position",
                         "description": "Chức vụ",
                         "args": [],
@@ -2427,6 +2411,47 @@
                                 "name": "Booking",
                                 "ofType": null
                             }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "currentBooking",
+                        "description": "Đơn đặt phòng hiện tại",
+                        "args": [
+                            {
+                                "name": "from",
+                                "description": "",
+                                "type": {
+                                    "kind": "NON_NULL",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "SCALAR",
+                                        "name": "DateTimeOffset",
+                                        "ofType": null
+                                    }
+                                },
+                                "defaultValue": null
+                            },
+                            {
+                                "name": "to",
+                                "description": "",
+                                "type": {
+                                    "kind": "NON_NULL",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "SCALAR",
+                                        "name": "DateTimeOffset",
+                                        "ofType": null
+                                    }
+                                },
+                                "defaultValue": null
+                            }
+                        ],
+                        "type": {
+                            "kind": "OBJECT",
+                            "name": "Booking",
+                            "ofType": null
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -3726,6 +3751,37 @@
                         "deprecationReason": null
                     },
                     {
+                        "name": "cancelled",
+                        "description": "Hủy đặt phòng",
+                        "args": [
+                            {
+                                "name": "id",
+                                "description": "",
+                                "type": {
+                                    "kind": "NON_NULL",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "SCALAR",
+                                        "name": "ID",
+                                        "ofType": null
+                                    }
+                                },
+                                "defaultValue": null
+                            }
+                        ],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
                         "name": "confirmCleaned",
                         "description": "Nhân viên xác nhận đã dọn xong",
                         "args": [
@@ -4691,6 +4747,37 @@
                             "ofType": {
                                 "kind": "OBJECT",
                                 "name": "AuthenticationObject",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "payTheBill",
+                        "description": "Thanh toán hóa đơn (thanh toán tiền phòng)",
+                        "args": [
+                            {
+                                "name": "id",
+                                "description": "",
+                                "type": {
+                                    "kind": "NON_NULL",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "SCALAR",
+                                        "name": "ID",
+                                        "ofType": null
+                                    }
+                                },
+                                "defaultValue": null
+                            }
+                        ],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "OBJECT",
+                                "name": "Bill",
                                 "ofType": null
                             }
                         },

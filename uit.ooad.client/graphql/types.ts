@@ -667,6 +667,58 @@ export namespace BookAndCheckIn {
     };
 }
 
+export namespace GetBookings {
+    export type Variables = {};
+
+    export type Query = {
+        __typename?: 'Query';
+
+        bookings: Bookings[];
+    };
+
+    export type Bookings = {
+        __typename?: 'Booking';
+
+        id: number;
+
+        bookCheckInTime: Maybe<DateTimeOffset>;
+
+        bookCheckOutTime: Maybe<DateTimeOffset>;
+
+        realCheckInTime: Maybe<DateTimeOffset>;
+
+        realCheckOutTime: Maybe<DateTimeOffset>;
+
+        status: number;
+
+        total: number;
+
+        totalRates: number;
+
+        totalVolatilityRate: number;
+
+        totalServicesDetails: number;
+
+        patrons: (Maybe<Patrons>)[];
+
+        bill: Bill;
+    };
+
+    export type Patrons = {
+        __typename?: 'Patron';
+
+        id: number;
+
+        name: string;
+    };
+
+    export type Bill = {
+        __typename?: 'Bill';
+
+        id: number;
+    };
+}
+
 export namespace GetEmployees {
     export type Variables = {};
 
@@ -1415,6 +1467,31 @@ export namespace GetRooms {
         name: string;
 
         isActive: boolean;
+    };
+}
+
+export namespace GetRoomsWithIsEmpty {
+    export type Variables = {
+        from: DateTimeOffset;
+        to: DateTimeOffset;
+    };
+
+    export type Query = {
+        __typename?: 'Query';
+
+        rooms: Rooms[];
+    };
+
+    export type Rooms = {
+        __typename?: 'Room';
+
+        id: number;
+
+        name: string;
+
+        isActive: boolean;
+
+        isEmpty: boolean;
     };
 }
 

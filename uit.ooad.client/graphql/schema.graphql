@@ -16,6 +16,9 @@ type AppMutation {
         bill: BillCreateInput!
     ): Bill!
 
+    # Hủy đặt phòng
+    cancelled(id: ID!): String!
+
     # Nhân viên xác nhận đã dọn xong
     confirmCleaned(id: ID!): HouseKeeping!
 
@@ -108,6 +111,9 @@ type AppMutation {
 
     # Đăng nhập mới
     login(id: String!, password: String!): AuthenticationObject!
+
+    # Thanh toán hóa đơn (thanh toán tiền phòng)
+    payTheBill(id: ID!): Bill!
 
     # Yêu cầu kiểm tra khi trả phòng
     requestCheckOut(id: ID!): Booking!
@@ -454,9 +460,6 @@ type Employee {
 
     # Tên nhân viên
     name: String!
-
-    # Mật khẩu của tài khoản nhân viên
-    password: String!
 
     # Chức vụ
     position: Position!
@@ -1077,6 +1080,9 @@ input ReceiptCreateInput {
 type Room {
     # Danh sách thông tin thuê phòng
     bookings: [Booking]
+
+    # Đơn đặt phòng hiện tại
+    currentBooking(from: DateTimeOffset!, to: DateTimeOffset!): Booking
 
     # Phòng thuộc tầng nào
     floor: Floor!

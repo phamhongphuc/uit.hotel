@@ -78,7 +78,7 @@ namespace uit.ooad.Businesses
                 DateTimeOffset bookingTo;
                 switch (status)
                 {
-                    case (int) Booking.StatusEnum.Booked:
+                    case (int)Booking.StatusEnum.Booked:
                         bookingFrom = booking.BookCheckInTime;
                         bookingTo = booking.BookCheckOutTime;
                         break;
@@ -100,6 +100,40 @@ namespace uit.ooad.Businesses
             }
 
             return true;
+        }
+
+        public static Booking GetCurrentBooking(this Room room, DateTimeOffset from, DateTimeOffset to)
+        {
+            if (from > to) throw new Exception("Ngày đến < ngày đi");
+            foreach (var booking in room.Bookings)
+            {
+                var status = booking.Status;
+                DateTimeOffset bookingFrom;
+                DateTimeOffset bookingTo;
+                switch (status)
+                {
+                    case (int)Booking.StatusEnum.Booked:
+                        bookingFrom = booking.BookCheckInTime;
+                        bookingTo = booking.BookCheckOutTime;
+                        break;
+                    case 1:
+                        bookingFrom = booking.RealCheckInTime;
+                        bookingTo = booking.BookCheckOutTime;
+                        break;
+                    case 2:
+                        bookingFrom = booking.RealCheckInTime;
+                        bookingTo = booking.BookCheckOutTime;
+                        break;
+                    default:
+                        bookingFrom = booking.RealCheckInTime;
+                        bookingTo = booking.RealCheckOutTime;
+                        break;
+                }
+
+                if (DateTimeHelper.IsTwoDateRangesOverlap(bookingFrom, bookingTo, from, to)) return booking;
+            }
+
+            return null;
         }
 
         public static Room Get(int roomId) => RoomDataAccess.Get(roomId);
