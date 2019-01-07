@@ -1,5 +1,5 @@
 <template>
-    <b-form @submit.prevent="mutate"><slot /></b-form>
+    <b-form @submit.prevent="mutate"><slot :mutate="mutate" /></b-form>
 </template>
 <script lang="ts">
 import { Vue, Component } from 'nuxt-property-decorator';

@@ -648,6 +648,25 @@ export namespace AddBookingToBill {
     };
 }
 
+export namespace BookAndCheckIn {
+    export type Variables = {
+        bookings: BookAndCheckInCreateInput[];
+        bill: BillCreateInput;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        bookAndCheckIn: BookAndCheckIn;
+    };
+
+    export type BookAndCheckIn = {
+        __typename?: 'Bill';
+
+        id: number;
+    };
+}
+
 export namespace GetEmployees {
     export type Variables = {};
 

@@ -1,3 +1,4 @@
+import { FetchResult } from 'apollo-link';
 import { DocumentNode } from 'graphql';
 import { Prop } from 'nuxt-property-decorator';
 import Vue, { ComponentOptions } from 'vue';
@@ -28,7 +29,9 @@ export default class extends Vue {
         return undefined;
     }
 
-    async mutate(): Promise<void> {
+    async mutate(): Promise<
+        FetchResult<{}, Record<string, any>, Record<string, any>>
+    > {
         const result = await apolloClientNotify({ app: this }).mutate({
             mutation: this.mutation,
             variables: this.variables,
@@ -52,6 +55,7 @@ export default class extends Vue {
                 }
             }
         }
+        return result;
     }
 }
 

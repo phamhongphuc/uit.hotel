@@ -30,6 +30,9 @@ export default class extends Vue {
     @Prop({ required: true, type: String })
     title: string;
 
+    @Prop({ default: undefined })
+    refs: any;
+
     @Prop({ default: false, type: Boolean })
     noData: boolean;
 

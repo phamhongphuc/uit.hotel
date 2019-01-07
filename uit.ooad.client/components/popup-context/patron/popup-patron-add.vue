@@ -50,16 +50,15 @@
                         class="m-3"
                         :poll-interval="0"
                     >
-                        <div slot-scope="{ data: { patronKinds } }">
-                            <b-form-select
-                                v-model="input.patronKind.id"
-                                value-field="id"
-                                text-field="name"
-                                :state="!$v.input.patronKind.id.$invalid"
-                                :options="patronKinds"
-                                class="rounded"
-                            />
-                        </div>
+                        <b-form-select
+                            v-model="input.patronKind.id"
+                            slot-scope="{ data: { patronKinds } }"
+                            value-field="id"
+                            text-field="name"
+                            :state="!$v.input.patronKind.id.$invalid"
+                            :options="patronKinds"
+                            class="rounded"
+                        />
                     </query->
                 </div>
                 <div>

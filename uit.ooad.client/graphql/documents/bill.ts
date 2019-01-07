@@ -33,3 +33,14 @@ export const addBookingToBill = gql`
         }
     }
 `;
+
+export const bookAndCheckIn = gql`
+    mutation bookAndCheckIn(
+        $bookings: [BookAndCheckInCreateInput!]!
+        $bill: BillCreateInput!
+    ) {
+        bookAndCheckIn(bookings: $bookings, bill: $bill) {
+            id
+        }
+    }
+`;
