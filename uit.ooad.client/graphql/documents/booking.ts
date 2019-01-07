@@ -27,3 +27,33 @@ export const getBookings = gql`
         }
     }
 `;
+
+export const checkIn = gql`
+    mutation checkIn($id: ID!) {
+        checkIn(id: $id) {
+            id
+        }
+    }
+`;
+
+export const requestCheckOut = gql`
+    mutation requestCheckOut($id: ID!) {
+        requestCheckOut(id: $id) {
+            id
+        }
+    }
+`;
+
+export const checkOut = gql`
+    mutation checkOut($id: ID!) {
+        checkOut(id: $id) {
+            id
+        }
+    }
+`;
+
+export const cancel = gql`
+    mutation cancel($id: ID!) {
+        cancel(id: $id)
+    }
+`;

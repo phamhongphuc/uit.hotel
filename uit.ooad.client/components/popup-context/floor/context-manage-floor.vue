@@ -2,6 +2,7 @@
     <context- ref="context" :refs="refs">
         <template slot-scope="{ data: { floor, floors }, refs }">
             <b-nav-item-icon-
+                v-if="floor.isActive"
                 icon=""
                 text="Sửa thông tin tầng"
                 @click="refs.floor_update.open({ floor })"
@@ -21,6 +22,7 @@
                 "
             />
             <b-nav-item-icon-mutate-
+                v-if="floor.isActive"
                 :mutation="deleteFloor"
                 :variables="{ id: floor.id }"
                 icon=""

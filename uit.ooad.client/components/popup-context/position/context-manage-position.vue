@@ -7,12 +7,6 @@
                 text="Sửa thông tin vị trí"
                 @click="refs.position_update.open({ position })"
             />
-            <!-- <b-nav-item-icon-
-                v-if="position.isActive"
-                icon=""
-                text="Thêm nhân viên"
-                @click="refs.employee_add.open({ position, positions })"
-            /> -->
             <b-nav-item-icon-mutate-
                 :mutation="setIsActivePosition"
                 :variables="{ id: position.id, isActive: !position.isActive }"

@@ -71,7 +71,6 @@
                         $event.stopPropagation();
                         $refs.context_booking.open(currentEvent || $event, {
                             booking,
-                            bookings,
                         });
                         currentEvent = null;
                     }
@@ -84,10 +83,10 @@
                     {{ bookingStatusEnum[value] }}
                 </template>
                 <template slot="checkin" slot-scope="{ item }">
-                    {{ toDate(item.bookCheckInTime) }}
+                    {{ toDate(getCheckInTime(item)) }}
                 </template>
                 <template slot="checkout" slot-scope="{ item }">
-                    {{ toDate(item.bookCheckOutTime) }}
+                    {{ toDate(getCheckOutTime(item)) }}
                 </template>
                 <template slot="room" slot-scope="{ value }">
                     {{ value.name }}
@@ -97,9 +96,9 @@
                 </template>
             </b-table>
         </query->
-        <!-- <context-manage-booking- ref="context_booking" :refs="$refs" />
-        <popup-booking-add- ref="booking_add" />
-        <popup-booking-update- ref="booking_update" /> -->
+        <context-manage-booking- ref="context_booking" :refs="$refs" />
+        <!-- <popup-booking-add- ref="booking_add" /> -->
+        <!-- <popup-booking-update- ref="booking_update" /> -->
     </div>
 </template>
 <script lang="ts">
@@ -144,5 +143,15 @@ export default class extends Vue {
     showInactive: boolean = false;
 
     console = console;
+
+    getCheckInTime(item: GetBookings.Bookings): string {
+        if (item.status === 0) return item.bookCheckInTime;
+        else return item.realCheckInTime;
+    }
+
+    getCheckOutTime(item: GetBookings.Bookings): string {
+        if (item.status === 3) return item.realCheckOutTime;
+        else return item.bookCheckOutTime;
+    }
 }
 </script>

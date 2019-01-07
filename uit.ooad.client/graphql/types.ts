@@ -702,6 +702,8 @@ export namespace GetBookings {
         patrons: (Maybe<Patrons>)[];
 
         bill: Bill;
+
+        room: Room;
     };
 
     export type Patrons = {
@@ -716,6 +718,80 @@ export namespace GetBookings {
         __typename?: 'Bill';
 
         id: number;
+    };
+
+    export type Room = {
+        __typename?: 'Room';
+
+        id: number;
+
+        name: string;
+    };
+}
+
+export namespace CheckIn {
+    export type Variables = {
+        id: string;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        checkIn: CheckIn;
+    };
+
+    export type CheckIn = {
+        __typename?: 'Booking';
+
+        id: number;
+    };
+}
+
+export namespace RequestCheckOut {
+    export type Variables = {
+        id: string;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        requestCheckOut: RequestCheckOut;
+    };
+
+    export type RequestCheckOut = {
+        __typename?: 'Booking';
+
+        id: number;
+    };
+}
+
+export namespace CheckOut {
+    export type Variables = {
+        id: string;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        checkOut: CheckOut;
+    };
+
+    export type CheckOut = {
+        __typename?: 'Booking';
+
+        id: number;
+    };
+}
+
+export namespace Cancel {
+    export type Variables = {
+        id: string;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        cancel: string;
     };
 }
 

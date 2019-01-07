@@ -55,7 +55,7 @@ namespace uit.ooad.Businesses
             return BookingDataAccess.CheckOut(bookingInDatabase);
         }
 
-        public static void Cancelled(int bookingId)
+        public static void Cancel(int bookingId)
         {
             var bookingInDatabase = Get(bookingId);
             if (bookingInDatabase == null)

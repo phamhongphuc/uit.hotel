@@ -11,7 +11,11 @@
             </b-button>
         </div>
         <query-
-            :query="getFloors"
+            :query="getFloorsMap"
+            :variables="{
+                from,
+                to,
+            }"
             class="hotel-map row flex-1"
             child-class="col m-2 p-3 bg-white rounded shadow-sm overflow-auto"
         >
@@ -37,7 +41,9 @@
                         :key="room.id"
                         :variant="
                             selected.indexOf(room) === -1
-                                ? 'light-blue'
+                                ? room.currentBooking
+                                    ? 'light-red'
+                                    : 'light-blue'
                                 : 'dark-blue'
                         "
                         @contextmenu.prevent="
@@ -67,16 +73,22 @@
 </template>
 <script lang="ts">
 import { Vue, Component } from 'nuxt-property-decorator';
-import { getFloors } from '~/graphql/documents/floor';
+import { getFloorsMap } from '~/graphql/documents/floor';
 import { mixinData } from '~/components/mixins/mutable';
 import { GetFloors } from 'graphql/types';
+import moment from 'moment';
 
 @Component({
     name: 'index-',
-    mixins: [mixinData({ getFloors })],
+    mixins: [mixinData({ getFloorsMap })],
 })
 export default class extends Vue {
     selected: GetFloors.Rooms[] = [];
+
+    from = moment().format();
+    to = moment()
+        .add(1, 'days')
+        .format();
 
     head() {
         return {

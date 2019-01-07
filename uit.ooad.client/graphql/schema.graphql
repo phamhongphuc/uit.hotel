@@ -17,7 +17,7 @@ type AppMutation {
     ): Bill!
 
     # Hủy đặt phòng
-    cancelled(id: ID!): String!
+    cancel(id: ID!): String!
 
     # Nhân viên xác nhận đã dọn xong
     confirmCleaned(id: ID!): HouseKeeping!

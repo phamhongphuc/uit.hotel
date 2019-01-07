@@ -19,6 +19,28 @@ export const getFloors = gql`
     }
 `;
 
+export const getFloorsMap = gql`
+    query getFloorsMap($from: DateTimeOffset!, $to: DateTimeOffset!) {
+        floors {
+            id
+            name
+            isActive
+            rooms {
+                id
+                name
+                isActive
+                currentBooking(from: $from, to: $to) {
+                    id
+                }
+                roomKind {
+                    id
+                    name
+                }
+            }
+        }
+    }
+`;
+
 export const createFloor = gql`
     mutation createFloor($input: FloorCreateInput!) {
         createFloor(input: $input) {

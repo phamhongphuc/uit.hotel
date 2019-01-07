@@ -3751,7 +3751,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "cancelled",
+                        "name": "cancel",
                         "description": "Hủy đặt phòng",
                         "args": [
                             {

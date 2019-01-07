@@ -4,6 +4,7 @@
             <b-nav-item-icon- icon="" text="Xem thông tin chi tiết" />
             <div class="context-hr" />
             <b-nav-item-icon-
+                v-if="room.isActive"
                 icon=""
                 text="Sửa thông tin phòng"
                 @click="refs.room_update.open({ room, floor })"
@@ -17,6 +18,7 @@
                 "
             />
             <b-nav-item-icon-mutate-
+                v-if="room.isActive"
                 :mutation="deleteRoom"
                 :variables="{ id: room.id }"
                 icon=""
