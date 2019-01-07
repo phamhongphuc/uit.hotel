@@ -6,7 +6,7 @@
                 variant="white"
                 @click="$refs.room_kind_add.open()"
             >
-                <span class="icon"></span>
+                <span class="icon mr-1"></span>
                 <span>Thêm loại phòng mới</span>
             </b-button>
             <b-button

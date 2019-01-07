@@ -6,7 +6,7 @@
                 variant="white"
                 @click="$refs.booking_add.open()"
             >
-                <span class="icon"></span>
+                <span class="icon mr-1"></span>
                 <span>Đặt phòng</span>
             </b-button>
             <b-button

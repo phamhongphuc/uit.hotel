@@ -6,7 +6,7 @@
                 variant="white"
                 @click="$refs.receipt_add.open()"
             >
-                <span class="icon"></span>
+                <span class="icon mr-1"></span>
                 <span>Tạo phiếu thu</span>
             </b-button>
             <b-button

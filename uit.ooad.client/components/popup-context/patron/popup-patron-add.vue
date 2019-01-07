@@ -131,7 +131,7 @@
                     :disabled="$v.$invalid"
                     @click="close"
                 >
-                    <span class="icon"></span>
+                    <span class="icon mr-1"></span>
                     <span>Thêm</span>
                 </b-button>
             </div>

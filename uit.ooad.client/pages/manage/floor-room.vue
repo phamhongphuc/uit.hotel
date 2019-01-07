@@ -6,7 +6,7 @@
                 variant="white"
                 @click="$refs.floor_add.open()"
             >
-                <span class="icon"></span>
+                <span class="icon mr-1"></span>
                 <span>Thêm tầng mới</span>
             </b-button>
             <b-button

@@ -6,7 +6,7 @@
                 variant="white"
                 @click="$refs.patron_add.open()"
             >
-                <span class="icon"></span>
+                <span class="icon mr-1"></span>
                 <span>Thêm khách hàng mới</span>
             </b-button>
         </div>
