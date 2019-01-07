@@ -10,7 +10,7 @@
             <div class="input-label">Tên tầng</div>
             <b-input-
                 ref="autoFocus"
-                v-model="floorName"
+                v-model="input.name"
                 :state="!$v.input.name.$invalid"
                 class="m-3 rounded"
                 icon=""

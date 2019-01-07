@@ -101,13 +101,6 @@ export default class extends PopupMixin<PopupRoomUpdateInput, RoomUpdateInput> {
                 id: roomKind.id,
             },
         };
-        // const data = this.data as {
-        //     room: GetFloors.Rooms;
-        //     floor: GetFloors.Floors;
-        // };
-        // this.floorId = data.floor.id;
-        // this.roomKindId = data.room.roomKind.id;
-        // this.roomName = data.room.name;
     }
 }
 </script>

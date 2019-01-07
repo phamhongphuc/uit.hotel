@@ -52,6 +52,12 @@
                 text="Quản lý khách hàng"
                 exact
             />
+            <b-nav-item-icon-
+                to="/manage/service"
+                icon=""
+                text="Quản lý dịch vụ"
+                exact
+            />
         </b-collapse>
     </b-navbar-nav>
 </template>
