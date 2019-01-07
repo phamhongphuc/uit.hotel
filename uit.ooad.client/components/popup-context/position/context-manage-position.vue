@@ -40,13 +40,11 @@ import {
     setIsActivePosition,
     deletePosition,
 } from '~/graphql/documents/position';
+import { mixinData } from '~/components/mixins/mutable';
 
 @Component({
     name: 'context-manage-position-',
-    mixins: [ContextMixin],
+    mixins: [ContextMixin, mixinData({ setIsActivePosition, deletePosition })],
 })
-export default class extends ContextMixin {
-    setIsActivePosition = setIsActivePosition;
-    deletePosition = deletePosition;
-}
+export default class extends ContextMixin {}
 </script>

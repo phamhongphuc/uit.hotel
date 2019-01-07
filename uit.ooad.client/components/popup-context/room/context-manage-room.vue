@@ -1,12 +1,12 @@
 <template>
     <context- ref="context">
-        <template slot-scope="{ data: { room, floor, floors } }">
+        <template slot-scope="{ data: { room, floor } }">
             <b-nav-item-icon- icon="" text="Xem thông tin chi tiết" />
             <div class="context-hr" />
             <b-nav-item-icon-
                 icon=""
                 text="Sửa thông tin phòng"
-                @click="refs.room_update.open({ room, floor, floors })"
+                @click="refs.room_update.open({ room, floor })"
             />
             <b-nav-item-icon-mutate-
                 :mutation="setIsActiveRoom"

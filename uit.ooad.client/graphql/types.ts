@@ -1,5 +1,11 @@
 export type Maybe<T> = T | null;
 
+/** Input cho thông tin một hóa đơn */
+export interface BillId {
+    /** Id của hóa đơn */
+    id: number;
+}
+
 export interface BookingCreateInput {
     /** Thời điểm nhận phòng dự kiến của khách hàng */
     bookCheckInTime: DateTimeOffset;
@@ -187,11 +193,6 @@ export interface ReceiptCreateInput {
     bankAccountNumber: Maybe<string>;
     /** Thuộc hóa đơn */
     bill: Maybe<BillId>;
-}
-/** Input cho thông tin một hóa đơn */
-export interface BillId {
-    /** Id của hóa đơn */
-    id: number;
 }
 
 export interface RoomCreateInput {
@@ -534,6 +535,8 @@ export namespace UserLogin {
     export type Position = {
         __typename?: 'Position';
 
+        id: number;
+
         name: string;
     };
 }
@@ -560,7 +563,107 @@ export namespace UserCheckLogin {
     export type Position = {
         __typename?: 'Position';
 
+        id: number;
+
         name: string;
+    };
+}
+
+export namespace GetBills {
+    export type Variables = {};
+
+    export type Query = {
+        __typename?: 'Query';
+
+        bills: Bills[];
+    };
+
+    export type Bills = {
+        __typename?: 'Bill';
+
+        id: number;
+
+        time: DateTimeOffset;
+
+        total: number;
+
+        patron: Patron;
+
+        employee: Maybe<Employee>;
+
+        receipts: Maybe<(Maybe<Receipts>)[]>;
+
+        bookings: Maybe<(Maybe<Bookings>)[]>;
+    };
+
+    export type Patron = {
+        __typename?: 'Patron';
+
+        id: number;
+
+        name: string;
+    };
+
+    export type Employee = {
+        __typename?: 'Employee';
+
+        id: string;
+
+        name: string;
+    };
+
+    export type Receipts = {
+        __typename?: 'Receipt';
+
+        id: number;
+
+        money: number;
+    };
+
+    export type Bookings = {
+        __typename?: 'Booking';
+
+        id: number;
+
+        total: number;
+    };
+}
+
+export namespace AddBookingToBill {
+    export type Variables = {
+        bill: BillId;
+        booking: BookingCreateInput;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        addBookingToBill: AddBookingToBill;
+    };
+
+    export type AddBookingToBill = {
+        __typename?: 'Booking';
+
+        id: number;
+    };
+}
+
+export namespace BookAndCheckIn {
+    export type Variables = {
+        bookings: BookAndCheckInCreateInput[];
+        bill: BillCreateInput;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        bookAndCheckIn: BookAndCheckIn;
+    };
+
+    export type BookAndCheckIn = {
+        __typename?: 'Bill';
+
+        id: number;
     };
 }
 
@@ -578,15 +681,19 @@ export namespace GetEmployees {
 
         id: string;
 
-        password: string;
-
         name: string;
+
+        identityCard: string;
 
         phoneNumber: string;
 
         address: string;
 
+        email: string;
+
         birthdate: DateTimeOffset;
+
+        gender: boolean;
 
         startingDate: DateTimeOffset;
 
@@ -599,6 +706,8 @@ export namespace GetEmployees {
         __typename?: 'Position';
 
         id: number;
+
+        name: string;
     };
 }
 
@@ -825,6 +934,54 @@ export namespace GetPatrons {
     };
 }
 
+export namespace GetPatron {
+    export type Variables = {
+        id: string;
+    };
+
+    export type Query = {
+        __typename?: 'Query';
+
+        patron: Patron;
+    };
+
+    export type Patron = {
+        __typename?: 'Patron';
+
+        id: number;
+
+        identification: string;
+
+        name: string;
+
+        birthdate: DateTimeOffset;
+
+        email: string;
+
+        gender: boolean;
+
+        residence: string;
+
+        domicile: string;
+
+        phoneNumbers: Maybe<(Maybe<string>)[]>;
+
+        nationality: string;
+
+        company: string;
+
+        note: string;
+
+        patronKind: PatronKind;
+    };
+
+    export type PatronKind = {
+        __typename?: 'PatronKind';
+
+        id: number;
+    };
+}
+
 export namespace CreatePatron {
     export type Variables = {
         input: PatronCreateInput;
@@ -838,6 +995,36 @@ export namespace CreatePatron {
 
     export type CreatePatron = {
         __typename?: 'Patron';
+
+        id: number;
+
+        identification: string;
+
+        name: string;
+
+        birthdate: DateTimeOffset;
+
+        email: string;
+
+        gender: boolean;
+
+        residence: string;
+
+        domicile: string;
+
+        phoneNumbers: Maybe<(Maybe<string>)[]>;
+
+        nationality: string;
+
+        company: string;
+
+        note: string;
+
+        patronKind: PatronKind;
+    };
+
+    export type PatronKind = {
+        __typename?: 'PatronKind';
 
         id: number;
     };
@@ -856,6 +1043,72 @@ export namespace UpdatePatron {
 
     export type UpdatePatron = {
         __typename?: 'Patron';
+
+        id: number;
+    };
+}
+
+export namespace GetPatronKinds {
+    export type Variables = {};
+
+    export type Query = {
+        __typename?: 'Query';
+
+        patronKinds: PatronKinds[];
+    };
+
+    export type PatronKinds = {
+        __typename?: 'PatronKind';
+
+        id: number;
+
+        name: string;
+
+        description: string;
+
+        patrons: Maybe<(Maybe<Patrons>)[]>;
+    };
+
+    export type Patrons = {
+        __typename?: 'Patron';
+
+        id: number;
+
+        name: string;
+    };
+}
+
+export namespace CreatePatronKind {
+    export type Variables = {
+        input: PatronKindCreateInput;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        createPatronKind: CreatePatronKind;
+    };
+
+    export type CreatePatronKind = {
+        __typename?: 'PatronKind';
+
+        id: number;
+    };
+}
+
+export namespace UpdatePatronKind {
+    export type Variables = {
+        input: PatronKindUpdateInput;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        updatePatronKind: UpdatePatronKind;
+    };
+
+    export type UpdatePatronKind = {
+        __typename?: 'PatronKind';
 
         id: number;
     };
@@ -996,6 +1249,54 @@ export namespace SetIsActivePositionAndMoveEmployee {
     };
 }
 
+export namespace GetReceipts {
+    export type Variables = {};
+
+    export type Query = {
+        __typename?: 'Query';
+
+        receipts: Receipts[];
+    };
+
+    export type Receipts = {
+        __typename?: 'Receipt';
+
+        id: number;
+
+        money: number;
+
+        time: DateTimeOffset;
+
+        bankAccountNumber: Maybe<string>;
+
+        bill: Bill;
+    };
+
+    export type Bill = {
+        __typename?: 'Bill';
+
+        id: number;
+    };
+}
+
+export namespace CreateReceipt {
+    export type Variables = {
+        input: ReceiptCreateInput;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        createReceipt: CreateReceipt;
+    };
+
+    export type CreateReceipt = {
+        __typename?: 'Receipt';
+
+        id: number;
+    };
+}
+
 export namespace GetRoomKinds {
     export type Variables = {};
 
@@ -1097,6 +1398,48 @@ export namespace SetIsActiveRoomKind {
     };
 }
 
+export namespace GetRooms {
+    export type Variables = {};
+
+    export type Query = {
+        __typename?: 'Query';
+
+        rooms: Rooms[];
+    };
+
+    export type Rooms = {
+        __typename?: 'Room';
+
+        id: number;
+
+        name: string;
+
+        isActive: boolean;
+    };
+}
+
+export namespace GetRoom {
+    export type Variables = {
+        id: string;
+    };
+
+    export type Query = {
+        __typename?: 'Query';
+
+        room: Room;
+    };
+
+    export type Room = {
+        __typename?: 'Room';
+
+        id: number;
+
+        name: string;
+
+        isActive: boolean;
+    };
+}
+
 export namespace CreateRoom {
     export type Variables = {
         input: RoomCreateInput;
@@ -1179,6 +1522,16 @@ export namespace GetServices {
         unit: string;
 
         isActive: boolean;
+
+        servicesDetails: Maybe<(Maybe<ServicesDetails>)[]>;
+    };
+
+    export type ServicesDetails = {
+        __typename?: 'ServicesDetail';
+
+        id: number;
+
+        number: number;
     };
 }
 
@@ -1227,5 +1580,18 @@ export namespace DeleteService {
         __typename?: 'Mutation';
 
         deleteService: string;
+    };
+}
+
+export namespace SetIsActiveService {
+    export type Variables = {
+        id: string;
+        isActive: boolean;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        setIsActiveService: string;
     };
 }

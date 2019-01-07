@@ -1,50 +1,41 @@
 <template>
     <popup- ref="popup" title="Thêm phòng">
         <form-mutate-
-            slot-scope="{ data: { floors }, close }"
+            v-if="input"
+            slot-scope="{ data: { floor }, close }"
             success="Thêm phòng mới thành công"
             :mutation="createRoom"
-            :variables="{
-                input: {
-                    name: roomName,
-                    floor: {
-                        id: floorId,
-                    },
-                    roomKind: {
-                        id: roomKindId,
-                    },
-                },
-            }"
+            :variables="{ input }"
         >
             <div class="input-label">Tầng</div>
-            <div class="m-3">
+            <query- :query="getFloors" class="m-3" :poll-interval="0">
                 <b-form-select
-                    v-model="floorId"
+                    v-model="input.floor.id"
+                    slot-scope="{ data: { floors } }"
                     value-field="id"
                     text-field="name"
-                    :state="!$v.floorId.$invalid"
+                    :state="!$v.input.floor.$invalid"
                     :options="floors"
                     class="rounded"
                 />
-            </div>
+            </query->
             <div class="input-label">Loại phòng</div>
             <query- :query="getRoomKinds" class="m-3" :poll-interval="0">
-                <div slot-scope="{ data: { roomKinds } }">
-                    <b-form-select
-                        v-model="roomKindId"
-                        value-field="id"
-                        text-field="name"
-                        :state="!$v.roomKindId.$invalid"
-                        :options="roomKinds"
-                        class="rounded"
-                    />
-                </div>
+                <b-form-select
+                    v-model="input.roomKind.id"
+                    slot-scope="{ data: { roomKinds } }"
+                    value-field="id"
+                    text-field="name"
+                    :state="!$v.input.roomKind.id.$invalid"
+                    :options="roomKinds"
+                    class="rounded"
+                />
             </query->
             <div class="input-label">Tên phòng</div>
             <b-input-
                 ref="autoFocus"
-                v-model="roomName"
-                :state="!$v.roomName.$invalid"
+                v-model="input.name"
+                :state="!$v.input.name.$invalid"
                 class="m-3 rounded"
                 icon=""
             />
@@ -67,38 +58,41 @@
 import { Component } from 'nuxt-property-decorator';
 import { PopupMixin } from '~/components/mixins/popup';
 import { createRoom } from '~/graphql/documents/room';
+import { getFloors } from '~/graphql/documents/floor';
 import { getRoomKinds } from '~/graphql/documents/room-kind';
-import { GetFloors } from '~/graphql/types';
+import { GetFloors, RoomCreateInput } from '~/graphql/types';
 import { mixinData } from '~/components/mixins/mutable';
 import { required } from 'vuelidate/lib/validators';
 
 @Component({
-    mixins: [PopupMixin, mixinData({ createRoom, getRoomKinds })],
+    mixins: [PopupMixin, mixinData({ createRoom, getRoomKinds, getFloors })],
     name: 'popup-room-add-',
     validations: {
-        roomName: {
-            required,
-        },
-        floorId: {
-            required,
-        },
-        roomKindId: {
-            required,
+        input: {
+            name: { required },
+            floor: {
+                id: { required },
+            },
+            roomKind: {
+                id: { required },
+            },
         },
     },
 })
-export default class extends PopupMixin {
-    roomName: string = '';
-    floorId: number | null = null;
-    roomKindId: number | null = null;
-
+export default class extends PopupMixin<
+    { floor: GetFloors.Floors },
+    RoomCreateInput
+> {
     onOpen() {
-        const data = this.data as {
-            floor: GetFloors.Floors;
-            floors: GetFloors.Floors[];
+        this.input = {
+            name: '',
+            floor: {
+                id: this.data.floor.id,
+            },
+            roomKind: {
+                id: 1,
+            },
         };
-        this.floorId = data.floor.id;
-        this.roomName = '';
     }
 }
 </script>

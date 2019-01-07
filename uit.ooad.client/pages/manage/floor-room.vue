@@ -39,7 +39,6 @@
                         :variant="floor.isActive ? 'main' : 'gray'"
                         @contextmenu.prevent="
                             $refs.context_floor.open($event, {
-                                floors: floors,
                                 floor,
                             })
                         "
@@ -54,7 +53,6 @@
                             $refs.context_room.open($event, {
                                 room,
                                 floor,
-                                floors,
                             })
                         "
                     >

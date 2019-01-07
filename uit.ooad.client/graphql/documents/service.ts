@@ -8,6 +8,10 @@ export const getServices = gql`
             unitRate
             unit
             isActive
+            servicesDetails {
+                id
+                number
+            }
         }
     }
 `;
@@ -31,5 +35,11 @@ export const updateService = gql`
 export const deleteService = gql`
     mutation deleteService($id: ID!) {
         deleteService(id: $id)
+    }
+`;
+
+export const setIsActiveService = gql`
+    mutation setIsActiveService($id: ID!, $isActive: Boolean!) {
+        setIsActiveService(id: $id, isActive: $isActive)
     }
 `;

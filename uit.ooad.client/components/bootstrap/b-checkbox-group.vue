@@ -53,7 +53,6 @@ export default class extends CheckboxProps {
         const arrayFiltered = this.value.filter(
             e => this.optionsList.indexOf(e) === -1,
         );
-
         const newValue = arrayFiltered.concat(array);
 
         if (!isEquals(this.value, newValue)) this.$emit('input', newValue);
@@ -78,6 +77,7 @@ export default class extends CheckboxProps {
     }
 
     toggleAll(checked: boolean) {
+        if (this.indeterminate && !checked) return;
         this.selected = checked ? this.optionsList : [];
     }
 }

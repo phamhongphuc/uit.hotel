@@ -1,5 +1,25 @@
 import gql from 'graphql-tag';
 
+export const getRooms = gql`
+    query getRooms {
+        rooms {
+            id
+            name
+            isActive
+        }
+    }
+`;
+
+export const getRoom = gql`
+    query getRoom($id: ID!) {
+        room(id: $id) {
+            id
+            name
+            isActive
+        }
+    }
+`;
+
 export const createRoom = gql`
     mutation createRoom($input: RoomCreateInput!) {
         createRoom(input: $input) {

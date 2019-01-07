@@ -1,20 +1,19 @@
 <template>
     <popup- ref="popup" title="Cập nhật vị trí">
         <form-mutate-
+            v-if="input"
             slot-scope="{ data: { position }, close }"
             success="Cập nhật vị trí mới thành công"
             :mutation="updatePosition"
-            :variables="{
-                input,
-            }"
+            :variables="{ input: getInput }"
         >
             <div class="d-flex">
                 <div>
                     <div class="input-label">Tên vị trí</div>
                     <b-input-
                         ref="autoFocus"
-                        v-model="positionName"
-                        :state="!$v.positionName.$invalid"
+                        v-model="input.name"
+                        :state="!$v.input.name.$invalid"
                         class="m-3 rounded"
                         icon=""
                     />
@@ -70,33 +69,27 @@ import {
 import { mixinData } from '~/components/mixins/mutable';
 import { required } from 'vuelidate/lib/validators';
 import { CheckboxOption } from '~/utils/components';
+import { GetPositions } from 'graphql/types';
 
 @Component({
     mixins: [PopupMixin, mixinData({ updatePosition })],
     name: 'popup-position-update-',
     validations: {
-        positionName: {
-            required,
+        input: {
+            name: { required },
         },
     },
 })
-export default class extends PopupMixin {
-    positionName: string = '';
-
+export default class extends PopupMixin<
+    { position: GetPositions.Positions },
+    any
+> {
     selected: string[] = [];
 
     positionOptionsAdministrative: CheckboxOption[] = [];
     positionOptionsBusiness: CheckboxOption[] = [];
     positionOptionsReceptionist: CheckboxOption[] = [];
     positionOptionsHouseKeeping: CheckboxOption[] = [];
-
-    get input() {
-        return {
-            id: this.data.position.id,
-            name: this.positionName,
-            ...this.positionOptions,
-        };
-    }
 
     mounted() {
         this.positionOptionsAdministrative = positionOptionsAdministrative;
@@ -119,9 +112,15 @@ export default class extends PopupMixin {
         return options;
     }
 
-    onOpen() {
-        this.positionName = this.data.position.name;
+    get getInput() {
+        return {
+            id: this.data.position.id,
+            name: this.input.name,
+            ...this.positionOptions,
+        };
+    }
 
+    onOpen() {
         const permission = [
             ...positionOptionsAdministrative,
             ...positionOptionsBusiness,
@@ -132,6 +131,12 @@ export default class extends PopupMixin {
         permission.forEach(p => {
             if (this.data.position[p]) this.selected.push(p);
         });
+
+        this.input = {
+            id: this.data.position.id,
+            name: this.data.position.name,
+            ...this.positionOptions,
+        };
     }
 
     toggleAll(checked: boolean, options: CheckboxOption[]) {

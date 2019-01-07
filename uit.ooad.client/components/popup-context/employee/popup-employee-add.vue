@@ -1,13 +1,11 @@
 <template>
-    <popup- ref="popup" title="Thêm nhân viên" no-data="true">
+    <popup- ref="popup" title="Thêm nhân viên" no-data>
         <form-mutate-
             v-if="input"
             slot-scope="{ close }"
             success="Thêm nhân viên mới thành công"
             :mutation="createEmployee"
-            :variables="{
-                input: input,
-            }"
+            :variables="{ input }"
         >
             <div class="d-flex">
                 <div>
@@ -44,16 +42,15 @@
                         class="m-3"
                         :poll-interval="0"
                     >
-                        <div slot-scope="{ data: { positions } }">
-                            <b-form-select
-                                v-model="input.position.id"
-                                value-field="id"
-                                text-field="name"
-                                :state="!$v.input.positionId"
-                                :options="positions"
-                                class="rounded"
-                            />
-                        </div>
+                        <b-form-select
+                            v-model="input.position.id"
+                            slot-scope="{ data: { positions } }"
+                            value-field="id"
+                            text-field="name"
+                            :state="!$v.input.position.id.$invalid"
+                            :options="positions"
+                            class="rounded"
+                        />
                     </query->
                 </div>
                 <div>
@@ -173,7 +170,10 @@ import { EmployeeCreateInput } from 'graphql/types';
             address: { required },
             email: { required, email },
             birthdate: { required },
-            positionId: { required },
+
+            position: {
+                id: { required },
+            },
         },
         rePassword: {
             required,
@@ -183,7 +183,7 @@ import { EmployeeCreateInput } from 'graphql/types';
         },
     },
 })
-export default class extends PopupMixin {
+export default class extends PopupMixin<void, EmployeeCreateInput> {
     input: EmployeeCreateInput | null = null;
     rePassword: string = '';
 
