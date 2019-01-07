@@ -53,3 +53,14 @@
 .table-cell-id {
     min-width: 3rem !important;
 }
+
+.table-inner {
+    box-shadow: $input-box-shadow;
+    background-color: $input-bg;
+    > .table-style {
+        th,
+        td {
+            border-color: rgba($main, 0.5);
+        }
+    }
+}

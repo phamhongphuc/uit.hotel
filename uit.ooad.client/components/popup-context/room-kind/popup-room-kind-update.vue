@@ -1,43 +1,37 @@
 <template>
     <popup- ref="popup" title="Cập nhật loại phòng">
         <form-mutate-
+            v-if="input"
             slot-scope="{ data: { roomKind }, close }"
             success="Cập nhật loại phòng mới thành công"
             :mutation="updateRoomKind"
-            :variables="{
-                input: {
-                    id: roomKind.id,
-                    name: roomKindName,
-                    numberOfBeds,
-                    amountOfPeople,
-                },
-            }"
+            :variables="{ input }"
         >
             <div class="input-label">Tên loại phòng</div>
             <b-input-
                 ref="autoFocus"
-                v-model="roomKindName"
-                :state="!$v.roomKindName.$invalid"
+                v-model="input.name"
+                :state="!$v.input.name.$invalid"
                 class="m-3 rounded"
                 icon=""
             />
             <div class="input-label">Số giường</div>
             <b-input-
-                v-model="numberOfBeds"
+                v-model="input.numberOfBeds"
                 type="number"
                 :min="1"
                 :max="5"
-                :state="!$v.numberOfBeds.$invalid"
+                :state="!$v.input.numberOfBeds.$invalid"
                 class="m-3 rounded"
                 icon=""
             />
             <div class="input-label">Số người</div>
             <b-input-
-                v-model="amountOfPeople"
+                v-model="input.amountOfPeople"
                 type="number"
                 :min="1"
                 :max="10"
-                :state="!$v.amountOfPeople.$invalid"
+                :state="!$v.input.amountOfPeople.$invalid"
                 class="m-3 rounded"
                 icon=""
             />
@@ -59,7 +53,7 @@
 <script lang="ts">
 import { Component } from 'nuxt-property-decorator';
 import { mixinData } from '~/components/mixins/mutable';
-import { GetRoomKinds } from '~/graphql/types';
+import { GetRoomKinds, RoomKindUpdateInput } from '~/graphql/types';
 import { PopupMixin } from '~/components/mixins/popup';
 import { updateRoomKind } from '~/graphql/documents/room-kind';
 import { required, minLength, between } from 'vuelidate/lib/validators';
@@ -68,32 +62,29 @@ import { required, minLength, between } from 'vuelidate/lib/validators';
     mixins: [PopupMixin, mixinData({ updateRoomKind })],
     name: 'popup-room-kind-add-',
     validations: {
-        roomKindName: {
-            required,
-            minLength: minLength(1),
-        },
-        numberOfBeds: {
-            required,
-            between: between(1, 5),
-        },
-        amountOfPeople: {
-            required,
-            between: between(1, 10),
+        input: {
+            name: {
+                required,
+                minLength: minLength(1),
+            },
+            numberOfBeds: {
+                required,
+                between: between(1, 5),
+            },
+            amountOfPeople: {
+                required,
+                between: between(1, 10),
+            },
         },
     },
 })
-export default class extends PopupMixin {
-    roomKindName: string = '';
-    numberOfBeds: number = 1;
-    amountOfPeople: number = 1;
-
+export default class extends PopupMixin<
+    { roomKind: GetRoomKinds.RoomKinds },
+    RoomKindUpdateInput
+> {
     onOpen() {
-        const { roomKind } = this.data as {
-            roomKind: GetRoomKinds.RoomKinds;
-        };
-        this.roomKindName = roomKind.name;
-        this.numberOfBeds = roomKind.numberOfBeds;
-        this.amountOfPeople = roomKind.amountOfPeople;
+        const { id, name, numberOfBeds, amountOfPeople } = this.data.roomKind;
+        this.input = { id, name, numberOfBeds, amountOfPeople };
     }
 }
 </script>

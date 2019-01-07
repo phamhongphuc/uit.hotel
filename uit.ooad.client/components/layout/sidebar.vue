@@ -8,6 +8,58 @@
         />
         <b-collapse id="collapse_dashboard" v-model="showDashboard">
             <b-nav-item-icon- to="/" icon="" text="Sơ đồ khách sạn" exact />
+            <b-nav-item-icon-
+                to="/manage/patron"
+                icon=""
+                text="Quản lý khách hàng"
+                exact
+            />
+        </b-collapse>
+        <b-nav-item-icon-
+            v-b-toggle.collapse_business
+            icon=""
+            text="Quản lý kinh doanh"
+            class="header-item"
+        />
+        <b-collapse id="collapse_business" v-model="showBusiness">
+            <b-nav-item-icon-
+                to="/manage/bill"
+                icon=""
+                text="Quản lý hóa đơn"
+                exact
+            />
+            <b-nav-item-icon-
+                to="/manage/receipt"
+                icon=""
+                text="Quản lý phiếu thu"
+                exact
+            />
+            <b-nav-item-icon-
+                to="/manage/service"
+                icon=""
+                text="Quản lý dịch vụ"
+                exact
+            />
+        </b-collapse>
+        <b-nav-item-icon-
+            v-b-toggle.collapse_employee
+            icon=""
+            text="Quản lý nhân sự"
+            class="header-item"
+        />
+        <b-collapse id="collapse_employee" v-model="showEmployee">
+            <b-nav-item-icon-
+                to="/manage/position"
+                icon=""
+                text="Quản lý phân quyền"
+                exact
+            />
+            <b-nav-item-icon-
+                to="/manage/employee"
+                icon=""
+                text="Quản lý nhân viên"
+                exact
+            />
         </b-collapse>
         <b-nav-item-icon-
             v-b-toggle.collapse_manage
@@ -29,15 +81,9 @@
                 exact
             />
             <b-nav-item-icon-
-                to="/manage/position"
-                icon=""
-                text="Quản lý phân quyền"
-                exact
-            />
-            <b-nav-item-icon-
-                to="/manage/employee"
+                to="/manage/patron-kind"
                 icon=""
-                text="Quản lý nhân viên"
+                text="Quản lý loại khách hàng"
                 exact
             />
         </b-collapse>
@@ -50,8 +96,11 @@ import { Vue, Component } from 'nuxt-property-decorator';
     name: 'sidebar-',
 })
 export default class extends Vue {
-    showManage: boolean = false;
     showDashboard: boolean = false;
+    showSystem: boolean = false;
+    showEmployee: boolean = false;
+    showBusiness: boolean = false;
+    showManage: boolean = false;
 
     mounted() {
         if (this.$route !== undefined) {
@@ -90,7 +139,7 @@ export default class extends Vue {
     }
     > :not(.header-item) {
         margin-right: 0.75rem;
-        margin-left: -0.5rem;
+        margin-left: 0;
         &.collapse:not(.show) {
             display: block !important;
             overflow: hidden;

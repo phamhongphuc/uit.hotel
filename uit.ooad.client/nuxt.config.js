@@ -3,6 +3,7 @@ import autoprefixer from 'autoprefixer';
 const LOCALHOST = `http://localhost:3000`;
 
 export default {
+    mode: 'spa',
     head: {
         title: 'uit.ooad.client',
         meta: [
@@ -67,7 +68,7 @@ export default {
             if (isDev && isClient) {
                 config.module.rules.push({
                     enforce: 'pre',
-                    test: /\.(js|vue)$/,
+                    test: /\.(ts|js|vue)$/,
                     loader: 'eslint-loader',
                     exclude: /(node_modules)/,
                 });

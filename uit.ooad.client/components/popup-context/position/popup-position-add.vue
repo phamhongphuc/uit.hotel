@@ -1,20 +1,19 @@
 <template>
-    <popup- ref="popup" title="Thêm vị trí" no-data="true">
+    <popup- ref="popup" title="Thêm vị trí" no-data>
         <form-mutate-
+            v-if="input"
             slot-scope="{ close }"
             success="Thêm vị trí mới thành công"
             :mutation="createPosition"
-            :variables="{
-                input: input,
-            }"
+            :variables="{ input, getInput }"
         >
             <div class="d-flex">
                 <div>
                     <div class="input-label">Tên vị trí</div>
                     <b-input-
                         ref="autoFocus"
-                        v-model="positionName"
-                        :state="!$v.positionName.$invalid"
+                        v-model="input.name"
+                        :state="!$v.input.name.$invalid"
                         class="m-3 rounded"
                         icon=""
                     />
@@ -75,27 +74,18 @@ import { CheckboxOption } from '~/utils/components';
     mixins: [PopupMixin, mixinData({ createPosition })],
     name: 'popup-position-add-',
     validations: {
-        positionName: {
-            required,
+        input: {
+            name: { required },
         },
     },
 })
-export default class extends PopupMixin {
-    positionName: string = '';
-
+export default class extends PopupMixin<void, any> {
     selected: string[] = [];
 
     positionOptionsAdministrative: CheckboxOption[] = [];
     positionOptionsBusiness: CheckboxOption[] = [];
     positionOptionsReceptionist: CheckboxOption[] = [];
     positionOptionsHouseKeeping: CheckboxOption[] = [];
-
-    get input() {
-        return {
-            name: this.positionName,
-            ...this.positionOptions,
-        };
-    }
 
     mounted() {
         this.positionOptionsAdministrative = positionOptionsAdministrative;
@@ -118,9 +108,19 @@ export default class extends PopupMixin {
         return options;
     }
 
+    get getInput() {
+        return {
+            name: this.input.name,
+            ...this.positionOptions,
+        };
+    }
+
     onOpen() {
-        this.positionName = '';
         this.selected = [];
+        this.input = {
+            name: '',
+            ...this.positionOptions,
+        };
     }
 
     toggleAll(checked: boolean, options: CheckboxOption[]) {

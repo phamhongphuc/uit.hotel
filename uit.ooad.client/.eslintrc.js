@@ -30,6 +30,7 @@ const config = {
     },
     plugins: ['standard', 'vue', 'import', 'node', 'graphql', 'typescript'],
     settings: {
+        cache: true,
         'import/resolver': {
             'babel-plugin-root-import': {
                 rootPathPrefix: '~',

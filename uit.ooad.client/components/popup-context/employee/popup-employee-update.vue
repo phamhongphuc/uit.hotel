@@ -1,12 +1,11 @@
 <template>
     <popup- ref="popup" title="Cập nhật vị trí">
         <form-mutate-
+            v-if="input"
             slot-scope="{ data: { employee }, close }"
             success="Cập nhật vị trí mới thành công"
             :mutation="updateEmployee"
-            :variables="{
-                input,
-            }"
+            :variables="{ input }"
         >
             <div class="d-flex">
                 <div>
@@ -34,16 +33,15 @@
                         class="m-3"
                         :poll-interval="0"
                     >
-                        <div slot-scope="{ data: { positions } }">
-                            <b-form-select
-                                v-model="input.position.id"
-                                value-field="id"
-                                text-field="name"
-                                :state="!$v.input.positionId"
-                                :options="positions"
-                                class="rounded"
-                            />
-                        </div>
+                        <b-form-select
+                            v-model="input.position.id"
+                            slot-scope="{ data: { positions } }"
+                            value-field="id"
+                            text-field="name"
+                            :state="!$v.input.position.id.$invalid"
+                            :options="positions"
+                            class="rounded"
+                        />
                     </query->
                 </div>
                 <div>
@@ -141,7 +139,7 @@ import { updateEmployee } from '~/graphql/documents/employee';
 import { getPositions } from '~/graphql/documents/position';
 import { mixinData } from '~/components/mixins/mutable';
 import { required, email, alphaNum } from 'vuelidate/lib/validators';
-import { EmployeeUpdateInput } from 'graphql/types';
+import { EmployeeUpdateInput, GetEmployees } from 'graphql/types';
 
 @Component({
     mixins: [PopupMixin, mixinData({ updateEmployee, getPositions })],
@@ -157,26 +155,43 @@ import { EmployeeUpdateInput } from 'graphql/types';
             address: { required },
             email: { required, email },
             birthdate: { required },
+
+            position: {
+                id: { required },
+            },
         },
     },
 })
-export default class extends PopupMixin {
-    input: EmployeeUpdateInput | null = null;
-
+export default class extends PopupMixin<
+    { employee: GetEmployees.Employees },
+    EmployeeUpdateInput
+> {
     onOpen() {
-        const employee = this.data.employee;
+        const {
+            id,
+            name,
+            identityCard,
+            phoneNumber,
+            address,
+            email,
+            birthdate,
+            gender,
+            startingDate,
+            position,
+        } = this.data.employee;
+
         this.input = {
-            id: employee.id,
-            name: employee.name,
-            identityCard: employee.identityCard,
-            phoneNumber: employee.phoneNumber,
-            address: employee.address,
-            email: employee.email,
-            birthdate: employee.birthdate,
-            gender: employee.gender,
-            startingDate: employee.startingDate,
+            id,
+            name,
+            identityCard,
+            phoneNumber,
+            address,
+            email,
+            birthdate,
+            gender,
+            startingDate,
             position: {
-                id: employee.position.id,
+                id: position.id,
             },
         };
     }

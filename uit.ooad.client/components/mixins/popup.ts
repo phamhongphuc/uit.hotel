@@ -1,9 +1,14 @@
+import { Prop } from 'nuxt-property-decorator';
 import Vue from 'vue';
 import { Mixin } from 'vue-mixin-decorator';
 
 @Mixin
-export class PopupMixin extends Vue {
-    data: any = null;
+export class PopupMixin<TData, TInput> extends Vue {
+    @Prop({ default: undefined })
+    refs: any;
+
+    data: TData = null;
+    input: TInput | null = null;
 
     async open(data: any): Promise<void> {
         const popup: any = this.$refs.popup;

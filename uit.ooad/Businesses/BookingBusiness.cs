@@ -48,7 +48,7 @@ namespace uit.ooad.Businesses
             if (bookingInDatabase == null)
                 throw new Exception("Mã Booking không tồn tại");
             if (bookingInDatabase.Status != (int)Booking.StatusEnum.RequestedCheckOut)
-                throw new Exception("Booking chưa thực hiện yêu cầu RequestCheckOut");
+                throw new Exception("Booking chưa thực hiện yêu cầu check-out");
             if (!bookingInDatabase.EmployeeCheckOut.Equals(employee))
                 throw new Exception("Nhân viên không được phép check-out");
 
@@ -68,12 +68,8 @@ namespace uit.ooad.Businesses
                 
             BookingDataAccess.Delete(bookingInDatabase);
         }
-
-        public static Task<Booking> Add(Employee employee, int billId, Booking booking)
+        public static Task<Booking> Add(Employee employee, Bill bill, Booking booking)
         {
-            var bill = BillBusiness.Get(billId);
-            if (bill == null) throw new Exception("Mã hóa đơn không tồn tại");
-
             booking.Room = booking.Room.GetManaged();
 
             if (!booking.Room.IsActive)

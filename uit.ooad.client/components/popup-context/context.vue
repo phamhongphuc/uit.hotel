@@ -21,10 +21,10 @@ import { mixin as clickaway } from 'vue-clickaway';
     name: 'context-',
 })
 export default class extends Vue {
-    @Prop({ default: true })
+    @Prop({ default: true, type: Boolean })
     closeOnClick: boolean;
 
-    @Prop({ default: true })
+    @Prop({ default: true, type: Boolean })
     closeOnScroll: boolean;
 
     @Prop({ default: undefined })

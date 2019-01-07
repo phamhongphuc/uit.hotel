@@ -1,20 +1,17 @@
 <template>
-    <popup- ref="popup" title="Thêm tầng" no-data="true">
+    <popup- ref="popup" title="Thêm tầng" no-data>
         <form-mutate-
+            v-if="input"
             slot-scope="{ close }"
             success="Thêm tầng mới thành công"
             :mutation="createFloor"
-            :variables="{
-                input: {
-                    name: floorName,
-                },
-            }"
+            :variables="{ input }"
         >
             <div class="input-label">Tên tầng</div>
             <b-input-
                 ref="autoFocus"
-                v-model="floorName"
-                :state="!$v.floorName.$invalid"
+                v-model="input.name"
+                :state="!$v.input.name.$invalid"
                 class="m-3 rounded"
                 icon=""
             />
@@ -39,22 +36,25 @@ import { mixinData } from '~/components/mixins/mutable';
 import { PopupMixin } from '~/components/mixins/popup';
 import { createFloor } from '~/graphql/documents/floor';
 import { required, minLength } from 'vuelidate/lib/validators';
+import { FloorCreateInput } from 'graphql/types';
 
 @Component({
     mixins: [PopupMixin, mixinData({ createFloor })],
     name: 'popup-floor-add-',
     validations: {
-        floorName: {
-            required,
-            minLength: minLength(1),
+        input: {
+            name: {
+                required,
+                minLength: minLength(1),
+            },
         },
     },
 })
-export default class extends PopupMixin {
-    floorName: string = '';
-
+export default class extends PopupMixin<void, FloorCreateInput> {
     onOpen() {
-        this.floorName = '';
+        this.input = {
+            name: '',
+        };
     }
 }
 </script>
