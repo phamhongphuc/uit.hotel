@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -41,8 +42,27 @@ namespace uit.ooad.DataAccesses
             return bill;
         }
 
+        public static async Task<Bill> PayTheBill(Employee employee, Bill billInDatabase)
+        {
+            await Database.WriteAsync(realm =>
+            {
+                billInDatabase.Employee = employee;
+                billInDatabase.Time = DateTimeOffset.Now;
+                
+                var receipt = new Receipt();
+                receipt.Money = billInDatabase.Total - billInDatabase.TotalReceipts;
+                receipt.Bill = billInDatabase;
+                receipt.Employee = employee;
+
+                ReceiptDataAccess.Add(realm, receipt);
+            });
+            return billInDatabase;
+        }
+
         public static Bill Get(int billId) => Database.Find<Bill>(billId);
 
         public static IEnumerable<Bill> Get() => Database.All<Bill>();
+
+        public static async void Delete(Bill bill) => await Database.WriteAsync(realm => realm.Remove(bill));
     }
 }

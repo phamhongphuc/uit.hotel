@@ -29,6 +29,16 @@ namespace uit.ooad.Models
             }
         }
 
+        public long TotalReceipts
+        {
+            get
+            {
+                long total = 0;
+                foreach (var r in Receipts) total += r.Money;
+                return total;
+            }
+        }
+
         public Bill GetManaged()
         {
             var bill = BillBusiness.Get(Id);

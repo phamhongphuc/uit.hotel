@@ -53,6 +53,20 @@ namespace uit.ooad.Queries.Mutation
                 )
             );
 
+            Field<NonNullGraphType<StringGraphType>>(
+                "Cancelled",
+                "Hủy đặt phòng",
+                _IdArgument(),
+                _CheckPermission_String(
+                    p => p.PermissionManageHiringRoom,
+                    context =>
+                    {
+                        BookingBusiness.Cancelled(_GetId<int>(context));
+                        return "Hủy thành công";
+                    }
+                )
+            );
+
             Field<NonNullGraphType<BookingType>>(
                 "AddBookingToBill",
                 "Thêm phòng khách đoàn",

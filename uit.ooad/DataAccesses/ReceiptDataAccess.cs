@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Realms;
 using uit.ooad.Models;
 
 namespace uit.ooad.DataAccesses
@@ -14,15 +15,21 @@ namespace uit.ooad.DataAccesses
         {
             await Database.WriteAsync(realm =>
             {
-                receipt.Id = NextId;
-                receipt.Time = DateTimeOffset.Now;
-                receipt = realm.Add(receipt);
+                Add(realm, receipt);
             });
             return receipt;
+        }
+
+        public static void Add(Realm realm, Receipt receipt)
+        {
+            receipt.Id = NextId;
+            receipt.Time = DateTimeOffset.Now;
+            realm.Add(receipt);
         }
 
         public static Receipt Get(int receiptId) => Database.Find<Receipt>(receiptId);
 
         public static IEnumerable<Receipt> Get() => Database.All<Receipt>();
+
     }
 }

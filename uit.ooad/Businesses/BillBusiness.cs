@@ -69,6 +69,21 @@ namespace uit.ooad.Businesses
 
         public static Bill Get(int billId) => BillDataAccess.Get(billId);
         public static IEnumerable<Bill> Get() => BillDataAccess.Get();
+
+        public static Task<Bill> PayTheBill(Employee employee, int billId)
+        {
+            var billInDatabase = Get(billId);
+            if (billInDatabase == null)
+                throw new Exception("Mã bill không tồn tại");
+
+            foreach (var booking in billInDatabase.Bookings)
+            {
+                if(booking.Status != (int)Booking.StatusEnum.CheckedOut)
+                    throw new Exception("Có phòng chưa Check-out, không thể thanh toán");
+            }
+            
+            return BillDataAccess.PayTheBill(employee, billInDatabase);
+        }
     }
 
     public class EqualityBooking : IEqualityComparer<Booking>
