@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using uit.ooad.DataAccesses;
 using uit.ooad.Models;
@@ -13,12 +14,12 @@ namespace uit.ooad.Businesses
             var bookingInDatabase = Get(bookingId);
             if (bookingInDatabase == null)
                 throw new Exception("Mã Booking không tồn tại");
-            if (bookingInDatabase.Status != (int) Booking.StatusEnum.Booked)
+            if (bookingInDatabase.Status != (int)Booking.StatusEnum.Booked)
                 throw new Exception("Phòng đã được check-in, không thể check-in lại");
 
             var houseKeeping = new HouseKeeping();
-            houseKeeping.Type = (int) HouseKeeping.TypeEnum.ExpectedArrival;
-            houseKeeping.Status = (int) HouseKeeping.StatusEnum.Pending;
+            houseKeeping.Type = (int)HouseKeeping.TypeEnum.ExpectedArrival;
+            houseKeeping.Status = (int)HouseKeeping.StatusEnum.Pending;
             houseKeeping.Booking = bookingInDatabase;
 
             return BookingDataAccess.CheckIn(employee, bookingInDatabase, houseKeeping);
@@ -30,12 +31,12 @@ namespace uit.ooad.Businesses
 
             if (bookingInDatabase == null)
                 throw new Exception("Mã Booking không tồn tại");
-            if (bookingInDatabase.Status != (int) Booking.StatusEnum.CheckedIn)
+            if (bookingInDatabase.Status != (int)Booking.StatusEnum.CheckedIn)
                 throw new Exception("Không thể yêu cầu trả phòng");
 
             var houseKeeping = new HouseKeeping();
-            houseKeeping.Type = (int) HouseKeeping.TypeEnum.ExpectedDeparture;
-            houseKeeping.Status = (int) HouseKeeping.StatusEnum.Pending;
+            houseKeeping.Type = (int)HouseKeeping.TypeEnum.ExpectedDeparture;
+            houseKeeping.Status = (int)HouseKeeping.StatusEnum.Pending;
             houseKeeping.Booking = bookingInDatabase;
 
             return BookingDataAccess.RequestCheckOut(employee, bookingInDatabase, houseKeeping);
@@ -46,12 +47,26 @@ namespace uit.ooad.Businesses
             var bookingInDatabase = Get(bookingId);
             if (bookingInDatabase == null)
                 throw new Exception("Mã Booking không tồn tại");
-            if (bookingInDatabase.Status != (int) Booking.StatusEnum.RequestedCheckOut)
-                throw new Exception("Booking chưa thực hiện yêu cầu check-out");
+            if (bookingInDatabase.Status != (int)Booking.StatusEnum.RequestedCheckOut)
+                throw new Exception("Booking chưa thực hiện yêu cầu RequestCheckOut");
             if (!bookingInDatabase.EmployeeCheckOut.Equals(employee))
                 throw new Exception("Nhân viên không được phép check-out");
 
             return BookingDataAccess.CheckOut(bookingInDatabase);
+        }
+
+        public static void Cancelled(int bookingId)
+        {
+            var bookingInDatabase = Get(bookingId);
+            if (bookingInDatabase == null)
+                throw new Exception("Mã Booking không tồn tại");
+
+            if(bookingInDatabase.Status != (int)Booking.StatusEnum.Booked)
+                throw new Exception("Không thể hủy đặt phòng. Booking đã hoặc đang được sử dụng.");
+            
+            if(bookingInDatabase.Bill.Bookings.Count() == 1) BillDataAccess.Delete(bookingInDatabase.Bill);
+                
+            BookingDataAccess.Delete(bookingInDatabase);
         }
 
         public static Task<Booking> Add(Employee employee, int billId, Booking booking)
