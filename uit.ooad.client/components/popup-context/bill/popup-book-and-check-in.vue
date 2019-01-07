@@ -35,6 +35,11 @@
                     <span>Chọn hoặc thêm khách hàng</span>
                 </b-button>
             </div>
+            <div class="input-label">Thời gian trả phòng dự kiến</div>
+            <b-input-date-time-
+                v-model="bookCheckOutTime"
+                class="rounded m-3"
+            />
             <div class="input-label">Danh sách phòng</div>
             <div class="m-3 table-inner rounded overflow-hidden">
                 <b-table
@@ -158,6 +163,7 @@ import { getPatrons } from '~/graphql/documents/patron';
 import { getRoom } from '~/graphql/documents/room';
 import { mixinData } from '~/components/mixins/mutable';
 import { PopupMixin } from '~/components/mixins/popup';
+import moment from 'moment';
 
 @Component({
     mixins: [PopupMixin, mixinData({ bookAndCheckIn, getPatrons, getRoom })],
@@ -170,6 +176,8 @@ export default class extends PopupMixin<
     { rooms: GetFloors.Rooms[] },
     BookAndCheckIn.Variables
 > {
+    bookCheckOutTime: string = moment().format();
+
     onOpen() {
         const self = this;
         this.input = {
@@ -189,7 +197,7 @@ export default class extends PopupMixin<
     }
 
     get getInput(): BookAndCheckIn.Variables {
-        const { input } = this;
+        const { input, bookCheckOutTime } = this;
         const { bill, bookings } = input;
         return {
             bill: {
@@ -199,7 +207,7 @@ export default class extends PopupMixin<
             },
             bookings: bookings.map(b => {
                 return {
-                    bookCheckOutTime: b.bookCheckOutTime,
+                    bookCheckOutTime,
                     room: {
                         id: b.room.id,
                     },

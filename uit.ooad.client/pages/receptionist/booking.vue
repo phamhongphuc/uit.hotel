@@ -80,12 +80,6 @@
                 <template slot="index" slot-scope="data">
                     {{ data.index + 1 }}
                 </template>
-                <!-- <template slot="receipts" slot-scope="{ value }">
-                    {{ toMoney(sumReceipts(value)) }}
-                </template>
-                <template slot="total" slot-scope="{ value }">
-                    {{ toMoney(value) }}
-                </template> -->
                 <template slot="status" slot-scope="{ value }">
                     {{ bookingStatusEnum[value] }}
                 </template>
