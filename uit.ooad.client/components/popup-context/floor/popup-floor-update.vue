@@ -1,21 +1,17 @@
 <template>
     <popup- ref="popup" title="Sửa tầng">
         <form-mutate-
+            v-if="input"
             slot-scope="{ data: { floor }, close }"
             success="Cập nhật thông tin tầng thành công"
             :mutation="updateFloor"
-            :variables="{
-                input: {
-                    id: floor.id,
-                    name: floorName,
-                },
-            }"
+            :variables="{ input }"
         >
             <div class="input-label">Tên tầng</div>
             <b-input-
                 ref="autoFocus"
                 v-model="floorName"
-                :state="!$v.floorName.$invalid"
+                :state="!$v.input.name.$invalid"
                 class="m-3 rounded"
                 icon=""
             />

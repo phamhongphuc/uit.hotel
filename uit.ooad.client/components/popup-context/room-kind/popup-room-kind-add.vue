@@ -1,38 +1,37 @@
 <template>
-    <popup- ref="popup" title="Thêm loại phòng" no-data="true">
+    <popup- ref="popup" title="Thêm loại phòng" :no-data="true">
         <form-mutate-
+            v-if="input"
             slot-scope="{ close }"
             success="Thêm loại phòng mới thành công"
             :mutation="createRoomKind"
-            :variables="{
-                input,
-            }"
+            :variables="{ input }"
         >
             <div class="input-label">Tên loại phòng</div>
             <b-input-
                 ref="autoFocus"
-                v-model="roomKindName"
-                :state="!$v.roomKindName.$invalid"
+                v-model="input.name"
+                :state="!$v.input.name.$invalid"
                 class="m-3 rounded"
                 icon=""
             />
             <div class="input-label">Số giường</div>
             <b-input-
-                v-model="numberOfBeds"
+                v-model="input.numberOfBeds"
                 type="number"
                 :min="1"
                 :max="5"
-                :state="!$v.numberOfBeds.$invalid"
+                :state="!$v.input.numberOfBeds.$invalid"
                 class="m-3 rounded"
                 icon=""
             />
             <div class="input-label">Số người</div>
             <b-input-
-                v-model="amountOfPeople"
+                v-model="input.amountOfPeople"
                 type="number"
                 :min="1"
                 :max="10"
-                :state="!$v.amountOfPeople.$invalid"
+                :state="!$v.input.amountOfPeople.$invalid"
                 class="m-3 rounded"
                 icon=""
             />

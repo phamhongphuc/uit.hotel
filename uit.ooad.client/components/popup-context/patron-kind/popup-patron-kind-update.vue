@@ -1,12 +1,11 @@
 <template>
     <popup- ref="popup" title="Cập nhật loại khách hàng">
         <form-mutate-
+            v-if="input"
             slot-scope="{ data: { patron }, close }"
             success="Cập nhật loại khách hàng thành công"
             :mutation="updatePatronKind"
-            :variables="{
-                input,
-            }"
+            :variables="{ input }"
         >
             <div class="input-label">Tên loại khách hàng</div>
             <b-input-

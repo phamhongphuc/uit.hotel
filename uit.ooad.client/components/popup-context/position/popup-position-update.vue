@@ -1,20 +1,19 @@
 <template>
     <popup- ref="popup" title="Cập nhật vị trí">
         <form-mutate-
+            v-if="input"
             slot-scope="{ data: { position }, close }"
             success="Cập nhật vị trí mới thành công"
             :mutation="updatePosition"
-            :variables="{
-                input,
-            }"
+            :variables="{ input: getInput }"
         >
             <div class="d-flex">
                 <div>
                     <div class="input-label">Tên vị trí</div>
                     <b-input-
                         ref="autoFocus"
-                        v-model="positionName"
-                        :state="!$v.positionName.$invalid"
+                        v-model="input.name"
+                        :state="!$v.input.name.$invalid"
                         class="m-3 rounded"
                         icon=""
                     />
@@ -76,8 +75,8 @@ import { GetPositions } from 'graphql/types';
     mixins: [PopupMixin, mixinData({ updatePosition })],
     name: 'popup-position-update-',
     validations: {
-        positionName: {
-            required,
+        input: {
+            name: { required },
         },
     },
 })
@@ -85,8 +84,6 @@ export default class extends PopupMixin<
     { position: GetPositions.Positions },
     any
 > {
-    positionName: string = '';
-
     selected: string[] = [];
 
     positionOptionsAdministrative: CheckboxOption[] = [];
@@ -115,9 +112,15 @@ export default class extends PopupMixin<
         return options;
     }
 
-    onOpen() {
-        this.positionName = this.data.position.name;
+    get getInput() {
+        return {
+            id: this.data.position.id,
+            name: this.input.name,
+            ...this.positionOptions,
+        };
+    }
 
+    onOpen() {
         const permission = [
             ...positionOptionsAdministrative,
             ...positionOptionsBusiness,
@@ -131,7 +134,7 @@ export default class extends PopupMixin<
 
         this.input = {
             id: this.data.position.id,
-            name: this.positionName,
+            name: this.data.position.name,
             ...this.positionOptions,
         };
     }

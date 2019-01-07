@@ -1,13 +1,11 @@
 <template>
-    <popup- ref="popup" title="Thêm nhân viên" no-data="true">
+    <popup- ref="popup" title="Thêm nhân viên" no-data>
         <form-mutate-
             v-if="input"
             slot-scope="{ close }"
             success="Thêm nhân viên mới thành công"
             :mutation="createEmployee"
-            :variables="{
-                input: input,
-            }"
+            :variables="{ input }"
         >
             <div class="d-flex">
                 <div>

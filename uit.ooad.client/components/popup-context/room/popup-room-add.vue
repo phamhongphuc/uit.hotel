@@ -1,20 +1,19 @@
 <template>
     <popup- ref="popup" title="Thêm phòng">
         <form-mutate-
+            v-if="input"
             slot-scope="{ data: { floors }, close }"
             success="Thêm phòng mới thành công"
             :mutation="createRoom"
-            :variables="{
-                input,
-            }"
+            :variables="{ input }"
         >
             <div class="input-label">Tầng</div>
             <div class="m-3">
                 <b-form-select
-                    v-model="floorId"
+                    v-model="input.floor.id"
                     value-field="id"
                     text-field="name"
-                    :state="!$v.floorId.$invalid"
+                    :state="!$v.input.floor.id.$invalid"
                     :options="floors"
                     class="rounded"
                 />
@@ -23,10 +22,10 @@
             <query- :query="getRoomKinds" class="m-3" :poll-interval="0">
                 <div slot-scope="{ data: { roomKinds } }">
                     <b-form-select
-                        v-model="roomKindId"
+                        v-model="input.roomKind.id"
                         value-field="id"
                         text-field="name"
-                        :state="!$v.roomKindId.$invalid"
+                        :state="!$v.input.roomKind.id.$invalid"
                         :options="roomKinds"
                         class="rounded"
                     />
@@ -35,8 +34,8 @@
             <div class="input-label">Tên phòng</div>
             <b-input-
                 ref="autoFocus"
-                v-model="roomName"
-                :state="!$v.roomName.$invalid"
+                v-model="input.name"
+                :state="!$v.input.name.$invalid"
                 class="m-3 rounded"
                 icon=""
             />
@@ -68,14 +67,14 @@ import { required } from 'vuelidate/lib/validators';
     mixins: [PopupMixin, mixinData({ createRoom, getRoomKinds })],
     name: 'popup-room-add-',
     validations: {
-        roomName: {
-            required,
-        },
-        floorId: {
-            required,
-        },
-        roomKindId: {
-            required,
+        input: {
+            name: { required },
+            floor: {
+                id: { required },
+            },
+            roomKind: {
+                id: { required },
+            },
         },
     },
 })

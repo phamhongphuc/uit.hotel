@@ -28,7 +28,7 @@ import { mixinData } from '~/components/mixins/mutable';
 
 @Component({
     name: 'context-manage-employee-',
-    mixins: [ContextMixin, mixinData(setIsActiveAccount)],
+    mixins: [ContextMixin, mixinData({ setIsActiveAccount })],
 })
 export default class extends ContextMixin {}
 </script>
