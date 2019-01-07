@@ -35,8 +35,7 @@ import { Component } from 'nuxt-property-decorator';
 import { mixinData } from '~/components/mixins/mutable';
 import { PopupMixin } from '~/components/mixins/popup';
 import { addBookingToBill } from '~/graphql/documents/bill';
-// eslint-disable-next-line typescript/no-unused-vars
-import { required, minLength, minValue } from 'vuelidate/lib/validators';
+// import { required, minLength, minValue } from 'vuelidate/lib/validators';
 import { GetBills, AddBookingToBill } from 'graphql/types';
 
 @Component({

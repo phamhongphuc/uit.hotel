@@ -1320,6 +1320,48 @@ export namespace SetIsActiveRoomKind {
     };
 }
 
+export namespace GetRooms {
+    export type Variables = {};
+
+    export type Query = {
+        __typename?: 'Query';
+
+        rooms: Rooms[];
+    };
+
+    export type Rooms = {
+        __typename?: 'Room';
+
+        id: number;
+
+        name: string;
+
+        isActive: boolean;
+    };
+}
+
+export namespace GetRoom {
+    export type Variables = {
+        id: string;
+    };
+
+    export type Query = {
+        __typename?: 'Query';
+
+        room: Room;
+    };
+
+    export type Room = {
+        __typename?: 'Room';
+
+        id: number;
+
+        name: string;
+
+        isActive: boolean;
+    };
+}
+
 export namespace CreateRoom {
     export type Variables = {
         input: RoomCreateInput;

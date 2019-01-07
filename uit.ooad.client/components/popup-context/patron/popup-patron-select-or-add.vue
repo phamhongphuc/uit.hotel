@@ -146,7 +146,7 @@ import { getPatronKinds } from '~/graphql/documents/patronKind';
 import { createPatron } from '~/graphql/documents/patron';
 import { mixinData } from '~/components/mixins/mutable';
 import { required, alphaNum, minLength } from 'vuelidate/lib/validators';
-import { CreatePatron, PatronCreateInput, PatronId } from 'graphql/types';
+import { CreatePatron, PatronCreateInput } from 'graphql/types';
 
 @Component({
     mixins: [PopupMixin, mixinData({ createPatron, getPatronKinds })],
@@ -179,7 +179,7 @@ import { CreatePatron, PatronCreateInput, PatronId } from 'graphql/types';
     },
 })
 export default class extends PopupMixin<
-    { patron: PatronId; patrons: PatronId[] },
+    { callback: Function },
     PatronCreateInput
 > {
     phoneNumbers: string = '';
@@ -210,7 +210,7 @@ export default class extends PopupMixin<
 
     async addAndSelect(close: Function, mutate: Function) {
         const { data }: { data: CreatePatron.Mutation } = await mutate();
-        this.data.patron.id = data.createPatron.id;
+        this.data.callback(data.createPatron.id, data.createPatron);
         close();
     }
 }

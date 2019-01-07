@@ -7,40 +7,109 @@
             :mutation="bookAndCheckIn"
             :variables="{ input }"
         >
-            <div class="input-label">Khách hàng</div>
-            <query-
-                :query="getPatrons"
-                :poll-interval="500"
-                class="m-3"
-                child-class="d-flex"
-            >
-                <template slot-scope="{ data: { patrons } }">
+            <div class="input-label">Khách hàng đứng tên hóa đơn</div>
+            <div class="m-3 d-flex">
+                <query- :query="getPatrons" :poll-interval="500">
                     <b-form-select
                         v-model="input.bill.patron.id"
+                        slot-scope="{ data: { patrons } }"
                         value-field="id"
                         text-field="name"
                         :state="!$v.input.$invalid"
                         :options="patrons"
                         class="rounded"
                     />
-                    <b-button
-                        variant="main"
-                        class="ml-3 text-nowrap"
-                        @click="
-                            refs.patron_select.open({
-                                patron: input.bill.patron,
-                            })
-                        "
-                    >
-                        <span class="icon"></span>
-                        <span>Chọn khách hàng</span>
-                    </b-button>
-                </template>
-            </query->
+                </query->
+                <b-button
+                    variant="main"
+                    class="ml-3 text-nowrap"
+                    @click="
+                        refs.patron_select.open({
+                            callback(id) {
+                                input.bill.patron.id = id;
+                            },
+                        })
+                    "
+                >
+                    <span class="icon"></span>
+                    <span>Chọn hoặc thêm khách hàng</span>
+                </b-button>
+            </div>
             <div class="input-label">Danh sách phòng</div>
+            <div class="m-3 table-inner rounded overflow-hidden">
+                <b-table
+                    class="table-style"
+                    :items="input.bookings"
+                    :fields="[
+                        {
+                            key: 'index',
+                            label: '#',
+                            class: 'table-cell-id text-center',
+                            sortable: true,
+                        },
+                        {
+                            key: 'room',
+                            label: 'Phòng',
+                            class: 'text-center',
+                        },
+                        {
+                            key: 'listOfPatrons',
+                            label: 'Danh sách khách hàng',
+                            class: 'text-center',
+                        },
+                        {
+                            key: 'actions',
+                            label: 'Thao tác',
+                            class: 'text-center',
+                        },
+                    ]"
+                >
+                    <template slot="index" slot-scope="data">
+                        {{ data.index + 1 }}
+                    </template>
+                    <template slot="room" slot-scope="{ value }">
+                        <query-
+                            :query="getRoom"
+                            :variables="{
+                                id: value.id,
+                            }"
+                            :poll-interval="0"
+                        >
+                            <span slot-scope="{ data: { room } }">
+                                {{ room.name }}
+                            </span>
+                        </query->
+                    </template>
+                    <template slot="listOfPatrons" slot-scope="{ value }">
+                        <div v-for="patron in value" :key="patron.id">
+                            {{ patron.name }}
+                        </div>
+                    </template>
+                </b-table>
+                <div v-if="input.bookings.length === 0" class="p-3 text-center">
+                    Chưa có phòng nào trong danh sách. Ấn
+                    <span class="icon mx-1"></span>
+                    để thêm phòng
+                </div>
+            </div>
             <div class="d-flex m-3">
                 <b-button
                     variant="main"
+                    class="ml-auto"
+                    @click="
+                        refs.book_and_check_in_add_booking.open({
+                            callback(result) {
+                                input.bookings.push(result);
+                            },
+                        })
+                    "
+                >
+                    <span class="icon"></span>
+                    <span>Thêm phòng</span>
+                </b-button>
+                <b-button
+                    variant="main"
+                    class="ml-3"
                     type="submit"
                     :disabled="$v.$invalid"
                     @click="close"
@@ -54,14 +123,15 @@
 </template>
 <script lang="ts">
 import { Component } from 'nuxt-property-decorator';
-import { mixinData } from '~/components/mixins/mutable';
-import { PopupMixin } from '~/components/mixins/popup';
+import { GetFloors, BookAndCheckIn } from '~/graphql/types';
 import { bookAndCheckIn } from '~/graphql/documents/bill';
 import { getPatrons } from '~/graphql/documents/patron';
-import { GetFloors, BookAndCheckIn } from 'graphql/types';
+import { getRoom } from '~/graphql/documents/room';
+import { mixinData } from '~/components/mixins/mutable';
+import { PopupMixin } from '~/components/mixins/popup';
 
 @Component({
-    mixins: [PopupMixin, mixinData({ bookAndCheckIn, getPatrons })],
+    mixins: [PopupMixin, mixinData({ bookAndCheckIn, getPatrons, getRoom })],
     name: 'popup-booking-and-check-in-',
     validations: {
         input: {},
