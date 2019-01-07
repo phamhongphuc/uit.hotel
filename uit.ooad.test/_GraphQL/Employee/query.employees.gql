@@ -1,7 +1,6 @@
 {
     employees {
         id
-        password
         name
         phoneNumber
         address

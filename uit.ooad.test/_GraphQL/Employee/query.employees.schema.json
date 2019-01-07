@@ -13,7 +13,6 @@
                         "type": "object",
                         "required": [
                             "id",
-                            "password",
                             "name",
                             "phoneNumber",
                             "address",
@@ -24,10 +23,6 @@
                         ],
                         "properties": {
                             "id": {
-                                "type": "string",
-                                "pattern": "^(.*)$"
-                            },
-                            "password": {
                                 "type": "string",
                                 "pattern": "^(.*)$"
                             },

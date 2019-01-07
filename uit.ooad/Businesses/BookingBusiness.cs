@@ -61,15 +61,16 @@ namespace uit.ooad.Businesses
             if (bookingInDatabase == null)
                 throw new Exception("Mã Booking không tồn tại");
 
-            if(bookingInDatabase.Status != (int)Booking.StatusEnum.Booked)
+            if (bookingInDatabase.Status != (int)Booking.StatusEnum.Booked)
                 throw new Exception("Không thể hủy đặt phòng. Booking đã hoặc đang được sử dụng.");
-            
-            if(bookingInDatabase.Bill.Bookings.Count() == 1) BillDataAccess.Delete(bookingInDatabase.Bill);
-                
+
+            if (bookingInDatabase.Bill.Bookings.Count() == 1) BillDataAccess.Delete(bookingInDatabase.Bill);
+
             BookingDataAccess.Delete(bookingInDatabase);
         }
         public static Task<Booking> Add(Employee employee, Bill bill, Booking booking)
         {
+            bill = bill.GetManaged();
             booking.Room = booking.Room.GetManaged();
 
             if (!booking.Room.IsActive)

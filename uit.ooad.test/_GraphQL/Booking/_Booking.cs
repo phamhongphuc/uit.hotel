@@ -38,7 +38,9 @@ namespace uit.ooad.test._GraphQL
                             new { id = 1 }
                         }
                     },
-                    billId = 1
+                    bill = new {
+                        id = 1
+                    }
                 },
                 p => p.PermissionManageHiringRoom = true
             );
@@ -71,8 +73,9 @@ namespace uit.ooad.test._GraphQL
                             new { id = 1 }
                         }
                     },
-                    billId = 1
-                },
+                    bill = new {
+                        id = 1
+                    }                },
                 p => p.PermissionManageHiringRoom = true
             );
         }
@@ -95,8 +98,9 @@ namespace uit.ooad.test._GraphQL
                             new { id = 1 }
                         }
                     },
-                    billId = 1
-                },
+                    bill = new {
+                        id = 1
+                    }                },
                 p => p.PermissionManageHiringRoom = true
             );
         }
@@ -119,8 +123,9 @@ namespace uit.ooad.test._GraphQL
                             new { id = 1 }
                         }
                     },
-                    billId = 1
-                },
+                    bill = new {
+                        id = 1
+                    }                },
                 p => p.PermissionManageHiringRoom = true
             );
         }
@@ -152,8 +157,9 @@ namespace uit.ooad.test._GraphQL
                             new { id = 1 }
                         }
                     },
-                    billId = 1
-                },
+                    bill = new {
+                        id = 1
+                    }                },
                 p => p.PermissionManageHiringRoom = true
             );
         }
@@ -176,8 +182,9 @@ namespace uit.ooad.test._GraphQL
                             new { id = 1 }
                         }
                     },
-                    billId = 1
-                },
+                    bill = new {
+                        id = 1
+                    }                },
                 p => p.PermissionManageHiringRoom = true
             );
         }
