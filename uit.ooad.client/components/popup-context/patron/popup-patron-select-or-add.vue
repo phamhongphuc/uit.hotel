@@ -221,7 +221,9 @@ export default class extends PopupMixin<
 
             birthdate: '',
             get listOfPhoneNumbers() {
-                return self.phoneNumbers.split(/\s*/);
+                return self.phoneNumbers === ''
+                    ? []
+                    : self.phoneNumbers.split(/\s*,\s*/);
             },
             email: '',
             company: '',

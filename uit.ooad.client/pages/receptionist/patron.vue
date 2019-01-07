@@ -30,19 +30,21 @@
                         key: 'name',
                         label: 'Tên khách hàng',
                         tdClass: 'w-100',
-                        sortable: true,
+                    },
+                    {
+                        key: 'identification',
+                        label: 'Chứng minh nhân dân',
+                        tdClass: 'w-100',
                     },
                     {
                         key: 'phoneNumbers',
                         label: 'Số điện thoại',
                         tdClass: 'text-nowrap',
-                        sortable: true,
                     },
                     {
                         key: 'birthdate',
                         label: 'Năm sinh',
                         tdClass: 'text-nowrap',
-                        sortable: true,
                     },
                 ]"
                 @row-clicked="

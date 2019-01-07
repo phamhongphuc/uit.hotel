@@ -43,7 +43,7 @@
             <div class="input-label">Danh sách phòng</div>
             <div class="m-3 table-inner rounded overflow-hidden">
                 <b-table
-                    class="table-style"
+                    class="table-style table-cell-middle"
                     :items="input.bookings"
                     :fields="[
                         {
