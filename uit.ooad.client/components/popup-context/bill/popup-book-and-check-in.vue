@@ -5,7 +5,7 @@
             slot-scope="{ data: { bill }, close }"
             success="Thêm phòng cho hóa đơn có sẵn"
             :mutation="bookAndCheckIn"
-            :variables="{ input }"
+            :variables="getInput"
         >
             <div class="input-label">Khách hàng đứng tên hóa đơn</div>
             <div class="m-3 d-flex">
@@ -185,6 +185,27 @@ export default class extends PopupMixin<
                 },
                 listOfPatrons: [],
             })),
+        };
+    }
+
+    get getInput(): BookAndCheckIn.Variables {
+        const { input } = this;
+        const { bill, bookings } = input;
+        return {
+            bill: {
+                patron: {
+                    id: bill.patron.id,
+                },
+            },
+            bookings: bookings.map(b => {
+                return {
+                    bookCheckOutTime: b.bookCheckOutTime,
+                    room: {
+                        id: b.room.id,
+                    },
+                    listOfPatrons: b.listOfPatrons.map(p => ({ id: p.id })),
+                };
+            }),
         };
     }
 
