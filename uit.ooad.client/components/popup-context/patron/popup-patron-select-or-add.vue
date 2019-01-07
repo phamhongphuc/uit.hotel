@@ -124,17 +124,39 @@
                         />
                     </div>
                 </div>
-                <div class="m-3">
-                    <b-button
-                        class="ml-auto"
-                        variant="main"
-                        :disabled="$v.$invalid"
-                        @click="addAndSelect(close, mutate)"
-                    >
-                        <span class="icon"></span>
-                        <span>Thêm</span>
-                    </b-button>
-                </div>
+                <query-
+                    :query="getPatrons"
+                    :poll-interval="500"
+                    class="m-3"
+                    child-class="d-flex"
+                >
+                    <template slot-scope="{ data: { patrons } }">
+                        <b-button
+                            v-if="currentPatron(patrons)"
+                            class="ml-auto"
+                            variant="main"
+                            @click="
+                                addAndSelectFromDatabase(
+                                    close,
+                                    currentPatron(patrons),
+                                )
+                            "
+                        >
+                            <span class="icon"></span>
+                            <span>Thêm khách hàng có sẵn trong hệ thống</span>
+                        </b-button>
+                        <b-button
+                            v-if="!currentPatron(patrons)"
+                            class="ml-auto"
+                            variant="main"
+                            :disabled="$v.$invalid"
+                            @click="addAndSelect(close, mutate)"
+                        >
+                            <span class="icon"></span>
+                            <span>Thêm</span>
+                        </b-button>
+                    </template>
+                </query->
             </template>
         </form-mutate->
     </popup->
@@ -143,13 +165,16 @@
 import { Component } from 'nuxt-property-decorator';
 import { PopupMixin } from '~/components/mixins/popup';
 import { getPatronKinds } from '~/graphql/documents/patronKind';
-import { createPatron } from '~/graphql/documents/patron';
+import { createPatron, getPatrons } from '~/graphql/documents/patron';
 import { mixinData } from '~/components/mixins/mutable';
 import { required, alphaNum, minLength } from 'vuelidate/lib/validators';
-import { CreatePatron, PatronCreateInput } from 'graphql/types';
+import { CreatePatron, PatronCreateInput, GetPatrons } from 'graphql/types';
 
 @Component({
-    mixins: [PopupMixin, mixinData({ createPatron, getPatronKinds })],
+    mixins: [
+        PopupMixin,
+        mixinData({ createPatron, getPatronKinds, getPatrons }),
+    ],
     name: 'popup-patron-add-',
     validations: {
         input: {
@@ -179,7 +204,7 @@ import { CreatePatron, PatronCreateInput } from 'graphql/types';
     },
 })
 export default class extends PopupMixin<
-    { callback: Function },
+    { callback(id: number, patron: GetPatrons.Patrons) },
     PatronCreateInput
 > {
     phoneNumbers: string = '';
@@ -208,9 +233,23 @@ export default class extends PopupMixin<
         };
     }
 
+    currentPatron(patrons: GetPatrons.Patrons[]): GetPatrons.Patrons {
+        return patrons.find(
+            p => p.identification === this.input.identification,
+        );
+    }
+
     async addAndSelect(close: Function, mutate: Function) {
         const { data }: { data: CreatePatron.Mutation } = await mutate();
         this.data.callback(data.createPatron.id, data.createPatron);
+        close();
+    }
+
+    async addAndSelectFromDatabase(
+        close: Function,
+        patron: GetPatrons.Patrons,
+    ) {
+        this.data.callback(patron.id, patron);
         close();
     }
 }

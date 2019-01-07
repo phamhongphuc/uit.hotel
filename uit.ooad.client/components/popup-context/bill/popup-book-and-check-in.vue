@@ -85,6 +85,31 @@
                             {{ patron.name }}
                         </div>
                     </template>
+                    <template slot="actions" slot-scope="{ item }">
+                        <div class="d-flex">
+                            <b-button
+                                variant="main"
+                                @click="
+                                    refs.booking_book_and_check_in.open({
+                                        booking: item,
+                                        callback(result) {
+                                            removeBooking(item);
+                                            input.bookings.push(result);
+                                        },
+                                    })
+                                "
+                            >
+                                Sửa
+                            </b-button>
+                            <b-button
+                                class="ml-3"
+                                variant="main"
+                                @click="removeBooking(item)"
+                            >
+                                Xóa
+                            </b-button>
+                        </div>
+                    </template>
                 </b-table>
                 <div v-if="input.bookings.length === 0" class="p-3 text-center">
                     Chưa có phòng nào trong danh sách. Ấn
@@ -97,7 +122,7 @@
                     variant="main"
                     class="ml-auto"
                     @click="
-                        refs.book_and_check_in_add_booking.open({
+                        refs.booking_book_and_check_in.open({
                             callback(result) {
                                 input.bookings.push(result);
                             },
@@ -123,7 +148,11 @@
 </template>
 <script lang="ts">
 import { Component } from 'nuxt-property-decorator';
-import { GetFloors, BookAndCheckIn } from '~/graphql/types';
+import {
+    GetFloors,
+    BookAndCheckIn,
+    BookAndCheckInCreateInput,
+} from '~/graphql/types';
 import { bookAndCheckIn } from '~/graphql/documents/bill';
 import { getPatrons } from '~/graphql/documents/patron';
 import { getRoom } from '~/graphql/documents/room';
@@ -157,6 +186,11 @@ export default class extends PopupMixin<
                 listOfPatrons: [],
             })),
         };
+    }
+
+    removeBooking(booking: BookAndCheckInCreateInput) {
+        const index = this.input.bookings.indexOf(booking);
+        this.input.bookings.splice(index, 1);
     }
 }
 </script>

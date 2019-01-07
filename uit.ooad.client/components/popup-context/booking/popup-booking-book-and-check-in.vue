@@ -93,17 +93,12 @@ import { getPatronKinds } from '~/graphql/documents/patronKind';
 import { getRooms } from '~/graphql/documents/room';
 import { createPatron } from '~/graphql/documents/patron';
 import { mixinData } from '~/components/mixins/mutable';
-import {
-    BookAndCheckIn,
-    BookAndCheckInCreateInput,
-    DateTimeOffset,
-    GetRooms,
-} from 'graphql/types';
+import { BookAndCheckInCreateInput, GetRooms } from 'graphql/types';
 import { required } from 'vuelidate/lib/validators';
 
 @Component({
     mixins: [PopupMixin, mixinData({ createPatron, getPatronKinds, getRooms })],
-    name: 'popup-book-and-check-in-add-booking-',
+    name: 'popup-booking-book-and-check-in-',
     validations: {
         input: {
             room: { required },
@@ -112,12 +107,13 @@ import { required } from 'vuelidate/lib/validators';
 })
 export default class extends PopupMixin<
     {
+        booking: BookAndCheckInCreateInput;
         callback(result: BookAndCheckInCreateInput): void;
     },
     BookAndCheckInCreateInput
 > {
     onOpen() {
-        this.input = {
+        this.input = this.data.booking || {
             bookCheckOutTime: new Date(),
             room: {
                 id: 1,

@@ -934,6 +934,54 @@ export namespace GetPatrons {
     };
 }
 
+export namespace GetPatron {
+    export type Variables = {
+        id: string;
+    };
+
+    export type Query = {
+        __typename?: 'Query';
+
+        patron: Patron;
+    };
+
+    export type Patron = {
+        __typename?: 'Patron';
+
+        id: number;
+
+        identification: string;
+
+        name: string;
+
+        birthdate: DateTimeOffset;
+
+        email: string;
+
+        gender: boolean;
+
+        residence: string;
+
+        domicile: string;
+
+        phoneNumbers: Maybe<(Maybe<string>)[]>;
+
+        nationality: string;
+
+        company: string;
+
+        note: string;
+
+        patronKind: PatronKind;
+    };
+
+    export type PatronKind = {
+        __typename?: 'PatronKind';
+
+        id: number;
+    };
+}
+
 export namespace CreatePatron {
     export type Variables = {
         input: PatronCreateInput;
@@ -947,6 +995,36 @@ export namespace CreatePatron {
 
     export type CreatePatron = {
         __typename?: 'Patron';
+
+        id: number;
+
+        identification: string;
+
+        name: string;
+
+        birthdate: DateTimeOffset;
+
+        email: string;
+
+        gender: boolean;
+
+        residence: string;
+
+        domicile: string;
+
+        phoneNumbers: Maybe<(Maybe<string>)[]>;
+
+        nationality: string;
+
+        company: string;
+
+        note: string;
+
+        patronKind: PatronKind;
+    };
+
+    export type PatronKind = {
+        __typename?: 'PatronKind';
 
         id: number;
     };

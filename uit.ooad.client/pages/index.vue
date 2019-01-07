@@ -57,9 +57,9 @@
             </div>
         </query->
         <context-room- ref="context_room" :refs="$refs" />
-        <popup-booking-and-check-in- ref="book_and_check_in" :refs="$refs" />
-        <popup-book-and-check-in-add-booking-
-            ref="book_and_check_in_add_booking"
+        <popup-book-and-check-in- ref="book_and_check_in" :refs="$refs" />
+        <popup-booking-book-and-check-in-
+            ref="booking_book_and_check_in"
             :refs="$refs"
         />
         <popup-patron-select-or-add- ref="patron_select" />
