@@ -64,6 +64,12 @@
                 text="Quản lý hóa đơn"
                 exact
             />
+            <b-nav-item-icon-
+                to="/manage/receipt"
+                icon=""
+                text="Quản lý phiếu thu"
+                exact
+            />
         </b-collapse>
     </b-navbar-nav>
 </template>

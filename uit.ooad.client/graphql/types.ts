@@ -1152,6 +1152,54 @@ export namespace SetIsActivePositionAndMoveEmployee {
     };
 }
 
+export namespace GetReceipts {
+    export type Variables = {};
+
+    export type Query = {
+        __typename?: 'Query';
+
+        receipts: Receipts[];
+    };
+
+    export type Receipts = {
+        __typename?: 'Receipt';
+
+        id: number;
+
+        money: number;
+
+        time: DateTimeOffset;
+
+        bankAccountNumber: Maybe<string>;
+
+        bill: Bill;
+    };
+
+    export type Bill = {
+        __typename?: 'Bill';
+
+        id: number;
+    };
+}
+
+export namespace CreateReceipt {
+    export type Variables = {
+        input: ReceiptCreateInput;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        createReceipt: CreateReceipt;
+    };
+
+    export type CreateReceipt = {
+        __typename?: 'Receipt';
+
+        id: number;
+    };
+}
+
 export namespace GetRoomKinds {
     export type Variables = {};
 
