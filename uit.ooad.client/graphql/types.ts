@@ -1,5 +1,11 @@
 export type Maybe<T> = T | null;
 
+/** Input cho thông tin một hóa đơn */
+export interface BillId {
+    /** Id của hóa đơn */
+    id: number;
+}
+
 export interface BookingCreateInput {
     /** Thời điểm nhận phòng dự kiến của khách hàng */
     bookCheckInTime: DateTimeOffset;
@@ -187,11 +193,6 @@ export interface ReceiptCreateInput {
     bankAccountNumber: Maybe<string>;
     /** Thuộc hóa đơn */
     bill: Maybe<BillId>;
-}
-/** Input cho thông tin một hóa đơn */
-export interface BillId {
-    /** Id của hóa đơn */
-    id: number;
 }
 
 export interface RoomCreateInput {
@@ -568,6 +569,85 @@ export namespace UserCheckLogin {
     };
 }
 
+export namespace GetBills {
+    export type Variables = {};
+
+    export type Query = {
+        __typename?: 'Query';
+
+        bills: Bills[];
+    };
+
+    export type Bills = {
+        __typename?: 'Bill';
+
+        id: number;
+
+        time: DateTimeOffset;
+
+        total: number;
+
+        patron: Patron;
+
+        employee: Maybe<Employee>;
+
+        receipts: Maybe<(Maybe<Receipts>)[]>;
+
+        bookings: Maybe<(Maybe<Bookings>)[]>;
+    };
+
+    export type Patron = {
+        __typename?: 'Patron';
+
+        id: number;
+
+        name: string;
+    };
+
+    export type Employee = {
+        __typename?: 'Employee';
+
+        id: string;
+
+        name: string;
+    };
+
+    export type Receipts = {
+        __typename?: 'Receipt';
+
+        id: number;
+
+        money: number;
+    };
+
+    export type Bookings = {
+        __typename?: 'Booking';
+
+        id: number;
+
+        total: number;
+    };
+}
+
+export namespace AddBookingToBill {
+    export type Variables = {
+        bill: BillId;
+        booking: BookingCreateInput;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        addBookingToBill: AddBookingToBill;
+    };
+
+    export type AddBookingToBill = {
+        __typename?: 'Booking';
+
+        id: number;
+    };
+}
+
 export namespace GetEmployees {
     export type Variables = {};
 
@@ -888,6 +968,16 @@ export namespace GetPatronKinds {
         name: string;
 
         description: string;
+
+        patrons: Maybe<(Maybe<Patrons>)[]>;
+    };
+
+    export type Patrons = {
+        __typename?: 'Patron';
+
+        id: number;
+
+        name: string;
     };
 }
 
@@ -1245,6 +1335,16 @@ export namespace GetServices {
         unit: string;
 
         isActive: boolean;
+
+        servicesDetails: Maybe<(Maybe<ServicesDetails>)[]>;
+    };
+
+    export type ServicesDetails = {
+        __typename?: 'ServicesDetail';
+
+        id: number;
+
+        number: number;
     };
 }
 
@@ -1293,5 +1393,18 @@ export namespace DeleteService {
         __typename?: 'Mutation';
 
         deleteService: string;
+    };
+}
+
+export namespace SetIsActiveService {
+    export type Variables = {
+        id: string;
+        isActive: boolean;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        setIsActiveService: string;
     };
 }

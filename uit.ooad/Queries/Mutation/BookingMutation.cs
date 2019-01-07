@@ -57,7 +57,7 @@ namespace uit.ooad.Queries.Mutation
                 "AddBookingToBill",
                 "Thêm phòng khách đoàn",
                 new QueryArguments(
-                    new QueryArgument<NonNullGraphType<IdGraphType>> { Name = "billId" },
+                    new QueryArgument<NonNullGraphType<BillIdInput>> { Name = "bill" },
                     new QueryArgument<NonNullGraphType<BookingCreateInput>> { Name = "booking" }
                 ),
                 _CheckPermission_TaskObject(
@@ -65,10 +65,10 @@ namespace uit.ooad.Queries.Mutation
                     context =>
                     {
                         var employee = AuthenticationHelper.GetEmployee(context);
-                        var billId = context.GetArgument<int>("billId");
+                        var bill = context.GetArgument<Bill>("bill");
                         var booking = context.GetArgument<Booking>("booking");
 
-                        return BookingBusiness.Add(employee, billId, booking);
+                        return BookingBusiness.Add(employee, bill, booking);
                     }
                 )
             );

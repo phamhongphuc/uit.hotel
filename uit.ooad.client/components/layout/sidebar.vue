@@ -58,6 +58,12 @@
                 text="Quản lý dịch vụ"
                 exact
             />
+            <b-nav-item-icon-
+                to="/manage/bill"
+                icon=""
+                text="Quản lý hóa đơn"
+                exact
+            />
         </b-collapse>
     </b-navbar-nav>
 </template>

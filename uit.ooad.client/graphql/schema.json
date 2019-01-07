@@ -3601,14 +3601,14 @@
                         "description": "Thêm phòng khách đoàn",
                         "args": [
                             {
-                                "name": "billId",
+                                "name": "bill",
                                 "description": "",
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
                                     "ofType": {
-                                        "kind": "SCALAR",
-                                        "name": "ID",
+                                        "kind": "INPUT_OBJECT",
+                                        "name": "BillId",
                                         "ofType": null
                                     }
                                 },
@@ -5437,6 +5437,31 @@
             },
             {
                 "kind": "INPUT_OBJECT",
+                "name": "BillId",
+                "description": "Input cho thông tin một hóa đơn",
+                "fields": null,
+                "inputFields": [
+                    {
+                        "name": "id",
+                        "description": "Id của hóa đơn",
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Int",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    }
+                ],
+                "interfaces": null,
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "INPUT_OBJECT",
                 "name": "BookingCreateInput",
                 "description": "",
                 "fields": null,
@@ -6578,31 +6603,6 @@
                             "ofType": null
                         },
                         "defaultValue": "null"
-                    }
-                ],
-                "interfaces": null,
-                "enumValues": null,
-                "possibleTypes": null
-            },
-            {
-                "kind": "INPUT_OBJECT",
-                "name": "BillId",
-                "description": "Input cho thông tin một hóa đơn",
-                "fields": null,
-                "inputFields": [
-                    {
-                        "name": "id",
-                        "description": "Id của hóa đơn",
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Int",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
                     }
                 ],
                 "interfaces": null,

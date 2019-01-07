@@ -5,7 +5,7 @@ schema {
 
 type AppMutation {
     # Thêm phòng khách đoàn
-    addBookingToBill(billId: ID!, booking: BookingCreateInput!): Booking!
+    addBookingToBill(bill: BillId!, booking: BookingCreateInput!): Booking!
 
     # Nhân viên nhận phòng để dọn dẹp
     assignCleaningService(id: ID!): HouseKeeping!
