@@ -27,10 +27,10 @@ export default class extends Vue {
     show: boolean = false;
     data: any = null;
 
-    @Prop({ required: true })
+    @Prop({ required: true, type: String })
     title: string;
 
-    @Prop({ default: false })
+    @Prop({ default: false, type: Boolean })
     noData: boolean;
 
     close() {
