@@ -42,7 +42,7 @@
                     },
                     {
                         key: 'time',
-                        label: 'Thời gian',
+                        label: 'Thời gian chốt hóa đơn',
                         tdClass: 'w-100',
                     },
                     {
@@ -80,7 +80,11 @@
                     {{ data.index + 1 }}
                 </template>
                 <template slot="time" slot-scope="{ value }">
-                    {{ toDate(value) }}
+                    {{
+                        moment(value).year() === 1
+                            ? 'Chưa chốt hóa đơn'
+                            : toDate(value)
+                    }}
                 </template>
                 <template slot="bookings" slot-scope="{ value }">
                     {{ value.length }} phòng
@@ -88,17 +92,16 @@
                 <template slot="receipts" slot-scope="{ value }">
                     {{ value.length }} lần
                 </template>
-                <template slot="totalReceipts" slot-scope="{ value }">
-                    {{ toMoney(value) }}
+                <template slot="totalReceipts" slot-scope="{ item }">
+                    {{ toMoney(sumReceipts(item.receipts)) }}
                 </template>
                 <template slot="total" slot-scope="{ value }">
-                    {{ toMoney(value) }}
+                    {{ value }}
                 </template>
             </b-table>
         </query->
         <context-manage-bill- ref="context_bill" :refs="$refs" />
         <popup-receipt-add- ref="receipt_add" />
-        <!-- <popup-bill-update- ref="bill_update" /> -->
     </div>
 </template>
 <script lang="ts">
@@ -107,10 +110,11 @@ import { getBills } from '~/graphql/documents/bill';
 import { mixinData } from '~/components/mixins/mutable';
 import { GetBills } from '~/graphql/types';
 import { toMoney, toDate } from '~/utils/dataFormater';
+import moment from 'moment';
 
 @Component({
     name: 'bill-',
-    mixins: [mixinData({ getBills, toMoney, toDate })],
+    mixins: [mixinData({ getBills, toMoney, toDate, moment })],
 })
 export default class extends Vue {
     head() {
@@ -123,9 +127,13 @@ export default class extends Vue {
         return bills;
     }
 
-    sumReceipts(bookings: GetBills.Receipts[]) {
-        return bookings.map(r => r.money).reduce((a, b) => a + b, 0);
+    sumReceipts(receipt: GetBills.Receipts[]) {
+        return receipt.map(r => r.money).reduce((a, b) => a + b, 0);
     }
+
+    // sumBookings(bookings: GetBills.Bookings[]) {
+    //     return bookings.map(r => r.total).reduce((a, b) => a + b, 0);
+    // }
 
     tableContext(event: MouseEvent) {
         const tr = (event.target as HTMLElement).closest('tr');

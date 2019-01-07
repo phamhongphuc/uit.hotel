@@ -585,13 +585,7 @@ export namespace GetBills {
 
         time: DateTimeOffset;
 
-        total: number;
-
-        totalReceipts: number;
-
         patron: Patron;
-
-        employee: Maybe<Employee>;
 
         receipts: Maybe<(Maybe<Receipts>)[]>;
 
@@ -606,14 +600,6 @@ export namespace GetBills {
         name: string;
     };
 
-    export type Employee = {
-        __typename?: 'Employee';
-
-        id: string;
-
-        name: string;
-    };
-
     export type Receipts = {
         __typename?: 'Receipt';
 
@@ -624,6 +610,24 @@ export namespace GetBills {
 
     export type Bookings = {
         __typename?: 'Booking';
+
+        id: number;
+    };
+}
+
+export namespace GetBillTotal {
+    export type Variables = {
+        id: string;
+    };
+
+    export type Query = {
+        __typename?: 'Query';
+
+        bill: Bill;
+    };
+
+    export type Bill = {
+        __typename?: 'Bill';
 
         id: number;
 
@@ -710,14 +714,6 @@ export namespace GetBookings {
         realCheckOutTime: Maybe<DateTimeOffset>;
 
         status: number;
-
-        total: number;
-
-        totalRates: number;
-
-        totalVolatilityRate: number;
-
-        totalServicesDetails: number;
 
         patrons: (Maybe<Patrons>)[];
 

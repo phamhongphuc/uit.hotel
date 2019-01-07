@@ -6,12 +6,7 @@ export const getBills = gql`
             id
             time
             total
-            totalReceipts
             patron {
-                id
-                name
-            }
-            employee {
                 id
                 name
             }
@@ -21,7 +16,6 @@ export const getBills = gql`
             }
             bookings {
                 id
-                total
             }
         }
     }

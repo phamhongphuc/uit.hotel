@@ -9,10 +9,6 @@ export const getBookings = gql`
             realCheckInTime
             realCheckOutTime
             status
-            total
-            totalRates
-            totalVolatilityRate
-            totalServicesDetails
             patrons {
                 id
                 name
