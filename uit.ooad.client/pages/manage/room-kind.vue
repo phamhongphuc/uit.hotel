@@ -88,6 +88,7 @@
         <context-manage-room-kind- ref="context_room_kind" :refs="$refs" />
         <popup-room-kind-add- ref="room_kind_add" />
         <popup-room-kind-update- ref="room_kind_update" />
+        <popup-rate-add- ref="rate_add" />
     </div>
 </template>
 <script lang="ts">

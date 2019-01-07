@@ -585,6 +585,8 @@ export namespace GetBills {
 
         time: DateTimeOffset;
 
+        total: number;
+
         patron: Patron;
 
         receipts: Maybe<(Maybe<Receipts>)[]>;
@@ -612,26 +614,6 @@ export namespace GetBills {
         __typename?: 'Booking';
 
         id: number;
-    };
-}
-
-export namespace GetBillTotal {
-    export type Variables = {
-        id: string;
-    };
-
-    export type Query = {
-        __typename?: 'Query';
-
-        bill: Bill;
-    };
-
-    export type Bill = {
-        __typename?: 'Bill';
-
-        id: number;
-
-        total: number;
     };
 }
 
@@ -1443,6 +1425,56 @@ export namespace SetIsActivePositionAndMoveEmployee {
         __typename?: 'Mutation';
 
         setIsActivePositionAndMoveEmployee: string;
+    };
+}
+
+export namespace GetRates {
+    export type Variables = {};
+
+    export type Query = {
+        __typename?: 'Query';
+
+        rates: Rates[];
+    };
+
+    export type Rates = {
+        __typename?: 'Rate';
+
+        id: number;
+
+        dayRate: number;
+
+        effectiveStartDate: DateTimeOffset;
+
+        createDate: DateTimeOffset;
+
+        roomKind: RoomKind;
+    };
+
+    export type RoomKind = {
+        __typename?: 'RoomKind';
+
+        id: number;
+
+        name: string;
+    };
+}
+
+export namespace CreateRate {
+    export type Variables = {
+        input: RateCreateInput;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        createRate: CreateRate;
+    };
+
+    export type CreateRate = {
+        __typename?: 'Rate';
+
+        id: number;
     };
 }
 
