@@ -1,68 +1,8 @@
 <template>
     <div>
-        <div class="row">
-            <b-button
-                class="m-2"
-                variant="white"
-                @click="$refs.book_and_check_in.open({ rooms: selected })"
-            >
-                <span class="icon"></span>
-                <span>Đặt phòng nhận ngay</span>
-            </b-button>
+        <div class="col m-2 bg-white rounded shadow-sm overflow-auto main-app">
+            Vui lòng sử dụng menu bên trái để chọn chức năng tương ứng!
         </div>
-        <query-
-            :query="getFloors"
-            class="hotel-map row flex-1"
-            child-class="col m-2 p-3 bg-white rounded shadow-sm overflow-auto"
-        >
-            <div slot-scope="{ data: { floors } }">
-                <div
-                    v-for="floor in floorsFilter(floors)"
-                    :key="floor.id"
-                    class="d-flex flex-nowrap"
-                >
-                    <b-button
-                        :variant="floor.isActive ? 'main' : 'gray'"
-                        @contextmenu.prevent="
-                            $refs.context_floor.open($event, {
-                                floors: floors,
-                                floor,
-                            })
-                        "
-                    >
-                        Tầng {{ floor.name }}
-                    </b-button>
-                    <b-button
-                        v-for="room in roomsFilter(floor.rooms)"
-                        :key="room.id"
-                        :variant="
-                            selected.indexOf(room) === -1
-                                ? 'light-blue'
-                                : 'dark-blue'
-                        "
-                        @contextmenu.prevent="
-                            $refs.context_room.open($event, {
-                                room,
-                                floor,
-                                floors,
-                            })
-                        "
-                        @click="toggle(room)"
-                    >
-                        {{ room.name }}
-                        <br />
-                        {{ room.roomKind.name }}
-                    </b-button>
-                </div>
-            </div>
-        </query->
-        <context-room- ref="context_room" :refs="$refs" />
-        <popup-book-and-check-in- ref="book_and_check_in" :refs="$refs" />
-        <popup-booking-book-and-check-in-
-            ref="booking_book_and_check_in"
-            :refs="$refs"
-        />
-        <popup-patron-select-or-add- ref="patron_select" />
     </div>
 </template>
 <script lang="ts">
@@ -104,3 +44,10 @@ export default class extends Vue {
     }
 }
 </script>
+<style lang="scss">
+.main-app {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+</style>

@@ -1,15 +1,20 @@
 <template>
     <b-navbar-nav id="sidebar">
         <b-nav-item-icon-
-            v-b-toggle.collapse_dashboard
+            v-b-toggle.collapse_receptionist
             icon=""
             text="Nghiệp vụ lễ tân"
             class="header-item"
         />
-        <b-collapse id="collapse_dashboard" v-model="showDashboard">
-            <b-nav-item-icon- to="/" icon="" text="Sơ đồ khách sạn" exact />
+        <b-collapse id="collapse_receptionist" v-model="showReceptionist">
             <b-nav-item-icon-
-                to="/manage/patron"
+                to="/receptionist/map"
+                icon=""
+                text="Sơ đồ khách sạn"
+                exact
+            />
+            <b-nav-item-icon-
+                to="/receptionist/patron"
                 icon=""
                 text="Quản lý khách hàng"
                 exact
@@ -23,39 +28,39 @@
         />
         <b-collapse id="collapse_business" v-model="showBusiness">
             <b-nav-item-icon-
-                to="/manage/bill"
-                icon=""
+                to="/business/bill"
+                icon=""
                 text="Quản lý hóa đơn"
                 exact
             />
             <b-nav-item-icon-
-                to="/manage/receipt"
-                icon=""
+                to="/business/receipt"
+                icon=""
                 text="Quản lý phiếu thu"
                 exact
             />
             <b-nav-item-icon-
-                to="/manage/service"
-                icon=""
+                to="/business/service"
+                icon=""
                 text="Quản lý dịch vụ"
                 exact
             />
         </b-collapse>
         <b-nav-item-icon-
-            v-b-toggle.collapse_employee
+            v-b-toggle.collapse_personnel
             icon=""
             text="Quản lý nhân sự"
             class="header-item"
         />
-        <b-collapse id="collapse_employee" v-model="showEmployee">
+        <b-collapse id="collapse_personnel" v-model="showPersonnel">
             <b-nav-item-icon-
-                to="/manage/position"
+                to="/personnel/position"
                 icon=""
                 text="Quản lý phân quyền"
                 exact
             />
             <b-nav-item-icon-
-                to="/manage/employee"
+                to="/personnel/employee"
                 icon=""
                 text="Quản lý nhân viên"
                 exact
@@ -96,16 +101,24 @@ import { Vue, Component } from 'nuxt-property-decorator';
     name: 'sidebar-',
 })
 export default class extends Vue {
-    showDashboard: boolean = false;
-    showSystem: boolean = false;
-    showEmployee: boolean = false;
+    showReceptionist: boolean = false;
     showBusiness: boolean = false;
+    showPersonnel: boolean = false;
     showManage: boolean = false;
 
     mounted() {
         if (this.$route !== undefined) {
-            if (this.$route.path.indexOf('/manage') === 0) {
+            if (this.$route.path.indexOf('/receptionist') === 0) {
+                this.showReceptionist = true;
+            }
+            else if (this.$route.path.indexOf('/business') === 0) {
+                this.showBusiness = true;
+            }
+            else if (this.$route.path.indexOf('/manage') === 0) {
                 this.showManage = true;
+            }
+            else if (this.$route.path.indexOf('/personnel') === 0) {
+                this.showPersonnel = true;
             }
         }
     }
