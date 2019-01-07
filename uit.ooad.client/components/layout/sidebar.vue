@@ -19,6 +19,12 @@
                 text="Quản lý khách hàng"
                 exact
             />
+            <b-nav-item-icon-
+                to="/receptionist/booking"
+                icon=""
+                text="Quản lý đặt phòng"
+                exact
+            />
         </b-collapse>
         <b-nav-item-icon-
             v-b-toggle.collapse_business
@@ -110,14 +116,11 @@ export default class extends Vue {
         if (this.$route !== undefined) {
             if (this.$route.path.indexOf('/receptionist') === 0) {
                 this.showReceptionist = true;
-            }
-            else if (this.$route.path.indexOf('/business') === 0) {
+            } else if (this.$route.path.indexOf('/business') === 0) {
                 this.showBusiness = true;
-            }
-            else if (this.$route.path.indexOf('/manage') === 0) {
+            } else if (this.$route.path.indexOf('/manage') === 0) {
                 this.showManage = true;
-            }
-            else if (this.$route.path.indexOf('/personnel') === 0) {
+            } else if (this.$route.path.indexOf('/personnel') === 0) {
                 this.showPersonnel = true;
             }
         }

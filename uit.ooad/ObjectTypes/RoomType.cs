@@ -34,6 +34,22 @@ namespace uit.ooad.ObjectTypes
                 }
             );
 
+            Field<BookingType>(
+                "currentBooking",
+                "Đơn đặt phòng hiện tại",
+                new QueryArguments
+                {
+                    new QueryArgument<NonNullGraphType<DateTimeOffsetGraphType>> { Name = "from" },
+                    new QueryArgument<NonNullGraphType<DateTimeOffsetGraphType>> { Name = "to" }
+                },
+                context =>
+                {
+                    var from = context.GetArgument<DateTimeOffset>("from");
+                    var to = context.GetArgument<DateTimeOffset>("to");
+                    return context.Source.GetCurrentBooking(from, to);
+                }
+            );
+
             Field<NonNullGraphType<FloorType>>(
                 nameof(Room.Floor),
                 "Phòng thuộc tầng nào",

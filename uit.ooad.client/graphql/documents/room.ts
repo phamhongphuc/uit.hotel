@@ -10,6 +10,17 @@ export const getRooms = gql`
     }
 `;
 
+export const getRoomsWithIsEmpty = gql`
+    query getRoomsWithIsEmpty($from: DateTimeOffset!, $to: DateTimeOffset!) {
+        rooms {
+            id
+            name
+            isActive
+            isEmpty(from: $from, to: $to)
+        }
+    }
+`;
+
 export const getRoom = gql`
     query getRoom($id: ID!) {
         room(id: $id) {
