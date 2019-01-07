@@ -1,5 +1,5 @@
-mutation($booking: BookingCreateInput!, $billId: ID!) {
-    addBookingToBill(booking: $booking, billId: $billId) {
+mutation($booking: BookingCreateInput!, $bill: BillId!) {
+    addBookingToBill(booking: $booking, bill: $bill) {
         id
         bookCheckInTime
         bookCheckOutTime
