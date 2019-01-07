@@ -306,6 +306,9 @@ type Bill {
 
     # Tổng giá trị hóa đơn
     total: Int!
+
+    # Tổng giá trị các phiếu thu
+    totalReceipts: Int!
 }
 
 input BillCreateInput {

@@ -587,6 +587,8 @@ export namespace GetBills {
 
         total: number;
 
+        totalReceipts: number;
+
         patron: Patron;
 
         employee: Maybe<Employee>;
@@ -661,6 +663,24 @@ export namespace BookAndCheckIn {
     };
 
     export type BookAndCheckIn = {
+        __typename?: 'Bill';
+
+        id: number;
+    };
+}
+
+export namespace PayTheBill {
+    export type Variables = {
+        id: string;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        payTheBill: PayTheBill;
+    };
+
+    export type PayTheBill = {
         __typename?: 'Bill';
 
         id: number;
@@ -944,6 +964,59 @@ export namespace GetFloors {
         isActive: boolean;
 
         roomKind: RoomKind;
+    };
+
+    export type RoomKind = {
+        __typename?: 'RoomKind';
+
+        id: number;
+
+        name: string;
+    };
+}
+
+export namespace GetFloorsMap {
+    export type Variables = {
+        from: DateTimeOffset;
+        to: DateTimeOffset;
+    };
+
+    export type Query = {
+        __typename?: 'Query';
+
+        floors: Floors[];
+    };
+
+    export type Floors = {
+        __typename?: 'Floor';
+
+        id: number;
+
+        name: string;
+
+        isActive: boolean;
+
+        rooms: Maybe<(Maybe<Rooms>)[]>;
+    };
+
+    export type Rooms = {
+        __typename?: 'Room';
+
+        id: number;
+
+        name: string;
+
+        isActive: boolean;
+
+        currentBooking: Maybe<CurrentBooking>;
+
+        roomKind: RoomKind;
+    };
+
+    export type CurrentBooking = {
+        __typename?: 'Booking';
+
+        id: number;
     };
 
     export type RoomKind = {

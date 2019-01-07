@@ -43,14 +43,20 @@
                     {
                         key: 'time',
                         label: 'Thời gian',
-                        tdClass: (value, key, row) => {
-                            if (!row.isActive)
-                                return 'table-cell-disable w-100';
-                            return 'w-100';
-                        },
+                        tdClass: 'w-100',
+                    },
+                    {
+                        key: 'bookings',
+                        label: 'Phòng',
+                        class: 'text-right text-nowrap',
                     },
                     {
                         key: 'receipts',
+                        label: 'Số lần',
+                        class: 'text-right',
+                    },
+                    {
+                        key: 'totalReceipts',
                         label: 'Đã thanh toán',
                         class: 'text-right',
                     },
@@ -65,7 +71,6 @@
                         $event.stopPropagation();
                         $refs.context_bill.open(currentEvent || $event, {
                             bill,
-                            bills,
                         });
                         currentEvent = null;
                     }
@@ -74,17 +79,26 @@
                 <template slot="index" slot-scope="data">
                     {{ data.index + 1 }}
                 </template>
+                <template slot="time" slot-scope="{ value }">
+                    {{ toDate(value) }}
+                </template>
+                <template slot="bookings" slot-scope="{ value }">
+                    {{ value.length }} phòng
+                </template>
                 <template slot="receipts" slot-scope="{ value }">
-                    {{ toMoney(sumReceipts(value)) }}
+                    {{ value.length }} lần
+                </template>
+                <template slot="totalReceipts" slot-scope="{ value }">
+                    {{ toMoney(value) }}
                 </template>
                 <template slot="total" slot-scope="{ value }">
                     {{ toMoney(value) }}
                 </template>
             </b-table>
         </query->
-        <!-- <context-manage-bill- ref="context_bill" :refs="$refs" />
-        <popup-bill-add- ref="bill_add" />
-        <popup-bill-update- ref="bill_update" /> -->
+        <context-manage-bill- ref="context_bill" :refs="$refs" />
+        <popup-receipt-add- ref="receipt_add" />
+        <!-- <popup-bill-update- ref="bill_update" /> -->
     </div>
 </template>
 <script lang="ts">
@@ -92,11 +106,11 @@ import { Vue, Component } from 'nuxt-property-decorator';
 import { getBills } from '~/graphql/documents/bill';
 import { mixinData } from '~/components/mixins/mutable';
 import { GetBills } from '~/graphql/types';
-import { toMoney } from '~/utils/dataFormater';
+import { toMoney, toDate } from '~/utils/dataFormater';
 
 @Component({
     name: 'bill-',
-    mixins: [mixinData({ getBills, toMoney })],
+    mixins: [mixinData({ getBills, toMoney, toDate })],
 })
 export default class extends Vue {
     head() {
@@ -107,8 +121,6 @@ export default class extends Vue {
 
     billsFilter(bills: GetBills.Bills[]): GetBills.Bills[] {
         return bills;
-        // if (this.showInactive) return bills;
-        // return bills.filter(rk => rk.isActive);
     }
 
     sumReceipts(bookings: GetBills.Receipts[]) {

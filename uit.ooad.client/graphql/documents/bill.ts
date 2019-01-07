@@ -6,6 +6,7 @@ export const getBills = gql`
             id
             time
             total
+            totalReceipts
             patron {
                 id
                 name
@@ -40,6 +41,14 @@ export const bookAndCheckIn = gql`
         $bill: BillCreateInput!
     ) {
         bookAndCheckIn(bookings: $bookings, bill: $bill) {
+            id
+        }
+    }
+`;
+
+export const payTheBill = gql`
+    mutation payTheBill($id: ID!) {
+        payTheBill(id: $id) {
             id
         }
     }
