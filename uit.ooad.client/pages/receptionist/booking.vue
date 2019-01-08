@@ -9,20 +9,13 @@
                 <span class="icon mr-1"></span>
                 <span>Đặt phòng</span>
             </b-button>
-            <b-button
+            <b-form-checkbox-group
+                v-model="show"
                 class="m-2 ml-auto"
-                variant="white"
-                @click="showInactive = !showInactive"
-            >
-                <span class="icon mr-1">{{ showInactive ? '' : '' }}</span>
-                <span>
-                    {{
-                        `Đang ${
-                            showInactive ? 'hiện' : 'ẩn'
-                        } dịch vụ đã bị vô hiệu hóa`
-                    }}
-                </span>
-            </b-button>
+                buttons
+                button-variant="white"
+                :options="showOptions"
+            />
         </block-flex->
         <query-
             :query="getBookings"
@@ -97,6 +90,7 @@
             </b-table>
         </query->
         <context-manage-booking- ref="context_booking" :refs="$refs" />
+        <popup-service-detail-add- ref="service_detail_add" />
     </div>
 </template>
 <script lang="ts">
@@ -117,6 +111,8 @@ export default class extends Vue {
         };
     }
 
+    show = [0, 1, 2, 3];
+
     bookingStatusEnum = [
         'Đã đặt',
         'Đã nhận phòng',
@@ -124,8 +120,15 @@ export default class extends Vue {
         'Đã trả phòng',
     ];
 
+    showOptions = this.bookingStatusEnum.map((booking, index) => ({
+        text: booking,
+        value: index,
+    }));
+
     bookingsFilter(bookings: GetBookings.Bookings[]): GetBookings.Bookings[] {
-        return bookings;
+        return bookings.filter(
+            booking => this.show.indexOf(booking.status) !== -1,
+        );
     }
 
     tableContext(event: MouseEvent) {

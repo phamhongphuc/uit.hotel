@@ -29,6 +29,11 @@
                 icon=""
                 text="Trả phòng"
             />
+            <b-nav-item-icon-
+                icon=""
+                text="Thêm chi tiết dịch vụ"
+                @click="refs.service_detail_add.open({ booking })"
+            />
         </template>
     </context->
 </template>
