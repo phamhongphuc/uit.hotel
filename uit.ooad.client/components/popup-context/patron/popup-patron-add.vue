@@ -131,7 +131,7 @@
                     :disabled="$v.$invalid"
                     @click="close"
                 >
-                    <span class="icon"></span>
+                    <span class="icon mr-1"></span>
                     <span>Thêm</span>
                 </b-button>
             </div>
@@ -192,7 +192,9 @@ export default class extends PopupMixin<void, PatronCreateInput> {
 
             birthdate: '',
             get listOfPhoneNumbers() {
-                return self.phoneNumbers.split(/\s*/);
+                return self.phoneNumbers === ''
+                    ? []
+                    : self.phoneNumbers.split(/\s*,\s*/);
             },
             email: '',
             company: '',

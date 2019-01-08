@@ -72,7 +72,7 @@
                     />
                     <div class="input-label">Số điện thoại</div>
                     <b-input-
-                        v-model="input.listOfPhoneNumbers"
+                        v-model="phoneNumbers"
                         :state="!$v.input.listOfPhoneNumbers.$invalid"
                         class="m-3 rounded"
                         icon=""
@@ -131,7 +131,7 @@
                     :disabled="$v.$invalid"
                     @click="close"
                 >
-                    <span class="icon"></span>
+                    <span class="icon mr-1"></span>
                     <span>Cập nhật</span>
                 </b-button>
             </div>
@@ -215,7 +215,9 @@ export default class extends PopupMixin<
             company,
             note,
             get listOfPhoneNumbers() {
-                return self.phoneNumbers.split(/\s*/);
+                return self.phoneNumbers === ''
+                    ? []
+                    : self.phoneNumbers.split(/\s*,\s*/);
             },
             patronKind: {
                 id: patronKind.id,

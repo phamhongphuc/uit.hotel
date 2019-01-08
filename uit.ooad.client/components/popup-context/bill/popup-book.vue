@@ -1,10 +1,10 @@
 <template>
-    <popup- ref="popup" title="Đặt phòng và nhận ngay">
+    <popup- ref="popup" title="Đặt phòng">
         <form-mutate-
             v-if="input"
             slot-scope="{ data: { bill }, close }"
             success="Thêm phòng cho hóa đơn có sẵn"
-            :mutation="bookAndCheckIn"
+            :mutation="createBill"
             :variables="getInput"
         >
             <div class="input-label">Khách hàng đứng tên hóa đơn</div>
@@ -35,6 +35,8 @@
                     <span>Chọn hoặc thêm khách hàng</span>
                 </b-button>
             </div>
+            <div class="input-label">Thời gian nhận phòng dự kiến</div>
+            <b-input-date-time- v-model="bookCheckInTime" class="rounded m-3" />
             <div class="input-label">Thời gian trả phòng dự kiến</div>
             <b-input-date-time-
                 v-model="bookCheckOutTime"
@@ -145,7 +147,7 @@
                     @click="close"
                 >
                     <span class="icon mr-1"></span>
-                    <span>Đặt phòng và nhận ngay</span>
+                    <span>Đặt phòng</span>
                 </b-button>
             </div>
         </form-mutate->
@@ -153,12 +155,8 @@
 </template>
 <script lang="ts">
 import { Component } from 'nuxt-property-decorator';
-import {
-    GetFloors,
-    BookAndCheckIn,
-    BookAndCheckInCreateInput,
-} from '~/graphql/types';
-import { bookAndCheckIn } from '~/graphql/documents/bill';
+import { GetFloors, CreateBill, BookingCreateInput } from '~/graphql/types';
+import { createBill } from '~/graphql/documents/bill';
 import { getPatrons } from '~/graphql/documents/patron';
 import { getRoom } from '~/graphql/documents/room';
 import { mixinData } from '~/components/mixins/mutable';
@@ -166,7 +164,7 @@ import { PopupMixin } from '~/components/mixins/popup';
 import moment from 'moment';
 
 @Component({
-    mixins: [PopupMixin, mixinData({ bookAndCheckIn, getPatrons, getRoom })],
+    mixins: [PopupMixin, mixinData({ createBill, getPatrons, getRoom })],
     name: 'popup-booking-and-check-in-',
     validations: {
         input: {},
@@ -174,9 +172,10 @@ import moment from 'moment';
 })
 export default class extends PopupMixin<
     { rooms: GetFloors.Rooms[] },
-    BookAndCheckIn.Variables
+    CreateBill.Variables
 > {
     bookCheckOutTime: string = moment().format();
+    bookCheckInTime: string = moment().format();
 
     onOpen() {
         const self = this;
@@ -188,6 +187,7 @@ export default class extends PopupMixin<
             },
             bookings: self.data.rooms.map(r => ({
                 bookCheckOutTime: new Date(),
+                bookCheckInTime: new Date(),
                 room: {
                     id: r.id,
                 },
@@ -196,8 +196,8 @@ export default class extends PopupMixin<
         };
     }
 
-    get getInput(): BookAndCheckIn.Variables {
-        const { input, bookCheckOutTime } = this;
+    get getInput(): CreateBill.Variables {
+        const { input, bookCheckOutTime, bookCheckInTime } = this;
         const { bill, bookings } = input;
         return {
             bill: {
@@ -208,6 +208,7 @@ export default class extends PopupMixin<
             bookings: bookings.map(b => {
                 return {
                     bookCheckOutTime,
+                    bookCheckInTime,
                     room: {
                         id: b.room.id,
                     },
@@ -217,7 +218,7 @@ export default class extends PopupMixin<
         };
     }
 
-    removeBooking(booking: BookAndCheckInCreateInput) {
+    removeBooking(booking: BookingCreateInput) {
         const index = this.input.bookings.indexOf(booking);
         this.input.bookings.splice(index, 1);
     }

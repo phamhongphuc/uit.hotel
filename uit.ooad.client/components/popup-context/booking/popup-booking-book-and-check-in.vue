@@ -70,7 +70,7 @@
                         })
                     "
                 >
-                    <span class="icon"></span>
+                    <span class="icon mr-1"></span>
                     <span>Thêm khách hàng</span>
                 </b-button>
                 <b-button
@@ -79,7 +79,7 @@
                     :disabled="$v.$invalid"
                     @click="addBookingToList(close)"
                 >
-                    <span class="icon"></span>
+                    <span class="icon mr-1"></span>
                     <span>Thêm</span>
                 </b-button>
             </div>

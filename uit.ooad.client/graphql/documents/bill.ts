@@ -10,17 +10,12 @@ export const getBills = gql`
                 id
                 name
             }
-            employee {
-                id
-                name
-            }
             receipts {
                 id
                 money
             }
             bookings {
                 id
-                total
             }
         }
     }
@@ -40,6 +35,25 @@ export const bookAndCheckIn = gql`
         $bill: BillCreateInput!
     ) {
         bookAndCheckIn(bookings: $bookings, bill: $bill) {
+            id
+        }
+    }
+`;
+
+export const createBill = gql`
+    mutation createBill(
+        $bookings: [BookingCreateInput!]!
+        $bill: BillCreateInput!
+    ) {
+        createBill(bookings: $bookings, bill: $bill) {
+            id
+        }
+    }
+`;
+
+export const payTheBill = gql`
+    mutation payTheBill($id: ID!) {
+        payTheBill(id: $id) {
             id
         }
     }

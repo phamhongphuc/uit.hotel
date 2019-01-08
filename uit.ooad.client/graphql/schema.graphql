@@ -17,7 +17,7 @@ type AppMutation {
     ): Bill!
 
     # Hủy đặt phòng
-    cancelled(id: ID!): String!
+    cancel(id: ID!): String!
 
     # Nhân viên xác nhận đã dọn xong
     confirmCleaned(id: ID!): HouseKeeping!
@@ -306,6 +306,9 @@ type Bill {
 
     # Tổng giá trị hóa đơn
     total: Int!
+
+    # Tổng giá trị các phiếu thu
+    totalReceipts: Int!
 }
 
 input BillCreateInput {

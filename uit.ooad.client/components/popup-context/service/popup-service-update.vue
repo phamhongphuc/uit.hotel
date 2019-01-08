@@ -39,7 +39,7 @@
                     :disabled="$v.$invalid"
                     @click="close"
                 >
-                    <span class="icon"></span>
+                    <span class="icon mr-1"></span>
                     <span>Cập nhật</span>
                 </b-button>
             </div>

@@ -6,7 +6,7 @@
                 variant="white"
                 @click="$refs.employee_add.open()"
             >
-                <span class="icon"></span>
+                <span class="icon mr-1"></span>
                 <span>Thêm nhân viên mới</span>
             </b-button>
             <b-button

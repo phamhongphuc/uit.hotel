@@ -51,6 +51,12 @@
                 text="Quản lý dịch vụ"
                 exact
             />
+            <b-nav-item-icon-
+                to="/business/rate"
+                icon=""
+                text="Quản lý giá"
+                exact
+            />
         </b-collapse>
         <b-nav-item-icon-
             v-b-toggle.collapse_personnel

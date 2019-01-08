@@ -6,7 +6,7 @@
                 variant="white"
                 @click="$refs.room_kind_add.open()"
             >
-                <span class="icon"></span>
+                <span class="icon mr-1"></span>
                 <span>Thêm loại phòng mới</span>
             </b-button>
             <b-button
@@ -88,6 +88,7 @@
         <context-manage-room-kind- ref="context_room_kind" :refs="$refs" />
         <popup-room-kind-add- ref="room_kind_add" />
         <popup-room-kind-update- ref="room_kind_update" />
+        <popup-rate-add- ref="rate_add" />
     </div>
 </template>
 <script lang="ts">

@@ -2,14 +2,6 @@
     <div @contextmenu.prevent="tableContext">
         <div class="row">
             <b-button
-                class="m-2"
-                variant="white"
-                @click="$refs.receipt_add.open()"
-            >
-                <span class="icon"></span>
-                <span>Tạo phiếu thu</span>
-            </b-button>
-            <b-button
                 class="m-2 ml-auto"
                 variant="white"
                 @click="showInactive = !showInactive"
@@ -36,31 +28,36 @@
                         class: 'table-cell-id text-center',
                         sortable: true,
                     },
+                    {
+                        key: 'time',
+                        label: 'Thời gian',
+                        class: 'text-center',
+                    },
+                    {
+                        key: 'money',
+                        label: 'Số tiền',
+                        class: 'text-center',
+                    },
+                    {
+                        key: 'bankAccountNumber',
+                        label: 'Tài khoản   ',
+                        class: 'text-center',
+                    },
                 ]"
-                @row-clicked="
-                    (receipt, $index, $event) => {
-                        $event.stopPropagation();
-                        $refs.context_receipt.open(currentEvent || $event, {
-                            receipt,
-                            receipts,
-                        });
-                        currentEvent = null;
-                    }
-                "
             >
                 <template slot="index" slot-scope="data">
                     {{ data.index + 1 }}
                 </template>
-                <!-- <template slot="receipts" slot-scope="{ value }">
-                    {{ toMoney(sumReceipts(value)) }}
+                <template slot="time" slot-scope="{ value }">
+                    {{ toDate(value) }}
                 </template>
-                <template slot="total" slot-scope="{ value }">
+                <template slot="money" slot-scope="{ value }">
                     {{ toMoney(value) }}
-                </template> -->
+                </template>
             </b-table>
         </query->
-        <!-- <context-manage-receipt- ref="context_receipt" :refs="$refs" />
-        <popup-receipt-add- ref="receipt_add" />
+        <!-- <context-manage-receipt- ref="context_receipt" :refs="$refs" /> -->
+        <!-- <popup-receipt-add- ref="receipt_add" />
         <popup-receipt-update- ref="receipt_update" /> -->
     </div>
 </template>
@@ -69,11 +66,11 @@ import { Vue, Component } from 'nuxt-property-decorator';
 import { getReceipts } from '~/graphql/documents/receipt';
 import { mixinData } from '~/components/mixins/mutable';
 import { GetReceipts } from '~/graphql/types';
-import { toMoney } from '~/utils/dataFormater';
+import { toMoney, toDate } from '~/utils/dataFormater';
 
 @Component({
     name: 'receipt-',
-    mixins: [mixinData({ getReceipts, toMoney })],
+    mixins: [mixinData({ getReceipts, toMoney, toDate })],
 })
 export default class extends Vue {
     head() {

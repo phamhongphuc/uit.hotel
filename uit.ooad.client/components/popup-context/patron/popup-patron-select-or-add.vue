@@ -142,7 +142,7 @@
                                 )
                             "
                         >
-                            <span class="icon"></span>
+                            <span class="icon mr-1"></span>
                             <span>Thêm khách hàng có sẵn trong hệ thống</span>
                         </b-button>
                         <b-button
@@ -152,7 +152,7 @@
                             :disabled="$v.$invalid"
                             @click="addAndSelect(close, mutate)"
                         >
-                            <span class="icon"></span>
+                            <span class="icon mr-1"></span>
                             <span>Thêm</span>
                         </b-button>
                     </template>
@@ -221,7 +221,9 @@ export default class extends PopupMixin<
 
             birthdate: '',
             get listOfPhoneNumbers() {
-                return self.phoneNumbers.split(/\s*/);
+                return self.phoneNumbers === ''
+                    ? []
+                    : self.phoneNumbers.split(/\s*,\s*/);
             },
             email: '',
             company: '',

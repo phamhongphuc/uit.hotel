@@ -18,6 +18,11 @@
                         : 'Kích hoạt lại loại phòng'
                 "
             />
+            <b-nav-item-icon-
+                icon=""
+                text="Thêm giá cơ bản"
+                @click="refs.rate_add.open({ roomKind })"
+            />
             <b-nav-item-icon-mutate-
                 :mutation="deleteRoomKind"
                 :variables="{ id: roomKind.id }"

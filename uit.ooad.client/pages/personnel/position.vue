@@ -6,7 +6,7 @@
                 variant="white"
                 @click="$refs.position_add.open()"
             >
-                <span class="icon"></span>
+                <span class="icon mr-1"></span>
                 <span>Thêm vị trí mới</span>
             </b-button>
             <b-button

@@ -9,10 +9,6 @@ export const getBookings = gql`
             realCheckInTime
             realCheckOutTime
             status
-            total
-            totalRates
-            totalVolatilityRate
-            totalServicesDetails
             patrons {
                 id
                 name
@@ -25,5 +21,35 @@ export const getBookings = gql`
                 name
             }
         }
+    }
+`;
+
+export const checkIn = gql`
+    mutation checkIn($id: ID!) {
+        checkIn(id: $id) {
+            id
+        }
+    }
+`;
+
+export const requestCheckOut = gql`
+    mutation requestCheckOut($id: ID!) {
+        requestCheckOut(id: $id) {
+            id
+        }
+    }
+`;
+
+export const checkOut = gql`
+    mutation checkOut($id: ID!) {
+        checkOut(id: $id) {
+            id
+        }
+    }
+`;
+
+export const cancel = gql`
+    mutation cancel($id: ID!) {
+        cancel(id: $id)
     }
 `;

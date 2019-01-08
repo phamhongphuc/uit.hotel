@@ -1001,6 +1001,22 @@
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
+                    },
+                    {
+                        "name": "totalReceipts",
+                        "description": "Tổng giá trị các phiếu thu",
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Int",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
                     }
                 ],
                 "inputFields": null,
@@ -3751,7 +3767,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "cancelled",
+                        "name": "cancel",
                         "description": "Hủy đặt phòng",
                         "args": [
                             {

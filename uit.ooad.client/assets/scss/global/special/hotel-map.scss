@@ -17,6 +17,10 @@
             color: $blue;
             border-color: rgba($blue, 0.5);
         }
+        &.btn-light-red {
+            color: $white;
+            border-color: $red;
+        }
         &.btn-gray {
             border-color: rgba($black, 0.1);
         }

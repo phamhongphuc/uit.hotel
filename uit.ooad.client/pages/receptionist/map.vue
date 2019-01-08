@@ -1,4 +1,4 @@
-<template>
+﻿<template>
     <div>
         <div class="row">
             <b-button
@@ -6,12 +6,24 @@
                 variant="white"
                 @click="$refs.book_and_check_in.open({ rooms: selected })"
             >
-                <span class="icon"></span>
+                <span class="icon mr-1"></span>
                 <span>Đặt phòng nhận ngay</span>
+            </b-button>
+            <b-button
+                class="m-2"
+                variant="white"
+                @click="$refs.book.open({ rooms: selected })"
+            >
+                <span class="icon mr-1"></span>
+                <span>Đặt phòng</span>
             </b-button>
         </div>
         <query-
-            :query="getFloors"
+            :query="getFloorsMap"
+            :variables="{
+                from,
+                to,
+            }"
             class="hotel-map row flex-1"
             child-class="col m-2 p-3 bg-white rounded shadow-sm overflow-auto"
         >
@@ -37,7 +49,9 @@
                         :key="room.id"
                         :variant="
                             selected.indexOf(room) === -1
-                                ? 'light-blue'
+                                ? room.currentBooking
+                                    ? 'light-red'
+                                    : 'light-blue'
                                 : 'dark-blue'
                         "
                         @contextmenu.prevent="
@@ -58,6 +72,7 @@
         </query->
         <context-room- ref="context_room" :refs="$refs" />
         <popup-book-and-check-in- ref="book_and_check_in" :refs="$refs" />
+        <popup-book- ref="book" :refs="$refs" />
         <popup-booking-book-and-check-in-
             ref="booking_book_and_check_in"
             :refs="$refs"
@@ -67,16 +82,22 @@
 </template>
 <script lang="ts">
 import { Vue, Component } from 'nuxt-property-decorator';
-import { getFloors } from '~/graphql/documents/floor';
+import { getFloorsMap } from '~/graphql/documents/floor';
 import { mixinData } from '~/components/mixins/mutable';
 import { GetFloors } from 'graphql/types';
+import moment from 'moment';
 
 @Component({
     name: 'index-',
-    mixins: [mixinData({ getFloors })],
+    mixins: [mixinData({ getFloorsMap })],
 })
 export default class extends Vue {
     selected: GetFloors.Rooms[] = [];
+
+    from = moment().format();
+    to = moment()
+        .add(1, 'hours')
+        .format();
 
     head() {
         return {

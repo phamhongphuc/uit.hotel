@@ -589,8 +589,6 @@ export namespace GetBills {
 
         patron: Patron;
 
-        employee: Maybe<Employee>;
-
         receipts: Maybe<(Maybe<Receipts>)[]>;
 
         bookings: Maybe<(Maybe<Bookings>)[]>;
@@ -600,14 +598,6 @@ export namespace GetBills {
         __typename?: 'Patron';
 
         id: number;
-
-        name: string;
-    };
-
-    export type Employee = {
-        __typename?: 'Employee';
-
-        id: string;
 
         name: string;
     };
@@ -624,8 +614,6 @@ export namespace GetBills {
         __typename?: 'Booking';
 
         id: number;
-
-        total: number;
     };
 }
 
@@ -667,6 +655,43 @@ export namespace BookAndCheckIn {
     };
 }
 
+export namespace CreateBill {
+    export type Variables = {
+        bookings: BookingCreateInput[];
+        bill: BillCreateInput;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        createBill: CreateBill;
+    };
+
+    export type CreateBill = {
+        __typename?: 'Bill';
+
+        id: number;
+    };
+}
+
+export namespace PayTheBill {
+    export type Variables = {
+        id: string;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        payTheBill: PayTheBill;
+    };
+
+    export type PayTheBill = {
+        __typename?: 'Bill';
+
+        id: number;
+    };
+}
+
 export namespace GetBookings {
     export type Variables = {};
 
@@ -691,17 +716,11 @@ export namespace GetBookings {
 
         status: number;
 
-        total: number;
-
-        totalRates: number;
-
-        totalVolatilityRate: number;
-
-        totalServicesDetails: number;
-
         patrons: (Maybe<Patrons>)[];
 
         bill: Bill;
+
+        room: Room;
     };
 
     export type Patrons = {
@@ -716,6 +735,80 @@ export namespace GetBookings {
         __typename?: 'Bill';
 
         id: number;
+    };
+
+    export type Room = {
+        __typename?: 'Room';
+
+        id: number;
+
+        name: string;
+    };
+}
+
+export namespace CheckIn {
+    export type Variables = {
+        id: string;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        checkIn: CheckIn;
+    };
+
+    export type CheckIn = {
+        __typename?: 'Booking';
+
+        id: number;
+    };
+}
+
+export namespace RequestCheckOut {
+    export type Variables = {
+        id: string;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        requestCheckOut: RequestCheckOut;
+    };
+
+    export type RequestCheckOut = {
+        __typename?: 'Booking';
+
+        id: number;
+    };
+}
+
+export namespace CheckOut {
+    export type Variables = {
+        id: string;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        checkOut: CheckOut;
+    };
+
+    export type CheckOut = {
+        __typename?: 'Booking';
+
+        id: number;
+    };
+}
+
+export namespace Cancel {
+    export type Variables = {
+        id: string;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        cancel: string;
     };
 }
 
@@ -868,6 +961,59 @@ export namespace GetFloors {
         isActive: boolean;
 
         roomKind: RoomKind;
+    };
+
+    export type RoomKind = {
+        __typename?: 'RoomKind';
+
+        id: number;
+
+        name: string;
+    };
+}
+
+export namespace GetFloorsMap {
+    export type Variables = {
+        from: DateTimeOffset;
+        to: DateTimeOffset;
+    };
+
+    export type Query = {
+        __typename?: 'Query';
+
+        floors: Floors[];
+    };
+
+    export type Floors = {
+        __typename?: 'Floor';
+
+        id: number;
+
+        name: string;
+
+        isActive: boolean;
+
+        rooms: Maybe<(Maybe<Rooms>)[]>;
+    };
+
+    export type Rooms = {
+        __typename?: 'Room';
+
+        id: number;
+
+        name: string;
+
+        isActive: boolean;
+
+        currentBooking: Maybe<CurrentBooking>;
+
+        roomKind: RoomKind;
+    };
+
+    export type CurrentBooking = {
+        __typename?: 'Booking';
+
+        id: number;
     };
 
     export type RoomKind = {
@@ -1298,6 +1444,56 @@ export namespace SetIsActivePositionAndMoveEmployee {
         __typename?: 'Mutation';
 
         setIsActivePositionAndMoveEmployee: string;
+    };
+}
+
+export namespace GetRates {
+    export type Variables = {};
+
+    export type Query = {
+        __typename?: 'Query';
+
+        rates: Rates[];
+    };
+
+    export type Rates = {
+        __typename?: 'Rate';
+
+        id: number;
+
+        dayRate: number;
+
+        effectiveStartDate: DateTimeOffset;
+
+        createDate: DateTimeOffset;
+
+        roomKind: RoomKind;
+    };
+
+    export type RoomKind = {
+        __typename?: 'RoomKind';
+
+        id: number;
+
+        name: string;
+    };
+}
+
+export namespace CreateRate {
+    export type Variables = {
+        input: RateCreateInput;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        createRate: CreateRate;
+    };
+
+    export type CreateRate = {
+        __typename?: 'Rate';
+
+        id: number;
     };
 }
 
