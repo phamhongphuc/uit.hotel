@@ -1,6 +1,6 @@
 <template>
     <div @contextmenu.prevent="tableContext">
-        <div class="row">
+        <block-flex->
             <b-button
                 class="m-2"
                 variant="white"
@@ -15,7 +15,7 @@
                 <span class="icon mr-1"></span>
                 <span>Thêm giá cơ bản mới</span>
             </b-button>
-        </div>
+        </block-flex->
         <query-
             :query="getRates"
             class="row"

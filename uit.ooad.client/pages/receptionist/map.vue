@@ -1,6 +1,6 @@
 ﻿<template>
     <div>
-        <div class="row">
+        <block-flex->
             <b-button
                 class="m-2"
                 variant="white"
@@ -17,7 +17,7 @@
                 <span class="icon mr-1"></span>
                 <span>Đặt phòng</span>
             </b-button>
-        </div>
+        </block-flex->
         <query-
             :query="getFloorsMap"
             :variables="{

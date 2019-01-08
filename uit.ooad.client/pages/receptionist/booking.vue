@@ -1,6 +1,6 @@
 <template>
     <div @contextmenu.prevent="tableContext">
-        <div class="row">
+        <block-flex->
             <b-button
                 class="m-2"
                 variant="white"
@@ -23,7 +23,7 @@
                     }}
                 </span>
             </b-button>
-        </div>
+        </block-flex->
         <query-
             :query="getBookings"
             class="row"
@@ -97,8 +97,6 @@
             </b-table>
         </query->
         <context-manage-booking- ref="context_booking" :refs="$refs" />
-        <!-- <popup-booking-add- ref="booking_add" /> -->
-        <!-- <popup-booking-update- ref="booking_update" /> -->
     </div>
 </template>
 <script lang="ts">

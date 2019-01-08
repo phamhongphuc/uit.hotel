@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="row">
+        <block-flex->
             <b-button
                 class="m-2"
                 variant="white"
@@ -23,7 +23,7 @@
                     }}
                 </span>
             </b-button>
-        </div>
+        </block-flex->
         <query-
             :query="getFloors"
             class="hotel-map row flex-1"
