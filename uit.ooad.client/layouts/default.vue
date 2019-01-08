@@ -3,14 +3,12 @@
         <navbar- />
         <main>
             <sidebar- />
-            <div class="content">
-                <div class="container-staff"><nuxt /></div>
-            </div>
+            <nuxt class="content" />
         </main>
         <no-ssr>
             <notifications
                 animation-type="velocity"
-                position="left bottom"
+                position="right bottom"
                 :duration="1500"
             />
         </no-ssr>
@@ -23,26 +21,19 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+    user-select: none;
     > main {
         display: flex;
         flex: 1;
         max-height: calc(100% - 3.5rem);
         .content {
+            overflow: hidden;
+            position: relative;
             flex: 1;
-            padding: 0.75rem 0;
-            overflow-y: scroll;
+            padding: 0.5rem calc(0.5rem + 15px);
+            display: flex;
+            flex-direction: column;
         }
     }
-}
-
-.container-staff {
-    @include make-container();
-    @include make-container-max-widths(
-        (
-            md: 720px - 100px,
-            lg: 960px - 200px,
-            xl: 1140px - 200px,
-        )
-    );
 }
 </style>

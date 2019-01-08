@@ -14,7 +14,6 @@ query($id: ID!) {
             name
             amountOfPeople
             numberOfBeds
-            priceByDate
         }
     }
 }

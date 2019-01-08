@@ -32,7 +32,8 @@
                 "autoFix": true
             }
         ],
-        "files.eol": "\r\n"
+        "files.eol": "\r\n",
+        "search.usePCRE2": true
     },
     "extensions": {
         "recommendations": [],

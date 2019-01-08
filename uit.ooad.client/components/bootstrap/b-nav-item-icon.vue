@@ -1,5 +1,21 @@
 <template>
-    <b-nav-item :to="to" class="nav-item-icon" :exact="exact">
+    <b-nav-item
+        :href="href"
+        :rel="rel"
+        :target="target"
+        :active="active"
+        :active-class="activeClass"
+        :append="append"
+        :disabled="disabled"
+        :event="event"
+        :exact="exact"
+        :exact-active-class="exactActiveClass"
+        :replace="replace"
+        :router-tag="routerTag"
+        :to="to"
+        class="nav-item-icon"
+        @click="$emit('click')"
+    >
         <div v-if="icon !== ''" class="icon">{{ icon }}</div>
         <div v-else-if="image !== ''" class="icon">
             <image-
@@ -14,38 +30,17 @@
     </b-nav-item>
 </template>
 <script lang="ts">
-import { Vue, Prop, Component } from 'nuxt-property-decorator';
+import { Vue, Component } from 'nuxt-property-decorator';
+import {
+    IconProps,
+    ImageProps,
+    LinkProps,
+    TextProps,
+} from '~/components/mixins/props';
 
-@Component
-export default class extends Vue {
-    @Prop({ default: '' })
-    to: string;
-
-    @Prop({ default: '' })
-    image: string;
-
-    @Prop({ default: 0 })
-    imageWidth: number;
-
-    @Prop({ default: 0 })
-    imageHeight: number;
-
-    @Prop({ default: '' })
-    imageClass: string;
-
-    @Prop({ default: false })
-    circle: boolean;
-
-    @Prop({ default: '' })
-    textClass: string;
-
-    @Prop({ default: '' })
-    icon: string;
-
-    @Prop({ default: '' })
-    text: string;
-
-    @Prop({ default: false })
-    exact: boolean;
-}
+@Component({
+    name: 'b-nav-item-icon-',
+    mixins: [LinkProps, IconProps, TextProps, ImageProps],
+})
+export default class extends Vue {}
 </script>

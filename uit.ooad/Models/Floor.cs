@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Realms;
 using uit.ooad.Businesses;
 
@@ -16,11 +17,10 @@ namespace uit.ooad.Models
         [Backlink(nameof(Room.Floor))]
         public IQueryable<Room> Rooms { get; }
 
-        public Room[] fakeMethod()
+        public Floor GetManaged()
         {
-            return Realm.All<Room>().Where(r => r.Floor == this).ToArray();
+            var floor = FloorBusiness.Get(Id);
+            return floor;
         }
-
-        public Floor GetManaged() => FloorBusiness.Get(Id);
     }
 }

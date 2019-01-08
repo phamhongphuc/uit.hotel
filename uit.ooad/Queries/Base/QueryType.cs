@@ -45,9 +45,14 @@ namespace uit.ooad.Queries.Base
                 return resolver(context);
             };
 
-        public Func<ResolveFieldContext<object>, object> _CheckPermission_Object(
+        public Func<ResolveFieldContext<object>, object> _CheckPermission_TaskObject(
             Func<Position, bool> getPermission,
             Func<ResolveFieldContext<object>, Task<TModel>> resolver
+        ) => _CheckPermissionWithType(getPermission, resolver);
+
+        public Func<ResolveFieldContext<object>, object> _CheckPermission_Object(
+            Func<Position, bool> getPermission,
+            Func<ResolveFieldContext<object>, TModel> resolver
         ) => _CheckPermissionWithType(getPermission, resolver);
 
         public Func<ResolveFieldContext<object>, object> _CheckPermission_String(

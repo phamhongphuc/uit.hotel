@@ -1,0 +1,15 @@
+mutation($bookings: [BookAndCheckInCreateInput!]!, $bill: BillCreateInput!) {
+    bookAndCheckIn(bookings: $bookings, bill: $bill) {
+        id
+        time
+        patron {
+            id
+        }
+        employee {
+            id
+        }
+        bookings {
+            id
+        }
+    }
+}

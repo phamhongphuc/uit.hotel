@@ -14,28 +14,21 @@
                         "required": [
                             "id",
                             "name",
-                            "permissionReferRevenues",
-                            "permissionManageEmployees",
-                            "permissionGetRooms",
-                            "permissionManagePatrons",
-                            "permissionManagePatronKinds",
-                            "permissionHandleBills",
-                            "permissionManageHiringRooms",
-                            "permissionGetHouseKeepings",
-                            "permissionCreatePatronKind",
-                            "permissionCreateBill",
-                            "permissionCreateBooking",
-                            "permissionCreateOrUpdateEmployee",
                             "permissionCleaning",
-                            "permissionCreateOrUpdatePatron",
-                            "permissionCreatePosition",
-                            "permissionCreateOrUpdateRate",
-                            "permissionCreateReceipt",
-                            "permissionUpdateGroundPlan",
-                            "permissionCreateOrUpdateRoomKind",
-                            "permissionCreateOrUpdateService",
-                            "permissionCreateServicesDetail",
-                            "permissionCreateOrUpdateVolatilityRate"
+                            "permissionGetAccountingVoucher",
+                            "permissionGetHouseKeeping",
+                            "permissionGetMap",
+                            "permissionGetPatron",
+                            "permissionGetRate",
+                            "permissionGetService",
+                            "permissionManageEmployee",
+                            "permissionManageHiringRoom",
+                            "permissionManageMap",
+                            "permissionManagePatron",
+                            "permissionManagePatronKind",
+                            "permissionManagePosition",
+                            "permissionManageRate",
+                            "permissionManageService"
                         ],
                         "properties": {
                             "id": {
@@ -45,70 +38,49 @@
                                 "type": "string",
                                 "pattern": "^(.*)$"
                             },
-                            "permissionReferRevenues": {
+                            "permissionGetMap": {
                                 "type": "boolean"
                             },
-                            "permissionManageEmployees": {
+                            "permissionManageMap": {
                                 "type": "boolean"
                             },
-                            "permissionGetRooms": {
+                            "permissionManageRate": {
                                 "type": "boolean"
                             },
-                            "permissionManagePatrons": {
+                            "permissionGetRate": {
                                 "type": "boolean"
                             },
-                            "permissionManagePatronKinds": {
-                                "type": "boolean"
-                            },
-                            "permissionHandleBills": {
-                                "type": "boolean"
-                            },
-                            "permissionManageHiringRooms": {
-                                "type": "boolean"
-                            },
-                            "permissionGetHouseKeepings": {
-                                "type": "boolean"
-                            },
-                            "permissionCreatePatronKind": {
-                                "type": "boolean"
-                            },
-                            "permissionCreateBill": {
-                                "type": "boolean"
-                            },
-                            "permissionCreateBooking": {
-                                "type": "boolean"
-                            },
-                            "permissionCreateOrUpdateEmployee": {
+                            "permissionGetHouseKeeping": {
                                 "type": "boolean"
                             },
                             "permissionCleaning": {
                                 "type": "boolean"
                             },
-                            "permissionCreateOrUpdatePatron": {
+                            "permissionManageHiringRoom": {
                                 "type": "boolean"
                             },
-                            "permissionCreatePosition": {
+                            "permissionManagePatron": {
                                 "type": "boolean"
                             },
-                            "permissionCreateOrUpdateRate": {
+                            "permissionGetPatron": {
                                 "type": "boolean"
                             },
-                            "permissionCreateReceipt": {
+                            "permissionManagePatronKind": {
                                 "type": "boolean"
                             },
-                            "permissionUpdateGroundPlan": {
+                            "permissionManagePosition": {
                                 "type": "boolean"
                             },
-                            "permissionCreateOrUpdateRoomKind": {
+                            "permissionManageEmployee": {
                                 "type": "boolean"
                             },
-                            "permissionCreateOrUpdateService": {
+                            "permissionManageService": {
                                 "type": "boolean"
                             },
-                            "permissionCreateServicesDetail": {
+                            "permissionGetService": {
                                 "type": "boolean"
                             },
-                            "permissionCreateOrUpdateVolatilityRate": {
+                            "permissionGetAccountingVoucher": {
                                 "type": "boolean"
                             }
                         }

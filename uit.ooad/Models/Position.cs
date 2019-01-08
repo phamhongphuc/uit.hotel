@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Realms;
 using uit.ooad.Businesses;
 
@@ -10,32 +11,32 @@ namespace uit.ooad.Models
         public int Id { get; set; }
         public string Name { get; set; }
 
-        public bool PermissionUpdateGroundPlan { get; set; }
-        public bool PermissionManageEmployees { get; set; }
-        public bool PermissionReferRevenues { get; set; }
-        public bool PermissionManagePatrons { get; set; }
-        public bool PermissionManagePatronKinds { get; set; }
-        public bool PermissionHandleBills { get; set; }
-        public bool PermissionGetRooms { get; set; }
-        public bool PermissionManageHiringRooms { get; set; }
-        public bool PermissionGetHouseKeepings { get; set; }
-        public bool PermissionCreateBill { get; set; }
-        public bool PermissionCreateBooking { get; set; }
-        public bool PermissionCreateOrUpdateEmployee { get; set; }
         public bool PermissionCleaning { get; set; }
-        public bool PermissionCreateOrUpdatePatron { get; set; }
-        public bool PermissionCreatePatronKind { get; set; }
-        public bool PermissionCreatePosition { get; set; }
-        public bool PermissionCreateOrUpdateRate { get; set; }
-        public bool PermissionCreateReceipt { get; set; }
-        public bool PermissionCreateOrUpdateRoomKind { get; set; }
-        public bool PermissionCreateOrUpdateService { get; set; }
-        public bool PermissionCreateServicesDetail { get; set; }
-        public bool PermissionCreateOrUpdateVolatilityRate { get; set; }
+        public bool PermissionGetAccountingVoucher { get; set; }
+        public bool PermissionGetHouseKeeping { get; set; }
+        public bool PermissionGetMap { get; set; }
+        public bool PermissionGetPatron { get; set; }
+        public bool PermissionGetRate { get; set; }
+        public bool PermissionGetService { get; set; }
+        public bool PermissionManageEmployee { get; set; }
+        public bool PermissionManageHiringRoom { get; set; }
+        public bool PermissionManageMap { get; set; }
+        public bool PermissionManagePatron { get; set; }
+        public bool PermissionManagePatronKind { get; set; }
+        public bool PermissionManagePosition { get; set; }
+        public bool PermissionManageRate { get; set; }
+        public bool PermissionManageService { get; set; }
+        public bool IsActive { get; set; }
 
         [Backlink(nameof(Employee.Position))]
         public IQueryable<Employee> Employees { get; }
 
-        public Position GetManaged() => PositionBusiness.Get(Id);
+        public Position GetManaged()
+        {
+            var position = PositionBusiness.Get(Id);
+            if (position == null)
+                throw new Exception("Mã chức vụ không tồn tại");
+            return position;
+        }
     }
 }

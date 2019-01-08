@@ -14,15 +14,16 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.Id).Description("Id của chi tiết dịch vụ");
             Field(x => x.Time).Description("Thời gian tạo");
             Field(x => x.Number).Description("Số lượng");
+            Field(x => x.Total).Description("Thành tiền");
 
             Field<NonNullGraphType<BookingType>>(
                 nameof(ServicesDetail.Booking),
-                resolve: context => context.Source.Booking,
-                description: "Thuộc thông tin thuê phòng nào");
+                "Thuộc thông tin thuê phòng nào",
+                resolve: context => context.Source.Booking);
             Field<NonNullGraphType<ServiceType>>(
                 nameof(ServicesDetail.Service),
-                resolve: context => context.Source.Service,
-                description: "Thuộc dịch vụ nào");
+                "Thuộc dịch vụ nào",
+                resolve: context => context.Source.Service);
         }
     }
 
@@ -37,12 +38,48 @@ namespace uit.ooad.ObjectTypes
         }
     }
 
+    public class ServicesDetailHouseKeepingInput : InputType<ServicesDetail>
+    {
+        public ServicesDetailHouseKeepingInput()
+        {
+            Name = "ServicesDetailHouseKeepingInput";
+
+            Field(x => x.Number).Description("Số lượng");
+
+            Field<NonNullGraphType<ServiceIdInput>>(
+                nameof(ServicesDetail.Service),
+                "Thuộc dịch vụ nào"
+            );
+        }
+    }
+
     public class ServicesDetailCreateInput : InputType<ServicesDetail>
     {
         public ServicesDetailCreateInput()
         {
             Name = _Creation;
 
+            Field(x => x.Number).Description("Số lượng");
+
+            Field<NonNullGraphType<ServiceIdInput>>(
+                nameof(ServicesDetail.Service),
+                "Thuộc dịch vụ nào"
+            );
+
+            Field<NonNullGraphType<BookingIdInput>>(
+                nameof(ServicesDetail.Booking),
+                "Thuộc booking nào"
+            );
+        }
+    }
+
+    public class ServicesDetailUpdateInput : InputType<ServicesDetail>
+    {
+        public ServicesDetailUpdateInput()
+        {
+            Name = _Updation;
+
+            Field(x => x.Id).Description("Id của chi tiết dịch vụ cần cập nhật");
             Field(x => x.Number).Description("Số lượng");
 
             Field<NonNullGraphType<ServiceIdInput>>(

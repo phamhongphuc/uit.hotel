@@ -9,12 +9,11 @@
         earlyCheckInFee
         effectiveStartDate
         createDate
+        employee {
+            id
+        }
         roomKind {
             id
-            name
-            amountOfPeople
-            numberOfBeds
-            priceByDate
         }
     }
 }

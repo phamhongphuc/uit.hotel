@@ -14,28 +14,28 @@ namespace uit.ooad.ObjectTypes
 
             Field(x => x.Id).Description("Id của hóa đơn");
             Field(x => x.Time).Description("Thời điểm in hóa đơn");
+            Field(x => x.Total).Description("Tổng giá trị hóa đơn");
+            Field(x => x.TotalReceipts).Description("Tổng giá trị các phiếu thu");
 
             Field<NonNullGraphType<PatronType>>(
                 nameof(Bill.Patron),
-                resolve: context => context.Source.Patron,
-                description: "Thông tin khách hàng thanh toán hóa đơn");
+                "Thông tin khách hàng thanh toán hóa đơn",
+                resolve: context => context.Source.Patron);
 
             Field<EmployeeType>(
                 nameof(Bill.Employee),
-                resolve: context => context.Source.Employee,
-                description: "Thông tin nhân viên nhận thanh toán hóa đơn");
+                "Thông tin nhân viên nhận thanh toán hóa đơn",
+                resolve: context => context.Source.Employee);
 
             Field<ListGraphType<ReceiptType>>(
                 nameof(Bill.Receipts),
-                resolve: context =>
-                    context.Source.Receipts.ToList(),
-                description: "Danh sách các biên nhận cho hóa đơn");
+                "Danh sách các biên nhận cho hóa đơn",
+                resolve: context => context.Source.Receipts.ToList());
 
             Field<ListGraphType<BookingType>>(
                 nameof(Bill.Bookings),
-                resolve: context => context.Source.Bookings.ToList(),
-                description: "Danh sách các thông tin đặt trước của hóa đơn"
-            );
+                "Danh sách các thông tin đặt trước của hóa đơn",
+                resolve: context => context.Source.Bookings.ToList());
         }
     }
 
@@ -54,8 +54,6 @@ namespace uit.ooad.ObjectTypes
     {
         public BillCreateInput()
         {
-            Field(x => x.Time).Description("Thời điểm in hóa đơn");
-
             Field<PatronIdInput>(
                 nameof(Bill.Patron),
                 "Khách hàng"

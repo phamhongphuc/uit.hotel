@@ -5,12 +5,12 @@ using uit.ooad.Models;
 
 namespace uit.ooad.Businesses
 {
-    public class ReceiptBusiness
+    public static class ReceiptBusiness
     {
-        public static Task<Receipt> Add(Receipt receipt)
+        public static Task<Receipt> Add(Employee employee, Receipt receipt)
         {
             receipt.Bill = receipt.Bill.GetManaged();
-            receipt.Employee = receipt.Employee.GetManaged();
+            receipt.Employee = employee;
             return ReceiptDataAccess.Add(receipt);
         }
 

@@ -14,20 +14,17 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.Id).Description("Id của phiếu thu");
             Field(x => x.Money).Description("Số tiền đã thu");
             Field(x => x.Time).Description("Thời gian tạo phiếu thu");
-            Field(x => x.TypeOfPayment).Description("Kiểu thanh toán (tiền mặt hoặc chuyển khoản)");
             Field(x => x.BankAccountNumber, true).Description("Số tài khoản ngân hàng của khách");
 
             Field<NonNullGraphType<BillType>>(
                 nameof(Receipt.Bill),
-                resolve: context => context.Source.Bill,
-                description: "Phiếu thu thuộc hóa đơn nào"
-            );
+                "Phiếu thu thuộc hóa đơn nào",
+                resolve: context => context.Source.Bill);
 
             Field<NonNullGraphType<EmployeeType>>(
                 nameof(Receipt.Employee),
-                resolve: context => context.Source.Employee,
-                description: "Nhân viên tạo phiếu thu"
-            );
+                "Nhân viên tạo phiếu thu",
+                resolve: context => context.Source.Employee);
         }
     }
 
@@ -36,18 +33,11 @@ namespace uit.ooad.ObjectTypes
         public ReceiptCreateInput()
         {
             Field(x => x.Money).Description("Số tiền đã thu");
-            Field(x => x.Time).Description("Thời gian tạo phiếu thu");
-            Field(x => x.TypeOfPayment).Description("Kiểu thanh toán (tiền mặt hoặc chuyển khoản)");
             Field(x => x.BankAccountNumber, true).Description("Số tài khoản ngân hàng của khách");
 
             Field<BillIdInput>(
                 nameof(Receipt.Bill),
                 "Thuộc hóa đơn"
-            );
-
-            Field<EmployeeIdInput>(
-                nameof(Receipt.Employee),
-                "Nhân viên tạo phiếu thu"
             );
         }
     }

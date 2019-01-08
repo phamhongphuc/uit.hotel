@@ -57,8 +57,7 @@
                                 "id",
                                 "name",
                                 "amountOfPeople",
-                                "numberOfBeds",
-                                "priceByDate"
+                                "numberOfBeds"
                             ],
                             "properties": {
                                 "id": {
@@ -72,9 +71,6 @@
                                     "type": "integer"
                                 },
                                 "numberOfBeds": {
-                                    "type": "integer"
-                                },
-                                "priceByDate": {
                                     "type": "integer"
                                 }
                             }

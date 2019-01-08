@@ -11,11 +11,12 @@
                     "type": "object",
                     "required": [
                         "id",
-                        "password",
                         "name",
                         "identityCard",
                         "phoneNumber",
                         "address",
+                        "email",
+                        "gender",
                         "birthdate",
                         "startingDate",
                         "isActive",
@@ -23,10 +24,6 @@
                     ],
                     "properties": {
                         "id": {
-                            "type": "string",
-                            "pattern": "^(.*)$"
-                        },
-                        "password": {
                             "type": "string",
                             "pattern": "^(.*)$"
                         },
@@ -45,6 +42,13 @@
                         "address": {
                             "type": "string",
                             "pattern": "^(.*)$"
+                        },
+                        "email": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "gender": {
+                            "type": "boolean"
                         },
                         "birthdate": {
                             "type": "string",

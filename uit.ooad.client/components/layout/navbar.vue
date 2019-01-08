@@ -14,11 +14,7 @@
             >
                 Quản lý khách sạn
             </b-nav-item>
-            <b-nav-item-icon-
-                class="d-md-none mx-1"
-                image="/favicon.png"
-                @click.native="toggle"
-            />
+            <b-nav-item-icon- class="d-md-none mx-1" image="/favicon.png" />
         </b-navbar-nav>
 
         <b-collapse
@@ -37,29 +33,96 @@
                     icon=""
                     :focus.sync="isInputFocus"
                 />
-                <b-nav-item-icon-
-                    image="/favicon.png"
-                    text="Tên người dùng"
-                    text-class="d-md-none"
-                    class="d-none d-md-block"
-                    :class="isInputFocus ? 'w-0 h-0' : ''"
-                    @click.native="toggle"
-                />
+                <b-dropdown
+                    class="navar-dropdown d-none d-md-block"
+                    variant="link"
+                    size="md"
+                    no-caret
+                    right
+                    toggle-class="p-0 border-0 nav-item-icon d-flex"
+                    menu-class="border-0 shadow rounded mt-3"
+                >
+                    <template slot="button-content">
+                        <div class="icon">
+                            <image-
+                                class="m-1 rounded-circle"
+                                source="/black.png"
+                                height="32"
+                                width="32"
+                            />
+                        </div>
+                    </template>
+                    <b-dropdown-item
+                        to="/profile"
+                        class="d-flex dropdown-profile"
+                    >
+                        <image-
+                            class="rounded-circle m-1"
+                            source="/black.png"
+                            height="40"
+                            width="40"
+                        />
+                        <div class="dropdown-profile-detail">
+                            <div class="dropdown-profile-detail-name">
+                                {{ employee.name }}
+                            </div>
+                            <div class="dropdown-profile-detail-position">
+                                {{ employee.position.name }}
+                            </div>
+                        </div>
+                    </b-dropdown-item>
+                    <div class="hr line" />
+                    <b-dropdown-item-icon-
+                        text="Đăng xuất"
+                        icon=""
+                        @click="logout"
+                    />
+                </b-dropdown>
             </b-navbar-nav>
         </b-collapse>
     </b-navbar>
 </template>
 <script lang="ts">
 import { Vue, namespace, Component } from 'nuxt-property-decorator';
+import { UserState } from 'store/user';
+import { UserLogin } from 'graphql/types';
 
-@Component
+@Component({
+    name: 'navbar-',
+})
 export default class extends Vue {
     isInputFocus = false;
 
     @namespace('style').State
     breakpoint;
 
-    @namespace('view').Action
-    toggle;
+    @namespace('user').Action
+    logout;
+
+    @namespace('user').State(
+        (state: UserState) => state.employee || { position: {} },
+    )
+    employee: UserLogin.Employee;
 }
 </script>
+<style lang="scss">
+.dropdown-profile {
+    padding: 1rem;
+    margin-top: -0.5rem;
+    > .dropdown-profile-detail {
+        height: 3rem;
+        margin-left: 0.75rem;
+        margin-right: 2.5rem;
+        > .dropdown-profile-detail-name {
+            margin-top: 0.25rem;
+            line-height: 1.5rem;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+        > .dropdown-profile-detail-position {
+            line-height: 1.25rem;
+            font-size: 0.8rem;
+        }
+    }
+}
+</style>

@@ -16,7 +16,7 @@ namespace uit.ooad.Queries.Mutation
 
         public AuthenticationMutation()
         {
-            Field<AuthenticationType>(
+            Field<NonNullGraphType<AuthenticationType>>(
                 "Login",
                 "Đăng nhập mới",
                 new QueryArguments(
@@ -31,7 +31,7 @@ namespace uit.ooad.Queries.Mutation
                 }
             );
 
-            Field<EmployeeType>(
+            Field<NonNullGraphType<EmployeeType>>(
                 "CheckLogin",
                 "Kiểm tra đăng nhập",
                 resolve: context =>
@@ -42,7 +42,7 @@ namespace uit.ooad.Queries.Mutation
                 }
             );
 
-            Field<StringGraphType>(
+            Field<NonNullGraphType<StringGraphType>>(
                 "ChangePassword",
                 "Nhân viên tự đổi mật khẩu cho tài khoản của mình",
                 new QueryArguments(

@@ -14,21 +14,13 @@
 </template>
 <script lang="ts">
 import { Vue, Prop, Component } from 'nuxt-property-decorator';
+import { IconProps, InputProps } from '~/components/mixins/props';
 
-@Component
+@Component({
+    name: 'b-nav-item-input-',
+    mixins: [IconProps, InputProps],
+})
 export default class extends Vue {
-    @Prop({ default: '' })
-    value: string;
-
-    @Prop({ default: false })
-    type: boolean;
-
-    @Prop({ default: '' })
-    placeholder: string;
-
-    @Prop({ default: '' })
-    icon: string;
-
     @Prop({ default: '' })
     reverseWhen: string;
 }

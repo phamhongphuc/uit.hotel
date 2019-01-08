@@ -17,9 +17,8 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.IsActive).Description("Trạng thái hoạt động");
             Field<ListGraphType<RoomType>>(
                 nameof(Floor.Rooms),
-                resolve: context => context.Source.Rooms.ToList(),
-                description: "Danh sách các phòng có trong tầng"
-            );
+                "Danh sách các phòng có trong tầng",
+                resolve: context => context.Source.Rooms.ToList());
         }
     }
 
@@ -40,7 +39,6 @@ namespace uit.ooad.ObjectTypes
         {
             Name = _Creation;
             Field(x => x.Name).Description("Tên tầng");
-            Field(x => x.IsActive).Description("Trạng thái hoạt động");
         }
     }
 

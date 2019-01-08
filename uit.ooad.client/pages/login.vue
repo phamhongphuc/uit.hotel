@@ -6,13 +6,17 @@
             :style="{ width: '120px' }"
         />
         <h4 class="font-pacifico text-center mb-5">Quản lý khách sạn</h4>
-        <b-form class="flex-fill d-flex flex-column my-5" @submit="login">
+        <b-form
+            class="flex-fill d-flex flex-column my-5"
+            @submit.prevent="login({ id, password })"
+        >
             <b-input-
                 v-model="id"
                 name="username"
                 type="text"
                 placeholder="Tên đăng nhập"
                 icon=""
+                class="circle"
             />
             <b-input-
                 v-model="password"
@@ -20,7 +24,7 @@
                 type="password"
                 placeholder="Mật khẩu"
                 icon=""
-                class="my-2"
+                class="my-2 circle"
             />
             <b-button
                 variant="main"
@@ -42,7 +46,9 @@
 <script lang="ts">
 import { Vue, Component, namespace } from 'nuxt-property-decorator';
 
-@Component
+@Component({
+    name: 'login-',
+})
 export default class extends Vue {
     id = '';
     password = '';
@@ -51,16 +57,7 @@ export default class extends Vue {
         return 'side';
     }
 
-    @namespace('user').Action('login')
-    actionLogin;
-
-    async login(event) {
-        event.preventDefault();
-        await this.actionLogin({ id: this.id, password: this.password });
-        this.$router.push('/');
-        Vue.notify({
-            title: 'Đăng nhập thành công',
-        });
-    }
+    @namespace('user').Action
+    login;
 }
 </script>

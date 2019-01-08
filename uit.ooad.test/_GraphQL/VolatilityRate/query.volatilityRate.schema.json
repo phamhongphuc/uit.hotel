@@ -145,8 +145,7 @@
                                 "id",
                                 "name",
                                 "amountOfPeople",
-                                "numberOfBeds",
-                                "priceByDate"
+                                "numberOfBeds"
                             ],
                             "properties": {
                                 "id": {
@@ -173,12 +172,6 @@
                                     "title": "The Numberofbeds Schema",
                                     "default": 0,
                                     "examples": [2]
-                                },
-                                "priceByDate": {
-                                    "type": "integer",
-                                    "title": "The Pricebydate Schema",
-                                    "default": 0,
-                                    "examples": [1000]
                                 }
                             }
                         }

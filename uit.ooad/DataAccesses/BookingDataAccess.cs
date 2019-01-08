@@ -9,11 +9,16 @@ namespace uit.ooad.DataAccesses
 {
     public class BookingDataAccess : RealmDatabase
     {
-        public static int NextId => Get().Count() == 0 ? 1 : Get().Max(f => f.Id) + 1;
+        public static int NextId => Get().Count() == 0 ? 1 : Get().Max(i => i.Id) + 1;
 
-        public static async Task<Booking> Add(Booking booking)
+        public static async Task<Booking> Add(Employee employee, Bill bill, Booking booking)
         {
-            await Database.WriteAsync(realm => Add(realm, booking));
+            await Database.WriteAsync(realm =>
+            {
+                booking.EmployeeBooking = employee;
+                booking.Bill = bill;
+                Add(realm, booking);
+            });
             return booking;
         }
 
@@ -23,6 +28,26 @@ namespace uit.ooad.DataAccesses
             booking.CreateTime = DateTimeOffset.Now;
             booking.Status = (int)Booking.StatusEnum.Booked;
             return realm.Add(booking);
+        }
+
+        public static Booking BookAndCheckIn(Realm realm, Booking booking)
+        {
+            booking.Id = NextId;
+            booking.CreateTime = DateTimeOffset.Now;
+            booking.BookCheckInTime = DateTimeOffset.Now;
+            booking.RealCheckInTime = DateTimeOffset.Now;
+            booking.Status = (int)Booking.StatusEnum.CheckedIn;
+
+            booking = realm.Add(booking);
+
+            var houseKeeping = new HouseKeeping();
+            houseKeeping.Type = (int)HouseKeeping.TypeEnum.ExpectedArrival;
+            houseKeeping.Status = (int)HouseKeeping.StatusEnum.Pending;
+            houseKeeping.Booking = booking;
+
+            HouseKeepingDataAccess.Add(realm, houseKeeping);
+
+            return booking;
         }
 
         public static async Task<Booking> CheckIn(Employee employee, Booking bookingInDatabase,
@@ -40,7 +65,7 @@ namespace uit.ooad.DataAccesses
         }
 
         public static async Task<Booking> RequestCheckOut(Employee employee, Booking bookingInDatabase,
-                                                            HouseKeeping houseKeeping)
+                                                          HouseKeeping houseKeeping)
         {
             await Database.WriteAsync(realm =>
             {
@@ -60,6 +85,11 @@ namespace uit.ooad.DataAccesses
                 bookingInDatabase.Status = (int)Booking.StatusEnum.CheckedOut;
             });
             return bookingInDatabase;
+        }
+
+        public static async void Delete(Booking bookingInDatabase)
+        {
+            await Database.WriteAsync(realm => realm.Remove(bookingInDatabase));
         }
 
         public static Booking Get(int bookingId) => Database.Find<Booking>(bookingId);

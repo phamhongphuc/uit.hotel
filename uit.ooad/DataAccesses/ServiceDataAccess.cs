@@ -14,7 +14,7 @@ namespace uit.ooad.DataAccesses
             await Database.WriteAsync(realm =>
             {
                 service.Id = NextId;
-
+                service.IsActive = true;
                 service = realm.Add(service);
             });
             return service;
@@ -34,6 +34,11 @@ namespace uit.ooad.DataAccesses
         public static async void SetIsActive(Service service, bool isActive)
         {
             await Database.WriteAsync(realm => service.IsActive = isActive);
+        }
+
+        public static async void Delete(Service serviceInDatabase)
+        {
+            await Database.WriteAsync(realm => realm.Remove(serviceInDatabase));
         }
 
         public static Service Get(int serviceId) => Database.Find<Service>(serviceId);

@@ -10,16 +10,23 @@ namespace uit.ooad.Queries.Query
     {
         public BookingQuery()
         {
-            Field<ListGraphType<BookingType>>(
+            Field<NonNullGraphType<ListGraphType<NonNullGraphType<BookingType>>>>(
                 _List,
                 "Trả về một danh sách các đơn đặt phòng",
-                resolve: context => BookingBusiness.Get()
+                resolve: _CheckPermission_List(
+                    p => p.PermissionManageHiringRoom,
+                    context => BookingBusiness.Get()
+                )
             );
-            Field<BookingType>(
+
+            Field<NonNullGraphType<BookingType>>(
                 _Item,
                 "Trả về thông tin một đơn đặt phòng",
                 _IdArgument(),
-                context => BookingBusiness.Get(_GetId<int>(context))
+                _CheckPermission_Object(
+                    p => p.PermissionManageHiringRoom,
+                    context => BookingBusiness.Get(_GetId<int>(context))
+                )
             );
         }
     }

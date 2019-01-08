@@ -12,16 +12,16 @@ namespace uit.ooad.Queries.Mutation
     {
         public BillMutation()
         {
-            Field<BillType>(
+            Field<NonNullGraphType<BillType>>(
                 _Creation,
                 "Tạo và trả về một đơn đặt phòng",
                 new QueryArguments(
                     new QueryArgument<NonNullGraphType<ListGraphType<NonNullGraphType<BookingCreateInput>>>>
-                        { Name = "bookings" },
+                    { Name = "bookings" },
                     new QueryArgument<NonNullGraphType<BillCreateInput>> { Name = "bill" }
                 ),
-                _CheckPermission_Object(
-                    p => p.PermissionManageHiringRooms,
+                _CheckPermission_TaskObject(
+                    p => p.PermissionManageHiringRoom,
                     async context =>
                     {
                         var employee = AuthenticationHelper.GetEmployee(context);
@@ -30,6 +30,41 @@ namespace uit.ooad.Queries.Mutation
 
                         var billInDatabase = await BillBusiness.Book(employee, bill, bookings);
                         return billInDatabase;
+                    }
+                )
+            );
+
+            Field<NonNullGraphType<BillType>>(
+                "BookAndCheckIn",
+                "Đặt và nhận phòng ngay tại khách sạn",
+                new QueryArguments(
+                    new QueryArgument<NonNullGraphType<ListGraphType<NonNullGraphType<BookAndCheckInCreateInput>>>>
+                    { Name = "bookings" },
+                    new QueryArgument<NonNullGraphType<BillCreateInput>> { Name = "bill" }
+                ),
+                _CheckPermission_TaskObject(
+                    p => p.PermissionManageHiringRoom,
+                    async context =>
+                    {
+                        var employee = AuthenticationHelper.GetEmployee(context);
+                        var bill = context.GetArgument<Bill>("bill");
+                        var bookings = context.GetArgument<List<Booking>>("bookings");
+
+                        return await BillBusiness.BookAndCheckIn(employee, bill, bookings);
+                    }
+                )
+            );
+            
+            Field<NonNullGraphType<BillType>>(
+                "PayTheBill",
+                "Thanh toán hóa đơn (thanh toán tiền phòng)",
+                _IdArgument(),
+                _CheckPermission_TaskObject(
+                    p => p.PermissionManageHiringRoom,
+                    context =>
+                    {
+                        var employee = AuthenticationHelper.GetEmployee(context);
+                        return BillBusiness.PayTheBill(employee, _GetId<int>(context));
                     }
                 )
             );

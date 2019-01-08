@@ -7,7 +7,7 @@ using uit.ooad.Models;
 
 namespace uit.ooad.Businesses
 {
-    public class RoomKindBusiness
+    public static class RoomKindBusiness
     {
         public static Task<RoomKind> Add(RoomKind roomKind) => RoomKindDataAccess.Add(roomKind);
 
@@ -27,7 +27,7 @@ namespace uit.ooad.Businesses
         {
             var roomKindInDatabase = Get(roomKindId);
             if (roomKindInDatabase == null)
-                throw new Exception("Tầng có Id: " + roomKindId + " không hợp lệ!");
+                throw new Exception("Loại phòng có Id: " + roomKindId + " không hợp lệ!");
             RoomKindDataAccess.SetIsActive(roomKindInDatabase, isActive);
         }
 

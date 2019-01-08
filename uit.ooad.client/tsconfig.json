@@ -1,18 +1,14 @@
 {
     "compilerOptions": {
         "target": "es5",
-        "lib": ["dom", "es2015"],
+        "lib": ["dom", "es2015", "esnext"],
         "module": "es2015",
         "moduleResolution": "node",
         "experimentalDecorators": true,
-        "noImplicitAny": false,
-        "noImplicitThis": false,
-        "strictNullChecks": true,
         "removeComments": true,
         "suppressImplicitAnyIndexErrors": true,
         "allowSyntheticDefaultImports": true,
-        "sourceMap": true,
-        "allowJs": true,
+        "skipLibCheck": true,
         "baseUrl": ".",
         "paths": {
             "~/*": ["./*"]
@@ -22,10 +18,14 @@
     "compileOnSave": false,
     "exclude": [
         "node_modules",
+        ".nyc_output",
+        ".vscode",
         ".nuxt",
         "dist",
+        "coverage",
         "modules/typescript.js",
         "test/ts-register.js",
-        "nuxt.config.js"
+        "nuxt.config.js",
+        ".eslintrc.js"
     ]
 }

@@ -1,0 +1,17 @@
+{
+    "definitions": {},
+    "type": "object",
+    "required": ["data"],
+    "properties": {
+        "data": {
+            "type": "object",
+            "required": ["deleteService"],
+            "properties": {
+                "deleteService": {
+                    "type": "string",
+                    "pattern": "^(.*)$"
+                }
+            }
+        }
+    }
+}

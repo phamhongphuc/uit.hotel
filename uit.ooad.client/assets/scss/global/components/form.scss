@@ -1,0 +1,35 @@
+.btn {
+    display: flex;
+    justify-content: center;
+    > span {
+        display: block;
+        max-height: $input-btn-font-size * $input-btn-line-height;
+        line-height: $input-btn-font-size * $input-btn-line-height;
+        &.icon {
+            width: $input-btn-font-size * $input-btn-line-height;
+            margin-left: -0.25rem;
+        }
+    }
+}
+
+.input-label {
+    padding: 0.25rem;
+    margin: -0.5rem 1rem -1rem;
+
+    &:first-child {
+        margin-top: 0.5rem;
+    }
+}
+
+.inline-checkbox {
+    display: block;
+    margin: 0 1.5rem -1rem;
+    &:first-child {
+        margin-top: 1rem;
+    }
+}
+
+.custom-select {
+    background-color: #e5e5e5 !important;
+    border: 0;
+}

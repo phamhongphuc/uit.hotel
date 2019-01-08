@@ -1,0 +1,93 @@
+{
+    "definitions": {},
+    "type": "object",
+    "required": ["data"],
+    "properties": {
+        "data": {
+            "type": "object",
+            "required": ["updatePosition"],
+            "properties": {
+                "updatePosition": {
+                    "type": "object",
+                    "required": [
+                        "id",
+                        "name",
+                        "isActive",
+                        "permissionCleaning",
+                        "permissionGetAccountingVoucher",
+                        "permissionGetHouseKeeping",
+                        "permissionGetMap",
+                        "permissionGetPatron",
+                        "permissionGetRate",
+                        "permissionGetService",
+                        "permissionManageEmployee",
+                        "permissionManageHiringRoom",
+                        "permissionManageMap",
+                        "permissionManagePatron",
+                        "permissionManagePatronKind",
+                        "permissionManagePosition",
+                        "permissionManageRate",
+                        "permissionManageService"
+                    ],
+                    "properties": {
+                        "id": {
+                            "type": "integer"
+                        },
+                        "name": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "permissionManageMap": {
+                            "type": "boolean"
+                        },
+                        "permissionGetMap": {
+                            "type": "boolean"
+                        },
+                        "permissionManageRate": {
+                            "type": "boolean"
+                        },
+                        "permissionGetRate": {
+                            "type": "boolean"
+                        },
+                        "permissionGetHouseKeeping": {
+                            "type": "boolean"
+                        },
+                        "permissionCleaning": {
+                            "type": "boolean"
+                        },
+                        "permissionManageHiringRoom": {
+                            "type": "boolean"
+                        },
+                        "permissionManagePatron": {
+                            "type": "boolean"
+                        },
+                        "permissionGetPatron": {
+                            "type": "boolean"
+                        },
+                        "permissionManagePatronKind": {
+                            "type": "boolean"
+                        },
+                        "permissionManagePosition": {
+                            "type": "boolean"
+                        },
+                        "permissionManageEmployee": {
+                            "type": "boolean"
+                        },
+                        "permissionManageService": {
+                            "type": "boolean"
+                        },
+                        "permissionGetService": {
+                            "type": "boolean"
+                        },
+                        "permissionGetAccountingVoucher": {
+                            "type": "boolean"
+                        },
+                        "isActive": {
+                            "type": "boolean"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

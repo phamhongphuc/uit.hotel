@@ -1,0 +1,17 @@
+mutation($input: EmployeeUpdateInput!) {
+    updateEmployee(input: $input) {
+        id
+        name
+        identityCard
+        phoneNumber
+        address
+        email
+        gender
+        birthdate
+        startingDate
+        isActive
+        position {
+            id
+        }
+    }
+}

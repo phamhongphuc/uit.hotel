@@ -10,16 +10,23 @@ namespace uit.ooad.Queries.Query
     {
         public VolatilityRateQuery()
         {
-            Field<ListGraphType<VolatilityRateType>>(
+            Field<NonNullGraphType<ListGraphType<NonNullGraphType<VolatilityRateType>>>>(
                 _List,
                 "Trả về một danh sách các giá biến động",
-                resolve: context => VolatilityRateBusiness.Get()
+                resolve: _CheckPermission_List(
+                    p => p.PermissionGetRate,
+                    context => VolatilityRateBusiness.Get()
+                )
             );
-            Field<VolatilityRateType>(
+
+            Field<NonNullGraphType<VolatilityRateType>>(
                 _Item,
                 "Trả về thông tin một giá biến động",
                 _IdArgument(),
-                context => VolatilityRateBusiness.Get(_GetId<int>(context))
+                _CheckPermission_Object(
+                    p => p.PermissionGetRate,
+                    context => VolatilityRateBusiness.Get(_GetId<int>(context))
+                )
             );
         }
     }

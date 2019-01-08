@@ -10,16 +10,23 @@ namespace uit.ooad.Queries.Query
     {
         public PositionQuery()
         {
-            Field<ListGraphType<PositionType>>(
+            Field<NonNullGraphType<ListGraphType<NonNullGraphType<PositionType>>>>(
                 _List,
                 "Trả về một danh sách các chức vụ",
-                resolve: context => PositionBusiness.Get()
+                resolve: _CheckPermission_List(
+                    p => p.PermissionManagePosition,
+                    context => PositionBusiness.Get()
+                )
             );
-            Field<PositionType>(
+
+            Field<NonNullGraphType<PositionType>>(
                 _Item,
                 "Trả về thông tin một chức vụ",
                 _IdArgument(),
-                context => PositionBusiness.Get(_GetId<int>(context))
+                _CheckPermission_Object(
+                    p => p.PermissionManagePosition,
+                    context => PositionBusiness.Get(_GetId<int>(context))
+                )
             );
         }
     }

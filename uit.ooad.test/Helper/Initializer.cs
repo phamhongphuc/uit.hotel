@@ -1,4 +1,7 @@
+using System.Collections.Generic;
+using GraphQL;
 using GraphQL.Types;
+using GraphQL.Validation;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -12,6 +15,8 @@ namespace uit.ooad.test.Helper
     public class Initializer
     {
         public static ISchema Schema;
+        public static IDocumentExecuter DocumentExecuter;
+        public static IEnumerable<IValidationRule> ValidationRule;
 
         [AssemblyInitialize]
         public static void AssemblyInitialize(TestContext TestContext)
@@ -33,6 +38,10 @@ namespace uit.ooad.test.Helper
             });
 
             Schema = serviceProvider.GetService<ISchema>();
+
+            DocumentExecuter = serviceProvider.GetService<IDocumentExecuter>();
+
+            ValidationRule = serviceProvider.GetService<IEnumerable<IValidationRule>>();
 
             InitializeDatabase.InitializeDatabaseObject();
         }

@@ -7,12 +7,14 @@ namespace uit.ooad.DataAccesses
 {
     public class FloorDataAccess : RealmDatabase
     {
+        private static int NextId => Get().Count() == 0 ? 1 : Get().Max(i => i.Id) + 1;
+
         public static async Task<Floor> Add(Floor floor)
         {
             await Database.WriteAsync(realm =>
             {
-                floor.Id = Get().Count() == 0 ? 1 : Get().Max(f => f.Id) + 1;
-
+                floor.Id = NextId;
+                floor.IsActive = true;
                 floor = realm.Add(floor);
             });
             return floor;

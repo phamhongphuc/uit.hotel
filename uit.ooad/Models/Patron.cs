@@ -14,7 +14,7 @@ namespace uit.ooad.Models
             set
             {
                 if (IsManaged)
-                    throw new Exception("Chỉ tạo setter cho trường dữ liệu này đối với đối tượng chưa được quản lý.");
+                    throw new Exception("Chỉ tạo setter cho trường dữ liệu này đối với đối tượng chưa được quản lý");
                 foreach (var phoneNumber in value)
                     PhoneNumbers.Add(phoneNumber);
             }
@@ -47,7 +47,7 @@ namespace uit.ooad.Models
         {
             var patronInDatabase = PatronBusiness.Get(Id);
             if (patronInDatabase == null)
-                throw new Exception("Không tìm thấy khách hàng có Id là " + Id);
+                throw new Exception("Mã khách hàng không tồn tại");
             return patronInDatabase;
         }
     }

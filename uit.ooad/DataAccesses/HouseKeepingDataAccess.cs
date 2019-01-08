@@ -26,10 +26,6 @@ namespace uit.ooad.DataAccesses
             return realm.Add(houseKeeping);
         }
 
-        public static HouseKeeping Get(int houseKeepingId) => Database.Find<HouseKeeping>(houseKeepingId);
-
-        public static IEnumerable<HouseKeeping> Get() => Database.All<HouseKeeping>();
-
         public static async Task<HouseKeeping> AssignCleaningService(Employee employee,
                                                                      HouseKeeping houseKeepingInDatabase)
         {
@@ -65,5 +61,9 @@ namespace uit.ooad.DataAccesses
             });
             return houseKeepingInDatabase;
         }
+
+        public static HouseKeeping Get(int houseKeepingId) => Database.Find<HouseKeeping>(houseKeepingId);
+
+        public static IEnumerable<HouseKeeping> Get() => Database.All<HouseKeeping>();
     }
 }

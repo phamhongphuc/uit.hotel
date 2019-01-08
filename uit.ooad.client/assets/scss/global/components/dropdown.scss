@@ -1,0 +1,14 @@
+.dropdown-item {
+    display: flex;
+    transition: all 0.2s;
+}
+.dropdown-item-icon .icon {
+    display: block;
+    text-align: center;
+    font-size: 1.25rem;
+    padding: 0;
+    width: $navbar-size;
+    min-width: $navbar-size;
+    min-height: $navbar-size;
+    line-height: $navbar-size;
+}

@@ -10,30 +10,32 @@ namespace uit.ooad.Queries.Mutation
     {
         public RoomMutation()
         {
-            Field<RoomType>(
+            Field<NonNullGraphType<RoomType>>(
                 _Creation,
                 "Tạo và trả về một phòng mới",
                 _InputArgument<RoomCreateInput>(),
-                _CheckPermission_Object(
-                    p => p.PermissionUpdateGroundPlan,
+                _CheckPermission_TaskObject(
+                    p => p.PermissionManageMap,
                     context => RoomBusiness.Add(_GetInput(context))
                 )
             );
-            Field<RoomType>(
+
+            Field<NonNullGraphType<RoomType>>(
                 _Updation,
                 "Cập nhật và trả về một phòng vừa cập nhật",
                 _InputArgument<RoomUpdateInput>(),
-                _CheckPermission_Object(
-                    p => p.PermissionUpdateGroundPlan,
+                _CheckPermission_TaskObject(
+                    p => p.PermissionManageMap,
                     context => RoomBusiness.Update(_GetInput(context))
                 )
             );
-            Field<StringGraphType>(
+
+            Field<NonNullGraphType<StringGraphType>>(
                 _Deletion,
-                "Xóa và trả về một phòng vừa xóa",
+                "Xóa một phòng",
                 _IdArgument(),
                 _CheckPermission_String(
-                    p => p.PermissionUpdateGroundPlan,
+                    p => p.PermissionManageMap,
                     context =>
                     {
                         RoomBusiness.Delete(_GetId<int>(context));
@@ -41,14 +43,17 @@ namespace uit.ooad.Queries.Mutation
                     }
                 )
             );
-            Field<StringGraphType>(
+
+            Field<NonNullGraphType<StringGraphType>>(
                 _SetIsActive,
-                "Cập nhật trạng thái của một phòng",
+                "Cập nhật trạng thái hoạt động của một phòng",
                 new QueryArguments(
                     new QueryArgument<NonNullGraphType<IdGraphType>> { Name = "id" },
                     new QueryArgument<NonNullGraphType<BooleanGraphType>> { Name = "isActive" }
                 ),
-                _CheckPermission_String(p => p.PermissionUpdateGroundPlan, context =>
+                _CheckPermission_String(
+                    p => p.PermissionManageMap,
+                    context =>
                     {
                         var id = context.GetArgument<int>("id");
                         var isActive = context.GetArgument<bool>("isActive");

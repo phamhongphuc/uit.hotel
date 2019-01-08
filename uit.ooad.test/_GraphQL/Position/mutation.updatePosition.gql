@@ -1,0 +1,22 @@
+mutation($input: PositionUpdateInput!) {
+    updatePosition(input: $input) {
+        id
+        name
+        isActive
+        permissionCleaning
+        permissionGetAccountingVoucher
+        permissionGetHouseKeeping
+        permissionGetMap
+        permissionGetPatron
+        permissionGetRate
+        permissionGetService
+        permissionManageEmployee
+        permissionManageHiringRoom
+        permissionManageMap
+        permissionManagePatron
+        permissionManagePatronKind
+        permissionManagePosition
+        permissionManageRate
+        permissionManageService
+    }
+}

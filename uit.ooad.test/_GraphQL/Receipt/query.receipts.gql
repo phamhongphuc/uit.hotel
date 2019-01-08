@@ -4,7 +4,6 @@
         time
         money
         bankAccountNumber
-        typeOfPayment
         employee {
             id
         }

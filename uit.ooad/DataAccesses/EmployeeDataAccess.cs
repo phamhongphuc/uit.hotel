@@ -8,7 +8,11 @@ namespace uit.ooad.DataAccesses
     {
         public static async Task<Employee> Add(Employee employee)
         {
-            await Database.WriteAsync(realm => employee = realm.Add(employee));
+            await Database.WriteAsync(realm =>
+            {
+                employee.IsActive = true;
+                employee = realm.Add(employee);
+            });
             return employee;
         }
 
@@ -20,15 +24,14 @@ namespace uit.ooad.DataAccesses
                 employeeInDatabase.IdentityCard = employee.IdentityCard;
                 employeeInDatabase.PhoneNumber = employee.PhoneNumber;
                 employeeInDatabase.Address = employee.Address;
+                employeeInDatabase.Email = employee.Email;
+                employeeInDatabase.Gender = employee.Gender;
                 employeeInDatabase.Birthdate = employee.Birthdate;
                 employeeInDatabase.StartingDate = employee.StartingDate;
                 employeeInDatabase.Position = employee.Position;
             });
             return employeeInDatabase;
         }
-
-        public static Employee Get(string employeeId) => Database.Find<Employee>(employeeId);
-        public static IEnumerable<Employee> Get() => Database.All<Employee>();
 
         public static async void ChangePassword(Employee employee, string newPassword) =>
             await Database.WriteAsync(realm => employee.Password = newPassword);
@@ -37,5 +40,8 @@ namespace uit.ooad.DataAccesses
         {
             await Database.WriteAsync(realm => employee.IsActive = isActive);
         }
+
+        public static Employee Get(string employeeId) => Database.Find<Employee>(employeeId);
+        public static IEnumerable<Employee> Get() => Database.All<Employee>();
     }
 }

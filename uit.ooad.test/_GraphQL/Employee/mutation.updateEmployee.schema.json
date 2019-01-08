@@ -1,0 +1,78 @@
+{
+    "definitions": {},
+    "type": "object",
+    "required": ["data"],
+    "properties": {
+        "data": {
+            "type": "object",
+            "required": ["updateEmployee"],
+            "properties": {
+                "updateEmployee": {
+                    "type": "object",
+                    "required": [
+                        "id",
+                        "name",
+                        "identityCard",
+                        "phoneNumber",
+                        "address",
+                        "email",
+                        "gender",
+                        "birthdate",
+                        "startingDate",
+                        "isActive",
+                        "position"
+                    ],
+                    "properties": {
+                        "id": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "name": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "identityCard": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "phoneNumber": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "address": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "email": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "gender": {
+                            "type": "boolean"
+                        },
+                        "birthdate": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "startingDate": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "isActive": {
+                            "type": "boolean"
+                        },
+                        "position": {
+                            "type": "object",
+                            "required": ["id"],
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

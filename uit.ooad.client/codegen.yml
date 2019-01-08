@@ -1,7 +1,18 @@
 overwrite: true
-schema: "http://localhost:3000/api/graphql"
-documents: null
+schema: 'http://localhost:3000/api/graphql'
+documents:
+    - 'store/*.ts'
+    - 'graphql/documents/*.ts'
 generates:
-  graphql/types.ts:
-    plugins:
-      - "typescript-common"
+    graphql/types.ts:
+        config:
+            avoidOptionals: true
+        plugins:
+            - 'typescript-common'
+            - 'typescript-client'
+    graphql/schema.json:
+        plugins:
+            - 'introspection'
+    graphql/schema.graphql:
+        plugins:
+            - 'schema-ast'

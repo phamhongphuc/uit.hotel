@@ -7,7 +7,6 @@ $map-breakpoints: (
 );
 
 $spacer: 1rem;
-
 $spacers: (
     0: 0,
     1: $spacer * 0.25,
@@ -16,7 +15,7 @@ $spacers: (
     4: $spacer * 1.5,
     5: $spacer * 2,
 );
-
 $carousel-caption-width: 100%;
-
+$scrollbar-size: 0.5rem;
+$context-size: 2rem;
 $input-size: 2.5rem;

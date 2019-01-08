@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,11 +8,28 @@ namespace uit.ooad.DataAccesses
 {
     public class RoomKindDataAccess : RealmDatabase
     {
+        public static int NextId => Get().Count() == 0 ? 1 : Get().Max(i => i.Id) + 1;
+
         public static async Task<RoomKind> Add(RoomKind roomKind)
         {
             await Database.WriteAsync(realm =>
             {
-                roomKind.Id = Get().Count() == 0 ? 1 : Get().Max(f => f.Id) + 1;
+                roomKind.Id = NextId;
+                roomKind.IsActive = true;
+
+                var rate = new Rate
+                {
+                    DayRate = 0,
+                    NightRate = 0,
+                    WeekRate = 0,
+                    MonthRate = 0,
+                    LateCheckOutFee = 0,
+                    EarlyCheckInFee = 0,
+                    EffectiveStartDate = DateTimeOffset.MinValue,
+                    Employee = null,
+                    RoomKind = roomKind
+                };
+                RateDataAccess.Add(realm, rate);
 
                 roomKind = realm.Add(roomKind);
             });
@@ -25,7 +43,6 @@ namespace uit.ooad.DataAccesses
                 roomKindInDatabase.Name = roomKind.Name;
                 roomKindInDatabase.NumberOfBeds = roomKind.NumberOfBeds;
                 roomKindInDatabase.AmountOfPeople = roomKind.AmountOfPeople;
-                roomKindInDatabase.PriceByDate = roomKind.PriceByDate;
             });
             return roomKindInDatabase;
         }
@@ -35,16 +52,17 @@ namespace uit.ooad.DataAccesses
             await Database.WriteAsync(realm => roomKind.IsActive = isActive);
         }
 
-        public static RoomKind Get(int roomKindId) => Database.Find<RoomKind>(roomKindId);
-
         public static async void Delete(RoomKind roomKind)
         {
             await Database.WriteAsync(realm =>
             {
                 realm.RemoveRange(roomKind.VolatilityRates);
+                realm.RemoveRange(roomKind.Rates);
                 realm.Remove(roomKind);
             });
         }
+
+        public static RoomKind Get(int roomKindId) => Database.Find<RoomKind>(roomKindId);
 
         public static IEnumerable<RoomKind> Get() => Database.All<RoomKind>();
     }

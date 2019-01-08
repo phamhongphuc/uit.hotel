@@ -18,9 +18,8 @@ namespace uit.ooad.ObjectTypes
 
             Field<ListGraphType<PatronType>>(
                 nameof(PatronKind.Patrons),
-                resolve: context => context.Source.Patrons.ToList(),
-                description: "Danh sách các khách hàng thuộc loại khách hàng"
-            );
+                "Danh sách các khách hàng thuộc loại khách hàng",
+                resolve: context => context.Source.Patrons.ToList());
         }
     }
 
@@ -41,6 +40,18 @@ namespace uit.ooad.ObjectTypes
         {
             Name = _Creation;
 
+            Field(x => x.Name).Description("Tên loại khách hàng");
+            Field(x => x.Description).Description("Thông tin mô tả loại khách hàng");
+        }
+    }
+
+    public class PatronKindUpdateInput : InputType<PatronKind>
+    {
+        public PatronKindUpdateInput()
+        {
+            Name = _Updation;
+
+            Field(x => x.Id).Description("Id của loại khách hàng");
             Field(x => x.Name).Description("Tên loại khách hàng");
             Field(x => x.Description).Description("Thông tin mô tả loại khách hàng");
         }

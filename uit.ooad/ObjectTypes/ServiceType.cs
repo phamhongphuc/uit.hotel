@@ -20,9 +20,8 @@ namespace uit.ooad.ObjectTypes
 
             Field<ListGraphType<ServicesDetailType>>(
                 nameof(Service.ServicesDetails),
-                resolve: context => context.Source.ServicesDetails.ToList(),
-                description: "Danh sách chi tiết dịch vụ"
-            );
+                "Danh sách chi tiết dịch vụ",
+                resolve: context => context.Source.ServicesDetails.ToList());
         }
     }
 
@@ -36,7 +35,6 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.Name).Description("Tên dịch vụ");
             Field(x => x.UnitRate).Description("Đơn giá");
             Field(x => x.Unit).Description("Đơn vị");
-            Field(x => x.IsActive).Description("Trạng thái hoạt động");
         }
     }
 

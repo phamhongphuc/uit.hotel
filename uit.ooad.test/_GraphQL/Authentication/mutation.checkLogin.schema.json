@@ -1,0 +1,23 @@
+{
+    "definitions": {},
+    "type": "object",
+    "required": ["data"],
+    "properties": {
+        "data": {
+            "type": "object",
+            "required": ["checkLogin"],
+            "properties": {
+                "checkLogin": {
+                    "type": "object",
+                    "required": ["id"],
+                    "properties": {
+                        "id": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

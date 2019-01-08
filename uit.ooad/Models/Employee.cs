@@ -15,6 +15,8 @@ namespace uit.ooad.Models
         public string IdentityCard { get; set; }
         public string PhoneNumber { get; set; }
         public string Address { get; set; }
+        public string Email { get; set; }
+        public bool Gender { get; set; }
         public DateTimeOffset Birthdate { get; set; }
         public DateTimeOffset StartingDate { get; set; }
         public Position Position { get; set; }
@@ -25,6 +27,12 @@ namespace uit.ooad.Models
 
         [Backlink(nameof(Receipt.Employee))]
         public IQueryable<Receipt> Receipts { get; }
+
+        [Backlink(nameof(Rate.Employee))]
+        public IQueryable<Rate> Rates { get; }
+
+        [Backlink(nameof(VolatilityRate.Employee))]
+        public IQueryable<Rate> VolatilityRates { get; }
 
         [Backlink(nameof(HouseKeeping.Employee))]
         public IQueryable<HouseKeeping> HouseKeepings { get; }
@@ -43,6 +51,12 @@ namespace uit.ooad.Models
             return CryptoHelper.Encrypt(rawPassword).Equals(Password);
         }
 
-        public Employee GetManaged() => EmployeeBusiness.Get(Id);
+        public Employee GetManaged()
+        {
+            var employee = EmployeeBusiness.Get(Id);
+            if (employee == null)
+                throw new Exception("Tên đăng nhập không tồn tại");
+            return employee;
+        }
     }
 }

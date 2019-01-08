@@ -1,9 +1,0 @@
-{
-    "input": {
-        "name": "Loại 2",
-        "numberOfBeds": 2,
-        "amountOfPeople": 2,
-        "priceByDate": 1000,
-        "isActive": true
-    }
-}

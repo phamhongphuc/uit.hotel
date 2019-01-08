@@ -30,6 +30,7 @@ const config = {
     },
     plugins: ['standard', 'vue', 'import', 'node', 'graphql', 'typescript'],
     settings: {
+        cache: true,
         'import/resolver': {
             'babel-plugin-root-import': {
                 rootPathPrefix: '~',
@@ -44,7 +45,9 @@ const config = {
             '@babel/register',
             '@babel/polyfill',
             'chalk',
+            'graphql',
             'apollo-client',
+            'apollo-link',
             'apollo-cache-inmemory',
         ],
     },
@@ -63,7 +66,7 @@ const config = {
         'typescript/explicit-function-return-type': 'warn',
         'typescript/explicit-member-accessibility': 'off',
         indent: 'off',
-        'typescript/indent': 'error',
+        'typescript/indent': 'off', // because of prettier
         'typescript/interface-name-prefix': 'error',
         'typescript/member-delimiter-style': 'error',
         'typescript/no-angle-bracket-type-assertion': 'error',
@@ -73,7 +76,7 @@ const config = {
         'typescript/no-explicit-any': 'off',
         'typescript/no-inferrable-types': 'error',
         'typescript/no-misused-new': 'error',
-        'typescript/no-namespace': 'error',
+        'typescript/no-namespace': 'off',
         'typescript/no-non-null-assertion': 'error',
         'typescript/no-object-literal-type-assertion': 'error',
         'typescript/no-parameter-properties': 'error',
@@ -82,7 +85,7 @@ const config = {
         'typescript/no-unused-vars': 'warn',
         'typescript/no-use-before-define': 'error',
         'typescript/no-var-requires': 'error',
-        'typescript/prefer-interface': 'error',
+        'typescript/prefer-interface': 'off',
         'typescript/prefer-namespace-keyword': 'error',
         'typescript/type-annotation-spacing': 'error',
 
@@ -132,6 +135,14 @@ const config = {
             },
         ],
     },
+    overrides: [
+        {
+            files: ['graphql/types.ts'],
+            rules: {
+                'import/export': 'off',
+            },
+        },
+    ],
 };
 
 if (process.env.NODE_ENV == 'development') {

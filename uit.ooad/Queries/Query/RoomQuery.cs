@@ -10,19 +10,23 @@ namespace uit.ooad.Queries.Query
     {
         public RoomQuery()
         {
-            Field<ListGraphType<RoomType>>(
+            Field<NonNullGraphType<ListGraphType<NonNullGraphType<RoomType>>>>(
                 _List,
                 "Trả về một danh sách các phòng",
                 resolve: _CheckPermission_List(
-                    p => p.PermissionGetRooms,
+                    p => p.PermissionGetMap,
                     context => RoomBusiness.Get()
                 )
             );
-            Field<RoomType>(
+
+            Field<NonNullGraphType<RoomType>>(
                 _Item,
                 "Trả về thông tin của một phòng",
                 _IdArgument(),
-                context => RoomBusiness.Get(_GetId<int>(context))
+                _CheckPermission_Object(
+                    p => p.PermissionGetMap,
+                    context => RoomBusiness.Get(_GetId<int>(context))
+                )
             );
         }
     }

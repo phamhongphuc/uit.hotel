@@ -27,6 +27,7 @@ namespace uit.ooad.GraphQLHelper
             services.AddSingleton<BillCreateInput>();
             services.AddSingleton<BillIdInput>();
             services.AddSingleton<BookingCreateInput>();
+            services.AddSingleton<BookAndCheckInCreateInput>();
             services.AddSingleton<BookingIdInput>();
             services.AddSingleton<EmployeeCreateInput>();
             services.AddSingleton<EmployeeUpdateInput>();
@@ -40,10 +41,13 @@ namespace uit.ooad.GraphQLHelper
             services.AddSingleton<PatronUpdateInput>();
             services.AddSingleton<PatronIdInput>();
             services.AddSingleton<PatronKindCreateInput>();
+            services.AddSingleton<PatronKindUpdateInput>();
             services.AddSingleton<PatronKindIdInput>();
             services.AddSingleton<PositionCreateInput>();
+            services.AddSingleton<PositionUpdateInput>();
             services.AddSingleton<PositionIdInput>();
             services.AddSingleton<RateCreateInput>();
+            services.AddSingleton<RateUpdateInput>();
             services.AddSingleton<ReceiptCreateInput>();
             services.AddSingleton<RoomCreateInput>();
             services.AddSingleton<RoomUpdateInput>();
@@ -54,9 +58,12 @@ namespace uit.ooad.GraphQLHelper
             services.AddSingleton<ServiceIdInput>();
             services.AddSingleton<ServiceCreateInput>();
             services.AddSingleton<ServiceUpdateInput>();
+            services.AddSingleton<ServicesDetailHouseKeepingInput>();
             services.AddSingleton<ServicesDetailCreateInput>();
+            services.AddSingleton<ServicesDetailUpdateInput>();
             services.AddSingleton<ServicesDetailIdInput>();
             services.AddSingleton<VolatilityRateCreateInput>();
+            services.AddSingleton<VolatilityRateUpdateInput>();
         }
 
         public static ServiceProvider GetServiceProvider(Action<ServiceCollection> function)

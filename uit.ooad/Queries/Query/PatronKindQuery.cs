@@ -10,16 +10,23 @@ namespace uit.ooad.Queries.Query
     {
         public PatronKindQuery()
         {
-            Field<ListGraphType<PatronKindType>>(
+            Field<NonNullGraphType<ListGraphType<NonNullGraphType<PatronKindType>>>>(
                 _List,
                 "Trả về một danh sách các loại khách hàng có trong hệ thống",
-                resolve: context => PatronKindBusiness.Get()
+                resolve: _CheckPermission_List(
+                    p => p.PermissionGetPatron,
+                    context => PatronKindBusiness.Get()
+                )
             );
-            Field<PatronKindType>(
+
+            Field<NonNullGraphType<PatronKindType>>(
                 _Item,
                 "Trả về thông tin của một loại khách hàng",
                 _IdArgument(),
-                context => PatronKindBusiness.Get(_GetId<int>(context))
+                _CheckPermission_Object(
+                    p => p.PermissionGetPatron,
+                    context => PatronKindBusiness.Get(_GetId<int>(context))
+                )
             );
         }
     }

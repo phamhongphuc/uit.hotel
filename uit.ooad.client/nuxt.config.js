@@ -3,6 +3,7 @@ import autoprefixer from 'autoprefixer';
 const LOCALHOST = `http://localhost:3000`;
 
 export default {
+    mode: 'spa',
     head: {
         title: 'uit.ooad.client',
         meta: [
@@ -26,7 +27,7 @@ export default {
         ],
     },
     server: {
-        port: 8080,
+        port: process.env.PORT || 8080,
     },
     env: {},
     css: [{ src: '~/assets/scss/main.scss', lang: 'scss' }],
@@ -49,9 +50,10 @@ export default {
     plugins: [
         { src: '~/plugins/localStorage', ssr: false },
         { src: '~/plugins/notification', ssr: false },
+        { src: '~/plugins/notify', ssr: false },
         { src: '~/plugins/global', ssr: false },
         { src: '~/plugins/component' },
-        { src: '~/plugins/types' },
+        { src: '~/plugins/vuelidate' },
     ],
     apollo: {
         clientConfigs: {
@@ -66,7 +68,7 @@ export default {
             if (isDev && isClient) {
                 config.module.rules.push({
                     enforce: 'pre',
-                    test: /\.(js|vue)$/,
+                    test: /\.(ts|js|vue)$/,
                     loader: 'eslint-loader',
                     exclude: /(node_modules)/,
                 });

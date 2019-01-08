@@ -10,16 +10,23 @@ namespace uit.ooad.Queries.Query
     {
         public ServiceQuery()
         {
-            Field<ListGraphType<ServiceType>>(
+            Field<NonNullGraphType<ListGraphType<NonNullGraphType<ServiceType>>>>(
                 _List,
                 "Trả về một danh sách các dịch vụ",
-                resolve: context => ServiceBusiness.Get()
+                resolve: _CheckPermission_List(
+                    p => p.PermissionGetService,
+                    context => ServiceBusiness.Get()
+                )
             );
-            Field<ServiceType>(
+
+            Field<NonNullGraphType<ServiceType>>(
                 _Item,
                 "Trả về thông tin một dịch vụ",
                 _IdArgument(),
-                context => ServiceBusiness.Get(_GetId<int>(context))
+                _CheckPermission_Object(
+                    p => p.PermissionGetService,
+                    context => ServiceBusiness.Get(_GetId<int>(context))
+                )
             );
         }
     }

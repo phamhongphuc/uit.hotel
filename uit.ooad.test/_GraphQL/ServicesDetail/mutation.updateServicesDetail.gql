@@ -1,0 +1,15 @@
+mutation($input: ServicesDetailUpdateInput!) {
+    updateServicesDetail(input: $input) {
+        id
+        time
+        number
+        total
+        booking {
+            id
+        }
+        service {
+            id
+            unitRate
+        }
+    }
+}

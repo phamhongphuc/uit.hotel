@@ -1,0 +1,7 @@
+mutation($input: PatronKindUpdateInput!) {
+    updatePatronKind(input: $input) {
+        id
+        name
+        description
+    }
+}

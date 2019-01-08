@@ -1,12 +1,18 @@
 @import 'fonts';
 @import 'typography';
 @import 'class';
+@import 'style';
 
+@import 'components/dropdown';
 @import 'components/footer';
+@import 'components/form';
+@import 'components/line';
 @import 'components/navbar';
-@import 'components/table';
-@import 'components/pagination';
 @import 'components/notifications';
+@import 'components/pagination';
+@import 'components/table';
+
+@import 'special/hotel-map';
 
 @import 'utilities/box-shadow';
 @import 'utilities/border';
