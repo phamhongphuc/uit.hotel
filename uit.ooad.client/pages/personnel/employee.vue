@@ -102,7 +102,7 @@ import { GetEmployees } from '~/graphql/types';
 export default class extends Vue {
     head() {
         return {
-            title: 'Sơ đồ khách sạn',
+            title: 'Quản lý nhân viên',
         };
     }
 

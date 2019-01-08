@@ -110,7 +110,7 @@ import { toMoney } from '~/utils/dataFormater';
 export default class extends Vue {
     head() {
         return {
-            title: 'Sơ đồ khách sạn',
+            title: 'Quản lý dịch vụ',
         };
     }
 

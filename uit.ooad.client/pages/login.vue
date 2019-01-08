@@ -57,6 +57,12 @@ export default class extends Vue {
         return 'side';
     }
 
+    head() {
+        return {
+            title: 'Đăng nhập',
+        };
+    }
+
     @namespace('user').Action
     login;
 }

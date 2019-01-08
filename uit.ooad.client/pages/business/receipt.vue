@@ -81,8 +81,6 @@ export default class extends Vue {
 
     receiptsFilter(receipts: GetReceipts.Receipts[]): GetReceipts.Receipts[] {
         return receipts;
-        // if (this.showInactive) return receipts;
-        // return receipts.filter(rk => rk.isActive);
     }
 
     sumReceipts(bookings: GetReceipts.Receipts[]) {

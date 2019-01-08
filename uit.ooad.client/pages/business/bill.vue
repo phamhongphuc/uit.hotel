@@ -119,7 +119,7 @@ import moment from 'moment';
 export default class extends Vue {
     head() {
         return {
-            title: 'Sơ đồ khách sạn',
+            title: 'Quản lý hóa đơn',
         };
     }
 

@@ -79,7 +79,7 @@ import { mixinData } from '~/components/mixins/mutable';
 export default class extends Vue {
     head() {
         return {
-            title: 'Sơ đồ khách sạn',
+            title: 'Quản lý loại khách hàng',
         };
     }
 
