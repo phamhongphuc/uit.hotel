@@ -96,7 +96,7 @@
                     {{ toMoney(sumReceipts(item.receipts)) }}
                 </template>
                 <template slot="total" slot-scope="{ value }">
-                    {{ value }}
+                    {{ toMoney(value) }}
                 </template>
             </b-table>
         </query->

@@ -40,7 +40,7 @@
                     {
                         key: 'createDate',
                         label: 'Ngày tạo',
-                        tdClass: 'text-nowrap text-center',
+                        tdClass: 'text-nowrap text-left',
                     },
                     {
                         key: 'effectiveStartDate',
@@ -48,7 +48,7 @@
                         tdClass: 'text-nowrap text-center',
                     },
                     {
-                        key: 'roomKinds',
+                        key: 'roomKind',
                         label: 'Loại phòng',
                         tdClass: 'text-nowrap text-center',
                     },
@@ -70,10 +70,13 @@
                 <template slot="createDate" slot-scope="{ value }">
                     {{ toDate(value) }}
                 </template>
+                <template slot="effectiveStartDate" slot-scope="{ value }">
+                    {{ toDate(value) }}
+                </template>
                 <template slot="dayRate" slot-scope="{ value }">
                     {{ toMoney(value) }}
                 </template>
-                <template slot="roomKinds" slot-scope="{ value }">
+                <template slot="roomKind" slot-scope="{ value }">
                     {{ value.name }}
                 </template>
             </b-table>
