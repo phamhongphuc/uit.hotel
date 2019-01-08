@@ -655,6 +655,25 @@ export namespace BookAndCheckIn {
     };
 }
 
+export namespace CreateBill {
+    export type Variables = {
+        bookings: BookingCreateInput[];
+        bill: BillCreateInput;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        createBill: CreateBill;
+    };
+
+    export type CreateBill = {
+        __typename?: 'Bill';
+
+        id: number;
+    };
+}
+
 export namespace PayTheBill {
     export type Variables = {
         id: string;

@@ -131,10 +131,6 @@ export default class extends Vue {
         return receipt.map(r => r.money).reduce((a, b) => a + b, 0);
     }
 
-    // sumBookings(bookings: GetBills.Bookings[]) {
-    //     return bookings.map(r => r.total).reduce((a, b) => a + b, 0);
-    // }
-
     tableContext(event: MouseEvent) {
         const tr = (event.target as HTMLElement).closest('tr');
         if (tr !== null) {

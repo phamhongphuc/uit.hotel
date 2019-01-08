@@ -9,6 +9,14 @@
                 <span class="icon mr-1"></span>
                 <span>Đặt phòng nhận ngay</span>
             </b-button>
+            <b-button
+                class="m-2"
+                variant="white"
+                @click="$refs.book.open({ rooms: selected })"
+            >
+                <span class="icon mr-1"></span>
+                <span>Đặt phòng</span>
+            </b-button>
         </div>
         <query-
             :query="getFloorsMap"
@@ -64,6 +72,7 @@
         </query->
         <context-room- ref="context_room" :refs="$refs" />
         <popup-book-and-check-in- ref="book_and_check_in" :refs="$refs" />
+        <popup-book- ref="book" :refs="$refs" />
         <popup-booking-book-and-check-in-
             ref="booking_book_and_check_in"
             :refs="$refs"
@@ -87,7 +96,7 @@ export default class extends Vue {
 
     from = moment().format();
     to = moment()
-        .add(1, 'days')
+        .add(1, 'hoursBook ')
         .format();
 
     head() {
