@@ -9312,8 +9312,8 @@ ts-loader@3.5.0:
     semver "^5.0.1"
 
 ts-loader@^5.3.2:
-  version "5.3.2"
-  resolved "https://registry.yarnpkg.com/ts-loader/-/ts-loader-5.3.2.tgz#31d10be522bedfac8ee4c20c735e05a9bd772faf"
+  version "5.3.3"
+  resolved "https://registry.yarnpkg.com/ts-loader/-/ts-loader-5.3.3.tgz#8b4af042e773132d86b3c99ef0acf3b4d325f473"
   dependencies:
     chalk "^2.3.0"
     enhanced-resolve "^4.0.0"
