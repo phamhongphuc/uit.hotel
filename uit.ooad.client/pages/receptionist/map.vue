@@ -1,4 +1,4 @@
-<template>
+﻿<template>
     <div>
         <div class="row">
             <b-button
@@ -96,7 +96,7 @@ export default class extends Vue {
 
     from = moment().format();
     to = moment()
-        .add(1, 'hoursBook ')
+        .add(1, 'hours')
         .format();
 
     head() {
