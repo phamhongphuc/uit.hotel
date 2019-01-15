@@ -1,6 +1,6 @@
 <template>
     <div @contextmenu.prevent="tableContext">
-        <div class="row">
+        <block-flex->
             <b-button
                 class="m-2"
                 variant="white"
@@ -23,7 +23,7 @@
                     }}
                 </span>
             </b-button>
-        </div>
+        </block-flex->
         <query-
             :query="getBills"
             class="row"
@@ -119,7 +119,7 @@ import moment from 'moment';
 export default class extends Vue {
     head() {
         return {
-            title: 'Sơ đồ khách sạn',
+            title: 'Quản lý hóa đơn',
         };
     }
 

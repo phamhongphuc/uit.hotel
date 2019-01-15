@@ -1,6 +1,6 @@
 <template>
     <div @contextmenu.prevent="tableContext">
-        <div class="row">
+        <block-flex->
             <b-button
                 class="m-2"
                 variant="white"
@@ -9,21 +9,14 @@
                 <span class="icon mr-1"></span>
                 <span>Đặt phòng</span>
             </b-button>
-            <b-button
+            <b-form-checkbox-group
+                v-model="show"
                 class="m-2 ml-auto"
-                variant="white"
-                @click="showInactive = !showInactive"
-            >
-                <span class="icon mr-1">{{ showInactive ? '' : '' }}</span>
-                <span>
-                    {{
-                        `Đang ${
-                            showInactive ? 'hiện' : 'ẩn'
-                        } dịch vụ đã bị vô hiệu hóa`
-                    }}
-                </span>
-            </b-button>
-        </div>
+                buttons
+                button-variant="white"
+                :options="showOptions"
+            />
+        </block-flex->
         <query-
             :query="getBookings"
             class="row"
@@ -97,8 +90,7 @@
             </b-table>
         </query->
         <context-manage-booking- ref="context_booking" :refs="$refs" />
-        <!-- <popup-booking-add- ref="booking_add" /> -->
-        <!-- <popup-booking-update- ref="booking_update" /> -->
+        <popup-service-detail-add- ref="service_detail_add" />
     </div>
 </template>
 <script lang="ts">
@@ -115,9 +107,11 @@ import { toMoney, toDate } from '~/utils/dataFormater';
 export default class extends Vue {
     head() {
         return {
-            title: 'Sơ đồ khách sạn',
+            title: 'Quản lý đơn đặt phòng',
         };
     }
+
+    show = [0, 1, 2, 3];
 
     bookingStatusEnum = [
         'Đã đặt',
@@ -126,8 +120,15 @@ export default class extends Vue {
         'Đã trả phòng',
     ];
 
+    showOptions = this.bookingStatusEnum.map((booking, index) => ({
+        text: booking,
+        value: index,
+    }));
+
     bookingsFilter(bookings: GetBookings.Bookings[]): GetBookings.Bookings[] {
-        return bookings;
+        return bookings.filter(
+            booking => this.show.indexOf(booking.status) !== -1,
+        );
     }
 
     tableContext(event: MouseEvent) {

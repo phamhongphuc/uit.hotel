@@ -1774,6 +1774,24 @@ export namespace SetIsActiveRoom {
     };
 }
 
+export namespace CreateServicesDetail {
+    export type Variables = {
+        input: ServicesDetailCreateInput;
+    };
+
+    export type Mutation = {
+        __typename?: 'Mutation';
+
+        createServicesDetail: CreateServicesDetail;
+    };
+
+    export type CreateServicesDetail = {
+        __typename?: 'ServicesDetail';
+
+        id: number;
+    };
+}
+
 export namespace GetServices {
     export type Variables = {};
 

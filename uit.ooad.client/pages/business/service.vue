@@ -1,6 +1,6 @@
 <template>
     <div @contextmenu.prevent="tableContext">
-        <div class="row">
+        <block-flex->
             <b-button
                 class="m-2"
                 variant="white"
@@ -23,7 +23,7 @@
                     }}
                 </span>
             </b-button>
-        </div>
+        </block-flex->
         <query-
             :query="getServices"
             class="row"
@@ -110,7 +110,7 @@ import { toMoney } from '~/utils/dataFormater';
 export default class extends Vue {
     head() {
         return {
-            title: 'Sơ đồ khách sạn',
+            title: 'Quản lý dịch vụ',
         };
     }
 

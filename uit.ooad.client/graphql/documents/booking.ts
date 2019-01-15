@@ -24,6 +24,19 @@ export const getBookings = gql`
     }
 `;
 
+export const getSimpleBookings = gql`
+    query getSimpleBookings {
+        bookings {
+            id
+            status
+            room {
+                id
+                name
+            }
+        }
+    }
+`;
+
 export const checkIn = gql`
     mutation checkIn($id: ID!) {
         checkIn(id: $id) {

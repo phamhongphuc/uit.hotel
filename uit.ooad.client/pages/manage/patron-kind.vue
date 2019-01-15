@@ -1,6 +1,6 @@
 <template>
     <div @contextmenu.prevent="tableContext">
-        <div class="row">
+        <block-flex->
             <b-button
                 class="m-2"
                 variant="white"
@@ -9,7 +9,7 @@
                 <span class="icon mr-1"></span>
                 <span>Thêm loại khách hàng mới</span>
             </b-button>
-        </div>
+        </block-flex->
         <query-
             :query="getPatronKinds"
             class="row"
@@ -79,7 +79,7 @@ import { mixinData } from '~/components/mixins/mutable';
 export default class extends Vue {
     head() {
         return {
-            title: 'Sơ đồ khách sạn',
+            title: 'Quản lý loại khách hàng',
         };
     }
 

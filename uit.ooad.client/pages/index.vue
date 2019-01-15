@@ -20,7 +20,7 @@ export default class extends Vue {
 
     head() {
         return {
-            title: 'Sơ đồ khách sạn',
+            title: 'Trang chủ',
         };
     }
 
