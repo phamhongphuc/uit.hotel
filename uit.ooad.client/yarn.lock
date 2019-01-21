@@ -4552,9 +4552,9 @@ graphql-codegen-plugin-helpers@0.15.2:
     graphql-codegen-core "0.15.2"
     import-from "2.1.0"
 
-graphql-codegen-schema-ast@^0.15.2:
-  version "0.15.2"
-  resolved "https://registry.yarnpkg.com/graphql-codegen-schema-ast/-/graphql-codegen-schema-ast-0.15.2.tgz#be87a86d22e1357a1aa84e763387c6ac5bedee8b"
+graphql-codegen-schema-ast@^0.16.0:
+  version "0.16.0"
+  resolved "https://registry.yarnpkg.com/graphql-codegen-schema-ast/-/graphql-codegen-schema-ast-0.16.0.tgz#f336381ea0df0059f442117aca67e2e1290a9d94"
 
 graphql-codegen-typescript-client@^0.15.2:
   version "0.15.2"
