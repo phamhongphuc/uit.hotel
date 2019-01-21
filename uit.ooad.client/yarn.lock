@@ -2321,9 +2321,40 @@ chalk@2.4.1, chalk@^2.0.0, chalk@^2.0.1, chalk@^2.1.0, chalk@^2.3.0, chalk@^2.3.
     escape-string-regexp "^1.0.5"
     supports-color "^5.3.0"
 
+chalk@2.4.2:
+  version "2.4.2"
+  resolved "https://registry.yarnpkg.com/chalk/-/chalk-2.4.2.tgz#cd42541677a54333cf541a49108c1432b44c9424"
+  dependencies:
+    ansi-styles "^3.2.1"
+    escape-string-regexp "^1.0.5"
+    supports-color "^5.3.0"
+
 change-case@3.0.2, change-case@^3.0.0:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/change-case/-/change-case-3.0.2.tgz#fd48746cce02f03f0a672577d1d3a8dc2eceb037"
+  dependencies:
+    camel-case "^3.0.0"
+    constant-case "^2.0.0"
+    dot-case "^2.1.0"
+    header-case "^1.0.0"
+    is-lower-case "^1.1.0"
+    is-upper-case "^1.1.0"
+    lower-case "^1.1.1"
+    lower-case-first "^1.0.0"
+    no-case "^2.3.2"
+    param-case "^2.1.0"
+    pascal-case "^2.0.0"
+    path-case "^2.1.0"
+    sentence-case "^2.1.0"
+    snake-case "^2.1.0"
+    swap-case "^1.1.0"
+    title-case "^2.1.0"
+    upper-case "^1.1.1"
+    upper-case-first "^1.1.0"
+
+change-case@3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/change-case/-/change-case-3.1.0.tgz#0e611b7edc9952df2e8513b27b42de72647dd17e"
   dependencies:
     camel-case "^3.0.0"
     constant-case "^2.0.0"
@@ -4541,6 +4572,18 @@ graphql-codegen-core@0.15.2:
     ts-log "2.1.4"
     winston "3.1.0"
 
+graphql-codegen-core@0.16.0:
+  version "0.16.0"
+  resolved "https://registry.yarnpkg.com/graphql-codegen-core/-/graphql-codegen-core-0.16.0.tgz#04f19e231fcf27fb9911a192620f8567322bbf69"
+  dependencies:
+    chalk "2.4.2"
+    change-case "3.1.0"
+    common-tags "1.8.0"
+    graphql-tag "2.10.1"
+    graphql-tools "4.0.3"
+    ts-log "2.1.4"
+    winston "3.1.0"
+
 graphql-codegen-introspection@^0.15.2:
   version "0.15.2"
   resolved "https://registry.yarnpkg.com/graphql-codegen-introspection/-/graphql-codegen-introspection-0.15.2.tgz#6b0a4442a0bf6547511619ab16f29d50fe400fbb"
@@ -4552,17 +4595,24 @@ graphql-codegen-plugin-helpers@0.15.2:
     graphql-codegen-core "0.15.2"
     import-from "2.1.0"
 
+graphql-codegen-plugin-helpers@0.16.0:
+  version "0.16.0"
+  resolved "https://registry.yarnpkg.com/graphql-codegen-plugin-helpers/-/graphql-codegen-plugin-helpers-0.16.0.tgz#1b662df373b393d021499247e650f12bb22c1878"
+  dependencies:
+    graphql-codegen-core "0.16.0"
+    import-from "2.1.0"
+
 graphql-codegen-schema-ast@^0.15.2:
   version "0.15.2"
   resolved "https://registry.yarnpkg.com/graphql-codegen-schema-ast/-/graphql-codegen-schema-ast-0.15.2.tgz#be87a86d22e1357a1aa84e763387c6ac5bedee8b"
 
-graphql-codegen-typescript-client@^0.15.2:
-  version "0.15.2"
-  resolved "https://registry.yarnpkg.com/graphql-codegen-typescript-client/-/graphql-codegen-typescript-client-0.15.2.tgz#37fab175306e37a2b814f84361f1ec4c3db06dc1"
+graphql-codegen-typescript-client@^0.16.0:
+  version "0.16.0"
+  resolved "https://registry.yarnpkg.com/graphql-codegen-typescript-client/-/graphql-codegen-typescript-client-0.16.0.tgz#65e0ded7671c6c1039b897def53cf3a73f280a96"
   dependencies:
-    graphql-codegen-core "0.15.2"
-    graphql-codegen-plugin-helpers "0.15.2"
-    graphql-codegen-typescript-common "0.15.2"
+    graphql-codegen-core "0.16.0"
+    graphql-codegen-plugin-helpers "0.16.0"
+    graphql-codegen-typescript-common "0.16.0"
 
 graphql-codegen-typescript-common@0.15.2:
   version "0.15.2"
@@ -4572,6 +4622,15 @@ graphql-codegen-typescript-common@0.15.2:
     common-tags "1.8.0"
     graphql-codegen-core "0.15.2"
     graphql-codegen-plugin-helpers "0.15.2"
+
+graphql-codegen-typescript-common@0.16.0:
+  version "0.16.0"
+  resolved "https://registry.yarnpkg.com/graphql-codegen-typescript-common/-/graphql-codegen-typescript-common-0.16.0.tgz#7f13060b2071e4d8e25ee9ffe85db075e3a5a13d"
+  dependencies:
+    change-case "3.1.0"
+    common-tags "1.8.0"
+    graphql-codegen-core "0.16.0"
+    graphql-codegen-plugin-helpers "0.16.0"
 
 graphql-config@2.2.1, graphql-config@^2.0.1:
   version "2.2.1"
@@ -4662,6 +4721,10 @@ graphql-tag-pluck@0.4.4:
 graphql-tag@2.10.0, graphql-tag@^2.10.0, graphql-tag@^2.9.2:
   version "2.10.0"
   resolved "https://registry.yarnpkg.com/graphql-tag/-/graphql-tag-2.10.0.tgz#87da024be863e357551b2b8700e496ee2d4353ae"
+
+graphql-tag@2.10.1:
+  version "2.10.1"
+  resolved "https://registry.yarnpkg.com/graphql-tag/-/graphql-tag-2.10.1.tgz#10aa41f1cd8fae5373eaf11f1f67260a3cad5e02"
 
 graphql-tools@4.0.3, graphql-tools@^4.0.0:
   version "4.0.3"
