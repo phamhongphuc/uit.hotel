@@ -75,7 +75,7 @@
         "graphql-code-generator": "^0.15.2",
         "graphql-codegen-introspection": "^0.15.2",
         "graphql-codegen-schema-ast": "^0.16.1",
-        "graphql-codegen-typescript-client": "^0.15.2",
+        "graphql-codegen-typescript-client": "^0.16.1",
         "graphql-codegen-typescript-common": "0.15.2",
         "mocha": "^5.2.0",
         "node-sass": "^4.11.0",
