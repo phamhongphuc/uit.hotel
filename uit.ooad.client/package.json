@@ -73,7 +73,7 @@
         "eslint-plugin-typescript": "^1.0.0-rc.0",
         "eslint-plugin-vue": "^5.0.0",
         "graphql-code-generator": "^0.15.2",
-        "graphql-codegen-introspection": "^0.15.2",
+        "graphql-codegen-introspection": "^0.18.0",
         "graphql-codegen-schema-ast": "^0.16.1",
         "graphql-codegen-typescript-client": "^0.16.1",
         "graphql-codegen-typescript-common": "0.15.2",
