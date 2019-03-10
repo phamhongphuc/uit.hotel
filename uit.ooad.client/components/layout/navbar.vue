@@ -93,15 +93,15 @@ import { UserLogin } from 'graphql/types';
 export default class extends Vue {
     isInputFocus = false;
 
-    @namespace('style').State
+    @(namespace('style').State)
     breakpoint;
 
-    @namespace('user').Action
+    @(namespace('user').Action)
     logout;
 
-    @namespace('user').State(
+    @(namespace('user').State(
         (state: UserState) => state.employee || { position: {} },
-    )
+    ))
     employee: UserLogin.Employee;
 }
 </script>
