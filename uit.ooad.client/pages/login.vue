@@ -63,7 +63,7 @@ export default class extends Vue {
         };
     }
 
-    @namespace('user').Action
+    @(namespace('user').Action)
     login;
 }
 </script>
