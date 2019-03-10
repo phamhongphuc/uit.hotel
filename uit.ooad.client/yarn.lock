@@ -4594,9 +4594,9 @@ graphql-codegen-core@0.16.1:
     ts-log "2.1.4"
     winston "3.2.1"
 
-graphql-codegen-introspection@^0.15.2:
-  version "0.15.2"
-  resolved "https://registry.yarnpkg.com/graphql-codegen-introspection/-/graphql-codegen-introspection-0.15.2.tgz#6b0a4442a0bf6547511619ab16f29d50fe400fbb"
+graphql-codegen-introspection@^0.18.0:
+  version "0.18.0"
+  resolved "https://registry.yarnpkg.com/graphql-codegen-introspection/-/graphql-codegen-introspection-0.18.0.tgz#684f35865e3ae3b0376e38bc25d73a847507836d"
 
 graphql-codegen-plugin-helpers@0.15.2:
   version "0.15.2"
