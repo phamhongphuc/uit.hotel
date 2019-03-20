@@ -5,10 +5,10 @@ export interface StoreSelf {
     app: ComponentOptions<Vue>;
 }
 
-export function router(self: StoreSelf): VueRouter {
+export function router(self: any): VueRouter {
     return self.app.router as VueRouter;
 }
 
-export function route(self: StoreSelf): Route {
+export function route(self: any): Route {
     return router(self).currentRoute;
 }
