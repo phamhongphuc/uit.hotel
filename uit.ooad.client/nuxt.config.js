@@ -33,19 +33,18 @@ export default {
     loading: { color: '#3B8070' },
     modules: [
         '@nuxtjs/apollo',
-        'nuxt-typescript',
+        '@nuxtjs/style-resources',
         ['bootstrap-vue/nuxt', { css: false }],
-        [
-            'nuxt-sass-resources-loader',
-            [
-                'assets/scss/before/_before.scss',
-                'bootstrap/scss/_functions.scss',
-                'bootstrap/scss/_variables.scss',
-                'bootstrap/scss/_mixins.scss',
-                'assets/scss/after/_after.scss',
-            ],
-        ],
     ],
+    styleResources: {
+        scss: [
+            'assets/scss/before/_before.scss',
+            'bootstrap/scss/_functions.scss',
+            'bootstrap/scss/_variables.scss',
+            'bootstrap/scss/_mixins.scss',
+            'assets/scss/after/_after.scss',
+        ],
+    },
     plugins: [
         { src: '~/plugins/localStorage', ssr: false },
         { src: '~/plugins/notification', ssr: false },
