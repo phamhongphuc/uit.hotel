@@ -2,7 +2,6 @@ import { notify } from '~/plugins/notify';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { ApolloClient, ApolloError, MutationOptions } from 'apollo-client';
 import { FetchResult } from 'apollo-link';
-import Vue from 'vue';
 
 declare module 'vue/types/vue' {
     interface Vue {
@@ -20,11 +19,11 @@ export function apolloClient(store: any): ApolloClient<InMemoryCache> {
     throw new Error('Không thể tìm thấy apolloProvider hoặc $apolloProvider');
 }
 
-export function apolloHelpers(store: { app: Vue }): ApolloHelpers {
+export function apolloHelpers(store: any): ApolloHelpers {
     return store.app.$apolloHelpers;
 }
 
-export function apolloClientNotify(store: { app: Vue }): ApolloNotify {
+export function apolloClientNotify(store: any): ApolloNotify {
     const client = apolloClient(store);
     return {
         async mutate<TType, TVariables>(
