@@ -42,7 +42,7 @@
     },
     "devDependencies": {
         "@babel/polyfill": "^7.2.3",
-        "@babel/register": "7.0.0",
+        "@babel/register": "7.4.0",
         "@nuxt/typescript": "^2.4.5",
         "@playlyfe/gql": "^2.6.1",
         "@types/chai": "^4.1.7",
