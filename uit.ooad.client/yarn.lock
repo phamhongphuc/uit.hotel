@@ -11164,9 +11164,9 @@ vue-meta@^1.5.8:
     object-assign "^4.1.1"
 
 vue-mixin-decorator@^1.0.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/vue-mixin-decorator/-/vue-mixin-decorator-1.1.0.tgz#0dfffee53fa3e31a99cc0cf248ec8b7a76a75f1a"
-  integrity sha512-2vWVZh7GX8JNYIuYdA5YJmZjqQ6NO2PdFRfLfHeJnLBGOAi6txq4ZxHLRRgBXGoGhTmT7CuRGlW5LhiUisQjqQ==
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/vue-mixin-decorator/-/vue-mixin-decorator-1.1.1.tgz#1a44a3358391e6ce2ab6d0944cc926effbbcfe59"
+  integrity sha512-o+KRo1n2snb8gcUBxEZuVInwkuQ49ARtzA5HX6qLWAmnlxX+bo5uQ1tW/X0MxE7NJCjJ+7iyKUQeETYE3G0Taw==
   dependencies:
     global "^4.3.2"
     prettier "^1.16.1"
