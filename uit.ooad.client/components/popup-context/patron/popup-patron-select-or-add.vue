@@ -235,7 +235,9 @@ export default class extends PopupMixin<
         };
     }
 
-    currentPatron(patrons: GetPatrons.Patrons[]): GetPatrons.Patrons {
+    currentPatron(
+        patrons: GetPatrons.Patrons[],
+    ): GetPatrons.Patrons | undefined {
         return patrons.find(
             p => p.identification === this.input.identification,
         );

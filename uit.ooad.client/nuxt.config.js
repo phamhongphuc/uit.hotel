@@ -1,5 +1,3 @@
-import autoprefixer from 'autoprefixer';
-
 const LOCALHOST = `http://localhost:3000`;
 
 export default {
@@ -72,6 +70,11 @@ export default {
                 });
             }
         },
-        postcss: [autoprefixer()],
+        postcss: {
+            plugins: {},
+            preset: {
+                autoprefixer: {},
+            },
+        },
     },
 };

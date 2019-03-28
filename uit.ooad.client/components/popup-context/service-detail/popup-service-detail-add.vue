@@ -98,6 +98,7 @@ export default class extends PopupMixin<
 > {
     onOpen() {
         const self = this;
+        if (self === null) return;
         this.input = {
             number: 0,
             service: { id: 1 },

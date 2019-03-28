@@ -28,13 +28,13 @@ export default class extends Vue {
     data: any = null;
 
     @Prop({ required: true, type: String })
-    title: string;
+    title!: string;
 
     @Prop({ default: undefined })
     refs: any;
 
     @Prop({ default: false, type: Boolean })
-    noData: boolean;
+    noData!: boolean;
 
     close() {
         this.data = null;

@@ -178,13 +178,12 @@ import { EmployeeCreateInput } from 'graphql/types';
         rePassword: {
             required,
             equalPassword(value) {
-                return value === this.input.password;
+                return value === (this as any).input.password;
             },
         },
     },
 })
 export default class extends PopupMixin<void, EmployeeCreateInput> {
-    input: EmployeeCreateInput | null = null;
     rePassword: string = '';
 
     onOpen() {

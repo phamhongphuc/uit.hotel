@@ -10,35 +10,41 @@ export class CheckboxProps extends Vue {
     value: any;
 
     @Prop({ default: null })
-    checked: [string, number, Record<string, any>, any[], boolean];
+    checked!: [string, number, Record<string, any>, any[], boolean];
 
     @Prop({ default: false })
-    validated: boolean;
+    validated!: boolean;
 
     @Prop({ default: false })
-    ariaInvalid: [boolean, string];
+    ariaInvalid!: [boolean, string];
 
     @Prop({ default: false })
-    stacked: boolean;
+    stacked!: boolean;
 
     // Render as button style
+    // Render as button style
     @Prop({ default: false })
-    buttons: boolean;
+    buttons!: boolean;
 
     // Convert from bootstrap-vue/es/mixins/form-options.js
     // Only applicable when rendered with button style
+    // Convert from bootstrap-vue/es/mixins/form-options.js
+    // Only applicable when rendered with button style
     @Prop({ default: 'secondary' })
-    buttonVariant: string;
+    buttonVariant!: string;
 
     @Prop({ default: () => [] })
-    options: { text: string; value: string }[];
+    options!: {
+        text: string;
+        value: string;
+    }[];
 
     @Prop({ default: 'value' })
-    valueField: string;
+    valueField!: string;
 
     @Prop({ default: 'text' })
-    textField: string;
+    textField!: string;
 
     @Prop({ default: 'disabled' })
-    disabledField: string;
+    disabledField!: string;
 }

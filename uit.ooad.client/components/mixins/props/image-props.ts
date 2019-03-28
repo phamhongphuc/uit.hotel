@@ -5,17 +5,17 @@ import { Mixin } from 'vue-mixin-decorator';
 @Mixin
 export class ImageProps extends Vue {
     @Prop({ default: '' })
-    image: string;
+    image!: string;
 
     @Prop({ default: 0 })
-    imageWidth: number;
+    imageWidth!: number;
 
     @Prop({ default: 0 })
-    imageHeight: number;
+    imageHeight!: number;
 
     @Prop({ default: '' })
-    imageClass: string;
+    imageClass!: string;
 
     @Prop({ default: false })
-    circle: boolean;
+    circle!: boolean;
 }
