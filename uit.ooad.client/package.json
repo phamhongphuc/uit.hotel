@@ -23,7 +23,6 @@
     "dependencies": {
         "@nuxtjs/apollo": "^4.0.0-rc2.3",
         "@nuxtjs/style-resources": "^0.1.2",
-        "autoprefixer": "^9.4.3",
         "bluebird": "^3.5.3",
         "bootstrap-vue": "^2.0.0-rc.11",
         "graphql-tag": "^2.10.0",
