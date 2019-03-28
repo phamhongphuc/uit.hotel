@@ -33,13 +33,13 @@ import { Vue, Component, Prop } from 'nuxt-property-decorator';
 })
 export default class extends Vue {
     @Prop({ required: true })
-    query: string;
+    query!: string;
 
     @Prop({ default: '' })
-    childClass: string;
+    childClass!: string;
 
     @Prop({ default: () => ({}) })
-    variables: object;
+    variables!: object;
 }
 </script>
 <style lang="scss">

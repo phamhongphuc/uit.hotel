@@ -54,7 +54,7 @@ namespace uit.ooad.ObjectTypes
     {
         public BillCreateInput()
         {
-            Field<PatronIdInput>(
+            Field<NonNullGraphType<PatronIdInput>>(
                 nameof(Bill.Patron),
                 "Khách hàng"
             );

@@ -22,7 +22,7 @@ import { IconProps, InputProps } from '~/components/mixins/props';
 })
 export default class extends Vue {
     @Prop({ default: '' })
-    reverseWhen: string;
+    reverseWhen!: string;
 }
 </script>
 <style lang="scss">

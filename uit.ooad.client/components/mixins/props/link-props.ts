@@ -6,41 +6,41 @@ import { Mixin } from 'vue-mixin-decorator';
 @Mixin
 export class LinkProps extends Vue {
     @Prop({ default: null })
-    href: string;
+    href!: string;
 
     @Prop({ default: null })
-    rel: string;
+    rel!: string;
 
     @Prop({ default: '_self' })
-    target: string;
+    target!: string;
 
     @Prop({ default: false })
-    active: boolean;
+    active!: boolean;
 
     @Prop({ default: 'active' })
-    activeClass: string;
+    activeClass!: string;
 
     @Prop({ default: false })
-    append: boolean;
+    append!: boolean;
 
     @Prop({ default: false })
-    disabled: boolean;
+    disabled!: boolean;
 
     @Prop({ default: 'click' })
-    event: [string, any[]];
+    event!: [string, any[]];
 
     @Prop({ default: false })
-    exact: boolean;
+    exact!: boolean;
 
     @Prop({ default: 'active' })
-    exactActiveClass: string;
+    exactActiveClass!: string;
 
     @Prop({ default: false })
-    replace: boolean;
+    replace!: boolean;
 
     @Prop({ default: 'a' })
-    routerTag: string;
+    routerTag!: string;
 
     @Prop({ default: null })
-    to: [string, Record<string, any>];
+    to!: [string, Record<string, any>];
 }

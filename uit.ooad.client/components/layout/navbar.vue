@@ -102,7 +102,7 @@ export default class extends Vue {
     @(namespace('user').State(
         (state: UserState) => state.employee || { position: {} },
     ))
-    employee: UserLogin.Employee;
+    employee!: UserLogin.Employee;
 }
 </script>
 <style lang="scss">
