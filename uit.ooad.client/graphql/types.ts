@@ -38,7 +38,7 @@ export interface BookAndCheckInCreateInput {
 
 export interface BillCreateInput {
     /** Khách hàng */
-    patron: Maybe<PatronId>;
+    patron: PatronId;
 }
 
 export interface ServicesDetailHouseKeepingInput {
@@ -110,7 +110,7 @@ export interface PatronCreateInput {
     /** Một số chú thích về khách hàng nếu cần thiết */
     note: string;
     /** Danh sách số điện thoại của khách hàng */
-    listOfPhoneNumbers: Maybe<(Maybe<string>)[]>;
+    listOfPhoneNumbers: string[];
     /** Loại khách hàng */
     patronKind: Maybe<PatronKindId>;
 }
@@ -330,7 +330,7 @@ export interface PatronUpdateInput {
     /** Một số chú thích về khách hàng nếu cần thiết */
     note: string;
     /** Danh sách số điện thoại của khách hàng */
-    listOfPhoneNumbers: Maybe<(Maybe<string>)[]>;
+    listOfPhoneNumbers: string[];
     /** Loại khách hàng */
     patronKind: Maybe<PatronKindId>;
 }
@@ -746,6 +746,34 @@ export namespace GetBookings {
     };
 }
 
+export namespace GetSimpleBookings {
+    export type Variables = {};
+
+    export type Query = {
+        __typename?: 'Query';
+
+        bookings: Bookings[];
+    };
+
+    export type Bookings = {
+        __typename?: 'Booking';
+
+        id: number;
+
+        status: number;
+
+        room: Room;
+    };
+
+    export type Room = {
+        __typename?: 'Room';
+
+        id: number;
+
+        name: string;
+    };
+}
+
 export namespace CheckIn {
     export type Variables = {
         id: string;
@@ -1114,7 +1142,7 @@ export namespace GetPatrons {
 
         domicile: string;
 
-        phoneNumbers: Maybe<(Maybe<string>)[]>;
+        phoneNumbers: string[];
 
         nationality: string;
 
@@ -1162,7 +1190,7 @@ export namespace GetPatron {
 
         domicile: string;
 
-        phoneNumbers: Maybe<(Maybe<string>)[]>;
+        phoneNumbers: string[];
 
         nationality: string;
 
@@ -1210,7 +1238,7 @@ export namespace CreatePatron {
 
         domicile: string;
 
-        phoneNumbers: Maybe<(Maybe<string>)[]>;
+        phoneNumbers: string[];
 
         nationality: string;
 

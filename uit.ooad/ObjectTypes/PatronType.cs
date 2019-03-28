@@ -25,7 +25,7 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.Company).Description("Công ty mà khách hàng đang làm việc");
             Field(x => x.Note).Description("Một số chú thích về khách hàng nếu cần thiết");
 
-            Field<ListGraphType<StringGraphType>>(
+            Field<NonNullGraphType<ListGraphType<NonNullGraphType<StringGraphType>>>>(
                 nameof(Patron.PhoneNumbers),
                 "Danh sách số điện thoại của khách hàng",
                 resolve: context => context.Source.PhoneNumbers.ToList());
@@ -35,11 +35,11 @@ namespace uit.ooad.ObjectTypes
                 "Loại khách hàng",
                 resolve: context => context.Source.PatronKind);
 
-            Field<ListGraphType<BillType>>(
+            Field<NonNullGraphType<ListGraphType<NonNullGraphType<BillType>>>>(
                 nameof(Patron.Bills),
                 "Danh sách các số hóa đơn của khách hàng",
                 resolve: context => context.Source.Bills.ToList());
-            Field<ListGraphType<BookingType>>(
+            Field<NonNullGraphType<ListGraphType<NonNullGraphType<BookingType>>>>(
                 nameof(Patron.Bookings),
                 "Danh sách các đơn đặt trước của khách hàng",
                 resolve: context => context.Source.Bookings.ToList());
@@ -75,7 +75,7 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.Company).Description("Công ty mà khách hàng đang làm việc");
             Field(x => x.Note).Description("Một số chú thích về khách hàng nếu cần thiết");
 
-            Field<ListGraphType<StringGraphType>>(
+            Field<NonNullGraphType<ListGraphType<NonNullGraphType<StringGraphType>>>>(
                 nameof(Patron.ListOfPhoneNumbers),
                 "Danh sách số điện thoại của khách hàng"
             );
@@ -105,7 +105,7 @@ namespace uit.ooad.ObjectTypes
             Field(x => x.Company).Description("Công ty mà khách hàng đang làm việc");
             Field(x => x.Note).Description("Một số chú thích về khách hàng nếu cần thiết");
 
-            Field<ListGraphType<StringGraphType>>(
+            Field<NonNullGraphType<ListGraphType<NonNullGraphType<StringGraphType>>>>(
                 nameof(Patron.ListOfPhoneNumbers),
                 "Danh sách số điện thoại của khách hàng"
             );

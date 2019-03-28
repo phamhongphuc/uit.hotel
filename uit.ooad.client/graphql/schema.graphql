@@ -313,7 +313,7 @@ type Bill {
 
 input BillCreateInput {
     # Khách hàng
-    patron: PatronId = null
+    patron: PatronId!
 }
 
 # Input cho thông tin một hóa đơn
@@ -608,13 +608,13 @@ scalar Milliseconds
 # Thông tin  một khách hàng của khách sạn
 type Patron {
     # Danh sách các số hóa đơn của khách hàng
-    bills: [Bill]
+    bills: [Bill!]!
 
     # Ngày sinh của khách hàng
     birthdate: DateTimeOffset!
 
     # Danh sách các đơn đặt trước của khách hàng
-    bookings: [Booking]
+    bookings: [Booking!]!
 
     # Công ty mà khách hàng đang làm việc
     company: String!
@@ -647,7 +647,7 @@ type Patron {
     patronKind: PatronKind!
 
     # Danh sách số điện thoại của khách hàng
-    phoneNumbers: [String]
+    phoneNumbers: [String!]!
 
     # Địa chỉ thường trú của khách hàng
     residence: String!
@@ -685,7 +685,7 @@ input PatronCreateInput {
     note: String!
 
     # Danh sách số điện thoại của khách hàng
-    listOfPhoneNumbers: [String] = null
+    listOfPhoneNumbers: [String!]!
 
     # Loại khách hàng
     patronKind: PatronKindId = null
@@ -772,7 +772,7 @@ input PatronUpdateInput {
     note: String!
 
     # Danh sách số điện thoại của khách hàng
-    listOfPhoneNumbers: [String] = null
+    listOfPhoneNumbers: [String!]!
 
     # Loại khách hàng
     patronKind: PatronKindId = null
