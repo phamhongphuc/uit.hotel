@@ -30,7 +30,7 @@ import { InputProps, IconProps, StateProps } from '~/components/mixins/props';
 })
 export default class extends Vue {
     @Prop({ default: null })
-    title: string;
+    title!: string;
 }
 </script>
 <style lang="scss">

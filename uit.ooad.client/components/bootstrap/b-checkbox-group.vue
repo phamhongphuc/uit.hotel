@@ -32,7 +32,7 @@ function isEquals(a: string[], b: string[]): boolean {
 })
 export default class extends CheckboxProps {
     @Prop({ required: true })
-    title: string;
+    title!: string;
 
     selected: string[] = [];
     allSelected: boolean = false;

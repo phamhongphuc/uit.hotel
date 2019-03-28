@@ -32,29 +32,29 @@ export class InputProps extends Vue {
             return TYPES.indexOf(type) !== -1;
         },
     })
-    type: string;
+    type!: string;
 
     @Prop({ default: false })
-    ariaInvalid: [boolean, string];
+    ariaInvalid!: [boolean, string];
 
     @Prop({ default: false })
-    readonly: boolean;
+    readonly!: boolean;
 
     @Prop({ default: false })
-    plaintext: boolean;
+    plaintext!: boolean;
 
     @Prop({ default: null })
-    autocomplete: string;
+    autocomplete!: string;
 
     @Prop({ default: null })
-    placeholder: string;
+    placeholder!: string;
 
     @Prop()
-    formatter: Function;
+    formatter!: Function;
 
     @Prop({ default: false })
-    lazyFormatter: boolean;
+    lazyFormatter!: boolean;
 
     @Prop({ default: false })
-    disabled: boolean;
+    disabled!: boolean;
 }

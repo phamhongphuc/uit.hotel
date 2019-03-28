@@ -9,10 +9,10 @@ import { notify } from '~/plugins/notify';
 @Mixin
 export default class extends Vue {
     @Prop({ required: true })
-    mutation: DocumentNode;
+    mutation!: DocumentNode;
 
     @Prop({ default: '' })
-    variables: object;
+    variables!: object;
 
     @Prop({ default: undefined })
     success: string | undefined;
@@ -30,7 +30,7 @@ export default class extends Vue {
     }
 
     async mutate(): Promise<
-        FetchResult<{}, Record<string, any>, Record<string, any>>
+        FetchResult<{}, Record<string, any>, Record<string, any>> | undefined
     > {
         const result = await apolloClientNotify({ app: this }).mutate({
             mutation: this.mutation,
@@ -39,7 +39,7 @@ export default class extends Vue {
         const mutationName = this.mutationName;
         if (mutationName !== undefined) {
             const data = result.data;
-            if (data == null) return;
+            if (data == null) return undefined;
             if (mutationName in data) {
                 const text = data[mutationName];
                 if (typeof text === 'string') {
