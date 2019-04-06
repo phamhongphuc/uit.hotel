@@ -53,7 +53,7 @@ const config = {
     },
     rules: {
         'eol-last': 'error',
-        'linebreak-style': ['warn', isWin ? 'windows' : 'unix'],
+        'linebreak-style': ['warn', 'unix'],
         'no-console': 'warn',
         'no-lonely-if': 'error',
 
