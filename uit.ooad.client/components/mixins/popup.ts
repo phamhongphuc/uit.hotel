@@ -8,7 +8,7 @@ export class PopupMixin<TData, TInput> extends Vue {
     refs: any;
 
     data!: TData;
-    input!: TInput;
+    input: TInput | any = null;
 
     onOpen(): void {}
 

@@ -175,7 +175,7 @@ import { CreatePatron, PatronCreateInput, GetPatrons } from 'graphql/types';
         PopupMixin,
         mixinData({ createPatron, getPatronKinds, getPatrons }),
     ],
-    name: 'popup-patron-add-',
+    name: 'popup-patron-select-or-add-',
     validations: {
         input: {
             name: { required },
@@ -205,8 +205,10 @@ import { CreatePatron, PatronCreateInput, GetPatrons } from 'graphql/types';
 })
 export default class extends PopupMixin<
     { callback(id: number, patron: GetPatrons.Patrons) },
-    PatronCreateInput
+    PatronCreateInput | null
 > {
+    // input: PatronCreateInput | null = null;
+
     phoneNumbers: string = '';
 
     onOpen() {
@@ -238,9 +240,10 @@ export default class extends PopupMixin<
     currentPatron(
         patrons: GetPatrons.Patrons[],
     ): GetPatrons.Patrons | undefined {
-        return patrons.find(
-            p => p.identification === this.input.identification,
-        );
+        if (this.input == null) return;
+
+        const { identification } = this.input;
+        return patrons.find(p => p.identification === identification);
     }
 
     async addAndSelect(close: Function, mutate: Function) {
