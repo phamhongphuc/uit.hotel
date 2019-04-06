@@ -1,4 +1,4 @@
 import Vue from 'vue';
 import Vuelidate from 'vuelidate';
 
-Vue.use(Vuelidate as any);
+Vue.use(Vuelidate);
