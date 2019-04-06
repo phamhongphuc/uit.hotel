@@ -1,30 +1,33 @@
 <template>
-    <apollo-query
-        :query="query"
-        :variables="variables"
-        :poll-interval="500"
-        class="query"
-    >
-        <template slot-scope="{ result: { loading, error, data } }">
-            <div :class="childClass">
-                <slot v-if="data" :data="data" />
-                <div v-else class="query-text">
-                    <span v-if="loading">
-                        <span class="icon mr-1"></span>
-                        Đang tải dữ liệu...
-                    </span>
-                    <span v-else-if="error" class="text-red">
-                        <span class="icon mr-1"></span>
-                        Đã có lỗi xảy ra!
-                    </span>
-                    <span v-else>
-                        <span class="icon mr-1"></span>
-                        Đang yêu cầu dữ liệu...
-                    </span>
+    <no-ssr>
+        <apollo-query
+            :query="query"
+            :variables="variables"
+            :poll-interval="500"
+            fetch-policy="no-cache"
+            class="query"
+        >
+            <template slot-scope="{ result: { loading, error, data } }">
+                <div :class="childClass">
+                    <slot v-if="data" :data="data" />
+                    <div v-else class="query-text">
+                        <span v-if="loading">
+                            <span class="icon mr-1"></span>
+                            Đang tải dữ liệu...
+                        </span>
+                        <span v-else-if="error" class="text-red">
+                            <span class="icon mr-1"></span>
+                            Đã có lỗi xảy ra!
+                        </span>
+                        <span v-else>
+                            <span class="icon mr-1"></span>
+                            Đang yêu cầu dữ liệu...
+                        </span>
+                    </div>
                 </div>
-            </div>
-        </template>
-    </apollo-query>
+            </template>
+        </apollo-query>
+    </no-ssr>
 </template>
 <script lang="ts">
 import { Vue, Component, Prop } from 'nuxt-property-decorator';
