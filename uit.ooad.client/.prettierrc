@@ -7,7 +7,7 @@
     "arrowParens": "avoid",
     "htmlWhitespaceSensitivity": "ignore",
     "printWidth": 80,
-    "endOfLine": "auto",
+    "endOfLine": "lf",
     "overrides": [
         {
             "files": ["*.code-workspace", ".stylelintrc", ".babelrc"],
