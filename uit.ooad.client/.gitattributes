@@ -1,8 +1,10 @@
+[core]
+	autocrlf = true
+
 ###############################################################################
 # Set default behavior to automatically normalize line endings.
 ###############################################################################
-* text=auto
-
+* text = auto
 ###############################################################################
 # Set default behavior for command prompt diff.
 #
