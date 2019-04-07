@@ -77,7 +77,7 @@
             ref="booking_book_and_check_in"
             :refs="$refs"
         />
-        <popup-patron-select-or-add- ref="patron_select" />
+        <popup-patron-select-or-add- ref="patron_select_or_add" />
     </div>
 </template>
 <script lang="ts">
