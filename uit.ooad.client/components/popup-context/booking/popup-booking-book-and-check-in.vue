@@ -63,7 +63,7 @@
                     variant="main"
                     :disabled="$v.$invalid"
                     @click="
-                        refs.patron_select.open({
+                        refs.patron_select_or_add.open({
                             callback(id, patron) {
                                 input.listOfPatrons.push(patron);
                             },

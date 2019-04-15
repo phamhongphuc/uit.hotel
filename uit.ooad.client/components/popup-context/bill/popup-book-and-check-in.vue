@@ -24,7 +24,7 @@
                     variant="main"
                     class="ml-3 text-nowrap"
                     @click="
-                        refs.patron_select.open({
+                        refs.patron_select_or_add.open({
                             callback(id) {
                                 input.bill.patron.id = id;
                             },

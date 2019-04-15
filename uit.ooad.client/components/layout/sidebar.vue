@@ -140,7 +140,7 @@ export default class extends Vue {
     padding: 1rem;
     background-color: $white;
     box-shadow: $box-shadow-sm-right;
-
+    overflow-y: auto;
     > .header-item {
         border-radius: 0 0.25rem 0.25rem 0;
         text-transform: uppercase;
@@ -149,6 +149,7 @@ export default class extends Vue {
         font-size: 0.8rem;
         line-height: 2rem;
         height: 2rem;
+        min-height: 2rem;
         > .nav-link {
             flex-direction: row-reverse;
             > .icon {

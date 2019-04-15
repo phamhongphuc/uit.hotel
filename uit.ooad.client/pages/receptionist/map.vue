@@ -24,60 +24,68 @@
                 from,
                 to,
             }"
-            class="hotel-map row flex-1"
-            child-class="col m-2 p-3 bg-white rounded shadow-sm overflow-auto"
+            class="hotel-map row flex-1 p-2"
+            child-class="bg-white rounded shadow-sm w-100 overflow-auto"
         >
-            <div slot-scope="{ data: { floors } }">
-                <div
-                    v-for="floor in floorsFilter(floors)"
-                    :key="floor.id"
-                    class="d-flex flex-nowrap"
-                >
-                    <b-button
-                        :variant="floor.isActive ? 'main' : 'gray'"
-                        @contextmenu.prevent="
-                            $refs.context_floor.open($event, {
-                                floors: floors,
-                                floor,
-                            })
-                        "
-                    >
-                        Tầng {{ floor.name }}
-                    </b-button>
-                    <b-button
-                        v-for="room in roomsFilter(floor.rooms)"
-                        :key="room.id"
-                        :variant="
-                            selected.indexOf(room) === -1
-                                ? room.currentBooking
-                                    ? 'light-red'
-                                    : 'light-blue'
-                                : 'dark-blue'
-                        "
-                        @contextmenu.prevent="
-                            $refs.context_room.open($event, {
-                                room,
-                                floor,
-                                floors,
-                            })
-                        "
-                        @click="toggle(room)"
-                    >
-                        {{ room.name }}
-                        <br />
-                        {{ room.roomKind.name }}
-                    </b-button>
-                </div>
+            <div
+                slot-scope="{ data: { floors } }"
+                class="hotel-map-table-container p-3"
+            >
+                <table>
+                    <tr v-for="floor in floorsFilter(floors)" :key="floor.id">
+                        <td>
+                            <b-button
+                                :variant="floor.isActive ? 'main' : 'gray'"
+                                @contextmenu.prevent="
+                                    $refs.context_floor.open($event, {
+                                        floors: floors,
+                                        floor,
+                                    })
+                                "
+                            >
+                                Tầng {{ floor.name }}
+                            </b-button>
+                        </td>
+                        <td
+                            v-for="room in roomsFilter(floor.rooms)"
+                            :key="room.id"
+                        >
+                            <b-button
+                                :variant="
+                                    selected.indexOf(room) === -1
+                                        ? room.currentBooking
+                                            ? 'light-red'
+                                            : 'light-blue'
+                                        : 'dark-blue'
+                                "
+                                @contextmenu.prevent="
+                                    $refs.context_room.open($event, {
+                                        room,
+                                        floor,
+                                        floors,
+                                    })
+                                "
+                                @click="toggle(room)"
+                            >
+                                {{ room.name }}
+                                <br />
+                                {{ room.roomKind.name }}
+                            </b-button>
+                        </td>
+                    </tr>
+                </table>
             </div>
         </query->
-        <context-room- ref="context_room" :refs="$refs" />
-        <popup-book-and-check-in- ref="book_and_check_in" :refs="$refs" />
-        <popup-book- ref="book" :refs="$refs" />
-        <popup-booking-book-and-check-in-
-            ref="booking_book_and_check_in"
-            :refs="$refs"
-        />
-        <popup-patron-select-or-add- ref="patron_select" />
+        <div>
+            <context-room- ref="context_room" :refs="$refs" />
+            <popup-book-and-check-in- ref="book_and_check_in" :refs="$refs" />
+            <popup-book- ref="book" :refs="$refs" />
+            <popup-booking-book-and-check-in-
+                ref="booking_book_and_check_in"
+                :refs="$refs"
+            />
+            <popup-patron-select-or-add- ref="patron_select_or_add" />
+        </div>
     </div>
 </template>
 <script lang="ts">

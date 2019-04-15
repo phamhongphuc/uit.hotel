@@ -30,37 +30,40 @@
             child-class="col m-2 p-3 bg-white rounded shadow-sm overflow-auto"
         >
             <div slot-scope="{ data: { floors } }">
-                <div
-                    v-for="floor in floorsFilter(floors)"
-                    :key="floor.id"
-                    class="d-flex flex-nowrap"
-                >
-                    <b-button
-                        :variant="floor.isActive ? 'main' : 'gray'"
-                        @contextmenu.prevent="
-                            $refs.context_floor.open($event, {
-                                floor,
-                            })
-                        "
-                    >
-                        Tầng {{ floor.name }}
-                    </b-button>
-                    <b-button
-                        v-for="room in roomsFilter(floor.rooms)"
-                        :key="room.id"
-                        :variant="room.isActive ? 'light-blue' : 'gray'"
-                        @contextmenu.prevent="
-                            $refs.context_room.open($event, {
-                                room,
-                                floor,
-                            })
-                        "
-                    >
-                        {{ room.name }}
-                        <br />
-                        {{ room.roomKind.name }}
-                    </b-button>
-                </div>
+                <table>
+                    <tr v-for="floor in floorsFilter(floors)" :key="floor.id">
+                        <td>
+                            <b-button
+                                :variant="floor.isActive ? 'main' : 'gray'"
+                                @contextmenu.prevent="
+                                    $refs.context_floor.open($event, {
+                                        floor,
+                                    })
+                                "
+                            >
+                                Tầng {{ floor.name }}
+                            </b-button>
+                        </td>
+                        <td
+                            v-for="room in roomsFilter(floor.rooms)"
+                            :key="room.id"
+                        >
+                            <b-button
+                                :variant="room.isActive ? 'light-blue' : 'gray'"
+                                @contextmenu.prevent="
+                                    $refs.context_room.open($event, {
+                                        room,
+                                        floor,
+                                    })
+                                "
+                            >
+                                {{ room.name }}
+                                <br />
+                                {{ room.roomKind.name }}
+                            </b-button>
+                        </td>
+                    </tr>
+                </table>
             </div>
         </query->
         <context-manage-room- ref="context_room" :refs="$refs" />
