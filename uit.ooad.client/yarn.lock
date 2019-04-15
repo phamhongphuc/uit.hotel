@@ -1371,9 +1371,9 @@
     "@types/vfile-message" "*"
 
 "@types/vuelidate@^0.7.4":
-  version "0.7.4"
-  resolved "https://registry.yarnpkg.com/@types/vuelidate/-/vuelidate-0.7.4.tgz#0792cae95ce6de75d2f40d3b5b787773a2e872be"
-  integrity sha512-fdDm9M3AlisXAvu+POuzQQlO4luxF0J9KHuxiPM+HuSshVizF+QN6u1/lhqNE0wq5L/Us8oJmTVWbx40iNsdwA==
+  version "0.7.5"
+  resolved "https://registry.yarnpkg.com/@types/vuelidate/-/vuelidate-0.7.5.tgz#903708687403c8e33ae2f992769b3c09979841e5"
+  integrity sha512-Xz4znSLv5VAiTvxaCvF5mlXwzJiOWAV0BysCHk0cyXUK7LpMSnXQcYNSbPioa821O1Vcs4SBuM+VAuHbIhFdqw==
   dependencies:
     vue "^2.5.16"
 
