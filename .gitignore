@@ -261,7 +261,7 @@ __pycache__/
 *.pyc
 
 # Database
-/uit.ooad/Database/
+/uit.hotel/Database/
 
 # Tool
 /Tools
@@ -272,5 +272,5 @@ coverage
 
 .nyc_output
 
-uit.ooad/Tools/
-uit.ooad.test/Tools/
+uit.hotel/Tools/
+uit.hotel.test/Tools/

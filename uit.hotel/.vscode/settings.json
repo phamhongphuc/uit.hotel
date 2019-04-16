@@ -1,0 +1,15 @@
+{
+    "files.exclude": {
+        "**/.vscode": true,
+        "**/bin": true,
+        "obj": true,
+        "Properties": true,
+        "Database": true,
+        "Tools": true,
+        "appsettings.json": true,
+        "appsettings.Development.json": true,
+        "clean.bat": true,
+        "uit.hotel.csproj.user": true,
+        "FodyWeavers.xml": true
+    }
+}

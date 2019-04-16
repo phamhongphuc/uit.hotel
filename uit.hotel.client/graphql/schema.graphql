@@ -1,0 +1,1469 @@
+schema {
+    query: AppQuery
+    mutation: AppMutation
+}
+
+type AppMutation {
+    # Thêm phòng khách đoàn
+    addBookingToBill(bill: BillId!, booking: BookingCreateInput!): Booking!
+
+    # Nhân viên nhận phòng để dọn dẹp
+    assignCleaningService(id: ID!): HouseKeeping!
+
+    # Đặt và nhận phòng ngay tại khách sạn
+    bookAndCheckIn(
+        bookings: [BookAndCheckInCreateInput!]!
+        bill: BillCreateInput!
+    ): Bill!
+
+    # Hủy đặt phòng
+    cancel(id: ID!): String!
+
+    # Nhân viên xác nhận đã dọn xong
+    confirmCleaned(id: ID!): HouseKeeping!
+
+    # Nhân viên xác nhận và gửi thông tin kiểm tra phòng check-out
+    confirmCleanedAndServices(
+        servicesDetails: [ServicesDetailHouseKeepingInput!]!
+        houseKeepingId: ID!
+    ): HouseKeeping!
+
+    # Tạo và trả về một đơn đặt phòng
+    createBill(bookings: [BookingCreateInput!]!, bill: BillCreateInput!): Bill!
+
+    # Tạo và trả về một nhân viên mới
+    createEmployee(input: EmployeeCreateInput!): Employee!
+
+    # Tạo và trả về một tầng mới
+    createFloor(input: FloorCreateInput!): Floor!
+
+    # Tạo và trả về một khách hàng mới
+    createPatron(input: PatronCreateInput!): Patron!
+
+    # Tạo và trả về một loại khách hàng mới
+    createPatronKind(input: PatronKindCreateInput!): PatronKind!
+
+    # Tạo và trả về một chức vụ mới
+    createPosition(input: PositionCreateInput!): Position!
+
+    # Tạo và trả về một loại giá cơ bản mới
+    createRate(input: RateCreateInput!): Rate!
+
+    # Tạo và trả về một phiếu thu mới
+    createReceipt(input: ReceiptCreateInput!): Receipt!
+
+    # Tạo và trả về một phòng mới
+    createRoom(input: RoomCreateInput!): Room!
+
+    # Tạo và trả về một loại phòng
+    createRoomKind(input: RoomKindCreateInput!): RoomKind!
+
+    # Tạo và trả về một dịch vụ mới
+    createService(input: ServiceCreateInput!): Service!
+
+    # Tạo và trả về một chi tiết dịch vụ mới
+    createServicesDetail(input: ServicesDetailCreateInput!): ServicesDetail!
+
+    # Tạo và trả về một giá biến động mới
+    createVolatilityRate(input: VolatilityRateCreateInput!): VolatilityRate!
+
+    # Nhân viên tự đổi mật khẩu cho tài khoản của mình
+    changePassword(password: String!, newPassword: String!): String!
+
+    # Cập nhật thời gian checkin của phòng
+    checkIn(id: ID!): Booking!
+
+    # Kiểm tra đăng nhập
+    checkLogin: Employee!
+
+    # Thực hiện xác nhận trả phòng
+    checkOut(id: ID!): Booking!
+
+    # Xóa một tầng
+    deleteFloor(id: ID!): String!
+
+    # Xóa một loại khách hàng
+    deletePatronKind(id: ID!): String!
+
+    # Xóa một chức vụ
+    deletePosition(id: ID!): String!
+
+    # Xóa một giá cơ bản
+    deleteRate(id: ID!): String!
+
+    # Xóa một phòng
+    deleteRoom(id: ID!): String!
+
+    # Xóa một loại phòng
+    deleteRoomKind(id: ID!): String!
+
+    # Xóa một dịch vụ
+    deleteService(id: ID!): String!
+
+    # Xóa một dịch vụ
+    deleteServicesDetail(id: ID!): String!
+
+    # Xóa một giá biến động
+    deleteVolatilityRate(id: ID!): String!
+
+    # Khởi tạo dữ liệu
+    initializeDatabase: String!
+
+    # Đăng nhập mới
+    login(id: String!, password: String!): AuthenticationObject!
+
+    # Thanh toán hóa đơn (thanh toán tiền phòng)
+    payTheBill(id: ID!): Bill!
+
+    # Yêu cầu kiểm tra khi trả phòng
+    requestCheckOut(id: ID!): Booking!
+
+    # Reset lại mật khẩu cho nhân viên khi quên mật khẩu
+    resetPassword(id: ID!): String!
+
+    # Vô hiệu hóa/ kích hoạt tài khoản
+    setIsActiveAccount(id: ID!, isActive: Boolean!): String!
+
+    # Cập nhật trạng thái hoạt động của tầng
+    setIsActiveFloor(id: ID!, isActive: Boolean!): String!
+
+    # Cập nhật trạng thái hoạt động của chức vụ
+    setIsActivePosition(id: ID!, isActive: Boolean!): String!
+
+    # Vô hiệu hóa chức vụ và chuyển nhân viên sang chức vụ mới
+    setIsActivePositionAndMoveEmployee(
+        id: ID!
+        newId: ID!
+        isActive: Boolean!
+    ): String!
+
+    # Cập nhật trạng thái hoạt động của một phòng
+    setIsActiveRoom(id: ID!, isActive: Boolean!): String!
+
+    # Cập nhật trạng thái hoạt động của loại phòng
+    setIsActiveRoomKind(id: ID!, isActive: Boolean!): String!
+
+    # Cập nhật trạng thái của dịch vụ
+    setIsActiveService(id: ID!, isActive: Boolean!): String!
+
+    # Chỉnh sửa thông tin nhân viên
+    updateEmployee(input: EmployeeUpdateInput!): Employee!
+
+    # Cập nhật và trả về một tầng vừa cập nhật
+    updateFloor(input: FloorUpdateInput!): Floor!
+
+    # Cập nhật và trả về một khách hàng vừa cập nhật
+    updatePatron(input: PatronUpdateInput!): Patron!
+
+    # Cập nhật và trả về một loại khách hàng vừa cập nhật
+    updatePatronKind(input: PatronKindUpdateInput!): PatronKind!
+
+    # Cập nhật và trả về một chức vụ vừa cập nhật
+    updatePosition(input: PositionUpdateInput!): Position!
+
+    # Cập nhật và trả về một giá cơ bản vừa cập nhật
+    updateRate(input: RateUpdateInput!): Rate!
+
+    # Cập nhật và trả về một phòng vừa cập nhật
+    updateRoom(input: RoomUpdateInput!): Room!
+
+    # Cập nhật và trả về loại phòng vừa cập nhật
+    updateRoomKind(input: RoomKindUpdateInput!): RoomKind!
+
+    # Cập nhật và trả về một dịch vụ mới cập nhật
+    updateService(input: ServiceUpdateInput!): Service!
+
+    # Cập nhật và trả về một chi tiết dịch vụ mới cập nhật
+    updateServicesDetail(input: ServicesDetailUpdateInput!): ServicesDetail!
+
+    # Cập nhật và trả về một giá biến động vừa cập nhật
+    updateVolatilityRate(input: VolatilityRateUpdateInput!): VolatilityRate!
+}
+
+type AppQuery {
+    # Trả về thông tin một hóa đơn
+    bill(id: ID!): Bill!
+
+    # Trả về một danh sách các hóa đơn
+    bills: [Bill!]!
+
+    # Trả về thông tin một đơn đặt phòng
+    booking(id: ID!): Booking!
+
+    # Trả về một danh sách các đơn đặt phòng
+    bookings: [Booking!]!
+
+    # Trả về thông tin một nhân viên
+    employee(id: ID!): Employee!
+
+    # Trả về một danh sách các nhân viên
+    employees: [Employee!]!
+
+    # Trả về danh sách khách hàng theo từ khóa tìm kiếm
+    findingPatron(id: ID!): [Patron!]!
+
+    # Trả về thông tin một tầng
+    floor(id: ID!): Floor!
+
+    # Trả về một danh sách các tầng
+    floors: [Floor!]!
+
+    # Trả về thông tin một công việc dọn dẹp
+    houseKeeping(id: ID!): HouseKeeping!
+
+    # Trả về một danh sách các công việc dọn dẹp
+    houseKeepings: [HouseKeeping!]!
+
+    # Trả về thông tin một khách hàng
+    patron(id: ID!): Patron!
+
+    # Trả về thông tin của một loại khách hàng
+    patronKind(id: ID!): PatronKind!
+
+    # Trả về một danh sách các loại khách hàng có trong hệ thống
+    patronKinds: [PatronKind!]!
+
+    # Trả về một danh sách các khách hàng
+    patrons: [Patron!]!
+
+    # Trả về thông tin một chức vụ
+    position(id: ID!): Position!
+
+    # Trả về một danh sách các chức vụ
+    positions: [Position!]!
+
+    # Trả về thông tin một loại giá cơ bản
+    rate(id: ID!): Rate!
+
+    # Trả về một danh sách các loại giá cơ bản
+    rates: [Rate!]!
+
+    # Trả về thông tin một phiếu thu
+    receipt(id: ID!): Receipt!
+
+    # Trả về một danh sách các phiếu thu
+    receipts: [Receipt!]!
+
+    # Trả về thông tin của một phòng
+    room(id: ID!): Room!
+
+    # Trả về thông tin của một loại phòng
+    roomKind(id: ID!): RoomKind!
+
+    # Trả về một danh sách các loại phòng
+    roomKinds: [RoomKind!]!
+
+    # Trả về một danh sách các phòng
+    rooms: [Room!]!
+
+    # Trả về thông tin một dịch vụ
+    service(id: ID!): Service!
+
+    # Trả về một danh sách các dịch vụ
+    services: [Service!]!
+
+    # Trả về thông tin một chi tiết dịch vụ
+    servicesDetail(id: ID!): ServicesDetail!
+
+    # Trả về một danh sách các chi tiết dịch vụ
+    servicesDetails: [ServicesDetail!]!
+
+    # Trả về thông tin một giá biến động
+    volatilityRate(id: ID!): VolatilityRate!
+
+    # Trả về một danh sách các giá biến động
+    volatilityRates: [VolatilityRate!]!
+}
+
+# Một đối tượng đăng nhập
+type AuthenticationObject {
+    # Thông tin nhân viên đăng nhập
+    employee: Employee!
+
+    # Token đăng nhập
+    token: String!
+}
+
+# Một phiếu hóa đơn của khách hàng
+type Bill {
+    # Danh sách các thông tin đặt trước của hóa đơn
+    bookings: [Booking]
+
+    # Thông tin nhân viên nhận thanh toán hóa đơn
+    employee: Employee
+
+    # Id của hóa đơn
+    id: Int!
+
+    # Thông tin khách hàng thanh toán hóa đơn
+    patron: Patron!
+
+    # Danh sách các biên nhận cho hóa đơn
+    receipts: [Receipt]
+
+    # Thời điểm in hóa đơn
+    time: DateTimeOffset!
+
+    # Tổng giá trị hóa đơn
+    total: Int!
+
+    # Tổng giá trị các phiếu thu
+    totalReceipts: Int!
+}
+
+input BillCreateInput {
+    # Khách hàng
+    patron: PatronId!
+}
+
+# Input cho thông tin một hóa đơn
+input BillId {
+    # Id của hóa đơn
+    id: Int!
+}
+
+input BookAndCheckInCreateInput {
+    # Thời điểm trả phòng dự kiến của khách hàng
+    bookCheckOutTime: DateTimeOffset!
+
+    # Phòng khách hàng chọn đặt trước
+    room: RoomId!
+
+    # Danh sách khách hàng
+    listOfPatrons: [PatronId!]!
+}
+
+# Một thông tin thuê phòng của khách hàng
+type Booking {
+    # Thông tin hóa đơn của thông tin thuê phòng
+    bill: Bill!
+
+    # Thời điểm nhận phòng dự kiến của khách hàng
+    bookCheckInTime: DateTimeOffset
+
+    # Thời điểm trả phòng dự kiến của khách hàng
+    bookCheckOutTime: DateTimeOffset
+
+    # Thời điểm tạo thông tin thuê phòng
+    createTime: DateTimeOffset!
+
+    # Nhân viên thực hiện giao dịch nhận đặt phòng từ khách hàng
+    employeeBooking: Employee
+
+    # Nhân viên thực hiện check-in cho khách hàng
+    employeeCheckIn: Employee
+
+    # Nhân viên thực hiện check-out cho khách hàng
+    employeeCheckOut: Employee
+
+    # Danh sách nhân viên dọn phòng cho phòng đã đặt này
+    houseKeepings: [HouseKeeping]
+
+    # Id của thông tin thuê phòng
+    id: Int!
+
+    # Danh sách khách hàng yêu cầu đặt phòng
+    patrons: [Patron]!
+
+    # Thời điểm nhận phòng của khách hàng
+    realCheckInTime: DateTimeOffset
+
+    # Thời điểm trả phòng của khách hàng
+    realCheckOutTime: DateTimeOffset
+
+    # Phòng khách hàng chọn đặt trước
+    room: Room!
+
+    # Danh sách chi tiết sử dụng dịch vụ của khách hàng
+    servicesDetails: [ServicesDetail]
+
+    # Trạng thái của thông tin thuê phòng
+    status: Int!
+
+    # Tổng tiền của booking
+    total: Int!
+
+    # Tổng tiền của booking
+    totalRates: Int!
+
+    # Tổng tiền của booking
+    totalServicesDetails: Int!
+
+    # Tổng tiền của booking
+    totalVolatilityRate: Int!
+}
+
+input BookingCreateInput {
+    # Thời điểm nhận phòng dự kiến của khách hàng
+    bookCheckInTime: DateTimeOffset!
+
+    # Thời điểm trả phòng dự kiến của khách hàng
+    bookCheckOutTime: DateTimeOffset!
+
+    # Phòng khách hàng chọn đặt trước
+    room: RoomId!
+
+    # Danh sách khách hàng
+    listOfPatrons: [PatronId!]!
+}
+
+# Input cho một thông tin một đơn đặt phòng
+input BookingId {
+    # Id của một đơn đặt phòng
+    id: Int!
+}
+
+# The `Date` scalar type represents a year, month and day in accordance with the
+# [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+scalar Date
+
+# The `DateTime` scalar type represents a date and time. `DateTime` expects
+# timestamps to be formatted in accordance with the
+# [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+scalar DateTime
+
+# The `DateTimeOffset` scalar type represents a date, time and offset from UTC.
+# `DateTimeOffset` expects timestamps to be formatted in accordance with the
+# [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+scalar DateTimeOffset
+
+scalar Decimal
+
+# Một nhân viên trong khách sạn
+type Employee {
+    # Địa chỉ của nhân viên
+    address: String!
+
+    # Danh sách các Hóa đơn mà nhân viên tạo
+    bills: [Bill]
+
+    # Ngày sinh của nhân viên
+    birthdate: DateTimeOffset!
+
+    # Danh sách các Thông tin thuê phòng mà nhân viên tạo
+    bookings: [Booking]
+
+    # Email của nhân viên
+    email: String!
+
+    # Giới tính của nhân viên
+    gender: Boolean!
+
+    # Danh sách các Phòng mà nhân viên dọn
+    houseKeepings: [HouseKeeping]
+
+    # Id của nhân viên
+    id: String!
+
+    # Chứng minh nhân dân
+    identityCard: String!
+
+    # Tài khoản còn hiệu lực hay không
+    isActive: Boolean!
+
+    # Tên nhân viên
+    name: String!
+
+    # Chức vụ
+    position: Position!
+
+    # Số điện thoại của nhân viên
+    phoneNumber: String!
+
+    # Danh sách các Giá cơ bản mà nhân viên tạo
+    rates: [Rate]
+
+    # Danh sách các Phiếu thu mà nhân viên tạo
+    receipts: [Receipt]
+
+    # Ngày vào làm
+    startingDate: DateTimeOffset!
+
+    # Danh sách các Giá biến động mà nhân viên tạo
+    volatilityRates: [VolatilityRate]
+}
+
+input EmployeeCreateInput {
+    # Id của nhân viên
+    id: String!
+
+    # Mật khẩu của tài khoản nhân viên
+    password: String!
+
+    # Tên nhân viên
+    name: String!
+
+    # Chứng minh nhân dân
+    identityCard: String!
+
+    # Số điện thoại của nhân viên
+    phoneNumber: String!
+
+    # Địa chỉ của nhân viên
+    address: String!
+
+    # Email của nhân viên
+    email: String!
+
+    # Ngày sinh của nhân viên
+    birthdate: DateTimeOffset!
+
+    # Giới tính của nhân viên
+    gender: Boolean!
+
+    # Ngày vào làm
+    startingDate: DateTimeOffset!
+
+    # Loại chức vụ
+    position: PositionId = null
+}
+
+input EmployeeUpdateInput {
+    # Id của nhân viên
+    id: String!
+
+    # Tên nhân viên
+    name: String!
+
+    # Chứng minh nhân dân
+    identityCard: String!
+
+    # Địa chỉ của nhân viên
+    address: String!
+
+    # Ngày sinh của nhân viên
+    birthdate: DateTimeOffset!
+
+    # Email của nhân viên
+    email: String!
+
+    # Giới tính của nhân viên
+    gender: Boolean!
+
+    # Số điện thoại của nhân viên
+    phoneNumber: String!
+
+    # Ngày vào làm
+    startingDate: DateTimeOffset!
+
+    # Loại chức vụ
+    position: PositionId = null
+}
+
+# Một tầng trong khách sạn
+type Floor {
+    # Id của tầng
+    id: Int!
+
+    # Trạng thái hoạt động
+    isActive: Boolean!
+
+    # Tên tầng
+    name: String!
+
+    # Danh sách các phòng có trong tầng
+    rooms: [Room]
+}
+
+input FloorCreateInput {
+    # Tên tầng
+    name: String!
+}
+
+# Input cho một thông tin tầng
+input FloorId {
+    # Id của tầng
+    id: Int!
+}
+
+input FloorUpdateInput {
+    # Id tầng cần cập nhật
+    id: Int!
+
+    # Tên tầng
+    name: String!
+}
+
+# Một hình thức dọn dẹp của một nhân viên buồng phòng tại một phòng trong khách sạn
+type HouseKeeping {
+    # Thông tin chi tiết đặt trước của phòng cần chuẩn bị
+    booking: Booking!
+
+    # Nhân viên thực hiện dọn dẹp
+    employee: Employee
+
+    # Id của việc dọn dẹp
+    id: Int!
+
+    # Trạng thái dọn phòng
+    status: Int!
+
+    # Hình thức dọn dẹp phòng
+    type: Int!
+}
+
+# The `Milliseconds` scalar type represents a period of time represented as the total number of milliseconds.
+scalar Milliseconds
+
+# Thông tin  một khách hàng của khách sạn
+type Patron {
+    # Danh sách các số hóa đơn của khách hàng
+    bills: [Bill!]!
+
+    # Ngày sinh của khách hàng
+    birthdate: DateTimeOffset!
+
+    # Danh sách các đơn đặt trước của khách hàng
+    bookings: [Booking!]!
+
+    # Công ty mà khách hàng đang làm việc
+    company: String!
+
+    # Nguyên quán của khách hàng
+    domicile: String!
+
+    # Địa chỉ e-mail của khách hàng
+    email: String!
+
+    # Giới tính của khách hàng
+    gender: Boolean!
+
+    # Id của khách hàng
+    id: Int!
+
+    # Số an sinh xã hội / Số chứng minh nhân dân / Số passport của khách hàng
+    identification: String!
+
+    # Tên của khách hàng
+    name: String!
+
+    # Quốc tịch của khách hàng
+    nationality: String!
+
+    # Một số chú thích về khách hàng nếu cần thiết
+    note: String!
+
+    # Loại khách hàng
+    patronKind: PatronKind!
+
+    # Danh sách số điện thoại của khách hàng
+    phoneNumbers: [String!]!
+
+    # Địa chỉ thường trú của khách hàng
+    residence: String!
+}
+
+input PatronCreateInput {
+    # Số an sinh xã hội / Số chứng minh nhân dân / Số passport của khách hàng
+    identification: String!
+
+    # Tên của khách hàng
+    name: String!
+
+    # Địa chỉ e-mail của khách hàng
+    email: String!
+
+    # Giới tính của khách hàng
+    gender: Boolean!
+
+    # Ngày sinh của khách hàng
+    birthdate: DateTimeOffset!
+
+    # Quốc tịch của khách hàng
+    nationality: String!
+
+    # Nguyên quán của khách hàng
+    domicile: String!
+
+    # Địa chỉ thường trú của khách hàng
+    residence: String!
+
+    # Công ty mà khách hàng đang làm việc
+    company: String!
+
+    # Một số chú thích về khách hàng nếu cần thiết
+    note: String!
+
+    # Danh sách số điện thoại của khách hàng
+    listOfPhoneNumbers: [String!]!
+
+    # Loại khách hàng
+    patronKind: PatronKindId = null
+}
+
+# Input cho thông tin một khách hàng
+input PatronId {
+    # Id của khách hàng
+    id: Int!
+}
+
+# Thông tin  một loại khách hàng
+type PatronKind {
+    # Thông tin mô tả loại khách hàng
+    description: String!
+
+    # Id của loại khách hàng
+    id: Int!
+
+    # Tên loại khách hàng
+    name: String!
+
+    # Danh sách các khách hàng thuộc loại khách hàng
+    patrons: [Patron]
+}
+
+input PatronKindCreateInput {
+    # Tên loại khách hàng
+    name: String!
+
+    # Thông tin mô tả loại khách hàng
+    description: String!
+}
+
+# Input cho thông tin  một loại khách hàng
+input PatronKindId {
+    # Id của loại khách hàng
+    id: Int!
+}
+
+input PatronKindUpdateInput {
+    # Id của loại khách hàng
+    id: Int!
+
+    # Tên loại khách hàng
+    name: String!
+
+    # Thông tin mô tả loại khách hàng
+    description: String!
+}
+
+input PatronUpdateInput {
+    # Id của khách hàng
+    id: Int!
+
+    # Số an sinh xã hội / Số chứng minh nhân dân / Số passport của khách hàng
+    identification: String!
+
+    # Tên của khách hàng
+    name: String!
+
+    # Địa chỉ e-mail của khách hàng
+    email: String!
+
+    # Giới tính của khách hàng
+    gender: Boolean!
+
+    # Ngày sinh của khách hàng
+    birthdate: DateTimeOffset!
+
+    # Quốc tịch của khách hàng
+    nationality: String!
+
+    # Nguyên quán của khách hàng
+    domicile: String!
+
+    # Địa chỉ thường trú của khách hàng
+    residence: String!
+
+    # Công ty mà khách hàng đang làm việc
+    company: String!
+
+    # Một số chú thích về khách hàng nếu cần thiết
+    note: String!
+
+    # Danh sách số điện thoại của khách hàng
+    listOfPhoneNumbers: [String!]!
+
+    # Loại khách hàng
+    patronKind: PatronKindId = null
+}
+
+# Một chức vụ trong khách sạn
+type Position {
+    # Số nhân viên còn hoạt động
+    countActiveEmployees: Int!
+
+    # Số nhân viên
+    countEmployees: Int!
+
+    # Số nhân viên ngưng hoạt động
+    countInActiveEmployees: Int!
+
+    # Danh sách các nhân viên thuộc quyền này
+    employees: [Employee]
+
+    # Id của chức vụ
+    id: Int!
+
+    # Trạng thái kích hoạt/vô hiệu hóa chức vụ
+    isActive: Boolean!
+
+    # Tên chức vụ
+    name: String!
+
+    # Quyền thao tác dọn phòng
+    permissionCleaning: Boolean!
+
+    # Quyền lấy thông tin các chứng từ (hóa đơn, phiếu thu)
+    permissionGetAccountingVoucher: Boolean!
+
+    # Quyền tra cứu lịch sử dọn phòng
+    permissionGetHouseKeeping: Boolean!
+
+    # Quyền lấy thông tin tầng, phòng
+    permissionGetMap: Boolean!
+
+    # Quyền lấy thông tin khách hàng
+    permissionGetPatron: Boolean!
+
+    # Quyền lấy thông tin giá cơ bản và giá biến động
+    permissionGetRate: Boolean!
+
+    # Quyền lấy thông tin dịch vụ
+    permissionGetService: Boolean!
+
+    # Quyền quản lý thông tin nhân viên
+    permissionManageEmployee: Boolean!
+
+    # Quyền quản lý thuê phòng
+    permissionManageHiringRoom: Boolean!
+
+    # Quyền chỉnh sửa sơ đồ
+    permissionManageMap: Boolean!
+
+    # Quyền quản lý khách hàng
+    permissionManagePatron: Boolean!
+
+    # Quyền quản lý loại khách hàng
+    permissionManagePatronKind: Boolean!
+
+    # Quyền quản lý chức vụ
+    permissionManagePosition: Boolean!
+
+    # Quyền quản lý giá cơ bản và giá biến động
+    permissionManageRate: Boolean!
+
+    # Quyền quản lý dịch vụ
+    permissionManageService: Boolean!
+}
+
+input PositionCreateInput {
+    # Tên chức vụ
+    name: String!
+
+    # Quyền thao tác dọn phòng
+    permissionCleaning: Boolean!
+
+    # Quyền lấy thông tin các chứng từ (hóa đơn, phiếu thu)
+    permissionGetAccountingVoucher: Boolean!
+
+    # Quyền tra cứu lịch sử dọn phòng
+    permissionGetHouseKeeping: Boolean!
+
+    # Quyền lấy thông tin tầng, phòng
+    permissionGetMap: Boolean!
+
+    # Quyền lấy thông tin khách hàng
+    permissionGetPatron: Boolean!
+
+    # Quyền lấy thông tin giá cơ bản và giá biến động
+    permissionGetRate: Boolean!
+
+    # Quyền lấy thông tin dịch vụ
+    permissionGetService: Boolean!
+
+    # Quyền quản lý thông tin nhân viên
+    permissionManageEmployee: Boolean!
+
+    # Quyền quản lý thuê phòng
+    permissionManageHiringRoom: Boolean!
+
+    # Quyền quản lý khách hàng
+    permissionManagePatron: Boolean!
+
+    # Quyền quản lý loại khách hàng
+    permissionManagePatronKind: Boolean!
+
+    # Quyền quản lý chức vụ
+    permissionManagePosition: Boolean!
+
+    # Quyền quản lý giá cơ bản và giá biến động
+    permissionManageRate: Boolean!
+
+    # Quyền quản lý dịch vụ
+    permissionManageService: Boolean!
+
+    # Quyền chỉnh sửa sơ đồ
+    permissionManageMap: Boolean!
+}
+
+# Input cho thông tin một chức vụ
+input PositionId {
+    # Id của chức vụ
+    id: Int!
+}
+
+input PositionUpdateInput {
+    # Id của chức vụ
+    id: Int!
+
+    # Tên chức vụ
+    name: String!
+
+    # Quyền thao tác dọn phòng
+    permissionCleaning: Boolean!
+
+    # Quyền lấy thông tin tầng, phòng
+    permissionGetMap: Boolean!
+
+    # Quyền tra cứu lịch sử dọn phòng
+    permissionGetHouseKeeping: Boolean!
+
+    # Quyền lấy thông tin khách hàng
+    permissionGetPatron: Boolean!
+
+    # Quyền lấy thông tin giá cơ bản và giá biến động
+    permissionGetRate: Boolean!
+
+    # Quyền lấy thông tin dịch vụ
+    permissionGetService: Boolean!
+
+    # Quyền lấy thông tin các chứng từ (hóa đơn, phiếu thu)
+    permissionGetAccountingVoucher: Boolean!
+
+    # Quyền quản lý thông tin nhân viên
+    permissionManageEmployee: Boolean!
+
+    # Quyền quản lý thuê phòng
+    permissionManageHiringRoom: Boolean!
+
+    # Quyền chỉnh sửa sơ đồ
+    permissionManageMap: Boolean!
+
+    # Quyền quản lý khách hàng
+    permissionManagePatron: Boolean!
+
+    # Quyền quản lý loại khách hàng
+    permissionManagePatronKind: Boolean!
+
+    # Quyền quản lý chức vụ
+    permissionManagePosition: Boolean!
+
+    # Quyền quản lý giá cơ bản và giá biến động
+    permissionManageRate: Boolean!
+
+    # Quyền quản lý dịch vụ
+    permissionManageService: Boolean!
+}
+
+# Giá cố định của một loại phòng
+type Rate {
+    # Ngày tạo giá
+    createDate: DateTimeOffset!
+
+    # Giá ngày
+    dayRate: Int!
+
+    # Phí check-out sớm
+    earlyCheckInFee: Int!
+
+    # Ngày giá bắt đầu có hiệu lực
+    effectiveStartDate: DateTimeOffset!
+
+    # Nhân viên tạo giá
+    employee: Employee
+
+    # Id của giá
+    id: Int!
+
+    # Phí check-out muộn
+    lateCheckOutFee: Int!
+
+    # Giá tháng
+    monthRate: Int!
+
+    # Giá đêm
+    nightRate: Int!
+
+    # Thuộc loại phòng
+    roomKind: RoomKind!
+
+    # Giá tuần
+    weekRate: Int!
+}
+
+input RateCreateInput {
+    # Giá ngày
+    dayRate: Int!
+
+    # Giá đêm
+    nightRate: Int!
+
+    # Giá tuần
+    weekRate: Int!
+
+    # Giá tháng
+    monthRate: Int!
+
+    # Phí check-out muộn
+    lateCheckOutFee: Int!
+
+    # Phí check-out sớm
+    earlyCheckInFee: Int!
+
+    # Ngày giá bắt đầu có hiệu lực
+    effectiveStartDate: DateTimeOffset!
+
+    # Loại phòng
+    roomKind: RoomKindId!
+}
+
+input RateUpdateInput {
+    # Id của giá cần cập nhật
+    id: Int!
+
+    # Giá ngày
+    dayRate: Int!
+
+    # Giá đêm
+    nightRate: Int!
+
+    # Giá tuần
+    weekRate: Int!
+
+    # Giá tháng
+    monthRate: Int!
+
+    # Phí check-out muộn
+    lateCheckOutFee: Int!
+
+    # Phí check-out sớm
+    earlyCheckInFee: Int!
+
+    # Ngày giá bắt đầu có hiệu lực
+    effectiveStartDate: DateTimeOffset!
+
+    # Loại phòng
+    roomKind: RoomKindId = null
+}
+
+# Phiếu thu
+type Receipt {
+    # Số tài khoản ngân hàng của khách
+    bankAccountNumber: String
+
+    # Phiếu thu thuộc hóa đơn nào
+    bill: Bill!
+
+    # Nhân viên tạo phiếu thu
+    employee: Employee!
+
+    # Id của phiếu thu
+    id: Int!
+
+    # Số tiền đã thu
+    money: Int!
+
+    # Thời gian tạo phiếu thu
+    time: DateTimeOffset!
+}
+
+input ReceiptCreateInput {
+    # Số tiền đã thu
+    money: Int!
+
+    # Số tài khoản ngân hàng của khách
+    bankAccountNumber: String = null
+
+    # Thuộc hóa đơn
+    bill: BillId = null
+}
+
+# Một phòng trong khách sạn
+type Room {
+    # Danh sách thông tin thuê phòng
+    bookings: [Booking]
+
+    # Đơn đặt phòng hiện tại
+    currentBooking(from: DateTimeOffset!, to: DateTimeOffset!): Booking
+
+    # Phòng thuộc tầng nào
+    floor: Floor!
+
+    # Id của phòng
+    id: Int!
+
+    # Trạng thái phòng
+    isActive: Boolean!
+
+    # Phòng trống
+    isEmpty(from: DateTimeOffset!, to: DateTimeOffset!): Boolean!
+
+    # Tên phòng
+    name: String!
+
+    # Loại phòng của phòng
+    roomKind: RoomKind!
+}
+
+input RoomCreateInput {
+    # Tên phòng
+    name: String!
+
+    # Phòng thuộc tầng nào
+    floor: FloorId!
+
+    # Loại phòng của phòng
+    roomKind: RoomKindId!
+}
+
+# Input cho thông tin một phòng
+input RoomId {
+    # Id của phòng
+    id: Int!
+}
+
+# Một loại phòng hiện có trong khách sạn
+type RoomKind {
+    # Số người trong một phòng
+    amountOfPeople: Int!
+
+    # Id của loại phòng
+    id: Int!
+
+    # Trạng thái phòng
+    isActive: Boolean!
+
+    # Tên loại phòng
+    name: String!
+
+    # Số giường
+    numberOfBeds: Int!
+
+    # Danh sách giá cố định của loại phòng
+    rates: [Rate]
+
+    # Danh sách các phòng thuộc loại phòng này
+    rooms: [Room]
+
+    # Danh sách giá biến động của loại phòng
+    volatilityRates: [VolatilityRate]
+}
+
+# Input cho việc tạo một loại phòng
+input RoomKindCreateInput {
+    # Tên loại phòng
+    name: String!
+
+    # Số giường
+    numberOfBeds: Int!
+
+    # Số người trong một phòng
+    amountOfPeople: Int!
+}
+
+# Input cho một thông tin một loại phòng
+input RoomKindId {
+    # Id của một loại phòng
+    id: Int!
+}
+
+# Input cho việc chỉnh sửa một loại phòng
+input RoomKindUpdateInput {
+    # Id loại phòng
+    id: Int!
+
+    # Tên loại phòng
+    name: String!
+
+    # Số giường
+    numberOfBeds: Int!
+
+    # Số người trong một phòng
+    amountOfPeople: Int!
+}
+
+input RoomUpdateInput {
+    # Id phòng cần cập nhật
+    id: Int!
+
+    # Tên phòng
+    name: String!
+
+    # Phòng thuộc tầng nào
+    floor: FloorId = null
+
+    # Loại phòng của phòng
+    roomKind: RoomKindId = null
+}
+
+# The `Seconds` scalar type represents a period of time represented as the total number of seconds.
+scalar Seconds
+
+# Một dịch vụ trong khách sạn
+type Service {
+    # Id của dịch vụ
+    id: Int!
+
+    # Trạng thái hoạt động
+    isActive: Boolean!
+
+    # Tên dịch vụ
+    name: String!
+
+    # Danh sách chi tiết dịch vụ
+    servicesDetails: [ServicesDetail]
+
+    # Đơn vị
+    unit: String!
+
+    # Đơn giá
+    unitRate: Int!
+}
+
+# Input cho một thông tin dịch vụ cần tạo mới
+input ServiceCreateInput {
+    # Tên dịch vụ
+    name: String!
+
+    # Đơn giá
+    unitRate: Int!
+
+    # Đơn vị
+    unit: String!
+}
+
+# Input cho một thông tin dịch vụ
+input ServiceId {
+    # Id của dịch vụ
+    id: Int!
+}
+
+# Một chi tiết dịch vụ của Thông tin thuê phòng
+type ServicesDetail {
+    # Thuộc thông tin thuê phòng nào
+    booking: Booking!
+
+    # Id của chi tiết dịch vụ
+    id: Int!
+
+    # Số lượng
+    number: Int!
+
+    # Thuộc dịch vụ nào
+    service: Service!
+
+    # Thời gian tạo
+    time: DateTimeOffset!
+
+    # Thành tiền
+    total: Int!
+}
+
+input ServicesDetailCreateInput {
+    # Số lượng
+    number: Int!
+
+    # Thuộc dịch vụ nào
+    service: ServiceId!
+
+    # Thuộc booking nào
+    booking: BookingId!
+}
+
+input ServicesDetailHouseKeepingInput {
+    # Số lượng
+    number: Int!
+
+    # Thuộc dịch vụ nào
+    service: ServiceId!
+}
+
+input ServicesDetailUpdateInput {
+    # Id của chi tiết dịch vụ cần cập nhật
+    id: Int!
+
+    # Số lượng
+    number: Int!
+
+    # Thuộc dịch vụ nào
+    service: ServiceId!
+}
+
+# Input cho một thông tin dịch vụ cần cập nhật
+input ServiceUpdateInput {
+    # Id của dịch vụ
+    id: Int!
+
+    # Tên dịch vụ
+    name: String!
+
+    # Đơn giá
+    unitRate: Int!
+
+    # Đơn vị
+    unit: String!
+}
+
+# Giá biến động của một loại phòng
+type VolatilityRate {
+    # Ngày tạo giá
+    createDate: DateTimeOffset!
+
+    # Giá ngày
+    dayRate: Int!
+
+    # Phí check-out sớm
+    earlyCheckInFee: Int!
+
+    # Ngày giá hết hiệu lực
+    effectiveEndDate: DateTimeOffset!
+
+    # Giá có hiệu lực vào ngày Thứ 6
+    effectiveOnFriday: Boolean!
+
+    # Giá có hiệu lực vào ngày Thứ 2
+    effectiveOnMonday: Boolean!
+
+    # Giá có hiệu lực vào ngày Thứ 7
+    effectiveOnSaturday: Boolean!
+
+    # Giá có hiệu lực vào ngày Chủ Nhật
+    effectiveOnSunday: Boolean!
+
+    # Giá có hiệu lực vào ngày Thứ 3
+    effectiveOnTuesday: Boolean!
+
+    # Giá có hiệu lực vào ngày Thứ 5
+    effectiveOnThursday: Boolean!
+
+    # Giá có hiệu lực vào ngày Thứ 4
+    effectiveOnWednesday: Boolean!
+
+    # Ngày giá bắt đầu có hiệu lực
+    effectiveStartDate: DateTimeOffset!
+
+    # Nhân viên tạo giá
+    employee: Employee
+
+    # Id của giá
+    id: Int!
+
+    # Phí check-out muộn
+    lateCheckOutFee: Int!
+
+    # Giá tháng
+    monthRate: Int!
+
+    # Giá đêm
+    nightRate: Int!
+
+    # Thuộc loại phòng
+    roomKind: RoomKind!
+
+    # Giá tuần
+    weekRate: Int!
+}
+
+input VolatilityRateCreateInput {
+    # Giá ngày
+    dayRate: Int!
+
+    # Giá đêm
+    nightRate: Int!
+
+    # Giá tuần
+    weekRate: Int!
+
+    # Giá tháng
+    monthRate: Int!
+
+    # Phí check-out muộn
+    lateCheckOutFee: Int!
+
+    # Phí check-out sớm
+    earlyCheckInFee: Int!
+
+    # Ngày giá bắt đầu có hiệu lực
+    effectiveStartDate: DateTimeOffset!
+
+    # Ngày giá hết hiệu lực
+    effectiveEndDate: DateTimeOffset!
+
+    # Giá có hiệu lực vào ngày Thứ 2
+    effectiveOnMonday: Boolean!
+
+    # Giá có hiệu lực vào ngày Thứ 3
+    effectiveOnTuesday: Boolean!
+
+    # Giá có hiệu lực vào ngày Thứ 4
+    effectiveOnWednesday: Boolean!
+
+    # Giá có hiệu lực vào ngày Thứ 5
+    effectiveOnThursday: Boolean!
+
+    # Giá có hiệu lực vào ngày Thứ 6
+    effectiveOnFriday: Boolean!
+
+    # Giá có hiệu lực vào ngày Thứ 7
+    effectiveOnSaturday: Boolean!
+
+    # Giá có hiệu lực vào ngày Chủ Nhật
+    effectiveOnSunday: Boolean!
+
+    # Loại phòng
+    roomKind: RoomKindId!
+}
+
+input VolatilityRateUpdateInput {
+    # Id của giá cần cập nhật
+    id: Int!
+
+    # Giá ngày
+    dayRate: Int!
+
+    # Giá đêm
+    nightRate: Int!
+
+    # Giá tuần
+    weekRate: Int!
+
+    # Giá tháng
+    monthRate: Int!
+
+    # Phí check-out muộn
+    lateCheckOutFee: Int!
+
+    # Phí check-out sớm
+    earlyCheckInFee: Int!
+
+    # Ngày giá bắt đầu có hiệu lực
+    effectiveStartDate: DateTimeOffset!
+
+    # Ngày giá hết hiệu lực
+    effectiveEndDate: DateTimeOffset!
+
+    # Giá có hiệu lực vào ngày Thứ 2
+    effectiveOnMonday: Boolean!
+
+    # Giá có hiệu lực vào ngày Thứ 3
+    effectiveOnTuesday: Boolean!
+
+    # Giá có hiệu lực vào ngày Thứ 4
+    effectiveOnWednesday: Boolean!
+
+    # Giá có hiệu lực vào ngày Thứ 5
+    effectiveOnThursday: Boolean!
+
+    # Giá có hiệu lực vào ngày Thứ 6
+    effectiveOnFriday: Boolean!
+
+    # Giá có hiệu lực vào ngày Thứ 7
+    effectiveOnSaturday: Boolean!
+
+    # Giá có hiệu lực vào ngày Chủ Nhật
+    effectiveOnSunday: Boolean!
+
+    # Loại phòng
+    roomKind: RoomKindId!
+}
