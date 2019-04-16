@@ -1,0 +1,18 @@
+{
+    "folders": [
+        {
+            "path": "uit.hotel.test"
+        },
+        {
+            "path": "uit.hotel"
+        }
+    ],
+    "settings": {
+        "open-file-from-path.searchExclusion": [
+            "**/node_modules/**",
+            "**/.vscode/**",
+            "**/bin/**"
+        ],
+        "open-file-from-path.startingPath": "/_GraphQL"
+    }
+}
