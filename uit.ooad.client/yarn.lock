@@ -3217,12 +3217,7 @@ connect@^3.6.6:
     parseurl "~1.3.2"
     utils-merge "1.0.1"
 
-consola@^2.0.0-1, consola@^2.3.0, consola@^2.4.0, consola@^2.5.6, consola@^2.5.8, consola@^2.6.0:
-  version "2.6.0"
-  resolved "https://registry.yarnpkg.com/consola/-/consola-2.6.0.tgz#ddf4e2a4361f67c120aa8bb41a0bd3cdbb58636e"
-  integrity sha512-jge0Ip1NVoOafxZq1zxG1sLYVBtKV45BF39VV6YKSWb45nyLOHY51YP0+cBQ2DyOTKhCjtF0XrRJkjTvX4wzgQ==
-
-consola@^2.6.0:
+consola@^2.0.0-1, consola@^2.3.0, consola@^2.4.0, consola@^2.5.6, consola@^2.6.0:
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/consola/-/consola-2.6.0.tgz#ddf4e2a4361f67c120aa8bb41a0bd3cdbb58636e"
   integrity sha512-jge0Ip1NVoOafxZq1zxG1sLYVBtKV45BF39VV6YKSWb45nyLOHY51YP0+cBQ2DyOTKhCjtF0XrRJkjTvX4wzgQ==
@@ -5277,9 +5272,9 @@ graphql-codegen-core@0.18.0:
     winston "3.2.1"
 
 graphql-codegen-introspection@^0.18.0:
-  version "0.18.0"
-  resolved "https://registry.yarnpkg.com/graphql-codegen-introspection/-/graphql-codegen-introspection-0.18.0.tgz#684f35865e3ae3b0376e38bc25d73a847507836d"
-  integrity sha512-rIzNzbIjSb9oHySNLLIdEy15Il3Xd8KTP6kU9o5x+X/E8Y1FqrbP7zdh7nZA2DzAnZ+g74ZTFvjaT+3SHTLd6A==
+  version "0.18.1"
+  resolved "https://registry.yarnpkg.com/graphql-codegen-introspection/-/graphql-codegen-introspection-0.18.1.tgz#044e5736f1b88d47584c95debac4b783929b9f81"
+  integrity sha512-NFtyyhbpEg0lwqJwQ1HHnqA2cPKzEA5KSH+e/7v1qLUquVgU70yXgWKiPXQvxgZdTykmsLK6jqxPM8LpvNmIjg==
 
 graphql-codegen-plugin-helpers@0.18.0:
   version "0.18.0"
