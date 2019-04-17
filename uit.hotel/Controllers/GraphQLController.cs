@@ -17,7 +17,7 @@ namespace uit.hotel.Controllers
     public class GraphQLController : ControllerBase
     {
         private readonly IDocumentExecuter _documentExecuter;
-        public readonly DataLoaderDocumentListener _listener;
+        private readonly DataLoaderDocumentListener _listener;
         private readonly ISchema _schema;
         private readonly IEnumerable<IValidationRule> _validationRules;
 
