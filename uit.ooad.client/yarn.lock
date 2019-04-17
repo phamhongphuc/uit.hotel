@@ -5285,9 +5285,9 @@ graphql-codegen-plugin-helpers@0.18.0:
     import-from "2.1.0"
 
 graphql-codegen-schema-ast@^0.18.0:
-  version "0.18.0"
-  resolved "https://registry.yarnpkg.com/graphql-codegen-schema-ast/-/graphql-codegen-schema-ast-0.18.0.tgz#aaaf6f1a49651b6d4f24d7c702c5a70f07ffeeb6"
-  integrity sha512-hxymMtnNtKLsn3aWEmbGqt40igW6RlE++YsguQXzVW5ldiyz+RGeA2KKEZJ7fH3kfyRx8U5bEO/LkktmvG7TOA==
+  version "0.18.1"
+  resolved "https://registry.yarnpkg.com/graphql-codegen-schema-ast/-/graphql-codegen-schema-ast-0.18.1.tgz#d708ca1dccdf5fc2ef7400807f2b3c799e3683f3"
+  integrity sha512-vEDmS9kouW5Fm3QsX9ZstUggXdjpb5FciPxXzmeSrF/G0M0DvdyrhVE7UXyx1BAoiW2WhD9rTJIa6ypLV1aT1g==
 
 graphql-codegen-typescript-client@^0.18.0:
   version "0.18.0"
