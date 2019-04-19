@@ -1,4 +1,5 @@
-dotnet: 2.1.402
+dist: xenial
+dotnet: 2.2.203
 
 cache:
     directories: uit.hotel.client\node_modules
