@@ -13,7 +13,7 @@
                 v-model="input.name"
                 :state="!$v.input.name.$invalid"
                 class="m-3 rounded"
-                icon=""
+                icon="type"
             />
             <div class="input-label">Đơn giá</div>
             <b-input-
@@ -21,7 +21,7 @@
                 v-model="input.unitRate"
                 :state="!$v.input.unitRate.$invalid"
                 class="m-3 rounded"
-                icon=""
+                icon="type"
             />
             <div class="input-label">Đơn vị</div>
             <b-input-
@@ -29,7 +29,7 @@
                 v-model="input.unit"
                 :state="!$v.input.unit.$invalid"
                 class="m-3 rounded"
-                icon=""
+                icon="type"
             />
             <div class="d-flex m-3">
                 <b-button
@@ -39,7 +39,7 @@
                     :disabled="$v.$invalid"
                     @click="close"
                 >
-                    <span class="icon mr-1"></span>
+                    <icon- class="mr-1" i="edit-2" />
                     <span>Cập nhật</span>
                 </b-button>
             </div>

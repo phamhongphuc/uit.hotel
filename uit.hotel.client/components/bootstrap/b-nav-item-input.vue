@@ -1,6 +1,6 @@
 <template>
     <b-nav-item class="nav-item-input">
-        <div class="icon">{{ icon }}</div>
+        <icon- :i="icon" />
         <input
             type="text"
             :class="`pl-0 pr-3 pl-${reverseWhen}-3 pr-${reverseWhen}-0`"

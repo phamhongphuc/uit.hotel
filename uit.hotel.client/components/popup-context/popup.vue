@@ -1,10 +1,10 @@
 <template>
     <div v-show="show" class="popup" @click="close">
-        <div ref="popup" class="popup-modal" @click.stop>
+        <div ref="popup" class="popup-modal m-3" @click.stop>
             <div class="popup-modal-title">
                 <div class="text">{{ title }}</div>
-                <b-button variant="white" class="icon close" @click="close">
-                    
+                <b-button variant="white" class="close" @click="close">
+                    <icon- class="m-0 w-auto" i="x" />
                 </b-button>
             </div>
             <no-ssr>
@@ -49,8 +49,6 @@ export default class extends Vue {
 </script>
 
 <style lang="scss">
-$popup-modal-title-size: $input-height;
-
 .popup {
     position: absolute;
     background: rgba($black, 0.2);
@@ -75,17 +73,15 @@ $popup-modal-title-size: $input-height;
             display: flex;
             border-bottom: 1.5px solid $border-color;
             opacity: 0.8;
-            line-height: $input-height;
             > .text {
                 flex: 1;
                 padding: 0 0.75rem;
+                line-height: $input-height;
                 font-weight: 500;
-                font-size: calc(0.4 * #{$input-height});
             }
-            > .icon {
+            > .close {
                 display: block;
-                text-align: center;
-                font-size: calc(0.5 * #{$input-height});
+                border: none;
                 padding: 0;
                 width: $input-height;
                 min-width: $input-height;

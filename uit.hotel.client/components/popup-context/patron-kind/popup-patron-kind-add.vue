@@ -13,14 +13,14 @@
                 :state="!$v.input.name.$invalid"
                 autocomplete="new-password"
                 class="m-3 rounded"
-                icon=""
+                icon="type"
             />
             <div class="input-label">Mô tả</div>
             <b-input-
                 v-model="input.description"
                 :state="!$v.input.description.$invalid"
                 class="m-3 rounded"
-                icon=""
+                icon="package"
             />
             <div class="m-3">
                 <b-button
@@ -30,7 +30,7 @@
                     :disabled="$v.$invalid"
                     @click="close"
                 >
-                    <span class="icon mr-1"></span>
+                    <icon- class="mr-1" i="plus" />
                     <span>Thêm</span>
                 </b-button>
             </div>

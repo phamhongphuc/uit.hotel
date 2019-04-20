@@ -3,7 +3,7 @@
         <template slot-scope="{ data: { rate, rates }, refs }">
             <b-nav-item-icon-
                 v-if="rate.isActive"
-                icon=""
+                icon="edit-2"
                 text="Sửa thông tin giá cơ bản"
                 @click="refs.rate_update.open({ rate })"
             />

@@ -14,7 +14,7 @@
                 type="number"
                 :state="!$v.input.money.$invalid"
                 class="m-3 rounded"
-                icon=""
+                icon="type"
             />
             <div class="input-label">Số tài khoản</div>
             <b-input-
@@ -22,7 +22,7 @@
                 type="number"
                 :state="!$v.input.bankAccountNumber.$invalid"
                 class="m-3 rounded"
-                icon=""
+                icon="type"
             />
             <div class="d-flex m-3">
                 <b-button
@@ -32,7 +32,7 @@
                     :disabled="$v.$invalid"
                     @click="close"
                 >
-                    <span class="icon mr-1"></span>
+                    <icon- class="mr-1" i="plus" />
                     <span>Thêm</span>
                 </b-button>
             </div>

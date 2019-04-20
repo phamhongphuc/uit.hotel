@@ -15,7 +15,7 @@
                         v-model="input.name"
                         :state="!$v.input.name.$invalid"
                         class="m-3 rounded"
-                        icon=""
+                        icon="type"
                     />
                     <b-checkbox-group-
                         v-model="selected"
@@ -49,7 +49,7 @@
                     :disabled="$v.$invalid"
                     @click="close"
                 >
-                    <span class="icon mr-1"></span>
+                    <icon- class="mr-1" i="plus" />
                     <span>Thêm</span>
                 </b-button>
             </div>

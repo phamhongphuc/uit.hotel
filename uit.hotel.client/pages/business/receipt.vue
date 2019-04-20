@@ -6,7 +6,7 @@
                 variant="white"
                 @click="showInactive = !showInactive"
             >
-                <span class="icon mr-1">{{ showInactive ? '' : '' }}</span>
+                <icon- class="mx-1" :i="showInactive ? 'eye' : 'eye-off'" />
                 <span>
                     {{ `Đang ${showInactive ? 'hiện' : 'ẩn'} phiếu thu cũ` }}
                 </span>

@@ -15,7 +15,7 @@
                 name="username"
                 type="text"
                 placeholder="Tên đăng nhập"
-                icon=""
+                icon="user"
                 class="circle"
             />
             <b-input-
@@ -23,7 +23,7 @@
                 name="password"
                 type="password"
                 placeholder="Mật khẩu"
-                icon=""
+                icon="lock"
                 class="my-2 circle"
             />
             <b-button

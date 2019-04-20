@@ -14,7 +14,7 @@
                 :state="!$v.input.number.$invalid"
                 type="number"
                 class="m-3 rounded"
-                icon=""
+                icon="type"
             />
             <div class="input-label">Dịch vụ</div>
             <query- :query="getServices" class="m-3" :poll-interval="0">
@@ -53,7 +53,7 @@
                     :disabled="$v.$invalid"
                     @click="close"
                 >
-                    <span class="icon mr-1"></span>
+                    <icon- class="mr-1" i="plus" />
                     <span>Thêm</span>
                 </b-button>
             </div>
