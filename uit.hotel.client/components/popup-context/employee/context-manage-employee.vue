@@ -3,7 +3,7 @@
         <template slot-scope="{ data: { employee }, refs }">
             <b-nav-item-icon-
                 v-if="employee.isActive"
-                icon=""
+                icon="edit-2"
                 text="Sửa thông tin nhân viên"
                 @click="refs.employee_update.open({ employee })"
             />

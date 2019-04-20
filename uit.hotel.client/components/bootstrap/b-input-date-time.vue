@@ -5,7 +5,7 @@
             v-model="date"
             type="date"
             class="rounded"
-            icon=""
+            icon="calendar"
             :state="state"
         />
         <b-input-
@@ -13,7 +13,7 @@
             v-model="time"
             type="time"
             class="rounded ml-3"
-            icon=""
+            icon="calendar"
             :state="state"
         />
     </div>

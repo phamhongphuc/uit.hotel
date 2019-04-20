@@ -31,7 +31,7 @@
                         })
                     "
                 >
-                    <span class="icon mr-1"></span>
+                    <icon- class="mr-1" i="edit-2" />
                     <span>Chọn hoặc thêm khách hàng</span>
                 </b-button>
             </div>
@@ -118,7 +118,7 @@
                 </b-table>
                 <div v-if="input.bookings.length === 0" class="p-3 text-center">
                     Chưa có phòng nào trong danh sách. Ấn
-                    <span class="icon mx-1"></span>
+                    <icon- class="mx-1" i="plus-square" />
                     để thêm phòng
                 </div>
             </div>
@@ -134,7 +134,7 @@
                         })
                     "
                 >
-                    <span class="icon mr-1"></span>
+                    <icon- class="mr-1" i="plus-square" />
                     <span>Thêm phòng</span>
                 </b-button>
                 <b-button
@@ -144,7 +144,7 @@
                     :disabled="$v.$invalid"
                     @click="close"
                 >
-                    <span class="icon mr-1"></span>
+                    <icon- class="mr-1" i="edit-2" />
                     <span>Đặt phòng và nhận ngay</span>
                 </b-button>
             </div>

@@ -16,14 +16,14 @@
                             :state="!$v.input.name.$invalid"
                             autocomplete="new-password"
                             class="m-3 rounded"
-                            icon=""
+                            icon="type"
                         />
                         <div class="input-label">Chứng minh nhân dân</div>
                         <b-input-
                             v-model="input.identification"
                             :state="!$v.input.identification.$invalid"
                             class="m-3 rounded"
-                            icon=""
+                            icon="package"
                         />
                         <div class="input-label">Giới tính</div>
                         <div class="m-3">
@@ -69,28 +69,28 @@
                             :state="!$v.input.birthdate.$invalid"
                             type="date"
                             class="m-3 rounded"
-                            icon=""
+                            icon="calendar"
                         />
                         <div class="input-label">Số điện thoại</div>
                         <b-input-
                             v-model="phoneNumbers"
                             :state="!$v.input.listOfPhoneNumbers.$invalid"
                             class="m-3 rounded"
-                            icon=""
+                            icon="phone"
                         />
                         <div class="input-label">Thư điện tử</div>
                         <b-input-
                             v-model="input.email"
                             :state="!$v.input.email.$invalid"
                             class="m-3 rounded"
-                            icon=""
+                            icon="mail"
                         />
                         <div class="input-label">Công ty</div>
                         <b-input-
                             v-model="input.company"
                             :state="!$v.input.company.$invalid"
                             class="m-3 rounded"
-                            icon=""
+                            icon="briefcase"
                         />
                     </div>
                     <div>
@@ -99,28 +99,28 @@
                             v-model="input.nationality"
                             :state="!$v.input.nationality.$invalid"
                             class="m-3 rounded"
-                            icon=""
+                            icon="map-pin"
                         />
                         <div class="input-label">Nguyên quán</div>
                         <b-input-
                             v-model="input.domicile"
                             :state="!$v.input.domicile.$invalid"
                             class="m-3 rounded"
-                            icon=""
+                            icon="calendar"
                         />
                         <div class="input-label">Địa chỉ thường trú</div>
                         <b-input-
                             v-model="input.residence"
                             :state="!$v.input.residence.$invalid"
                             class="m-3 rounded"
-                            icon=""
+                            icon="map-pin"
                         />
                         <div class="input-label">Ghi chú</div>
                         <b-input-
                             v-model="input.note"
                             :state="!$v.input.note.$invalid"
                             class="m-3 rounded"
-                            icon=""
+                            icon="calendar"
                         />
                     </div>
                 </div>
@@ -142,7 +142,7 @@
                                 )
                             "
                         >
-                            <span class="icon mr-1"></span>
+                            <icon- class="mr-1" i="plus" />
                             <span>Thêm khách hàng có sẵn trong hệ thống</span>
                         </b-button>
                         <b-button
@@ -152,7 +152,7 @@
                             :disabled="$v.$invalid"
                             @click="addAndSelect(close, mutate)"
                         >
-                            <span class="icon mr-1"></span>
+                            <icon- class="mr-1" i="plus" />
                             <span>Thêm</span>
                         </b-button>
                     </template>

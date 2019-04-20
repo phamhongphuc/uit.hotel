@@ -6,7 +6,7 @@
                 variant="white"
                 @click="$refs.bill_add.open()"
             >
-                <span class="icon mr-1"></span>
+                <icon- class="mr-1" i="plus" />
                 <span>Đặt phòng</span>
             </b-button>
             <b-button
@@ -14,7 +14,7 @@
                 variant="white"
                 @click="showInactive = !showInactive"
             >
-                <span class="icon mr-1">{{ showInactive ? '' : '' }}</span>
+                <icon- class="mx-1" :i="showInactive ? 'eye' : 'eye-off'" />
                 <span>
                     {{
                         `Đang ${

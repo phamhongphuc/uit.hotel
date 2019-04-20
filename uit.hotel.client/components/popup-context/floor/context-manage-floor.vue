@@ -3,14 +3,14 @@
         <template slot-scope="{ data: { floor, floors }, refs }">
             <b-nav-item-icon-
                 v-if="floor.isActive"
-                icon=""
+                icon="edit-2"
                 text="Sửa thông tin tầng"
                 @click="refs.floor_update.open({ floor })"
             />
             <b-nav-item-icon-
                 v-if="floor.isActive"
                 text="Thêm phòng"
-                icon=""
+                icon="plus"
                 @click="refs.room_add.open({ floor })"
             />
             <b-nav-item-icon-mutate-
@@ -25,7 +25,7 @@
                 v-if="floor.isActive"
                 :mutation="deleteFloor"
                 :variables="{ id: floor.id }"
-                icon=""
+                icon="trash-2"
                 text="Xóa tầng"
             />
         </template>

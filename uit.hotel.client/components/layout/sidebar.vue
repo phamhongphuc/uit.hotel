@@ -2,104 +2,104 @@
     <b-navbar-nav id="sidebar">
         <b-nav-item-icon-
             v-b-toggle.collapse_receptionist
-            icon=""
+            icon="chevron-down"
             text="Nghiệp vụ lễ tân"
             class="header-item"
         />
         <b-collapse id="collapse_receptionist" v-model="showReceptionist">
             <b-nav-item-icon-
                 to="/receptionist/map"
-                icon=""
+                icon="grid"
                 text="Sơ đồ khách sạn"
                 exact
             />
             <b-nav-item-icon-
                 to="/receptionist/patron"
-                icon=""
+                icon="users"
                 text="Quản lý khách hàng"
                 exact
             />
             <b-nav-item-icon-
                 to="/receptionist/booking"
-                icon=""
+                icon="box"
                 text="Quản lý đặt phòng"
                 exact
             />
         </b-collapse>
         <b-nav-item-icon-
             v-b-toggle.collapse_business
-            icon=""
+            icon="chevron-down"
             text="Quản lý kinh doanh"
             class="header-item"
         />
         <b-collapse id="collapse_business" v-model="showBusiness">
             <b-nav-item-icon-
                 to="/business/bill"
-                icon=""
+                icon="dollar-sign"
                 text="Quản lý hóa đơn"
                 exact
             />
             <b-nav-item-icon-
                 to="/business/receipt"
-                icon=""
+                icon="dollar-sign"
                 text="Quản lý phiếu thu"
                 exact
             />
             <b-nav-item-icon-
                 to="/business/service"
-                icon=""
+                icon="shopping-cart"
                 text="Quản lý dịch vụ"
                 exact
             />
             <b-nav-item-icon-
                 to="/business/rate"
-                icon=""
+                icon="shopping-cart"
                 text="Quản lý giá"
                 exact
             />
         </b-collapse>
         <b-nav-item-icon-
             v-b-toggle.collapse_personnel
-            icon=""
+            icon="chevron-down"
             text="Quản lý nhân sự"
             class="header-item"
         />
         <b-collapse id="collapse_personnel" v-model="showPersonnel">
             <b-nav-item-icon-
                 to="/personnel/position"
-                icon=""
+                icon="lock"
                 text="Quản lý phân quyền"
                 exact
             />
             <b-nav-item-icon-
                 to="/personnel/employee"
-                icon=""
+                icon="users"
                 text="Quản lý nhân viên"
                 exact
             />
         </b-collapse>
         <b-nav-item-icon-
             v-b-toggle.collapse_manage
-            icon=""
+            icon="chevron-down"
             text="Cài đặt khách sạn"
             class="header-item"
         />
         <b-collapse id="collapse_manage" v-model="showManage">
             <b-nav-item-icon-
                 to="/manage/floor-room"
-                icon=""
+                icon="archive"
                 text="Quản lý tầng phòng"
                 exact
             />
             <b-nav-item-icon-
                 to="/manage/room-kind"
-                icon=""
+                icon="box"
                 text="Quản lý loại phòng"
                 exact
             />
             <b-nav-item-icon-
                 to="/manage/patron-kind"
-                icon=""
+                icon="users"
                 text="Quản lý loại khách hàng"
                 exact
             />

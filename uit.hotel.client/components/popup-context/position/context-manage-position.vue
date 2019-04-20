@@ -3,7 +3,7 @@
         <template slot-scope="{ data: { position, positions }, refs }">
             <b-nav-item-icon-
                 v-if="position.isActive"
-                icon=""
+                icon="edit-2"
                 text="Sửa thông tin vị trí"
                 @click="refs.position_update.open({ position })"
             />
@@ -21,7 +21,7 @@
                 v-if="position.isActive"
                 :mutation="deletePosition"
                 :variables="{ id: position.id }"
-                icon=""
+                icon="trash-2"
                 text="Xóa vị trí"
             />
         </template>

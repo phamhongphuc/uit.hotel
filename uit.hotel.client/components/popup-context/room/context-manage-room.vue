@@ -1,11 +1,14 @@
 <template>
     <context- ref="context">
         <template slot-scope="{ data: { room, floor } }">
-            <b-nav-item-icon- icon="" text="Xem thông tin chi tiết" />
+            <b-nav-item-icon-
+                icon="alert-circle"
+                text="Xem thông tin chi tiết"
+            />
             <div class="context-hr" />
             <b-nav-item-icon-
                 v-if="room.isActive"
-                icon=""
+                icon="edit-2"
                 text="Sửa thông tin phòng"
                 @click="refs.room_update.open({ room, floor })"
             />
@@ -21,7 +24,7 @@
                 v-if="room.isActive"
                 :mutation="deleteRoom"
                 :variables="{ id: room.id }"
-                icon=""
+                icon="trash-2"
                 text="Xóa phòng"
             />
         </template>

@@ -30,7 +30,7 @@
                     class="flex-fill"
                     reverse-when="md"
                     placeholder="Tìm kiếm..."
-                    icon=""
+                    icon="search"
                     :focus.sync="isInputFocus"
                 />
                 <b-dropdown
@@ -74,7 +74,7 @@
                     <div class="hr line" />
                     <b-dropdown-item-icon-
                         text="Đăng xuất"
-                        icon=""
+                        icon="power"
                         @click="logout"
                     />
                 </b-dropdown>

@@ -2,7 +2,7 @@
     <context- ref="context" :refs="refs">
         <template slot-scope="{ data: { patron }, refs }">
             <b-nav-item-icon-
-                icon=""
+                icon="edit-2"
                 text="Sửa thông tin khách hàng"
                 @click="refs.patron_update.open({ patron })"
             />

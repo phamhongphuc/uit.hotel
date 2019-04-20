@@ -16,7 +16,7 @@
                         :state="!$v.input.id.$invalid"
                         autocomplete="new-password"
                         class="m-3 rounded"
-                        icon=""
+                        icon="at-sign"
                     />
                     <div class="input-label">Mật khẩu</div>
                     <b-input-
@@ -25,7 +25,7 @@
                         :state="!$v.input.password.$invalid"
                         autocomplete="new-password"
                         class="m-3 rounded"
-                        icon=""
+                        icon="unlock"
                     />
                     <div class="input-label">Nhập lại mật khẩu</div>
                     <b-input-
@@ -34,7 +34,7 @@
                         :state="!$v.rePassword.$invalid"
                         autocomplete="new-password"
                         class="m-3 rounded"
-                        icon=""
+                        icon="lock"
                     />
                     <div class="input-label">Vị trí</div>
                     <query-
@@ -60,14 +60,14 @@
                         :state="!$v.input.name.$invalid"
                         autocomplete="new-password"
                         class="m-3 rounded"
-                        icon=""
+                        icon="type"
                     />
                     <div class="input-label">Chứng minh nhân dân</div>
                     <b-input-
                         v-model="input.identityCard"
                         :state="!$v.input.identityCard.$invalid"
                         class="m-3 rounded"
-                        icon=""
+                        icon="package"
                     />
                     <div class="input-label">Giới tính</div>
                     <div class="m-3">
@@ -95,7 +95,7 @@
                         :state="!$v.input.birthdate.$invalid"
                         type="date"
                         class="m-3 rounded"
-                        icon=""
+                        icon="calendar"
                     />
                 </div>
                 <div>
@@ -104,21 +104,21 @@
                         v-model="input.phoneNumber"
                         :state="!$v.input.phoneNumber.$invalid"
                         class="m-3 rounded"
-                        icon=""
+                        icon="phone"
                     />
                     <div class="input-label">Thư điện tử</div>
                     <b-input-
                         v-model="input.email"
                         :state="!$v.input.email.$invalid"
                         class="m-3 rounded"
-                        icon=""
+                        icon="mail"
                     />
                     <div class="input-label">Địa chỉ</div>
                     <b-input-
                         v-model="input.address"
                         :state="!$v.input.address.$invalid"
                         class="m-3 rounded"
-                        icon=""
+                        icon="map-pin"
                     />
                     <div class="input-label">Ngày bắt đầu</div>
                     <b-input-
@@ -126,7 +126,7 @@
                         :state="!$v.input.startingDate.$invalid"
                         type="date"
                         class="m-3 rounded"
-                        icon=""
+                        icon="calendar"
                     />
                 </div>
             </div>
@@ -138,7 +138,7 @@
                     :disabled="$v.$invalid"
                     @click="close"
                 >
-                    <span class="icon mr-1"></span>
+                    <icon- class="mr-1" i="plus" />
                     <span>Thêm</span>
                 </b-button>
             </div>

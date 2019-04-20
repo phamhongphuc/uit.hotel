@@ -6,7 +6,7 @@
                 variant="white"
                 @click="$refs.book_and_check_in.open({ rooms: selected })"
             >
-                <span class="icon mr-1"></span>
+                <icon- class="mr-1" i="plus" />
                 <span>Đặt phòng nhận ngay</span>
             </b-button>
             <b-button
@@ -14,7 +14,7 @@
                 variant="white"
                 @click="$refs.book.open({ rooms: selected })"
             >
-                <span class="icon mr-1"></span>
+                <icon- class="mr-1" i="plus" />
                 <span>Đặt phòng</span>
             </b-button>
         </block-flex->
