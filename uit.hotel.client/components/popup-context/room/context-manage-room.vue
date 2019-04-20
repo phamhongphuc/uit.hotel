@@ -1,7 +1,10 @@
 <template>
     <context- ref="context">
         <template slot-scope="{ data: { room, floor } }">
-            <b-nav-item-icon- icon="alert-circle" text="Xem thông tin chi tiết" />
+            <b-nav-item-icon-
+                icon="alert-circle"
+                text="Xem thông tin chi tiết"
+            />
             <div class="context-hr" />
             <b-nav-item-icon-
                 v-if="room.isActive"
