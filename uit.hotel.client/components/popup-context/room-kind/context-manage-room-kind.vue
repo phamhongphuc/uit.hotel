@@ -1,10 +1,10 @@
 <template>
     <context- ref="context">
         <template slot-scope="{ data: { roomKind } }">
-            <b-nav-item-icon- icon="" text="Xem thông tin chi tiết" />
+            <b-nav-item-icon- icon="alert-circle" text="Xem thông tin chi tiết" />
             <div class="context-hr" />
             <b-nav-item-icon-
-                icon=""
+                icon="edit-2"
                 text="Sửa thông tin phòng"
                 @click="refs.room_kind_update.open({ roomKind })"
             />
@@ -19,14 +19,14 @@
                 "
             />
             <b-nav-item-icon-
-                icon=""
+                icon="edit-2"
                 text="Thêm giá cơ bản"
                 @click="refs.rate_add.open({ roomKind })"
             />
             <b-nav-item-icon-mutate-
                 :mutation="deleteRoomKind"
                 :variables="{ id: roomKind.id }"
-                icon=""
+                icon="trash-2"
                 text="Xóa loại phòng"
             />
         </template>

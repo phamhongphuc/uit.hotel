@@ -3,13 +3,13 @@
         <template slot-scope="{ data: { bill, bills }, refs }">
             <b-nav-item-icon-
                 v-if="moment(bill.time).year() === 1"
-                icon=""
+                icon="dollar-sign"
                 text="Tạo phiếu thu"
                 @click="refs.receipt_add.open({ bill })"
             />
             <b-nav-item-icon-mutate-
                 v-if="moment(bill.time).year() === 1"
-                icon=""
+                icon="dollar-sign"
                 text="Chốt hóa đơn"
                 :mutation="payTheBill"
                 :variables="{ id: bill.id }"

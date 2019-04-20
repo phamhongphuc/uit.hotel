@@ -16,7 +16,7 @@
         class="nav-item-icon"
         @click="$emit('click')"
     >
-        <div v-if="icon !== ''" class="icon">{{ icon }}</div>
+        <icon- v-if="icon" :i="icon" />
         <div v-else-if="image !== ''" class="icon">
             <image-
                 class="m-2"

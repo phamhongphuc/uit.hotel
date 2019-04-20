@@ -12,7 +12,7 @@
                     })
                 "
             >
-                <span class="icon mr-1"></span>
+                <icon- class="mr-1" i="plus" />
                 <span>Thêm giá cơ bản mới</span>
             </b-button>
         </block-flex->

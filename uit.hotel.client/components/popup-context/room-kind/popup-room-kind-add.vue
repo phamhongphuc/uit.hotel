@@ -13,7 +13,7 @@
                 v-model="input.name"
                 :state="!$v.input.name.$invalid"
                 class="m-3 rounded"
-                icon=""
+                icon="type"
             />
             <div class="input-label">Số giường</div>
             <b-input-
@@ -23,7 +23,7 @@
                 :max="5"
                 :state="!$v.input.numberOfBeds.$invalid"
                 class="m-3 rounded"
-                icon=""
+                icon="type"
             />
             <div class="input-label">Số người</div>
             <b-input-
@@ -33,7 +33,7 @@
                 :max="10"
                 :state="!$v.input.amountOfPeople.$invalid"
                 class="m-3 rounded"
-                icon=""
+                icon="type"
             />
             <div class="d-flex m-3">
                 <b-button
@@ -43,7 +43,7 @@
                     :disabled="$v.$invalid"
                     @click="close"
                 >
-                    <span class="icon mr-1"></span>
+                    <icon- class="mr-1" i="plus" />
                     <span>Thêm</span>
                 </b-button>
             </div>

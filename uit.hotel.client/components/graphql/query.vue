@@ -12,15 +12,15 @@
                     <slot v-if="data" :data="data" />
                     <div v-else class="query-text">
                         <span v-if="loading">
-                            <span class="icon mr-1"></span>
+                            <icon- class="mr-1" i="loader" />
                             Đang tải dữ liệu...
                         </span>
                         <span v-else-if="error" class="text-red">
-                            <span class="icon mr-1"></span>
+                            <icon- class="mr-1" i="alert-triangle" />
                             Đã có lỗi xảy ra!
                         </span>
                         <span v-else>
-                            <span class="icon mr-1"></span>
+                            <icon- class="mr-1" i="loader" />
                             Đang yêu cầu dữ liệu...
                         </span>
                     </div>

@@ -3,7 +3,7 @@
         <template slot-scope="{ data: { service, services }, refs }">
             <b-nav-item-icon-
                 v-if="service.isActive"
-                icon=""
+                icon="edit-2"
                 text="Sửa thông tin dịch vụ"
                 @click="refs.service_update.open({ service })"
             />
@@ -21,7 +21,7 @@
                 v-if="service.isActive"
                 :mutation="deleteService"
                 :variables="{ id: service.id }"
-                icon=""
+                icon="trash-2"
                 text="Xóa dịch vụ"
             />
         </template>

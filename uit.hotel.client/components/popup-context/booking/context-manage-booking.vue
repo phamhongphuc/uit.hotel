@@ -5,32 +5,32 @@
                 v-if="booking.status === statusEnum.Booked"
                 :mutation="cancel"
                 :variables="{ id: booking.id }"
-                icon=""
+                icon="trash-2"
                 text="Hủy đặt phòng"
             />
             <b-nav-item-icon-mutate-
                 v-if="booking.status === statusEnum.Booked"
                 :mutation="checkIn"
                 :variables="{ id: booking.id }"
-                icon=""
+                icon="trash-2"
                 text="Nhận phòng"
             />
             <b-nav-item-icon-mutate-
                 v-else-if="booking.status === statusEnum.CheckedIn"
                 :mutation="requestCheckOut"
                 :variables="{ id: booking.id }"
-                icon=""
+                icon="trash-2"
                 text="Yêu cầu trả phòng"
             />
             <b-nav-item-icon-mutate-
                 v-else-if="booking.status === statusEnum.RequestedCheckOut"
                 :mutation="checkOut"
                 :variables="{ id: booking.id }"
-                icon=""
+                icon="trash-2"
                 text="Trả phòng"
             />
             <b-nav-item-icon-
-                icon=""
+                icon="edit-2"
                 text="Thêm chi tiết dịch vụ"
                 @click="refs.service_detail_add.open({ booking })"
             />

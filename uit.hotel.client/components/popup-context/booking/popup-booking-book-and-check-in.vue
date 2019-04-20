@@ -52,7 +52,7 @@
                         class="p-3 text-center"
                     >
                         Chưa có phòng nào trong danh sách. Ấn
-                        <span class="icon mx-1"></span>
+                        <icon- class="mx-1" i="users" />
                         để thêm phòng
                     </div>
                 </div>
@@ -70,7 +70,7 @@
                         })
                     "
                 >
-                    <span class="icon mr-1"></span>
+                    <icon- class="mr-1" i="plus" />
                     <span>Thêm khách hàng</span>
                 </b-button>
                 <b-button
@@ -79,7 +79,7 @@
                     :disabled="$v.$invalid"
                     @click="addBookingToList(close)"
                 >
-                    <span class="icon mr-1"></span>
+                    <icon- class="mr-1" i="plus" />
                     <span>Thêm</span>
                 </b-button>
             </div>

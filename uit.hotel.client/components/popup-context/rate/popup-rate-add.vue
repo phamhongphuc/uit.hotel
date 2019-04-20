@@ -30,14 +30,14 @@
                         v-model="input.lateCheckOutFee"
                         :state="!$v.input.lateCheckOutFee.$invalid"
                         class="m-3 rounded"
-                        icon=""
+                        icon="type"
                     />
                     <div class="input-label">Phí nhận phòng sớm</div>
                     <b-input-
                         v-model="input.earlyCheckInFee"
                         :state="!$v.input.earlyCheckInFee.$invalid"
                         class="m-3 rounded"
-                        icon=""
+                        icon="type"
                     />
                     <div class="input-label">Ngày bắt đầu có hiệu lực</div>
                     <b-input-
@@ -45,7 +45,7 @@
                         :state="!$v.input.effectiveStartDate.$invalid"
                         class="m-3 rounded"
                         type="date"
-                        icon=""
+                        icon="type"
                     />
                 </div>
                 <div>
@@ -54,28 +54,28 @@
                         v-model="input.dayRate"
                         :state="!$v.input.dayRate.$invalid"
                         class="m-3 rounded"
-                        icon=""
+                        icon="type"
                     />
                     <div class="input-label">Giá theo đêm</div>
                     <b-input-
                         v-model="input.nightRate"
                         :state="!$v.input.nightRate.$invalid"
                         class="m-3 rounded"
-                        icon=""
+                        icon="type"
                     />
                     <div class="input-label">Giá theo tuần</div>
                     <b-input-
                         v-model="input.weekRate"
                         :state="!$v.input.weekRate.$invalid"
                         class="m-3 rounded"
-                        icon=""
+                        icon="type"
                     />
                     <div class="input-label">Giá theo tháng</div>
                     <b-input-
                         v-model="input.monthRate"
                         :state="!$v.input.monthRate.$invalid"
                         class="m-3 rounded"
-                        icon=""
+                        icon="type"
                     />
                 </div>
             </div>
@@ -87,7 +87,7 @@
                     :disabled="$v.$invalid"
                     @click="close"
                 >
-                    <span class="icon mr-1"></span>
+                    <icon- class="mr-1" i="plus" />
                     <span>Thêm</span>
                 </b-button>
             </div>
