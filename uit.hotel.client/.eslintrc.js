@@ -16,19 +16,27 @@ const config = {
         'plugin:node/recommended',
         'plugin:import/warnings',
         'plugin:import/errors',
+        'plugin:@typescript-eslint/recommended',
         'plugin:prettier/recommended',
         'prettier/vue',
     ],
     parser: 'vue-eslint-parser',
     parserOptions: {
-        parser: 'eslint-plugin-typescript/parser',
+        parser: '@typescript-eslint/parser',
         sourceType: 'module',
         ecmaVersion: 2017,
         ecmaFeatures: {
             jsx: false,
         },
     },
-    plugins: ['standard', 'vue', 'import', 'node', 'graphql', 'typescript'],
+    plugins: [
+        'standard',
+        'vue',
+        'import',
+        'node',
+        'graphql',
+        '@typescript-eslint',
+    ],
     settings: {
         cache: true,
         'import/resolver': {
@@ -57,37 +65,10 @@ const config = {
         'no-console': 'warn',
         'no-lonely-if': 'error',
 
-        'typescript/adjacent-overload-signatures': 'error',
-        'typescript/array-type': 'error',
-        'typescript/ban-types': 'error',
-        camelcase: 'off',
-        'typescript/camelcase': 'error',
-        'typescript/class-name-casing': 'error',
-        'typescript/explicit-function-return-type': 'warn',
-        'typescript/explicit-member-accessibility': 'off',
-        indent: 'off',
-        'typescript/indent': 'off', // because of prettier
-        'typescript/interface-name-prefix': 'error',
-        'typescript/member-delimiter-style': 'error',
-        'typescript/no-angle-bracket-type-assertion': 'error',
-        'no-array-constructor': 'off',
-        'typescript/no-array-constructor': 'error',
-        'typescript/no-empty-interface': 'error',
-        'typescript/no-explicit-any': 'off',
-        'typescript/no-inferrable-types': 'error',
-        'typescript/no-misused-new': 'error',
-        'typescript/no-namespace': 'off',
-        'typescript/no-non-null-assertion': 'error',
-        'typescript/no-object-literal-type-assertion': 'error',
-        'typescript/no-parameter-properties': 'error',
-        'typescript/no-triple-slash-reference': 'error',
-        'no-unused-vars': 'off',
-        'typescript/no-unused-vars': 'warn',
-        'typescript/no-use-before-define': 'error',
-        'typescript/no-var-requires': 'error',
-        'typescript/prefer-interface': 'off',
-        'typescript/prefer-namespace-keyword': 'error',
-        'typescript/type-annotation-spacing': 'error',
+        //?"@typescript-eslint/explicit-member-accessibility": "error",
+        //? 'typescript/prefer-interface': 'off',
+        '@typescript-eslint/indent': 'off', // Because of prettier
+        '@typescript-eslint/no-explicit-any': 'off',
 
         'prefer-const': 'error',
         'space-before-function-paren': [
@@ -96,30 +77,15 @@ const config = {
         ],
         'node/no-unsupported-features/es-syntax': 'off',
         'import/prefer-default-export': 'off',
+
         'vue/html-indent': ['error', 4],
         'vue/html-self-closing': [
             'error',
             { html: { void: 'always', normal: 'always', component: 'always' } },
         ],
         'vue/component-name-in-template-casing': ['error', 'kebab-case'],
-        'vue/attributes-order': [
-            'error',
-            {
-                order: [
-                    'DEFINITION', //        is
-                    'LIST_RENDERING', //    v-for
-                    'CONDITIONALS', //      v-if | v-else-if | v-else | v-show | v-cloak
-                    'RENDER_MODIFIERS', //  v-pre | v-once
-                    'GLOBAL', //            id
-                    'UNIQUE', //            ref | key | slot | slot-scope
-                    'TWO_WAY_BINDING', //   v-model
-                    'OTHER_DIRECTIVES', //  v-custom-directive
-                    'OTHER_ATTR', //        custom-prop | v-bind:prop | :prop
-                    'EVENTS', //            v-on:click | @click
-                    'CONTENT', //           v-text | v-html
-                ],
-            },
-        ],
+        'vue/attributes-order': 'error',
+
         'graphql/template-strings': [
             'error',
             {
@@ -140,6 +106,9 @@ const config = {
             files: ['graphql/types.ts'],
             rules: {
                 'import/export': 'off',
+                '@typescript-eslint/no-empty-interface': 'off',
+                '@typescript-eslint/no-explicit-any': 'off',
+                '@typescript-eslint/no-namespace': 'off',
             },
         },
     ],
