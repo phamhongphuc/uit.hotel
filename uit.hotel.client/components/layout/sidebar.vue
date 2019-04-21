@@ -157,7 +157,12 @@ export default class extends Vue {
                 min-height: 2rem;
                 height: 2rem;
                 margin-left: auto;
+                transition: transform 0.2s;
+                transform-style: preserve-3d;
             }
+        }
+        &.collapsed > .nav-link > .icon {
+            transform: rotateX(180deg);
         }
     }
     > :not(.header-item) {
