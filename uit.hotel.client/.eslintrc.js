@@ -12,12 +12,17 @@ const config = {
         'airbnb-base',
         'eslint:recommended',
         'standard',
-        'plugin:vue/recommended',
+
         'plugin:node/recommended',
         'plugin:import/warnings',
         'plugin:import/errors',
+        'plugin:import/typescript',
+
+        'plugin:vue/recommended',
         'plugin:@typescript-eslint/recommended',
         'plugin:prettier/recommended',
+
+        'prettier/@typescript-eslint',
         'prettier/vue',
     ],
     parser: 'vue-eslint-parser',
@@ -54,8 +59,8 @@ const config = {
             '@babel/polyfill',
             'chalk',
             'graphql',
-            'apollo-client',
             'apollo-link',
+            'apollo-client',
             'apollo-cache-inmemory',
         ],
     },
@@ -64,27 +69,22 @@ const config = {
         'linebreak-style': ['warn', 'unix'],
         'no-console': 'warn',
         'no-lonely-if': 'error',
-
-        //?"@typescript-eslint/explicit-member-accessibility": "error",
-        //? 'typescript/prefer-interface': 'off',
-        '@typescript-eslint/indent': 'off', // Because of prettier
-        '@typescript-eslint/no-explicit-any': 'off',
-
         'prefer-const': 'error',
         'space-before-function-paren': [
             'error',
             { anonymous: 'never', named: 'never', asyncArrow: 'always' },
         ],
+
+        '@typescript-eslint/no-explicit-any': 'off',
+
         'node/no-unsupported-features/es-syntax': 'off',
         'import/prefer-default-export': 'off',
 
-        'vue/html-indent': ['error', 4],
         'vue/html-self-closing': [
             'error',
             { html: { void: 'always', normal: 'always', component: 'always' } },
         ],
         'vue/component-name-in-template-casing': ['error', 'kebab-case'],
-        'vue/attributes-order': 'error',
 
         'graphql/template-strings': [
             'error',
@@ -109,6 +109,12 @@ const config = {
                 '@typescript-eslint/no-empty-interface': 'off',
                 '@typescript-eslint/no-explicit-any': 'off',
                 '@typescript-eslint/no-namespace': 'off',
+            },
+        },
+        {
+            files: ['store/*.ts'],
+            rules: {
+                'import/no-cycle': 'off',
             },
         },
     ],
