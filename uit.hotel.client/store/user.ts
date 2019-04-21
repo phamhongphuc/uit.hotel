@@ -1,5 +1,5 @@
 import gql from 'graphql-tag';
-import { ActionTree, MutationTree, GetterTree } from 'vuex';
+import { ActionTree, GetterTree, MutationTree } from 'vuex';
 import { UserCheckLogin, UserLogin } from '~/graphql/types';
 import {
     apolloClient,
@@ -8,6 +8,7 @@ import {
 } from '~/modules/apollo';
 import { notify } from '~/plugins/notify';
 import { route, router } from '~/utils/store';
+import { RootState } from '.';
 
 export interface UserState {
     token: undefined | string;
@@ -19,7 +20,7 @@ export const state = (): UserState => ({
     employee: undefined,
 });
 
-export const getters: GetterTree<UserState, UserState> = {};
+export const getters: GetterTree<UserState, RootState> = {};
 
 export const mutations: MutationTree<UserState> = {
     setToken(state, token: string) {
@@ -37,7 +38,7 @@ export const mutations: MutationTree<UserState> = {
     },
 };
 
-export const actions: ActionTree<UserState, UserState> = {
+export const actions: ActionTree<UserState, RootState> = {
     async login({ commit }, variables: UserLogin.Variables): Promise<void> {
         const result = await apolloClientNotify(this).mutate<
             UserLogin.Mutation,

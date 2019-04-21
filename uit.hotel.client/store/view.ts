@@ -1,6 +1,6 @@
 import { MutationTree } from 'vuex';
 
-interface ViewState {
+export interface ViewState {
     open: boolean;
 }
 

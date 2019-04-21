@@ -7,11 +7,9 @@
                     <icon- class="m-0 w-auto" i="x" />
                 </b-button>
             </div>
-            <no-ssr>
-                <div class="popup-modal-content">
-                    <slot v-if="noData || data" :data="data" :close="close" />
-                </div>
-            </no-ssr>
+            <div class="popup-modal-content">
+                <slot v-if="noData || data" :data="data" :close="close" />
+            </div>
         </div>
     </div>
 </template>
@@ -47,7 +45,6 @@ export default class extends Vue {
     }
 }
 </script>
-
 <style lang="scss">
 .popup {
     position: absolute;
@@ -73,12 +70,14 @@ export default class extends Vue {
             display: flex;
             border-bottom: 1.5px solid $border-color;
             opacity: 0.8;
+
             > .text {
                 flex: 1;
                 padding: 0 0.75rem;
                 line-height: $input-height;
                 font-weight: 500;
             }
+
             > .close {
                 display: block;
                 border: none;
