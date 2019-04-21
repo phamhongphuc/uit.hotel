@@ -7,44 +7,41 @@ import { Mixin } from 'vue-mixin-decorator';
 @Mixin
 export class CheckboxProps extends Vue {
     @Prop({ default: null })
-    value: any;
+    protected value: any;
 
     @Prop({ default: null })
-    checked!: [string, number, Record<string, any>, any[], boolean];
+    protected checked!: [string, number, Record<string, any>, any[], boolean];
 
     @Prop({ default: false })
-    validated!: boolean;
+    protected validated!: boolean;
 
     @Prop({ default: false })
-    ariaInvalid!: [boolean, string];
+    protected ariaInvalid!: [boolean, string];
 
     @Prop({ default: false })
-    stacked!: boolean;
+    protected stacked!: boolean;
 
     // Render as button style
-    // Render as button style
     @Prop({ default: false })
-    buttons!: boolean;
+    protected buttons!: boolean;
 
-    // Convert from bootstrap-vue/es/mixins/form-options.js
-    // Only applicable when rendered with button style
     // Convert from bootstrap-vue/es/mixins/form-options.js
     // Only applicable when rendered with button style
     @Prop({ default: 'secondary' })
-    buttonVariant!: string;
+    protected buttonVariant!: string;
 
-    @Prop({ default: () => [] })
-    options!: {
+    @Prop({ default: (): [] => [] })
+    protected options!: {
         text: string;
         value: string;
     }[];
 
     @Prop({ default: 'value' })
-    valueField!: string;
+    protected valueField!: string;
 
     @Prop({ default: 'text' })
-    textField!: string;
+    protected textField!: string;
 
     @Prop({ default: 'disabled' })
-    disabledField!: string;
+    protected disabledField!: string;
 }

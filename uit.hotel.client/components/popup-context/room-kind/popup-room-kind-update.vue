@@ -3,9 +3,9 @@
         <form-mutate-
             v-if="input"
             slot-scope="{ data: { roomKind }, close }"
-            success="Cập nhật loại phòng mới thành công"
             :mutation="updateRoomKind"
             :variables="{ input }"
+            success="Cập nhật loại phòng mới thành công"
         >
             <div class="input-label">Tên loại phòng</div>
             <b-input-
@@ -18,29 +18,29 @@
             <div class="input-label">Số giường</div>
             <b-input-
                 v-model="input.numberOfBeds"
-                type="number"
                 :min="1"
                 :max="5"
                 :state="!$v.input.numberOfBeds.$invalid"
+                type="number"
                 class="m-3 rounded"
                 icon="type"
             />
             <div class="input-label">Số người</div>
             <b-input-
                 v-model="input.amountOfPeople"
-                type="number"
                 :min="1"
                 :max="10"
                 :state="!$v.input.amountOfPeople.$invalid"
+                type="number"
                 class="m-3 rounded"
                 icon="type"
             />
             <div class="d-flex m-3">
                 <b-button
+                    :disabled="$v.$invalid"
                     class="ml-auto"
                     variant="main"
                     type="submit"
-                    :disabled="$v.$invalid"
                     @click="close"
                 >
                     <icon- class="mr-1" i="plus" />

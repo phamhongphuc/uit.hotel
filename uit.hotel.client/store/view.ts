@@ -9,7 +9,7 @@ export const state = (): ViewState => ({
 });
 
 export const mutations: MutationTree<ViewState> = {
-    toggle(state) {
+    toggle(state): void {
         state.open = !state.open;
     },
 };

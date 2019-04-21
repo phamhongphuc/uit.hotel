@@ -19,9 +19,9 @@
         <icon- v-if="icon" :i="icon" />
         <div v-else-if="image !== ''" class="icon">
             <image-
-                class="m-2"
                 :class="[{ 'rounded-circle': circle }, imageClass]"
                 :source="image"
+                class="m-2"
                 height="24"
                 width="24"
             />

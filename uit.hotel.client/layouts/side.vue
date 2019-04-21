@@ -2,9 +2,9 @@
     <div id="side" class="center">
         <no-ssr>
             <notifications
+                :duration="1500"
                 animation-type="velocity"
                 position="left bottom"
-                :duration="1500"
             />
         </no-ssr>
         <div class="left flex-fill" />

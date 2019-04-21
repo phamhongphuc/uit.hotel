@@ -28,7 +28,9 @@ export function apolloClientNotify(store: any): ApolloNotify {
     return {
         async mutate<TType, TVariables>(
             options: MutationOptions<TType, TVariables>,
-        ) {
+        ): Promise<
+            FetchResult<TType, Record<string, any>, Record<string, any>>
+        > {
             try {
                 const result = await client.mutate<TType, TVariables>(options);
                 return result;

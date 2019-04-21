@@ -6,7 +6,7 @@
                 variant="white"
                 @click="showInactive = !showInactive"
             >
-                <icon- class="mx-1" :i="showInactive ? 'eye' : 'eye-off'" />
+                <icon- :i="showInactive ? 'eye' : 'eye-off'" class="mx-1" />
                 <span>
                     {{ `Đang ${showInactive ? 'hiện' : 'ẩn'} phiếu thu cũ` }}
                 </span>
@@ -19,7 +19,6 @@
         >
             <b-table
                 slot-scope="{ data: { receipts } }"
-                class="table-style"
                 :items="receiptsFilter(receipts)"
                 :fields="[
                     {
@@ -44,6 +43,7 @@
                         class: 'text-center',
                     },
                 ]"
+                class="table-style"
             >
                 <template slot="index" slot-scope="data">
                     {{ data.index + 1 }}

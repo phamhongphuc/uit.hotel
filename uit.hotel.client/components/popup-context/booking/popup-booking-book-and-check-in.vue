@@ -3,21 +3,20 @@
         <template slot-scope="{ close }">
             <div v-if="input">
                 <div class="input-label">Phòng</div>
-                <query- :query="getRooms" class="m-3" :poll-interval="0">
+                <query- :query="getRooms" :poll-interval="0" class="m-3">
                     <b-form-select
                         v-model="input.room.id"
                         slot-scope="{ data: { rooms } }"
-                        value-field="id"
-                        text-field="name"
                         :state="!$v.input.room.$invalid"
                         :options="rooms"
+                        value-field="id"
+                        text-field="name"
                         class="rounded"
                     />
                 </query->
                 <div class="input-label">Khách hàng</div>
                 <div class="m-3 table-inner rounded overflow-hidden">
                     <b-table
-                        class="table-style"
                         :items="input.listOfPatrons"
                         :fields="[
                             {
@@ -42,6 +41,7 @@
                                 class: 'text-center',
                             },
                         ]"
+                        class="table-style"
                     >
                         <template slot="index" slot-scope="data">
                             {{ data.index + 1 }}
@@ -59,9 +59,9 @@
             </div>
             <div class="d-flex m-3">
                 <b-button
+                    :disabled="$v.$invalid"
                     class="ml-auto"
                     variant="main"
-                    :disabled="$v.$invalid"
                     @click="
                         refs.patron_select_or_add.open({
                             callback(id, patron) {
@@ -74,9 +74,9 @@
                     <span>Thêm khách hàng</span>
                 </b-button>
                 <b-button
+                    :disabled="$v.$invalid"
                     class="ml-3"
                     variant="main"
-                    :disabled="$v.$invalid"
                     @click="addBookingToList(close)"
                 >
                     <icon- class="mr-1" i="plus" />

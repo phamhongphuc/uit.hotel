@@ -11,10 +11,10 @@
             </b-button>
             <b-form-checkbox-group
                 v-model="show"
+                :options="showOptions"
                 class="m-2 ml-auto"
                 buttons
                 button-variant="white"
-                :options="showOptions"
             />
         </block-flex->
         <query-
@@ -24,7 +24,6 @@
         >
             <b-table
                 slot-scope="{ data: { bookings } }"
-                class="table-style"
                 :items="bookingsFilter(bookings)"
                 :fields="[
                     {
@@ -59,6 +58,7 @@
                         tdClass: 'w-100 text-nowrap',
                     },
                 ]"
+                class="table-style"
                 @row-clicked="
                     (booking, $index, $event) => {
                         $event.stopPropagation();

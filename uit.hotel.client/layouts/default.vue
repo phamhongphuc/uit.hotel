@@ -7,9 +7,9 @@
         </main>
         <no-ssr>
             <notifications
+                :duration="1500"
                 animation-type="velocity"
                 position="right bottom"
-                :duration="1500"
             />
         </no-ssr>
     </div>

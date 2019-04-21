@@ -10,13 +10,13 @@ export const state = (): StyleState => ({
 });
 
 export const mutations: MutationTree<StyleState> = {
-    setBreakpoint(state, text) {
+    setBreakpoint(state, text): void {
         state.breakpoint = text;
     },
 };
 
 export const actions: ActionTree<StyleState, RootState> = {
-    updateBreakpoint({ state, commit }) {
+    updateBreakpoint({ state, commit }): void {
         const w = window.innerWidth;
         let breakpoint = 'none';
         if (w < 576) breakpoint = 'xs';

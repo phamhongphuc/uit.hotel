@@ -10,9 +10,9 @@
         </b-checkbox>
         <b-checkbox-group
             v-model="selected"
+            :options="options"
             class="h-auto m-4"
             stacked
-            :options="options"
         />
     </div>
 </template>

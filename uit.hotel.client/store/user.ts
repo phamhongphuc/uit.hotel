@@ -23,15 +23,15 @@ export const state = (): UserState => ({
 export const getters: GetterTree<UserState, RootState> = {};
 
 export const mutations: MutationTree<UserState> = {
-    setToken(state, token: string) {
+    setToken(state, token: string): void {
         state.token = token;
     },
-    login(state, { token, employee }: UserLogin.Login) {
+    login(state, { token, employee }: UserLogin.Login): void {
         apolloHelpers(this).onLogin(token);
         state.token = token;
         state.employee = employee;
     },
-    logout(state) {
+    logout(state): void {
         apolloHelpers(this).onLogout();
         state.token = undefined;
         state.employee = undefined;
@@ -69,13 +69,13 @@ export const actions: ActionTree<UserState, RootState> = {
         notify.success({ title: 'Thông báo', text: 'Đăng nhập thành công' });
     },
 
-    async logout({ commit }) {
+    async logout({ commit }): Promise<void> {
         commit('logout');
         router(this).push('/login');
         notify.success({ title: 'Thông báo', text: 'Đăng xuất thành công' });
     },
 
-    async checkLogin({ state, commit }) {
+    async checkLogin({ state, commit }): Promise<void> {
         const token = state.token || apolloHelpers(this).getToken();
 
         if (typeof token === 'string') {

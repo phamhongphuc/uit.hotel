@@ -5,14 +5,14 @@ import { Mixin } from 'vue-mixin-decorator';
 @Mixin
 export class PopupMixin<TData, TInput> extends Vue {
     @Prop({ default: undefined })
-    refs: any;
+    protected refs: any;
 
-    data!: TData;
-    input: TInput | any = null;
+    protected data!: TData;
+    protected input: TInput | any = null;
 
-    onOpen(): void {}
+    protected onOpen(): void {}
 
-    async open(data: any): Promise<void> {
+    protected async open(data: any): Promise<void> {
         const popup: any = this.$refs.popup;
         if (popup !== undefined && typeof popup.open === 'function') {
             this.data = data;

@@ -14,7 +14,7 @@
                 variant="white"
                 @click="showInactive = !showInactive"
             >
-                <icon- class="mx-1" :i="showInactive ? 'eye' : 'eye-off'" />
+                <icon- :i="showInactive ? 'eye' : 'eye-off'" class="mx-1" />
                 <span>
                     {{
                         `Đang ${
@@ -31,7 +31,6 @@
         >
             <b-table
                 slot-scope="{ data: { roomKinds } }"
-                class="table-style"
                 :items="roomKindsFilter(roomKinds)"
                 :fields="[
                     {
@@ -67,6 +66,7 @@
                         tdClass: 'text-right',
                     },
                 ]"
+                class="table-style"
                 @row-clicked="
                     (roomKind, $index, $event) => {
                         $event.stopPropagation();

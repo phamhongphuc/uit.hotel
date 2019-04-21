@@ -23,7 +23,6 @@
         >
             <b-table
                 slot-scope="{ data: { rates } }"
-                class="table-style"
                 :items="ratesFilter(rates)"
                 :fields="[
                     {
@@ -53,6 +52,7 @@
                         tdClass: 'text-nowrap text-center',
                     },
                 ]"
+                class="table-style"
                 @row-clicked="
                     (rate, $index, $event) => {
                         $event.stopPropagation();

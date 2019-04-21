@@ -3,9 +3,9 @@
         <form-mutate-
             v-if="input"
             slot-scope="{ data: { bill }, close }"
-            success="Thêm phòng cho hóa đơn có sẵn"
             :mutation="addBookingToBill"
             :variables="{ input }"
+            success="Thêm phòng cho hóa đơn có sẵn"
         >
             <div class="input-label">Tên hóa đơn</div>
             <b-input-
@@ -17,10 +17,10 @@
             />
             <div class="d-flex m-3">
                 <b-button
+                    :disabled="$v.$invalid"
                     class="ml-auto"
                     variant="main"
                     type="submit"
-                    :disabled="$v.$invalid"
                     @click="close"
                 >
                     <icon- class="mr-1" i="edit-2" />

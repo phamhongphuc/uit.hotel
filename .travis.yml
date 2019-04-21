@@ -11,7 +11,8 @@ matrix:
           script:
               - cd uit.hotel.client
               - yarn
-              - yarn lint
+              - yarn lint:js --max-warnings=0
+              - yarn lint:css
               - yarn build
               - yarn test
 

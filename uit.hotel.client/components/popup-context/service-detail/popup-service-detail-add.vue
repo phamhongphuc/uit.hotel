@@ -3,9 +3,9 @@
         <form-mutate-
             v-if="input"
             slot-scope="{ close }"
-            success="Thêm chi tiết dịch vụ mới thành công"
             :mutation="createServicesDetail"
             :variables="{ input }"
+            success="Thêm chi tiết dịch vụ mới thành công"
         >
             <div class="input-label">Số lượng</div>
             <b-input-
@@ -17,24 +17,22 @@
                 icon="type"
             />
             <div class="input-label">Dịch vụ</div>
-            <query- :query="getServices" class="m-3" :poll-interval="0">
+            <query- :query="getServices" :poll-interval="0" class="m-3">
                 <b-form-select
                     v-model="input.service.id"
                     slot-scope="{ data: { services } }"
-                    value-field="id"
-                    text-field="name"
                     :state="!$v.input.service.$invalid"
                     :options="services"
+                    value-field="id"
+                    text-field="name"
                     class="rounded"
                 />
             </query->
             <div class="input-label">Đơn đặt tại phòng</div>
-            <query- :query="getSimpleBookings" class="m-3" :poll-interval="0">
+            <query- :query="getSimpleBookings" :poll-interval="0" class="m-3">
                 <b-form-select
                     v-model="input.booking.id"
                     slot-scope="{ data: { bookings } }"
-                    value-field="id"
-                    text-field="name"
                     :state="!$v.input.booking.$invalid"
                     :options="
                         bookings.map(book => ({
@@ -42,15 +40,17 @@
                             name: book.room.name,
                         }))
                     "
+                    value-field="id"
+                    text-field="name"
                     class="rounded"
                 />
             </query->
             <div class="d-flex m-3">
                 <b-button
+                    :disabled="$v.$invalid"
                     class="ml-auto"
                     variant="main"
                     type="submit"
-                    :disabled="$v.$invalid"
                     @click="close"
                 >
                     <icon- class="mr-1" i="plus" />

@@ -3,25 +3,25 @@
         <form-mutate-
             v-if="input"
             slot-scope="{ close }"
-            success="Thêm giá cơ bản mới thành công"
             :mutation="createRate"
             :variables="{ input }"
+            success="Thêm giá cơ bản mới thành công"
         >
             <div class="d-flex">
                 <div>
                     <div class="input-label">Loại phòng</div>
                     <query-
                         :query="getRoomKinds"
-                        class="m-3"
                         :poll-interval="0"
+                        class="m-3"
                     >
                         <b-form-select
                             v-model="input.roomKind.id"
                             slot-scope="{ data: { roomKinds } }"
-                            value-field="id"
-                            text-field="name"
                             :state="!$v.input.roomKind.$invalid"
                             :options="roomKinds"
+                            value-field="id"
+                            text-field="name"
                             class="rounded"
                         />
                     </query->
@@ -81,10 +81,10 @@
             </div>
             <div class="d-flex m-3">
                 <b-button
+                    :disabled="$v.$invalid"
                     class="ml-auto"
                     variant="main"
                     type="submit"
-                    :disabled="$v.$invalid"
                     @click="close"
                 >
                     <icon- class="mr-1" i="plus" />

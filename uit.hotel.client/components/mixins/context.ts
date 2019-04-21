@@ -5,11 +5,11 @@ import { Mixin } from 'vue-mixin-decorator';
 @Mixin
 export class ContextMixin extends Vue {
     @Prop({ default: undefined })
-    refs: any;
+    protected refs: any;
 
-    data: any = null;
+    protected data: any = null;
 
-    open(event: MouseEvent, data: any): void {
+    protected open(event: MouseEvent, data: any): void {
         const context: any = this.$refs.context;
         if (context !== undefined && typeof context.open === 'function') {
             this.data = data;

@@ -5,8 +5,8 @@ import { Mixin } from 'vue-mixin-decorator';
 @Mixin
 export class TextProps extends Vue {
     @Prop({ default: '' })
-    textClass!: string;
+    protected textClass!: string;
 
     @Prop({ default: '' })
-    text!: string;
+    protected text!: string;
 }

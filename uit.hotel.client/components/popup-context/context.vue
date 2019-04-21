@@ -2,8 +2,8 @@
     <b-nav
         v-show="show"
         v-on-clickaway="close"
-        class="context-menu"
         :style="style"
+        class="context-menu"
         tabindex="-1"
         @click="onClick"
         @contextmenu.capture.prevent
