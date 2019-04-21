@@ -1,5 +1,8 @@
 <template>
-    <div id="login" class="bg-white shadow-lg p-5 d-flex flex-column">
+    <div
+        id="login"
+        class="bg-white shadow-lg p-5 d-flex flex-column overflow-auto"
+    >
         <img
             src="/favicon.png"
             class="d-block img-fluid mb-2 mt-5 mx-auto"
@@ -26,11 +29,7 @@
                 icon="lock"
                 class="my-2 circle"
             />
-            <b-button
-                variant="main"
-                type="submit"
-                class="border-circle d-block w-100"
-            >
+            <b-button variant="main" type="submit" class="border-circle w-100">
                 Đăng nhập
             </b-button>
         </b-form>
