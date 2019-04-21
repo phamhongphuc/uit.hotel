@@ -3,9 +3,9 @@
         <form-mutate-
             v-if="input"
             slot-scope="{ data: { position }, close }"
-            success="Cập nhật vị trí mới thành công"
             :mutation="updatePosition"
             :variables="{ input: getInput }"
+            success="Cập nhật vị trí mới thành công"
         >
             <div class="d-flex">
                 <div>
@@ -19,34 +19,34 @@
                     />
                     <b-checkbox-group-
                         v-model="selected"
-                        title="Nhóm quyền của nhân viên kinh doanh"
                         :options="positionOptionsBusiness"
+                        title="Nhóm quyền của nhân viên kinh doanh"
                     />
                     <b-checkbox-group-
                         v-model="selected"
-                        title="Nhóm quyền của nhân viên hành chính"
                         :options="positionOptionsAdministrative"
+                        title="Nhóm quyền của nhân viên hành chính"
                     />
                 </div>
                 <div>
                     <b-checkbox-group-
                         v-model="selected"
-                        title="Nhóm quyền của nhân viên lễ tân"
                         :options="positionOptionsReceptionist"
+                        title="Nhóm quyền của nhân viên lễ tân"
                     />
                     <b-checkbox-group-
                         v-model="selected"
-                        title="Nhóm quyền của nhân viên dọn dẹp"
                         :options="positionOptionsHouseKeeping"
+                        title="Nhóm quyền của nhân viên dọn dẹp"
                     />
                 </div>
             </div>
             <div class="m-3">
                 <b-button
+                    :disabled="$v.$invalid"
                     class="ml-auto"
                     variant="main"
                     type="submit"
-                    :disabled="$v.$invalid"
                     @click="close"
                 >
                     <icon- class="mr-1" i="plus" />

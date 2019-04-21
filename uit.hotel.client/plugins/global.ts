@@ -4,7 +4,7 @@ import { StoreSelf } from '~/utils/store';
 export default function({ app }: StoreSelf): void {
     if (!app.mixins) app.mixins = [];
     app.mixins.push({
-        async mounted() {
+        async mounted(): Promise<void> {
             // Breakpoint
             const updateBreakpoint = (): void => {
                 (this as Vue).$store.dispatch('style/updateBreakpoint');

@@ -17,7 +17,6 @@
         >
             <b-table
                 slot-scope="{ data: { patronKinds } }"
-                class="table-style"
                 :items="patronKinds"
                 :fields="[
                     {
@@ -44,6 +43,7 @@
                         sortable: true,
                     },
                 ]"
+                class="table-style"
                 @row-clicked="
                     (patronKind, $index, $event) => {
                         $event.stopPropagation();

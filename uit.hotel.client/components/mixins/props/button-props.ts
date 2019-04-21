@@ -6,20 +6,20 @@ import { Mixin } from 'vue-mixin-decorator';
 @Mixin
 export class ButtonProps extends Vue {
     @Prop({ default: false })
-    block: boolean = false;
+    protected block: boolean = false;
 
     @Prop({ default: false })
-    disabled: boolean = false;
+    protected disabled: boolean = false;
 
     @Prop({ default: null })
-    size!: string;
+    protected size!: string;
 
     @Prop({ default: null })
-    variant!: string;
+    protected variant!: string;
 
     @Prop({ default: 'button' })
-    type!: string;
+    protected type!: string;
 
     @Prop({ default: null })
-    pressed: boolean = false;
+    protected pressed: boolean = false;
 }

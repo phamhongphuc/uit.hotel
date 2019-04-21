@@ -27,11 +27,11 @@
 
             <b-navbar-nav class="py-2 flex-fill justify-content-end">
                 <b-nav-item-input-
+                    :focus.sync="isInputFocus"
                     class="flex-fill"
                     reverse-when="md"
                     placeholder="Tìm kiếm..."
                     icon="search"
-                    :focus.sync="isInputFocus"
                 />
                 <b-dropdown
                     class="navar-dropdown d-none d-md-block"

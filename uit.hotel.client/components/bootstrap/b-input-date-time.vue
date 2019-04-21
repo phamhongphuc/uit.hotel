@@ -3,18 +3,18 @@
         <b-input-
             ref="date"
             v-model="date"
+            :state="state"
             type="date"
             class="rounded"
             icon="calendar"
-            :state="state"
         />
         <b-input-
             ref="time"
             v-model="time"
+            :state="state"
             type="time"
             class="rounded ml-3"
             icon="calendar"
-            :state="state"
         />
     </div>
 </template>
@@ -28,8 +28,8 @@ import moment from 'moment';
     mixins: [InputProps, StateProps],
 })
 export default class extends InputProps {
-    date: any = '';
-    time: any = '';
+    date: string = '';
+    time: string = '';
 
     @Watch('date')
     onDateChange() {

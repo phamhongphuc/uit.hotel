@@ -14,7 +14,7 @@
                 variant="white"
                 @click="showInactive = !showInactive"
             >
-                <icon- class="mx-1" :i="showInactive ? 'eye' : 'eye-off'" />
+                <icon- :i="showInactive ? 'eye' : 'eye-off'" class="mx-1" />
                 <span>
                     {{
                         `Đang ${
@@ -31,7 +31,6 @@
         >
             <b-table
                 slot-scope="{ data: { employees } }"
-                class="table-style"
                 :items="employeesFilter(employees)"
                 :fields="[
                     {
@@ -63,6 +62,7 @@
                         sortable: true,
                     },
                 ]"
+                class="table-style"
                 @row-clicked="
                     (employee, $index, $event) => {
                         $event.stopPropagation();

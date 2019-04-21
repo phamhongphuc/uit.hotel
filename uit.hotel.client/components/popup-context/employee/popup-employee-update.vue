@@ -3,9 +3,9 @@
         <form-mutate-
             v-if="input"
             slot-scope="{ data: { employee }, close }"
-            success="Cập nhật vị trí mới thành công"
             :mutation="updateEmployee"
             :variables="{ input }"
+            success="Cập nhật vị trí mới thành công"
         >
             <div class="d-flex">
                 <div>
@@ -30,16 +30,16 @@
                     <div class="input-label">Vị trí</div>
                     <query-
                         :query="getPositions"
-                        class="m-3"
                         :poll-interval="0"
+                        class="m-3"
                     >
                         <b-form-select
                             v-model="input.position.id"
                             slot-scope="{ data: { positions } }"
-                            value-field="id"
-                            text-field="name"
                             :state="!$v.input.position.id.$invalid"
                             :options="positions"
+                            value-field="id"
+                            text-field="name"
                             class="rounded"
                         />
                     </query->
@@ -58,8 +58,6 @@
                             <div class="m-3">
                                 <b-form-select
                                     v-model="input.gender"
-                                    value-field="value"
-                                    text-field="name"
                                     :state="!$v.input.gender.$invalid"
                                     :options="[
                                         {
@@ -71,6 +69,8 @@
                                             value: false,
                                         },
                                     ]"
+                                    value-field="value"
+                                    text-field="name"
                                     class="rounded"
                                 />
                             </div>
@@ -119,10 +119,10 @@
             </div>
             <div class="m-3">
                 <b-button
+                    :disabled="$v.$invalid"
                     class="ml-auto"
                     variant="main"
                     type="submit"
-                    :disabled="$v.$invalid"
                     @click="close"
                 >
                     <icon- class="mr-1" i="plus" />

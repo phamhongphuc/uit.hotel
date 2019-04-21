@@ -3,31 +3,31 @@
         <form-mutate-
             v-if="input"
             slot-scope="{ data: { floor }, close }"
-            success="Thêm phòng mới thành công"
             :mutation="createRoom"
             :variables="{ input }"
+            success="Thêm phòng mới thành công"
         >
             <div class="input-label">Tầng</div>
-            <query- :query="getFloors" class="m-3" :poll-interval="0">
+            <query- :query="getFloors" :poll-interval="0" class="m-3">
                 <b-form-select
                     v-model="input.floor.id"
                     slot-scope="{ data: { floors } }"
-                    value-field="id"
-                    text-field="name"
                     :state="!$v.input.floor.$invalid"
                     :options="floors"
+                    value-field="id"
+                    text-field="name"
                     class="rounded"
                 />
             </query->
             <div class="input-label">Loại phòng</div>
-            <query- :query="getRoomKinds" class="m-3" :poll-interval="0">
+            <query- :query="getRoomKinds" :poll-interval="0" class="m-3">
                 <b-form-select
                     v-model="input.roomKind.id"
                     slot-scope="{ data: { roomKinds } }"
-                    value-field="id"
-                    text-field="name"
                     :state="!$v.input.roomKind.id.$invalid"
                     :options="roomKinds"
+                    value-field="id"
+                    text-field="name"
                     class="rounded"
                 />
             </query->
@@ -41,10 +41,10 @@
             />
             <div class="m-3">
                 <b-button
+                    :disabled="$v.$invalid"
                     class="ml-auto"
                     variant="main"
                     type="submit"
-                    :disabled="$v.$invalid"
                     @click="close"
                 >
                     <icon- class="mr-1" i="plus" />

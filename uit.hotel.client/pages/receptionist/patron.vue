@@ -17,7 +17,6 @@
         >
             <b-table
                 slot-scope="{ data: { patrons } }"
-                class="table-style"
                 :items="patrons"
                 :fields="[
                     {
@@ -47,6 +46,7 @@
                         tdClass: 'text-nowrap',
                     },
                 ]"
+                class="table-style"
                 @row-clicked="
                     (patron, $index, $event) => {
                         $event.stopPropagation();
@@ -64,8 +64,8 @@
                     <a
                         v-for="phoneNumber in value"
                         :key="phoneNumber"
-                        class="d-block"
                         :href="`tel:${phoneNumber}`"
+                        class="d-block"
                         @click.stop
                     >
                         {{ phoneNumber }}

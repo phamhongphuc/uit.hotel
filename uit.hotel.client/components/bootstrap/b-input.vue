@@ -1,5 +1,5 @@
 <template>
-    <div class="b-input" :class="{ 'has-icon': icon !== null }">
+    <div :class="{ 'has-icon': icon !== null }" class="b-input">
         <icon- v-if="icon" :i="icon" />
         <b-input
             ref="input"

@@ -503,26 +503,26 @@ export type Seconds = any;
 // ====================================================
 
 export namespace UserLogin {
-    export type Variables = {
+    export interface Variables {
         id: string;
         password: string;
-    };
+    }
 
-    export type Mutation = {
+    export interface Mutation {
         __typename?: 'Mutation';
 
         login: Login;
-    };
+    }
 
-    export type Login = {
+    export interface Login {
         __typename?: 'AuthenticationObject';
 
         token: string;
 
         employee: Employee;
-    };
+    }
 
-    export type Employee = {
+    export interface Employee {
         __typename?: 'Employee';
 
         id: string;
@@ -530,27 +530,27 @@ export namespace UserLogin {
         name: string;
 
         position: Position;
-    };
+    }
 
-    export type Position = {
+    export interface Position {
         __typename?: 'Position';
 
         id: number;
 
         name: string;
-    };
+    }
 }
 
 export namespace UserCheckLogin {
-    export type Variables = {};
+    export interface Variables {}
 
-    export type Mutation = {
+    export interface Mutation {
         __typename?: 'Mutation';
 
         checkLogin: CheckLogin;
-    };
+    }
 
-    export type CheckLogin = {
+    export interface CheckLogin {
         __typename?: 'Employee';
 
         id: string;
@@ -558,27 +558,27 @@ export namespace UserCheckLogin {
         name: string;
 
         position: Position;
-    };
+    }
 
-    export type Position = {
+    export interface Position {
         __typename?: 'Position';
 
         id: number;
 
         name: string;
-    };
+    }
 }
 
 export namespace GetBills {
-    export type Variables = {};
+    export interface Variables {}
 
-    export type Query = {
+    export interface Query {
         __typename?: 'Query';
 
         bills: Bills[];
-    };
+    }
 
-    export type Bills = {
+    export interface Bills {
         __typename?: 'Bill';
 
         id: number;
@@ -592,116 +592,116 @@ export namespace GetBills {
         receipts: Maybe<(Maybe<Receipts>)[]>;
 
         bookings: Maybe<(Maybe<Bookings>)[]>;
-    };
+    }
 
-    export type Patron = {
+    export interface Patron {
         __typename?: 'Patron';
 
         id: number;
 
         name: string;
-    };
+    }
 
-    export type Receipts = {
+    export interface Receipts {
         __typename?: 'Receipt';
 
         id: number;
 
         money: number;
-    };
+    }
 
-    export type Bookings = {
+    export interface Bookings {
         __typename?: 'Booking';
 
         id: number;
-    };
+    }
 }
 
 export namespace AddBookingToBill {
-    export type Variables = {
+    export interface Variables {
         bill: BillId;
         booking: BookingCreateInput;
-    };
+    }
 
-    export type Mutation = {
+    export interface Mutation {
         __typename?: 'Mutation';
 
         addBookingToBill: AddBookingToBill;
-    };
+    }
 
-    export type AddBookingToBill = {
+    export interface AddBookingToBill {
         __typename?: 'Booking';
 
         id: number;
-    };
+    }
 }
 
 export namespace BookAndCheckIn {
-    export type Variables = {
+    export interface Variables {
         bookings: BookAndCheckInCreateInput[];
         bill: BillCreateInput;
-    };
+    }
 
-    export type Mutation = {
+    export interface Mutation {
         __typename?: 'Mutation';
 
         bookAndCheckIn: BookAndCheckIn;
-    };
+    }
 
-    export type BookAndCheckIn = {
+    export interface BookAndCheckIn {
         __typename?: 'Bill';
 
         id: number;
-    };
+    }
 }
 
 export namespace CreateBill {
-    export type Variables = {
+    export interface Variables {
         bookings: BookingCreateInput[];
         bill: BillCreateInput;
-    };
+    }
 
-    export type Mutation = {
+    export interface Mutation {
         __typename?: 'Mutation';
 
         createBill: CreateBill;
-    };
+    }
 
-    export type CreateBill = {
+    export interface CreateBill {
         __typename?: 'Bill';
 
         id: number;
-    };
+    }
 }
 
 export namespace PayTheBill {
-    export type Variables = {
+    export interface Variables {
         id: string;
-    };
+    }
 
-    export type Mutation = {
+    export interface Mutation {
         __typename?: 'Mutation';
 
         payTheBill: PayTheBill;
-    };
+    }
 
-    export type PayTheBill = {
+    export interface PayTheBill {
         __typename?: 'Bill';
 
         id: number;
-    };
+    }
 }
 
 export namespace GetBookings {
-    export type Variables = {};
+    export interface Variables {}
 
-    export type Query = {
+    export interface Query {
         __typename?: 'Query';
 
         bookings: Bookings[];
-    };
+    }
 
-    export type Bookings = {
+    export interface Bookings {
         __typename?: 'Booking';
 
         id: number;
@@ -721,41 +721,41 @@ export namespace GetBookings {
         bill: Bill;
 
         room: Room;
-    };
+    }
 
-    export type Patrons = {
+    export interface Patrons {
         __typename?: 'Patron';
 
         id: number;
 
         name: string;
-    };
+    }
 
-    export type Bill = {
+    export interface Bill {
         __typename?: 'Bill';
 
         id: number;
-    };
+    }
 
-    export type Room = {
+    export interface Room {
         __typename?: 'Room';
 
         id: number;
 
         name: string;
-    };
+    }
 }
 
 export namespace GetSimpleBookings {
-    export type Variables = {};
+    export interface Variables {}
 
-    export type Query = {
+    export interface Query {
         __typename?: 'Query';
 
         bookings: Bookings[];
-    };
+    }
 
-    export type Bookings = {
+    export interface Bookings {
         __typename?: 'Booking';
 
         id: number;
@@ -763,93 +763,93 @@ export namespace GetSimpleBookings {
         status: number;
 
         room: Room;
-    };
+    }
 
-    export type Room = {
+    export interface Room {
         __typename?: 'Room';
 
         id: number;
 
         name: string;
-    };
+    }
 }
 
 export namespace CheckIn {
-    export type Variables = {
+    export interface Variables {
         id: string;
-    };
+    }
 
-    export type Mutation = {
+    export interface Mutation {
         __typename?: 'Mutation';
 
         checkIn: CheckIn;
-    };
+    }
 
-    export type CheckIn = {
+    export interface CheckIn {
         __typename?: 'Booking';
 
         id: number;
-    };
+    }
 }
 
 export namespace RequestCheckOut {
-    export type Variables = {
+    export interface Variables {
         id: string;
-    };
+    }
 
-    export type Mutation = {
+    export interface Mutation {
         __typename?: 'Mutation';
 
         requestCheckOut: RequestCheckOut;
-    };
+    }
 
-    export type RequestCheckOut = {
+    export interface RequestCheckOut {
         __typename?: 'Booking';
 
         id: number;
-    };
+    }
 }
 
 export namespace CheckOut {
-    export type Variables = {
+    export interface Variables {
         id: string;
-    };
+    }
 
-    export type Mutation = {
+    export interface Mutation {
         __typename?: 'Mutation';
 
         checkOut: CheckOut;
-    };
+    }
 
-    export type CheckOut = {
+    export interface CheckOut {
         __typename?: 'Booking';
 
         id: number;
-    };
+    }
 }
 
 export namespace Cancel {
-    export type Variables = {
+    export interface Variables {
         id: string;
-    };
+    }
 
-    export type Mutation = {
+    export interface Mutation {
         __typename?: 'Mutation';
 
         cancel: string;
-    };
+    }
 }
 
 export namespace GetEmployees {
-    export type Variables = {};
+    export interface Variables {}
 
-    export type Query = {
+    export interface Query {
         __typename?: 'Query';
 
         employees: Employees[];
-    };
+    }
 
-    export type Employees = {
+    export interface Employees {
         __typename?: 'Employee';
 
         id: string;
@@ -873,101 +873,101 @@ export namespace GetEmployees {
         isActive: boolean;
 
         position: Position;
-    };
+    }
 
-    export type Position = {
+    export interface Position {
         __typename?: 'Position';
 
         id: number;
 
         name: string;
-    };
+    }
 }
 
 export namespace CreateEmployee {
-    export type Variables = {
+    export interface Variables {
         input: EmployeeCreateInput;
-    };
+    }
 
-    export type Mutation = {
+    export interface Mutation {
         __typename?: 'Mutation';
 
         createEmployee: CreateEmployee;
-    };
+    }
 
-    export type CreateEmployee = {
+    export interface CreateEmployee {
         __typename?: 'Employee';
 
         id: string;
-    };
+    }
 }
 
 export namespace UpdateEmployee {
-    export type Variables = {
+    export interface Variables {
         input: EmployeeUpdateInput;
-    };
+    }
 
-    export type Mutation = {
+    export interface Mutation {
         __typename?: 'Mutation';
 
         updateEmployee: UpdateEmployee;
-    };
+    }
 
-    export type UpdateEmployee = {
+    export interface UpdateEmployee {
         __typename?: 'Employee';
 
         id: string;
-    };
+    }
 }
 
 export namespace ResetPassword {
-    export type Variables = {
+    export interface Variables {
         id: string;
-    };
+    }
 
-    export type Mutation = {
+    export interface Mutation {
         __typename?: 'Mutation';
 
         resetPassword: string;
-    };
+    }
 }
 
 export namespace SetIsActiveAccount {
-    export type Variables = {
+    export interface Variables {
         id: string;
         isActive: boolean;
-    };
+    }
 
-    export type Mutation = {
+    export interface Mutation {
         __typename?: 'Mutation';
 
         setIsActiveAccount: string;
-    };
+    }
 }
 
 export namespace ChangePassword {
-    export type Variables = {
+    export interface Variables {
         password: string;
         newPassword: string;
-    };
+    }
 
-    export type Mutation = {
+    export interface Mutation {
         __typename?: 'Mutation';
 
         changePassword: string;
-    };
+    }
 }
 
 export namespace GetFloors {
-    export type Variables = {};
+    export interface Variables {}
 
-    export type Query = {
+    export interface Query {
         __typename?: 'Query';
 
         floors: Floors[];
-    };
+    }
 
-    export type Floors = {
+    export interface Floors {
         __typename?: 'Floor';
 
         id: number;
@@ -977,9 +977,9 @@ export namespace GetFloors {
         isActive: boolean;
 
         rooms: Maybe<(Maybe<Rooms>)[]>;
-    };
+    }
 
-    export type Rooms = {
+    export interface Rooms {
         __typename?: 'Room';
 
         id: number;
@@ -989,30 +989,30 @@ export namespace GetFloors {
         isActive: boolean;
 
         roomKind: RoomKind;
-    };
+    }
 
-    export type RoomKind = {
+    export interface RoomKind {
         __typename?: 'RoomKind';
 
         id: number;
 
         name: string;
-    };
+    }
 }
 
 export namespace GetFloorsMap {
-    export type Variables = {
+    export interface Variables {
         from: DateTimeOffset;
         to: DateTimeOffset;
-    };
+    }
 
-    export type Query = {
+    export interface Query {
         __typename?: 'Query';
 
         floors: Floors[];
-    };
+    }
 
-    export type Floors = {
+    export interface Floors {
         __typename?: 'Floor';
 
         id: number;
@@ -1022,9 +1022,9 @@ export namespace GetFloorsMap {
         isActive: boolean;
 
         rooms: Maybe<(Maybe<Rooms>)[]>;
-    };
+    }
 
-    export type Rooms = {
+    export interface Rooms {
         __typename?: 'Room';
 
         id: number;
@@ -1036,94 +1036,94 @@ export namespace GetFloorsMap {
         currentBooking: Maybe<CurrentBooking>;
 
         roomKind: RoomKind;
-    };
+    }
 
-    export type CurrentBooking = {
+    export interface CurrentBooking {
         __typename?: 'Booking';
 
         id: number;
-    };
+    }
 
-    export type RoomKind = {
+    export interface RoomKind {
         __typename?: 'RoomKind';
 
         id: number;
 
         name: string;
-    };
+    }
 }
 
 export namespace CreateFloor {
-    export type Variables = {
+    export interface Variables {
         input: FloorCreateInput;
-    };
+    }
 
-    export type Mutation = {
+    export interface Mutation {
         __typename?: 'Mutation';
 
         createFloor: CreateFloor;
-    };
+    }
 
-    export type CreateFloor = {
+    export interface CreateFloor {
         __typename?: 'Floor';
 
         id: number;
-    };
+    }
 }
 
 export namespace UpdateFloor {
-    export type Variables = {
+    export interface Variables {
         input: FloorUpdateInput;
-    };
+    }
 
-    export type Mutation = {
+    export interface Mutation {
         __typename?: 'Mutation';
 
         updateFloor: UpdateFloor;
-    };
+    }
 
-    export type UpdateFloor = {
+    export interface UpdateFloor {
         __typename?: 'Floor';
 
         id: number;
-    };
+    }
 }
 
 export namespace DeleteFloor {
-    export type Variables = {
+    export interface Variables {
         id: string;
-    };
+    }
 
-    export type Mutation = {
+    export interface Mutation {
         __typename?: 'Mutation';
 
         deleteFloor: string;
-    };
+    }
 }
 
 export namespace SetIsActiveFloor {
-    export type Variables = {
+    export interface Variables {
         id: string;
         isActive: boolean;
-    };
+    }
 
-    export type Mutation = {
+    export interface Mutation {
         __typename?: 'Mutation';
 
         setIsActiveFloor: string;
-    };
+    }
 }
 
 export namespace GetPatrons {
-    export type Variables = {};
+    export interface Variables {}
 
-    export type Query = {
+    export interface Query {
         __typename?: 'Query';
 
         patrons: Patrons[];
-    };
+    }
 
-    export type Patrons = {
+    export interface Patrons {
         __typename?: 'Patron';
 
         id: number;
@@ -1151,27 +1151,27 @@ export namespace GetPatrons {
         note: string;
 
         patronKind: PatronKind;
-    };
+    }
 
-    export type PatronKind = {
+    export interface PatronKind {
         __typename?: 'PatronKind';
 
         id: number;
-    };
+    }
 }
 
 export namespace GetPatron {
-    export type Variables = {
+    export interface Variables {
         id: string;
-    };
+    }
 
-    export type Query = {
+    export interface Query {
         __typename?: 'Query';
 
         patron: Patron;
-    };
+    }
 
-    export type Patron = {
+    export interface Patron {
         __typename?: 'Patron';
 
         id: number;
@@ -1199,27 +1199,27 @@ export namespace GetPatron {
         note: string;
 
         patronKind: PatronKind;
-    };
+    }
 
-    export type PatronKind = {
+    export interface PatronKind {
         __typename?: 'PatronKind';
 
         id: number;
-    };
+    }
 }
 
 export namespace CreatePatron {
-    export type Variables = {
+    export interface Variables {
         input: PatronCreateInput;
-    };
+    }
 
-    export type Mutation = {
+    export interface Mutation {
         __typename?: 'Mutation';
 
         createPatron: CreatePatron;
-    };
+    }
 
-    export type CreatePatron = {
+    export interface CreatePatron {
         __typename?: 'Patron';
 
         id: number;
@@ -1247,43 +1247,43 @@ export namespace CreatePatron {
         note: string;
 
         patronKind: PatronKind;
-    };
+    }
 
-    export type PatronKind = {
+    export interface PatronKind {
         __typename?: 'PatronKind';
 
         id: number;
-    };
+    }
 }
 
 export namespace UpdatePatron {
-    export type Variables = {
+    export interface Variables {
         input: PatronUpdateInput;
-    };
+    }
 
-    export type Mutation = {
+    export interface Mutation {
         __typename?: 'Mutation';
 
         updatePatron: UpdatePatron;
-    };
+    }
 
-    export type UpdatePatron = {
+    export interface UpdatePatron {
         __typename?: 'Patron';
 
         id: number;
-    };
+    }
 }
 
 export namespace GetPatronKinds {
-    export type Variables = {};
+    export interface Variables {}
 
-    export type Query = {
+    export interface Query {
         __typename?: 'Query';
 
         patronKinds: PatronKinds[];
-    };
+    }
 
-    export type PatronKinds = {
+    export interface PatronKinds {
         __typename?: 'PatronKind';
 
         id: number;
@@ -1293,63 +1293,63 @@ export namespace GetPatronKinds {
         description: string;
 
         patrons: Maybe<(Maybe<Patrons>)[]>;
-    };
+    }
 
-    export type Patrons = {
+    export interface Patrons {
         __typename?: 'Patron';
 
         id: number;
 
         name: string;
-    };
+    }
 }
 
 export namespace CreatePatronKind {
-    export type Variables = {
+    export interface Variables {
         input: PatronKindCreateInput;
-    };
+    }
 
-    export type Mutation = {
+    export interface Mutation {
         __typename?: 'Mutation';
 
         createPatronKind: CreatePatronKind;
-    };
+    }
 
-    export type CreatePatronKind = {
+    export interface CreatePatronKind {
         __typename?: 'PatronKind';
 
         id: number;
-    };
+    }
 }
 
 export namespace UpdatePatronKind {
-    export type Variables = {
+    export interface Variables {
         input: PatronKindUpdateInput;
-    };
+    }
 
-    export type Mutation = {
+    export interface Mutation {
         __typename?: 'Mutation';
 
         updatePatronKind: UpdatePatronKind;
-    };
+    }
 
-    export type UpdatePatronKind = {
+    export interface UpdatePatronKind {
         __typename?: 'PatronKind';
 
         id: number;
-    };
+    }
 }
 
 export namespace GetPositions {
-    export type Variables = {};
+    export interface Variables {}
 
-    export type Query = {
+    export interface Query {
         __typename?: 'Query';
 
         positions: Positions[];
-    };
+    }
 
-    export type Positions = {
+    export interface Positions {
         __typename?: 'Position';
 
         id: number;
@@ -1389,102 +1389,102 @@ export namespace GetPositions {
         isActive: boolean;
 
         employees: Maybe<(Maybe<Employees>)[]>;
-    };
+    }
 
-    export type Employees = {
+    export interface Employees {
         __typename?: 'Employee';
 
         id: string;
 
         isActive: boolean;
-    };
+    }
 }
 
 export namespace CreatePosition {
-    export type Variables = {
+    export interface Variables {
         input: PositionCreateInput;
-    };
+    }
 
-    export type Mutation = {
+    export interface Mutation {
         __typename?: 'Mutation';
 
         createPosition: CreatePosition;
-    };
+    }
 
-    export type CreatePosition = {
+    export interface CreatePosition {
         __typename?: 'Position';
 
         id: number;
-    };
+    }
 }
 
 export namespace UpdatePosition {
-    export type Variables = {
+    export interface Variables {
         input: PositionUpdateInput;
-    };
+    }
 
-    export type Mutation = {
+    export interface Mutation {
         __typename?: 'Mutation';
 
         updatePosition: UpdatePosition;
-    };
+    }
 
-    export type UpdatePosition = {
+    export interface UpdatePosition {
         __typename?: 'Position';
 
         id: number;
-    };
+    }
 }
 
 export namespace DeletePosition {
-    export type Variables = {
+    export interface Variables {
         id: string;
-    };
+    }
 
-    export type Mutation = {
+    export interface Mutation {
         __typename?: 'Mutation';
 
         deletePosition: string;
-    };
+    }
 }
 
 export namespace SetIsActivePosition {
-    export type Variables = {
+    export interface Variables {
         id: string;
         isActive: boolean;
-    };
+    }
 
-    export type Mutation = {
+    export interface Mutation {
         __typename?: 'Mutation';
 
         setIsActivePosition: string;
-    };
+    }
 }
 
 export namespace SetIsActivePositionAndMoveEmployee {
-    export type Variables = {
+    export interface Variables {
         id: string;
         newId: string;
         isActive: boolean;
-    };
+    }
 
-    export type Mutation = {
+    export interface Mutation {
         __typename?: 'Mutation';
 
         setIsActivePositionAndMoveEmployee: string;
-    };
+    }
 }
 
 export namespace GetRates {
-    export type Variables = {};
+    export interface Variables {}
 
-    export type Query = {
+    export interface Query {
         __typename?: 'Query';
 
         rates: Rates[];
-    };
+    }
 
-    export type Rates = {
+    export interface Rates {
         __typename?: 'Rate';
 
         id: number;
@@ -1496,45 +1496,45 @@ export namespace GetRates {
         createDate: DateTimeOffset;
 
         roomKind: RoomKind;
-    };
+    }
 
-    export type RoomKind = {
+    export interface RoomKind {
         __typename?: 'RoomKind';
 
         id: number;
 
         name: string;
-    };
+    }
 }
 
 export namespace CreateRate {
-    export type Variables = {
+    export interface Variables {
         input: RateCreateInput;
-    };
+    }
 
-    export type Mutation = {
+    export interface Mutation {
         __typename?: 'Mutation';
 
         createRate: CreateRate;
-    };
+    }
 
-    export type CreateRate = {
+    export interface CreateRate {
         __typename?: 'Rate';
 
         id: number;
-    };
+    }
 }
 
 export namespace GetReceipts {
-    export type Variables = {};
+    export interface Variables {}
 
-    export type Query = {
+    export interface Query {
         __typename?: 'Query';
 
         receipts: Receipts[];
-    };
+    }
 
-    export type Receipts = {
+    export interface Receipts {
         __typename?: 'Receipt';
 
         id: number;
@@ -1546,43 +1546,43 @@ export namespace GetReceipts {
         bankAccountNumber: Maybe<string>;
 
         bill: Bill;
-    };
+    }
 
-    export type Bill = {
+    export interface Bill {
         __typename?: 'Bill';
 
         id: number;
-    };
+    }
 }
 
 export namespace CreateReceipt {
-    export type Variables = {
+    export interface Variables {
         input: ReceiptCreateInput;
-    };
+    }
 
-    export type Mutation = {
+    export interface Mutation {
         __typename?: 'Mutation';
 
         createReceipt: CreateReceipt;
-    };
+    }
 
-    export type CreateReceipt = {
+    export interface CreateReceipt {
         __typename?: 'Receipt';
 
         id: number;
-    };
+    }
 }
 
 export namespace GetRoomKinds {
-    export type Variables = {};
+    export interface Variables {}
 
-    export type Query = {
+    export interface Query {
         __typename?: 'Query';
 
         roomKinds: RoomKinds[];
-    };
+    }
 
-    export type RoomKinds = {
+    export interface RoomKinds {
         __typename?: 'RoomKind';
 
         id: number;
@@ -1596,27 +1596,27 @@ export namespace GetRoomKinds {
         numberOfBeds: number;
 
         rooms: Maybe<(Maybe<Rooms>)[]>;
-    };
+    }
 
-    export type Rooms = {
+    export interface Rooms {
         __typename?: 'Room';
 
         id: number;
-    };
+    }
 }
 
 export namespace CreateRoomKind {
-    export type Variables = {
+    export interface Variables {
         input: RoomKindCreateInput;
-    };
+    }
 
-    export type Mutation = {
+    export interface Mutation {
         __typename?: 'Mutation';
 
         createRoomKind: CreateRoomKind;
-    };
+    }
 
-    export type CreateRoomKind = {
+    export interface CreateRoomKind {
         __typename?: 'RoomKind';
 
         id: number;
@@ -1628,62 +1628,62 @@ export namespace CreateRoomKind {
         amountOfPeople: number;
 
         isActive: boolean;
-    };
+    }
 }
 
 export namespace UpdateRoomKind {
-    export type Variables = {
+    export interface Variables {
         input: RoomKindUpdateInput;
-    };
+    }
 
-    export type Mutation = {
+    export interface Mutation {
         __typename?: 'Mutation';
 
         updateRoomKind: UpdateRoomKind;
-    };
+    }
 
-    export type UpdateRoomKind = {
+    export interface UpdateRoomKind {
         __typename?: 'RoomKind';
 
         id: number;
-    };
+    }
 }
 
 export namespace DeleteRoomKind {
-    export type Variables = {
+    export interface Variables {
         id: string;
-    };
+    }
 
-    export type Mutation = {
+    export interface Mutation {
         __typename?: 'Mutation';
 
         deleteRoomKind: string;
-    };
+    }
 }
 
 export namespace SetIsActiveRoomKind {
-    export type Variables = {
+    export interface Variables {
         id: string;
         isActive: boolean;
-    };
+    }
 
-    export type Mutation = {
+    export interface Mutation {
         __typename?: 'Mutation';
 
         setIsActiveRoomKind: string;
-    };
+    }
 }
 
 export namespace GetRooms {
-    export type Variables = {};
+    export interface Variables {}
 
-    export type Query = {
+    export interface Query {
         __typename?: 'Query';
 
         rooms: Rooms[];
-    };
+    }
 
-    export type Rooms = {
+    export interface Rooms {
         __typename?: 'Room';
 
         id: number;
@@ -1691,22 +1691,22 @@ export namespace GetRooms {
         name: string;
 
         isActive: boolean;
-    };
+    }
 }
 
 export namespace GetRoomsWithIsEmpty {
-    export type Variables = {
+    export interface Variables {
         from: DateTimeOffset;
         to: DateTimeOffset;
-    };
+    }
 
-    export type Query = {
+    export interface Query {
         __typename?: 'Query';
 
         rooms: Rooms[];
-    };
+    }
 
-    export type Rooms = {
+    export interface Rooms {
         __typename?: 'Room';
 
         id: number;
@@ -1716,21 +1716,21 @@ export namespace GetRoomsWithIsEmpty {
         isActive: boolean;
 
         isEmpty: boolean;
-    };
+    }
 }
 
 export namespace GetRoom {
-    export type Variables = {
+    export interface Variables {
         id: string;
-    };
+    }
 
-    export type Query = {
+    export interface Query {
         __typename?: 'Query';
 
         room: Room;
-    };
+    }
 
-    export type Room = {
+    export interface Room {
         __typename?: 'Room';
 
         id: number;
@@ -1738,98 +1738,98 @@ export namespace GetRoom {
         name: string;
 
         isActive: boolean;
-    };
+    }
 }
 
 export namespace CreateRoom {
-    export type Variables = {
+    export interface Variables {
         input: RoomCreateInput;
-    };
+    }
 
-    export type Mutation = {
+    export interface Mutation {
         __typename?: 'Mutation';
 
         createRoom: CreateRoom;
-    };
+    }
 
-    export type CreateRoom = {
+    export interface CreateRoom {
         __typename?: 'Room';
 
         id: number;
-    };
+    }
 }
 
 export namespace UpdateRoom {
-    export type Variables = {
+    export interface Variables {
         input: RoomUpdateInput;
-    };
+    }
 
-    export type Mutation = {
+    export interface Mutation {
         __typename?: 'Mutation';
 
         updateRoom: UpdateRoom;
-    };
+    }
 
-    export type UpdateRoom = {
+    export interface UpdateRoom {
         __typename?: 'Room';
 
         id: number;
-    };
+    }
 }
 
 export namespace DeleteRoom {
-    export type Variables = {
+    export interface Variables {
         id: string;
-    };
+    }
 
-    export type Mutation = {
+    export interface Mutation {
         __typename?: 'Mutation';
 
         deleteRoom: string;
-    };
+    }
 }
 
 export namespace SetIsActiveRoom {
-    export type Variables = {
+    export interface Variables {
         id: string;
         isActive: boolean;
-    };
+    }
 
-    export type Mutation = {
+    export interface Mutation {
         __typename?: 'Mutation';
 
         setIsActiveRoom: string;
-    };
+    }
 }
 
 export namespace CreateServicesDetail {
-    export type Variables = {
+    export interface Variables {
         input: ServicesDetailCreateInput;
-    };
+    }
 
-    export type Mutation = {
+    export interface Mutation {
         __typename?: 'Mutation';
 
         createServicesDetail: CreateServicesDetail;
-    };
+    }
 
-    export type CreateServicesDetail = {
+    export interface CreateServicesDetail {
         __typename?: 'ServicesDetail';
 
         id: number;
-    };
+    }
 }
 
 export namespace GetServices {
-    export type Variables = {};
+    export interface Variables {}
 
-    export type Query = {
+    export interface Query {
         __typename?: 'Query';
 
         services: Services[];
-    };
+    }
 
-    export type Services = {
+    export interface Services {
         __typename?: 'Service';
 
         id: number;
@@ -1843,74 +1843,74 @@ export namespace GetServices {
         isActive: boolean;
 
         servicesDetails: Maybe<(Maybe<ServicesDetails>)[]>;
-    };
+    }
 
-    export type ServicesDetails = {
+    export interface ServicesDetails {
         __typename?: 'ServicesDetail';
 
         id: number;
 
         number: number;
-    };
+    }
 }
 
 export namespace CreateService {
-    export type Variables = {
+    export interface Variables {
         input: ServiceCreateInput;
-    };
+    }
 
-    export type Mutation = {
+    export interface Mutation {
         __typename?: 'Mutation';
 
         createService: CreateService;
-    };
+    }
 
-    export type CreateService = {
+    export interface CreateService {
         __typename?: 'Service';
 
         id: number;
-    };
+    }
 }
 
 export namespace UpdateService {
-    export type Variables = {
+    export interface Variables {
         input: ServiceUpdateInput;
-    };
+    }
 
-    export type Mutation = {
+    export interface Mutation {
         __typename?: 'Mutation';
 
         updateService: UpdateService;
-    };
+    }
 
-    export type UpdateService = {
+    export interface UpdateService {
         __typename?: 'Service';
 
         id: number;
-    };
+    }
 }
 
 export namespace DeleteService {
-    export type Variables = {
+    export interface Variables {
         id: string;
-    };
+    }
 
-    export type Mutation = {
+    export interface Mutation {
         __typename?: 'Mutation';
 
         deleteService: string;
-    };
+    }
 }
 
 export namespace SetIsActiveService {
-    export type Variables = {
+    export interface Variables {
         id: string;
         isActive: boolean;
-    };
+    }
 
-    export type Mutation = {
+    export interface Mutation {
         __typename?: 'Mutation';
 
         setIsActiveService: string;
-    };
+    }
 }

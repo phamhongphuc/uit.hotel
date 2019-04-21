@@ -24,37 +24,37 @@ var TYPES = [
 @Mixin
 export class InputProps extends Vue {
     @Prop({ default: null })
-    value: any;
+    protected value: any;
 
     @Prop({
         default: 'text',
-        validator(type) {
+        validator(type): boolean {
             return TYPES.indexOf(type) !== -1;
         },
     })
-    type!: string;
+    protected type!: string;
 
     @Prop({ default: false })
-    ariaInvalid!: [boolean, string];
+    protected ariaInvalid!: [boolean, string];
 
     @Prop({ default: false })
-    readonly!: boolean;
+    protected readonly!: boolean;
 
     @Prop({ default: false })
-    plaintext!: boolean;
+    protected plaintext!: boolean;
 
     @Prop({ default: null })
-    autocomplete!: string;
+    protected autocomplete!: string;
 
     @Prop({ default: null })
-    placeholder!: string;
+    protected placeholder!: string;
 
     @Prop()
-    formatter!: Function;
+    protected formatter!: Function;
 
     @Prop({ default: false })
-    lazyFormatter!: boolean;
+    protected lazyFormatter!: boolean;
 
     @Prop({ default: false })
-    disabled!: boolean;
+    protected disabled!: boolean;
 }

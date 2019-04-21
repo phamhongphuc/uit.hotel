@@ -3,9 +3,9 @@
         <form-mutate-
             v-if="input"
             slot-scope="{ data: { service }, close }"
-            success="Cập nhật thông tin dịch vụ thành công"
             :mutation="updateService"
             :variables="{ input }"
+            success="Cập nhật thông tin dịch vụ thành công"
         >
             <div class="input-label">Tên dịch vụ</div>
             <b-input-
@@ -33,10 +33,10 @@
             />
             <div class="d-flex m-3">
                 <b-button
+                    :disabled="$v.$invalid"
                     class="ml-auto"
                     variant="main"
                     type="submit"
-                    :disabled="$v.$invalid"
                     @click="close"
                 >
                     <icon- class="mr-1" i="edit-2" />

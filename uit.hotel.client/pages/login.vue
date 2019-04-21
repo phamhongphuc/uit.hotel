@@ -4,9 +4,9 @@
         class="bg-white shadow-lg p-5 d-flex flex-column overflow-auto"
     >
         <img
+            :style="{ width: '120px' }"
             src="/favicon.png"
             class="d-block img-fluid mb-2 mt-5 mx-auto"
-            :style="{ width: '120px' }"
         />
         <h4 class="font-pacifico text-center mb-5">Quản lý khách sạn</h4>
         <b-form

@@ -9,15 +9,15 @@ import { notify } from '~/plugins/notify';
 @Mixin
 export default class extends Vue {
     @Prop({ required: true })
-    mutation!: DocumentNode;
+    protected mutation!: DocumentNode;
 
     @Prop({ default: '' })
-    variables!: object;
+    protected variables!: object;
 
     @Prop({ default: undefined })
-    success: string | undefined;
+    protected success: string | undefined;
 
-    get mutationName(): string | undefined {
+    protected get mutationName(): string | undefined {
         const operation = this.mutation.definitions[0];
         if (
             operation !== undefined &&
@@ -29,7 +29,7 @@ export default class extends Vue {
         return undefined;
     }
 
-    async mutate(): Promise<
+    protected async mutate(): Promise<
         FetchResult<{}, Record<string, any>, Record<string, any>> | undefined
     > {
         const result = await apolloClientNotify({ app: this }).mutate({
@@ -61,7 +61,7 @@ export default class extends Vue {
 
 export function mixinData(data: object): ComponentOptions<Vue> {
     return {
-        data() {
+        data(): Record<string, any> {
             return {
                 ...data,
             };

@@ -3,9 +3,9 @@
         <form-mutate-
             v-if="input"
             slot-scope="{ data: { patron }, close }"
-            success="Cập nhật khách hàng thành công"
             :mutation="updatePatron"
             :variables="{ input }"
+            success="Cập nhật khách hàng thành công"
         >
             <div class="d-flex">
                 <div>
@@ -28,8 +28,6 @@
                     <div class="m-3">
                         <b-form-select
                             v-model="input.gender"
-                            value-field="value"
-                            text-field="name"
                             :state="!$v.input.gender.$invalid"
                             :options="[
                                 {
@@ -41,22 +39,24 @@
                                     value: false,
                                 },
                             ]"
+                            value-field="value"
+                            text-field="name"
                             class="rounded"
                         />
                     </div>
                     <div class="input-label">Loại khách hàng</div>
                     <query-
                         :query="getPatronKinds"
-                        class="m-3"
                         :poll-interval="0"
+                        class="m-3"
                     >
                         <b-form-select
                             v-model="input.patronKind.id"
                             slot-scope="{ data: { patronKinds } }"
-                            value-field="id"
-                            text-field="name"
                             :state="!$v.input.patronKind.id.$invalid"
                             :options="patronKinds"
+                            value-field="id"
+                            text-field="name"
                             class="rounded"
                         />
                     </query->
@@ -125,10 +125,10 @@
             </div>
             <div class="m-3">
                 <b-button
+                    :disabled="$v.$invalid"
                     class="ml-auto"
                     variant="main"
                     type="submit"
-                    :disabled="$v.$invalid"
                     @click="close"
                 >
                     <icon- class="mr-1" i="plus" />

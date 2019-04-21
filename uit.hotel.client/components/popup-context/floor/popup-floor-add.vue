@@ -3,9 +3,9 @@
         <form-mutate-
             v-if="input"
             slot-scope="{ close }"
-            success="Thêm tầng mới thành công"
             :mutation="createFloor"
             :variables="{ input }"
+            success="Thêm tầng mới thành công"
         >
             <div class="input-label">Tên tầng</div>
             <b-input-
@@ -17,10 +17,10 @@
             />
             <div class="d-flex m-3">
                 <b-button
+                    :disabled="$v.$invalid"
                     class="ml-auto"
                     variant="main"
                     type="submit"
-                    :disabled="$v.$invalid"
                     @click="close"
                 >
                     <icon- class="mr-1" i="plus" />
