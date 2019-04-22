@@ -61,6 +61,7 @@ namespace uit.hotel.Queries.Mutation
                 }
             );
 
+            //TODO: Remove this mutation
             Field<NonNullGraphType<StringGraphType>>(
                 "InitializeDatabase",
                 "Khởi tạo dữ liệu",
