@@ -43,12 +43,7 @@ namespace uit.hotel
                 });
 
             // GraphQL
-            GraphQLConfig.Config(services);
-            GraphQLConfig.Input(services);
-            GraphQLConfig.Type(services);
-            GraphQLConfig.App(services);
-            GraphQLConfig.DataLoader(services);
-            GraphQLConfig.Auth(services);
+            services.AddGraphQL();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
