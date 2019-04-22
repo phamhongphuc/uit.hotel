@@ -1,6 +1,10 @@
 dist: xenial
 dotnet: 2.2.203
 
+branches:
+    except:
+        - documents
+
 cache:
     directories: uit.hotel.client\node_modules
 matrix:
