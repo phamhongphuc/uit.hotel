@@ -40,7 +40,7 @@
         "vuex-persistedstate": "^2.5.4"
     },
     "devDependencies": {
-        "@babel/polyfill": "^7.4.3",
+        "@babel/polyfill": "^7.4.4",
         "@babel/register": "7.4.4",
         "@nuxt/typescript": "^2.6.3",
         "@playlyfe/gql": "^2.6.1",
