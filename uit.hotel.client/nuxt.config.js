@@ -51,6 +51,9 @@ export default {
         { src: '~/plugins/component' },
         { src: '~/plugins/vuelidate' },
     ],
+    router: {
+        middleware: 'auth',
+    },
     apollo: {
         clientConfigs: {
             default: {
