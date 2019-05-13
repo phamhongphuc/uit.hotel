@@ -17,6 +17,9 @@ namespace uit.hotel.Businesses
                 throw new Exception("Id: " + employee.Id + " đã có người sử dụng");
 
             employee.Position = employee.Position.GetManaged();
+            if (employee.Position == null)
+                throw new Exception("Không tồn tại vị trí này");
+
             employee.Password = CryptoHelper.Encrypt(employee.Password);
 
             return EmployeeDataAccess.Add(employee);

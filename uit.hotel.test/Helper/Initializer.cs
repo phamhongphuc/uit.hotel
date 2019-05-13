@@ -26,16 +26,7 @@ namespace uit.hotel.test.Helper
                .Build();
             AuthenticationHelper.Initialize(Configuration);
 
-            var serviceProvider = GraphQLConfig.GetServiceProvider(services =>
-            {
-                GraphQLConfig.Config(services);
-                GraphQLConfig.Input(services);
-                GraphQLConfig.Type(services);
-                GraphQLConfig.App(services);
-
-                GraphQLConfig.DataLoader(services);
-                GraphQLConfig.Auth(services);
-            });
+            var serviceProvider = GraphQLConfig.GetInitializedServiceProvider();
 
             Schema = serviceProvider.GetService<ISchema>();
 

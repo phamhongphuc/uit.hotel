@@ -10,9 +10,11 @@ namespace uit.hotel.Queries
             AddFields(
                 new AuthenticationMutation(),
                 new BillMutation(),
+                new BookingMutation(),
                 new EmployeeMutation(),
                 new FloorMutation(),
                 new HouseKeepingMutation(),
+                new InitializeMutation(),
                 new PatronKindMutation(),
                 new PatronMutation(),
                 new PositionMutation(),
@@ -22,7 +24,6 @@ namespace uit.hotel.Queries
                 new RoomMutation(),
                 new ServiceMutation(),
                 new ServicesDetailMutation(),
-                new BookingMutation(),
                 new VolatilityRateMutation()
             );
         }
