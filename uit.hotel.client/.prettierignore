@@ -32,3 +32,5 @@
 *.realm.lock
 
 *.sh
+
+/components/utilities/icon/selection.json
