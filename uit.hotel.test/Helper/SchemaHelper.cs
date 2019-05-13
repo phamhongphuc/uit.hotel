@@ -105,7 +105,7 @@ namespace uit.hotel.test.Helper
         {
             var variable = "{}";
             if (variableObject is string)
-                variable = File.ReadAllText(((string) variableObject).TrimStart('/'));
+                variable = File.ReadAllText(((string)variableObject).TrimStart('/'));
             else if (variableObject != null) variable = JsonConvert.SerializeObject(variableObject);
             var query = File.ReadAllText(queryPath.TrimStart('/'));
 

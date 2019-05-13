@@ -78,10 +78,10 @@ namespace uit.hotel.Businesses
 
             foreach (var booking in billInDatabase.Bookings)
             {
-                if(booking.Status != (int)Booking.StatusEnum.CheckedOut)
+                if (booking.Status != (int)Booking.StatusEnum.CheckedOut)
                     throw new Exception("Có phòng chưa Check-out, không thể thanh toán");
             }
-            
+
             return BillDataAccess.PayTheBill(employee, billInDatabase);
         }
     }
