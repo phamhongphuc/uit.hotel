@@ -32,7 +32,7 @@ namespace uit.hotel.DataAccesses
             await Database.WriteAsync(realm =>
             {
                 houseKeepingInDatabase.Employee = employee;
-                houseKeepingInDatabase.Status = (int) HouseKeeping.StatusEnum.Cleaning;
+                houseKeepingInDatabase.Status = (int)HouseKeeping.StatusEnum.Cleaning;
             });
             return houseKeepingInDatabase;
         }
@@ -41,7 +41,7 @@ namespace uit.hotel.DataAccesses
         {
             await Database.WriteAsync(realm =>
             {
-                houseKeepingInDatabase.Status = (int) HouseKeeping.StatusEnum.Cleaned;
+                houseKeepingInDatabase.Status = (int)HouseKeeping.StatusEnum.Cleaned;
             });
             return houseKeepingInDatabase;
         }
@@ -57,7 +57,7 @@ namespace uit.hotel.DataAccesses
                     ServicesDetailDataAccess.Add(realm, servicesDetail);
                 }
 
-                houseKeepingInDatabase.Status = (int) HouseKeeping.StatusEnum.Cleaned;
+                houseKeepingInDatabase.Status = (int)HouseKeeping.StatusEnum.Cleaned;
             });
             return houseKeepingInDatabase;
         }

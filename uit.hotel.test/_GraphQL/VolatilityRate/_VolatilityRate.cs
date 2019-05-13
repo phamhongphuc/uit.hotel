@@ -289,7 +289,7 @@ namespace uit.hotel.test._GraphQL
                     Employee = EmployeeBusiness.Get("admin")
                 });
             }).Wait();
-            
+
             SchemaHelper.ExecuteAndExpectError(
                 "Loại phòng 201 đã ngưng hoại động",
                 @"/_GraphQL/VolatilityRate/mutation.updateVolatilityRate.gql",

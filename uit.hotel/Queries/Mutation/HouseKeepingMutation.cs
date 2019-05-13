@@ -44,9 +44,8 @@ namespace uit.hotel.Queries.Mutation
                 "ConfirmCleanedAndServices",
                 "Nhân viên xác nhận và gửi thông tin kiểm tra phòng check-out",
                 new QueryArguments(
-                    new QueryArgument<NonNullGraphType<ListGraphType<NonNullGraphType<ServicesDetailHouseKeepingInput>>>
-                        >
-                        { Name = "servicesDetails" },
+                    new QueryArgument<NonNullGraphType<ListGraphType<NonNullGraphType<ServicesDetailHouseKeepingInput>>>>
+                    { Name = "servicesDetails" },
                     new QueryArgument<NonNullGraphType<IdGraphType>> { Name = "houseKeepingId" }
                 ),
                 _CheckPermission_TaskObject(

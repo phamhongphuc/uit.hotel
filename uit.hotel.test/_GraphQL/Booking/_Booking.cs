@@ -38,7 +38,8 @@ namespace uit.hotel.test._GraphQL
                             new { id = 1 }
                         }
                     },
-                    bill = new {
+                    bill = new
+                    {
                         id = 1
                     }
                 },
@@ -73,9 +74,11 @@ namespace uit.hotel.test._GraphQL
                             new { id = 1 }
                         }
                     },
-                    bill = new {
+                    bill = new
+                    {
                         id = 1
-                    }                },
+                    }
+                },
                 p => p.PermissionManageHiringRoom = true
             );
         }
@@ -98,9 +101,11 @@ namespace uit.hotel.test._GraphQL
                             new { id = 1 }
                         }
                     },
-                    bill = new {
+                    bill = new
+                    {
                         id = 1
-                    }                },
+                    }
+                },
                 p => p.PermissionManageHiringRoom = true
             );
         }
@@ -123,9 +128,11 @@ namespace uit.hotel.test._GraphQL
                             new { id = 1 }
                         }
                     },
-                    bill = new {
+                    bill = new
+                    {
                         id = 1
-                    }                },
+                    }
+                },
                 p => p.PermissionManageHiringRoom = true
             );
         }
@@ -157,9 +164,11 @@ namespace uit.hotel.test._GraphQL
                             new { id = 1 }
                         }
                     },
-                    bill = new {
+                    bill = new
+                    {
                         id = 1
-                    }                },
+                    }
+                },
                 p => p.PermissionManageHiringRoom = true
             );
         }
@@ -182,9 +191,11 @@ namespace uit.hotel.test._GraphQL
                             new { id = 1 }
                         }
                     },
-                    bill = new {
+                    bill = new
+                    {
                         id = 1
-                    }                },
+                    }
+                },
                 p => p.PermissionManageHiringRoom = true
             );
         }
@@ -326,7 +337,7 @@ namespace uit.hotel.test._GraphQL
                 p => p.PermissionManageHiringRoom = true
             );
         }
-        
+
         [TestMethod]
         public void Mutation_CheckOut_InvalidId()
         {
