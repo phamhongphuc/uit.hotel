@@ -106,6 +106,9 @@ type AppMutation {
     # Xóa một giá biến động
     deleteVolatilityRate(id: ID!): String!
 
+    # Khởi tạo tài khoản admin
+    initializeAdminAccount(email: String!, password: String!): String!
+
     # Khởi tạo dữ liệu
     initializeDatabase: String!
 
@@ -213,6 +216,9 @@ type AppQuery {
 
     # Trả về một danh sách các công việc dọn dẹp
     houseKeepings: [HouseKeeping!]!
+
+    # Kiểm tra
+    isInitialized: Boolean!
 
     # Trả về thông tin một khách hàng
     patron(id: ID!): Patron!

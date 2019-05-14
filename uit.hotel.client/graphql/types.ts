@@ -1,1916 +1,2377 @@
 export type Maybe<T> = T | null;
+/** All built-in and custom scalars, mapped to their actual values */
+export type Scalars = {
+    ID: string;
+    String: string;
+    Boolean: boolean;
+    Int: number;
+    Float: number;
+    /** The `DateTimeOffset` scalar type represents a date, time and offset from UTC.
+     * `DateTimeOffset` expects timestamps to be formatted in accordance with the
+     * [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+     */
+    DateTimeOffset: any;
+    /** The `Date` scalar type represents a year, month and day in accordance with the
+     * [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+     */
+    Date: any;
+    /** The `DateTime` scalar type represents a date and time. `DateTime` expects
+     * timestamps to be formatted in accordance with the
+     * [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+     */
+    DateTime: any;
+    Decimal: any;
+    /** The `Milliseconds` scalar type represents a period of time represented as the total number of milliseconds. */
+    Milliseconds: any;
+    /** The `Seconds` scalar type represents a period of time represented as the total number of seconds. */
+    Seconds: any;
+};
 
-/** Input cho thông tin một hóa đơn */
-export interface BillId {
+export type AppMutation = {
+    /** Thêm phòng khách đoàn */
+    addBookingToBill: Booking;
+    /** Nhân viên nhận phòng để dọn dẹp */
+    assignCleaningService: HouseKeeping;
+    /** Đặt và nhận phòng ngay tại khách sạn */
+    bookAndCheckIn: Bill;
+    /** Hủy đặt phòng */
+    cancel: Scalars['String'];
+    /** Nhân viên xác nhận đã dọn xong */
+    confirmCleaned: HouseKeeping;
+    /** Nhân viên xác nhận và gửi thông tin kiểm tra phòng check-out */
+    confirmCleanedAndServices: HouseKeeping;
+    /** Tạo và trả về một đơn đặt phòng */
+    createBill: Bill;
+    /** Tạo và trả về một nhân viên mới */
+    createEmployee: Employee;
+    /** Tạo và trả về một tầng mới */
+    createFloor: Floor;
+    /** Tạo và trả về một khách hàng mới */
+    createPatron: Patron;
+    /** Tạo và trả về một loại khách hàng mới */
+    createPatronKind: PatronKind;
+    /** Tạo và trả về một chức vụ mới */
+    createPosition: Position;
+    /** Tạo và trả về một loại giá cơ bản mới */
+    createRate: Rate;
+    /** Tạo và trả về một phiếu thu mới */
+    createReceipt: Receipt;
+    /** Tạo và trả về một phòng mới */
+    createRoom: Room;
+    /** Tạo và trả về một loại phòng */
+    createRoomKind: RoomKind;
+    /** Tạo và trả về một dịch vụ mới */
+    createService: Service;
+    /** Tạo và trả về một chi tiết dịch vụ mới */
+    createServicesDetail: ServicesDetail;
+    /** Tạo và trả về một giá biến động mới */
+    createVolatilityRate: VolatilityRate;
+    /** Nhân viên tự đổi mật khẩu cho tài khoản của mình */
+    changePassword: Scalars['String'];
+    /** Cập nhật thời gian checkin của phòng */
+    checkIn: Booking;
+    /** Kiểm tra đăng nhập */
+    checkLogin: Employee;
+    /** Thực hiện xác nhận trả phòng */
+    checkOut: Booking;
+    /** Xóa một tầng */
+    deleteFloor: Scalars['String'];
+    /** Xóa một loại khách hàng */
+    deletePatronKind: Scalars['String'];
+    /** Xóa một chức vụ */
+    deletePosition: Scalars['String'];
+    /** Xóa một giá cơ bản */
+    deleteRate: Scalars['String'];
+    /** Xóa một phòng */
+    deleteRoom: Scalars['String'];
+    /** Xóa một loại phòng */
+    deleteRoomKind: Scalars['String'];
+    /** Xóa một dịch vụ */
+    deleteService: Scalars['String'];
+    /** Xóa một dịch vụ */
+    deleteServicesDetail: Scalars['String'];
+    /** Xóa một giá biến động */
+    deleteVolatilityRate: Scalars['String'];
+    /** Khởi tạo tài khoản admin */
+    initializeAdminAccount: Scalars['String'];
+    /** Khởi tạo dữ liệu */
+    initializeDatabase: Scalars['String'];
+    /** Đăng nhập mới */
+    login: AuthenticationObject;
+    /** Thanh toán hóa đơn (thanh toán tiền phòng) */
+    payTheBill: Bill;
+    /** Yêu cầu kiểm tra khi trả phòng */
+    requestCheckOut: Booking;
+    /** Reset lại mật khẩu cho nhân viên khi quên mật khẩu */
+    resetPassword: Scalars['String'];
+    /** Vô hiệu hóa/ kích hoạt tài khoản */
+    setIsActiveAccount: Scalars['String'];
+    /** Cập nhật trạng thái hoạt động của tầng */
+    setIsActiveFloor: Scalars['String'];
+    /** Cập nhật trạng thái hoạt động của chức vụ */
+    setIsActivePosition: Scalars['String'];
+    /** Vô hiệu hóa chức vụ và chuyển nhân viên sang chức vụ mới */
+    setIsActivePositionAndMoveEmployee: Scalars['String'];
+    /** Cập nhật trạng thái hoạt động của một phòng */
+    setIsActiveRoom: Scalars['String'];
+    /** Cập nhật trạng thái hoạt động của loại phòng */
+    setIsActiveRoomKind: Scalars['String'];
+    /** Cập nhật trạng thái của dịch vụ */
+    setIsActiveService: Scalars['String'];
+    /** Chỉnh sửa thông tin nhân viên */
+    updateEmployee: Employee;
+    /** Cập nhật và trả về một tầng vừa cập nhật */
+    updateFloor: Floor;
+    /** Cập nhật và trả về một khách hàng vừa cập nhật */
+    updatePatron: Patron;
+    /** Cập nhật và trả về một loại khách hàng vừa cập nhật */
+    updatePatronKind: PatronKind;
+    /** Cập nhật và trả về một chức vụ vừa cập nhật */
+    updatePosition: Position;
+    /** Cập nhật và trả về một giá cơ bản vừa cập nhật */
+    updateRate: Rate;
+    /** Cập nhật và trả về một phòng vừa cập nhật */
+    updateRoom: Room;
+    /** Cập nhật và trả về loại phòng vừa cập nhật */
+    updateRoomKind: RoomKind;
+    /** Cập nhật và trả về một dịch vụ mới cập nhật */
+    updateService: Service;
+    /** Cập nhật và trả về một chi tiết dịch vụ mới cập nhật */
+    updateServicesDetail: ServicesDetail;
+    /** Cập nhật và trả về một giá biến động vừa cập nhật */
+    updateVolatilityRate: VolatilityRate;
+};
+
+export type AppMutationAddBookingToBillArgs = {
+    bill: BillId;
+    booking: BookingCreateInput;
+};
+
+export type AppMutationAssignCleaningServiceArgs = {
+    id: Scalars['ID'];
+};
+
+export type AppMutationBookAndCheckInArgs = {
+    bookings: Array<BookAndCheckInCreateInput>;
+    bill: BillCreateInput;
+};
+
+export type AppMutationCancelArgs = {
+    id: Scalars['ID'];
+};
+
+export type AppMutationConfirmCleanedArgs = {
+    id: Scalars['ID'];
+};
+
+export type AppMutationConfirmCleanedAndServicesArgs = {
+    servicesDetails: Array<ServicesDetailHouseKeepingInput>;
+    houseKeepingId: Scalars['ID'];
+};
+
+export type AppMutationCreateBillArgs = {
+    bookings: Array<BookingCreateInput>;
+    bill: BillCreateInput;
+};
+
+export type AppMutationCreateEmployeeArgs = {
+    input: EmployeeCreateInput;
+};
+
+export type AppMutationCreateFloorArgs = {
+    input: FloorCreateInput;
+};
+
+export type AppMutationCreatePatronArgs = {
+    input: PatronCreateInput;
+};
+
+export type AppMutationCreatePatronKindArgs = {
+    input: PatronKindCreateInput;
+};
+
+export type AppMutationCreatePositionArgs = {
+    input: PositionCreateInput;
+};
+
+export type AppMutationCreateRateArgs = {
+    input: RateCreateInput;
+};
+
+export type AppMutationCreateReceiptArgs = {
+    input: ReceiptCreateInput;
+};
+
+export type AppMutationCreateRoomArgs = {
+    input: RoomCreateInput;
+};
+
+export type AppMutationCreateRoomKindArgs = {
+    input: RoomKindCreateInput;
+};
+
+export type AppMutationCreateServiceArgs = {
+    input: ServiceCreateInput;
+};
+
+export type AppMutationCreateServicesDetailArgs = {
+    input: ServicesDetailCreateInput;
+};
+
+export type AppMutationCreateVolatilityRateArgs = {
+    input: VolatilityRateCreateInput;
+};
+
+export type AppMutationChangePasswordArgs = {
+    password: Scalars['String'];
+    newPassword: Scalars['String'];
+};
+
+export type AppMutationCheckInArgs = {
+    id: Scalars['ID'];
+};
+
+export type AppMutationCheckOutArgs = {
+    id: Scalars['ID'];
+};
+
+export type AppMutationDeleteFloorArgs = {
+    id: Scalars['ID'];
+};
+
+export type AppMutationDeletePatronKindArgs = {
+    id: Scalars['ID'];
+};
+
+export type AppMutationDeletePositionArgs = {
+    id: Scalars['ID'];
+};
+
+export type AppMutationDeleteRateArgs = {
+    id: Scalars['ID'];
+};
+
+export type AppMutationDeleteRoomArgs = {
+    id: Scalars['ID'];
+};
+
+export type AppMutationDeleteRoomKindArgs = {
+    id: Scalars['ID'];
+};
+
+export type AppMutationDeleteServiceArgs = {
+    id: Scalars['ID'];
+};
+
+export type AppMutationDeleteServicesDetailArgs = {
+    id: Scalars['ID'];
+};
+
+export type AppMutationDeleteVolatilityRateArgs = {
+    id: Scalars['ID'];
+};
+
+export type AppMutationInitializeAdminAccountArgs = {
+    email: Scalars['String'];
+    password: Scalars['String'];
+};
+
+export type AppMutationLoginArgs = {
+    id: Scalars['String'];
+    password: Scalars['String'];
+};
+
+export type AppMutationPayTheBillArgs = {
+    id: Scalars['ID'];
+};
+
+export type AppMutationRequestCheckOutArgs = {
+    id: Scalars['ID'];
+};
+
+export type AppMutationResetPasswordArgs = {
+    id: Scalars['ID'];
+};
+
+export type AppMutationSetIsActiveAccountArgs = {
+    id: Scalars['ID'];
+    isActive: Scalars['Boolean'];
+};
+
+export type AppMutationSetIsActiveFloorArgs = {
+    id: Scalars['ID'];
+    isActive: Scalars['Boolean'];
+};
+
+export type AppMutationSetIsActivePositionArgs = {
+    id: Scalars['ID'];
+    isActive: Scalars['Boolean'];
+};
+
+export type AppMutationSetIsActivePositionAndMoveEmployeeArgs = {
+    id: Scalars['ID'];
+    newId: Scalars['ID'];
+    isActive: Scalars['Boolean'];
+};
+
+export type AppMutationSetIsActiveRoomArgs = {
+    id: Scalars['ID'];
+    isActive: Scalars['Boolean'];
+};
+
+export type AppMutationSetIsActiveRoomKindArgs = {
+    id: Scalars['ID'];
+    isActive: Scalars['Boolean'];
+};
+
+export type AppMutationSetIsActiveServiceArgs = {
+    id: Scalars['ID'];
+    isActive: Scalars['Boolean'];
+};
+
+export type AppMutationUpdateEmployeeArgs = {
+    input: EmployeeUpdateInput;
+};
+
+export type AppMutationUpdateFloorArgs = {
+    input: FloorUpdateInput;
+};
+
+export type AppMutationUpdatePatronArgs = {
+    input: PatronUpdateInput;
+};
+
+export type AppMutationUpdatePatronKindArgs = {
+    input: PatronKindUpdateInput;
+};
+
+export type AppMutationUpdatePositionArgs = {
+    input: PositionUpdateInput;
+};
+
+export type AppMutationUpdateRateArgs = {
+    input: RateUpdateInput;
+};
+
+export type AppMutationUpdateRoomArgs = {
+    input: RoomUpdateInput;
+};
+
+export type AppMutationUpdateRoomKindArgs = {
+    input: RoomKindUpdateInput;
+};
+
+export type AppMutationUpdateServiceArgs = {
+    input: ServiceUpdateInput;
+};
+
+export type AppMutationUpdateServicesDetailArgs = {
+    input: ServicesDetailUpdateInput;
+};
+
+export type AppMutationUpdateVolatilityRateArgs = {
+    input: VolatilityRateUpdateInput;
+};
+
+export type AppQuery = {
+    /** Trả về thông tin một hóa đơn */
+    bill: Bill;
+    /** Trả về một danh sách các hóa đơn */
+    bills: Array<Bill>;
+    /** Trả về thông tin một đơn đặt phòng */
+    booking: Booking;
+    /** Trả về một danh sách các đơn đặt phòng */
+    bookings: Array<Booking>;
+    /** Trả về thông tin một nhân viên */
+    employee: Employee;
+    /** Trả về một danh sách các nhân viên */
+    employees: Array<Employee>;
+    /** Trả về danh sách khách hàng theo từ khóa tìm kiếm */
+    findingPatron: Array<Patron>;
+    /** Trả về thông tin một tầng */
+    floor: Floor;
+    /** Trả về một danh sách các tầng */
+    floors: Array<Floor>;
+    /** Trả về thông tin một công việc dọn dẹp */
+    houseKeeping: HouseKeeping;
+    /** Trả về một danh sách các công việc dọn dẹp */
+    houseKeepings: Array<HouseKeeping>;
+    /** Kiểm tra */
+    isInitialized: Scalars['Boolean'];
+    /** Trả về thông tin một khách hàng */
+    patron: Patron;
+    /** Trả về thông tin của một loại khách hàng */
+    patronKind: PatronKind;
+    /** Trả về một danh sách các loại khách hàng có trong hệ thống */
+    patronKinds: Array<PatronKind>;
+    /** Trả về một danh sách các khách hàng */
+    patrons: Array<Patron>;
+    /** Trả về thông tin một chức vụ */
+    position: Position;
+    /** Trả về một danh sách các chức vụ */
+    positions: Array<Position>;
+    /** Trả về thông tin một loại giá cơ bản */
+    rate: Rate;
+    /** Trả về một danh sách các loại giá cơ bản */
+    rates: Array<Rate>;
+    /** Trả về thông tin một phiếu thu */
+    receipt: Receipt;
+    /** Trả về một danh sách các phiếu thu */
+    receipts: Array<Receipt>;
+    /** Trả về thông tin của một phòng */
+    room: Room;
+    /** Trả về thông tin của một loại phòng */
+    roomKind: RoomKind;
+    /** Trả về một danh sách các loại phòng */
+    roomKinds: Array<RoomKind>;
+    /** Trả về một danh sách các phòng */
+    rooms: Array<Room>;
+    /** Trả về thông tin một dịch vụ */
+    service: Service;
+    /** Trả về một danh sách các dịch vụ */
+    services: Array<Service>;
+    /** Trả về thông tin một chi tiết dịch vụ */
+    servicesDetail: ServicesDetail;
+    /** Trả về một danh sách các chi tiết dịch vụ */
+    servicesDetails: Array<ServicesDetail>;
+    /** Trả về thông tin một giá biến động */
+    volatilityRate: VolatilityRate;
+    /** Trả về một danh sách các giá biến động */
+    volatilityRates: Array<VolatilityRate>;
+};
+
+export type AppQueryBillArgs = {
+    id: Scalars['ID'];
+};
+
+export type AppQueryBookingArgs = {
+    id: Scalars['ID'];
+};
+
+export type AppQueryEmployeeArgs = {
+    id: Scalars['ID'];
+};
+
+export type AppQueryFindingPatronArgs = {
+    id: Scalars['ID'];
+};
+
+export type AppQueryFloorArgs = {
+    id: Scalars['ID'];
+};
+
+export type AppQueryHouseKeepingArgs = {
+    id: Scalars['ID'];
+};
+
+export type AppQueryPatronArgs = {
+    id: Scalars['ID'];
+};
+
+export type AppQueryPatronKindArgs = {
+    id: Scalars['ID'];
+};
+
+export type AppQueryPositionArgs = {
+    id: Scalars['ID'];
+};
+
+export type AppQueryRateArgs = {
+    id: Scalars['ID'];
+};
+
+export type AppQueryReceiptArgs = {
+    id: Scalars['ID'];
+};
+
+export type AppQueryRoomArgs = {
+    id: Scalars['ID'];
+};
+
+export type AppQueryRoomKindArgs = {
+    id: Scalars['ID'];
+};
+
+export type AppQueryServiceArgs = {
+    id: Scalars['ID'];
+};
+
+export type AppQueryServicesDetailArgs = {
+    id: Scalars['ID'];
+};
+
+export type AppQueryVolatilityRateArgs = {
+    id: Scalars['ID'];
+};
+
+/** Một đối tượng đăng nhập */
+export type AuthenticationObject = {
+    /** Thông tin nhân viên đăng nhập */
+    employee: Employee;
+    /** Token đăng nhập */
+    token: Scalars['String'];
+};
+
+/** Một phiếu hóa đơn của khách hàng */
+export type Bill = {
+    /** Danh sách các thông tin đặt trước của hóa đơn */
+    bookings: Maybe<Array<Maybe<Booking>>>;
+    /** Thông tin nhân viên nhận thanh toán hóa đơn */
+    employee: Maybe<Employee>;
     /** Id của hóa đơn */
-    id: number;
-}
+    id: Scalars['Int'];
+    /** Thông tin khách hàng thanh toán hóa đơn */
+    patron: Patron;
+    /** Danh sách các biên nhận cho hóa đơn */
+    receipts: Maybe<Array<Maybe<Receipt>>>;
+    /** Thời điểm in hóa đơn */
+    time: Scalars['DateTimeOffset'];
+    /** Tổng giá trị hóa đơn */
+    total: Scalars['Int'];
+    /** Tổng giá trị các phiếu thu */
+    totalReceipts: Scalars['Int'];
+};
 
-export interface BookingCreateInput {
-    /** Thời điểm nhận phòng dự kiến của khách hàng */
-    bookCheckInTime: DateTimeOffset;
-    /** Thời điểm trả phòng dự kiến của khách hàng */
-    bookCheckOutTime: DateTimeOffset;
-    /** Phòng khách hàng chọn đặt trước */
-    room: RoomId;
-    /** Danh sách khách hàng */
-    listOfPatrons: PatronId[];
-}
-/** Input cho thông tin một phòng */
-export interface RoomId {
-    /** Id của phòng */
-    id: number;
-}
-/** Input cho thông tin một khách hàng */
-export interface PatronId {
-    /** Id của khách hàng */
-    id: number;
-}
-
-export interface BookAndCheckInCreateInput {
-    /** Thời điểm trả phòng dự kiến của khách hàng */
-    bookCheckOutTime: DateTimeOffset;
-    /** Phòng khách hàng chọn đặt trước */
-    room: RoomId;
-    /** Danh sách khách hàng */
-    listOfPatrons: PatronId[];
-}
-
-export interface BillCreateInput {
+export type BillCreateInput = {
     /** Khách hàng */
     patron: PatronId;
-}
+};
 
-export interface ServicesDetailHouseKeepingInput {
-    /** Số lượng */
-    number: number;
-    /** Thuộc dịch vụ nào */
-    service: ServiceId;
-}
-/** Input cho một thông tin dịch vụ */
-export interface ServiceId {
-    /** Id của dịch vụ */
-    id: number;
-}
+/** Input cho thông tin một hóa đơn */
+export type BillId = {
+    /** Id của hóa đơn */
+    id: Scalars['Int'];
+};
 
-export interface EmployeeCreateInput {
-    /** Id của nhân viên */
-    id: string;
-    /** Mật khẩu của tài khoản nhân viên */
-    password: string;
-    /** Tên nhân viên */
-    name: string;
-    /** Chứng minh nhân dân */
-    identityCard: string;
-    /** Số điện thoại của nhân viên */
-    phoneNumber: string;
+export type BookAndCheckInCreateInput = {
+    /** Thời điểm trả phòng dự kiến của khách hàng */
+    bookCheckOutTime: Scalars['DateTimeOffset'];
+    /** Phòng khách hàng chọn đặt trước */
+    room: RoomId;
+    /** Danh sách khách hàng */
+    listOfPatrons: Array<PatronId>;
+};
+
+/** Một thông tin thuê phòng của khách hàng */
+export type Booking = {
+    /** Thông tin hóa đơn của thông tin thuê phòng */
+    bill: Bill;
+    /** Thời điểm nhận phòng dự kiến của khách hàng */
+    bookCheckInTime: Maybe<Scalars['DateTimeOffset']>;
+    /** Thời điểm trả phòng dự kiến của khách hàng */
+    bookCheckOutTime: Maybe<Scalars['DateTimeOffset']>;
+    /** Thời điểm tạo thông tin thuê phòng */
+    createTime: Scalars['DateTimeOffset'];
+    /** Nhân viên thực hiện giao dịch nhận đặt phòng từ khách hàng */
+    employeeBooking: Maybe<Employee>;
+    /** Nhân viên thực hiện check-in cho khách hàng */
+    employeeCheckIn: Maybe<Employee>;
+    /** Nhân viên thực hiện check-out cho khách hàng */
+    employeeCheckOut: Maybe<Employee>;
+    /** Danh sách nhân viên dọn phòng cho phòng đã đặt này */
+    houseKeepings: Maybe<Array<Maybe<HouseKeeping>>>;
+    /** Id của thông tin thuê phòng */
+    id: Scalars['Int'];
+    /** Danh sách khách hàng yêu cầu đặt phòng */
+    patrons: Array<Maybe<Patron>>;
+    /** Thời điểm nhận phòng của khách hàng */
+    realCheckInTime: Maybe<Scalars['DateTimeOffset']>;
+    /** Thời điểm trả phòng của khách hàng */
+    realCheckOutTime: Maybe<Scalars['DateTimeOffset']>;
+    /** Phòng khách hàng chọn đặt trước */
+    room: Room;
+    /** Danh sách chi tiết sử dụng dịch vụ của khách hàng */
+    servicesDetails: Maybe<Array<Maybe<ServicesDetail>>>;
+    /** Trạng thái của thông tin thuê phòng */
+    status: Scalars['Int'];
+    /** Tổng tiền của booking */
+    total: Scalars['Int'];
+    /** Tổng tiền của booking */
+    totalRates: Scalars['Int'];
+    /** Tổng tiền của booking */
+    totalServicesDetails: Scalars['Int'];
+    /** Tổng tiền của booking */
+    totalVolatilityRate: Scalars['Int'];
+};
+
+export type BookingCreateInput = {
+    /** Thời điểm nhận phòng dự kiến của khách hàng */
+    bookCheckInTime: Scalars['DateTimeOffset'];
+    /** Thời điểm trả phòng dự kiến của khách hàng */
+    bookCheckOutTime: Scalars['DateTimeOffset'];
+    /** Phòng khách hàng chọn đặt trước */
+    room: RoomId;
+    /** Danh sách khách hàng */
+    listOfPatrons: Array<PatronId>;
+};
+
+/** Input cho một thông tin một đơn đặt phòng */
+export type BookingId = {
+    /** Id của một đơn đặt phòng */
+    id: Scalars['Int'];
+};
+
+/** Một nhân viên trong khách sạn */
+export type Employee = {
     /** Địa chỉ của nhân viên */
-    address: string;
-    /** Email của nhân viên */
-    email: string;
+    address: Scalars['String'];
+    /** Danh sách các Hóa đơn mà nhân viên tạo */
+    bills: Maybe<Array<Maybe<Bill>>>;
     /** Ngày sinh của nhân viên */
-    birthdate: DateTimeOffset;
+    birthdate: Scalars['DateTimeOffset'];
+    /** Danh sách các Thông tin thuê phòng mà nhân viên tạo */
+    bookings: Maybe<Array<Maybe<Booking>>>;
+    /** Email của nhân viên */
+    email: Scalars['String'];
     /** Giới tính của nhân viên */
-    gender: boolean;
+    gender: Scalars['Boolean'];
+    /** Danh sách các Phòng mà nhân viên dọn */
+    houseKeepings: Maybe<Array<Maybe<HouseKeeping>>>;
+    /** Id của nhân viên */
+    id: Scalars['String'];
+    /** Chứng minh nhân dân */
+    identityCard: Scalars['String'];
+    /** Tài khoản còn hiệu lực hay không */
+    isActive: Scalars['Boolean'];
+    /** Tên nhân viên */
+    name: Scalars['String'];
+    /** Chức vụ */
+    position: Position;
+    /** Số điện thoại của nhân viên */
+    phoneNumber: Scalars['String'];
+    /** Danh sách các Giá cơ bản mà nhân viên tạo */
+    rates: Maybe<Array<Maybe<Rate>>>;
+    /** Danh sách các Phiếu thu mà nhân viên tạo */
+    receipts: Maybe<Array<Maybe<Receipt>>>;
     /** Ngày vào làm */
-    startingDate: DateTimeOffset;
+    startingDate: Scalars['DateTimeOffset'];
+    /** Danh sách các Giá biến động mà nhân viên tạo */
+    volatilityRates: Maybe<Array<Maybe<VolatilityRate>>>;
+};
+
+export type EmployeeCreateInput = {
+    /** Id của nhân viên */
+    id: Scalars['String'];
+    /** Mật khẩu của tài khoản nhân viên */
+    password: Scalars['String'];
+    /** Tên nhân viên */
+    name: Scalars['String'];
+    /** Chứng minh nhân dân */
+    identityCard: Scalars['String'];
+    /** Số điện thoại của nhân viên */
+    phoneNumber: Scalars['String'];
+    /** Địa chỉ của nhân viên */
+    address: Scalars['String'];
+    /** Email của nhân viên */
+    email: Scalars['String'];
+    /** Ngày sinh của nhân viên */
+    birthdate: Scalars['DateTimeOffset'];
+    /** Giới tính của nhân viên */
+    gender: Scalars['Boolean'];
+    /** Ngày vào làm */
+    startingDate: Scalars['DateTimeOffset'];
     /** Loại chức vụ */
     position: Maybe<PositionId>;
-}
-/** Input cho thông tin một chức vụ */
-export interface PositionId {
-    /** Id của chức vụ */
-    id: number;
-}
+};
 
-export interface FloorCreateInput {
+export type EmployeeUpdateInput = {
+    /** Id của nhân viên */
+    id: Scalars['String'];
+    /** Tên nhân viên */
+    name: Scalars['String'];
+    /** Chứng minh nhân dân */
+    identityCard: Scalars['String'];
+    /** Địa chỉ của nhân viên */
+    address: Scalars['String'];
+    /** Ngày sinh của nhân viên */
+    birthdate: Scalars['DateTimeOffset'];
+    /** Email của nhân viên */
+    email: Scalars['String'];
+    /** Giới tính của nhân viên */
+    gender: Scalars['Boolean'];
+    /** Số điện thoại của nhân viên */
+    phoneNumber: Scalars['String'];
+    /** Ngày vào làm */
+    startingDate: Scalars['DateTimeOffset'];
+    /** Loại chức vụ */
+    position: Maybe<PositionId>;
+};
+
+/** Một tầng trong khách sạn */
+export type Floor = {
+    /** Id của tầng */
+    id: Scalars['Int'];
+    /** Trạng thái hoạt động */
+    isActive: Scalars['Boolean'];
     /** Tên tầng */
-    name: string;
-}
+    name: Scalars['String'];
+    /** Danh sách các phòng có trong tầng */
+    rooms: Maybe<Array<Maybe<Room>>>;
+};
 
-export interface PatronCreateInput {
-    /** Số an sinh xã hội / Số chứng minh nhân dân / Số passport của khách hàng */
-    identification: string;
-    /** Tên của khách hàng */
-    name: string;
-    /** Địa chỉ e-mail của khách hàng */
-    email: string;
-    /** Giới tính của khách hàng */
-    gender: boolean;
+export type FloorCreateInput = {
+    /** Tên tầng */
+    name: Scalars['String'];
+};
+
+/** Input cho một thông tin tầng */
+export type FloorId = {
+    /** Id của tầng */
+    id: Scalars['Int'];
+};
+
+export type FloorUpdateInput = {
+    /** Id tầng cần cập nhật */
+    id: Scalars['Int'];
+    /** Tên tầng */
+    name: Scalars['String'];
+};
+
+/** Một hình thức dọn dẹp của một nhân viên buồng phòng tại một phòng trong khách sạn */
+export type HouseKeeping = {
+    /** Thông tin chi tiết đặt trước của phòng cần chuẩn bị */
+    booking: Booking;
+    /** Nhân viên thực hiện dọn dẹp */
+    employee: Maybe<Employee>;
+    /** Id của việc dọn dẹp */
+    id: Scalars['Int'];
+    /** Trạng thái dọn phòng */
+    status: Scalars['Int'];
+    /** Hình thức dọn dẹp phòng */
+    type: Scalars['Int'];
+};
+
+/** Thông tin  một khách hàng của khách sạn */
+export type Patron = {
+    /** Danh sách các số hóa đơn của khách hàng */
+    bills: Array<Bill>;
     /** Ngày sinh của khách hàng */
-    birthdate: DateTimeOffset;
-    /** Quốc tịch của khách hàng */
-    nationality: string;
-    /** Nguyên quán của khách hàng */
-    domicile: string;
-    /** Địa chỉ thường trú của khách hàng */
-    residence: string;
+    birthdate: Scalars['DateTimeOffset'];
+    /** Danh sách các đơn đặt trước của khách hàng */
+    bookings: Array<Booking>;
     /** Công ty mà khách hàng đang làm việc */
-    company: string;
+    company: Scalars['String'];
+    /** Nguyên quán của khách hàng */
+    domicile: Scalars['String'];
+    /** Địa chỉ e-mail của khách hàng */
+    email: Scalars['String'];
+    /** Giới tính của khách hàng */
+    gender: Scalars['Boolean'];
+    /** Id của khách hàng */
+    id: Scalars['Int'];
+    /** Số an sinh xã hội / Số chứng minh nhân dân / Số passport của khách hàng */
+    identification: Scalars['String'];
+    /** Tên của khách hàng */
+    name: Scalars['String'];
+    /** Quốc tịch của khách hàng */
+    nationality: Scalars['String'];
     /** Một số chú thích về khách hàng nếu cần thiết */
-    note: string;
+    note: Scalars['String'];
+    /** Loại khách hàng */
+    patronKind: PatronKind;
     /** Danh sách số điện thoại của khách hàng */
-    listOfPhoneNumbers: string[];
+    phoneNumbers: Array<Scalars['String']>;
+    /** Địa chỉ thường trú của khách hàng */
+    residence: Scalars['String'];
+};
+
+export type PatronCreateInput = {
+    /** Số an sinh xã hội / Số chứng minh nhân dân / Số passport của khách hàng */
+    identification: Scalars['String'];
+    /** Tên của khách hàng */
+    name: Scalars['String'];
+    /** Địa chỉ e-mail của khách hàng */
+    email: Scalars['String'];
+    /** Giới tính của khách hàng */
+    gender: Scalars['Boolean'];
+    /** Ngày sinh của khách hàng */
+    birthdate: Scalars['DateTimeOffset'];
+    /** Quốc tịch của khách hàng */
+    nationality: Scalars['String'];
+    /** Nguyên quán của khách hàng */
+    domicile: Scalars['String'];
+    /** Địa chỉ thường trú của khách hàng */
+    residence: Scalars['String'];
+    /** Công ty mà khách hàng đang làm việc */
+    company: Scalars['String'];
+    /** Một số chú thích về khách hàng nếu cần thiết */
+    note: Scalars['String'];
+    /** Danh sách số điện thoại của khách hàng */
+    listOfPhoneNumbers: Array<Scalars['String']>;
     /** Loại khách hàng */
     patronKind: Maybe<PatronKindId>;
-}
-/** Input cho thông tin  một loại khách hàng */
-export interface PatronKindId {
-    /** Id của loại khách hàng */
-    id: number;
-}
+};
 
-export interface PatronKindCreateInput {
-    /** Tên loại khách hàng */
-    name: string;
+/** Input cho thông tin một khách hàng */
+export type PatronId = {
+    /** Id của khách hàng */
+    id: Scalars['Int'];
+};
+
+/** Thông tin  một loại khách hàng */
+export type PatronKind = {
     /** Thông tin mô tả loại khách hàng */
-    description: string;
-}
+    description: Scalars['String'];
+    /** Id của loại khách hàng */
+    id: Scalars['Int'];
+    /** Tên loại khách hàng */
+    name: Scalars['String'];
+    /** Danh sách các khách hàng thuộc loại khách hàng */
+    patrons: Maybe<Array<Maybe<Patron>>>;
+};
 
-export interface PositionCreateInput {
+export type PatronKindCreateInput = {
+    /** Tên loại khách hàng */
+    name: Scalars['String'];
+    /** Thông tin mô tả loại khách hàng */
+    description: Scalars['String'];
+};
+
+/** Input cho thông tin  một loại khách hàng */
+export type PatronKindId = {
+    /** Id của loại khách hàng */
+    id: Scalars['Int'];
+};
+
+export type PatronKindUpdateInput = {
+    /** Id của loại khách hàng */
+    id: Scalars['Int'];
+    /** Tên loại khách hàng */
+    name: Scalars['String'];
+    /** Thông tin mô tả loại khách hàng */
+    description: Scalars['String'];
+};
+
+export type PatronUpdateInput = {
+    /** Id của khách hàng */
+    id: Scalars['Int'];
+    /** Số an sinh xã hội / Số chứng minh nhân dân / Số passport của khách hàng */
+    identification: Scalars['String'];
+    /** Tên của khách hàng */
+    name: Scalars['String'];
+    /** Địa chỉ e-mail của khách hàng */
+    email: Scalars['String'];
+    /** Giới tính của khách hàng */
+    gender: Scalars['Boolean'];
+    /** Ngày sinh của khách hàng */
+    birthdate: Scalars['DateTimeOffset'];
+    /** Quốc tịch của khách hàng */
+    nationality: Scalars['String'];
+    /** Nguyên quán của khách hàng */
+    domicile: Scalars['String'];
+    /** Địa chỉ thường trú của khách hàng */
+    residence: Scalars['String'];
+    /** Công ty mà khách hàng đang làm việc */
+    company: Scalars['String'];
+    /** Một số chú thích về khách hàng nếu cần thiết */
+    note: Scalars['String'];
+    /** Danh sách số điện thoại của khách hàng */
+    listOfPhoneNumbers: Array<Scalars['String']>;
+    /** Loại khách hàng */
+    patronKind: Maybe<PatronKindId>;
+};
+
+/** Một chức vụ trong khách sạn */
+export type Position = {
+    /** Số nhân viên còn hoạt động */
+    countActiveEmployees: Scalars['Int'];
+    /** Số nhân viên */
+    countEmployees: Scalars['Int'];
+    /** Số nhân viên ngưng hoạt động */
+    countInActiveEmployees: Scalars['Int'];
+    /** Danh sách các nhân viên thuộc quyền này */
+    employees: Maybe<Array<Maybe<Employee>>>;
+    /** Id của chức vụ */
+    id: Scalars['Int'];
+    /** Trạng thái kích hoạt/vô hiệu hóa chức vụ */
+    isActive: Scalars['Boolean'];
     /** Tên chức vụ */
-    name: string;
+    name: Scalars['String'];
     /** Quyền thao tác dọn phòng */
-    permissionCleaning: boolean;
+    permissionCleaning: Scalars['Boolean'];
     /** Quyền lấy thông tin các chứng từ (hóa đơn, phiếu thu) */
-    permissionGetAccountingVoucher: boolean;
+    permissionGetAccountingVoucher: Scalars['Boolean'];
     /** Quyền tra cứu lịch sử dọn phòng */
-    permissionGetHouseKeeping: boolean;
+    permissionGetHouseKeeping: Scalars['Boolean'];
     /** Quyền lấy thông tin tầng, phòng */
-    permissionGetMap: boolean;
+    permissionGetMap: Scalars['Boolean'];
     /** Quyền lấy thông tin khách hàng */
-    permissionGetPatron: boolean;
+    permissionGetPatron: Scalars['Boolean'];
     /** Quyền lấy thông tin giá cơ bản và giá biến động */
-    permissionGetRate: boolean;
+    permissionGetRate: Scalars['Boolean'];
     /** Quyền lấy thông tin dịch vụ */
-    permissionGetService: boolean;
+    permissionGetService: Scalars['Boolean'];
     /** Quyền quản lý thông tin nhân viên */
-    permissionManageEmployee: boolean;
+    permissionManageEmployee: Scalars['Boolean'];
     /** Quyền quản lý thuê phòng */
-    permissionManageHiringRoom: boolean;
-    /** Quyền quản lý khách hàng */
-    permissionManagePatron: boolean;
-    /** Quyền quản lý loại khách hàng */
-    permissionManagePatronKind: boolean;
-    /** Quyền quản lý chức vụ */
-    permissionManagePosition: boolean;
-    /** Quyền quản lý giá cơ bản và giá biến động */
-    permissionManageRate: boolean;
-    /** Quyền quản lý dịch vụ */
-    permissionManageService: boolean;
+    permissionManageHiringRoom: Scalars['Boolean'];
     /** Quyền chỉnh sửa sơ đồ */
-    permissionManageMap: boolean;
-}
+    permissionManageMap: Scalars['Boolean'];
+    /** Quyền quản lý khách hàng */
+    permissionManagePatron: Scalars['Boolean'];
+    /** Quyền quản lý loại khách hàng */
+    permissionManagePatronKind: Scalars['Boolean'];
+    /** Quyền quản lý chức vụ */
+    permissionManagePosition: Scalars['Boolean'];
+    /** Quyền quản lý giá cơ bản và giá biến động */
+    permissionManageRate: Scalars['Boolean'];
+    /** Quyền quản lý dịch vụ */
+    permissionManageService: Scalars['Boolean'];
+};
 
-export interface RateCreateInput {
+export type PositionCreateInput = {
+    /** Tên chức vụ */
+    name: Scalars['String'];
+    /** Quyền thao tác dọn phòng */
+    permissionCleaning: Scalars['Boolean'];
+    /** Quyền lấy thông tin các chứng từ (hóa đơn, phiếu thu) */
+    permissionGetAccountingVoucher: Scalars['Boolean'];
+    /** Quyền tra cứu lịch sử dọn phòng */
+    permissionGetHouseKeeping: Scalars['Boolean'];
+    /** Quyền lấy thông tin tầng, phòng */
+    permissionGetMap: Scalars['Boolean'];
+    /** Quyền lấy thông tin khách hàng */
+    permissionGetPatron: Scalars['Boolean'];
+    /** Quyền lấy thông tin giá cơ bản và giá biến động */
+    permissionGetRate: Scalars['Boolean'];
+    /** Quyền lấy thông tin dịch vụ */
+    permissionGetService: Scalars['Boolean'];
+    /** Quyền quản lý thông tin nhân viên */
+    permissionManageEmployee: Scalars['Boolean'];
+    /** Quyền quản lý thuê phòng */
+    permissionManageHiringRoom: Scalars['Boolean'];
+    /** Quyền quản lý khách hàng */
+    permissionManagePatron: Scalars['Boolean'];
+    /** Quyền quản lý loại khách hàng */
+    permissionManagePatronKind: Scalars['Boolean'];
+    /** Quyền quản lý chức vụ */
+    permissionManagePosition: Scalars['Boolean'];
+    /** Quyền quản lý giá cơ bản và giá biến động */
+    permissionManageRate: Scalars['Boolean'];
+    /** Quyền quản lý dịch vụ */
+    permissionManageService: Scalars['Boolean'];
+    /** Quyền chỉnh sửa sơ đồ */
+    permissionManageMap: Scalars['Boolean'];
+};
+
+/** Input cho thông tin một chức vụ */
+export type PositionId = {
+    /** Id của chức vụ */
+    id: Scalars['Int'];
+};
+
+export type PositionUpdateInput = {
+    /** Id của chức vụ */
+    id: Scalars['Int'];
+    /** Tên chức vụ */
+    name: Scalars['String'];
+    /** Quyền thao tác dọn phòng */
+    permissionCleaning: Scalars['Boolean'];
+    /** Quyền lấy thông tin tầng, phòng */
+    permissionGetMap: Scalars['Boolean'];
+    /** Quyền tra cứu lịch sử dọn phòng */
+    permissionGetHouseKeeping: Scalars['Boolean'];
+    /** Quyền lấy thông tin khách hàng */
+    permissionGetPatron: Scalars['Boolean'];
+    /** Quyền lấy thông tin giá cơ bản và giá biến động */
+    permissionGetRate: Scalars['Boolean'];
+    /** Quyền lấy thông tin dịch vụ */
+    permissionGetService: Scalars['Boolean'];
+    /** Quyền lấy thông tin các chứng từ (hóa đơn, phiếu thu) */
+    permissionGetAccountingVoucher: Scalars['Boolean'];
+    /** Quyền quản lý thông tin nhân viên */
+    permissionManageEmployee: Scalars['Boolean'];
+    /** Quyền quản lý thuê phòng */
+    permissionManageHiringRoom: Scalars['Boolean'];
+    /** Quyền chỉnh sửa sơ đồ */
+    permissionManageMap: Scalars['Boolean'];
+    /** Quyền quản lý khách hàng */
+    permissionManagePatron: Scalars['Boolean'];
+    /** Quyền quản lý loại khách hàng */
+    permissionManagePatronKind: Scalars['Boolean'];
+    /** Quyền quản lý chức vụ */
+    permissionManagePosition: Scalars['Boolean'];
+    /** Quyền quản lý giá cơ bản và giá biến động */
+    permissionManageRate: Scalars['Boolean'];
+    /** Quyền quản lý dịch vụ */
+    permissionManageService: Scalars['Boolean'];
+};
+
+/** Giá cố định của một loại phòng */
+export type Rate = {
+    /** Ngày tạo giá */
+    createDate: Scalars['DateTimeOffset'];
     /** Giá ngày */
-    dayRate: number;
-    /** Giá đêm */
-    nightRate: number;
-    /** Giá tuần */
-    weekRate: number;
-    /** Giá tháng */
-    monthRate: number;
-    /** Phí check-out muộn */
-    lateCheckOutFee: number;
+    dayRate: Scalars['Int'];
     /** Phí check-out sớm */
-    earlyCheckInFee: number;
+    earlyCheckInFee: Scalars['Int'];
     /** Ngày giá bắt đầu có hiệu lực */
-    effectiveStartDate: DateTimeOffset;
+    effectiveStartDate: Scalars['DateTimeOffset'];
+    /** Nhân viên tạo giá */
+    employee: Maybe<Employee>;
+    /** Id của giá */
+    id: Scalars['Int'];
+    /** Phí check-out muộn */
+    lateCheckOutFee: Scalars['Int'];
+    /** Giá tháng */
+    monthRate: Scalars['Int'];
+    /** Giá đêm */
+    nightRate: Scalars['Int'];
+    /** Thuộc loại phòng */
+    roomKind: RoomKind;
+    /** Giá tuần */
+    weekRate: Scalars['Int'];
+};
+
+export type RateCreateInput = {
+    /** Giá ngày */
+    dayRate: Scalars['Int'];
+    /** Giá đêm */
+    nightRate: Scalars['Int'];
+    /** Giá tuần */
+    weekRate: Scalars['Int'];
+    /** Giá tháng */
+    monthRate: Scalars['Int'];
+    /** Phí check-out muộn */
+    lateCheckOutFee: Scalars['Int'];
+    /** Phí check-out sớm */
+    earlyCheckInFee: Scalars['Int'];
+    /** Ngày giá bắt đầu có hiệu lực */
+    effectiveStartDate: Scalars['DateTimeOffset'];
     /** Loại phòng */
     roomKind: RoomKindId;
-}
-/** Input cho một thông tin một loại phòng */
-export interface RoomKindId {
-    /** Id của một loại phòng */
-    id: number;
-}
+};
 
-export interface ReceiptCreateInput {
-    /** Số tiền đã thu */
-    money: number;
+export type RateUpdateInput = {
+    /** Id của giá cần cập nhật */
+    id: Scalars['Int'];
+    /** Giá ngày */
+    dayRate: Scalars['Int'];
+    /** Giá đêm */
+    nightRate: Scalars['Int'];
+    /** Giá tuần */
+    weekRate: Scalars['Int'];
+    /** Giá tháng */
+    monthRate: Scalars['Int'];
+    /** Phí check-out muộn */
+    lateCheckOutFee: Scalars['Int'];
+    /** Phí check-out sớm */
+    earlyCheckInFee: Scalars['Int'];
+    /** Ngày giá bắt đầu có hiệu lực */
+    effectiveStartDate: Scalars['DateTimeOffset'];
+    /** Loại phòng */
+    roomKind: Maybe<RoomKindId>;
+};
+
+/** Phiếu thu */
+export type Receipt = {
     /** Số tài khoản ngân hàng của khách */
-    bankAccountNumber: Maybe<string>;
+    bankAccountNumber: Maybe<Scalars['String']>;
+    /** Phiếu thu thuộc hóa đơn nào */
+    bill: Bill;
+    /** Nhân viên tạo phiếu thu */
+    employee: Employee;
+    /** Id của phiếu thu */
+    id: Scalars['Int'];
+    /** Số tiền đã thu */
+    money: Scalars['Int'];
+    /** Thời gian tạo phiếu thu */
+    time: Scalars['DateTimeOffset'];
+};
+
+export type ReceiptCreateInput = {
+    /** Số tiền đã thu */
+    money: Scalars['Int'];
+    /** Số tài khoản ngân hàng của khách */
+    bankAccountNumber: Maybe<Scalars['String']>;
     /** Thuộc hóa đơn */
     bill: Maybe<BillId>;
-}
+};
 
-export interface RoomCreateInput {
+/** Một phòng trong khách sạn */
+export type Room = {
+    /** Danh sách thông tin thuê phòng */
+    bookings: Maybe<Array<Maybe<Booking>>>;
+    /** Đơn đặt phòng hiện tại */
+    currentBooking: Maybe<Booking>;
+    /** Phòng thuộc tầng nào */
+    floor: Floor;
+    /** Id của phòng */
+    id: Scalars['Int'];
+    /** Trạng thái phòng */
+    isActive: Scalars['Boolean'];
+    /** Phòng trống */
+    isEmpty: Scalars['Boolean'];
     /** Tên phòng */
-    name: string;
+    name: Scalars['String'];
+    /** Loại phòng của phòng */
+    roomKind: RoomKind;
+};
+
+/** Một phòng trong khách sạn */
+export type RoomCurrentBookingArgs = {
+    from: Scalars['DateTimeOffset'];
+    to: Scalars['DateTimeOffset'];
+};
+
+/** Một phòng trong khách sạn */
+export type RoomIsEmptyArgs = {
+    from: Scalars['DateTimeOffset'];
+    to: Scalars['DateTimeOffset'];
+};
+
+export type RoomCreateInput = {
+    /** Tên phòng */
+    name: Scalars['String'];
     /** Phòng thuộc tầng nào */
     floor: FloorId;
     /** Loại phòng của phòng */
     roomKind: RoomKindId;
-}
-/** Input cho một thông tin tầng */
-export interface FloorId {
-    /** Id của tầng */
-    id: number;
-}
-/** Input cho việc tạo một loại phòng */
-export interface RoomKindCreateInput {
-    /** Tên loại phòng */
-    name: string;
-    /** Số giường */
-    numberOfBeds: number;
+};
+
+/** Input cho thông tin một phòng */
+export type RoomId = {
+    /** Id của phòng */
+    id: Scalars['Int'];
+};
+
+/** Một loại phòng hiện có trong khách sạn */
+export type RoomKind = {
     /** Số người trong một phòng */
-    amountOfPeople: number;
-}
-/** Input cho một thông tin dịch vụ cần tạo mới */
-export interface ServiceCreateInput {
-    /** Tên dịch vụ */
-    name: string;
-    /** Đơn giá */
-    unitRate: number;
-    /** Đơn vị */
-    unit: string;
-}
+    amountOfPeople: Scalars['Int'];
+    /** Id của loại phòng */
+    id: Scalars['Int'];
+    /** Trạng thái phòng */
+    isActive: Scalars['Boolean'];
+    /** Tên loại phòng */
+    name: Scalars['String'];
+    /** Số giường */
+    numberOfBeds: Scalars['Int'];
+    /** Danh sách giá cố định của loại phòng */
+    rates: Maybe<Array<Maybe<Rate>>>;
+    /** Danh sách các phòng thuộc loại phòng này */
+    rooms: Maybe<Array<Maybe<Room>>>;
+    /** Danh sách giá biến động của loại phòng */
+    volatilityRates: Maybe<Array<Maybe<VolatilityRate>>>;
+};
 
-export interface ServicesDetailCreateInput {
-    /** Số lượng */
-    number: number;
-    /** Thuộc dịch vụ nào */
-    service: ServiceId;
-    /** Thuộc booking nào */
-    booking: BookingId;
-}
-/** Input cho một thông tin một đơn đặt phòng */
-export interface BookingId {
-    /** Id của một đơn đặt phòng */
-    id: number;
-}
+/** Input cho việc tạo một loại phòng */
+export type RoomKindCreateInput = {
+    /** Tên loại phòng */
+    name: Scalars['String'];
+    /** Số giường */
+    numberOfBeds: Scalars['Int'];
+    /** Số người trong một phòng */
+    amountOfPeople: Scalars['Int'];
+};
 
-export interface VolatilityRateCreateInput {
-    /** Giá ngày */
-    dayRate: number;
-    /** Giá đêm */
-    nightRate: number;
-    /** Giá tuần */
-    weekRate: number;
-    /** Giá tháng */
-    monthRate: number;
-    /** Phí check-out muộn */
-    lateCheckOutFee: number;
-    /** Phí check-out sớm */
-    earlyCheckInFee: number;
-    /** Ngày giá bắt đầu có hiệu lực */
-    effectiveStartDate: DateTimeOffset;
-    /** Ngày giá hết hiệu lực */
-    effectiveEndDate: DateTimeOffset;
-    /** Giá có hiệu lực vào ngày Thứ 2 */
-    effectiveOnMonday: boolean;
-    /** Giá có hiệu lực vào ngày Thứ 3 */
-    effectiveOnTuesday: boolean;
-    /** Giá có hiệu lực vào ngày Thứ 4 */
-    effectiveOnWednesday: boolean;
-    /** Giá có hiệu lực vào ngày Thứ 5 */
-    effectiveOnThursday: boolean;
-    /** Giá có hiệu lực vào ngày Thứ 6 */
-    effectiveOnFriday: boolean;
-    /** Giá có hiệu lực vào ngày Thứ 7 */
-    effectiveOnSaturday: boolean;
-    /** Giá có hiệu lực vào ngày Chủ Nhật */
-    effectiveOnSunday: boolean;
-    /** Loại phòng */
-    roomKind: RoomKindId;
-}
+/** Input cho một thông tin một loại phòng */
+export type RoomKindId = {
+    /** Id của một loại phòng */
+    id: Scalars['Int'];
+};
 
-export interface EmployeeUpdateInput {
-    /** Id của nhân viên */
-    id: string;
-    /** Tên nhân viên */
-    name: string;
-    /** Chứng minh nhân dân */
-    identityCard: string;
-    /** Địa chỉ của nhân viên */
-    address: string;
-    /** Ngày sinh của nhân viên */
-    birthdate: DateTimeOffset;
-    /** Email của nhân viên */
-    email: string;
-    /** Giới tính của nhân viên */
-    gender: boolean;
-    /** Số điện thoại của nhân viên */
-    phoneNumber: string;
-    /** Ngày vào làm */
-    startingDate: DateTimeOffset;
-    /** Loại chức vụ */
-    position: Maybe<PositionId>;
-}
+/** Input cho việc chỉnh sửa một loại phòng */
+export type RoomKindUpdateInput = {
+    /** Id loại phòng */
+    id: Scalars['Int'];
+    /** Tên loại phòng */
+    name: Scalars['String'];
+    /** Số giường */
+    numberOfBeds: Scalars['Int'];
+    /** Số người trong một phòng */
+    amountOfPeople: Scalars['Int'];
+};
 
-export interface FloorUpdateInput {
-    /** Id tầng cần cập nhật */
-    id: number;
-    /** Tên tầng */
-    name: string;
-}
-
-export interface PatronUpdateInput {
-    /** Id của khách hàng */
-    id: number;
-    /** Số an sinh xã hội / Số chứng minh nhân dân / Số passport của khách hàng */
-    identification: string;
-    /** Tên của khách hàng */
-    name: string;
-    /** Địa chỉ e-mail của khách hàng */
-    email: string;
-    /** Giới tính của khách hàng */
-    gender: boolean;
-    /** Ngày sinh của khách hàng */
-    birthdate: DateTimeOffset;
-    /** Quốc tịch của khách hàng */
-    nationality: string;
-    /** Nguyên quán của khách hàng */
-    domicile: string;
-    /** Địa chỉ thường trú của khách hàng */
-    residence: string;
-    /** Công ty mà khách hàng đang làm việc */
-    company: string;
-    /** Một số chú thích về khách hàng nếu cần thiết */
-    note: string;
-    /** Danh sách số điện thoại của khách hàng */
-    listOfPhoneNumbers: string[];
-    /** Loại khách hàng */
-    patronKind: Maybe<PatronKindId>;
-}
-
-export interface PatronKindUpdateInput {
-    /** Id của loại khách hàng */
-    id: number;
-    /** Tên loại khách hàng */
-    name: string;
-    /** Thông tin mô tả loại khách hàng */
-    description: string;
-}
-
-export interface PositionUpdateInput {
-    /** Id của chức vụ */
-    id: number;
-    /** Tên chức vụ */
-    name: string;
-    /** Quyền thao tác dọn phòng */
-    permissionCleaning: boolean;
-    /** Quyền lấy thông tin tầng, phòng */
-    permissionGetMap: boolean;
-    /** Quyền tra cứu lịch sử dọn phòng */
-    permissionGetHouseKeeping: boolean;
-    /** Quyền lấy thông tin khách hàng */
-    permissionGetPatron: boolean;
-    /** Quyền lấy thông tin giá cơ bản và giá biến động */
-    permissionGetRate: boolean;
-    /** Quyền lấy thông tin dịch vụ */
-    permissionGetService: boolean;
-    /** Quyền lấy thông tin các chứng từ (hóa đơn, phiếu thu) */
-    permissionGetAccountingVoucher: boolean;
-    /** Quyền quản lý thông tin nhân viên */
-    permissionManageEmployee: boolean;
-    /** Quyền quản lý thuê phòng */
-    permissionManageHiringRoom: boolean;
-    /** Quyền chỉnh sửa sơ đồ */
-    permissionManageMap: boolean;
-    /** Quyền quản lý khách hàng */
-    permissionManagePatron: boolean;
-    /** Quyền quản lý loại khách hàng */
-    permissionManagePatronKind: boolean;
-    /** Quyền quản lý chức vụ */
-    permissionManagePosition: boolean;
-    /** Quyền quản lý giá cơ bản và giá biến động */
-    permissionManageRate: boolean;
-    /** Quyền quản lý dịch vụ */
-    permissionManageService: boolean;
-}
-
-export interface RateUpdateInput {
-    /** Id của giá cần cập nhật */
-    id: number;
-    /** Giá ngày */
-    dayRate: number;
-    /** Giá đêm */
-    nightRate: number;
-    /** Giá tuần */
-    weekRate: number;
-    /** Giá tháng */
-    monthRate: number;
-    /** Phí check-out muộn */
-    lateCheckOutFee: number;
-    /** Phí check-out sớm */
-    earlyCheckInFee: number;
-    /** Ngày giá bắt đầu có hiệu lực */
-    effectiveStartDate: DateTimeOffset;
-    /** Loại phòng */
-    roomKind: Maybe<RoomKindId>;
-}
-
-export interface RoomUpdateInput {
+export type RoomUpdateInput = {
     /** Id phòng cần cập nhật */
-    id: number;
+    id: Scalars['Int'];
     /** Tên phòng */
-    name: string;
+    name: Scalars['String'];
     /** Phòng thuộc tầng nào */
     floor: Maybe<FloorId>;
     /** Loại phòng của phòng */
     roomKind: Maybe<RoomKindId>;
-}
-/** Input cho việc chỉnh sửa một loại phòng */
-export interface RoomKindUpdateInput {
-    /** Id loại phòng */
-    id: number;
-    /** Tên loại phòng */
-    name: string;
-    /** Số giường */
-    numberOfBeds: number;
-    /** Số người trong một phòng */
-    amountOfPeople: number;
-}
-/** Input cho một thông tin dịch vụ cần cập nhật */
-export interface ServiceUpdateInput {
-    /** Id của dịch vụ */
-    id: number;
-    /** Tên dịch vụ */
-    name: string;
-    /** Đơn giá */
-    unitRate: number;
-    /** Đơn vị */
-    unit: string;
-}
+};
 
-export interface ServicesDetailUpdateInput {
-    /** Id của chi tiết dịch vụ cần cập nhật */
-    id: number;
+/** Một dịch vụ trong khách sạn */
+export type Service = {
+    /** Id của dịch vụ */
+    id: Scalars['Int'];
+    /** Trạng thái hoạt động */
+    isActive: Scalars['Boolean'];
+    /** Tên dịch vụ */
+    name: Scalars['String'];
+    /** Danh sách chi tiết dịch vụ */
+    servicesDetails: Maybe<Array<Maybe<ServicesDetail>>>;
+    /** Đơn vị */
+    unit: Scalars['String'];
+    /** Đơn giá */
+    unitRate: Scalars['Int'];
+};
+
+/** Input cho một thông tin dịch vụ cần tạo mới */
+export type ServiceCreateInput = {
+    /** Tên dịch vụ */
+    name: Scalars['String'];
+    /** Đơn giá */
+    unitRate: Scalars['Int'];
+    /** Đơn vị */
+    unit: Scalars['String'];
+};
+
+/** Input cho một thông tin dịch vụ */
+export type ServiceId = {
+    /** Id của dịch vụ */
+    id: Scalars['Int'];
+};
+
+/** Một chi tiết dịch vụ của Thông tin thuê phòng */
+export type ServicesDetail = {
+    /** Thuộc thông tin thuê phòng nào */
+    booking: Booking;
+    /** Id của chi tiết dịch vụ */
+    id: Scalars['Int'];
     /** Số lượng */
-    number: number;
+    number: Scalars['Int'];
+    /** Thuộc dịch vụ nào */
+    service: Service;
+    /** Thời gian tạo */
+    time: Scalars['DateTimeOffset'];
+    /** Thành tiền */
+    total: Scalars['Int'];
+};
+
+export type ServicesDetailCreateInput = {
+    /** Số lượng */
+    number: Scalars['Int'];
     /** Thuộc dịch vụ nào */
     service: ServiceId;
-}
+    /** Thuộc booking nào */
+    booking: BookingId;
+};
 
-export interface VolatilityRateUpdateInput {
-    /** Id của giá cần cập nhật */
-    id: number;
+export type ServicesDetailHouseKeepingInput = {
+    /** Số lượng */
+    number: Scalars['Int'];
+    /** Thuộc dịch vụ nào */
+    service: ServiceId;
+};
+
+export type ServicesDetailUpdateInput = {
+    /** Id của chi tiết dịch vụ cần cập nhật */
+    id: Scalars['Int'];
+    /** Số lượng */
+    number: Scalars['Int'];
+    /** Thuộc dịch vụ nào */
+    service: ServiceId;
+};
+
+/** Input cho một thông tin dịch vụ cần cập nhật */
+export type ServiceUpdateInput = {
+    /** Id của dịch vụ */
+    id: Scalars['Int'];
+    /** Tên dịch vụ */
+    name: Scalars['String'];
+    /** Đơn giá */
+    unitRate: Scalars['Int'];
+    /** Đơn vị */
+    unit: Scalars['String'];
+};
+
+/** Giá biến động của một loại phòng */
+export type VolatilityRate = {
+    /** Ngày tạo giá */
+    createDate: Scalars['DateTimeOffset'];
     /** Giá ngày */
-    dayRate: number;
-    /** Giá đêm */
-    nightRate: number;
-    /** Giá tuần */
-    weekRate: number;
-    /** Giá tháng */
-    monthRate: number;
-    /** Phí check-out muộn */
-    lateCheckOutFee: number;
+    dayRate: Scalars['Int'];
     /** Phí check-out sớm */
-    earlyCheckInFee: number;
-    /** Ngày giá bắt đầu có hiệu lực */
-    effectiveStartDate: DateTimeOffset;
+    earlyCheckInFee: Scalars['Int'];
     /** Ngày giá hết hiệu lực */
-    effectiveEndDate: DateTimeOffset;
-    /** Giá có hiệu lực vào ngày Thứ 2 */
-    effectiveOnMonday: boolean;
-    /** Giá có hiệu lực vào ngày Thứ 3 */
-    effectiveOnTuesday: boolean;
-    /** Giá có hiệu lực vào ngày Thứ 4 */
-    effectiveOnWednesday: boolean;
-    /** Giá có hiệu lực vào ngày Thứ 5 */
-    effectiveOnThursday: boolean;
+    effectiveEndDate: Scalars['DateTimeOffset'];
     /** Giá có hiệu lực vào ngày Thứ 6 */
-    effectiveOnFriday: boolean;
+    effectiveOnFriday: Scalars['Boolean'];
+    /** Giá có hiệu lực vào ngày Thứ 2 */
+    effectiveOnMonday: Scalars['Boolean'];
     /** Giá có hiệu lực vào ngày Thứ 7 */
-    effectiveOnSaturday: boolean;
+    effectiveOnSaturday: Scalars['Boolean'];
     /** Giá có hiệu lực vào ngày Chủ Nhật */
-    effectiveOnSunday: boolean;
+    effectiveOnSunday: Scalars['Boolean'];
+    /** Giá có hiệu lực vào ngày Thứ 3 */
+    effectiveOnTuesday: Scalars['Boolean'];
+    /** Giá có hiệu lực vào ngày Thứ 5 */
+    effectiveOnThursday: Scalars['Boolean'];
+    /** Giá có hiệu lực vào ngày Thứ 4 */
+    effectiveOnWednesday: Scalars['Boolean'];
+    /** Ngày giá bắt đầu có hiệu lực */
+    effectiveStartDate: Scalars['DateTimeOffset'];
+    /** Nhân viên tạo giá */
+    employee: Maybe<Employee>;
+    /** Id của giá */
+    id: Scalars['Int'];
+    /** Phí check-out muộn */
+    lateCheckOutFee: Scalars['Int'];
+    /** Giá tháng */
+    monthRate: Scalars['Int'];
+    /** Giá đêm */
+    nightRate: Scalars['Int'];
+    /** Thuộc loại phòng */
+    roomKind: RoomKind;
+    /** Giá tuần */
+    weekRate: Scalars['Int'];
+};
+
+export type VolatilityRateCreateInput = {
+    /** Giá ngày */
+    dayRate: Scalars['Int'];
+    /** Giá đêm */
+    nightRate: Scalars['Int'];
+    /** Giá tuần */
+    weekRate: Scalars['Int'];
+    /** Giá tháng */
+    monthRate: Scalars['Int'];
+    /** Phí check-out muộn */
+    lateCheckOutFee: Scalars['Int'];
+    /** Phí check-out sớm */
+    earlyCheckInFee: Scalars['Int'];
+    /** Ngày giá bắt đầu có hiệu lực */
+    effectiveStartDate: Scalars['DateTimeOffset'];
+    /** Ngày giá hết hiệu lực */
+    effectiveEndDate: Scalars['DateTimeOffset'];
+    /** Giá có hiệu lực vào ngày Thứ 2 */
+    effectiveOnMonday: Scalars['Boolean'];
+    /** Giá có hiệu lực vào ngày Thứ 3 */
+    effectiveOnTuesday: Scalars['Boolean'];
+    /** Giá có hiệu lực vào ngày Thứ 4 */
+    effectiveOnWednesday: Scalars['Boolean'];
+    /** Giá có hiệu lực vào ngày Thứ 5 */
+    effectiveOnThursday: Scalars['Boolean'];
+    /** Giá có hiệu lực vào ngày Thứ 6 */
+    effectiveOnFriday: Scalars['Boolean'];
+    /** Giá có hiệu lực vào ngày Thứ 7 */
+    effectiveOnSaturday: Scalars['Boolean'];
+    /** Giá có hiệu lực vào ngày Chủ Nhật */
+    effectiveOnSunday: Scalars['Boolean'];
     /** Loại phòng */
     roomKind: RoomKindId;
-}
+};
 
-/** The `DateTimeOffset` scalar type represents a date, time and offset from UTC. `DateTimeOffset` expects timestamps to be formatted in accordance with the [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) standard. */
-export type DateTimeOffset = any;
+export type VolatilityRateUpdateInput = {
+    /** Id của giá cần cập nhật */
+    id: Scalars['Int'];
+    /** Giá ngày */
+    dayRate: Scalars['Int'];
+    /** Giá đêm */
+    nightRate: Scalars['Int'];
+    /** Giá tuần */
+    weekRate: Scalars['Int'];
+    /** Giá tháng */
+    monthRate: Scalars['Int'];
+    /** Phí check-out muộn */
+    lateCheckOutFee: Scalars['Int'];
+    /** Phí check-out sớm */
+    earlyCheckInFee: Scalars['Int'];
+    /** Ngày giá bắt đầu có hiệu lực */
+    effectiveStartDate: Scalars['DateTimeOffset'];
+    /** Ngày giá hết hiệu lực */
+    effectiveEndDate: Scalars['DateTimeOffset'];
+    /** Giá có hiệu lực vào ngày Thứ 2 */
+    effectiveOnMonday: Scalars['Boolean'];
+    /** Giá có hiệu lực vào ngày Thứ 3 */
+    effectiveOnTuesday: Scalars['Boolean'];
+    /** Giá có hiệu lực vào ngày Thứ 4 */
+    effectiveOnWednesday: Scalars['Boolean'];
+    /** Giá có hiệu lực vào ngày Thứ 5 */
+    effectiveOnThursday: Scalars['Boolean'];
+    /** Giá có hiệu lực vào ngày Thứ 6 */
+    effectiveOnFriday: Scalars['Boolean'];
+    /** Giá có hiệu lực vào ngày Thứ 7 */
+    effectiveOnSaturday: Scalars['Boolean'];
+    /** Giá có hiệu lực vào ngày Chủ Nhật */
+    effectiveOnSunday: Scalars['Boolean'];
+    /** Loại phòng */
+    roomKind: RoomKindId;
+};
+export type UserLoginMutationVariables = {
+    id: Scalars['String'];
+    password: Scalars['String'];
+};
 
-/** The `Date` scalar type represents a year, month and day in accordance with the [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) standard. */
-export type Date = any;
+export type UserLoginMutation = {
+    login: Pick<AuthenticationObject, 'token'> & {
+        employee: Pick<Employee, 'id' | 'name'> & {
+            position: Pick<Position, 'id' | 'name'>;
+        };
+    };
+};
 
-/** The `DateTime` scalar type represents a date and time. `DateTime` expects timestamps to be formatted in accordance with the [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) standard. */
-export type DateTime = any;
+export type UserCheckLoginMutationVariables = {};
 
-export type Decimal = any;
+export type UserCheckLoginMutation = {
+    checkLogin: Pick<Employee, 'id' | 'name'> & {
+        position: Pick<Position, 'id' | 'name'>;
+    };
+};
 
-/** The `Milliseconds` scalar type represents a period of time represented as the total number of milliseconds. */
-export type Milliseconds = any;
+export type GetBillsQueryVariables = {};
 
-/** The `Seconds` scalar type represents a period of time represented as the total number of seconds. */
-export type Seconds = any;
+export type GetBillsQuery = {
+    bills: Array<
+        Pick<Bill, 'id' | 'time' | 'total'> & {
+            patron: Pick<Patron, 'id' | 'name'>;
+            receipts: Maybe<Array<Maybe<Pick<Receipt, 'id' | 'money'>>>>;
+            bookings: Maybe<Array<Maybe<Pick<Booking, 'id'>>>>;
+        }
+    >;
+};
 
-// ====================================================
-// Documents
-// ====================================================
+export type AddBookingToBillMutationVariables = {
+    bill: BillId;
+    booking: BookingCreateInput;
+};
 
+export type AddBookingToBillMutation = {
+    addBookingToBill: Pick<Booking, 'id'>;
+};
+
+export type BookAndCheckInMutationVariables = {
+    bookings: Array<BookAndCheckInCreateInput>;
+    bill: BillCreateInput;
+};
+
+export type BookAndCheckInMutation = { bookAndCheckIn: Pick<Bill, 'id'> };
+
+export type CreateBillMutationVariables = {
+    bookings: Array<BookingCreateInput>;
+    bill: BillCreateInput;
+};
+
+export type CreateBillMutation = { createBill: Pick<Bill, 'id'> };
+
+export type PayTheBillMutationVariables = {
+    id: Scalars['ID'];
+};
+
+export type PayTheBillMutation = { payTheBill: Pick<Bill, 'id'> };
+
+export type GetBookingsQueryVariables = {};
+
+export type GetBookingsQuery = {
+    bookings: Array<
+        Pick<
+            Booking,
+            | 'id'
+            | 'bookCheckInTime'
+            | 'bookCheckOutTime'
+            | 'realCheckInTime'
+            | 'realCheckOutTime'
+            | 'status'
+        > & {
+            patrons: Array<Maybe<Pick<Patron, 'id' | 'name'>>>;
+            bill: Pick<Bill, 'id'>;
+            room: Pick<Room, 'id' | 'name'>;
+        }
+    >;
+};
+
+export type GetSimpleBookingsQueryVariables = {};
+
+export type GetSimpleBookingsQuery = {
+    bookings: Array<
+        Pick<Booking, 'id' | 'status'> & { room: Pick<Room, 'id' | 'name'> }
+    >;
+};
+
+export type CheckInMutationVariables = {
+    id: Scalars['ID'];
+};
+
+export type CheckInMutation = { checkIn: Pick<Booking, 'id'> };
+
+export type RequestCheckOutMutationVariables = {
+    id: Scalars['ID'];
+};
+
+export type RequestCheckOutMutation = { requestCheckOut: Pick<Booking, 'id'> };
+
+export type CheckOutMutationVariables = {
+    id: Scalars['ID'];
+};
+
+export type CheckOutMutation = { checkOut: Pick<Booking, 'id'> };
+
+export type CancelMutationVariables = {
+    id: Scalars['ID'];
+};
+
+export type CancelMutation = Pick<AppMutation, 'cancel'>;
+
+export type GetEmployeesQueryVariables = {};
+
+export type GetEmployeesQuery = {
+    employees: Array<
+        Pick<
+            Employee,
+            | 'id'
+            | 'name'
+            | 'identityCard'
+            | 'phoneNumber'
+            | 'address'
+            | 'email'
+            | 'birthdate'
+            | 'gender'
+            | 'startingDate'
+            | 'isActive'
+        > & { position: Pick<Position, 'id' | 'name'> }
+    >;
+};
+
+export type CreateEmployeeMutationVariables = {
+    input: EmployeeCreateInput;
+};
+
+export type CreateEmployeeMutation = { createEmployee: Pick<Employee, 'id'> };
+
+export type UpdateEmployeeMutationVariables = {
+    input: EmployeeUpdateInput;
+};
+
+export type UpdateEmployeeMutation = { updateEmployee: Pick<Employee, 'id'> };
+
+export type ResetPasswordMutationVariables = {
+    id: Scalars['ID'];
+};
+
+export type ResetPasswordMutation = Pick<AppMutation, 'resetPassword'>;
+
+export type SetIsActiveAccountMutationVariables = {
+    id: Scalars['ID'];
+    isActive: Scalars['Boolean'];
+};
+
+export type SetIsActiveAccountMutation = Pick<
+    AppMutation,
+    'setIsActiveAccount'
+>;
+
+export type ChangePasswordMutationVariables = {
+    password: Scalars['String'];
+    newPassword: Scalars['String'];
+};
+
+export type ChangePasswordMutation = Pick<AppMutation, 'changePassword'>;
+
+export type GetFloorsQueryVariables = {};
+
+export type GetFloorsQuery = {
+    floors: Array<
+        Pick<Floor, 'id' | 'name' | 'isActive'> & {
+            rooms: Maybe<
+                Array<
+                    Maybe<
+                        Pick<Room, 'id' | 'name' | 'isActive'> & {
+                            roomKind: Pick<RoomKind, 'id' | 'name'>;
+                        }
+                    >
+                >
+            >;
+        }
+    >;
+};
+
+export type GetFloorsMapQueryVariables = {
+    from: Scalars['DateTimeOffset'];
+    to: Scalars['DateTimeOffset'];
+};
+
+export type GetFloorsMapQuery = {
+    floors: Array<
+        Pick<Floor, 'id' | 'name' | 'isActive'> & {
+            rooms: Maybe<
+                Array<
+                    Maybe<
+                        Pick<Room, 'id' | 'name' | 'isActive'> & {
+                            currentBooking: Maybe<Pick<Booking, 'id'>>;
+                            roomKind: Pick<RoomKind, 'id' | 'name'>;
+                        }
+                    >
+                >
+            >;
+        }
+    >;
+};
+
+export type CreateFloorMutationVariables = {
+    input: FloorCreateInput;
+};
+
+export type CreateFloorMutation = { createFloor: Pick<Floor, 'id'> };
+
+export type UpdateFloorMutationVariables = {
+    input: FloorUpdateInput;
+};
+
+export type UpdateFloorMutation = { updateFloor: Pick<Floor, 'id'> };
+
+export type DeleteFloorMutationVariables = {
+    id: Scalars['ID'];
+};
+
+export type DeleteFloorMutation = Pick<AppMutation, 'deleteFloor'>;
+
+export type SetIsActiveFloorMutationVariables = {
+    id: Scalars['ID'];
+    isActive: Scalars['Boolean'];
+};
+
+export type SetIsActiveFloorMutation = Pick<AppMutation, 'setIsActiveFloor'>;
+
+export type GetPatronsQueryVariables = {};
+
+export type GetPatronsQuery = {
+    patrons: Array<
+        Pick<
+            Patron,
+            | 'id'
+            | 'identification'
+            | 'name'
+            | 'birthdate'
+            | 'email'
+            | 'gender'
+            | 'residence'
+            | 'domicile'
+            | 'phoneNumbers'
+            | 'nationality'
+            | 'company'
+            | 'note'
+        > & { patronKind: Pick<PatronKind, 'id'> }
+    >;
+};
+
+export type GetPatronQueryVariables = {
+    id: Scalars['ID'];
+};
+
+export type GetPatronQuery = {
+    patron: Pick<
+        Patron,
+        | 'id'
+        | 'identification'
+        | 'name'
+        | 'birthdate'
+        | 'email'
+        | 'gender'
+        | 'residence'
+        | 'domicile'
+        | 'phoneNumbers'
+        | 'nationality'
+        | 'company'
+        | 'note'
+    > & { patronKind: Pick<PatronKind, 'id'> };
+};
+
+export type CreatePatronMutationVariables = {
+    input: PatronCreateInput;
+};
+
+export type CreatePatronMutation = {
+    createPatron: Pick<
+        Patron,
+        | 'id'
+        | 'identification'
+        | 'name'
+        | 'birthdate'
+        | 'email'
+        | 'gender'
+        | 'residence'
+        | 'domicile'
+        | 'phoneNumbers'
+        | 'nationality'
+        | 'company'
+        | 'note'
+    > & { patronKind: Pick<PatronKind, 'id'> };
+};
+
+export type UpdatePatronMutationVariables = {
+    input: PatronUpdateInput;
+};
+
+export type UpdatePatronMutation = { updatePatron: Pick<Patron, 'id'> };
+
+export type GetPatronKindsQueryVariables = {};
+
+export type GetPatronKindsQuery = {
+    patronKinds: Array<
+        Pick<PatronKind, 'id' | 'name' | 'description'> & {
+            patrons: Maybe<Array<Maybe<Pick<Patron, 'id' | 'name'>>>>;
+        }
+    >;
+};
+
+export type CreatePatronKindMutationVariables = {
+    input: PatronKindCreateInput;
+};
+
+export type CreatePatronKindMutation = {
+    createPatronKind: Pick<PatronKind, 'id'>;
+};
+
+export type UpdatePatronKindMutationVariables = {
+    input: PatronKindUpdateInput;
+};
+
+export type UpdatePatronKindMutation = {
+    updatePatronKind: Pick<PatronKind, 'id'>;
+};
+
+export type GetPositionsQueryVariables = {};
+
+export type GetPositionsQuery = {
+    positions: Array<
+        Pick<
+            Position,
+            | 'id'
+            | 'name'
+            | 'permissionCleaning'
+            | 'permissionGetAccountingVoucher'
+            | 'permissionGetHouseKeeping'
+            | 'permissionGetMap'
+            | 'permissionGetPatron'
+            | 'permissionGetRate'
+            | 'permissionGetService'
+            | 'permissionManageEmployee'
+            | 'permissionManageHiringRoom'
+            | 'permissionManageMap'
+            | 'permissionManagePatron'
+            | 'permissionManagePatronKind'
+            | 'permissionManagePosition'
+            | 'permissionManageRate'
+            | 'permissionManageService'
+            | 'isActive'
+        > & {
+            employees: Maybe<Array<Maybe<Pick<Employee, 'id' | 'isActive'>>>>;
+        }
+    >;
+};
+
+export type CreatePositionMutationVariables = {
+    input: PositionCreateInput;
+};
+
+export type CreatePositionMutation = { createPosition: Pick<Position, 'id'> };
+
+export type UpdatePositionMutationVariables = {
+    input: PositionUpdateInput;
+};
+
+export type UpdatePositionMutation = { updatePosition: Pick<Position, 'id'> };
+
+export type DeletePositionMutationVariables = {
+    id: Scalars['ID'];
+};
+
+export type DeletePositionMutation = Pick<AppMutation, 'deletePosition'>;
+
+export type SetIsActivePositionMutationVariables = {
+    id: Scalars['ID'];
+    isActive: Scalars['Boolean'];
+};
+
+export type SetIsActivePositionMutation = Pick<
+    AppMutation,
+    'setIsActivePosition'
+>;
+
+export type SetIsActivePositionAndMoveEmployeeMutationVariables = {
+    id: Scalars['ID'];
+    newId: Scalars['ID'];
+    isActive: Scalars['Boolean'];
+};
+
+export type SetIsActivePositionAndMoveEmployeeMutation = Pick<
+    AppMutation,
+    'setIsActivePositionAndMoveEmployee'
+>;
+
+export type GetRatesQueryVariables = {};
+
+export type GetRatesQuery = {
+    rates: Array<
+        Pick<Rate, 'id' | 'dayRate' | 'effectiveStartDate' | 'createDate'> & {
+            roomKind: Pick<RoomKind, 'id' | 'name'>;
+        }
+    >;
+};
+
+export type CreateRateMutationVariables = {
+    input: RateCreateInput;
+};
+
+export type CreateRateMutation = { createRate: Pick<Rate, 'id'> };
+
+export type GetReceiptsQueryVariables = {};
+
+export type GetReceiptsQuery = {
+    receipts: Array<
+        Pick<Receipt, 'id' | 'money' | 'time' | 'bankAccountNumber'> & {
+            bill: Pick<Bill, 'id'>;
+        }
+    >;
+};
+
+export type CreateReceiptMutationVariables = {
+    input: ReceiptCreateInput;
+};
+
+export type CreateReceiptMutation = { createReceipt: Pick<Receipt, 'id'> };
+
+export type GetRoomKindsQueryVariables = {};
+
+export type GetRoomKindsQuery = {
+    roomKinds: Array<
+        Pick<
+            RoomKind,
+            'id' | 'name' | 'isActive' | 'amountOfPeople' | 'numberOfBeds'
+        > & { rooms: Maybe<Array<Maybe<Pick<Room, 'id'>>>> }
+    >;
+};
+
+export type CreateRoomKindMutationVariables = {
+    input: RoomKindCreateInput;
+};
+
+export type CreateRoomKindMutation = {
+    createRoomKind: Pick<
+        RoomKind,
+        'id' | 'name' | 'numberOfBeds' | 'amountOfPeople' | 'isActive'
+    >;
+};
+
+export type UpdateRoomKindMutationVariables = {
+    input: RoomKindUpdateInput;
+};
+
+export type UpdateRoomKindMutation = { updateRoomKind: Pick<RoomKind, 'id'> };
+
+export type DeleteRoomKindMutationVariables = {
+    id: Scalars['ID'];
+};
+
+export type DeleteRoomKindMutation = Pick<AppMutation, 'deleteRoomKind'>;
+
+export type SetIsActiveRoomKindMutationVariables = {
+    id: Scalars['ID'];
+    isActive: Scalars['Boolean'];
+};
+
+export type SetIsActiveRoomKindMutation = Pick<
+    AppMutation,
+    'setIsActiveRoomKind'
+>;
+
+export type GetRoomsQueryVariables = {};
+
+export type GetRoomsQuery = {
+    rooms: Array<Pick<Room, 'id' | 'name' | 'isActive'>>;
+};
+
+export type GetRoomsWithIsEmptyQueryVariables = {
+    from: Scalars['DateTimeOffset'];
+    to: Scalars['DateTimeOffset'];
+};
+
+export type GetRoomsWithIsEmptyQuery = {
+    rooms: Array<Pick<Room, 'id' | 'name' | 'isActive' | 'isEmpty'>>;
+};
+
+export type GetRoomQueryVariables = {
+    id: Scalars['ID'];
+};
+
+export type GetRoomQuery = { room: Pick<Room, 'id' | 'name' | 'isActive'> };
+
+export type CreateRoomMutationVariables = {
+    input: RoomCreateInput;
+};
+
+export type CreateRoomMutation = { createRoom: Pick<Room, 'id'> };
+
+export type UpdateRoomMutationVariables = {
+    input: RoomUpdateInput;
+};
+
+export type UpdateRoomMutation = { updateRoom: Pick<Room, 'id'> };
+
+export type DeleteRoomMutationVariables = {
+    id: Scalars['ID'];
+};
+
+export type DeleteRoomMutation = Pick<AppMutation, 'deleteRoom'>;
+
+export type SetIsActiveRoomMutationVariables = {
+    id: Scalars['ID'];
+    isActive: Scalars['Boolean'];
+};
+
+export type SetIsActiveRoomMutation = Pick<AppMutation, 'setIsActiveRoom'>;
+
+export type CreateServicesDetailMutationVariables = {
+    input: ServicesDetailCreateInput;
+};
+
+export type CreateServicesDetailMutation = {
+    createServicesDetail: Pick<ServicesDetail, 'id'>;
+};
+
+export type GetServicesQueryVariables = {};
+
+export type GetServicesQuery = {
+    services: Array<
+        Pick<Service, 'id' | 'name' | 'unitRate' | 'unit' | 'isActive'> & {
+            servicesDetails: Maybe<
+                Array<Maybe<Pick<ServicesDetail, 'id' | 'number'>>>
+            >;
+        }
+    >;
+};
+
+export type CreateServiceMutationVariables = {
+    input: ServiceCreateInput;
+};
+
+export type CreateServiceMutation = { createService: Pick<Service, 'id'> };
+
+export type UpdateServiceMutationVariables = {
+    input: ServiceUpdateInput;
+};
+
+export type UpdateServiceMutation = { updateService: Pick<Service, 'id'> };
+
+export type DeleteServiceMutationVariables = {
+    id: Scalars['ID'];
+};
+
+export type DeleteServiceMutation = Pick<AppMutation, 'deleteService'>;
+
+export type SetIsActiveServiceMutationVariables = {
+    id: Scalars['ID'];
+    isActive: Scalars['Boolean'];
+};
+
+export type SetIsActiveServiceMutation = Pick<
+    AppMutation,
+    'setIsActiveService'
+>;
 export namespace UserLogin {
-    export interface Variables {
-        id: string;
-        password: string;
-    }
-
-    export interface Mutation {
-        __typename?: 'Mutation';
-
-        login: Login;
-    }
-
-    export interface Login {
-        __typename?: 'AuthenticationObject';
-
-        token: string;
-
-        employee: Employee;
-    }
-
-    export interface Employee {
-        __typename?: 'Employee';
-
-        id: string;
-
-        name: string;
-
-        position: Position;
-    }
-
-    export interface Position {
-        __typename?: 'Position';
-
-        id: number;
-
-        name: string;
-    }
+    export type Variables = UserLoginMutationVariables;
+    export type Mutation = UserLoginMutation;
+    export type Login = UserLoginMutation['login'];
+    export type Employee = UserLoginMutation['login']['employee'];
+    export type Position = UserLoginMutation['login']['employee']['position'];
 }
 
 export namespace UserCheckLogin {
-    export interface Variables {}
-
-    export interface Mutation {
-        __typename?: 'Mutation';
-
-        checkLogin: CheckLogin;
-    }
-
-    export interface CheckLogin {
-        __typename?: 'Employee';
-
-        id: string;
-
-        name: string;
-
-        position: Position;
-    }
-
-    export interface Position {
-        __typename?: 'Position';
-
-        id: number;
-
-        name: string;
-    }
+    export type Variables = UserCheckLoginMutationVariables;
+    export type Mutation = UserCheckLoginMutation;
+    export type CheckLogin = UserCheckLoginMutation['checkLogin'];
+    export type Position = UserCheckLoginMutation['checkLogin']['position'];
 }
 
 export namespace GetBills {
-    export interface Variables {}
-
-    export interface Query {
-        __typename?: 'Query';
-
-        bills: Bills[];
-    }
-
-    export interface Bills {
-        __typename?: 'Bill';
-
-        id: number;
-
-        time: DateTimeOffset;
-
-        total: number;
-
-        patron: Patron;
-
-        receipts: Maybe<(Maybe<Receipts>)[]>;
-
-        bookings: Maybe<(Maybe<Bookings>)[]>;
-    }
-
-    export interface Patron {
-        __typename?: 'Patron';
-
-        id: number;
-
-        name: string;
-    }
-
-    export interface Receipts {
-        __typename?: 'Receipt';
-
-        id: number;
-
-        money: number;
-    }
-
-    export interface Bookings {
-        __typename?: 'Booking';
-
-        id: number;
-    }
+    export type Variables = GetBillsQueryVariables;
+    export type Query = GetBillsQuery;
+    export type Bills = NonNullable<GetBillsQuery['bills'][0]>;
+    export type Patron = (NonNullable<GetBillsQuery['bills'][0]>)['patron'];
+    export type Receipts = NonNullable<
+        (NonNullable<(NonNullable<GetBillsQuery['bills'][0]>)['receipts']>)[0]
+    >;
+    export type Bookings = NonNullable<
+        (NonNullable<(NonNullable<GetBillsQuery['bills'][0]>)['bookings']>)[0]
+    >;
 }
 
 export namespace AddBookingToBill {
-    export interface Variables {
-        bill: BillId;
-        booking: BookingCreateInput;
-    }
-
-    export interface Mutation {
-        __typename?: 'Mutation';
-
-        addBookingToBill: AddBookingToBill;
-    }
-
-    export interface AddBookingToBill {
-        __typename?: 'Booking';
-
-        id: number;
-    }
+    export type Variables = AddBookingToBillMutationVariables;
+    export type Mutation = AddBookingToBillMutation;
+    export type AddBookingToBill = AddBookingToBillMutation['addBookingToBill'];
 }
 
 export namespace BookAndCheckIn {
-    export interface Variables {
-        bookings: BookAndCheckInCreateInput[];
-        bill: BillCreateInput;
-    }
-
-    export interface Mutation {
-        __typename?: 'Mutation';
-
-        bookAndCheckIn: BookAndCheckIn;
-    }
-
-    export interface BookAndCheckIn {
-        __typename?: 'Bill';
-
-        id: number;
-    }
+    export type Variables = BookAndCheckInMutationVariables;
+    export type Mutation = BookAndCheckInMutation;
+    export type BookAndCheckIn = BookAndCheckInMutation['bookAndCheckIn'];
 }
 
 export namespace CreateBill {
-    export interface Variables {
-        bookings: BookingCreateInput[];
-        bill: BillCreateInput;
-    }
-
-    export interface Mutation {
-        __typename?: 'Mutation';
-
-        createBill: CreateBill;
-    }
-
-    export interface CreateBill {
-        __typename?: 'Bill';
-
-        id: number;
-    }
+    export type Variables = CreateBillMutationVariables;
+    export type Mutation = CreateBillMutation;
+    export type CreateBill = CreateBillMutation['createBill'];
 }
 
 export namespace PayTheBill {
-    export interface Variables {
-        id: string;
-    }
-
-    export interface Mutation {
-        __typename?: 'Mutation';
-
-        payTheBill: PayTheBill;
-    }
-
-    export interface PayTheBill {
-        __typename?: 'Bill';
-
-        id: number;
-    }
+    export type Variables = PayTheBillMutationVariables;
+    export type Mutation = PayTheBillMutation;
+    export type PayTheBill = PayTheBillMutation['payTheBill'];
 }
 
 export namespace GetBookings {
-    export interface Variables {}
-
-    export interface Query {
-        __typename?: 'Query';
-
-        bookings: Bookings[];
-    }
-
-    export interface Bookings {
-        __typename?: 'Booking';
-
-        id: number;
-
-        bookCheckInTime: Maybe<DateTimeOffset>;
-
-        bookCheckOutTime: Maybe<DateTimeOffset>;
-
-        realCheckInTime: Maybe<DateTimeOffset>;
-
-        realCheckOutTime: Maybe<DateTimeOffset>;
-
-        status: number;
-
-        patrons: (Maybe<Patrons>)[];
-
-        bill: Bill;
-
-        room: Room;
-    }
-
-    export interface Patrons {
-        __typename?: 'Patron';
-
-        id: number;
-
-        name: string;
-    }
-
-    export interface Bill {
-        __typename?: 'Bill';
-
-        id: number;
-    }
-
-    export interface Room {
-        __typename?: 'Room';
-
-        id: number;
-
-        name: string;
-    }
+    export type Variables = GetBookingsQueryVariables;
+    export type Query = GetBookingsQuery;
+    export type Bookings = NonNullable<GetBookingsQuery['bookings'][0]>;
+    export type Patrons = NonNullable<
+        (NonNullable<GetBookingsQuery['bookings'][0]>)['patrons'][0]
+    >;
+    export type Bill = (NonNullable<GetBookingsQuery['bookings'][0]>)['bill'];
+    export type Room = (NonNullable<GetBookingsQuery['bookings'][0]>)['room'];
 }
 
 export namespace GetSimpleBookings {
-    export interface Variables {}
-
-    export interface Query {
-        __typename?: 'Query';
-
-        bookings: Bookings[];
-    }
-
-    export interface Bookings {
-        __typename?: 'Booking';
-
-        id: number;
-
-        status: number;
-
-        room: Room;
-    }
-
-    export interface Room {
-        __typename?: 'Room';
-
-        id: number;
-
-        name: string;
-    }
+    export type Variables = GetSimpleBookingsQueryVariables;
+    export type Query = GetSimpleBookingsQuery;
+    export type Bookings = NonNullable<GetSimpleBookingsQuery['bookings'][0]>;
+    export type Room = (NonNullable<
+        GetSimpleBookingsQuery['bookings'][0]
+    >)['room'];
 }
 
 export namespace CheckIn {
-    export interface Variables {
-        id: string;
-    }
-
-    export interface Mutation {
-        __typename?: 'Mutation';
-
-        checkIn: CheckIn;
-    }
-
-    export interface CheckIn {
-        __typename?: 'Booking';
-
-        id: number;
-    }
+    export type Variables = CheckInMutationVariables;
+    export type Mutation = CheckInMutation;
+    export type CheckIn = CheckInMutation['checkIn'];
 }
 
 export namespace RequestCheckOut {
-    export interface Variables {
-        id: string;
-    }
-
-    export interface Mutation {
-        __typename?: 'Mutation';
-
-        requestCheckOut: RequestCheckOut;
-    }
-
-    export interface RequestCheckOut {
-        __typename?: 'Booking';
-
-        id: number;
-    }
+    export type Variables = RequestCheckOutMutationVariables;
+    export type Mutation = RequestCheckOutMutation;
+    export type RequestCheckOut = RequestCheckOutMutation['requestCheckOut'];
 }
 
 export namespace CheckOut {
-    export interface Variables {
-        id: string;
-    }
-
-    export interface Mutation {
-        __typename?: 'Mutation';
-
-        checkOut: CheckOut;
-    }
-
-    export interface CheckOut {
-        __typename?: 'Booking';
-
-        id: number;
-    }
+    export type Variables = CheckOutMutationVariables;
+    export type Mutation = CheckOutMutation;
+    export type CheckOut = CheckOutMutation['checkOut'];
 }
 
 export namespace Cancel {
-    export interface Variables {
-        id: string;
-    }
-
-    export interface Mutation {
-        __typename?: 'Mutation';
-
-        cancel: string;
-    }
+    export type Variables = CancelMutationVariables;
+    export type Mutation = CancelMutation;
 }
 
 export namespace GetEmployees {
-    export interface Variables {}
-
-    export interface Query {
-        __typename?: 'Query';
-
-        employees: Employees[];
-    }
-
-    export interface Employees {
-        __typename?: 'Employee';
-
-        id: string;
-
-        name: string;
-
-        identityCard: string;
-
-        phoneNumber: string;
-
-        address: string;
-
-        email: string;
-
-        birthdate: DateTimeOffset;
-
-        gender: boolean;
-
-        startingDate: DateTimeOffset;
-
-        isActive: boolean;
-
-        position: Position;
-    }
-
-    export interface Position {
-        __typename?: 'Position';
-
-        id: number;
-
-        name: string;
-    }
+    export type Variables = GetEmployeesQueryVariables;
+    export type Query = GetEmployeesQuery;
+    export type Employees = NonNullable<GetEmployeesQuery['employees'][0]>;
+    export type Position = (NonNullable<
+        GetEmployeesQuery['employees'][0]
+    >)['position'];
 }
 
 export namespace CreateEmployee {
-    export interface Variables {
-        input: EmployeeCreateInput;
-    }
-
-    export interface Mutation {
-        __typename?: 'Mutation';
-
-        createEmployee: CreateEmployee;
-    }
-
-    export interface CreateEmployee {
-        __typename?: 'Employee';
-
-        id: string;
-    }
+    export type Variables = CreateEmployeeMutationVariables;
+    export type Mutation = CreateEmployeeMutation;
+    export type CreateEmployee = CreateEmployeeMutation['createEmployee'];
 }
 
 export namespace UpdateEmployee {
-    export interface Variables {
-        input: EmployeeUpdateInput;
-    }
-
-    export interface Mutation {
-        __typename?: 'Mutation';
-
-        updateEmployee: UpdateEmployee;
-    }
-
-    export interface UpdateEmployee {
-        __typename?: 'Employee';
-
-        id: string;
-    }
+    export type Variables = UpdateEmployeeMutationVariables;
+    export type Mutation = UpdateEmployeeMutation;
+    export type UpdateEmployee = UpdateEmployeeMutation['updateEmployee'];
 }
 
 export namespace ResetPassword {
-    export interface Variables {
-        id: string;
-    }
-
-    export interface Mutation {
-        __typename?: 'Mutation';
-
-        resetPassword: string;
-    }
+    export type Variables = ResetPasswordMutationVariables;
+    export type Mutation = ResetPasswordMutation;
 }
 
 export namespace SetIsActiveAccount {
-    export interface Variables {
-        id: string;
-        isActive: boolean;
-    }
-
-    export interface Mutation {
-        __typename?: 'Mutation';
-
-        setIsActiveAccount: string;
-    }
+    export type Variables = SetIsActiveAccountMutationVariables;
+    export type Mutation = SetIsActiveAccountMutation;
 }
 
 export namespace ChangePassword {
-    export interface Variables {
-        password: string;
-        newPassword: string;
-    }
-
-    export interface Mutation {
-        __typename?: 'Mutation';
-
-        changePassword: string;
-    }
+    export type Variables = ChangePasswordMutationVariables;
+    export type Mutation = ChangePasswordMutation;
 }
 
 export namespace GetFloors {
-    export interface Variables {}
-
-    export interface Query {
-        __typename?: 'Query';
-
-        floors: Floors[];
-    }
-
-    export interface Floors {
-        __typename?: 'Floor';
-
-        id: number;
-
-        name: string;
-
-        isActive: boolean;
-
-        rooms: Maybe<(Maybe<Rooms>)[]>;
-    }
-
-    export interface Rooms {
-        __typename?: 'Room';
-
-        id: number;
-
-        name: string;
-
-        isActive: boolean;
-
-        roomKind: RoomKind;
-    }
-
-    export interface RoomKind {
-        __typename?: 'RoomKind';
-
-        id: number;
-
-        name: string;
-    }
+    export type Variables = GetFloorsQueryVariables;
+    export type Query = GetFloorsQuery;
+    export type Floors = NonNullable<GetFloorsQuery['floors'][0]>;
+    export type Rooms = NonNullable<
+        (NonNullable<(NonNullable<GetFloorsQuery['floors'][0]>)['rooms']>)[0]
+    >;
+    export type RoomKind = (NonNullable<
+        (NonNullable<(NonNullable<GetFloorsQuery['floors'][0]>)['rooms']>)[0]
+    >)['roomKind'];
 }
 
 export namespace GetFloorsMap {
-    export interface Variables {
-        from: DateTimeOffset;
-        to: DateTimeOffset;
-    }
-
-    export interface Query {
-        __typename?: 'Query';
-
-        floors: Floors[];
-    }
-
-    export interface Floors {
-        __typename?: 'Floor';
-
-        id: number;
-
-        name: string;
-
-        isActive: boolean;
-
-        rooms: Maybe<(Maybe<Rooms>)[]>;
-    }
-
-    export interface Rooms {
-        __typename?: 'Room';
-
-        id: number;
-
-        name: string;
-
-        isActive: boolean;
-
-        currentBooking: Maybe<CurrentBooking>;
-
-        roomKind: RoomKind;
-    }
-
-    export interface CurrentBooking {
-        __typename?: 'Booking';
-
-        id: number;
-    }
-
-    export interface RoomKind {
-        __typename?: 'RoomKind';
-
-        id: number;
-
-        name: string;
-    }
+    export type Variables = GetFloorsMapQueryVariables;
+    export type Query = GetFloorsMapQuery;
+    export type Floors = NonNullable<GetFloorsMapQuery['floors'][0]>;
+    export type Rooms = NonNullable<
+        (NonNullable<(NonNullable<GetFloorsMapQuery['floors'][0]>)['rooms']>)[0]
+    >;
+    export type CurrentBooking = NonNullable<
+        (NonNullable<
+            (NonNullable<
+                (NonNullable<GetFloorsMapQuery['floors'][0]>)['rooms']
+            >)[0]
+        >)['currentBooking']
+    >;
+    export type RoomKind = (NonNullable<
+        (NonNullable<(NonNullable<GetFloorsMapQuery['floors'][0]>)['rooms']>)[0]
+    >)['roomKind'];
 }
 
 export namespace CreateFloor {
-    export interface Variables {
-        input: FloorCreateInput;
-    }
-
-    export interface Mutation {
-        __typename?: 'Mutation';
-
-        createFloor: CreateFloor;
-    }
-
-    export interface CreateFloor {
-        __typename?: 'Floor';
-
-        id: number;
-    }
+    export type Variables = CreateFloorMutationVariables;
+    export type Mutation = CreateFloorMutation;
+    export type CreateFloor = CreateFloorMutation['createFloor'];
 }
 
 export namespace UpdateFloor {
-    export interface Variables {
-        input: FloorUpdateInput;
-    }
-
-    export interface Mutation {
-        __typename?: 'Mutation';
-
-        updateFloor: UpdateFloor;
-    }
-
-    export interface UpdateFloor {
-        __typename?: 'Floor';
-
-        id: number;
-    }
+    export type Variables = UpdateFloorMutationVariables;
+    export type Mutation = UpdateFloorMutation;
+    export type UpdateFloor = UpdateFloorMutation['updateFloor'];
 }
 
 export namespace DeleteFloor {
-    export interface Variables {
-        id: string;
-    }
-
-    export interface Mutation {
-        __typename?: 'Mutation';
-
-        deleteFloor: string;
-    }
+    export type Variables = DeleteFloorMutationVariables;
+    export type Mutation = DeleteFloorMutation;
 }
 
 export namespace SetIsActiveFloor {
-    export interface Variables {
-        id: string;
-        isActive: boolean;
-    }
-
-    export interface Mutation {
-        __typename?: 'Mutation';
-
-        setIsActiveFloor: string;
-    }
+    export type Variables = SetIsActiveFloorMutationVariables;
+    export type Mutation = SetIsActiveFloorMutation;
 }
 
 export namespace GetPatrons {
-    export interface Variables {}
-
-    export interface Query {
-        __typename?: 'Query';
-
-        patrons: Patrons[];
-    }
-
-    export interface Patrons {
-        __typename?: 'Patron';
-
-        id: number;
-
-        identification: string;
-
-        name: string;
-
-        birthdate: DateTimeOffset;
-
-        email: string;
-
-        gender: boolean;
-
-        residence: string;
-
-        domicile: string;
-
-        phoneNumbers: string[];
-
-        nationality: string;
-
-        company: string;
-
-        note: string;
-
-        patronKind: PatronKind;
-    }
-
-    export interface PatronKind {
-        __typename?: 'PatronKind';
-
-        id: number;
-    }
+    export type Variables = GetPatronsQueryVariables;
+    export type Query = GetPatronsQuery;
+    export type Patrons = NonNullable<GetPatronsQuery['patrons'][0]>;
+    export type PatronKind = (NonNullable<
+        GetPatronsQuery['patrons'][0]
+    >)['patronKind'];
 }
 
 export namespace GetPatron {
-    export interface Variables {
-        id: string;
-    }
-
-    export interface Query {
-        __typename?: 'Query';
-
-        patron: Patron;
-    }
-
-    export interface Patron {
-        __typename?: 'Patron';
-
-        id: number;
-
-        identification: string;
-
-        name: string;
-
-        birthdate: DateTimeOffset;
-
-        email: string;
-
-        gender: boolean;
-
-        residence: string;
-
-        domicile: string;
-
-        phoneNumbers: string[];
-
-        nationality: string;
-
-        company: string;
-
-        note: string;
-
-        patronKind: PatronKind;
-    }
-
-    export interface PatronKind {
-        __typename?: 'PatronKind';
-
-        id: number;
-    }
+    export type Variables = GetPatronQueryVariables;
+    export type Query = GetPatronQuery;
+    export type Patron = GetPatronQuery['patron'];
+    export type PatronKind = GetPatronQuery['patron']['patronKind'];
 }
 
 export namespace CreatePatron {
-    export interface Variables {
-        input: PatronCreateInput;
-    }
-
-    export interface Mutation {
-        __typename?: 'Mutation';
-
-        createPatron: CreatePatron;
-    }
-
-    export interface CreatePatron {
-        __typename?: 'Patron';
-
-        id: number;
-
-        identification: string;
-
-        name: string;
-
-        birthdate: DateTimeOffset;
-
-        email: string;
-
-        gender: boolean;
-
-        residence: string;
-
-        domicile: string;
-
-        phoneNumbers: string[];
-
-        nationality: string;
-
-        company: string;
-
-        note: string;
-
-        patronKind: PatronKind;
-    }
-
-    export interface PatronKind {
-        __typename?: 'PatronKind';
-
-        id: number;
-    }
+    export type Variables = CreatePatronMutationVariables;
+    export type Mutation = CreatePatronMutation;
+    export type CreatePatron = CreatePatronMutation['createPatron'];
+    export type PatronKind = CreatePatronMutation['createPatron']['patronKind'];
 }
 
 export namespace UpdatePatron {
-    export interface Variables {
-        input: PatronUpdateInput;
-    }
-
-    export interface Mutation {
-        __typename?: 'Mutation';
-
-        updatePatron: UpdatePatron;
-    }
-
-    export interface UpdatePatron {
-        __typename?: 'Patron';
-
-        id: number;
-    }
+    export type Variables = UpdatePatronMutationVariables;
+    export type Mutation = UpdatePatronMutation;
+    export type UpdatePatron = UpdatePatronMutation['updatePatron'];
 }
 
 export namespace GetPatronKinds {
-    export interface Variables {}
-
-    export interface Query {
-        __typename?: 'Query';
-
-        patronKinds: PatronKinds[];
-    }
-
-    export interface PatronKinds {
-        __typename?: 'PatronKind';
-
-        id: number;
-
-        name: string;
-
-        description: string;
-
-        patrons: Maybe<(Maybe<Patrons>)[]>;
-    }
-
-    export interface Patrons {
-        __typename?: 'Patron';
-
-        id: number;
-
-        name: string;
-    }
+    export type Variables = GetPatronKindsQueryVariables;
+    export type Query = GetPatronKindsQuery;
+    export type PatronKinds = NonNullable<
+        GetPatronKindsQuery['patronKinds'][0]
+    >;
+    export type Patrons = NonNullable<
+        (NonNullable<
+            (NonNullable<GetPatronKindsQuery['patronKinds'][0]>)['patrons']
+        >)[0]
+    >;
 }
 
 export namespace CreatePatronKind {
-    export interface Variables {
-        input: PatronKindCreateInput;
-    }
-
-    export interface Mutation {
-        __typename?: 'Mutation';
-
-        createPatronKind: CreatePatronKind;
-    }
-
-    export interface CreatePatronKind {
-        __typename?: 'PatronKind';
-
-        id: number;
-    }
+    export type Variables = CreatePatronKindMutationVariables;
+    export type Mutation = CreatePatronKindMutation;
+    export type CreatePatronKind = CreatePatronKindMutation['createPatronKind'];
 }
 
 export namespace UpdatePatronKind {
-    export interface Variables {
-        input: PatronKindUpdateInput;
-    }
-
-    export interface Mutation {
-        __typename?: 'Mutation';
-
-        updatePatronKind: UpdatePatronKind;
-    }
-
-    export interface UpdatePatronKind {
-        __typename?: 'PatronKind';
-
-        id: number;
-    }
+    export type Variables = UpdatePatronKindMutationVariables;
+    export type Mutation = UpdatePatronKindMutation;
+    export type UpdatePatronKind = UpdatePatronKindMutation['updatePatronKind'];
 }
 
 export namespace GetPositions {
-    export interface Variables {}
-
-    export interface Query {
-        __typename?: 'Query';
-
-        positions: Positions[];
-    }
-
-    export interface Positions {
-        __typename?: 'Position';
-
-        id: number;
-
-        name: string;
-
-        permissionCleaning: boolean;
-
-        permissionGetAccountingVoucher: boolean;
-
-        permissionGetHouseKeeping: boolean;
-
-        permissionGetMap: boolean;
-
-        permissionGetPatron: boolean;
-
-        permissionGetRate: boolean;
-
-        permissionGetService: boolean;
-
-        permissionManageEmployee: boolean;
-
-        permissionManageHiringRoom: boolean;
-
-        permissionManageMap: boolean;
-
-        permissionManagePatron: boolean;
-
-        permissionManagePatronKind: boolean;
-
-        permissionManagePosition: boolean;
-
-        permissionManageRate: boolean;
-
-        permissionManageService: boolean;
-
-        isActive: boolean;
-
-        employees: Maybe<(Maybe<Employees>)[]>;
-    }
-
-    export interface Employees {
-        __typename?: 'Employee';
-
-        id: string;
-
-        isActive: boolean;
-    }
+    export type Variables = GetPositionsQueryVariables;
+    export type Query = GetPositionsQuery;
+    export type Positions = NonNullable<GetPositionsQuery['positions'][0]>;
+    export type Employees = NonNullable<
+        (NonNullable<
+            (NonNullable<GetPositionsQuery['positions'][0]>)['employees']
+        >)[0]
+    >;
 }
 
 export namespace CreatePosition {
-    export interface Variables {
-        input: PositionCreateInput;
-    }
-
-    export interface Mutation {
-        __typename?: 'Mutation';
-
-        createPosition: CreatePosition;
-    }
-
-    export interface CreatePosition {
-        __typename?: 'Position';
-
-        id: number;
-    }
+    export type Variables = CreatePositionMutationVariables;
+    export type Mutation = CreatePositionMutation;
+    export type CreatePosition = CreatePositionMutation['createPosition'];
 }
 
 export namespace UpdatePosition {
-    export interface Variables {
-        input: PositionUpdateInput;
-    }
-
-    export interface Mutation {
-        __typename?: 'Mutation';
-
-        updatePosition: UpdatePosition;
-    }
-
-    export interface UpdatePosition {
-        __typename?: 'Position';
-
-        id: number;
-    }
+    export type Variables = UpdatePositionMutationVariables;
+    export type Mutation = UpdatePositionMutation;
+    export type UpdatePosition = UpdatePositionMutation['updatePosition'];
 }
 
 export namespace DeletePosition {
-    export interface Variables {
-        id: string;
-    }
-
-    export interface Mutation {
-        __typename?: 'Mutation';
-
-        deletePosition: string;
-    }
+    export type Variables = DeletePositionMutationVariables;
+    export type Mutation = DeletePositionMutation;
 }
 
 export namespace SetIsActivePosition {
-    export interface Variables {
-        id: string;
-        isActive: boolean;
-    }
-
-    export interface Mutation {
-        __typename?: 'Mutation';
-
-        setIsActivePosition: string;
-    }
+    export type Variables = SetIsActivePositionMutationVariables;
+    export type Mutation = SetIsActivePositionMutation;
 }
 
 export namespace SetIsActivePositionAndMoveEmployee {
-    export interface Variables {
-        id: string;
-        newId: string;
-        isActive: boolean;
-    }
-
-    export interface Mutation {
-        __typename?: 'Mutation';
-
-        setIsActivePositionAndMoveEmployee: string;
-    }
+    export type Variables = SetIsActivePositionAndMoveEmployeeMutationVariables;
+    export type Mutation = SetIsActivePositionAndMoveEmployeeMutation;
 }
 
 export namespace GetRates {
-    export interface Variables {}
-
-    export interface Query {
-        __typename?: 'Query';
-
-        rates: Rates[];
-    }
-
-    export interface Rates {
-        __typename?: 'Rate';
-
-        id: number;
-
-        dayRate: number;
-
-        effectiveStartDate: DateTimeOffset;
-
-        createDate: DateTimeOffset;
-
-        roomKind: RoomKind;
-    }
-
-    export interface RoomKind {
-        __typename?: 'RoomKind';
-
-        id: number;
-
-        name: string;
-    }
+    export type Variables = GetRatesQueryVariables;
+    export type Query = GetRatesQuery;
+    export type Rates = NonNullable<GetRatesQuery['rates'][0]>;
+    export type RoomKind = (NonNullable<GetRatesQuery['rates'][0]>)['roomKind'];
 }
 
 export namespace CreateRate {
-    export interface Variables {
-        input: RateCreateInput;
-    }
-
-    export interface Mutation {
-        __typename?: 'Mutation';
-
-        createRate: CreateRate;
-    }
-
-    export interface CreateRate {
-        __typename?: 'Rate';
-
-        id: number;
-    }
+    export type Variables = CreateRateMutationVariables;
+    export type Mutation = CreateRateMutation;
+    export type CreateRate = CreateRateMutation['createRate'];
 }
 
 export namespace GetReceipts {
-    export interface Variables {}
-
-    export interface Query {
-        __typename?: 'Query';
-
-        receipts: Receipts[];
-    }
-
-    export interface Receipts {
-        __typename?: 'Receipt';
-
-        id: number;
-
-        money: number;
-
-        time: DateTimeOffset;
-
-        bankAccountNumber: Maybe<string>;
-
-        bill: Bill;
-    }
-
-    export interface Bill {
-        __typename?: 'Bill';
-
-        id: number;
-    }
+    export type Variables = GetReceiptsQueryVariables;
+    export type Query = GetReceiptsQuery;
+    export type Receipts = NonNullable<GetReceiptsQuery['receipts'][0]>;
+    export type Bill = (NonNullable<GetReceiptsQuery['receipts'][0]>)['bill'];
 }
 
 export namespace CreateReceipt {
-    export interface Variables {
-        input: ReceiptCreateInput;
-    }
-
-    export interface Mutation {
-        __typename?: 'Mutation';
-
-        createReceipt: CreateReceipt;
-    }
-
-    export interface CreateReceipt {
-        __typename?: 'Receipt';
-
-        id: number;
-    }
+    export type Variables = CreateReceiptMutationVariables;
+    export type Mutation = CreateReceiptMutation;
+    export type CreateReceipt = CreateReceiptMutation['createReceipt'];
 }
 
 export namespace GetRoomKinds {
-    export interface Variables {}
-
-    export interface Query {
-        __typename?: 'Query';
-
-        roomKinds: RoomKinds[];
-    }
-
-    export interface RoomKinds {
-        __typename?: 'RoomKind';
-
-        id: number;
-
-        name: string;
-
-        isActive: boolean;
-
-        amountOfPeople: number;
-
-        numberOfBeds: number;
-
-        rooms: Maybe<(Maybe<Rooms>)[]>;
-    }
-
-    export interface Rooms {
-        __typename?: 'Room';
-
-        id: number;
-    }
+    export type Variables = GetRoomKindsQueryVariables;
+    export type Query = GetRoomKindsQuery;
+    export type RoomKinds = NonNullable<GetRoomKindsQuery['roomKinds'][0]>;
+    export type Rooms = NonNullable<
+        (NonNullable<
+            (NonNullable<GetRoomKindsQuery['roomKinds'][0]>)['rooms']
+        >)[0]
+    >;
 }
 
 export namespace CreateRoomKind {
-    export interface Variables {
-        input: RoomKindCreateInput;
-    }
-
-    export interface Mutation {
-        __typename?: 'Mutation';
-
-        createRoomKind: CreateRoomKind;
-    }
-
-    export interface CreateRoomKind {
-        __typename?: 'RoomKind';
-
-        id: number;
-
-        name: string;
-
-        numberOfBeds: number;
-
-        amountOfPeople: number;
-
-        isActive: boolean;
-    }
+    export type Variables = CreateRoomKindMutationVariables;
+    export type Mutation = CreateRoomKindMutation;
+    export type CreateRoomKind = CreateRoomKindMutation['createRoomKind'];
 }
 
 export namespace UpdateRoomKind {
-    export interface Variables {
-        input: RoomKindUpdateInput;
-    }
-
-    export interface Mutation {
-        __typename?: 'Mutation';
-
-        updateRoomKind: UpdateRoomKind;
-    }
-
-    export interface UpdateRoomKind {
-        __typename?: 'RoomKind';
-
-        id: number;
-    }
+    export type Variables = UpdateRoomKindMutationVariables;
+    export type Mutation = UpdateRoomKindMutation;
+    export type UpdateRoomKind = UpdateRoomKindMutation['updateRoomKind'];
 }
 
 export namespace DeleteRoomKind {
-    export interface Variables {
-        id: string;
-    }
-
-    export interface Mutation {
-        __typename?: 'Mutation';
-
-        deleteRoomKind: string;
-    }
+    export type Variables = DeleteRoomKindMutationVariables;
+    export type Mutation = DeleteRoomKindMutation;
 }
 
 export namespace SetIsActiveRoomKind {
-    export interface Variables {
-        id: string;
-        isActive: boolean;
-    }
-
-    export interface Mutation {
-        __typename?: 'Mutation';
-
-        setIsActiveRoomKind: string;
-    }
+    export type Variables = SetIsActiveRoomKindMutationVariables;
+    export type Mutation = SetIsActiveRoomKindMutation;
 }
 
 export namespace GetRooms {
-    export interface Variables {}
-
-    export interface Query {
-        __typename?: 'Query';
-
-        rooms: Rooms[];
-    }
-
-    export interface Rooms {
-        __typename?: 'Room';
-
-        id: number;
-
-        name: string;
-
-        isActive: boolean;
-    }
+    export type Variables = GetRoomsQueryVariables;
+    export type Query = GetRoomsQuery;
+    export type Rooms = NonNullable<GetRoomsQuery['rooms'][0]>;
 }
 
 export namespace GetRoomsWithIsEmpty {
-    export interface Variables {
-        from: DateTimeOffset;
-        to: DateTimeOffset;
-    }
-
-    export interface Query {
-        __typename?: 'Query';
-
-        rooms: Rooms[];
-    }
-
-    export interface Rooms {
-        __typename?: 'Room';
-
-        id: number;
-
-        name: string;
-
-        isActive: boolean;
-
-        isEmpty: boolean;
-    }
+    export type Variables = GetRoomsWithIsEmptyQueryVariables;
+    export type Query = GetRoomsWithIsEmptyQuery;
+    export type Rooms = NonNullable<GetRoomsWithIsEmptyQuery['rooms'][0]>;
 }
 
 export namespace GetRoom {
-    export interface Variables {
-        id: string;
-    }
-
-    export interface Query {
-        __typename?: 'Query';
-
-        room: Room;
-    }
-
-    export interface Room {
-        __typename?: 'Room';
-
-        id: number;
-
-        name: string;
-
-        isActive: boolean;
-    }
+    export type Variables = GetRoomQueryVariables;
+    export type Query = GetRoomQuery;
+    export type Room = GetRoomQuery['room'];
 }
 
 export namespace CreateRoom {
-    export interface Variables {
-        input: RoomCreateInput;
-    }
-
-    export interface Mutation {
-        __typename?: 'Mutation';
-
-        createRoom: CreateRoom;
-    }
-
-    export interface CreateRoom {
-        __typename?: 'Room';
-
-        id: number;
-    }
+    export type Variables = CreateRoomMutationVariables;
+    export type Mutation = CreateRoomMutation;
+    export type CreateRoom = CreateRoomMutation['createRoom'];
 }
 
 export namespace UpdateRoom {
-    export interface Variables {
-        input: RoomUpdateInput;
-    }
-
-    export interface Mutation {
-        __typename?: 'Mutation';
-
-        updateRoom: UpdateRoom;
-    }
-
-    export interface UpdateRoom {
-        __typename?: 'Room';
-
-        id: number;
-    }
+    export type Variables = UpdateRoomMutationVariables;
+    export type Mutation = UpdateRoomMutation;
+    export type UpdateRoom = UpdateRoomMutation['updateRoom'];
 }
 
 export namespace DeleteRoom {
-    export interface Variables {
-        id: string;
-    }
-
-    export interface Mutation {
-        __typename?: 'Mutation';
-
-        deleteRoom: string;
-    }
+    export type Variables = DeleteRoomMutationVariables;
+    export type Mutation = DeleteRoomMutation;
 }
 
 export namespace SetIsActiveRoom {
-    export interface Variables {
-        id: string;
-        isActive: boolean;
-    }
-
-    export interface Mutation {
-        __typename?: 'Mutation';
-
-        setIsActiveRoom: string;
-    }
+    export type Variables = SetIsActiveRoomMutationVariables;
+    export type Mutation = SetIsActiveRoomMutation;
 }
 
 export namespace CreateServicesDetail {
-    export interface Variables {
-        input: ServicesDetailCreateInput;
-    }
-
-    export interface Mutation {
-        __typename?: 'Mutation';
-
-        createServicesDetail: CreateServicesDetail;
-    }
-
-    export interface CreateServicesDetail {
-        __typename?: 'ServicesDetail';
-
-        id: number;
-    }
+    export type Variables = CreateServicesDetailMutationVariables;
+    export type Mutation = CreateServicesDetailMutation;
+    export type CreateServicesDetail = CreateServicesDetailMutation['createServicesDetail'];
 }
 
 export namespace GetServices {
-    export interface Variables {}
-
-    export interface Query {
-        __typename?: 'Query';
-
-        services: Services[];
-    }
-
-    export interface Services {
-        __typename?: 'Service';
-
-        id: number;
-
-        name: string;
-
-        unitRate: number;
-
-        unit: string;
-
-        isActive: boolean;
-
-        servicesDetails: Maybe<(Maybe<ServicesDetails>)[]>;
-    }
-
-    export interface ServicesDetails {
-        __typename?: 'ServicesDetail';
-
-        id: number;
-
-        number: number;
-    }
+    export type Variables = GetServicesQueryVariables;
+    export type Query = GetServicesQuery;
+    export type Services = NonNullable<GetServicesQuery['services'][0]>;
+    export type ServicesDetails = NonNullable<
+        (NonNullable<
+            (NonNullable<GetServicesQuery['services'][0]>)['servicesDetails']
+        >)[0]
+    >;
 }
 
 export namespace CreateService {
-    export interface Variables {
-        input: ServiceCreateInput;
-    }
-
-    export interface Mutation {
-        __typename?: 'Mutation';
-
-        createService: CreateService;
-    }
-
-    export interface CreateService {
-        __typename?: 'Service';
-
-        id: number;
-    }
+    export type Variables = CreateServiceMutationVariables;
+    export type Mutation = CreateServiceMutation;
+    export type CreateService = CreateServiceMutation['createService'];
 }
 
 export namespace UpdateService {
-    export interface Variables {
-        input: ServiceUpdateInput;
-    }
-
-    export interface Mutation {
-        __typename?: 'Mutation';
-
-        updateService: UpdateService;
-    }
-
-    export interface UpdateService {
-        __typename?: 'Service';
-
-        id: number;
-    }
+    export type Variables = UpdateServiceMutationVariables;
+    export type Mutation = UpdateServiceMutation;
+    export type UpdateService = UpdateServiceMutation['updateService'];
 }
 
 export namespace DeleteService {
-    export interface Variables {
-        id: string;
-    }
-
-    export interface Mutation {
-        __typename?: 'Mutation';
-
-        deleteService: string;
-    }
+    export type Variables = DeleteServiceMutationVariables;
+    export type Mutation = DeleteServiceMutation;
 }
 
 export namespace SetIsActiveService {
-    export interface Variables {
-        id: string;
-        isActive: boolean;
-    }
-
-    export interface Mutation {
-        __typename?: 'Mutation';
-
-        setIsActiveService: string;
-    }
+    export type Variables = SetIsActiveServiceMutationVariables;
+    export type Mutation = SetIsActiveServiceMutation;
 }
