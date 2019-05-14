@@ -1,5 +1,4 @@
-import { Prop } from 'nuxt-property-decorator';
-import Vue from 'vue';
+import { Vue, Prop } from 'nuxt-property-decorator';
 import { Mixin } from 'vue-mixin-decorator';
 
 // Copy and modify from bootstrap-vue/es/components/button/button.js

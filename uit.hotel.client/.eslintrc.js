@@ -80,6 +80,19 @@ const config = {
 
         'node/no-unsupported-features/es-syntax': 'off',
         'import/prefer-default-export': 'off',
+        'import/order': [
+            'error',
+            {
+                groups: [
+                    'sibling',
+                    'parent',
+                    'internal',
+                    'external',
+                    'builtin',
+                    'index',
+                ],
+            },
+        ],
 
         'vue/html-self-closing': [
             'error',
@@ -110,6 +123,8 @@ const config = {
                 '@typescript-eslint/no-empty-interface': 'off',
                 '@typescript-eslint/no-explicit-any': 'off',
                 '@typescript-eslint/no-namespace': 'off',
+                '@typescript-eslint/prefer-interface': 'off',
+                '@typescript-eslint/array-type': ['error', 'generic'],
             },
         },
         {

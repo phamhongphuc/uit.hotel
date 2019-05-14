@@ -61,6 +61,7 @@
     </popup->
 </template>
 <script lang="ts">
+import { ServicesDetailCreateInput, GetBookings } from 'graphql/types';
 import { Component } from 'nuxt-property-decorator';
 import { mixinData } from '~/components/mixins/mutable';
 import { PopupMixin } from '~/components/mixins/popup';
@@ -68,7 +69,6 @@ import { getServices } from '~/graphql/documents/service';
 import { getSimpleBookings } from '~/graphql/documents/booking';
 import { createServicesDetail } from '~/graphql/documents/service-detail';
 import { required, minValue } from 'vuelidate/lib/validators';
-import { ServicesDetailCreateInput, GetBookings } from 'graphql/types';
 
 @Component({
     mixins: [

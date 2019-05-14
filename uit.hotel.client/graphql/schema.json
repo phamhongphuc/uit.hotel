@@ -7,7 +7,7 @@
             {
                 "kind": "OBJECT",
                 "name": "AppQuery",
-                "description": "",
+                "description": null,
                 "fields": [
                     {
                         "name": "bill",
@@ -15,7 +15,7 @@
                         "args": [
                             {
                                 "name": "id",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -70,7 +70,7 @@
                         "args": [
                             {
                                 "name": "id",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -125,7 +125,7 @@
                         "args": [
                             {
                                 "name": "id",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -180,7 +180,7 @@
                         "args": [
                             {
                                 "name": "id",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -219,7 +219,7 @@
                         "args": [
                             {
                                 "name": "id",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -274,7 +274,7 @@
                         "args": [
                             {
                                 "name": "id",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -324,12 +324,28 @@
                         "deprecationReason": null
                     },
                     {
+                        "name": "isInitialized",
+                        "description": "Kiểm tra",
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Boolean",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
                         "name": "patron",
                         "description": "Trả về thông tin một khách hàng",
                         "args": [
                             {
                                 "name": "id",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -360,7 +376,7 @@
                         "args": [
                             {
                                 "name": "id",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -439,7 +455,7 @@
                         "args": [
                             {
                                 "name": "id",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -494,7 +510,7 @@
                         "args": [
                             {
                                 "name": "id",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -549,7 +565,7 @@
                         "args": [
                             {
                                 "name": "id",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -604,7 +620,7 @@
                         "args": [
                             {
                                 "name": "id",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -635,7 +651,7 @@
                         "args": [
                             {
                                 "name": "id",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -714,7 +730,7 @@
                         "args": [
                             {
                                 "name": "id",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -769,7 +785,7 @@
                         "args": [
                             {
                                 "name": "id",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -824,7 +840,7 @@
                         "args": [
                             {
                                 "name": "id",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -2437,7 +2453,7 @@
                         "args": [
                             {
                                 "name": "from",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -2451,7 +2467,7 @@
                             },
                             {
                                 "name": "to",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -2526,7 +2542,7 @@
                         "args": [
                             {
                                 "name": "from",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -2540,7 +2556,7 @@
                             },
                             {
                                 "name": "to",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -3659,7 +3675,7 @@
             {
                 "kind": "OBJECT",
                 "name": "AppMutation",
-                "description": "",
+                "description": null,
                 "fields": [
                     {
                         "name": "addBookingToBill",
@@ -3667,7 +3683,7 @@
                         "args": [
                             {
                                 "name": "bill",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -3681,7 +3697,7 @@
                             },
                             {
                                 "name": "booking",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -3712,7 +3728,7 @@
                         "args": [
                             {
                                 "name": "id",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -3743,7 +3759,7 @@
                         "args": [
                             {
                                 "name": "bookings",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -3765,7 +3781,7 @@
                             },
                             {
                                 "name": "bill",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -3796,7 +3812,7 @@
                         "args": [
                             {
                                 "name": "id",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -3827,7 +3843,7 @@
                         "args": [
                             {
                                 "name": "id",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -3858,7 +3874,7 @@
                         "args": [
                             {
                                 "name": "servicesDetails",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -3880,7 +3896,7 @@
                             },
                             {
                                 "name": "houseKeepingId",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -3911,7 +3927,7 @@
                         "args": [
                             {
                                 "name": "bookings",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -3933,7 +3949,7 @@
                             },
                             {
                                 "name": "bill",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -3964,7 +3980,7 @@
                         "args": [
                             {
                                 "name": "input",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -3995,7 +4011,7 @@
                         "args": [
                             {
                                 "name": "input",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -4026,7 +4042,7 @@
                         "args": [
                             {
                                 "name": "input",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -4057,7 +4073,7 @@
                         "args": [
                             {
                                 "name": "input",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -4088,7 +4104,7 @@
                         "args": [
                             {
                                 "name": "input",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -4119,7 +4135,7 @@
                         "args": [
                             {
                                 "name": "input",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -4150,7 +4166,7 @@
                         "args": [
                             {
                                 "name": "input",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -4181,7 +4197,7 @@
                         "args": [
                             {
                                 "name": "input",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -4212,7 +4228,7 @@
                         "args": [
                             {
                                 "name": "input",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -4243,7 +4259,7 @@
                         "args": [
                             {
                                 "name": "input",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -4274,7 +4290,7 @@
                         "args": [
                             {
                                 "name": "input",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -4305,7 +4321,7 @@
                         "args": [
                             {
                                 "name": "input",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -4336,7 +4352,7 @@
                         "args": [
                             {
                                 "name": "password",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -4350,7 +4366,7 @@
                             },
                             {
                                 "name": "newPassword",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -4381,7 +4397,7 @@
                         "args": [
                             {
                                 "name": "id",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -4428,7 +4444,7 @@
                         "args": [
                             {
                                 "name": "id",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -4459,7 +4475,7 @@
                         "args": [
                             {
                                 "name": "id",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -4490,7 +4506,7 @@
                         "args": [
                             {
                                 "name": "id",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -4521,7 +4537,7 @@
                         "args": [
                             {
                                 "name": "id",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -4552,7 +4568,7 @@
                         "args": [
                             {
                                 "name": "id",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -4583,7 +4599,7 @@
                         "args": [
                             {
                                 "name": "id",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -4614,7 +4630,7 @@
                         "args": [
                             {
                                 "name": "id",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -4645,7 +4661,7 @@
                         "args": [
                             {
                                 "name": "id",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -4676,7 +4692,7 @@
                         "args": [
                             {
                                 "name": "id",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -4707,13 +4723,58 @@
                         "args": [
                             {
                                 "name": "id",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
                                     "ofType": {
                                         "kind": "SCALAR",
                                         "name": "ID",
+                                        "ofType": null
+                                    }
+                                },
+                                "defaultValue": null
+                            }
+                        ],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "initializeAdminAccount",
+                        "description": "Khởi tạo tài khoản admin",
+                        "args": [
+                            {
+                                "name": "email",
+                                "description": null,
+                                "type": {
+                                    "kind": "NON_NULL",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "SCALAR",
+                                        "name": "String",
+                                        "ofType": null
+                                    }
+                                },
+                                "defaultValue": null
+                            },
+                            {
+                                "name": "password",
+                                "description": null,
+                                "type": {
+                                    "kind": "NON_NULL",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "SCALAR",
+                                        "name": "String",
                                         "ofType": null
                                     }
                                 },
@@ -4754,7 +4815,7 @@
                         "args": [
                             {
                                 "name": "id",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -4768,7 +4829,7 @@
                             },
                             {
                                 "name": "password",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -4799,7 +4860,7 @@
                         "args": [
                             {
                                 "name": "id",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -4830,7 +4891,7 @@
                         "args": [
                             {
                                 "name": "id",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -4861,7 +4922,7 @@
                         "args": [
                             {
                                 "name": "id",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -4892,7 +4953,7 @@
                         "args": [
                             {
                                 "name": "id",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -4906,7 +4967,7 @@
                             },
                             {
                                 "name": "isActive",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -4937,7 +4998,7 @@
                         "args": [
                             {
                                 "name": "id",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -4951,7 +5012,7 @@
                             },
                             {
                                 "name": "isActive",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -4982,7 +5043,7 @@
                         "args": [
                             {
                                 "name": "id",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -4996,7 +5057,7 @@
                             },
                             {
                                 "name": "isActive",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -5027,7 +5088,7 @@
                         "args": [
                             {
                                 "name": "id",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -5041,7 +5102,7 @@
                             },
                             {
                                 "name": "newId",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -5055,7 +5116,7 @@
                             },
                             {
                                 "name": "isActive",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -5086,7 +5147,7 @@
                         "args": [
                             {
                                 "name": "id",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -5100,7 +5161,7 @@
                             },
                             {
                                 "name": "isActive",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -5131,7 +5192,7 @@
                         "args": [
                             {
                                 "name": "id",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -5145,7 +5206,7 @@
                             },
                             {
                                 "name": "isActive",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -5176,7 +5237,7 @@
                         "args": [
                             {
                                 "name": "id",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -5190,7 +5251,7 @@
                             },
                             {
                                 "name": "isActive",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -5221,7 +5282,7 @@
                         "args": [
                             {
                                 "name": "input",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -5252,7 +5313,7 @@
                         "args": [
                             {
                                 "name": "input",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -5283,7 +5344,7 @@
                         "args": [
                             {
                                 "name": "input",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -5314,7 +5375,7 @@
                         "args": [
                             {
                                 "name": "input",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -5345,7 +5406,7 @@
                         "args": [
                             {
                                 "name": "input",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -5376,7 +5437,7 @@
                         "args": [
                             {
                                 "name": "input",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -5407,7 +5468,7 @@
                         "args": [
                             {
                                 "name": "input",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -5438,7 +5499,7 @@
                         "args": [
                             {
                                 "name": "input",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -5469,7 +5530,7 @@
                         "args": [
                             {
                                 "name": "input",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -5500,7 +5561,7 @@
                         "args": [
                             {
                                 "name": "input",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -5531,7 +5592,7 @@
                         "args": [
                             {
                                 "name": "input",
-                                "description": "",
+                                "description": null,
                                 "type": {
                                     "kind": "NON_NULL",
                                     "name": null,
@@ -5590,7 +5651,7 @@
             {
                 "kind": "INPUT_OBJECT",
                 "name": "BookingCreateInput",
-                "description": "",
+                "description": null,
                 "fields": null,
                 "inputFields": [
                     {
@@ -5715,7 +5776,7 @@
             {
                 "kind": "INPUT_OBJECT",
                 "name": "BookAndCheckInCreateInput",
-                "description": "",
+                "description": null,
                 "fields": null,
                 "inputFields": [
                     {
@@ -5776,7 +5837,7 @@
             {
                 "kind": "INPUT_OBJECT",
                 "name": "BillCreateInput",
-                "description": "",
+                "description": null,
                 "fields": null,
                 "inputFields": [
                     {
@@ -5801,7 +5862,7 @@
             {
                 "kind": "INPUT_OBJECT",
                 "name": "ServicesDetailHouseKeepingInput",
-                "description": "",
+                "description": null,
                 "fields": null,
                 "inputFields": [
                     {
@@ -5865,7 +5926,7 @@
             {
                 "kind": "INPUT_OBJECT",
                 "name": "EmployeeCreateInput",
-                "description": "",
+                "description": null,
                 "fields": null,
                 "inputFields": [
                     {
@@ -6051,7 +6112,7 @@
             {
                 "kind": "INPUT_OBJECT",
                 "name": "FloorCreateInput",
-                "description": "",
+                "description": null,
                 "fields": null,
                 "inputFields": [
                     {
@@ -6076,7 +6137,7 @@
             {
                 "kind": "INPUT_OBJECT",
                 "name": "PatronCreateInput",
-                "description": "",
+                "description": null,
                 "fields": null,
                 "inputFields": [
                     {
@@ -6284,7 +6345,7 @@
             {
                 "kind": "INPUT_OBJECT",
                 "name": "PatronKindCreateInput",
-                "description": "",
+                "description": null,
                 "fields": null,
                 "inputFields": [
                     {
@@ -6323,7 +6384,7 @@
             {
                 "kind": "INPUT_OBJECT",
                 "name": "PositionCreateInput",
-                "description": "",
+                "description": null,
                 "fields": null,
                 "inputFields": [
                     {
@@ -6558,7 +6619,7 @@
             {
                 "kind": "INPUT_OBJECT",
                 "name": "RateCreateInput",
-                "description": "",
+                "description": null,
                 "fields": null,
                 "inputFields": [
                     {
@@ -6706,7 +6767,7 @@
             {
                 "kind": "INPUT_OBJECT",
                 "name": "ReceiptCreateInput",
-                "description": "",
+                "description": null,
                 "fields": null,
                 "inputFields": [
                     {
@@ -6751,7 +6812,7 @@
             {
                 "kind": "INPUT_OBJECT",
                 "name": "RoomCreateInput",
-                "description": "",
+                "description": null,
                 "fields": null,
                 "inputFields": [
                     {
@@ -6935,7 +6996,7 @@
             {
                 "kind": "INPUT_OBJECT",
                 "name": "ServicesDetailCreateInput",
-                "description": "",
+                "description": null,
                 "fields": null,
                 "inputFields": [
                     {
@@ -7013,7 +7074,7 @@
             {
                 "kind": "INPUT_OBJECT",
                 "name": "VolatilityRateCreateInput",
-                "description": "",
+                "description": null,
                 "fields": null,
                 "inputFields": [
                     {
@@ -7291,7 +7352,7 @@
             {
                 "kind": "INPUT_OBJECT",
                 "name": "EmployeeUpdateInput",
-                "description": "",
+                "description": null,
                 "fields": null,
                 "inputFields": [
                     {
@@ -7438,7 +7499,7 @@
             {
                 "kind": "INPUT_OBJECT",
                 "name": "FloorUpdateInput",
-                "description": "",
+                "description": null,
                 "fields": null,
                 "inputFields": [
                     {
@@ -7477,7 +7538,7 @@
             {
                 "kind": "INPUT_OBJECT",
                 "name": "PatronUpdateInput",
-                "description": "",
+                "description": null,
                 "fields": null,
                 "inputFields": [
                     {
@@ -7674,7 +7735,7 @@
             {
                 "kind": "INPUT_OBJECT",
                 "name": "PatronKindUpdateInput",
-                "description": "",
+                "description": null,
                 "fields": null,
                 "inputFields": [
                     {
@@ -7727,7 +7788,7 @@
             {
                 "kind": "INPUT_OBJECT",
                 "name": "PositionUpdateInput",
-                "description": "",
+                "description": null,
                 "fields": null,
                 "inputFields": [
                     {
@@ -7976,7 +8037,7 @@
             {
                 "kind": "INPUT_OBJECT",
                 "name": "RateUpdateInput",
-                "description": "",
+                "description": null,
                 "fields": null,
                 "inputFields": [
                     {
@@ -8109,7 +8170,7 @@
             {
                 "kind": "INPUT_OBJECT",
                 "name": "RoomUpdateInput",
-                "description": "",
+                "description": null,
                 "fields": null,
                 "inputFields": [
                     {
@@ -8302,7 +8363,7 @@
             {
                 "kind": "INPUT_OBJECT",
                 "name": "ServicesDetailUpdateInput",
-                "description": "",
+                "description": null,
                 "fields": null,
                 "inputFields": [
                     {
@@ -8355,7 +8416,7 @@
             {
                 "kind": "INPUT_OBJECT",
                 "name": "VolatilityRateUpdateInput",
-                "description": "",
+                "description": null,
                 "fields": null,
                 "inputFields": [
                     {
@@ -9420,7 +9481,7 @@
             {
                 "kind": "SCALAR",
                 "name": "Decimal",
-                "description": "",
+                "description": null,
                 "fields": null,
                 "inputFields": null,
                 "interfaces": null,

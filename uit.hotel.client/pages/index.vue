@@ -6,10 +6,10 @@
     </div>
 </template>
 <script lang="ts">
+import { GetFloors } from 'graphql/types';
 import { Vue, Component } from 'nuxt-property-decorator';
 import { getFloors } from '~/graphql/documents/floor';
 import { mixinData } from '~/components/mixins/mutable';
-import { GetFloors } from 'graphql/types';
 
 @Component({
     name: 'index-',

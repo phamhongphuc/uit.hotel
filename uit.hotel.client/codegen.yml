@@ -5,11 +5,14 @@ documents:
     - 'graphql/documents/*.ts'
 generates:
     graphql/types.ts:
+        plugins:
+            - typescript
+            - typescript-operations
+            - typescript-compatibility
         config:
             avoidOptionals: true
-        plugins:
-            - 'typescript-common'
-            - 'typescript-client'
+            skipTypename: true
+            strict: true
     graphql/schema.json:
         plugins:
             - 'introspection'

@@ -1,5 +1,4 @@
-import { Prop } from 'nuxt-property-decorator';
-import Vue from 'vue';
+import { Vue, Prop } from 'nuxt-property-decorator';
 import { Mixin } from 'vue-mixin-decorator';
 
 // Valid supported input types
