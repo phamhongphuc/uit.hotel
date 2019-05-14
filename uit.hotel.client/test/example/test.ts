@@ -1,4 +1,4 @@
-import { filename, itname } from '../utils/utils';
+import { filename, itname } from '~/test/utils/utils';
 import { assert } from 'chai';
 
 describe(filename(__filename), function(): void {
