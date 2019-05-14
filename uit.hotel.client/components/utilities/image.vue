@@ -1,6 +1,6 @@
 <script lang="ts">
-import { VNode, CreateElement } from 'vue';
 import { Vue, Prop, Component } from 'nuxt-property-decorator';
+import { VNode, CreateElement } from 'vue';
 
 @Component({
     name: 'image-',

@@ -1,5 +1,5 @@
-import { Context } from '@nuxt/vue-app';
 import cookie from 'cookie';
+import { Context } from '@nuxt/vue-app';
 
 const publicRoutes = ['/login'];
 

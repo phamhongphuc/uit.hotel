@@ -83,9 +83,9 @@
     </b-navbar>
 </template>
 <script lang="ts">
-import { Vue, namespace, Component } from 'nuxt-property-decorator';
 import { UserState } from 'store/user';
 import { UserLogin } from 'graphql/types';
+import { Vue, namespace, Component } from 'nuxt-property-decorator';
 
 @Component({
     name: 'navbar-',

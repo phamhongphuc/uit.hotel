@@ -80,6 +80,19 @@ const config = {
 
         'node/no-unsupported-features/es-syntax': 'off',
         'import/prefer-default-export': 'off',
+        'import/order': [
+            'error',
+            {
+                groups: [
+                    'sibling',
+                    'parent',
+                    'internal',
+                    'external',
+                    'builtin',
+                    'index',
+                ],
+            },
+        ],
 
         'vue/html-self-closing': [
             'error',

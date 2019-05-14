@@ -139,13 +139,13 @@
     </popup->
 </template>
 <script lang="ts">
+import { PatronCreateInput } from 'graphql/types';
 import { Component } from 'nuxt-property-decorator';
 import { PopupMixin } from '~/components/mixins/popup';
 import { getPatronKinds } from '~/graphql/documents/patronKind';
 import { createPatron } from '~/graphql/documents/patron';
 import { mixinData } from '~/components/mixins/mutable';
 import { required, alphaNum, minLength } from 'vuelidate/lib/validators';
-import { PatronCreateInput } from 'graphql/types';
 
 @Component({
     mixins: [PopupMixin, mixinData({ createPatron, getPatronKinds })],

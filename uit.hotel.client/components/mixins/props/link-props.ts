@@ -1,6 +1,6 @@
 import { Prop } from 'nuxt-property-decorator';
-import Vue from 'vue';
 import { Mixin } from 'vue-mixin-decorator';
+import Vue from 'vue';
 
 // Copy and convert from bootstrap-vue/es/components/link/link.js
 @Mixin

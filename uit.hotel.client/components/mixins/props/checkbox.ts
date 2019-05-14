@@ -1,6 +1,6 @@
 import { Prop } from 'nuxt-property-decorator';
-import Vue from 'vue';
 import { Mixin } from 'vue-mixin-decorator';
+import Vue from 'vue';
 
 // Convert from bootstrap-vue/es/components/form-checkbox/form-checkbox-group.js
 
