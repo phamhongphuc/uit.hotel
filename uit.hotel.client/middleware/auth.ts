@@ -1,7 +1,8 @@
-import cookie from 'cookie';
 import { Context } from '@nuxt/vue-app';
+import cookie from 'cookie';
+import { RootState } from '~/store';
 
-const publicRoutes = ['/login'];
+const publicRoutes = ['login', 'initialize'];
 
 export default async function({
     req,
@@ -23,8 +24,9 @@ export default async function({
             token,
         );
         if (!isUserLoggedIn) return checkAndRedirect();
-        else if (route.name === 'login') {
-            redirect('/');
-        }
+        else if (route.name === 'login') redirect('/');
+    } else {
+        const employee = (store.state as RootState).user.employee;
+        if (!employee) return checkAndRedirect();
     }
 }

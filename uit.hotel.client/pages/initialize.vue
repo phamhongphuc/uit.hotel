@@ -1,6 +1,6 @@
 <template>
     <div
-        id="login"
+        id="initialize"
         class="bg-white shadow-lg p-5 d-flex flex-column overflow-auto"
     >
         <img
@@ -9,16 +9,18 @@
             class="d-block img-fluid mb-2 mt-5 mx-auto"
         />
         <h4 class="font-pacifico text-center mb-5">Quản lý khách sạn</h4>
-        <b-form
+        <form-mutate-
             class="flex-fill d-flex flex-column my-5"
-            @submit.prevent="login({ id, password })"
+            :mutation="initializeAdminAccount"
+            :variables="{ email, password }"
+            success="Khởi tạo tài khoản quản trị thành công"
         >
             <b-input-
-                v-model="id"
-                name="username"
+                v-model="email"
+                name="email"
                 type="text"
-                placeholder="Tên đăng nhập"
-                icon="user"
+                placeholder="Địa chỉ thư điện tử"
+                icon="mail"
                 class="circle"
             />
             <b-input-
@@ -30,29 +32,25 @@
                 class="my-2 circle"
             />
             <b-button variant="main" type="submit" class="border-circle w-100">
-                Đăng nhập
+                Khởi tạo tài khoản quản trị
             </b-button>
-        </b-form>
-        <div class="text-center">
-            <nuxt-link to="/help">Chưa có tài khoản</nuxt-link>
-            <br />
-            hoặc
-            <br />
-            <nuxt-link to="/help">Quên mật khẩu?</nuxt-link>
-            <br />
-            Lần đầu truy cập hệ thống?
-            <nuxt-link to="/initialize">Khởi tạo</nuxt-link>
-        </div>
+        </form-mutate->
     </div>
 </template>
 <script lang="ts">
 import { Vue, Component, namespace } from 'nuxt-property-decorator';
+import { mixinData } from '~/components/mixins/mutable';
+import { initializeAdminAccount } from '~/graphql/documents/initialize';
 
 @Component({
-    name: 'login-',
+    name: 'initialize-',
+    mixins: [mixinData({ initializeAdminAccount })],
+    validations: {
+        input: {},
+    },
 })
 export default class extends Vue {
-    id = '';
+    email = '';
     password = '';
 
     layout() {
@@ -61,11 +59,15 @@ export default class extends Vue {
 
     head() {
         return {
-            title: 'Đăng nhập',
+            title: 'Khởi tạo tài khoản quản trị',
         };
     }
 
     @(namespace('user').Action)
-    login;
+    checkIsInitializedDatabase;
+
+    async beforeRouteEnter(to, from, next) {
+        next(vm => vm.checkIsInitializedDatabase());
+    }
 }
 </script>
