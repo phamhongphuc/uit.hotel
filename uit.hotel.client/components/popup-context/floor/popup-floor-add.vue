@@ -32,11 +32,10 @@
 </template>
 <script lang="ts">
 import { FloorCreateInput } from 'graphql/types';
-import { Component } from 'nuxt-property-decorator';
+import { Component, mixins } from 'nuxt-property-decorator';
 import { DataMixin, PopupMixin } from '~/components/mixins';
 import { createFloor } from '~/graphql/documents';
 import { required, minLength } from 'vuelidate/lib/validators';
-import { Mixins } from 'vue-mixin-decorator';
 
 @Component({
     name: 'popup-floor-add-',
@@ -49,7 +48,7 @@ import { Mixins } from 'vue-mixin-decorator';
         },
     },
 })
-export default class extends Mixins<PopupMixin<void, FloorCreateInput>>(
+export default class extends mixins<PopupMixin<void, FloorCreateInput>>(
     PopupMixin,
     DataMixin({ createFloor }),
 ) {

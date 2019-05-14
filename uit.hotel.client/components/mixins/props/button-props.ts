@@ -1,8 +1,7 @@
-import { Vue, Prop } from 'nuxt-property-decorator';
-import { Mixin } from 'vue-mixin-decorator';
+import { Vue, Prop, Component } from 'nuxt-property-decorator';
 
 // Copy and modify from bootstrap-vue/es/components/button/button.js
-@Mixin
+@Component
 export class ButtonProps extends Vue {
     @Prop({ default: false })
     protected block: boolean = false;

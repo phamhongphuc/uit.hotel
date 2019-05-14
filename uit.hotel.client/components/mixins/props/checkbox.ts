@@ -1,9 +1,8 @@
-import { Vue, Prop } from 'nuxt-property-decorator';
-import { Mixin } from 'vue-mixin-decorator';
+import { Vue, Prop, Component } from 'nuxt-property-decorator';
 
 // Convert from bootstrap-vue/es/components/form-checkbox/form-checkbox-group.js
 
-@Mixin
+@Component
 export class CheckboxProps extends Vue {
     @Prop({ default: null })
     protected value: any;

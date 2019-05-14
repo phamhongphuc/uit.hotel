@@ -32,22 +32,20 @@
 </template>
 <script lang="ts">
 import { GetBills, AddBookingToBill } from 'graphql/types';
-import { Component } from 'nuxt-property-decorator';
-import { mixinData, PopupMixin } from '~/components/mixins';
+import { Component, mixins } from 'nuxt-property-decorator';
+import { PopupMixin, DataMixin } from '~/components/mixins';
 import { addBookingToBill } from '~/graphql/documents';
-// import { required, minLength, minValue } from 'vuelidate/lib/validators';
 
 @Component({
-    mixins: [PopupMixin, mixinData({ addBookingToBill })],
     name: 'popup-bill-update-',
     validations: {
         input: {},
     },
 })
-export default class extends PopupMixin<
-    { bill: GetBills.Bills },
-    AddBookingToBill.Variables
-> {
+export default class extends mixins<
+    PopupMixin<{ bill: GetBills.Bills }, AddBookingToBill.Variables>,
+    { addBookingToBill }
+>(PopupMixin, DataMixin({ addBookingToBill })) {
     onOpen() {
         this.input = {
             bill: {

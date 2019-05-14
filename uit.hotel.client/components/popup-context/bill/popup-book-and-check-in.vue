@@ -152,15 +152,15 @@
     </popup->
 </template>
 <script lang="ts">
-import { Component } from 'nuxt-property-decorator';
+import moment from 'moment';
+import { Component, mixins } from 'nuxt-property-decorator';
 import {
     GetFloors,
     BookAndCheckIn,
     BookAndCheckInCreateInput,
 } from '~/graphql/types';
 import { bookAndCheckIn, getPatrons, getRoom } from '~/graphql/documents';
-import { mixinData, PopupMixin } from '~/components/mixins';
-import moment from 'moment';
+import { DataMixin, mixinData, PopupMixin } from '~/components/mixins';
 
 @Component({
     mixins: [PopupMixin, mixinData({ bookAndCheckIn, getPatrons, getRoom })],
@@ -169,10 +169,9 @@ import moment from 'moment';
         input: {},
     },
 })
-export default class extends PopupMixin<
-    { rooms: GetFloors.Rooms[] },
-    BookAndCheckIn.Variables
-> {
+export default class extends mixins<
+    PopupMixin<{ rooms: GetFloors.Rooms[] }, BookAndCheckIn.Variables>
+>(PopupMixin, DataMixin({ bookAndCheckIn, getPatrons, getRoom })) {
     bookCheckOutTime: string = moment().format();
 
     onOpen() {
