@@ -93,8 +93,10 @@ const config = {
                     'builtin',
                     'index',
                 ],
+                'newlines-between': 'never',
             },
         ],
+        'import/no-useless-path-segments': ['error', { noUselessIndex: true }],
 
         'vue/html-self-closing': [
             'error',
