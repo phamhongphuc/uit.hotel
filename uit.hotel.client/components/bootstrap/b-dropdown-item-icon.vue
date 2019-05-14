@@ -36,7 +36,7 @@ import {
     IconProps,
     TextProps,
     ImageProps,
-} from '~/components/mixins/props';
+} from '~/components/mixins';
 
 @Component({
     name: 'b-dropdown-item-icon-',

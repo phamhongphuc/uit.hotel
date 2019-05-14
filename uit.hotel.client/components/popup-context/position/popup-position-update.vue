@@ -59,15 +59,14 @@
 <script lang="ts">
 import { GetPositions } from 'graphql/types';
 import { Component } from 'nuxt-property-decorator';
-import { PopupMixin } from '~/components/mixins/popup';
+import { PopupMixin, mixinData } from '~/components/mixins';
 import {
     updatePosition,
     positionOptionsAdministrative,
     positionOptionsBusiness,
     positionOptionsReceptionist,
     positionOptionsHouseKeeping,
-} from '~/graphql/documents/position';
-import { mixinData } from '~/components/mixins/mutable';
+} from '~/graphql/documents';
 import { required } from 'vuelidate/lib/validators';
 import { CheckboxOption } from '~/utils/components';
 

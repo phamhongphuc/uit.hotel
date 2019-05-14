@@ -95,8 +95,8 @@
 </template>
 <script lang="ts">
 import { Vue, Component } from 'nuxt-property-decorator';
-import { getBookings } from '~/graphql/documents/booking';
-import { mixinData } from '~/components/mixins/mutable';
+import { getBookings } from '~/graphql/documents';
+import { mixinData } from '~/components/mixins';
 import { GetBookings } from '~/graphql/types';
 import { toMoney, toDate } from '~/utils/dataFormater';
 

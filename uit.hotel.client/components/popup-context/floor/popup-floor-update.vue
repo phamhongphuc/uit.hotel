@@ -33,9 +33,8 @@
 <script lang="ts">
 import { FloorUpdateInput, GetFloors } from 'graphql/types';
 import { Component } from 'nuxt-property-decorator';
-import { mixinData } from '~/components/mixins/mutable';
-import { PopupMixin } from '~/components/mixins/popup';
-import { updateFloor } from '~/graphql/documents/floor';
+import { mixinData, PopupMixin } from '~/components/mixins';
+import { updateFloor } from '~/graphql/documents';
 import { required, minLength } from 'vuelidate/lib/validators';
 
 @Component({

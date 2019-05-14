@@ -22,9 +22,8 @@
 </template>
 <script lang="ts">
 import { Component } from 'nuxt-property-decorator';
-import { ContextMixin } from '~/components/mixins/context';
-import { setIsActiveAccount } from '~/graphql/documents/employee';
-import { mixinData } from '~/components/mixins/mutable';
+import { ContextMixin, mixinData } from '~/components/mixins';
+import { setIsActiveAccount } from '~/graphql/documents';
 
 @Component({
     name: 'context-manage-employee-',

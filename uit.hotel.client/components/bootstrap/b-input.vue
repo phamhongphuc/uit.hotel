@@ -22,7 +22,7 @@
 </template>
 <script lang="ts">
 import { Vue, Component, Prop } from 'nuxt-property-decorator';
-import { InputProps, IconProps, StateProps } from '~/components/mixins/props';
+import { InputProps, IconProps, StateProps } from '~/components/mixins';
 
 @Component({
     name: 'b-input-',

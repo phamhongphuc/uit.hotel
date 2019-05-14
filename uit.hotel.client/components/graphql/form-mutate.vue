@@ -3,7 +3,7 @@
 </template>
 <script lang="ts">
 import { Vue, Component } from 'nuxt-property-decorator';
-import mutable from '~/components/mixins/mutable';
+import mutable from '~/components/mixins';
 
 @Component({
     mixins: [mutable],

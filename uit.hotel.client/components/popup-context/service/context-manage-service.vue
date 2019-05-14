@@ -29,9 +29,8 @@
 </template>
 <script lang="ts">
 import { Component } from 'nuxt-property-decorator';
-import { ContextMixin } from '~/components/mixins/context';
-import { setIsActiveService, deleteService } from '~/graphql/documents/service';
-import { mixinData } from '~/components/mixins/mutable';
+import { ContextMixin, mixinData } from '~/components/mixins';
+import { setIsActiveService, deleteService } from '~/graphql/documents';
 
 @Component({
     name: 'context-manage-service-',

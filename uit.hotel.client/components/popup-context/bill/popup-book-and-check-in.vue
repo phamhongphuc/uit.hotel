@@ -158,11 +158,8 @@ import {
     BookAndCheckIn,
     BookAndCheckInCreateInput,
 } from '~/graphql/types';
-import { bookAndCheckIn } from '~/graphql/documents/bill';
-import { getPatrons } from '~/graphql/documents/patron';
-import { getRoom } from '~/graphql/documents/room';
-import { mixinData } from '~/components/mixins/mutable';
-import { PopupMixin } from '~/components/mixins/popup';
+import { bookAndCheckIn, getPatrons, getRoom } from '~/graphql/documents';
+import { mixinData, PopupMixin } from '~/components/mixins';
 import moment from 'moment';
 
 @Component({

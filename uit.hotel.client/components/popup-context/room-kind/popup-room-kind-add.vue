@@ -52,10 +52,9 @@
 </template>
 <script lang="ts">
 import { Component } from 'nuxt-property-decorator';
-import { mixinData } from '~/components/mixins/mutable';
+import { mixinData, PopupMixin } from '~/components/mixins';
 import { RoomKindCreateInput } from '~/graphql/types';
-import { PopupMixin } from '~/components/mixins/popup';
-import { createRoomKind } from '~/graphql/documents/room-kind';
+import { createRoomKind } from '~/graphql/documents';
 import { required, minLength, between } from 'vuelidate/lib/validators';
 
 @Component({

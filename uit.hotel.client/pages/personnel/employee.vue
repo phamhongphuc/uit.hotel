@@ -91,8 +91,8 @@
 </template>
 <script lang="ts">
 import { Vue, Component } from 'nuxt-property-decorator';
-import { getEmployees } from '~/graphql/documents/employee';
-import { mixinData } from '~/components/mixins/mutable';
+import { getEmployees } from '~/graphql/documents';
+import { mixinData } from '~/components/mixins';
 import { GetEmployees } from '~/graphql/types';
 
 @Component({

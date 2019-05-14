@@ -20,9 +20,8 @@
 </template>
 <script lang="ts">
 import { Component } from 'nuxt-property-decorator';
-import { ContextMixin } from '~/components/mixins/context';
-import { mixinData } from '~/components/mixins/mutable';
-import { payTheBill } from '~/graphql/documents/bill';
+import { ContextMixin, mixinData } from '~/components/mixins';
+import { payTheBill } from '~/graphql/documents';
 import moment from 'moment';
 
 @Component({

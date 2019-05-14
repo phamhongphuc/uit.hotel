@@ -98,8 +98,8 @@
 </template>
 <script lang="ts">
 import { Vue, Component } from 'nuxt-property-decorator';
-import { getServices } from '~/graphql/documents/service';
-import { mixinData } from '~/components/mixins/mutable';
+import { getServices } from '~/graphql/documents';
+import { mixinData } from '~/components/mixins';
 import { GetServices } from '~/graphql/types';
 import { toMoney } from '~/utils/dataFormater';
 

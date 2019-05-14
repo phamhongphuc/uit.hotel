@@ -91,8 +91,8 @@
 <script lang="ts">
 import { GetFloors } from 'graphql/types';
 import { Vue, Component } from 'nuxt-property-decorator';
-import { getFloorsMap } from '~/graphql/documents/floor';
-import { mixinData } from '~/components/mixins/mutable';
+import { getFloorsMap } from '~/graphql/documents';
+import { mixinData } from '~/components/mixins';
 import moment from 'moment';
 
 @Component({

@@ -56,13 +56,10 @@
 </template>
 <script lang="ts">
 import { Component } from 'nuxt-property-decorator';
-import { PopupMixin } from '~/components/mixins/popup';
+import { PopupMixin, mixinData } from '~/components/mixins';
 import { GetFloors, RoomUpdateInput } from '~/graphql/types';
-import { mixinData } from '~/components/mixins/mutable';
-import { getFloors } from '~/graphql/documents/floor';
+import { getFloors, updateRoom, getRoomKinds } from '~/graphql/documents';
 import { required } from 'vuelidate/lib/validators';
-import { updateRoom } from '~/graphql/documents/room';
-import { getRoomKinds } from '~/graphql/documents/room-kind';
 
 interface PopupRoomUpdateInput {
     room: GetFloors.Rooms;

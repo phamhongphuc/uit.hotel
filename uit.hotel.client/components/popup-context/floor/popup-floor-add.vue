@@ -33,9 +33,8 @@
 <script lang="ts">
 import { FloorCreateInput } from 'graphql/types';
 import { Component } from 'nuxt-property-decorator';
-import { DataMixin } from '~/components/mixins/data';
-import { PopupMixin } from '~/components/mixins/popup';
-import { createFloor } from '~/graphql/documents/floor';
+import { DataMixin, PopupMixin } from '~/components/mixins';
+import { createFloor } from '~/graphql/documents';
 import { required, minLength } from 'vuelidate/lib/validators';
 import { Mixins } from 'vue-mixin-decorator';
 

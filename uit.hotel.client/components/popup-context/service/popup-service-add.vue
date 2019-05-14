@@ -49,9 +49,8 @@
 <script lang="ts">
 import { ServiceCreateInput } from 'graphql/types';
 import { Component } from 'nuxt-property-decorator';
-import { mixinData } from '~/components/mixins/mutable';
-import { PopupMixin } from '~/components/mixins/popup';
-import { createService } from '~/graphql/documents/service';
+import { mixinData, PopupMixin } from '~/components/mixins';
+import { createService } from '~/graphql/documents';
 import { required, minLength, minValue } from 'vuelidate/lib/validators';
 
 @Component({

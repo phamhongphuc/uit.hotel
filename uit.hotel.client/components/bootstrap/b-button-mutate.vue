@@ -13,8 +13,7 @@
 </template>
 <script lang="ts">
 import { Vue, Component } from 'nuxt-property-decorator';
-import mutable from '~/components/mixins/mutable';
-import { ButtonProps } from '~/components/mixins/props';
+import mutable, { ButtonProps } from '~/components/mixins';
 
 @Component({
     name: 'b-button-mutate-',

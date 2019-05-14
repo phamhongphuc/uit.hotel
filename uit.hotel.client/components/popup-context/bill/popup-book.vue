@@ -156,11 +156,8 @@
 <script lang="ts">
 import { Component } from 'nuxt-property-decorator';
 import { GetFloors, CreateBill, BookingCreateInput } from '~/graphql/types';
-import { createBill } from '~/graphql/documents/bill';
-import { getPatrons } from '~/graphql/documents/patron';
-import { getRoom } from '~/graphql/documents/room';
-import { mixinData } from '~/components/mixins/mutable';
-import { PopupMixin } from '~/components/mixins/popup';
+import { createBill, getPatrons, getRoom } from '~/graphql/documents';
+import { mixinData, PopupMixin } from '~/components/mixins';
 import moment from 'moment';
 
 @Component({

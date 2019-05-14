@@ -106,8 +106,8 @@
 </template>
 <script lang="ts">
 import { Vue, Component } from 'nuxt-property-decorator';
-import { getBills } from '~/graphql/documents/bill';
-import { mixinData } from '~/components/mixins/mutable';
+import { getBills } from '~/graphql/documents';
+import { mixinData } from '~/components/mixins';
 import { GetBills } from '~/graphql/types';
 import { toMoney, toDate } from '~/utils/dataFormater';
 import moment from 'moment';

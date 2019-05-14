@@ -83,8 +83,8 @@
 </template>
 <script lang="ts">
 import { Vue, Component } from 'nuxt-property-decorator';
-import { getPatrons } from '~/graphql/documents/patron';
-import { mixinData } from '~/components/mixins/mutable';
+import { getPatrons } from '~/graphql/documents';
+import { mixinData } from '~/components/mixins';
 import moment from 'moment';
 
 @Component({
