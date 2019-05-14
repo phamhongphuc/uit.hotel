@@ -11,10 +11,6 @@ export default function({ app }: StoreSelf): void {
             };
             window.addEventListener('resize', updateBreakpoint);
             updateBreakpoint();
-
-            // Route
-            await Vue.nextTick();
-            await (this as Vue).$store.dispatch('user/checkLogin');
         },
     });
 }

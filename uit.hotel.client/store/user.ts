@@ -7,7 +7,7 @@ import {
     apolloHelpers,
 } from '~/modules/apollo';
 import { notify } from '~/plugins/notify';
-import { route, router } from '~/utils/store';
+import { router } from '~/utils/store';
 import { RootState } from '.';
 
 export interface UserState {
@@ -75,48 +75,41 @@ export const actions: ActionTree<UserState, RootState> = {
         notify.success({ title: 'Thông báo', text: 'Đăng xuất thành công' });
     },
 
-    async checkLogin({ state, commit }): Promise<void> {
-        const token = state.token || apolloHelpers(this).getToken();
+    async serverUpdateUserProfile({ commit }, token: string): Promise<boolean> {
+        if (typeof token !== 'string') return false;
 
-        if (typeof token === 'string') {
-            try {
-                const result = await apolloClient(this).mutate<
-                    UserCheckLogin.Mutation
-                >({
-                    mutation: gql`
-                        mutation userCheckLogin {
-                            checkLogin {
+        commit('setToken', token);
+
+        try {
+            const result = await apolloClient(this).mutate<
+                UserCheckLogin.Mutation
+            >({
+                mutation: gql`
+                    mutation userCheckLogin {
+                        checkLogin {
+                            id
+                            name
+                            position {
                                 id
                                 name
-                                position {
-                                    id
-                                    name
-                                }
                             }
                         }
-                    `,
-                });
+                    }
+                `,
+            });
 
-                if (result.data === undefined) {
-                    throw new Error('Lỗi không xác định');
-                }
-                const loginArgs: UserLogin.Login = {
-                    token,
-                    employee: result.data.checkLogin,
-                };
-                commit('login', loginArgs);
-
-                if (route(this).name === 'login') router(this).push('/');
-            } catch (e) {
-                commit('logout');
-                router(this).push('/login');
-                notify.error({
-                    title: 'Lỗi xác thực',
-                    text: 'Vui lòng đăng nhập lại',
-                });
+            if (result.data === undefined) {
+                throw new Error('Lỗi không xác định');
             }
-        } else {
-            router(this).push('/login');
+
+            const loginArgs: UserLogin.Login = {
+                token,
+                employee: result.data.checkLogin,
+            };
+            commit('login', loginArgs);
+            return true;
+        } catch (e) {
+            return false;
         }
     },
 };

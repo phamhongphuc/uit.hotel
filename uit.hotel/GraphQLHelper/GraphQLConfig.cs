@@ -14,15 +14,28 @@ using uit.hotel.Schemas;
 
 namespace uit.hotel.GraphQLHelper
 {
-    public class GraphQLConfig
+    public static class GraphQLConfig
     {
-        public static void DataLoader(IServiceCollection services)
+        public static IServiceCollection AddGraphQL(this IServiceCollection services)
+        {
+            return services
+                .AddInputType()
+                .AddObjectType()
+                .AddSchema()
+                .AddResolver()
+                .AddDataLoader()
+                .AddAuthorization();
+        }
+
+        private static IServiceCollection AddDataLoader(this IServiceCollection services)
         {
             services.AddSingleton<IDataLoaderContextAccessor, DataLoaderContextAccessor>();
             services.AddSingleton<DataLoaderDocumentListener>();
+
+            return services;
         }
 
-        public static void Input(IServiceCollection services)
+        private static IServiceCollection AddInputType(this IServiceCollection services)
         {
             services.AddSingleton<BillCreateInput>();
             services.AddSingleton<BillIdInput>();
@@ -64,16 +77,11 @@ namespace uit.hotel.GraphQLHelper
             services.AddSingleton<ServicesDetailIdInput>();
             services.AddSingleton<VolatilityRateCreateInput>();
             services.AddSingleton<VolatilityRateUpdateInput>();
+
+            return services;
         }
 
-        public static ServiceProvider GetServiceProvider(Action<ServiceCollection> function)
-        {
-            var services = new ServiceCollection();
-            function(services);
-            return services.BuildServiceProvider();
-        }
-
-        public static void Type(IServiceCollection services)
+        private static IServiceCollection AddObjectType(this IServiceCollection services)
         {
             services.AddSingleton<AuthenticationType>();
             services.AddSingleton<BillType>();
@@ -91,28 +99,43 @@ namespace uit.hotel.GraphQLHelper
             services.AddSingleton<ServicesDetailType>();
             services.AddSingleton<ServiceType>();
             services.AddSingleton<VolatilityRateType>();
+
+            return services;
         }
 
-        public static void Config(IServiceCollection services)
+        private static IServiceCollection AddResolver(this IServiceCollection services)
         {
             services.AddSingleton<IDependencyResolver>(s => new FuncDependencyResolver(s.GetRequiredService));
             services.AddSingleton<IDocumentExecuter, DocumentExecuter>();
             services.AddSingleton<IDocumentWriter, DocumentWriter>();
+
+            return services;
         }
 
-        public static void App(IServiceCollection services)
+        private static IServiceCollection AddSchema(this IServiceCollection services)
         {
             services.AddSingleton<AppQuery>();
             services.AddSingleton<AppMutation>();
             services.AddSingleton<ISchema, AppSchema>();
+
+            return services;
         }
 
-        public static void Auth(IServiceCollection services)
+        private static IServiceCollection AddAuthorization(this IServiceCollection services)
         {
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.TryAddSingleton<IAuthorizationEvaluator, AuthorizationEvaluator>();
             services.AddTransient<IValidationRule, AuthorizationValidationRule>();
             services.TryAddSingleton<AuthorizationSettings>();
+
+            return services;
+        }
+
+        public static ServiceProvider GetInitializedServiceProvider()
+        {
+            return new ServiceCollection()
+                .AddGraphQL()
+                .BuildServiceProvider();
         }
     }
 }

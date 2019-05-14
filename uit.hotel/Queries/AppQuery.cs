@@ -9,19 +9,20 @@ namespace uit.hotel.Queries
         {
             AddFields(
                 new BillQuery(),
+                new BookingQuery(),
                 new EmployeeQuery(),
                 new FloorQuery(),
                 new HouseKeepingQuery(),
-                new PatronQuery(),
+                new InitializeQuery(),
                 new PatronKindQuery(),
-                new ServiceQuery(),
-                new ServicesDetailQuery(),
+                new PatronQuery(),
                 new PositionQuery(),
                 new RateQuery(),
                 new ReceiptQuery(),
                 new RoomKindQuery(),
                 new RoomQuery(),
-                new BookingQuery(),
+                new ServiceQuery(),
+                new ServicesDetailQuery(),
                 new VolatilityRateQuery()
             );
         }
