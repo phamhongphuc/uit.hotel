@@ -32,9 +32,8 @@
 </template>
 <script lang="ts">
 import { Component } from 'nuxt-property-decorator';
-import { ContextMixin } from '~/components/mixins/context';
-import { setIsActiveRoom, deleteRoom } from '~/graphql/documents/room';
-import { mixinData } from '~/components/mixins/mutable';
+import { ContextMixin, mixinData } from '~/components/mixins';
+import { setIsActiveRoom, deleteRoom } from '~/graphql/documents';
 
 @Component({
     name: 'context-manage-room-',

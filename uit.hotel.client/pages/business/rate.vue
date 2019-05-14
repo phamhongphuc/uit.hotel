@@ -87,8 +87,8 @@
 </template>
 <script lang="ts">
 import { Vue, Component } from 'nuxt-property-decorator';
-import { getRates } from '~/graphql/documents/rate';
-import { mixinData } from '~/components/mixins/mutable';
+import { getRates } from '~/graphql/documents';
+import { mixinData } from '~/components/mixins';
 import { GetRates } from '~/graphql/types';
 import { toMoney, toDate } from '~/utils/dataFormater';
 

@@ -11,7 +11,7 @@
 </template>
 <script lang="ts">
 import { Component } from 'nuxt-property-decorator';
-import { ContextMixin } from '~/components/mixins/context';
+import { ContextMixin } from '~/components/mixins';
 
 @Component({
     name: 'context-manage-patron-kind-',

@@ -101,8 +101,8 @@
 </template>
 <script lang="ts">
 import { Vue, Component } from 'nuxt-property-decorator';
-import { getPositions } from '~/graphql/documents/position';
-import { mixinData } from '~/components/mixins/mutable';
+import { getPositions } from '~/graphql/documents';
+import { mixinData } from '~/components/mixins';
 import { GetPositions } from '~/graphql/types';
 
 @Component({

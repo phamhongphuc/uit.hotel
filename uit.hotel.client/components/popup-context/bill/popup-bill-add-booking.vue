@@ -33,9 +33,8 @@
 <script lang="ts">
 import { GetBills, AddBookingToBill } from 'graphql/types';
 import { Component } from 'nuxt-property-decorator';
-import { mixinData } from '~/components/mixins/mutable';
-import { PopupMixin } from '~/components/mixins/popup';
-import { addBookingToBill } from '~/graphql/documents/bill';
+import { mixinData, PopupMixin } from '~/components/mixins';
+import { addBookingToBill } from '~/graphql/documents';
 // import { required, minLength, minValue } from 'vuelidate/lib/validators';
 
 @Component({

@@ -69,8 +69,8 @@
 </template>
 <script lang="ts">
 import { Vue, Component } from 'nuxt-property-decorator';
-import { getPatronKinds } from '~/graphql/documents/patronKind';
-import { mixinData } from '~/components/mixins/mutable';
+import { getPatronKinds } from '~/graphql/documents';
+import { mixinData } from '~/components/mixins';
 
 @Component({
     name: 'patronKind-',

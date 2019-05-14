@@ -36,7 +36,7 @@ import {
     ImageProps,
     LinkProps,
     TextProps,
-} from '~/components/mixins/props';
+} from '~/components/mixins';
 
 @Component({
     name: 'b-nav-item-icon-',

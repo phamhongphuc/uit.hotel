@@ -93,8 +93,8 @@
 </template>
 <script lang="ts">
 import { Vue, Component } from 'nuxt-property-decorator';
-import { getRoomKinds } from '~/graphql/documents/room-kind';
-import { mixinData } from '~/components/mixins/mutable';
+import { getRoomKinds } from '~/graphql/documents';
+import { mixinData } from '~/components/mixins';
 import { GetRoomKinds } from '~/graphql/types';
 
 @Component({

@@ -148,10 +148,8 @@
 <script lang="ts">
 import { EmployeeCreateInput } from 'graphql/types';
 import { Component } from 'nuxt-property-decorator';
-import { PopupMixin } from '~/components/mixins/popup';
-import { getPositions } from '~/graphql/documents/position';
-import { createEmployee } from '~/graphql/documents/employee';
-import { mixinData } from '~/components/mixins/mutable';
+import { PopupMixin, mixinData } from '~/components/mixins';
+import { getPositions, createEmployee } from '~/graphql/documents';
 import { required, email, alphaNum } from 'vuelidate/lib/validators';
 
 @Component({

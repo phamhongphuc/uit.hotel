@@ -13,8 +13,7 @@
 </template>
 <script lang="ts">
 import { Vue, Component } from 'nuxt-property-decorator';
-import mutable from '~/components/mixins/mutable';
-import { IconProps, TextProps, ImageProps } from '~/components/mixins/props';
+import mutable, { IconProps, TextProps, ImageProps } from '~/components/mixins';
 
 @Component({
     name: 'b-nav-item-icon-mutate-',

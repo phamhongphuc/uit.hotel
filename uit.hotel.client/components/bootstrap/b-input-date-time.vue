@@ -20,7 +20,7 @@
 </template>
 <script lang="ts">
 import { Vue, Component, Watch } from 'nuxt-property-decorator';
-import { InputProps, StateProps } from '~/components/mixins/props';
+import { InputProps, StateProps } from '~/components/mixins';
 import moment from 'moment';
 
 @Component({

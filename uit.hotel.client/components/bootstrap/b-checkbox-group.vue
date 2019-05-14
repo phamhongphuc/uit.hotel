@@ -18,7 +18,7 @@
 </template>
 <script lang="ts">
 import { Component, Prop, Watch } from 'nuxt-property-decorator';
-import { CheckboxProps } from '~/components/mixins/props';
+import { CheckboxProps } from '~/components/mixins';
 
 function isEquals(a: string[], b: string[]): boolean {
     if (a.length !== b.length) return false;

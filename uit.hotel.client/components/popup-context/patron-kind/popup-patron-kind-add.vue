@@ -40,9 +40,8 @@
 <script lang="ts">
 import { PatronKindCreateInput } from 'graphql/types';
 import { Component } from 'nuxt-property-decorator';
-import { PopupMixin } from '~/components/mixins/popup';
-import { createPatronKind } from '~/graphql/documents/patronKind';
-import { mixinData } from '~/components/mixins/mutable';
+import { PopupMixin, mixinData } from '~/components/mixins';
+import { createPatronKind } from '~/graphql/documents';
 import { required } from 'vuelidate/lib/validators';
 
 @Component({

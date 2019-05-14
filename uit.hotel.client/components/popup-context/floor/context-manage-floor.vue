@@ -33,9 +33,8 @@
 </template>
 <script lang="ts">
 import { Component } from 'nuxt-property-decorator';
-import { ContextMixin } from '~/components/mixins/context';
-import { setIsActiveFloor, deleteFloor } from '~/graphql/documents/floor';
-import { mixinData } from '~/components/mixins/mutable';
+import { ContextMixin, mixinData } from '~/components/mixins';
+import { setIsActiveFloor, deleteFloor } from '~/graphql/documents';
 
 @Component({
     name: 'context-manage-floor-',

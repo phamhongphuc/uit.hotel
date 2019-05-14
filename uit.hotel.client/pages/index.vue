@@ -8,8 +8,8 @@
 <script lang="ts">
 import { GetFloors } from 'graphql/types';
 import { Vue, Component } from 'nuxt-property-decorator';
-import { getFloors } from '~/graphql/documents/floor';
-import { mixinData } from '~/components/mixins/mutable';
+import { getFloors } from '~/graphql/documents';
+import { mixinData } from '~/components/mixins';
 
 @Component({
     name: 'index-',
