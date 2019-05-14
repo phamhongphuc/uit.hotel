@@ -1003,10 +1003,10 @@
     serve-static "^1.14.1"
     server-destroy "^1.0.1"
 
-"@nuxt/typescript@^2.6.3":
-  version "2.7.0"
-  resolved "https://registry.yarnpkg.com/@nuxt/typescript/-/typescript-2.7.0.tgz#b75940e01f84d0bab0e0088eff799fa6e18005c8"
-  integrity sha512-wR3wJUb1b9Ux543iroWdPE7o/GLJN/jQU3JPwE/niWsuWXm/ol2URIGCTwxbQczEPuTfmhzZqcleKX4veR696w==
+"@nuxt/typescript@^2.7.1":
+  version "2.7.1"
+  resolved "https://registry.yarnpkg.com/@nuxt/typescript/-/typescript-2.7.1.tgz#8ac368255306c13d19db10d011474c01e095ba03"
+  integrity sha512-DiUvQxWUczUtkUTLl+BY+sWFxpV6epU3MNweRPb0iFB2JfHYse5wx+QubExkG7+hMbD4sEdA2+X7/KavES3ulw==
   dependencies:
     "@types/babel__core" "^7.1.1"
     "@types/chokidar" "^2.1.3"
