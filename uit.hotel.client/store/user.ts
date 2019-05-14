@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
 import { ActionTree, GetterTree, MutationTree } from 'vuex';
-import { UserCheckLogin, UserLogin } from '~/graphql/types';
+import { IsInitialized, UserCheckLogin, UserLogin } from '~/graphql/types';
 import {
     apolloClient,
     apolloClientNotify,
@@ -110,6 +110,29 @@ export const actions: ActionTree<UserState, RootState> = {
             return true;
         } catch (e) {
             return false;
+        }
+    },
+
+    async checkIsInitializedDatabase(): Promise<void> {
+        let isInitialized = true;
+        try {
+            const result = await apolloClient(this).query<IsInitialized.Query>({
+                query: gql`
+                    query isInitialized {
+                        isInitialized
+                    }
+                `,
+            });
+            isInitialized = result.data.isInitialized;
+        } finally {
+            if (isInitialized) {
+                router(this).push('/login');
+                notify.error({
+                    title: 'Thông báo',
+                    text:
+                        'Hệ thống đã có sẵn tài khoản quản trị, không thể khởi tạo',
+                });
+            }
         }
     },
 };

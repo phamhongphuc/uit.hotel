@@ -1413,6 +1413,10 @@ export type UserCheckLoginMutation = {
     };
 };
 
+export type IsInitializedQueryVariables = {};
+
+export type IsInitializedQuery = Pick<AppQuery, 'isInitialized'>;
+
 export type GetBillsQueryVariables = {};
 
 export type GetBillsQuery = {
@@ -1625,6 +1629,16 @@ export type SetIsActiveFloorMutationVariables = {
 };
 
 export type SetIsActiveFloorMutation = Pick<AppMutation, 'setIsActiveFloor'>;
+
+export type InitializeAdminAccountMutationVariables = {
+    email: Scalars['String'];
+    password: Scalars['String'];
+};
+
+export type InitializeAdminAccountMutation = Pick<
+    AppMutation,
+    'initializeAdminAccount'
+>;
 
 export type GetPatronsQueryVariables = {};
 
@@ -1977,6 +1991,11 @@ export namespace UserCheckLogin {
     export type Position = UserCheckLoginMutation['checkLogin']['position'];
 }
 
+export namespace IsInitialized {
+    export type Variables = IsInitializedQueryVariables;
+    export type Query = IsInitializedQuery;
+}
+
 export namespace GetBills {
     export type Variables = GetBillsQueryVariables;
     export type Query = GetBillsQuery;
@@ -2144,6 +2163,11 @@ export namespace DeleteFloor {
 export namespace SetIsActiveFloor {
     export type Variables = SetIsActiveFloorMutationVariables;
     export type Mutation = SetIsActiveFloorMutation;
+}
+
+export namespace InitializeAdminAccount {
+    export type Variables = InitializeAdminAccountMutationVariables;
+    export type Mutation = InitializeAdminAccountMutation;
 }
 
 export namespace GetPatrons {
