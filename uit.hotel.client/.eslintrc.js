@@ -71,12 +71,9 @@ const config = {
         'no-console': 'warn',
         'no-lonely-if': 'error',
         'prefer-const': 'error',
-        'space-before-function-paren': [
-            'error',
-            { anonymous: 'never', named: 'never', asyncArrow: 'always' },
-        ],
 
         '@typescript-eslint/explicit-function-return-type': 'off',
+        '@typescript-eslint/explicit-member-accessibility': 'off',
         '@typescript-eslint/no-empty-interface': 'off',
         '@typescript-eslint/no-explicit-any': 'off',
 
