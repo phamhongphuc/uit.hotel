@@ -154,26 +154,27 @@
     </popup->
 </template>
 <script lang="ts">
-import { Component } from 'nuxt-property-decorator';
-import { GetFloors, CreateBill, BookingCreateInput } from '~/graphql/types';
-import { createBill } from '~/graphql/documents/bill';
-import { getPatrons } from '~/graphql/documents/patron';
-import { getRoom } from '~/graphql/documents/room';
-import { mixinData } from '~/components/mixins/mutable';
-import { PopupMixin } from '~/components/mixins/popup';
 import moment from 'moment';
+import { Component, mixins } from 'nuxt-property-decorator';
+import { GetFloors, CreateBill, BookingCreateInput } from '~/graphql/types';
+import { createBill, getPatrons, getRoom } from '~/graphql/documents';
+import { PopupMixin, DataMixin } from '~/components/mixins';
+
+type PopupMixinType = PopupMixin<
+    { rooms: GetFloors.Rooms[] },
+    CreateBill.Variables
+>;
 
 @Component({
-    mixins: [PopupMixin, mixinData({ createBill, getPatrons, getRoom })],
     name: 'popup-booking-and-check-in-',
     validations: {
         input: {},
     },
 })
-export default class extends PopupMixin<
-    { rooms: GetFloors.Rooms[] },
-    CreateBill.Variables
-> {
+export default class extends mixins<PopupMixinType>(
+    PopupMixin,
+    DataMixin({ createBill, getPatrons, getRoom }),
+) {
     bookCheckOutTime: string = moment().format();
     bookCheckInTime: string = moment().format();
 

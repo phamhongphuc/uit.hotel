@@ -19,15 +19,17 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Watch } from 'nuxt-property-decorator';
-import { InputProps, StateProps } from '~/components/mixins/props';
+import { Vue, Component, Watch, mixins } from 'nuxt-property-decorator';
+import { InputProps, StateProps } from '~/components/mixins';
 import moment from 'moment';
 
 @Component({
     name: 'b-input-date-time-',
-    mixins: [InputProps, StateProps],
 })
-export default class extends InputProps {
+export default class extends mixins<InputProps, StateProps>(
+    InputProps,
+    StateProps,
+) {
     date: string = '';
     time: string = '';
 

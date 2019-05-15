@@ -39,12 +39,12 @@
 </template>
 <script lang="ts">
 import { Vue, Component, namespace } from 'nuxt-property-decorator';
-import { mixinData } from '~/components/mixins/mutable';
-import { initializeAdminAccount } from '~/graphql/documents/initialize';
+import { DataMixin } from '~/components/mixins';
+import { initializeAdminAccount } from '~/graphql/documents';
 
 @Component({
     name: 'initialize-',
-    mixins: [mixinData({ initializeAdminAccount })],
+    mixins: [DataMixin({ initializeAdminAccount })],
     validations: {
         input: {},
     },

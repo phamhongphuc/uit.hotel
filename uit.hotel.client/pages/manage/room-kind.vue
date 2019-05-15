@@ -92,16 +92,15 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component } from 'nuxt-property-decorator';
-import { getRoomKinds } from '~/graphql/documents/room-kind';
-import { mixinData } from '~/components/mixins/mutable';
+import { Component, mixins } from 'nuxt-property-decorator';
+import { getRoomKinds } from '~/graphql/documents';
+import { DataMixin } from '~/components/mixins';
 import { GetRoomKinds } from '~/graphql/types';
 
 @Component({
     name: 'floor-room-',
-    mixins: [mixinData({ getRoomKinds })],
 })
-export default class extends Vue {
+export default class extends mixins(DataMixin({ getRoomKinds })) {
     head() {
         return {
             title: 'Quản lý loại phòng',

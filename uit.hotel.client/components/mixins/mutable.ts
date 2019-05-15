@@ -1,12 +1,10 @@
 import { FetchResult } from 'apollo-link';
 import { DocumentNode } from 'graphql';
-import { Vue, Prop } from 'nuxt-property-decorator';
-import { ComponentOptions } from 'vue';
-import { Mixin } from 'vue-mixin-decorator';
+import { Component, Prop, Vue } from 'nuxt-property-decorator';
 import { apolloClientNotify } from '~/modules/apollo';
 import { notify } from '~/plugins/notify';
 
-@Mixin
+@Component
 export default class extends Vue {
     @Prop({ required: true })
     protected mutation!: DocumentNode;
@@ -57,14 +55,4 @@ export default class extends Vue {
         }
         return result;
     }
-}
-
-export function mixinData(data: object): ComponentOptions<Vue> {
-    return {
-        data(): Record<string, any> {
-            return {
-                ...data,
-            };
-        },
-    };
 }

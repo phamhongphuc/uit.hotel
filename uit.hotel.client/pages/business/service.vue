@@ -97,17 +97,16 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component } from 'nuxt-property-decorator';
-import { getServices } from '~/graphql/documents/service';
-import { mixinData } from '~/components/mixins/mutable';
+import { Component, mixins } from 'nuxt-property-decorator';
+import { getServices } from '~/graphql/documents';
+import { DataMixin } from '~/components/mixins';
 import { GetServices } from '~/graphql/types';
 import { toMoney } from '~/utils/dataFormater';
 
 @Component({
     name: 'service-',
-    mixins: [mixinData({ getServices, toMoney })],
 })
-export default class extends Vue {
+export default class extends mixins(DataMixin({ getServices, toMoney })) {
     head() {
         return {
             title: 'Quản lý dịch vụ',

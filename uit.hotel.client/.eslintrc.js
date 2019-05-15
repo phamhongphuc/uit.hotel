@@ -71,11 +71,10 @@ const config = {
         'no-console': 'warn',
         'no-lonely-if': 'error',
         'prefer-const': 'error',
-        'space-before-function-paren': [
-            'error',
-            { anonymous: 'never', named: 'never', asyncArrow: 'always' },
-        ],
 
+        '@typescript-eslint/explicit-function-return-type': 'off',
+        '@typescript-eslint/explicit-member-accessibility': 'off',
+        '@typescript-eslint/no-empty-interface': 'off',
         '@typescript-eslint/no-explicit-any': 'off',
 
         'node/no-unsupported-features/es-syntax': 'off',
@@ -91,8 +90,10 @@ const config = {
                     'builtin',
                     'index',
                 ],
+                'newlines-between': 'never',
             },
         ],
+        'import/no-useless-path-segments': ['error', { noUselessIndex: true }],
 
         'vue/html-self-closing': [
             'error',

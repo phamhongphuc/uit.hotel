@@ -7,15 +7,14 @@
 </template>
 <script lang="ts">
 import { GetFloors } from 'graphql/types';
-import { Vue, Component } from 'nuxt-property-decorator';
-import { getFloors } from '~/graphql/documents/floor';
-import { mixinData } from '~/components/mixins/mutable';
+import { Component, mixins } from 'nuxt-property-decorator';
+import { getFloors } from '~/graphql/documents';
+import { DataMixin } from '~/components/mixins';
 
 @Component({
     name: 'index-',
-    mixins: [mixinData({ getFloors })],
 })
-export default class extends Vue {
+export default class extends mixins(DataMixin({ getFloors })) {
     selected: GetFloors.Rooms[] = [];
 
     head() {

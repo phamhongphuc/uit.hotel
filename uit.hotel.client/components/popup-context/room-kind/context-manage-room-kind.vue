@@ -37,16 +37,12 @@
 </template>
 <script lang="ts">
 import { Component } from 'nuxt-property-decorator';
-import { ContextMixin } from '~/components/mixins/context';
-import {
-    setIsActiveRoomKind,
-    deleteRoomKind,
-} from '~/graphql/documents/room-kind';
-import { mixinData } from '~/components/mixins/mutable';
+import { ContextMixin, DataMixin } from '~/components/mixins';
+import { setIsActiveRoomKind, deleteRoomKind } from '~/graphql/documents';
 
 @Component({
     name: 'context-manage-room-kind-',
-    mixins: [ContextMixin, mixinData({ setIsActiveRoomKind, deleteRoomKind })],
+    mixins: [ContextMixin, DataMixin({ setIsActiveRoomKind, deleteRoomKind })],
 })
 export default class extends ContextMixin {}
 </script>

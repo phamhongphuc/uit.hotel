@@ -90,16 +90,15 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component } from 'nuxt-property-decorator';
-import { getEmployees } from '~/graphql/documents/employee';
-import { mixinData } from '~/components/mixins/mutable';
+import { Component, mixins } from 'nuxt-property-decorator';
+import { getEmployees } from '~/graphql/documents';
+import { DataMixin } from '~/components/mixins';
 import { GetEmployees } from '~/graphql/types';
 
 @Component({
     name: 'employee-',
-    mixins: [mixinData({ getEmployees })],
 })
-export default class extends Vue {
+export default class extends mixins(DataMixin({ getEmployees })) {
     head() {
         return {
             title: 'Quản lý nhân viên',

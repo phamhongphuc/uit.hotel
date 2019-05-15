@@ -1,5 +1,4 @@
-import { Vue, Prop } from 'nuxt-property-decorator';
-import { Mixin } from 'vue-mixin-decorator';
+import { Vue, Prop, Component } from 'nuxt-property-decorator';
 
 // Valid supported input types
 var TYPES = [
@@ -20,7 +19,7 @@ var TYPES = [
     'week',
 ];
 
-@Mixin
+@Component
 export class InputProps extends Vue {
     @Prop({ default: null })
     protected value: any;

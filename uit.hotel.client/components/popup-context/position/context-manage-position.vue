@@ -29,16 +29,12 @@
 </template>
 <script lang="ts">
 import { Component } from 'nuxt-property-decorator';
-import { ContextMixin } from '~/components/mixins/context';
-import {
-    setIsActivePosition,
-    deletePosition,
-} from '~/graphql/documents/position';
-import { mixinData } from '~/components/mixins/mutable';
+import { ContextMixin, DataMixin } from '~/components/mixins';
+import { setIsActivePosition, deletePosition } from '~/graphql/documents';
 
 @Component({
     name: 'context-manage-position-',
-    mixins: [ContextMixin, mixinData({ setIsActivePosition, deletePosition })],
+    mixins: [ContextMixin, DataMixin({ setIsActivePosition, deletePosition })],
 })
 export default class extends ContextMixin {}
 </script>

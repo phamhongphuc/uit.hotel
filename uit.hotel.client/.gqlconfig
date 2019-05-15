@@ -5,7 +5,7 @@
     "query": {
         "files": [
             {
-                "match": "**/*.js",
+                "match": "**/*.ts",
                 "parser": ["EmbeddedQueryParser", { "startTag": "gql`", "endTag": "`" }],
                 "isRelay": true
             },

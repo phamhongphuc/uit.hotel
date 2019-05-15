@@ -19,15 +19,16 @@
     </context->
 </template>
 <script lang="ts">
-import { Component } from 'nuxt-property-decorator';
-import { ContextMixin } from '~/components/mixins/context';
-import { mixinData } from '~/components/mixins/mutable';
-import { payTheBill } from '~/graphql/documents/bill';
+import { Component, mixins } from 'nuxt-property-decorator';
+import { ContextMixin, DataMixin } from '~/components/mixins';
+import { payTheBill } from '~/graphql/documents';
 import moment from 'moment';
 
 @Component({
     name: 'context-manage-bill-',
-    mixins: [ContextMixin, mixinData({ payTheBill, moment })],
 })
-export default class extends ContextMixin {}
+export default class extends mixins<ContextMixin>(
+    ContextMixin,
+    DataMixin({ payTheBill, moment }),
+) {}
 </script>

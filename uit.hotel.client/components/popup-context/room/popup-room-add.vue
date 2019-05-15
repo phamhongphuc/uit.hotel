@@ -56,16 +56,13 @@
 </template>
 <script lang="ts">
 import { Component } from 'nuxt-property-decorator';
-import { PopupMixin } from '~/components/mixins/popup';
-import { createRoom } from '~/graphql/documents/room';
-import { getFloors } from '~/graphql/documents/floor';
-import { getRoomKinds } from '~/graphql/documents/room-kind';
+import { PopupMixin, DataMixin } from '~/components/mixins';
+import { createRoom, getFloors, getRoomKinds } from '~/graphql/documents';
 import { GetFloors, RoomCreateInput } from '~/graphql/types';
-import { mixinData } from '~/components/mixins/mutable';
 import { required } from 'vuelidate/lib/validators';
 
 @Component({
-    mixins: [PopupMixin, mixinData({ createRoom, getRoomKinds, getFloors })],
+    mixins: [PopupMixin, DataMixin({ createRoom, getRoomKinds, getFloors })],
     name: 'popup-room-add-',
     validations: {
         input: {

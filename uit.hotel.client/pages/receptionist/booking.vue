@@ -94,17 +94,18 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component } from 'nuxt-property-decorator';
-import { getBookings } from '~/graphql/documents/booking';
-import { mixinData } from '~/components/mixins/mutable';
+import { Component, mixins } from 'nuxt-property-decorator';
+import { getBookings } from '~/graphql/documents';
+import { DataMixin } from '~/components/mixins';
 import { GetBookings } from '~/graphql/types';
 import { toMoney, toDate } from '~/utils/dataFormater';
 
 @Component({
     name: 'booking-',
-    mixins: [mixinData({ getBookings, toMoney, toDate })],
 })
-export default class extends Vue {
+export default class extends mixins(
+    DataMixin({ getBookings, toMoney, toDate }),
+) {
     head() {
         return {
             title: 'Quản lý đơn đặt phòng',

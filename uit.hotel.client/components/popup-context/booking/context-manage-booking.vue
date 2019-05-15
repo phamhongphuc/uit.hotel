@@ -38,24 +38,22 @@
     </context->
 </template>
 <script lang="ts">
-import { Component } from 'nuxt-property-decorator';
-import { ContextMixin } from '~/components/mixins/context';
-import { mixinData } from '~/components/mixins/mutable';
+import { Component, mixins } from 'nuxt-property-decorator';
+import { ContextMixin, DataMixin } from '~/components/mixins';
 import {
     checkIn,
     requestCheckOut,
     checkOut,
     cancel,
-} from '~/graphql/documents/booking';
+} from '~/graphql/documents';
 
 @Component({
     name: 'context-manage-patron-kind-',
-    mixins: [
-        ContextMixin,
-        mixinData({ checkIn, requestCheckOut, checkOut, cancel }),
-    ],
 })
-export default class extends ContextMixin {
+export default class extends mixins<ContextMixin>(
+    ContextMixin,
+    DataMixin({ checkIn, requestCheckOut, checkOut, cancel }),
+) {
     statusEnum = {
         Booked: 0,
         CheckedIn: 1,

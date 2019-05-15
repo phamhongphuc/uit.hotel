@@ -105,18 +105,19 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component } from 'nuxt-property-decorator';
-import { getBills } from '~/graphql/documents/bill';
-import { mixinData } from '~/components/mixins/mutable';
+import { Component, mixins } from 'nuxt-property-decorator';
+import { getBills } from '~/graphql/documents';
+import { DataMixin } from '~/components/mixins';
 import { GetBills } from '~/graphql/types';
 import { toMoney, toDate } from '~/utils/dataFormater';
 import moment from 'moment';
 
 @Component({
     name: 'bill-',
-    mixins: [mixinData({ getBills, toMoney, toDate, moment })],
 })
-export default class extends Vue {
+export default class extends mixins(
+    DataMixin({ getBills, toMoney, toDate, moment }),
+) {
     head() {
         return {
             title: 'Quản lý hóa đơn',

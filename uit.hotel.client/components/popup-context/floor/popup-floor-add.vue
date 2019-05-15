@@ -32,14 +32,12 @@
 </template>
 <script lang="ts">
 import { FloorCreateInput } from 'graphql/types';
-import { Component } from 'nuxt-property-decorator';
-import { mixinData } from '~/components/mixins/mutable';
-import { PopupMixin } from '~/components/mixins/popup';
-import { createFloor } from '~/graphql/documents/floor';
+import { Component, mixins } from 'nuxt-property-decorator';
+import { DataMixin, PopupMixin } from '~/components/mixins';
+import { createFloor } from '~/graphql/documents';
 import { required, minLength } from 'vuelidate/lib/validators';
 
 @Component({
-    mixins: [PopupMixin, mixinData({ createFloor })],
     name: 'popup-floor-add-',
     validations: {
         input: {
@@ -50,7 +48,10 @@ import { required, minLength } from 'vuelidate/lib/validators';
         },
     },
 })
-export default class extends PopupMixin<void, FloorCreateInput> {
+export default class extends mixins<PopupMixin<void, FloorCreateInput>>(
+    PopupMixin,
+    DataMixin({ createFloor }),
+) {
     onOpen() {
         this.input = {
             name: '',

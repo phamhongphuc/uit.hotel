@@ -134,15 +134,17 @@
 </template>
 <script lang="ts">
 import { EmployeeUpdateInput, GetEmployees } from 'graphql/types';
-import { Component } from 'nuxt-property-decorator';
-import { PopupMixin } from '~/components/mixins/popup';
-import { updateEmployee } from '~/graphql/documents/employee';
-import { getPositions } from '~/graphql/documents/position';
-import { mixinData } from '~/components/mixins/mutable';
+import { Component, mixins } from 'nuxt-property-decorator';
+import { PopupMixin, DataMixin } from '~/components/mixins';
+import { updateEmployee, getPositions } from '~/graphql/documents';
 import { required, email, alphaNum } from 'vuelidate/lib/validators';
 
+type PopupMixinType = PopupMixin<
+    { employee: GetEmployees.Employees },
+    EmployeeUpdateInput
+>;
+
 @Component({
-    mixins: [PopupMixin, mixinData({ updateEmployee, getPositions })],
     name: 'popup-employee-update-',
     validations: {
         input: {
@@ -162,10 +164,10 @@ import { required, email, alphaNum } from 'vuelidate/lib/validators';
         },
     },
 })
-export default class extends PopupMixin<
-    { employee: GetEmployees.Employees },
-    EmployeeUpdateInput
-> {
+export default class extends mixins<PopupMixinType>(
+    PopupMixin,
+    DataMixin({ updateEmployee, getPositions }),
+) {
     onOpen() {
         const {
             id,
