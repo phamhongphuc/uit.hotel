@@ -164,14 +164,14 @@
 <script lang="ts">
 import { CreatePatron, PatronCreateInput, GetPatrons } from 'graphql/types';
 import { Component } from 'nuxt-property-decorator';
-import { PopupMixin, mixinData } from '~/components/mixins';
+import { PopupMixin, DataMixin } from '~/components/mixins';
 import { getPatronKinds, createPatron, getPatrons } from '~/graphql/documents';
 import { required, alphaNum, minLength } from 'vuelidate/lib/validators';
 
 @Component({
     mixins: [
         PopupMixin,
-        mixinData({ createPatron, getPatronKinds, getPatrons }),
+        DataMixin({ createPatron, getPatronKinds, getPatrons }),
     ],
     name: 'popup-patron-select-or-add-',
     validations: {

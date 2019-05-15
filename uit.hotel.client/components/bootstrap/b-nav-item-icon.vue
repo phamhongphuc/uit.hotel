@@ -30,7 +30,7 @@
     </b-nav-item>
 </template>
 <script lang="ts">
-import { Vue, Component } from 'nuxt-property-decorator';
+import { Component, mixins } from 'nuxt-property-decorator';
 import {
     IconProps,
     ImageProps,
@@ -40,7 +40,11 @@ import {
 
 @Component({
     name: 'b-nav-item-icon-',
-    mixins: [LinkProps, IconProps, TextProps, ImageProps],
 })
-export default class extends Vue {}
+export default class extends mixins<
+    LinkProps,
+    IconProps,
+    TextProps,
+    ImageProps
+>(LinkProps, IconProps, TextProps, ImageProps) {}
 </script>

@@ -68,15 +68,14 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component } from 'nuxt-property-decorator';
+import { Component, mixins } from 'nuxt-property-decorator';
 import { getPatronKinds } from '~/graphql/documents';
-import { mixinData } from '~/components/mixins';
+import { DataMixin } from '~/components/mixins';
 
 @Component({
     name: 'patronKind-',
-    mixins: [mixinData({ getPatronKinds })],
 })
-export default class extends Vue {
+export default class extends mixins(DataMixin({ getPatronKinds })) {
     head() {
         return {
             title: 'Quản lý loại khách hàng',

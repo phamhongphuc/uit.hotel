@@ -88,13 +88,21 @@
 </template>
 <script lang="ts">
 import { BookAndCheckInCreateInput, GetRooms } from 'graphql/types';
-import { Component } from 'nuxt-property-decorator';
-import { PopupMixin, mixinData } from '~/components/mixins';
+import { Component, mixins } from 'nuxt-property-decorator';
+import { PopupMixin, DataMixin } from '~/components/mixins';
 import { getPatronKinds, getRooms, createPatron } from '~/graphql/documents';
 import { required } from 'vuelidate/lib/validators';
 
+type PopupMixinType = PopupMixin<
+    {
+        booking: BookAndCheckInCreateInput;
+        callback(result: BookAndCheckInCreateInput): void;
+    },
+    BookAndCheckInCreateInput
+>;
+
 @Component({
-    mixins: [PopupMixin, mixinData({ createPatron, getPatronKinds, getRooms })],
+    mixins: [PopupMixin, DataMixin({ createPatron, getPatronKinds, getRooms })],
     name: 'popup-booking-book-and-check-in-',
     validations: {
         input: {
@@ -102,13 +110,10 @@ import { required } from 'vuelidate/lib/validators';
         },
     },
 })
-export default class extends PopupMixin<
-    {
-        booking: BookAndCheckInCreateInput;
-        callback(result: BookAndCheckInCreateInput): void;
-    },
-    BookAndCheckInCreateInput
-> {
+export default class extends mixins<PopupMixinType>(
+    PopupMixin,
+    DataMixin({ createPatron, getPatronKinds, getRooms }),
+) {
     onOpen() {
         this.input = this.data.booking || {
             bookCheckOutTime: new Date(),

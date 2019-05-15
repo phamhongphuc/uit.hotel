@@ -29,12 +29,12 @@
 </template>
 <script lang="ts">
 import { Component } from 'nuxt-property-decorator';
-import { ContextMixin, mixinData } from '~/components/mixins';
+import { ContextMixin, DataMixin } from '~/components/mixins';
 import { setIsActiveService, deleteService } from '~/graphql/documents';
 
 @Component({
     name: 'context-manage-service-',
-    mixins: [ContextMixin, mixinData({ setIsActiveService, deleteService })],
+    mixins: [ContextMixin, DataMixin({ setIsActiveService, deleteService })],
 })
 export default class extends ContextMixin {}
 </script>

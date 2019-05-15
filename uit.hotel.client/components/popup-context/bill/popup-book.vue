@@ -158,18 +158,23 @@ import moment from 'moment';
 import { Component, mixins } from 'nuxt-property-decorator';
 import { GetFloors, CreateBill, BookingCreateInput } from '~/graphql/types';
 import { createBill, getPatrons, getRoom } from '~/graphql/documents';
-import { mixinData, PopupMixin } from '~/components/mixins';
+import { PopupMixin, DataMixin } from '~/components/mixins';
+
+type PopupMixinType = PopupMixin<
+    { rooms: GetFloors.Rooms[] },
+    CreateBill.Variables
+>;
 
 @Component({
-    mixins: [PopupMixin, mixinData({ createBill, getPatrons, getRoom })],
     name: 'popup-booking-and-check-in-',
     validations: {
         input: {},
     },
 })
-export default class extends mixins<
-    PopupMixin<{ rooms: GetFloors.Rooms[] }, CreateBill.Variables>
->(PopupMixin) {
+export default class extends mixins<PopupMixinType>(
+    PopupMixin,
+    DataMixin({ createBill, getPatrons, getRoom }),
+) {
     bookCheckOutTime: string = moment().format();
     bookCheckInTime: string = moment().format();
 

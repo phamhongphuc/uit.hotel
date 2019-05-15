@@ -86,17 +86,16 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component } from 'nuxt-property-decorator';
+import { Component, mixins } from 'nuxt-property-decorator';
 import { getRates } from '~/graphql/documents';
-import { mixinData } from '~/components/mixins';
+import { DataMixin } from '~/components/mixins';
 import { GetRates } from '~/graphql/types';
 import { toMoney, toDate } from '~/utils/dataFormater';
 
 @Component({
     name: 'rate-',
-    mixins: [mixinData({ getRates, toMoney, toDate })],
 })
-export default class extends Vue {
+export default class extends mixins(DataMixin({ getRates, toMoney, toDate })) {
     head() {
         return {
             title: 'Quản lý giá',

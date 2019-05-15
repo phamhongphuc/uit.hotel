@@ -21,13 +21,15 @@
     </context->
 </template>
 <script lang="ts">
-import { Component } from 'nuxt-property-decorator';
-import { ContextMixin, mixinData } from '~/components/mixins';
+import { Component, mixins } from 'nuxt-property-decorator';
+import { ContextMixin, DataMixin } from '~/components/mixins';
 import { setIsActiveAccount } from '~/graphql/documents';
 
 @Component({
     name: 'context-manage-employee-',
-    mixins: [ContextMixin, mixinData({ setIsActiveAccount })],
 })
-export default class extends ContextMixin {}
+export default class extends mixins<ContextMixin>(
+    ContextMixin,
+    DataMixin({ setIsActiveAccount }),
+) {}
 </script>

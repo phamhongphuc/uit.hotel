@@ -75,16 +75,15 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component } from 'nuxt-property-decorator';
+import { Component, mixins } from 'nuxt-property-decorator';
 import { getFloors } from '~/graphql/documents';
-import { mixinData } from '~/components/mixins';
+import { DataMixin } from '~/components/mixins';
 import { GetFloors } from '~/graphql/types';
 
 @Component({
     name: 'floor-room-',
-    mixins: [mixinData({ getFloors })],
 })
-export default class extends Vue {
+export default class extends mixins(DataMixin({ getFloors })) {
     head() {
         return {
             title: 'Sơ đồ khách sạn',

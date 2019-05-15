@@ -39,13 +39,13 @@
 </template>
 <script lang="ts">
 import { PatronKindCreateInput } from 'graphql/types';
-import { Component } from 'nuxt-property-decorator';
-import { PopupMixin, mixinData } from '~/components/mixins';
+import { Component, mixins } from 'nuxt-property-decorator';
+import { PopupMixin, DataMixin } from '~/components/mixins';
 import { createPatronKind } from '~/graphql/documents';
 import { required } from 'vuelidate/lib/validators';
 
 @Component({
-    mixins: [PopupMixin, mixinData({ createPatronKind })],
+    mixins: [PopupMixin, DataMixin({ createPatronKind })],
     name: 'popup-patron-kind-add-',
     validations: {
         input: {
@@ -54,7 +54,9 @@ import { required } from 'vuelidate/lib/validators';
         },
     },
 })
-export default class extends PopupMixin<void, PatronKindCreateInput> {
+export default class extends mixins<PopupMixin<void, PatronKindCreateInput>>(
+    PopupMixin,
+) {
     onOpen() {
         this.input = {
             name: '',

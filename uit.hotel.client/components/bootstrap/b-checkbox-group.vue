@@ -17,7 +17,7 @@
     </div>
 </template>
 <script lang="ts">
-import { Component, Prop, Watch } from 'nuxt-property-decorator';
+import { Component, Prop, Watch, mixins } from 'nuxt-property-decorator';
 import { CheckboxProps } from '~/components/mixins';
 
 function isEquals(a: string[], b: string[]): boolean {
@@ -28,9 +28,8 @@ function isEquals(a: string[], b: string[]): boolean {
 
 @Component({
     name: 'b-checkbox-group-',
-    mixins: [CheckboxProps],
 })
-export default class extends CheckboxProps {
+export default class extends mixins<CheckboxProps>(CheckboxProps) {
     @Prop({ required: true })
     title!: string;
 

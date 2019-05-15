@@ -43,8 +43,7 @@ import { addBookingToBill } from '~/graphql/documents';
     },
 })
 export default class extends mixins<
-    PopupMixin<{ bill: GetBills.Bills }, AddBookingToBill.Variables>,
-    { addBookingToBill }
+    PopupMixin<{ bill: GetBills.Bills }, AddBookingToBill.Variables>
 >(PopupMixin, DataMixin({ addBookingToBill })) {
     onOpen() {
         this.input = {

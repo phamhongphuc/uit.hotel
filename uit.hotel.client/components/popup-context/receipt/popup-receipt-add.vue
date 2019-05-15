@@ -41,13 +41,13 @@
 </template>
 <script lang="ts">
 import { Component } from 'nuxt-property-decorator';
-import { mixinData, PopupMixin } from '~/components/mixins';
+import { DataMixin, PopupMixin } from '~/components/mixins';
 import { ReceiptCreateInput, GetBills } from '~/graphql/types';
 import { createReceipt } from '~/graphql/documents';
 import { required } from 'vuelidate/lib/validators';
 
 @Component({
-    mixins: [PopupMixin, mixinData({ createReceipt })],
+    mixins: [PopupMixin, DataMixin({ createReceipt })],
     name: 'popup-receipt-add-',
     validations: {
         input: {

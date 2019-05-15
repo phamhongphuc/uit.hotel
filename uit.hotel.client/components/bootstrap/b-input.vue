@@ -21,14 +21,17 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop } from 'nuxt-property-decorator';
+import { Component, Prop, mixins } from 'nuxt-property-decorator';
 import { InputProps, IconProps, StateProps } from '~/components/mixins';
 
 @Component({
     name: 'b-input-',
-    mixins: [IconProps, InputProps, StateProps],
 })
-export default class extends Vue {
+export default class extends mixins<IconProps, InputProps, StateProps>(
+    IconProps,
+    InputProps,
+    StateProps,
+) {
     @Prop({ default: null })
     title!: string;
 }

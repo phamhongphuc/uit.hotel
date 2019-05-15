@@ -52,13 +52,13 @@
 </template>
 <script lang="ts">
 import { Component } from 'nuxt-property-decorator';
-import { mixinData, PopupMixin } from '~/components/mixins';
+import { DataMixin, PopupMixin } from '~/components/mixins';
 import { GetRoomKinds, RoomKindUpdateInput } from '~/graphql/types';
 import { updateRoomKind } from '~/graphql/documents';
 import { required, minLength, between } from 'vuelidate/lib/validators';
 
 @Component({
-    mixins: [PopupMixin, mixinData({ updateRoomKind })],
+    mixins: [PopupMixin, DataMixin({ updateRoomKind })],
     name: 'popup-room-kind-add-',
     validations: {
         input: {

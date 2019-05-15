@@ -1,7 +1,6 @@
 import { FetchResult } from 'apollo-link';
 import { DocumentNode } from 'graphql';
-import { Vue, Prop, Component } from 'nuxt-property-decorator';
-import { ComponentOptions } from 'vue';
+import { Component, Prop, Vue } from 'nuxt-property-decorator';
 import { apolloClientNotify } from '~/modules/apollo';
 import { notify } from '~/plugins/notify';
 
@@ -56,14 +55,4 @@ export default class extends Vue {
         }
         return result;
     }
-}
-
-export function mixinData(data: object): ComponentOptions<Vue> {
-    return {
-        data(): Record<string, any> {
-            return {
-                ...data,
-            };
-        },
-    };
 }

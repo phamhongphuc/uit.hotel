@@ -55,8 +55,8 @@
     </popup->
 </template>
 <script lang="ts">
-import { Component } from 'nuxt-property-decorator';
-import { PopupMixin, mixinData } from '~/components/mixins';
+import { Component, mixins } from 'nuxt-property-decorator';
+import { PopupMixin, DataMixin } from '~/components/mixins';
 import { GetFloors, RoomUpdateInput } from '~/graphql/types';
 import { getFloors, updateRoom, getRoomKinds } from '~/graphql/documents';
 import { required } from 'vuelidate/lib/validators';
@@ -67,7 +67,7 @@ interface PopupRoomUpdateInput {
 }
 
 @Component({
-    mixins: [PopupMixin, mixinData({ updateRoom, getRoomKinds, getFloors })],
+    mixins: [PopupMixin, DataMixin({ updateRoom, getRoomKinds, getFloors })],
     name: 'popup-room-add-',
     validations: {
         input: {
@@ -81,7 +81,9 @@ interface PopupRoomUpdateInput {
         },
     },
 })
-export default class extends PopupMixin<PopupRoomUpdateInput, RoomUpdateInput> {
+export default class extends mixins<
+    PopupMixin<PopupRoomUpdateInput, RoomUpdateInput>
+>(PopupMixin) {
     onOpen() {
         const {
             room: { id, name, roomKind },

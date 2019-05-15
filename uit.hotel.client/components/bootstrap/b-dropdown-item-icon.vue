@@ -30,7 +30,7 @@
     </b-dropdown-item>
 </template>
 <script lang="ts">
-import { Vue, Component } from 'nuxt-property-decorator';
+import { Component, mixins } from 'nuxt-property-decorator';
 import {
     LinkProps,
     IconProps,
@@ -40,7 +40,11 @@ import {
 
 @Component({
     name: 'b-dropdown-item-icon-',
-    mixins: [LinkProps, IconProps, TextProps, ImageProps],
 })
-export default class extends Vue {}
+export default class extends mixins<
+    LinkProps,
+    IconProps,
+    TextProps,
+    ImageProps
+>(LinkProps, IconProps, TextProps, ImageProps) {}
 </script>

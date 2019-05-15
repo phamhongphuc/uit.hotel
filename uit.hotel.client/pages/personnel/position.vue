@@ -100,16 +100,15 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component } from 'nuxt-property-decorator';
+import { Component, mixins } from 'nuxt-property-decorator';
 import { getPositions } from '~/graphql/documents';
-import { mixinData } from '~/components/mixins';
+import { DataMixin } from '~/components/mixins';
 import { GetPositions } from '~/graphql/types';
 
 @Component({
     name: 'position-',
-    mixins: [mixinData({ getPositions })],
 })
-export default class extends Vue {
+export default class extends mixins(DataMixin({ getPositions })) {
     head() {
         return {
             title: 'Quản lý vị trí',

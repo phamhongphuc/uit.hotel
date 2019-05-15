@@ -141,12 +141,12 @@
 <script lang="ts">
 import { PatronUpdateInput, GetPatrons } from 'graphql/types';
 import { Component } from 'nuxt-property-decorator';
-import { PopupMixin, mixinData } from '~/components/mixins';
+import { PopupMixin, DataMixin } from '~/components/mixins';
 import { updatePatron, getPatronKinds } from '~/graphql/documents';
 import { required, alphaNum, minLength } from 'vuelidate/lib/validators';
 
 @Component({
-    mixins: [PopupMixin, mixinData({ updatePatron, getPatronKinds })],
+    mixins: [PopupMixin, DataMixin({ updatePatron, getPatronKinds })],
     name: 'popup-patron-update-',
     validations: {
         input: {

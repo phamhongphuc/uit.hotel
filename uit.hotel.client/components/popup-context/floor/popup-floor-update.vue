@@ -33,12 +33,12 @@
 <script lang="ts">
 import { FloorUpdateInput, GetFloors } from 'graphql/types';
 import { Component } from 'nuxt-property-decorator';
-import { mixinData, PopupMixin } from '~/components/mixins';
+import { DataMixin, PopupMixin } from '~/components/mixins';
 import { updateFloor } from '~/graphql/documents';
 import { required, minLength } from 'vuelidate/lib/validators';
 
 @Component({
-    mixins: [PopupMixin, mixinData({ updateFloor })],
+    mixins: [PopupMixin, DataMixin({ updateFloor })],
     name: 'popup-floor-update-',
     validations: {
         input: {

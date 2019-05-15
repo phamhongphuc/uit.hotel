@@ -57,8 +57,8 @@
     </popup->
 </template>
 <script lang="ts">
-import { Component } from 'nuxt-property-decorator';
-import { PopupMixin, mixinData } from '~/components/mixins';
+import { Component, mixins } from 'nuxt-property-decorator';
+import { PopupMixin, DataMixin } from '~/components/mixins';
 import {
     createPosition,
     positionOptionsAdministrative,
@@ -70,7 +70,7 @@ import { required } from 'vuelidate/lib/validators';
 import { CheckboxOption } from '~/utils/components';
 
 @Component({
-    mixins: [PopupMixin, mixinData({ createPosition })],
+    mixins: [PopupMixin, DataMixin({ createPosition })],
     name: 'popup-position-add-',
     validations: {
         input: {
@@ -78,7 +78,7 @@ import { CheckboxOption } from '~/utils/components';
         },
     },
 })
-export default class extends PopupMixin<void, any> {
+export default class extends mixins<PopupMixin<void, any>>(PopupMixin) {
     selected: string[] = [];
 
     positionOptionsAdministrative: CheckboxOption[] = [];

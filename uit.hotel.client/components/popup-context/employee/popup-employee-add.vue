@@ -147,13 +147,12 @@
 </template>
 <script lang="ts">
 import { EmployeeCreateInput } from 'graphql/types';
-import { Component } from 'nuxt-property-decorator';
-import { PopupMixin, mixinData } from '~/components/mixins';
+import { Component, mixins } from 'nuxt-property-decorator';
+import { PopupMixin, DataMixin } from '~/components/mixins';
 import { getPositions, createEmployee } from '~/graphql/documents';
 import { required, email, alphaNum } from 'vuelidate/lib/validators';
 
 @Component({
-    mixins: [PopupMixin, mixinData({ createEmployee, getPositions })],
     name: 'popup-employee-add-',
     validations: {
         input: {
@@ -181,7 +180,10 @@ import { required, email, alphaNum } from 'vuelidate/lib/validators';
         },
     },
 })
-export default class extends PopupMixin<void, EmployeeCreateInput> {
+export default class extends mixins<PopupMixin<void, EmployeeCreateInput>>(
+    PopupMixin,
+    DataMixin({ createEmployee, getPositions }),
+) {
     rePassword: string = '';
 
     onOpen() {

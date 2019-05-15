@@ -59,7 +59,7 @@
 <script lang="ts">
 import { GetPositions } from 'graphql/types';
 import { Component } from 'nuxt-property-decorator';
-import { PopupMixin, mixinData } from '~/components/mixins';
+import { PopupMixin, DataMixin } from '~/components/mixins';
 import {
     updatePosition,
     positionOptionsAdministrative,
@@ -71,7 +71,7 @@ import { required } from 'vuelidate/lib/validators';
 import { CheckboxOption } from '~/utils/components';
 
 @Component({
-    mixins: [PopupMixin, mixinData({ updatePosition })],
+    mixins: [PopupMixin, DataMixin({ updatePosition })],
     name: 'popup-position-update-',
     validations: {
         input: {

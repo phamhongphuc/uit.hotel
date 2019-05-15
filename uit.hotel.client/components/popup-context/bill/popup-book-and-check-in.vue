@@ -160,18 +160,23 @@ import {
     BookAndCheckInCreateInput,
 } from '~/graphql/types';
 import { bookAndCheckIn, getPatrons, getRoom } from '~/graphql/documents';
-import { DataMixin, mixinData, PopupMixin } from '~/components/mixins';
+import { DataMixin, PopupMixin } from '~/components/mixins';
+
+type PopupMixinType = PopupMixin<
+    { rooms: GetFloors.Rooms[] },
+    BookAndCheckIn.Variables
+>;
 
 @Component({
-    mixins: [PopupMixin, mixinData({ bookAndCheckIn, getPatrons, getRoom })],
     name: 'popup-booking-and-check-in-',
     validations: {
         input: {},
     },
 })
-export default class extends mixins<
-    PopupMixin<{ rooms: GetFloors.Rooms[] }, BookAndCheckIn.Variables>
->(PopupMixin, DataMixin({ bookAndCheckIn, getPatrons, getRoom })) {
+export default class extends mixins<PopupMixinType>(
+    PopupMixin,
+    DataMixin({ bookAndCheckIn, getPatrons, getRoom }),
+) {
     bookCheckOutTime: string = moment().format();
 
     onOpen() {

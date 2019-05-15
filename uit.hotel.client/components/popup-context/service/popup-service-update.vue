@@ -49,12 +49,12 @@
 <script lang="ts">
 import { ServiceUpdateInput, GetServices } from 'graphql/types';
 import { Component } from 'nuxt-property-decorator';
-import { mixinData, PopupMixin } from '~/components/mixins';
+import { DataMixin, PopupMixin } from '~/components/mixins';
 import { updateService } from '~/graphql/documents';
 import { required, minLength, minValue } from 'vuelidate/lib/validators';
 
 @Component({
-    mixins: [PopupMixin, mixinData({ updateService })],
+    mixins: [PopupMixin, DataMixin({ updateService })],
     name: 'popup-service-update-',
     validations: {
         input: {
