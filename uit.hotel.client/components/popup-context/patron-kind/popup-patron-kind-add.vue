@@ -45,7 +45,6 @@ import { createPatronKind } from '~/graphql/documents';
 import { required } from 'vuelidate/lib/validators';
 
 @Component({
-    mixins: [PopupMixin, DataMixin({ createPatronKind })],
     name: 'popup-patron-kind-add-',
     validations: {
         input: {
@@ -56,6 +55,7 @@ import { required } from 'vuelidate/lib/validators';
 })
 export default class extends mixins<PopupMixin<void, PatronKindCreateInput>>(
     PopupMixin,
+    DataMixin({ createPatronKind }),
 ) {
     onOpen() {
         this.input = {

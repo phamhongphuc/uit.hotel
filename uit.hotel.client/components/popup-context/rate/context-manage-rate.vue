@@ -11,12 +11,11 @@
     </context->
 </template>
 <script lang="ts">
-import { Component } from 'nuxt-property-decorator';
-import { ContextMixin, DataMixin } from '~/components/mixins';
+import { Component, mixins } from 'nuxt-property-decorator';
+import { ContextMixin } from '~/components/mixins';
 
 @Component({
     name: 'context-manage-rate-',
-    mixins: [ContextMixin, DataMixin({})],
 })
-export default class extends ContextMixin {}
+export default class extends mixins<ContextMixin>(ContextMixin) {}
 </script>

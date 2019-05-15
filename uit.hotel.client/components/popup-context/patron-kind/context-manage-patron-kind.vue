@@ -10,12 +10,11 @@
     </context->
 </template>
 <script lang="ts">
-import { Component } from 'nuxt-property-decorator';
+import { Component, mixins } from 'nuxt-property-decorator';
 import { ContextMixin } from '~/components/mixins';
 
 @Component({
     name: 'context-manage-patron-kind-',
-    mixins: [ContextMixin],
 })
-export default class extends ContextMixin {}
+export default class extends mixins<ContextMixin>(ContextMixin) {}
 </script>

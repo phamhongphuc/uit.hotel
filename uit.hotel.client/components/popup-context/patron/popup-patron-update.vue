@@ -140,13 +140,12 @@
 </template>
 <script lang="ts">
 import { PatronUpdateInput, GetPatrons } from 'graphql/types';
-import { Component } from 'nuxt-property-decorator';
+import { Component, mixins } from 'nuxt-property-decorator';
 import { PopupMixin, DataMixin } from '~/components/mixins';
 import { updatePatron, getPatronKinds } from '~/graphql/documents';
 import { required, alphaNum, minLength } from 'vuelidate/lib/validators';
 
 @Component({
-    mixins: [PopupMixin, DataMixin({ updatePatron, getPatronKinds })],
     name: 'popup-patron-update-',
     validations: {
         input: {
@@ -175,10 +174,9 @@ import { required, alphaNum, minLength } from 'vuelidate/lib/validators';
         },
     },
 })
-export default class extends PopupMixin<
-    { patron: GetPatrons.Patrons },
-    PatronUpdateInput
-> {
+export default class extends mixins<
+    PopupMixin<{ patron: GetPatrons.Patrons }, PatronUpdateInput>
+>(PopupMixin, DataMixin({ updatePatron, getPatronKinds })) {
     phoneNumbers: string = '';
 
     onOpen() {

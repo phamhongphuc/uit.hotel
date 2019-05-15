@@ -96,13 +96,17 @@
 </template>
 <script lang="ts">
 import { RateCreateInput, GetRoomKinds } from 'graphql/types';
-import { Component } from 'nuxt-property-decorator';
+import { Component, mixins } from 'nuxt-property-decorator';
 import { DataMixin, PopupMixin } from '~/components/mixins';
 import { createRate, getRoomKinds } from '~/graphql/documents';
 import { required } from 'vuelidate/lib/validators';
 
+type PopupMixinType = PopupMixin<
+    { roomKind: GetRoomKinds.RoomKinds },
+    RateCreateInput
+>;
+
 @Component({
-    mixins: [PopupMixin, DataMixin({ createRate, getRoomKinds })],
     name: 'popup-rate-add-',
     validations: {
         input: {
@@ -117,10 +121,10 @@ import { required } from 'vuelidate/lib/validators';
         },
     },
 })
-export default class extends PopupMixin<
-    { roomKind: GetRoomKinds.RoomKinds },
-    RateCreateInput
-> {
+export default class extends mixins<PopupMixinType>(
+    PopupMixin,
+    DataMixin({ createRate, getRoomKinds }),
+) {
     onOpen() {
         const self = this;
         this.input = {

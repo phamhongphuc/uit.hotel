@@ -38,18 +38,17 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, namespace } from 'nuxt-property-decorator';
+import { Component, namespace, mixins } from 'nuxt-property-decorator';
 import { DataMixin } from '~/components/mixins';
 import { initializeAdminAccount } from '~/graphql/documents';
 
 @Component({
     name: 'initialize-',
-    mixins: [DataMixin({ initializeAdminAccount })],
     validations: {
         input: {},
     },
 })
-export default class extends Vue {
+export default class extends mixins(DataMixin({ initializeAdminAccount })) {
     email = '';
     password = '';
 
