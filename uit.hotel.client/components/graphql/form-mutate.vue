@@ -3,10 +3,10 @@
 </template>
 <script lang="ts">
 import { Component, mixins } from 'nuxt-property-decorator';
-import mutable from '~/components/mixins';
+import { MutableMixin } from '~/components/mixins';
 
 @Component({
     name: 'form-mutate-',
 })
-export default class extends mixins<mutable>(mutable) {}
+export default class extends mixins<MutableMixin>(MutableMixin) {}
 </script>

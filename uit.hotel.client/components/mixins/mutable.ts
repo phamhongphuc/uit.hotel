@@ -5,7 +5,7 @@ import { apolloClientNotify } from '~/modules/apollo';
 import { notify } from '~/plugins/notify';
 
 @Component
-export default class extends Vue {
+export class MutableMixin extends Vue {
     @Prop({ required: true })
     protected mutation!: DocumentNode;
 

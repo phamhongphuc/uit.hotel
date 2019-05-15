@@ -13,15 +13,20 @@
 </template>
 <script lang="ts">
 import { Component, mixins } from 'nuxt-property-decorator';
-import mutable, { IconProps, TextProps, ImageProps } from '~/components/mixins';
+import {
+    MutableMixin,
+    IconProps,
+    TextProps,
+    ImageProps,
+} from '~/components/mixins';
 
 @Component({
     name: 'b-nav-item-icon-mutate-',
 })
-export default class extends mixins<mutable, IconProps, TextProps, ImageProps>(
-    mutable,
+export default class extends mixins<
+    MutableMixin,
     IconProps,
     TextProps,
-    ImageProps,
-) {}
+    ImageProps
+>(MutableMixin, IconProps, TextProps, ImageProps) {}
 </script>

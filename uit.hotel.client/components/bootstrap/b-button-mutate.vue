@@ -13,13 +13,13 @@
 </template>
 <script lang="ts">
 import { Component, mixins } from 'nuxt-property-decorator';
-import mutable, { ButtonProps } from '~/components/mixins';
+import { MutableMixin, ButtonProps } from '~/components/mixins';
 
 @Component({
     name: 'b-button-mutate-',
 })
-export default class extends mixins<mutable, ButtonProps>(
-    mutable,
+export default class extends mixins<MutableMixin, ButtonProps>(
+    MutableMixin,
     ButtonProps,
 ) {}
 </script>
