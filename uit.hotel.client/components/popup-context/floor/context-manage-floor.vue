@@ -16,7 +16,7 @@
             <b-nav-item-icon-mutate-
                 :mutation="setIsActiveFloor"
                 :variables="{ id: floor.id, isActive: !floor.isActive }"
-                :icon="floor.isActive ? '' : ''"
+                :icon="floor.isActive ? 'x' : 'chevrons-up'"
                 :text="
                     floor.isActive ? 'Vô hiệu hóa tầng' : 'Kích hoạt lại tầng'
                 "

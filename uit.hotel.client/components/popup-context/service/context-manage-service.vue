@@ -10,7 +10,7 @@
             <b-nav-item-icon-mutate-
                 :mutation="setIsActiveService"
                 :variables="{ id: service.id, isActive: !service.isActive }"
-                :icon="service.isActive ? '' : ''"
+                :icon="service.isActive ? 'x' : 'chevrons-up'"
                 :text="
                     service.isActive
                         ? 'Vô hiệu hóa dịch vụ'

@@ -15,7 +15,7 @@
             <!-- <b-nav-item-icon-mutate-
                 :mutation="setIsActiveRoom"
                 :variables="{ id: room.id, isActive: !room.isActive }"
-                :icon="room.isActive ? '' : ''"
+                :icon="room.isActive ? 'x' : 'chevrons-up'"
                 text="Cho"
             /> -->
             <!-- <b-nav-item-icon-mutate-

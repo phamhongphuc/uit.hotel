@@ -10,7 +10,7 @@
             <b-nav-item-icon-mutate-
                 :mutation="setIsActiveAccount"
                 :variables="{ id: employee.id, isActive: !employee.isActive }"
-                :icon="employee.isActive ? '' : ''"
+                :icon="employee.isActive ? 'x' : 'chevrons-up'"
                 :text="
                     employee.isActive
                         ? 'Vô hiệu hóa nhân viên'

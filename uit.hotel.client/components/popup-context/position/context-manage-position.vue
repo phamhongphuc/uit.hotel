@@ -10,7 +10,7 @@
             <b-nav-item-icon-mutate-
                 :mutation="setIsActivePosition"
                 :variables="{ id: position.id, isActive: !position.isActive }"
-                :icon="position.isActive ? '' : ''"
+                :icon="position.isActive ? 'x' : 'chevrons-up'"
                 :text="
                     position.isActive
                         ? 'Vô hiệu hóa vị trí'
