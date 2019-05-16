@@ -68,7 +68,7 @@ import {
     positionOptionsHouseKeeping,
 } from '~/graphql/documents';
 import { required } from 'vuelidate/lib/validators';
-import { CheckboxOption } from '~/utils/components';
+import { CheckboxOption } from '~/utils';
 
 type PopupMixinType = PopupMixin<{ position: GetPositions.Positions }, any>;
 

@@ -67,7 +67,7 @@ import {
     positionOptionsHouseKeeping,
 } from '~/graphql/documents';
 import { required } from 'vuelidate/lib/validators';
-import { CheckboxOption } from '~/utils/components';
+import { CheckboxOption } from '~/utils';
 
 @Component({
     name: 'popup-position-add-',

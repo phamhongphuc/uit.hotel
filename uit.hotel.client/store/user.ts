@@ -7,7 +7,7 @@ import {
     apolloHelpers,
 } from '~/modules/apollo';
 import { notify } from '~/plugins/notify';
-import { router } from '~/utils/store';
+import { router } from '~/utils';
 import { RootState } from '.';
 
 export interface UserState {

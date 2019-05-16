@@ -109,7 +109,7 @@ import { Component, mixins } from 'nuxt-property-decorator';
 import { getBills } from '~/graphql/documents';
 import { DataMixin } from '~/components/mixins';
 import { GetBills } from '~/graphql/types';
-import { toMoney, toDate } from '~/utils/dataFormater';
+import { toMoney, toDate } from '~/utils';
 import moment from 'moment';
 
 @Component({
