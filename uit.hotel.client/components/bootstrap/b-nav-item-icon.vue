@@ -1,5 +1,6 @@
 <template>
     <b-nav-item
+        v-if="isShow"
         :href="href"
         :rel="rel"
         :target="target"
@@ -36,6 +37,7 @@ import {
     ImageProps,
     LinkProps,
     TextProps,
+    PermissionMixin,
 } from '~/components/mixins';
 
 @Component({
@@ -45,6 +47,7 @@ export default class extends mixins<
     LinkProps,
     IconProps,
     TextProps,
-    ImageProps
->(LinkProps, IconProps, TextProps, ImageProps) {}
+    ImageProps,
+    PermissionMixin
+>(LinkProps, IconProps, TextProps, ImageProps, PermissionMixin) {}
 </script>
