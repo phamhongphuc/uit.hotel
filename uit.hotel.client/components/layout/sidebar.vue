@@ -5,6 +5,12 @@
             icon="chevron-down"
             text="Nghiệp vụ lễ tân"
             class="header-item"
+            :permission="[
+                'GetMap',
+                'ManagePatron',
+                'ManagePatronKind',
+                'ManageHiringRoom',
+            ]"
         />
         <b-collapse id="collapse_receptionist" v-model="showReceptionist">
             <b-nav-item-icon-
@@ -12,18 +18,21 @@
                 icon="grid"
                 text="Sơ đồ khách sạn"
                 exact
+                :permission="['GetMap']"
             />
             <b-nav-item-icon-
                 to="/receptionist/patron"
                 icon="users"
                 text="Quản lý khách hàng"
                 exact
+                :permission="['ManagePatron', 'ManagePatronKind']"
             />
             <b-nav-item-icon-
                 to="/receptionist/booking"
                 icon="box"
                 text="Quản lý đặt phòng"
                 exact
+                :permission="['ManageHiringRoom']"
             />
         </b-collapse>
         <b-nav-item-icon-
@@ -31,6 +40,11 @@
             icon="chevron-down"
             text="Quản lý kinh doanh"
             class="header-item"
+            :permission="[
+                'GetAccountingVoucher',
+                'ManageService',
+                'ManageRate',
+            ]"
         />
         <b-collapse id="collapse_business" v-model="showBusiness">
             <b-nav-item-icon-
@@ -38,24 +52,28 @@
                 icon="dollar-sign"
                 text="Quản lý hóa đơn"
                 exact
+                :permission="['GetAccountingVoucher']"
             />
             <b-nav-item-icon-
                 to="/business/receipt"
                 icon="dollar-sign"
                 text="Quản lý phiếu thu"
                 exact
+                :permission="['GetAccountingVoucher']"
             />
             <b-nav-item-icon-
                 to="/business/service"
                 icon="shopping-cart"
                 text="Quản lý dịch vụ"
                 exact
+                :permission="['ManageService']"
             />
             <b-nav-item-icon-
                 to="/business/rate"
                 icon="shopping-cart"
                 text="Quản lý giá"
                 exact
+                :permission="['ManageRate']"
             />
         </b-collapse>
         <b-nav-item-icon-
@@ -63,6 +81,7 @@
             icon="chevron-down"
             text="Quản lý nhân sự"
             class="header-item"
+            :permission="['ManagePosition', 'ManageEmployee']"
         />
         <b-collapse id="collapse_personnel" v-model="showPersonnel">
             <b-nav-item-icon-
@@ -70,12 +89,14 @@
                 icon="lock"
                 text="Quản lý phân quyền"
                 exact
+                :permission="['ManagePosition']"
             />
             <b-nav-item-icon-
                 to="/personnel/employee"
                 icon="users"
                 text="Quản lý nhân viên"
                 exact
+                :permission="['ManageEmployee']"
             />
         </b-collapse>
         <b-nav-item-icon-
@@ -83,6 +104,7 @@
             icon="chevron-down"
             text="Cài đặt khách sạn"
             class="header-item"
+            :permission="['ManageMap', 'ManagePatronKind']"
         />
         <b-collapse id="collapse_manage" v-model="showManage">
             <b-nav-item-icon-
@@ -90,18 +112,21 @@
                 icon="archive"
                 text="Quản lý tầng phòng"
                 exact
+                :permission="['ManageMap']"
             />
             <b-nav-item-icon-
                 to="/manage/room-kind"
                 icon="box"
                 text="Quản lý loại phòng"
                 exact
+                :permission="['ManageMap']"
             />
             <b-nav-item-icon-
                 to="/manage/patron-kind"
                 icon="users"
                 text="Quản lý loại khách hàng"
                 exact
+                :permission="['ManagePatronKind']"
             />
         </b-collapse>
     </b-navbar-nav>
