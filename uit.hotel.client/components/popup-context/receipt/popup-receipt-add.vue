@@ -40,14 +40,15 @@
     </popup->
 </template>
 <script lang="ts">
-import { Component } from 'nuxt-property-decorator';
+import { Component, mixins } from 'nuxt-property-decorator';
 import { DataMixin, PopupMixin } from '~/components/mixins';
 import { ReceiptCreateInput, GetBills } from '~/graphql/types';
 import { createReceipt } from '~/graphql/documents';
 import { required } from 'vuelidate/lib/validators';
 
+type PopupMixinType = PopupMixin<{ bill: GetBills.Bills }, ReceiptCreateInput>;
+
 @Component({
-    mixins: [PopupMixin, DataMixin({ createReceipt })],
     name: 'popup-receipt-add-',
     validations: {
         input: {
@@ -61,10 +62,10 @@ import { required } from 'vuelidate/lib/validators';
         },
     },
 })
-export default class extends PopupMixin<
-    { bill: GetBills.Bills },
-    ReceiptCreateInput
-> {
+export default class extends mixins<PopupMixinType>(
+    PopupMixin,
+    DataMixin({ createReceipt }),
+) {
     onOpen() {
         this.input = {
             money: 0,

@@ -61,13 +61,15 @@ import { GetFloors, RoomUpdateInput } from '~/graphql/types';
 import { getFloors, updateRoom, getRoomKinds } from '~/graphql/documents';
 import { required } from 'vuelidate/lib/validators';
 
-interface PopupRoomUpdateInput {
-    room: GetFloors.Rooms;
-    floor: GetFloors.Floors;
-}
+type PopupMixinType = PopupMixin<
+    {
+        room: GetFloors.Rooms;
+        floor: GetFloors.Floors;
+    },
+    RoomUpdateInput
+>;
 
 @Component({
-    mixins: [PopupMixin, DataMixin({ updateRoom, getRoomKinds, getFloors })],
     name: 'popup-room-add-',
     validations: {
         input: {
@@ -81,9 +83,10 @@ interface PopupRoomUpdateInput {
         },
     },
 })
-export default class extends mixins<
-    PopupMixin<PopupRoomUpdateInput, RoomUpdateInput>
->(PopupMixin) {
+export default class extends mixins<PopupMixinType>(
+    PopupMixin,
+    DataMixin({ updateRoom, getRoomKinds, getFloors }),
+) {
     onOpen() {
         const {
             room: { id, name, roomKind },

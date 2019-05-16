@@ -98,7 +98,7 @@ import { Component, mixins } from 'nuxt-property-decorator';
 import { getBookings } from '~/graphql/documents';
 import { DataMixin } from '~/components/mixins';
 import { GetBookings } from '~/graphql/types';
-import { toMoney, toDate } from '~/utils/dataFormater';
+import { toMoney, toDate } from '~/utils';
 
 @Component({
     name: 'booking-',

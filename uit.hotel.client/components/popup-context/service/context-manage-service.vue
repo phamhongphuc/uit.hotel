@@ -10,7 +10,7 @@
             <b-nav-item-icon-mutate-
                 :mutation="setIsActiveService"
                 :variables="{ id: service.id, isActive: !service.isActive }"
-                :icon="service.isActive ? '' : ''"
+                :icon="service.isActive ? 'x' : 'chevrons-up'"
                 :text="
                     service.isActive
                         ? 'Vô hiệu hóa dịch vụ'
@@ -28,13 +28,15 @@
     </context->
 </template>
 <script lang="ts">
-import { Component } from 'nuxt-property-decorator';
+import { Component, mixins } from 'nuxt-property-decorator';
 import { ContextMixin, DataMixin } from '~/components/mixins';
 import { setIsActiveService, deleteService } from '~/graphql/documents';
 
 @Component({
     name: 'context-manage-service-',
-    mixins: [ContextMixin, DataMixin({ setIsActiveService, deleteService })],
 })
-export default class extends ContextMixin {}
+export default class extends mixins<ContextMixin>(
+    ContextMixin,
+    DataMixin({ setIsActiveService, deleteService }),
+) {}
 </script>

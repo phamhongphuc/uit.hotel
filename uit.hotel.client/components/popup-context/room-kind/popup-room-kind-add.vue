@@ -58,7 +58,6 @@ import { createRoomKind } from '~/graphql/documents';
 import { required, minLength, between } from 'vuelidate/lib/validators';
 
 @Component({
-    mixins: [PopupMixin, DataMixin({ createRoomKind })],
     name: 'popup-room-kind-add-',
     validations: {
         input: {
@@ -79,6 +78,7 @@ import { required, minLength, between } from 'vuelidate/lib/validators';
 })
 export default class extends mixins<PopupMixin<void, RoomKindCreateInput>>(
     PopupMixin,
+    DataMixin({ createRoomKind }),
 ) {
     onOpen() {
         this.input = {

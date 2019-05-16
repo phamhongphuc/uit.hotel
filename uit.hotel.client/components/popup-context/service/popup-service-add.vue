@@ -54,7 +54,6 @@ import { createService } from '~/graphql/documents';
 import { required, minLength, minValue } from 'vuelidate/lib/validators';
 
 @Component({
-    mixins: [PopupMixin, DataMixin({ createService })],
     name: 'popup-service-add-',
     validations: {
         input: {
@@ -72,6 +71,7 @@ import { required, minLength, minValue } from 'vuelidate/lib/validators';
 })
 export default class extends mixins<PopupMixin<void, ServiceCreateInput>>(
     PopupMixin,
+    DataMixin({ createService }),
 ) {
     onOpen() {
         this.input = {

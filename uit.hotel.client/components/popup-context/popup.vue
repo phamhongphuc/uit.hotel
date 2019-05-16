@@ -14,14 +14,13 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop } from 'nuxt-property-decorator';
-import { mixin as clickaway } from 'vue-clickaway';
+import { Component, Prop, mixins } from 'nuxt-property-decorator';
+import { ClickawayMixin } from '~/components/mixins/clickaway';
 
 @Component({
-    mixins: [clickaway],
     name: 'popup-',
 })
-export default class extends Vue {
+export default class extends mixins<ClickawayMixin>(ClickawayMixin) {
     show: boolean = false;
     data: any = null;
 

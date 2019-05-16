@@ -90,7 +90,7 @@ import { Component, mixins } from 'nuxt-property-decorator';
 import { getRates } from '~/graphql/documents';
 import { DataMixin } from '~/components/mixins';
 import { GetRates } from '~/graphql/types';
-import { toMoney, toDate } from '~/utils/dataFormater';
+import { toMoney, toDate } from '~/utils';
 
 @Component({
     name: 'rate-',

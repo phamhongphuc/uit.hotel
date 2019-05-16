@@ -1,5 +1,5 @@
 import gql from 'graphql-tag';
-import { CheckboxOption } from '~/utils/components';
+import { CheckboxOption } from '~/utils';
 
 export const getPositions = gql`
     query getPositions {

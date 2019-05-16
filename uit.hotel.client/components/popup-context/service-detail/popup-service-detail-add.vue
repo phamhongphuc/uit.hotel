@@ -62,7 +62,7 @@
 </template>
 <script lang="ts">
 import { ServicesDetailCreateInput, GetBookings } from 'graphql/types';
-import { Component } from 'nuxt-property-decorator';
+import { Component, mixins } from 'nuxt-property-decorator';
 import { DataMixin, PopupMixin } from '~/components/mixins';
 import {
     getServices,
@@ -71,15 +71,14 @@ import {
 } from '~/graphql/documents';
 import { required, minValue } from 'vuelidate/lib/validators';
 
+type PopupMixinType = PopupMixin<
+    {
+        booking: GetBookings.Bookings;
+    },
+    ServicesDetailCreateInput
+>;
+
 @Component({
-    mixins: [
-        PopupMixin,
-        DataMixin({
-            getServices,
-            createServicesDetail,
-            getSimpleBookings,
-        }),
-    ],
     name: 'popup-service-add-',
     validations: {
         input: {
@@ -91,12 +90,10 @@ import { required, minValue } from 'vuelidate/lib/validators';
         },
     },
 })
-export default class extends PopupMixin<
-    {
-        booking: GetBookings.Bookings;
-    },
-    ServicesDetailCreateInput
-> {
+export default class extends mixins<PopupMixinType>(
+    PopupMixin,
+    DataMixin({ getServices, createServicesDetail, getSimpleBookings }),
+) {
     onOpen() {
         const self = this;
         if (self === null) return;

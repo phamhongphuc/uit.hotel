@@ -66,7 +66,7 @@ import { Component, mixins } from 'nuxt-property-decorator';
 import { getReceipts } from '~/graphql/documents';
 import { DataMixin } from '~/components/mixins';
 import { GetReceipts } from '~/graphql/types';
-import { toMoney, toDate } from '~/utils/dataFormater';
+import { toMoney, toDate } from '~/utils';
 
 @Component({
     name: 'receipt-',

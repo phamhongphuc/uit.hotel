@@ -10,7 +10,7 @@
             <b-nav-item-icon-mutate-
                 :mutation="setIsActivePosition"
                 :variables="{ id: position.id, isActive: !position.isActive }"
-                :icon="position.isActive ? '' : ''"
+                :icon="position.isActive ? 'x' : 'chevrons-up'"
                 :text="
                     position.isActive
                         ? 'Vô hiệu hóa vị trí'
@@ -28,13 +28,15 @@
     </context->
 </template>
 <script lang="ts">
-import { Component } from 'nuxt-property-decorator';
+import { Component, mixins } from 'nuxt-property-decorator';
 import { ContextMixin, DataMixin } from '~/components/mixins';
 import { setIsActivePosition, deletePosition } from '~/graphql/documents';
 
 @Component({
     name: 'context-manage-position-',
-    mixins: [ContextMixin, DataMixin({ setIsActivePosition, deletePosition })],
 })
-export default class extends ContextMixin {}
+export default class extends mixins<ContextMixin>(
+    ContextMixin,
+    DataMixin({ setIsActivePosition, deletePosition }),
+) {}
 </script>

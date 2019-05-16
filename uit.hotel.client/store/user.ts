@@ -7,7 +7,6 @@ import {
     apolloHelpers,
 } from '~/modules/apollo';
 import { notify } from '~/plugins/notify';
-import { router } from '~/utils/store';
 import { RootState } from '.';
 
 export interface UserState {
@@ -65,13 +64,13 @@ export const actions: ActionTree<UserState, RootState> = {
         if (result.data === undefined || result.data.login === null) return;
 
         commit('login', result.data.login);
-        router(this).push('/');
+        this.$router.push('/');
         notify.success({ title: 'Thông báo', text: 'Đăng nhập thành công' });
     },
 
     async logout({ commit }): Promise<void> {
         commit('logout');
-        router(this).push('/login');
+        this.$router.push('/login');
         notify.success({ title: 'Thông báo', text: 'Đăng xuất thành công' });
     },
 
@@ -126,7 +125,7 @@ export const actions: ActionTree<UserState, RootState> = {
             isInitialized = result.data.isInitialized;
         } finally {
             if (isInitialized) {
-                router(this).push('/login');
+                this.$router.push('/login');
                 notify.error({
                     title: 'Thông báo',
                     text:

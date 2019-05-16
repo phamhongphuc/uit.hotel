@@ -15,7 +15,7 @@
             <!-- <b-nav-item-icon-mutate-
                 :mutation="setIsActiveRoom"
                 :variables="{ id: room.id, isActive: !room.isActive }"
-                :icon="room.isActive ? '' : ''"
+                :icon="room.isActive ? 'x' : 'chevrons-up'"
                 text="Cho"
             /> -->
             <!-- <b-nav-item-icon-mutate-
@@ -28,13 +28,15 @@
     </context->
 </template>
 <script lang="ts">
-import { Component } from 'nuxt-property-decorator';
+import { Component, mixins } from 'nuxt-property-decorator';
 import { ContextMixin, DataMixin } from '~/components/mixins';
 import { setIsActiveRoom, deleteRoom } from '~/graphql/documents';
 
 @Component({
     name: 'context-manage-room-',
-    mixins: [ContextMixin, DataMixin({ setIsActiveRoom, deleteRoom })],
 })
-export default class extends ContextMixin {}
+export default class extends mixins<ContextMixin>(
+    ContextMixin,
+    DataMixin({ setIsActiveRoom, deleteRoom }),
+) {}
 </script>

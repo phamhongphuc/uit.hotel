@@ -102,7 +102,6 @@ type PopupMixinType = PopupMixin<
 >;
 
 @Component({
-    mixins: [PopupMixin, DataMixin({ createPatron, getPatronKinds, getRooms })],
     name: 'popup-booking-book-and-check-in-',
     validations: {
         input: {

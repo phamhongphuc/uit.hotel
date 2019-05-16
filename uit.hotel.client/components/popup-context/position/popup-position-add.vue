@@ -67,10 +67,9 @@ import {
     positionOptionsHouseKeeping,
 } from '~/graphql/documents';
 import { required } from 'vuelidate/lib/validators';
-import { CheckboxOption } from '~/utils/components';
+import { CheckboxOption } from '~/utils';
 
 @Component({
-    mixins: [PopupMixin, DataMixin({ createPosition })],
     name: 'popup-position-add-',
     validations: {
         input: {
@@ -78,7 +77,10 @@ import { CheckboxOption } from '~/utils/components';
         },
     },
 })
-export default class extends mixins<PopupMixin<void, any>>(PopupMixin) {
+export default class extends mixins<PopupMixin<void, any>>(
+    PopupMixin,
+    DataMixin({ createPosition }),
+) {
     selected: string[] = [];
 
     positionOptionsAdministrative: CheckboxOption[] = [];

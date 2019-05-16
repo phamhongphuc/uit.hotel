@@ -101,7 +101,7 @@ import { Component, mixins } from 'nuxt-property-decorator';
 import { getServices } from '~/graphql/documents';
 import { DataMixin } from '~/components/mixins';
 import { GetServices } from '~/graphql/types';
-import { toMoney } from '~/utils/dataFormater';
+import { toMoney } from '~/utils';
 
 @Component({
     name: 'service-',
