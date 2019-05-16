@@ -54,3 +54,62 @@ export const changePassword = gql`
         changePassword(password: $password, newPassword: $newPassword)
     }
 `;
+
+export const userLogin = gql`
+    mutation userLogin($id: String!, $password: String!) {
+        login(id: $id, password: $password) {
+            token
+            employee {
+                id
+                name
+                position {
+                    id
+                    name
+                    permissionCleaning
+                    permissionGetAccountingVoucher
+                    permissionGetHouseKeeping
+                    permissionGetMap
+                    permissionGetPatron
+                    permissionGetRate
+                    permissionGetService
+                    permissionManageEmployee
+                    permissionManageHiringRoom
+                    permissionManageMap
+                    permissionManagePatron
+                    permissionManagePatronKind
+                    permissionManagePosition
+                    permissionManageRate
+                    permissionManageService
+                }
+            }
+        }
+    }
+`;
+
+export const userCheckLogin = gql`
+    mutation userCheckLogin {
+        checkLogin {
+            id
+            name
+            position {
+                id
+                name
+                permissionCleaning
+                permissionGetAccountingVoucher
+                permissionGetHouseKeeping
+                permissionGetMap
+                permissionGetPatron
+                permissionGetRate
+                permissionGetService
+                permissionManageEmployee
+                permissionManageHiringRoom
+                permissionManageMap
+                permissionManagePatron
+                permissionManagePatronKind
+                permissionManagePosition
+                permissionManageRate
+                permissionManageService
+            }
+        }
+    }
+`;
