@@ -18,6 +18,9 @@
 
 Hotel Management System (HMS) is a open source web based hotel management software, designed and built for guest houses and small hotels.
 
+## Roadmap: 
+- Visit [phamhongphuc/uit.hotel#339](https://github.com/phamhongphuc/uit.hotel/issues/339)
+
 ## Features:
 
 -   The system features include:
