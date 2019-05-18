@@ -1,6 +1,6 @@
 import { Vue, Prop, Component } from 'nuxt-property-decorator';
 
-// Copy and convert from bootstrap-vue/es/components/link/link.js
+// Copy and convert from https://github.com/bootstrap-vue/bootstrap-vue/blob/dev/src/components/link/link.js
 @Component
 export class LinkProps extends Vue {
     @Prop({ default: null })

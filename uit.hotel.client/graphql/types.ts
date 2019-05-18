@@ -1392,27 +1392,6 @@ export type VolatilityRateUpdateInput = {
     /** Loại phòng */
     roomKind: RoomKindId;
 };
-export type UserLoginMutationVariables = {
-    id: Scalars['String'];
-    password: Scalars['String'];
-};
-
-export type UserLoginMutation = {
-    login: Pick<AuthenticationObject, 'token'> & {
-        employee: Pick<Employee, 'id' | 'name'> & {
-            position: Pick<Position, 'id' | 'name'>;
-        };
-    };
-};
-
-export type UserCheckLoginMutationVariables = {};
-
-export type UserCheckLoginMutation = {
-    checkLogin: Pick<Employee, 'id' | 'name'> & {
-        position: Pick<Position, 'id' | 'name'>;
-    };
-};
-
 export type IsInitializedQueryVariables = {};
 
 export type IsInitializedQuery = Pick<AppQuery, 'isInitialized'>;
@@ -1564,6 +1543,65 @@ export type ChangePasswordMutationVariables = {
 };
 
 export type ChangePasswordMutation = Pick<AppMutation, 'changePassword'>;
+
+export type UserLoginMutationVariables = {
+    id: Scalars['String'];
+    password: Scalars['String'];
+};
+
+export type UserLoginMutation = {
+    login: Pick<AuthenticationObject, 'token'> & {
+        employee: Pick<Employee, 'id' | 'name'> & {
+            position: Pick<
+                Position,
+                | 'id'
+                | 'name'
+                | 'permissionCleaning'
+                | 'permissionGetAccountingVoucher'
+                | 'permissionGetHouseKeeping'
+                | 'permissionGetMap'
+                | 'permissionGetPatron'
+                | 'permissionGetRate'
+                | 'permissionGetService'
+                | 'permissionManageEmployee'
+                | 'permissionManageHiringRoom'
+                | 'permissionManageMap'
+                | 'permissionManagePatron'
+                | 'permissionManagePatronKind'
+                | 'permissionManagePosition'
+                | 'permissionManageRate'
+                | 'permissionManageService'
+            >;
+        };
+    };
+};
+
+export type UserCheckLoginMutationVariables = {};
+
+export type UserCheckLoginMutation = {
+    checkLogin: Pick<Employee, 'id' | 'name'> & {
+        position: Pick<
+            Position,
+            | 'id'
+            | 'name'
+            | 'permissionCleaning'
+            | 'permissionGetAccountingVoucher'
+            | 'permissionGetHouseKeeping'
+            | 'permissionGetMap'
+            | 'permissionGetPatron'
+            | 'permissionGetRate'
+            | 'permissionGetService'
+            | 'permissionManageEmployee'
+            | 'permissionManageHiringRoom'
+            | 'permissionManageMap'
+            | 'permissionManagePatron'
+            | 'permissionManagePatronKind'
+            | 'permissionManagePosition'
+            | 'permissionManageRate'
+            | 'permissionManageService'
+        >;
+    };
+};
 
 export type GetFloorsQueryVariables = {};
 
@@ -1976,21 +2014,6 @@ export type SetIsActiveServiceMutation = Pick<
     AppMutation,
     'setIsActiveService'
 >;
-export namespace UserLogin {
-    export type Variables = UserLoginMutationVariables;
-    export type Mutation = UserLoginMutation;
-    export type Login = UserLoginMutation['login'];
-    export type Employee = UserLoginMutation['login']['employee'];
-    export type Position = UserLoginMutation['login']['employee']['position'];
-}
-
-export namespace UserCheckLogin {
-    export type Variables = UserCheckLoginMutationVariables;
-    export type Mutation = UserCheckLoginMutation;
-    export type CheckLogin = UserCheckLoginMutation['checkLogin'];
-    export type Position = UserCheckLoginMutation['checkLogin']['position'];
-}
-
 export namespace IsInitialized {
     export type Variables = IsInitializedQueryVariables;
     export type Query = IsInitializedQuery;
@@ -2110,6 +2133,21 @@ export namespace SetIsActiveAccount {
 export namespace ChangePassword {
     export type Variables = ChangePasswordMutationVariables;
     export type Mutation = ChangePasswordMutation;
+}
+
+export namespace UserLogin {
+    export type Variables = UserLoginMutationVariables;
+    export type Mutation = UserLoginMutation;
+    export type Login = UserLoginMutation['login'];
+    export type Employee = UserLoginMutation['login']['employee'];
+    export type Position = UserLoginMutation['login']['employee']['position'];
+}
+
+export namespace UserCheckLogin {
+    export type Variables = UserCheckLoginMutationVariables;
+    export type Mutation = UserCheckLoginMutation;
+    export type CheckLogin = UserCheckLoginMutation['checkLogin'];
+    export type Position = UserCheckLoginMutation['checkLogin']['position'];
 }
 
 export namespace GetFloors {

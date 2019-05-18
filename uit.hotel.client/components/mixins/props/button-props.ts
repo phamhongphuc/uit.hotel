@@ -1,6 +1,6 @@
 import { Vue, Prop, Component } from 'nuxt-property-decorator';
 
-// Copy and modify from bootstrap-vue/es/components/button/button.js
+// Copy and modify from https://github.com/bootstrap-vue/bootstrap-vue/blob/dev/src/components/button/button.js
 @Component
 export class ButtonProps extends Vue {
     @Prop({ default: false })

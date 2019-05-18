@@ -1,5 +1,6 @@
 import gql from 'graphql-tag';
 import { ActionTree, GetterTree, MutationTree } from 'vuex';
+import { userCheckLogin, userLogin } from '~/graphql/documents';
 import { IsInitialized, UserCheckLogin, UserLogin } from '~/graphql/types';
 import {
     apolloClient,
@@ -43,21 +44,7 @@ export const actions: ActionTree<UserState, RootState> = {
             UserLogin.Mutation,
             UserLogin.Variables
         >({
-            mutation: gql`
-                mutation userLogin($id: String!, $password: String!) {
-                    login(id: $id, password: $password) {
-                        token
-                        employee {
-                            id
-                            name
-                            position {
-                                id
-                                name
-                            }
-                        }
-                    }
-                }
-            `,
+            mutation: userLogin,
             variables,
         });
 
@@ -83,18 +70,7 @@ export const actions: ActionTree<UserState, RootState> = {
             const result = await apolloClient(this).mutate<
                 UserCheckLogin.Mutation
             >({
-                mutation: gql`
-                    mutation userCheckLogin {
-                        checkLogin {
-                            id
-                            name
-                            position {
-                                id
-                                name
-                            }
-                        }
-                    }
-                `,
+                mutation: userCheckLogin,
             });
 
             if (result.data === undefined) {

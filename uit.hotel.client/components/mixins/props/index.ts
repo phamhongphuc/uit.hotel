@@ -1,5 +1,5 @@
 export * from './button-props';
-export * from './checkbox';
+export * from './checkbox-props';
 export * from './icon-props';
 export * from './image-props';
 export * from './input-props';

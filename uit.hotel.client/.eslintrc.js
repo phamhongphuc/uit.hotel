@@ -68,14 +68,14 @@ const config = {
     rules: {
         'eol-last': 'error',
         'linebreak-style': ['warn', 'unix'],
-        'no-console': 'warn',
+        'no-console': ['warn', { allow: ['warn', 'error'] }],
         'no-lonely-if': 'error',
         'prefer-const': 'error',
 
         '@typescript-eslint/explicit-function-return-type': 'off',
-        '@typescript-eslint/explicit-member-accessibility': 'off',
         '@typescript-eslint/no-empty-interface': 'off',
         '@typescript-eslint/no-explicit-any': 'off',
+        '@typescript-eslint/prefer-interface': 'off',
 
         'node/no-unsupported-features/es-syntax': 'off',
         'import/prefer-default-export': 'off',
@@ -124,7 +124,6 @@ const config = {
                 '@typescript-eslint/no-empty-interface': 'off',
                 '@typescript-eslint/no-explicit-any': 'off',
                 '@typescript-eslint/no-namespace': 'off',
-                '@typescript-eslint/prefer-interface': 'off',
                 '@typescript-eslint/array-type': ['error', 'generic'],
             },
         },
