@@ -12,7 +12,11 @@
                 'ManageHiringRoom',
             ]"
         />
-        <b-collapse id="collapse_receptionist" v-model="showReceptionist">
+        <b-collapse-
+            id="collapse_receptionist"
+            v-model="showReceptionist"
+            auto-permission
+        >
             <b-nav-item-icon-
                 to="/receptionist/map"
                 icon="grid"
@@ -34,7 +38,7 @@
                 exact
                 :permission="['ManageHiringRoom']"
             />
-        </b-collapse>
+        </b-collapse->
         <b-nav-item-icon-
             v-b-toggle.collapse_business
             icon="chevron-down"
@@ -46,7 +50,11 @@
                 'ManageRate',
             ]"
         />
-        <b-collapse id="collapse_business" v-model="showBusiness">
+        <b-collapse-
+            id="collapse_business"
+            v-model="showBusiness"
+            auto-permission
+        >
             <b-nav-item-icon-
                 to="/business/bill"
                 icon="dollar-sign"
@@ -75,7 +83,7 @@
                 exact
                 :permission="['ManageRate']"
             />
-        </b-collapse>
+        </b-collapse->
         <b-nav-item-icon-
             v-b-toggle.collapse_personnel
             icon="chevron-down"
@@ -83,7 +91,11 @@
             class="header-item"
             :permission="['ManagePosition', 'ManageEmployee']"
         />
-        <b-collapse id="collapse_personnel" v-model="showPersonnel">
+        <b-collapse-
+            id="collapse_personnel"
+            v-model="showPersonnel"
+            auto-permission
+        >
             <b-nav-item-icon-
                 to="/personnel/position"
                 icon="lock"
@@ -98,7 +110,7 @@
                 exact
                 :permission="['ManageEmployee']"
             />
-        </b-collapse>
+        </b-collapse->
         <b-nav-item-icon-
             v-b-toggle.collapse_manage
             icon="chevron-down"
@@ -106,7 +118,7 @@
             class="header-item"
             :permission="['ManageMap', 'ManagePatronKind']"
         />
-        <b-collapse id="collapse_manage" v-model="showManage">
+        <b-collapse- id="collapse_manage" v-model="showManage" auto-permission>
             <b-nav-item-icon-
                 to="/manage/floor-room"
                 icon="archive"
@@ -128,7 +140,7 @@
                 exact
                 :permission="['ManagePatronKind']"
             />
-        </b-collapse>
+        </b-collapse->
     </b-navbar-nav>
 </template>
 <script lang="ts">
