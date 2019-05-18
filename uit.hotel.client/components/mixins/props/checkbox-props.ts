@@ -1,7 +1,6 @@
 import { Vue, Prop, Component } from 'nuxt-property-decorator';
 
-// Convert from bootstrap-vue/es/components/form-checkbox/form-checkbox-group.js
-
+// Convert from https://github.com/bootstrap-vue/bootstrap-vue/blob/dev/src/components/form-checkbox/form-checkbox-group.js
 @Component
 export class CheckboxProps extends Vue {
     @Prop({ default: null })

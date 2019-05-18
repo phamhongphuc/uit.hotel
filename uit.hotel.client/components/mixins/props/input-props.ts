@@ -1,7 +1,7 @@
 import { Vue, Prop, Component } from 'nuxt-property-decorator';
 
 // Valid supported input types
-var TYPES = [
+const InputPropsType = [
     'text',
     'password',
     'email',
@@ -27,7 +27,7 @@ export class InputProps extends Vue {
     @Prop({
         default: 'text',
         validator(type): boolean {
-            return TYPES.indexOf(type) !== -1;
+            return InputPropsType.indexOf(type) !== -1;
         },
     })
     protected type!: string;
