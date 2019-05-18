@@ -6,6 +6,7 @@
             :mutation="createReceipt"
             :variables="{ input }"
             success="Thêm phiếu thu mới thành công"
+            @success="close"
         >
             <div class="input-label">Số tiền</div>
             <b-input-
@@ -30,7 +31,6 @@
                     class="ml-auto"
                     variant="main"
                     type="submit"
-                    @click="close"
                 >
                     <icon- class="mr-1" i="plus" />
                     <span>Thêm</span>

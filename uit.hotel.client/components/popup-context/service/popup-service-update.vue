@@ -6,6 +6,7 @@
             :mutation="updateService"
             :variables="{ input }"
             success="Cập nhật thông tin dịch vụ thành công"
+            @success="close"
         >
             <div class="input-label">Tên dịch vụ</div>
             <b-input-
@@ -37,7 +38,6 @@
                     class="ml-auto"
                     variant="main"
                     type="submit"
-                    @click="close"
                 >
                     <icon- class="mr-1" i="edit-2" />
                     <span>Cập nhật</span>

@@ -6,6 +6,7 @@
             :mutation="updateFloor"
             :variables="{ input }"
             success="Cập nhật thông tin tầng thành công"
+            @success="close"
         >
             <div class="input-label">Tên tầng</div>
             <b-input-
@@ -21,7 +22,6 @@
                     class="ml-auto"
                     variant="main"
                     type="submit"
-                    @click="close"
                 >
                     <icon- class="mr-1" i="edit-2" />
                     <span>Cập nhật</span>

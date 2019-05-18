@@ -6,6 +6,7 @@
             :mutation="updateRoomKind"
             :variables="{ input }"
             success="Cập nhật loại phòng mới thành công"
+            @success="close"
         >
             <div class="input-label">Tên loại phòng</div>
             <b-input-
@@ -41,7 +42,6 @@
                     class="ml-auto"
                     variant="main"
                     type="submit"
-                    @click="close"
                 >
                     <icon- class="mr-1" i="plus" />
                     <span>Cập nhật</span>

@@ -51,6 +51,7 @@ export class MutableMixin extends Vue {
                         text: this.success,
                     });
                 }
+                this.$emit('success');
             }
         }
         return result;

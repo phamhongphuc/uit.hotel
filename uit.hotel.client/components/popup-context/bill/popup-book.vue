@@ -6,6 +6,7 @@
             :mutation="createBill"
             :variables="getInput"
             success="Thêm phòng cho hóa đơn có sẵn"
+            @success="close"
         >
             <div class="input-label">Khách hàng đứng tên hóa đơn</div>
             <div class="m-3 d-flex">
@@ -144,7 +145,6 @@
                     variant="main"
                     class="ml-3"
                     type="submit"
-                    @click="close"
                 >
                     <icon- class="mr-1" i="edit-2" />
                     <span>Đặt phòng</span>

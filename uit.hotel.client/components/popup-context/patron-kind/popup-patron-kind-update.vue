@@ -6,6 +6,7 @@
             :mutation="updatePatronKind"
             :variables="{ input }"
             success="Cập nhật loại khách hàng thành công"
+            @success="close"
         >
             <div class="input-label">Tên loại khách hàng</div>
             <b-input-
@@ -28,7 +29,6 @@
                     class="ml-auto"
                     variant="main"
                     type="submit"
-                    @click="close"
                 >
                     <icon- class="mr-1" i="plus" />
                     <span>Cập nhật</span>

@@ -14,6 +14,7 @@
             :mutation="initializeAdminAccount"
             :variables="{ email, password }"
             success="Khởi tạo tài khoản quản trị thành công"
+            @success="success"
         >
             <b-input-
                 v-model="email"
@@ -60,6 +61,10 @@ export default class extends mixins(DataMixin({ initializeAdminAccount })) {
         return {
             title: 'Khởi tạo tài khoản quản trị',
         };
+    }
+
+    success() {
+        this.$router.push('/');
     }
 
     @(namespace('user').Action)

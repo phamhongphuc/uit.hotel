@@ -6,6 +6,7 @@
             :mutation="createRoom"
             :variables="{ input }"
             success="Thêm phòng mới thành công"
+            @success="close"
         >
             <div class="input-label">Tầng</div>
             <query- :query="getFloors" :poll-interval="0" class="m-3">
@@ -45,7 +46,6 @@
                     class="ml-auto"
                     variant="main"
                     type="submit"
-                    @click="close"
                 >
                     <icon- class="mr-1" i="plus" />
                     <span>Thêm</span>

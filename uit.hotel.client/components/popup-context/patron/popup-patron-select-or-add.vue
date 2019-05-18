@@ -6,6 +6,7 @@
             :mutation="createPatron"
             :variables="{ input }"
             success="Thêm khách hàng mới thành công"
+            @success="close"
         >
             <template slot-scope="{ mutate }">
                 <div class="d-flex">
