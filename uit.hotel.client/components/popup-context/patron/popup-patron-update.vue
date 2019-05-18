@@ -2,7 +2,7 @@
     <popup- ref="popup" title="Cập nhật khách hàng">
         <form-mutate-
             v-if="input"
-            slot-scope="{ data: { patron }, close }"
+            slot-scope="{ close }"
             :mutation="updatePatron"
             :variables="{ input }"
             success="Cập nhật khách hàng thành công"

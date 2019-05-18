@@ -2,9 +2,9 @@
     <popup- ref="popup" title="Đặt phòng">
         <form-mutate-
             v-if="input"
-            slot-scope="{ data: { bill }, close }"
+            slot-scope="{ close }"
             :mutation="createBill"
-            :variables="getInput"
+            :variables="variables"
             success="Thêm phòng cho hóa đơn có sẵn"
             @success="close"
         >
@@ -197,7 +197,7 @@ export default class extends mixins<PopupMixinType>(
         };
     }
 
-    get getInput(): CreateBill.Variables {
+    get variables(): CreateBill.Variables {
         const { input, bookCheckOutTime, bookCheckInTime } = this;
         const { bill, bookings } = input;
         return {

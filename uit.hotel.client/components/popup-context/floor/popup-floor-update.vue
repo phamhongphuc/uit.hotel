@@ -2,7 +2,7 @@
     <popup- ref="popup" title="Sửa tầng">
         <form-mutate-
             v-if="input"
-            slot-scope="{ data: { floor }, close }"
+            slot-scope="{ close }"
             :mutation="updateFloor"
             :variables="{ input }"
             success="Cập nhật thông tin tầng thành công"

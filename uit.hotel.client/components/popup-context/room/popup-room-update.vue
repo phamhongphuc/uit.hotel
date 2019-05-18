@@ -2,7 +2,7 @@
     <popup- ref="popup" title="Cập nhật phòng">
         <form-mutate-
             v-if="input"
-            slot-scope="{ data: { room }, close }"
+            slot-scope="{ close }"
             :mutation="updateRoom"
             :variables="{ input }"
             success="Cập nhật phòng mới thành công"
