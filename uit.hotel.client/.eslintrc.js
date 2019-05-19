@@ -1,5 +1,5 @@
 const schemaJson = require('./graphql/schema.json');
-const isWin = require('os').platform() === 'win32';
+const path = require('path');
 
 const config = {
     env: {
@@ -51,19 +51,9 @@ const config = {
             },
             typescript: {},
         },
-        'import/core-modules': [
-            '@babel/polyfill',
-            '@babel/register',
-            '@nuxt/vue-app',
-            'apollo-cache-inmemory',
-            'apollo-client',
-            'apollo-link',
-            'chalk',
-            'graphql',
-            'vue-router',
-            'vue',
-            'vuex',
-        ],
+        'import/parsers': {
+            '@typescript-eslint/parser': ['.ts', '.tsx'],
+        },
     },
     rules: {
         'eol-last': 'error',
@@ -83,8 +73,8 @@ const config = {
             'error',
             {
                 groups: [
-                    'external',
                     'builtin',
+                    'external',
                     'internal',
                     'parent',
                     'sibling',
@@ -94,7 +84,22 @@ const config = {
             },
         ],
         'import/no-useless-path-segments': ['error', { noUselessIndex: true }],
-
+        'import/no-extraneous-dependencies': [
+            'error',
+            {
+                devDependencies: false,
+                optionalDependencies: false,
+                peerDependencies: false,
+                packageDir: [
+                    path.join('./'),
+                    path.join(__dirname, 'node_modules/@nuxt/builder'),
+                    path.join(__dirname, 'node_modules/@nuxt/vue-app'),
+                    path.join(__dirname, 'node_modules/@nuxtjs/apollo/'),
+                    path.join(__dirname, 'node_modules/nuxt'),
+                    path.join(__dirname, 'node_modules/vue-cli-plugin-apollo/'),
+                ],
+            },
+        ],
         'vue/html-self-closing': [
             'error',
             { html: { void: 'always', normal: 'always', component: 'always' } },
@@ -131,6 +136,15 @@ const config = {
             files: ['store/*.ts'],
             rules: {
                 'import/no-cycle': 'off',
+            },
+        },
+        {
+            files: ['test/**/*.ts'],
+            rules: {
+                'import/no-extraneous-dependencies': [
+                    'error',
+                    { devDependencies: true },
+                ],
             },
         },
     ],
