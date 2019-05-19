@@ -27,7 +27,7 @@ namespace uit.hotel.Queries.Helper
                     PermissionGetRate = true,
                     PermissionGetService = true,
                     PermissionManageEmployee = true,
-                    PermissionManageHiringRoom = true,
+                    PermissionManageRentingRoom = true,
                     PermissionManagePatron = true,
                     PermissionManagePatronKind = true,
                     PermissionManagePosition = true,

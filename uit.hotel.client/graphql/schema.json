@@ -1987,22 +1987,6 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "permissionManageHiringRoom",
-                        "description": "Quyền quản lý thuê phòng",
-                        "args": [],
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Boolean",
-                                "ofType": null
-                            }
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
                         "name": "permissionManageMap",
                         "description": "Quyền chỉnh sửa sơ đồ",
                         "args": [],
@@ -2069,6 +2053,22 @@
                     {
                         "name": "permissionManageRate",
                         "description": "Quyền quản lý giá cơ bản và giá biến động",
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Boolean",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "permissionManageRentingRoom",
+                        "description": "Quyền quản lý thuê phòng",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -6514,7 +6514,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "permissionManageHiringRoom",
+                        "name": "permissionManageRentingRoom",
                         "description": "Quyền quản lý thuê phòng",
                         "type": {
                             "kind": "NON_NULL",
@@ -7932,7 +7932,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "permissionManageHiringRoom",
+                        "name": "permissionManageRentingRoom",
                         "description": "Quyền quản lý thuê phòng",
                         "type": {
                             "kind": "NON_NULL",

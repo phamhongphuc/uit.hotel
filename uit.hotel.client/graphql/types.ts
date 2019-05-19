@@ -903,8 +903,6 @@ export type Position = {
     permissionGetService: Scalars['Boolean'];
     /** Quyền quản lý thông tin nhân viên */
     permissionManageEmployee: Scalars['Boolean'];
-    /** Quyền quản lý thuê phòng */
-    permissionManageHiringRoom: Scalars['Boolean'];
     /** Quyền chỉnh sửa sơ đồ */
     permissionManageMap: Scalars['Boolean'];
     /** Quyền quản lý khách hàng */
@@ -915,6 +913,8 @@ export type Position = {
     permissionManagePosition: Scalars['Boolean'];
     /** Quyền quản lý giá cơ bản và giá biến động */
     permissionManageRate: Scalars['Boolean'];
+    /** Quyền quản lý thuê phòng */
+    permissionManageRentingRoom: Scalars['Boolean'];
     /** Quyền quản lý dịch vụ */
     permissionManageService: Scalars['Boolean'];
 };
@@ -939,7 +939,7 @@ export type PositionCreateInput = {
     /** Quyền quản lý thông tin nhân viên */
     permissionManageEmployee: Scalars['Boolean'];
     /** Quyền quản lý thuê phòng */
-    permissionManageHiringRoom: Scalars['Boolean'];
+    permissionManageRentingRoom: Scalars['Boolean'];
     /** Quyền quản lý khách hàng */
     permissionManagePatron: Scalars['Boolean'];
     /** Quyền quản lý loại khách hàng */
@@ -982,7 +982,7 @@ export type PositionUpdateInput = {
     /** Quyền quản lý thông tin nhân viên */
     permissionManageEmployee: Scalars['Boolean'];
     /** Quyền quản lý thuê phòng */
-    permissionManageHiringRoom: Scalars['Boolean'];
+    permissionManageRentingRoom: Scalars['Boolean'];
     /** Quyền chỉnh sửa sơ đồ */
     permissionManageMap: Scalars['Boolean'];
     /** Quyền quản lý khách hàng */
@@ -1564,7 +1564,7 @@ export type UserLoginMutation = {
                 | 'permissionGetRate'
                 | 'permissionGetService'
                 | 'permissionManageEmployee'
-                | 'permissionManageHiringRoom'
+                | 'permissionManageRentingRoom'
                 | 'permissionManageMap'
                 | 'permissionManagePatron'
                 | 'permissionManagePatronKind'
@@ -1592,7 +1592,7 @@ export type UserCheckLoginMutation = {
             | 'permissionGetRate'
             | 'permissionGetService'
             | 'permissionManageEmployee'
-            | 'permissionManageHiringRoom'
+            | 'permissionManageRentingRoom'
             | 'permissionManageMap'
             | 'permissionManagePatron'
             | 'permissionManagePatronKind'
@@ -1792,7 +1792,7 @@ export type GetPositionsQuery = {
             | 'permissionGetRate'
             | 'permissionGetService'
             | 'permissionManageEmployee'
-            | 'permissionManageHiringRoom'
+            | 'permissionManageRentingRoom'
             | 'permissionManageMap'
             | 'permissionManagePatron'
             | 'permissionManagePatronKind'

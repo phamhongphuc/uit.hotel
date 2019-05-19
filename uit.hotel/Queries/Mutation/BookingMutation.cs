@@ -16,7 +16,7 @@ namespace uit.hotel.Queries.Mutation
                 "Cập nhật thời gian checkin của phòng",
                 _IdArgument(),
                 _CheckPermission_TaskObject(
-                    p => p.PermissionManageHiringRoom,
+                    p => p.PermissionManageRentingRoom,
                     context =>
                     {
                         var employee = AuthenticationHelper.GetEmployee(context);
@@ -30,7 +30,7 @@ namespace uit.hotel.Queries.Mutation
                 "Yêu cầu kiểm tra khi trả phòng",
                 _IdArgument(),
                 _CheckPermission_TaskObject(
-                    p => p.PermissionManageHiringRoom,
+                    p => p.PermissionManageRentingRoom,
                     context =>
                     {
                         var employee = AuthenticationHelper.GetEmployee(context);
@@ -44,7 +44,7 @@ namespace uit.hotel.Queries.Mutation
                 "Thực hiện xác nhận trả phòng",
                 _IdArgument(),
                 _CheckPermission_TaskObject(
-                    p => p.PermissionManageHiringRoom,
+                    p => p.PermissionManageRentingRoom,
                     context =>
                     {
                         var employee = AuthenticationHelper.GetEmployee(context);
@@ -58,7 +58,7 @@ namespace uit.hotel.Queries.Mutation
                 "Hủy đặt phòng",
                 _IdArgument(),
                 _CheckPermission_String(
-                    p => p.PermissionManageHiringRoom,
+                    p => p.PermissionManageRentingRoom,
                     context =>
                     {
                         BookingBusiness.Cancel(_GetId<int>(context));
@@ -75,7 +75,7 @@ namespace uit.hotel.Queries.Mutation
                     new QueryArgument<NonNullGraphType<BookingCreateInput>> { Name = "booking" }
                 ),
                 _CheckPermission_TaskObject(
-                    p => p.PermissionManageHiringRoom,
+                    p => p.PermissionManageRentingRoom,
                     context =>
                     {
                         var employee = AuthenticationHelper.GetEmployee(context);

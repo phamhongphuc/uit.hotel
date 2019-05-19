@@ -24,7 +24,7 @@ const PermissionInstance: PermissionType = {
     permissionGetRate: true,
     permissionGetService: true,
     permissionManageEmployee: true,
-    permissionManageHiringRoom: true,
+    permissionManageRentingRoom: true,
     permissionManagePatron: true,
     permissionManagePatronKind: true,
     permissionManagePosition: true,

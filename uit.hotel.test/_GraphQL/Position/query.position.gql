@@ -10,7 +10,7 @@ query($id: ID!) {
         permissionGetRate
         permissionGetService
         permissionManageEmployee
-        permissionManageHiringRoom
+        permissionManageRentingRoom
         permissionManageMap
         permissionManagePatron
         permissionManagePatronKind

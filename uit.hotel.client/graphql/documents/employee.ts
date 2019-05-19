@@ -73,7 +73,7 @@ export const userLogin = gql`
                     permissionGetRate
                     permissionGetService
                     permissionManageEmployee
-                    permissionManageHiringRoom
+                    permissionManageRentingRoom
                     permissionManageMap
                     permissionManagePatron
                     permissionManagePatronKind
@@ -102,7 +102,7 @@ export const userCheckLogin = gql`
                 permissionGetRate
                 permissionGetService
                 permissionManageEmployee
-                permissionManageHiringRoom
+                permissionManageRentingRoom
                 permissionManageMap
                 permissionManagePatron
                 permissionManagePatronKind

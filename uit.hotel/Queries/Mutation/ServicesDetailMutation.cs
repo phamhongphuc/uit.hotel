@@ -15,7 +15,7 @@ namespace uit.hotel.Queries.Mutation
                 "Tạo và trả về một chi tiết dịch vụ mới",
                 _InputArgument<ServicesDetailCreateInput>(),
                 _CheckPermission_TaskObject(
-                    p => p.PermissionManageHiringRoom,
+                    p => p.PermissionManageRentingRoom,
                     context => ServicesDetailBusiness.Add(_GetInput(context))
                 )
             );
