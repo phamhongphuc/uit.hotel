@@ -13,3 +13,9 @@ declare module 'vuex' {
 declare module '*.vue' {
     export default Vue;
 }
+
+declare global {
+    interface Window {
+        onNuxtReady: (callback: () => void) => void;
+    }
+}
