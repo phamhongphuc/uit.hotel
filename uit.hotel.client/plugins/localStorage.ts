@@ -6,11 +6,9 @@ interface CustomWindow extends Window {
 }
 
 export default ({ store }: ComponentOptions<Vue>): void => {
-    (window as CustomWindow).onNuxtReady(
-        (): void => {
-            createPersistedState({
-                paths: ['user'],
-            })(store);
-        },
-    );
+    (window as CustomWindow).onNuxtReady(() => {
+        createPersistedState({
+            paths: ['user'],
+        })(store);
+    });
 };
