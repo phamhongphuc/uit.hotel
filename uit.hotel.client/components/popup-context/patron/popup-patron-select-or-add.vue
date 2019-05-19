@@ -6,6 +6,7 @@
             :mutation="createPatron"
             :variables="{ input }"
             success="Thêm khách hàng mới thành công"
+            @success="close"
         >
             <template slot-scope="{ mutate }">
                 <div class="d-flex">
@@ -200,7 +201,7 @@ import { required, alphaNum, minLength } from 'vuelidate/lib/validators';
 export default class extends mixins<
     PopupMixin<
         { callback(id: number, patron: GetPatrons.Patrons) },
-        PatronCreateInput | null
+        PatronCreateInput
     >
 >(PopupMixin, DataMixin({ createPatron, getPatronKinds, getPatrons })) {
     phoneNumbers: string = '';

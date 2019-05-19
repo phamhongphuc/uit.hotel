@@ -1,6 +1,6 @@
 <template>
     <context- ref="context" :refs="refs">
-        <template slot-scope="{ data: { bill, bills }, refs }">
+        <template slot-scope="{ data: { bill }, refs }">
             <b-nav-item-icon-
                 v-if="moment(bill.time).year() === 1"
                 icon="dollar-sign"

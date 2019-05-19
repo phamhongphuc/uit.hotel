@@ -6,6 +6,7 @@
             :mutation="createRate"
             :variables="{ input }"
             success="Thêm giá cơ bản mới thành công"
+            @success="close"
         >
             <div class="d-flex">
                 <div>
@@ -85,7 +86,6 @@
                     class="ml-auto"
                     variant="main"
                     type="submit"
-                    @click="close"
                 >
                     <icon- class="mr-1" i="plus" />
                     <span>Thêm</span>

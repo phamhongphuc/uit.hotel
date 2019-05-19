@@ -2,10 +2,11 @@
     <popup- ref="popup" title="Cập nhật vị trí">
         <form-mutate-
             v-if="input"
-            slot-scope="{ data: { position }, close }"
+            slot-scope="{ close }"
             :mutation="updatePosition"
             :variables="{ input: getInput }"
             success="Cập nhật vị trí mới thành công"
+            @success="close"
         >
             <div class="d-flex">
                 <div>
@@ -47,7 +48,6 @@
                     class="ml-auto"
                     variant="main"
                     type="submit"
-                    @click="close"
                 >
                     <icon- class="mr-1" i="plus" />
                     <span>Cập nhật</span>
@@ -80,23 +80,25 @@ type PopupMixinType = PopupMixin<{ position: GetPositions.Positions }, any>;
         },
     },
 })
-export default class extends mixins<PopupMixinType>(
+export default class extends mixins<
+    PopupMixinType,
+    {
+        positionOptionsAdministrative: CheckboxOption[];
+        positionOptionsBusiness: CheckboxOption[];
+        positionOptionsReceptionist: CheckboxOption[];
+        positionOptionsHouseKeeping: CheckboxOption[];
+    }
+>(
     PopupMixin,
-    DataMixin({ updatePosition }),
+    DataMixin({
+        updatePosition,
+        positionOptionsAdministrative,
+        positionOptionsBusiness,
+        positionOptionsReceptionist,
+        positionOptionsHouseKeeping,
+    }),
 ) {
     selected: string[] = [];
-
-    positionOptionsAdministrative: CheckboxOption[] = [];
-    positionOptionsBusiness: CheckboxOption[] = [];
-    positionOptionsReceptionist: CheckboxOption[] = [];
-    positionOptionsHouseKeeping: CheckboxOption[] = [];
-
-    mounted() {
-        this.positionOptionsAdministrative = positionOptionsAdministrative;
-        this.positionOptionsBusiness = positionOptionsBusiness;
-        this.positionOptionsReceptionist = positionOptionsReceptionist;
-        this.positionOptionsHouseKeeping = positionOptionsHouseKeeping;
-    }
 
     get positionOptions() {
         const options = {};

@@ -6,6 +6,7 @@
             :mutation="addBookingToBill"
             :variables="{ input }"
             success="Thêm phòng cho hóa đơn có sẵn"
+            @success="close"
         >
             <div class="input-label">Tên hóa đơn</div>
             <b-input-
@@ -21,7 +22,6 @@
                     class="ml-auto"
                     variant="main"
                     type="submit"
-                    @click="close"
                 >
                     <icon- class="mr-1" i="edit-2" />
                     <span>Cập nhật</span>

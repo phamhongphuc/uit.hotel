@@ -2,10 +2,11 @@
     <popup- ref="popup" title="Cập nhật khách hàng">
         <form-mutate-
             v-if="input"
-            slot-scope="{ data: { patron }, close }"
+            slot-scope="{ close }"
             :mutation="updatePatron"
             :variables="{ input }"
             success="Cập nhật khách hàng thành công"
+            @success="close"
         >
             <div class="d-flex">
                 <div>
@@ -129,7 +130,6 @@
                     class="ml-auto"
                     variant="main"
                     type="submit"
-                    @click="close"
                 >
                     <icon- class="mr-1" i="plus" />
                     <span>Cập nhật</span>

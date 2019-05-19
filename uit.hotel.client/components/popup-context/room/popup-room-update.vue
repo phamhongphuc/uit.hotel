@@ -2,10 +2,11 @@
     <popup- ref="popup" title="Cập nhật phòng">
         <form-mutate-
             v-if="input"
-            slot-scope="{ data: { room }, close }"
+            slot-scope="{ close }"
             :mutation="updateRoom"
             :variables="{ input }"
             success="Cập nhật phòng mới thành công"
+            @success="close"
         >
             <div class="input-label">Tầng</div>
             <query- :query="getFloors" :poll-interval="0" class="m-3">
@@ -45,7 +46,6 @@
                     class="ml-auto"
                     variant="main"
                     type="submit"
-                    @click="close"
                 >
                     <icon- class="mr-1" i="plus" />
                     <span>Cập nhật</span>
