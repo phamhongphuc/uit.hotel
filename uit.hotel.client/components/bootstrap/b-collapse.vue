@@ -18,6 +18,10 @@ function isPermissionMixin(instance: Vue): instance is PermissionMixin {
 
 @Component({
     name: 'b-collapse-',
+    model: {
+        prop: 'visible',
+        event: 'input',
+    },
 })
 export default class extends mixins<PermissionMixin>(PermissionMixin) {
     @Prop({ default: false, type: Boolean })
