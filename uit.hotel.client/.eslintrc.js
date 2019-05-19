@@ -83,11 +83,11 @@ const config = {
             'error',
             {
                 groups: [
-                    'sibling',
-                    'parent',
-                    'internal',
                     'external',
                     'builtin',
+                    'internal',
+                    'parent',
+                    'sibling',
                     'index',
                 ],
                 'newlines-between': 'never',

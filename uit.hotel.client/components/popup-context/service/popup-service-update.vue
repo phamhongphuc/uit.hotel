@@ -47,11 +47,11 @@
     </popup->
 </template>
 <script lang="ts">
-import { ServiceUpdateInput, GetServices } from 'graphql/types';
 import { Component, mixins } from 'nuxt-property-decorator';
-import { DataMixin, PopupMixin } from '~/components/mixins';
-import { updateService } from '~/graphql/documents';
 import { required, minLength, minValue } from 'vuelidate/lib/validators';
+import { DataMixin, PopupMixin } from '~/components/mixins';
+import { ServiceUpdateInput, GetServices } from '~/graphql/types';
+import { updateService } from '~/graphql/documents';
 
 type PopupMixinType = PopupMixin<
     { service: GetServices.Services },

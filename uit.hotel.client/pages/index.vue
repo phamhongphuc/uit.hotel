@@ -6,7 +6,7 @@
     </div>
 </template>
 <script lang="ts">
-import { GetFloors } from 'graphql/types';
+import { GetFloors } from '~/graphql/types';
 import { Component, mixins } from 'nuxt-property-decorator';
 import { getFloors } from '~/graphql/documents';
 import { DataMixin } from '~/components/mixins';

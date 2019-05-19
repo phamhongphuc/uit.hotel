@@ -95,11 +95,11 @@
     </popup->
 </template>
 <script lang="ts">
-import { RateCreateInput, GetRoomKinds } from 'graphql/types';
 import { Component, mixins } from 'nuxt-property-decorator';
-import { DataMixin, PopupMixin } from '~/components/mixins';
-import { createRate, getRoomKinds } from '~/graphql/documents';
 import { required } from 'vuelidate/lib/validators';
+import { DataMixin, PopupMixin } from '~/components/mixins';
+import { RateCreateInput, GetRoomKinds } from '~/graphql/types';
+import { createRate, getRoomKinds } from '~/graphql/documents';
 
 type PopupMixinType = PopupMixin<
     { roomKind: GetRoomKinds.RoomKinds },

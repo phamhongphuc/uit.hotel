@@ -31,9 +31,9 @@
     </popup->
 </template>
 <script lang="ts">
-import { GetBills, AddBookingToBill } from 'graphql/types';
 import { Component, mixins } from 'nuxt-property-decorator';
 import { PopupMixin, DataMixin } from '~/components/mixins';
+import { GetBills, AddBookingToBill } from '~/graphql/types';
 import { addBookingToBill } from '~/graphql/documents';
 
 @Component({

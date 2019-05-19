@@ -38,11 +38,11 @@
     </popup->
 </template>
 <script lang="ts">
-import { PatronKindUpdateInput, GetPatronKinds } from 'graphql/types';
 import { Component, mixins } from 'nuxt-property-decorator';
-import { PopupMixin, DataMixin } from '~/components/mixins';
-import { updatePatronKind } from '~/graphql/documents';
 import { required } from 'vuelidate/lib/validators';
+import { PopupMixin, DataMixin } from '~/components/mixins';
+import { PatronKindUpdateInput, GetPatronKinds } from '~/graphql/types';
+import { updatePatronKind } from '~/graphql/documents';
 
 type PopupMixinType = PopupMixin<
     { patronKind: GetPatronKinds.PatronKinds },

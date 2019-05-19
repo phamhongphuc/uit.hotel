@@ -61,15 +61,15 @@
     </popup->
 </template>
 <script lang="ts">
-import { ServicesDetailCreateInput, GetBookings } from 'graphql/types';
 import { Component, mixins } from 'nuxt-property-decorator';
+import { required, minValue } from 'vuelidate/lib/validators';
 import { DataMixin, PopupMixin } from '~/components/mixins';
+import { ServicesDetailCreateInput, GetBookings } from '~/graphql/types';
 import {
     getServices,
     getSimpleBookings,
     createServicesDetail,
 } from '~/graphql/documents';
-import { required, minValue } from 'vuelidate/lib/validators';
 
 type PopupMixinType = PopupMixin<
     {
