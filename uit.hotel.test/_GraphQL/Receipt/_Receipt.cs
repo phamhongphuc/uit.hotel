@@ -28,7 +28,7 @@ namespace uit.hotel.test._GraphQL
                         }
                     }
                 },
-                p => p.PermissionManageHiringRoom = true
+                p => p.PermissionManageRentingRoom = true
             );
         }
 
@@ -50,7 +50,7 @@ namespace uit.hotel.test._GraphQL
                         }
                     }
                 },
-                p => p.PermissionManageHiringRoom = true
+                p => p.PermissionManageRentingRoom = true
             );
         }
 

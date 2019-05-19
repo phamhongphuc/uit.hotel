@@ -9,7 +9,7 @@
                 'GetMap',
                 'ManagePatron',
                 'ManagePatronKind',
-                'ManageHiringRoom',
+                'ManageRentingRoom',
             ]"
         />
         <b-collapse-
@@ -36,7 +36,7 @@
                 icon="box"
                 text="Quản lý đặt phòng"
                 exact
-                :permission="['ManageHiringRoom']"
+                :permission="['ManageRentingRoom']"
             />
         </b-collapse->
         <b-nav-item-icon-

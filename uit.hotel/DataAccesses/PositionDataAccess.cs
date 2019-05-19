@@ -35,12 +35,12 @@ namespace uit.hotel.DataAccesses
                 positionInDatabase.PermissionGetRate = position.PermissionGetRate;
                 positionInDatabase.PermissionGetService = position.PermissionGetService;
                 positionInDatabase.PermissionManageEmployee = position.PermissionManageEmployee;
-                positionInDatabase.PermissionManageHiringRoom = position.PermissionManageHiringRoom;
                 positionInDatabase.PermissionManageMap = position.PermissionManageMap;
                 positionInDatabase.PermissionManagePatron = position.PermissionManagePatron;
                 positionInDatabase.PermissionManagePatronKind = position.PermissionManagePatronKind;
                 positionInDatabase.PermissionManagePosition = position.PermissionManagePosition;
                 positionInDatabase.PermissionManageRate = position.PermissionManageRate;
+                positionInDatabase.PermissionManageRentingRoom = position.PermissionManageRentingRoom;
                 positionInDatabase.PermissionManageService = position.PermissionManageService;
             });
             return positionInDatabase;

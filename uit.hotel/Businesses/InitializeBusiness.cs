@@ -29,7 +29,7 @@ namespace uit.hotel.Businesses
                 PermissionGetRate = true,
                 PermissionGetService = true,
                 PermissionManageEmployee = true,
-                PermissionManageHiringRoom = true,
+                PermissionManageRentingRoom = true,
                 PermissionManageMap = true,
                 PermissionManagePatron = true,
                 PermissionManagePatronKind = true,

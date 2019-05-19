@@ -831,9 +831,6 @@ type Position {
     # Quyền quản lý thông tin nhân viên
     permissionManageEmployee: Boolean!
 
-    # Quyền quản lý thuê phòng
-    permissionManageHiringRoom: Boolean!
-
     # Quyền chỉnh sửa sơ đồ
     permissionManageMap: Boolean!
 
@@ -848,6 +845,9 @@ type Position {
 
     # Quyền quản lý giá cơ bản và giá biến động
     permissionManageRate: Boolean!
+
+    # Quyền quản lý thuê phòng
+    permissionManageRentingRoom: Boolean!
 
     # Quyền quản lý dịch vụ
     permissionManageService: Boolean!
@@ -882,7 +882,7 @@ input PositionCreateInput {
     permissionManageEmployee: Boolean!
 
     # Quyền quản lý thuê phòng
-    permissionManageHiringRoom: Boolean!
+    permissionManageRentingRoom: Boolean!
 
     # Quyền quản lý khách hàng
     permissionManagePatron: Boolean!
@@ -941,7 +941,7 @@ input PositionUpdateInput {
     permissionManageEmployee: Boolean!
 
     # Quyền quản lý thuê phòng
-    permissionManageHiringRoom: Boolean!
+    permissionManageRentingRoom: Boolean!
 
     # Quyền chỉnh sửa sơ đồ
     permissionManageMap: Boolean!

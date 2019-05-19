@@ -14,7 +14,7 @@ export const getPositions = gql`
             permissionGetRate
             permissionGetService
             permissionManageEmployee
-            permissionManageHiringRoom
+            permissionManageRentingRoom
             permissionManageMap
             permissionManagePatron
             permissionManagePatronKind
@@ -129,7 +129,7 @@ export const positionOptionsReceptionist: CheckboxOption[] = [
     },
     {
         text: 'Quản lý thuê phòng',
-        value: 'permissionManageHiringRoom',
+        value: 'permissionManageRentingRoom',
     },
     {
         text: 'Quản lý khách hàng',
