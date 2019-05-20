@@ -5,20 +5,18 @@ import { ApolloProvider } from '~/interfaces/ApolloProvider';
 
 declare module 'vuex' {
     interface Store<S> {
-        app: ComponentOptions<Vue> & {
-            router: VueRouter;
-            $apolloHelpers: ApolloHelpers;
-            $apolloProvider: ApolloProvider;
-            apolloProvider: ApolloProvider;
-        };
+        app: ComponentOptions<Vue>;
         $router: VueRouter;
     }
 }
 
-declare module '*.vue' {
-    export default Vue;
+declare module 'vue/types/vue' {
+    interface Vue {
+        $apolloHelpers: ApolloHelpers;
+        $apolloProvider: ApolloProvider;
+        apolloProvider: ApolloProvider;
+    }
 }
-
 declare global {
     interface Window {
         onNuxtReady: (callback: () => void) => void;
