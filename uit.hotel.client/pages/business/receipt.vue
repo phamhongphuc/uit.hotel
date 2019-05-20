@@ -99,7 +99,5 @@ export default class extends mixins(
     currentEvent: MouseEvent | null = null;
 
     showInactive: boolean = false;
-
-    console = console;
 }
 </script>

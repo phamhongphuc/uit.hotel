@@ -133,7 +133,5 @@ export default class extends mixins(DataMixin({ getPositions })) {
     currentEvent: MouseEvent | null = null;
 
     showInactive: boolean = false;
-
-    console = console;
 }
 </script>

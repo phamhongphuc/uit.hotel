@@ -129,7 +129,5 @@ export default class extends mixins(DataMixin({ getServices, toMoney })) {
     currentEvent: MouseEvent | null = null;
 
     showInactive: boolean = false;
-
-    console = console;
 }
 </script>

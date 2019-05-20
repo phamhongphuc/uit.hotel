@@ -125,7 +125,5 @@ export default class extends mixins(DataMixin({ getRoomKinds })) {
     currentEvent: MouseEvent | null = null;
 
     showInactive: boolean = false;
-
-    console = console;
 }
 </script>

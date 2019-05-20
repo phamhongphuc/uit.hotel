@@ -142,10 +142,6 @@ export default class extends mixins(
 
     currentEvent: MouseEvent | null = null;
 
-    showInactive: boolean = false;
-
-    console = console;
-
     getCheckInTime(item: GetBookings.Bookings): string {
         if (item.status === 0) return item.bookCheckInTime;
         else return item.realCheckInTime;

@@ -124,7 +124,5 @@ export default class extends mixins(DataMixin({ getEmployees })) {
     currentEvent: MouseEvent | null = null;
 
     showInactive: boolean = false;
-
-    console = console;
 }
 </script>
