@@ -87,11 +87,11 @@
     </popup->
 </template>
 <script lang="ts">
-import { BookAndCheckInCreateInput, GetRooms } from 'graphql/types';
 import { Component, mixins } from 'nuxt-property-decorator';
-import { PopupMixin, DataMixin } from '~/components/mixins';
-import { getPatronKinds, getRooms, createPatron } from '~/graphql/documents';
 import { required } from 'vuelidate/lib/validators';
+import { PopupMixin, DataMixin } from '~/components/mixins';
+import { BookAndCheckInCreateInput, GetRooms } from '~/graphql/types';
+import { getPatronKinds, getRooms, createPatron } from '~/graphql/documents';
 
 type PopupMixinType = PopupMixin<
     {

@@ -31,11 +31,11 @@
     </popup->
 </template>
 <script lang="ts">
-import { FloorUpdateInput, GetFloors } from 'graphql/types';
 import { Component, mixins } from 'nuxt-property-decorator';
-import { DataMixin, PopupMixin } from '~/components/mixins';
-import { updateFloor } from '~/graphql/documents';
 import { required, minLength } from 'vuelidate/lib/validators';
+import { DataMixin, PopupMixin } from '~/components/mixins';
+import { FloorUpdateInput, GetFloors } from '~/graphql/types';
+import { updateFloor } from '~/graphql/documents';
 
 type PopupMixinType = PopupMixin<{ floor: GetFloors.Floors }, FloorUpdateInput>;
 

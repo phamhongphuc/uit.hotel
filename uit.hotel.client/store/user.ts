@@ -1,5 +1,5 @@
 import gql from 'graphql-tag';
-import { ActionTree, GetterTree, MutationTree } from 'vuex';
+import { ActionTree, MutationTree } from 'vuex';
 import { userCheckLogin, userLogin } from '~/graphql/documents';
 import { IsInitialized, UserCheckLogin, UserLogin } from '~/graphql/types';
 import {
@@ -20,18 +20,16 @@ export const state = (): UserState => ({
     employee: undefined,
 });
 
-export const getters: GetterTree<UserState, RootState> = {};
-
 export const mutations: MutationTree<UserState> = {
-    setToken(state, token: string): void {
+    setToken(state, token: string) {
         state.token = token;
     },
-    login(state, { token, employee }: UserLogin.Login): void {
+    login(state, { token, employee }: UserLogin.Login) {
         apolloHelpers(this).onLogin(token);
         state.token = token;
         state.employee = employee;
     },
-    logout(state): void {
+    logout(state) {
         apolloHelpers(this).onLogout();
         state.token = undefined;
         state.employee = undefined;
@@ -39,7 +37,7 @@ export const mutations: MutationTree<UserState> = {
 };
 
 export const actions: ActionTree<UserState, RootState> = {
-    async login({ commit }, variables: UserLogin.Variables): Promise<void> {
+    async login({ commit }, variables: UserLogin.Variables) {
         const result = await apolloClientNotify(this).mutate<
             UserLogin.Mutation,
             UserLogin.Variables
@@ -55,13 +53,13 @@ export const actions: ActionTree<UserState, RootState> = {
         notify.success({ title: 'Thông báo', text: 'Đăng nhập thành công' });
     },
 
-    async logout({ commit }): Promise<void> {
+    async logout({ commit }) {
         commit('logout');
         this.$router.push('/login');
         notify.success({ title: 'Thông báo', text: 'Đăng xuất thành công' });
     },
 
-    async serverUpdateUserProfile({ commit }, token: string): Promise<boolean> {
+    async serverUpdateUserProfile({ commit }, token: string) {
         if (typeof token !== 'string') return false;
 
         commit('setToken', token);
@@ -88,7 +86,7 @@ export const actions: ActionTree<UserState, RootState> = {
         }
     },
 
-    async checkIsInitializedDatabase(): Promise<void> {
+    async checkIsInitializedDatabase() {
         let isInitialized = true;
         try {
             const result = await apolloClient(this).query<IsInitialized.Query>({

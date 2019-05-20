@@ -2,8 +2,8 @@
     <span class="icon">{{ icon }}</span>
 </template>
 <script lang="ts">
-import selection from './selection.json';
 import { Vue, Component, Prop } from 'nuxt-property-decorator';
+import selection from './selection.json';
 
 const map = selection.icons.reduce((obj, current) => {
     obj[current.properties.name] = String.fromCharCode(current.properties.code);

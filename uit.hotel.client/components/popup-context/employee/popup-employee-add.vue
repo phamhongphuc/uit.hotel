@@ -146,11 +146,11 @@
     </popup->
 </template>
 <script lang="ts">
-import { EmployeeCreateInput } from 'graphql/types';
 import { Component, mixins } from 'nuxt-property-decorator';
-import { PopupMixin, DataMixin } from '~/components/mixins';
-import { getPositions, createEmployee } from '~/graphql/documents';
 import { required, email, alphaNum } from 'vuelidate/lib/validators';
+import { PopupMixin, DataMixin } from '~/components/mixins';
+import { EmployeeCreateInput } from '~/graphql/types';
+import { getPositions, createEmployee } from '~/graphql/documents';
 
 @Component({
     name: 'popup-employee-add-',

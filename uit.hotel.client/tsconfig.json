@@ -12,8 +12,7 @@
         "baseUrl": ".",
         "resolveJsonModule": true,
         "paths": {
-            "~/*": ["./*"],
-            "@/*": ["./*"]
+            "~/*": ["./*"]
         },
         "types": ["node", "mocha", "chai", "webpack-env", "vue-notification"],
         "esModuleInterop": true,
