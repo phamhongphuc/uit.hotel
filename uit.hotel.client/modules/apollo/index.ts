@@ -1,16 +1,10 @@
-import { notify } from '~/plugins/notify';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { ApolloClient, ApolloError, MutationOptions } from 'apollo-client';
 import { FetchResult } from 'apollo-link';
-
-declare module 'vue/types/vue' {
-    interface Vue {
-        $apolloHelpers: ApolloHelpers;
-        $apolloProvider: {
-            defaultClient: ApolloClient<InMemoryCache>;
-        };
-    }
-}
+import { notify } from '~/plugins/notify';
+import { ApolloHelpers } from '../../interfaces/ApolloHelpers';
+import { ApolloNotify } from './interfaces/ApolloNotify';
+import { ServerError } from './interfaces/ServerError';
 
 export function apolloClient(store: any): ApolloClient<InMemoryCache> {
     if (store.app.apolloProvider) return store.app.apolloProvider.defaultClient;
@@ -59,49 +53,4 @@ export function apolloClientNotify(store: any): ApolloNotify {
             }
         },
     };
-}
-
-interface ServerError extends Error {
-    result: {
-        ClassName: string;
-        Message: string;
-        Data: null;
-        InnerException: {
-            ClassName: string;
-            Message: string;
-            Data: {};
-            InnerException: null;
-            HelpURL: null;
-            StackTraceString: string;
-            RemoteStackTraceString: null;
-            RemoteStackIndex: number;
-            ExceptionMethod: null;
-            HResult: number;
-            Source: string;
-            WatsonBuckets: null;
-        };
-        HelpURL: null;
-        StackTraceString: null;
-        RemoteStackTraceString: null;
-        RemoteStackIndex: 0;
-        ExceptionMethod: null;
-        HResult: number;
-        Source: null;
-        WatsonBuckets: null;
-    }[];
-    name: string;
-    response: object;
-    statusCode: number;
-}
-
-interface ApolloNotify {
-    mutate<TType, TVariables>(
-        options: MutationOptions<TType, TVariables>,
-    ): Promise<FetchResult<TType>>;
-}
-
-interface ApolloHelpers {
-    onLogin: (token: string) => void;
-    onLogout: () => void;
-    getToken: () => string;
 }
