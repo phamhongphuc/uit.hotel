@@ -1,13 +1,9 @@
 @mixin icon {
-    // line-height: 1;
     font-weight: normal;
     font-family: 'ai-web-font', serif !important;
     font-style: normal;
     font-variant: normal;
     text-transform: none;
-    -webkit-user-select: none;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
     user-select: none;
 }
 
