@@ -10,7 +10,12 @@
     "endOfLine": "lf",
     "overrides": [
         {
-            "files": ["*.code-workspace", ".stylelintrc", ".babelrc"],
+            "files": [
+                "*.code-workspace",
+                ".stylelintrc",
+                ".babelrc",
+                ".gqlconfig"
+            ],
             "options": { "parser": "json" }
         }
     ]
