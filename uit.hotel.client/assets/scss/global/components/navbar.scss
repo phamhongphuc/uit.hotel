@@ -1,4 +1,4 @@
-.navbar-toggler::after,
+.navbar-toggler > .icon,
 .nav-item-input .icon,
 .nav-item-icon .icon {
     display: block;
@@ -29,11 +29,6 @@
     .navbar-toggler {
         height: $navbar-size;
         border: none !important;
-
-        &::after {
-            content: $navbar-toggler-icon;
-            @include icon;
-        }
 
         > .navbar-toggler-icon {
             display: none;
