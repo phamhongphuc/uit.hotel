@@ -47,23 +47,23 @@ export default class extends mixins<ClickawayMixin>(ClickawayMixin) {
 <style lang="scss">
 .popup {
     position: absolute;
-    background: rgba($black, 0.2);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 5;
-    width: 100%;
-    height: 100%;
     top: 0;
-    left: 0;
     right: 0;
     bottom: 0;
+    left: 0;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background: rgba($black, 0.2);
 
     > .popup-modal {
         min-width: 300px;
         background: $white;
-        box-shadow: $box-shadow-context;
         border-radius: $border-radius;
+        box-shadow: $box-shadow-context;
 
         > .popup-modal-title {
             display: flex;
@@ -73,17 +73,17 @@ export default class extends mixins<ClickawayMixin>(ClickawayMixin) {
             > .text {
                 flex: 1;
                 padding: 0 0.75rem;
-                line-height: $input-height;
                 font-weight: 500;
+                line-height: $input-height;
             }
 
             > .close {
                 display: block;
-                border: none;
-                padding: 0;
                 width: $input-height;
                 min-width: $input-height;
                 min-height: $input-height;
+                padding: 0;
+                border: none;
             }
         }
     }

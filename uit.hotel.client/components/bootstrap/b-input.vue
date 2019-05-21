@@ -40,28 +40,28 @@ export default class extends mixins<IconProps, InputProps, StateProps>(
 $input-icon-margin-left: 0.25rem;
 
 .b-input {
-    transition: border 0.2s;
-    display: flex;
     position: relative;
+    display: flex;
+    transition: border 0.2s;
     > .icon {
         position: absolute;
         display: block;
-        text-align: center;
-        font-size: 1rem;
         width: $input-height;
         min-width: $input-height;
         min-height: $input-height;
+        font-size: 1rem;
         line-height: $input-height;
+        text-align: center;
     }
 
     > input {
-        outline: none;
-        border: none;
-        min-width: 0;
         flex-grow: 1;
+        min-width: 0;
         padding-left: calc(
             #{$input-height-inner} + #{$input-height-border} - 0.125rem
         );
+        border: none;
+        outline: none;
         &:focus {
             outline: none;
         }

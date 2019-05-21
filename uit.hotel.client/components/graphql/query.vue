@@ -49,10 +49,10 @@ export default class extends Vue {
 .query {
     > div > .query-text {
         display: flex;
+        align-items: center;
+        justify-content: center;
         height: 100%;
         padding: 2rem;
-        justify-content: center;
-        align-items: center;
     }
 }
 </style>

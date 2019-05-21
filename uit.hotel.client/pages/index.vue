@@ -46,7 +46,7 @@ export default class extends mixins(DataMixin({ getFloors })) {
 <style lang="scss">
 .main-app {
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 }
 </style>

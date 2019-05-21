@@ -13,8 +13,8 @@
 }
 
 .table-inner {
-    box-shadow: $input-box-shadow;
     background-color: $input-bg;
+    box-shadow: $input-box-shadow;
 
     th,
     td {
@@ -26,8 +26,8 @@
     cursor: pointer;
 
     th {
-        border-bottom-color: $main !important;
         white-space: nowrap;
+        border-bottom-color: $main !important;
     }
 
     th,
@@ -54,8 +54,8 @@
             background: rgba($black, 0.025);
         }
         &:focus {
-            outline: 0;
             background: rgba($black, 0.075);
+            outline: 0;
         }
     }
 }
