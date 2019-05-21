@@ -7,9 +7,16 @@
         sticky
     >
         <b-navbar-nav class="flex-row flex-grow-1 flex-md-grow-0 mb-2 mb-md-0">
+            <b-navbar-toggle
+                target="sidebar-collapse"
+                class="navbar-toggler-sidebar mx-1"
+            >
+                <icon- i="chevrons-right" />
+            </b-navbar-toggle>
             <b-navbar-toggle target="navbar-collapse" class="mx-1">
                 <icon- i="menu" />
             </b-navbar-toggle>
+            <b-nav-item-icon- icon="maximize" @click="fullscreen" />
             <b-nav-item
                 class="font-pacifico font-size-bigger ml-md-2 mx-auto"
                 to="/"
@@ -105,25 +112,39 @@ export default class extends Vue {
         (state: UserState) => state.employee || { position: {} },
     ))
     employee!: UserLogin.Employee;
+
+    fullscreen() {
+        document.documentElement.requestFullscreen();
+    }
 }
 </script>
 <style lang="scss">
+.navbar-toggler-sidebar {
+    > .icon {
+        transition: transform 0.2s;
+    }
+    &[aria-expanded='false'] {
+        > .icon {
+            transform: rotate(180deg);
+        }
+    }
+}
 .dropdown-profile {
-    padding: 1rem;
     margin-top: -0.5rem;
+    padding: 1rem;
     > .dropdown-profile-detail {
         height: 3rem;
-        margin-left: 0.75rem;
         margin-right: 2.5rem;
+        margin-left: 0.75rem;
         > .dropdown-profile-detail-name {
             margin-top: 0.25rem;
-            line-height: 1.5rem;
             font-weight: bold;
             font-size: 1rem;
+            line-height: 1.5rem;
         }
         > .dropdown-profile-detail-position {
-            line-height: 1.25rem;
             font-size: 0.8rem;
+            line-height: 1.25rem;
         }
     }
 }
