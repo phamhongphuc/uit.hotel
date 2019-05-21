@@ -568,7 +568,7 @@ type Floor {
     name: String!
 
     # Danh sách các phòng có trong tầng
-    rooms: [Room]
+    rooms: [Room!]!
 }
 
 input FloorCreateInput {
@@ -1088,7 +1088,7 @@ input ReceiptCreateInput {
 # Một phòng trong khách sạn
 type Room {
     # Danh sách thông tin thuê phòng
-    bookings: [Booking]
+    bookings: [Booking!]!
 
     # Đơn đặt phòng hiện tại
     currentBooking(from: DateTimeOffset!, to: DateTimeOffset!): Booking

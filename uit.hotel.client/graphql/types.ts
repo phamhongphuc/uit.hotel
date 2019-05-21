@@ -706,7 +706,7 @@ export type Floor = {
     /** Tên tầng */
     name: Scalars['String'];
     /** Danh sách các phòng có trong tầng */
-    rooms: Maybe<Array<Maybe<Room>>>;
+    rooms: Array<Room>;
 };
 
 export type FloorCreateInput = {
@@ -1091,7 +1091,7 @@ export type ReceiptCreateInput = {
 /** Một phòng trong khách sạn */
 export type Room = {
     /** Danh sách thông tin thuê phòng */
-    bookings: Maybe<Array<Maybe<Booking>>>;
+    bookings: Array<Booking>;
     /** Đơn đặt phòng hiện tại */
     currentBooking: Maybe<Booking>;
     /** Phòng thuộc tầng nào */
@@ -1608,14 +1608,10 @@ export type GetFloorsQueryVariables = {};
 export type GetFloorsQuery = {
     floors: Array<
         Pick<Floor, 'id' | 'name' | 'isActive'> & {
-            rooms: Maybe<
-                Array<
-                    Maybe<
-                        Pick<Room, 'id' | 'name' | 'isActive'> & {
-                            roomKind: Pick<RoomKind, 'id' | 'name'>;
-                        }
-                    >
-                >
+            rooms: Array<
+                Pick<Room, 'id' | 'name' | 'isActive'> & {
+                    roomKind: Pick<RoomKind, 'id' | 'name'>;
+                }
             >;
         }
     >;
@@ -1629,15 +1625,35 @@ export type GetFloorsMapQueryVariables = {
 export type GetFloorsMapQuery = {
     floors: Array<
         Pick<Floor, 'id' | 'name' | 'isActive'> & {
-            rooms: Maybe<
-                Array<
-                    Maybe<
-                        Pick<Room, 'id' | 'name' | 'isActive'> & {
-                            currentBooking: Maybe<Pick<Booking, 'id'>>;
-                            roomKind: Pick<RoomKind, 'id' | 'name'>;
-                        }
-                    >
-                >
+            rooms: Array<
+                Pick<Room, 'id' | 'name' | 'isActive'> & {
+                    currentBooking: Maybe<Pick<Booking, 'id'>>;
+                    roomKind: Pick<RoomKind, 'id' | 'name'>;
+                }
+            >;
+        }
+    >;
+};
+
+export type GetTimelineQueryVariables = {};
+
+export type GetTimelineQuery = {
+    floors: Array<
+        Pick<Floor, 'id' | 'name' | 'isActive'> & {
+            rooms: Array<
+                Pick<Room, 'id' | 'name' | 'isActive'> & {
+                    bookings: Array<
+                        Pick<
+                            Booking,
+                            | 'id'
+                            | 'status'
+                            | 'createTime'
+                            | 'bookCheckInTime'
+                            | 'bookCheckOutTime'
+                        > & { patrons: Array<Maybe<Pick<Patron, 'id'>>> }
+                    >;
+                    roomKind: Pick<RoomKind, 'id' | 'name'>;
+                }
             >;
         }
     >;
@@ -2155,10 +2171,10 @@ export namespace GetFloors {
     export type Query = GetFloorsQuery;
     export type Floors = NonNullable<GetFloorsQuery['floors'][0]>;
     export type Rooms = NonNullable<
-        (NonNullable<(NonNullable<GetFloorsQuery['floors'][0]>)['rooms']>)[0]
+        (NonNullable<GetFloorsQuery['floors'][0]>)['rooms'][0]
     >;
     export type RoomKind = (NonNullable<
-        (NonNullable<(NonNullable<GetFloorsQuery['floors'][0]>)['rooms']>)[0]
+        (NonNullable<GetFloorsQuery['floors'][0]>)['rooms'][0]
     >)['roomKind'];
 }
 
@@ -2167,17 +2183,39 @@ export namespace GetFloorsMap {
     export type Query = GetFloorsMapQuery;
     export type Floors = NonNullable<GetFloorsMapQuery['floors'][0]>;
     export type Rooms = NonNullable<
-        (NonNullable<(NonNullable<GetFloorsMapQuery['floors'][0]>)['rooms']>)[0]
+        (NonNullable<GetFloorsMapQuery['floors'][0]>)['rooms'][0]
     >;
     export type CurrentBooking = NonNullable<
         (NonNullable<
-            (NonNullable<
-                (NonNullable<GetFloorsMapQuery['floors'][0]>)['rooms']
-            >)[0]
+            (NonNullable<GetFloorsMapQuery['floors'][0]>)['rooms'][0]
         >)['currentBooking']
     >;
     export type RoomKind = (NonNullable<
-        (NonNullable<(NonNullable<GetFloorsMapQuery['floors'][0]>)['rooms']>)[0]
+        (NonNullable<GetFloorsMapQuery['floors'][0]>)['rooms'][0]
+    >)['roomKind'];
+}
+
+export namespace GetTimeline {
+    export type Variables = GetTimelineQueryVariables;
+    export type Query = GetTimelineQuery;
+    export type Floors = NonNullable<GetTimelineQuery['floors'][0]>;
+    export type Rooms = NonNullable<
+        (NonNullable<GetTimelineQuery['floors'][0]>)['rooms'][0]
+    >;
+    export type Bookings = NonNullable<
+        (NonNullable<
+            (NonNullable<GetTimelineQuery['floors'][0]>)['rooms'][0]
+        >)['bookings'][0]
+    >;
+    export type Patrons = NonNullable<
+        (NonNullable<
+            (NonNullable<
+                (NonNullable<GetTimelineQuery['floors'][0]>)['rooms'][0]
+            >)['bookings'][0]
+        >)['patrons'][0]
+    >;
+    export type RoomKind = (NonNullable<
+        (NonNullable<GetTimelineQuery['floors'][0]>)['rooms'][0]
     >)['roomKind'];
 }
 
