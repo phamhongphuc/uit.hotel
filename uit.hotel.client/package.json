@@ -14,10 +14,12 @@
         "gql": "graphql-codegen --config codegen.yml",
         "prettier:fix": "prettier ** --write",
         "prettier:fix:w": "prettier ** --write --end-of-line crlf",
+        "lint": "run-s lint:*",
         "lint:js": "eslint --ext .ts,.js,.vue,.gql,.graphql .",
         "lint:css": "stylelint **/*.{vue,scss}",
-        "lint": "run-s lint:*",
+        "lint:css:fix": "stylelint **/*.{vue,scss} --fix",
         "type:fix": "run-s prettier:fix \"lint:* --fix\"",
+        "git-push-f": "git push -f",
         "test": "mocha test/**/*.ts -r test/ts-register --exit"
     },
     "dependencies": {
