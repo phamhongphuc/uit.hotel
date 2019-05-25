@@ -53,9 +53,26 @@ export default class extends Vue {
     > div > .query-text {
         display: flex;
         align-items: center;
-        justify-content: center;
         height: 100%;
-        padding: 2rem;
+        margin: auto;
+    }
+    &.query-fill {
+        display: flex;
+        flex: 1;
+        overflow: hidden;
+        @include row-like;
+        > div {
+            flex: 1;
+            margin: map-get($spacers, 2);
+            overflow: auto;
+            background-color: $white;
+            border-radius: $border-radius;
+            box-shadow: $box-shadow-sm;
+            > div {
+                width: fit-content;
+                padding: map-get($spacers, 2);
+            }
+        }
     }
 }
 </style>
