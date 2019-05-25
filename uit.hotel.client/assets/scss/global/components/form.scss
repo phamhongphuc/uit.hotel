@@ -1,9 +1,9 @@
 .btn {
     display: flex;
+    align-items: center;
     justify-content: center;
     > span {
         display: block;
-        max-height: $input-btn-font-size * $input-btn-line-height;
         line-height: $input-btn-font-size * $input-btn-line-height;
         &.icon {
             width: $input-btn-font-size * $input-btn-line-height;
