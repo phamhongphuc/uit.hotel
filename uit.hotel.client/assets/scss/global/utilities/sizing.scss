@@ -9,10 +9,6 @@ $axis-types: width height;
     .#{$short}-0 {
         #{$axis}: 0 !important;
     }
-
-    .v#{$short}-100 {
-        #{$axis}: #{'100v' + $short} !important;
-    }
 }
 
 $position-types: top right bottom left;

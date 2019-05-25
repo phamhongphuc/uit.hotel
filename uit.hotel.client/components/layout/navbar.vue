@@ -29,7 +29,7 @@
         <b-collapse
             id="navbar-collapse"
             :class="{ 'navbar-input-focused': isInputFocus }"
-            class="justify-content-end nmx-2 nmx-md-0 px-2 px-md-0"
+            class="justify-content-end mx-n2 mx-md-0 px-2 px-md-0"
             is-nav
         >
             <b-navbar-hr- class="d-md-none" />

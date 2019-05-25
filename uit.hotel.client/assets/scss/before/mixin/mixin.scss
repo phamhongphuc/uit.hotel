@@ -22,3 +22,8 @@
     height: 100%;
     object-fit: cover;
 }
+
+@mixin row-like {
+    margin-right: $grid-gutter-width / -2;
+    margin-left: $grid-gutter-width / -2;
+}
