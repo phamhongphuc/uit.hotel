@@ -7,7 +7,6 @@
         url('../fonts/aicon.svg#ai-web-font') format('svg');
 }
 
-//TODO Move into "~/components/utilities/icon/icon.vue"
 .icon {
     @include icon;
 }
