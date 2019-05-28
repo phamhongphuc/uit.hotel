@@ -13,7 +13,7 @@ namespace uit.hotel.Businesses
     {
         private static string ADMIN = "admin";
 
-        public async static void Initialize(Employee employee)
+        public async static Task Initialize(Employee employee)
         {
             if (IsInitialized())
                 throw new Exception("Cơ sở dữ liệu đã được khởi tạo trước đó");
