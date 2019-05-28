@@ -2,10 +2,11 @@
     <popup- ref="popup" title="Cập nhật vị trí">
         <form-mutate-
             v-if="input"
-            slot-scope="{ data: { position }, close }"
-            success="Cập nhật vị trí mới thành công"
+            slot-scope="{ close }"
             :mutation="updatePosition"
             :variables="{ input: getInput }"
+            success="Cập nhật vị trí mới thành công"
+            @success="close"
         >
             <div class="d-flex">
                 <div>
@@ -19,35 +20,34 @@
                     />
                     <b-checkbox-group-
                         v-model="selected"
-                        title="Nhóm quyền của nhân viên kinh doanh"
                         :options="positionOptionsBusiness"
+                        title="Nhóm quyền của nhân viên kinh doanh"
                     />
                     <b-checkbox-group-
                         v-model="selected"
-                        title="Nhóm quyền của nhân viên hành chính"
                         :options="positionOptionsAdministrative"
+                        title="Nhóm quyền của nhân viên hành chính"
                     />
                 </div>
                 <div>
                     <b-checkbox-group-
                         v-model="selected"
-                        title="Nhóm quyền của nhân viên lễ tân"
                         :options="positionOptionsReceptionist"
+                        title="Nhóm quyền của nhân viên lễ tân"
                     />
                     <b-checkbox-group-
                         v-model="selected"
-                        title="Nhóm quyền của nhân viên dọn dẹp"
                         :options="positionOptionsHouseKeeping"
+                        title="Nhóm quyền của nhân viên dọn dẹp"
                     />
                 </div>
             </div>
             <div class="m-3">
                 <b-button
+                    :disabled="$v.$invalid"
                     class="ml-auto"
                     variant="main"
                     type="submit"
-                    :disabled="$v.$invalid"
-                    @click="close"
                 >
                     <icon- class="mr-1" i="plus" />
                     <span>Cập nhật</span>
@@ -57,22 +57,22 @@
     </popup->
 </template>
 <script lang="ts">
-import { Component } from 'nuxt-property-decorator';
-import { PopupMixin } from '~/components/mixins/popup';
+import { Component, mixins } from 'nuxt-property-decorator';
+import { required } from 'vuelidate/lib/validators';
+import { PopupMixin, DataMixin } from '~/components/mixins';
+import { GetPositions } from '~/graphql/types';
 import {
     updatePosition,
     positionOptionsAdministrative,
     positionOptionsBusiness,
     positionOptionsReceptionist,
     positionOptionsHouseKeeping,
-} from '~/graphql/documents/position';
-import { mixinData } from '~/components/mixins/mutable';
-import { required } from 'vuelidate/lib/validators';
-import { CheckboxOption } from '~/utils/components';
-import { GetPositions } from 'graphql/types';
+} from '~/graphql/documents';
+import { CheckboxOption } from '~/utils';
+
+type PopupMixinType = PopupMixin<{ position: GetPositions.Positions }, any>;
 
 @Component({
-    mixins: [PopupMixin, mixinData({ updatePosition })],
     name: 'popup-position-update-',
     validations: {
         input: {
@@ -80,23 +80,25 @@ import { GetPositions } from 'graphql/types';
         },
     },
 })
-export default class extends PopupMixin<
-    { position: GetPositions.Positions },
-    any
-> {
-    selected: string[] = [];
-
-    positionOptionsAdministrative: CheckboxOption[] = [];
-    positionOptionsBusiness: CheckboxOption[] = [];
-    positionOptionsReceptionist: CheckboxOption[] = [];
-    positionOptionsHouseKeeping: CheckboxOption[] = [];
-
-    mounted() {
-        this.positionOptionsAdministrative = positionOptionsAdministrative;
-        this.positionOptionsBusiness = positionOptionsBusiness;
-        this.positionOptionsReceptionist = positionOptionsReceptionist;
-        this.positionOptionsHouseKeeping = positionOptionsHouseKeeping;
+export default class extends mixins<
+    PopupMixinType,
+    {
+        positionOptionsAdministrative: CheckboxOption[];
+        positionOptionsBusiness: CheckboxOption[];
+        positionOptionsReceptionist: CheckboxOption[];
+        positionOptionsHouseKeeping: CheckboxOption[];
     }
+>(
+    PopupMixin,
+    DataMixin({
+        updatePosition,
+        positionOptionsAdministrative,
+        positionOptionsBusiness,
+        positionOptionsReceptionist,
+        positionOptionsHouseKeeping,
+    }),
+) {
+    selected: string[] = [];
 
     get positionOptions() {
         const options = {};

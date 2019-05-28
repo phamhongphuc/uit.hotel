@@ -59,7 +59,7 @@ namespace uit.hotel.ObjectTypes
                 "Loại phòng của phòng",
                 resolve: context => context.Source.RoomKind);
 
-            Field<ListGraphType<BookingType>>(
+            Field<NonNullGraphType<ListGraphType<NonNullGraphType<BookingType>>>>(
                 nameof(Room.Bookings),
                 "Danh sách thông tin thuê phòng",
                 resolve: context => context.Source.Bookings.ToList());

@@ -3,34 +3,34 @@
         <form-mutate-
             v-if="input"
             slot-scope="{ close }"
-            success="Thêm phiếu thu mới thành công"
             :mutation="createReceipt"
             :variables="{ input }"
+            success="Thêm phiếu thu mới thành công"
+            @success="close"
         >
             <div class="input-label">Số tiền</div>
             <b-input-
                 ref="autoFocus"
                 v-model="input.money"
-                type="number"
                 :state="!$v.input.money.$invalid"
+                type="number"
                 class="m-3 rounded"
                 icon="type"
             />
             <div class="input-label">Số tài khoản</div>
             <b-input-
                 v-model="input.bankAccountNumber"
-                type="number"
                 :state="!$v.input.bankAccountNumber.$invalid"
+                type="number"
                 class="m-3 rounded"
                 icon="type"
             />
             <div class="d-flex m-3">
                 <b-button
+                    :disabled="$v.$invalid"
                     class="ml-auto"
                     variant="main"
                     type="submit"
-                    :disabled="$v.$invalid"
-                    @click="close"
                 >
                     <icon- class="mr-1" i="plus" />
                     <span>Thêm</span>
@@ -40,15 +40,15 @@
     </popup->
 </template>
 <script lang="ts">
-import { Component } from 'nuxt-property-decorator';
-import { mixinData } from '~/components/mixins/mutable';
+import { Component, mixins } from 'nuxt-property-decorator';
+import { DataMixin, PopupMixin } from '~/components/mixins';
 import { ReceiptCreateInput, GetBills } from '~/graphql/types';
-import { PopupMixin } from '~/components/mixins/popup';
-import { createReceipt } from '~/graphql/documents/receipt';
+import { createReceipt } from '~/graphql/documents';
 import { required } from 'vuelidate/lib/validators';
 
+type PopupMixinType = PopupMixin<{ bill: GetBills.Bills }, ReceiptCreateInput>;
+
 @Component({
-    mixins: [PopupMixin, mixinData({ createReceipt })],
     name: 'popup-receipt-add-',
     validations: {
         input: {
@@ -62,10 +62,10 @@ import { required } from 'vuelidate/lib/validators';
         },
     },
 })
-export default class extends PopupMixin<
-    { bill: GetBills.Bills },
-    ReceiptCreateInput
-> {
+export default class extends mixins<PopupMixinType>(
+    PopupMixin,
+    DataMixin({ createReceipt }),
+) {
     onOpen() {
         this.input = {
             money: 0,

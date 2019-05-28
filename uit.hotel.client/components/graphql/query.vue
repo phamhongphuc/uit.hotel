@@ -3,7 +3,7 @@
         <apollo-query
             :query="query"
             :variables="variables"
-            :poll-interval="500"
+            :poll-interval="pollInterval"
             fetch-policy="no-cache"
             class="query"
         >
@@ -43,16 +43,36 @@ export default class extends Vue {
 
     @Prop({ default: () => ({}) })
     variables!: object;
+
+    @Prop({ default: 500 })
+    pollInterval!: number;
 }
 </script>
 <style lang="scss">
 .query {
     > div > .query-text {
         display: flex;
-        height: 100%;
-        padding: 2rem;
-        justify-content: center;
         align-items: center;
+        height: 100%;
+        margin: auto;
+    }
+    &.query-fill {
+        display: flex;
+        flex: 1;
+        overflow: hidden;
+        @include row-like;
+        > div {
+            flex: 1;
+            margin: map-get($spacers, 2);
+            overflow: auto;
+            background-color: $white;
+            border-radius: $border-radius;
+            box-shadow: $box-shadow-sm;
+            > div {
+                width: fit-content;
+                padding: map-get($spacers, 2);
+            }
+        }
     }
 }
 </style>

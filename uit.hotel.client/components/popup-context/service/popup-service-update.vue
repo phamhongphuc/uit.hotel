@@ -2,10 +2,11 @@
     <popup- ref="popup" title="Sửa dịch vụ">
         <form-mutate-
             v-if="input"
-            slot-scope="{ data: { service }, close }"
-            success="Cập nhật thông tin dịch vụ thành công"
+            slot-scope="{ close }"
             :mutation="updateService"
             :variables="{ input }"
+            success="Cập nhật thông tin dịch vụ thành công"
+            @success="close"
         >
             <div class="input-label">Tên dịch vụ</div>
             <b-input-
@@ -33,11 +34,10 @@
             />
             <div class="d-flex m-3">
                 <b-button
+                    :disabled="$v.$invalid"
                     class="ml-auto"
                     variant="main"
                     type="submit"
-                    :disabled="$v.$invalid"
-                    @click="close"
                 >
                     <icon- class="mr-1" i="edit-2" />
                     <span>Cập nhật</span>
@@ -47,15 +47,18 @@
     </popup->
 </template>
 <script lang="ts">
-import { Component } from 'nuxt-property-decorator';
-import { mixinData } from '~/components/mixins/mutable';
-import { PopupMixin } from '~/components/mixins/popup';
-import { updateService } from '~/graphql/documents/service';
+import { Component, mixins } from 'nuxt-property-decorator';
 import { required, minLength, minValue } from 'vuelidate/lib/validators';
-import { ServiceUpdateInput, GetServices } from 'graphql/types';
+import { DataMixin, PopupMixin } from '~/components/mixins';
+import { ServiceUpdateInput, GetServices } from '~/graphql/types';
+import { updateService } from '~/graphql/documents';
+
+type PopupMixinType = PopupMixin<
+    { service: GetServices.Services },
+    ServiceUpdateInput
+>;
 
 @Component({
-    mixins: [PopupMixin, mixinData({ updateService })],
     name: 'popup-service-update-',
     validations: {
         input: {
@@ -71,10 +74,10 @@ import { ServiceUpdateInput, GetServices } from 'graphql/types';
         },
     },
 })
-export default class extends PopupMixin<
-    { service: GetServices.Services },
-    ServiceUpdateInput
-> {
+export default class extends mixins<PopupMixinType>(
+    PopupMixin,
+    DataMixin({ updateService }),
+) {
     onOpen() {
         const { id, name, unitRate, unit } = this.data.service;
         this.input = { id, name, unitRate, unit };

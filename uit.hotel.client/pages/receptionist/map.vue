@@ -89,17 +89,16 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component } from 'nuxt-property-decorator';
-import { getFloorsMap } from '~/graphql/documents/floor';
-import { mixinData } from '~/components/mixins/mutable';
-import { GetFloors } from 'graphql/types';
+import { GetFloors } from '~/graphql/types';
+import { Component, mixins } from 'nuxt-property-decorator';
+import { getFloorsMap } from '~/graphql/documents';
+import { DataMixin } from '~/components/mixins';
 import moment from 'moment';
 
 @Component({
     name: 'index-',
-    mixins: [mixinData({ getFloorsMap })],
 })
-export default class extends Vue {
+export default class extends mixins(DataMixin({ getFloorsMap })) {
     selected: GetFloors.Rooms[] = [];
 
     from = moment().format();

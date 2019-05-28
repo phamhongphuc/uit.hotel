@@ -38,11 +38,12 @@ namespace uit.hotel.test._GraphQL
                             new { id = 1 }
                         }
                     },
-                    bill = new {
+                    bill = new
+                    {
                         id = 1
                     }
                 },
-                p => p.PermissionManageHiringRoom = true
+                p => p.PermissionManageRentingRoom = true
             );
         }
 
@@ -73,10 +74,12 @@ namespace uit.hotel.test._GraphQL
                             new { id = 1 }
                         }
                     },
-                    bill = new {
+                    bill = new
+                    {
                         id = 1
-                    }                },
-                p => p.PermissionManageHiringRoom = true
+                    }
+                },
+                p => p.PermissionManageRentingRoom = true
             );
         }
 
@@ -98,10 +101,12 @@ namespace uit.hotel.test._GraphQL
                             new { id = 1 }
                         }
                     },
-                    bill = new {
+                    bill = new
+                    {
                         id = 1
-                    }                },
-                p => p.PermissionManageHiringRoom = true
+                    }
+                },
+                p => p.PermissionManageRentingRoom = true
             );
         }
 
@@ -123,10 +128,12 @@ namespace uit.hotel.test._GraphQL
                             new { id = 1 }
                         }
                     },
-                    bill = new {
+                    bill = new
+                    {
                         id = 1
-                    }                },
-                p => p.PermissionManageHiringRoom = true
+                    }
+                },
+                p => p.PermissionManageRentingRoom = true
             );
         }
 
@@ -157,10 +164,12 @@ namespace uit.hotel.test._GraphQL
                             new { id = 1 }
                         }
                     },
-                    bill = new {
+                    bill = new
+                    {
                         id = 1
-                    }                },
-                p => p.PermissionManageHiringRoom = true
+                    }
+                },
+                p => p.PermissionManageRentingRoom = true
             );
         }
 
@@ -182,10 +191,12 @@ namespace uit.hotel.test._GraphQL
                             new { id = 1 }
                         }
                     },
-                    bill = new {
+                    bill = new
+                    {
                         id = 1
-                    }                },
-                p => p.PermissionManageHiringRoom = true
+                    }
+                },
+                p => p.PermissionManageRentingRoom = true
             );
         }
 
@@ -207,7 +218,7 @@ namespace uit.hotel.test._GraphQL
                 @"/_GraphQL/Booking/mutation.checkIn.gql",
                 @"/_GraphQL/Booking/mutation.checkIn.schema.json",
                 new { id = 10 },
-                p => p.PermissionManageHiringRoom = true
+                p => p.PermissionManageRentingRoom = true
             );
         }
 
@@ -229,7 +240,7 @@ namespace uit.hotel.test._GraphQL
                 "Phòng đã được check-in, không thể check-in lại",
                 @"/_GraphQL/Booking/mutation.checkIn.gql",
                 new { id = 11 },
-                p => p.PermissionManageHiringRoom = true
+                p => p.PermissionManageRentingRoom = true
             );
         }
 
@@ -240,7 +251,7 @@ namespace uit.hotel.test._GraphQL
                 "Mã Booking không tồn tại",
                 @"/_GraphQL/Booking/mutation.checkIn.gql",
                 new { id = 100 },
-                p => p.PermissionManageHiringRoom = true
+                p => p.PermissionManageRentingRoom = true
             );
         }
 
@@ -262,7 +273,7 @@ namespace uit.hotel.test._GraphQL
                 @"/_GraphQL/Booking/mutation.checkOut.gql",
                 @"/_GraphQL/Booking/mutation.checkOut.schema.json",
                 new { id = 20 },
-                p => p.PermissionManageHiringRoom = true
+                p => p.PermissionManageRentingRoom = true
             );
         }
 
@@ -283,7 +294,7 @@ namespace uit.hotel.test._GraphQL
                 "Booking chưa thực hiện yêu cầu check-out",
                 @"/_GraphQL/Booking/mutation.checkOut.gql",
                 new { id = 21 },
-                p => p.PermissionManageHiringRoom = true
+                p => p.PermissionManageRentingRoom = true
             );
         }
 
@@ -323,10 +334,10 @@ namespace uit.hotel.test._GraphQL
                 "Nhân viên không được phép check-out",
                 @"/_GraphQL/Booking/mutation.checkOut.gql",
                 new { id = 22 },
-                p => p.PermissionManageHiringRoom = true
+                p => p.PermissionManageRentingRoom = true
             );
         }
-        
+
         [TestMethod]
         public void Mutation_CheckOut_InvalidId()
         {
@@ -334,7 +345,7 @@ namespace uit.hotel.test._GraphQL
                 "Mã Booking không tồn tại",
                 @"/_GraphQL/Booking/mutation.checkOut.gql",
                 new { id = 100 },
-                p => p.PermissionManageHiringRoom = true
+                p => p.PermissionManageRentingRoom = true
             );
         }
 
@@ -355,7 +366,7 @@ namespace uit.hotel.test._GraphQL
                 @"/_GraphQL/Booking/mutation.requestCheckOut.gql",
                 @"/_GraphQL/Booking/mutation.requestCheckOut.schema.json",
                 new { id = 30 },
-                p => p.PermissionManageHiringRoom = true
+                p => p.PermissionManageRentingRoom = true
             );
         }
 
@@ -377,7 +388,7 @@ namespace uit.hotel.test._GraphQL
                 "Không thể yêu cầu trả phòng",
                 @"/_GraphQL/Booking/mutation.requestCheckOut.gql",
                 new { id = 31 },
-                p => p.PermissionManageHiringRoom = true
+                p => p.PermissionManageRentingRoom = true
             );
         }
 
@@ -388,7 +399,7 @@ namespace uit.hotel.test._GraphQL
                 "Mã Booking không tồn tại",
                 @"/_GraphQL/Booking/mutation.requestCheckOut.gql",
                 new { id = 100 },
-                p => p.PermissionManageHiringRoom = true
+                p => p.PermissionManageRentingRoom = true
             );
         }
 
@@ -399,7 +410,7 @@ namespace uit.hotel.test._GraphQL
                 @"/_GraphQL/Booking/query.booking.gql",
                 @"/_GraphQL/Booking/query.booking.schema.json",
                 new { id = 1 },
-                p => p.PermissionManageHiringRoom = true
+                p => p.PermissionManageRentingRoom = true
             );
         }
 
@@ -410,7 +421,7 @@ namespace uit.hotel.test._GraphQL
                 @"/_GraphQL/Booking/query.bookings.gql",
                 @"/_GraphQL/Booking/query.bookings.schema.json",
                 null,
-                p => p.PermissionManageHiringRoom = true
+                p => p.PermissionManageRentingRoom = true
             );
         }
     }

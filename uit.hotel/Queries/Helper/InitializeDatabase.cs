@@ -27,7 +27,7 @@ namespace uit.hotel.Queries.Helper
                     PermissionGetRate = true,
                     PermissionGetService = true,
                     PermissionManageEmployee = true,
-                    PermissionManageHiringRoom = true,
+                    PermissionManageRentingRoom = true,
                     PermissionManagePatron = true,
                     PermissionManagePatronKind = true,
                     PermissionManagePosition = true,
@@ -131,7 +131,7 @@ namespace uit.hotel.Queries.Helper
                 var booking = realm.Add(new Booking
                 {
                     Id = 1,
-                    Status = (int) Booking.StatusEnum.CheckedIn,
+                    Status = (int)Booking.StatusEnum.CheckedIn,
                     EmployeeBooking = admin,
                     EmployeeCheckIn = null,
                     EmployeeCheckOut = null,

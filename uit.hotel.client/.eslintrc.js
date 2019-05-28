@@ -1,5 +1,5 @@
 const schemaJson = require('./graphql/schema.json');
-const isWin = require('os').platform() === 'win32';
+const path = require('path');
 
 const config = {
     env: {
@@ -12,114 +12,96 @@ const config = {
         'airbnb-base',
         'eslint:recommended',
         'standard',
-        'plugin:vue/recommended',
+
         'plugin:node/recommended',
         'plugin:import/warnings',
         'plugin:import/errors',
+        'plugin:import/typescript',
+
+        'plugin:vue/recommended',
+        'plugin:@typescript-eslint/recommended',
         'plugin:prettier/recommended',
+
+        'prettier/@typescript-eslint',
         'prettier/vue',
     ],
     parser: 'vue-eslint-parser',
     parserOptions: {
-        parser: 'eslint-plugin-typescript/parser',
+        parser: '@typescript-eslint/parser',
         sourceType: 'module',
         ecmaVersion: 2017,
         ecmaFeatures: {
             jsx: false,
         },
     },
-    plugins: ['standard', 'vue', 'import', 'node', 'graphql', 'typescript'],
+    plugins: [
+        'standard',
+        'vue',
+        'import',
+        'node',
+        'graphql',
+        '@typescript-eslint',
+    ],
     settings: {
         cache: true,
         'import/resolver': {
-            'babel-plugin-root-import': {
-                rootPathPrefix: '~',
-                rootPathSuffix: '',
-            },
             typescript: {},
         },
-        'import/core-modules': [
-            'vue',
-            'vuex',
-            'vue-router',
-            '@babel/register',
-            '@babel/polyfill',
-            'chalk',
-            'graphql',
-            'apollo-client',
-            'apollo-link',
-            'apollo-cache-inmemory',
-        ],
+        'import/parsers': {
+            '@typescript-eslint/parser': ['.ts', '.tsx'],
+        },
     },
     rules: {
         'eol-last': 'error',
         'linebreak-style': ['warn', 'unix'],
-        'no-console': 'warn',
+        'no-console': ['warn', { allow: ['warn', 'error'] }],
         'no-lonely-if': 'error',
-
-        'typescript/adjacent-overload-signatures': 'error',
-        'typescript/array-type': 'error',
-        'typescript/ban-types': 'error',
-        camelcase: 'off',
-        'typescript/camelcase': 'error',
-        'typescript/class-name-casing': 'error',
-        'typescript/explicit-function-return-type': 'warn',
-        'typescript/explicit-member-accessibility': 'off',
-        indent: 'off',
-        'typescript/indent': 'off', // because of prettier
-        'typescript/interface-name-prefix': 'error',
-        'typescript/member-delimiter-style': 'error',
-        'typescript/no-angle-bracket-type-assertion': 'error',
-        'no-array-constructor': 'off',
-        'typescript/no-array-constructor': 'error',
-        'typescript/no-empty-interface': 'error',
-        'typescript/no-explicit-any': 'off',
-        'typescript/no-inferrable-types': 'error',
-        'typescript/no-misused-new': 'error',
-        'typescript/no-namespace': 'off',
-        'typescript/no-non-null-assertion': 'error',
-        'typescript/no-object-literal-type-assertion': 'error',
-        'typescript/no-parameter-properties': 'error',
-        'typescript/no-triple-slash-reference': 'error',
-        'no-unused-vars': 'off',
-        'typescript/no-unused-vars': 'warn',
-        'typescript/no-use-before-define': 'error',
-        'typescript/no-var-requires': 'error',
-        'typescript/prefer-interface': 'off',
-        'typescript/prefer-namespace-keyword': 'error',
-        'typescript/type-annotation-spacing': 'error',
-
         'prefer-const': 'error',
-        'space-before-function-paren': [
-            'error',
-            { anonymous: 'never', named: 'never', asyncArrow: 'always' },
-        ],
+
+        '@typescript-eslint/explicit-function-return-type': 'off',
+        '@typescript-eslint/no-empty-interface': 'off',
+        '@typescript-eslint/no-explicit-any': 'off',
+        '@typescript-eslint/prefer-interface': 'off',
+
         'node/no-unsupported-features/es-syntax': 'off',
         'import/prefer-default-export': 'off',
-        'vue/html-indent': ['error', 4],
+        'import/order': [
+            'error',
+            {
+                groups: [
+                    'builtin',
+                    'external',
+                    'internal',
+                    'parent',
+                    'sibling',
+                    'index',
+                ],
+                'newlines-between': 'never',
+            },
+        ],
+        'import/no-useless-path-segments': ['error', { noUselessIndex: true }],
+        'import/no-extraneous-dependencies': [
+            'error',
+            {
+                devDependencies: false,
+                optionalDependencies: false,
+                peerDependencies: false,
+                packageDir: [
+                    path.join('./'),
+                    path.join(__dirname, 'node_modules/@nuxt/builder'),
+                    path.join(__dirname, 'node_modules/@nuxt/vue-app'),
+                    path.join(__dirname, 'node_modules/@nuxtjs/apollo/'),
+                    path.join(__dirname, 'node_modules/nuxt'),
+                    path.join(__dirname, 'node_modules/vue-cli-plugin-apollo/'),
+                ],
+            },
+        ],
         'vue/html-self-closing': [
             'error',
             { html: { void: 'always', normal: 'always', component: 'always' } },
         ],
         'vue/component-name-in-template-casing': ['error', 'kebab-case'],
-        'vue/attributes-order': [
-            'error',
-            {
-                order: [
-                    'DEFINITION', //        is
-                    'LIST_RENDERING', //    v-for
-                    'CONDITIONALS', //      v-if | v-else-if | v-else | v-show | v-cloak
-                    'RENDER_MODIFIERS', //  v-pre | v-once
-                    'GLOBAL', //            id
-                    'UNIQUE', //            ref | key | slot | slot-scope
-                    'TWO_WAY_BINDING', //   v-model
-                    'OTHER_DIRECTIVES', //  v-custom-directive
-                    'OTHER_ATTR', //        custom-prop | v-bind:prop | :prop
-                    'EVENTS', //            v-on:click | @click
-                    'CONTENT', //           v-text | v-html
-                ],
-            },
-        ],
+
         'graphql/template-strings': [
             'error',
             {
@@ -140,6 +122,25 @@ const config = {
             files: ['graphql/types.ts'],
             rules: {
                 'import/export': 'off',
+                '@typescript-eslint/no-empty-interface': 'off',
+                '@typescript-eslint/no-explicit-any': 'off',
+                '@typescript-eslint/no-namespace': 'off',
+                '@typescript-eslint/array-type': ['error', 'generic'],
+            },
+        },
+        {
+            files: ['store/*.ts'],
+            rules: {
+                'import/no-cycle': 'off',
+            },
+        },
+        {
+            files: ['test/**/*.ts'],
+            rules: {
+                'import/no-extraneous-dependencies': [
+                    'error',
+                    { devDependencies: true },
+                ],
             },
         },
     ],

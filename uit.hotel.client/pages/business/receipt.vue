@@ -6,7 +6,7 @@
                 variant="white"
                 @click="showInactive = !showInactive"
             >
-                <icon- class="mx-1" :i="showInactive ? 'eye' : 'eye-off'" />
+                <icon- :i="showInactive ? 'eye' : 'eye-off'" class="mx-1" />
                 <span>
                     {{ `Đang ${showInactive ? 'hiện' : 'ẩn'} phiếu thu cũ` }}
                 </span>
@@ -19,7 +19,6 @@
         >
             <b-table
                 slot-scope="{ data: { receipts } }"
-                class="table-style"
                 :items="receiptsFilter(receipts)"
                 :fields="[
                     {
@@ -44,6 +43,7 @@
                         class: 'text-center',
                     },
                 ]"
+                class="table-style"
             >
                 <template slot="index" slot-scope="data">
                     {{ data.index + 1 }}
@@ -62,17 +62,18 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component } from 'nuxt-property-decorator';
-import { getReceipts } from '~/graphql/documents/receipt';
-import { mixinData } from '~/components/mixins/mutable';
+import { Component, mixins } from 'nuxt-property-decorator';
+import { getReceipts } from '~/graphql/documents';
+import { DataMixin } from '~/components/mixins';
 import { GetReceipts } from '~/graphql/types';
-import { toMoney, toDate } from '~/utils/dataFormater';
+import { toMoney, toDate } from '~/utils';
 
 @Component({
     name: 'receipt-',
-    mixins: [mixinData({ getReceipts, toMoney, toDate })],
 })
-export default class extends Vue {
+export default class extends mixins(
+    DataMixin({ getReceipts, toMoney, toDate }),
+) {
     head() {
         return {
             title: 'Danh sách phiếu thu',
@@ -98,7 +99,5 @@ export default class extends Vue {
     currentEvent: MouseEvent | null = null;
 
     showInactive: boolean = false;
-
-    console = console;
 }
 </script>

@@ -19,9 +19,9 @@
         <icon- v-if="icon" :i="icon" />
         <div v-else-if="image !== ''" class="icon">
             <image-
-                class="m-2"
                 :class="[{ 'rounded-circle': circle }, imageClass]"
                 :source="image"
+                class="m-2"
                 height="24"
                 width="24"
             />
@@ -30,17 +30,21 @@
     </b-dropdown-item>
 </template>
 <script lang="ts">
-import { Vue, Component } from 'nuxt-property-decorator';
+import { Component, mixins } from 'nuxt-property-decorator';
 import {
     LinkProps,
     IconProps,
     TextProps,
     ImageProps,
-} from '~/components/mixins/props';
+} from '~/components/mixins';
 
 @Component({
     name: 'b-dropdown-item-icon-',
-    mixins: [LinkProps, IconProps, TextProps, ImageProps],
 })
-export default class extends Vue {}
+export default class extends mixins<
+    LinkProps,
+    IconProps,
+    TextProps,
+    ImageProps
+>(LinkProps, IconProps, TextProps, ImageProps) {}
 </script>

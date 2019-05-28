@@ -1,0 +1,9 @@
+$axes: x, y;
+
+@each $value in $overflows {
+    @each $axis in $axes {
+        .overflow-#{$axis}-#{$value} {
+            overflow-#{$axis}: $value !important;
+        }
+    }
+}

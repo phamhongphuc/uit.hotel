@@ -1,12 +1,10 @@
-import { Prop } from 'nuxt-property-decorator';
-import Vue from 'vue';
-import { Mixin } from 'vue-mixin-decorator';
+import { Vue, Prop, Component } from 'nuxt-property-decorator';
 
-@Mixin
+@Component
 export class TextProps extends Vue {
     @Prop({ default: '' })
-    textClass!: string;
+    protected textClass!: string;
 
     @Prop({ default: '' })
-    text!: string;
+    protected text!: string;
 }

@@ -1,11 +1,12 @@
 <template>
-    <popup- ref="popup" title="Thêm loại phòng" :no-data="true">
+    <popup- ref="popup" :no-data="true" title="Thêm loại phòng">
         <form-mutate-
             v-if="input"
             slot-scope="{ close }"
-            success="Thêm loại phòng mới thành công"
             :mutation="createRoomKind"
             :variables="{ input }"
+            success="Thêm loại phòng mới thành công"
+            @success="close"
         >
             <div class="input-label">Tên loại phòng</div>
             <b-input-
@@ -18,30 +19,29 @@
             <div class="input-label">Số giường</div>
             <b-input-
                 v-model="input.numberOfBeds"
-                type="number"
                 :min="1"
                 :max="5"
                 :state="!$v.input.numberOfBeds.$invalid"
+                type="number"
                 class="m-3 rounded"
                 icon="type"
             />
             <div class="input-label">Số người</div>
             <b-input-
                 v-model="input.amountOfPeople"
-                type="number"
                 :min="1"
                 :max="10"
                 :state="!$v.input.amountOfPeople.$invalid"
+                type="number"
                 class="m-3 rounded"
                 icon="type"
             />
             <div class="d-flex m-3">
                 <b-button
+                    :disabled="$v.$invalid"
                     class="ml-auto"
                     variant="main"
                     type="submit"
-                    :disabled="$v.$invalid"
-                    @click="close"
                 >
                     <icon- class="mr-1" i="plus" />
                     <span>Thêm</span>
@@ -51,15 +51,13 @@
     </popup->
 </template>
 <script lang="ts">
-import { Component } from 'nuxt-property-decorator';
-import { mixinData } from '~/components/mixins/mutable';
+import { Component, mixins } from 'nuxt-property-decorator';
+import { DataMixin, PopupMixin } from '~/components/mixins';
 import { RoomKindCreateInput } from '~/graphql/types';
-import { PopupMixin } from '~/components/mixins/popup';
-import { createRoomKind } from '~/graphql/documents/room-kind';
+import { createRoomKind } from '~/graphql/documents';
 import { required, minLength, between } from 'vuelidate/lib/validators';
 
 @Component({
-    mixins: [PopupMixin, mixinData({ createRoomKind })],
     name: 'popup-room-kind-add-',
     validations: {
         input: {
@@ -78,7 +76,10 @@ import { required, minLength, between } from 'vuelidate/lib/validators';
         },
     },
 })
-export default class extends PopupMixin<void, RoomKindCreateInput> {
+export default class extends mixins<PopupMixin<void, RoomKindCreateInput>>(
+    PopupMixin,
+    DataMixin({ createRoomKind }),
+) {
     onOpen() {
         this.input = {
             name: '',

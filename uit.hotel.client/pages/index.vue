@@ -6,16 +6,15 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component } from 'nuxt-property-decorator';
-import { getFloors } from '~/graphql/documents/floor';
-import { mixinData } from '~/components/mixins/mutable';
-import { GetFloors } from 'graphql/types';
+import { GetFloors } from '~/graphql/types';
+import { Component, mixins } from 'nuxt-property-decorator';
+import { getFloors } from '~/graphql/documents';
+import { DataMixin } from '~/components/mixins';
 
 @Component({
     name: 'index-',
-    mixins: [mixinData({ getFloors })],
 })
-export default class extends Vue {
+export default class extends mixins(DataMixin({ getFloors })) {
     selected: GetFloors.Rooms[] = [];
 
     head() {
@@ -47,7 +46,7 @@ export default class extends Vue {
 <style lang="scss">
 .main-app {
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 }
 </style>

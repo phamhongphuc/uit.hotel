@@ -2,10 +2,11 @@
     <popup- ref="popup" title="Sửa tầng">
         <form-mutate-
             v-if="input"
-            slot-scope="{ data: { floor }, close }"
-            success="Cập nhật thông tin tầng thành công"
+            slot-scope="{ close }"
             :mutation="updateFloor"
             :variables="{ input }"
+            success="Cập nhật thông tin tầng thành công"
+            @success="close"
         >
             <div class="input-label">Tên tầng</div>
             <b-input-
@@ -17,11 +18,10 @@
             />
             <div class="d-flex m-3">
                 <b-button
+                    :disabled="$v.$invalid"
                     class="ml-auto"
                     variant="main"
                     type="submit"
-                    :disabled="$v.$invalid"
-                    @click="close"
                 >
                     <icon- class="mr-1" i="edit-2" />
                     <span>Cập nhật</span>
@@ -31,15 +31,15 @@
     </popup->
 </template>
 <script lang="ts">
-import { Component } from 'nuxt-property-decorator';
-import { mixinData } from '~/components/mixins/mutable';
-import { PopupMixin } from '~/components/mixins/popup';
-import { updateFloor } from '~/graphql/documents/floor';
+import { Component, mixins } from 'nuxt-property-decorator';
 import { required, minLength } from 'vuelidate/lib/validators';
-import { FloorUpdateInput, GetFloors } from 'graphql/types';
+import { DataMixin, PopupMixin } from '~/components/mixins';
+import { FloorUpdateInput, GetFloors } from '~/graphql/types';
+import { updateFloor } from '~/graphql/documents';
+
+type PopupMixinType = PopupMixin<{ floor: GetFloors.Floors }, FloorUpdateInput>;
 
 @Component({
-    mixins: [PopupMixin, mixinData({ updateFloor })],
     name: 'popup-floor-update-',
     validations: {
         input: {
@@ -50,10 +50,10 @@ import { FloorUpdateInput, GetFloors } from 'graphql/types';
         },
     },
 })
-export default class extends PopupMixin<
-    { floor: GetFloors.Floors },
-    FloorUpdateInput
-> {
+export default class extends mixins<PopupMixinType>(
+    PopupMixin,
+    DataMixin({ updateFloor }),
+) {
     onOpen() {
         this.input = {
             id: this.data.floor.id,

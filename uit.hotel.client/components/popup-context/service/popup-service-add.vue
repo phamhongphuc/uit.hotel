@@ -3,9 +3,10 @@
         <form-mutate-
             v-if="input"
             slot-scope="{ close }"
-            success="Thêm dịch vụ mới thành công"
             :mutation="createService"
             :variables="{ input }"
+            success="Thêm dịch vụ mới thành công"
+            @success="close"
         >
             <div class="input-label">Tên dịch vụ</div>
             <b-input-
@@ -33,11 +34,10 @@
             />
             <div class="d-flex m-3">
                 <b-button
+                    :disabled="$v.$invalid"
                     class="ml-auto"
                     variant="main"
                     type="submit"
-                    :disabled="$v.$invalid"
-                    @click="close"
                 >
                     <icon- class="mr-1" i="plus" />
                     <span>Thêm</span>
@@ -47,15 +47,13 @@
     </popup->
 </template>
 <script lang="ts">
-import { Component } from 'nuxt-property-decorator';
-import { mixinData } from '~/components/mixins/mutable';
-import { PopupMixin } from '~/components/mixins/popup';
-import { createService } from '~/graphql/documents/service';
+import { Component, mixins } from 'nuxt-property-decorator';
 import { required, minLength, minValue } from 'vuelidate/lib/validators';
-import { ServiceCreateInput } from 'graphql/types';
+import { DataMixin, PopupMixin } from '~/components/mixins';
+import { ServiceCreateInput } from '~/graphql/types';
+import { createService } from '~/graphql/documents';
 
 @Component({
-    mixins: [PopupMixin, mixinData({ createService })],
     name: 'popup-service-add-',
     validations: {
         input: {
@@ -71,7 +69,10 @@ import { ServiceCreateInput } from 'graphql/types';
         },
     },
 })
-export default class extends PopupMixin<void, ServiceCreateInput> {
+export default class extends mixins<PopupMixin<void, ServiceCreateInput>>(
+    PopupMixin,
+    DataMixin({ createService }),
+) {
     onOpen() {
         this.input = {
             name: '',

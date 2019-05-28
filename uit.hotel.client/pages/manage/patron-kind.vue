@@ -17,7 +17,6 @@
         >
             <b-table
                 slot-scope="{ data: { patronKinds } }"
-                class="table-style"
                 :items="patronKinds"
                 :fields="[
                     {
@@ -44,6 +43,7 @@
                         sortable: true,
                     },
                 ]"
+                class="table-style"
                 @row-clicked="
                     (patronKind, $index, $event) => {
                         $event.stopPropagation();
@@ -68,15 +68,14 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component } from 'nuxt-property-decorator';
-import { getPatronKinds } from '~/graphql/documents/patronKind';
-import { mixinData } from '~/components/mixins/mutable';
+import { Component, mixins } from 'nuxt-property-decorator';
+import { getPatronKinds } from '~/graphql/documents';
+import { DataMixin } from '~/components/mixins';
 
 @Component({
     name: 'patronKind-',
-    mixins: [mixinData({ getPatronKinds })],
 })
-export default class extends Vue {
+export default class extends mixins(DataMixin({ getPatronKinds })) {
     head() {
         return {
             title: 'Quản lý loại khách hàng',
@@ -92,9 +91,5 @@ export default class extends Vue {
     }
 
     currentEvent: MouseEvent | null = null;
-
-    showInactive: boolean = false;
-
-    console = console;
 }
 </script>

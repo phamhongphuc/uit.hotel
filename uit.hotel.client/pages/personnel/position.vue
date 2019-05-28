@@ -14,7 +14,7 @@
                 variant="white"
                 @click="showInactive = !showInactive"
             >
-                <icon- class="mx-1" :i="showInactive ? 'eye' : 'eye-off'" />
+                <icon- :i="showInactive ? 'eye' : 'eye-off'" class="mx-1" />
                 <span>
                     {{
                         `Đang ${
@@ -31,7 +31,6 @@
         >
             <b-table
                 slot-scope="{ data: { positions } }"
-                class="table-style"
                 :items="positionsFilter(positions)"
                 :fields="[
                     {
@@ -69,6 +68,7 @@
                         sortable: true,
                     },
                 ]"
+                class="table-style"
                 @row-clicked="
                     (position, $index, $event) => {
                         $event.stopPropagation();
@@ -100,16 +100,15 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component } from 'nuxt-property-decorator';
-import { getPositions } from '~/graphql/documents/position';
-import { mixinData } from '~/components/mixins/mutable';
+import { Component, mixins } from 'nuxt-property-decorator';
+import { getPositions } from '~/graphql/documents';
+import { DataMixin } from '~/components/mixins';
 import { GetPositions } from '~/graphql/types';
 
 @Component({
     name: 'position-',
-    mixins: [mixinData({ getPositions })],
 })
-export default class extends Vue {
+export default class extends mixins(DataMixin({ getPositions })) {
     head() {
         return {
             title: 'Quản lý vị trí',
@@ -134,7 +133,5 @@ export default class extends Vue {
     currentEvent: MouseEvent | null = null;
 
     showInactive: boolean = false;
-
-    console = console;
 }
 </script>

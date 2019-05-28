@@ -2,10 +2,11 @@
     <popup- ref="popup" title="Cập nhật khách hàng">
         <form-mutate-
             v-if="input"
-            slot-scope="{ data: { patron }, close }"
-            success="Cập nhật khách hàng thành công"
+            slot-scope="{ close }"
             :mutation="updatePatron"
             :variables="{ input }"
+            success="Cập nhật khách hàng thành công"
+            @success="close"
         >
             <div class="d-flex">
                 <div>
@@ -28,8 +29,6 @@
                     <div class="m-3">
                         <b-form-select
                             v-model="input.gender"
-                            value-field="value"
-                            text-field="name"
                             :state="!$v.input.gender.$invalid"
                             :options="[
                                 {
@@ -41,22 +40,24 @@
                                     value: false,
                                 },
                             ]"
+                            value-field="value"
+                            text-field="name"
                             class="rounded"
                         />
                     </div>
                     <div class="input-label">Loại khách hàng</div>
                     <query-
                         :query="getPatronKinds"
-                        class="m-3"
                         :poll-interval="0"
+                        class="m-3"
                     >
                         <b-form-select
                             v-model="input.patronKind.id"
                             slot-scope="{ data: { patronKinds } }"
-                            value-field="id"
-                            text-field="name"
                             :state="!$v.input.patronKind.id.$invalid"
                             :options="patronKinds"
+                            value-field="id"
+                            text-field="name"
                             class="rounded"
                         />
                     </query->
@@ -125,11 +126,10 @@
             </div>
             <div class="m-3">
                 <b-button
+                    :disabled="$v.$invalid"
                     class="ml-auto"
                     variant="main"
                     type="submit"
-                    :disabled="$v.$invalid"
-                    @click="close"
                 >
                     <icon- class="mr-1" i="plus" />
                     <span>Cập nhật</span>
@@ -139,16 +139,13 @@
     </popup->
 </template>
 <script lang="ts">
-import { Component } from 'nuxt-property-decorator';
-import { PopupMixin } from '~/components/mixins/popup';
-import { updatePatron } from '~/graphql/documents/patron';
-import { getPatronKinds } from '~/graphql/documents/patronKind';
-import { mixinData } from '~/components/mixins/mutable';
+import { Component, mixins } from 'nuxt-property-decorator';
 import { required, alphaNum, minLength } from 'vuelidate/lib/validators';
-import { PatronUpdateInput, GetPatrons } from 'graphql/types';
+import { PopupMixin, DataMixin } from '~/components/mixins';
+import { PatronUpdateInput, GetPatrons } from '~/graphql/types';
+import { updatePatron, getPatronKinds } from '~/graphql/documents';
 
 @Component({
-    mixins: [PopupMixin, mixinData({ updatePatron, getPatronKinds })],
     name: 'popup-patron-update-',
     validations: {
         input: {
@@ -177,10 +174,9 @@ import { PatronUpdateInput, GetPatrons } from 'graphql/types';
         },
     },
 })
-export default class extends PopupMixin<
-    { patron: GetPatrons.Patrons },
-    PatronUpdateInput
-> {
+export default class extends mixins<
+    PopupMixin<{ patron: GetPatrons.Patrons }, PatronUpdateInput>
+>(PopupMixin, DataMixin({ updatePatron, getPatronKinds })) {
     phoneNumbers: string = '';
 
     onOpen() {

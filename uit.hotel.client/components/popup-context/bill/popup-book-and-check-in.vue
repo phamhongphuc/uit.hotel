@@ -2,10 +2,11 @@
     <popup- ref="popup" title="Đặt phòng và nhận ngay">
         <form-mutate-
             v-if="input"
-            slot-scope="{ data: { bill }, close }"
-            success="Thêm phòng cho hóa đơn có sẵn"
+            slot-scope="{ close }"
             :mutation="bookAndCheckIn"
-            :variables="getInput"
+            :variables="variables"
+            success="Thêm phòng cho hóa đơn có sẵn"
+            @success="close"
         >
             <div class="input-label">Khách hàng đứng tên hóa đơn</div>
             <div class="m-3 d-flex">
@@ -13,10 +14,10 @@
                     <b-form-select
                         v-model="input.bill.patron.id"
                         slot-scope="{ data: { patrons } }"
-                        value-field="id"
-                        text-field="name"
                         :state="!$v.input.$invalid"
                         :options="patrons"
+                        value-field="id"
+                        text-field="name"
                         class="rounded"
                     />
                 </query->
@@ -43,7 +44,6 @@
             <div class="input-label">Danh sách phòng</div>
             <div class="m-3 table-inner rounded overflow-hidden">
                 <b-table
-                    class="table-style table-cell-middle"
                     :items="input.bookings"
                     :fields="[
                         {
@@ -68,6 +68,7 @@
                             class: 'text-center',
                         },
                     ]"
+                    class="table-style table-cell-middle"
                 >
                     <template slot="index" slot-scope="data">
                         {{ data.index + 1 }}
@@ -138,11 +139,10 @@
                     <span>Thêm phòng</span>
                 </b-button>
                 <b-button
+                    :disabled="$v.$invalid"
                     variant="main"
                     class="ml-3"
                     type="submit"
-                    :disabled="$v.$invalid"
-                    @click="close"
                 >
                     <icon- class="mr-1" i="edit-2" />
                     <span>Đặt phòng và nhận ngay</span>
@@ -152,30 +152,31 @@
     </popup->
 </template>
 <script lang="ts">
-import { Component } from 'nuxt-property-decorator';
+import moment from 'moment';
+import { Component, mixins } from 'nuxt-property-decorator';
 import {
     GetFloors,
     BookAndCheckIn,
     BookAndCheckInCreateInput,
 } from '~/graphql/types';
-import { bookAndCheckIn } from '~/graphql/documents/bill';
-import { getPatrons } from '~/graphql/documents/patron';
-import { getRoom } from '~/graphql/documents/room';
-import { mixinData } from '~/components/mixins/mutable';
-import { PopupMixin } from '~/components/mixins/popup';
-import moment from 'moment';
+import { bookAndCheckIn, getPatrons, getRoom } from '~/graphql/documents';
+import { DataMixin, PopupMixin } from '~/components/mixins';
+
+type PopupMixinType = PopupMixin<
+    { rooms: GetFloors.Rooms[] },
+    BookAndCheckIn.Variables
+>;
 
 @Component({
-    mixins: [PopupMixin, mixinData({ bookAndCheckIn, getPatrons, getRoom })],
     name: 'popup-booking-and-check-in-',
     validations: {
         input: {},
     },
 })
-export default class extends PopupMixin<
-    { rooms: GetFloors.Rooms[] },
-    BookAndCheckIn.Variables
-> {
+export default class extends mixins<PopupMixinType>(
+    PopupMixin,
+    DataMixin({ bookAndCheckIn, getPatrons, getRoom }),
+) {
     bookCheckOutTime: string = moment().format();
 
     onOpen() {
@@ -196,7 +197,7 @@ export default class extends PopupMixin<
         };
     }
 
-    get getInput(): BookAndCheckIn.Variables {
+    get variables(): BookAndCheckIn.Variables {
         const { input, bookCheckOutTime } = this;
         const { bill, bookings } = input;
         return {

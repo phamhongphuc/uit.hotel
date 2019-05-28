@@ -1,9 +1,12 @@
 <template>
-    <div id="login" class="bg-white shadow-lg p-5 d-flex flex-column">
+    <div
+        id="login"
+        class="bg-white shadow-lg p-5 d-flex flex-column overflow-auto"
+    >
         <img
+            :style="{ width: '120px' }"
             src="/favicon.png"
             class="d-block img-fluid mb-2 mt-5 mx-auto"
-            :style="{ width: '120px' }"
         />
         <h4 class="font-pacifico text-center mb-5">Quản lý khách sạn</h4>
         <b-form
@@ -26,11 +29,7 @@
                 icon="lock"
                 class="my-2 circle"
             />
-            <b-button
-                variant="main"
-                type="submit"
-                class="border-circle d-block w-100"
-            >
+            <b-button variant="main" type="submit" class="border-circle w-100">
                 Đăng nhập
             </b-button>
         </b-form>
@@ -40,6 +39,9 @@
             hoặc
             <br />
             <nuxt-link to="/help">Quên mật khẩu?</nuxt-link>
+            <br />
+            Lần đầu truy cập hệ thống?
+            <nuxt-link to="/initialize">Khởi tạo</nuxt-link>
         </div>
     </div>
 </template>

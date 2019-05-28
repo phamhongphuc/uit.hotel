@@ -4,11 +4,11 @@
 }
 .dropdown-item-icon .icon {
     display: block;
-    text-align: center;
-    font-size: 1.25rem;
-    padding: 0;
     width: $navbar-size;
     min-width: $navbar-size;
     min-height: $navbar-size;
+    padding: 0;
+    font-size: 1.25rem;
     line-height: $navbar-size;
+    text-align: center;
 }

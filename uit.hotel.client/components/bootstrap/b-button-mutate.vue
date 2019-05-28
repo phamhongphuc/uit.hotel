@@ -12,13 +12,14 @@
     </b-button>
 </template>
 <script lang="ts">
-import { Vue, Component } from 'nuxt-property-decorator';
-import mutable from '~/components/mixins/mutable';
-import { ButtonProps } from '~/components/mixins/props';
+import { Component, mixins } from 'nuxt-property-decorator';
+import { MutableMixin, ButtonProps } from '~/components/mixins';
 
 @Component({
     name: 'b-button-mutate-',
-    mixins: [mutable, ButtonProps],
 })
-export default class extends Vue {}
+export default class extends mixins<MutableMixin, ButtonProps>(
+    MutableMixin,
+    ButtonProps,
+) {}
 </script>

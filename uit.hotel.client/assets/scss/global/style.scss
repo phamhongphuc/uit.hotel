@@ -4,9 +4,9 @@
 }
 ::-webkit-scrollbar-thumb {
     background-color: rgba(0, 0, 0, 0.3);
-    border-radius: 0.5rem;
-    border: 0.125rem solid transparent;
     background-clip: padding-box;
+    border: 0.125rem solid transparent;
+    border-radius: 0.5rem;
 }
 ::-webkit-resizer,
 ::-webkit-scrollbar-corner {

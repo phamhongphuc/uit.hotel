@@ -2,10 +2,11 @@
     <popup- ref="popup" title="Cập nhật loại khách hàng">
         <form-mutate-
             v-if="input"
-            slot-scope="{ data: { patron }, close }"
-            success="Cập nhật loại khách hàng thành công"
+            slot-scope="{ close }"
             :mutation="updatePatronKind"
             :variables="{ input }"
+            success="Cập nhật loại khách hàng thành công"
+            @success="close"
         >
             <div class="input-label">Tên loại khách hàng</div>
             <b-input-
@@ -24,11 +25,10 @@
             />
             <div class="m-3">
                 <b-button
+                    :disabled="$v.$invalid"
                     class="ml-auto"
                     variant="main"
                     type="submit"
-                    :disabled="$v.$invalid"
-                    @click="close"
                 >
                     <icon- class="mr-1" i="plus" />
                     <span>Cập nhật</span>
@@ -38,15 +38,18 @@
     </popup->
 </template>
 <script lang="ts">
-import { Component } from 'nuxt-property-decorator';
-import { PopupMixin } from '~/components/mixins/popup';
-import { updatePatronKind } from '~/graphql/documents/patronKind';
-import { mixinData } from '~/components/mixins/mutable';
+import { Component, mixins } from 'nuxt-property-decorator';
 import { required } from 'vuelidate/lib/validators';
-import { PatronKindUpdateInput, GetPatronKinds } from 'graphql/types';
+import { PopupMixin, DataMixin } from '~/components/mixins';
+import { PatronKindUpdateInput, GetPatronKinds } from '~/graphql/types';
+import { updatePatronKind } from '~/graphql/documents';
+
+type PopupMixinType = PopupMixin<
+    { patronKind: GetPatronKinds.PatronKinds },
+    PatronKindUpdateInput
+>;
 
 @Component({
-    mixins: [PopupMixin, mixinData({ updatePatronKind })],
     name: 'popup-patron-update-',
     validations: {
         input: {
@@ -55,13 +58,13 @@ import { PatronKindUpdateInput, GetPatronKinds } from 'graphql/types';
         },
     },
 })
-export default class extends PopupMixin<
-    { patronKind: GetPatronKinds.PatronKinds },
-    PatronKindUpdateInput
-> {
+export default class extends mixins<PopupMixinType>(
+    PopupMixin,
+    DataMixin({ updatePatronKind }),
+) {
     phoneNumbers: string = '';
     onOpen() {
-        const patronKind: GetPatronKinds.PatronKinds = this.data.patronKind;
+        const { patronKind } = this.data;
         this.input = {
             id: patronKind.id,
             description: patronKind.description,

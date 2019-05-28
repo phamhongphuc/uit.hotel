@@ -14,7 +14,7 @@ namespace uit.hotel.Businesses
             if (houseKeepingInDatabase == null)
                 throw new Exception("Mã dọn phòng không tồn tại");
 
-            if (houseKeepingInDatabase.Status != (int) HouseKeeping.StatusEnum.Pending)
+            if (houseKeepingInDatabase.Status != (int)HouseKeeping.StatusEnum.Pending)
                 throw new Exception("Không thể nhận phòng này. Phòng đã hoặc đang được dọn");
 
             return HouseKeepingDataAccess.AssignCleaningService(employee, houseKeepingInDatabase);
@@ -24,7 +24,7 @@ namespace uit.hotel.Businesses
         {
             var houseKeepingInDatabase = GetAndCheckValid(employee, houseKeepingId);
 
-            if (houseKeepingInDatabase.Type == (int) HouseKeeping.TypeEnum.ExpectedDeparture)
+            if (houseKeepingInDatabase.Type == (int)HouseKeeping.TypeEnum.ExpectedDeparture)
                 throw new Exception("Không thể sử dụng kiểu xác nhận này đối với phòng check-out");
 
             return HouseKeepingDataAccess.ConfirmCleaned(houseKeepingInDatabase);
@@ -36,7 +36,7 @@ namespace uit.hotel.Businesses
         {
             var houseKeepingInDatabase = GetAndCheckValid(employee, houseKeepingId);
 
-            if (houseKeepingInDatabase.Type != (int) HouseKeeping.TypeEnum.ExpectedDeparture)
+            if (houseKeepingInDatabase.Type != (int)HouseKeeping.TypeEnum.ExpectedDeparture)
                 throw new Exception("Chỉ được sử dụng kiểu xác nhận này đối với phòng check-out");
 
             foreach (var servicesDetail in servicesDetails)
@@ -55,7 +55,7 @@ namespace uit.hotel.Businesses
             if (houseKeepingInDatabase == null)
                 throw new Exception("Mã dọn phòng không tồn tại");
 
-            if (houseKeepingInDatabase.Status != (int) HouseKeeping.StatusEnum.Cleaning)
+            if (houseKeepingInDatabase.Status != (int)HouseKeeping.StatusEnum.Cleaning)
                 throw new Exception("Không thể xác nhận dọn phòng");
 
             if (!houseKeepingInDatabase.Employee.Equals(employee))

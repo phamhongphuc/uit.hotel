@@ -3,9 +3,10 @@
         <form-mutate-
             v-if="input"
             slot-scope="{ close }"
-            success="Thêm nhân viên mới thành công"
             :mutation="createEmployee"
             :variables="{ input }"
+            success="Thêm nhân viên mới thành công"
+            @success="close"
         >
             <div class="d-flex">
                 <div>
@@ -21,8 +22,8 @@
                     <div class="input-label">Mật khẩu</div>
                     <b-input-
                         v-model="input.password"
-                        type="password"
                         :state="!$v.input.password.$invalid"
+                        type="password"
                         autocomplete="new-password"
                         class="m-3 rounded"
                         icon="unlock"
@@ -30,8 +31,8 @@
                     <div class="input-label">Nhập lại mật khẩu</div>
                     <b-input-
                         v-model="rePassword"
-                        type="password"
                         :state="!$v.rePassword.$invalid"
+                        type="password"
                         autocomplete="new-password"
                         class="m-3 rounded"
                         icon="lock"
@@ -39,16 +40,16 @@
                     <div class="input-label">Vị trí</div>
                     <query-
                         :query="getPositions"
-                        class="m-3"
                         :poll-interval="0"
+                        class="m-3"
                     >
                         <b-form-select
                             v-model="input.position.id"
                             slot-scope="{ data: { positions } }"
-                            value-field="id"
-                            text-field="name"
                             :state="!$v.input.position.id.$invalid"
                             :options="positions"
+                            value-field="id"
+                            text-field="name"
                             class="rounded"
                         />
                     </query->
@@ -73,8 +74,6 @@
                     <div class="m-3">
                         <b-form-select
                             v-model="input.gender"
-                            value-field="value"
-                            text-field="name"
                             :state="!$v.input.gender.$invalid"
                             :options="[
                                 {
@@ -86,6 +85,8 @@
                                     value: false,
                                 },
                             ]"
+                            value-field="value"
+                            text-field="name"
                             class="rounded"
                         />
                     </div>
@@ -132,11 +133,10 @@
             </div>
             <div class="m-3">
                 <b-button
+                    :disabled="$v.$invalid"
                     class="ml-auto"
                     variant="main"
                     type="submit"
-                    :disabled="$v.$invalid"
-                    @click="close"
                 >
                     <icon- class="mr-1" i="plus" />
                     <span>Thêm</span>
@@ -146,16 +146,13 @@
     </popup->
 </template>
 <script lang="ts">
-import { Component } from 'nuxt-property-decorator';
-import { PopupMixin } from '~/components/mixins/popup';
-import { getPositions } from '~/graphql/documents/position';
-import { createEmployee } from '~/graphql/documents/employee';
-import { mixinData } from '~/components/mixins/mutable';
+import { Component, mixins } from 'nuxt-property-decorator';
 import { required, email, alphaNum } from 'vuelidate/lib/validators';
-import { EmployeeCreateInput } from 'graphql/types';
+import { PopupMixin, DataMixin } from '~/components/mixins';
+import { EmployeeCreateInput } from '~/graphql/types';
+import { getPositions, createEmployee } from '~/graphql/documents';
 
 @Component({
-    mixins: [PopupMixin, mixinData({ createEmployee, getPositions })],
     name: 'popup-employee-add-',
     validations: {
         input: {
@@ -183,7 +180,10 @@ import { EmployeeCreateInput } from 'graphql/types';
         },
     },
 })
-export default class extends PopupMixin<void, EmployeeCreateInput> {
+export default class extends mixins<PopupMixin<void, EmployeeCreateInput>>(
+    PopupMixin,
+    DataMixin({ createEmployee, getPositions }),
+) {
     rePassword: string = '';
 
     onOpen() {

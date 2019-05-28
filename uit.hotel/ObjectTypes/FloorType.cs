@@ -15,7 +15,7 @@ namespace uit.hotel.ObjectTypes
             Field(x => x.Id).Description("Id của tầng");
             Field(x => x.Name).Description("Tên tầng");
             Field(x => x.IsActive).Description("Trạng thái hoạt động");
-            Field<ListGraphType<RoomType>>(
+            Field<NonNullGraphType<ListGraphType<NonNullGraphType<RoomType>>>>(
                 nameof(Floor.Rooms),
                 "Danh sách các phòng có trong tầng",
                 resolve: context => context.Source.Rooms.ToList());

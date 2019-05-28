@@ -14,7 +14,7 @@
                 variant="white"
                 @click="showInactive = !showInactive"
             >
-                <icon- class="mx-1" :i="showInactive ? 'eye' : 'eye-off'" />
+                <icon- :i="showInactive ? 'eye' : 'eye-off'" class="mx-1" />
                 <span>
                     {{
                         `Đang ${
@@ -31,7 +31,6 @@
         >
             <b-table
                 slot-scope="{ data: { roomKinds } }"
-                class="table-style"
                 :items="roomKindsFilter(roomKinds)"
                 :fields="[
                     {
@@ -67,6 +66,7 @@
                         tdClass: 'text-right',
                     },
                 ]"
+                class="table-style"
                 @row-clicked="
                     (roomKind, $index, $event) => {
                         $event.stopPropagation();
@@ -92,16 +92,15 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component } from 'nuxt-property-decorator';
-import { getRoomKinds } from '~/graphql/documents/room-kind';
-import { mixinData } from '~/components/mixins/mutable';
+import { Component, mixins } from 'nuxt-property-decorator';
+import { getRoomKinds } from '~/graphql/documents';
+import { DataMixin } from '~/components/mixins';
 import { GetRoomKinds } from '~/graphql/types';
 
 @Component({
     name: 'floor-room-',
-    mixins: [mixinData({ getRoomKinds })],
 })
-export default class extends Vue {
+export default class extends mixins(DataMixin({ getRoomKinds })) {
     head() {
         return {
             title: 'Quản lý loại phòng',
@@ -126,7 +125,5 @@ export default class extends Vue {
     currentEvent: MouseEvent | null = null;
 
     showInactive: boolean = false;
-
-    console = console;
 }
 </script>

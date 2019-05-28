@@ -1,9 +1,7 @@
-import { Prop } from 'nuxt-property-decorator';
-import Vue from 'vue';
-import { Mixin } from 'vue-mixin-decorator';
+import { Vue, Prop, Component } from 'nuxt-property-decorator';
 
 // Valid supported input types
-var TYPES = [
+const InputPropsType = [
     'text',
     'password',
     'email',
@@ -21,40 +19,40 @@ var TYPES = [
     'week',
 ];
 
-@Mixin
+@Component
 export class InputProps extends Vue {
     @Prop({ default: null })
-    value: any;
+    protected value: any;
 
     @Prop({
         default: 'text',
-        validator(type) {
-            return TYPES.indexOf(type) !== -1;
+        validator(type): boolean {
+            return InputPropsType.indexOf(type) !== -1;
         },
     })
-    type!: string;
+    protected type!: string;
 
     @Prop({ default: false })
-    ariaInvalid!: [boolean, string];
+    protected ariaInvalid!: [boolean, string];
 
     @Prop({ default: false })
-    readonly!: boolean;
+    protected readonly!: boolean;
 
     @Prop({ default: false })
-    plaintext!: boolean;
+    protected plaintext!: boolean;
 
     @Prop({ default: null })
-    autocomplete!: string;
+    protected autocomplete!: string;
 
     @Prop({ default: null })
-    placeholder!: string;
+    protected placeholder!: string;
 
     @Prop()
-    formatter!: Function;
+    protected formatter!: Function;
 
     @Prop({ default: false })
-    lazyFormatter!: boolean;
+    protected lazyFormatter!: boolean;
 
     @Prop({ default: false })
-    disabled!: boolean;
+    protected disabled!: boolean;
 }

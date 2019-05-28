@@ -1,23 +1,23 @@
-.navbar-toggler::after,
+.navbar-toggler > .icon,
 .nav-item-input .icon,
 .nav-item-icon .icon {
     display: block;
-    text-align: center;
-    font-size: 1.5rem;
-    padding: 0;
     width: $navbar-size;
     min-width: $navbar-size;
     min-height: $navbar-size;
+    padding: 0;
+    font-size: 1.5rem;
     line-height: $navbar-size;
+    text-align: center;
 }
 
 .navbar-nav {
     line-height: $navbar-size;
 
     > .nav-item {
-        transition: all 0.2s;
-        overflow: hidden;
         height: $navbar-size;
+        overflow: hidden;
+        transition: all 0.2s;
 
         > .nav-link {
             display: flex;
@@ -29,11 +29,6 @@
     .navbar-toggler {
         height: $navbar-size;
         border: none !important;
-
-        &::after {
-            content: $navbar-toggler-icon;
-            @include icon;
-        }
 
         > .navbar-toggler-icon {
             display: none;
@@ -58,8 +53,8 @@
                 max-width: 200px;
                 margin-right: 0.5rem;
                 .icon {
-                    margin-right: 0.25rem;
                     order: 1;
+                    margin-right: 0.25rem;
                 }
             }
         }

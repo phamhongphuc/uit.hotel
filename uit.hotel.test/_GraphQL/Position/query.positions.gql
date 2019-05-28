@@ -10,7 +10,7 @@
         permissionGetRate
         permissionGetService
         permissionManageEmployee
-        permissionManageHiringRoom
+        permissionManageRentingRoom
         permissionManageMap
         permissionManagePatron
         permissionManagePatronKind

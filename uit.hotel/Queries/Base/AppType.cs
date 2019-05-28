@@ -7,8 +7,8 @@ namespace uit.hotel.Queries.Base
         protected void AddFields(params ObjectGraphType[] objectGraphTypes)
         {
             foreach (var objectGraphType in objectGraphTypes)
-            foreach (var field in objectGraphType.Fields)
-                AddField(field);
+                foreach (var field in objectGraphType.Fields)
+                    AddField(field);
         }
     }
 }

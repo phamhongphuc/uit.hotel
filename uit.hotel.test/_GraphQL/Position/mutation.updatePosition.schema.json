@@ -21,7 +21,7 @@
                         "permissionGetRate",
                         "permissionGetService",
                         "permissionManageEmployee",
-                        "permissionManageHiringRoom",
+                        "permissionManageRentingRoom",
                         "permissionManageMap",
                         "permissionManagePatron",
                         "permissionManagePatronKind",
@@ -55,7 +55,7 @@
                         "permissionCleaning": {
                             "type": "boolean"
                         },
-                        "permissionManageHiringRoom": {
+                        "permissionManageRentingRoom": {
                             "type": "boolean"
                         },
                         "permissionManagePatron": {

@@ -17,7 +17,6 @@
         >
             <b-table
                 slot-scope="{ data: { patrons } }"
-                class="table-style"
                 :items="patrons"
                 :fields="[
                     {
@@ -47,6 +46,7 @@
                         tdClass: 'text-nowrap',
                     },
                 ]"
+                class="table-style"
                 @row-clicked="
                     (patron, $index, $event) => {
                         $event.stopPropagation();
@@ -64,8 +64,8 @@
                     <a
                         v-for="phoneNumber in value"
                         :key="phoneNumber"
-                        class="d-block"
                         :href="`tel:${phoneNumber}`"
+                        class="d-block"
                         @click.stop
                     >
                         {{ phoneNumber }}
@@ -82,16 +82,15 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component } from 'nuxt-property-decorator';
-import { getPatrons } from '~/graphql/documents/patron';
-import { mixinData } from '~/components/mixins/mutable';
+import { Component, mixins } from 'nuxt-property-decorator';
+import { getPatrons } from '~/graphql/documents';
+import { DataMixin } from '~/components/mixins';
 import moment from 'moment';
 
 @Component({
     name: 'patron-',
-    mixins: [mixinData({ getPatrons })],
 })
-export default class extends Vue {
+export default class extends mixins(DataMixin({ getPatrons })) {
     head() {
         return {
             title: 'Quản lý khách hàng',
@@ -111,9 +110,5 @@ export default class extends Vue {
     }
 
     currentEvent: MouseEvent | null = null;
-
-    showInactive: boolean = false;
-
-    console = console;
 }
 </script>

@@ -2,9 +2,9 @@
     <div id="side" class="center">
         <no-ssr>
             <notifications
+                :duration="1500"
                 animation-type="velocity"
                 position="left bottom"
-                :duration="1500"
             />
         </no-ssr>
         <div class="left flex-fill" />
@@ -14,9 +14,9 @@
 <style lang="scss">
 #side {
     position: fixed;
-    height: 100%;
-    width: 100%;
     display: flex;
+    width: 100%;
+    height: 100%;
     > .left {
         background-image: url('/img/background.jpg');
         background-size: cover;

@@ -14,7 +14,7 @@ namespace uit.hotel.Queries.Query
                 _List,
                 "Trả về một danh sách các đơn đặt phòng",
                 resolve: _CheckPermission_List(
-                    p => p.PermissionManageHiringRoom,
+                    p => p.PermissionManageRentingRoom,
                     context => BookingBusiness.Get()
                 )
             );
@@ -24,7 +24,7 @@ namespace uit.hotel.Queries.Query
                 "Trả về thông tin một đơn đặt phòng",
                 _IdArgument(),
                 _CheckPermission_Object(
-                    p => p.PermissionManageHiringRoom,
+                    p => p.PermissionManageRentingRoom,
                     context => BookingBusiness.Get(_GetId<int>(context))
                 )
             );

@@ -1,5 +1,6 @@
 <template>
     <b-nav-item
+        v-if="isShow"
         :href="href"
         :rel="rel"
         :target="target"
@@ -19,9 +20,9 @@
         <icon- v-if="icon" :i="icon" />
         <div v-else-if="image !== ''" class="icon">
             <image-
-                class="m-2"
                 :class="[{ 'rounded-circle': circle }, imageClass]"
                 :source="image"
+                class="m-2"
                 height="24"
                 width="24"
             />
@@ -30,17 +31,23 @@
     </b-nav-item>
 </template>
 <script lang="ts">
-import { Vue, Component } from 'nuxt-property-decorator';
+import { Component, mixins } from 'nuxt-property-decorator';
 import {
     IconProps,
     ImageProps,
     LinkProps,
     TextProps,
-} from '~/components/mixins/props';
+    PermissionMixin,
+} from '~/components/mixins';
 
 @Component({
     name: 'b-nav-item-icon-',
-    mixins: [LinkProps, IconProps, TextProps, ImageProps],
 })
-export default class extends Vue {}
+export default class extends mixins<
+    LinkProps,
+    IconProps,
+    TextProps,
+    ImageProps,
+    PermissionMixin
+>(LinkProps, IconProps, TextProps, ImageProps, PermissionMixin) {}
 </script>

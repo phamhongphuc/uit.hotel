@@ -12,10 +12,12 @@ $body-bg: #f2f2f2;
 $body-color: lighten(#212529, 25%);
 $gray: #f5f6fa;
 $blue: #507af2;
-$light-blue: #e6efff;
+$green: #c2f2d7;
+$light-blue: #bde7ff;
 $dark-blue: #9abeff;
 $light-red: #f39190;
 $red: #eb4d4b;
+$orange: #f39c12;
 
 $black: black;
 $white: white;
@@ -27,6 +29,8 @@ $theme-colors: (
     'white': $white,
     'black': $black,
     'blue': $blue,
+    'green': $green,
+    'orange': $orange,
     'light-blue': $light-blue,
     'dark-blue': $dark-blue,
     'light-red': $light-red,

@@ -14,7 +14,7 @@
                 variant="white"
                 @click="showInactive = !showInactive"
             >
-                <icon- class="mx-1" :i="showInactive ? 'eye' : 'eye-off'" />
+                <icon- :i="showInactive ? 'eye' : 'eye-off'" class="mx-1" />
                 <span>
                     {{
                         `Đang ${
@@ -31,7 +31,6 @@
         >
             <b-table
                 slot-scope="{ data: { bills } }"
-                class="table-style"
                 :items="billsFilter(bills)"
                 :fields="[
                     {
@@ -66,6 +65,7 @@
                         class: 'text-right',
                     },
                 ]"
+                class="table-style"
                 @row-clicked="
                     (bill, $index, $event) => {
                         $event.stopPropagation();
@@ -105,18 +105,19 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component } from 'nuxt-property-decorator';
-import { getBills } from '~/graphql/documents/bill';
-import { mixinData } from '~/components/mixins/mutable';
+import { Component, mixins } from 'nuxt-property-decorator';
+import { getBills } from '~/graphql/documents';
+import { DataMixin } from '~/components/mixins';
 import { GetBills } from '~/graphql/types';
-import { toMoney, toDate } from '~/utils/dataFormater';
+import { toMoney, toDate } from '~/utils';
 import moment from 'moment';
 
 @Component({
     name: 'bill-',
-    mixins: [mixinData({ getBills, toMoney, toDate, moment })],
 })
-export default class extends Vue {
+export default class extends mixins(
+    DataMixin({ getBills, toMoney, toDate, moment }),
+) {
     head() {
         return {
             title: 'Quản lý hóa đơn',
@@ -142,7 +143,5 @@ export default class extends Vue {
     currentEvent: MouseEvent | null = null;
 
     showInactive: boolean = false;
-
-    console = console;
 }
 </script>

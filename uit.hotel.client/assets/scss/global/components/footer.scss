@@ -2,8 +2,8 @@ footer {
     &.footer-light {
         color: $footer-light-color;
         a:hover {
-            text-decoration: none;
             color: $footer-light-hover-color;
+            text-decoration: none;
         }
     }
 }

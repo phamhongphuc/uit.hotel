@@ -1,6 +1,7 @@
-import { MutationTree, ActionTree } from 'vuex';
+import { ActionTree, MutationTree } from 'vuex';
+import { RootState } from '.';
 
-interface StyleState {
+export interface StyleState {
     breakpoint: string;
 }
 
@@ -14,7 +15,7 @@ export const mutations: MutationTree<StyleState> = {
     },
 };
 
-export const actions: ActionTree<StyleState, StyleState> = {
+export const actions: ActionTree<StyleState, RootState> = {
     updateBreakpoint({ state, commit }) {
         const w = window.innerWidth;
         let breakpoint = 'none';

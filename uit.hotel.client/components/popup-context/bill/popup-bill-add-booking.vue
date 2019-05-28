@@ -3,9 +3,10 @@
         <form-mutate-
             v-if="input"
             slot-scope="{ data: { bill }, close }"
-            success="Thêm phòng cho hóa đơn có sẵn"
             :mutation="addBookingToBill"
             :variables="{ input }"
+            success="Thêm phòng cho hóa đơn có sẵn"
+            @success="close"
         >
             <div class="input-label">Tên hóa đơn</div>
             <b-input-
@@ -17,11 +18,10 @@
             />
             <div class="d-flex m-3">
                 <b-button
+                    :disabled="$v.$invalid"
                     class="ml-auto"
                     variant="main"
                     type="submit"
-                    :disabled="$v.$invalid"
-                    @click="close"
                 >
                     <icon- class="mr-1" i="edit-2" />
                     <span>Cập nhật</span>
@@ -31,24 +31,20 @@
     </popup->
 </template>
 <script lang="ts">
-import { Component } from 'nuxt-property-decorator';
-import { mixinData } from '~/components/mixins/mutable';
-import { PopupMixin } from '~/components/mixins/popup';
-import { addBookingToBill } from '~/graphql/documents/bill';
-// import { required, minLength, minValue } from 'vuelidate/lib/validators';
-import { GetBills, AddBookingToBill } from 'graphql/types';
+import { Component, mixins } from 'nuxt-property-decorator';
+import { PopupMixin, DataMixin } from '~/components/mixins';
+import { GetBills, AddBookingToBill } from '~/graphql/types';
+import { addBookingToBill } from '~/graphql/documents';
 
 @Component({
-    mixins: [PopupMixin, mixinData({ addBookingToBill })],
     name: 'popup-bill-update-',
     validations: {
         input: {},
     },
 })
-export default class extends PopupMixin<
-    { bill: GetBills.Bills },
-    AddBookingToBill.Variables
-> {
+export default class extends mixins<
+    PopupMixin<{ bill: GetBills.Bills }, AddBookingToBill.Variables>
+>(PopupMixin, DataMixin({ addBookingToBill })) {
     onOpen() {
         this.input = {
             bill: {

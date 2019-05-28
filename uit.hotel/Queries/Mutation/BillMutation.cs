@@ -21,7 +21,7 @@ namespace uit.hotel.Queries.Mutation
                     new QueryArgument<NonNullGraphType<BillCreateInput>> { Name = "bill" }
                 ),
                 _CheckPermission_TaskObject(
-                    p => p.PermissionManageHiringRoom,
+                    p => p.PermissionManageRentingRoom,
                     async context =>
                     {
                         var employee = AuthenticationHelper.GetEmployee(context);
@@ -43,7 +43,7 @@ namespace uit.hotel.Queries.Mutation
                     new QueryArgument<NonNullGraphType<BillCreateInput>> { Name = "bill" }
                 ),
                 _CheckPermission_TaskObject(
-                    p => p.PermissionManageHiringRoom,
+                    p => p.PermissionManageRentingRoom,
                     async context =>
                     {
                         var employee = AuthenticationHelper.GetEmployee(context);
@@ -54,13 +54,13 @@ namespace uit.hotel.Queries.Mutation
                     }
                 )
             );
-            
+
             Field<NonNullGraphType<BillType>>(
                 "PayTheBill",
                 "Thanh toán hóa đơn (thanh toán tiền phòng)",
                 _IdArgument(),
                 _CheckPermission_TaskObject(
-                    p => p.PermissionManageHiringRoom,
+                    p => p.PermissionManageRentingRoom,
                     context =>
                     {
                         var employee = AuthenticationHelper.GetEmployee(context);

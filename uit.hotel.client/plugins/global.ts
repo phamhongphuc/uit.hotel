@@ -1,20 +1,16 @@
 import Vue from 'vue';
-import { StoreSelf } from '~/utils/store';
+import { Context } from '@nuxt/vue-app';
 
-export default function({ app }: StoreSelf): void {
+export default function({ app }: Context): void {
     if (!app.mixins) app.mixins = [];
     app.mixins.push({
-        async mounted() {
+        async mounted(): Promise<void> {
             // Breakpoint
             const updateBreakpoint = (): void => {
                 (this as Vue).$store.dispatch('style/updateBreakpoint');
             };
             window.addEventListener('resize', updateBreakpoint);
             updateBreakpoint();
-
-            // Route
-            await Vue.nextTick();
-            await (this as Vue).$store.dispatch('user/checkLogin');
         },
     });
 }

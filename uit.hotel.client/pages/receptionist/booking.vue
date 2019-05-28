@@ -11,10 +11,10 @@
             </b-button>
             <b-form-checkbox-group
                 v-model="show"
+                :options="showOptions"
                 class="m-2 ml-auto"
                 buttons
                 button-variant="white"
-                :options="showOptions"
             />
         </block-flex->
         <query-
@@ -24,7 +24,6 @@
         >
             <b-table
                 slot-scope="{ data: { bookings } }"
-                class="table-style"
                 :items="bookingsFilter(bookings)"
                 :fields="[
                     {
@@ -59,6 +58,7 @@
                         tdClass: 'w-100 text-nowrap',
                     },
                 ]"
+                class="table-style"
                 @row-clicked="
                     (booking, $index, $event) => {
                         $event.stopPropagation();
@@ -94,17 +94,18 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component } from 'nuxt-property-decorator';
-import { getBookings } from '~/graphql/documents/booking';
-import { mixinData } from '~/components/mixins/mutable';
+import { Component, mixins } from 'nuxt-property-decorator';
+import { getBookings } from '~/graphql/documents';
+import { DataMixin } from '~/components/mixins';
 import { GetBookings } from '~/graphql/types';
-import { toMoney, toDate } from '~/utils/dataFormater';
+import { toMoney, toDate } from '~/utils';
 
 @Component({
     name: 'booking-',
-    mixins: [mixinData({ getBookings, toMoney, toDate })],
 })
-export default class extends Vue {
+export default class extends mixins(
+    DataMixin({ getBookings, toMoney, toDate }),
+) {
     head() {
         return {
             title: 'Quản lý đơn đặt phòng',
@@ -140,10 +141,6 @@ export default class extends Vue {
     }
 
     currentEvent: MouseEvent | null = null;
-
-    showInactive: boolean = false;
-
-    console = console;
 
     getCheckInTime(item: GetBookings.Bookings): string {
         if (item.status === 0) return item.bookCheckInTime;

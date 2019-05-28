@@ -17,8 +17,8 @@ namespace uit.hotel.ObjectTypes
             Field(x => x.IsActive).Description("Trạng thái kích hoạt/vô hiệu hóa chức vụ");
 
             Field(x => x.PermissionCleaning).Description("Quyền thao tác dọn phòng");
-            Field(x => x.PermissionGetAccountingVoucher)
-               .Description("Quyền lấy thông tin các chứng từ (hóa đơn, phiếu thu)");
+
+            Field(x => x.PermissionGetAccountingVoucher).Description("Quyền lấy thông tin các chứng từ (hóa đơn, phiếu thu)");
             Field(x => x.PermissionGetHouseKeeping).Description("Quyền tra cứu lịch sử dọn phòng");
             Field(x => x.PermissionGetMap).Description("Quyền lấy thông tin tầng, phòng");
             Field(x => x.PermissionGetPatron).Description("Quyền lấy thông tin khách hàng");
@@ -26,12 +26,12 @@ namespace uit.hotel.ObjectTypes
             Field(x => x.PermissionGetService).Description("Quyền lấy thông tin dịch vụ");
 
             Field(x => x.PermissionManageEmployee).Description("Quyền quản lý thông tin nhân viên");
-            Field(x => x.PermissionManageHiringRoom).Description("Quyền quản lý thuê phòng");
             Field(x => x.PermissionManageMap).Description("Quyền chỉnh sửa sơ đồ");
             Field(x => x.PermissionManagePatron).Description("Quyền quản lý khách hàng");
             Field(x => x.PermissionManagePatronKind).Description("Quyền quản lý loại khách hàng");
             Field(x => x.PermissionManagePosition).Description("Quyền quản lý chức vụ");
             Field(x => x.PermissionManageRate).Description("Quyền quản lý giá cơ bản và giá biến động");
+            Field(x => x.PermissionManageRentingRoom).Description("Quyền quản lý thuê phòng");
             Field(x => x.PermissionManageService).Description("Quyền quản lý dịch vụ");
 
             Field<ListGraphType<EmployeeType>>(
@@ -84,7 +84,7 @@ namespace uit.hotel.ObjectTypes
             Field(x => x.PermissionGetService).Description("Quyền lấy thông tin dịch vụ");
 
             Field(x => x.PermissionManageEmployee).Description("Quyền quản lý thông tin nhân viên");
-            Field(x => x.PermissionManageHiringRoom).Description("Quyền quản lý thuê phòng");
+            Field(x => x.PermissionManageRentingRoom).Description("Quyền quản lý thuê phòng");
             Field(x => x.PermissionManagePatron).Description("Quyền quản lý khách hàng");
             Field(x => x.PermissionManagePatronKind).Description("Quyền quản lý loại khách hàng");
             Field(x => x.PermissionManagePosition).Description("Quyền quản lý chức vụ");
@@ -112,7 +112,7 @@ namespace uit.hotel.ObjectTypes
                .Description("Quyền lấy thông tin các chứng từ (hóa đơn, phiếu thu)");
 
             Field(x => x.PermissionManageEmployee).Description("Quyền quản lý thông tin nhân viên");
-            Field(x => x.PermissionManageHiringRoom).Description("Quyền quản lý thuê phòng");
+            Field(x => x.PermissionManageRentingRoom).Description("Quyền quản lý thuê phòng");
             Field(x => x.PermissionManageMap).Description("Quyền chỉnh sửa sơ đồ");
             Field(x => x.PermissionManagePatron).Description("Quyền quản lý khách hàng");
             Field(x => x.PermissionManagePatronKind).Description("Quyền quản lý loại khách hàng");

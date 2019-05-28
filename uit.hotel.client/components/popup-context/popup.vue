@@ -7,23 +7,20 @@
                     <icon- class="m-0 w-auto" i="x" />
                 </b-button>
             </div>
-            <no-ssr>
-                <div class="popup-modal-content">
-                    <slot v-if="noData || data" :data="data" :close="close" />
-                </div>
-            </no-ssr>
+            <div class="popup-modal-content">
+                <slot v-if="noData || data" :data="data" :close="close" />
+            </div>
         </div>
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop } from 'nuxt-property-decorator';
-import { mixin as clickaway } from 'vue-clickaway';
+import { Component, Prop, mixins } from 'nuxt-property-decorator';
+import { ClickawayMixin } from '~/components/mixins/clickaway';
 
 @Component({
-    mixins: [clickaway],
     name: 'popup-',
 })
-export default class extends Vue {
+export default class extends mixins<ClickawayMixin>(ClickawayMixin) {
     show: boolean = false;
     data: any = null;
 
@@ -47,45 +44,46 @@ export default class extends Vue {
     }
 }
 </script>
-
 <style lang="scss">
 .popup {
     position: absolute;
-    background: rgba($black, 0.2);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 5;
-    width: 100%;
-    height: 100%;
     top: 0;
-    left: 0;
     right: 0;
     bottom: 0;
+    left: 0;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background: rgba($black, 0.2);
 
     > .popup-modal {
         min-width: 300px;
         background: $white;
-        box-shadow: $box-shadow-context;
         border-radius: $border-radius;
+        box-shadow: $box-shadow-context;
 
         > .popup-modal-title {
             display: flex;
             border-bottom: 1.5px solid $border-color;
             opacity: 0.8;
+
             > .text {
                 flex: 1;
                 padding: 0 0.75rem;
-                line-height: $input-height;
                 font-weight: 500;
+                line-height: $input-height;
             }
+
             > .close {
                 display: block;
-                border: none;
-                padding: 0;
                 width: $input-height;
                 min-width: $input-height;
                 min-height: $input-height;
+                padding: 0;
+                border: none;
             }
         }
     }

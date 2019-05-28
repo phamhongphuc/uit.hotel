@@ -1,5 +1,5 @@
 <template>
-    <div class="b-input" :class="{ 'has-icon': icon !== null }">
+    <div :class="{ 'has-icon': icon !== null }" class="b-input">
         <icon- v-if="icon" :i="icon" />
         <b-input
             ref="input"
@@ -21,14 +21,17 @@
     </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop } from 'nuxt-property-decorator';
-import { InputProps, IconProps, StateProps } from '~/components/mixins/props';
+import { Component, Prop, mixins } from 'nuxt-property-decorator';
+import { InputProps, IconProps, StateProps } from '~/components/mixins';
 
 @Component({
     name: 'b-input-',
-    mixins: [IconProps, InputProps, StateProps],
 })
-export default class extends Vue {
+export default class extends mixins<IconProps, InputProps, StateProps>(
+    IconProps,
+    InputProps,
+    StateProps,
+) {
     @Prop({ default: null })
     title!: string;
 }
@@ -37,28 +40,28 @@ export default class extends Vue {
 $input-icon-margin-left: 0.25rem;
 
 .b-input {
-    transition: border 0.2s;
-    display: flex;
     position: relative;
+    display: flex;
+    transition: border 0.2s;
     > .icon {
         position: absolute;
         display: block;
-        text-align: center;
-        font-size: 1rem;
         width: $input-height;
         min-width: $input-height;
         min-height: $input-height;
+        font-size: 1rem;
         line-height: $input-height;
+        text-align: center;
     }
 
     > input {
-        outline: none;
-        border: none;
-        min-width: 0;
         flex-grow: 1;
+        min-width: 0;
         padding-left: calc(
             #{$input-height-inner} + #{$input-height-border} - 0.125rem
         );
+        border: none;
+        outline: none;
         &:focus {
             outline: none;
         }

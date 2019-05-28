@@ -41,6 +41,35 @@ export const getFloorsMap = gql`
     }
 `;
 
+export const getTimeline = gql`
+    query getTimeline {
+        floors {
+            id
+            name
+            isActive
+            rooms {
+                id
+                name
+                isActive
+                bookings {
+                    id
+                    status
+                    createTime
+                    bookCheckInTime
+                    bookCheckOutTime
+                    patrons {
+                        id
+                    }
+                }
+                roomKind {
+                    id
+                    name
+                }
+            }
+        }
+    }
+`;
+
 export const createFloor = gql`
     mutation createFloor($input: FloorCreateInput!) {
         createFloor(input: $input) {

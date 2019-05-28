@@ -3,9 +3,10 @@
         <form-mutate-
             v-if="input"
             slot-scope="{ close }"
-            success="Thêm khách hàng mới thành công"
             :mutation="createPatron"
             :variables="{ input }"
+            success="Thêm khách hàng mới thành công"
+            @success="close"
         >
             <div class="d-flex">
                 <div>
@@ -28,8 +29,6 @@
                     <div class="m-3">
                         <b-form-select
                             v-model="input.gender"
-                            value-field="value"
-                            text-field="name"
                             :state="!$v.input.gender.$invalid"
                             :options="[
                                 {
@@ -41,22 +40,24 @@
                                     value: false,
                                 },
                             ]"
+                            value-field="value"
+                            text-field="name"
                             class="rounded"
                         />
                     </div>
                     <div class="input-label">Loại khách hàng</div>
                     <query-
                         :query="getPatronKinds"
-                        class="m-3"
                         :poll-interval="0"
+                        class="m-3"
                     >
                         <b-form-select
                             v-model="input.patronKind.id"
                             slot-scope="{ data: { patronKinds } }"
-                            value-field="id"
-                            text-field="name"
                             :state="!$v.input.patronKind.id.$invalid"
                             :options="patronKinds"
+                            value-field="id"
+                            text-field="name"
                             class="rounded"
                         />
                     </query->
@@ -125,11 +126,10 @@
             </div>
             <div class="m-3">
                 <b-button
+                    :disabled="$v.$invalid"
                     class="ml-auto"
                     variant="main"
                     type="submit"
-                    :disabled="$v.$invalid"
-                    @click="close"
                 >
                     <icon- class="mr-1" i="plus" />
                     <span>Thêm</span>
@@ -139,16 +139,13 @@
     </popup->
 </template>
 <script lang="ts">
-import { Component } from 'nuxt-property-decorator';
-import { PopupMixin } from '~/components/mixins/popup';
-import { getPatronKinds } from '~/graphql/documents/patronKind';
-import { createPatron } from '~/graphql/documents/patron';
-import { mixinData } from '~/components/mixins/mutable';
+import { Component, mixins } from 'nuxt-property-decorator';
 import { required, alphaNum, minLength } from 'vuelidate/lib/validators';
-import { PatronCreateInput } from 'graphql/types';
+import { PopupMixin, DataMixin } from '~/components/mixins';
+import { PatronCreateInput } from '~/graphql/types';
+import { getPatronKinds, createPatron } from '~/graphql/documents';
 
 @Component({
-    mixins: [PopupMixin, mixinData({ createPatron, getPatronKinds })],
     name: 'popup-patron-add-',
     validations: {
         input: {
@@ -177,7 +174,10 @@ import { PatronCreateInput } from 'graphql/types';
         },
     },
 })
-export default class extends PopupMixin<void, PatronCreateInput> {
+export default class extends mixins<PopupMixin<void, PatronCreateInput>>(
+    PopupMixin,
+    DataMixin({ createPatron, getPatronKinds }),
+) {
     phoneNumbers: string = '';
 
     onOpen() {

@@ -3,9 +3,10 @@
         <form-mutate-
             v-if="input"
             slot-scope="{ close }"
-            success="Thêm vị trí mới thành công"
             :mutation="createPosition"
             :variables="{ input, getInput }"
+            success="Thêm vị trí mới thành công"
+            @success="close"
         >
             <div class="d-flex">
                 <div>
@@ -19,35 +20,34 @@
                     />
                     <b-checkbox-group-
                         v-model="selected"
-                        title="Nhóm quyền của nhân viên kinh doanh"
                         :options="positionOptionsBusiness"
+                        title="Nhóm quyền của nhân viên kinh doanh"
                     />
                     <b-checkbox-group-
                         v-model="selected"
-                        title="Nhóm quyền của nhân viên hành chính"
                         :options="positionOptionsAdministrative"
+                        title="Nhóm quyền của nhân viên hành chính"
                     />
                 </div>
                 <div>
                     <b-checkbox-group-
                         v-model="selected"
-                        title="Nhóm quyền của nhân viên lễ tân"
                         :options="positionOptionsReceptionist"
+                        title="Nhóm quyền của nhân viên lễ tân"
                     />
                     <b-checkbox-group-
                         v-model="selected"
-                        title="Nhóm quyền của nhân viên dọn dẹp"
                         :options="positionOptionsHouseKeeping"
+                        title="Nhóm quyền của nhân viên dọn dẹp"
                     />
                 </div>
             </div>
             <div class="m-3">
                 <b-button
+                    :disabled="$v.$invalid"
                     class="ml-auto"
                     variant="main"
                     type="submit"
-                    :disabled="$v.$invalid"
-                    @click="close"
                 >
                     <icon- class="mr-1" i="plus" />
                     <span>Thêm</span>
@@ -57,21 +57,19 @@
     </popup->
 </template>
 <script lang="ts">
-import { Component } from 'nuxt-property-decorator';
-import { PopupMixin } from '~/components/mixins/popup';
+import { Component, mixins } from 'nuxt-property-decorator';
+import { PopupMixin, DataMixin } from '~/components/mixins';
 import {
     createPosition,
     positionOptionsAdministrative,
     positionOptionsBusiness,
     positionOptionsReceptionist,
     positionOptionsHouseKeeping,
-} from '~/graphql/documents/position';
-import { mixinData } from '~/components/mixins/mutable';
+} from '~/graphql/documents';
 import { required } from 'vuelidate/lib/validators';
-import { CheckboxOption } from '~/utils/components';
+import { CheckboxOption } from '~/utils';
 
 @Component({
-    mixins: [PopupMixin, mixinData({ createPosition })],
     name: 'popup-position-add-',
     validations: {
         input: {
@@ -79,7 +77,10 @@ import { CheckboxOption } from '~/utils/components';
         },
     },
 })
-export default class extends PopupMixin<void, any> {
+export default class extends mixins<PopupMixin<void, any>>(
+    PopupMixin,
+    DataMixin({ createPosition }),
+) {
     selected: string[] = [];
 
     positionOptionsAdministrative: CheckboxOption[] = [];

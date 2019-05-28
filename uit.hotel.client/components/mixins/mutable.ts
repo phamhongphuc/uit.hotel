@@ -1,23 +1,21 @@
 import { FetchResult } from 'apollo-link';
 import { DocumentNode } from 'graphql';
-import { Prop } from 'nuxt-property-decorator';
-import Vue, { ComponentOptions } from 'vue';
-import { Mixin } from 'vue-mixin-decorator';
+import { Component, Prop, Vue } from 'nuxt-property-decorator';
 import { apolloClientNotify } from '~/modules/apollo';
 import { notify } from '~/plugins/notify';
 
-@Mixin
-export default class extends Vue {
+@Component
+export class MutableMixin extends Vue {
     @Prop({ required: true })
-    mutation!: DocumentNode;
+    protected mutation!: DocumentNode;
 
     @Prop({ default: '' })
-    variables!: object;
+    protected variables!: object;
 
     @Prop({ default: undefined })
-    success: string | undefined;
+    protected success: string | undefined;
 
-    get mutationName(): string | undefined {
+    protected get mutationName(): string | undefined {
         const operation = this.mutation.definitions[0];
         if (
             operation !== undefined &&
@@ -29,7 +27,7 @@ export default class extends Vue {
         return undefined;
     }
 
-    async mutate(): Promise<
+    protected async mutate(): Promise<
         FetchResult<{}, Record<string, any>, Record<string, any>> | undefined
     > {
         const result = await apolloClientNotify({ app: this }).mutate({
@@ -53,18 +51,9 @@ export default class extends Vue {
                         text: this.success,
                     });
                 }
+                this.$emit('success');
             }
         }
         return result;
     }
-}
-
-export function mixinData(data: object): ComponentOptions<Vue> {
-    return {
-        data() {
-            return {
-                ...data,
-            };
-        },
-    };
 }

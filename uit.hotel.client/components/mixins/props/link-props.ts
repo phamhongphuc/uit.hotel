@@ -1,46 +1,44 @@
-import { Prop } from 'nuxt-property-decorator';
-import Vue from 'vue';
-import { Mixin } from 'vue-mixin-decorator';
+import { Vue, Prop, Component } from 'nuxt-property-decorator';
 
-// Copy and convert from bootstrap-vue/es/components/link/link.js
-@Mixin
+// Copy and convert from https://github.com/bootstrap-vue/bootstrap-vue/blob/dev/src/components/link/link.js
+@Component
 export class LinkProps extends Vue {
     @Prop({ default: null })
-    href!: string;
+    protected href!: string;
 
     @Prop({ default: null })
-    rel!: string;
+    protected rel!: string;
 
     @Prop({ default: '_self' })
-    target!: string;
+    protected target!: string;
 
     @Prop({ default: false })
-    active!: boolean;
+    protected active!: boolean;
 
     @Prop({ default: 'active' })
-    activeClass!: string;
+    protected activeClass!: string;
 
     @Prop({ default: false })
-    append!: boolean;
+    protected append!: boolean;
 
     @Prop({ default: false })
-    disabled!: boolean;
+    protected disabled!: boolean;
 
     @Prop({ default: 'click' })
-    event!: [string, any[]];
+    protected event!: [string, any[]];
 
     @Prop({ default: false })
-    exact!: boolean;
+    protected exact!: boolean;
 
     @Prop({ default: 'active' })
-    exactActiveClass!: string;
+    protected exactActiveClass!: string;
 
     @Prop({ default: false })
-    replace!: boolean;
+    protected replace!: boolean;
 
     @Prop({ default: 'a' })
-    routerTag!: string;
+    protected routerTag!: string;
 
     @Prop({ default: null })
-    to!: [string, Record<string, any>];
+    protected to!: [string, Record<string, any>];
 }

@@ -3,21 +3,20 @@
         <template slot-scope="{ close }">
             <div v-if="input">
                 <div class="input-label">Phòng</div>
-                <query- :query="getRooms" class="m-3" :poll-interval="0">
+                <query- :query="getRooms" :poll-interval="0" class="m-3">
                     <b-form-select
                         v-model="input.room.id"
                         slot-scope="{ data: { rooms } }"
-                        value-field="id"
-                        text-field="name"
                         :state="!$v.input.room.$invalid"
                         :options="rooms"
+                        value-field="id"
+                        text-field="name"
                         class="rounded"
                     />
                 </query->
                 <div class="input-label">Khách hàng</div>
                 <div class="m-3 table-inner rounded overflow-hidden">
                     <b-table
-                        class="table-style"
                         :items="input.listOfPatrons"
                         :fields="[
                             {
@@ -42,6 +41,7 @@
                                 class: 'text-center',
                             },
                         ]"
+                        class="table-style"
                     >
                         <template slot="index" slot-scope="data">
                             {{ data.index + 1 }}
@@ -59,9 +59,9 @@
             </div>
             <div class="d-flex m-3">
                 <b-button
+                    :disabled="$v.$invalid"
                     class="ml-auto"
                     variant="main"
-                    :disabled="$v.$invalid"
                     @click="
                         refs.patron_select_or_add.open({
                             callback(id, patron) {
@@ -74,9 +74,9 @@
                     <span>Thêm khách hàng</span>
                 </b-button>
                 <b-button
+                    :disabled="$v.$invalid"
                     class="ml-3"
                     variant="main"
-                    :disabled="$v.$invalid"
                     @click="addBookingToList(close)"
                 >
                     <icon- class="mr-1" i="plus" />
@@ -87,17 +87,21 @@
     </popup->
 </template>
 <script lang="ts">
-import { Component } from 'nuxt-property-decorator';
-import { PopupMixin } from '~/components/mixins/popup';
-import { getPatronKinds } from '~/graphql/documents/patronKind';
-import { getRooms } from '~/graphql/documents/room';
-import { createPatron } from '~/graphql/documents/patron';
-import { mixinData } from '~/components/mixins/mutable';
-import { BookAndCheckInCreateInput, GetRooms } from 'graphql/types';
+import { Component, mixins } from 'nuxt-property-decorator';
 import { required } from 'vuelidate/lib/validators';
+import { PopupMixin, DataMixin } from '~/components/mixins';
+import { BookAndCheckInCreateInput, GetRooms } from '~/graphql/types';
+import { getPatronKinds, getRooms, createPatron } from '~/graphql/documents';
+
+type PopupMixinType = PopupMixin<
+    {
+        booking: BookAndCheckInCreateInput;
+        callback(result: BookAndCheckInCreateInput): void;
+    },
+    BookAndCheckInCreateInput
+>;
 
 @Component({
-    mixins: [PopupMixin, mixinData({ createPatron, getPatronKinds, getRooms })],
     name: 'popup-booking-book-and-check-in-',
     validations: {
         input: {
@@ -105,13 +109,10 @@ import { required } from 'vuelidate/lib/validators';
         },
     },
 })
-export default class extends PopupMixin<
-    {
-        booking: BookAndCheckInCreateInput;
-        callback(result: BookAndCheckInCreateInput): void;
-    },
-    BookAndCheckInCreateInput
-> {
+export default class extends mixins<PopupMixinType>(
+    PopupMixin,
+    DataMixin({ createPatron, getPatronKinds, getRooms }),
+) {
     onOpen() {
         this.input = this.data.booking || {
             bookCheckOutTime: new Date(),

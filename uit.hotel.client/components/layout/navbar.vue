@@ -7,7 +7,16 @@
         sticky
     >
         <b-navbar-nav class="flex-row flex-grow-1 flex-md-grow-0 mb-2 mb-md-0">
-            <b-navbar-toggle target="navbar-collapse" class="mx-1" />
+            <b-navbar-toggle
+                target="sidebar-collapse"
+                class="navbar-toggler-sidebar mx-1"
+            >
+                <icon- i="chevrons-right" />
+            </b-navbar-toggle>
+            <b-navbar-toggle target="navbar-collapse" class="mx-1">
+                <icon- i="menu" />
+            </b-navbar-toggle>
+            <b-nav-item-icon- icon="maximize" @click="fullscreen" />
             <b-nav-item
                 class="font-pacifico font-size-bigger ml-md-2 mx-auto"
                 to="/"
@@ -20,18 +29,18 @@
         <b-collapse
             id="navbar-collapse"
             :class="{ 'navbar-input-focused': isInputFocus }"
-            class="justify-content-end nmx-2 nmx-md-0 px-2 px-md-0"
+            class="justify-content-end mx-n2 mx-md-0 px-2 px-md-0"
             is-nav
         >
             <b-navbar-hr- class="d-md-none" />
 
             <b-navbar-nav class="py-2 flex-fill justify-content-end">
                 <b-nav-item-input-
+                    :focus.sync="isInputFocus"
                     class="flex-fill"
                     reverse-when="md"
                     placeholder="Tìm kiếm..."
                     icon="search"
-                    :focus.sync="isInputFocus"
                 />
                 <b-dropdown
                     class="navar-dropdown d-none d-md-block"
@@ -84,8 +93,8 @@
 </template>
 <script lang="ts">
 import { Vue, namespace, Component } from 'nuxt-property-decorator';
-import { UserState } from 'store/user';
-import { UserLogin } from 'graphql/types';
+import { UserState } from '~/store/user';
+import { UserLogin } from '~/graphql/types';
 
 @Component({
     name: 'navbar-',
@@ -103,25 +112,39 @@ export default class extends Vue {
         (state: UserState) => state.employee || { position: {} },
     ))
     employee!: UserLogin.Employee;
+
+    fullscreen() {
+        document.documentElement.requestFullscreen();
+    }
 }
 </script>
 <style lang="scss">
+.navbar-toggler-sidebar {
+    > .icon {
+        transition: transform 0.2s;
+    }
+    &[aria-expanded='false'] {
+        > .icon {
+            transform: rotate(180deg);
+        }
+    }
+}
 .dropdown-profile {
-    padding: 1rem;
     margin-top: -0.5rem;
+    padding: 1rem;
     > .dropdown-profile-detail {
         height: 3rem;
-        margin-left: 0.75rem;
         margin-right: 2.5rem;
+        margin-left: 0.75rem;
         > .dropdown-profile-detail-name {
             margin-top: 0.25rem;
-            line-height: 1.5rem;
             font-weight: bold;
             font-size: 1rem;
+            line-height: 1.5rem;
         }
         > .dropdown-profile-detail-position {
-            line-height: 1.25rem;
             font-size: 0.8rem;
+            line-height: 1.25rem;
         }
     }
 }

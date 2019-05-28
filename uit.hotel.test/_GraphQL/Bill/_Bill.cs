@@ -29,7 +29,7 @@ namespace uit.hotel.test._GraphQL
                     },
                     bill = new { patron = new { id = 1 } }
                 },
-                p => p.PermissionManageHiringRoom = true
+                p => p.PermissionManageRentingRoom = true
             );
         }
 
@@ -52,7 +52,7 @@ namespace uit.hotel.test._GraphQL
                     },
                     bill = new { patron = new { id = 1 } }
                 },
-                p => p.PermissionManageHiringRoom = true
+                p => p.PermissionManageRentingRoom = true
             );
         }
 
@@ -75,7 +75,7 @@ namespace uit.hotel.test._GraphQL
                     },
                     bill = new { patron = new { id = 100 } }
                 },
-                p => p.PermissionManageHiringRoom = true
+                p => p.PermissionManageRentingRoom = true
             );
         }
 
@@ -98,7 +98,7 @@ namespace uit.hotel.test._GraphQL
                     },
                     bill = new { patron = new { id = 1 } }
                 },
-                p => p.PermissionManageHiringRoom = true
+                p => p.PermissionManageRentingRoom = true
             );
         }
 
@@ -127,7 +127,7 @@ namespace uit.hotel.test._GraphQL
                     },
                     bill = new { patron = new { id = 1 } }
                 },
-                p => p.PermissionManageHiringRoom = true
+                p => p.PermissionManageRentingRoom = true
             );
         }
 
@@ -159,7 +159,7 @@ namespace uit.hotel.test._GraphQL
                     },
                     bill = new { patron = new { id = 1 } }
                 },
-                p => p.PermissionManageHiringRoom = true
+                p => p.PermissionManageRentingRoom = true
             );
         }
 
@@ -191,7 +191,7 @@ namespace uit.hotel.test._GraphQL
                     },
                     bill = new { patron = new { id = 1 } }
                 },
-                p => p.PermissionManageHiringRoom = true
+                p => p.PermissionManageRentingRoom = true
             );
         }
 
@@ -227,7 +227,7 @@ namespace uit.hotel.test._GraphQL
                         patron = new { id = 1 }
                     }
                 },
-                p => p.PermissionManageHiringRoom = true
+                p => p.PermissionManageRentingRoom = true
             );
         }
 
@@ -254,7 +254,7 @@ namespace uit.hotel.test._GraphQL
                         patron = new { id = 1 }
                     }
                 },
-                p => p.PermissionManageHiringRoom = true
+                p => p.PermissionManageRentingRoom = true
             );
         }
 
@@ -281,7 +281,7 @@ namespace uit.hotel.test._GraphQL
                         patron = new { id = 100 }
                     }
                 },
-                p => p.PermissionManageHiringRoom = true
+                p => p.PermissionManageRentingRoom = true
             );
         }
 
@@ -308,7 +308,7 @@ namespace uit.hotel.test._GraphQL
                         patron = new { id = 1 }
                     }
                 },
-                p => p.PermissionManageHiringRoom = true
+                p => p.PermissionManageRentingRoom = true
             );
         }
         [TestMethod]
@@ -334,7 +334,7 @@ namespace uit.hotel.test._GraphQL
                         patron = new { id = 1 }
                     }
                 },
-                p => p.PermissionManageHiringRoom = true
+                p => p.PermissionManageRentingRoom = true
             );
         }
 
@@ -370,7 +370,7 @@ namespace uit.hotel.test._GraphQL
                         patron = new { id = 1 }
                     }
                 },
-                p => p.PermissionManageHiringRoom = true
+                p => p.PermissionManageRentingRoom = true
             );
         }
 
@@ -413,7 +413,7 @@ namespace uit.hotel.test._GraphQL
                         patron = new { id = 1 }
                     }
                 },
-                p => p.PermissionManageHiringRoom = true
+                p => p.PermissionManageRentingRoom = true
             );
         }
 

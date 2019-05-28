@@ -1,0 +1,21 @@
+$axis-types: width height;
+
+@each $axis in $axis-types {
+    $short: str-slice($axis, 0, 1);
+    .#{$short}-fit {
+        #{$axis}: fit-content !important;
+    }
+
+    .#{$short}-0 {
+        #{$axis}: 0 !important;
+    }
+}
+
+$position-types: top right bottom left;
+
+@each $position in $position-types {
+    $short: str-slice($position, 0, 1);
+    .#{$short}-0 {
+        #{$position}: 0;
+    }
+}

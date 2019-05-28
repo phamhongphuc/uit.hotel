@@ -2,10 +2,11 @@
     <popup- ref="popup" title="Cập nhật vị trí">
         <form-mutate-
             v-if="input"
-            slot-scope="{ data: { employee }, close }"
-            success="Cập nhật vị trí mới thành công"
+            slot-scope="{ close }"
             :mutation="updateEmployee"
             :variables="{ input }"
+            success="Cập nhật vị trí mới thành công"
+            @success="close"
         >
             <div class="d-flex">
                 <div>
@@ -30,16 +31,16 @@
                     <div class="input-label">Vị trí</div>
                     <query-
                         :query="getPositions"
-                        class="m-3"
                         :poll-interval="0"
+                        class="m-3"
                     >
                         <b-form-select
                             v-model="input.position.id"
                             slot-scope="{ data: { positions } }"
-                            value-field="id"
-                            text-field="name"
                             :state="!$v.input.position.id.$invalid"
                             :options="positions"
+                            value-field="id"
+                            text-field="name"
                             class="rounded"
                         />
                     </query->
@@ -58,8 +59,6 @@
                             <div class="m-3">
                                 <b-form-select
                                     v-model="input.gender"
-                                    value-field="value"
-                                    text-field="name"
                                     :state="!$v.input.gender.$invalid"
                                     :options="[
                                         {
@@ -71,6 +70,8 @@
                                             value: false,
                                         },
                                     ]"
+                                    value-field="value"
+                                    text-field="name"
                                     class="rounded"
                                 />
                             </div>
@@ -119,11 +120,10 @@
             </div>
             <div class="m-3">
                 <b-button
+                    :disabled="$v.$invalid"
                     class="ml-auto"
                     variant="main"
                     type="submit"
-                    :disabled="$v.$invalid"
-                    @click="close"
                 >
                     <icon- class="mr-1" i="plus" />
                     <span>Cập nhật</span>
@@ -133,16 +133,18 @@
     </popup->
 </template>
 <script lang="ts">
-import { Component } from 'nuxt-property-decorator';
-import { PopupMixin } from '~/components/mixins/popup';
-import { updateEmployee } from '~/graphql/documents/employee';
-import { getPositions } from '~/graphql/documents/position';
-import { mixinData } from '~/components/mixins/mutable';
+import { Component, mixins } from 'nuxt-property-decorator';
 import { required, email, alphaNum } from 'vuelidate/lib/validators';
-import { EmployeeUpdateInput, GetEmployees } from 'graphql/types';
+import { PopupMixin, DataMixin } from '~/components/mixins';
+import { EmployeeUpdateInput, GetEmployees } from '~/graphql/types';
+import { updateEmployee, getPositions } from '~/graphql/documents';
+
+type PopupMixinType = PopupMixin<
+    { employee: GetEmployees.Employees },
+    EmployeeUpdateInput
+>;
 
 @Component({
-    mixins: [PopupMixin, mixinData({ updateEmployee, getPositions })],
     name: 'popup-employee-update-',
     validations: {
         input: {
@@ -162,10 +164,10 @@ import { EmployeeUpdateInput, GetEmployees } from 'graphql/types';
         },
     },
 })
-export default class extends PopupMixin<
-    { employee: GetEmployees.Employees },
-    EmployeeUpdateInput
-> {
+export default class extends mixins<PopupMixinType>(
+    PopupMixin,
+    DataMixin({ updateEmployee, getPositions }),
+) {
     onOpen() {
         const {
             id,

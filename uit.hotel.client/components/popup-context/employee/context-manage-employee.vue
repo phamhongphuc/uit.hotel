@@ -10,7 +10,7 @@
             <b-nav-item-icon-mutate-
                 :mutation="setIsActiveAccount"
                 :variables="{ id: employee.id, isActive: !employee.isActive }"
-                :icon="employee.isActive ? '' : ''"
+                :icon="employee.isActive ? 'x' : 'chevrons-up'"
                 :text="
                     employee.isActive
                         ? 'Vô hiệu hóa nhân viên'
@@ -21,14 +21,15 @@
     </context->
 </template>
 <script lang="ts">
-import { Component } from 'nuxt-property-decorator';
-import { ContextMixin } from '~/components/mixins/context';
-import { setIsActiveAccount } from '~/graphql/documents/employee';
-import { mixinData } from '~/components/mixins/mutable';
+import { Component, mixins } from 'nuxt-property-decorator';
+import { ContextMixin, DataMixin } from '~/components/mixins';
+import { setIsActiveAccount } from '~/graphql/documents';
 
 @Component({
     name: 'context-manage-employee-',
-    mixins: [ContextMixin, mixinData({ setIsActiveAccount })],
 })
-export default class extends ContextMixin {}
+export default class extends mixins<ContextMixin>(
+    ContextMixin,
+    DataMixin({ setIsActiveAccount }),
+) {}
 </script>

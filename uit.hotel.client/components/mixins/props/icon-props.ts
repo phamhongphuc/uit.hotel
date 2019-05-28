@@ -1,9 +1,7 @@
-import { Prop } from 'nuxt-property-decorator';
-import Vue from 'vue';
-import { Mixin } from 'vue-mixin-decorator';
+import { Vue, Prop, Component } from 'nuxt-property-decorator';
 
-@Mixin
+@Component
 export class IconProps extends Vue {
     @Prop({ default: null })
-    icon!: string;
+    protected icon!: string;
 }

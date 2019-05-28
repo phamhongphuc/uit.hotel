@@ -3,9 +3,10 @@
         <form-mutate-
             v-if="input"
             slot-scope="{ close }"
-            success="Thêm khách hàng mới thành công"
             :mutation="createPatron"
             :variables="{ input }"
+            success="Thêm khách hàng mới thành công"
+            @success="close"
         >
             <template slot-scope="{ mutate }">
                 <div class="d-flex">
@@ -29,8 +30,6 @@
                         <div class="m-3">
                             <b-form-select
                                 v-model="input.gender"
-                                value-field="value"
-                                text-field="name"
                                 :state="!$v.input.gender.$invalid"
                                 :options="[
                                     {
@@ -42,22 +41,24 @@
                                         value: false,
                                     },
                                 ]"
+                                value-field="value"
+                                text-field="name"
                                 class="rounded"
                             />
                         </div>
                         <div class="input-label">Loại khách hàng</div>
                         <query-
                             :query="getPatronKinds"
-                            class="m-3"
                             :poll-interval="0"
+                            class="m-3"
                         >
                             <b-form-select
                                 v-model="input.patronKind.id"
                                 slot-scope="{ data: { patronKinds } }"
-                                value-field="id"
-                                text-field="name"
                                 :state="!$v.input.patronKind.id.$invalid"
                                 :options="patronKinds"
+                                value-field="id"
+                                text-field="name"
                                 class="rounded"
                             />
                         </query->
@@ -147,9 +148,9 @@
                         </b-button>
                         <b-button
                             v-if="!currentPatron(patrons)"
+                            :disabled="$v.$invalid"
                             class="ml-auto"
                             variant="main"
-                            :disabled="$v.$invalid"
                             @click="addAndSelect(close, mutate)"
                         >
                             <icon- class="mr-1" i="plus" />
@@ -162,19 +163,13 @@
     </popup->
 </template>
 <script lang="ts">
-import { Component } from 'nuxt-property-decorator';
-import { PopupMixin } from '~/components/mixins/popup';
-import { getPatronKinds } from '~/graphql/documents/patronKind';
-import { createPatron, getPatrons } from '~/graphql/documents/patron';
-import { mixinData } from '~/components/mixins/mutable';
+import { Component, mixins } from 'nuxt-property-decorator';
 import { required, alphaNum, minLength } from 'vuelidate/lib/validators';
-import { CreatePatron, PatronCreateInput, GetPatrons } from 'graphql/types';
+import { PopupMixin, DataMixin } from '~/components/mixins';
+import { CreatePatron, PatronCreateInput, GetPatrons } from '~/graphql/types';
+import { getPatronKinds, createPatron, getPatrons } from '~/graphql/documents';
 
 @Component({
-    mixins: [
-        PopupMixin,
-        mixinData({ createPatron, getPatronKinds, getPatrons }),
-    ],
     name: 'popup-patron-select-or-add-',
     validations: {
         input: {
@@ -203,12 +198,12 @@ import { CreatePatron, PatronCreateInput, GetPatrons } from 'graphql/types';
         },
     },
 })
-export default class extends PopupMixin<
-    { callback(id: number, patron: GetPatrons.Patrons) },
-    PatronCreateInput | null
-> {
-    // input: PatronCreateInput | null = null;
-
+export default class extends mixins<
+    PopupMixin<
+        { callback(id: number, patron: GetPatrons.Patrons) },
+        PatronCreateInput
+    >
+>(PopupMixin, DataMixin({ createPatron, getPatronKinds, getPatrons })) {
     phoneNumbers: string = '';
 
     onOpen() {
@@ -246,8 +241,11 @@ export default class extends PopupMixin<
         return patrons.find(p => p.identification === identification);
     }
 
-    async addAndSelect(close: Function, mutate: Function) {
-        const { data }: { data: CreatePatron.Mutation } = await mutate();
+    async addAndSelect(
+        close: Function,
+        mutate: () => Promise<{ data: CreatePatron.Mutation }>,
+    ) {
+        const { data } = await mutate();
         this.data.callback(data.createPatron.id, data.createPatron);
         close();
     }

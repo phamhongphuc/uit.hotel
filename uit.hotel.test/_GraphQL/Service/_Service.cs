@@ -192,7 +192,7 @@ namespace uit.hotel.test._GraphQL
                 Name = "Tên dịch vụ",
                 Unit = "Đơn vị"
             })).Wait();
-            
+
             SchemaHelper.ExecuteAndExpectError(
                 "Dịch vụ 31 đã ngừng cung cấp. Không thể cập nhật/xóa!",
                 @"/_GraphQL/Service/mutation.updateService.gql",

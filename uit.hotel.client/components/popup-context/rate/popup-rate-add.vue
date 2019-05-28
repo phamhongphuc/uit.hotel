@@ -3,25 +3,26 @@
         <form-mutate-
             v-if="input"
             slot-scope="{ close }"
-            success="Thêm giá cơ bản mới thành công"
             :mutation="createRate"
             :variables="{ input }"
+            success="Thêm giá cơ bản mới thành công"
+            @success="close"
         >
             <div class="d-flex">
                 <div>
                     <div class="input-label">Loại phòng</div>
                     <query-
                         :query="getRoomKinds"
-                        class="m-3"
                         :poll-interval="0"
+                        class="m-3"
                     >
                         <b-form-select
                             v-model="input.roomKind.id"
                             slot-scope="{ data: { roomKinds } }"
-                            value-field="id"
-                            text-field="name"
                             :state="!$v.input.roomKind.$invalid"
                             :options="roomKinds"
+                            value-field="id"
+                            text-field="name"
                             class="rounded"
                         />
                     </query->
@@ -81,11 +82,10 @@
             </div>
             <div class="d-flex m-3">
                 <b-button
+                    :disabled="$v.$invalid"
                     class="ml-auto"
                     variant="main"
                     type="submit"
-                    :disabled="$v.$invalid"
-                    @click="close"
                 >
                     <icon- class="mr-1" i="plus" />
                     <span>Thêm</span>
@@ -95,16 +95,18 @@
     </popup->
 </template>
 <script lang="ts">
-import { Component } from 'nuxt-property-decorator';
-import { mixinData } from '~/components/mixins/mutable';
-import { PopupMixin } from '~/components/mixins/popup';
-import { createRate } from '~/graphql/documents/rate';
-import { RateCreateInput, GetRoomKinds } from 'graphql/types';
-import { getRoomKinds } from '~/graphql/documents/room-kind';
+import { Component, mixins } from 'nuxt-property-decorator';
 import { required } from 'vuelidate/lib/validators';
+import { DataMixin, PopupMixin } from '~/components/mixins';
+import { RateCreateInput, GetRoomKinds } from '~/graphql/types';
+import { createRate, getRoomKinds } from '~/graphql/documents';
+
+type PopupMixinType = PopupMixin<
+    { roomKind: GetRoomKinds.RoomKinds },
+    RateCreateInput
+>;
 
 @Component({
-    mixins: [PopupMixin, mixinData({ createRate, getRoomKinds })],
     name: 'popup-rate-add-',
     validations: {
         input: {
@@ -119,10 +121,10 @@ import { required } from 'vuelidate/lib/validators';
         },
     },
 })
-export default class extends PopupMixin<
-    { roomKind: GetRoomKinds.RoomKinds },
-    RateCreateInput
-> {
+export default class extends mixins<PopupMixinType>(
+    PopupMixin,
+    DataMixin({ createRate, getRoomKinds }),
+) {
     onOpen() {
         const self = this;
         this.input = {

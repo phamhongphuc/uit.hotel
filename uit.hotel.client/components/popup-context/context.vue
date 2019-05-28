@@ -2,8 +2,8 @@
     <b-nav
         v-show="show"
         v-on-clickaway="close"
-        class="context-menu"
         :style="style"
+        class="context-menu"
         tabindex="-1"
         @click="onClick"
         @contextmenu.capture.prevent
@@ -13,14 +13,13 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop, Watch } from 'nuxt-property-decorator';
-import { mixin as clickaway } from 'vue-clickaway';
+import { Component, Prop, Watch, mixins } from 'nuxt-property-decorator';
+import { ClickawayMixin } from '~/components/mixins/clickaway';
 
 @Component({
-    mixins: [clickaway],
     name: 'context-',
 })
-export default class extends Vue {
+export default class extends mixins<ClickawayMixin>(ClickawayMixin) {
     @Prop({ default: true, type: Boolean })
     closeOnClick!: boolean;
 
@@ -119,38 +118,38 @@ export default class extends Vue {
 </script>
 <style lang="scss">
 .context-menu {
-    background: $white;
-    box-shadow: $box-shadow-context;
-    border-radius: $border-radius;
-    display: block;
     position: fixed;
-    padding: #{0.25 * $context-size} 0;
     z-index: 1;
+    display: block;
+    padding: #{0.25 * $context-size} 0;
+    background: $white;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow-context;
     .nav-item-icon {
         &:hover {
             background: rgba($black, 0.05);
         }
         > .nav-link {
             display: flex;
-            line-height: $context-size;
             padding: 0.25rem 1rem 0.25rem 0.5rem;
+            line-height: $context-size;
             > .icon {
                 display: block;
-                text-align: center;
-                font-size: 0.5 * $context-size;
-                margin-right: 0.125 * $context-size;
-                padding: 0;
                 width: $context-size;
                 min-width: $context-size;
                 min-height: $context-size;
+                margin-right: 0.125 * $context-size;
+                padding: 0;
+                font-size: 0.5 * $context-size;
                 line-height: $context-size;
+                text-align: center;
             }
         }
     }
     .context-hr {
         width: calc(100% - 2rem);
-        margin: auto;
         height: 1.5px;
+        margin: auto;
         background: $border-color;
     }
 }

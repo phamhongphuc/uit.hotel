@@ -1,21 +1,19 @@
-import { Prop } from 'nuxt-property-decorator';
-import Vue from 'vue';
-import { Mixin } from 'vue-mixin-decorator';
+import { Vue, Prop, Component } from 'nuxt-property-decorator';
 
-@Mixin
+@Component
 export class ImageProps extends Vue {
     @Prop({ default: '' })
-    image!: string;
+    protected image!: string;
 
     @Prop({ default: 0 })
-    imageWidth!: number;
+    protected imageWidth!: number;
 
     @Prop({ default: 0 })
-    imageHeight!: number;
+    protected imageHeight!: number;
 
     @Prop({ default: '' })
-    imageClass!: string;
+    protected imageClass!: string;
 
     @Prop({ default: false })
-    circle!: boolean;
+    protected circle!: boolean;
 }

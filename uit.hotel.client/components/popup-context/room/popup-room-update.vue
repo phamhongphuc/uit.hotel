@@ -2,32 +2,33 @@
     <popup- ref="popup" title="Cập nhật phòng">
         <form-mutate-
             v-if="input"
-            slot-scope="{ data: { room }, close }"
-            success="Cập nhật phòng mới thành công"
+            slot-scope="{ close }"
             :mutation="updateRoom"
             :variables="{ input }"
+            success="Cập nhật phòng mới thành công"
+            @success="close"
         >
             <div class="input-label">Tầng</div>
-            <query- :query="getFloors" class="m-3" :poll-interval="0">
+            <query- :query="getFloors" :poll-interval="0" class="m-3">
                 <b-form-select
                     v-model="input.floor.id"
                     slot-scope="{ data: { floors } }"
-                    value-field="id"
-                    text-field="name"
                     :state="!$v.input.floor.$invalid"
                     :options="floors"
+                    value-field="id"
+                    text-field="name"
                     class="rounded"
                 />
             </query->
             <div class="input-label">Loại phòng</div>
-            <query- :query="getRoomKinds" class="m-3" :poll-interval="0">
+            <query- :query="getRoomKinds" :poll-interval="0" class="m-3">
                 <b-form-select
                     v-model="input.roomKind.id"
                     slot-scope="{ data: { roomKinds } }"
-                    value-field="id"
-                    text-field="name"
                     :state="!$v.input.roomKind.id.$invalid"
                     :options="roomKinds"
+                    value-field="id"
+                    text-field="name"
                     class="rounded"
                 />
             </query->
@@ -41,11 +42,10 @@
             />
             <div class="m-3">
                 <b-button
+                    :disabled="$v.$invalid"
                     class="ml-auto"
                     variant="main"
                     type="submit"
-                    :disabled="$v.$invalid"
-                    @click="close"
                 >
                     <icon- class="mr-1" i="plus" />
                     <span>Cập nhật</span>
@@ -55,22 +55,21 @@
     </popup->
 </template>
 <script lang="ts">
-import { Component } from 'nuxt-property-decorator';
-import { PopupMixin } from '~/components/mixins/popup';
+import { Component, mixins } from 'nuxt-property-decorator';
+import { PopupMixin, DataMixin } from '~/components/mixins';
 import { GetFloors, RoomUpdateInput } from '~/graphql/types';
-import { mixinData } from '~/components/mixins/mutable';
-import { getFloors } from '~/graphql/documents/floor';
+import { getFloors, updateRoom, getRoomKinds } from '~/graphql/documents';
 import { required } from 'vuelidate/lib/validators';
-import { updateRoom } from '~/graphql/documents/room';
-import { getRoomKinds } from '~/graphql/documents/room-kind';
 
-interface PopupRoomUpdateInput {
-    room: GetFloors.Rooms;
-    floor: GetFloors.Floors;
-}
+type PopupMixinType = PopupMixin<
+    {
+        room: GetFloors.Rooms;
+        floor: GetFloors.Floors;
+    },
+    RoomUpdateInput
+>;
 
 @Component({
-    mixins: [PopupMixin, mixinData({ updateRoom, getRoomKinds, getFloors })],
     name: 'popup-room-add-',
     validations: {
         input: {
@@ -84,7 +83,10 @@ interface PopupRoomUpdateInput {
         },
     },
 })
-export default class extends PopupMixin<PopupRoomUpdateInput, RoomUpdateInput> {
+export default class extends mixins<PopupMixinType>(
+    PopupMixin,
+    DataMixin({ updateRoom, getRoomKinds, getFloors }),
+) {
     onOpen() {
         const {
             room: { id, name, roomKind },

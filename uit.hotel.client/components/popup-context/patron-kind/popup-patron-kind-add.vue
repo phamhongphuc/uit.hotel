@@ -3,9 +3,10 @@
         <form-mutate-
             v-if="input"
             slot-scope="{ close }"
-            success="Thêm khách hàng mới thành công"
             :mutation="createPatronKind"
             :variables="{ input }"
+            success="Thêm khách hàng mới thành công"
+            @success="close"
         >
             <div class="input-label">Tên loại khách hàng</div>
             <b-input-
@@ -24,11 +25,10 @@
             />
             <div class="m-3">
                 <b-button
+                    :disabled="$v.$invalid"
                     class="ml-auto"
                     variant="main"
                     type="submit"
-                    :disabled="$v.$invalid"
-                    @click="close"
                 >
                     <icon- class="mr-1" i="plus" />
                     <span>Thêm</span>
@@ -38,15 +38,13 @@
     </popup->
 </template>
 <script lang="ts">
-import { Component } from 'nuxt-property-decorator';
-import { PopupMixin } from '~/components/mixins/popup';
-import { createPatronKind } from '~/graphql/documents/patronKind';
-import { mixinData } from '~/components/mixins/mutable';
+import { Component, mixins } from 'nuxt-property-decorator';
 import { required } from 'vuelidate/lib/validators';
-import { PatronKindCreateInput } from 'graphql/types';
+import { PopupMixin, DataMixin } from '~/components/mixins';
+import { PatronKindCreateInput } from '~/graphql/types';
+import { createPatronKind } from '~/graphql/documents';
 
 @Component({
-    mixins: [PopupMixin, mixinData({ createPatronKind })],
     name: 'popup-patron-kind-add-',
     validations: {
         input: {
@@ -55,7 +53,10 @@ import { PatronKindCreateInput } from 'graphql/types';
         },
     },
 })
-export default class extends PopupMixin<void, PatronKindCreateInput> {
+export default class extends mixins<PopupMixin<void, PatronKindCreateInput>>(
+    PopupMixin,
+    DataMixin({ createPatronKind }),
+) {
     onOpen() {
         this.input = {
             name: '',

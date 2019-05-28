@@ -106,6 +106,9 @@ type AppMutation {
     # Xóa một giá biến động
     deleteVolatilityRate(id: ID!): String!
 
+    # Khởi tạo tài khoản admin
+    initializeAdminAccount(email: String!, password: String!): String!
+
     # Khởi tạo dữ liệu
     initializeDatabase: String!
 
@@ -213,6 +216,9 @@ type AppQuery {
 
     # Trả về một danh sách các công việc dọn dẹp
     houseKeepings: [HouseKeeping!]!
+
+    # Kiểm tra
+    isInitialized: Boolean!
 
     # Trả về thông tin một khách hàng
     patron(id: ID!): Patron!
@@ -562,7 +568,7 @@ type Floor {
     name: String!
 
     # Danh sách các phòng có trong tầng
-    rooms: [Room]
+    rooms: [Room!]!
 }
 
 input FloorCreateInput {
@@ -825,9 +831,6 @@ type Position {
     # Quyền quản lý thông tin nhân viên
     permissionManageEmployee: Boolean!
 
-    # Quyền quản lý thuê phòng
-    permissionManageHiringRoom: Boolean!
-
     # Quyền chỉnh sửa sơ đồ
     permissionManageMap: Boolean!
 
@@ -842,6 +845,9 @@ type Position {
 
     # Quyền quản lý giá cơ bản và giá biến động
     permissionManageRate: Boolean!
+
+    # Quyền quản lý thuê phòng
+    permissionManageRentingRoom: Boolean!
 
     # Quyền quản lý dịch vụ
     permissionManageService: Boolean!
@@ -876,7 +882,7 @@ input PositionCreateInput {
     permissionManageEmployee: Boolean!
 
     # Quyền quản lý thuê phòng
-    permissionManageHiringRoom: Boolean!
+    permissionManageRentingRoom: Boolean!
 
     # Quyền quản lý khách hàng
     permissionManagePatron: Boolean!
@@ -935,7 +941,7 @@ input PositionUpdateInput {
     permissionManageEmployee: Boolean!
 
     # Quyền quản lý thuê phòng
-    permissionManageHiringRoom: Boolean!
+    permissionManageRentingRoom: Boolean!
 
     # Quyền chỉnh sửa sơ đồ
     permissionManageMap: Boolean!
@@ -1082,7 +1088,7 @@ input ReceiptCreateInput {
 # Một phòng trong khách sạn
 type Room {
     # Danh sách thông tin thuê phòng
-    bookings: [Booking]
+    bookings: [Booking!]!
 
     # Đơn đặt phòng hiện tại
     currentBooking(from: DateTimeOffset!, to: DateTimeOffset!): Booking

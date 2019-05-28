@@ -1,9 +1,7 @@
-import { Prop } from 'nuxt-property-decorator';
-import Vue from 'vue';
-import { Mixin } from 'vue-mixin-decorator';
+import { Vue, Prop, Component } from 'nuxt-property-decorator';
 
-@Mixin
+@Component
 export class StateProps extends Vue {
     @Prop({ default: null })
-    state!: [boolean, string];
+    protected state!: [boolean, string];
 }

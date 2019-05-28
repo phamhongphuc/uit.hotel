@@ -1,14 +1,10 @@
 @mixin icon {
+    font-weight: normal;
     font-family: 'ai-web-font', serif !important;
     font-style: normal;
-    font-weight: normal;
     font-variant: normal;
     text-transform: none;
     user-select: none;
-    // line-height: 1;
-    -webkit-user-select: none;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 }
 
 @mixin transition-all {
@@ -16,13 +12,18 @@
 }
 
 @mixin white-card {
-    box-shadow: $box-shadow;
     background: $white;
     border-radius: $border-radius;
+    box-shadow: $box-shadow;
 }
 
 @mixin fit-image {
-    height: 100%;
     width: 100%;
+    height: 100%;
     object-fit: cover;
+}
+
+@mixin row-like {
+    margin-right: $grid-gutter-width / -2;
+    margin-left: $grid-gutter-width / -2;
 }
