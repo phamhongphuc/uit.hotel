@@ -1,0 +1,69 @@
+variables:
+    target_folder: $(NUGET_PACKAGES)
+    sourcefolder: $(Build.SourcesDirectory)
+
+    NUGET_PACKAGES: $(sourcefolder)/packages
+    dotnet_core_artifacts: "d09745d0-213d-4136-bcd1-78ba4998212a"
+    nodejs_artifacts: "112b6df3-39ce-4dc9-a4ed-df6940f01b04"
+
+    server_path: "uit.hotel"
+    client_path: "uit.hotel.client"
+
+    key_file: "**/*.csproj, **/*.sln"
+    obj_path: $(server_path)/obj
+    obj_cache: $(target_folder)/$(obj_path)
+    obj_project: $(sourcefolder)/$(obj_path)
+
+jobs:
+    - job: DotNetCore
+      pool:
+          vmImage: "ubuntu-latest"
+      steps:
+          - task: RestoreAndSaveCache@1
+            displayName: "[Cache] Restore artifact based on: $(key_file)"
+            inputs:
+                keyfile: $(key_file)
+                targetfolder: "$(target_folder)"
+                vstsFeed: $(dotnet_core_artifacts)
+
+          - script: |
+                mkdir -p $(obj_cache)
+                mkdir -p $(obj_project)
+                cp $(obj_cache)/* $(obj_project)/ || true
+            displayName: "[Copy] Copy from cache"
+
+          - script: dotnet --info
+            displayName: "[Server] dotnet --info"
+
+          - script: dotnet restore
+            displayName: "[Server] Dotnet restore"
+
+          - script: |
+                mkdir -p $(obj_cache)
+                mkdir -p $(obj_project)
+                cp $(obj_project)/* $(obj_cache)/ || true
+            displayName: "[Copy] Copy to cache"
+
+          - script: dotnet build --no-restore
+            displayName: "[Server] dotnet build"
+    - job: NodeJS
+      pool:
+          vmImage: "ubuntu-latest"
+      steps:
+          - task: RestoreAndSaveCache@1
+            displayName: "[Cache] Restore artifact based on: yarn.lock"
+            inputs:
+                keyfile: "**/yarn.lock, !**/node_modules/**/yarn.lock, !**/.*/**/yarn.lock"
+                targetfolder: "**/node_modules, !**/node_modules/**/node_modules"
+                vstsFeed: "$(nodejs_artifacts)"
+
+          - task: UseNode@1
+            inputs:
+                version: "10.15.3"
+            displayName: "[Client] Install NodeJS"
+
+          - script: |
+                cd $(client_path)
+                yarn
+                yarn build
+            displayName: "[Client] yarn install & yarn build"
