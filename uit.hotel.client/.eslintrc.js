@@ -45,10 +45,6 @@ const config = {
     settings: {
         cache: true,
         'import/resolver': {
-            'babel-plugin-root-import': {
-                rootPathPrefix: '~',
-                rootPathSuffix: '',
-            },
             typescript: {},
         },
         'import/parsers': {
