@@ -36,12 +36,6 @@
                         <td>
                             <b-button
                                 :variant="floor.isActive ? 'main' : 'gray'"
-                                @contextmenu.prevent="
-                                    $refs.context_floor.open($event, {
-                                        floors: floors,
-                                        floor,
-                                    })
-                                "
                             >
                                 Tầng {{ floor.name }}
                             </b-button>
