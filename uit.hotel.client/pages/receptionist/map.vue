@@ -61,7 +61,7 @@
                                 "
                                 @click="toggle(room)"
                             >
-                                {{ room.name }}
+                                Phòng {{ room.name }}
                                 <br />
                                 {{ room.roomKind.name }}
                             </b-button>
