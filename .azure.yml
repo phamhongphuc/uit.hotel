@@ -1,18 +1,24 @@
 variables:
-    target_folder: $(NUGET_PACKAGES)
-    sourcefolder: $(Build.SourcesDirectory)
+    folder_root: $(Build.SourcesDirectory)
+    folder_packages: $(folder_root)/packages
+    NUGET_PACKAGES: $(folder_packages)
 
-    NUGET_PACKAGES: $(sourcefolder)/packages
-    dotnet_core_artifacts: "d09745d0-213d-4136-bcd1-78ba4998212a"
-    nodejs_artifacts: "112b6df3-39ce-4dc9-a4ed-df6940f01b04"
+    artifacts_dotnet_core: "d09745d0-213d-4136-bcd1-78ba4998212a"
+    artifacts_nodejs: "112b6df3-39ce-4dc9-a4ed-df6940f01b04"
 
-    server_path: "uit.hotel"
-    client_path: "uit.hotel.client"
+    path_server: "uit.hotel"
+    path_server_test: "uit.hotel.test"
+    path_client: "uit.hotel.client"
 
-    key_file: "**/*.csproj, **/*.sln"
-    obj_path: $(server_path)/obj
-    obj_cache: $(target_folder)/$(obj_path)
-    obj_project: $(sourcefolder)/$(obj_path)
+    dotnet_key_file: "**/*.csproj, **/*.sln, **/.azure.yml"
+
+    obj_path: $(path_server)/obj
+    obj_cache: $(folder_packages)/$(obj_path)
+    obj_project: $(folder_root)/$(obj_path)
+
+    obj_test_path: $(path_server_test)/obj
+    obj_test_cache: $(folder_packages)/$(obj_test_path)
+    obj_test_project: $(folder_root)/$(obj_test_path)
 
 jobs:
     - job: DotNetCore
@@ -20,16 +26,24 @@ jobs:
           vmImage: "ubuntu-latest"
       steps:
           - task: RestoreAndSaveCache@1
-            displayName: "[Cache] Restore artifact based on: $(key_file)"
+            displayName: "[Cache] Restore artifact based on: $(dotnet_key_file)"
             inputs:
-                keyfile: $(key_file)
-                targetfolder: "$(target_folder)"
-                vstsFeed: $(dotnet_core_artifacts)
+                keyfile: $(dotnet_key_file)
+                targetfolder: "$(folder_packages)"
+                vstsFeed: $(artifacts_dotnet_core)
 
           - script: |
                 mkdir -p $(obj_cache)
                 mkdir -p $(obj_project)
                 cp $(obj_cache)/* $(obj_project)/ || true
+                ls $(obj_cache)
+                ls $(obj_project)
+
+                mkdir -p $(obj_test_cache)
+                mkdir -p $(obj_test_project)
+                cp $(obj_test_cache)/* $(obj_test_project)/ || true
+                ls $(obj_test_cache)
+                ls $(obj_test_project)
             displayName: "[Copy] Copy from cache"
 
           - script: dotnet --info
@@ -42,10 +56,21 @@ jobs:
                 mkdir -p $(obj_cache)
                 mkdir -p $(obj_project)
                 cp $(obj_project)/* $(obj_cache)/ || true
+                ls $(obj_cache)
+                ls $(obj_project)
+
+                mkdir -p $(obj_test_cache)
+                mkdir -p $(obj_test_project)
+                cp $(obj_test_project)/* $(obj_test_cache)/ || true
+                ls $(obj_test_cache)
+                ls $(obj_test_project)
             displayName: "[Copy] Copy to cache"
 
           - script: dotnet build --no-restore
             displayName: "[Server] dotnet build"
+
+          - script: dotnet test --no-build
+            displayName: "[Server] dotnet test"
     - job: NodeJS
       pool:
           vmImage: "ubuntu-latest"
@@ -55,7 +80,7 @@ jobs:
             inputs:
                 keyfile: "**/yarn.lock, !**/node_modules/**/yarn.lock, !**/.*/**/yarn.lock"
                 targetfolder: "**/node_modules, !**/node_modules/**/node_modules"
-                vstsFeed: "$(nodejs_artifacts)"
+                vstsFeed: "$(artifacts_nodejs)"
 
           - task: UseNode@1
             inputs:
@@ -63,7 +88,7 @@ jobs:
             displayName: "[Client] Install NodeJS"
 
           - script: |
-                cd $(client_path)
+                cd $(path_client)
                 yarn
                 yarn build
             displayName: "[Client] yarn install & yarn build"
