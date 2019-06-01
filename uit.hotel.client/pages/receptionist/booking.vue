@@ -88,7 +88,7 @@
                     v-if="bookingsFilter(bookings).length === 0"
                     class="table-after"
                 >
-                    Không có giao dịch nào khớp với tìm kiếm
+                    Không tìm thấy bản ghi đặt phòng nào
                 </div>
             </template>
         </query->

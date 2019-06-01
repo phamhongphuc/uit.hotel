@@ -15,52 +15,59 @@
             class="row"
             child-class="col m-2 p-0 bg-white rounded shadow-sm overflow-auto"
         >
-            <b-table
-                slot-scope="{ data: { patronKinds } }"
-                :items="patronKinds"
-                :fields="[
-                    {
-                        key: 'index',
-                        label: '#',
-                        class: 'table-cell-id text-center',
-                        sortable: true,
-                    },
-                    {
-                        key: 'name',
-                        label: 'Tên loại khách hàng',
-                        sortable: true,
-                    },
-                    {
-                        key: 'description',
-                        label: 'Mô tả',
-                        tdClass: 'w-100',
-                        sortable: true,
-                    },
-                    {
-                        key: 'patrons',
-                        label: 'Số lượng',
-                        tdClass: 'text-nowrap text-right',
-                        sortable: true,
-                    },
-                ]"
-                class="table-style"
-                @row-clicked="
-                    (patronKind, $index, $event) => {
-                        $event.stopPropagation();
-                        $refs.context_patron_kind.open(currentEvent || $event, {
-                            patronKind,
-                        });
-                        currentEvent = null;
-                    }
-                "
-            >
-                <template slot="index" slot-scope="data">
-                    {{ data.index + 1 }}
-                </template>
-                <template slot="patrons" slot-scope="{ value }">
-                    {{ value.length }} khách hàng
-                </template>
-            </b-table>
+            <template slot-scope="{ data: { patronKinds } }">
+                <b-table
+                    :items="patronKinds"
+                    :fields="[
+                        {
+                            key: 'index',
+                            label: '#',
+                            class: 'table-cell-id text-center',
+                            sortable: true,
+                        },
+                        {
+                            key: 'name',
+                            label: 'Tên loại khách hàng',
+                            sortable: true,
+                        },
+                        {
+                            key: 'description',
+                            label: 'Mô tả',
+                            tdClass: 'w-100',
+                            sortable: true,
+                        },
+                        {
+                            key: 'patrons',
+                            label: 'Số lượng',
+                            tdClass: 'text-nowrap text-right',
+                            sortable: true,
+                        },
+                    ]"
+                    class="table-style"
+                    @row-clicked="
+                        (patronKind, $index, $event) => {
+                            $event.stopPropagation();
+                            $refs.context_patron_kind.open(
+                                currentEvent || $event,
+                                {
+                                    patronKind,
+                                },
+                            );
+                            currentEvent = null;
+                        }
+                    "
+                >
+                    <template slot="index" slot-scope="data">
+                        {{ data.index + 1 }}
+                    </template>
+                    <template slot="patrons" slot-scope="{ value }">
+                        {{ value.length }} khách hàng
+                    </template>
+                </b-table>
+                <div v-if="patronKinds.length === 0" class="table-after">
+                    Không tìm thấy loại khách hàng nào
+                </div>
+            </template>
         </query->
         <context-manage-patron-kind- ref="context_patron_kind" :refs="$refs" />
         <popup-patron-kind-add- ref="patron_kind_add" />

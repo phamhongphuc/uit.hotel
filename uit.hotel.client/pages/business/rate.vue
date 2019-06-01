@@ -21,65 +21,69 @@
             class="row"
             child-class="col m-2 p-0 bg-white rounded shadow-sm overflow-auto"
         >
-            <b-table
-                slot-scope="{ data: { rates } }"
-                :items="ratesFilter(rates)"
-                :fields="[
-                    {
-                        key: 'index',
-                        label: '#',
-                        class: 'table-cell-id text-center',
-                        sortable: true,
-                    },
-                    {
-                        key: 'dayRate',
-                        label: 'Tên giá cơ bản',
-                        tdClass: 'w-100',
-                    },
-                    {
-                        key: 'createDate',
-                        label: 'Ngày tạo',
-                        tdClass: 'text-nowrap text-left',
-                    },
-                    {
-                        key: 'effectiveStartDate',
-                        label: 'Có hiệu lực từ',
-                        tdClass: 'text-nowrap text-center',
-                    },
-                    {
-                        key: 'roomKind',
-                        label: 'Loại phòng',
-                        tdClass: 'text-nowrap text-center',
-                    },
-                ]"
-                class="table-style"
-                @row-clicked="
-                    (rate, $index, $event) => {
-                        $event.stopPropagation();
-                        $refs.context_rate.open(currentEvent || $event, {
-                            rate,
-                            rates,
-                        });
-                        currentEvent = null;
-                    }
-                "
-            >
-                <template slot="index" slot-scope="data">
-                    {{ data.index + 1 }}
-                </template>
-                <template slot="createDate" slot-scope="{ value }">
-                    {{ toDate(value) }}
-                </template>
-                <template slot="effectiveStartDate" slot-scope="{ value }">
-                    {{ toDate(value) }}
-                </template>
-                <template slot="dayRate" slot-scope="{ value }">
-                    {{ toMoney(value) }}
-                </template>
-                <template slot="roomKind" slot-scope="{ value }">
-                    {{ value.name }}
-                </template>
-            </b-table>
+            <template slot-scope="{ data: { rates } }">
+                <b-table
+                    :items="ratesFilter(rates)"
+                    :fields="[
+                        {
+                            key: 'index',
+                            label: '#',
+                            class: 'table-cell-id text-center',
+                            sortable: true,
+                        },
+                        {
+                            key: 'dayRate',
+                            label: 'Tên giá cơ bản',
+                            tdClass: 'w-100',
+                        },
+                        {
+                            key: 'createDate',
+                            label: 'Ngày tạo',
+                            tdClass: 'text-nowrap text-left',
+                        },
+                        {
+                            key: 'effectiveStartDate',
+                            label: 'Có hiệu lực từ',
+                            tdClass: 'text-nowrap text-center',
+                        },
+                        {
+                            key: 'roomKind',
+                            label: 'Loại phòng',
+                            tdClass: 'text-nowrap text-center',
+                        },
+                    ]"
+                    class="table-style"
+                    @row-clicked="
+                        (rate, $index, $event) => {
+                            $event.stopPropagation();
+                            $refs.context_rate.open(currentEvent || $event, {
+                                rate,
+                                rates,
+                            });
+                            currentEvent = null;
+                        }
+                    "
+                >
+                    <template slot="index" slot-scope="data">
+                        {{ data.index + 1 }}
+                    </template>
+                    <template slot="createDate" slot-scope="{ value }">
+                        {{ toDate(value) }}
+                    </template>
+                    <template slot="effectiveStartDate" slot-scope="{ value }">
+                        {{ toDate(value) }}
+                    </template>
+                    <template slot="dayRate" slot-scope="{ value }">
+                        {{ toMoney(value) }}
+                    </template>
+                    <template slot="roomKind" slot-scope="{ value }">
+                        {{ value.name }}
+                    </template>
+                </b-table>
+                <div v-if="ratesFilter(rates).length === 0" class="table-after">
+                    Không tìm thấy giá nào
+                </div>
+            </template>
         </query->
         <context-manage-rate- ref="context_rate" :refs="$refs" />
         <popup-rate-add- ref="rate_add" />

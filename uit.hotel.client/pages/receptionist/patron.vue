@@ -72,7 +72,7 @@
                     </template>
                 </b-table>
                 <div v-if="patrons.length === 0" class="table-after">
-                    Chưa có khách hàng nào
+                    Không tìm thấy khách hàng nào
                 </div>
             </template>
         </query->
