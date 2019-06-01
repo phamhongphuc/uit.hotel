@@ -5,7 +5,11 @@
 </p>
 
 <p align="center">
-  <a href="https://travis-ci.com/phamhongphuc/uit.hotel"><img src="https://travis-ci.com/phamhongphuc/uit.hotel.svg?branch=master" alt="Build Status"></a>
+  <a href="https://travis-ci.com/phamhongphuc/uit.hotel"><img src="https://travis-ci.com/phamhongphuc/uit.hotel.svg?branch=dev" alt="Build Status"></a>
+  <a href="https://dev.azure.com/uit-team/hotel/_build"><img src="https://dev.azure.com/uit-team/hotel/_apis/build/status/Azure%20Devops%20Hotel?branchName=dev" alt="Build Status"></a>
+  <a href="https://www.codefactor.io/repository/github/phamhongphuc/uit.hotel"><img src="https://www.codefactor.io/repository/github/phamhongphuc/uit.hotel/badge" alt="Codefactor"></a>
+</p>
+<p align="center">
   <a href="https://github.com/phamhongphuc/uit.hotel/issues"><img src="https://img.shields.io/github/issues/phamhongphuc/uit.hotel.svg" alt="Issues Status"></a>
   <a href="https://github.com/phamhongphuc/uit.hotel/network/members"><img src="https://img.shields.io/github/forks/phamhongphuc/uit.hotel.svg" alt="Forks Status"></a>
   <a href="https://github.com/phamhongphuc/uit.hotel/stargazers"><img src="https://img.shields.io/github/stars/phamhongphuc/uit.hotel.svg" alt="Issues Status"></a>
@@ -16,7 +20,7 @@
   <h1 align="center"><a href="https://github.com/phamhongphuc/uit.hotel">Hotel Management System</a></h1>
 </p>
 
-Hotel Management System (HMS) is a open source web based hotel management software, designed and built for guest houses and small hotels.
+Hotel Management System (HMS) is an open source web based hotel management software, designed and built for guest houses and small hotels.
 
 ## Roadmap: 
 - Visit [phamhongphuc/uit.hotel#339](https://github.com/phamhongphuc/uit.hotel/issues/339)
