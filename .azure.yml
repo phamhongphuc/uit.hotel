@@ -31,46 +31,49 @@ jobs:
                 keyfile: $(dotnet_key_file)
                 targetfolder: "$(folder_packages)"
                 vstsFeed: $(artifacts_dotnet_core)
+            condition: ne(variables['CacheRestored'], 'true')
 
           - script: |
                 mkdir -p $(obj_cache)
                 mkdir -p $(obj_project)
-                cp $(obj_cache)/* $(obj_project)/ || true
-                ls $(obj_cache)
-                ls $(obj_project)
+                cp -R $(obj_cache)/* $(obj_project) || true
+                ls -R $(obj_cache)
+                ls -R $(obj_project)
 
                 mkdir -p $(obj_test_cache)
                 mkdir -p $(obj_test_project)
-                cp $(obj_test_cache)/* $(obj_test_project)/ || true
-                ls $(obj_test_cache)
-                ls $(obj_test_project)
+                cp -R $(obj_test_cache)/* $(obj_test_project) || true
+                ls -R $(obj_test_cache)
+                ls -R $(obj_test_project)
             displayName: "[Copy] Copy from cache"
 
           - script: dotnet --info
-            displayName: "[Server] dotnet --info"
+            displayName: "[Server] Run `dotnet --info`"
 
           - script: dotnet restore
-            displayName: "[Server] Dotnet restore"
+            condition: ne(variables['CacheRestored'], 'true')
+            displayName: "[Server] Run `dotnet restore`"
+
+          - script: dotnet build --no-restore
+            displayName: "[Server] Run `dotnet build`"
 
           - script: |
                 mkdir -p $(obj_cache)
                 mkdir -p $(obj_project)
-                cp $(obj_project)/* $(obj_cache)/ || true
-                ls $(obj_cache)
-                ls $(obj_project)
+                cp -R $(obj_project)/* $(obj_cache) || true
+                ls -R $(obj_cache)
+                ls -R $(obj_project)
 
                 mkdir -p $(obj_test_cache)
                 mkdir -p $(obj_test_project)
-                cp $(obj_test_project)/* $(obj_test_cache)/ || true
-                ls $(obj_test_cache)
-                ls $(obj_test_project)
+                cp -R $(obj_test_project)/* $(obj_test_cache) || true
+                ls -R $(obj_test_cache)
+                ls -R $(obj_test_project)
             displayName: "[Copy] Copy to cache"
 
-          - script: dotnet build --no-restore
-            displayName: "[Server] dotnet build"
-
           - script: dotnet test --no-build
-            displayName: "[Server] dotnet test"
+            displayName: "[Server] Run `dotnet test`"
+
     - job: NodeJS
       pool:
           vmImage: "ubuntu-latest"
@@ -78,7 +81,7 @@ jobs:
           - task: RestoreAndSaveCache@1
             displayName: "[Cache] Restore artifact based on: yarn.lock"
             inputs:
-                keyfile: "**/yarn.lock, !**/node_modules/**/yarn.lock, !**/.*/**/yarn.lock"
+                keyfile: "**/yarn.lock, !**/node_modules/**/yarn.lock, !**/.*/**/yarn.lock, **/.azure.yml"
                 targetfolder: "**/node_modules, !**/node_modules/**/node_modules"
                 vstsFeed: "$(artifacts_nodejs)"
 
@@ -90,5 +93,11 @@ jobs:
           - script: |
                 cd $(path_client)
                 yarn
+            condition: ne(variables['CacheRestored'], 'true')
+            displayName: "[Client] Run `yarn install`"
+
+          - script: |
+                cd $(path_client)
+                yarn lint
                 yarn build
-            displayName: "[Client] yarn install & yarn build"
+            displayName: "[Client] Run `yarn` lint and build"
