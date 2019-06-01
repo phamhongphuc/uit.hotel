@@ -6,11 +6,7 @@
             <nuxt class="content" />
         </main>
         <no-ssr>
-            <notifications
-                :duration="1500"
-                animation-type="velocity"
-                position="right bottom"
-            />
+            <notifications :duration="1500" position="right bottom" />
         </no-ssr>
     </div>
 </template>

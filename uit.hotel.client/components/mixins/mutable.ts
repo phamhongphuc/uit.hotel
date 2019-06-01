@@ -1,4 +1,3 @@
-import { FetchResult } from 'apollo-link';
 import { DocumentNode } from 'graphql';
 import { Component, Prop, Vue } from 'nuxt-property-decorator';
 import { apolloClientNotify } from '~/modules/apollo';
@@ -27,13 +26,13 @@ export class MutableMixin extends Vue {
         return undefined;
     }
 
-    protected async mutate(): Promise<
-        FetchResult<{}, Record<string, any>, Record<string, any>> | undefined
-    > {
-        const result = await apolloClientNotify({ app: this }).mutate({
-            mutation: this.mutation,
-            variables: this.variables,
-        });
+    protected async mutate() {
+        const result = await apolloClientNotify({ app: this }).mutate<any, any>(
+            {
+                mutation: this.mutation,
+                variables: this.variables,
+            },
+        );
         const mutationName = this.mutationName;
         if (mutationName !== undefined) {
             const data = result.data;
