@@ -26,6 +26,18 @@
 }
 
 .navbar {
+    &.navbar-light {
+        background-color: $white;
+    }
+
+    .btn-link {
+        &:hover {
+            text-decoration: none;
+        }
+        &:active {
+            box-shadow: none !important;
+        }
+    }
     .navbar-toggler {
         height: $navbar-size;
         border: none !important;
@@ -58,9 +70,5 @@
                 }
             }
         }
-    }
-
-    &.navbar-light {
-        background-color: $white;
     }
 }

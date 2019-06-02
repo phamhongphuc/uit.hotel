@@ -16,7 +16,6 @@
             <b-navbar-toggle target="navbar-collapse" class="mx-1">
                 <icon- i="menu" />
             </b-navbar-toggle>
-            <b-nav-item-icon- icon="maximize" @click="fullscreen" />
             <b-nav-item
                 class="font-pacifico font-size-bigger ml-md-2 mx-auto"
                 to="/"
@@ -33,17 +32,9 @@
             is-nav
         >
             <b-navbar-hr- class="d-md-none" />
-
             <b-navbar-nav class="py-2 flex-fill justify-content-end">
-                <b-nav-item-input-
-                    :focus.sync="isInputFocus"
-                    class="flex-fill"
-                    reverse-when="md"
-                    placeholder="Tìm kiếm..."
-                    icon="search"
-                />
                 <b-dropdown
-                    class="navar-dropdown d-none d-md-block"
+                    class="d-none d-md-block"
                     variant="link"
                     size="md"
                     no-caret
@@ -52,35 +43,40 @@
                     menu-class="border-0 shadow rounded mt-3"
                 >
                     <template slot="button-content">
-                        <div class="icon">
-                            <image-
-                                class="m-1 rounded-circle"
-                                source="/black.png"
-                                height="32"
-                                width="32"
-                            />
+                        <div class="d-flex navbar-profile-button">
+                            <div class="navbar-profile-button-text">
+                                <div class="navbar-profile-button-text-name">
+                                    {{ employee.name }}
+                                </div>
+                                <div
+                                    class="navbar-profile-button-text-position"
+                                >
+                                    {{ employee.position.name }}
+                                </div>
+                            </div>
+                            <div class="icon ml-2">
+                                <image-
+                                    class="m-1 rounded-circle"
+                                    source="/black.png"
+                                    height="32"
+                                    width="32"
+                                />
+                            </div>
                         </div>
                     </template>
-                    <b-dropdown-item
+                    <b-dropdown-item-icon-
                         to="/profile"
-                        class="d-flex dropdown-profile"
-                    >
-                        <image-
-                            class="rounded-circle m-1"
-                            source="/black.png"
-                            height="40"
-                            width="40"
-                        />
-                        <div class="dropdown-profile-detail">
-                            <div class="dropdown-profile-detail-name">
-                                {{ employee.name }}
-                            </div>
-                            <div class="dropdown-profile-detail-position">
-                                {{ employee.position.name }}
-                            </div>
-                        </div>
-                    </b-dropdown-item>
-                    <div class="hr line" />
+                        text="Tài khoản"
+                        icon="user"
+                        @click="logout"
+                    />
+                    <b-dropdown-item-icon-
+                        to="/settings"
+                        text="Cài đặt"
+                        icon="settings"
+                        @click="logout"
+                    />
+                    <div class="hr line my-2" />
                     <b-dropdown-item-icon-
                         text="Đăng xuất"
                         icon="power"
@@ -112,10 +108,6 @@ export default class extends Vue {
         (state: UserState) => state.employee || { position: {} },
     ))
     employee!: UserLogin.Employee;
-
-    fullscreen() {
-        document.documentElement.requestFullscreen();
-    }
 }
 </script>
 <style lang="scss">
@@ -129,22 +121,19 @@ export default class extends Vue {
         }
     }
 }
-.dropdown-profile {
-    margin-top: -0.5rem;
-    padding: 1rem;
-    > .dropdown-profile-detail {
-        height: 3rem;
-        margin-right: 2.5rem;
-        margin-left: 0.75rem;
-        > .dropdown-profile-detail-name {
-            margin-top: 0.25rem;
+
+.navbar-profile-button {
+    > .navbar-profile-button-text {
+        padding: 0.375rem 0 0.125rem;
+        text-align: right;
+        > .navbar-profile-button-text-name {
             font-weight: bold;
             font-size: 1rem;
-            line-height: 1.5rem;
+            line-height: 1rem;
         }
-        > .dropdown-profile-detail-position {
-            font-size: 0.8rem;
-            line-height: 1.25rem;
+        > .navbar-profile-button-text-position {
+            font-size: 0.75rem;
+            line-height: 0.75rem;
         }
     }
 }
