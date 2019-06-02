@@ -17,77 +17,80 @@
                 button-variant="white"
             />
         </block-flex->
-        <query-
-            :query="getBookings"
-            class="row"
-            child-class="col m-2 p-0 bg-white rounded shadow-sm overflow-auto"
-        >
-            <b-table
-                slot-scope="{ data: { bookings } }"
-                :items="bookingsFilter(bookings)"
-                :fields="[
-                    {
-                        key: 'index',
-                        label: '#',
-                        class: 'table-cell-id text-center',
-                        sortable: true,
-                    },
-                    {
-                        key: 'room',
-                        label: 'Phòng',
-                        tdClass: 'w-100',
-                    },
-                    {
-                        key: 'patrons',
-                        label: 'Khách hàng',
-                        class: 'text-right',
-                    },
-                    {
-                        key: 'status',
-                        label: 'Trạng thái',
-                        tdClass: 'w-100 text-nowrap',
-                    },
-                    {
-                        key: 'checkin',
-                        label: 'Nhận phòng',
-                        tdClass: 'w-100 text-nowrap',
-                    },
-                    {
-                        key: 'checkout',
-                        label: 'Trả phòng',
-                        tdClass: 'w-100 text-nowrap',
-                    },
-                ]"
-                class="table-style"
-                @row-clicked="
-                    (booking, $index, $event) => {
-                        $event.stopPropagation();
-                        $refs.context_booking.open(currentEvent || $event, {
-                            booking,
-                        });
-                        currentEvent = null;
-                    }
-                "
-            >
-                <template slot="index" slot-scope="data">
-                    {{ data.index + 1 }}
-                </template>
-                <template slot="status" slot-scope="{ value }">
-                    {{ bookingStatusEnum[value] }}
-                </template>
-                <template slot="checkin" slot-scope="{ item }">
-                    {{ toDate(getCheckInTime(item)) }}
-                </template>
-                <template slot="checkout" slot-scope="{ item }">
-                    {{ toDate(getCheckOutTime(item)) }}
-                </template>
-                <template slot="room" slot-scope="{ value }">
-                    {{ value.name }}
-                </template>
-                <template slot="patrons" slot-scope="{ value }">
-                    {{ value.length }} khách
-                </template>
-            </b-table>
+        <query- :query="getBookings" class="query-fill">
+            <template slot-scope="{ data: { bookings } }">
+                <b-table
+                    :items="bookingsFilter(bookings)"
+                    :fields="[
+                        {
+                            key: 'index',
+                            label: '#',
+                            class: 'table-cell-id text-center',
+                            sortable: true,
+                        },
+                        {
+                            key: 'room',
+                            label: 'Phòng',
+                            tdClass: 'w-100',
+                        },
+                        {
+                            key: 'patrons',
+                            label: 'Khách hàng',
+                            class: 'text-right',
+                        },
+                        {
+                            key: 'status',
+                            label: 'Trạng thái',
+                            tdClass: 'w-100 text-nowrap',
+                        },
+                        {
+                            key: 'checkin',
+                            label: 'Nhận phòng',
+                            tdClass: 'w-100 text-nowrap',
+                        },
+                        {
+                            key: 'checkout',
+                            label: 'Trả phòng',
+                            tdClass: 'w-100 text-nowrap',
+                        },
+                    ]"
+                    class="table-style"
+                    @row-clicked="
+                        (booking, $index, $event) => {
+                            $event.stopPropagation();
+                            $refs.context_booking.open(currentEvent || $event, {
+                                booking,
+                            });
+                            currentEvent = null;
+                        }
+                    "
+                >
+                    <template slot="index" slot-scope="data">
+                        {{ data.index + 1 }}
+                    </template>
+                    <template slot="status" slot-scope="{ value }">
+                        {{ bookingStatusEnum[value] }}
+                    </template>
+                    <template slot="checkin" slot-scope="{ item }">
+                        {{ toDate(getCheckInTime(item)) }}
+                    </template>
+                    <template slot="checkout" slot-scope="{ item }">
+                        {{ toDate(getCheckOutTime(item)) }}
+                    </template>
+                    <template slot="room" slot-scope="{ value }">
+                        {{ value.name }}
+                    </template>
+                    <template slot="patrons" slot-scope="{ value }">
+                        {{ value.length }} khách
+                    </template>
+                </b-table>
+                <div
+                    v-if="bookingsFilter(bookings).length === 0"
+                    class="table-after"
+                >
+                    Không tìm thấy bản ghi đặt phòng nào
+                </div>
+            </template>
         </query->
         <context-manage-booking- ref="context_booking" :refs="$refs" />
         <popup-service-detail-add- ref="service_detail_add" />

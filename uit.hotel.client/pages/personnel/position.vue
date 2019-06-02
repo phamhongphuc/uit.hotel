@@ -29,70 +29,82 @@
             class="row"
             child-class="col m-2 p-0 bg-white rounded shadow-sm overflow-auto"
         >
-            <b-table
-                slot-scope="{ data: { positions } }"
-                :items="positionsFilter(positions)"
-                :fields="[
-                    {
-                        key: 'index',
-                        label: '#',
-                        class: 'table-cell-id text-center',
-                        sortable: true,
-                    },
-                    {
-                        key: 'name',
-                        label: 'Tên vị trí',
-                        tdClass: (value, key, row) => {
-                            if (!row.isActive)
-                                return 'table-cell-disable w-100';
-                            return 'w-100';
+            <template slot-scope="{ data: { positions } }">
+                <b-table
+                    :items="positionsFilter(positions)"
+                    :fields="[
+                        {
+                            key: 'index',
+                            label: '#',
+                            class: 'table-cell-id text-center',
+                            sortable: true,
                         },
-                        sortable: true,
-                    },
-                    {
-                        key: 'employeesActive',
-                        label: 'Hoạt động',
-                        tdClass: 'text-center',
-                        sortable: true,
-                    },
-                    {
-                        key: 'employeesInactive',
-                        label: 'Ngưng hoạt động',
-                        tdClass: 'text-center',
-                        sortable: true,
-                    },
-                    {
-                        key: 'employees',
-                        label: 'Tổng cộng',
-                        tdClass: 'text-center',
-                        sortable: true,
-                    },
-                ]"
-                class="table-style"
-                @row-clicked="
-                    (position, $index, $event) => {
-                        $event.stopPropagation();
-                        $refs.context_position.open(currentEvent || $event, {
-                            position,
-                            positions,
-                        });
-                        currentEvent = null;
-                    }
-                "
-            >
-                <template slot="index" slot-scope="data">
-                    {{ data.index + 1 }}
-                </template>
-                <template slot="employeesActive" slot-scope="{ item }">
-                    {{ item.employees.filter(e => e.isActive).length }} người
-                </template>
-                <template slot="employeesInactive" slot-scope="{ item }">
-                    {{ item.employees.filter(e => !e.isActive).length }} người
-                </template>
-                <template slot="employees" slot-scope="{ value }">
-                    {{ value.length }} người
-                </template>
-            </b-table>
+                        {
+                            key: 'name',
+                            label: 'Tên vị trí',
+                            tdClass: (value, key, row) => {
+                                if (!row.isActive)
+                                    return 'table-cell-disable w-100';
+                                return 'w-100';
+                            },
+                            sortable: true,
+                        },
+                        {
+                            key: 'employeesActive',
+                            label: 'Hoạt động',
+                            tdClass: 'text-center',
+                            sortable: true,
+                        },
+                        {
+                            key: 'employeesInactive',
+                            label: 'Ngưng hoạt động',
+                            tdClass: 'text-center',
+                            sortable: true,
+                        },
+                        {
+                            key: 'employees',
+                            label: 'Tổng cộng',
+                            tdClass: 'text-center',
+                            sortable: true,
+                        },
+                    ]"
+                    class="table-style"
+                    @row-clicked="
+                        (position, $index, $event) => {
+                            $event.stopPropagation();
+                            $refs.context_position.open(
+                                currentEvent || $event,
+                                {
+                                    position,
+                                    positions,
+                                },
+                            );
+                            currentEvent = null;
+                        }
+                    "
+                >
+                    <template slot="index" slot-scope="data">
+                        {{ data.index + 1 }}
+                    </template>
+                    <template slot="employeesActive" slot-scope="{ item }">
+                        {{ item.employees.filter(e => e.isActive).length }}
+                        người
+                    </template>
+                    <template slot="employeesInactive" slot-scope="{ item }">
+                        {{ item.employees.filter(e => !e.isActive).length }}
+                        người
+                    </template>
+                    <template slot="employees" slot-scope="{ value }">
+                        {{ value.length }} người
+                    </template>
+                </b-table>
+                <div
+                    v-if="positionsFilter(positions).length === 0"
+                    class="table-after"
+                >
+                    Không tìm thấy vị trí nào
+                </div>
+            </template>
         </query->
         <context-manage-position- ref="context_position" :refs="$refs" />
         <popup-position-add- ref="position_add" />

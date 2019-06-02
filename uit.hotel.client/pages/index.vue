@@ -1,7 +1,9 @@
 <template>
     <div>
-        <div class="col m-2 bg-white rounded shadow-sm overflow-auto main-app">
-            Vui lòng sử dụng menu bên trái để chọn chức năng tương ứng!
+        <div class="row-like flex-fill d-flex">
+            <div class="bg-white m-2 flex-fill rounded main-app">
+                Vui lòng sử dụng menu bên trái để chọn chức năng tương ứng!
+            </div>
         </div>
     </div>
 </template>
@@ -48,5 +50,7 @@ export default class extends mixins(DataMixin({ getFloors })) {
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: auto;
+    box-shadow: $box-shadow-sm;
 }
 </style>

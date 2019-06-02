@@ -1,5 +1,9 @@
 .table {
     margin-bottom: 0;
+    & + .table-after {
+        padding: map-get($spacers, 3);
+        text-align: center;
+    }
 }
 
 .table-cell-middle {

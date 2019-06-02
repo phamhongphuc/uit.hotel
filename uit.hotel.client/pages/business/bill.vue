@@ -29,76 +29,80 @@
             class="row"
             child-class="col m-2 p-0 bg-white rounded shadow-sm overflow-auto"
         >
-            <b-table
-                slot-scope="{ data: { bills } }"
-                :items="billsFilter(bills)"
-                :fields="[
-                    {
-                        key: 'index',
-                        label: '#',
-                        class: 'table-cell-id text-center',
-                        sortable: true,
-                    },
-                    {
-                        key: 'time',
-                        label: 'Thời gian chốt hóa đơn',
-                        tdClass: 'w-100',
-                    },
-                    {
-                        key: 'bookings',
-                        label: 'Phòng',
-                        class: 'text-right text-nowrap',
-                    },
-                    {
-                        key: 'receipts',
-                        label: 'Số lần',
-                        class: 'text-right',
-                    },
-                    {
-                        key: 'totalReceipts',
-                        label: 'Đã thanh toán',
-                        class: 'text-right',
-                    },
-                    {
-                        key: 'total',
-                        label: 'Tổng cộng',
-                        class: 'text-right',
-                    },
-                ]"
-                class="table-style"
-                @row-clicked="
-                    (bill, $index, $event) => {
-                        $event.stopPropagation();
-                        $refs.context_bill.open(currentEvent || $event, {
-                            bill,
-                        });
-                        currentEvent = null;
-                    }
-                "
-            >
-                <template slot="index" slot-scope="data">
-                    {{ data.index + 1 }}
-                </template>
-                <template slot="time" slot-scope="{ value }">
-                    {{
-                        moment(value).year() === 1
-                            ? 'Chưa chốt hóa đơn'
-                            : toDate(value)
-                    }}
-                </template>
-                <template slot="bookings" slot-scope="{ value }">
-                    {{ value.length }} phòng
-                </template>
-                <template slot="receipts" slot-scope="{ value }">
-                    {{ value.length }} lần
-                </template>
-                <template slot="totalReceipts" slot-scope="{ item }">
-                    {{ toMoney(sumReceipts(item.receipts)) }}
-                </template>
-                <template slot="total" slot-scope="{ value }">
-                    {{ toMoney(value) }}
-                </template>
-            </b-table>
+            <template slot-scope="{ data: { bills } }">
+                <b-table
+                    :items="billsFilter(bills)"
+                    :fields="[
+                        {
+                            key: 'index',
+                            label: '#',
+                            class: 'table-cell-id text-center',
+                            sortable: true,
+                        },
+                        {
+                            key: 'time',
+                            label: 'Thời gian chốt hóa đơn',
+                            tdClass: 'w-100',
+                        },
+                        {
+                            key: 'bookings',
+                            label: 'Phòng',
+                            class: 'text-right text-nowrap',
+                        },
+                        {
+                            key: 'receipts',
+                            label: 'Số lần',
+                            class: 'text-right',
+                        },
+                        {
+                            key: 'totalReceipts',
+                            label: 'Đã thanh toán',
+                            class: 'text-right',
+                        },
+                        {
+                            key: 'total',
+                            label: 'Tổng cộng',
+                            class: 'text-right',
+                        },
+                    ]"
+                    class="table-style"
+                    @row-clicked="
+                        (bill, $index, $event) => {
+                            $event.stopPropagation();
+                            $refs.context_bill.open(currentEvent || $event, {
+                                bill,
+                            });
+                            currentEvent = null;
+                        }
+                    "
+                >
+                    <template slot="index" slot-scope="data">
+                        {{ data.index + 1 }}
+                    </template>
+                    <template slot="time" slot-scope="{ value }">
+                        {{
+                            moment(value).year() === 1
+                                ? 'Chưa chốt hóa đơn'
+                                : toDate(value)
+                        }}
+                    </template>
+                    <template slot="bookings" slot-scope="{ value }">
+                        {{ value.length }} phòng
+                    </template>
+                    <template slot="receipts" slot-scope="{ value }">
+                        {{ value.length }} lần
+                    </template>
+                    <template slot="totalReceipts" slot-scope="{ item }">
+                        {{ toMoney(sumReceipts(item.receipts)) }}
+                    </template>
+                    <template slot="total" slot-scope="{ value }">
+                        {{ toMoney(value) }}
+                    </template>
+                </b-table>
+                <div v-if="billsFilter(bills).length === 0" class="table-after">
+                    Không tìm thấy hóa đơn nào
+                </div>
+            </template>
         </query->
         <context-manage-bill- ref="context_bill" :refs="$refs" />
         <popup-receipt-add- ref="receipt_add" />

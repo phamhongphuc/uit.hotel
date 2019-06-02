@@ -29,67 +29,74 @@
             class="row"
             child-class="col m-2 p-0 bg-white rounded shadow-sm overflow-auto"
         >
-            <b-table
-                slot-scope="{ data: { services } }"
-                :items="servicesFilter(services)"
-                :fields="[
-                    {
-                        key: 'index',
-                        label: '#',
-                        class: 'table-cell-id text-center',
-                        sortable: true,
-                    },
-                    {
-                        key: 'name',
-                        label: 'Tên dịch vụ',
-                        tdClass: (value, key, row) => {
-                            if (!row.isActive)
-                                return 'table-cell-disable w-100';
-                            return 'w-100';
+            <template slot-scope="{ data: { services } }">
+                <b-table
+                    :items="servicesFilter(services)"
+                    :fields="[
+                        {
+                            key: 'index',
+                            label: '#',
+                            class: 'table-cell-id text-center',
+                            sortable: true,
                         },
-                        sortable: true,
-                    },
-                    {
-                        key: 'unitRate',
-                        label: 'Đơn giá',
-                        tdClass: 'text-nowrap text-center',
-                        sortable: true,
-                    },
-                    {
-                        key: 'servicesDetails',
-                        label: 'Đã sử dụng',
-                        tdClass: 'text-nowrap text-center',
-                        sortable: true,
-                    },
-                ]"
-                class="table-style"
-                @row-clicked="
-                    (service, $index, $event) => {
-                        $event.stopPropagation();
-                        $refs.context_service.open(currentEvent || $event, {
-                            service,
-                            services,
-                        });
-                        currentEvent = null;
-                    }
-                "
-            >
-                <template slot="index" slot-scope="data">
-                    {{ data.index + 1 }}
-                </template>
-                <template
-                    slot="unitRate"
-                    slot-scope="{ item: { unitRate, unit } }"
+                        {
+                            key: 'name',
+                            label: 'Tên dịch vụ',
+                            tdClass: (value, key, row) => {
+                                if (!row.isActive)
+                                    return 'table-cell-disable w-100';
+                                return 'w-100';
+                            },
+                            sortable: true,
+                        },
+                        {
+                            key: 'unitRate',
+                            label: 'Đơn giá',
+                            tdClass: 'text-nowrap text-center',
+                            sortable: true,
+                        },
+                        {
+                            key: 'servicesDetails',
+                            label: 'Đã sử dụng',
+                            tdClass: 'text-nowrap text-center',
+                            sortable: true,
+                        },
+                    ]"
+                    class="table-style"
+                    @row-clicked="
+                        (service, $index, $event) => {
+                            $event.stopPropagation();
+                            $refs.context_service.open(currentEvent || $event, {
+                                service,
+                                services,
+                            });
+                            currentEvent = null;
+                        }
+                    "
                 >
-                    {{ toMoney(unitRate) }} / {{ unit }}
-                </template>
-                <template
-                    slot="servicesDetails"
-                    slot-scope="{ value, item: { unit } }"
+                    <template slot="index" slot-scope="data">
+                        {{ data.index + 1 }}
+                    </template>
+                    <template
+                        slot="unitRate"
+                        slot-scope="{ item: { unitRate, unit } }"
+                    >
+                        {{ toMoney(unitRate) }} / {{ unit }}
+                    </template>
+                    <template
+                        slot="servicesDetails"
+                        slot-scope="{ value, item: { unit } }"
+                    >
+                        {{ value.length }} {{ unit }}
+                    </template>
+                </b-table>
+                <div
+                    v-if="servicesFilter(services).length === 0"
+                    class="table-after"
                 >
-                    {{ value.length }} {{ unit }}
-                </template>
-            </b-table>
+                    Không tìm thấy dịch vụ nào
+                </div>
+            </template>
         </query->
         <context-manage-service- ref="context_service" :refs="$refs" />
         <popup-service-add- ref="service_add" />

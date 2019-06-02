@@ -17,44 +17,51 @@
             class="row"
             child-class="col m-2 p-0 bg-white rounded shadow-sm overflow-auto"
         >
-            <b-table
-                slot-scope="{ data: { receipts } }"
-                :items="receiptsFilter(receipts)"
-                :fields="[
-                    {
-                        key: 'index',
-                        label: '#',
-                        class: 'table-cell-id text-center',
-                        sortable: true,
-                    },
-                    {
-                        key: 'time',
-                        label: 'Thời gian',
-                        class: 'text-center',
-                    },
-                    {
-                        key: 'money',
-                        label: 'Số tiền',
-                        class: 'text-center',
-                    },
-                    {
-                        key: 'bankAccountNumber',
-                        label: 'Tài khoản   ',
-                        class: 'text-center',
-                    },
-                ]"
-                class="table-style"
-            >
-                <template slot="index" slot-scope="data">
-                    {{ data.index + 1 }}
-                </template>
-                <template slot="time" slot-scope="{ value }">
-                    {{ toDate(value) }}
-                </template>
-                <template slot="money" slot-scope="{ value }">
-                    {{ toMoney(value) }}
-                </template>
-            </b-table>
+            <template slot-scope="{ data: { receipts } }">
+                <b-table
+                    :items="receiptsFilter(receipts)"
+                    :fields="[
+                        {
+                            key: 'index',
+                            label: '#',
+                            class: 'table-cell-id text-center',
+                            sortable: true,
+                        },
+                        {
+                            key: 'time',
+                            label: 'Thời gian',
+                            class: 'text-center',
+                        },
+                        {
+                            key: 'money',
+                            label: 'Số tiền',
+                            class: 'text-center',
+                        },
+                        {
+                            key: 'bankAccountNumber',
+                            label: 'Tài khoản   ',
+                            class: 'text-center',
+                        },
+                    ]"
+                    class="table-style"
+                >
+                    <template slot="index" slot-scope="data">
+                        {{ data.index + 1 }}
+                    </template>
+                    <template slot="time" slot-scope="{ value }">
+                        {{ toDate(value) }}
+                    </template>
+                    <template slot="money" slot-scope="{ value }">
+                        {{ toMoney(value) }}
+                    </template>
+                </b-table>
+                <div
+                    v-if="receiptsFilter(receipts).length === 0"
+                    class="table-after"
+                >
+                    Không tìm thấy phiếu thu nào
+                </div>
+            </template>
         </query->
         <!-- <context-manage-receipt- ref="context_receipt" :refs="$refs" /> -->
         <!-- <popup-receipt-add- ref="receipt_add" />

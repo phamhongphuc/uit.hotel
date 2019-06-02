@@ -16,18 +16,18 @@ namespace uit.hotel.Queries.Mutation
 
         public InitializeMutation()
         {
-            Field<NonNullGraphType<StringGraphType>>(
+            FieldAsync<NonNullGraphType<StringGraphType>>(
                 "InitializeAdminAccount",
                 "Khởi tạo tài khoản admin",
                 new QueryArguments(
                     new QueryArgument<NonNullGraphType<StringGraphType>> { Name = EMAIL },
                     new QueryArgument<NonNullGraphType<StringGraphType>> { Name = PASSWORD }
                 ),
-                context =>
+                async context =>
                 {
                     var email = context.GetArgument<string>(EMAIL);
                     var password = context.GetArgument<string>(PASSWORD);
-                    InitializeBusiness.Initialize(new Employee
+                    await InitializeBusiness.Initialize(new Employee
                     {
                         Email = email,
                         Password = password,

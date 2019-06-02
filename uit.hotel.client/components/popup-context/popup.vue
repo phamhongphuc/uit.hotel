@@ -3,7 +3,11 @@
         <div ref="popup" class="popup-modal m-3" @click.stop>
             <div class="popup-modal-title">
                 <div class="text">{{ title }}</div>
-                <b-button variant="white" class="close" @click="close">
+                <b-button
+                    variant="white"
+                    class="close shadow-none"
+                    @click="close"
+                >
                     <icon- class="m-0 w-auto" i="x" />
                 </b-button>
             </div>
@@ -84,6 +88,7 @@ export default class extends mixins<ClickawayMixin>(ClickawayMixin) {
                 min-height: $input-height;
                 padding: 0;
                 border: none;
+                border-radius: 0 $border-radius 0 0;
             }
         }
     }
