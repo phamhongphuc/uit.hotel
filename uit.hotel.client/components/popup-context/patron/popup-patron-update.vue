@@ -52,6 +52,7 @@
                         class="m-3"
                     >
                         <b-form-select
+                            ref="patronKinds"
                             v-model="input.patronKind.id"
                             slot-scope="{ data: { patronKinds } }"
                             :state="!$v.input.patronKind.id.$invalid"
@@ -81,14 +82,14 @@
                     <div class="input-label">Thư điện tử</div>
                     <b-input-
                         v-model="input.email"
-                        :state="!$v.input.email.$invalid"
+                        :state="optional($v.input.email)"
                         class="m-3 rounded"
                         icon="mail"
                     />
                     <div class="input-label">Công ty</div>
                     <b-input-
                         v-model="input.company"
-                        :state="!$v.input.company.$invalid"
+                        :state="optional($v.input.company)"
                         class="m-3 rounded"
                         icon="briefcase"
                     />
@@ -97,28 +98,28 @@
                     <div class="input-label">Quốc tịch</div>
                     <b-input-
                         v-model="input.nationality"
-                        :state="!$v.input.nationality.$invalid"
+                        :state="optional($v.input.nationality)"
                         class="m-3 rounded"
                         icon="map-pin"
                     />
                     <div class="input-label">Nguyên quán</div>
                     <b-input-
                         v-model="input.domicile"
-                        :state="!$v.input.domicile.$invalid"
+                        :state="optional($v.input.domicile)"
                         class="m-3 rounded"
                         icon="calendar"
                     />
                     <div class="input-label">Địa chỉ thường trú</div>
                     <b-input-
                         v-model="input.residence"
-                        :state="!$v.input.residence.$invalid"
+                        :state="optional($v.input.residence)"
                         class="m-3 rounded"
                         icon="map-pin"
                     />
                     <div class="input-label">Ghi chú</div>
                     <b-input-
                         v-model="input.note"
-                        :state="!$v.input.note.$invalid"
+                        :state="optional($v.input.note)"
                         class="m-3 rounded"
                         icon="calendar"
                     />
@@ -140,33 +141,32 @@
 </template>
 <script lang="ts">
 import { Component, mixins } from 'nuxt-property-decorator';
-import { required, alphaNum, minLength } from 'vuelidate/lib/validators';
 import { PopupMixin, DataMixin } from '~/components/mixins';
 import { PatronUpdateInput, GetPatrons } from '~/graphql/types';
 import { updatePatron, getPatronKinds } from '~/graphql/documents';
+import {
+    birthdate,
+    gender,
+    identification,
+    included,
+    listOfPhoneNumbers,
+    name,
+    optional,
+    optionalEmail,
+} from '~/modules/validator';
 
 @Component({
     name: 'popup-patron-update-',
     validations: {
         input: {
-            name: { required },
-            identification: { required, alphaNum },
-            gender: { required },
-            patronKind: {
-                id: { required },
-            },
-
-            birthdate: {},
-            listOfPhoneNumbers: {
-                minLength: minLength(0),
-                $each: {
-                    required,
-                    alphaNum,
-                },
-            },
-            email: {},
+            name,
+            identification,
+            gender,
+            patronKind: included('patronKinds'),
+            birthdate,
+            listOfPhoneNumbers,
+            email: optionalEmail,
             company: {},
-
             nationality: {},
             domicile: {},
             residence: {},
@@ -176,7 +176,7 @@ import { updatePatron, getPatronKinds } from '~/graphql/documents';
 })
 export default class extends mixins<
     PopupMixin<{ patron: GetPatrons.Patrons }, PatronUpdateInput>
->(PopupMixin, DataMixin({ updatePatron, getPatronKinds })) {
+>(PopupMixin, DataMixin({ updatePatron, getPatronKinds, optional })) {
     phoneNumbers: string = '';
 
     onOpen() {
