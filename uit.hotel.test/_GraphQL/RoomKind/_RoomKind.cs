@@ -33,7 +33,7 @@ namespace uit.hotel.test._GraphQL
             Database.WriteAsync(realm => realm.Add(new RoomKind
             {
                 Id = 10,
-                Name = "Tên loại phòng",
+                Name = "Loại phòng 10",
                 AmountOfPeople = 1,
                 NumberOfBeds = 1,
                 IsActive = true
@@ -75,7 +75,7 @@ namespace uit.hotel.test._GraphQL
             Database.WriteAsync(realm => realm.Add(new RoomKind
             {
                 Id = 11,
-                Name = "Tên loại phòng",
+                Name = "Loại phòng 11",
                 AmountOfPeople = 1,
                 NumberOfBeds = 1,
                 IsActive = true
@@ -95,7 +95,7 @@ namespace uit.hotel.test._GraphQL
             Database.WriteAsync(realm => realm.Add(new RoomKind
             {
                 Id = 20,
-                Name = "Tên loại phòng",
+                Name = "Loại phòng 20",
                 AmountOfPeople = 1,
                 NumberOfBeds = 1,
                 IsActive = true
@@ -126,7 +126,7 @@ namespace uit.hotel.test._GraphQL
             Database.WriteAsync(realm => realm.Add(new RoomKind
             {
                 Id = 30,
-                Name = "Tên loại phòng",
+                Name = "Loại phòng 30",
                 AmountOfPeople = 1,
                 NumberOfBeds = 1,
                 IsActive = true
@@ -140,7 +140,7 @@ namespace uit.hotel.test._GraphQL
                     input = new
                     {
                         id = 30,
-                        name = "Loại 2",
+                        name = "Loại 30",
                         numberOfBeds = 2,
                         amountOfPeople = 2
                     }
@@ -160,7 +160,7 @@ namespace uit.hotel.test._GraphQL
                     input = new
                     {
                         id = 1,
-                        name = "Loại 2",
+                        name = "Loại 1",
                         numberOfBeds = 2,
                         amountOfPeople = 2
                     }
@@ -180,7 +180,7 @@ namespace uit.hotel.test._GraphQL
                     input = new
                     {
                         id = 100,
-                        name = "Loại 2",
+                        name = "Loại 100",
                         numberOfBeds = 2,
                         amountOfPeople = 2
                     }
@@ -195,7 +195,7 @@ namespace uit.hotel.test._GraphQL
             Database.WriteAsync(realm => realm.Add(new RoomKind
             {
                 Id = 33,
-                Name = "Tên loại phòng",
+                Name = "Loại phòng 33",
                 AmountOfPeople = 1,
                 NumberOfBeds = 1,
                 IsActive = false
@@ -209,7 +209,7 @@ namespace uit.hotel.test._GraphQL
                     input = new
                     {
                         id = 33,
-                        name = "Loại 2",
+                        name = "Loại 33",
                         numberOfBeds = 2,
                         amountOfPeople = 2
                     }
@@ -224,7 +224,7 @@ namespace uit.hotel.test._GraphQL
             Database.WriteAsync(realm => realm.Add(new RoomKind
             {
                 Id = 40,
-                Name = "Tên loại phòng",
+                Name = "Loại phòng 40",
                 AmountOfPeople = 1,
                 NumberOfBeds = 1,
                 IsActive = true

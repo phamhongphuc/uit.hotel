@@ -9,11 +9,16 @@ namespace uit.hotel.Businesses
 {
     public static class PositionBusiness
     {
-        public static Task<Position> Add(Position position) => PositionDataAccess.Add(position);
+        public static Task<Position> Add(Position position)
+        {
+            CheckUniqueName(position);
+            return PositionDataAccess.Add(position);
+        }
 
         public static Task<Position> Update(Position position)
         {
             var positionInDatabase = GetAndCheckValid(position.Id);
+            CheckUniqueName(position);
 
             return PositionDataAccess.Update(positionInDatabase, position);
         }
@@ -34,6 +39,15 @@ namespace uit.hotel.Businesses
                 throw new Exception("Chức vụ này còn nhân viên đang hoạt động sử dụng");
 
             PositionDataAccess.SetIsActive(positionInDatabase, isActive);
+        }
+
+        private static void CheckUniqueName(Position position)
+        {
+            var numberOfPositions = Get().Where(p => p.Name == position.Name).Count();
+            if (numberOfPositions == 1)
+                throw new Exception("Chức vụ " + position.Name + " đã được tạo.");
+            else if (numberOfPositions > 1)
+                throw new Exception("Cơ sở dữ liệu lỗi!");
         }
 
         public static void SetIsActiveAndMoveEmployee(int id, int newId, bool isActive)

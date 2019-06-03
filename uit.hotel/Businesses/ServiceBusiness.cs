@@ -9,12 +9,24 @@ namespace uit.hotel.Businesses
 {
     public static class ServiceBusiness
     {
-        public static Task<Service> Add(Service service) => ServiceDataAccess.Add(service);
+        public static Task<Service> Add(Service service)
+        {
+            CheckUniqueName(service);
+            return ServiceDataAccess.Add(service);
+        }
 
         public static Task<Service> Update(Service service)
         {
             var serviceInDatabase = GetAndCheckValid(service.Id);
+            CheckUniqueName(service);
+
             return ServiceDataAccess.Update(serviceInDatabase, service);
+        }
+
+        public static void Delete(int serviceId)
+        {
+            var serviceInDatabase = GetAndCheckValid(serviceId);
+            ServiceDataAccess.Delete(serviceInDatabase);
         }
 
         public static void SetIsActive(int serviceId, bool isActive)
@@ -26,10 +38,13 @@ namespace uit.hotel.Businesses
             ServiceDataAccess.SetIsActive(serviceInDatabase, isActive);
         }
 
-        public static void Delete(int serviceId)
+        private static void CheckUniqueName(Service service)
         {
-            var serviceInDatabase = GetAndCheckValid(serviceId);
-            ServiceDataAccess.Delete(serviceInDatabase);
+            var numberOfServices = Get().Where(s => s.Name == service.Name).Count();
+            if (numberOfServices == 1)
+                throw new Exception("Dịch vụ " + service.Name + " đã được tạo.");
+            else if (numberOfServices > 1)
+                throw new Exception("Cơ sở dữ liệu lỗi!");
         }
 
         private static Service GetAndCheckValid(int serviceId)

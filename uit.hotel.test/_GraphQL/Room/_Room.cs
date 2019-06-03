@@ -44,7 +44,7 @@ namespace uit.hotel.test._GraphQL
                 {
                     input = new
                     {
-                        name = "Phòng 2",
+                        name = "Phòng 100",
                         roomKind = new
                         {
                             id = 1
@@ -76,7 +76,7 @@ namespace uit.hotel.test._GraphQL
                 {
                     input = new
                     {
-                        name = "Phòng 2",
+                        name = "Phòng 101",
                         roomKind = new
                         {
                             id = 1
@@ -101,7 +101,7 @@ namespace uit.hotel.test._GraphQL
                 {
                     input = new
                     {
-                        name = "Phòng 2",
+                        name = "Phòng không tồn tại",
                         roomKind = new
                         {
                             id = 100
@@ -135,7 +135,7 @@ namespace uit.hotel.test._GraphQL
                 {
                     input = new
                     {
-                        name = "Phòng 2",
+                        name = "Phòng 103",
                         roomKind = new
                         {
                             id = 103
@@ -289,7 +289,7 @@ namespace uit.hotel.test._GraphQL
                     input = new
                     {
                         id = 30,
-                        name = "Phòng 2",
+                        name = "Phòng 30",
                         roomKind = new
                         {
                             id = 1
@@ -323,7 +323,7 @@ namespace uit.hotel.test._GraphQL
                     input = new
                     {
                         id = 31,
-                        name = "Phòng 2",
+                        name = "Phòng 31",
                         roomKind = new
                         {
                             id = 1
@@ -366,7 +366,7 @@ namespace uit.hotel.test._GraphQL
                     input = new
                     {
                         id = 32,
-                        name = "Phòng 2",
+                        name = "Phòng 32",
                         roomKind = new
                         {
                             id = 1
@@ -392,7 +392,7 @@ namespace uit.hotel.test._GraphQL
                     input = new
                     {
                         id = 100,
-                        name = "Phòng 2",
+                        name = "Phòng không tồn tại 2",
                         roomKind = new
                         {
                             id = 1
@@ -418,7 +418,7 @@ namespace uit.hotel.test._GraphQL
                     input = new
                     {
                         id = 1,
-                        name = "Phòng 2",
+                        name = "Phòng không tồn tại 3",
                         roomKind = new
                         {
                             id = 1
@@ -453,7 +453,7 @@ namespace uit.hotel.test._GraphQL
                     input = new
                     {
                         id = 33,
-                        name = "Phòng 2",
+                        name = "Phòng 33",
                         roomKind = new
                         {
                             id = 100
@@ -499,7 +499,7 @@ namespace uit.hotel.test._GraphQL
                     input = new
                     {
                         id = 34,
-                        name = "Phòng 2",
+                        name = "Phòng 34",
                         roomKind = new
                         {
                             id = 102
@@ -533,7 +533,7 @@ namespace uit.hotel.test._GraphQL
                     input = new
                     {
                         id = 35,
-                        name = "Phòng 2",
+                        name = "Phòng 35",
                         roomKind = new
                         {
                             id = 1

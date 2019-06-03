@@ -18,7 +18,7 @@ namespace uit.hotel.test._GraphQL
                 {
                     input = new
                     {
-                        name = "Tên dịch vụ",
+                        name = "Tên dịch vụ 1",
                         unitRate = 30000,
                         unit = "Đơn vị tính"
                     }
@@ -73,7 +73,7 @@ namespace uit.hotel.test._GraphQL
             {
                 Id = 11,
                 IsActive = false,
-                Name = "Tên dịch vụ",
+                Name = "Tên dịch vụ 11",
                 Unit = "Đơn vị"
             })).Wait();
 
@@ -92,7 +92,7 @@ namespace uit.hotel.test._GraphQL
             {
                 Id = 20,
                 IsActive = true,
-                Name = "Tên dịch vụ",
+                Name = "Tên dịch vụ 20",
                 Unit = "Đơn vị"
             })).Wait();
             SchemaHelper.Execute(
@@ -121,7 +121,7 @@ namespace uit.hotel.test._GraphQL
             {
                 Id = 30,
                 IsActive = true,
-                Name = "Tên dịch vụ",
+                Name = "Tên dịch vụ 30",
                 Unit = "Đơn vị"
             })).Wait();
 
@@ -133,7 +133,7 @@ namespace uit.hotel.test._GraphQL
                     input = new
                     {
                         id = 30,
-                        name = "Tên dịch vụ",
+                        name = "Tên dịch vụ 30.1",
                         unitRate = 30000,
                         unit = "Đơn vị tính"
                     }
@@ -153,7 +153,7 @@ namespace uit.hotel.test._GraphQL
                     input = new
                     {
                         id = 1,
-                        name = "Tên dịch vụ",
+                        name = "Tên dịch vụ 1.1",
                         unitRate = 30000,
                         unit = "Đơn vị tính"
                     }
@@ -173,7 +173,7 @@ namespace uit.hotel.test._GraphQL
                     input = new
                     {
                         id = 100,
-                        name = "Tên dịch vụ",
+                        name = "Tên dịch vụ 100",
                         unitRate = 30000,
                         unit = "Đơn vị tính"
                     }
@@ -189,7 +189,7 @@ namespace uit.hotel.test._GraphQL
             {
                 Id = 31,
                 IsActive = true,
-                Name = "Tên dịch vụ",
+                Name = "Tên dịch vụ 31",
                 Unit = "Đơn vị"
             })).Wait();
 
@@ -201,7 +201,7 @@ namespace uit.hotel.test._GraphQL
                     input = new
                     {
                         id = 31,
-                        name = "Tên dịch vụ",
+                        name = "Tên dịch vụ 31.1",
                         unitRate = 30000,
                         unit = "Đơn vị tính"
                     }

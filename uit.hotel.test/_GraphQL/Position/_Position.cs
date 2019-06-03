@@ -46,7 +46,7 @@ namespace uit.hotel.test._GraphQL
             Database.WriteAsync(realm => realm.Add(new Position
             {
                 Id = 10,
-                Name = "Quản trị viên",
+                Name = "Quản trị viên 10",
                 IsActive = true
             })).Wait();
 
@@ -87,7 +87,7 @@ namespace uit.hotel.test._GraphQL
             Database.WriteAsync(realm => realm.Add(new Position
             {
                 Id = 20,
-                Name = "Quản trị viên",
+                Name = "Quản trị viên 20",
                 IsActive = true
             })).Wait();
 
@@ -105,7 +105,7 @@ namespace uit.hotel.test._GraphQL
             Database.WriteAsync(realm => realm.Add(new Position
             {
                 Id = 30,
-                Name = "Quản trị viên",
+                Name = "Quản trị viên 30",
                 IsActive = true
             })).Wait();
 
@@ -128,7 +128,7 @@ namespace uit.hotel.test._GraphQL
             Database.WriteAsync(realm => realm.Add(new Position
             {
                 Id = 31,
-                Name = "Quản trị viên",
+                Name = "Quản trị viên 31",
                 IsActive = true
             })).Wait();
 
@@ -151,7 +151,7 @@ namespace uit.hotel.test._GraphQL
             Database.WriteAsync(realm => realm.Add(new Position
             {
                 Id = 32,
-                Name = "Quản trị viên",
+                Name = "Quản trị viên 32",
                 IsActive = false
             })).Wait();
 
@@ -206,7 +206,7 @@ namespace uit.hotel.test._GraphQL
             Database.WriteAsync(realm => realm.Add(new Position
             {
                 Id = 33,
-                Name = "Quản trị viên",
+                Name = "Quản trị viên 33",
                 IsActive = true
             })).Wait();
 
@@ -251,7 +251,7 @@ namespace uit.hotel.test._GraphQL
             Database.WriteAsync(realm => realm.Add(new Position
             {
                 Id = 40,
-                Name = "Quản trị viên",
+                Name = "Quản trị viên 40",
                 IsActive = true
             })).Wait();
 
@@ -263,7 +263,7 @@ namespace uit.hotel.test._GraphQL
                     input = new
                     {
                         id = 40,
-                        name = "Tên quyền",
+                        name = "Tên quyền 40",
                         permissionCleaning = true,
                         permissionGetAccountingVoucher = true,
                         permissionGetHouseKeeping = true,
@@ -296,7 +296,7 @@ namespace uit.hotel.test._GraphQL
                     input = new
                     {
                         id = 1,
-                        name = "Tên quyền",
+                        name = "Tên quyền 1",
                         permissionCleaning = true,
                         permissionGetAccountingVoucher = true,
                         permissionGetHouseKeeping = true,
@@ -329,7 +329,7 @@ namespace uit.hotel.test._GraphQL
                     input = new
                     {
                         id = 100,
-                        name = "Tên quyền",
+                        name = "Tên quyền 100",
                         permissionCleaning = true,
                         permissionGetAccountingVoucher = true,
                         permissionGetHouseKeeping = true,
