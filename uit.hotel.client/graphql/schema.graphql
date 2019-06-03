@@ -345,10 +345,10 @@ type Booking {
     bill: Bill!
 
     # Thời điểm nhận phòng dự kiến của khách hàng
-    bookCheckInTime: DateTimeOffset
+    bookCheckInTime: DateTimeOffset!
 
     # Thời điểm trả phòng dự kiến của khách hàng
-    bookCheckOutTime: DateTimeOffset
+    bookCheckOutTime: DateTimeOffset!
 
     # Thời điểm tạo thông tin thuê phòng
     createTime: DateTimeOffset!

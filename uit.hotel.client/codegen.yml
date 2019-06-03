@@ -13,6 +13,13 @@ generates:
             avoidOptionals: true
             skipTypename: true
             strict: true
+            scalars:
+                Date: string | Date
+                DateTime: string | Date
+                DateTimeOffset: string | Date
+                Milliseconds: number
+                Seconds: number
+                Decimal: number
     graphql/schema.json:
         plugins:
             - 'introspection'

@@ -10,21 +10,21 @@ export type Scalars = {
      * `DateTimeOffset` expects timestamps to be formatted in accordance with the
      * [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
      */
-    DateTimeOffset: any;
+    DateTimeOffset: string | Date;
     /** The `Date` scalar type represents a year, month and day in accordance with the
      * [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
      */
-    Date: any;
+    Date: string | Date;
     /** The `DateTime` scalar type represents a date and time. `DateTime` expects
      * timestamps to be formatted in accordance with the
      * [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
      */
-    DateTime: any;
-    Decimal: any;
+    DateTime: string | Date;
+    Decimal: number;
     /** The `Milliseconds` scalar type represents a period of time represented as the total number of milliseconds. */
-    Milliseconds: any;
+    Milliseconds: number;
     /** The `Seconds` scalar type represents a period of time represented as the total number of seconds. */
-    Seconds: any;
+    Seconds: number;
 };
 
 export type AppMutation = {
@@ -557,9 +557,9 @@ export type Booking = {
     /** Thông tin hóa đơn của thông tin thuê phòng */
     bill: Bill;
     /** Thời điểm nhận phòng dự kiến của khách hàng */
-    bookCheckInTime: Maybe<Scalars['DateTimeOffset']>;
+    bookCheckInTime: Scalars['DateTimeOffset'];
     /** Thời điểm trả phòng dự kiến của khách hàng */
-    bookCheckOutTime: Maybe<Scalars['DateTimeOffset']>;
+    bookCheckOutTime: Scalars['DateTimeOffset'];
     /** Thời điểm tạo thông tin thuê phòng */
     createTime: Scalars['DateTimeOffset'];
     /** Nhân viên thực hiện giao dịch nhận đặt phòng từ khách hàng */

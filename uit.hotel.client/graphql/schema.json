@@ -1066,9 +1066,13 @@
                         "description": "Thời điểm nhận phòng dự kiến của khách hàng",
                         "args": [],
                         "type": {
-                            "kind": "SCALAR",
-                            "name": "DateTimeOffset",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "DateTimeOffset",
+                                "ofType": null
+                            }
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -1078,9 +1082,13 @@
                         "description": "Thời điểm trả phòng dự kiến của khách hàng",
                         "args": [],
                         "type": {
-                            "kind": "SCALAR",
-                            "name": "DateTimeOffset",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "DateTimeOffset",
+                                "ofType": null
+                            }
                         },
                         "isDeprecated": false,
                         "deprecationReason": null

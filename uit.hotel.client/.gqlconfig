@@ -17,20 +17,6 @@
                     }
                 ],
                 "isRelay": true
-            },
-            {
-                "match": {
-                    "include": "**/*.ts",
-                    "ignore": "node_modules/**"
-                },
-                "parser": [
-                    "EmbeddedQueryParser",
-                    {
-                        "startTag": "gql`",
-                        "endTag": "`"
-                    }
-                ],
-                "isRelay": true
             }
         ]
     }
