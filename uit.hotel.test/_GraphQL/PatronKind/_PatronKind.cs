@@ -18,7 +18,7 @@ namespace uit.hotel.test._GraphQL
                 {
                     input = new
                     {
-                        name = "Tên loại khách hàng",
+                        name = "Tên loại khách hàng 1",
                         description = "Mô tả"
                     }
                 },
@@ -32,7 +32,7 @@ namespace uit.hotel.test._GraphQL
             Database.WriteAsync(realm => realm.Add(new PatronKind
             {
                 Id = 10,
-                Name = "Tên loại khách hàng",
+                Name = "Tên loại khách hàng 10",
                 Description = "Mô tả loại khách hàng"
             })).Wait();
             SchemaHelper.Execute(
@@ -71,7 +71,7 @@ namespace uit.hotel.test._GraphQL
             Database.WriteAsync(realm => realm.Add(new PatronKind
             {
                 Id = 20,
-                Name = "Tên loại khách hàng",
+                Name = "Tên loại khách hàng 20",
                 Description = "Mô tả loại khách hàng"
             })).Wait();
             SchemaHelper.Execute(
@@ -82,8 +82,8 @@ namespace uit.hotel.test._GraphQL
                     input = new
                     {
                         id = 20,
-                        name = "Loại khách 2",
-                        description = "Loại khách 2"
+                        name = "Loại khách 20",
+                        description = "Loại khách 20"
                     }
                 },
                 p => p.PermissionManagePatronKind = true
