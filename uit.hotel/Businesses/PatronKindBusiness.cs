@@ -9,11 +9,17 @@ namespace uit.hotel.Businesses
 {
     public static class PatronKindBusiness
     {
-        public static Task<PatronKind> Add(PatronKind patronKind) => PatronKindDataAccess.Add(patronKind);
+        public static Task<PatronKind> Add(PatronKind patronKind)
+        {
+            CheckUniqueName(patronKind);
+            return PatronKindDataAccess.Add(patronKind);
+        }
 
         public static Task<PatronKind> Update(PatronKind patronKind)
         {
             var patronKindInDatabase = GetAndCheckValid(patronKind.Id);
+            CheckUniqueName(patronKind);
+
             return PatronKindDataAccess.Update(patronKindInDatabase, patronKind);
         }
 
@@ -24,6 +30,15 @@ namespace uit.hotel.Businesses
                 throw new Exception("Loại khách hàng đang được sử dụng. Không thể cập xóa");
 
             PatronKindDataAccess.Delete(patronKindInDatabase);
+        }
+
+        private static void CheckUniqueName(PatronKind patronKind)
+        {
+            var numberOfPatronKinds = Get().Where(p => p.Name == patronKind.Name).Count();
+            if (numberOfPatronKinds == 1)
+                throw new Exception("Loại khách hàng " + patronKind.Name + " đã được tạo.");
+            else if (numberOfPatronKinds > 1)
+                throw new Exception("Cơ sở dữ liệu lỗi!");
         }
 
         private static PatronKind GetAndCheckValid(int patronKindId)
