@@ -35,6 +35,7 @@
                         class="m-3"
                     >
                         <b-form-select
+                            ref="position"
                             v-model="input.position.id"
                             slot-scope="{ data: { positions } }"
                             :state="!$v.input.position.id.$invalid"
@@ -134,10 +135,21 @@
 </template>
 <script lang="ts">
 import { Component, mixins } from 'nuxt-property-decorator';
-import { required, email, alphaNum } from 'vuelidate/lib/validators';
+import { required, email } from 'vuelidate/lib/validators';
 import { PopupMixin, DataMixin } from '~/components/mixins';
 import { EmployeeUpdateInput, GetEmployees } from '~/graphql/types';
 import { updateEmployee, getPositions } from '~/graphql/documents';
+import {
+    address,
+    birthdate,
+    gender,
+    id,
+    included,
+    name,
+    password,
+    phoneNumber,
+    validDate,
+} from '~/modules/validator';
 
 type PopupMixinType = PopupMixin<
     { employee: GetEmployees.Employees },
@@ -148,19 +160,16 @@ type PopupMixinType = PopupMixin<
     name: 'popup-employee-update-',
     validations: {
         input: {
-            id: { required },
-            name: { required },
-            identityCard: { required, alphaNum },
-            startingDate: { required },
-            gender: { required },
-            phoneNumber: { required, alphaNum },
-            address: { required },
+            id,
+            name,
+            password,
+            startingDate: { required, validDate },
+            gender,
+            phoneNumber,
+            address,
             email: { required, email },
-            birthdate: { required },
-
-            position: {
-                id: { required },
-            },
+            birthdate,
+            position: included('position'),
         },
     },
 })

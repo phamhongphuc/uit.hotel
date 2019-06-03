@@ -44,6 +44,7 @@
                         class="m-3"
                     >
                         <b-form-select
+                            ref="position"
                             v-model="input.position.id"
                             slot-scope="{ data: { positions } }"
                             :state="!$v.input.position.id.$invalid"
@@ -151,33 +152,36 @@ import { required, email, alphaNum } from 'vuelidate/lib/validators';
 import { PopupMixin, DataMixin } from '~/components/mixins';
 import { EmployeeCreateInput } from '~/graphql/types';
 import { getPositions, createEmployee } from '~/graphql/documents';
+import {
+    address,
+    birthdate,
+    gender,
+    id,
+    included,
+    name,
+    password,
+    phoneNumber,
+    rePassword,
+    startingDate,
+} from '~/modules/validator';
 
 @Component({
     name: 'popup-employee-add-',
     validations: {
         input: {
-            id: { required },
-            name: { required },
-            password: { required },
+            id,
+            name,
+            password,
             identityCard: { required, alphaNum },
-            startingDate: { required },
-
-            gender: { required },
-            phoneNumber: { required, alphaNum },
-            address: { required },
+            startingDate,
+            gender,
+            phoneNumber,
+            address,
             email: { required, email },
-            birthdate: { required },
-
-            position: {
-                id: { required },
-            },
+            birthdate,
+            position: included('position'),
         },
-        rePassword: {
-            required,
-            equalPassword(value) {
-                return value === (this as any).input.password;
-            },
-        },
+        rePassword,
     },
 })
 export default class extends mixins<PopupMixin<void, EmployeeCreateInput>>(
@@ -199,7 +203,7 @@ export default class extends mixins<PopupMixin<void, EmployeeCreateInput>>(
             gender: true,
             startingDate: '',
             position: {
-                id: 1,
+                id: -1,
             },
         };
     }
