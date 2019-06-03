@@ -81,7 +81,7 @@
                     <div class="input-label">Thư điện tử</div>
                     <b-input-
                         v-model="input.email"
-                        :state="!$v.input.email.$invalid"
+                        :state="optional($v.input.email)"
                         class="m-3 rounded"
                         icon="mail"
                     />

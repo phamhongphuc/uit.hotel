@@ -130,6 +130,7 @@ export default class extends mixins<PopupMixinType>(
     }
 
     addBookingToList(close: Function) {
+        if (this.input === null) throw new Error("Popup input mustn't be null");
         this.data.callback(this.input);
         close();
     }

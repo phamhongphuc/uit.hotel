@@ -198,8 +198,11 @@ export default class extends mixins<PopupMixinType>(
     }
 
     get variables(): BookAndCheckIn.Variables {
-        const { input, bookCheckOutTime } = this;
-        const { bill, bookings } = input;
+        if (this.input === null) throw new Error("Popup input mustn't be null");
+        const {
+            input: { bill, bookings },
+            bookCheckOutTime,
+        } = this;
         return {
             bill: {
                 patron: {
@@ -219,6 +222,7 @@ export default class extends mixins<PopupMixinType>(
     }
 
     removeBooking(booking: BookAndCheckInCreateInput) {
+        if (this.input === null) throw new Error("Popup input mustn't be null");
         const index = this.input.bookings.indexOf(booking);
         this.input.bookings.splice(index, 1);
     }
