@@ -12,6 +12,8 @@ namespace uit.hotel.Businesses
     {
         public static Task<Room> Add(Room room)
         {
+            CheckUniqueName(room);
+
             room.Floor = room.Floor.GetManaged();
             if (!room.Floor.IsActive)
                 throw new Exception("Tầng có ID: " + room.Floor.Id + " đã ngưng hoại động");
@@ -26,6 +28,7 @@ namespace uit.hotel.Businesses
         public static Task<Room> Update(Room room)
         {
             var roomInDatabase = GetAndCheckValid(room.Id);
+            CheckUniqueName(room);
 
             room.Floor = room.Floor.GetManaged();
             if (!room.Floor.IsActive)
@@ -51,6 +54,15 @@ namespace uit.hotel.Businesses
             if (isActive && !roomInDatabase.Floor.IsActive)
                 throw new Exception("Loại phòng thuộc tầng đã bị vô hiệu hóa. Không thể kích hoạt");
             RoomDataAccess.SetIsActive(roomInDatabase, isActive);
+        }
+
+        private static void CheckUniqueName(Room room)
+        {
+            var numberOfRooms = Get().Where(r => r.Name == room.Name).Count();
+            if (numberOfRooms == 1)
+                throw new Exception("Phòng " + room.Name + " đã được tạo.");
+            else if (numberOfRooms > 1)
+                throw new Exception("Cơ sở dữ liệu lỗi!");
         }
 
         private static Room GetAndCheckValid(int roomId)
