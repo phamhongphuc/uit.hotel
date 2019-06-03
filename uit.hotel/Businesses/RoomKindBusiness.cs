@@ -9,11 +9,17 @@ namespace uit.hotel.Businesses
 {
     public static class RoomKindBusiness
     {
-        public static Task<RoomKind> Add(RoomKind roomKind) => RoomKindDataAccess.Add(roomKind);
+        public static Task<RoomKind> Add(RoomKind roomKind)
+        {
+            CheckUniqueName(roomKind);
+            return RoomKindDataAccess.Add(roomKind);
+        }
 
         public static Task<RoomKind> Update(RoomKind roomKind)
         {
             var roomKindInDatabase = GetAndCheckValid(roomKind.Id);
+            CheckUniqueName(roomKind);
+
             return RoomKindDataAccess.Update(roomKindInDatabase, roomKind);
         }
 
@@ -29,6 +35,15 @@ namespace uit.hotel.Businesses
             if (roomKindInDatabase == null)
                 throw new Exception("Loại phòng có Id: " + roomKindId + " không hợp lệ!");
             RoomKindDataAccess.SetIsActive(roomKindInDatabase, isActive);
+        }
+        
+        private static void CheckUniqueName(RoomKind roomKind)
+        {
+            var numberOfRoomKinds = Get().Where(rk => rk.Name == roomKind.Name).Count();
+            if (numberOfRoomKinds == 1)
+                throw new Exception("Loại Phòng " + roomKind.Name + " đã được tạo.");
+            else if (numberOfRoomKinds > 1)
+                throw new Exception("Cơ sở dữ liệu lỗi!");
         }
 
         private static RoomKind GetAndCheckValid(int roomKindId)
