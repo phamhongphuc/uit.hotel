@@ -67,7 +67,7 @@ namespace uit.hotel.ObjectTypes
             Field(x => x.EarlyCheckInFee).Description("Phí check-out sớm");
             Field(x => x.EffectiveStartDate).Description("Ngày giá bắt đầu có hiệu lực");
 
-            Field<RoomKindIdInput>(
+            Field<NonNullGraphType<RoomKindIdInput>>(
                 nameof(Rate.RoomKind),
                 "Loại phòng"
             );

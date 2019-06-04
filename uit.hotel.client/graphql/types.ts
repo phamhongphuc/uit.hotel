@@ -799,7 +799,7 @@ export type PatronCreateInput = {
     /** Danh sách số điện thoại của khách hàng */
     listOfPhoneNumbers: Array<Scalars['String']>;
     /** Loại khách hàng */
-    patronKind: Maybe<PatronKindId>;
+    patronKind: PatronKindId;
 };
 
 /** Input cho thông tin một khách hàng */
@@ -1060,7 +1060,7 @@ export type RateUpdateInput = {
     /** Ngày giá bắt đầu có hiệu lực */
     effectiveStartDate: Scalars['DateTimeOffset'];
     /** Loại phòng */
-    roomKind: Maybe<RoomKindId>;
+    roomKind: RoomKindId;
 };
 
 /** Phiếu thu */
@@ -1085,7 +1085,7 @@ export type ReceiptCreateInput = {
     /** Số tài khoản ngân hàng của khách */
     bankAccountNumber: Maybe<Scalars['String']>;
     /** Thuộc hóa đơn */
-    bill: Maybe<BillId>;
+    bill: BillId;
 };
 
 /** Một phòng trong khách sạn */
@@ -1189,9 +1189,9 @@ export type RoomUpdateInput = {
     /** Tên phòng */
     name: Scalars['String'];
     /** Phòng thuộc tầng nào */
-    floor: Maybe<FloorId>;
+    floor: FloorId;
     /** Loại phòng của phòng */
-    roomKind: Maybe<RoomKindId>;
+    roomKind: RoomKindId;
 };
 
 /** Một dịch vụ trong khách sạn */

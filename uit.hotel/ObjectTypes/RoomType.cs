@@ -95,11 +95,11 @@ namespace uit.hotel.ObjectTypes
             Field(x => x.Id).Description("Id phòng cần cập nhật");
             Field(x => x.Name).Description("Tên phòng");
 
-            Field<FloorIdInput>(
+            Field<NonNullGraphType<FloorIdInput>>(
                 nameof(Room.Floor),
                 "Phòng thuộc tầng nào"
             );
-            Field<RoomKindIdInput>(
+            Field<NonNullGraphType<RoomKindIdInput>>(
                 nameof(Room.RoomKind),
                 "Loại phòng của phòng"
             );

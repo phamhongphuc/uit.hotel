@@ -694,7 +694,7 @@ input PatronCreateInput {
     listOfPhoneNumbers: [String!]!
 
     # Loại khách hàng
-    patronKind: PatronKindId = null
+    patronKind: PatronKindId!
 }
 
 # Input cho thông tin một khách hàng
@@ -1050,7 +1050,7 @@ input RateUpdateInput {
     effectiveStartDate: DateTimeOffset!
 
     # Loại phòng
-    roomKind: RoomKindId = null
+    roomKind: RoomKindId!
 }
 
 # Phiếu thu
@@ -1082,7 +1082,7 @@ input ReceiptCreateInput {
     bankAccountNumber: String = null
 
     # Thuộc hóa đơn
-    bill: BillId = null
+    bill: BillId!
 }
 
 # Một phòng trong khách sạn
@@ -1197,10 +1197,10 @@ input RoomUpdateInput {
     name: String!
 
     # Phòng thuộc tầng nào
-    floor: FloorId = null
+    floor: FloorId!
 
     # Loại phòng của phòng
-    roomKind: RoomKindId = null
+    roomKind: RoomKindId!
 }
 
 # The `Seconds` scalar type represents a period of time represented as the total number of seconds.

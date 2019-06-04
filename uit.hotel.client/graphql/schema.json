@@ -6382,11 +6382,15 @@
                         "name": "patronKind",
                         "description": "Loại khách hàng",
                         "type": {
-                            "kind": "INPUT_OBJECT",
-                            "name": "PatronKindId",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "INPUT_OBJECT",
+                                "name": "PatronKindId",
+                                "ofType": null
+                            }
                         },
-                        "defaultValue": "null"
+                        "defaultValue": null
                     }
                 ],
                 "interfaces": null,
@@ -6874,11 +6878,15 @@
                         "name": "bill",
                         "description": "Thuộc hóa đơn",
                         "type": {
-                            "kind": "INPUT_OBJECT",
-                            "name": "BillId",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "INPUT_OBJECT",
+                                "name": "BillId",
+                                "ofType": null
+                            }
                         },
-                        "defaultValue": "null"
+                        "defaultValue": null
                     }
                 ],
                 "interfaces": null,
@@ -8240,11 +8248,15 @@
                         "name": "roomKind",
                         "description": "Loại phòng",
                         "type": {
-                            "kind": "INPUT_OBJECT",
-                            "name": "RoomKindId",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "INPUT_OBJECT",
+                                "name": "RoomKindId",
+                                "ofType": null
+                            }
                         },
-                        "defaultValue": "null"
+                        "defaultValue": null
                     }
                 ],
                 "interfaces": null,
@@ -8289,21 +8301,29 @@
                         "name": "floor",
                         "description": "Phòng thuộc tầng nào",
                         "type": {
-                            "kind": "INPUT_OBJECT",
-                            "name": "FloorId",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "INPUT_OBJECT",
+                                "name": "FloorId",
+                                "ofType": null
+                            }
                         },
-                        "defaultValue": "null"
+                        "defaultValue": null
                     },
                     {
                         "name": "roomKind",
                         "description": "Loại phòng của phòng",
                         "type": {
-                            "kind": "INPUT_OBJECT",
-                            "name": "RoomKindId",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "INPUT_OBJECT",
+                                "name": "RoomKindId",
+                                "ofType": null
+                            }
                         },
-                        "defaultValue": "null"
+                        "defaultValue": null
                     }
                 ],
                 "interfaces": null,
