@@ -189,7 +189,7 @@ export default class extends mixins<PopupMixin<void, PatronCreateInput>>(
             patronKind: {
                 id: -1,
             },
-            birthdate: null,
+            birthdate: '',
             get listOfPhoneNumbers() {
                 return self.phoneNumbers === null || self.phoneNumbers === ''
                     ? []

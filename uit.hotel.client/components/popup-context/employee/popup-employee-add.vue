@@ -44,7 +44,7 @@
                         class="m-3"
                     >
                         <b-form-select
-                            ref="position"
+                            ref="positions"
                             v-model="input.position.id"
                             slot-scope="{ data: { positions } }"
                             :state="!$v.input.position.id.$invalid"
@@ -179,17 +179,15 @@ import {
             address,
             email: { required, email },
             birthdate,
-            position: included('position'),
+            position: included('positions'),
         },
         rePassword,
     },
 })
-export default class extends mixins<PopupMixin<void, EmployeeCreateInput>>(
-    PopupMixin,
-    DataMixin({ createEmployee, getPositions }),
-) {
+export default class PopupEmployeeAdd extends mixins<
+    PopupMixin<void, EmployeeCreateInput>
+>(PopupMixin, DataMixin({ createEmployee, getPositions })) {
     rePassword: string = '';
-
     onOpen() {
         this.input = {
             id: '',

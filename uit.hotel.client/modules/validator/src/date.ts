@@ -10,10 +10,18 @@ export const beforeDate = (date?: Moment) => (value: string) =>
 
 export const birthdate: RuleDecl = {
     validDate,
-    beforeDate: beforeDate(moment().subtract('year', 5)),
+    beforeDate: beforeDate(),
 };
+
+interface HasBirthdate {
+    input: { birthdate: string };
+}
 
 export const startingDate: RuleDecl = {
     validDate,
-    beforeDate: beforeDate(),
+    notBefore(value: string) {
+        const { input } = (this as any) as HasBirthdate;
+        if (!input) return false;
+        return !beforeDate(moment(input.birthdate))(value);
+    },
 };

@@ -1,4 +1,4 @@
-export { birthdate, validDate, startingDate } from './src/date';
+export { birthdate, beforeDate, validDate, startingDate } from './src/date';
 export { included } from './src/included';
 export { optional } from './src/optional';
 export {

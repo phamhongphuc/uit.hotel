@@ -1,5 +1,5 @@
 <template>
-    <popup- ref="popup" title="Cập nhật vị trí">
+    <popup- ref="popup" title="Cập nhật vị trí" no-data>
         <form-mutate-
             v-if="input"
             slot-scope="{ close }"
@@ -35,7 +35,7 @@
                         class="m-3"
                     >
                         <b-form-select
-                            ref="position"
+                            ref="positions"
                             v-model="input.position.id"
                             slot-scope="{ data: { positions } }"
                             :state="!$v.input.position.id.$invalid"
@@ -135,10 +135,11 @@
 </template>
 <script lang="ts">
 import { Component, mixins } from 'nuxt-property-decorator';
-import { required, email } from 'vuelidate/lib/validators';
+import { required, email, alphaNum } from 'vuelidate/lib/validators';
 import { PopupMixin, DataMixin } from '~/components/mixins';
 import { EmployeeUpdateInput, GetEmployees } from '~/graphql/types';
 import { updateEmployee, getPositions } from '~/graphql/documents';
+import { toInputDate } from '~/utils/dataFormater';
 import {
     address,
     birthdate,
@@ -146,7 +147,6 @@ import {
     id,
     included,
     name,
-    password,
     phoneNumber,
     validDate,
 } from '~/modules/validator';
@@ -162,14 +162,14 @@ type PopupMixinType = PopupMixin<
         input: {
             id,
             name,
-            password,
+            identityCard: { required, alphaNum },
             startingDate: { required, validDate },
             gender,
             phoneNumber,
             address,
             email: { required, email },
             birthdate,
-            position: included('position'),
+            position: included('positions'),
         },
     },
 })
@@ -198,9 +198,9 @@ export default class extends mixins<PopupMixinType>(
             phoneNumber,
             address,
             email,
-            birthdate,
+            birthdate: toInputDate(birthdate),
             gender,
-            startingDate,
+            startingDate: toInputDate(startingDate),
             position: {
                 id: position.id,
             },
