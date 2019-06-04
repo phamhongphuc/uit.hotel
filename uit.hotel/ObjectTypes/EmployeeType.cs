@@ -28,27 +28,27 @@ namespace uit.hotel.ObjectTypes
                 "Chức vụ",
                 resolve: context => context.Source.Position);
 
-            Field<ListGraphType<BillType>>(
+            Field<NonNullGraphType<ListGraphType<NonNullGraphType<BillType>>>>(
                 nameof(Employee.Bills),
                 "Danh sách các Hóa đơn mà nhân viên tạo",
                 resolve: context => context.Source.Bills.ToList());
 
-            Field<ListGraphType<ReceiptType>>(
+            Field<NonNullGraphType<ListGraphType<NonNullGraphType<ReceiptType>>>>(
                 nameof(Employee.Receipts),
                 "Danh sách các Phiếu thu mà nhân viên tạo",
                 resolve: context => context.Source.Receipts.ToList());
 
-            Field<ListGraphType<RateType>>(
+            Field<NonNullGraphType<ListGraphType<NonNullGraphType<RateType>>>>(
                 nameof(Employee.Rates),
                 "Danh sách các Giá cơ bản mà nhân viên tạo",
                 resolve: context => context.Source.Rates.ToList());
 
-            Field<ListGraphType<VolatilityRateType>>(
+            Field<NonNullGraphType<ListGraphType<NonNullGraphType<VolatilityRateType>>>>(
                 nameof(Employee.VolatilityRates),
                 "Danh sách các Giá biến động mà nhân viên tạo",
                 resolve: context => context.Source.VolatilityRates.ToList());
 
-            Field<ListGraphType<BookingType>>(
+            Field<NonNullGraphType<ListGraphType<NonNullGraphType<BookingType>>>>(
                 nameof(Employee.Bookings),
                 "Danh sách các Thông tin thuê phòng mà nhân viên tạo",
                 resolve: context => context.Source.Bookings.ToList());
@@ -81,7 +81,7 @@ namespace uit.hotel.ObjectTypes
             Field(x => x.Gender).Description("Giới tính của nhân viên");
             Field(x => x.StartingDate).Description("Ngày vào làm");
 
-            Field<PositionIdInput>(
+            Field<NonNullGraphType<PositionIdInput>>(
                 nameof(Employee.Position),
                 "Loại chức vụ"
             );
@@ -103,7 +103,7 @@ namespace uit.hotel.ObjectTypes
             Field(x => x.PhoneNumber).Description("Số điện thoại của nhân viên");
             Field(x => x.StartingDate).Description("Ngày vào làm");
 
-            Field<PositionIdInput>(
+            Field<NonNullGraphType<PositionIdInput>>(
                 nameof(Employee.Position),
                 "Loại chức vụ"
             );

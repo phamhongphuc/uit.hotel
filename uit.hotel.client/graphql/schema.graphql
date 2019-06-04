@@ -441,13 +441,13 @@ type Employee {
     address: String!
 
     # Danh sách các Hóa đơn mà nhân viên tạo
-    bills: [Bill]
+    bills: [Bill!]!
 
     # Ngày sinh của nhân viên
     birthdate: DateTimeOffset!
 
     # Danh sách các Thông tin thuê phòng mà nhân viên tạo
-    bookings: [Booking]
+    bookings: [Booking!]!
 
     # Email của nhân viên
     email: String!
@@ -456,7 +456,7 @@ type Employee {
     gender: Boolean!
 
     # Danh sách các Phòng mà nhân viên dọn
-    houseKeepings: [HouseKeeping]
+    houseKeepings: [HouseKeeping!]!
 
     # Id của nhân viên
     id: String!
@@ -477,16 +477,16 @@ type Employee {
     phoneNumber: String!
 
     # Danh sách các Giá cơ bản mà nhân viên tạo
-    rates: [Rate]
+    rates: [Rate!]!
 
     # Danh sách các Phiếu thu mà nhân viên tạo
-    receipts: [Receipt]
+    receipts: [Receipt!]!
 
     # Ngày vào làm
     startingDate: DateTimeOffset!
 
     # Danh sách các Giá biến động mà nhân viên tạo
-    volatilityRates: [VolatilityRate]
+    volatilityRates: [VolatilityRate!]!
 }
 
 input EmployeeCreateInput {
@@ -521,7 +521,7 @@ input EmployeeCreateInput {
     startingDate: DateTimeOffset!
 
     # Loại chức vụ
-    position: PositionId = null
+    position: PositionId!
 }
 
 input EmployeeUpdateInput {
@@ -553,7 +553,7 @@ input EmployeeUpdateInput {
     startingDate: DateTimeOffset!
 
     # Loại chức vụ
-    position: PositionId = null
+    position: PositionId!
 }
 
 # Một tầng trong khách sạn

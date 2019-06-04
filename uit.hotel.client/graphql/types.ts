@@ -616,17 +616,17 @@ export type Employee = {
     /** Địa chỉ của nhân viên */
     address: Scalars['String'];
     /** Danh sách các Hóa đơn mà nhân viên tạo */
-    bills: Maybe<Array<Maybe<Bill>>>;
+    bills: Array<Bill>;
     /** Ngày sinh của nhân viên */
     birthdate: Scalars['DateTimeOffset'];
     /** Danh sách các Thông tin thuê phòng mà nhân viên tạo */
-    bookings: Maybe<Array<Maybe<Booking>>>;
+    bookings: Array<Booking>;
     /** Email của nhân viên */
     email: Scalars['String'];
     /** Giới tính của nhân viên */
     gender: Scalars['Boolean'];
     /** Danh sách các Phòng mà nhân viên dọn */
-    houseKeepings: Maybe<Array<Maybe<HouseKeeping>>>;
+    houseKeepings: Array<HouseKeeping>;
     /** Id của nhân viên */
     id: Scalars['String'];
     /** Chứng minh nhân dân */
@@ -640,13 +640,13 @@ export type Employee = {
     /** Số điện thoại của nhân viên */
     phoneNumber: Scalars['String'];
     /** Danh sách các Giá cơ bản mà nhân viên tạo */
-    rates: Maybe<Array<Maybe<Rate>>>;
+    rates: Array<Rate>;
     /** Danh sách các Phiếu thu mà nhân viên tạo */
-    receipts: Maybe<Array<Maybe<Receipt>>>;
+    receipts: Array<Receipt>;
     /** Ngày vào làm */
     startingDate: Scalars['DateTimeOffset'];
     /** Danh sách các Giá biến động mà nhân viên tạo */
-    volatilityRates: Maybe<Array<Maybe<VolatilityRate>>>;
+    volatilityRates: Array<VolatilityRate>;
 };
 
 export type EmployeeCreateInput = {
@@ -671,7 +671,7 @@ export type EmployeeCreateInput = {
     /** Ngày vào làm */
     startingDate: Scalars['DateTimeOffset'];
     /** Loại chức vụ */
-    position: Maybe<PositionId>;
+    position: PositionId;
 };
 
 export type EmployeeUpdateInput = {
@@ -694,7 +694,7 @@ export type EmployeeUpdateInput = {
     /** Ngày vào làm */
     startingDate: Scalars['DateTimeOffset'];
     /** Loại chức vụ */
-    position: Maybe<PositionId>;
+    position: PositionId;
 };
 
 /** Một tầng trong khách sạn */
