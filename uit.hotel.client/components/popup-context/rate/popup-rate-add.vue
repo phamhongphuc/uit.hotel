@@ -15,8 +15,10 @@
                         :query="getRoomKinds"
                         :poll-interval="0"
                         class="m-3"
+                        @result="onResult"
                     >
                         <b-form-select
+                            ref="roomKind"
                             v-model="input.roomKind.id"
                             slot-scope="{ data: { roomKinds } }"
                             :state="!$v.input.roomKind.$invalid"
@@ -95,11 +97,12 @@
     </popup->
 </template>
 <script lang="ts">
-import { Component, mixins } from 'nuxt-property-decorator';
+import { Component, mixins, Vue } from 'nuxt-property-decorator';
 import { required } from 'vuelidate/lib/validators';
 import { DataMixin, PopupMixin } from '~/components/mixins';
 import { RateCreateInput, GetRoomKinds } from '~/graphql/types';
 import { createRate, getRoomKinds } from '~/graphql/documents';
+import { rate, validDate, included } from '~/modules/validator';
 
 type PopupMixinType = PopupMixin<
     { roomKind: GetRoomKinds.RoomKinds },
@@ -110,14 +113,14 @@ type PopupMixinType = PopupMixin<
     name: 'popup-rate-add-',
     validations: {
         input: {
-            dayRate: { required },
-            nightRate: { required },
-            weekRate: { required },
-            monthRate: { required },
-            lateCheckOutFee: { required },
-            earlyCheckInFee: { required },
-            effectiveStartDate: { required },
-            roomKind: { required },
+            dayRate: rate,
+            nightRate: rate,
+            weekRate: rate,
+            monthRate: rate,
+            lateCheckOutFee: rate,
+            earlyCheckInFee: rate,
+            effectiveStartDate: { required, validDate },
+            roomKind: included('roomKind'),
         },
     },
 })
@@ -126,7 +129,6 @@ export default class extends mixins<PopupMixinType>(
     DataMixin({ createRate, getRoomKinds }),
 ) {
     onOpen() {
-        const self = this;
         this.input = {
             dayRate: 0,
             nightRate: 0,
@@ -135,10 +137,15 @@ export default class extends mixins<PopupMixinType>(
             lateCheckOutFee: 0,
             earlyCheckInFee: 0,
             effectiveStartDate: '',
-            roomKind: {
-                id: self.data.roomKind.id,
-            },
+            roomKind: { id: -1 },
         };
+    }
+
+    async onResult() {
+        if (this.input === null) return;
+        await Vue.nextTick();
+        this.input.roomKind.id = this.data.roomKind.id;
+        this.$v.$touch();
     }
 }
 </script>

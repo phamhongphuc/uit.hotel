@@ -13,7 +13,7 @@
                 :query="getFloors"
                 :poll-interval="0"
                 class="m-3"
-                @result="onResult"
+                @result="onResult('floor')"
             >
                 <b-form-select
                     ref="floor"
@@ -31,7 +31,7 @@
                 :query="getRoomKinds"
                 :poll-interval="0"
                 class="m-3"
-                @result="onResult"
+                @result="onResult('roomKind')"
             >
                 <b-form-select
                     ref="roomKind"
@@ -108,10 +108,17 @@ export default class extends mixins<PopupMixinType>(
         };
     }
 
-    async onResult() {
+    async onResult(type: 'roomKind' | 'floor') {
         if (this.input === null) return;
         await Vue.nextTick();
-        // this.input.floor.id = this.data.room.patronKind.id;
+        switch (type) {
+            case 'roomKind':
+                this.input.roomKind.id = this.data.room.roomKind.id;
+                break;
+            case 'floor':
+                this.input.floor.id = this.data.floor.id;
+                break;
+        }
         this.$v.$touch();
     }
 }

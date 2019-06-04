@@ -57,7 +57,7 @@
     </popup->
 </template>
 <script lang="ts">
-import { Component, mixins } from 'nuxt-property-decorator';
+import { Component, mixins, Vue } from 'nuxt-property-decorator';
 import { PopupMixin, DataMixin } from '~/components/mixins';
 import { createRoom, getFloors, getRoomKinds } from '~/graphql/documents';
 import { GetFloors, RoomCreateInput } from '~/graphql/types';
@@ -82,13 +82,16 @@ export default class extends mixins<PopupMixinType>(
     onOpen() {
         this.input = {
             name: '',
-            floor: {
-                id: this.data.floor.id,
-            },
-            roomKind: {
-                id: 1,
-            },
+            floor: { id: -1 },
+            roomKind: { id: -1 },
         };
+    }
+
+    async onResult() {
+        if (this.input === null) return;
+        await Vue.nextTick();
+        this.input.floor.id = this.data.floor.id;
+        this.$v.$touch();
     }
 }
 </script>

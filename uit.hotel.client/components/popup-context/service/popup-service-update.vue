@@ -48,10 +48,10 @@
 </template>
 <script lang="ts">
 import { Component, mixins } from 'nuxt-property-decorator';
-import { required, minLength, minValue } from 'vuelidate/lib/validators';
 import { DataMixin, PopupMixin } from '~/components/mixins';
 import { ServiceUpdateInput, GetServices } from '~/graphql/types';
 import { updateService } from '~/graphql/documents';
+import { serviceName, unitRate, unit } from '~/modules/validator';
 
 type PopupMixinType = PopupMixin<
     { service: GetServices.Services },
@@ -62,15 +62,9 @@ type PopupMixinType = PopupMixin<
     name: 'popup-service-update-',
     validations: {
         input: {
-            name: {
-                required,
-                minLength: minLength(1),
-            },
-            unitRate: {
-                required,
-                minLength: minValue(1000),
-            },
-            unit: { required },
+            name: serviceName,
+            unitRate,
+            unit,
         },
     },
 })
