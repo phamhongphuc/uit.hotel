@@ -59,6 +59,7 @@ namespace uit.hotel.DataAccesses
             {
                 bookingInDatabase.RealCheckOutTime = DateTimeOffset.Now;
                 bookingInDatabase.Status = (int)Booking.StatusEnum.CheckedOut;
+                bookingInDatabase.Room.IsClean = false;
             });
             return bookingInDatabase;
         }
