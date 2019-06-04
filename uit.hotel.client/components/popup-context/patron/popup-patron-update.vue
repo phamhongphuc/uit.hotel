@@ -50,6 +50,7 @@
                         :query="getPatronKinds"
                         :poll-interval="0"
                         class="m-3"
+                        @result="onResult"
                     >
                         <b-form-select
                             ref="patronKinds"
@@ -140,7 +141,7 @@
     </popup->
 </template>
 <script lang="ts">
-import { Component, mixins } from 'nuxt-property-decorator';
+import { Component, mixins, Vue } from 'nuxt-property-decorator';
 import { PopupMixin, DataMixin } from '~/components/mixins';
 import { PatronUpdateInput, GetPatrons } from '~/graphql/types';
 import { updatePatron, getPatronKinds } from '~/graphql/documents';
@@ -193,7 +194,6 @@ export default class extends mixins<
             company,
             note,
             phoneNumbers,
-            patronKind,
         } = this.data.patron;
         const self = this;
 
@@ -216,9 +216,16 @@ export default class extends mixins<
                     : self.phoneNumbers.split(/\s*,\s*/);
             },
             patronKind: {
-                id: patronKind.id,
+                id: -1,
             },
         };
+    }
+
+    async onResult() {
+        if (this.input === null) return;
+        await Vue.nextTick();
+        this.input.patronKind.id = this.data.patron.patronKind.id;
+        this.$v.$touch();
     }
 }
 </script>

@@ -7,10 +7,7 @@ import {
 
 export const gender = { required };
 
-export const name = {
-    required,
-    minLength: minLength(3),
-};
+export const name = { required, minLength: minLength(3) };
 
 export const identification = {
     required,

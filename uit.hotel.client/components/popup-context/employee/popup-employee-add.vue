@@ -148,7 +148,6 @@
 </template>
 <script lang="ts">
 import { Component, mixins } from 'nuxt-property-decorator';
-import { required, email, alphaNum } from 'vuelidate/lib/validators';
 import { PopupMixin, DataMixin } from '~/components/mixins';
 import { EmployeeCreateInput } from '~/graphql/types';
 import { getPositions, createEmployee } from '~/graphql/documents';
@@ -157,11 +156,13 @@ import {
     birthdate,
     gender,
     id,
+    identityCard,
     included,
     name,
     password,
     phoneNumber,
     rePassword,
+    requiredEmail,
     startingDate,
 } from '~/modules/validator';
 
@@ -172,12 +173,12 @@ import {
             id,
             name,
             password,
-            identityCard: { required, alphaNum },
+            identityCard,
             startingDate,
             gender,
             phoneNumber,
             address,
-            email: { required, email },
+            email: requiredEmail,
             birthdate,
             position: included('positions'),
         },

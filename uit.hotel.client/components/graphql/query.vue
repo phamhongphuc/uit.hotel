@@ -6,6 +6,7 @@
             :poll-interval="pollInterval"
             fetch-policy="no-cache"
             class="query"
+            @result="$emit('result', $event)"
         >
             <template slot-scope="{ result: { loading, error, data } }">
                 <div :class="childClass">

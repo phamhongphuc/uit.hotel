@@ -1,14 +1,12 @@
 import {
+    alphaNum,
+    email,
+    minLength,
     required,
     sameAs,
-    minLength,
-    alphaNum,
 } from 'vuelidate/lib/validators';
 
-export const id = {
-    required,
-    minLength: minLength(3),
-};
+export const id = { required, minLength: minLength(3) };
 
 export const rePassword = {
     required,
@@ -17,17 +15,12 @@ export const rePassword = {
     ),
 };
 
-export const password = {
-    required,
-    minLength: minLength(3),
-};
+export const password = { required, minLength: minLength(3) };
 
-export const phoneNumber = {
-    required,
-    alphaNum,
-};
+export const phoneNumber = { required, alphaNum };
 
-export const address = {
-    required,
-    minLength: minLength(10),
-};
+export const address = { required, minLength: minLength(10) };
+
+export const requiredEmail = { required, email };
+
+export const identityCard = { required, alphaNum };

@@ -1,5 +1,5 @@
 <template>
-    <popup- ref="popup" title="Cập nhật vị trí" no-data>
+    <popup- ref="popup" title="Cập nhật vị trí">
         <form-mutate-
             v-if="input"
             slot-scope="{ close }"
@@ -33,6 +33,7 @@
                         :query="getPositions"
                         :poll-interval="0"
                         class="m-3"
+                        @result="onResult"
                     >
                         <b-form-select
                             ref="positions"
@@ -134,8 +135,7 @@
     </popup->
 </template>
 <script lang="ts">
-import { Component, mixins } from 'nuxt-property-decorator';
-import { required, email, alphaNum } from 'vuelidate/lib/validators';
+import { Component, mixins, Vue } from 'nuxt-property-decorator';
 import { PopupMixin, DataMixin } from '~/components/mixins';
 import { EmployeeUpdateInput, GetEmployees } from '~/graphql/types';
 import { updateEmployee, getPositions } from '~/graphql/documents';
@@ -145,10 +145,12 @@ import {
     birthdate,
     gender,
     id,
+    identityCard,
     included,
     name,
     phoneNumber,
-    validDate,
+    requiredEmail,
+    startingDate,
 } from '~/modules/validator';
 
 type PopupMixinType = PopupMixin<
@@ -162,12 +164,12 @@ type PopupMixinType = PopupMixin<
         input: {
             id,
             name,
-            identityCard: { required, alphaNum },
-            startingDate: { required, validDate },
+            identityCard,
+            startingDate,
             gender,
             phoneNumber,
             address,
-            email: { required, email },
+            email: requiredEmail,
             birthdate,
             position: included('positions'),
         },
@@ -188,7 +190,6 @@ export default class extends mixins<PopupMixinType>(
             birthdate,
             gender,
             startingDate,
-            position,
         } = this.data.employee;
 
         this.input = {
@@ -201,10 +202,15 @@ export default class extends mixins<PopupMixinType>(
             birthdate: toInputDate(birthdate),
             gender,
             startingDate: toInputDate(startingDate),
-            position: {
-                id: position.id,
-            },
+            position: { id: -1 },
         };
+    }
+
+    async onResult() {
+        if (this.input === null) return;
+        await Vue.nextTick();
+        this.input.position.id = this.data.employee.position.id;
+        this.$v.$touch();
     }
 }
 </script>
