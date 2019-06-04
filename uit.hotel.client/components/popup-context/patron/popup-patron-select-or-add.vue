@@ -175,6 +175,7 @@ import {
     included,
     listOfPhoneNumbers,
     name,
+    optional,
     optionalEmail,
 } from '~/modules/validator';
 
@@ -202,7 +203,10 @@ export default class extends mixins<
         { callback(id: number, patron: GetPatrons.Patrons) },
         PatronCreateInput
     >
->(PopupMixin, DataMixin({ createPatron, getPatronKinds, getPatrons })) {
+>(
+    PopupMixin,
+    DataMixin({ createPatron, getPatronKinds, getPatrons, optional }),
+) {
     phoneNumbers: string = '';
 
     onOpen() {
