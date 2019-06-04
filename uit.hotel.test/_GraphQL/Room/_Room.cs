@@ -252,7 +252,7 @@ namespace uit.hotel.test._GraphQL
             }).Wait();
 
             SchemaHelper.ExecuteAndExpectError(
-                "Loại phòng thuộc tầng đã bị vô hiệu hóa. Không thể kích hoạt",
+                "Phòng thuộc tầng đã bị vô hiệu hóa. Không thể kích hoạt",
                 @"/_GraphQL/Room/mutation.setIsActiveRoom.gql",
                 new { id = 21, isActive = true },
                 p => p.PermissionManageMap = true
@@ -545,6 +545,56 @@ namespace uit.hotel.test._GraphQL
                     }
                 },
                 p => p.PermissionManageMap = true
+            );
+        }
+
+        [TestMethod]
+        public void Mutation_SetIsCleanRoom()
+        {
+            Database.WriteAsync(realm => realm.Add(new Room
+            {
+                Id = 40,
+                IsActive = true,
+                Name = "Tên phòng 40",
+                Floor = FloorBusiness.Get(1),
+                RoomKind = RoomKindBusiness.Get(1)
+            })).Wait();
+            SchemaHelper.Execute(
+                @"/_GraphQL/Room/mutation.setIsCleanRoom.gql",
+                @"/_GraphQL/Room/mutation.setIsCleanRoom.schema.json",
+                new { id = 40, isClean = true },
+                p => p.PermissionCleaning = true
+            );
+        }
+
+        [TestMethod]
+        public void Mutation_SetIsCleanRoom_InActive()
+        {
+            Database.WriteAsync(realm => realm.Add(new Room
+            {
+                Id = 41,
+                IsActive = false,
+                Name = "Tên phòng 41",
+                Floor = FloorBusiness.Get(1),
+                RoomKind = RoomKindBusiness.Get(1)
+            })).Wait();
+
+            SchemaHelper.ExecuteAndExpectError(
+                "Phòng đã bị vô hiệu hóa. Không thể sửa trạng thái dọn phòng",
+                @"/_GraphQL/Room/mutation.setIsCleanRoom.gql",
+                new { id = 41, isClean = true },
+                p => p.PermissionCleaning = true
+            );
+        }
+
+        [TestMethod]
+        public void Mutation_SetIsCleanRoom_InvalidId()
+        {
+            SchemaHelper.ExecuteAndExpectError(
+                "Id: 100 không tồn tại",
+                @"/_GraphQL/Room/mutation.setIsCleanRoom.gql",
+                new { id = 100, isClean = true },
+                p => p.PermissionCleaning = true
             );
         }
 
