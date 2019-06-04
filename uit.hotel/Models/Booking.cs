@@ -12,7 +12,6 @@ namespace uit.hotel.Models
         {
             Booked,
             CheckedIn,
-            RequestedCheckOut,
             CheckedOut
         }
 
