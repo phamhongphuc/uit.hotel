@@ -44,9 +44,6 @@ namespace uit.hotel.Models
         public Room Room { get; set; }
         public IList<Patron> Patrons { get; }
 
-        [Backlink(nameof(HouseKeeping.Booking))]
-        public IQueryable<HouseKeeping> HouseKeepings { get; }
-
         [Backlink(nameof(ServicesDetail.Booking))]
         public IQueryable<ServicesDetail> ServicesDetails { get; }
 

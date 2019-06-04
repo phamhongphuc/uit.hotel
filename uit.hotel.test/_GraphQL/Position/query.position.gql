@@ -4,7 +4,6 @@ query($id: ID!) {
         name
         permissionCleaning
         permissionGetAccountingVoucher
-        permissionGetHouseKeeping
         permissionGetMap
         permissionGetPatron
         permissionGetRate

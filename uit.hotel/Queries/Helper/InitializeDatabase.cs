@@ -21,7 +21,6 @@ namespace uit.hotel.Queries.Helper
                     IsActive = true,
                     PermissionCleaning = true,
                     PermissionGetAccountingVoucher = true,
-                    PermissionGetHouseKeeping = true,
                     PermissionGetMap = true,
                     PermissionGetPatron = true,
                     PermissionGetRate = true,

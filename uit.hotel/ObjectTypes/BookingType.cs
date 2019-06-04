@@ -51,11 +51,6 @@ namespace uit.hotel.ObjectTypes
                 "Danh sách khách hàng yêu cầu đặt phòng",
                 resolve: context => context.Source.Patrons.ToList());
 
-            Field<ListGraphType<HouseKeepingType>>(
-                nameof(Booking.HouseKeepings),
-                "Danh sách nhân viên dọn phòng cho phòng đã đặt này",
-                resolve: context => context.Source.HouseKeepings.ToList());
-
             Field<ListGraphType<ServicesDetailType>>(
                 nameof(Booking.ServicesDetails),
                 "Danh sách chi tiết sử dụng dịch vụ của khách hàng",

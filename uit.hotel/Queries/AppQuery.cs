@@ -12,7 +12,6 @@ namespace uit.hotel.Queries
                 new BookingQuery(),
                 new EmployeeQuery(),
                 new FloorQuery(),
-                new HouseKeepingQuery(),
                 new InitializeQuery(),
                 new PatronKindQuery(),
                 new PatronQuery(),

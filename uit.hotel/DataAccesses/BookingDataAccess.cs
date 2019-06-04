@@ -39,40 +39,26 @@ namespace uit.hotel.DataAccesses
             booking.Status = (int)Booking.StatusEnum.CheckedIn;
 
             booking = realm.Add(booking);
-
-            var houseKeeping = new HouseKeeping();
-            houseKeeping.Type = (int)HouseKeeping.TypeEnum.ExpectedArrival;
-            houseKeeping.Status = (int)HouseKeeping.StatusEnum.Pending;
-            houseKeeping.Booking = booking;
-
-            HouseKeepingDataAccess.Add(realm, houseKeeping);
-
             return booking;
         }
 
-        public static async Task<Booking> CheckIn(Employee employee, Booking bookingInDatabase,
-                                                  HouseKeeping houseKeeping)
+        public static async Task<Booking> CheckIn(Employee employee, Booking bookingInDatabase)
         {
             await Database.WriteAsync(realm =>
             {
                 bookingInDatabase.EmployeeCheckIn = employee;
                 bookingInDatabase.RealCheckInTime = DateTimeOffset.Now;
                 bookingInDatabase.Status = (int)Booking.StatusEnum.CheckedIn;
-
-                HouseKeepingDataAccess.Add(realm, houseKeeping);
             });
             return bookingInDatabase;
         }
 
-        public static async Task<Booking> RequestCheckOut(Employee employee, Booking bookingInDatabase,
-                                                          HouseKeeping houseKeeping)
+        public static async Task<Booking> RequestCheckOut(Employee employee, Booking bookingInDatabase)
         {
             await Database.WriteAsync(realm =>
             {
                 bookingInDatabase.EmployeeCheckOut = employee;
                 bookingInDatabase.Status = (int)Booking.StatusEnum.RequestedCheckOut;
-
-                HouseKeepingDataAccess.Add(realm, houseKeeping);
             });
             return bookingInDatabase;
         }

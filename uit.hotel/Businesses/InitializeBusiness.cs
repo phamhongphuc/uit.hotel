@@ -23,7 +23,6 @@ namespace uit.hotel.Businesses
                 Name = "admin",
                 PermissionCleaning = true,
                 PermissionGetAccountingVoucher = true,
-                PermissionGetHouseKeeping = true,
                 PermissionGetMap = true,
                 PermissionGetPatron = true,
                 PermissionGetRate = true,

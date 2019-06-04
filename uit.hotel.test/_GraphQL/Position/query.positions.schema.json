@@ -16,7 +16,6 @@
                             "name",
                             "permissionCleaning",
                             "permissionGetAccountingVoucher",
-                            "permissionGetHouseKeeping",
                             "permissionGetMap",
                             "permissionGetPatron",
                             "permissionGetRate",
@@ -48,9 +47,6 @@
                                 "type": "boolean"
                             },
                             "permissionGetRate": {
-                                "type": "boolean"
-                            },
-                            "permissionGetHouseKeeping": {
                                 "type": "boolean"
                             },
                             "permissionCleaning": {

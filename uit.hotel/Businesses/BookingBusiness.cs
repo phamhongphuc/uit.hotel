@@ -17,12 +17,7 @@ namespace uit.hotel.Businesses
             if (bookingInDatabase.Status != (int)Booking.StatusEnum.Booked)
                 throw new Exception("Phòng đã được check-in, không thể check-in lại");
 
-            var houseKeeping = new HouseKeeping();
-            houseKeeping.Type = (int)HouseKeeping.TypeEnum.ExpectedArrival;
-            houseKeeping.Status = (int)HouseKeeping.StatusEnum.Pending;
-            houseKeeping.Booking = bookingInDatabase;
-
-            return BookingDataAccess.CheckIn(employee, bookingInDatabase, houseKeeping);
+            return BookingDataAccess.CheckIn(employee, bookingInDatabase);
         }
 
         public static Task<Booking> RequestCheckOut(Employee employee, int bookingId)
@@ -34,12 +29,7 @@ namespace uit.hotel.Businesses
             if (bookingInDatabase.Status != (int)Booking.StatusEnum.CheckedIn)
                 throw new Exception("Không thể yêu cầu trả phòng");
 
-            var houseKeeping = new HouseKeeping();
-            houseKeeping.Type = (int)HouseKeeping.TypeEnum.ExpectedDeparture;
-            houseKeeping.Status = (int)HouseKeeping.StatusEnum.Pending;
-            houseKeeping.Booking = bookingInDatabase;
-
-            return BookingDataAccess.RequestCheckOut(employee, bookingInDatabase, houseKeeping);
+            return BookingDataAccess.RequestCheckOut(employee, bookingInDatabase);
         }
 
         public static Task<Booking> CheckOut(Employee employee, int bookingId)

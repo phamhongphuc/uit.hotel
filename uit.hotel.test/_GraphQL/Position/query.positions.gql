@@ -4,7 +4,6 @@
         name
         permissionCleaning
         permissionGetAccountingVoucher
-        permissionGetHouseKeeping
         permissionGetMap
         permissionGetPatron
         permissionGetRate

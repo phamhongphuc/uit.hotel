@@ -28,7 +28,6 @@ namespace uit.hotel.DataAccesses
                 positionInDatabase.Name = position.Name;
                 positionInDatabase.PermissionCleaning = position.PermissionCleaning;
                 positionInDatabase.PermissionGetAccountingVoucher = position.PermissionGetAccountingVoucher;
-                positionInDatabase.PermissionGetHouseKeeping = position.PermissionGetHouseKeeping;
                 positionInDatabase.PermissionGetMap = position.PermissionGetMap;
                 positionInDatabase.PermissionGetMap = position.PermissionGetMap;
                 positionInDatabase.PermissionGetPatron = position.PermissionGetPatron;

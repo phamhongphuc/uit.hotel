@@ -24,7 +24,6 @@ namespace uit.hotel.DataAccesses
                     typeof(Booking),
                     typeof(Employee),
                     typeof(Floor),
-                    typeof(HouseKeeping),
                     typeof(Patron),
                     typeof(PatronKind),
                     typeof(Position),
