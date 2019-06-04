@@ -52,8 +52,18 @@ namespace uit.hotel.Businesses
             var roomInDatabase = Get(id);
             if (roomInDatabase == null) throw new Exception("Id: " + id + " không tồn tại");
             if (isActive && !roomInDatabase.Floor.IsActive)
-                throw new Exception("Loại phòng thuộc tầng đã bị vô hiệu hóa. Không thể kích hoạt");
+                throw new Exception("Phòng thuộc tầng đã bị vô hiệu hóa. Không thể kích hoạt");
             RoomDataAccess.SetIsActive(roomInDatabase, isActive);
+        }
+
+        public static void SetIsClean(int id, bool isClean)
+        {
+            var roomInDatabase = Get(id);
+            if (roomInDatabase == null) throw new Exception("Id: " + id + " không tồn tại");
+            if (!roomInDatabase.IsActive)
+                throw new Exception("Phòng đã bị vô hiệu hóa. Không thể sửa trạng thái dọn phòng");
+
+            RoomDataAccess.SetIsClean(roomInDatabase, isClean);
         }
 
         private static void CheckUniqueName(Room room)

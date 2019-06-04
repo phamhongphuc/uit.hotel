@@ -62,6 +62,25 @@ namespace uit.hotel.Queries.Mutation
                     }
                 )
             );
+
+            Field<NonNullGraphType<StringGraphType>>(
+                "SetIsClean",
+                "Cập nhật trạng thái dọn phòng của một phòng",
+                new QueryArguments(
+                    new QueryArgument<NonNullGraphType<IdGraphType>> { Name = "id" },
+                    new QueryArgument<NonNullGraphType<BooleanGraphType>> { Name = "isClean" }
+                ),
+                _CheckPermission_String(
+                    p => p.PermissionCleaning,
+                    context =>
+                    {
+                        var id = context.GetArgument<int>("id");
+                        var isClean = context.GetArgument<bool>("isClean");
+                        RoomBusiness.SetIsClean(id, isClean);
+                        return "Cập nhật trạng thái dọn phòng thành công";
+                    }
+                )
+            );
         }
     }
 }

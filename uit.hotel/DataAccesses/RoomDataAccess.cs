@@ -42,6 +42,11 @@ namespace uit.hotel.DataAccesses
             await Database.WriteAsync(realm => room.IsActive = roomIsActive);
         }
 
+        public static async void SetIsClean(Room room, bool roomIsClean)
+        {
+            await Database.WriteAsync(realm => room.IsClean = roomIsClean);
+        }
+
         public static Room Get(int roomId) => Database.Find<Room>(roomId);
 
         public static IEnumerable<Room> Get() => Database.All<Room>();
