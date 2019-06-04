@@ -74,7 +74,7 @@
             <context-room- ref="context_room" :refs="$refs" />
             <popup-book-and-check-in- ref="book_and_check_in" :refs="$refs" />
             <popup-book- ref="book" :refs="$refs" />
-            <popup-booking-book-and-check-in-
+            <popup-booking-add-or-update-
                 ref="booking_book_and_check_in"
                 :refs="$refs"
             />

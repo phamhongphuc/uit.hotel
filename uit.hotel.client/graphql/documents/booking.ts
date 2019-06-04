@@ -1,5 +1,11 @@
 import gql from 'graphql-tag';
 
+export enum BookingStatus {
+    Booked,
+    CheckedIn,
+    CheckedOut,
+}
+
 export const getBookings = gql`
     query getBookings {
         bookings {
@@ -40,14 +46,6 @@ export const getSimpleBookings = gql`
 export const checkIn = gql`
     mutation checkIn($id: ID!) {
         checkIn(id: $id) {
-            id
-        }
-    }
-`;
-
-export const requestCheckOut = gql`
-    mutation requestCheckOut($id: ID!) {
-        requestCheckOut(id: $id) {
             id
         }
     }

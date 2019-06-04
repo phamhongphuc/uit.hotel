@@ -8,7 +8,6 @@ export const getPositions = gql`
             name
             permissionCleaning
             permissionGetAccountingVoucher
-            permissionGetHouseKeeping
             permissionGetMap
             permissionGetPatron
             permissionGetRate
@@ -106,10 +105,6 @@ export const positionOptionsReceptionist: CheckboxOption[] = [
     {
         text: 'Lấy thông tin các chứng từ (hóa đơn, phiếu thu)',
         value: 'permissionGetAccountingVoucher',
-    },
-    {
-        text: 'Tra cứu lịch sử dọn phòng',
-        value: 'permissionGetHouseKeeping',
     },
     {
         text: 'Lấy thông tin tầng, phòng',

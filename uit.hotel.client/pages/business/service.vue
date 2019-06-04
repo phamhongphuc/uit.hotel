@@ -87,7 +87,7 @@
                         slot="servicesDetails"
                         slot-scope="{ value, item: { unit } }"
                     >
-                        {{ value.length }} {{ unit }}
+                        {{ servicesDetailsCount(value) }} {{ unit }}
                     </template>
                 </b-table>
                 <div
@@ -123,6 +123,12 @@ export default class extends mixins(DataMixin({ getServices, toMoney })) {
     servicesFilter(services: GetServices.Services[]): GetServices.Services[] {
         if (this.showInactive) return services;
         return services.filter(rk => rk.isActive);
+    }
+
+    servicesDetailsCount(servicesDetails: GetServices.ServicesDetails[]) {
+        return servicesDetails.reduce((output, current) => {
+            return output + current.number;
+        }, 0);
     }
 
     tableContext(event: MouseEvent) {

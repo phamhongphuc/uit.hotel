@@ -39,10 +39,10 @@
 </template>
 <script lang="ts">
 import { Component, mixins } from 'nuxt-property-decorator';
-import { required } from 'vuelidate/lib/validators';
 import { PopupMixin, DataMixin } from '~/components/mixins';
 import { PatronKindUpdateInput, GetPatronKinds } from '~/graphql/types';
 import { updatePatronKind } from '~/graphql/documents';
+import { patronKindName, patronKindDescription } from '~/modules/validator';
 
 type PopupMixinType = PopupMixin<
     { patronKind: GetPatronKinds.PatronKinds },
@@ -50,11 +50,11 @@ type PopupMixinType = PopupMixin<
 >;
 
 @Component({
-    name: 'popup-patron-update-',
+    name: 'popup-patron-kind-update-',
     validations: {
         input: {
-            name: { required },
-            description: { required },
+            name: patronKindName,
+            description: patronKindDescription,
         },
     },
 })

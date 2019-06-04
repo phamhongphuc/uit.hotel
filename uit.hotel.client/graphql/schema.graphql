@@ -7,9 +7,6 @@ type AppMutation {
     # Thêm phòng khách đoàn
     addBookingToBill(bill: BillId!, booking: BookingCreateInput!): Booking!
 
-    # Nhân viên nhận phòng để dọn dẹp
-    assignCleaningService(id: ID!): HouseKeeping!
-
     # Đặt và nhận phòng ngay tại khách sạn
     bookAndCheckIn(
         bookings: [BookAndCheckInCreateInput!]!
@@ -18,15 +15,6 @@ type AppMutation {
 
     # Hủy đặt phòng
     cancel(id: ID!): String!
-
-    # Nhân viên xác nhận đã dọn xong
-    confirmCleaned(id: ID!): HouseKeeping!
-
-    # Nhân viên xác nhận và gửi thông tin kiểm tra phòng check-out
-    confirmCleanedAndServices(
-        servicesDetails: [ServicesDetailHouseKeepingInput!]!
-        houseKeepingId: ID!
-    ): HouseKeeping!
 
     # Tạo và trả về một đơn đặt phòng
     createBill(bookings: [BookingCreateInput!]!, bill: BillCreateInput!): Bill!
@@ -118,9 +106,6 @@ type AppMutation {
     # Thanh toán hóa đơn (thanh toán tiền phòng)
     payTheBill(id: ID!): Bill!
 
-    # Yêu cầu kiểm tra khi trả phòng
-    requestCheckOut(id: ID!): Booking!
-
     # Reset lại mật khẩu cho nhân viên khi quên mật khẩu
     resetPassword(id: ID!): String!
 
@@ -148,6 +133,9 @@ type AppMutation {
 
     # Cập nhật trạng thái của dịch vụ
     setIsActiveService(id: ID!, isActive: Boolean!): String!
+
+    # Cập nhật trạng thái dọn phòng của một phòng
+    setIsClean(id: ID!, isClean: Boolean!): String!
 
     # Chỉnh sửa thông tin nhân viên
     updateEmployee(input: EmployeeUpdateInput!): Employee!
@@ -210,12 +198,6 @@ type AppQuery {
 
     # Trả về một danh sách các tầng
     floors: [Floor!]!
-
-    # Trả về thông tin một công việc dọn dẹp
-    houseKeeping(id: ID!): HouseKeeping!
-
-    # Trả về một danh sách các công việc dọn dẹp
-    houseKeepings: [HouseKeeping!]!
 
     # Kiểm tra
     isInitialized: Boolean!
@@ -345,10 +327,10 @@ type Booking {
     bill: Bill!
 
     # Thời điểm nhận phòng dự kiến của khách hàng
-    bookCheckInTime: DateTimeOffset
+    bookCheckInTime: DateTimeOffset!
 
     # Thời điểm trả phòng dự kiến của khách hàng
-    bookCheckOutTime: DateTimeOffset
+    bookCheckOutTime: DateTimeOffset!
 
     # Thời điểm tạo thông tin thuê phòng
     createTime: DateTimeOffset!
@@ -361,9 +343,6 @@ type Booking {
 
     # Nhân viên thực hiện check-out cho khách hàng
     employeeCheckOut: Employee
-
-    # Danh sách nhân viên dọn phòng cho phòng đã đặt này
-    houseKeepings: [HouseKeeping]
 
     # Id của thông tin thuê phòng
     id: Int!
@@ -441,22 +420,19 @@ type Employee {
     address: String!
 
     # Danh sách các Hóa đơn mà nhân viên tạo
-    bills: [Bill]
+    bills: [Bill!]!
 
     # Ngày sinh của nhân viên
     birthdate: DateTimeOffset!
 
     # Danh sách các Thông tin thuê phòng mà nhân viên tạo
-    bookings: [Booking]
+    bookings: [Booking!]!
 
     # Email của nhân viên
     email: String!
 
     # Giới tính của nhân viên
     gender: Boolean!
-
-    # Danh sách các Phòng mà nhân viên dọn
-    houseKeepings: [HouseKeeping]
 
     # Id của nhân viên
     id: String!
@@ -477,16 +453,16 @@ type Employee {
     phoneNumber: String!
 
     # Danh sách các Giá cơ bản mà nhân viên tạo
-    rates: [Rate]
+    rates: [Rate!]!
 
     # Danh sách các Phiếu thu mà nhân viên tạo
-    receipts: [Receipt]
+    receipts: [Receipt!]!
 
     # Ngày vào làm
     startingDate: DateTimeOffset!
 
     # Danh sách các Giá biến động mà nhân viên tạo
-    volatilityRates: [VolatilityRate]
+    volatilityRates: [VolatilityRate!]!
 }
 
 input EmployeeCreateInput {
@@ -521,7 +497,7 @@ input EmployeeCreateInput {
     startingDate: DateTimeOffset!
 
     # Loại chức vụ
-    position: PositionId = null
+    position: PositionId!
 }
 
 input EmployeeUpdateInput {
@@ -553,7 +529,7 @@ input EmployeeUpdateInput {
     startingDate: DateTimeOffset!
 
     # Loại chức vụ
-    position: PositionId = null
+    position: PositionId!
 }
 
 # Một tầng trong khách sạn
@@ -588,24 +564,6 @@ input FloorUpdateInput {
 
     # Tên tầng
     name: String!
-}
-
-# Một hình thức dọn dẹp của một nhân viên buồng phòng tại một phòng trong khách sạn
-type HouseKeeping {
-    # Thông tin chi tiết đặt trước của phòng cần chuẩn bị
-    booking: Booking!
-
-    # Nhân viên thực hiện dọn dẹp
-    employee: Employee
-
-    # Id của việc dọn dẹp
-    id: Int!
-
-    # Trạng thái dọn phòng
-    status: Int!
-
-    # Hình thức dọn dẹp phòng
-    type: Int!
 }
 
 # The `Milliseconds` scalar type represents a period of time represented as the total number of milliseconds.
@@ -694,7 +652,7 @@ input PatronCreateInput {
     listOfPhoneNumbers: [String!]!
 
     # Loại khách hàng
-    patronKind: PatronKindId = null
+    patronKind: PatronKindId!
 }
 
 # Input cho thông tin một khách hàng
@@ -781,7 +739,7 @@ input PatronUpdateInput {
     listOfPhoneNumbers: [String!]!
 
     # Loại khách hàng
-    patronKind: PatronKindId = null
+    patronKind: PatronKindId!
 }
 
 # Một chức vụ trong khách sạn
@@ -812,9 +770,6 @@ type Position {
 
     # Quyền lấy thông tin các chứng từ (hóa đơn, phiếu thu)
     permissionGetAccountingVoucher: Boolean!
-
-    # Quyền tra cứu lịch sử dọn phòng
-    permissionGetHouseKeeping: Boolean!
 
     # Quyền lấy thông tin tầng, phòng
     permissionGetMap: Boolean!
@@ -862,9 +817,6 @@ input PositionCreateInput {
 
     # Quyền lấy thông tin các chứng từ (hóa đơn, phiếu thu)
     permissionGetAccountingVoucher: Boolean!
-
-    # Quyền tra cứu lịch sử dọn phòng
-    permissionGetHouseKeeping: Boolean!
 
     # Quyền lấy thông tin tầng, phòng
     permissionGetMap: Boolean!
@@ -921,9 +873,6 @@ input PositionUpdateInput {
 
     # Quyền lấy thông tin tầng, phòng
     permissionGetMap: Boolean!
-
-    # Quyền tra cứu lịch sử dọn phòng
-    permissionGetHouseKeeping: Boolean!
 
     # Quyền lấy thông tin khách hàng
     permissionGetPatron: Boolean!
@@ -1050,7 +999,7 @@ input RateUpdateInput {
     effectiveStartDate: DateTimeOffset!
 
     # Loại phòng
-    roomKind: RoomKindId = null
+    roomKind: RoomKindId!
 }
 
 # Phiếu thu
@@ -1082,7 +1031,7 @@ input ReceiptCreateInput {
     bankAccountNumber: String = null
 
     # Thuộc hóa đơn
-    bill: BillId = null
+    bill: BillId!
 }
 
 # Một phòng trong khách sạn
@@ -1101,6 +1050,9 @@ type Room {
 
     # Trạng thái phòng
     isActive: Boolean!
+
+    # Trạng thái dọn phòng
+    isClean: Boolean!
 
     # Phòng trống
     isEmpty(from: DateTimeOffset!, to: DateTimeOffset!): Boolean!
@@ -1197,10 +1149,10 @@ input RoomUpdateInput {
     name: String!
 
     # Phòng thuộc tầng nào
-    floor: FloorId = null
+    floor: FloorId!
 
     # Loại phòng của phòng
-    roomKind: RoomKindId = null
+    roomKind: RoomKindId!
 }
 
 # The `Seconds` scalar type represents a period of time represented as the total number of seconds.
@@ -1275,14 +1227,6 @@ input ServicesDetailCreateInput {
 
     # Thuộc booking nào
     booking: BookingId!
-}
-
-input ServicesDetailHouseKeepingInput {
-    # Số lượng
-    number: Int!
-
-    # Thuộc dịch vụ nào
-    service: ServiceId!
 }
 
 input ServicesDetailUpdateInput {

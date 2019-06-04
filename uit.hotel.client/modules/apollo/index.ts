@@ -48,10 +48,13 @@ export function apolloClientNotify(context: AppContextType): ApolloNotify {
                     error.networkError !== null &&
                     (error.networkError as ServerError).result !== undefined
                 ) {
+                    const result = (error.networkError as ServerError)
+                        .result[0];
                     notify.error({
                         title: 'Lỗi',
-                        text: (error.networkError as ServerError).result[0]
-                            .InnerException.Message,
+                        text: result.InnerException
+                            ? result.InnerException.Message
+                            : result.Message,
                     });
                 } else {
                     notify.error({

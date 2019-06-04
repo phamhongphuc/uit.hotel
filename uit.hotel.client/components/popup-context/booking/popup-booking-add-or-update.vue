@@ -3,8 +3,14 @@
         <template slot-scope="{ close }">
             <div v-if="input">
                 <div class="input-label">Phòng</div>
-                <query- :query="getRooms" :poll-interval="0" class="m-3">
+                <query-
+                    :query="getRooms"
+                    :poll-interval="0"
+                    class="m-3"
+                    @result="onResult"
+                >
                     <b-form-select
+                        ref="room"
                         v-model="input.room.id"
                         slot-scope="{ data: { rooms } }"
                         :state="!$v.input.room.$invalid"
@@ -59,7 +65,6 @@
             </div>
             <div class="d-flex m-3">
                 <b-button
-                    :disabled="$v.$invalid"
                     class="ml-auto"
                     variant="main"
                     @click="
@@ -87,11 +92,12 @@
     </popup->
 </template>
 <script lang="ts">
-import { Component, mixins } from 'nuxt-property-decorator';
-import { required } from 'vuelidate/lib/validators';
+import { Component, mixins, Vue } from 'nuxt-property-decorator';
+import { minLength, required } from 'vuelidate/lib/validators';
 import { PopupMixin, DataMixin } from '~/components/mixins';
 import { BookAndCheckInCreateInput, GetRooms } from '~/graphql/types';
 import { getPatronKinds, getRooms, createPatron } from '~/graphql/documents';
+import { included } from '~/modules/validator';
 
 type PopupMixinType = PopupMixin<
     {
@@ -102,10 +108,14 @@ type PopupMixinType = PopupMixin<
 >;
 
 @Component({
-    name: 'popup-booking-book-and-check-in-',
+    name: 'popup-booking-add-or-update-',
     validations: {
         input: {
-            room: { required },
+            room: included('room'),
+            listOfPatrons: {
+                minLength: minLength(1),
+                required,
+            },
         },
     },
 })
@@ -116,9 +126,7 @@ export default class extends mixins<PopupMixinType>(
     onOpen() {
         this.input = this.data.booking || {
             bookCheckOutTime: new Date(),
-            room: {
-                id: 1,
-            },
+            room: { id: -1 },
             listOfPatrons: [],
         };
     }
@@ -130,8 +138,17 @@ export default class extends mixins<PopupMixinType>(
     }
 
     addBookingToList(close: Function) {
+        if (this.input === null) throw new Error("Popup input mustn't be null");
         this.data.callback(this.input);
         close();
+    }
+
+    async onResult() {
+        if (!this.data.booking) return;
+        if (this.input === null) return;
+        await Vue.nextTick();
+        this.input.room.id = this.data.booking.room.id;
+        this.$v.$touch();
     }
 }
 </script>

@@ -66,14 +66,14 @@ import {
     positionOptionsReceptionist,
     positionOptionsHouseKeeping,
 } from '~/graphql/documents';
-import { required } from 'vuelidate/lib/validators';
 import { CheckboxOption } from '~/utils';
+import { positionName } from '~/modules/validator';
 
 @Component({
     name: 'popup-position-add-',
     validations: {
         input: {
-            name: { required },
+            name: positionName,
         },
     },
 })

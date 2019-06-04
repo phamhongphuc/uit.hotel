@@ -18,8 +18,14 @@
                 icon="type"
             />
             <div class="input-label">Dịch vụ</div>
-            <query- :query="getServices" :poll-interval="0" class="m-3">
+            <query-
+                :query="getServices"
+                :poll-interval="0"
+                class="m-3"
+                @result="onResult"
+            >
                 <b-form-select
+                    ref="service"
                     v-model="input.service.id"
                     slot-scope="{ data: { services } }"
                     :state="!$v.input.service.$invalid"
@@ -30,8 +36,14 @@
                 />
             </query->
             <div class="input-label">Đơn đặt tại phòng</div>
-            <query- :query="getSimpleBookings" :poll-interval="0" class="m-3">
+            <query-
+                :query="getSimpleBookings"
+                :poll-interval="0"
+                class="m-3"
+                @result="onResult"
+            >
                 <b-form-select
+                    ref="booking"
                     v-model="input.booking.id"
                     slot-scope="{ data: { bookings } }"
                     :state="!$v.input.booking.$invalid"
@@ -61,10 +73,11 @@
     </popup->
 </template>
 <script lang="ts">
-import { Component, mixins } from 'nuxt-property-decorator';
-import { required, minValue } from 'vuelidate/lib/validators';
+import { Component, mixins, Vue } from 'nuxt-property-decorator';
+import { minValue } from 'vuelidate/lib/validators';
 import { DataMixin, PopupMixin } from '~/components/mixins';
 import { ServicesDetailCreateInput, GetBookings } from '~/graphql/types';
+import { included } from '~/modules/validator';
 import {
     getServices,
     getSimpleBookings,
@@ -85,8 +98,8 @@ type PopupMixinType = PopupMixin<
             number: {
                 minLength: minValue(1),
             },
-            service: { required },
-            booking: { required },
+            service: included('service'),
+            booking: included('booking'),
         },
     },
 })
@@ -95,13 +108,18 @@ export default class extends mixins<PopupMixinType>(
     DataMixin({ getServices, createServicesDetail, getSimpleBookings }),
 ) {
     onOpen() {
-        const self = this;
-        if (self === null) return;
         this.input = {
             number: 0,
-            service: { id: 1 },
-            booking: { id: self.data.booking.id },
+            service: { id: -1 },
+            booking: { id: -1 },
         };
+    }
+
+    async onResult() {
+        if (this.input === null) return;
+        await Vue.nextTick();
+        this.input.booking.id = this.data.booking.id;
+        this.$v.$touch();
     }
 }
 </script>

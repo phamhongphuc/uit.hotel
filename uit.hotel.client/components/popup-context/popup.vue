@@ -87,8 +87,12 @@ export default class extends mixins<ClickawayMixin>(ClickawayMixin) {
                 min-width: $input-height;
                 min-height: $input-height;
                 padding: 0;
+                background-color: transparent;
                 border: none;
                 border-radius: 0 $border-radius 0 0;
+                @include hover {
+                    @include gradient-bg(darken($white, 7.5%));
+                }
             }
         }
     }

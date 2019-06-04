@@ -23,13 +23,6 @@
                 text="Nhận phòng"
             />
             <b-nav-item-icon-mutate-
-                v-else-if="booking.status === statusEnum.CheckedIn"
-                :mutation="requestCheckOut"
-                :variables="{ id }"
-                icon="trash-2"
-                text="Yêu cầu trả phòng"
-            />
-            <b-nav-item-icon-mutate-
                 v-else-if="booking.status === statusEnum.RequestedCheckOut"
                 :mutation="checkOut"
                 :variables="{ id }"
@@ -47,19 +40,14 @@
 <script lang="ts">
 import { Component, mixins } from 'nuxt-property-decorator';
 import { ContextMixin, DataMixin } from '~/components/mixins';
-import {
-    checkIn,
-    requestCheckOut,
-    checkOut,
-    cancel,
-} from '~/graphql/documents';
+import { checkIn, checkOut, cancel } from '~/graphql/documents';
 
 @Component({
     name: 'context-manage-patron-kind-',
 })
 export default class extends mixins<ContextMixin>(
     ContextMixin,
-    DataMixin({ checkIn, requestCheckOut, checkOut, cancel }),
+    DataMixin({ checkIn, checkOut, cancel }),
 ) {
     statusEnum = {
         Booked: 0,

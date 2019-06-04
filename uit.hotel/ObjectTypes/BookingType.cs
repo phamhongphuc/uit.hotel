@@ -13,8 +13,8 @@ namespace uit.hotel.ObjectTypes
             Description = "Một thông tin thuê phòng của khách hàng";
 
             Field(x => x.Id).Description("Id của thông tin thuê phòng");
-            Field(x => x.BookCheckInTime, true).Description("Thời điểm nhận phòng dự kiến của khách hàng");
-            Field(x => x.BookCheckOutTime, true).Description("Thời điểm trả phòng dự kiến của khách hàng");
+            Field(x => x.BookCheckInTime).Description("Thời điểm nhận phòng dự kiến của khách hàng");
+            Field(x => x.BookCheckOutTime).Description("Thời điểm trả phòng dự kiến của khách hàng");
             Field(x => x.RealCheckInTime, true).Description("Thời điểm nhận phòng của khách hàng");
             Field(x => x.RealCheckOutTime, true).Description("Thời điểm trả phòng của khách hàng");
             Field(x => x.CreateTime).Description("Thời điểm tạo thông tin thuê phòng");

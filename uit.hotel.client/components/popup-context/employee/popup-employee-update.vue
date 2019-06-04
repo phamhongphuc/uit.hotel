@@ -33,8 +33,10 @@
                         :query="getPositions"
                         :poll-interval="0"
                         class="m-3"
+                        @result="onResult"
                     >
                         <b-form-select
+                            ref="position"
                             v-model="input.position.id"
                             slot-scope="{ data: { positions } }"
                             :state="!$v.input.position.id.$invalid"
@@ -133,11 +135,23 @@
     </popup->
 </template>
 <script lang="ts">
-import { Component, mixins } from 'nuxt-property-decorator';
-import { required, email, alphaNum } from 'vuelidate/lib/validators';
+import { Component, mixins, Vue } from 'nuxt-property-decorator';
 import { PopupMixin, DataMixin } from '~/components/mixins';
 import { EmployeeUpdateInput, GetEmployees } from '~/graphql/types';
 import { updateEmployee, getPositions } from '~/graphql/documents';
+import { toInputDate } from '~/utils/dataFormater';
+import {
+    address,
+    birthdate,
+    gender,
+    id,
+    identityCard,
+    included,
+    name,
+    phoneNumber,
+    requiredEmail,
+    startingDate,
+} from '~/modules/validator';
 
 type PopupMixinType = PopupMixin<
     { employee: GetEmployees.Employees },
@@ -148,19 +162,16 @@ type PopupMixinType = PopupMixin<
     name: 'popup-employee-update-',
     validations: {
         input: {
-            id: { required },
-            name: { required },
-            identityCard: { required, alphaNum },
-            startingDate: { required },
-            gender: { required },
-            phoneNumber: { required, alphaNum },
-            address: { required },
-            email: { required, email },
-            birthdate: { required },
-
-            position: {
-                id: { required },
-            },
+            id,
+            name,
+            identityCard,
+            startingDate,
+            gender,
+            phoneNumber,
+            address,
+            email: requiredEmail,
+            birthdate,
+            position: included('position'),
         },
     },
 })
@@ -179,7 +190,6 @@ export default class extends mixins<PopupMixinType>(
             birthdate,
             gender,
             startingDate,
-            position,
         } = this.data.employee;
 
         this.input = {
@@ -189,13 +199,18 @@ export default class extends mixins<PopupMixinType>(
             phoneNumber,
             address,
             email,
-            birthdate,
+            birthdate: toInputDate(birthdate),
             gender,
-            startingDate,
-            position: {
-                id: position.id,
-            },
+            startingDate: toInputDate(startingDate),
+            position: { id: -1 },
         };
+    }
+
+    async onResult() {
+        if (this.input === null) return;
+        await Vue.nextTick();
+        this.input.position.id = this.data.employee.position.id;
+        this.$v.$touch();
     }
 }
 </script>

@@ -35,7 +35,7 @@ namespace uit.hotel.ObjectTypes
             Field(x => x.Money).Description("Số tiền đã thu");
             Field(x => x.BankAccountNumber, true).Description("Số tài khoản ngân hàng của khách");
 
-            Field<BillIdInput>(
+            Field<NonNullGraphType<BillIdInput>>(
                 nameof(Receipt.Bill),
                 "Thuộc hóa đơn"
             );

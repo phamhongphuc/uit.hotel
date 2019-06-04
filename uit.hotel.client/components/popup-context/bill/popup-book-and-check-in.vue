@@ -12,9 +12,10 @@
             <div class="m-3 d-flex">
                 <query- :query="getPatrons" :poll-interval="500">
                     <b-form-select
+                        ref="patron"
                         v-model="input.bill.patron.id"
                         slot-scope="{ data: { patrons } }"
-                        :state="!$v.input.$invalid"
+                        :state="!$v.input.bill.patron.$invalid"
                         :options="patrons"
                         value-field="id"
                         text-field="name"
@@ -40,6 +41,7 @@
             <b-input-date-time-
                 v-model="bookCheckOutTime"
                 class="rounded m-3"
+                :state="!$v.bookCheckOutTime.$invalid"
             />
             <div class="input-label">Danh sách phòng</div>
             <div class="m-3 table-inner rounded overflow-hidden">
@@ -117,11 +119,22 @@
                         </div>
                     </template>
                 </b-table>
-                <div v-if="input.bookings.length === 0" class="p-3 text-center">
-                    Chưa có phòng nào trong danh sách. Ấn
-                    <icon- class="mx-1" i="plus-square" />
-                    để thêm phòng
-                </div>
+                <text-validator-
+                    :state="!$v.input.bookings.$invalid"
+                    class="py-3 pl-4 border-top border-main"
+                >
+                    <template v-slot:valid>
+                        Có tổng cộng {{ input.bookings.length }} phòng trong
+                        danh sách
+                    </template>
+                    <template v-slot:invalid>
+                        Chưa có phòng nào trong danh sách.
+                        <br />
+                        Ấn
+                        <icon- class="mx-1" i="plus-square" />
+                        để thêm phòng
+                    </template>
+                </text-validator->
             </div>
             <div class="d-flex m-3">
                 <b-button
@@ -161,6 +174,8 @@ import {
 } from '~/graphql/types';
 import { bookAndCheckIn, getPatrons, getRoom } from '~/graphql/documents';
 import { DataMixin, PopupMixin } from '~/components/mixins';
+import { included, beforeDateTime, validDate } from '~/modules/validator';
+import { required, not } from 'vuelidate/lib/validators';
 
 type PopupMixinType = PopupMixin<
     { rooms: GetFloors.Rooms[] },
@@ -170,22 +185,39 @@ type PopupMixinType = PopupMixin<
 @Component({
     name: 'popup-booking-and-check-in-',
     validations: {
-        input: {},
+        input: {
+            bill: {
+                patron: included('patron'),
+            },
+            bookings: {
+                required,
+            },
+        },
+        bookCheckOutTime: {
+            required,
+            validDate,
+            beforeDateTime: not(beforeDateTime()),
+        },
     },
 })
 export default class extends mixins<PopupMixinType>(
     PopupMixin,
     DataMixin({ bookAndCheckIn, getPatrons, getRoom }),
 ) {
-    bookCheckOutTime: string = moment().format();
+    bookCheckOutTime: string = moment()
+        .add(3, 'day')
+        .set({
+            hour: 11,
+            minute: 0,
+            second: 0,
+        })
+        .format();
 
     onOpen() {
         const self = this;
         this.input = {
             bill: {
-                patron: {
-                    id: 1,
-                },
+                patron: { id: -1 },
             },
             bookings: self.data.rooms.map(r => ({
                 bookCheckOutTime: new Date(),
@@ -198,8 +230,11 @@ export default class extends mixins<PopupMixinType>(
     }
 
     get variables(): BookAndCheckIn.Variables {
-        const { input, bookCheckOutTime } = this;
-        const { bill, bookings } = input;
+        if (this.input === null) throw new Error("Popup input mustn't be null");
+        const {
+            input: { bill, bookings },
+            bookCheckOutTime,
+        } = this;
         return {
             bill: {
                 patron: {
@@ -219,6 +254,7 @@ export default class extends mixins<PopupMixinType>(
     }
 
     removeBooking(booking: BookAndCheckInCreateInput) {
+        if (this.input === null) throw new Error("Popup input mustn't be null");
         const index = this.input.bookings.indexOf(booking);
         this.input.bookings.splice(index, 1);
     }
