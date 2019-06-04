@@ -38,11 +38,16 @@
                 </b-button>
             </div>
             <div class="input-label">Thời gian nhận phòng dự kiến</div>
-            <b-input-date-time- v-model="bookCheckInTime" class="rounded m-3" />
+            <b-input-date-time-
+                v-model="bookCheckInTime"
+                class="rounded m-3"
+                :state="!$v.bookCheckInTime.$invalid"
+            />
             <div class="input-label">Thời gian trả phòng dự kiến</div>
             <b-input-date-time-
                 v-model="bookCheckOutTime"
                 class="rounded m-3"
+                :state="!$v.bookCheckOutTime.$invalid"
             />
             <div class="input-label">Danh sách phòng</div>
             <div class="m-3 table-inner rounded overflow-hidden">
@@ -172,7 +177,11 @@ import { GetFloors, CreateBill, BookingCreateInput } from '~/graphql/types';
 import { createBill, getPatrons, getRoom } from '~/graphql/documents';
 import { PopupMixin, DataMixin } from '~/components/mixins';
 import { required } from 'vuelidate/lib/validators';
-import { included } from '~/modules/validator';
+import {
+    bookCheckOutTime,
+    included,
+    bookCheckInTime,
+} from '~/modules/validator';
 
 type PopupMixinType = PopupMixin<
     { rooms: GetFloors.Rooms[] },
@@ -190,22 +199,36 @@ type PopupMixinType = PopupMixin<
                 required,
             },
         },
+        bookCheckInTime,
+        bookCheckOutTime,
     },
 })
 export default class extends mixins<PopupMixinType>(
     PopupMixin,
     DataMixin({ createBill, getPatrons, getRoom }),
 ) {
-    bookCheckOutTime: string = moment().format();
-    bookCheckInTime: string = moment().format();
+    bookCheckInTime: string = moment()
+        .add(1, 'day')
+        .set({
+            hour: 13,
+            minute: 0,
+            second: 0,
+        })
+        .format();
+    bookCheckOutTime: string = moment()
+        .add(2, 'day')
+        .set({
+            hour: 11,
+            minute: 0,
+            second: 0,
+        })
+        .format();
 
     onOpen() {
         const self = this;
         this.input = {
             bill: {
-                patron: {
-                    id: -1,
-                },
+                patron: { id: -1 },
             },
             bookings: self.data.rooms.map(r => ({
                 bookCheckOutTime: new Date(),
