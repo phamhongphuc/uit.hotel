@@ -92,7 +92,7 @@ type PopupMixinType = PopupMixin<
 >;
 
 @Component({
-    name: 'popup-service-add-',
+    name: 'popup-service-detail-add-',
     validations: {
         input: {
             number: {
