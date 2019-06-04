@@ -868,7 +868,7 @@ export type PatronUpdateInput = {
     /** Danh sách số điện thoại của khách hàng */
     listOfPhoneNumbers: Array<Scalars['String']>;
     /** Loại khách hàng */
-    patronKind: Maybe<PatronKindId>;
+    patronKind: PatronKindId;
 };
 
 /** Một chức vụ trong khách sạn */

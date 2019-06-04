@@ -7801,11 +7801,15 @@
                         "name": "patronKind",
                         "description": "Loại khách hàng",
                         "type": {
-                            "kind": "INPUT_OBJECT",
-                            "name": "PatronKindId",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "INPUT_OBJECT",
+                                "name": "PatronKindId",
+                                "ofType": null
+                            }
                         },
-                        "defaultValue": "null"
+                        "defaultValue": null
                     }
                 ],
                 "interfaces": null,

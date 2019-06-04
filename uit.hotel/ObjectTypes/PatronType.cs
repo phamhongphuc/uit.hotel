@@ -109,7 +109,7 @@ namespace uit.hotel.ObjectTypes
                 nameof(Patron.ListOfPhoneNumbers),
                 "Danh sách số điện thoại của khách hàng"
             );
-            Field<PatronKindIdInput>(
+            Field<NonNullGraphType<PatronKindIdInput>>(
                 nameof(Patron.PatronKind),
                 "Loại khách hàng"
             );
