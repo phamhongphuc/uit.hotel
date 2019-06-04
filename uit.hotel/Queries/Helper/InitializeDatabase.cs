@@ -89,7 +89,8 @@ namespace uit.hotel.Queries.Helper
                     Name = "101",
                     Floor = floor,
                     RoomKind = roomKind,
-                    IsActive = true
+                    IsActive = true,
+                    IsClean = false
                 });
 
                 var patronKind = realm.Add(new PatronKind

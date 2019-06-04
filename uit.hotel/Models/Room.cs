@@ -14,6 +14,7 @@ namespace uit.hotel.Models
         public Floor Floor { get; set; }
         public RoomKind RoomKind { get; set; }
         public bool IsActive { get; set; }
+        public bool IsClean { get; set; }
 
         [Backlink(nameof(Booking.Room))]
         public IQueryable<Booking> Bookings { get; }
