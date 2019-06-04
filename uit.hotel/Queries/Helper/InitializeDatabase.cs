@@ -90,7 +90,7 @@ namespace uit.hotel.Queries.Helper
                     Floor = floor,
                     RoomKind = roomKind,
                     IsActive = true,
-                    IsClean = false
+                    IsClean = true
                 });
 
                 var patronKind = realm.Add(new PatronKind
