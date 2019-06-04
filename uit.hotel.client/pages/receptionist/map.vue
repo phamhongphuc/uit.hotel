@@ -75,7 +75,7 @@
             <popup-book-and-check-in- ref="book_and_check_in" :refs="$refs" />
             <popup-book- ref="book" :refs="$refs" />
             <popup-booking-add-or-update-
-                ref="booking_book_and_check_in"
+                ref="booking_add_or_update"
                 :refs="$refs"
             />
             <popup-patron-select-or-add- ref="patron_select_or_add" />

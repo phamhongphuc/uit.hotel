@@ -98,7 +98,7 @@
                             <b-button
                                 variant="main"
                                 @click="
-                                    refs.booking_book_and_check_in.open({
+                                    refs.booking_add_or_update.open({
                                         booking: item,
                                         callback(result) {
                                             removeBooking(item);
@@ -141,7 +141,7 @@
                     variant="main"
                     class="ml-auto"
                     @click="
-                        refs.booking_book_and_check_in.open({
+                        refs.booking_add_or_update.open({
                             callback(result) {
                                 input.bookings.push(result);
                             },
