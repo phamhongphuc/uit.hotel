@@ -129,7 +129,7 @@ namespace uit.hotel.test._GraphQL
                 @"/_GraphQL/ServicesDetail/mutation.deleteServicesDetail.gql",
                 @"/_GraphQL/ServicesDetail/mutation.deleteServicesDetail.schema.json",
                 new { id = 10 },
-                p => p.PermissionCleaning = true
+                p => p.PermissionManageRentingRoom = true
             );
         }
 
@@ -161,7 +161,7 @@ namespace uit.hotel.test._GraphQL
                 "Phòng đã check-out. Không thể cập nhật/xóa chi tiết dịch vụ",
                 @"/_GraphQL/ServicesDetail/mutation.deleteServicesDetail.gql",
                 new { id = 11 },
-                p => p.PermissionCleaning = true
+                p => p.PermissionManageRentingRoom = true
             );
         }
 
@@ -172,7 +172,7 @@ namespace uit.hotel.test._GraphQL
                 "Mã chi tiết dịch vụ không tồn tại",
                 @"/_GraphQL/ServicesDetail/mutation.deleteServicesDetail.gql",
                 new { id = 100 },
-                p => p.PermissionCleaning = true
+                p => p.PermissionManageRentingRoom = true
             );
         }
 
@@ -194,7 +194,7 @@ namespace uit.hotel.test._GraphQL
                         }
                     }
                 },
-                p => p.PermissionCleaning = true
+                p => p.PermissionManageRentingRoom = true
             );
         }
 
@@ -223,7 +223,7 @@ namespace uit.hotel.test._GraphQL
                         }
                     }
                 },
-                p => p.PermissionCleaning = true
+                p => p.PermissionManageRentingRoom = true
             );
         }
 
@@ -262,7 +262,7 @@ namespace uit.hotel.test._GraphQL
                         }
                     }
                 },
-                p => p.PermissionCleaning = true
+                p => p.PermissionManageRentingRoom = true
             );
         }
 
@@ -284,7 +284,7 @@ namespace uit.hotel.test._GraphQL
                         }
                     }
                 },
-                p => p.PermissionCleaning = true
+                p => p.PermissionManageRentingRoom = true
             );
         }
 

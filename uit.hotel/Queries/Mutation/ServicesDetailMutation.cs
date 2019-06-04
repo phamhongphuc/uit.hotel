@@ -25,7 +25,7 @@ namespace uit.hotel.Queries.Mutation
                 "Cập nhật và trả về một chi tiết dịch vụ mới cập nhật",
                 _InputArgument<ServicesDetailUpdateInput>(),
                 _CheckPermission_TaskObject(
-                    p => p.PermissionCleaning,
+                    p => p.PermissionManageRentingRoom,
                     context => ServicesDetailBusiness.Update(_GetInput(context))
                 )
             );
@@ -35,7 +35,7 @@ namespace uit.hotel.Queries.Mutation
                 "Xóa một dịch vụ",
                 _IdArgument(),
                 _CheckPermission_String(
-                    p => p.PermissionCleaning,
+                    p => p.PermissionManageRentingRoom,
                     context =>
                     {
                         ServicesDetailBusiness.Delete(_GetId<int>(context));
