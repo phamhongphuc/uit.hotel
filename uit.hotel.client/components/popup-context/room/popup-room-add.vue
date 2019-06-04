@@ -11,6 +11,7 @@
             <div class="input-label">Tầng</div>
             <query- :query="getFloors" :poll-interval="0" class="m-3">
                 <b-form-select
+                    ref="floor"
                     v-model="input.floor.id"
                     slot-scope="{ data: { floors } }"
                     :state="!$v.input.floor.$invalid"
@@ -23,6 +24,7 @@
             <div class="input-label">Loại phòng</div>
             <query- :query="getRoomKinds" :poll-interval="0" class="m-3">
                 <b-form-select
+                    ref="roomKind"
                     v-model="input.roomKind.id"
                     slot-scope="{ data: { roomKinds } }"
                     :state="!$v.input.roomKind.id.$invalid"
@@ -59,7 +61,7 @@ import { Component, mixins } from 'nuxt-property-decorator';
 import { PopupMixin, DataMixin } from '~/components/mixins';
 import { createRoom, getFloors, getRoomKinds } from '~/graphql/documents';
 import { GetFloors, RoomCreateInput } from '~/graphql/types';
-import { required } from 'vuelidate/lib/validators';
+import { floorRoomName, included } from '~/modules/validator';
 
 type PopupMixinType = PopupMixin<{ floor: GetFloors.Floors }, RoomCreateInput>;
 
@@ -67,13 +69,9 @@ type PopupMixinType = PopupMixin<{ floor: GetFloors.Floors }, RoomCreateInput>;
     name: 'popup-room-add-',
     validations: {
         input: {
-            name: { required },
-            floor: {
-                id: { required },
-            },
-            roomKind: {
-                id: { required },
-            },
+            name: floorRoomName,
+            floor: included('floor'),
+            roomKind: included('roomKind'),
         },
     },
 })

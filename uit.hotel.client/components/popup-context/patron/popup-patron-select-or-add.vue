@@ -53,7 +53,7 @@
                             class="m-3"
                         >
                             <b-form-select
-                                ref="patronKinds"
+                                ref="patronKind"
                                 v-model="input.patronKind.id"
                                 slot-scope="{ data: { patronKinds } }"
                                 :state="!$v.input.patronKind.id.$invalid"
@@ -185,7 +185,7 @@ import {
             name,
             identification,
             gender,
-            patronKind: included('patronKinds'),
+            patronKind: included('patronKind'),
             birthdate,
             listOfPhoneNumbers,
             email: optionalEmail,

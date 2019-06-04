@@ -44,7 +44,7 @@
                         class="m-3"
                     >
                         <b-form-select
-                            ref="positions"
+                            ref="position"
                             v-model="input.position.id"
                             slot-scope="{ data: { positions } }"
                             :state="!$v.input.position.id.$invalid"
@@ -180,7 +180,7 @@ import {
             address,
             email: requiredEmail,
             birthdate,
-            position: included('positions'),
+            position: included('position'),
         },
         rePassword,
     },

@@ -55,7 +55,11 @@ import { Component, mixins } from 'nuxt-property-decorator';
 import { DataMixin, PopupMixin } from '~/components/mixins';
 import { GetRoomKinds, RoomKindUpdateInput } from '~/graphql/types';
 import { updateRoomKind } from '~/graphql/documents';
-import { required, minLength, between } from 'vuelidate/lib/validators';
+import {
+    amountOfPeople,
+    numberOfBeds,
+    roomKindName,
+} from '~/modules/validator';
 
 type PopupMixinType = PopupMixin<
     { roomKind: GetRoomKinds.RoomKinds },
@@ -63,21 +67,12 @@ type PopupMixinType = PopupMixin<
 >;
 
 @Component({
-    name: 'popup-room-kind-add-',
+    name: 'popup-room-kind-update-',
     validations: {
         input: {
-            name: {
-                required,
-                minLength: minLength(1),
-            },
-            numberOfBeds: {
-                required,
-                between: between(1, 5),
-            },
-            amountOfPeople: {
-                required,
-                between: between(1, 10),
-            },
+            name: roomKindName,
+            numberOfBeds,
+            amountOfPeople,
         },
     },
 })

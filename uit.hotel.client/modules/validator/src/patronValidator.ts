@@ -18,3 +18,13 @@ export const listOfPhoneNumbers = {
         numeric,
     },
 };
+
+export const patronKindName = {
+    required,
+    minLength: minLength(3),
+};
+
+export const patronKindDescription = {
+    required,
+    minLength: minLength(3),
+};

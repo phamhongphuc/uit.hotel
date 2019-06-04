@@ -55,24 +55,19 @@ import { Component, mixins } from 'nuxt-property-decorator';
 import { DataMixin, PopupMixin } from '~/components/mixins';
 import { RoomKindCreateInput } from '~/graphql/types';
 import { createRoomKind } from '~/graphql/documents';
-import { required, minLength, between } from 'vuelidate/lib/validators';
+import {
+    amountOfPeople,
+    numberOfBeds,
+    roomKindName,
+} from '~/modules/validator';
 
 @Component({
     name: 'popup-room-kind-add-',
     validations: {
         input: {
-            name: {
-                required,
-                minLength: minLength(1),
-            },
-            numberOfBeds: {
-                required,
-                between: between(1, 5),
-            },
-            amountOfPeople: {
-                required,
-                between: between(1, 10),
-            },
+            name: roomKindName,
+            numberOfBeds,
+            amountOfPeople,
         },
     },
 })

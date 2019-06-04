@@ -32,10 +32,10 @@
 </template>
 <script lang="ts">
 import { Component, mixins } from 'nuxt-property-decorator';
-import { required, minLength } from 'vuelidate/lib/validators';
 import { DataMixin, PopupMixin } from '~/components/mixins';
 import { FloorUpdateInput, GetFloors } from '~/graphql/types';
 import { updateFloor } from '~/graphql/documents';
+import { floorRoomName } from '~/modules/validator';
 
 type PopupMixinType = PopupMixin<{ floor: GetFloors.Floors }, FloorUpdateInput>;
 
@@ -43,10 +43,7 @@ type PopupMixinType = PopupMixin<{ floor: GetFloors.Floors }, FloorUpdateInput>;
     name: 'popup-floor-update-',
     validations: {
         input: {
-            name: {
-                required,
-                minLength: minLength(1),
-            },
+            name: floorRoomName,
         },
     },
 })

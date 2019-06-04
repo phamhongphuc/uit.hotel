@@ -36,7 +36,7 @@
                         @result="onResult"
                     >
                         <b-form-select
-                            ref="positions"
+                            ref="position"
                             v-model="input.position.id"
                             slot-scope="{ data: { positions } }"
                             :state="!$v.input.position.id.$invalid"
@@ -171,7 +171,7 @@ type PopupMixinType = PopupMixin<
             address,
             email: requiredEmail,
             birthdate,
-            position: included('positions'),
+            position: included('position'),
         },
     },
 })

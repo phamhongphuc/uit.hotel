@@ -39,17 +39,17 @@
 </template>
 <script lang="ts">
 import { Component, mixins } from 'nuxt-property-decorator';
-import { required } from 'vuelidate/lib/validators';
 import { PopupMixin, DataMixin } from '~/components/mixins';
 import { PatronKindCreateInput } from '~/graphql/types';
 import { createPatronKind } from '~/graphql/documents';
+import { patronKindDescription, patronKindName } from '~/modules/validator';
 
 @Component({
     name: 'popup-patron-kind-add-',
     validations: {
         input: {
-            name: { required },
-            description: { required },
+            name: patronKindName,
+            description: patronKindDescription,
         },
     },
 })
