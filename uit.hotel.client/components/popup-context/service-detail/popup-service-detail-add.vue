@@ -119,6 +119,7 @@ export default class extends mixins<PopupMixinType>(
         if (this.input === null) return;
         await Vue.nextTick();
         this.input.booking.id = this.data.booking.id;
+        this.$v.$touch();
     }
 }
 </script>
