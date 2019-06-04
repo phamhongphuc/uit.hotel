@@ -18,7 +18,6 @@ type PermissionType = Pick<
 const PermissionInstance: PermissionType = {
     permissionCleaning: true,
     permissionGetAccountingVoucher: true,
-    permissionGetHouseKeeping: true,
     permissionGetMap: true,
     permissionGetPatron: true,
     permissionGetRate: true,

@@ -30,16 +30,10 @@ export type Scalars = {
 export type AppMutation = {
     /** Thêm phòng khách đoàn */
     addBookingToBill: Booking;
-    /** Nhân viên nhận phòng để dọn dẹp */
-    assignCleaningService: HouseKeeping;
     /** Đặt và nhận phòng ngay tại khách sạn */
     bookAndCheckIn: Bill;
     /** Hủy đặt phòng */
     cancel: Scalars['String'];
-    /** Nhân viên xác nhận đã dọn xong */
-    confirmCleaned: HouseKeeping;
-    /** Nhân viên xác nhận và gửi thông tin kiểm tra phòng check-out */
-    confirmCleanedAndServices: HouseKeeping;
     /** Tạo và trả về một đơn đặt phòng */
     createBill: Bill;
     /** Tạo và trả về một nhân viên mới */
@@ -100,8 +94,6 @@ export type AppMutation = {
     login: AuthenticationObject;
     /** Thanh toán hóa đơn (thanh toán tiền phòng) */
     payTheBill: Bill;
-    /** Yêu cầu kiểm tra khi trả phòng */
-    requestCheckOut: Booking;
     /** Reset lại mật khẩu cho nhân viên khi quên mật khẩu */
     resetPassword: Scalars['String'];
     /** Vô hiệu hóa/ kích hoạt tài khoản */
@@ -118,6 +110,8 @@ export type AppMutation = {
     setIsActiveRoomKind: Scalars['String'];
     /** Cập nhật trạng thái của dịch vụ */
     setIsActiveService: Scalars['String'];
+    /** Cập nhật trạng thái dọn phòng của một phòng */
+    setIsClean: Scalars['String'];
     /** Chỉnh sửa thông tin nhân viên */
     updateEmployee: Employee;
     /** Cập nhật và trả về một tầng vừa cập nhật */
@@ -147,10 +141,6 @@ export type AppMutationAddBookingToBillArgs = {
     booking: BookingCreateInput;
 };
 
-export type AppMutationAssignCleaningServiceArgs = {
-    id: Scalars['ID'];
-};
-
 export type AppMutationBookAndCheckInArgs = {
     bookings: Array<BookAndCheckInCreateInput>;
     bill: BillCreateInput;
@@ -158,15 +148,6 @@ export type AppMutationBookAndCheckInArgs = {
 
 export type AppMutationCancelArgs = {
     id: Scalars['ID'];
-};
-
-export type AppMutationConfirmCleanedArgs = {
-    id: Scalars['ID'];
-};
-
-export type AppMutationConfirmCleanedAndServicesArgs = {
-    servicesDetails: Array<ServicesDetailHouseKeepingInput>;
-    houseKeepingId: Scalars['ID'];
 };
 
 export type AppMutationCreateBillArgs = {
@@ -285,10 +266,6 @@ export type AppMutationPayTheBillArgs = {
     id: Scalars['ID'];
 };
 
-export type AppMutationRequestCheckOutArgs = {
-    id: Scalars['ID'];
-};
-
 export type AppMutationResetPasswordArgs = {
     id: Scalars['ID'];
 };
@@ -327,6 +304,11 @@ export type AppMutationSetIsActiveRoomKindArgs = {
 export type AppMutationSetIsActiveServiceArgs = {
     id: Scalars['ID'];
     isActive: Scalars['Boolean'];
+};
+
+export type AppMutationSetIsCleanArgs = {
+    id: Scalars['ID'];
+    isClean: Scalars['Boolean'];
 };
 
 export type AppMutationUpdateEmployeeArgs = {
@@ -392,10 +374,6 @@ export type AppQuery = {
     floor: Floor;
     /** Trả về một danh sách các tầng */
     floors: Array<Floor>;
-    /** Trả về thông tin một công việc dọn dẹp */
-    houseKeeping: HouseKeeping;
-    /** Trả về một danh sách các công việc dọn dẹp */
-    houseKeepings: Array<HouseKeeping>;
     /** Kiểm tra */
     isInitialized: Scalars['Boolean'];
     /** Trả về thông tin một khách hàng */
@@ -457,10 +435,6 @@ export type AppQueryFindingPatronArgs = {
 };
 
 export type AppQueryFloorArgs = {
-    id: Scalars['ID'];
-};
-
-export type AppQueryHouseKeepingArgs = {
     id: Scalars['ID'];
 };
 
@@ -568,8 +542,6 @@ export type Booking = {
     employeeCheckIn: Maybe<Employee>;
     /** Nhân viên thực hiện check-out cho khách hàng */
     employeeCheckOut: Maybe<Employee>;
-    /** Danh sách nhân viên dọn phòng cho phòng đã đặt này */
-    houseKeepings: Maybe<Array<Maybe<HouseKeeping>>>;
     /** Id của thông tin thuê phòng */
     id: Scalars['Int'];
     /** Danh sách khách hàng yêu cầu đặt phòng */
@@ -625,8 +597,6 @@ export type Employee = {
     email: Scalars['String'];
     /** Giới tính của nhân viên */
     gender: Scalars['Boolean'];
-    /** Danh sách các Phòng mà nhân viên dọn */
-    houseKeepings: Array<HouseKeeping>;
     /** Id của nhân viên */
     id: Scalars['String'];
     /** Chứng minh nhân dân */
@@ -725,20 +695,6 @@ export type FloorUpdateInput = {
     id: Scalars['Int'];
     /** Tên tầng */
     name: Scalars['String'];
-};
-
-/** Một hình thức dọn dẹp của một nhân viên buồng phòng tại một phòng trong khách sạn */
-export type HouseKeeping = {
-    /** Thông tin chi tiết đặt trước của phòng cần chuẩn bị */
-    booking: Booking;
-    /** Nhân viên thực hiện dọn dẹp */
-    employee: Maybe<Employee>;
-    /** Id của việc dọn dẹp */
-    id: Scalars['Int'];
-    /** Trạng thái dọn phòng */
-    status: Scalars['Int'];
-    /** Hình thức dọn dẹp phòng */
-    type: Scalars['Int'];
 };
 
 /** Thông tin  một khách hàng của khách sạn */
@@ -891,8 +847,6 @@ export type Position = {
     permissionCleaning: Scalars['Boolean'];
     /** Quyền lấy thông tin các chứng từ (hóa đơn, phiếu thu) */
     permissionGetAccountingVoucher: Scalars['Boolean'];
-    /** Quyền tra cứu lịch sử dọn phòng */
-    permissionGetHouseKeeping: Scalars['Boolean'];
     /** Quyền lấy thông tin tầng, phòng */
     permissionGetMap: Scalars['Boolean'];
     /** Quyền lấy thông tin khách hàng */
@@ -926,8 +880,6 @@ export type PositionCreateInput = {
     permissionCleaning: Scalars['Boolean'];
     /** Quyền lấy thông tin các chứng từ (hóa đơn, phiếu thu) */
     permissionGetAccountingVoucher: Scalars['Boolean'];
-    /** Quyền tra cứu lịch sử dọn phòng */
-    permissionGetHouseKeeping: Scalars['Boolean'];
     /** Quyền lấy thông tin tầng, phòng */
     permissionGetMap: Scalars['Boolean'];
     /** Quyền lấy thông tin khách hàng */
@@ -969,8 +921,6 @@ export type PositionUpdateInput = {
     permissionCleaning: Scalars['Boolean'];
     /** Quyền lấy thông tin tầng, phòng */
     permissionGetMap: Scalars['Boolean'];
-    /** Quyền tra cứu lịch sử dọn phòng */
-    permissionGetHouseKeeping: Scalars['Boolean'];
     /** Quyền lấy thông tin khách hàng */
     permissionGetPatron: Scalars['Boolean'];
     /** Quyền lấy thông tin giá cơ bản và giá biến động */
@@ -1100,6 +1050,8 @@ export type Room = {
     id: Scalars['Int'];
     /** Trạng thái phòng */
     isActive: Scalars['Boolean'];
+    /** Trạng thái dọn phòng */
+    isClean: Scalars['Boolean'];
     /** Phòng trống */
     isEmpty: Scalars['Boolean'];
     /** Tên phòng */
@@ -1249,13 +1201,6 @@ export type ServicesDetailCreateInput = {
     service: ServiceId;
     /** Thuộc booking nào */
     booking: BookingId;
-};
-
-export type ServicesDetailHouseKeepingInput = {
-    /** Số lượng */
-    number: Scalars['Int'];
-    /** Thuộc dịch vụ nào */
-    service: ServiceId;
 };
 
 export type ServicesDetailUpdateInput = {
@@ -1471,12 +1416,6 @@ export type CheckInMutationVariables = {
 
 export type CheckInMutation = { checkIn: Pick<Booking, 'id'> };
 
-export type RequestCheckOutMutationVariables = {
-    id: Scalars['ID'];
-};
-
-export type RequestCheckOutMutation = { requestCheckOut: Pick<Booking, 'id'> };
-
 export type CheckOutMutationVariables = {
     id: Scalars['ID'];
 };
@@ -1558,7 +1497,6 @@ export type UserLoginMutation = {
                 | 'name'
                 | 'permissionCleaning'
                 | 'permissionGetAccountingVoucher'
-                | 'permissionGetHouseKeeping'
                 | 'permissionGetMap'
                 | 'permissionGetPatron'
                 | 'permissionGetRate'
@@ -1586,7 +1524,6 @@ export type UserCheckLoginMutation = {
             | 'name'
             | 'permissionCleaning'
             | 'permissionGetAccountingVoucher'
-            | 'permissionGetHouseKeeping'
             | 'permissionGetMap'
             | 'permissionGetPatron'
             | 'permissionGetRate'
@@ -1802,7 +1739,6 @@ export type GetPositionsQuery = {
             | 'name'
             | 'permissionCleaning'
             | 'permissionGetAccountingVoucher'
-            | 'permissionGetHouseKeeping'
             | 'permissionGetMap'
             | 'permissionGetPatron'
             | 'permissionGetRate'
@@ -2096,12 +2032,6 @@ export namespace CheckIn {
     export type Variables = CheckInMutationVariables;
     export type Mutation = CheckInMutation;
     export type CheckIn = CheckInMutation['checkIn'];
-}
-
-export namespace RequestCheckOut {
-    export type Variables = RequestCheckOutMutationVariables;
-    export type Mutation = RequestCheckOutMutation;
-    export type RequestCheckOut = RequestCheckOutMutation['requestCheckOut'];
 }
 
 export namespace CheckOut {

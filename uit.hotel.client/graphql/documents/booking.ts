@@ -45,14 +45,6 @@ export const checkIn = gql`
     }
 `;
 
-export const requestCheckOut = gql`
-    mutation requestCheckOut($id: ID!) {
-        requestCheckOut(id: $id) {
-            id
-        }
-    }
-`;
-
 export const checkOut = gql`
     mutation checkOut($id: ID!) {
         checkOut(id: $id) {

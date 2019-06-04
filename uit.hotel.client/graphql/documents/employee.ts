@@ -67,7 +67,6 @@ export const userLogin = gql`
                     name
                     permissionCleaning
                     permissionGetAccountingVoucher
-                    permissionGetHouseKeeping
                     permissionGetMap
                     permissionGetPatron
                     permissionGetRate
@@ -96,7 +95,6 @@ export const userCheckLogin = gql`
                 name
                 permissionCleaning
                 permissionGetAccountingVoucher
-                permissionGetHouseKeeping
                 permissionGetMap
                 permissionGetPatron
                 permissionGetRate
