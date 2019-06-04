@@ -21,7 +21,6 @@ namespace uit.hotel.Queries.Helper
                     IsActive = true,
                     PermissionCleaning = true,
                     PermissionGetAccountingVoucher = true,
-                    PermissionGetHouseKeeping = true,
                     PermissionGetMap = true,
                     PermissionGetPatron = true,
                     PermissionGetRate = true,
@@ -90,7 +89,8 @@ namespace uit.hotel.Queries.Helper
                     Name = "101",
                     Floor = floor,
                     RoomKind = roomKind,
-                    IsActive = true
+                    IsActive = true,
+                    IsClean = true
                 });
 
                 var patronKind = realm.Add(new PatronKind

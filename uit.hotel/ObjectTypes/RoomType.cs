@@ -17,6 +17,7 @@ namespace uit.hotel.ObjectTypes
             Field(x => x.Id).Description("Id của phòng");
             Field(x => x.Name).Description("Tên phòng");
             Field(x => x.IsActive).Description("Trạng thái phòng");
+            Field(x => x.IsClean).Description("Trạng thái dọn phòng");
 
             Field<NonNullGraphType<BooleanGraphType>>(
                 "isEmpty",

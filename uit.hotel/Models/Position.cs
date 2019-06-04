@@ -13,7 +13,6 @@ namespace uit.hotel.Models
 
         public bool PermissionCleaning { get; set; }
         public bool PermissionGetAccountingVoucher { get; set; }
-        public bool PermissionGetHouseKeeping { get; set; }
         public bool PermissionGetMap { get; set; }
         public bool PermissionGetPatron { get; set; }
         public bool PermissionGetRate { get; set; }

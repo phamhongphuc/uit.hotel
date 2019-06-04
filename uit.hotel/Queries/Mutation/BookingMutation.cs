@@ -26,20 +26,6 @@ namespace uit.hotel.Queries.Mutation
             );
 
             Field<NonNullGraphType<BookingType>>(
-                "RequestCheckOut",
-                "Yêu cầu kiểm tra khi trả phòng",
-                _IdArgument(),
-                _CheckPermission_TaskObject(
-                    p => p.PermissionManageRentingRoom,
-                    context =>
-                    {
-                        var employee = AuthenticationHelper.GetEmployee(context);
-                        return BookingBusiness.RequestCheckOut(employee, _GetId<int>(context));
-                    }
-                )
-            );
-
-            Field<NonNullGraphType<BookingType>>(
                 "CheckOut",
                 "Thực hiện xác nhận trả phòng",
                 _IdArgument(),

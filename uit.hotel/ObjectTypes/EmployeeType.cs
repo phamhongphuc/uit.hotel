@@ -48,11 +48,6 @@ namespace uit.hotel.ObjectTypes
                 "Danh sách các Giá biến động mà nhân viên tạo",
                 resolve: context => context.Source.VolatilityRates.ToList());
 
-            Field<ListGraphType<HouseKeepingType>>(
-                nameof(Employee.HouseKeepings),
-                "Danh sách các Phòng mà nhân viên dọn",
-                resolve: context => context.Source.HouseKeepings.ToList());
-
             Field<ListGraphType<BookingType>>(
                 nameof(Employee.Bookings),
                 "Danh sách các Thông tin thuê phòng mà nhân viên tạo",

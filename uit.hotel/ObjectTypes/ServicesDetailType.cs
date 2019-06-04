@@ -38,21 +38,6 @@ namespace uit.hotel.ObjectTypes
         }
     }
 
-    public class ServicesDetailHouseKeepingInput : InputType<ServicesDetail>
-    {
-        public ServicesDetailHouseKeepingInput()
-        {
-            Name = "ServicesDetailHouseKeepingInput";
-
-            Field(x => x.Number).Description("Số lượng");
-
-            Field<NonNullGraphType<ServiceIdInput>>(
-                nameof(ServicesDetail.Service),
-                "Thuộc dịch vụ nào"
-            );
-        }
-    }
-
     public class ServicesDetailCreateInput : InputType<ServicesDetail>
     {
         public ServicesDetailCreateInput()

@@ -48,8 +48,6 @@ namespace uit.hotel.GraphQLHelper
             services.AddSingleton<FloorCreateInput>();
             services.AddSingleton<FloorUpdateInput>();
             services.AddSingleton<FloorIdInput>();
-            services.AddSingleton<HouseKeepingCreateInput>();
-            services.AddSingleton<HouseKeepingIdInput>();
             services.AddSingleton<PatronCreateInput>();
             services.AddSingleton<PatronUpdateInput>();
             services.AddSingleton<PatronIdInput>();
@@ -71,7 +69,6 @@ namespace uit.hotel.GraphQLHelper
             services.AddSingleton<ServiceIdInput>();
             services.AddSingleton<ServiceCreateInput>();
             services.AddSingleton<ServiceUpdateInput>();
-            services.AddSingleton<ServicesDetailHouseKeepingInput>();
             services.AddSingleton<ServicesDetailCreateInput>();
             services.AddSingleton<ServicesDetailUpdateInput>();
             services.AddSingleton<ServicesDetailIdInput>();
@@ -88,7 +85,6 @@ namespace uit.hotel.GraphQLHelper
             services.AddSingleton<BookingType>();
             services.AddSingleton<EmployeeType>();
             services.AddSingleton<FloorType>();
-            services.AddSingleton<HouseKeepingType>();
             services.AddSingleton<PatronKindType>();
             services.AddSingleton<PatronType>();
             services.AddSingleton<PositionType>();

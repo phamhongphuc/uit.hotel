@@ -13,7 +13,6 @@ namespace uit.hotel.Queries
                 new BookingMutation(),
                 new EmployeeMutation(),
                 new FloorMutation(),
-                new HouseKeepingMutation(),
                 new InitializeMutation(),
                 new PatronKindMutation(),
                 new PatronMutation(),

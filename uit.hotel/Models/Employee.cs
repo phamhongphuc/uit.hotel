@@ -34,9 +34,6 @@ namespace uit.hotel.Models
         [Backlink(nameof(VolatilityRate.Employee))]
         public IQueryable<Rate> VolatilityRates { get; }
 
-        [Backlink(nameof(HouseKeeping.Employee))]
-        public IQueryable<HouseKeeping> HouseKeepings { get; }
-
         [Backlink(nameof(Booking.EmployeeBooking))]
         public IQueryable<Booking> Bookings { get; }
 

@@ -261,7 +261,7 @@ namespace uit.hotel.test._GraphQL
             Database.WriteAsync(realm => realm.Add(new Booking
             {
                 Id = 20,
-                Status = (int)Booking.StatusEnum.RequestedCheckOut,
+                Status = (int)Booking.StatusEnum.CheckedIn,
                 EmployeeBooking = EmployeeDataAccess.Get("admin"),
                 EmployeeCheckIn = EmployeeDataAccess.Get("admin"),
                 EmployeeCheckOut = EmployeeDataAccess.Get("admin"),
@@ -321,7 +321,7 @@ namespace uit.hotel.test._GraphQL
                 realm.Add(new Booking
                 {
                     Id = 22,
-                    Status = (int)Booking.StatusEnum.RequestedCheckOut,
+                    Status = (int)Booking.StatusEnum.CheckedIn,
                     EmployeeBooking = EmployeeDataAccess.Get("admin"),
                     EmployeeCheckIn = EmployeeDataAccess.Get("admin"),
                     EmployeeCheckOut = EmployeeDataAccess.Get("nhanvien_1"),
@@ -344,60 +344,6 @@ namespace uit.hotel.test._GraphQL
             SchemaHelper.ExecuteAndExpectError(
                 "Mã Booking không tồn tại",
                 @"/_GraphQL/Booking/mutation.checkOut.gql",
-                new { id = 100 },
-                p => p.PermissionManageRentingRoom = true
-            );
-        }
-
-        [TestMethod]
-        public void Mutation_RequestCheckOut()
-        {
-            Database.WriteAsync(realm => realm.Add(new Booking
-            {
-                Id = 30,
-                Status = (int)Booking.StatusEnum.CheckedIn,
-                EmployeeBooking = EmployeeDataAccess.Get("admin"),
-                EmployeeCheckIn = EmployeeDataAccess.Get("admin"),
-                EmployeeCheckOut = EmployeeDataAccess.Get("admin"),
-                Bill = BillDataAccess.Get(1),
-                Room = RoomDataAccess.Get(1)
-            })).Wait();
-            SchemaHelper.Execute(
-                @"/_GraphQL/Booking/mutation.requestCheckOut.gql",
-                @"/_GraphQL/Booking/mutation.requestCheckOut.schema.json",
-                new { id = 30 },
-                p => p.PermissionManageRentingRoom = true
-            );
-        }
-
-        [TestMethod]
-        public void Mutation_RequestCheckOut_InvalidBookingStatus()
-        {
-            Database.WriteAsync(realm => realm.Add(new Booking
-            {
-                Id = 31,
-                Status = (int)Booking.StatusEnum.CheckedOut,
-                EmployeeBooking = EmployeeDataAccess.Get("admin"),
-                EmployeeCheckIn = EmployeeDataAccess.Get("admin"),
-                EmployeeCheckOut = EmployeeDataAccess.Get("admin"),
-                Bill = BillDataAccess.Get(1),
-                Room = RoomDataAccess.Get(1)
-            })).Wait();
-
-            SchemaHelper.ExecuteAndExpectError(
-                "Không thể yêu cầu trả phòng",
-                @"/_GraphQL/Booking/mutation.requestCheckOut.gql",
-                new { id = 31 },
-                p => p.PermissionManageRentingRoom = true
-            );
-        }
-
-        [TestMethod]
-        public void Mutation_RequestCheckOut_InvalidId()
-        {
-            SchemaHelper.ExecuteAndExpectError(
-                "Mã Booking không tồn tại",
-                @"/_GraphQL/Booking/mutation.requestCheckOut.gql",
                 new { id = 100 },
                 p => p.PermissionManageRentingRoom = true
             );

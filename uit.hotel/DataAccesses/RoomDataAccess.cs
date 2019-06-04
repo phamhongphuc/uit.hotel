@@ -15,6 +15,7 @@ namespace uit.hotel.DataAccesses
             {
                 room.Id = NextId;
                 room.IsActive = true;
+                room.IsClean = false;
                 room = realm.Add(room);
             });
             return room;
@@ -39,6 +40,11 @@ namespace uit.hotel.DataAccesses
         public static async void SetIsActive(Room room, bool roomIsActive)
         {
             await Database.WriteAsync(realm => room.IsActive = roomIsActive);
+        }
+
+        public static async void SetIsClean(Room room, bool roomIsClean)
+        {
+            await Database.WriteAsync(realm => room.IsClean = roomIsClean);
         }
 
         public static Room Get(int roomId) => Database.Find<Room>(roomId);
