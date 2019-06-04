@@ -15,6 +15,7 @@ namespace uit.hotel.DataAccesses
             {
                 room.Id = NextId;
                 room.IsActive = true;
+                room.IsClean = false;
                 room = realm.Add(room);
             });
             return room;
