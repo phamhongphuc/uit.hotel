@@ -46,6 +46,7 @@
                     </div>
                     <div class="input-label">Loại khách hàng</div>
                     <query-
+                        v-slot="{ data: { patronKinds } }"
                         :query="getPatronKinds"
                         :poll-interval="0"
                         class="m-3"
@@ -53,7 +54,6 @@
                         <b-form-select
                             ref="patronKind"
                             v-model="input.patronKind.id"
-                            v-slot="{ data: { patronKinds } }"
                             :state="!$v.input.patronKind.id.$invalid"
                             :options="patronKinds"
                             value-field="id"

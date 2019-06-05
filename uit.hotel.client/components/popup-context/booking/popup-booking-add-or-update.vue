@@ -8,6 +8,7 @@
         <div v-if="input">
             <div class="input-label">Phòng</div>
             <query-
+                v-slot="{ data: { rooms } }"
                 :query="getRooms"
                 :poll-interval="0"
                 class="m-3"
@@ -16,7 +17,6 @@
                 <b-form-select
                     ref="room"
                     v-model="input.room.id"
-                    v-slot="{ data: { rooms } }"
                     :state="!$v.input.room.$invalid"
                     :options="rooms"
                     value-field="id"

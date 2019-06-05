@@ -29,6 +29,7 @@
                     />
                     <div class="input-label">Vị trí</div>
                     <query-
+                        v-slot="{ data: { positions } }"
                         :query="getPositions"
                         :poll-interval="0"
                         class="m-3"
@@ -37,7 +38,6 @@
                         <b-form-select
                             ref="position"
                             v-model="input.position.id"
-                            v-slot="{ data: { positions } }"
                             :state="!$v.input.position.id.$invalid"
                             :options="positions"
                             value-field="id"

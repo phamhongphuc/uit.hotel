@@ -9,11 +9,14 @@
         >
             <div class="input-label">Khách hàng đứng tên hóa đơn</div>
             <div class="m-3 d-flex">
-                <query- :query="getPatrons" :poll-interval="500">
+                <query-
+                    v-slot="{ data: { patrons } }"
+                    :query="getPatrons"
+                    :poll-interval="500"
+                >
                     <b-form-select
                         ref="patron"
                         v-model="input.bill.patron.id"
-                        v-slot="{ data: { patrons } }"
                         :state="!$v.input.bill.patron.$invalid"
                         :options="patrons"
                         value-field="id"
