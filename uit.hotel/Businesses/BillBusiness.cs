@@ -15,6 +15,9 @@ namespace uit.hotel.Businesses
             bill.Patron = bill.Patron.GetManaged();
             bill.Employee = employee;
 
+            if (bookings.Count() == 0)
+                throw new Exception("Chưa có booking nào");
+
             if (
                 bookings.Count() !=
                 bookings.ToList().Distinct(new EqualityBooking(Booking.StatusEnum.Booked)).Count()
@@ -33,6 +36,9 @@ namespace uit.hotel.Businesses
 
                 if (!booking.Room.IsEmptyRoom(booking.BookCheckInTime, booking.BookCheckOutTime))
                     throw new Exception("Phòng đã được đặt hoặc đang được sử dụng");
+
+                if (booking.Patrons.Count() == 0)
+                    throw new Exception("Phòng chưa có khách hàng");
             }
 
             return BillDataAccess.Book(bill, bookings);
@@ -42,6 +48,9 @@ namespace uit.hotel.Businesses
         {
             bill.Patron = bill.Patron.GetManaged();
             bill.Employee = employee;
+
+            if (bookings.Count() == 0)
+                throw new Exception("Chưa có booking nào");
 
             if (
                 bookings.Count() !=
@@ -62,6 +71,9 @@ namespace uit.hotel.Businesses
 
                 if (!booking.Room.IsEmptyRoom(DateTimeOffset.Now, booking.BookCheckOutTime))
                     throw new Exception("Phòng đã được đặt hoặc đang được sử dụng");
+                    
+                if (booking.Patrons.Count() == 0)
+                    throw new Exception("Phòng chưa có khách hàng");
             }
 
             return BillDataAccess.BookAndCheckIn(bill, bookings);
