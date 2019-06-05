@@ -8,7 +8,7 @@
         @click="onClick"
         @contextmenu.capture.prevent
     >
-        <slot v-if="data" :data="data" :refs="refs" />
+        <slot v-if="data" :data="data" />
     </b-nav>
 </template>
 
@@ -25,9 +25,6 @@ export default class extends mixins<ClickawayMixin>(ClickawayMixin) {
 
     @Prop({ default: true, type: Boolean })
     closeOnScroll!: boolean;
-
-    @Prop({ default: undefined })
-    refs: any;
 
     top: number = 0;
     left: number = 0;

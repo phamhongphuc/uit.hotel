@@ -1,5 +1,5 @@
 <template>
-    <context- ref="context" v-slot="{ data: { employee }, refs }" :refs="refs">
+    <context- ref="context" v-slot="{ data: { employee } }">
         <b-nav-item-icon-
             v-if="employee.isActive"
             icon="edit-2"

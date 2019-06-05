@@ -1,5 +1,5 @@
 <template>
-    <context- ref="context" :refs="refs">
+    <context- ref="context">
         <template
             v-slot="{
                 data: {

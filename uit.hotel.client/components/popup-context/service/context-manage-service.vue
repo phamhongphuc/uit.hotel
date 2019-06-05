@@ -1,9 +1,5 @@
 <template>
-    <context-
-        ref="context"
-        v-slot="{ data: { service, services }, refs }"
-        :refs="refs"
-    >
+    <context- ref="context" v-slot="{ data: { service, services } }">
         <b-nav-item-icon-
             v-if="service.isActive"
             icon="edit-2"

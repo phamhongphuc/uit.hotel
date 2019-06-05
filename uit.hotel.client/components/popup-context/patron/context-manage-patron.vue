@@ -1,5 +1,5 @@
 <template>
-    <context- ref="context" v-slot="{ data: { patron }, refs }" :refs="refs">
+    <context- ref="context" v-slot="{ data: { patron } }">
         <b-nav-item-icon-
             icon="edit-2"
             text="Sửa thông tin khách hàng"

@@ -1,5 +1,5 @@
 <template>
-    <context- ref="context" v-slot="{ data: { bill }, refs }" :refs="refs">
+    <context- ref="context" v-slot="{ data: { bill } }">
         <b-nav-item-icon-
             v-if="moment(bill.time).year() === 1"
             icon="dollar-sign"
