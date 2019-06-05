@@ -1,5 +1,5 @@
 <template>
-    <popup- ref="popup" title="Thêm dịch vụ" no-data>
+    <popup- ref="popup" title="Thêm dịch vụ">
         <form-mutate-
             v-if="input"
             slot-scope="{ close }"
@@ -13,30 +13,32 @@
                 ref="autoFocus"
                 v-model="input.number"
                 :state="!$v.input.number.$invalid"
-                type="number"
                 class="m-3 rounded"
                 icon="type"
+                type="number"
+                text-field="name"
+                value-field="id"
             />
             <div class="input-label">Dịch vụ</div>
             <query-
+                v-slot="{ data: { services } }"
                 :query="getServices"
                 :poll-interval="0"
                 class="m-3"
-                @result="onResult"
             >
                 <b-form-select
                     ref="service"
                     v-model="input.service.id"
-                    slot-scope="{ data: { services } }"
                     :state="!$v.input.service.$invalid"
                     :options="services"
-                    value-field="id"
-                    text-field="name"
                     class="rounded"
+                    text-field="name"
+                    value-field="id"
                 />
             </query->
             <div class="input-label">Đơn đặt tại phòng</div>
             <query-
+                v-slot="{ data: { bookings } }"
                 :query="getSimpleBookings"
                 :poll-interval="0"
                 class="m-3"
@@ -45,17 +47,11 @@
                 <b-form-select
                     ref="booking"
                     v-model="input.booking.id"
-                    slot-scope="{ data: { bookings } }"
                     :state="!$v.input.booking.$invalid"
-                    :options="
-                        bookings.map(book => ({
-                            id: book.id,
-                            name: book.room.name,
-                        }))
-                    "
-                    value-field="id"
-                    text-field="name"
+                    :options="mappedBookings"
                     class="rounded"
+                    text-field="name"
+                    value-field="id"
                 />
             </query->
             <div class="d-flex m-3">
@@ -76,13 +72,18 @@
 import { Component, mixins, Vue } from 'nuxt-property-decorator';
 import { minValue } from 'vuelidate/lib/validators';
 import { DataMixin, PopupMixin } from '~/components/mixins';
-import { ServicesDetailCreateInput, GetBookings } from '~/graphql/types';
+import {
+    ServicesDetailCreateInput,
+    GetBookings,
+    GetSimpleBookingsQuery,
+} from '~/graphql/types';
 import { included } from '~/modules/validator';
 import {
     getServices,
     getSimpleBookings,
     createServicesDetail,
 } from '~/graphql/documents';
+import { ExecutionResult } from 'graphql';
 
 type PopupMixinType = PopupMixin<
     {
@@ -107,6 +108,8 @@ export default class extends mixins<PopupMixinType>(
     PopupMixin,
     DataMixin({ getServices, createServicesDetail, getSimpleBookings }),
 ) {
+    bookings: GetSimpleBookingsQuery['bookings'] = [];
+
     onOpen() {
         this.input = {
             number: 0,
@@ -115,7 +118,17 @@ export default class extends mixins<PopupMixinType>(
         };
     }
 
-    async onResult() {
+    get mappedBookings() {
+        return this.bookings.map(booking => ({
+            id: booking.id,
+            name: booking.room.name,
+        }));
+    }
+
+    async onResult(result: ExecutionResult<GetSimpleBookingsQuery>) {
+        if (result.data === undefined) return;
+        this.bookings = result.data.bookings;
+
         if (this.input === null) return;
         await Vue.nextTick();
         this.input.booking.id = this.data.booking.id;
