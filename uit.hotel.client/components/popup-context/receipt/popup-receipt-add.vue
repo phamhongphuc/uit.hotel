@@ -1,8 +1,7 @@
 <template>
-    <popup- ref="popup" title="Thêm phiếu thu" no-data>
+    <popup- ref="popup" v-slot="{ close }" title="Thêm phiếu thu" no-data>
         <form-mutate-
             v-if="input"
-            slot-scope="{ close }"
             :mutation="createReceipt"
             :variables="{ input }"
             success="Thêm phiếu thu mới thành công"

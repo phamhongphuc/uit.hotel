@@ -1,8 +1,7 @@
 <template>
-    <popup- ref="popup" title="Cập nhật vị trí">
+    <popup- ref="popup" v-slot="{ close }" title="Cập nhật vị trí">
         <form-mutate-
             v-if="input"
-            slot-scope="{ close }"
             :mutation="updateEmployee"
             :variables="{ input }"
             success="Cập nhật vị trí mới thành công"
@@ -38,7 +37,7 @@
                         <b-form-select
                             ref="position"
                             v-model="input.position.id"
-                            slot-scope="{ data: { positions } }"
+                            v-slot="{ data: { positions } }"
                             :state="!$v.input.position.id.$invalid"
                             :options="positions"
                             value-field="id"

@@ -1,8 +1,7 @@
 <template>
-    <popup- ref="popup" title="Sửa tầng">
+    <popup- ref="popup" v-slot="{ close }" title="Sửa tầng">
         <form-mutate-
             v-if="input"
-            slot-scope="{ close }"
             :mutation="updateFloor"
             :variables="{ input }"
             success="Cập nhật thông tin tầng thành công"

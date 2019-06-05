@@ -1,8 +1,7 @@
 <template>
-    <popup- ref="popup" title="Cập nhật phòng">
+    <popup- ref="popup" v-slot="{ close }" title="Cập nhật phòng">
         <form-mutate-
             v-if="input"
-            slot-scope="{ close }"
             :mutation="updateRoom"
             :variables="{ input }"
             success="Cập nhật phòng mới thành công"
@@ -10,6 +9,7 @@
         >
             <div class="input-label">Tầng</div>
             <query-
+                v-slot="{ data: { floors } }"
                 :query="getFloors"
                 :poll-interval="0"
                 class="m-3"
@@ -18,7 +18,6 @@
                 <b-form-select
                     ref="floor"
                     v-model="input.floor.id"
-                    slot-scope="{ data: { floors } }"
                     :state="!$v.input.floor.$invalid"
                     :options="floors"
                     value-field="id"
@@ -36,7 +35,7 @@
                 <b-form-select
                     ref="roomKind"
                     v-model="input.roomKind.id"
-                    slot-scope="{ data: { roomKinds } }"
+                    v-slot="{ data: { roomKinds } }"
                     :state="!$v.input.roomKind.id.$invalid"
                     :options="roomKinds"
                     value-field="id"

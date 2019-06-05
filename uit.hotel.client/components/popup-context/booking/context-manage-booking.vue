@@ -1,7 +1,7 @@
 <template>
     <context- ref="context" :refs="refs">
         <template
-            slot-scope="{
+            v-slot="{
                 data: {
                     booking,
                     booking: { id },

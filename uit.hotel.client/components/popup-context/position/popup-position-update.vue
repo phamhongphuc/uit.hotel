@@ -1,8 +1,7 @@
 <template>
-    <popup- ref="popup" title="Cập nhật vị trí">
+    <popup- ref="popup" v-slot="{ close }" title="Cập nhật vị trí">
         <form-mutate-
             v-if="input"
-            slot-scope="{ close }"
             :mutation="updatePosition"
             :variables="{ input: getInput }"
             success="Cập nhật vị trí mới thành công"

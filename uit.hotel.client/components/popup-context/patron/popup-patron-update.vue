@@ -1,8 +1,7 @@
 <template>
-    <popup- ref="popup" title="Cập nhật khách hàng">
+    <popup- ref="popup" v-slot="{ close }" title="Cập nhật khách hàng">
         <form-mutate-
             v-if="input"
-            slot-scope="{ close }"
             :mutation="updatePatron"
             :variables="{ input }"
             success="Cập nhật khách hàng thành công"
@@ -55,7 +54,7 @@
                         <b-form-select
                             ref="patronKind"
                             v-model="input.patronKind.id"
-                            slot-scope="{ data: { patronKinds } }"
+                            v-slot="{ data: { patronKinds } }"
                             :state="!$v.input.patronKind.id.$invalid"
                             :options="patronKinds"
                             value-field="id"

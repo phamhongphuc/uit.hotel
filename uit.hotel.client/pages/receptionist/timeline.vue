@@ -10,8 +10,13 @@
                 <span>Đặt phòng</span>
             </b-button>
         </block-flex->
-        <query- :query="getTimeline" :poll-interval="500" class="query-fill">
-            <div slot-scope="{ data: { floors } }">
+        <query-
+            v-slot="{ data: { floors } }"
+            :query="getTimeline"
+            :poll-interval="500"
+            class="query-fill"
+        >
+            <div>
                 <booking-timeline- :floors="floors" />
             </div>
         </query->

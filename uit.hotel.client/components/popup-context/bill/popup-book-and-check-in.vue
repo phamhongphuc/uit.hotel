@@ -1,8 +1,7 @@
 <template>
-    <popup- ref="popup" title="Đặt phòng và nhận ngay">
+    <popup- ref="popup" v-slot="{ close }" title="Đặt phòng và nhận ngay">
         <form-mutate-
             v-if="input"
-            slot-scope="{ close }"
             :mutation="bookAndCheckIn"
             :variables="variables"
             success="Thêm phòng cho hóa đơn có sẵn"
@@ -14,7 +13,7 @@
                     <b-form-select
                         ref="patron"
                         v-model="input.bill.patron.id"
-                        slot-scope="{ data: { patrons } }"
+                        v-slot="{ data: { patrons } }"
                         :state="!$v.input.bill.patron.$invalid"
                         :options="patrons"
                         value-field="id"
@@ -72,28 +71,27 @@
                     ]"
                     class="table-style table-cell-middle"
                 >
-                    <template slot="index" slot-scope="data">
+                    <template v-slot:index="data">
                         {{ data.index + 1 }}
                     </template>
-                    <template slot="room" slot-scope="{ value }">
+                    <template v-slot:room="{ value }">
                         <query-
+                            v-slot="{ data: { room } }"
                             :query="getRoom"
                             :variables="{
                                 id: value.id,
                             }"
                             :poll-interval="0"
                         >
-                            <span slot-scope="{ data: { room } }">
-                                {{ room.name }}
-                            </span>
+                            {{ room.name }}
                         </query->
                     </template>
-                    <template slot="listOfPatrons" slot-scope="{ value }">
+                    <template v-slot:listOfPatrons="{ value }">
                         <div v-for="patron in value" :key="patron.id">
                             {{ patron.name }}
                         </div>
                     </template>
-                    <template slot="actions" slot-scope="{ item }">
+                    <template v-slot:actions="{ item }">
                         <div class="d-flex">
                             <b-button
                                 variant="main"
