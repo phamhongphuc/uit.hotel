@@ -25,78 +25,71 @@
             </b-button>
         </block-flex->
         <query-
+            v-slot="{ data: { services } }"
             :query="getServices"
             class="row"
             child-class="col m-2 p-0 bg-white rounded shadow-sm overflow-auto"
         >
-            <template slot-scope="{ data: { services } }">
-                <b-table
-                    :items="servicesFilter(services)"
-                    :fields="[
-                        {
-                            key: 'index',
-                            label: '#',
-                            class: 'table-cell-id text-center',
-                            sortable: true,
+            <b-table
+                :items="servicesFilter(services)"
+                :fields="[
+                    {
+                        key: 'index',
+                        label: '#',
+                        class: 'table-cell-id text-center',
+                        sortable: true,
+                    },
+                    {
+                        key: 'name',
+                        label: 'Tên dịch vụ',
+                        tdClass: (value, key, row) => {
+                            if (!row.isActive)
+                                return 'table-cell-disable w-100';
+                            return 'w-100';
                         },
-                        {
-                            key: 'name',
-                            label: 'Tên dịch vụ',
-                            tdClass: (value, key, row) => {
-                                if (!row.isActive)
-                                    return 'table-cell-disable w-100';
-                                return 'w-100';
-                            },
-                            sortable: true,
-                        },
-                        {
-                            key: 'unitRate',
-                            label: 'Đơn giá',
-                            tdClass: 'text-nowrap text-center',
-                            sortable: true,
-                        },
-                        {
-                            key: 'servicesDetails',
-                            label: 'Đã sử dụng',
-                            tdClass: 'text-nowrap text-center',
-                            sortable: true,
-                        },
-                    ]"
-                    class="table-style"
-                    @row-clicked="
-                        (service, $index, $event) => {
-                            $event.stopPropagation();
-                            $refs.context_service.open(currentEvent || $event, {
-                                service,
-                                services,
-                            });
-                            currentEvent = null;
-                        }
-                    "
-                >
-                    <template slot="index" slot-scope="data">
-                        {{ data.index + 1 }}
-                    </template>
-                    <template
-                        slot="unitRate"
-                        slot-scope="{ item: { unitRate, unit } }"
-                    >
-                        {{ toMoney(unitRate) }} / {{ unit }}
-                    </template>
-                    <template
-                        slot="servicesDetails"
-                        slot-scope="{ value, item: { unit } }"
-                    >
-                        {{ servicesDetailsCount(value) }} {{ unit }}
-                    </template>
-                </b-table>
-                <div
-                    v-if="servicesFilter(services).length === 0"
-                    class="table-after"
-                >
-                    Không tìm thấy dịch vụ nào
-                </div>
-            </template>
+                        sortable: true,
+                    },
+                    {
+                        key: 'unitRate',
+                        label: 'Đơn giá',
+                        tdClass: 'text-nowrap text-center',
+                        sortable: true,
+                    },
+                    {
+                        key: 'servicesDetails',
+                        label: 'Đã sử dụng',
+                        tdClass: 'text-nowrap text-center',
+                        sortable: true,
+                    },
+                ]"
+                class="table-style"
+                @row-clicked="
+                    (service, $index, $event) => {
+                        $event.stopPropagation();
+                        $refs.context_service.open(currentEvent || $event, {
+                            service,
+                            services,
+                        });
+                        currentEvent = null;
+                    }
+                "
+            >
+                <template v-slot:index="data">
+                    {{ data.index + 1 }}
+                </template>
+                <template v-slot:unitRate="{ item: { unitRate, unit } }">
+                    {{ toMoney(unitRate) }} / {{ unit }}
+                </template>
+                <template v-slot:servicesDetails="{ value, item: { unit } }">
+                    {{ servicesDetailsCount(value) }} {{ unit }}
+                </template>
+            </b-table>
+            <div
+                v-if="servicesFilter(services).length === 0"
+                class="table-after"
+            >
+                Không tìm thấy dịch vụ nào
+            </div>
         </query->
         <context-manage-service- ref="context_service" :refs="$refs" />
         <popup-service-add- ref="service_add" />

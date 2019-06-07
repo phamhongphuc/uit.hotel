@@ -2,7 +2,6 @@
     <popup- ref="popup" :no-data="true" title="Thêm loại phòng">
         <form-mutate-
             v-if="input"
-            slot-scope="{ close }"
             :mutation="createRoomKind"
             :variables="{ input }"
             success="Thêm loại phòng mới thành công"

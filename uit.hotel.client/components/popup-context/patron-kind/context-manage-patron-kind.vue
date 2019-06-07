@@ -1,12 +1,10 @@
 <template>
-    <context- ref="context" :refs="refs">
-        <template slot-scope="{ data: { patronKind }, refs }">
-            <b-nav-item-icon-
-                icon="edit-2"
-                text="Sửa thông tin loại khách hàng"
-                @click="refs.patron_kind_update.open({ patronKind })"
-            />
-        </template>
+    <context- ref="context" v-slot="{ data: { patronKind } }">
+        <b-nav-item-icon-
+            icon="edit-2"
+            text="Sửa thông tin loại khách hàng"
+            @click="refs.patron_kind_update.open({ patronKind })"
+        />
     </context->
 </template>
 <script lang="ts">

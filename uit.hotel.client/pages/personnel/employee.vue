@@ -25,74 +25,70 @@
             </b-button>
         </block-flex->
         <query-
+            v-slot="{ data: { employees } }"
             :query="getEmployees"
             class="row"
             child-class="col m-2 p-0 bg-white rounded shadow-sm overflow-auto"
         >
-            <template slot-scope="{ data: { employees } }">
-                <b-table
-                    :items="employeesFilter(employees)"
-                    :fields="[
-                        {
-                            key: 'index',
-                            label: '#',
-                            class: 'table-cell-id text-center',
-                            sortable: true,
+            <b-table
+                :items="employeesFilter(employees)"
+                :fields="[
+                    {
+                        key: 'index',
+                        label: '#',
+                        class: 'table-cell-id text-center',
+                        sortable: true,
+                    },
+                    {
+                        key: 'name',
+                        label: 'Tên nhân viên',
+                        tdClass: (value, key, row) => {
+                            if (!row.isActive)
+                                return 'table-cell-disable w-100';
+                            return 'w-100';
                         },
-                        {
-                            key: 'name',
-                            label: 'Tên nhân viên',
-                            tdClass: (value, key, row) => {
-                                if (!row.isActive)
-                                    return 'table-cell-disable w-100';
-                                return 'w-100';
-                            },
-                            sortable: true,
-                        },
-                        {
-                            key: 'phoneNumber',
-                            label: 'Số điện thoại',
-                            tdClass: 'text-center text-nowrap',
-                            sortable: true,
-                        },
-                        {
-                            key: 'position',
-                            label: 'Vị trí',
-                            tdClass: 'text-center text-nowrap',
-                            sortable: true,
-                        },
-                    ]"
-                    class="table-style"
-                    @row-clicked="
-                        (employee, $index, $event) => {
-                            $event.stopPropagation();
-                            $refs.context_employee.open(
-                                currentEvent || $event,
-                                {
-                                    employee,
-                                },
-                            );
-                            currentEvent = null;
-                        }
-                    "
-                >
-                    <template slot="index" slot-scope="data">
-                        {{ data.index + 1 }}
-                    </template>
-                    <template slot="phoneNumber" slot-scope="{ value }">
-                        <a :href="`tel:${value}`" @click.stop>{{ value }}</a>
-                    </template>
-                    <template slot="position" slot-scope="{ value }">
-                        {{ value.name }}
-                    </template>
-                </b-table>
-                <div
-                    v-if="employeesFilter(employees).length === 0"
-                    class="table-after"
-                >
-                    Không tìm thấy nhân viên nào
-                </div>
-            </template>
+                        sortable: true,
+                    },
+                    {
+                        key: 'phoneNumber',
+                        label: 'Số điện thoại',
+                        tdClass: 'text-center text-nowrap',
+                        sortable: true,
+                    },
+                    {
+                        key: 'position',
+                        label: 'Vị trí',
+                        tdClass: 'text-center text-nowrap',
+                        sortable: true,
+                    },
+                ]"
+                class="table-style"
+                @row-clicked="
+                    (employee, $index, $event) => {
+                        $event.stopPropagation();
+                        $refs.context_employee.open(currentEvent || $event, {
+                            employee,
+                        });
+                        currentEvent = null;
+                    }
+                "
+            >
+                <template v-slot:index="data">
+                    {{ data.index + 1 }}
+                </template>
+                <template v-slot:phoneNumber="{ value }">
+                    <a :href="`tel:${value}`" @click.stop>{{ value }}</a>
+                </template>
+                <template v-slot:position="{ value }">
+                    {{ value.name }}
+                </template>
+            </b-table>
+            <div
+                v-if="employeesFilter(employees).length === 0"
+                class="table-after"
+            >
+                Không tìm thấy nhân viên nào
+            </div>
         </query->
         <context-manage-employee- ref="context_employee" :refs="$refs" />
         <popup-employee-add- ref="employee_add" />

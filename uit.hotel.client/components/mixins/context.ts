@@ -3,7 +3,7 @@ import { Vue, Prop, Component } from 'nuxt-property-decorator';
 @Component
 export class ContextMixin extends Vue {
     @Prop({ default: undefined })
-    protected refs: any;
+    protected refs!: { [key: string]: Vue | Element | Vue[] | Element[] };
 
     protected data: any = null;
 

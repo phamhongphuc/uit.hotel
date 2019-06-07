@@ -1,8 +1,7 @@
 <template>
-    <popup- ref="popup" title="Thêm dịch vụ" no-data>
+    <popup- ref="popup" v-slot="{ close }" title="Thêm dịch vụ" no-data>
         <form-mutate-
             v-if="input"
-            slot-scope="{ close }"
             :mutation="createService"
             :variables="{ input }"
             success="Thêm dịch vụ mới thành công"

@@ -25,11 +25,12 @@
             </b-button>
         </block-flex->
         <query-
+            v-slot="{ data: { floors } }"
             :query="getFloors"
             class="hotel-map row flex-1"
             child-class="col m-2 p-3 bg-white rounded shadow-sm overflow-auto"
         >
-            <div slot-scope="{ data: { floors } }">
+            <div>
                 <table>
                     <tr v-for="floor in floorsFilter(floors)" :key="floor.id">
                         <td>

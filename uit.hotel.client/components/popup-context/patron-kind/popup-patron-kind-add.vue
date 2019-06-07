@@ -1,8 +1,7 @@
 <template>
-    <popup- ref="popup" title="Thêm khách hàng" no-data>
+    <popup- ref="popup" v-slot="{ close }" title="Thêm khách hàng" no-data>
         <form-mutate-
             v-if="input"
-            slot-scope="{ close }"
             :mutation="createPatronKind"
             :variables="{ input }"
             success="Thêm khách hàng mới thành công"

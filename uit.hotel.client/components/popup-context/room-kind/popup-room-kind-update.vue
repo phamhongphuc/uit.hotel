@@ -1,8 +1,7 @@
 <template>
-    <popup- ref="popup" title="Cập nhật loại phòng">
+    <popup- ref="popup" v-slot="{ close }" title="Cập nhật loại phòng">
         <form-mutate-
             v-if="input"
-            slot-scope="{ close }"
             :mutation="updateRoomKind"
             :variables="{ input }"
             success="Cập nhật loại phòng mới thành công"

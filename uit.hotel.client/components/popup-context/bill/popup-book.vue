@@ -1,8 +1,7 @@
 <template>
-    <popup- ref="popup" title="Đặt phòng">
+    <popup- ref="popup" v-slot="{ close }" title="Đặt phòng">
         <form-mutate-
             v-if="input"
-            slot-scope="{ close }"
             :mutation="createBill"
             :variables="variables"
             success="Thêm phòng cho hóa đơn có sẵn"
@@ -10,11 +9,14 @@
         >
             <div class="input-label">Khách hàng đứng tên hóa đơn</div>
             <div class="m-3 d-flex">
-                <query- :query="getPatrons" :poll-interval="500">
+                <query-
+                    v-slot="{ data: { patrons } }"
+                    :query="getPatrons"
+                    :poll-interval="500"
+                >
                     <b-form-select
                         ref="patron"
                         v-model="input.bill.patron.id"
-                        slot-scope="{ data: { patrons } }"
                         :state="!$v.input.bill.patron.$invalid"
                         :options="patrons"
                         value-field="id"
@@ -78,33 +80,32 @@
                     ]"
                     class="table-style table-cell-middle"
                 >
-                    <template slot="index" slot-scope="data">
+                    <template v-slot:index="data">
                         {{ data.index + 1 }}
                     </template>
-                    <template slot="room" slot-scope="{ value }">
+                    <template v-slot:room="{ value }">
                         <query-
+                            v-slot="{ data: { room } }"
                             :query="getRoom"
                             :variables="{
                                 id: value.id,
                             }"
                             :poll-interval="0"
                         >
-                            <span slot-scope="{ data: { room } }">
-                                {{ room.name }}
-                            </span>
+                            {{ room.name }}
                         </query->
                     </template>
-                    <template slot="listOfPatrons" slot-scope="{ value }">
+                    <template v-slot:listOfPatrons="{ value }">
                         <div v-for="patron in value" :key="patron.id">
                             {{ patron.name }}
                         </div>
                     </template>
-                    <template slot="actions" slot-scope="{ item }">
+                    <template v-slot:actions="{ item }">
                         <div class="d-flex">
                             <b-button
                                 variant="main"
                                 @click="
-                                    refs.booking_book_and_check_in.open({
+                                    refs.booking_add_or_update.open({
                                         booking: item,
                                         callback(result) {
                                             removeBooking(item);
@@ -147,7 +148,7 @@
                     variant="main"
                     class="ml-auto"
                     @click="
-                        refs.booking_book_and_check_in.open({
+                        refs.booking_add_or_update.open({
                             callback(result) {
                                 input.bookings.push(result);
                             },

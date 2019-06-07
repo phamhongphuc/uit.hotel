@@ -19,6 +19,7 @@
             </b-button>
         </block-flex->
         <query-
+            v-slot="{ data: { floors } }"
             :query="getFloorsMap"
             :variables="{
                 from,
@@ -27,10 +28,7 @@
             class="hotel-map row flex-1 p-2"
             child-class="bg-white rounded shadow-sm w-100 overflow-auto"
         >
-            <div
-                slot-scope="{ data: { floors } }"
-                class="hotel-map-table-container p-3"
-            >
+            <div class="hotel-map-table-container p-3">
                 <table>
                     <tr v-for="floor in floorsFilter(floors)" :key="floor.id">
                         <td>
@@ -75,7 +73,7 @@
             <popup-book-and-check-in- ref="book_and_check_in" :refs="$refs" />
             <popup-book- ref="book" :refs="$refs" />
             <popup-booking-add-or-update-
-                ref="booking_book_and_check_in"
+                ref="booking_add_or_update"
                 :refs="$refs"
             />
             <popup-patron-select-or-add- ref="patron_select_or_add" />

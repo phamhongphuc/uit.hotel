@@ -1,6 +1,7 @@
 <template>
     <no-ssr>
         <apollo-query
+            v-slot="{ result: { loading, error, data } }"
             :query="query"
             :variables="variables"
             :poll-interval="pollInterval"
@@ -8,25 +9,23 @@
             class="query"
             @result="$emit('result', $event)"
         >
-            <template slot-scope="{ result: { loading, error, data } }">
-                <div :class="childClass">
-                    <slot v-if="data" :data="data" />
-                    <div v-else class="query-text">
-                        <span v-if="loading">
-                            <icon- class="mr-1" i="loader" />
-                            Đang tải dữ liệu...
-                        </span>
-                        <span v-else-if="error" class="text-red">
-                            <icon- class="mr-1" i="alert-triangle" />
-                            Đã có lỗi xảy ra!
-                        </span>
-                        <span v-else>
-                            <icon- class="mr-1" i="loader" />
-                            Đang yêu cầu dữ liệu...
-                        </span>
-                    </div>
+            <div :class="childClass">
+                <slot v-if="data" :data="data" />
+                <div v-else class="query-text">
+                    <span v-if="loading">
+                        <icon- class="mr-1" i="loader" />
+                        Đang tải dữ liệu...
+                    </span>
+                    <span v-else-if="error" class="text-red">
+                        <icon- class="mr-1" i="alert-triangle" />
+                        Đã có lỗi xảy ra!
+                    </span>
+                    <span v-else>
+                        <icon- class="mr-1" i="loader" />
+                        Đang yêu cầu dữ liệu...
+                    </span>
                 </div>
-            </template>
+            </div>
         </apollo-query>
     </no-ssr>
 </template>

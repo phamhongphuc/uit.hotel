@@ -1,8 +1,7 @@
 <template>
-    <popup- ref="popup" title="Cập nhật loại khách hàng">
+    <popup- ref="popup" v-slot="{ close }" title="Cập nhật loại khách hàng">
         <form-mutate-
             v-if="input"
-            slot-scope="{ close }"
             :mutation="updatePatronKind"
             :variables="{ input }"
             success="Cập nhật loại khách hàng thành công"

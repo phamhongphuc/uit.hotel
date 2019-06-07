@@ -25,75 +25,71 @@
             </b-button>
         </block-flex->
         <query-
+            v-slot="{ data: { roomKinds } }"
             :query="getRoomKinds"
             class="row"
             child-class="col m-2 p-0 bg-white rounded shadow-sm overflow-auto"
         >
-            <template slot-scope="{ data: { roomKinds } }">
-                <b-table
-                    :items="roomKindsFilter(roomKinds)"
-                    :fields="[
-                        {
-                            key: 'index',
-                            label: '#',
-                            class: 'table-cell-id text-center',
-                            sortable: true,
+            <b-table
+                :items="roomKindsFilter(roomKinds)"
+                :fields="[
+                    {
+                        key: 'index',
+                        label: '#',
+                        class: 'table-cell-id text-center',
+                        sortable: true,
+                    },
+                    {
+                        key: 'name',
+                        label: 'Tên loại phòng',
+                        tdClass: (value, key, row) => {
+                            if (!row.isActive)
+                                return 'table-cell-disable w-100';
+                            return 'w-100';
                         },
-                        {
-                            key: 'name',
-                            label: 'Tên loại phòng',
-                            tdClass: (value, key, row) => {
-                                if (!row.isActive)
-                                    return 'table-cell-disable w-100';
-                                return 'w-100';
-                            },
-                            sortable: true,
-                        },
-                        {
-                            key: 'rooms',
-                            label: 'Số phòng',
-                            tdClass: 'text-center',
-                            sortable: true,
-                        },
-                        {
-                            key: 'numberOfBeds',
-                            label: 'Số giường',
-                            tdClass: 'text-right',
-                        },
-                        {
-                            key: 'amountOfPeople',
-                            label: 'Số người tối đa',
-                            tdClass: 'text-right',
-                        },
-                    ]"
-                    class="table-style"
-                    @row-clicked="
-                        (roomKind, $index, $event) => {
-                            $event.stopPropagation();
-                            $refs.context_room_kind.open(
-                                currentEvent || $event,
-                                {
-                                    roomKind,
-                                },
-                            );
-                            currentEvent = null;
-                        }
-                    "
-                >
-                    <template slot="index" slot-scope="data">
-                        {{ data.index + 1 }}
-                    </template>
-                    <template slot="rooms" slot-scope="{ value }">
-                        {{ value.length }} phòng
-                    </template>
-                </b-table>
-                <div
-                    v-if="roomKindsFilter(roomKinds).length === 0"
-                    class="table-after"
-                >
-                    Không tìm thấy loại phòng nào
-                </div>
-            </template>
+                        sortable: true,
+                    },
+                    {
+                        key: 'rooms',
+                        label: 'Số phòng',
+                        tdClass: 'text-center',
+                        sortable: true,
+                    },
+                    {
+                        key: 'numberOfBeds',
+                        label: 'Số giường',
+                        tdClass: 'text-right',
+                    },
+                    {
+                        key: 'amountOfPeople',
+                        label: 'Số người tối đa',
+                        tdClass: 'text-right',
+                    },
+                ]"
+                class="table-style"
+                @row-clicked="
+                    (roomKind, $index, $event) => {
+                        $event.stopPropagation();
+                        $refs.context_room_kind.open(currentEvent || $event, {
+                            roomKind,
+                        });
+                        currentEvent = null;
+                    }
+                "
+            >
+                <template v-slot:index="data">
+                    {{ data.index + 1 }}
+                </template>
+                <template v-slot:rooms="{ value }">
+                    {{ value.length }} phòng
+                </template>
+            </b-table>
+            <div
+                v-if="roomKindsFilter(roomKinds).length === 0"
+                class="table-after"
+            >
+                Không tìm thấy loại phòng nào
+            </div>
         </query->
         <context-manage-room-kind- ref="context_room_kind" :refs="$refs" />
         <popup-room-kind-add- ref="room_kind_add" />
