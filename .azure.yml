@@ -98,6 +98,8 @@ jobs:
 
           - script: |
                 cd $(path_client)
-                yarn lint
+                yarn lint:js --max-warnings=0
+                yarn lint:css
                 yarn build
+                yarn test
             displayName: "[Client] Run `yarn` lint and build"
