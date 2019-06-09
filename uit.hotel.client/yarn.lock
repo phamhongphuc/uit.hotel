@@ -1442,10 +1442,10 @@
   resolved "https://registry.yarnpkg.com/@types/mocha/-/mocha-5.2.7.tgz#315d570ccb56c53452ff8638738df60726d5b6ea"
   integrity sha512-NYrtPht0wGzhwe9+/idPaBB+TqkY9AhTvOLMkThm0IoEfLaiVQZwBwyJ5puCkO3AUCWrmcoePjp2mbFocKy4SQ==
 
-"@types/node@*", "@types/node@^12.0.2", "@types/node@^12.0.6":
-  version "12.0.6"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.0.6.tgz#215fa05292dab13e0ebc066f54d14eb983c5ad78"
-  integrity sha512-3sV/MUw6uYxPaRIoooI/MjO0j1A06JNlbpkGc56F+zikO52qavehD/Qw85so47gWhO82tNzEFoF6adXqIfK+EA==
+"@types/node@*", "@types/node@^12.0.2", "@types/node@^12.0.7":
+  version "12.0.7"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.0.7.tgz#4f2563bad652b2acb1722d7e7aae2b0ff62d192c"
+  integrity sha512-1YKeT4JitGgE4SOzyB9eMwO0nGVNkNEsm9qlIt1Lqm/tG2QEiSMTD4kS3aO6L+w5SClLVxALmIBESK6Mk5wX0A==
 
 "@types/node@^10.1.0":
   version "10.14.7"
