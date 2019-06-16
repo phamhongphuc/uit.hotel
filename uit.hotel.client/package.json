@@ -49,7 +49,7 @@
         "@graphql-codegen/schema-ast": "^1.2.0",
         "@graphql-codegen/typescript": "^1.2.0",
         "@graphql-codegen/typescript-compatibility": "^1.2.1",
-        "@graphql-codegen/typescript-operations": "^1.2.0",
+        "@graphql-codegen/typescript-operations": "^1.2.1",
         "@nuxt/typescript": "^2.8.1",
         "@playlyfe/gql": "^2.6.1",
         "@types/chai": "^4.1.7",
