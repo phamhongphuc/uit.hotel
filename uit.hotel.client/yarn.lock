@@ -782,16 +782,6 @@
     "@graphql-codegen/plugin-helpers" "1.2.1"
     tslib "1.9.3"
 
-"@graphql-codegen/plugin-helpers@1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@graphql-codegen/plugin-helpers/-/plugin-helpers-1.2.0.tgz#a5011f9d90767cbbe20ad9b4f6c8080bf79ba2fa"
-  integrity sha512-eF1p9KlKTgiqqCMnHUTlB8OhV35yyMCVfiqaSFuR0WtnnxgrR9QC6Bw+NAOsoV8gGhK2Uc9VgEJzjjHYVqPiVg==
-  dependencies:
-    change-case "3.1.0"
-    common-tags "1.8.0"
-    import-from "3.0.0"
-    tslib "1.9.3"
-
 "@graphql-codegen/plugin-helpers@1.2.1":
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/@graphql-codegen/plugin-helpers/-/plugin-helpers-1.2.1.tgz#ecda83e38fe44b46a0d415b3dd91d3a1342a56a6"
@@ -2529,10 +2519,10 @@ babel-code-frame@^6.22.0:
     esutils "^2.0.2"
     js-tokens "^3.0.2"
 
-babel-eslint@^10.0.1:
-  version "10.0.1"
-  resolved "https://registry.yarnpkg.com/babel-eslint/-/babel-eslint-10.0.1.tgz#919681dc099614cd7d31d45c8908695092a1faed"
-  integrity sha512-z7OT1iNV+TjOwHNLLyJk+HN+YVWX+CLE6fPD2SymJZOZQBs+QIexFjhm4keGTm8MW9xr4EC9Q0PbaLB24V5GoQ==
+babel-eslint@^10.0.2:
+  version "10.0.2"
+  resolved "https://registry.yarnpkg.com/babel-eslint/-/babel-eslint-10.0.2.tgz#182d5ac204579ff0881684b040560fdcc1558456"
+  integrity sha512-UdsurWPtgiPgpJ06ryUnuaSXC2s0WoSZnQmEpbAH65XZSdwowgN5MvyP7e88nW07FYXv72erVtpBkxyDVKhH1Q==
   dependencies:
     "@babel/code-frame" "^7.0.0"
     "@babel/parser" "^7.0.0"
