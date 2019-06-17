@@ -274,3 +274,4 @@ coverage
 
 uit.hotel/Tools/
 uit.hotel.test/Tools/
+*.xsd
