@@ -13,10 +13,9 @@ export const optionalEmail = {
     or: or(email, not(required)),
 };
 
-export const optionalBirthdate = or(
-    not(required),
-    and(validDate, beforeDate()),
-);
+export const optionalBirthdate = {
+    or: or(not(required), and(validDate, beforeDate())),
+};
 
 export const listOfPhoneNumbers = {
     minLength: minLength(0),
