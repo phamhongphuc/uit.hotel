@@ -19,6 +19,13 @@
                 auto-permission
             >
                 <b-nav-item-icon-
+                    to="/receptionist/timeline"
+                    icon="clock"
+                    text="Dòng thời gian"
+                    exact
+                    :permission="['ManageRentingRoom']"
+                />
+                <b-nav-item-icon-
                     to="/receptionist/map"
                     icon="grid"
                     text="Sơ đồ khách sạn"
@@ -39,13 +46,6 @@
                     exact
                     :permission="['ManageRentingRoom']"
                 /> -->
-                <b-nav-item-icon-
-                    to="/receptionist/timeline"
-                    icon="clock"
-                    text="Dòng thời gian"
-                    exact
-                    :permission="['ManageRentingRoom']"
-                />
             </b-collapse->
             <b-nav-item-icon-
                 v-b-toggle.collapse_business
@@ -63,7 +63,7 @@
                 v-model="showBusiness"
                 auto-permission
             >
-                <!-- <b-nav-item-icon-
+                <b-nav-item-icon-
                     to="/business/bill"
                     icon="dollar-sign"
                     text="Quản lý hóa đơn"
@@ -76,7 +76,7 @@
                     text="Quản lý phiếu thu"
                     exact
                     :permission="['GetAccountingVoucher']"
-                /> -->
+                />
                 <b-nav-item-icon-
                     to="/business/service"
                     icon="shopping-cart"
