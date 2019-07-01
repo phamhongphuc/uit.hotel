@@ -29,7 +29,19 @@
                 >
                     Tầng {{ floor.name }}
                 </td>
-                <td class="room">Phòng {{ room.name }}</td>
+                <td
+                    v-b-tooltip.hover.right
+                    class="room"
+                    title="Phòng chưa được dọn"
+                    :disabled="room.isClean"
+                >
+                    Phòng {{ room.name }}
+                    <icon-
+                        v-if="!room.isClean"
+                        i="alert-triangle"
+                        class="text-orange"
+                    />
+                </td>
                 <td class="bookings">
                     <b-button
                         v-for="booking in mapBookings(room)"
@@ -227,6 +239,9 @@ table.timeline {
             background-color: $white;
             border-right: none;
             box-shadow: 1px 0 0 0 $border-color;
+            > span {
+                float: right;
+            }
         }
         &.bookings {
             position: relative;
