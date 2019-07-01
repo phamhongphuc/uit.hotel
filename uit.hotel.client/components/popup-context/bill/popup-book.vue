@@ -93,7 +93,7 @@
 </template>
 <script lang="ts">
 import moment from 'moment';
-import { Component, mixins } from 'nuxt-property-decorator';
+import { Component, mixins, Emit } from 'nuxt-property-decorator';
 import { ApolloQueryResult } from 'apollo-client';
 import { required } from 'vuelidate/lib/validators';
 import { TableDataType } from './popup-book.helper';
@@ -240,7 +240,9 @@ export default class extends mixins<PopupMixinType>(
         );
     }
 
-    addPatron(patronId: number, row: TableDataType) {
+    async addPatron(patronId: number, row: TableDataType) {
+        await this.nextResult();
+
         const patron = this.patrons.find(patron => patron.id === patronId);
         if (patron === undefined) return;
         row.patrons.push({ ...patron, isOwner: this.numberOfPatrons === 0 });
@@ -268,6 +270,11 @@ export default class extends mixins<PopupMixinType>(
         this.tableData.splice(index, 1);
     }
 
+    nextResult() {
+        return new Promise(resolve => this.$once('onResult', resolve));
+    }
+
+    @Emit('onResult')
     async onResult({ data }: ApolloQueryResult<GetPatronsAndRoomsQuery>) {
         this.patrons = data.patrons;
         this.rooms = data.rooms;
