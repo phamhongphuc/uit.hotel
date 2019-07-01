@@ -174,6 +174,7 @@
 </template>
 <script lang="ts">
 import { Component, mixins } from 'nuxt-property-decorator';
+import { ApolloQueryResult } from 'apollo-client';
 import { PopupMixin, DataMixin } from '~/components/mixins';
 import {
     CreatePatron,
@@ -192,7 +193,6 @@ import {
     optionalBirthdate,
     optionalEmail,
 } from '~/modules/validator';
-import { ApolloQueryResult } from 'apollo-client';
 
 @Component({
     name: 'popup-patron-select-or-add-',

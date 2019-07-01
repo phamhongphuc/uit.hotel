@@ -85,9 +85,9 @@
 </template>
 <script lang="ts">
 import { Component, mixins } from 'nuxt-property-decorator';
+import moment from 'moment';
 import { getPatrons } from '~/graphql/documents';
 import { DataMixin } from '~/components/mixins';
-import moment from 'moment';
 
 @Component({
     name: 'patron-',

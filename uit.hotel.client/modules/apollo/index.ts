@@ -3,9 +3,9 @@ import { ApolloClient, ApolloError, MutationOptions } from 'apollo-client';
 import { FetchResult } from 'apollo-link';
 import Vue from 'vue';
 import { MutationTree, Store } from 'vuex';
-import { notify } from '~/plugins/notify';
 import { ApolloNotify } from './interfaces/ApolloNotify';
 import { ServerError } from './interfaces/ServerError';
+import { notify } from '~/plugins/notify';
 
 type HasAppType = { app: Vue };
 type AppContextType = MutationTree<any> | Store<any> | HasAppType;

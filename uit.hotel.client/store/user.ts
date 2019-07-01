@@ -1,5 +1,6 @@
 import gql from 'graphql-tag';
 import { ActionTree, MutationTree } from 'vuex';
+import { RootState } from '.';
 import { userCheckLogin, userLogin } from '~/graphql/documents';
 import { IsInitialized, UserCheckLogin, UserLogin } from '~/graphql/types';
 import {
@@ -8,7 +9,6 @@ import {
     apolloHelpers,
 } from '~/modules/apollo';
 import { notify } from '~/plugins/notify';
-import { RootState } from '.';
 
 export interface UserState {
     token: undefined | string;

@@ -8,8 +8,8 @@
     </div>
 </template>
 <script lang="ts">
-import { GetFloors } from '~/graphql/types';
 import { Component, mixins } from 'nuxt-property-decorator';
+import { GetFloors } from '~/graphql/types';
 import { getFloors } from '~/graphql/documents';
 import { DataMixin } from '~/components/mixins';
 

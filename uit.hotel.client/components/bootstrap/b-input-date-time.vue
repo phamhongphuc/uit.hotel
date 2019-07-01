@@ -20,8 +20,8 @@
 </template>
 <script lang="ts">
 import { Vue, Component, Watch, mixins } from 'nuxt-property-decorator';
-import { InputProps, StateProps } from '~/components/mixins';
 import moment from 'moment';
+import { InputProps, StateProps } from '~/components/mixins';
 
 @Component({
     name: 'b-input-date-time-',

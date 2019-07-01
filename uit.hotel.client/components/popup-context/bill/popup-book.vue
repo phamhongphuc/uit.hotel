@@ -94,6 +94,9 @@
 <script lang="ts">
 import moment from 'moment';
 import { Component, mixins } from 'nuxt-property-decorator';
+import { ApolloQueryResult } from 'apollo-client';
+import { required } from 'vuelidate/lib/validators';
+import { TableDataType } from './popup-book.helper';
 import {
     GetFloors,
     GetPatronsAndRoomsQuery,
@@ -109,9 +112,6 @@ import {
 } from '~/graphql/documents';
 import { PopupMixin, DataMixin } from '~/components/mixins';
 import { bookCheckOutTime, bookCheckInTime } from '~/modules/validator';
-import { ApolloQueryResult } from 'apollo-client';
-import { required } from 'vuelidate/lib/validators';
-import { TableDataType } from './popup-book.helper';
 
 type PopupMixinType = PopupMixin<{ rooms: GetFloors.Rooms[] }, null>;
 
