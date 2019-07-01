@@ -5929,15 +5929,11 @@
                         "name": "birthdate",
                         "description": "Ngày sinh của khách hàng",
                         "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "DateTimeOffset",
-                                "ofType": null
-                            }
+                            "kind": "SCALAR",
+                            "name": "DateTimeOffset",
+                            "ofType": null
                         },
-                        "defaultValue": null
+                        "defaultValue": "null"
                     },
                     {
                         "name": "nationality",

@@ -71,7 +71,7 @@ namespace uit.hotel.Businesses
 
                 if (!booking.Room.IsEmptyRoom(DateTimeOffset.Now, booking.BookCheckOutTime))
                     throw new Exception("Phòng đã được đặt hoặc đang được sử dụng");
-                    
+
                 if (booking.Patrons.Count() == 0)
                     throw new Exception("Phòng chưa có khách hàng");
             }
