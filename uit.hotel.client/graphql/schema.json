@@ -5021,7 +5021,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "setIsClean",
+                        "name": "setIsCleanRoom",
                         "description": "Cập nhật trạng thái dọn phòng của một phòng",
                         "args": [
                             {

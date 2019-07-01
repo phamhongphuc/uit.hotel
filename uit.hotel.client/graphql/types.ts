@@ -111,7 +111,7 @@ export type AppMutation = {
     /** Cập nhật trạng thái của dịch vụ */
     setIsActiveService: Scalars['String'];
     /** Cập nhật trạng thái dọn phòng của một phòng */
-    setIsClean: Scalars['String'];
+    setIsCleanRoom: Scalars['String'];
     /** Chỉnh sửa thông tin nhân viên */
     updateEmployee: Employee;
     /** Cập nhật và trả về một tầng vừa cập nhật */
@@ -306,7 +306,7 @@ export type AppMutationSetIsActiveServiceArgs = {
     isActive: Scalars['Boolean'];
 };
 
-export type AppMutationSetIsCleanArgs = {
+export type AppMutationSetIsCleanRoomArgs = {
     id: Scalars['ID'];
     isClean: Scalars['Boolean'];
 };
@@ -1919,6 +1919,13 @@ export type SetIsActiveRoomMutationVariables = {
 
 export type SetIsActiveRoomMutation = Pick<AppMutation, 'setIsActiveRoom'>;
 
+export type SetIsCleanRoomMutationVariables = {
+    id: Scalars['ID'];
+    isClean: Scalars['Boolean'];
+};
+
+export type SetIsCleanRoomMutation = Pick<AppMutation, 'setIsCleanRoom'>;
+
 export type CreateServicesDetailMutationVariables = {
     input: ServicesDetailCreateInput;
 };
@@ -2388,6 +2395,11 @@ export namespace DeleteRoom {
 export namespace SetIsActiveRoom {
     export type Variables = SetIsActiveRoomMutationVariables;
     export type Mutation = SetIsActiveRoomMutation;
+}
+
+export namespace SetIsCleanRoom {
+    export type Variables = SetIsCleanRoomMutationVariables;
+    export type Mutation = SetIsCleanRoomMutation;
 }
 
 export namespace CreateServicesDetail {

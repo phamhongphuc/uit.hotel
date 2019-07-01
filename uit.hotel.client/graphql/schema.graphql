@@ -135,7 +135,7 @@ type AppMutation {
     setIsActiveService(id: ID!, isActive: Boolean!): String!
 
     # Cập nhật trạng thái dọn phòng của một phòng
-    setIsClean(id: ID!, isClean: Boolean!): String!
+    setIsCleanRoom(id: ID!, isClean: Boolean!): String!
 
     # Chỉnh sửa thông tin nhân viên
     updateEmployee(input: EmployeeUpdateInput!): Employee!
