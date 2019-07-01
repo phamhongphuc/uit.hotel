@@ -158,9 +158,9 @@
         right: 0;
         margin-top: 4px;
         color: #999;
-        border-color: #999 transparent transparent transparent;
+        border-color: #999 transparent transparent;
         border-style: solid;
-        border-width: 5px 5px 0 5px;
+        border-width: 5px 5px 0;
         content: '';
     }
 }
@@ -370,16 +370,6 @@
         color: silver;
         content: attr(data-selected);
     }
-
-    &.multiselect__option--highlight {
-        color: #fff;
-        background: #ff6a6a;
-        &::after {
-            color: #fff;
-            background: #ff6a6a;
-            content: attr(data-deselect);
-        }
-    }
 }
 
 .multiselect__option--disabled {
@@ -404,7 +394,8 @@
     }
 }
 
-.multiselect__option--group-selected {
+.multiselect__option--group-selected,
+.multiselect__option--selected {
     &.multiselect__option--highlight {
         color: #fff;
         background: #ff6a6a;
