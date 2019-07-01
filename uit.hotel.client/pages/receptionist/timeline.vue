@@ -17,9 +17,10 @@
             class="query-fill"
         >
             <div>
-                <booking-timeline- :floors="floors" />
+                <booking-timeline- :floors="floors" :refs="$refs" />
             </div>
         </query->
+        <context-receptionist-room- ref="context_receptionist_room" />
         <popup-book- ref="book" :refs="$refs" />
         <popup-patron-select-or-add- ref="patron_select_or_add" />
         <popup-room-select- ref="room_select" />

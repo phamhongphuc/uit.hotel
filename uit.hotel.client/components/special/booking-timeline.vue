@@ -34,6 +34,11 @@
                     class="room"
                     title="Phòng chưa được dọn"
                     :disabled="room.isClean"
+                    @contextmenu.prevent="
+                        refs.context_receptionist_room.open($event, {
+                            room,
+                        })
+                    "
                 >
                     Phòng {{ room.name }}
                     <icon-
@@ -83,6 +88,9 @@ const statusEnumMap: StatusEnumMap = {
     name: 'booking-timeline-',
 })
 export default class extends Vue {
+    @Prop({ default: undefined })
+    refs: any;
+
     @Prop({ required: true })
     floors!: GetTimeline.Floors[];
 
