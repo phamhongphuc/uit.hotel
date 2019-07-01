@@ -54,6 +54,11 @@
                         :style="booking.style"
                         :variant="booking.variant"
                         class="booking shadow-sm"
+                        @contextmenu.prevent="
+                            refs.context_receptionist_booking.open($event, {
+                                booking,
+                            })
+                        "
                     >
                         {{ booking.id }}
                     </b-button>
