@@ -16,8 +16,8 @@ namespace uit.hotel.Businesses
                 throw new Exception("Mã Booking không tồn tại");
             if (bookingInDatabase.Status != (int)Booking.StatusEnum.Booked)
                 throw new Exception("Phòng đã được check-in, không thể check-in lại");
-            if(bookingInDatabase.Room.IsClean == false)
-                throw new Exception("Phòng chưa được dọn, không thể check-in");    
+            if (bookingInDatabase.Room.IsClean == false)
+                throw new Exception("Phòng chưa được dọn, không thể check-in");
 
             return BookingDataAccess.CheckIn(employee, bookingInDatabase);
         }

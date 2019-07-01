@@ -13,6 +13,7 @@
                 :query="getFloors"
                 :poll-interval="0"
                 class="m-3"
+                @result="onResult"
             >
                 <b-form-select
                     ref="floor"
@@ -30,6 +31,7 @@
                 :query="getRoomKinds"
                 :poll-interval="0"
                 class="m-3"
+                @result="onResult"
             >
                 <b-form-select
                     ref="roomKind"
@@ -67,8 +69,14 @@
 import { Component, mixins, Vue } from 'nuxt-property-decorator';
 import { PopupMixin, DataMixin } from '~/components/mixins';
 import { createRoom, getFloors, getRoomKinds } from '~/graphql/documents';
-import { GetFloors, RoomCreateInput } from '~/graphql/types';
+import {
+    GetFloors,
+    RoomCreateInput,
+    GetRoomKindsQuery,
+    GetFloorsQuery,
+} from '~/graphql/types';
 import { floorRoomName, included } from '~/modules/validator';
+import { ApolloQueryResult } from 'apollo-client';
 
 type PopupMixinType = PopupMixin<{ floor: GetFloors.Floors }, RoomCreateInput>;
 
@@ -94,10 +102,17 @@ export default class extends mixins<PopupMixinType>(
         };
     }
 
-    async onResult() {
+    async onResult({
+        data,
+    }: ApolloQueryResult<GetRoomKindsQuery | GetFloorsQuery>) {
         if (this.input === null) return;
         await Vue.nextTick();
-        this.input.floor.id = this.data.floor.id;
+        if ('roomKinds' in data) {
+            if (data.roomKinds.length === 0) return;
+            this.input.roomKind.id = data.roomKinds[0].id;
+        } else if ('floors' in data) {
+            this.input.floor.id = this.data.floor.id;
+        }
         this.$v.$touch();
     }
 }

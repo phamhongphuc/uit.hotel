@@ -741,7 +741,7 @@ export type PatronCreateInput = {
     /** Giới tính của khách hàng */
     gender: Scalars['Boolean'];
     /** Ngày sinh của khách hàng */
-    birthdate: Scalars['DateTimeOffset'];
+    birthdate: Maybe<Scalars['DateTimeOffset']>;
     /** Quốc tịch của khách hàng */
     nationality: Scalars['String'];
     /** Nguyên quán của khách hàng */
@@ -1966,6 +1966,43 @@ export type SetIsActiveServiceMutation = Pick<
     AppMutation,
     'setIsActiveService'
 >;
+
+export type GetPatronsAndRoomsQueryVariables = {};
+
+export type GetPatronsAndRoomsQuery = {
+    patrons: Array<
+        Pick<
+            Patron,
+            | 'id'
+            | 'identification'
+            | 'name'
+            | 'birthdate'
+            | 'email'
+            | 'gender'
+            | 'residence'
+            | 'domicile'
+            | 'phoneNumbers'
+            | 'nationality'
+            | 'company'
+            | 'note'
+        > & { patronKind: Pick<PatronKind, 'id'> }
+    >;
+    rooms: Array<Pick<Room, 'id' | 'name' | 'isActive'>>;
+};
+
+export type GetRoomsMapQueryVariables = {};
+
+export type GetRoomsMapQuery = {
+    floors: Array<
+        Pick<Floor, 'id' | 'name' | 'isActive'> & {
+            rooms: Array<
+                Pick<Room, 'id' | 'name' | 'isActive'> & {
+                    roomKind: Pick<RoomKind, 'id' | 'name'>;
+                }
+            >;
+        }
+    >;
+};
 export namespace IsInitialized {
     export type Variables = IsInitializedQueryVariables;
     export type Query = IsInitializedQuery;
@@ -2404,4 +2441,26 @@ export namespace DeleteService {
 export namespace SetIsActiveService {
     export type Variables = SetIsActiveServiceMutationVariables;
     export type Mutation = SetIsActiveServiceMutation;
+}
+
+export namespace GetPatronsAndRooms {
+    export type Variables = GetPatronsAndRoomsQueryVariables;
+    export type Query = GetPatronsAndRoomsQuery;
+    export type Patrons = NonNullable<GetPatronsAndRoomsQuery['patrons'][0]>;
+    export type PatronKind = (NonNullable<
+        GetPatronsAndRoomsQuery['patrons'][0]
+    >)['patronKind'];
+    export type Rooms = NonNullable<GetPatronsAndRoomsQuery['rooms'][0]>;
+}
+
+export namespace GetRoomsMap {
+    export type Variables = GetRoomsMapQueryVariables;
+    export type Query = GetRoomsMapQuery;
+    export type Floors = NonNullable<GetRoomsMapQuery['floors'][0]>;
+    export type Rooms = NonNullable<
+        (NonNullable<GetRoomsMapQuery['floors'][0]>)['rooms'][0]
+    >;
+    export type RoomKind = (NonNullable<
+        (NonNullable<GetRoomsMapQuery['floors'][0]>)['rooms'][0]
+    >)['roomKind'];
 }

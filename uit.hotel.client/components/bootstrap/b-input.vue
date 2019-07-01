@@ -57,6 +57,8 @@ $input-icon-margin-left: 0.25rem;
     > input {
         flex-grow: 1;
         min-width: 0;
+        height: $input-height;
+        min-height: $input-height;
         padding-left: calc(
             #{$input-height-inner} + #{$input-height-border} - 0.125rem
         );

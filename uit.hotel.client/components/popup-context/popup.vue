@@ -24,7 +24,7 @@ import { ClickawayMixin } from '~/components/mixins/clickaway';
 @Component({
     name: 'popup-',
 })
-export default class extends mixins<ClickawayMixin>(ClickawayMixin) {
+export default class Popup extends mixins<ClickawayMixin>(ClickawayMixin) {
     show: boolean = false;
     data: any = null;
 
@@ -64,7 +64,10 @@ export default class extends mixins<ClickawayMixin>(ClickawayMixin) {
     background: rgba($black, 0.2);
 
     > .popup-modal {
+        display: flex;
+        flex-direction: column;
         min-width: 300px;
+        max-height: calc(100% - 2rem);
         background: $white;
         border-radius: $border-radius;
         box-shadow: $box-shadow-context;
@@ -94,6 +97,10 @@ export default class extends mixins<ClickawayMixin>(ClickawayMixin) {
                     @include gradient-bg(darken($white, 7.5%));
                 }
             }
+        }
+
+        > .popup-modal-content {
+            overflow: auto;
         }
     }
 }

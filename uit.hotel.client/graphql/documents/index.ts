@@ -12,3 +12,4 @@ export * from './room-kind';
 export * from './room';
 export * from './service-detail';
 export * from './service';
+export * from './share';
