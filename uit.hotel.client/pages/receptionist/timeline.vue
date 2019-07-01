@@ -4,7 +4,7 @@
             <b-button
                 class="m-2"
                 variant="white"
-                @click="$refs.book.open({ rooms: selected })"
+                @click="$refs.book.open({ rooms: [] })"
             >
                 <icon- class="mr-1" i="plus" />
                 <span>Đặt phòng</span>

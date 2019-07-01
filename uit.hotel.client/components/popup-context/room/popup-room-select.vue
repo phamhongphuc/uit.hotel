@@ -2,7 +2,8 @@
     <popup- ref="popup" v-slot="{ close }" title="Thêm phòng">
         <query-
             v-slot="{ data: { floors } }"
-            :query="getRoomsMap"
+            :query="getFloorsMap"
+            :variables="{ from, to }"
             class="px-3 pb-0 pt-3"
         >
             <b-checkbox-group
@@ -42,13 +43,16 @@
 <script lang="ts">
 import { Component, mixins } from 'nuxt-property-decorator';
 import { PopupMixin, DataMixin } from '~/components/mixins';
-import { RoomCreateInput, GetRoomsMap } from '~/graphql/types';
-import { getRoomsMap } from '~/graphql/documents';
+import { RoomCreateInput, GetFloorsMap } from '~/graphql/types';
+import { getFloorsMap } from '~/graphql/documents';
+import moment from 'moment';
 
 type PopupMixinType = PopupMixin<
     {
         currentRoomIds: number[];
         callback: (roomIds: number[]) => void;
+        from: string;
+        to: string;
     },
     RoomCreateInput
 >;
@@ -59,27 +63,35 @@ type PopupMixinType = PopupMixin<
 })
 export default class extends mixins<PopupMixinType>(
     PopupMixin,
-    DataMixin({ getRoomsMap }),
+    DataMixin({ getFloorsMap }),
 ) {
     roomIds = [];
 
-    floorsFilter(floors: GetRoomsMap.Floors[]): GetRoomsMap.Floors[] {
+    from = moment().format();
+    to = moment()
+        .add(1, 'hours')
+        .format();
+
+    floorsFilter(floors: GetFloorsMap.Floors[]): GetFloorsMap.Floors[] {
         return floors
             .filter(f => f.isActive)
             .sort((a, b) => (a.name > b.name ? 1 : -1));
     }
 
-    roomsFilter(rooms: GetRoomsMap.Rooms[]): GetRoomsMap.Rooms[] {
+    roomsFilter(rooms: GetFloorsMap.Rooms[]): GetFloorsMap.Rooms[] {
         return rooms
             .filter(r => r.isActive)
             .sort((a, b) => (a.name > b.name ? 1 : -1));
     }
 
-    isDisabled(room: GetRoomsMap.Rooms) {
-        return this.data.currentRoomIds.includes(room.id);
+    isDisabled(room: GetFloorsMap.Rooms) {
+        return (
+            this.data.currentRoomIds.includes(room.id) ||
+            room.currentBooking !== null
+        );
     }
 
-    tooltip(room: GetRoomsMap.Rooms) {
+    tooltip(room: GetFloorsMap.Rooms) {
         return `Loại: Phòng ${room.roomKind.name}`;
     }
 
@@ -87,6 +99,12 @@ export default class extends mixins<PopupMixinType>(
         this.data.callback(this.roomIds);
         this.roomIds = [];
         close();
+    }
+
+    onOpen() {
+        this.roomIds = [];
+        this.from = this.data.from;
+        this.to = this.data.to;
     }
 }
 </script>
@@ -100,7 +118,7 @@ export default class extends mixins<PopupMixinType>(
         display: flex;
         > button,
         > label {
-            width: 7rem;
+            min-width: 7rem;
             margin: $margin-size;
         }
         > button {

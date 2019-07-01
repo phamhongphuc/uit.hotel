@@ -73,16 +73,7 @@
                     </text-validator->
                 </div>
                 <div class="d-flex m-3">
-                    <b-button
-                        variant="main"
-                        class="ml-auto"
-                        @click="
-                            refs.room_select.open({
-                                currentRoomIds,
-                                callback: roomAdded,
-                            })
-                        "
-                    >
+                    <b-button variant="main" class="ml-auto" @click="addRoom">
                         <icon- class="mr-1" i="plus-square" />
                         <span>Thêm phòng</span>
                     </b-button>
@@ -217,13 +208,19 @@ export default class extends mixins<PopupMixinType>(
         }
     }
 
-    roomAdded(roomIds: number[]) {
-        roomIds
-            .map(roomId => this.rooms.find(r => r.id === roomId))
-            .forEach(room => {
-                if (room === undefined) return;
-                this.tableData.push({ room, patrons: [] });
-            });
+    addRoom() {
+        this.refs.room_select.open({
+            currentRoomIds: this.currentRoomIds,
+            callback: (roomIds: number[]) =>
+                roomIds
+                    .map(roomId => this.rooms.find(r => r.id === roomId))
+                    .forEach(room => {
+                        room !== undefined &&
+                            this.tableData.push({ room, patrons: [] });
+                    }),
+            from: this.isCheckinNow ? moment().format() : this.bookCheckInTime,
+            to: this.bookCheckOutTime,
+        });
     }
 
     get numberOfPatrons() {
