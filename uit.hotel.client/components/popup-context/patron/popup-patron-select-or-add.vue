@@ -19,6 +19,7 @@
                     <b-input-
                         v-model="input.identification"
                         :state="!$v.input.identification.$invalid"
+                        :formatter="identificationFormatter"
                         class="m-3 rounded"
                         icon="package"
                     />
@@ -232,6 +233,11 @@ export default class extends mixins<
                 this.$v.input.identification.$invalid) ||
             this.currentPatron !== undefined
         );
+    }
+
+    identificationFormatter(value: string) {
+        if (value.length > 9) value = value.slice(0, 9);
+        return value;
     }
 
     onOpen() {
