@@ -1,11 +1,11 @@
 <template>
     <div>
         <block-flex->
-            <b-button class="m-2" variant="white">
-                <icon- class="mr-1" i="plus" />
-                <span>Đặt phòng nhận ngay</span>
-            </b-button>
-            <b-button class="m-2" variant="white">
+            <b-button
+                class="m-2"
+                variant="white"
+                @click="$refs.book.open({ rooms: selected })"
+            >
                 <icon- class="mr-1" i="plus" />
                 <span>Đặt phòng</span>
             </b-button>
@@ -20,6 +20,9 @@
                 <booking-timeline- :floors="floors" />
             </div>
         </query->
+        <popup-book- ref="book" :refs="$refs" />
+        <popup-patron-select-or-add- ref="patron_select_or_add" />
+        <popup-room-select- ref="room_select" />
     </div>
 </template>
 <script lang="ts">

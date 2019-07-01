@@ -5,15 +5,15 @@
             :query="getRoomsMap"
             class="px-3 pb-0 pt-3"
         >
-            <b-radio-group
-                v-model="roomId"
+            <b-checkbox-group
+                v-model="roomIds"
                 class="select-room-map"
                 buttons
                 button-variant="light-blue"
             >
                 <div v-for="floor in floorsFilter(floors)" :key="floor.id">
                     <b-button variant="main">Tầng {{ floor.name }}</b-button>
-                    <b-radio
+                    <b-checkbox
                         v-for="room in roomsFilter(floor.rooms)"
                         :key="room.id"
                         v-b-tooltip.hover
@@ -22,9 +22,9 @@
                         :disabled="isDisabled(room)"
                     >
                         Phòng {{ room.name }}
-                    </b-radio>
+                    </b-checkbox>
                 </div>
-            </b-radio-group>
+            </b-checkbox-group>
         </query->
         <div class="d-flex m-3">
             <b-button
@@ -48,7 +48,7 @@ import { getRoomsMap } from '~/graphql/documents';
 type PopupMixinType = PopupMixin<
     {
         currentRoomIds: number[];
-        callback: (roomId: number) => void;
+        callback: (roomIds: number[]) => void;
     },
     RoomCreateInput
 >;
@@ -61,7 +61,7 @@ export default class extends mixins<PopupMixinType>(
     PopupMixin,
     DataMixin({ getRoomsMap }),
 ) {
-    roomId = -1;
+    roomIds = [];
 
     floorsFilter(floors: GetRoomsMap.Floors[]): GetRoomsMap.Floors[] {
         return floors
@@ -84,8 +84,8 @@ export default class extends mixins<PopupMixinType>(
     }
 
     addRoom(close: Function) {
-        this.data.callback(this.roomId);
-        this.roomId = -1;
+        this.data.callback(this.roomIds);
+        this.roomIds = [];
         close();
     }
 }
@@ -109,7 +109,7 @@ export default class extends mixins<PopupMixinType>(
         > label {
             cursor: pointer;
             &.active {
-                box-shadow: 0 0 0 #{$margin-size} rgba($main, 1) !important;
+                box-shadow: 0 0 0 #{$margin-size * 0.75} rgba($main, 1) !important;
             }
             > input {
                 display: none;

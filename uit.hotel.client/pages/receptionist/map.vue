@@ -4,14 +4,6 @@
             <b-button
                 class="m-2"
                 variant="white"
-                @click="$refs.book_and_check_in.open({ rooms: selected })"
-            >
-                <icon- class="mr-1" i="plus" />
-                <span>Đặt phòng nhận ngay</span>
-            </b-button>
-            <b-button
-                class="m-2"
-                variant="white"
                 @click="$refs.book.open({ rooms: selected })"
             >
                 <icon- class="mr-1" i="plus" />
@@ -70,13 +62,9 @@
         </query->
         <div>
             <context-room- ref="context_room" :refs="$refs" />
-            <popup-book-and-check-in- ref="book_and_check_in" :refs="$refs" />
             <popup-book- ref="book" :refs="$refs" />
-            <popup-booking-add-or-update-
-                ref="booking_add_or_update"
-                :refs="$refs"
-            />
             <popup-patron-select-or-add- ref="patron_select_or_add" />
+            <popup-room-select- ref="room_select" />
         </div>
     </div>
 </template>
