@@ -116,7 +116,7 @@ export default class extends mixins<ClickawayMixin>(ClickawayMixin) {
 <style lang="scss">
 .context-menu {
     position: fixed;
-    z-index: 1;
+    z-index: 10;
     display: block;
     padding: #{0.25 * $context-size} 0;
     background: $white;
