@@ -215,10 +215,7 @@ import {
     },
 })
 export default class extends mixins<
-    PopupMixin<
-        { callback(id: number, patron: GetPatrons.Patrons) },
-        PatronCreateInput
-    >
+    PopupMixin<{ callback(id: number, isNew: boolean) }, PatronCreateInput>
 >(
     PopupMixin,
     DataMixin({ createPatron, getPatronKinds, getPatrons, optional }),
@@ -297,7 +294,7 @@ export default class extends mixins<
         mutate: () => Promise<{ data: CreatePatron.Mutation }>,
     ) {
         const { data } = await mutate();
-        this.data.callback(data.createPatron.id, data.createPatron);
+        this.data.callback(data.createPatron.id, true);
         close();
     }
 
@@ -305,7 +302,7 @@ export default class extends mixins<
         close: Function,
         patron: GetPatrons.Patrons,
     ) {
-        this.data.callback(patron.id, patron);
+        this.data.callback(patron.id, false);
         close();
     }
 }
