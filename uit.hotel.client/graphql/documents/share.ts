@@ -23,25 +23,7 @@ export const getPatronsAndRooms = gql`
             id
             name
             isActive
-        }
-    }
-`;
-
-export const getRoomsMap = gql`
-    query getRoomsMap {
-        floors {
-            id
-            name
-            isActive
-            rooms {
-                id
-                name
-                isActive
-                roomKind {
-                    id
-                    name
-                }
-            }
+            isClean
         }
     }
 `;

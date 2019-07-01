@@ -111,7 +111,7 @@ export type AppMutation = {
     /** Cập nhật trạng thái của dịch vụ */
     setIsActiveService: Scalars['String'];
     /** Cập nhật trạng thái dọn phòng của một phòng */
-    setIsClean: Scalars['String'];
+    setIsCleanRoom: Scalars['String'];
     /** Chỉnh sửa thông tin nhân viên */
     updateEmployee: Employee;
     /** Cập nhật và trả về một tầng vừa cập nhật */
@@ -306,7 +306,7 @@ export type AppMutationSetIsActiveServiceArgs = {
     isActive: Scalars['Boolean'];
 };
 
-export type AppMutationSetIsCleanArgs = {
+export type AppMutationSetIsCleanRoomArgs = {
     id: Scalars['ID'];
     isClean: Scalars['Boolean'];
 };
@@ -1397,9 +1397,47 @@ export type GetBookingsQuery = {
         > & {
             patrons: Array<Maybe<Pick<Patron, 'id' | 'name'>>>;
             bill: Pick<Bill, 'id'>;
-            room: Pick<Room, 'id' | 'name'>;
+            room: Pick<Room, 'id' | 'name' | 'isClean'>;
         }
     >;
+};
+
+export type GetBookingDetailsQueryVariables = {
+    id: Scalars['ID'];
+};
+
+export type GetBookingDetailsQuery = {
+    booking: Pick<
+        Booking,
+        | 'id'
+        | 'bookCheckInTime'
+        | 'bookCheckOutTime'
+        | 'realCheckInTime'
+        | 'realCheckOutTime'
+        | 'status'
+    > & {
+        patrons: Array<Maybe<Pick<Patron, 'id' | 'name'>>>;
+        bill: Pick<Bill, 'id'>;
+        servicesDetails: Maybe<
+            Array<
+                Maybe<
+                    Pick<ServicesDetail, 'id' | 'number' | 'time'> & {
+                        service: Pick<
+                            Service,
+                            'id' | 'name' | 'unit' | 'unitRate'
+                        >;
+                    }
+                >
+            >
+        >;
+        room: Pick<Room, 'id' | 'name' | 'isClean'> & {
+            roomKind: Pick<
+                RoomKind,
+                'id' | 'name' | 'numberOfBeds' | 'amountOfPeople'
+            >;
+            floor: Pick<Floor, 'id' | 'name'>;
+        };
+    };
 };
 
 export type GetSimpleBookingsQueryVariables = {};
@@ -1578,7 +1616,7 @@ export type GetTimelineQuery = {
     floors: Array<
         Pick<Floor, 'id' | 'name' | 'isActive'> & {
             rooms: Array<
-                Pick<Room, 'id' | 'name' | 'isActive'> & {
+                Pick<Room, 'id' | 'name' | 'isActive' | 'isClean'> & {
                     bookings: Array<
                         Pick<
                             Booking,
@@ -1587,6 +1625,8 @@ export type GetTimelineQuery = {
                             | 'createTime'
                             | 'bookCheckInTime'
                             | 'bookCheckOutTime'
+                            | 'realCheckInTime'
+                            | 'realCheckOutTime'
                         > & { patrons: Array<Maybe<Pick<Patron, 'id'>>> }
                     >;
                     roomKind: Pick<RoomKind, 'id' | 'name'>;
@@ -1919,6 +1959,13 @@ export type SetIsActiveRoomMutationVariables = {
 
 export type SetIsActiveRoomMutation = Pick<AppMutation, 'setIsActiveRoom'>;
 
+export type SetIsCleanRoomMutationVariables = {
+    id: Scalars['ID'];
+    isClean: Scalars['Boolean'];
+};
+
+export type SetIsCleanRoomMutation = Pick<AppMutation, 'setIsCleanRoom'>;
+
 export type CreateServicesDetailMutationVariables = {
     input: ServicesDetailCreateInput;
 };
@@ -1987,21 +2034,7 @@ export type GetPatronsAndRoomsQuery = {
             | 'note'
         > & { patronKind: Pick<PatronKind, 'id'> }
     >;
-    rooms: Array<Pick<Room, 'id' | 'name' | 'isActive'>>;
-};
-
-export type GetRoomsMapQueryVariables = {};
-
-export type GetRoomsMapQuery = {
-    floors: Array<
-        Pick<Floor, 'id' | 'name' | 'isActive'> & {
-            rooms: Array<
-                Pick<Room, 'id' | 'name' | 'isActive'> & {
-                    roomKind: Pick<RoomKind, 'id' | 'name'>;
-                }
-            >;
-        }
-    >;
+    rooms: Array<Pick<Room, 'id' | 'name' | 'isActive' | 'isClean'>>;
 };
 export namespace IsInitialized {
     export type Variables = IsInitializedQueryVariables;
@@ -2054,6 +2087,25 @@ export namespace GetBookings {
     >;
     export type Bill = (NonNullable<GetBookingsQuery['bookings'][0]>)['bill'];
     export type Room = (NonNullable<GetBookingsQuery['bookings'][0]>)['room'];
+}
+
+export namespace GetBookingDetails {
+    export type Variables = GetBookingDetailsQueryVariables;
+    export type Query = GetBookingDetailsQuery;
+    export type Booking = GetBookingDetailsQuery['booking'];
+    export type Patrons = NonNullable<
+        GetBookingDetailsQuery['booking']['patrons'][0]
+    >;
+    export type Bill = GetBookingDetailsQuery['booking']['bill'];
+    export type ServicesDetails = NonNullable<
+        (NonNullable<GetBookingDetailsQuery['booking']['servicesDetails']>)[0]
+    >;
+    export type Service = (NonNullable<
+        (NonNullable<GetBookingDetailsQuery['booking']['servicesDetails']>)[0]
+    >)['service'];
+    export type Room = GetBookingDetailsQuery['booking']['room'];
+    export type RoomKind = GetBookingDetailsQuery['booking']['room']['roomKind'];
+    export type Floor = GetBookingDetailsQuery['booking']['room']['floor'];
 }
 
 export namespace GetSimpleBookings {
@@ -2404,6 +2456,11 @@ export namespace SetIsActiveRoom {
     export type Mutation = SetIsActiveRoomMutation;
 }
 
+export namespace SetIsCleanRoom {
+    export type Variables = SetIsCleanRoomMutationVariables;
+    export type Mutation = SetIsCleanRoomMutation;
+}
+
 export namespace CreateServicesDetail {
     export type Variables = CreateServicesDetailMutationVariables;
     export type Mutation = CreateServicesDetailMutation;
@@ -2451,16 +2508,4 @@ export namespace GetPatronsAndRooms {
         GetPatronsAndRoomsQuery['patrons'][0]
     >)['patronKind'];
     export type Rooms = NonNullable<GetPatronsAndRoomsQuery['rooms'][0]>;
-}
-
-export namespace GetRoomsMap {
-    export type Variables = GetRoomsMapQueryVariables;
-    export type Query = GetRoomsMapQuery;
-    export type Floors = NonNullable<GetRoomsMapQuery['floors'][0]>;
-    export type Rooms = NonNullable<
-        (NonNullable<GetRoomsMapQuery['floors'][0]>)['rooms'][0]
-    >;
-    export type RoomKind = (NonNullable<
-        (NonNullable<GetRoomsMapQuery['floors'][0]>)['rooms'][0]
-    >)['roomKind'];
 }

@@ -43,11 +43,14 @@
                                         : 'dark-blue'
                                 "
                                 @contextmenu.prevent="
-                                    $refs.context_room.open($event, {
-                                        room,
-                                        floor,
-                                        floors,
-                                    })
+                                    $refs.context_receptionist_room.open(
+                                        $event,
+                                        {
+                                            room,
+                                            floor,
+                                            floors,
+                                        },
+                                    )
                                 "
                                 @click="toggle(room)"
                             >
@@ -61,7 +64,10 @@
             </div>
         </query->
         <div>
-            <context-room- ref="context_room" :refs="$refs" />
+            <context-receptionist-room-
+                ref="context_receptionist_room"
+                :refs="$refs"
+            />
             <popup-book- ref="book" :refs="$refs" />
             <popup-patron-select-or-add- ref="patron_select_or_add" />
             <popup-room-select- ref="room_select" />

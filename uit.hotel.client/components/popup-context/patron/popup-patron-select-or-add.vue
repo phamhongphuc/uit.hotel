@@ -278,7 +278,7 @@ export default class extends mixins<
             this.input.gender = patron.gender;
             this.input.patronKind = patron.patronKind;
             this.input.birthdate = patron.birthdate;
-            this.phoneNumbers = patron.phoneNumbers.join(' ');
+            this.phoneNumbers = patron.phoneNumbers.join(',');
             this.input.email = patron.email;
             this.input.company = patron.company;
             this.input.nationality = patron.nationality;

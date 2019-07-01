@@ -19,6 +19,13 @@
                 auto-permission
             >
                 <b-nav-item-icon-
+                    to="/receptionist/timeline"
+                    icon="clock"
+                    text="Dòng thời gian"
+                    exact
+                    :permission="['ManageRentingRoom']"
+                />
+                <b-nav-item-icon-
                     to="/receptionist/map"
                     icon="grid"
                     text="Sơ đồ khách sạn"
@@ -32,20 +39,13 @@
                     exact
                     :permission="['ManagePatron', 'ManagePatronKind']"
                 />
-                <b-nav-item-icon-
+                <!-- <b-nav-item-icon-
                     to="/receptionist/booking"
                     icon="box"
                     text="Quản lý đặt phòng"
                     exact
                     :permission="['ManageRentingRoom']"
-                />
-                <b-nav-item-icon-
-                    to="/receptionist/timeline"
-                    icon="clock"
-                    text="Dòng thời gian"
-                    exact
-                    :permission="['ManageRentingRoom']"
-                />
+                /> -->
             </b-collapse->
             <b-nav-item-icon-
                 v-b-toggle.collapse_business

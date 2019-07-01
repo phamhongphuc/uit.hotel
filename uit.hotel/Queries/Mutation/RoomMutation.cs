@@ -64,7 +64,7 @@ namespace uit.hotel.Queries.Mutation
             );
 
             Field<NonNullGraphType<StringGraphType>>(
-                "SetIsClean",
+                "SetIsCleanRoom",
                 "Cập nhật trạng thái dọn phòng của một phòng",
                 new QueryArguments(
                     new QueryArgument<NonNullGraphType<IdGraphType>> { Name = "id" },

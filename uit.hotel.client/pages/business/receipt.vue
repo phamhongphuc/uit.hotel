@@ -1,17 +1,5 @@
 <template>
     <div @contextmenu.prevent="tableContext">
-        <block-flex->
-            <b-button
-                class="m-2 ml-auto"
-                variant="white"
-                @click="showInactive = !showInactive"
-            >
-                <icon- :i="showInactive ? 'eye' : 'eye-off'" class="mx-1" />
-                <span>
-                    {{ `Đang ${showInactive ? 'hiện' : 'ẩn'} phiếu thu cũ` }}
-                </span>
-            </b-button>
-        </block-flex->
         <query-
             v-slot="{ data: { receipts } }"
             :query="getReceipts"
@@ -103,7 +91,5 @@ export default class extends mixins(
     }
 
     currentEvent: MouseEvent | null = null;
-
-    showInactive: boolean = false;
 }
 </script>

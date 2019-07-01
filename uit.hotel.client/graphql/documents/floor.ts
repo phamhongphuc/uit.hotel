@@ -51,12 +51,15 @@ export const getTimeline = gql`
                 id
                 name
                 isActive
+                isClean
                 bookings {
                     id
                     status
                     createTime
                     bookCheckInTime
                     bookCheckOutTime
+                    realCheckInTime
+                    realCheckOutTime
                     patrons {
                         id
                     }

@@ -58,3 +58,9 @@ export const setIsActiveRoom = gql`
         setIsActiveRoom(id: $id, isActive: $isActive)
     }
 `;
+
+export const setIsCleanRoom = gql`
+    mutation setIsCleanRoom($id: ID!, $isClean: Boolean!) {
+        setIsCleanRoom(id: $id, isClean: $isClean)
+    }
+`;

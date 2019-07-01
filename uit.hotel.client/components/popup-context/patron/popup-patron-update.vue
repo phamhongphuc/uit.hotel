@@ -196,7 +196,7 @@ export default class extends mixins<
         } = this.data.patron;
         const self = this;
 
-        this.phoneNumbers = phoneNumbers.join(' ');
+        this.phoneNumbers = phoneNumbers.join(',');
         this.input = {
             id,
             identification,

@@ -29,7 +29,24 @@
                 >
                     Tầng {{ floor.name }}
                 </td>
-                <td class="room">Phòng {{ room.name }}</td>
+                <td
+                    v-b-tooltip.hover.right
+                    class="room"
+                    title="Phòng chưa được dọn"
+                    :disabled="room.isClean"
+                    @contextmenu.prevent="
+                        refs.context_receptionist_room.open($event, {
+                            room,
+                        })
+                    "
+                >
+                    Phòng {{ room.name }}
+                    <icon-
+                        v-if="!room.isClean"
+                        i="alert-triangle"
+                        class="text-orange"
+                    />
+                </td>
                 <td class="bookings">
                     <b-button
                         v-for="booking in mapBookings(room)"
@@ -37,6 +54,11 @@
                         :style="booking.style"
                         :variant="booking.variant"
                         class="booking shadow-sm"
+                        @contextmenu.prevent="
+                            refs.context_receptionist_booking.open($event, {
+                                booking,
+                            })
+                        "
                     >
                         {{ booking.id }}
                     </b-button>
@@ -54,7 +76,6 @@ import { GetTimeline } from '~/graphql/types';
 enum StatusEnum {
     Booked,
     CheckedIn,
-    RequestedCheckOut,
     CheckedOut,
 }
 
@@ -63,7 +84,6 @@ type StatusEnumMap = { [key in StatusEnum]: string };
 const statusEnumMap: StatusEnumMap = {
     [StatusEnum.Booked]: 'light-blue',
     [StatusEnum.CheckedIn]: 'orange',
-    [StatusEnum.RequestedCheckOut]: 'light-red',
     [StatusEnum.CheckedOut]: 'gray',
 };
 
@@ -71,6 +91,9 @@ const statusEnumMap: StatusEnumMap = {
     name: 'booking-timeline-',
 })
 export default class extends Vue {
+    @Prop({ default: undefined })
+    refs: any;
+
     @Prop({ required: true })
     floors!: GetTimeline.Floors[];
 
@@ -157,7 +180,7 @@ export default class extends Vue {
         return Array.from({ length }, (v, index) =>
             startDay.clone().add(index, 'days'),
         ).map(day => ({
-            dayOfWeek: day.format('dd'),
+            dayOfWeek: day.format('dddd'),
             day: day.format('DD'),
         }));
     }
@@ -168,8 +191,17 @@ export default class extends Vue {
             ratio,
         } = this;
         return room.bookings.map(booking => {
-            const inTime = moment(booking.bookCheckInTime).unix();
-            const outTime = moment(booking.bookCheckOutTime).unix();
+            const inTime = moment(
+                booking.status === StatusEnum.Booked
+                    ? booking.bookCheckInTime
+                    : (booking.realCheckInTime as string),
+            ).unix();
+
+            const outTime = moment(
+                booking.status === StatusEnum.CheckedOut
+                    ? (booking.realCheckOutTime as string)
+                    : booking.bookCheckOutTime,
+            ).unix();
 
             const left = ((inTime - min) * ratio) / this.seconds;
             const right = ((outTime - min) * ratio) / this.seconds;
@@ -213,6 +245,7 @@ table.timeline {
     > tr > td {
         padding: 1rem;
         white-space: nowrap;
+        background-color: rgba($body-bg, 0.5);
         border: $border;
         &.floor {
             position: relative;
@@ -227,6 +260,9 @@ table.timeline {
             background-color: $white;
             border-right: none;
             box-shadow: 1px 0 0 0 $border-color;
+            > span {
+                float: right;
+            }
         }
         &.bookings {
             position: relative;
@@ -246,6 +282,7 @@ table.timeline {
         &.day {
             padding: 0.5rem;
             text-align: center;
+            text-transform: capitalize;
         }
     }
 

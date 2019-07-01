@@ -55,7 +55,7 @@ export default class Popup extends mixins<ClickawayMixin>(ClickawayMixin) {
     right: 0;
     bottom: 0;
     left: 0;
-    z-index: 5;
+    z-index: 6;
     display: flex;
     align-items: center;
     justify-content: center;

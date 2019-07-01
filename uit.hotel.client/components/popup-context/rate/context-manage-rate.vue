@@ -1,11 +1,6 @@
 <template>
     <context- ref="context" v-slot="{ data: { rate, rates } }">
-        <b-nav-item-icon-
-            v-if="rate.isActive"
-            icon="edit-2"
-            text="Sửa thông tin giá cơ bản"
-            @click="refs.rate_update.open({ rate })"
-        />
+        <b-nav-item-icon- icon="info" text="Thông tin giá" />
     </context->
 </template>
 <script lang="ts">

@@ -1,6 +1,6 @@
 <template>
     <context- ref="context" v-slot="{ data: { roomKind } }">
-        <b-nav-item-icon- icon="alert-circle" text="Xem thông tin chi tiết" />
+        <b-nav-item-icon- icon="info" text="Xem thông tin chi tiết" />
         <div class="context-hr" />
         <b-nav-item-icon-
             icon="edit-2"

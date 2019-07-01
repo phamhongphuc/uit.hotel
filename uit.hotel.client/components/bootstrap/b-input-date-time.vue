@@ -14,7 +14,7 @@
             :state="state"
             type="time"
             class="rounded ml-3"
-            icon="calendar"
+            icon="clock"
         />
     </div>
 </template>

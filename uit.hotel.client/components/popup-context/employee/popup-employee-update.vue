@@ -1,10 +1,10 @@
 <template>
-    <popup- ref="popup" v-slot="{ close }" title="Cập nhật vị trí">
+    <popup- ref="popup" v-slot="{ close }" title="Cập nhật thông tin nhân viên">
         <form-mutate-
             v-if="input"
             :mutation="updateEmployee"
             :variables="{ input }"
-            success="Cập nhật vị trí mới thành công"
+            success="Cập nhật thông tin nhân viên mới thành công"
             @success="close"
         >
             <div class="d-flex">
