@@ -1,4 +1,5 @@
 import {
+    and,
     email,
     minLength,
     not,
@@ -6,10 +7,16 @@ import {
     or,
     required,
 } from 'vuelidate/lib/validators';
+import { beforeDate, validDate } from './helper/dateValidator';
 
 export const optionalEmail = {
     or: or(email, not(required)),
 };
+
+export const optionalBirthdate = or(
+    not(required),
+    and(validDate, beforeDate()),
+);
 
 export const listOfPhoneNumbers = {
     minLength: minLength(0),

@@ -4,7 +4,7 @@
             <b-button
                 class="m-2"
                 variant="white"
-                @click="$refs.booking_add.open()"
+                @click="$refs.book.open({ rooms: [] })"
             >
                 <icon- class="mr-1" i="plus" />
                 <span>Đặt phòng</span>
@@ -96,6 +96,9 @@
         </query->
         <context-manage-booking- ref="context_booking" :refs="$refs" />
         <popup-service-detail-add- ref="service_detail_add" />
+        <popup-book- ref="book" :refs="$refs" />
+        <popup-patron-select-or-add- ref="patron_select_or_add" />
+        <popup-room-select- ref="room_select" />
     </div>
 </template>
 <script lang="ts">

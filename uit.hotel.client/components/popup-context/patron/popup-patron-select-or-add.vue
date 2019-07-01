@@ -1,5 +1,10 @@
 <template>
-    <popup- ref="popup" v-slot="{ close }" title="Thêm khách hàng" no-data>
+    <popup-
+        ref="popup"
+        v-slot="{ close }"
+        title="Thêm hoặc chọn khách hàng"
+        no-data
+    >
         <form-mutate-
             v-if="input"
             v-slot="{ mutate }"
@@ -10,14 +15,6 @@
         >
             <div class="d-flex">
                 <div>
-                    <div class="input-label">Tên khách hàng</div>
-                    <b-input-
-                        v-model="input.name"
-                        :state="!$v.input.name.$invalid"
-                        autocomplete="new-password"
-                        class="m-3 rounded"
-                        icon="type"
-                    />
                     <div class="input-label">Chứng minh nhân dân</div>
                     <b-input-
                         v-model="input.identification"
@@ -25,11 +22,21 @@
                         class="m-3 rounded"
                         icon="package"
                     />
+                    <div class="input-label">Tên khách hàng</div>
+                    <b-input-
+                        v-model="input.name"
+                        :state="!$v.input.name.$invalid"
+                        :disabled="disabled"
+                        autocomplete="new-password"
+                        class="m-3 rounded"
+                        icon="type"
+                    />
                     <div class="input-label">Giới tính</div>
                     <div class="m-3">
                         <b-form-select
                             v-model="input.gender"
                             :state="!$v.input.gender.$invalid"
+                            :disabled="disabled"
                             :options="[
                                 {
                                     name: 'Nam',
@@ -55,6 +62,7 @@
                         <b-form-select
                             ref="patronKind"
                             v-model="input.patronKind.id"
+                            :disabled="disabled"
                             :state="!$v.input.patronKind.id.$invalid"
                             :options="patronKinds"
                             value-field="id"
@@ -67,6 +75,7 @@
                     <div class="input-label">Ngày sinh</div>
                     <b-input-
                         v-model="input.birthdate"
+                        :disabled="disabled"
                         :state="!$v.input.birthdate.$invalid"
                         type="date"
                         class="m-3 rounded"
@@ -75,6 +84,7 @@
                     <div class="input-label">Số điện thoại</div>
                     <b-input-
                         v-model="phoneNumbers"
+                        :disabled="disabled"
                         :state="!$v.input.listOfPhoneNumbers.$invalid"
                         class="m-3 rounded"
                         icon="phone"
@@ -82,13 +92,15 @@
                     <div class="input-label">Thư điện tử</div>
                     <b-input-
                         v-model="input.email"
-                        :state="optional($v.input.birthdate)"
+                        :disabled="disabled"
+                        :state="optional($v.input.email)"
                         class="m-3 rounded"
                         icon="mail"
                     />
                     <div class="input-label">Công ty</div>
                     <b-input-
                         v-model="input.company"
+                        :disabled="disabled"
                         :state="optional($v.input.company)"
                         class="m-3 rounded"
                         icon="briefcase"
@@ -98,6 +110,7 @@
                     <div class="input-label">Quốc tịch</div>
                     <b-input-
                         v-model="input.nationality"
+                        :disabled="disabled"
                         :state="optional($v.input.nationality)"
                         class="m-3 rounded"
                         icon="map-pin"
@@ -105,6 +118,7 @@
                     <div class="input-label">Nguyên quán</div>
                     <b-input-
                         v-model="input.domicile"
+                        :disabled="disabled"
                         :state="optional($v.input.domicile)"
                         class="m-3 rounded"
                         icon="calendar"
@@ -112,6 +126,7 @@
                     <div class="input-label">Địa chỉ thường trú</div>
                     <b-input-
                         v-model="input.residence"
+                        :disabled="disabled"
                         :state="optional($v.input.residence)"
                         class="m-3 rounded"
                         icon="map-pin"
@@ -119,32 +134,25 @@
                     <div class="input-label">Ghi chú</div>
                     <b-input-
                         v-model="input.note"
+                        :disabled="disabled"
                         :state="optional($v.input.note)"
                         class="m-3 rounded"
                         icon="calendar"
                     />
                 </div>
             </div>
-            <query-
-                v-slot="{ data: { patrons } }"
-                :query="getPatrons"
-                :poll-interval="500"
-                class="m-3"
-                child-class="d-flex"
-            >
+            <div class="m-3 d-flex">
                 <b-button
-                    v-if="currentPatron(patrons)"
+                    v-if="currentPatron"
                     class="ml-auto"
                     variant="main"
-                    @click="
-                        addAndSelectFromDatabase(close, currentPatron(patrons))
-                    "
+                    @click="addAndSelectFromDatabase(close, currentPatron)"
                 >
                     <icon- class="mr-1" i="plus" />
                     <span>Thêm khách hàng có sẵn trong hệ thống</span>
                 </b-button>
                 <b-button
-                    v-if="!currentPatron(patrons)"
+                    v-if="!currentPatron"
                     :disabled="$v.$invalid"
                     class="ml-auto"
                     variant="main"
@@ -153,25 +161,38 @@
                     <icon- class="mr-1" i="plus" />
                     <span>Thêm</span>
                 </b-button>
-            </query->
+            </div>
+            <query-
+                v-slot="{ data: { patrons } }"
+                :query="getPatrons"
+                :poll-interval="500"
+                class="d-none"
+                @result="onResult"
+            />
         </form-mutate->
     </popup->
 </template>
 <script lang="ts">
 import { Component, mixins } from 'nuxt-property-decorator';
 import { PopupMixin, DataMixin } from '~/components/mixins';
-import { CreatePatron, PatronCreateInput, GetPatrons } from '~/graphql/types';
+import {
+    CreatePatron,
+    PatronCreateInput,
+    GetPatrons,
+    GetPatronsQuery,
+} from '~/graphql/types';
 import { getPatronKinds, createPatron, getPatrons } from '~/graphql/documents';
 import {
-    birthdate,
     gender,
     identification,
     included,
     listOfPhoneNumbers,
     name,
     optional,
+    optionalBirthdate,
     optionalEmail,
 } from '~/modules/validator';
+import { ApolloQueryResult } from 'apollo-client';
 
 @Component({
     name: 'popup-patron-select-or-add-',
@@ -181,7 +202,7 @@ import {
             identification,
             gender,
             patronKind: included('patronKind'),
-            birthdate,
+            birthdate: optionalBirthdate,
             listOfPhoneNumbers,
             email: optionalEmail,
             company: {},
@@ -203,16 +224,26 @@ export default class extends mixins<
 ) {
     phoneNumbers: string = '';
 
+    patrons: GetPatrons.Patrons[] = [];
+
+    get disabled() {
+        return (
+            (this.$v.input.identification &&
+                this.$v.input.identification.$invalid) ||
+            this.currentPatron !== undefined
+        );
+    }
+
     onOpen() {
         const self = this;
         this.input = {
-            name: '',
             identification: '',
+            name: '',
             gender: true,
             patronKind: {
                 id: -1,
             },
-            birthdate: '',
+            birthdate: null,
             get listOfPhoneNumbers() {
                 return self.phoneNumbers === ''
                     ? []
@@ -220,7 +251,6 @@ export default class extends mixins<
             },
             email: '',
             company: '',
-
             nationality: '',
             domicile: '',
             residence: '',
@@ -228,13 +258,32 @@ export default class extends mixins<
         };
     }
 
-    currentPatron(
-        patrons: GetPatrons.Patrons[],
-    ): GetPatrons.Patrons | undefined {
+    async onResult({ data }: ApolloQueryResult<GetPatronsQuery>) {
+        this.patrons = data.patrons;
+    }
+
+    get currentPatron(): GetPatrons.Patrons | undefined {
         if (this.input == null) return;
 
         const { identification } = this.input;
-        return patrons.find(p => p.identification === identification);
+        const patron = this.patrons.find(
+            p => p.identification === identification,
+        );
+        if (patron !== undefined) {
+            this.input.name = patron.name;
+            this.input.name = patron.name;
+            this.input.gender = patron.gender;
+            this.input.patronKind = patron.patronKind;
+            this.input.birthdate = patron.birthdate;
+            this.phoneNumbers = patron.phoneNumbers.join(' ');
+            this.input.email = patron.email;
+            this.input.company = patron.company;
+            this.input.nationality = patron.nationality;
+            this.input.domicile = patron.domicile;
+            this.input.residence = patron.residence;
+            this.input.note = patron.note;
+        }
+        return patron;
     }
 
     async addAndSelect(

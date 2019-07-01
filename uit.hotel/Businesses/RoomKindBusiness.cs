@@ -36,7 +36,7 @@ namespace uit.hotel.Businesses
                 throw new Exception("Loại phòng có Id: " + roomKindId + " không hợp lệ!");
             RoomKindDataAccess.SetIsActive(roomKindInDatabase, isActive);
         }
-        
+
         private static void CheckUniqueName(RoomKind roomKind)
         {
             var numberOfRoomKinds = Get().Where(rk => rk.Name == roomKind.Name).Count();

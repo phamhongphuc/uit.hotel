@@ -1,172 +1,92 @@
 <template>
-    <popup- ref="popup" v-slot="{ close }" title="Đặt phòng">
+    <popup-
+        ref="popup"
+        v-slot="{ close }"
+        title="Đặt phòng"
+        class="align-items-start"
+    >
         <form-mutate-
-            v-if="input"
-            :mutation="createBill"
+            :mutation="mutation"
             :variables="variables"
             success="Thêm phòng cho hóa đơn có sẵn"
             @success="close"
         >
-            <div class="input-label">Khách hàng đứng tên hóa đơn</div>
-            <div class="m-3 d-flex">
-                <query-
-                    v-slot="{ data: { patrons } }"
-                    :query="getPatrons"
-                    :poll-interval="500"
+            <query-
+                :query="getPatronsAndRooms"
+                class="d-none"
+                @result="onResult"
+            />
+            <div>
+                <div class="input-label">
+                    Thời gian nhận phòng dự kiến:
+                    <b-form-checkbox v-model="isCheckinNow" inline class="ml-1">
+                        Nhận ngay
+                    </b-form-checkbox>
+                </div>
+                <b-input-date-time-
+                    v-if="!isCheckinNow"
+                    v-model="bookCheckInTime"
+                    class="rounded m-3"
+                    :state="!$v.bookCheckOutTime.$invalid"
+                />
+                <div v-else class="m-2" />
+                <div class="input-label">Thời gian trả phòng dự kiến</div>
+                <b-input-date-time-
+                    v-model="bookCheckOutTime"
+                    class="rounded m-3"
+                    :state="!$v.bookCheckOutTime.$invalid"
+                />
+                <div class="input-label">Danh sách đặt phòng</div>
+                <div
+                    class="m-3 list-of-patrons box-shadow-inner rounded overflow-hidden"
                 >
-                    <b-form-select
-                        ref="patron"
-                        v-model="input.bill.patron.id"
-                        :state="!$v.input.bill.patron.$invalid"
-                        :options="patrons"
-                        value-field="id"
-                        text-field="name"
-                        class="rounded"
+                    <popup-book-room-detail-
+                        v-for="row in tableData"
+                        :key="row.room.id"
+                        :row="row"
+                        @select-patron="selectPatron"
+                        @remove-patron="removePatron"
+                        @remove-room="removeRoom"
+                        @add-patron="
+                            refs.patron_select_or_add.open({
+                                callback(patronId) {
+                                    addPatron(patronId, row);
+                                },
+                            })
+                        "
                     />
-                </query->
-                <b-button
-                    variant="main"
-                    class="ml-3 text-nowrap"
-                    @click="
-                        refs.patron_select_or_add.open({
-                            callback(id) {
-                                input.bill.patron.id = id;
-                            },
-                        })
-                    "
-                >
-                    <icon- class="mr-1" i="edit-2" />
-                    <span>Chọn hoặc thêm khách hàng</span>
-                </b-button>
-            </div>
-            <div class="input-label">Thời gian nhận phòng dự kiến</div>
-            <b-input-date-time-
-                v-model="bookCheckInTime"
-                class="rounded m-3"
-                :state="!$v.bookCheckInTime.$invalid"
-            />
-            <div class="input-label">Thời gian trả phòng dự kiến</div>
-            <b-input-date-time-
-                v-model="bookCheckOutTime"
-                class="rounded m-3"
-                :state="!$v.bookCheckOutTime.$invalid"
-            />
-            <div class="input-label">Danh sách phòng</div>
-            <div class="m-3 table-inner rounded overflow-hidden">
-                <b-table
-                    :items="input.bookings"
-                    :fields="[
-                        {
-                            key: 'index',
-                            label: '#',
-                            class: 'table-cell-id text-center',
-                            sortable: true,
-                        },
-                        {
-                            key: 'room',
-                            label: 'Phòng',
-                            class: 'text-center',
-                        },
-                        {
-                            key: 'listOfPatrons',
-                            label: 'Danh sách khách hàng',
-                            class: 'text-center',
-                        },
-                        {
-                            key: 'actions',
-                            label: 'Thao tác',
-                            class: 'text-center',
-                        },
-                    ]"
-                    class="table-style table-cell-middle"
-                >
-                    <template v-slot:index="data">
-                        {{ data.index + 1 }}
-                    </template>
-                    <template v-slot:room="{ value }">
-                        <query-
-                            v-slot="{ data: { room } }"
-                            :query="getRoom"
-                            :variables="{
-                                id: value.id,
-                            }"
-                            :poll-interval="0"
-                        >
-                            {{ room.name }}
-                        </query->
-                    </template>
-                    <template v-slot:listOfPatrons="{ value }">
-                        <div v-for="patron in value" :key="patron.id">
-                            {{ patron.name }}
-                        </div>
-                    </template>
-                    <template v-slot:actions="{ item }">
-                        <div class="d-flex">
-                            <b-button
-                                variant="main"
-                                @click="
-                                    refs.booking_add_or_update.open({
-                                        booking: item,
-                                        callback(result) {
-                                            removeBooking(item);
-                                            input.bookings.push(result);
-                                        },
-                                    })
-                                "
-                            >
-                                Sửa
-                            </b-button>
-                            <b-button
-                                class="ml-3"
-                                variant="main"
-                                @click="removeBooking(item)"
-                            >
-                                Xóa
-                            </b-button>
-                        </div>
-                    </template>
-                </b-table>
-                <text-validator-
-                    :state="!$v.input.bookings.$invalid"
-                    class="py-3 pl-4 border-top border-main"
-                >
-                    <template v-slot:valid>
-                        Có tổng cộng {{ input.bookings.length }} phòng trong
-                        danh sách
-                    </template>
-                    <template v-slot:invalid>
-                        Chưa có phòng nào trong danh sách.
-                        <br />
-                        Ấn
-                        <icon- class="mx-1" i="plus-square" />
-                        để thêm phòng
-                    </template>
-                </text-validator->
-            </div>
-            <div class="d-flex m-3">
-                <b-button
-                    variant="main"
-                    class="ml-auto"
-                    @click="
-                        refs.booking_add_or_update.open({
-                            callback(result) {
-                                input.bookings.push(result);
-                            },
-                        })
-                    "
-                >
-                    <icon- class="mr-1" i="plus-square" />
-                    <span>Thêm phòng</span>
-                </b-button>
-                <b-button
-                    :disabled="$v.$invalid"
-                    variant="main"
-                    class="ml-3"
-                    type="submit"
-                >
-                    <icon- class="mr-1" i="edit-2" />
-                    <span>Đặt phòng</span>
-                </b-button>
+                    <text-validator-
+                        :state="!$v.tableData.$invalid"
+                        class="py-3 pl-4"
+                    >
+                        <template v-slot:valid>
+                            Có tổng cộng {{ numberOfPatrons }} người /
+                            {{ tableData.length }} phòng
+                        </template>
+                        <template v-slot:invalid>
+                            Danh sách phòng không hợp lệ
+                            <br />
+                            Ấn
+                            <icon- class="mx-1" i="plus-square" />
+                            để thêm phòng
+                        </template>
+                    </text-validator->
+                </div>
+                <div class="d-flex m-3">
+                    <b-button variant="main" class="ml-auto" @click="addRoom">
+                        <icon- class="mr-1" i="plus-square" />
+                        <span>Thêm phòng</span>
+                    </b-button>
+                    <b-button
+                        :disabled="$v.$invalid"
+                        class="ml-3"
+                        variant="main"
+                        type="submit"
+                    >
+                        <icon- class="mr-1" i="check" />
+                        <span>Xong</span>
+                    </b-button>
+                </div>
             </div>
         </form-mutate->
     </popup->
@@ -174,40 +94,56 @@
 <script lang="ts">
 import moment from 'moment';
 import { Component, mixins } from 'nuxt-property-decorator';
-import { GetFloors, CreateBill, BookingCreateInput } from '~/graphql/types';
-import { createBill, getPatrons, getRoom } from '~/graphql/documents';
-import { PopupMixin, DataMixin } from '~/components/mixins';
-import { required } from 'vuelidate/lib/validators';
 import {
-    bookCheckOutTime,
-    included,
-    bookCheckInTime,
-} from '~/modules/validator';
+    GetFloors,
+    GetPatronsAndRoomsQuery,
+    GetPatronsAndRooms,
+    CreateBill,
+    BookAndCheckIn,
+} from '~/graphql/types';
+import {
+    createBill,
+    getRoom,
+    getPatronsAndRooms,
+    bookAndCheckIn,
+} from '~/graphql/documents';
+import { PopupMixin, DataMixin } from '~/components/mixins';
+import { bookCheckOutTime, bookCheckInTime } from '~/modules/validator';
+import { ApolloQueryResult } from 'apollo-client';
+import { required } from 'vuelidate/lib/validators';
+import { TableDataType } from './popup-book.helper';
 
-type PopupMixinType = PopupMixin<
-    { rooms: GetFloors.Rooms[] },
-    CreateBill.Variables
->;
+type PopupMixinType = PopupMixin<{ rooms: GetFloors.Rooms[] }, null>;
 
 @Component({
     name: 'popup-booking-and-check-in-',
     validations: {
-        input: {
-            bill: {
-                patron: included('patron'),
-            },
-            bookings: {
-                required,
-            },
-        },
         bookCheckInTime,
         bookCheckOutTime,
+        tableData: {
+            required,
+            $each: {
+                patrons: {
+                    required,
+                },
+            },
+            duplicate: (tableData: TableDataType[]) =>
+                tableData
+                    .flatMap(row =>
+                        row.patrons.map(patron => patron.identification),
+                    )
+                    .every(
+                        (value, index, array) => array.indexOf(value) === index,
+                    ),
+        },
     },
 })
 export default class extends mixins<PopupMixinType>(
     PopupMixin,
-    DataMixin({ createBill, getPatrons, getRoom }),
+    DataMixin({ getPatronsAndRooms, getRoom, moment }),
 ) {
+    isCheckinNow: boolean = false;
+
     bookCheckInTime: string = moment()
         .add(1, 'day')
         .set({
@@ -216,6 +152,7 @@ export default class extends mixins<PopupMixinType>(
             second: 0,
         })
         .format();
+
     bookCheckOutTime: string = moment()
         .add(2, 'day')
         .set({
@@ -225,53 +162,115 @@ export default class extends mixins<PopupMixinType>(
         })
         .format();
 
+    patrons: GetPatronsAndRooms.Patrons[] = [];
+    rooms: GetPatronsAndRooms.Rooms[] = [];
+
+    tableData: TableDataType[] = [];
+
     onOpen() {
-        const self = this;
-        this.input = {
-            bill: {
-                patron: { id: -1 },
-            },
-            bookings: self.data.rooms.map(r => ({
-                bookCheckOutTime: new Date(),
-                bookCheckInTime: new Date(),
-                room: {
-                    id: r.id,
-                },
-                listOfPatrons: [],
-            })),
-        };
+        this.tableData = [];
     }
 
-    get variables(): CreateBill.Variables {
-        if (this.input === null) throw new Error("Popup input mustn't be null");
-        const {
-            input: { bill, bookings },
-            bookCheckOutTime,
-            bookCheckInTime,
-        } = this;
-        return {
-            bill: {
-                patron: {
-                    id: bill.patron.id,
-                },
-            },
-            bookings: bookings.map(b => {
-                return {
-                    bookCheckOutTime,
-                    bookCheckInTime,
-                    room: {
-                        id: b.room.id,
-                    },
-                    listOfPatrons: b.listOfPatrons.map(p => ({ id: p.id })),
-                };
-            }),
-        };
+    get mutation() {
+        return this.isCheckinNow ? bookAndCheckIn : createBill;
     }
 
-    removeBooking(booking: BookingCreateInput) {
-        if (this.input === null) throw new Error("Popup input mustn't be null");
-        const index = this.input.bookings.indexOf(booking);
-        this.input.bookings.splice(index, 1);
+    get variables(): BookAndCheckIn.Variables | CreateBill.Variables {
+        let patronId = -1;
+
+        if (this.isCheckinNow) {
+            const output: BookAndCheckIn.Variables = {
+                bookings: this.tableData.map(tableRow => ({
+                    bookCheckOutTime: this.bookCheckOutTime,
+                    room: { id: tableRow.room.id },
+                    listOfPatrons: tableRow.patrons.map(patron => {
+                        if (patron.isOwner) patronId = patron.id;
+                        return { id: patron.id };
+                    }),
+                })),
+                bill: { patron: { id: patronId } },
+            };
+            return output;
+        } else {
+            const output: CreateBill.Variables = {
+                bookings: this.tableData.map(tableRow => ({
+                    bookCheckInTime: this.bookCheckInTime,
+                    bookCheckOutTime: this.bookCheckOutTime,
+                    room: { id: tableRow.room.id },
+                    listOfPatrons: tableRow.patrons.map(patron => {
+                        if (patron.isOwner) patronId = patron.id;
+                        return { id: patron.id };
+                    }),
+                })),
+                bill: { patron: { id: patronId } },
+            };
+            return output;
+        }
+    }
+
+    addRoom() {
+        this.refs.room_select.open({
+            currentRoomIds: this.currentRoomIds,
+            callback: (roomIds: number[]) =>
+                roomIds
+                    .map(roomId => this.rooms.find(r => r.id === roomId))
+                    .forEach(room => {
+                        room !== undefined &&
+                            this.tableData.push({ room, patrons: [] });
+                    }),
+            from: this.isCheckinNow ? moment().format() : this.bookCheckInTime,
+            to: this.bookCheckOutTime,
+        });
+    }
+
+    get numberOfPatrons() {
+        return this.tableData.reduce(
+            (sum, current) => sum + current.patrons.length,
+            0,
+        );
+    }
+
+    get currentRoomIds() {
+        return this.tableData.reduce(
+            (output, rowData) => {
+                output.push(rowData.room.id);
+                return output;
+            },
+            [] as number[],
+        );
+    }
+
+    addPatron(patronId: number, row: TableDataType) {
+        const patron = this.patrons.find(patron => patron.id === patronId);
+        if (patron === undefined) return;
+        row.patrons.push({ ...patron, isOwner: this.numberOfPatrons === 0 });
+    }
+
+    selectPatron(patronId: number) {
+        this.tableData.forEach(row => {
+            row.patrons.forEach(patron => {
+                patron.isOwner = patronId === patron.id;
+            });
+        });
+    }
+
+    removePatron(patronId: number) {
+        this.tableData.forEach(row => {
+            const index = row.patrons.findIndex(
+                patron => patron.id === patronId,
+            );
+            if (index !== -1) row.patrons.splice(index, 1);
+        });
+    }
+
+    removeRoom(roomId: number) {
+        const index = this.tableData.findIndex(row => row.room.id === roomId);
+        this.tableData.splice(index, 1);
+    }
+
+    async onResult({ data }: ApolloQueryResult<GetPatronsAndRoomsQuery>) {
+        this.patrons = data.patrons;
+        this.rooms = data.rooms;
     }
 }
 </script>

@@ -13,6 +13,7 @@
 /.prettierignore
 /.editorconfig
 /.eslintignore
+/.yarnclean
 /yarn.lock
 
 *.gqlconfig

@@ -631,7 +631,7 @@ input PatronCreateInput {
     gender: Boolean!
 
     # Ngày sinh của khách hàng
-    birthdate: DateTimeOffset!
+    birthdate: DateTimeOffset = null
 
     # Quốc tịch của khách hàng
     nationality: String!

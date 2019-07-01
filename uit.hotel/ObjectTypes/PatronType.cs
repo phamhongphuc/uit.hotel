@@ -68,7 +68,7 @@ namespace uit.hotel.ObjectTypes
             Field(x => x.Name).Description("Tên của khách hàng");
             Field(x => x.Email).Description("Địa chỉ e-mail của khách hàng");
             Field(x => x.Gender).Description("Giới tính của khách hàng");
-            Field(x => x.Birthdate).Description("Ngày sinh của khách hàng");
+            Field(x => x.Birthdate, true).Description("Ngày sinh của khách hàng");
             Field(x => x.Nationality).Description("Quốc tịch của khách hàng");
             Field(x => x.Domicile).Description("Nguyên quán của khách hàng");
             Field(x => x.Residence).Description("Địa chỉ thường trú của khách hàng");

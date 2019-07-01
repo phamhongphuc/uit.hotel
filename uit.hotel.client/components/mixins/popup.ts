@@ -8,17 +8,17 @@ export class PopupMixin<TData, TInput> extends Vue {
     protected data!: TData;
     protected input: TInput | null = null;
 
-    protected onOpen(): void {}
+    protected onOpen(): void | Promise<void> {}
 
-    protected async open(data: any): Promise<void> {
+    protected async open(data: TData): Promise<void> {
         const popup: any = this.$refs.popup;
         if (popup !== undefined && typeof popup.open === 'function') {
             this.data = data;
             popup.open(data);
 
-            this.onOpen();
-
+            await this.onOpen();
             await Vue.nextTick();
+
             const autoFocus = this.$refs.autoFocus as Vue;
             if (
                 autoFocus !== undefined &&
