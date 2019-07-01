@@ -51,6 +51,7 @@ export const getTimeline = gql`
                 id
                 name
                 isActive
+                isClean
                 bookings {
                     id
                     status

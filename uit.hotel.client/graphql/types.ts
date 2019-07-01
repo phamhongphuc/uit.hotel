@@ -1578,7 +1578,7 @@ export type GetTimelineQuery = {
     floors: Array<
         Pick<Floor, 'id' | 'name' | 'isActive'> & {
             rooms: Array<
-                Pick<Room, 'id' | 'name' | 'isActive'> & {
+                Pick<Room, 'id' | 'name' | 'isActive' | 'isClean'> & {
                     bookings: Array<
                         Pick<
                             Booking,
