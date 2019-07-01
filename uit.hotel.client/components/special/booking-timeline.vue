@@ -182,7 +182,7 @@ export default class extends Vue {
         return Array.from({ length }, (v, index) =>
             startDay.clone().add(index, 'days'),
         ).map(day => ({
-            dayOfWeek: day.format('dd'),
+            dayOfWeek: day.format('dddd'),
             day: day.format('DD'),
         }));
     }
@@ -274,6 +274,7 @@ table.timeline {
         &.day {
             padding: 0.5rem;
             text-align: center;
+            text-transform: capitalize;
         }
     }
 
