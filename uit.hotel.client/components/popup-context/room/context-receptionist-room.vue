@@ -2,7 +2,7 @@
     <context- ref="context" v-slot="{ data: { room } }">
         <b-nav-item-icon-
             v-if="room"
-            icon="alert-circle"
+            icon="info"
             text="Xem thông tin chi tiết"
         />
         <b-nav-item-icon-mutate-
