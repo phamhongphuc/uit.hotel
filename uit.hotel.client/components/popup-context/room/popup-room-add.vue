@@ -67,6 +67,7 @@
 </template>
 <script lang="ts">
 import { Component, mixins, Vue } from 'nuxt-property-decorator';
+import { ApolloQueryResult } from 'apollo-client';
 import { PopupMixin, DataMixin } from '~/components/mixins';
 import { createRoom, getFloors, getRoomKinds } from '~/graphql/documents';
 import {
@@ -76,7 +77,6 @@ import {
     GetFloorsQuery,
 } from '~/graphql/types';
 import { floorRoomName, included } from '~/modules/validator';
-import { ApolloQueryResult } from 'apollo-client';
 
 type PopupMixinType = PopupMixin<{ floor: GetFloors.Floors }, RoomCreateInput>;
 

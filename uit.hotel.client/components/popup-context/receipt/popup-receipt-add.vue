@@ -40,9 +40,6 @@
 </template>
 <script lang="ts">
 import { Component, mixins } from 'nuxt-property-decorator';
-import { DataMixin, PopupMixin } from '~/components/mixins';
-import { ReceiptCreateInput, GetBills } from '~/graphql/types';
-import { createReceipt } from '~/graphql/documents';
 import {
     required,
     numeric,
@@ -53,6 +50,9 @@ import {
     minLength,
     maxLength,
 } from 'vuelidate/lib/validators';
+import { DataMixin, PopupMixin } from '~/components/mixins';
+import { ReceiptCreateInput, GetBills } from '~/graphql/types';
+import { createReceipt } from '~/graphql/documents';
 import { optional } from '~/modules/validator';
 
 type PopupMixinType = PopupMixin<{ bill: GetBills.Bills }, ReceiptCreateInput>;

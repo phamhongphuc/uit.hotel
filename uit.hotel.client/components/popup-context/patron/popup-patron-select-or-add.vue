@@ -19,6 +19,7 @@
                     <b-input-
                         v-model="input.identification"
                         :state="!$v.input.identification.$invalid"
+                        :formatter="identificationFormatter"
                         class="m-3 rounded"
                         icon="package"
                     />
@@ -174,6 +175,7 @@
 </template>
 <script lang="ts">
 import { Component, mixins } from 'nuxt-property-decorator';
+import { ApolloQueryResult } from 'apollo-client';
 import { PopupMixin, DataMixin } from '~/components/mixins';
 import {
     CreatePatron,
@@ -192,7 +194,6 @@ import {
     optionalBirthdate,
     optionalEmail,
 } from '~/modules/validator';
-import { ApolloQueryResult } from 'apollo-client';
 
 @Component({
     name: 'popup-patron-select-or-add-',
@@ -232,6 +233,11 @@ export default class extends mixins<
                 this.$v.input.identification.$invalid) ||
             this.currentPatron !== undefined
         );
+    }
+
+    identificationFormatter(value: string) {
+        if (value.length > 9) value = value.slice(0, 9);
+        return value;
     }
 
     onOpen() {

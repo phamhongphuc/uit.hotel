@@ -1,5 +1,5 @@
-import { Position, UserLogin } from '~/graphql/types';
 import { Vue, Component, namespace, Prop } from 'nuxt-property-decorator';
+import { Position, UserLogin } from '~/graphql/types';
 
 type PermissionType = Pick<
     Position,

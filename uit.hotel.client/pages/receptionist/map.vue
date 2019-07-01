@@ -69,11 +69,11 @@
     </div>
 </template>
 <script lang="ts">
-import { GetFloors } from '~/graphql/types';
 import { Component, mixins } from 'nuxt-property-decorator';
+import moment from 'moment';
+import { GetFloors } from '~/graphql/types';
 import { getFloorsMap } from '~/graphql/documents';
 import { DataMixin } from '~/components/mixins';
-import moment from 'moment';
 
 @Component({
     name: 'index-',

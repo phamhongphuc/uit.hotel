@@ -48,8 +48,8 @@
 </template>
 <script lang="ts">
 import { Vue, Component, Prop } from 'nuxt-property-decorator';
-import { GetTimeline } from '~/graphql/types';
 import moment from 'moment';
+import { GetTimeline } from '~/graphql/types';
 
 enum StatusEnum {
     Booked,

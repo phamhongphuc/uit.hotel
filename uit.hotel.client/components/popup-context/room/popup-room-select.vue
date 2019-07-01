@@ -41,10 +41,10 @@
 </template>
 <script lang="ts">
 import { Component, mixins } from 'nuxt-property-decorator';
+import moment from 'moment';
 import { PopupMixin, DataMixin } from '~/components/mixins';
 import { RoomCreateInput, GetFloorsMap } from '~/graphql/types';
 import { getFloorsMap } from '~/graphql/documents';
-import moment from 'moment';
 
 type PopupMixinType = PopupMixin<
     {
