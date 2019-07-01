@@ -58,6 +58,8 @@ export const getTimeline = gql`
                     createTime
                     bookCheckInTime
                     bookCheckOutTime
+                    realCheckInTime
+                    realCheckOutTime
                     patrons {
                         id
                     }

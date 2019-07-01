@@ -1587,6 +1587,8 @@ export type GetTimelineQuery = {
                             | 'createTime'
                             | 'bookCheckInTime'
                             | 'bookCheckOutTime'
+                            | 'realCheckInTime'
+                            | 'realCheckOutTime'
                         > & { patrons: Array<Maybe<Pick<Patron, 'id'>>> }
                     >;
                     roomKind: Pick<RoomKind, 'id' | 'name'>;

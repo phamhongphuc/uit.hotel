@@ -76,7 +76,6 @@ import { GetTimeline } from '~/graphql/types';
 enum StatusEnum {
     Booked,
     CheckedIn,
-    RequestedCheckOut,
     CheckedOut,
 }
 
@@ -85,7 +84,6 @@ type StatusEnumMap = { [key in StatusEnum]: string };
 const statusEnumMap: StatusEnumMap = {
     [StatusEnum.Booked]: 'light-blue',
     [StatusEnum.CheckedIn]: 'orange',
-    [StatusEnum.RequestedCheckOut]: 'light-red',
     [StatusEnum.CheckedOut]: 'gray',
 };
 
@@ -193,8 +191,17 @@ export default class extends Vue {
             ratio,
         } = this;
         return room.bookings.map(booking => {
-            const inTime = moment(booking.bookCheckInTime).unix();
-            const outTime = moment(booking.bookCheckOutTime).unix();
+            const inTime = moment(
+                booking.status === StatusEnum.Booked
+                    ? booking.bookCheckInTime
+                    : (booking.realCheckInTime as string),
+            ).unix();
+
+            const outTime = moment(
+                booking.status === StatusEnum.CheckedOut
+                    ? (booking.realCheckOutTime as string)
+                    : booking.bookCheckOutTime,
+            ).unix();
 
             const left = ((inTime - min) * ratio) / this.seconds;
             const right = ((outTime - min) * ratio) / this.seconds;
