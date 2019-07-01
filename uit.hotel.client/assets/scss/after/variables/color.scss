@@ -6,3 +6,6 @@ $theme-colors: map-remove(
     'info',
     'warning'
 );
+
+$custom-select-disabled-bg: $gray-200 !important;
+$input-disabled-bg: $gray-200 !important;

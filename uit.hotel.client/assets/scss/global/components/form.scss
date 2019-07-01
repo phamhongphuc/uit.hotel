@@ -33,3 +33,10 @@
     background-color: #e5e5e5 !important;
     border: 0;
 }
+
+input,
+.custom-select {
+    &:disabled {
+        cursor: not-allowed;
+    }
+}

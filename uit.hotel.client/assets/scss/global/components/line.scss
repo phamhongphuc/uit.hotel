@@ -2,10 +2,10 @@
     background-color: $border-color;
     &.hr {
         width: 100%;
-        height: 1px;
+        height: 1.5px;
     }
     &.vr {
-        width: 1px;
+        width: 1.5px;
         height: 100%;
     }
 }
