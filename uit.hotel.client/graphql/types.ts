@@ -1397,7 +1397,7 @@ export type GetBookingsQuery = {
         > & {
             patrons: Array<Maybe<Pick<Patron, 'id' | 'name'>>>;
             bill: Pick<Bill, 'id'>;
-            room: Pick<Room, 'id' | 'name'>;
+            room: Pick<Room, 'id' | 'name' | 'isClean'>;
         }
     >;
 };
@@ -1987,21 +1987,7 @@ export type GetPatronsAndRoomsQuery = {
             | 'note'
         > & { patronKind: Pick<PatronKind, 'id'> }
     >;
-    rooms: Array<Pick<Room, 'id' | 'name' | 'isActive'>>;
-};
-
-export type GetRoomsMapQueryVariables = {};
-
-export type GetRoomsMapQuery = {
-    floors: Array<
-        Pick<Floor, 'id' | 'name' | 'isActive'> & {
-            rooms: Array<
-                Pick<Room, 'id' | 'name' | 'isActive'> & {
-                    roomKind: Pick<RoomKind, 'id' | 'name'>;
-                }
-            >;
-        }
-    >;
+    rooms: Array<Pick<Room, 'id' | 'name' | 'isActive' | 'isClean'>>;
 };
 export namespace IsInitialized {
     export type Variables = IsInitializedQueryVariables;
@@ -2451,16 +2437,4 @@ export namespace GetPatronsAndRooms {
         GetPatronsAndRoomsQuery['patrons'][0]
     >)['patronKind'];
     export type Rooms = NonNullable<GetPatronsAndRoomsQuery['rooms'][0]>;
-}
-
-export namespace GetRoomsMap {
-    export type Variables = GetRoomsMapQueryVariables;
-    export type Query = GetRoomsMapQuery;
-    export type Floors = NonNullable<GetRoomsMapQuery['floors'][0]>;
-    export type Rooms = NonNullable<
-        (NonNullable<GetRoomsMapQuery['floors'][0]>)['rooms'][0]
-    >;
-    export type RoomKind = (NonNullable<
-        (NonNullable<GetRoomsMapQuery['floors'][0]>)['rooms'][0]
-    >)['roomKind'];
 }

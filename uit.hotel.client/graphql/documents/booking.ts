@@ -25,6 +25,7 @@ export const getBookings = gql`
             room {
                 id
                 name
+                isClean
             }
         }
     }
