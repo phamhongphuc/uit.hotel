@@ -5,9 +5,9 @@
     "properties": {
         "data": {
             "type": "object",
-            "required": ["setIsClean"],
+            "required": ["setIsCleanRoom"],
             "properties": {
-                "setIsClean": {
+                "setIsCleanRoom": {
                     "type": "string",
                     "pattern": "^(.*)$"
                 }
