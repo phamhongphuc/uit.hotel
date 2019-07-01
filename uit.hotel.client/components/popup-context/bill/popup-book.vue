@@ -49,8 +49,8 @@
                         @remove-room="removeRoom"
                         @add-patron="
                             refs.patron_select_or_add.open({
-                                callback(patronId) {
-                                    addPatron(patronId, row);
+                                callback(patronId, isNew) {
+                                    addPatron(patronId, isNew, row);
                                 },
                             })
                         "
@@ -240,8 +240,8 @@ export default class extends mixins<PopupMixinType>(
         );
     }
 
-    async addPatron(patronId: number, row: TableDataType) {
-        await this.nextResult();
+    async addPatron(patronId: number, isNew: boolean, row: TableDataType) {
+        if (isNew) await this.nextResult();
 
         const patron = this.patrons.find(patron => patron.id === patronId);
         if (patron === undefined) return;

@@ -75,7 +75,9 @@ export default class extends Vue {
     floors!: GetTimeline.Floors[];
 
     seconds = moment.duration(1, 'day').asSeconds();
-    ratio = 5;
+    ratio = 10;
+
+    now = moment().unix();
 
     get filteredFloors() {
         return this.floors
@@ -84,6 +86,7 @@ export default class extends Vue {
     }
 
     get timeBound() {
+        const { now } = this;
         const { min, max } = this.filteredFloors
             .flatMap(floor =>
                 floor.rooms
@@ -98,12 +101,13 @@ export default class extends Vue {
             .reduce(
                 ({ min, max }, { inTime, outTime }) => {
                     return {
-                        max: Math.max(max, outTime),
-                        min: Math.min(min, inTime),
+                        max: Math.max(now, max, outTime),
+                        min: Math.min(now, min, inTime),
                     };
                 },
                 { min: Infinity, max: -Infinity },
             );
+
         return {
             min: moment
                 .unix(min)
@@ -119,8 +123,6 @@ export default class extends Vue {
         };
     }
 
-    now = moment().unix();
-
     get nowValue() {
         const {
             timeBound: { max },
@@ -129,6 +131,7 @@ export default class extends Vue {
         } = this;
         return ((max - now) / this.seconds) * ratio + 'rem';
     }
+
     get nowStyle() {
         return {
             right: this.nowValue,
@@ -219,7 +222,7 @@ table.timeline {
         &.room {
             position: sticky;
             left: -2px;
-            z-index: 4 !important;
+            z-index: 5 !important;
             min-width: 10rem;
             background-color: $white;
             border-right: none;
@@ -236,7 +239,7 @@ table.timeline {
                 position: absolute;
                 top: 0;
                 bottom: 0;
-                margin: 0.5rem;
+                margin: 0.5rem 0;
                 box-shadow: none;
             }
         }
@@ -254,7 +257,7 @@ table.timeline {
             background-color: $white;
             box-shadow: 0 1px 0 0 $border-color, 1px 0 0 0 $border-color;
             &.room {
-                z-index: 5 !important;
+                z-index: 6 !important;
             }
         }
     }
