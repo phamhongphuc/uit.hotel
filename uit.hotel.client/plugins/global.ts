@@ -1,5 +1,8 @@
 import Vue from 'vue';
 import { Context } from '@nuxt/vue-app';
+import moment from 'moment';
+
+moment.locale('vi');
 
 export default function({ app }: Context): void {
     if (!app.mixins) app.mixins = [];
