@@ -85,14 +85,14 @@
 </template>
 <script lang="ts">
 import { Component, mixins } from 'nuxt-property-decorator';
-import moment from 'moment';
 import { getPatrons } from '~/graphql/documents';
 import { DataMixin } from '~/components/mixins';
+import { toYear } from '~/utils';
 
 @Component({
     name: 'patron-',
 })
-export default class extends mixins(DataMixin({ getPatrons })) {
+export default class extends mixins(DataMixin({ getPatrons, toYear })) {
     head() {
         return {
             title: 'Quản lý khách hàng',
@@ -105,10 +105,6 @@ export default class extends mixins(DataMixin({ getPatrons })) {
             this.currentEvent = event;
             tr.click();
         }
-    }
-
-    toYear(date: string) {
-        return moment(date).year();
     }
 
     currentEvent: MouseEvent | null = null;

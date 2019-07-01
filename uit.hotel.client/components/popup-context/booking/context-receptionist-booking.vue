@@ -8,7 +8,11 @@
             },
         }"
     >
-        <b-nav-item-icon- icon="info" text="Xem thông tin chi tiết" />
+        <b-nav-item-icon-
+            icon="info"
+            text="Xem thông tin chi tiết"
+            @click="refs.booking_detail.open({ id })"
+        />
         <b-nav-item-icon-mutate-
             v-if="booking.status === statusEnum.Booked"
             :mutation="cancel"

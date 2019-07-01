@@ -31,6 +31,65 @@ export const getBookings = gql`
     }
 `;
 
+export const getBookingDetails = gql`
+    query getBookingDetails($id: ID!) {
+        booking(id: $id) {
+            id
+            bookCheckInTime
+            bookCheckOutTime
+            realCheckInTime
+            realCheckOutTime
+            status
+            patrons {
+                id
+                identification
+                name
+                birthdate
+                email
+                gender
+                residence
+                domicile
+                phoneNumbers
+                nationality
+                company
+                note
+                patronKind {
+                    id
+                }
+            }
+            bill {
+                id
+            }
+            servicesDetails {
+                id
+                number
+                service {
+                    id
+                    name
+                    unit
+                    unitRate
+                }
+                time
+            }
+            room {
+                id
+                name
+                isClean
+                roomKind {
+                    id
+                    name
+                    numberOfBeds
+                    amountOfPeople
+                }
+                floor {
+                    id
+                    name
+                }
+            }
+        }
+    }
+`;
+
 export const getSimpleBookings = gql`
     query getSimpleBookings {
         bookings {

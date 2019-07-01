@@ -1402,6 +1402,44 @@ export type GetBookingsQuery = {
     >;
 };
 
+export type GetBookingDetailsQueryVariables = {
+    id: Scalars['ID'];
+};
+
+export type GetBookingDetailsQuery = {
+    booking: Pick<
+        Booking,
+        | 'id'
+        | 'bookCheckInTime'
+        | 'bookCheckOutTime'
+        | 'realCheckInTime'
+        | 'realCheckOutTime'
+        | 'status'
+    > & {
+        patrons: Array<Maybe<Pick<Patron, 'id' | 'name'>>>;
+        bill: Pick<Bill, 'id'>;
+        servicesDetails: Maybe<
+            Array<
+                Maybe<
+                    Pick<ServicesDetail, 'id' | 'number' | 'time'> & {
+                        service: Pick<
+                            Service,
+                            'id' | 'name' | 'unit' | 'unitRate'
+                        >;
+                    }
+                >
+            >
+        >;
+        room: Pick<Room, 'id' | 'name' | 'isClean'> & {
+            roomKind: Pick<
+                RoomKind,
+                'id' | 'name' | 'numberOfBeds' | 'amountOfPeople'
+            >;
+            floor: Pick<Floor, 'id' | 'name'>;
+        };
+    };
+};
+
 export type GetSimpleBookingsQueryVariables = {};
 
 export type GetSimpleBookingsQuery = {
@@ -2049,6 +2087,25 @@ export namespace GetBookings {
     >;
     export type Bill = (NonNullable<GetBookingsQuery['bookings'][0]>)['bill'];
     export type Room = (NonNullable<GetBookingsQuery['bookings'][0]>)['room'];
+}
+
+export namespace GetBookingDetails {
+    export type Variables = GetBookingDetailsQueryVariables;
+    export type Query = GetBookingDetailsQuery;
+    export type Booking = GetBookingDetailsQuery['booking'];
+    export type Patrons = NonNullable<
+        GetBookingDetailsQuery['booking']['patrons'][0]
+    >;
+    export type Bill = GetBookingDetailsQuery['booking']['bill'];
+    export type ServicesDetails = NonNullable<
+        (NonNullable<GetBookingDetailsQuery['booking']['servicesDetails']>)[0]
+    >;
+    export type Service = (NonNullable<
+        (NonNullable<GetBookingDetailsQuery['booking']['servicesDetails']>)[0]
+    >)['service'];
+    export type Room = GetBookingDetailsQuery['booking']['room'];
+    export type RoomKind = GetBookingDetailsQuery['booking']['room']['roomKind'];
+    export type Floor = GetBookingDetailsQuery['booking']['room']['floor'];
 }
 
 export namespace GetSimpleBookings {
