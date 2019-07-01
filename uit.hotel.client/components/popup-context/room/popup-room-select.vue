@@ -6,24 +6,23 @@
             :variables="{ from, to }"
             class="px-3 pb-0 pt-3"
         >
-            <b-checkbox-group
-                v-model="roomIds"
-                class="select-room-map"
-                buttons
-                button-variant="light-blue"
-            >
+            <b-checkbox-group v-model="roomIds" class="select-room-map" buttons>
                 <div v-for="floor in floorsFilter(floors)" :key="floor.id">
                     <b-button variant="main">Tầng {{ floor.name }}</b-button>
-                    <b-checkbox
+                    <div
                         v-for="room in roomsFilter(floor.rooms)"
                         :key="room.id"
                         v-b-tooltip.hover
                         :title="tooltip(room)"
-                        :value="room.id"
-                        :disabled="isDisabled(room)"
                     >
-                        Phòng {{ room.name }}
-                    </b-checkbox>
+                        <b-checkbox
+                            :value="room.id"
+                            :disabled="isDisabled(room)"
+                            :button-variant="buttonVariant(room)"
+                        >
+                            Phòng {{ room.name }}
+                        </b-checkbox>
+                    </div>
                 </div>
             </b-checkbox-group>
         </query->
@@ -92,7 +91,21 @@ export default class extends mixins<PopupMixinType>(
     }
 
     tooltip(room: GetFloorsMap.Rooms) {
+        if (this.data.currentRoomIds.includes(room.id)) {
+            return 'Phòng đã được chọn';
+        } else if (room.currentBooking !== null) {
+            return 'Phòng đã được thuê';
+        }
         return `Loại: Phòng ${room.roomKind.name}`;
+    }
+
+    buttonVariant(room: GetFloorsMap.Rooms) {
+        if (this.data.currentRoomIds.includes(room.id)) {
+            return 'orange';
+        } else if (room.currentBooking !== null) {
+            return 'light-red';
+        }
+        return 'light-blue';
     }
 
     addRoom(close: Function) {
@@ -117,14 +130,15 @@ export default class extends mixins<PopupMixinType>(
     > div {
         display: flex;
         > button,
-        > label {
+        > div {
             min-width: 7rem;
             margin: $margin-size;
         }
         > button {
             cursor: default !important;
         }
-        > label {
+        > div > label {
+            margin: 0;
             cursor: pointer;
             &.active {
                 box-shadow: 0 0 0 #{$margin-size * 0.75} rgba($main, 1) !important;
