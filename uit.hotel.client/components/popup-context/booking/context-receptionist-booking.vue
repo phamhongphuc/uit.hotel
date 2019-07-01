@@ -42,7 +42,7 @@ import { ContextMixin, DataMixin } from '~/components/mixins';
 import { checkIn, checkOut, cancel } from '~/graphql/documents';
 
 @Component({
-    name: 'context-manage-patron-kind-',
+    name: 'context-receptionist-booking-',
 })
 export default class extends mixins<ContextMixin>(
     ContextMixin,

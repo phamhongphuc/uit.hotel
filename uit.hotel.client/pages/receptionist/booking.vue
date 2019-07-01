@@ -61,9 +61,12 @@
                 @row-clicked="
                     (booking, $index, $event) => {
                         $event.stopPropagation();
-                        $refs.context_booking.open(currentEvent || $event, {
-                            booking,
-                        });
+                        $refs.context_receptionist_booking.open(
+                            currentEvent || $event,
+                            {
+                                booking,
+                            },
+                        );
                         currentEvent = null;
                     }
                 "
@@ -94,7 +97,10 @@
                 Không tìm thấy bản ghi đặt phòng nào
             </div>
         </query->
-        <context-manage-booking- ref="context_booking" :refs="$refs" />
+        <context-receptionist-booking-
+            ref="context_receptionist_booking"
+            :refs="$refs"
+        />
         <popup-service-detail-add- ref="service_detail_add" />
         <popup-book- ref="book" :refs="$refs" />
         <popup-patron-select-or-add- ref="patron_select_or_add" />
