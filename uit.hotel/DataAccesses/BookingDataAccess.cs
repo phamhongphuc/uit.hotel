@@ -53,10 +53,11 @@ namespace uit.hotel.DataAccesses
             return bookingInDatabase;
         }
 
-        public static async Task<Booking> CheckOut(Booking bookingInDatabase)
+        public static async Task<Booking> CheckOut(Booking bookingInDatabase, Employee employee)
         {
             await Database.WriteAsync(realm =>
             {
+                bookingInDatabase.EmployeeCheckOut = employee;
                 bookingInDatabase.RealCheckOutTime = DateTimeOffset.Now;
                 bookingInDatabase.Status = (int)Booking.StatusEnum.CheckedOut;
                 bookingInDatabase.Room.IsClean = false;
