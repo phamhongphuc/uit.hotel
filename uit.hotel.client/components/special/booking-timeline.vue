@@ -238,6 +238,7 @@ table.timeline {
     > tr > td {
         padding: 1rem;
         white-space: nowrap;
+        background-color: rgba($body-bg, 0.5);
         border: $border;
         &.floor {
             position: relative;
