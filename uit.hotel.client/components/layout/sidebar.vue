@@ -32,13 +32,13 @@
                     exact
                     :permission="['ManagePatron', 'ManagePatronKind']"
                 />
-                <b-nav-item-icon-
+                <!-- <b-nav-item-icon-
                     to="/receptionist/booking"
                     icon="box"
                     text="Quản lý đặt phòng"
                     exact
                     :permission="['ManageRentingRoom']"
-                />
+                /> -->
                 <b-nav-item-icon-
                     to="/receptionist/timeline"
                     icon="clock"
@@ -63,7 +63,7 @@
                 v-model="showBusiness"
                 auto-permission
             >
-                <b-nav-item-icon-
+                <!-- <b-nav-item-icon-
                     to="/business/bill"
                     icon="dollar-sign"
                     text="Quản lý hóa đơn"
@@ -76,7 +76,7 @@
                     text="Quản lý phiếu thu"
                     exact
                     :permission="['GetAccountingVoucher']"
-                />
+                /> -->
                 <b-nav-item-icon-
                     to="/business/service"
                     icon="shopping-cart"
