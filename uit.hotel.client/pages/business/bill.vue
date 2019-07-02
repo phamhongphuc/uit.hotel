@@ -4,7 +4,7 @@
             <b-button
                 class="m-2"
                 variant="white"
-                @click="$refs.bill_add.open()"
+                @click="$refs.book.open({ rooms: [] })"
             >
                 <icon- class="mr-1" i="plus" />
                 <span>Đặt phòng</span>
@@ -105,6 +105,9 @@
         </query->
         <context-manage-bill- ref="context_bill" :refs="$refs" />
         <popup-receipt-add- ref="receipt_add" />
+        <popup-book- ref="book" :refs="$refs" />
+        <popup-patron-select-or-add- ref="patron_select_or_add" />
+        <popup-room-select- ref="room_select" />
     </div>
 </template>
 <script lang="ts">
