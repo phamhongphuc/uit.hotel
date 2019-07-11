@@ -56,7 +56,7 @@
         "@types/cookie": "^0.3.3",
         "@types/graphql": "^14.2.2",
         "@types/mocha": "^5.2.7",
-        "@types/node": "^12.0.8",
+        "@types/node": "^12.6.2",
         "@types/vuelidate": "^0.7.4",
         "@types/webpack-env": "^1.13.9",
         "@typescript-eslint/eslint-plugin": "^1.11.0",
