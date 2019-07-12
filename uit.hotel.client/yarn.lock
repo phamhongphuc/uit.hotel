@@ -1170,10 +1170,10 @@
     webpack-node-externals "^1.7.2"
     webpackbar "^3.2.0"
 
-"@nuxtjs/apollo@^4.0.0-rc7":
-  version "4.0.0-rc7"
-  resolved "https://registry.yarnpkg.com/@nuxtjs/apollo/-/apollo-4.0.0-rc7.tgz#4e39c17ba119dd70493cad98a4fbdc03de6d5b5b"
-  integrity sha512-/ZNvafMnApW8hRgj1o4VCd83ARAanxcbJn8B0qiidbqoXM/G6b7TBZgOZL6sbrMRlWYru/zMaR0NODoATwGgQw==
+"@nuxtjs/apollo@^4.0.0-rc8.1":
+  version "4.0.0-rc8.1"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/apollo/-/apollo-4.0.0-rc8.1.tgz#93955c392738dcf47ca30a55587e6da7b0481242"
+  integrity sha512-NJ1m+aum6UBmwnljkPq2UoQ4IlhiiksqjsWumStacB+c/sz/aFnwJhpPyxXJ5FHMLi872nIzJySMBr8tbdaL9Q==
   dependencies:
     cookie "^0.4.0"
     isomorphic-fetch "^2.2.1"
