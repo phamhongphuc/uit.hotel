@@ -23,7 +23,7 @@
         "test": "mocha test/**/*.ts -r test/ts-register --exit"
     },
     "dependencies": {
-        "@nuxtjs/apollo": "^4.0.0-rc7",
+        "@nuxtjs/apollo": "^4.0.0-rc8.2",
         "@nuxtjs/style-resources": "^0.1.2",
         "bluebird": "^3.5.5",
         "bootstrap-vue": "2.0.0-rc.24",
