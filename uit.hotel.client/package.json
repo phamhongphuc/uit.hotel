@@ -60,7 +60,7 @@
         "@types/vuelidate": "^0.7.4",
         "@types/webpack-env": "^1.13.9",
         "@typescript-eslint/eslint-plugin": "^1.11.0",
-        "@typescript-eslint/parser": "^1.11.0",
+        "@typescript-eslint/parser": "^1.13.0",
         "babel-eslint": "^10.0.2",
         "chai": "^4.2.0",
         "chalk": "^2.4.2",
