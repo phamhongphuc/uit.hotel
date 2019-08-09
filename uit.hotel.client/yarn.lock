@@ -800,12 +800,22 @@
     import-from "3.0.0"
     tslib "1.10.0"
 
-"@graphql-codegen/schema-ast@^1.3.1":
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/@graphql-codegen/schema-ast/-/schema-ast-1.3.1.tgz#483b91396a519d3327b438031c616581a6d85e09"
-  integrity sha512-SsKv5f0WPHWz2dFj6uSRsjbxcgjy/gzTUQaT8fzfScvzHLhamdiUWM3UjfHbJQu9jJJLUgf1o0aL2d9WURmHxQ==
+"@graphql-codegen/plugin-helpers@1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@graphql-codegen/plugin-helpers/-/plugin-helpers-1.5.0.tgz#0235343bee5350877ac7018e30c5833e7ea60b2f"
+  integrity sha512-U869xtwkLiIQBUQA8NlxO561GPBUF1p/Ecb1TW6RjEj72152NEtPMPvii6deWUII/FyL6ZKwahsS4C9CfJZwBQ==
   dependencies:
-    "@graphql-codegen/plugin-helpers" "1.3.1"
+    change-case "3.1.0"
+    common-tags "1.8.0"
+    import-from "3.0.0"
+    tslib "1.10.0"
+
+"@graphql-codegen/schema-ast@^1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@graphql-codegen/schema-ast/-/schema-ast-1.5.0.tgz#7e1c063a0a3f6c0bebad6e68e7f0793282259e34"
+  integrity sha512-/9wuyzxY2ocWto99T94uwHonGfTZzDxhAUiw688NsGdRl5oddw+Qh9KEDOovBv4sBsxdjAnGg8DAIUNGdrYcyA==
+  dependencies:
+    "@graphql-codegen/plugin-helpers" "1.5.0"
     tslib "1.10.0"
 
 "@graphql-codegen/typescript-compatibility@^1.3.1":
