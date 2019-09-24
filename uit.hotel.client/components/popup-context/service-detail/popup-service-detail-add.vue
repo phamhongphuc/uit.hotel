@@ -125,7 +125,7 @@ export default class extends mixins<PopupMixinType>(
     }
 
     async onResult(result: ExecutionResult<GetSimpleBookingsQuery>) {
-        if (result.data === undefined) return;
+        if (!result.data) return;
         this.bookings = result.data.bookings;
 
         if (this.input === null) return;

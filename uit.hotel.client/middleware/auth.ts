@@ -1,4 +1,4 @@
-import { Context } from '@nuxt/vue-app';
+import { Context } from '@nuxt/types';
 import cookie from 'cookie';
 import { RootState } from '~/store';
 
