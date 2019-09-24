@@ -32,7 +32,7 @@
         "graphql-tag": "^2.10.1",
         "moment": "^2.24.0",
         "nuxt": "^2.9.2",
-        "nuxt-property-decorator": "^2.3.0",
+        "nuxt-property-decorator": "^2.4.0",
         "source-map-support": "^0.5.13",
         "velocity-animate": "^1.5.2",
         "vue-clickaway": "^2.2.2",
