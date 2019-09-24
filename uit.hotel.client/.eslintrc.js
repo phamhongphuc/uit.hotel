@@ -73,6 +73,10 @@ const config = {
         '@typescript-eslint/prefer-interface': 'off',
 
         'node/no-unsupported-features/es-syntax': 'off',
+        'node/no-missing-import': 'off',
+        'node/no-extraneous-import': 'off',
+        'node/no-unpublished-import': 'off',
+
         'import/prefer-default-export': 'off',
         'import/order': [
             'error',
@@ -104,19 +108,10 @@ const config = {
         ],
         'vue/component-name-in-template-casing': ['error', 'kebab-case'],
 
+        'graphql/named-operations': ['warn', { schemaJson }],
         'graphql/template-strings': [
             'error',
-            {
-                validators: 'all',
-                env: 'apollo',
-                schemaJson,
-            },
-        ],
-        'graphql/named-operations': [
-            'warn',
-            {
-                schemaJson,
-            },
+            { validators: 'all', env: 'apollo', schemaJson },
         ],
     },
     overrides: [
