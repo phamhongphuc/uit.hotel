@@ -99,7 +99,19 @@ jobs:
           - script: |
                 cd $(path_client)
                 yarn lint:js --max-warnings=0
+            displayName: "[Client] Run `yarn lint:js`"
+
+          - script: |
+                cd $(path_client)
                 yarn lint:css
+            displayName: "[Client] Run `yarn lint:css`"
+
+          - script: |
+                cd $(path_client)
                 yarn build
+            displayName: "[Client] Run `yarn build`"
+
+          - script: |
+                cd $(path_client)
                 yarn test
-            displayName: "[Client] Run `yarn` lint and build"
+            displayName: "[Client] Run `yarn test`"

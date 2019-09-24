@@ -1,6 +1,8 @@
+import { Configuration } from '@nuxt/types';
+
 const LOCALHOST = `http://localhost:3000`;
 
-export default {
+const config: Configuration = {
     head: {
         title: 'uit.hotel.client',
         meta: [
@@ -27,13 +29,16 @@ export default {
         port: process.env.PORT || 8080,
     },
     env: {},
-    css: [{ src: '~/assets/scss/main.scss', lang: 'scss' }],
+    css: ['~/assets/scss/main.scss'],
     loading: { color: '#3B8070' },
-    modules: [
-        '@nuxtjs/apollo',
+    buildModules: [
+        [
+            '@nuxt/typescript-build',
+            { typeCheck: true, ignoreNotFoundWarnings: true },
+        ],
         '@nuxtjs/style-resources',
-        ['bootstrap-vue/nuxt', { css: false }],
     ],
+    modules: ['@nuxtjs/apollo', ['bootstrap-vue/nuxt', { css: false }]],
     styleResources: {
         scss: [
             'assets/scss/before/_before.scss',
@@ -65,12 +70,14 @@ export default {
     build: {
         extend(config, { isDev, isClient }) {
             if (isDev && isClient) {
-                config.module.rules.push({
-                    enforce: 'pre',
-                    test: /\.(ts|js|vue)$/,
-                    loader: 'eslint-loader',
-                    exclude: /(node_modules)/,
-                });
+                if (config.module) {
+                    config.module.rules.push({
+                        enforce: 'pre',
+                        test: /\.(ts|js|vue)$/,
+                        loader: 'eslint-loader',
+                        exclude: /(node_modules)/,
+                    });
+                }
             }
         },
         postcss: {
@@ -81,3 +88,5 @@ export default {
         },
     },
 };
+
+export default config;

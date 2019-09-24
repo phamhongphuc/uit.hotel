@@ -32,7 +32,7 @@
         "coverage",
         "modules/typescript.js",
         "test/ts-register.js",
-        "nuxt.config.js",
+        "nuxt.config.ts",
         ".eslintrc.js"
     ]
 }
