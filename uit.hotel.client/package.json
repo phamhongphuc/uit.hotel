@@ -5,10 +5,10 @@
     "author": "Phạm Hồng Phúc <phamhongphuc.info@gmail.com>",
     "private": true,
     "scripts": {
-        "dev": "nuxt",
+        "dev": "nuxt-ts",
         "dev:s": "cd ../uit.hotel && dotnet run",
-        "build": "nuxt build",
-        "start": "nuxt start",
+        "build": "nuxt-ts build",
+        "start": "nuxt-ts start",
         "heroku-postbuild": "yarn build",
         "precommit": "yarn lint",
         "gql": "graphql-codegen --config codegen.yml",
