@@ -1,5 +1,14 @@
 const schemaJson = require('./graphql/schema.json');
 const path = require('path');
+const packageDir = [
+    path.join('./'),
+    path.join(__dirname, 'node_modules/@nuxt/typescript-build'),
+    path.join(__dirname, 'node_modules/@nuxt/vue-app/'),
+    path.join(__dirname, 'node_modules/@nuxtjs/apollo/'),
+    path.join(__dirname, 'node_modules/nuxt-property-decorator'),
+    path.join(__dirname, 'node_modules/nuxt'),
+    path.join(__dirname, 'node_modules/vue-cli-plugin-apollo/'),
+];
 
 const config = {
     env: {
@@ -86,14 +95,7 @@ const config = {
                 devDependencies: false,
                 optionalDependencies: false,
                 peerDependencies: false,
-                packageDir: [
-                    path.join('./'),
-                    path.join(__dirname, 'node_modules/@nuxt/builder'),
-                    path.join(__dirname, 'node_modules/@nuxt/vue-app'),
-                    path.join(__dirname, 'node_modules/@nuxtjs/apollo/'),
-                    path.join(__dirname, 'node_modules/nuxt'),
-                    path.join(__dirname, 'node_modules/vue-cli-plugin-apollo/'),
-                ],
+                packageDir,
             },
         ],
         'vue/html-self-closing': [
