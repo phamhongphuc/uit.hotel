@@ -1,5 +1,14 @@
 const schemaJson = require('./graphql/schema.json');
 const path = require('path');
+const packageDir = [
+    path.join('./'),
+    path.join(__dirname, 'node_modules/@nuxt/typescript-build'),
+    path.join(__dirname, 'node_modules/@nuxt/vue-app/'),
+    path.join(__dirname, 'node_modules/@nuxtjs/apollo/'),
+    path.join(__dirname, 'node_modules/nuxt-property-decorator'),
+    path.join(__dirname, 'node_modules/nuxt'),
+    path.join(__dirname, 'node_modules/vue-cli-plugin-apollo/'),
+];
 
 const config = {
     env: {
@@ -64,6 +73,10 @@ const config = {
         '@typescript-eslint/prefer-interface': 'off',
 
         'node/no-unsupported-features/es-syntax': 'off',
+        'node/no-missing-import': 'off',
+        'node/no-extraneous-import': 'off',
+        'node/no-unpublished-import': 'off',
+
         'import/prefer-default-export': 'off',
         'import/order': [
             'error',
@@ -86,14 +99,7 @@ const config = {
                 devDependencies: false,
                 optionalDependencies: false,
                 peerDependencies: false,
-                packageDir: [
-                    path.join('./'),
-                    path.join(__dirname, 'node_modules/@nuxt/builder'),
-                    path.join(__dirname, 'node_modules/@nuxt/vue-app'),
-                    path.join(__dirname, 'node_modules/@nuxtjs/apollo/'),
-                    path.join(__dirname, 'node_modules/nuxt'),
-                    path.join(__dirname, 'node_modules/vue-cli-plugin-apollo/'),
-                ],
+                packageDir,
             },
         ],
         'vue/html-self-closing': [
@@ -102,19 +108,10 @@ const config = {
         ],
         'vue/component-name-in-template-casing': ['error', 'kebab-case'],
 
+        'graphql/named-operations': ['warn', { schemaJson }],
         'graphql/template-strings': [
             'error',
-            {
-                validators: 'all',
-                env: 'apollo',
-                schemaJson,
-            },
-        ],
-        'graphql/named-operations': [
-            'warn',
-            {
-                schemaJson,
-            },
+            { validators: 'all', env: 'apollo', schemaJson },
         ],
     },
     overrides: [

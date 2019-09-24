@@ -46,7 +46,7 @@ export const actions: ActionTree<UserState, RootState> = {
             variables,
         });
 
-        if (result.data === undefined || result.data.login === null) return;
+        if (!result.data || !result.data.login) return;
 
         commit('login', result.data.login);
         this.$router.push('/');
@@ -71,7 +71,7 @@ export const actions: ActionTree<UserState, RootState> = {
                 mutation: userCheckLogin,
             });
 
-            if (result.data === undefined) {
+            if (!result.data) {
                 throw new Error('Lỗi không xác định');
             }
 
