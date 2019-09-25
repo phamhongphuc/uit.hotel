@@ -33,9 +33,9 @@ export class MutableMixin extends Vue {
                 variables: this.variables,
             },
         );
-        const mutationName = this.mutationName;
+        const { mutationName } = this;
         if (mutationName !== undefined) {
-            const data = result.data;
+            const { data } = result;
             if (data == null) return undefined;
             if (mutationName in data) {
                 const text = data[mutationName];

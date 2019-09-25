@@ -152,7 +152,7 @@ export default class extends Vue {
             ratio,
             now,
         } = this;
-        return ((max - now) / this.seconds) * ratio + 'rem';
+        return `${((max - now) / this.seconds) * ratio}rem`;
     }
 
     get nowStyle() {
@@ -167,7 +167,7 @@ export default class extends Vue {
             ratio,
         } = this;
         return {
-            minWidth: ((max - min) / this.seconds) * ratio + 'rem',
+            minWidth: `${((max - min) / this.seconds) * ratio}rem`,
         };
     }
 
@@ -210,8 +210,8 @@ export default class extends Vue {
             return {
                 ...booking,
                 style: {
-                    left: left + 'rem',
-                    width: width + 'rem',
+                    left: `${left}rem`,
+                    width: `${width}rem`,
                 },
                 variant: statusEnumMap[booking.status],
             };

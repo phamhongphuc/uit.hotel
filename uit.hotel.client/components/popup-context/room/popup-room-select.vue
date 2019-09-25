@@ -93,7 +93,8 @@ export default class extends mixins<PopupMixinType>(
     tooltip(room: GetFloorsMap.Rooms) {
         if (this.data.currentRoomIds.includes(room.id)) {
             return 'Phòng đã được chọn';
-        } else if (room.currentBooking !== null) {
+        }
+        if (room.currentBooking !== null) {
             return 'Phòng đã được thuê';
         }
         return `Loại: Phòng ${room.roomKind.name}`;
@@ -102,7 +103,8 @@ export default class extends mixins<PopupMixinType>(
     buttonVariant(room: GetFloorsMap.Rooms) {
         if (this.data.currentRoomIds.includes(room.id)) {
             return 'orange';
-        } else if (room.currentBooking !== null) {
+        }
+        if (room.currentBooking !== null) {
             return 'light-red';
         }
         return 'light-blue';

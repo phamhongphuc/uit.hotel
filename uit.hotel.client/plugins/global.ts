@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import { Context } from '@nuxt/vue-app';
+import { Context } from '@nuxt/types';
 import moment from 'moment';
 
 moment.locale('vi');

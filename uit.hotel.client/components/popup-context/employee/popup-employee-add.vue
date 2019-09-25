@@ -187,7 +187,7 @@ import {
 export default class PopupEmployeeAdd extends mixins<
     PopupMixin<void, EmployeeCreateInput>
 >(PopupMixin, DataMixin({ createEmployee, getPositions })) {
-    rePassword: string = '';
+    rePassword = '';
     onOpen() {
         this.input = {
             id: '',

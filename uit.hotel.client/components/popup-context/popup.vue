@@ -25,7 +25,7 @@ import { ClickawayMixin } from '~/components/mixins/clickaway';
     name: 'popup-',
 })
 export default class Popup extends mixins<ClickawayMixin>(ClickawayMixin) {
-    show: boolean = false;
+    show = false;
     data: any = null;
 
     @Prop({ required: true, type: String })

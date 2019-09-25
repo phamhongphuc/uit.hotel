@@ -11,5 +11,5 @@ requireComponent.keys().forEach((fileName): void => {
     const regexr = /^.(\/[\w-]+)+\/([\w-]+).vue$/i;
     const name = fileName.replace(regexr, '$2');
 
-    Vue.component(name + '-', componentConfig.default || componentConfig);
+    Vue.component(`${name}-`, componentConfig.default || componentConfig);
 });

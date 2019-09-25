@@ -163,10 +163,10 @@ import { Vue, Component } from 'nuxt-property-decorator';
     name: 'sidebar-',
 })
 export default class extends Vue {
-    showReceptionist: boolean = false;
-    showBusiness: boolean = false;
-    showPersonnel: boolean = false;
-    showManage: boolean = false;
+    showReceptionist = false;
+    showBusiness = false;
+    showPersonnel = false;
+    showManage = false;
 
     sidebarStyle = {
         width: 'auto',
@@ -187,8 +187,9 @@ export default class extends Vue {
         }
         const sidebarCollapse = document.getElementById('sidebar-collapse');
         if (sidebarCollapse === null) throw new Error();
-        this.sidebarStyle.width =
-            sidebarCollapse.getBoundingClientRect().width + 'px';
+        this.sidebarStyle.width = `${
+            sidebarCollapse.getBoundingClientRect().width
+        }px`;
     }
 }
 </script>

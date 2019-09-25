@@ -1,4 +1,4 @@
-import { Context } from '@nuxt/vue-app';
+import { Context } from '@nuxt/types';
 import cookie from 'cookie';
 import { RootState } from '~/store';
 
@@ -9,14 +9,14 @@ export default async function({
     store,
     redirect,
     route,
-}: Context): Promise<void> {
+}: Context): Promise<void | undefined> {
     function checkAndRedirect(): void {
         if (!publicRoutes.includes(route.name || '')) redirect('/login');
     }
 
     if (process.server) {
         // Call first and one time user access to this application.
-        const headers: any = req.headers;
+        const { headers } = req;
         if (headers.cookie === undefined) return checkAndRedirect();
         const token = cookie.parse(headers.cookie)['apollo-token'];
         const isUserLoggedIn = await store.dispatch(
@@ -24,9 +24,10 @@ export default async function({
             token,
         );
         if (!isUserLoggedIn) return checkAndRedirect();
-        else if (route.name === 'login') redirect('/');
+        if (route.name === 'login') return redirect('/');
     } else {
-        const employee = (store.state as RootState).user.employee;
+        const { employee } = (store.state as RootState).user;
         if (!employee) return checkAndRedirect();
     }
+    return undefined;
 }
