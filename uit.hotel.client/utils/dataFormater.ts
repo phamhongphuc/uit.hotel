@@ -10,7 +10,7 @@ export const toDate = (date: string) => {
     const current = moment();
     const time = moment(date);
     if (current.year() === time.year()) return time.format('HH:mm - DD/MM');
-    else if (time.year() === 1) return 'N/A';
+    if (time.year() === 1) return 'N/A';
     return time.format('HH:mm - DD/MM/YYYY');
 };
 

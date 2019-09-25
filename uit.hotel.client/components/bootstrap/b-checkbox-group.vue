@@ -34,8 +34,8 @@ export default class extends mixins<CheckboxProps>(CheckboxProps) {
     title!: string;
 
     selected: string[] = [];
-    allSelected: boolean = false;
-    indeterminate: boolean = false;
+    allSelected = false;
+    indeterminate = false;
 
     @Watch('selected')
     onSelectedChange(array: string[]) {

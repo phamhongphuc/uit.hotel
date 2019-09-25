@@ -142,7 +142,7 @@ export default class extends mixins<PopupMixinType>(
     PopupMixin,
     DataMixin({ getPatronsAndRooms, getRoom, moment }),
 ) {
-    isCheckinNow: boolean = false;
+    isCheckinNow = false;
 
     bookCheckInTime: string = moment()
         .add(1, 'day')
@@ -191,21 +191,20 @@ export default class extends mixins<PopupMixinType>(
                 bill: { patron: { id: patronId } },
             };
             return output;
-        } else {
-            const output: CreateBill.Variables = {
-                bookings: this.tableData.map(tableRow => ({
-                    bookCheckInTime: this.bookCheckInTime,
-                    bookCheckOutTime: this.bookCheckOutTime,
-                    room: { id: tableRow.room.id },
-                    listOfPatrons: tableRow.patrons.map(patron => {
-                        if (patron.isOwner) patronId = patron.id;
-                        return { id: patron.id };
-                    }),
-                })),
-                bill: { patron: { id: patronId } },
-            };
-            return output;
         }
+        const output: CreateBill.Variables = {
+            bookings: this.tableData.map(tableRow => ({
+                bookCheckInTime: this.bookCheckInTime,
+                bookCheckOutTime: this.bookCheckOutTime,
+                room: { id: tableRow.room.id },
+                listOfPatrons: tableRow.patrons.map(patron => {
+                    if (patron.isOwner) patronId = patron.id;
+                    return { id: patron.id };
+                }),
+            })),
+            bill: { patron: { id: patronId } },
+        };
+        return output;
     }
 
     addRoom() {

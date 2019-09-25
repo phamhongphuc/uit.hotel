@@ -158,12 +158,12 @@ export default class extends mixins(
 
     getCheckInTime(item: GetBookings.Bookings) {
         if (item.status === 0) return item.bookCheckInTime;
-        else return item.realCheckInTime;
+        return item.realCheckInTime;
     }
 
     getCheckOutTime(item: GetBookings.Bookings) {
         if (item.status === 3) return item.realCheckOutTime;
-        else return item.bookCheckOutTime;
+        return item.bookCheckOutTime;
     }
 }
 </script>

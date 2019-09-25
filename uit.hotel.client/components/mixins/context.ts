@@ -8,7 +8,7 @@ export class ContextMixin extends Vue {
     protected data: any = null;
 
     protected open(event: MouseEvent, data: any): void {
-        const context: any = this.$refs.context;
+        const context = this.$refs.context as Vue & ContextMixin;
         if (context !== undefined && typeof context.open === 'function') {
             this.data = data;
             context.open(event, data);

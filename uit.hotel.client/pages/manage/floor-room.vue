@@ -105,6 +105,6 @@ export default class extends mixins(DataMixin({ getFloors })) {
             .sort((a, b) => (a.name > b.name ? 1 : -1));
     }
 
-    showInactive: boolean = false;
+    showInactive = false;
 }
 </script>

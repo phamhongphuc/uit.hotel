@@ -61,7 +61,7 @@ export default class extends mixins<PopupMixinType>(
     PopupMixin,
     DataMixin({ updatePatronKind }),
 ) {
-    phoneNumbers: string = '';
+    phoneNumbers = '';
     onOpen() {
         const { patronKind } = this.data;
         this.input = {

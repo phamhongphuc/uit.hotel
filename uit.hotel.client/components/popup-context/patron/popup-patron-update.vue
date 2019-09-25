@@ -177,9 +177,11 @@ import {
 export default class extends mixins<
     PopupMixin<{ patron: GetPatrons.Patrons }, PatronUpdateInput>
 >(PopupMixin, DataMixin({ updatePatron, getPatronKinds, optional })) {
-    phoneNumbers: string = '';
+    phoneNumbers = '';
 
     onOpen() {
+        this.phoneNumbers = this.data.patron.phoneNumbers.join(',');
+
         const {
             id,
             identification,
@@ -192,11 +194,9 @@ export default class extends mixins<
             residence,
             company,
             note,
-            phoneNumbers,
         } = this.data.patron;
-        const self = this;
+        const { phoneNumbers } = this;
 
-        this.phoneNumbers = phoneNumbers.join(',');
         this.input = {
             id,
             identification,
@@ -210,9 +210,7 @@ export default class extends mixins<
             company,
             note,
             get listOfPhoneNumbers() {
-                return self.phoneNumbers === ''
-                    ? []
-                    : self.phoneNumbers.split(/\s*,\s*/);
+                return phoneNumbers === '' ? [] : phoneNumbers.split(/\s*,\s*/);
             },
             patronKind: {
                 id: -1,
