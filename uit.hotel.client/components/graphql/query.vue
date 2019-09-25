@@ -31,6 +31,7 @@
 </template>
 <script lang="ts">
 import { Vue, Component, Prop } from 'nuxt-property-decorator';
+
 @Component({
     name: 'query-',
 })

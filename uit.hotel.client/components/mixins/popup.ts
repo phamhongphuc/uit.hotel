@@ -11,7 +11,7 @@ export class PopupMixin<TData, TInput> extends Vue {
     protected onOpen(): void | Promise<void> {}
 
     protected async open(data: TData): Promise<void> {
-        const popup: any = this.$refs.popup;
+        const popup = this.$refs.popup as Vue & PopupMixin<TData, TInput>;
         if (popup !== undefined && typeof popup.open === 'function') {
             this.data = data;
             popup.open(data);

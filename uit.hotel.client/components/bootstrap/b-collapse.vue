@@ -45,7 +45,7 @@ export default class extends mixins<PermissionMixin>(PermissionMixin) {
                     const child = current.componentInstance;
                     if (child === undefined) return;
                     if (!isPermissionMixin(child)) return;
-                    const permission = child.permission;
+                    const { permission } = child;
                     if (typeof permission === 'boolean') return;
 
                     output = output.concat(permission);

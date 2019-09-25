@@ -30,8 +30,8 @@ export default class extends mixins<InputProps, StateProps>(
     InputProps,
     StateProps,
 ) {
-    date: string = '';
-    time: string = '';
+    date = '';
+    time = '';
 
     @Watch('date')
     onDateChange() {

@@ -26,9 +26,9 @@ export default class extends mixins<ClickawayMixin>(ClickawayMixin) {
     @Prop({ default: true, type: Boolean })
     closeOnScroll!: boolean;
 
-    top: number = 0;
-    left: number = 0;
-    show: boolean = false;
+    top = 0;
+    left = 0;
+    show = false;
     data: any = null;
 
     get style() {
