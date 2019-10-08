@@ -52,7 +52,7 @@
         "@graphql-codegen/typescript-compatibility": "^1.7.0",
         "@graphql-codegen/typescript-operations": "^1.7.0",
         "@nuxt/types": "^0.2.15",
-        "@nuxt/typescript-build": "^0.2.10",
+        "@nuxt/typescript-build": "^0.3.0",
         "@playlyfe/gql": "^2.6.2",
         "@types/chai": "^4.2.3",
         "@types/cookie": "^0.3.3",
