@@ -46,7 +46,7 @@
         "@babel/polyfill": "^7.6.0",
         "@babel/register": "7.6.2",
         "@graphql-codegen/cli": "^1.7.0",
-        "@graphql-codegen/introspection": "^1.7.0",
+        "@graphql-codegen/introspection": "^1.8.1",
         "@graphql-codegen/schema-ast": "^1.7.0",
         "@graphql-codegen/typescript": "^1.8.0",
         "@graphql-codegen/typescript-compatibility": "^1.8.1",
