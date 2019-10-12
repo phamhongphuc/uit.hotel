@@ -922,12 +922,12 @@
     import-from "3.0.0"
     tslib "1.10.0"
 
-"@graphql-codegen/schema-ast@^1.7.0":
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/@graphql-codegen/schema-ast/-/schema-ast-1.7.0.tgz#43b774998aceec27c18bfcbbebcd04f160d915d2"
-  integrity sha512-jTdVKeObJc4Ndjt3V2NyOWRr9y6UCNDSIRBfoBHfn2+Vm+odqpyGdoeeFncjs4hjAAnzqWCvpedB08UiVunYOQ==
+"@graphql-codegen/schema-ast@^1.8.1":
+  version "1.8.1"
+  resolved "https://registry.yarnpkg.com/@graphql-codegen/schema-ast/-/schema-ast-1.8.1.tgz#e1a4a1264c7c4147324e6b22357833b25443aeb7"
+  integrity sha512-msvgQ582+SH4dLUyQHS4cYUWRtvVmJALsXB2qc2MdfYo7fj4ha+ZYl5SucnzSUTT/w7txZkL5OBQrRriPehh6w==
   dependencies:
-    "@graphql-codegen/plugin-helpers" "1.7.0"
+    "@graphql-codegen/plugin-helpers" "1.8.1"
     tslib "1.10.0"
 
 "@graphql-codegen/typescript-compatibility@^1.8.1":
