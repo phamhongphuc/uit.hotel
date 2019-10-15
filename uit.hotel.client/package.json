@@ -24,7 +24,7 @@
     },
     "dependencies": {
         "@nuxt/typescript-runtime": "^0.1.7",
-        "@nuxtjs/apollo": "^4.0.0-rc14",
+        "@nuxtjs/apollo": "^4.0.0-rc15",
         "@nuxtjs/style-resources": "^1.0.0",
         "bluebird": "^3.7.0",
         "bootstrap-vue": "2.0.2",
