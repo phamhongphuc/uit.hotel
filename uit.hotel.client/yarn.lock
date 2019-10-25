@@ -1229,10 +1229,10 @@
     "@types/webpack-dev-middleware" "^2.0.3"
     "@types/webpack-hot-middleware" "^2.16.5"
 
-"@nuxt/types@^0.3.1":
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/@nuxt/types/-/types-0.3.1.tgz#b6e133a57f740032743206861e51f762bcbbe89b"
-  integrity sha512-Ee8vRb6+OU+GttbYiHlvSa9UbOMvHdTIZw6XYbFidUYhSbyWbEtP6iOjql4OPntcSNufM4S2WyDvXKErvh/SEA==
+"@nuxt/types@0.3.2", "@nuxt/types@^0.3.1":
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/@nuxt/types/-/types-0.3.2.tgz#81f6d7c508c7420fdc72b4953e6ad9d2d7cd5c43"
+  integrity sha512-cxiLDOdekzHpFTj5uy2YL+IK/nRpd/6oGR0hOH6wGkOWDHQ14wpD6NcvuVhJbwkBuerwQ/eZmJ2meJKSeMTiwQ==
   dependencies:
     "@types/babel__core" "^7.1.3"
     "@types/compression" "^1.0.1"
@@ -1240,24 +1240,24 @@
     "@types/etag" "^1.8.0"
     "@types/express" "^4.17.1"
     "@types/html-minifier" "^3.5.3"
-    "@types/node" "^12.7.11"
+    "@types/node" "^12.11.1"
     "@types/optimize-css-assets-webpack-plugin" "^5.0.1"
     "@types/serve-static" "^1.13.3"
     "@types/terser-webpack-plugin" "^1.2.1"
-    "@types/webpack" "^4.39.2"
+    "@types/webpack" "^4.39.3"
     "@types/webpack-bundle-analyzer" "^2.13.3"
     "@types/webpack-dev-middleware" "^2.0.3"
     "@types/webpack-hot-middleware" "^2.16.5"
 
-"@nuxt/typescript-build@^0.2.10":
-  version "0.2.10"
-  resolved "https://registry.yarnpkg.com/@nuxt/typescript-build/-/typescript-build-0.2.10.tgz#23c69fc8a30b87738d8347a71d46f2690852d9d7"
-  integrity sha512-NlZTIntpwgbalSgzUsLnGoAf+8H2hMU3LZpF8aDc1yNl4/XmIzefBMoKpAQF+NU2vaq1VR7fXwhdCK1/tJZq0Q==
+"@nuxt/typescript-build@^0.3.2":
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/@nuxt/typescript-build/-/typescript-build-0.3.2.tgz#5037d64bf2c21c2b440ed931875dafc2ca53ef23"
+  integrity sha512-z73z2dU48UTfE+cl50JIN53GcKsnlNy5e1VC/JQhJG6gS31Z13gR5AKcTBOrF5j5pfL9bmVgWx7gsiO19H2KkQ==
   dependencies:
-    "@nuxt/types" "0.2.15"
+    "@nuxt/types" "0.3.2"
     consola "^2.10.1"
-    fork-ts-checker-webpack-plugin "^1.5.0"
-    ts-loader "^6.1.2"
+    fork-ts-checker-webpack-plugin "^1.5.1"
+    ts-loader "^6.2.0"
     typescript "~3.6"
 
 "@nuxt/typescript-runtime@^0.1.7":
@@ -1880,6 +1880,11 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.14.18.tgz#b7d45fc950e6ffd7edc685e890d13aa7b8535dce"
   integrity sha512-ryO3Q3++yZC/+b8j8BdKd/dn9JlzlHBPdm80656xwYUdmPkpTGTjkAdt6BByiNupGPE8w0FhBgvYy/fX9hRNGQ==
 
+"@types/node@^12.11.1":
+  version "12.11.7"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.11.7.tgz#57682a9771a3f7b09c2497f28129a0462966524a"
+  integrity sha512-JNbGaHFCLwgHn/iCckiGSOZ1XYHsKFwREtzPwSGCVld1SGhOlmZw2D4ZI94HQCrBHbADzW9m4LER/8olJTRGHA==
+
 "@types/object-assign@^4.0.30":
   version "4.0.30"
   resolved "https://registry.yarnpkg.com/@types/object-assign/-/object-assign-4.0.30.tgz#8949371d5a99f4381ee0f1df0a9b7a187e07e652"
@@ -2013,10 +2018,22 @@
     "@types/source-list-map" "*"
     source-map "^0.6.1"
 
-"@types/webpack@*", "@types/webpack@^4.39.1", "@types/webpack@^4.39.2":
+"@types/webpack@*", "@types/webpack@^4.39.1":
   version "4.39.2"
   resolved "https://registry.yarnpkg.com/@types/webpack/-/webpack-4.39.2.tgz#fcaa85607a9bdd0e8f86a350f239ff08aede8584"
   integrity sha512-3c7+vcmyyIi3RBoOdXs8k3E9rQVIy6yOBqK0DFk6lnJ76JUfbDBWbEf1JflzyPQf56W4ToE+2YPnbxbucniW5w==
+  dependencies:
+    "@types/anymatch" "*"
+    "@types/node" "*"
+    "@types/tapable" "*"
+    "@types/uglify-js" "*"
+    "@types/webpack-sources" "*"
+    source-map "^0.6.0"
+
+"@types/webpack@^4.39.3":
+  version "4.39.5"
+  resolved "https://registry.yarnpkg.com/@types/webpack/-/webpack-4.39.5.tgz#3671b65928d9e0c6fcd4adff3f8167d48b174681"
+  integrity sha512-9twG6D97ao13MBLvigwfBJe6rxtb04UY3TcYHBYkW5sXZjUrNhqIRxLYg74VzK/YAE8xlVhOyd+3Whr7E5RrBA==
   dependencies:
     "@types/anymatch" "*"
     "@types/node" "*"
@@ -6053,10 +6070,10 @@ forever-agent@~0.6.1:
   resolved "https://registry.yarnpkg.com/forever-agent/-/forever-agent-0.6.1.tgz#fbc71f0c41adeb37f96c577ad1ed42d8fdacca91"
   integrity sha1-+8cfDEGt6zf5bFd60e1C2P2sypE=
 
-fork-ts-checker-webpack-plugin@^1.5.0:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/fork-ts-checker-webpack-plugin/-/fork-ts-checker-webpack-plugin-1.5.0.tgz#ce1d77190b44d81a761b10b6284a373795e41f0c"
-  integrity sha512-zEhg7Hz+KhZlBhILYpXy+Beu96gwvkROWJiTXOCyOOMMrdBIRPvsBpBqgTI4jfJGrJXcqGwJR8zsBGDmzY0jsA==
+fork-ts-checker-webpack-plugin@^1.5.1:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/fork-ts-checker-webpack-plugin/-/fork-ts-checker-webpack-plugin-1.6.0.tgz#a81fd1c6bf5258fa5318cf3e9a7e9bac006f7917"
+  integrity sha512-vqOY5gakcoon2s12V7MMe01OPwfgqulUWFzm+geQaPPOBKjW1I7aqqoBVlU0ECn97liMB0ECs16pRdIGe9qdRw==
   dependencies:
     babel-code-frame "^6.22.0"
     chalk "^2.4.1"
@@ -12399,7 +12416,7 @@ ts-invariant@^0.4.0:
   dependencies:
     tslib "^1.9.3"
 
-ts-loader@^6.1.2, ts-loader@^6.2.0:
+ts-loader@^6.2.0:
   version "6.2.0"
   resolved "https://registry.yarnpkg.com/ts-loader/-/ts-loader-6.2.0.tgz#52d3993ecbc5474c1513242388e1049da0fce880"
   integrity sha512-Da8h3fD+HiZ9GvZJydqzk3mTC9nuOKYlJcpuk+Zv6Y1DPaMvBL+56GRzZFypx2cWrZFMsQr869+Ua2slGoLxvQ==
