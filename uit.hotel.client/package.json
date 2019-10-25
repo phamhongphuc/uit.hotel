@@ -98,6 +98,6 @@
         "stylelint-scss": "^3.11.1",
         "ts-loader": "^6.2.0",
         "ts-node": "^8.4.1",
-        "typescript": "^3.6.3"
+        "typescript": "^3.6.4"
     }
 }
