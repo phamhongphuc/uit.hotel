@@ -1,8 +1,8 @@
 <template>
     <div id="side" class="center">
-        <no-ssr>
+        <client-only>
             <notifications :duration="1500" position="left bottom" />
-        </no-ssr>
+        </client-only>
         <div class="left flex-fill" />
         <nuxt class="right" />
     </div>
