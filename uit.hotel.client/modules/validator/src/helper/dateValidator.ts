@@ -1,6 +1,6 @@
-import { required, not } from 'vuelidate/lib/validators';
 import moment, { Moment } from 'moment';
 import { RuleDecl } from 'vue/types/options';
+import { required, not } from 'vuelidate/lib/validators';
 
 export function validDate(value: string) {
     return moment(value, 'YYYY-MM-DD').isValid();
