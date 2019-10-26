@@ -69,8 +69,8 @@
 </template>
 <script lang="ts">
 import { Component, mixins, Vue } from 'nuxt-property-decorator';
-import { minValue } from 'vuelidate/lib/validators';
 import { ExecutionResult } from 'graphql';
+import { minValue } from 'vuelidate/lib/validators';
 import { DataMixin, PopupMixin } from '~/components/mixins';
 import {
     ServicesDetailCreateInput,
