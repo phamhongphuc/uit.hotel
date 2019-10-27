@@ -33,13 +33,13 @@
                 ]"
                 class="table-style"
             >
-                <template v-slot:index="data">
+                <template v-slot:cell(index)="data">
                     {{ data.index + 1 }}
                 </template>
-                <template v-slot:time="{ value }">
+                <template v-slot:cell(time)="{ value }">
                     {{ toDate(value) }}
                 </template>
-                <template v-slot:money="{ value }">
+                <template v-slot:cell(money)="{ value }">
                     {{ toMoney(value) }}
                 </template>
             </b-table>

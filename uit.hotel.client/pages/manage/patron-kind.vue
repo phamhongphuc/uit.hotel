@@ -54,10 +54,10 @@
                     }
                 "
             >
-                <template v-slot:index="data">
+                <template v-slot:cell(index)="data">
                     {{ data.index + 1 }}
                 </template>
-                <template v-slot:patrons="{ value }">
+                <template v-slot:cell(patrons)="{ value }">
                     {{ value.length }} khách hàng
                 </template>
             </b-table>
