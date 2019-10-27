@@ -56,10 +56,10 @@
                     }
                 "
             >
-                <template v-slot:index="data">
+                <template v-slot:cell(index)="data">
                     {{ data.index + 1 }}
                 </template>
-                <template v-slot:phoneNumbers="{ value }">
+                <template v-slot:cell(phoneNumbers)="{ value }">
                     <a
                         v-for="phoneNumber in value"
                         :key="phoneNumber"
@@ -70,7 +70,7 @@
                         {{ phoneNumber }}
                     </a>
                 </template>
-                <template v-slot:birthdate="{ value }">
+                <template v-slot:cell(birthdate)="{ value }">
                     {{ toYear(value) }}
                 </template>
             </b-table>

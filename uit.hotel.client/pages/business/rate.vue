@@ -64,19 +64,19 @@
                     }
                 "
             >
-                <template v-slot:index="data">
+                <template v-slot:cell(index)="data">
                     {{ data.index + 1 }}
                 </template>
-                <template v-slot:createDate="{ value }">
+                <template v-slot:cell(createDate)="{ value }">
                     {{ toDate(value) }}
                 </template>
-                <template v-slot:effectiveStartDate="{ value }">
+                <template v-slot:cell(effectiveStartDate)="{ value }">
                     {{ toDate(value) }}
                 </template>
-                <template v-slot:dayRate="{ value }">
+                <template v-slot:cell(dayRate)="{ value }">
                     {{ toMoney(value) }}
                 </template>
-                <template v-slot:roomKind="{ value }">
+                <template v-slot:cell(roomKind)="{ value }">
                     {{ value.name }}
                 </template>
             </b-table>

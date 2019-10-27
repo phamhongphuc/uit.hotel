@@ -80,18 +80,18 @@
                     }
                 "
             >
-                <template v-slot:index="data">
+                <template v-slot:cell(index)="data">
                     {{ data.index + 1 }}
                 </template>
-                <template v-slot:employeesActive="{ item }">
+                <template v-slot:cell(employeesActive)="{ item }">
                     {{ item.employees.filter(e => e.isActive).length }}
                     người
                 </template>
-                <template v-slot:employeesInactive="{ item }">
+                <template v-slot:cell(employeesInactive)="{ item }">
                     {{ item.employees.filter(e => !e.isActive).length }}
                     người
                 </template>
-                <template v-slot:employees="{ value }">
+                <template v-slot:cell(employees)="{ value }">
                     {{ value.length }} người
                 </template>
             </b-table>

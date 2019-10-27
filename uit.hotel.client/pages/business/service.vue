@@ -74,13 +74,15 @@
                     }
                 "
             >
-                <template v-slot:index="data">
+                <template v-slot:cell(index)="data">
                     {{ data.index + 1 }}
                 </template>
-                <template v-slot:unitRate="{ item: { unitRate, unit } }">
+                <template v-slot:cell(unitRate)="{ item: { unitRate, unit } }">
                     {{ toMoney(unitRate) }} / {{ unit }}
                 </template>
-                <template v-slot:servicesDetails="{ value, item: { unit } }">
+                <template
+                    v-slot:cell(servicesDetails)="{ value, item: { unit } }"
+                >
                     {{ servicesDetailsCount(value) }} {{ unit }}
                 </template>
             </b-table>

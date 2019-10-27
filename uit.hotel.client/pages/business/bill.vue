@@ -76,26 +76,26 @@
                     }
                 "
             >
-                <template v-slot:index="data">
+                <template v-slot:cell(index)="data">
                     {{ data.index + 1 }}
                 </template>
-                <template v-slot:time="{ value }">
+                <template v-slot:cell(time)="{ value }">
                     {{
                         moment(value).year() === 1
                             ? 'Chưa chốt hóa đơn'
                             : toDate(value)
                     }}
                 </template>
-                <template v-slot:bookings="{ value }">
+                <template v-slot:cell(bookings)="{ value }">
                     {{ value.length }} phòng
                 </template>
-                <template v-slot:receipts="{ value }">
+                <template v-slot:cell(receipts)="{ value }">
                     {{ value.length }} lần
                 </template>
-                <template v-slot:totalReceipts="{ item }">
+                <template v-slot:cell(totalReceipts)="{ item }">
                     {{ toMoney(sumReceipts(item.receipts)) }}
                 </template>
-                <template v-slot:total="{ value }">
+                <template v-slot:cell(total)="{ value }">
                     {{ toMoney(value) }}
                 </template>
             </b-table>

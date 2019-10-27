@@ -77,10 +77,10 @@
                     }
                 "
             >
-                <template v-slot:index="data">
+                <template v-slot:cell(index)="data">
                     {{ data.index + 1 }}
                 </template>
-                <template v-slot:rooms="{ value }">
+                <template v-slot:cell(rooms)="{ value }">
                     {{ value.length }} phòng
                 </template>
             </b-table>
