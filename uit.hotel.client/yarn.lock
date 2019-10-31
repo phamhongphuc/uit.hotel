@@ -1971,10 +1971,10 @@
     "@types/unist" "*"
     "@types/vfile-message" "*"
 
-"@types/vuelidate@^0.7.7":
-  version "0.7.7"
-  resolved "https://registry.yarnpkg.com/@types/vuelidate/-/vuelidate-0.7.7.tgz#98ea98832d944b666d1d03d8b1714384b4a4d853"
-  integrity sha512-VDoOZ5kg0ohEzLf5vS8SjZKnhY2QiNWQA0Sp1g6KhTwC6+7DbJQnTBEc8laJQglaDmptaVFbcMb1SH3l5MrKtA==
+"@types/vuelidate@^0.7.8":
+  version "0.7.8"
+  resolved "https://registry.yarnpkg.com/@types/vuelidate/-/vuelidate-0.7.8.tgz#8a13e750daa3c7c969a5cf988a5fcf53dec81bd1"
+  integrity sha512-8TPvK+HCthejp5aFEb4/So5NpTiqnqOL42UD1V28TDXilW1ii8BBaAxFvaQG7xk7JZxOA6qyLUIueYF15SYohg==
   dependencies:
     vue "^2.5.16"
 
