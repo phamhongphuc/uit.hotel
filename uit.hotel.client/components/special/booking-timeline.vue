@@ -1,7 +1,20 @@
 <template>
-    <table class="timeline table-hover">
+    <table
+        class="timeline table-hover"
+        @mouseenter="tooltip('show')"
+        @mouseleave="tooltip('hide')"
+    >
         <div class="now-fill" :style="nowStyle" />
-        <div class="now-line" :style="nowStyle" />
+        <div id="timeline-now" class="now-line" :style="nowStyle">
+            <b-tooltip
+                target="timeline-now"
+                triggers="manual"
+                placement="bottom"
+                custom-class="timeline-now-tooltip"
+            >
+                {{ now }}
+            </b-tooltip>
+        </div>
         <tr class="header-row">
             <td />
             <td class="room">Phòng</td>
@@ -217,15 +230,23 @@ export default class extends Vue {
             };
         });
     }
+
+    tooltip(action: 'show' | 'hide') {
+        this.$root.$emit(`bv::${action}::tooltip`, 'timeline-now');
+    }
 }
 </script>
 <style lang="scss">
 $border: $border-width solid $border-color;
 
+.timeline-now-tooltip {
+    top: -38px !important;
+}
+
 table.timeline {
     position: relative;
     flex: 1;
-    > div[class^='now-'] {
+    > [class^='now-'] {
         position: absolute;
         top: 0;
         bottom: $border-width;
@@ -247,6 +268,7 @@ table.timeline {
         white-space: nowrap;
         background-color: rgba($body-bg, 0.5);
         border: $border;
+        transition: all 0.2s;
         &.floor {
             position: relative;
             z-index: 2;
