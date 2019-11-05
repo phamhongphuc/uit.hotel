@@ -111,7 +111,7 @@ export default class extends Vue {
     floors!: GetTimeline.Floors[];
 
     seconds = moment.duration(1, 'day').asSeconds();
-    ratio = 10;
+    ratio = 6;
 
     now = moment().unix();
 
@@ -147,6 +147,7 @@ export default class extends Vue {
         return {
             min: moment
                 .unix(min)
+                .add(-1, 'day')
                 .startOf('day')
                 .set({ hour: 12 })
                 .unix(),
