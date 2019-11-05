@@ -7,12 +7,6 @@
         sticky
     >
         <b-navbar-nav class="flex-row flex-grow-1 flex-md-grow-0 mb-2 mb-md-0">
-            <b-navbar-toggle
-                target="sidebar-collapse"
-                class="navbar-toggler-sidebar mx-1"
-            >
-                <icon- i="chevrons-right" />
-            </b-navbar-toggle>
             <b-navbar-toggle target="navbar-collapse" class="mx-1">
                 <icon- i="menu" />
             </b-navbar-toggle>
