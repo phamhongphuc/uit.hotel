@@ -160,28 +160,15 @@ export default class extends Vue {
         };
     }
 
-    get nowValue() {
+    get nowStyle() {
         const {
             timeBound: { max },
             ratio,
             now,
         } = this;
-        return `${((max - now) / this.seconds) * ratio}rem`;
-    }
-
-    get nowStyle() {
+        const value = ((max - now) / this.seconds) * ratio;
         return {
-            right: this.nowValue,
-        };
-    }
-
-    get bookingsColStyle() {
-        const {
-            timeBound: { min, max },
-            ratio,
-        } = this;
-        return {
-            minWidth: `${((max - min) / this.seconds) * ratio}rem`,
+            right: `${value}rem`,
         };
     }
 
@@ -250,7 +237,7 @@ table.timeline {
     > [class^='now-'] {
         position: absolute;
         top: 0;
-        bottom: $border-width;
+        bottom: 0;
         &.now-fill {
             left: 0;
             z-index: 2;
@@ -260,7 +247,7 @@ table.timeline {
             z-index: 5;
             width: 1px;
             background: $blue;
-            box-shadow: -2px 0 0.25rem rgba($blue, 0.8);
+            box-shadow: -1px 0 0.25rem rgba($blue, 0.8);
         }
     }
 
@@ -277,7 +264,7 @@ table.timeline {
         }
         &.room {
             position: sticky;
-            left: -2px;
+            left: -1px;
             z-index: 5 !important;
             min-width: 10rem;
             background-color: $white;
@@ -312,7 +299,7 @@ table.timeline {
     > tr.header-row {
         > td {
             position: sticky;
-            top: -2px;
+            top: -1px;
             z-index: 3;
             background-color: $white;
             box-shadow: 0 1px 0 0 $border-color, 1px 0 0 0 $border-color;
