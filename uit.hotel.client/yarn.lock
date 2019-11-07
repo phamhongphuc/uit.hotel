@@ -992,13 +992,13 @@
     "@graphql-codegen/plugin-helpers" "1.8.2"
     tslib "1.10.0"
 
-"@graphql-codegen/typescript-compatibility@^1.8.2":
-  version "1.8.2"
-  resolved "https://registry.yarnpkg.com/@graphql-codegen/typescript-compatibility/-/typescript-compatibility-1.8.2.tgz#b38dd9d3ea6098c81c42fb9327882feb5139fb8c"
-  integrity sha512-jx2N/xfRSf1Ho8spZWfcOjF9oklyXFZ3TIUTs3X5+G1fcsXWL7QBFNJfCmgBiEn476yzKtZteEB/a3vsM8cgOw==
+"@graphql-codegen/typescript-compatibility@^1.8.3":
+  version "1.8.3"
+  resolved "https://registry.yarnpkg.com/@graphql-codegen/typescript-compatibility/-/typescript-compatibility-1.8.3.tgz#1319ad3266bd6d693c0e5fb6ba20a6a569cd0b2c"
+  integrity sha512-UMWaMBYYkptqg9PbBXlK+Yikx1qR5nR78QiCj9Navj2BGUr9wLzL6FlFd34o8CAwIxcBErgbeDNISnZV9HA0wQ==
   dependencies:
-    "@graphql-codegen/plugin-helpers" "1.8.2"
-    "@graphql-codegen/visitor-plugin-common" "1.8.2"
+    "@graphql-codegen/plugin-helpers" "1.8.3"
+    "@graphql-codegen/visitor-plugin-common" "1.8.3"
     tslib "1.10.0"
 
 "@graphql-codegen/typescript-operations@^1.8.3":
@@ -1019,18 +1019,6 @@
     "@graphql-codegen/plugin-helpers" "1.8.3"
     "@graphql-codegen/visitor-plugin-common" "1.8.3"
     auto-bind "3.0.0"
-    tslib "1.10.0"
-
-"@graphql-codegen/visitor-plugin-common@1.8.2":
-  version "1.8.2"
-  resolved "https://registry.yarnpkg.com/@graphql-codegen/visitor-plugin-common/-/visitor-plugin-common-1.8.2.tgz#25915d791ab7ecf126b87551b735ee00813b6622"
-  integrity sha512-Ma2TBYvu2i+D4Wgo5spODMDOcD6w4xI7wEhxUs+WGyjOVPs4TEUfstMQkDFJbcwlQbZKlDaswJfgY8zQ5JgMMw==
-  dependencies:
-    "@graphql-codegen/plugin-helpers" "1.8.2"
-    auto-bind "3.0.0"
-    dependency-graph "0.8.0"
-    graphql-tag "2.10.1"
-    relay-compiler "6.0.0"
     tslib "1.10.0"
 
 "@graphql-codegen/visitor-plugin-common@1.8.3":
