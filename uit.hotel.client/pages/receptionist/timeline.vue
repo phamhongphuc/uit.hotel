@@ -13,7 +13,7 @@
         <query-
             v-slot="{ data: { floors } }"
             :query="getTimeline"
-            :poll-interval="500"
+            :poll-interval="1000"
             class="query-fill"
         >
             <div>
