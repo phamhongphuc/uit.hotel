@@ -12,7 +12,7 @@
                 placement="bottom"
                 custom-class="timeline-now-tooltip"
             >
-                {{ now }}
+                {{ formattedNow }}
             </b-tooltip>
         </div>
         <tr class="header-row">
@@ -63,6 +63,7 @@
                 <td class="bookings">
                     <b-button
                         v-for="booking in mapBookings(room)"
+                        :id="`booking-${booking.id}`"
                         :key="booking.id"
                         :style="booking.style"
                         :variant="booking.variant"
@@ -74,6 +75,13 @@
                         "
                     >
                         {{ booking.id }}
+                        <b-tooltip :target="`booking-${booking.id}`">
+                            Từ: {{ booking.inTime }}
+                            <br />
+                            Đến: {{ booking.outTime }}
+                            <br />
+                            Trạng thái: {{ booking.statusTitle }}
+                        </b-tooltip>
                     </b-button>
                 </td>
                 <td v-for="(day, dayIndex) in days" :key="dayIndex" />
@@ -85,6 +93,7 @@
 import { Vue, Component, Prop } from 'nuxt-property-decorator';
 import moment from 'moment';
 import { GetTimeline } from '~/graphql/types';
+import { toDate } from '~/utils';
 
 enum StatusEnum {
     Booked,
@@ -94,11 +103,19 @@ enum StatusEnum {
 
 type StatusEnumMap = { [key in StatusEnum]: string };
 
-const statusEnumMap: StatusEnumMap = {
+const statusVariantMap: StatusEnumMap = {
     [StatusEnum.Booked]: 'light-blue',
     [StatusEnum.CheckedIn]: 'orange',
     [StatusEnum.CheckedOut]: 'gray',
 };
+
+const statusTitleMap: StatusEnumMap = {
+    [StatusEnum.Booked]: 'Đã đặt phòng',
+    [StatusEnum.CheckedIn]: 'Đã nhận phòng',
+    [StatusEnum.CheckedOut]: 'Đã trả phòng',
+};
+
+const seconds = moment.duration(1, 'day').asSeconds();
 
 @Component({
     name: 'booking-timeline-',
@@ -110,10 +127,28 @@ export default class extends Vue {
     @Prop({ required: true })
     floors!: GetTimeline.Floors[];
 
-    seconds = moment.duration(1, 'day').asSeconds();
     ratio = 6;
 
     now = moment().unix();
+    formattedNow = moment().format('hh:mm:ss');
+
+    interval?: NodeJS.Timeout;
+
+    calcValue() {
+        this.now = moment().unix();
+        this.formattedNow = moment().format('hh:mm:ss');
+    }
+
+    mounted() {
+        this.calcValue();
+        this.interval = setInterval(this.calcValue, 1000);
+    }
+
+    beforeDestroy() {
+        if (this.interval !== undefined) {
+            clearInterval(this.interval);
+        }
+    }
 
     get filteredFloors() {
         return this.floors
@@ -166,7 +201,7 @@ export default class extends Vue {
             ratio,
             now,
         } = this;
-        const value = ((max - now) / this.seconds) * ratio;
+        const value = ((max - now) / seconds) * ratio;
         return {
             right: `${value}rem`,
         };
@@ -176,7 +211,7 @@ export default class extends Vue {
         const {
             timeBound: { min, max },
         } = this;
-        const length = (max - min) / this.seconds;
+        const length = (max - min) / seconds;
         const startDay = moment.unix(min);
         return Array.from({ length }, (v, index) =>
             startDay.clone().add(index, 'days'),
@@ -204,17 +239,20 @@ export default class extends Vue {
                     : booking.bookCheckOutTime,
             ).unix();
 
-            const left = ((inTime - min) * ratio) / this.seconds;
-            const right = ((outTime - min) * ratio) / this.seconds;
+            const left = ((inTime - min) * ratio) / seconds;
+            const right = ((outTime - min) * ratio) / seconds;
             const width = right - left;
 
             return {
                 ...booking,
+                outTime: toDate(outTime),
+                inTime: toDate(inTime),
                 style: {
                     left: `${left}rem`,
                     width: `${width}rem`,
                 },
-                variant: statusEnumMap[booking.status],
+                variant: statusVariantMap[booking.status],
+                statusTitle: statusTitleMap[booking.status],
             };
         });
     }

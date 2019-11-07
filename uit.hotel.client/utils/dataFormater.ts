@@ -6,7 +6,7 @@ export const toMoney = (num: number) =>
         currency: 'VND',
     });
 
-export const toDate = (date: string) => {
+export const toDate = (date: string | number) => {
     const current = moment();
     const time = moment(date);
     if (current.year() === time.year()) return time.format('HH:mm - DD/MM');
