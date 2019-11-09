@@ -9,8 +9,8 @@
             <b-tooltip
                 target="timeline-now"
                 triggers="manual"
-                placement="bottom"
-                custom-class="timeline-now-tooltip"
+                placement="top"
+                boundary="window"
             >
                 {{ formattedNow }}
             </b-tooltip>
@@ -78,6 +78,7 @@
                         <b-tooltip
                             :target="`booking-${booking.id}`"
                             placement="left"
+                            boundary="window"
                         >
                             Từ: {{ booking.inTime }}
                             <br />
@@ -267,10 +268,6 @@ export default class extends Vue {
 </script>
 <style lang="scss">
 $border: $border-width solid $border-color;
-
-.timeline-now-tooltip {
-    top: -38px !important;
-}
 
 table.timeline {
     position: relative;
