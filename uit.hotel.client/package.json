@@ -44,7 +44,7 @@
     },
     "devDependencies": {
         "@babel/polyfill": "^7.6.0",
-        "@babel/register": "7.6.2",
+        "@babel/register": "7.7.0",
         "@graphql-codegen/cli": "^1.8.3",
         "@graphql-codegen/introspection": "^1.8.3",
         "@graphql-codegen/schema-ast": "^1.8.3",
