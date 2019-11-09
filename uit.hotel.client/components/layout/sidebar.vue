@@ -56,7 +56,11 @@
             text="Quản lý hóa đơn"
             exact
             :permission="['GetAccountingVoucher']"
-        />
+        >
+            <template v-slot:suffix>
+                <b-badge pill variant="danger" class="ml-2">12</b-badge>
+            </template>
+        </b-nav-item-icon->
         <b-nav-item-icon-
             to="/business/receipt"
             icon="dollar-sign"
@@ -174,11 +178,11 @@ export default class extends Vue {
     }
     > :not(.sidebar-nav-item-header) {
         height: $navbar-size;
+        padding-right: 0.25rem;
         overflow: hidden;
         transition: all 0.2s;
         > .nav-link {
             display: flex;
-            padding-right: 0.25rem;
             font-weight: 600;
             white-space: nowrap;
             transition: all 0.25s;
