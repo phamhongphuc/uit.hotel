@@ -3,6 +3,9 @@ schema: 'http://localhost:3000/api/graphql'
 documents:
     - 'store/*.ts'
     - 'graphql/documents/*.ts'
+hooks:
+    afterOneFileWrite:
+        - prettier --write
 generates:
     graphql/types.ts:
         plugins:
@@ -22,7 +25,9 @@ generates:
                 Decimal: number
     graphql/schema.json:
         plugins:
-            - 'introspection'
+            - introspection
     graphql/schema.graphql:
         plugins:
-            - 'schema-ast'
+            - schema-ast
+        config:
+            commentDescriptions: true
