@@ -75,7 +75,10 @@
                         "
                     >
                         {{ booking.id }}
-                        <b-tooltip :target="`booking-${booking.id}`">
+                        <b-tooltip
+                            :target="`booking-${booking.id}`"
+                            placement="left"
+                        >
                             Từ: {{ booking.inTime }}
                             <br />
                             Đến: {{ booking.outTime }}
@@ -182,13 +185,13 @@ export default class extends Vue {
         return {
             min: moment
                 .unix(min)
-                .add(-1, 'day')
+                .add(-3, 'day')
                 .startOf('day')
                 .set({ hour: 12 })
                 .unix(),
             max: moment
                 .unix(max)
-                .add(1, 'day')
+                .add(3, 'day')
                 .startOf('day')
                 .set({ hour: 12 })
                 .unix(),
