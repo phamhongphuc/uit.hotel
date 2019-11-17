@@ -19,6 +19,7 @@ namespace uit.hotel.DataAccesses
 
                 var rate = new Rate
                 {
+                    HourRate = 0,
                     DayRate = 0,
                     NightRate = 0,
                     WeekRate = 0,

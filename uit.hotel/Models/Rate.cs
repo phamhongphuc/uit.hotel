@@ -7,6 +7,7 @@ namespace uit.hotel.Models
     {
         [PrimaryKey]
         public int Id { get; set; }
+        public long HourRate { get; set; }
         public long DayRate { get; set; }
         public long NightRate { get; set; }
         public long WeekRate { get; set; }
