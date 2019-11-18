@@ -330,7 +330,6 @@ namespace uit.hotel.test._GraphQL
             );
         }
 
-
         [TestMethod]
         public void Query_VolatilityRate()
         {

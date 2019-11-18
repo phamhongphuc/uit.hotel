@@ -80,7 +80,7 @@ namespace uit.hotel.Queries.Authentication
             char ch;
             for (var i = 0; i < 6; i++)
             {
-                ch = Convert.ToChar(Convert.ToInt32(Math.Floor(26 * random.NextDouble() + 65)));
+                ch = Convert.ToChar(Convert.ToInt32(Math.Floor((26 * random.NextDouble()) + 65)));
                 builder.Append(ch);
             }
 
