@@ -230,13 +230,10 @@ export default class extends mixins<PopupMixinType>(
     }
 
     get currentRoomIds() {
-        return this.tableData.reduce(
-            (output, rowData) => {
-                output.push(rowData.room.id);
-                return output;
-            },
-            [] as number[],
-        );
+        return this.tableData.reduce((output, rowData) => {
+            output.push(rowData.room.id);
+            return output;
+        }, [] as number[]);
     }
 
     async addPatron(patronId: number, isNew: boolean, row: TableDataType) {

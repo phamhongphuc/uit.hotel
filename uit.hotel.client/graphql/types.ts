@@ -2063,12 +2063,12 @@ export namespace GetBills {
     export type Variables = GetBillsQueryVariables;
     export type Query = GetBillsQuery;
     export type Bills = NonNullable<GetBillsQuery['bills'][0]>;
-    export type Patron = (NonNullable<GetBillsQuery['bills'][0]>)['patron'];
+    export type Patron = NonNullable<GetBillsQuery['bills'][0]>['patron'];
     export type Receipts = NonNullable<
-        (NonNullable<(NonNullable<GetBillsQuery['bills'][0]>)['receipts']>)[0]
+        NonNullable<NonNullable<GetBillsQuery['bills'][0]>['receipts']>[0]
     >;
     export type Bookings = NonNullable<
-        (NonNullable<(NonNullable<GetBillsQuery['bills'][0]>)['bookings']>)[0]
+        NonNullable<NonNullable<GetBillsQuery['bills'][0]>['bookings']>[0]
     >;
 }
 
@@ -2101,10 +2101,10 @@ export namespace GetBookings {
     export type Query = GetBookingsQuery;
     export type Bookings = NonNullable<GetBookingsQuery['bookings'][0]>;
     export type Patrons = NonNullable<
-        (NonNullable<GetBookingsQuery['bookings'][0]>)['patrons'][0]
+        NonNullable<GetBookingsQuery['bookings'][0]>['patrons'][0]
     >;
-    export type Bill = (NonNullable<GetBookingsQuery['bookings'][0]>)['bill'];
-    export type Room = (NonNullable<GetBookingsQuery['bookings'][0]>)['room'];
+    export type Bill = NonNullable<GetBookingsQuery['bookings'][0]>['bill'];
+    export type Room = NonNullable<GetBookingsQuery['bookings'][0]>['room'];
 }
 
 export namespace GetBookingDetails {
@@ -2114,16 +2114,16 @@ export namespace GetBookingDetails {
     export type Patrons = NonNullable<
         GetBookingDetailsQuery['booking']['patrons'][0]
     >;
-    export type PatronKind = (NonNullable<
+    export type PatronKind = NonNullable<
         GetBookingDetailsQuery['booking']['patrons'][0]
-    >)['patronKind'];
+    >['patronKind'];
     export type Bill = GetBookingDetailsQuery['booking']['bill'];
     export type ServicesDetails = NonNullable<
-        (NonNullable<GetBookingDetailsQuery['booking']['servicesDetails']>)[0]
+        NonNullable<GetBookingDetailsQuery['booking']['servicesDetails']>[0]
     >;
-    export type Service = (NonNullable<
-        (NonNullable<GetBookingDetailsQuery['booking']['servicesDetails']>)[0]
-    >)['service'];
+    export type Service = NonNullable<
+        NonNullable<GetBookingDetailsQuery['booking']['servicesDetails']>[0]
+    >['service'];
     export type Room = GetBookingDetailsQuery['booking']['room'];
     export type RoomKind = GetBookingDetailsQuery['booking']['room']['roomKind'];
     export type Floor = GetBookingDetailsQuery['booking']['room']['floor'];
@@ -2133,9 +2133,9 @@ export namespace GetSimpleBookings {
     export type Variables = GetSimpleBookingsQueryVariables;
     export type Query = GetSimpleBookingsQuery;
     export type Bookings = NonNullable<GetSimpleBookingsQuery['bookings'][0]>;
-    export type Room = (NonNullable<
+    export type Room = NonNullable<
         GetSimpleBookingsQuery['bookings'][0]
-    >)['room'];
+    >['room'];
 }
 
 export namespace CheckIn {
@@ -2159,9 +2159,9 @@ export namespace GetEmployees {
     export type Variables = GetEmployeesQueryVariables;
     export type Query = GetEmployeesQuery;
     export type Employees = NonNullable<GetEmployeesQuery['employees'][0]>;
-    export type Position = (NonNullable<
+    export type Position = NonNullable<
         GetEmployeesQuery['employees'][0]
-    >)['position'];
+    >['position'];
 }
 
 export namespace CreateEmployee {
@@ -2211,11 +2211,11 @@ export namespace GetFloors {
     export type Query = GetFloorsQuery;
     export type Floors = NonNullable<GetFloorsQuery['floors'][0]>;
     export type Rooms = NonNullable<
-        (NonNullable<GetFloorsQuery['floors'][0]>)['rooms'][0]
+        NonNullable<GetFloorsQuery['floors'][0]>['rooms'][0]
     >;
-    export type RoomKind = (NonNullable<
-        (NonNullable<GetFloorsQuery['floors'][0]>)['rooms'][0]
-    >)['roomKind'];
+    export type RoomKind = NonNullable<
+        NonNullable<GetFloorsQuery['floors'][0]>['rooms'][0]
+    >['roomKind'];
 }
 
 export namespace GetFloorsMap {
@@ -2223,16 +2223,16 @@ export namespace GetFloorsMap {
     export type Query = GetFloorsMapQuery;
     export type Floors = NonNullable<GetFloorsMapQuery['floors'][0]>;
     export type Rooms = NonNullable<
-        (NonNullable<GetFloorsMapQuery['floors'][0]>)['rooms'][0]
+        NonNullable<GetFloorsMapQuery['floors'][0]>['rooms'][0]
     >;
     export type CurrentBooking = NonNullable<
-        (NonNullable<
-            (NonNullable<GetFloorsMapQuery['floors'][0]>)['rooms'][0]
-        >)['currentBooking']
+        NonNullable<
+            NonNullable<GetFloorsMapQuery['floors'][0]>['rooms'][0]
+        >['currentBooking']
     >;
-    export type RoomKind = (NonNullable<
-        (NonNullable<GetFloorsMapQuery['floors'][0]>)['rooms'][0]
-    >)['roomKind'];
+    export type RoomKind = NonNullable<
+        NonNullable<GetFloorsMapQuery['floors'][0]>['rooms'][0]
+    >['roomKind'];
 }
 
 export namespace GetTimeline {
@@ -2240,23 +2240,23 @@ export namespace GetTimeline {
     export type Query = GetTimelineQuery;
     export type Floors = NonNullable<GetTimelineQuery['floors'][0]>;
     export type Rooms = NonNullable<
-        (NonNullable<GetTimelineQuery['floors'][0]>)['rooms'][0]
+        NonNullable<GetTimelineQuery['floors'][0]>['rooms'][0]
     >;
     export type Bookings = NonNullable<
-        (NonNullable<
-            (NonNullable<GetTimelineQuery['floors'][0]>)['rooms'][0]
-        >)['bookings'][0]
+        NonNullable<
+            NonNullable<GetTimelineQuery['floors'][0]>['rooms'][0]
+        >['bookings'][0]
     >;
     export type Patrons = NonNullable<
-        (NonNullable<
-            (NonNullable<
-                (NonNullable<GetTimelineQuery['floors'][0]>)['rooms'][0]
-            >)['bookings'][0]
-        >)['patrons'][0]
+        NonNullable<
+            NonNullable<
+                NonNullable<GetTimelineQuery['floors'][0]>['rooms'][0]
+            >['bookings'][0]
+        >['patrons'][0]
     >;
-    export type RoomKind = (NonNullable<
-        (NonNullable<GetTimelineQuery['floors'][0]>)['rooms'][0]
-    >)['roomKind'];
+    export type RoomKind = NonNullable<
+        NonNullable<GetTimelineQuery['floors'][0]>['rooms'][0]
+    >['roomKind'];
 }
 
 export namespace CreateFloor {
@@ -2290,9 +2290,9 @@ export namespace GetPatrons {
     export type Variables = GetPatronsQueryVariables;
     export type Query = GetPatronsQuery;
     export type Patrons = NonNullable<GetPatronsQuery['patrons'][0]>;
-    export type PatronKind = (NonNullable<
+    export type PatronKind = NonNullable<
         GetPatronsQuery['patrons'][0]
-    >)['patronKind'];
+    >['patronKind'];
 }
 
 export namespace GetPatron {
@@ -2322,9 +2322,9 @@ export namespace GetPatronKinds {
         GetPatronKindsQuery['patronKinds'][0]
     >;
     export type Patrons = NonNullable<
-        (NonNullable<
-            (NonNullable<GetPatronKindsQuery['patronKinds'][0]>)['patrons']
-        >)[0]
+        NonNullable<
+            NonNullable<GetPatronKindsQuery['patronKinds'][0]>['patrons']
+        >[0]
     >;
 }
 
@@ -2345,9 +2345,9 @@ export namespace GetPositions {
     export type Query = GetPositionsQuery;
     export type Positions = NonNullable<GetPositionsQuery['positions'][0]>;
     export type Employees = NonNullable<
-        (NonNullable<
-            (NonNullable<GetPositionsQuery['positions'][0]>)['employees']
-        >)[0]
+        NonNullable<
+            NonNullable<GetPositionsQuery['positions'][0]>['employees']
+        >[0]
     >;
 }
 
@@ -2382,7 +2382,7 @@ export namespace GetRates {
     export type Variables = GetRatesQueryVariables;
     export type Query = GetRatesQuery;
     export type Rates = NonNullable<GetRatesQuery['rates'][0]>;
-    export type RoomKind = (NonNullable<GetRatesQuery['rates'][0]>)['roomKind'];
+    export type RoomKind = NonNullable<GetRatesQuery['rates'][0]>['roomKind'];
 }
 
 export namespace CreateRate {
@@ -2395,7 +2395,7 @@ export namespace GetReceipts {
     export type Variables = GetReceiptsQueryVariables;
     export type Query = GetReceiptsQuery;
     export type Receipts = NonNullable<GetReceiptsQuery['receipts'][0]>;
-    export type Bill = (NonNullable<GetReceiptsQuery['receipts'][0]>)['bill'];
+    export type Bill = NonNullable<GetReceiptsQuery['receipts'][0]>['bill'];
 }
 
 export namespace CreateReceipt {
@@ -2409,9 +2409,7 @@ export namespace GetRoomKinds {
     export type Query = GetRoomKindsQuery;
     export type RoomKinds = NonNullable<GetRoomKindsQuery['roomKinds'][0]>;
     export type Rooms = NonNullable<
-        (NonNullable<
-            (NonNullable<GetRoomKindsQuery['roomKinds'][0]>)['rooms']
-        >)[0]
+        NonNullable<NonNullable<GetRoomKindsQuery['roomKinds'][0]>['rooms']>[0]
     >;
 }
 
@@ -2493,9 +2491,9 @@ export namespace GetServices {
     export type Query = GetServicesQuery;
     export type Services = NonNullable<GetServicesQuery['services'][0]>;
     export type ServicesDetails = NonNullable<
-        (NonNullable<
-            (NonNullable<GetServicesQuery['services'][0]>)['servicesDetails']
-        >)[0]
+        NonNullable<
+            NonNullable<GetServicesQuery['services'][0]>['servicesDetails']
+        >[0]
     >;
 }
 
@@ -2525,9 +2523,9 @@ export namespace GetPatronsAndRooms {
     export type Variables = GetPatronsAndRoomsQueryVariables;
     export type Query = GetPatronsAndRoomsQuery;
     export type Patrons = NonNullable<GetPatronsAndRoomsQuery['patrons'][0]>;
-    export type PatronKind = (NonNullable<
+    export type PatronKind = NonNullable<
         GetPatronsAndRoomsQuery['patrons'][0]
-    >)['patronKind'];
+    >['patronKind'];
     export type Rooms = NonNullable<GetPatronsAndRoomsQuery['rooms'][0]>;
 }
 
