@@ -22,13 +22,6 @@ namespace uit.hotel.DataAccesses
             return servicesDetail;
         }
 
-        public static ServicesDetail Add(Realm realm, ServicesDetail servicesDetail)
-        {
-            servicesDetail.Id = NextId;
-            servicesDetail.Time = DateTimeOffset.Now;
-            return realm.Add(servicesDetail);
-        }
-
         public static async Task<ServicesDetail> Update(ServicesDetail servicesDetailInDatabase,
                                                         ServicesDetail servicesDetail)
         {
