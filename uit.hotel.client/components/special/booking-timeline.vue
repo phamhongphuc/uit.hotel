@@ -1,7 +1,20 @@
 <template>
-    <table class="timeline table-hover">
+    <table
+        class="timeline table-hover"
+        @mouseenter="tooltip('show')"
+        @mouseleave="tooltip('hide')"
+    >
         <div class="now-fill" :style="nowStyle" />
-        <div class="now-line" :style="nowStyle" />
+        <div id="timeline-now" class="now-line" :style="nowStyle">
+            <b-tooltip
+                target="timeline-now"
+                triggers="manual"
+                placement="top"
+                boundary="window"
+            >
+                {{ formattedNow }}
+            </b-tooltip>
+        </div>
         <tr class="header-row">
             <td />
             <td class="room">Phòng</td>
@@ -50,6 +63,7 @@
                 <td class="bookings">
                     <b-button
                         v-for="booking in mapBookings(room)"
+                        :id="`booking-${booking.id}`"
                         :key="booking.id"
                         :style="booking.style"
                         :variant="booking.variant"
@@ -61,6 +75,17 @@
                         "
                     >
                         {{ booking.id }}
+                        <b-tooltip
+                            :target="`booking-${booking.id}`"
+                            placement="left"
+                            boundary="window"
+                        >
+                            Từ: {{ booking.inTime }}
+                            <br />
+                            Đến: {{ booking.outTime }}
+                            <br />
+                            Trạng thái: {{ booking.statusTitle }}
+                        </b-tooltip>
                     </b-button>
                 </td>
                 <td v-for="(day, dayIndex) in days" :key="dayIndex" />
@@ -72,6 +97,7 @@
 import { Vue, Component, Prop } from 'nuxt-property-decorator';
 import moment from 'moment';
 import { GetTimeline } from '~/graphql/types';
+import { toDate } from '~/utils';
 
 enum StatusEnum {
     Booked,
@@ -81,11 +107,19 @@ enum StatusEnum {
 
 type StatusEnumMap = { [key in StatusEnum]: string };
 
-const statusEnumMap: StatusEnumMap = {
+const statusVariantMap: StatusEnumMap = {
     [StatusEnum.Booked]: 'light-blue',
     [StatusEnum.CheckedIn]: 'orange',
     [StatusEnum.CheckedOut]: 'gray',
 };
+
+const statusTitleMap: StatusEnumMap = {
+    [StatusEnum.Booked]: 'Đã đặt phòng',
+    [StatusEnum.CheckedIn]: 'Đã nhận phòng',
+    [StatusEnum.CheckedOut]: 'Đã trả phòng',
+};
+
+const seconds = moment.duration(1, 'day').asSeconds();
 
 @Component({
     name: 'booking-timeline-',
@@ -97,10 +131,28 @@ export default class extends Vue {
     @Prop({ required: true })
     floors!: GetTimeline.Floors[];
 
-    seconds = moment.duration(1, 'day').asSeconds();
-    ratio = 10;
+    ratio = 6;
 
     now = moment().unix();
+    formattedNow = moment().format('hh:mm:ss');
+
+    interval?: NodeJS.Timeout;
+
+    calcValue() {
+        this.now = moment().unix();
+        this.formattedNow = moment().format('hh:mm:ss');
+    }
+
+    mounted() {
+        this.calcValue();
+        this.interval = setInterval(this.calcValue, 1000);
+    }
+
+    beforeDestroy() {
+        if (this.interval !== undefined) {
+            clearInterval(this.interval);
+        }
+    }
 
     get filteredFloors() {
         return this.floors
@@ -134,40 +186,28 @@ export default class extends Vue {
         return {
             min: moment
                 .unix(min)
+                .add(-3, 'day')
                 .startOf('day')
                 .set({ hour: 12 })
                 .unix(),
             max: moment
                 .unix(max)
-                .add(1, 'day')
+                .add(3, 'day')
                 .startOf('day')
                 .set({ hour: 12 })
                 .unix(),
         };
     }
 
-    get nowValue() {
+    get nowStyle() {
         const {
             timeBound: { max },
             ratio,
             now,
         } = this;
-        return `${((max - now) / this.seconds) * ratio}rem`;
-    }
-
-    get nowStyle() {
+        const value = ((max - now) / seconds) * ratio;
         return {
-            right: this.nowValue,
-        };
-    }
-
-    get bookingsColStyle() {
-        const {
-            timeBound: { min, max },
-            ratio,
-        } = this;
-        return {
-            minWidth: `${((max - min) / this.seconds) * ratio}rem`,
+            right: `${value}rem`,
         };
     }
 
@@ -175,7 +215,7 @@ export default class extends Vue {
         const {
             timeBound: { min, max },
         } = this;
-        const length = (max - min) / this.seconds;
+        const length = (max - min) / seconds;
         const startDay = moment.unix(min);
         return Array.from({ length }, (v, index) =>
             startDay.clone().add(index, 'days'),
@@ -203,19 +243,26 @@ export default class extends Vue {
                     : booking.bookCheckOutTime,
             ).unix();
 
-            const left = ((inTime - min) * ratio) / this.seconds;
-            const right = ((outTime - min) * ratio) / this.seconds;
+            const left = ((inTime - min) * ratio) / seconds;
+            const right = ((outTime - min) * ratio) / seconds;
             const width = right - left;
 
             return {
                 ...booking,
+                outTime: toDate(outTime),
+                inTime: toDate(inTime),
                 style: {
                     left: `${left}rem`,
                     width: `${width}rem`,
                 },
-                variant: statusEnumMap[booking.status],
+                variant: statusVariantMap[booking.status],
+                statusTitle: statusTitleMap[booking.status],
             };
         });
+    }
+
+    tooltip(action: 'show' | 'hide') {
+        this.$root.$emit(`bv::${action}::tooltip`, 'timeline-now');
     }
 }
 </script>
@@ -225,10 +272,10 @@ $border: $border-width solid $border-color;
 table.timeline {
     position: relative;
     flex: 1;
-    > div[class^='now-'] {
+    > [class^='now-'] {
         position: absolute;
         top: 0;
-        bottom: $border-width;
+        bottom: 0;
         &.now-fill {
             left: 0;
             z-index: 2;
@@ -238,7 +285,7 @@ table.timeline {
             z-index: 5;
             width: 1px;
             background: $blue;
-            box-shadow: -2px 0 0.25rem rgba($blue, 0.8);
+            box-shadow: -1px 0 0.25rem rgba($blue, 0.8);
         }
     }
 
@@ -247,6 +294,7 @@ table.timeline {
         white-space: nowrap;
         background-color: rgba($body-bg, 0.5);
         border: $border;
+        transition: all 0.2s;
         &.floor {
             position: relative;
             z-index: 2;
@@ -254,7 +302,7 @@ table.timeline {
         }
         &.room {
             position: sticky;
-            left: -2px;
+            left: -1px;
             z-index: 5 !important;
             min-width: 10rem;
             background-color: $white;
@@ -289,7 +337,7 @@ table.timeline {
     > tr.header-row {
         > td {
             position: sticky;
-            top: -2px;
+            top: -1px;
             z-index: 3;
             background-color: $white;
             box-shadow: 0 1px 0 0 $border-color, 1px 0 0 0 $border-color;

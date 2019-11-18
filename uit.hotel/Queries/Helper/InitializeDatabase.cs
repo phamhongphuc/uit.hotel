@@ -161,6 +161,7 @@ namespace uit.hotel.Queries.Helper
                 var Rate = realm.Add(new Rate
                 {
                     Id = 1,
+                    HourRate = 30000,
                     DayRate = 100000,
                     NightRate = 80000,
                     WeekRate = 600000,

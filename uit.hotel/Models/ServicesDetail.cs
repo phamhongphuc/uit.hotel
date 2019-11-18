@@ -12,5 +12,8 @@ namespace uit.hotel.Models
         public Booking Booking { get; set; }
         public Service Service { get; set; }
         public long Total => Number * Service.UnitRate;
+
+        //? Call in transaction
+        public void CalculateBooking() => Booking.CalculateServicesDetails();
     }
 }

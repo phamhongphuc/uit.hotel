@@ -1,5 +1,5 @@
 <template>
-    <no-ssr>
+    <client-only>
         <apollo-query
             v-slot="{ result: { loading, error, data } }"
             :query="query"
@@ -27,7 +27,7 @@
                 </div>
             </div>
         </apollo-query>
-    </no-ssr>
+    </client-only>
 </template>
 <script lang="ts">
 import { Vue, Component, Prop } from 'nuxt-property-decorator';

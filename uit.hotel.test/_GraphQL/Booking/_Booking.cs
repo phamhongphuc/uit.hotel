@@ -265,6 +265,7 @@ namespace uit.hotel.test._GraphQL
                 EmployeeBooking = EmployeeDataAccess.Get("admin"),
                 EmployeeCheckIn = EmployeeDataAccess.Get("admin"),
                 EmployeeCheckOut = EmployeeDataAccess.Get("admin"),
+                RealCheckInTime = DateTimeOffset.Now.AddDays(-1),
                 Bill = BillDataAccess.Get(1),
                 Room = RoomDataAccess.Get(1)
             })).Wait();
@@ -287,6 +288,7 @@ namespace uit.hotel.test._GraphQL
                 EmployeeBooking = EmployeeDataAccess.Get("admin"),
                 EmployeeCheckIn = EmployeeDataAccess.Get("admin"),
                 EmployeeCheckOut = EmployeeDataAccess.Get("admin"),
+                RealCheckInTime = DateTimeOffset.Now.AddDays(-1),
                 Bill = BillDataAccess.Get(1),
                 Room = RoomDataAccess.Get(1)
             })).Wait();
@@ -325,6 +327,7 @@ namespace uit.hotel.test._GraphQL
                     EmployeeBooking = EmployeeDataAccess.Get("admin"),
                     EmployeeCheckIn = EmployeeDataAccess.Get("admin"),
                     EmployeeCheckOut = EmployeeDataAccess.Get("nhanvien_1"),
+                    RealCheckInTime = DateTimeOffset.Now.AddDays(-1),
                     Bill = BillDataAccess.Get(1),
                     Room = RoomDataAccess.Get(1)
                 });

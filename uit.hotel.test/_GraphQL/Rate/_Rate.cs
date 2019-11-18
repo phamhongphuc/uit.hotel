@@ -20,6 +20,7 @@ namespace uit.hotel.test._GraphQL
                 {
                     input = new
                     {
+                        hourRate = 1,
                         dayRate = 1,
                         nightRate = 1,
                         weekRate = 1,
@@ -47,6 +48,7 @@ namespace uit.hotel.test._GraphQL
                 {
                     input = new
                     {
+                        hourRate = 1,
                         dayRate = 1,
                         nightRate = 1,
                         weekRate = 1,
@@ -83,6 +85,7 @@ namespace uit.hotel.test._GraphQL
                 {
                     input = new
                     {
+                        hourRate = 1,
                         dayRate = 1,
                         nightRate = 1,
                         weekRate = 1,
@@ -151,6 +154,7 @@ namespace uit.hotel.test._GraphQL
                     input = new
                     {
                         id = 20,
+                        hourRate = 5,
                         dayRate = 5,
                         nightRate = 5,
                         weekRate = 5,
@@ -179,6 +183,7 @@ namespace uit.hotel.test._GraphQL
                     input = new
                     {
                         id = 100,
+                        hourRate = 5,
                         dayRate = 5,
                         nightRate = 5,
                         weekRate = 5,
@@ -214,6 +219,7 @@ namespace uit.hotel.test._GraphQL
                     input = new
                     {
                         id = 21,
+                        hourRate = 1,
                         dayRate = 5,
                         nightRate = 5,
                         weekRate = 5,
@@ -260,6 +266,7 @@ namespace uit.hotel.test._GraphQL
                     input = new
                     {
                         id = 22,
+                        hourRate = 5,
                         dayRate = 5,
                         nightRate = 5,
                         weekRate = 5,

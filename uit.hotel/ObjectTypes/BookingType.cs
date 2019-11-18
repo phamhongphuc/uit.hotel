@@ -19,10 +19,10 @@ namespace uit.hotel.ObjectTypes
             Field(x => x.RealCheckOutTime, true).Description("Thời điểm trả phòng của khách hàng");
             Field(x => x.CreateTime).Description("Thời điểm tạo thông tin thuê phòng");
             Field(x => x.Status).Description("Trạng thái của thông tin thuê phòng");
-            Field(x => x.Total).Description("Tổng tiền của booking");
-            Field(x => x.TotalRates).Description("Tổng tiền của booking");
-            Field(x => x.TotalVolatilityRate).Description("Tổng tiền của booking");
-            Field(x => x.TotalServicesDetails).Description("Tổng tiền của booking");
+            Field(x => x.Total).Description("Tổng tiền");
+            Field(x => x.TotalRate).Description("Tổng tiền thuê cơ bản");
+            Field(x => x.TotalVolatilityRate).Description("Tổng tiền thuê biến động");
+            Field(x => x.TotalServicesDetails).Description("Tổng tiền dịch vụ");
 
             Field<EmployeeType>(
                 nameof(Booking.EmployeeBooking),

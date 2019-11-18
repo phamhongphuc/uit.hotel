@@ -73,13 +73,13 @@
                     }
                 "
             >
-                <template v-slot:index="data">
+                <template v-slot:cell(index)="data">
                     {{ data.index + 1 }}
                 </template>
-                <template v-slot:phoneNumber="{ value }">
+                <template v-slot:cell(phoneNumber)="{ value }">
                     <a :href="`tel:${value}`" @click.stop>{{ value }}</a>
                 </template>
-                <template v-slot:position="{ value }">
+                <template v-slot:cell(position)="{ value }">
                     {{ value.name }}
                 </template>
             </b-table>

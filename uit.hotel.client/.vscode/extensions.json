@@ -5,20 +5,14 @@
     "recommendations": [
         // Auto Import
         "steoates.autoimport",
-        // Ayu Theme
-        "teabyii.ayu",
         // Bash Beautify
         "shakram02.bash-beautify",
         // Better Comments
         "aaron-bond.better-comments",
-        // Bookmarks
-        "alefragnani.Bookmarks",
         // Bootstrap 4 & Font awesome snippets for Visual studio code
         "thekalinga.bootstrap4-vscode",
         // Bracket Pair Colorizer
         "CoenraadS.bracket-pair-colorizer",
-        // Code Runner
-        "formulahendry.code-runner",
         // EditorConfig for VS Code
         "EditorConfig.EditorConfig",
         // Eslint
@@ -35,8 +29,6 @@
         "akamud.vscode-javascript-snippet-pack",
         // JS Refactor
         "cmstead.jsrefactor",
-        // LineCount
-        "yycalm.linecount",
         // Markdown All in One
         "yzhang.markdown-all-in-one",
         // Mocha sidebar
@@ -45,22 +37,16 @@
         "stringham.move-ts",
         // Node.js Modules Intellisense
         "leizongmin.node-module-intellisense",
-        // Nord
-        "arcticicestudio.nord-visual-studio-code",
         // npm Intellisense
         "christian-kohler.npm-intellisense",
-        // One Dark Pro
-        "zhuangtongfa.Material-theme",
         // Path Autocomplete
         "ionutvmi.path-autocomplete",
-        //? Path Intellisense >> ERROR
-        //? "christian-kohler.path-intellisense",
         // Promise snippets
         "progre.promise-snippets",
         // Rainbow Brackets
         "2gua.rainbow-brackets",
         // Sass
-        "robinbentley.sass-indented",
+        "syler.sass-indented",
         // SCSS IntelliSense
         "mrmlnc.vscode-scss",
         // Sort JS object keys

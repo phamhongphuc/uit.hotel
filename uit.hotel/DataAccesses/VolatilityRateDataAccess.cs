@@ -26,6 +26,7 @@ namespace uit.hotel.DataAccesses
         {
             await Database.WriteAsync(realm =>
             {
+                volatilityRateInDatabase.HourRate = volatilityRate.HourRate;
                 volatilityRateInDatabase.DayRate = volatilityRate.DayRate;
                 volatilityRateInDatabase.NightRate = volatilityRate.NightRate;
                 volatilityRateInDatabase.WeekRate = volatilityRate.WeekRate;

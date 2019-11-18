@@ -21,7 +21,11 @@ namespace uit.hotel.DataAccesses
                 {
                     booking.Bill = bill;
                     BookingDataAccess.Add(realm, booking);
+
+                    booking.CalculateTotal();
                 }
+
+                bill.CalculateTotal();
             });
             return bill;
         }
@@ -37,7 +41,11 @@ namespace uit.hotel.DataAccesses
                 {
                     booking.Bill = bill;
                     BookingDataAccess.BookAndCheckIn(realm, booking);
+
+                    booking.CalculateTotal();
                 }
+
+                bill.CalculateTotal();
             });
             return bill;
         }
@@ -49,12 +57,17 @@ namespace uit.hotel.DataAccesses
                 billInDatabase.Employee = employee;
                 billInDatabase.Time = DateTimeOffset.Now;
 
+                var remain = billInDatabase.Total - billInDatabase.TotalReceipts;
+                if (remain == 0) return;
+
                 var receipt = new Receipt();
-                receipt.Money = billInDatabase.Total - billInDatabase.TotalReceipts;
+                receipt.Money = remain;
                 receipt.Bill = billInDatabase;
                 receipt.Employee = employee;
 
                 ReceiptDataAccess.Add(realm, receipt);
+
+                billInDatabase.CalculateTotalReceipts();
             });
             return billInDatabase;
         }
@@ -63,6 +76,10 @@ namespace uit.hotel.DataAccesses
 
         public static IEnumerable<Bill> Get() => Database.All<Bill>();
 
-        public static async void Delete(Bill bill) => await Database.WriteAsync(realm => realm.Remove(bill));
+        public static async void Delete(Bill bill) => await Database.WriteAsync(realm =>
+        {
+            foreach (var booking in bill.Bookings) realm.Remove(booking);
+            realm.Remove(bill);
+        });
     }
 }

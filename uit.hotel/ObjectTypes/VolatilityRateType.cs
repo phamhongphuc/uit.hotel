@@ -12,6 +12,7 @@ namespace uit.hotel.ObjectTypes
             Description = "Giá biến động của một loại phòng";
 
             Field(x => x.Id).Description("Id của giá");
+            Field(x => x.HourRate).Description("Giá giờ");
             Field(x => x.DayRate).Description("Giá ngày");
             Field(x => x.NightRate).Description("Giá đêm");
             Field(x => x.WeekRate).Description("Giá tuần");
@@ -46,6 +47,7 @@ namespace uit.hotel.ObjectTypes
         public VolatilityRateCreateInput()
         {
             Name = _Creation;
+            Field(x => x.HourRate).Description("Giá giờ");
             Field(x => x.DayRate).Description("Giá ngày");
             Field(x => x.NightRate).Description("Giá đêm");
             Field(x => x.WeekRate).Description("Giá tuần");
@@ -75,6 +77,7 @@ namespace uit.hotel.ObjectTypes
         {
             Name = _Updation;
             Field(x => x.Id).Description("Id của giá cần cập nhật");
+            Field(x => x.HourRate).Description("Giá giờ");
             Field(x => x.DayRate).Description("Giá ngày");
             Field(x => x.NightRate).Description("Giá đêm");
             Field(x => x.WeekRate).Description("Giá tuần");

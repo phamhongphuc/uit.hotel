@@ -43,10 +43,10 @@ namespace uit.hotel.Businesses
 
         private static void CheckUniqueName(Position position)
         {
-            var numberOfPositions = Get().Where(p => p.Name == position.Name).Count();
-            if (numberOfPositions == 1)
+            var positions = Get().Where(p => p.Name == position.Name);
+            if (positions.Count() == 1 && positions.First().Id != position.Id)
                 throw new Exception("Chức vụ " + position.Name + " đã được tạo.");
-            else if (numberOfPositions > 1)
+            else if (positions.Count() > 1)
                 throw new Exception("Cơ sở dữ liệu lỗi!");
         }
 

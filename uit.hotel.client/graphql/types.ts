@@ -6,19 +6,22 @@ export type Scalars = {
     Boolean: boolean;
     Int: number;
     Float: number;
-    /** The `DateTimeOffset` scalar type represents a date, time and offset from UTC.
+    /**
+     * The `DateTimeOffset` scalar type represents a date, time and offset from UTC.
      * `DateTimeOffset` expects timestamps to be formatted in accordance with the
      * [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-     */
+     **/
     DateTimeOffset: string | Date;
-    /** The `Date` scalar type represents a year, month and day in accordance with the
+    /**
+     * The `Date` scalar type represents a year, month and day in accordance with the
      * [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-     */
+     **/
     Date: string | Date;
-    /** The `DateTime` scalar type represents a date and time. `DateTime` expects
+    /**
+     * The `DateTime` scalar type represents a date and time. `DateTime` expects
      * timestamps to be formatted in accordance with the
      * [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-     */
+     **/
     DateTime: string | Date;
     Decimal: number;
     /** The `Milliseconds` scalar type represents a period of time represented as the total number of milliseconds. */
@@ -1337,9 +1340,6 @@ export type VolatilityRateUpdateInput = {
     /** Loại phòng */
     roomKind: RoomKindId;
 };
-export type IsInitializedQueryVariables = {};
-
-export type IsInitializedQuery = Pick<AppQuery, 'isInitialized'>;
 
 export type GetBillsQueryVariables = {};
 
@@ -1416,7 +1416,25 @@ export type GetBookingDetailsQuery = {
         | 'realCheckOutTime'
         | 'status'
     > & {
-        patrons: Array<Maybe<Pick<Patron, 'id' | 'name'>>>;
+        patrons: Array<
+            Maybe<
+                Pick<
+                    Patron,
+                    | 'id'
+                    | 'identification'
+                    | 'name'
+                    | 'birthdate'
+                    | 'email'
+                    | 'gender'
+                    | 'residence'
+                    | 'domicile'
+                    | 'phoneNumbers'
+                    | 'nationality'
+                    | 'company'
+                    | 'note'
+                > & { patronKind: Pick<PatronKind, 'id'> }
+            >
+        >;
         bill: Pick<Bill, 'id'>;
         servicesDetails: Maybe<
             Array<
@@ -2036,10 +2054,10 @@ export type GetPatronsAndRoomsQuery = {
     >;
     rooms: Array<Pick<Room, 'id' | 'name' | 'isActive' | 'isClean'>>;
 };
-export namespace IsInitialized {
-    export type Variables = IsInitializedQueryVariables;
-    export type Query = IsInitializedQuery;
-}
+
+export type IsInitializedQueryVariables = {};
+
+export type IsInitializedQuery = Pick<AppQuery, 'isInitialized'>;
 
 export namespace GetBills {
     export type Variables = GetBillsQueryVariables;
@@ -2096,6 +2114,9 @@ export namespace GetBookingDetails {
     export type Patrons = NonNullable<
         GetBookingDetailsQuery['booking']['patrons'][0]
     >;
+    export type PatronKind = (NonNullable<
+        GetBookingDetailsQuery['booking']['patrons'][0]
+    >)['patronKind'];
     export type Bill = GetBookingDetailsQuery['booking']['bill'];
     export type ServicesDetails = NonNullable<
         (NonNullable<GetBookingDetailsQuery['booking']['servicesDetails']>)[0]
@@ -2508,4 +2529,9 @@ export namespace GetPatronsAndRooms {
         GetPatronsAndRoomsQuery['patrons'][0]
     >)['patronKind'];
     export type Rooms = NonNullable<GetPatronsAndRoomsQuery['rooms'][0]>;
+}
+
+export namespace IsInitialized {
+    export type Variables = IsInitializedQueryVariables;
+    export type Query = IsInitializedQuery;
 }

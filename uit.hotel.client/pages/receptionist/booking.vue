@@ -71,22 +71,22 @@
                     }
                 "
             >
-                <template v-slot:index="data">
+                <template v-slot:cell(index)="data">
                     {{ data.index + 1 }}
                 </template>
-                <template v-slot:status="{ value }">
+                <template v-slot:cell(status)="{ value }">
                     {{ bookingStatusEnum[value] }}
                 </template>
-                <template v-slot:checkin="{ item }">
+                <template v-slot:cell(checkin)="{ item }">
                     {{ toDate(getCheckInTime(item)) }}
                 </template>
-                <template v-slot:checkout="{ item }">
+                <template v-slot:cell(checkout)="{ item }">
                     {{ toDate(getCheckOutTime(item)) }}
                 </template>
-                <template v-slot:room="{ value }">
+                <template v-slot:cell(room)="{ value }">
                     {{ value.name }}
                 </template>
-                <template v-slot:patrons="{ value }">
+                <template v-slot:cell(patrons)="{ value }">
                     {{ value.length }} khách
                 </template>
             </b-table>

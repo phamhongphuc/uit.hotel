@@ -38,6 +38,7 @@ namespace uit.hotel.DataAccesses
         {
             await Database.WriteAsync(realm =>
             {
+                rateInDatabase.HourRate = rate.HourRate;
                 rateInDatabase.DayRate = rate.DayRate;
                 rateInDatabase.NightRate = rate.NightRate;
                 rateInDatabase.WeekRate = rate.WeekRate;

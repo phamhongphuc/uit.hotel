@@ -5,9 +5,9 @@
             <sidebar- />
             <nuxt class="content" />
         </main>
-        <no-ssr>
+        <client-only>
             <notifications :duration="1500" position="right bottom" />
-        </no-ssr>
+        </client-only>
     </div>
 </template>
 <style lang="scss">

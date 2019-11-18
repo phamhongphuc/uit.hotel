@@ -27,7 +27,9 @@
                 width="24"
             />
         </div>
-        <div v-if="text !== ''" :class="textClass">{{ text }}</div>
+        <slot />
+        <div v-if="text !== ''" :class="[textClass, 'mr-auto']">{{ text }}</div>
+        <slot name="suffix" />
     </b-nav-item>
 </template>
 <script lang="ts">
@@ -51,3 +53,13 @@ export default class extends mixins<
     PermissionMixin
 >(LinkProps, IconProps, TextProps, ImageProps, PermissionMixin) {}
 </script>
+<style lang="scss">
+.nav-item-icon {
+    .badge {
+        align-self: center;
+        height: 1.5rem;
+        padding: 0 0.5rem;
+        line-height: 1.5rem;
+    }
+}
+</style>

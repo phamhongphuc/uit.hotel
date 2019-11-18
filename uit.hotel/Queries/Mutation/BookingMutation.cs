@@ -13,7 +13,7 @@ namespace uit.hotel.Queries.Mutation
         {
             Field<NonNullGraphType<BookingType>>(
                 "CheckIn",
-                "Cập nhật thời gian checkin của phòng",
+                "Nhận phòng",
                 _IdArgument(),
                 _CheckPermission_TaskObject(
                     p => p.PermissionManageRentingRoom,
@@ -27,7 +27,7 @@ namespace uit.hotel.Queries.Mutation
 
             Field<NonNullGraphType<BookingType>>(
                 "CheckOut",
-                "Thực hiện xác nhận trả phòng",
+                "Trả phòng",
                 _IdArgument(),
                 _CheckPermission_TaskObject(
                     p => p.PermissionManageRentingRoom,
@@ -55,7 +55,7 @@ namespace uit.hotel.Queries.Mutation
 
             Field<NonNullGraphType<BookingType>>(
                 "AddBookingToBill",
-                "Thêm phòng khách đoàn",
+                "Thêm phòng vào hóa đơn",
                 new QueryArguments(
                     new QueryArgument<NonNullGraphType<BillIdInput>> { Name = "bill" },
                     new QueryArgument<NonNullGraphType<BookingCreateInput>> { Name = "booking" }
