@@ -1,5 +1,5 @@
 <template>
-    <context- ref="context" v-slot="{ data: { position, positions } }">
+    <context- ref="context" v-slot="{ data: { position } }">
         <b-nav-item-icon-
             v-if="position.isActive"
             icon="edit-2"
