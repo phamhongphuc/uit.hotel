@@ -16,10 +16,13 @@ namespace uit.hotel.DataAccesses
             await Database.WriteAsync(realm =>
             {
                 Add(realm, receipt);
+
+                receipt.Bill.CalculateTotalReceipts();
             });
             return receipt;
         }
 
+        // Doesn't calculate anything. Add only.
         public static void Add(Realm realm, Receipt receipt)
         {
             receipt.Id = NextId;
@@ -30,6 +33,5 @@ namespace uit.hotel.DataAccesses
         public static Receipt Get(int receiptId) => Database.Find<Receipt>(receiptId);
 
         public static IEnumerable<Receipt> Get() => Database.All<Receipt>();
-
     }
 }

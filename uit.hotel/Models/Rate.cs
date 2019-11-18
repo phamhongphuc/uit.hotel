@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Realms;
 
 namespace uit.hotel.Models
@@ -27,5 +28,8 @@ namespace uit.hotel.Models
         public DateTimeOffset CreateDate { get; set; }
         public Employee Employee { get; set; }
         public RoomKind RoomKind { get; set; }
+
+        [Backlink(nameof(Booking.Rate))]
+        public IQueryable<Booking> Bookings { get; }
     }
 }

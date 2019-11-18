@@ -18,6 +18,8 @@ namespace uit.hotel.DataAccesses
                 servicesDetail.Id = NextId;
                 servicesDetail.Time = DateTimeOffset.Now;
                 servicesDetail = realm.Add(servicesDetail);
+
+                servicesDetail.CalculateBooking();
             });
             return servicesDetail;
         }
@@ -30,13 +32,20 @@ namespace uit.hotel.DataAccesses
                 servicesDetailInDatabase.Time = DateTimeOffset.Now;
                 servicesDetailInDatabase.Number = servicesDetail.Number;
                 servicesDetailInDatabase.Service = servicesDetail.Service;
+
+                servicesDetailInDatabase.CalculateBooking();
             });
             return servicesDetailInDatabase;
         }
 
         public static async void Delete(ServicesDetail servicesDetailInDatabase)
         {
-            await Database.WriteAsync(realm => realm.Remove(servicesDetailInDatabase));
+            await Database.WriteAsync(realm =>
+            {
+                var booking = servicesDetailInDatabase.Booking;
+                realm.Remove(servicesDetailInDatabase);
+                booking.CalculateServicesDetails();
+            });
         }
 
         public static ServicesDetail Get(int servicesDetailId) => Database.Find<ServicesDetail>(servicesDetailId);

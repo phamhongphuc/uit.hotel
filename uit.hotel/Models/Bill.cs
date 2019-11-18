@@ -19,24 +19,27 @@ namespace uit.hotel.Models
         [Backlink(nameof(Booking.Bill))]
         public IQueryable<Booking> Bookings { get; }
 
-        public long Total
+        public long Total { get; private set; }
+        public long TotalReceipts { get; private set; }
+
+        public void Calculate()
         {
-            get
-            {
-                long total = 0;
-                foreach (var b in Bookings) total += b.Total;
-                return total;
-            }
+            CalculateTotal();
+            CalculateTotalReceipts();
         }
 
-        public long TotalReceipts
+        public void CalculateTotal()
         {
-            get
-            {
-                long total = 0;
-                foreach (var r in Receipts) total += r.Money;
-                return total;
-            }
+            long total = 0;
+            foreach (var b in Bookings) total += b.Total;
+            Total = total;
+        }
+
+        public void CalculateTotalReceipts()
+        {
+            long total = 0;
+            foreach (var r in Receipts) total += r.Money;
+            TotalReceipts = total;
         }
 
         public Bill GetManaged()

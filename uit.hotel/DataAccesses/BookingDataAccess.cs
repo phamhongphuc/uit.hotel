@@ -18,10 +18,13 @@ namespace uit.hotel.DataAccesses
                 booking.EmployeeBooking = employee;
                 booking.Bill = bill;
                 Add(realm, booking);
+
+                booking.CalculateTotal();
             });
             return booking;
         }
 
+        // Doesn't calculate anything. Add only.
         public static Booking Add(Realm realm, Booking booking)
         {
             booking.Id = NextId;
@@ -30,6 +33,7 @@ namespace uit.hotel.DataAccesses
             return realm.Add(booking);
         }
 
+        // Doesn't calculate anything. Add only.
         public static Booking BookAndCheckIn(Realm realm, Booking booking)
         {
             booking.Id = NextId;
@@ -49,6 +53,8 @@ namespace uit.hotel.DataAccesses
                 bookingInDatabase.EmployeeCheckIn = employee;
                 bookingInDatabase.RealCheckInTime = DateTimeOffset.Now;
                 bookingInDatabase.Status = (int)Booking.StatusEnum.CheckedIn;
+
+                bookingInDatabase.CalculateTotal();
             });
             return bookingInDatabase;
         }
@@ -59,6 +65,8 @@ namespace uit.hotel.DataAccesses
             {
                 bookingInDatabase.EmployeeCheckOut = employee;
                 bookingInDatabase.RealCheckOutTime = DateTimeOffset.Now;
+                bookingInDatabase.CalculateTotal();
+
                 bookingInDatabase.Status = (int)Booking.StatusEnum.CheckedOut;
                 bookingInDatabase.Room.IsClean = false;
             });
