@@ -5,11 +5,11 @@ export const included = (ref: string) => ({
     id: {
         required,
         included(value: number) {
-            const element = ((this as any) as Vue).$refs[ref] as (Vue & {
+            const element = ((this as any) as Vue).$refs[ref] as Vue & {
                 options: {
                     id: number;
                 }[];
-            });
+            };
             const condition =
                 element === undefined ||
                 !('options' in element) ||

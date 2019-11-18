@@ -37,7 +37,6 @@
             </query->
             <div class="input-label">Đơn đặt tại phòng</div>
             <query-
-                v-slot="{ data: { bookings } }"
                 :query="getSimpleBookings"
                 :poll-interval="0"
                 class="m-3"
