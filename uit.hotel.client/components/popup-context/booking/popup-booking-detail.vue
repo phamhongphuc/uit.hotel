@@ -1,10 +1,5 @@
 <template>
-    <popup-
-        ref="popup"
-        v-slot="{ close }"
-        title="Chi tiết đặt phòng"
-        class="popup-booking-detail"
-    >
+    <popup- ref="popup" title="Chi tiết đặt phòng" class="popup-booking-detail">
         <query-
             v-slot="{
                 data: {

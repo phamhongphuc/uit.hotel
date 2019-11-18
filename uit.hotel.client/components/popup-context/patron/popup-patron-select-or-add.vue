@@ -164,7 +164,6 @@
                 </b-button>
             </div>
             <query-
-                v-slot="{ data: { patrons } }"
                 :query="getPatrons"
                 :poll-interval="500"
                 class="d-none"
