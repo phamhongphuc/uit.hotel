@@ -2092,10 +2092,10 @@
     "@types/unist" "*"
     "@types/vfile-message" "*"
 
-"@types/vuelidate@^0.7.8":
-  version "0.7.8"
-  resolved "https://registry.yarnpkg.com/@types/vuelidate/-/vuelidate-0.7.8.tgz#8a13e750daa3c7c969a5cf988a5fcf53dec81bd1"
-  integrity sha512-8TPvK+HCthejp5aFEb4/So5NpTiqnqOL42UD1V28TDXilW1ii8BBaAxFvaQG7xk7JZxOA6qyLUIueYF15SYohg==
+"@types/vuelidate@^0.7.9":
+  version "0.7.9"
+  resolved "https://registry.yarnpkg.com/@types/vuelidate/-/vuelidate-0.7.9.tgz#3c607aa9309aa7efa32dbe965dc7611a8a166bfd"
+  integrity sha512-vMTgFGA6OEseAJVYIDI145dqMt1/xPYEzEai2TtvR4bwVHnV2K4TZvIB/eusmhkTw0obqB/irTZ57flU9IwCVQ==
   dependencies:
     vue "^2.5.16"
 
