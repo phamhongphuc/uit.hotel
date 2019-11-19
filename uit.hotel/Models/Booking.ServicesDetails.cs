@@ -6,9 +6,9 @@ namespace uit.hotel.Models
     {
         public void CalculateServicesDetails()
         {
-            // long total = 0;
-            // foreach (var s in ServicesDetails) total += s.Total;
-            // TotalServicesDetails = total;
+            long total = 0;
+            foreach (var s in ServicesDetails) total += s.Total;
+            TotalServicesDetails = total;
         }
     }
 }
