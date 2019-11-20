@@ -46,6 +46,7 @@ namespace uit.hotel.Models
         [Backlink(nameof(ServicesDetail.Booking))]
         public IQueryable<ServicesDetail> ServicesDetails { get; }
 
+        [Ignored]
         public long Total { get => TotalRate + TotalVolatilityRate + TotalServicesDetails; }
         public long TotalRate { get; set; }
         public long TotalVolatilityRate { get; set; }

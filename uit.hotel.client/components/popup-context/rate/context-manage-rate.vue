@@ -1,5 +1,5 @@
 <template>
-    <context- ref="context">
+    <context- ref="context" v-slot>
         <b-nav-item-icon- icon="info" text="Thông tin giá" />
     </context->
 </template>

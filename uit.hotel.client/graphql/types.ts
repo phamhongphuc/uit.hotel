@@ -31,7 +31,7 @@ export type Scalars = {
 };
 
 export type AppMutation = {
-    /** Thêm phòng khách đoàn */
+    /** Thêm phòng vào hóa đơn */
     addBookingToBill: Booking;
     /** Đặt và nhận phòng ngay tại khách sạn */
     bookAndCheckIn: Bill;
@@ -65,11 +65,11 @@ export type AppMutation = {
     createVolatilityRate: VolatilityRate;
     /** Nhân viên tự đổi mật khẩu cho tài khoản của mình */
     changePassword: Scalars['String'];
-    /** Cập nhật thời gian checkin của phòng */
+    /** Nhận phòng */
     checkIn: Booking;
     /** Kiểm tra đăng nhập */
     checkLogin: Employee;
-    /** Thực hiện xác nhận trả phòng */
+    /** Trả phòng */
     checkOut: Booking;
     /** Xóa một tầng */
     deleteFloor: Scalars['String'];
@@ -531,6 +531,10 @@ export type BookAndCheckInCreateInput = {
 
 /** Một thông tin thuê phòng của khách hàng */
 export type Booking = {
+    /** Thời gian nhận phòng được dùng */
+    baseCheckInTime: Scalars['DateTimeOffset'];
+    /** Thời gian trả phòng được dùng */
+    baseCheckOutTime: Scalars['DateTimeOffset'];
     /** Thông tin hóa đơn của thông tin thuê phòng */
     bill: Bill;
     /** Thời điểm nhận phòng dự kiến của khách hàng */
@@ -539,16 +543,28 @@ export type Booking = {
     bookCheckOutTime: Scalars['DateTimeOffset'];
     /** Thời điểm tạo thông tin thuê phòng */
     createTime: Scalars['DateTimeOffset'];
+    /** Giá theo ngày */
+    dayPrice: Scalars['Int'];
+    /** Phí nhận phòng sớm */
+    earlyCheckInFee: Scalars['Int'];
     /** Nhân viên thực hiện giao dịch nhận đặt phòng từ khách hàng */
     employeeBooking: Maybe<Employee>;
     /** Nhân viên thực hiện check-in cho khách hàng */
     employeeCheckIn: Maybe<Employee>;
     /** Nhân viên thực hiện check-out cho khách hàng */
     employeeCheckOut: Maybe<Employee>;
+    /** Giá theo giờ */
+    hourPrice: Scalars['Int'];
     /** Id của thông tin thuê phòng */
     id: Scalars['Int'];
+    /** Phí trả phòng trễ */
+    lateCheckOutFee: Scalars['Int'];
+    /** Giá theo đêm */
+    nightPrice: Scalars['Int'];
     /** Danh sách khách hàng yêu cầu đặt phòng */
     patrons: Array<Maybe<Patron>>;
+    /** Giá đang được dùng */
+    rate: Rate;
     /** Thời điểm nhận phòng của khách hàng */
     realCheckInTime: Maybe<Scalars['DateTimeOffset']>;
     /** Thời điểm trả phòng của khách hàng */
@@ -556,16 +572,16 @@ export type Booking = {
     /** Phòng khách hàng chọn đặt trước */
     room: Room;
     /** Danh sách chi tiết sử dụng dịch vụ của khách hàng */
-    servicesDetails: Maybe<Array<Maybe<ServicesDetail>>>;
+    servicesDetails: Array<Maybe<ServicesDetail>>;
     /** Trạng thái của thông tin thuê phòng */
     status: Scalars['Int'];
-    /** Tổng tiền của booking */
+    /** Tổng tiền */
     total: Scalars['Int'];
-    /** Tổng tiền của booking */
-    totalRates: Scalars['Int'];
-    /** Tổng tiền của booking */
+    /** Tổng tiền thuê cơ bản */
+    totalRate: Scalars['Int'];
+    /** Tổng tiền dịch vụ */
     totalServicesDetails: Scalars['Int'];
-    /** Tổng tiền của booking */
+    /** Tổng tiền thuê biến động */
     totalVolatilityRate: Scalars['Int'];
 };
 
@@ -962,6 +978,8 @@ export type Rate = {
     effectiveStartDate: Scalars['DateTimeOffset'];
     /** Nhân viên tạo giá */
     employee: Maybe<Employee>;
+    /** Giá giờ */
+    hourRate: Scalars['Int'];
     /** Id của giá */
     id: Scalars['Int'];
     /** Phí check-out muộn */
@@ -977,6 +995,8 @@ export type Rate = {
 };
 
 export type RateCreateInput = {
+    /** Giá giờ */
+    hourRate: Scalars['Int'];
     /** Giá ngày */
     dayRate: Scalars['Int'];
     /** Giá đêm */
@@ -998,6 +1018,8 @@ export type RateCreateInput = {
 export type RateUpdateInput = {
     /** Id của giá cần cập nhật */
     id: Scalars['Int'];
+    /** Giá giờ */
+    hourRate: Scalars['Int'];
     /** Giá ngày */
     dayRate: Scalars['Int'];
     /** Giá đêm */
@@ -1255,6 +1277,8 @@ export type VolatilityRate = {
     effectiveStartDate: Scalars['DateTimeOffset'];
     /** Nhân viên tạo giá */
     employee: Maybe<Employee>;
+    /** Giá giờ */
+    hourRate: Scalars['Int'];
     /** Id của giá */
     id: Scalars['Int'];
     /** Phí check-out muộn */
@@ -1270,6 +1294,8 @@ export type VolatilityRate = {
 };
 
 export type VolatilityRateCreateInput = {
+    /** Giá giờ */
+    hourRate: Scalars['Int'];
     /** Giá ngày */
     dayRate: Scalars['Int'];
     /** Giá đêm */
@@ -1307,6 +1333,8 @@ export type VolatilityRateCreateInput = {
 export type VolatilityRateUpdateInput = {
     /** Id của giá cần cập nhật */
     id: Scalars['Int'];
+    /** Giá giờ */
+    hourRate: Scalars['Int'];
     /** Giá ngày */
     dayRate: Scalars['Int'];
     /** Giá đêm */
@@ -1436,16 +1464,11 @@ export type GetBookingDetailsQuery = {
             >
         >;
         bill: Pick<Bill, 'id'>;
-        servicesDetails: Maybe<
-            Array<
-                Maybe<
-                    Pick<ServicesDetail, 'id' | 'number' | 'time'> & {
-                        service: Pick<
-                            Service,
-                            'id' | 'name' | 'unit' | 'unitRate'
-                        >;
-                    }
-                >
+        servicesDetails: Array<
+            Maybe<
+                Pick<ServicesDetail, 'id' | 'number' | 'time'> & {
+                    service: Pick<Service, 'id' | 'name' | 'unit' | 'unitRate'>;
+                }
             >
         >;
         room: Pick<Room, 'id' | 'name' | 'isClean'> & {
@@ -2119,10 +2142,10 @@ export namespace GetBookingDetails {
     >['patronKind'];
     export type Bill = GetBookingDetailsQuery['booking']['bill'];
     export type ServicesDetails = NonNullable<
-        NonNullable<GetBookingDetailsQuery['booking']['servicesDetails']>[0]
+        GetBookingDetailsQuery['booking']['servicesDetails'][0]
     >;
     export type Service = NonNullable<
-        NonNullable<GetBookingDetailsQuery['booking']['servicesDetails']>[0]
+        GetBookingDetailsQuery['booking']['servicesDetails'][0]
     >['service'];
     export type Room = GetBookingDetailsQuery['booking']['room'];
     export type RoomKind = GetBookingDetailsQuery['booking']['room']['roomKind'];

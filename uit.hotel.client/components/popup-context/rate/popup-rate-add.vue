@@ -129,6 +129,7 @@ export default class extends mixins<PopupMixinType>(
 ) {
     onOpen() {
         this.input = {
+            hourRate: 0,
             dayRate: 0,
             nightRate: 0,
             weekRate: 0,

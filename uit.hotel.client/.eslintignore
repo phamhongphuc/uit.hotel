@@ -31,3 +31,5 @@
 
 *.code-workspace
 *.json
+
+server.js
