@@ -1,17 +1,14 @@
-{
-    rates {
+mutation($input: PriceCreateInput!) {
+    createPrice(input: $input) {
         id
-        dayRate
-        nightRate
-        weekRate
-        monthRate
+        dayPrice
+        nightPrice
+        weekPrice
+        monthPrice
         lateCheckOutFee
         earlyCheckInFee
         effectiveStartDate
         createDate
-        employee {
-            id
-        }
         roomKind {
             id
         }

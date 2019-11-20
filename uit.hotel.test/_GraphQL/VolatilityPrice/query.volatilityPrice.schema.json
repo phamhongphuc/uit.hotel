@@ -7,17 +7,17 @@
         "data": {
             "type": "object",
             "title": "The Data Schema",
-            "required": ["volatilityRate"],
+            "required": ["volatilityPrice"],
             "properties": {
-                "volatilityRate": {
+                "volatilityPrice": {
                     "type": "object",
-                    "title": "The Volatilityrate Schema",
+                    "title": "The Volatilityprice Schema",
                     "required": [
                         "id",
-                        "dayRate",
-                        "nightRate",
-                        "weekRate",
-                        "monthRate",
+                        "dayPrice",
+                        "nightPrice",
+                        "weekPrice",
+                        "monthPrice",
                         "lateCheckOutFee",
                         "earlyCheckInFee",
                         "effectiveStartDate",
@@ -39,27 +39,27 @@
                             "default": 0,
                             "examples": [2]
                         },
-                        "dayRate": {
+                        "dayPrice": {
                             "type": "integer",
-                            "title": "The Dayrate Schema",
+                            "title": "The Dayprice Schema",
                             "default": 0,
                             "examples": [1]
                         },
-                        "nightRate": {
+                        "nightPrice": {
                             "type": "integer",
-                            "title": "The Nightrate Schema",
+                            "title": "The Nightprice Schema",
                             "default": 0,
                             "examples": [1]
                         },
-                        "weekRate": {
+                        "weekPrice": {
                             "type": "integer",
-                            "title": "The Weekrate Schema",
+                            "title": "The Weekprice Schema",
                             "default": 0,
                             "examples": [1]
                         },
-                        "monthRate": {
+                        "monthPrice": {
                             "type": "integer",
-                            "title": "The Monthrate Schema",
+                            "title": "The Monthprice Schema",
                             "default": 0,
                             "examples": [1]
                         },

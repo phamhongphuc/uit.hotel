@@ -6,26 +6,26 @@ using uit.hotel.Queries.Base;
 
 namespace uit.hotel.Queries.Query
 {
-    public class VolatilityRateQuery : QueryType<VolatilityRate>
+    public class VolatilityPriceQuery : QueryType<VolatilityPrice>
     {
-        public VolatilityRateQuery()
+        public VolatilityPriceQuery()
         {
-            Field<NonNullGraphType<ListGraphType<NonNullGraphType<VolatilityRateType>>>>(
+            Field<NonNullGraphType<ListGraphType<NonNullGraphType<VolatilityPriceType>>>>(
                 _List,
                 "Trả về một danh sách các giá biến động",
                 resolve: _CheckPermission_List(
-                    p => p.PermissionGetRate,
-                    context => VolatilityRateBusiness.Get()
+                    p => p.PermissionGetPrice,
+                    context => VolatilityPriceBusiness.Get()
                 )
             );
 
-            Field<NonNullGraphType<VolatilityRateType>>(
+            Field<NonNullGraphType<VolatilityPriceType>>(
                 _Item,
                 "Trả về thông tin một giá biến động",
                 _IdArgument(),
                 _CheckPermission_Object(
-                    p => p.PermissionGetRate,
-                    context => VolatilityRateBusiness.Get(_GetId<int>(context))
+                    p => p.PermissionGetPrice,
+                    context => VolatilityPriceBusiness.Get(_GetId<int>(context))
                 )
             );
         }

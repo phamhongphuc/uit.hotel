@@ -28,11 +28,11 @@ namespace uit.hotel.Models
         [Backlink(nameof(Receipt.Employee))]
         public IQueryable<Receipt> Receipts { get; }
 
-        [Backlink(nameof(Rate.Employee))]
-        public IQueryable<Rate> Rates { get; }
+        [Backlink(nameof(Price.Employee))]
+        public IQueryable<Price> Prices { get; }
 
-        [Backlink(nameof(VolatilityRate.Employee))]
-        public IQueryable<Rate> VolatilityRates { get; }
+        [Backlink(nameof(VolatilityPrice.Employee))]
+        public IQueryable<Price> VolatilityPrices { get; }
 
         [Backlink(nameof(Booking.EmployeeBooking))]
         public IQueryable<Booking> Bookings { get; }

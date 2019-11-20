@@ -6,7 +6,7 @@ query($id: ID!) {
         permissionGetAccountingVoucher
         permissionGetMap
         permissionGetPatron
-        permissionGetRate
+        permissionGetPrice
         permissionGetService
         permissionManageEmployee
         permissionManageRentingRoom
@@ -14,7 +14,7 @@ query($id: ID!) {
         permissionManagePatron
         permissionManagePatronKind
         permissionManagePosition
-        permissionManageRate
+        permissionManagePrice
         permissionManageService
     }
 }

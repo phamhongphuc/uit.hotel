@@ -23,7 +23,7 @@ namespace uit.hotel.test._GraphQL
                         permissionGetAccountingVoucher = true,
                         permissionGetMap = true,
                         permissionGetPatron = true,
-                        permissionGetRate = true,
+                        permissionGetPrice = true,
                         permissionGetService = true,
                         permissionManageEmployee = true,
                         permissionManageRentingRoom = true,
@@ -31,7 +31,7 @@ namespace uit.hotel.test._GraphQL
                         permissionManagePatron = true,
                         permissionManagePatronKind = true,
                         permissionManagePosition = true,
-                        permissionManageRate = true,
+                        permissionManagePrice = true,
                         permissionManageService = true
                     }
                 },
@@ -267,7 +267,7 @@ namespace uit.hotel.test._GraphQL
                         permissionGetAccountingVoucher = true,
                         permissionGetMap = true,
                         permissionGetPatron = true,
-                        permissionGetRate = true,
+                        permissionGetPrice = true,
                         permissionGetService = true,
                         permissionManageEmployee = true,
                         permissionManageRentingRoom = false,
@@ -275,7 +275,7 @@ namespace uit.hotel.test._GraphQL
                         permissionManagePatron = true,
                         permissionManagePatronKind = true,
                         permissionManagePosition = true,
-                        permissionManageRate = true,
+                        permissionManagePrice = true,
                         permissionManageService = true
                     }
                 },
@@ -299,7 +299,7 @@ namespace uit.hotel.test._GraphQL
                         permissionGetAccountingVoucher = true,
                         permissionGetMap = true,
                         permissionGetPatron = true,
-                        permissionGetRate = true,
+                        permissionGetPrice = true,
                         permissionGetService = true,
                         permissionManageEmployee = true,
                         permissionManageRentingRoom = false,
@@ -307,7 +307,7 @@ namespace uit.hotel.test._GraphQL
                         permissionManagePatron = true,
                         permissionManagePatronKind = true,
                         permissionManagePosition = true,
-                        permissionManageRate = true,
+                        permissionManagePrice = true,
                         permissionManageService = true
                     }
                 },
@@ -331,7 +331,7 @@ namespace uit.hotel.test._GraphQL
                         permissionGetAccountingVoucher = true,
                         permissionGetMap = true,
                         permissionGetPatron = true,
-                        permissionGetRate = true,
+                        permissionGetPrice = true,
                         permissionGetService = true,
                         permissionManageEmployee = true,
                         permissionManageRentingRoom = false,
@@ -339,7 +339,7 @@ namespace uit.hotel.test._GraphQL
                         permissionManagePatron = true,
                         permissionManagePatronKind = true,
                         permissionManagePosition = true,
-                        permissionManageRate = true,
+                        permissionManagePrice = true,
                         permissionManageService = true
                     }
                 },

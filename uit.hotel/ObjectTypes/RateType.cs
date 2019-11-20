@@ -4,74 +4,74 @@ using uit.hotel.Queries.Base;
 
 namespace uit.hotel.ObjectTypes
 {
-    public class RateType : ObjectGraphType<Rate>
+    public class PriceType : ObjectGraphType<Price>
     {
-        public RateType()
+        public PriceType()
         {
-            Name = nameof(Rate);
+            Name = nameof(Price);
             Description = "Giá cố định của một loại phòng";
 
             Field(x => x.Id).Description("Id của giá");
-            Field(x => x.HourRate).Description("Giá giờ");
-            Field(x => x.DayRate).Description("Giá ngày");
-            Field(x => x.NightRate).Description("Giá đêm");
-            Field(x => x.WeekRate).Description("Giá tuần");
-            Field(x => x.MonthRate).Description("Giá tháng");
+            Field(x => x.HourPrice).Description("Giá giờ");
+            Field(x => x.DayPrice).Description("Giá ngày");
+            Field(x => x.NightPrice).Description("Giá đêm");
+            Field(x => x.WeekPrice).Description("Giá tuần");
+            Field(x => x.MonthPrice).Description("Giá tháng");
             Field(x => x.LateCheckOutFee).Description("Phí check-out muộn");
             Field(x => x.EarlyCheckInFee).Description("Phí check-out sớm");
             Field(x => x.EffectiveStartDate).Description("Ngày giá bắt đầu có hiệu lực");
             Field(x => x.CreateDate).Description("Ngày tạo giá");
 
             Field<NonNullGraphType<RoomKindType>>(
-                nameof(Rate.RoomKind),
+                nameof(Price.RoomKind),
                 "Thuộc loại phòng",
                 resolve: context => context.Source.RoomKind);
 
             Field<EmployeeType>(
-                nameof(Rate.Employee),
+                nameof(Price.Employee),
                 "Nhân viên tạo giá",
                 resolve: context => context.Source.Employee);
         }
     }
 
-    public class RateCreateInput : InputType<Rate>
+    public class PriceCreateInput : InputType<Price>
     {
-        public RateCreateInput()
+        public PriceCreateInput()
         {
             Name = _Creation;
-            Field(x => x.HourRate).Description("Giá giờ");
-            Field(x => x.DayRate).Description("Giá ngày");
-            Field(x => x.NightRate).Description("Giá đêm");
-            Field(x => x.WeekRate).Description("Giá tuần");
-            Field(x => x.MonthRate).Description("Giá tháng");
+            Field(x => x.HourPrice).Description("Giá giờ");
+            Field(x => x.DayPrice).Description("Giá ngày");
+            Field(x => x.NightPrice).Description("Giá đêm");
+            Field(x => x.WeekPrice).Description("Giá tuần");
+            Field(x => x.MonthPrice).Description("Giá tháng");
             Field(x => x.LateCheckOutFee).Description("Phí check-out muộn");
             Field(x => x.EarlyCheckInFee).Description("Phí check-out sớm");
             Field(x => x.EffectiveStartDate).Description("Ngày giá bắt đầu có hiệu lực");
 
             Field<NonNullGraphType<RoomKindIdInput>>(
-                nameof(Rate.RoomKind),
+                nameof(Price.RoomKind),
                 "Loại phòng"
             );
         }
     }
 
-    public class RateUpdateInput : InputType<Rate>
+    public class PriceUpdateInput : InputType<Price>
     {
-        public RateUpdateInput()
+        public PriceUpdateInput()
         {
             Name = _Updation;
             Field(x => x.Id).Description("Id của giá cần cập nhật");
-            Field(x => x.HourRate).Description("Giá giờ");
-            Field(x => x.DayRate).Description("Giá ngày");
-            Field(x => x.NightRate).Description("Giá đêm");
-            Field(x => x.WeekRate).Description("Giá tuần");
-            Field(x => x.MonthRate).Description("Giá tháng");
+            Field(x => x.HourPrice).Description("Giá giờ");
+            Field(x => x.DayPrice).Description("Giá ngày");
+            Field(x => x.NightPrice).Description("Giá đêm");
+            Field(x => x.WeekPrice).Description("Giá tuần");
+            Field(x => x.MonthPrice).Description("Giá tháng");
             Field(x => x.LateCheckOutFee).Description("Phí check-out muộn");
             Field(x => x.EarlyCheckInFee).Description("Phí check-out sớm");
             Field(x => x.EffectiveStartDate).Description("Ngày giá bắt đầu có hiệu lực");
 
             Field<NonNullGraphType<RoomKindIdInput>>(
-                nameof(Rate.RoomKind),
+                nameof(Price.RoomKind),
                 "Loại phòng"
             );
         }

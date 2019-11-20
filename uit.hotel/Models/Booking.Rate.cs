@@ -9,19 +9,19 @@ namespace uit.hotel.Models
         //? Calculated fields
         public DateTimeOffset BaseCheckInTime { get; private set; }
         public DateTimeOffset BaseCheckOutTime { get; private set; }
-        public Rate Rate { get; private set; }
+        public Price Price { get; private set; }
         public long HourPrice { get; private set; }
         public long NightPrice { get; private set; }
         public long DayPrice { get; private set; }
         public long EarlyCheckInFee { get; private set; }
         public long LateCheckOutFee { get; private set; }
 
-        public void CalculateRate()
+        public void CalculatePrice()
         {
             BaseCheckInTime = (RealCheckInTime != DateTimeOffset.MinValue ? RealCheckInTime : BookCheckInTime).Round();
             BaseCheckOutTime = (RealCheckOutTime != DateTimeOffset.MinValue ? RealCheckOutTime : BookCheckOutTime).Round();
 
-            Rate = Room.RoomKind.GetRate(BaseCheckInTime);
+            Price = Room.RoomKind.GetPrice(BaseCheckInTime);
             HourPrice = 0;
             EarlyCheckInFee = 0;
             LateCheckOutFee = 0;
@@ -37,92 +37,92 @@ namespace uit.hotel.Models
                 CalculateDay();
             }
 
-            TotalRate = HourPrice + EarlyCheckInFee + LateCheckOutFee + NightPrice + DayPrice;
+            TotalPrice = HourPrice + EarlyCheckInFee + LateCheckOutFee + NightPrice + DayPrice;
         }
 
         private void CalculateHour()
         {
             var timeSpan = BaseCheckOutTime - BaseCheckInTime;
-            if (timeSpan.FloatHour() <= Rate.HourTimeSpan)
+            if (timeSpan.FloatHour() <= Price.HourTimeSpan)
             {
-                HourPrice = (long)(Rate.HourRate * timeSpan.FloatHour());
+                HourPrice = (long)(Price.HourPrice * timeSpan.FloatHour());
             }
         }
 
         private void CalculateCheckIn()
         {
             var checkInHour = BaseCheckInTime.FloatHour();
-            if (checkInHour <= Rate.MaxCheckInNightTime)
+            if (checkInHour <= Price.MaxCheckInNightTime)
             {
-                BaseCheckInTime = BaseCheckInTime.AtHour(Rate.CheckInNightTime).AddDays(-1);
+                BaseCheckInTime = BaseCheckInTime.AtHour(Price.CheckInNightTime).AddDays(-1);
             }
-            else if (checkInHour <= Rate.CheckInDayTime)
+            else if (checkInHour <= Price.CheckInDayTime)
             {
-                EarlyCheckInFee = (long)(Rate.EarlyCheckInFee * (Rate.CheckInDayTime - checkInHour));
-                BaseCheckInTime = BaseCheckInTime.AtHour(Rate.CheckInDayTime);
+                EarlyCheckInFee = (long)(Price.EarlyCheckInFee * (Price.CheckInDayTime - checkInHour));
+                BaseCheckInTime = BaseCheckInTime.AtHour(Price.CheckInDayTime);
             }
-            else if (checkInHour <= Rate.CheckInNightTime - Rate.ToleranceTimeSpan)
+            else if (checkInHour <= Price.CheckInNightTime - Price.ToleranceTimeSpan)
             {
-                BaseCheckInTime.AtHour(Rate.CheckInDayTime);
+                BaseCheckInTime.AtHour(Price.CheckInDayTime);
             }
-            else if (checkInHour <= Rate.CheckInNightTime)
+            else if (checkInHour <= Price.CheckInNightTime)
             {
-                EarlyCheckInFee = (long)(Rate.EarlyCheckInFee * (Rate.CheckInNightTime - checkInHour));
-                BaseCheckInTime = BaseCheckInTime.AtHour(Rate.CheckInNightTime);
+                EarlyCheckInFee = (long)(Price.EarlyCheckInFee * (Price.CheckInNightTime - checkInHour));
+                BaseCheckInTime = BaseCheckInTime.AtHour(Price.CheckInNightTime);
             }
             else
             {
-                BaseCheckInTime = BaseCheckInTime.AtHour(Rate.CheckInNightTime);
+                BaseCheckInTime = BaseCheckInTime.AtHour(Price.CheckInNightTime);
             }
         }
 
         private void CalculateCheckOut()
         {
             var checkOutTime = BaseCheckOutTime.FloatHour();
-            if (checkOutTime <= Rate.CheckOutNightTime)
+            if (checkOutTime <= Price.CheckOutNightTime)
             {
-                BaseCheckOutTime = BaseCheckOutTime.AtHour(Rate.CheckOutNightTime);
+                BaseCheckOutTime = BaseCheckOutTime.AtHour(Price.CheckOutNightTime);
             }
-            else if (checkOutTime <= Rate.CheckInDayTime + Rate.ToleranceTimeSpan)
+            else if (checkOutTime <= Price.CheckInDayTime + Price.ToleranceTimeSpan)
             {
-                BaseCheckOutTime = BaseCheckOutTime.AtHour(Rate.CheckInNightTime);
-                LateCheckOutFee = (long)(Rate.LateCheckOutFee * (checkOutTime - Rate.CheckOutNightTime));
+                BaseCheckOutTime = BaseCheckOutTime.AtHour(Price.CheckInNightTime);
+                LateCheckOutFee = (long)(Price.LateCheckOutFee * (checkOutTime - Price.CheckOutNightTime));
             }
             else
             {
-                BaseCheckOutTime = BaseCheckOutTime.AtHour(Rate.CheckOutDayTime).AddDays(1);
+                BaseCheckOutTime = BaseCheckOutTime.AtHour(Price.CheckOutDayTime).AddDays(1);
             }
         }
 
         private void CalculateNight()
         {
-            if (BaseCheckInTime.FloatHour() == Rate.CheckInNightTime) // isNight
+            if (BaseCheckInTime.FloatHour() == Price.CheckInNightTime) // isNight
             {
-                NightPrice = Rate.NightRate;
-                BaseCheckInTime = BaseCheckInTime.AtHour(Rate.CheckInDayTime).AddDays(1);
+                NightPrice = Price.NightPrice;
+                BaseCheckInTime = BaseCheckInTime.AtHour(Price.CheckInDayTime).AddDays(1);
             }
         }
 
         private void CalculateDay()
         {
-            var iterateTime = BaseCheckInTime;
-            while (iterateTime <= BaseCheckOutTime)
+            var itepriceTime = BaseCheckInTime;
+            while (itepriceTime <= BaseCheckOutTime)
             {
-                var remain = (BaseCheckOutTime - iterateTime).Days;
-                if (remain >= 30 && Rate.MonthRate != 0)
+                var remain = (BaseCheckOutTime - itepriceTime).Days;
+                if (remain >= 30 && Price.MonthPrice != 0)
                 {
-                    DayPrice += Rate.MonthRate;
-                    iterateTime = iterateTime.AddDays(30);
+                    DayPrice += Price.MonthPrice;
+                    itepriceTime = itepriceTime.AddDays(30);
                 }
-                else if (remain >= 7 && Rate.WeekRate != 0)
+                else if (remain >= 7 && Price.WeekPrice != 0)
                 {
-                    DayPrice += Rate.WeekRate;
-                    iterateTime = iterateTime.AddDays(7);
+                    DayPrice += Price.WeekPrice;
+                    itepriceTime = itepriceTime.AddDays(7);
                 }
                 else
                 {
-                    DayPrice += Rate.DayRate;
-                    iterateTime = iterateTime.AddDays(1);
+                    DayPrice += Price.DayPrice;
+                    itepriceTime = itepriceTime.AddDays(1);
                 }
             }
         }

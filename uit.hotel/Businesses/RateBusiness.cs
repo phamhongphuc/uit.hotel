@@ -6,49 +6,49 @@ using uit.hotel.Models;
 
 namespace uit.hotel.Businesses
 {
-    public static class RateBusiness
+    public static class PriceBusiness
     {
-        public static Task<Rate> Add(Employee employee, Rate rate)
+        public static Task<Price> Add(Employee employee, Price price)
         {
-            rate.Employee = employee;
-            rate.RoomKind = rate.RoomKind.GetManaged();
-            if (!rate.RoomKind.IsActive)
-                throw new Exception("Loại phòng có ID: " + rate.RoomKind.Id + " đã ngưng hoại động");
+            price.Employee = employee;
+            price.RoomKind = price.RoomKind.GetManaged();
+            if (!price.RoomKind.IsActive)
+                throw new Exception("Loại phòng có ID: " + price.RoomKind.Id + " đã ngưng hoại động");
 
-            return RateDataAccess.Add(rate);
+            return PriceDataAccess.Add(price);
         }
 
-        public static Task<Rate> Update(Employee employee, Rate rate)
+        public static Task<Price> Update(Employee employee, Price price)
         {
-            var rateInDatabase = GetAndCheckValid(rate.Id);
+            var priceInDatabase = GetAndCheckValid(price.Id);
 
-            rate.Employee = employee;
-            rate.RoomKind = rate.RoomKind.GetManaged();
-            if (!rate.RoomKind.IsActive)
-                throw new Exception("Loại phòng " + rate.RoomKind.Id + " đã ngưng hoại động");
+            price.Employee = employee;
+            price.RoomKind = price.RoomKind.GetManaged();
+            if (!price.RoomKind.IsActive)
+                throw new Exception("Loại phòng " + price.RoomKind.Id + " đã ngưng hoại động");
 
-            return RateDataAccess.Update(rateInDatabase, rate);
+            return PriceDataAccess.Update(priceInDatabase, price);
         }
 
-        public static void Delete(int rateId)
+        public static void Delete(int priceId)
         {
-            var rateInDatabase = GetAndCheckValid(rateId);
-            RateDataAccess.Delete(rateInDatabase);
+            var priceInDatabase = GetAndCheckValid(priceId);
+            PriceDataAccess.Delete(priceInDatabase);
         }
 
-        private static Rate GetAndCheckValid(int rateId)
+        private static Price GetAndCheckValid(int priceId)
         {
-            var rateInDatabase = Get(rateId);
+            var priceInDatabase = Get(priceId);
 
-            if (rateInDatabase == null)
-                throw new Exception("Giá có Id: " + rateId + " không hợp lệ!");
+            if (priceInDatabase == null)
+                throw new Exception("Giá có Id: " + priceId + " không hợp lệ!");
 
             //TODO: kiểm tra điều kiện xóa sửa ở đây
 
-            return rateInDatabase;
+            return priceInDatabase;
         }
 
-        public static Rate Get(int rateId) => RateDataAccess.Get(rateId);
-        public static IEnumerable<Rate> Get() => RateDataAccess.Get();
+        public static Price Get(int priceId) => PriceDataAccess.Get(priceId);
+        public static IEnumerable<Price> Get() => PriceDataAccess.Get();
     }
 }

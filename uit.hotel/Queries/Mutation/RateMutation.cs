@@ -7,34 +7,34 @@ using uit.hotel.Queries.Base;
 
 namespace uit.hotel.Queries.Mutation
 {
-    public class RateMutation : QueryType<Rate>
+    public class PriceMutation : QueryType<Price>
     {
-        public RateMutation()
+        public PriceMutation()
         {
-            Field<NonNullGraphType<RateType>>(
+            Field<NonNullGraphType<PriceType>>(
                 _Creation,
                 "Tạo và trả về một loại giá cơ bản mới",
-                _InputArgument<RateCreateInput>(),
+                _InputArgument<PriceCreateInput>(),
                 _CheckPermission_TaskObject(
-                    p => p.PermissionManageRate,
+                    p => p.PermissionManagePrice,
                     context =>
                     {
                         var employee = AuthenticationHelper.GetEmployee(context);
-                        return RateBusiness.Add(employee, _GetInput(context));
+                        return PriceBusiness.Add(employee, _GetInput(context));
                     }
                 )
             );
 
-            Field<NonNullGraphType<RateType>>(
+            Field<NonNullGraphType<PriceType>>(
                 _Updation,
                 "Cập nhật và trả về một giá cơ bản vừa cập nhật",
-                _InputArgument<RateUpdateInput>(),
+                _InputArgument<PriceUpdateInput>(),
                 _CheckPermission_TaskObject(
-                    p => p.PermissionManageRate,
+                    p => p.PermissionManagePrice,
                     context =>
                     {
                         var employee = AuthenticationHelper.GetEmployee(context);
-                        return RateBusiness.Update(employee, _GetInput(context));
+                        return PriceBusiness.Update(employee, _GetInput(context));
                     }
                 )
             );
@@ -44,10 +44,10 @@ namespace uit.hotel.Queries.Mutation
                 "Xóa một giá cơ bản",
                 _IdArgument(),
                 _CheckPermission_String(
-                    p => p.PermissionManageRate,
+                    p => p.PermissionManagePrice,
                     context =>
                     {
-                        RateBusiness.Delete(_GetId<int>(context));
+                        PriceBusiness.Delete(_GetId<int>(context));
                         return "Xóa thành công";
                     }
                 )

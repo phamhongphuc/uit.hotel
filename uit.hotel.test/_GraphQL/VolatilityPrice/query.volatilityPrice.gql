@@ -1,10 +1,10 @@
-mutation($input: VolatilityRateUpdateInput!) {
-    updateVolatilityRate(input: $input) {
+query($id: ID!) {
+    volatilityPrice(id: $id) {
         id
-        dayRate
-        nightRate
-        weekRate
-        monthRate
+        dayPrice
+        nightPrice
+        weekPrice
+        monthPrice
         lateCheckOutFee
         earlyCheckInFee
         effectiveStartDate
@@ -17,11 +17,11 @@ mutation($input: VolatilityRateUpdateInput!) {
         effectiveOnSaturday
         effectiveOnSunday
         createDate
-        employee {
-            id
-        }
         roomKind {
             id
+            name
+            amountOfPeople
+            numberOfBeds
         }
     }
 }

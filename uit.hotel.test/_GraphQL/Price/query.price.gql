@@ -1,10 +1,10 @@
 query($id: ID!) {
-    rate(id: $id) {
+    price(id: $id) {
         id
-        dayRate
-        nightRate
-        weekRate
-        monthRate
+        dayPrice
+        nightPrice
+        weekPrice
+        monthPrice
         lateCheckOutFee
         earlyCheckInFee
         effectiveStartDate

@@ -5,19 +5,27 @@
     "properties": {
         "data": {
             "type": "object",
-            "required": ["updateRate"],
+            "required": ["updateVolatilityPrice"],
             "properties": {
-                "updateRate": {
+                "updateVolatilityPrice": {
                     "type": "object",
                     "required": [
                         "id",
-                        "dayRate",
-                        "nightRate",
-                        "weekRate",
-                        "monthRate",
+                        "dayPrice",
+                        "nightPrice",
+                        "weekPrice",
+                        "monthPrice",
                         "lateCheckOutFee",
                         "earlyCheckInFee",
                         "effectiveStartDate",
+                        "effectiveEndDate",
+                        "effectiveOnMonday",
+                        "effectiveOnTuesday",
+                        "effectiveOnWednesday",
+                        "effectiveOnThursday",
+                        "effectiveOnFriday",
+                        "effectiveOnSaturday",
+                        "effectiveOnSunday",
                         "createDate",
                         "employee",
                         "roomKind"
@@ -26,16 +34,16 @@
                         "id": {
                             "type": "integer"
                         },
-                        "dayRate": {
+                        "dayPrice": {
                             "type": "integer"
                         },
-                        "nightRate": {
+                        "nightPrice": {
                             "type": "integer"
                         },
-                        "weekRate": {
+                        "weekPrice": {
                             "type": "integer"
                         },
-                        "monthRate": {
+                        "monthPrice": {
                             "type": "integer"
                         },
                         "lateCheckOutFee": {
@@ -47,6 +55,31 @@
                         "effectiveStartDate": {
                             "type": "string",
                             "pattern": "^(.*)$"
+                        },
+                        "effectiveEndDate": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "effectiveOnMonday": {
+                            "type": "boolean"
+                        },
+                        "effectiveOnTuesday": {
+                            "type": "boolean"
+                        },
+                        "effectiveOnWednesday": {
+                            "type": "boolean"
+                        },
+                        "effectiveOnThursday": {
+                            "type": "boolean"
+                        },
+                        "effectiveOnFriday": {
+                            "type": "boolean"
+                        },
+                        "effectiveOnSaturday": {
+                            "type": "boolean"
+                        },
+                        "effectiveOnSunday": {
+                            "type": "boolean"
                         },
                         "createDate": {
                             "type": "string",

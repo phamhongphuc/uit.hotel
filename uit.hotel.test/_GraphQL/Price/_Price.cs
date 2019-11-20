@@ -8,23 +8,23 @@ using uit.hotel.test.Helper;
 namespace uit.hotel.test._GraphQL
 {
     [TestClass]
-    public class _Rate : RealmDatabase
+    public class _Price : RealmDatabase
     {
         [TestMethod]
-        public void Mutation_CreateRate()
+        public void Mutation_CreatePrice()
         {
             SchemaHelper.Execute(
-                @"/_GraphQL/Rate/mutation.createRate.gql",
-                @"/_GraphQL/Rate/mutation.createRate.schema.json",
+                @"/_GraphQL/Price/mutation.createPrice.gql",
+                @"/_GraphQL/Price/mutation.createPrice.schema.json",
                 new
                 {
                     input = new
                     {
-                        hourRate = 1,
-                        dayRate = 1,
-                        nightRate = 1,
-                        weekRate = 1,
-                        monthRate = 1,
+                        hourPrice = 1,
+                        dayPrice = 1,
+                        nightPrice = 1,
+                        weekPrice = 1,
+                        monthPrice = 1,
                         lateCheckOutFee = 1,
                         earlyCheckInFee = 1,
                         effectiveStartDate = "0001-01-01T00:00:00+00:00",
@@ -34,25 +34,25 @@ namespace uit.hotel.test._GraphQL
                         }
                     }
                 },
-                p => p.PermissionManageRate = true
+                p => p.PermissionManagePrice = true
             );
         }
 
         [TestMethod]
-        public void Mutation_CreateRate_InvalidRoomKind()
+        public void Mutation_CreatePrice_InvalidRoomKind()
         {
             SchemaHelper.ExecuteAndExpectError(
                 "Mã loại phòng không tồn tại",
-                @"/_GraphQL/Rate/mutation.createRate.gql",
+                @"/_GraphQL/Price/mutation.createPrice.gql",
                 new
                 {
                     input = new
                     {
-                        hourRate = 1,
-                        dayRate = 1,
-                        nightRate = 1,
-                        weekRate = 1,
-                        monthRate = 1,
+                        hourPrice = 1,
+                        dayPrice = 1,
+                        nightPrice = 1,
+                        weekPrice = 1,
+                        monthPrice = 1,
                         lateCheckOutFee = 1,
                         earlyCheckInFee = 1,
                         effectiveStartDate = "0001-01-01T00:00:00+00:00",
@@ -62,12 +62,12 @@ namespace uit.hotel.test._GraphQL
                         }
                     }
                 },
-                p => p.PermissionManageRate = true
+                p => p.PermissionManagePrice = true
             );
         }
 
         [TestMethod]
-        public void Mutation_CreateRate_InvalidRoomKind_InActive()
+        public void Mutation_CreatePrice_InvalidRoomKind_InActive()
         {
             Database.WriteAsync(realm => realm.Add(new RoomKind
             {
@@ -80,16 +80,16 @@ namespace uit.hotel.test._GraphQL
 
             SchemaHelper.ExecuteAndExpectError(
                 "Loại phòng có ID: 101 đã ngưng hoại động",
-                @"/_GraphQL/Rate/mutation.createRate.gql",
+                @"/_GraphQL/Price/mutation.createPrice.gql",
                 new
                 {
                     input = new
                     {
-                        hourRate = 1,
-                        dayRate = 1,
-                        nightRate = 1,
-                        weekRate = 1,
-                        monthRate = 1,
+                        hourPrice = 1,
+                        dayPrice = 1,
+                        nightPrice = 1,
+                        weekPrice = 1,
+                        monthPrice = 1,
                         lateCheckOutFee = 1,
                         earlyCheckInFee = 1,
                         effectiveStartDate = "0001-01-01T00:00:00+00:00",
@@ -99,66 +99,66 @@ namespace uit.hotel.test._GraphQL
                         }
                     }
                 },
-                p => p.PermissionManageRate = true
+                p => p.PermissionManagePrice = true
             );
         }
 
         [TestMethod]
-        public void Mutation_DeleteRate()
+        public void Mutation_DeletePrice()
         {
-            Database.WriteAsync(realm => realm.Add(new Rate
+            Database.WriteAsync(realm => realm.Add(new Price
             {
                 Id = 10,
                 RoomKind = RoomKindBusiness.Get(1),
                 Employee = EmployeeBusiness.Get("admin")
             })).Wait();
             SchemaHelper.Execute(
-                @"/_GraphQL/Rate/mutation.deleteRate.gql",
-                @"/_GraphQL/Rate/mutation.deleteRate.schema.json",
+                @"/_GraphQL/Price/mutation.deletePrice.gql",
+                @"/_GraphQL/Price/mutation.deletePrice.schema.json",
                 new
                 {
                     id = 10
                 },
-                p => p.PermissionManageRate = true
+                p => p.PermissionManagePrice = true
             );
         }
 
         [TestMethod]
-        public void Mutation_DeleteRate_InvalidId()
+        public void Mutation_DeletePrice_InvalidId()
         {
             SchemaHelper.ExecuteAndExpectError(
                 "Giá có Id: 100 không hợp lệ!",
-                @"/_GraphQL/Rate/mutation.deleteRate.gql",
+                @"/_GraphQL/Price/mutation.deletePrice.gql",
                 new
                 {
                     id = 100
                 },
-                p => p.PermissionManageRate = true
+                p => p.PermissionManagePrice = true
             );
         }
 
         [TestMethod]
-        public void Mutation_UpdateRate()
+        public void Mutation_UpdatePrice()
         {
-            Database.WriteAsync(realm => realm.Add(new Rate
+            Database.WriteAsync(realm => realm.Add(new Price
             {
                 Id = 20,
                 RoomKind = RoomKindBusiness.Get(1),
                 Employee = EmployeeBusiness.Get("admin")
             })).Wait();
             SchemaHelper.Execute(
-                @"/_GraphQL/Rate/mutation.updateRate.gql",
-                @"/_GraphQL/Rate/mutation.updateRate.schema.json",
+                @"/_GraphQL/Price/mutation.updatePrice.gql",
+                @"/_GraphQL/Price/mutation.updatePrice.schema.json",
                 new
                 {
                     input = new
                     {
                         id = 20,
-                        hourRate = 5,
-                        dayRate = 5,
-                        nightRate = 5,
-                        weekRate = 5,
-                        monthRate = 5,
+                        hourPrice = 5,
+                        dayPrice = 5,
+                        nightPrice = 5,
+                        weekPrice = 5,
+                        monthPrice = 5,
                         lateCheckOutFee = 5,
                         earlyCheckInFee = 5,
                         effectiveStartDate = DateTimeOffset.MinValue,
@@ -168,26 +168,26 @@ namespace uit.hotel.test._GraphQL
                         }
                     }
                 },
-                p => p.PermissionManageRate = true
+                p => p.PermissionManagePrice = true
             );
         }
 
         [TestMethod]
-        public void Mutation_UpdateRate_InvalidId()
+        public void Mutation_UpdatePrice_InvalidId()
         {
             SchemaHelper.ExecuteAndExpectError(
                 "Giá có Id: 100 không hợp lệ!",
-                @"/_GraphQL/Rate/mutation.updateRate.gql",
+                @"/_GraphQL/Price/mutation.updatePrice.gql",
                 new
                 {
                     input = new
                     {
                         id = 100,
-                        hourRate = 5,
-                        dayRate = 5,
-                        nightRate = 5,
-                        weekRate = 5,
-                        monthRate = 5,
+                        hourPrice = 5,
+                        dayPrice = 5,
+                        nightPrice = 5,
+                        weekPrice = 5,
+                        monthPrice = 5,
                         lateCheckOutFee = 5,
                         earlyCheckInFee = 5,
                         effectiveStartDate = DateTimeOffset.MinValue,
@@ -197,14 +197,14 @@ namespace uit.hotel.test._GraphQL
                         }
                     }
                 },
-                p => p.PermissionManageRate = true
+                p => p.PermissionManagePrice = true
             );
         }
 
         [TestMethod]
-        public void Mutation_UpdateRate_InvalidRoomKind()
+        public void Mutation_UpdatePrice_InvalidRoomKind()
         {
-            Database.WriteAsync(realm => realm.Add(new Rate
+            Database.WriteAsync(realm => realm.Add(new Price
             {
                 Id = 21,
                 RoomKind = RoomKindBusiness.Get(1),
@@ -213,17 +213,17 @@ namespace uit.hotel.test._GraphQL
 
             SchemaHelper.ExecuteAndExpectError(
                 "Mã loại phòng không tồn tại",
-                @"/_GraphQL/Rate/mutation.updateRate.gql",
+                @"/_GraphQL/Price/mutation.updatePrice.gql",
                 new
                 {
                     input = new
                     {
                         id = 21,
-                        hourRate = 1,
-                        dayRate = 5,
-                        nightRate = 5,
-                        weekRate = 5,
-                        monthRate = 5,
+                        hourPrice = 1,
+                        dayPrice = 5,
+                        nightPrice = 5,
+                        weekPrice = 5,
+                        monthPrice = 5,
                         lateCheckOutFee = 5,
                         earlyCheckInFee = 5,
                         effectiveStartDate = DateTimeOffset.MinValue,
@@ -233,16 +233,16 @@ namespace uit.hotel.test._GraphQL
                         }
                     }
                 },
-                p => p.PermissionManageRate = true
+                p => p.PermissionManagePrice = true
             );
         }
 
         [TestMethod]
-        public void Mutation_UpdateRate_InvalidRoomKind_InActive()
+        public void Mutation_UpdatePrice_InvalidRoomKind_InActive()
         {
             Database.WriteAsync(realm =>
             {
-                realm.Add(new Rate
+                realm.Add(new Price
                 {
                     Id = 22,
                     RoomKind = RoomKindBusiness.Get(1),
@@ -260,17 +260,17 @@ namespace uit.hotel.test._GraphQL
 
             SchemaHelper.ExecuteAndExpectError(
                 "Loại phòng 110 đã ngưng hoại động",
-                @"/_GraphQL/Rate/mutation.updateRate.gql",
+                @"/_GraphQL/Price/mutation.updatePrice.gql",
                 new
                 {
                     input = new
                     {
                         id = 22,
-                        hourRate = 5,
-                        dayRate = 5,
-                        nightRate = 5,
-                        weekRate = 5,
-                        monthRate = 5,
+                        hourPrice = 5,
+                        dayPrice = 5,
+                        nightPrice = 5,
+                        weekPrice = 5,
+                        monthPrice = 5,
                         lateCheckOutFee = 5,
                         earlyCheckInFee = 5,
                         effectiveStartDate = DateTimeOffset.MinValue,
@@ -280,35 +280,35 @@ namespace uit.hotel.test._GraphQL
                         }
                     }
                 },
-                p => p.PermissionManageRate = true
+                p => p.PermissionManagePrice = true
             );
         }
 
         [TestMethod]
-        public void Query_Rate()
+        public void Query_Price()
         {
-            Database.WriteAsync(realm => realm.Add(new Rate
+            Database.WriteAsync(realm => realm.Add(new Price
             {
                 Id = 30,
                 RoomKind = RoomKindBusiness.Get(1),
                 Employee = EmployeeBusiness.Get("admin")
             })).Wait();
             SchemaHelper.Execute(
-                @"/_GraphQL/Rate/query.rate.gql",
-                @"/_GraphQL/Rate/query.rate.schema.json",
+                @"/_GraphQL/Price/query.price.gql",
+                @"/_GraphQL/Price/query.price.schema.json",
                 new { id = 30 },
-                p => p.PermissionGetRate = true
+                p => p.PermissionGetPrice = true
             );
         }
 
         [TestMethod]
-        public void Query_Rates()
+        public void Query_Prices()
         {
             SchemaHelper.Execute(
-                @"/_GraphQL/Rate/query.rates.gql",
-                @"/_GraphQL/Rate/query.rates.schema.json",
+                @"/_GraphQL/Price/query.prices.gql",
+                @"/_GraphQL/Price/query.prices.schema.json",
                 null,
-                p => p.PermissionGetRate = true
+                p => p.PermissionGetPrice = true
             );
         }
     }

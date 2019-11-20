@@ -47,9 +47,9 @@ namespace uit.hotel.Models
         public IQueryable<ServicesDetail> ServicesDetails { get; }
 
         [Ignored]
-        public long Total { get => TotalRate + TotalVolatilityRate + TotalServicesDetails; }
-        public long TotalRate { get; set; }
-        public long TotalVolatilityRate { get; set; }
+        public long Total { get => TotalPrice + TotalVolatilityPrice + TotalServicesDetails; }
+        public long TotalPrice { get; set; }
+        public long TotalVolatilityPrice { get; set; }
         public long TotalServicesDetails { get; set; }
 
         public void CalculateTotal(bool updateBill = false)
@@ -57,7 +57,7 @@ namespace uit.hotel.Models
             if (Status == (int)StatusEnum.CheckedOut)
                 throw new Exception("Phòng đã checkout, không thể tính toán lại giá tiền.");
 
-            CalculateRate();
+            CalculatePrice();
             CalculateServicesDetails();
         }
 

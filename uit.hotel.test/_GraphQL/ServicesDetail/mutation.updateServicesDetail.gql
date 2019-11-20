@@ -9,7 +9,7 @@ mutation($input: ServicesDetailUpdateInput!) {
         }
         service {
             id
-            unitRate
+            unitPrice
         }
     }
 }

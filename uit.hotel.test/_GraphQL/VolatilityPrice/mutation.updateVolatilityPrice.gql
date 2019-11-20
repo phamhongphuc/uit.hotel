@@ -1,10 +1,10 @@
-{
-    volatilityRates {
+mutation($input: VolatilityPriceUpdateInput!) {
+    updateVolatilityPrice(input: $input) {
         id
-        dayRate
-        nightRate
-        weekRate
-        monthRate
+        dayPrice
+        nightPrice
+        weekPrice
+        monthPrice
         lateCheckOutFee
         earlyCheckInFee
         effectiveStartDate
@@ -17,11 +17,11 @@
         effectiveOnSaturday
         effectiveOnSunday
         createDate
+        employee {
+            id
+        }
         roomKind {
             id
-            name
-            amountOfPeople
-            numberOfBeds
         }
     }
 }

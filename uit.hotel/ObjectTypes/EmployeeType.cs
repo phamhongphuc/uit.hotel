@@ -38,15 +38,15 @@ namespace uit.hotel.ObjectTypes
                 "Danh sách các Phiếu thu mà nhân viên tạo",
                 resolve: context => context.Source.Receipts.ToList());
 
-            Field<NonNullGraphType<ListGraphType<NonNullGraphType<RateType>>>>(
-                nameof(Employee.Rates),
+            Field<NonNullGraphType<ListGraphType<NonNullGraphType<PriceType>>>>(
+                nameof(Employee.Prices),
                 "Danh sách các Giá cơ bản mà nhân viên tạo",
-                resolve: context => context.Source.Rates.ToList());
+                resolve: context => context.Source.Prices.ToList());
 
-            Field<NonNullGraphType<ListGraphType<NonNullGraphType<VolatilityRateType>>>>(
-                nameof(Employee.VolatilityRates),
+            Field<NonNullGraphType<ListGraphType<NonNullGraphType<VolatilityPriceType>>>>(
+                nameof(Employee.VolatilityPrices),
                 "Danh sách các Giá biến động mà nhân viên tạo",
-                resolve: context => context.Source.VolatilityRates.ToList());
+                resolve: context => context.Source.VolatilityPrices.ToList());
 
             Field<NonNullGraphType<ListGraphType<NonNullGraphType<BookingType>>>>(
                 nameof(Employee.Bookings),

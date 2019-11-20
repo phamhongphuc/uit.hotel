@@ -6,49 +6,49 @@ using uit.hotel.Models;
 
 namespace uit.hotel.Businesses
 {
-    public static class VolatilityRateBusiness
+    public static class VolatilityPriceBusiness
     {
-        public static Task<VolatilityRate> Add(Employee employee, VolatilityRate volatilityRate)
+        public static Task<VolatilityPrice> Add(Employee employee, VolatilityPrice volatilityPrice)
         {
-            volatilityRate.Employee = employee;
-            volatilityRate.RoomKind = volatilityRate.RoomKind.GetManaged();
-            if (!volatilityRate.RoomKind.IsActive)
-                throw new Exception("Loại phòng " + volatilityRate.RoomKind.Id + " đã ngưng hoại động");
+            volatilityPrice.Employee = employee;
+            volatilityPrice.RoomKind = volatilityPrice.RoomKind.GetManaged();
+            if (!volatilityPrice.RoomKind.IsActive)
+                throw new Exception("Loại phòng " + volatilityPrice.RoomKind.Id + " đã ngưng hoại động");
 
-            return VolatilityRateDataAccess.Add(volatilityRate);
+            return VolatilityPriceDataAccess.Add(volatilityPrice);
         }
 
-        public static Task<VolatilityRate> Update(Employee employee, VolatilityRate volatilityRate)
+        public static Task<VolatilityPrice> Update(Employee employee, VolatilityPrice volatilityPrice)
         {
-            var volatilityRateInDatabase = GetAndCheckValid(volatilityRate.Id);
+            var volatilityPriceInDatabase = GetAndCheckValid(volatilityPrice.Id);
 
-            volatilityRate.Employee = employee;
-            volatilityRate.RoomKind = volatilityRate.RoomKind.GetManaged();
-            if (!volatilityRate.RoomKind.IsActive)
-                throw new Exception("Loại phòng " + volatilityRate.RoomKind.Id + " đã ngưng hoại động");
+            volatilityPrice.Employee = employee;
+            volatilityPrice.RoomKind = volatilityPrice.RoomKind.GetManaged();
+            if (!volatilityPrice.RoomKind.IsActive)
+                throw new Exception("Loại phòng " + volatilityPrice.RoomKind.Id + " đã ngưng hoại động");
 
-            return VolatilityRateDataAccess.Update(volatilityRateInDatabase, volatilityRate);
+            return VolatilityPriceDataAccess.Update(volatilityPriceInDatabase, volatilityPrice);
         }
 
-        public static void Delete(int volatilityRateId)
+        public static void Delete(int volatilityPriceId)
         {
-            var volatilityRateInDatabase = GetAndCheckValid(volatilityRateId);
-            VolatilityRateDataAccess.Delete(volatilityRateInDatabase);
+            var volatilityPriceInDatabase = GetAndCheckValid(volatilityPriceId);
+            VolatilityPriceDataAccess.Delete(volatilityPriceInDatabase);
         }
 
-        private static VolatilityRate GetAndCheckValid(int volatilityRateId)
+        private static VolatilityPrice GetAndCheckValid(int volatilityPriceId)
         {
-            var volatilityRateInDatabase = Get(volatilityRateId);
+            var volatilityPriceInDatabase = Get(volatilityPriceId);
 
-            if (volatilityRateInDatabase == null)
-                throw new Exception("Giá có Id: " + volatilityRateId + " không hợp lệ!");
+            if (volatilityPriceInDatabase == null)
+                throw new Exception("Giá có Id: " + volatilityPriceId + " không hợp lệ!");
 
             //TODO: kiểm tra điều kiện xóa sửa ở đây
 
-            return volatilityRateInDatabase;
+            return volatilityPriceInDatabase;
         }
 
-        public static VolatilityRate Get(int volatilityRateId) => VolatilityRateDataAccess.Get(volatilityRateId);
-        public static IEnumerable<VolatilityRate> Get() => VolatilityRateDataAccess.Get();
+        public static VolatilityPrice Get(int volatilityPriceId) => VolatilityPriceDataAccess.Get(volatilityPriceId);
+        public static IEnumerable<VolatilityPrice> Get() => VolatilityPriceDataAccess.Get();
     }
 }

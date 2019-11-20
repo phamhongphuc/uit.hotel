@@ -1,10 +1,10 @@
-mutation($input: RateUpdateInput!) {
-    updateRate(input: $input) {
+mutation($input: PriceUpdateInput!) {
+    updatePrice(input: $input) {
         id
-        dayRate
-        nightRate
-        weekRate
-        monthRate
+        dayPrice
+        nightPrice
+        weekPrice
+        monthPrice
         lateCheckOutFee
         earlyCheckInFee
         effectiveStartDate

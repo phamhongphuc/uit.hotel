@@ -19,7 +19,7 @@ namespace uit.hotel.test._GraphQL
                     input = new
                     {
                         name = "Tên dịch vụ 1",
-                        unitRate = 30000,
+                        unitPrice = 30000,
                         unit = "Đơn vị tính"
                     }
                 },
@@ -134,7 +134,7 @@ namespace uit.hotel.test._GraphQL
                     {
                         id = 30,
                         name = "Tên dịch vụ 30.1",
-                        unitRate = 30000,
+                        unitPrice = 30000,
                         unit = "Đơn vị tính"
                     }
                 },
@@ -154,7 +154,7 @@ namespace uit.hotel.test._GraphQL
                     {
                         id = 1,
                         name = "Tên dịch vụ 1.1",
-                        unitRate = 30000,
+                        unitPrice = 30000,
                         unit = "Đơn vị tính"
                     }
                 },
@@ -174,7 +174,7 @@ namespace uit.hotel.test._GraphQL
                     {
                         id = 100,
                         name = "Tên dịch vụ 100",
-                        unitRate = 30000,
+                        unitPrice = 30000,
                         unit = "Đơn vị tính"
                     }
                 },
@@ -202,7 +202,7 @@ namespace uit.hotel.test._GraphQL
                     {
                         id = 31,
                         name = "Tên dịch vụ 31.1",
-                        unitRate = 30000,
+                        unitPrice = 30000,
                         unit = "Đơn vị tính"
                     }
                 },

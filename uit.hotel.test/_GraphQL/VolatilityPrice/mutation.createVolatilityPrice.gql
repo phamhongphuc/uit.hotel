@@ -1,10 +1,10 @@
-mutation($input: VolatilityRateCreateInput!) {
-    createVolatilityRate(input: $input) {
+mutation($input: VolatilityPriceCreateInput!) {
+    createVolatilityPrice(input: $input) {
         id
-        dayRate
-        nightRate
-        weekRate
-        monthRate
+        dayPrice
+        nightPrice
+        weekPrice
+        monthPrice
         lateCheckOutFee
         earlyCheckInFee
         effectiveStartDate

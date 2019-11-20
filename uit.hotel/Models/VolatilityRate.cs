@@ -3,15 +3,15 @@ using Realms;
 
 namespace uit.hotel.Models
 {
-    public class VolatilityRate : RealmObject
+    public class VolatilityPrice : RealmObject
     {
         [PrimaryKey]
         public int Id { get; set; }
-        public long HourRate { get; set; }
-        public long DayRate { get; set; }
-        public long NightRate { get; set; }
-        public long WeekRate { get; set; }
-        public long MonthRate { get; set; }
+        public long HourPrice { get; set; }
+        public long DayPrice { get; set; }
+        public long NightPrice { get; set; }
+        public long WeekPrice { get; set; }
+        public long MonthPrice { get; set; }
         public long LateCheckOutFee { get; set; }
         public long EarlyCheckInFee { get; set; }
         public DateTimeOffset EffectiveStartDate { get; set; }

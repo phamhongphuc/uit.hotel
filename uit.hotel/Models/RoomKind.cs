@@ -17,21 +17,21 @@ namespace uit.hotel.Models
         [Backlink(nameof(Room.RoomKind))]
         public IQueryable<Room> Rooms { get; }
 
-        [Backlink(nameof(Rate.RoomKind))]
-        public IQueryable<Rate> Rates { get; }
+        [Backlink(nameof(Price.RoomKind))]
+        public IQueryable<Price> Prices { get; }
 
-        [Backlink(nameof(VolatilityRate.RoomKind))]
-        public IQueryable<VolatilityRate> VolatilityRates { get; }
+        [Backlink(nameof(VolatilityPrice.RoomKind))]
+        public IQueryable<VolatilityPrice> VolatilityPrices { get; }
 
-        public Rate GetRate(DateTimeOffset date)
+        public Price GetPrice(DateTimeOffset date)
         {
-            Rate select = null;
-            foreach (var rate in Rates)
+            Price select = null;
+            foreach (var price in Prices)
                 if (
-                    date >= rate.EffectiveStartDate &&
-                    (select == null || select.EffectiveStartDate < rate.EffectiveStartDate)
+                    date >= price.EffectiveStartDate &&
+                    (select == null || select.EffectiveStartDate < price.EffectiveStartDate)
                 )
-                    select = rate;
+                    select = price;
             if (select == null) throw new Exception("Loại phòng này chưa được cài đặt giá");
             return select;
         }

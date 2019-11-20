@@ -42,12 +42,12 @@
                         },
                         "service": {
                             "type": "object",
-                            "required": ["id", "unitRate"],
+                            "required": ["id", "unitPrice"],
                             "properties": {
                                 "id": {
                                     "type": "integer"
                                 },
-                                "unitRate": {
+                                "unitPrice": {
                                     "type": "integer"
                                 }
                             }

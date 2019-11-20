@@ -23,15 +23,15 @@ namespace uit.hotel.ObjectTypes
                 "Danh sách các phòng thuộc loại phòng này",
                 resolve: context => context.Source.Rooms.ToList());
 
-            Field<ListGraphType<RateType>>(
-                nameof(RoomKind.Rates),
+            Field<ListGraphType<PriceType>>(
+                nameof(RoomKind.Prices),
                 "Danh sách giá cố định của loại phòng",
-                resolve: context => context.Source.Rates.ToList());
+                resolve: context => context.Source.Prices.ToList());
 
-            Field<ListGraphType<VolatilityRateType>>(
-                nameof(RoomKind.VolatilityRates),
+            Field<ListGraphType<VolatilityPriceType>>(
+                nameof(RoomKind.VolatilityPrices),
                 "Danh sách giá biến động của loại phòng",
-                resolve: context => context.Source.VolatilityRates.ToList());
+                resolve: context => context.Source.VolatilityPrices.ToList());
         }
     }
 

@@ -25,7 +25,7 @@ namespace uit.hotel.Businesses
                 PermissionGetAccountingVoucher = true,
                 PermissionGetMap = true,
                 PermissionGetPatron = true,
-                PermissionGetRate = true,
+                PermissionGetPrice = true,
                 PermissionGetService = true,
                 PermissionManageEmployee = true,
                 PermissionManageRentingRoom = true,
@@ -33,7 +33,7 @@ namespace uit.hotel.Businesses
                 PermissionManagePatron = true,
                 PermissionManagePatronKind = true,
                 PermissionManagePosition = true,
-                PermissionManageRate = true,
+                PermissionManagePrice = true,
                 PermissionManageService = true,
                 IsActive = true,
             });

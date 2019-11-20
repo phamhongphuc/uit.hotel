@@ -5,18 +5,18 @@
     "properties": {
         "data": {
             "type": "object",
-            "required": ["volatilityRates"],
+            "required": ["volatilityPrices"],
             "properties": {
-                "volatilityRates": {
+                "volatilityPrices": {
                     "type": "array",
                     "items": {
                         "type": "object",
                         "required": [
                             "id",
-                            "dayRate",
-                            "nightRate",
-                            "weekRate",
-                            "monthRate",
+                            "dayPrice",
+                            "nightPrice",
+                            "weekPrice",
+                            "monthPrice",
                             "lateCheckOutFee",
                             "earlyCheckInFee",
                             "effectiveStartDate",
@@ -35,16 +35,16 @@
                             "id": {
                                 "type": "integer"
                             },
-                            "dayRate": {
+                            "dayPrice": {
                                 "type": "integer"
                             },
-                            "nightRate": {
+                            "nightPrice": {
                                 "type": "integer"
                             },
-                            "weekRate": {
+                            "weekPrice": {
                                 "type": "integer"
                             },
-                            "monthRate": {
+                            "monthPrice": {
                                 "type": "integer"
                             },
                             "lateCheckOutFee": {

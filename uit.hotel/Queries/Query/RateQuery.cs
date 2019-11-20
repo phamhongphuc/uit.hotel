@@ -6,26 +6,26 @@ using uit.hotel.Queries.Base;
 
 namespace uit.hotel.Queries.Query
 {
-    public class RateQuery : QueryType<Rate>
+    public class PriceQuery : QueryType<Price>
     {
-        public RateQuery()
+        public PriceQuery()
         {
-            Field<NonNullGraphType<ListGraphType<NonNullGraphType<RateType>>>>(
+            Field<NonNullGraphType<ListGraphType<NonNullGraphType<PriceType>>>>(
                 _List,
                 "Trả về một danh sách các loại giá cơ bản",
                 resolve: _CheckPermission_List(
-                    p => p.PermissionGetRate,
-                    context => RateBusiness.Get()
+                    p => p.PermissionGetPrice,
+                    context => PriceBusiness.Get()
                 )
             );
 
-            Field<NonNullGraphType<RateType>>(
+            Field<NonNullGraphType<PriceType>>(
                 _Item,
                 "Trả về thông tin một loại giá cơ bản",
                 _IdArgument(),
                 _CheckPermission_Object(
-                    p => p.PermissionGetRate,
-                    context => RateBusiness.Get(_GetId<int>(context))
+                    p => p.PermissionGetPrice,
+                    context => PriceBusiness.Get(_GetId<int>(context))
                 )
             );
         }

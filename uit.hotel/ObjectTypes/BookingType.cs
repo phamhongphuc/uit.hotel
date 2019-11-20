@@ -20,8 +20,8 @@ namespace uit.hotel.ObjectTypes
             Field(x => x.CreateTime).Description("Thời điểm tạo thông tin thuê phòng");
             Field(x => x.Status).Description("Trạng thái của thông tin thuê phòng");
             Field(x => x.Total).Description("Tổng tiền");
-            Field(x => x.TotalRate).Description("Tổng tiền thuê cơ bản");
-            Field(x => x.TotalVolatilityRate).Description("Tổng tiền thuê biến động");
+            Field(x => x.TotalPrice).Description("Tổng tiền thuê cơ bản");
+            Field(x => x.TotalVolatilityPrice).Description("Tổng tiền thuê biến động");
             Field(x => x.TotalServicesDetails).Description("Tổng tiền dịch vụ");
 
             Field(x => x.BaseCheckInTime).Description("Thời gian nhận phòng được dùng");
@@ -31,10 +31,10 @@ namespace uit.hotel.ObjectTypes
             Field(x => x.DayPrice).Description("Giá theo ngày");
             Field(x => x.EarlyCheckInFee).Description("Phí nhận phòng sớm");
             Field(x => x.LateCheckOutFee).Description("Phí trả phòng trễ");
-            Field<NonNullGraphType<RateType>>(
-                nameof(Booking.Rate),
+            Field<NonNullGraphType<PriceType>>(
+                nameof(Booking.Price),
                 "Giá đang được dùng",
-                resolve: context => context.Source.Rate
+                resolve: context => context.Source.Price
             );
 
             Field<EmployeeType>(

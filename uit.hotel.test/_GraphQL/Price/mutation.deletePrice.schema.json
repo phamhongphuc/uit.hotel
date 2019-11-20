@@ -7,9 +7,9 @@
     "properties": {
         "data": {
             "type": "object",
-            "required": ["deleteRate"],
+            "required": ["deletePrice"],
             "properties": {
-                "deleteRate": {
+                "deletePrice": {
                     "type": "string",
                     "pattern": "^(.*)$"
                 }

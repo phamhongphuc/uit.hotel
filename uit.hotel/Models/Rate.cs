@@ -4,7 +4,7 @@ using Realms;
 
 namespace uit.hotel.Models
 {
-    public class Rate : RealmObject
+    public class Price : RealmObject
     {
         public static int CheckInDayTime = 13;
         public static int CheckOutDayTime = 11;
@@ -16,11 +16,11 @@ namespace uit.hotel.Models
 
         [PrimaryKey]
         public int Id { get; set; }
-        public long HourRate { get; set; }
-        public long DayRate { get; set; }
-        public long NightRate { get; set; }
-        public long WeekRate { get; set; }
-        public long MonthRate { get; set; }
+        public long HourPrice { get; set; }
+        public long DayPrice { get; set; }
+        public long NightPrice { get; set; }
+        public long WeekPrice { get; set; }
+        public long MonthPrice { get; set; }
         public long LateCheckOutFee { get; set; }
         public long EarlyCheckInFee { get; set; }
         [Indexed]
@@ -29,7 +29,7 @@ namespace uit.hotel.Models
         public Employee Employee { get; set; }
         public RoomKind RoomKind { get; set; }
 
-        [Backlink(nameof(Booking.Rate))]
+        [Backlink(nameof(Booking.Price))]
         public IQueryable<Booking> Bookings { get; }
     }
 }

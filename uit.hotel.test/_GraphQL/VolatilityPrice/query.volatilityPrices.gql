@@ -1,10 +1,10 @@
-query($id: ID!) {
-    volatilityRate(id: $id) {
+{
+    volatilityPrices {
         id
-        dayRate
-        nightRate
-        weekRate
-        monthRate
+        dayPrice
+        nightPrice
+        weekPrice
+        monthPrice
         lateCheckOutFee
         earlyCheckInFee
         effectiveStartDate

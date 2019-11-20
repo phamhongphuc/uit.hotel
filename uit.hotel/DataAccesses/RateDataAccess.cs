@@ -7,54 +7,54 @@ using uit.hotel.Models;
 
 namespace uit.hotel.DataAccesses
 {
-    public class RateDataAccess : RealmDatabase
+    public class PriceDataAccess : RealmDatabase
     {
         public static int NextId => Get().Count() == 0 ? 1 : Get().Max(i => i.Id) + 1;
 
-        public static async Task<Rate> Add(Rate rate)
+        public static async Task<Price> Add(Price price)
         {
             await Database.WriteAsync(realm =>
             {
-                rate.Id = NextId;
-                rate.CreateDate = DateTimeOffset.Now;
-                rate = realm.Add(rate);
+                price.Id = NextId;
+                price.CreateDate = DateTimeOffset.Now;
+                price = realm.Add(price);
             });
-            return rate;
+            return price;
         }
 
-        public static Rate Add(Realm realm, Rate rate)
+        public static Price Add(Realm realm, Price price)
         {
-            rate.Id = NextId;
-            rate.CreateDate = DateTimeOffset.MinValue;
-            return realm.Add(rate);
+            price.Id = NextId;
+            price.CreateDate = DateTimeOffset.MinValue;
+            return realm.Add(price);
         }
 
-        public static async void Delete(Rate rateInDatabase)
+        public static async void Delete(Price priceInDatabase)
         {
-            await Database.WriteAsync(realm => realm.Remove(rateInDatabase));
+            await Database.WriteAsync(realm => realm.Remove(priceInDatabase));
         }
 
-        public static async Task<Rate> Update(Rate rateInDatabase, Rate rate)
+        public static async Task<Price> Update(Price priceInDatabase, Price price)
         {
             await Database.WriteAsync(realm =>
             {
-                rateInDatabase.HourRate = rate.HourRate;
-                rateInDatabase.DayRate = rate.DayRate;
-                rateInDatabase.NightRate = rate.NightRate;
-                rateInDatabase.WeekRate = rate.WeekRate;
-                rateInDatabase.MonthRate = rate.MonthRate;
-                rateInDatabase.LateCheckOutFee = rate.LateCheckOutFee;
-                rateInDatabase.EarlyCheckInFee = rate.EarlyCheckInFee;
-                rateInDatabase.EffectiveStartDate = rate.EffectiveStartDate;
-                rateInDatabase.CreateDate = DateTimeOffset.Now;
-                rateInDatabase.Employee = rate.Employee;
-                rateInDatabase.RoomKind = rate.RoomKind;
+                priceInDatabase.HourPrice = price.HourPrice;
+                priceInDatabase.DayPrice = price.DayPrice;
+                priceInDatabase.NightPrice = price.NightPrice;
+                priceInDatabase.WeekPrice = price.WeekPrice;
+                priceInDatabase.MonthPrice = price.MonthPrice;
+                priceInDatabase.LateCheckOutFee = price.LateCheckOutFee;
+                priceInDatabase.EarlyCheckInFee = price.EarlyCheckInFee;
+                priceInDatabase.EffectiveStartDate = price.EffectiveStartDate;
+                priceInDatabase.CreateDate = DateTimeOffset.Now;
+                priceInDatabase.Employee = price.Employee;
+                priceInDatabase.RoomKind = price.RoomKind;
             });
-            return rateInDatabase;
+            return priceInDatabase;
         }
 
-        public static Rate Get(int rateId) => Database.Find<Rate>(rateId);
+        public static Price Get(int priceId) => Database.Find<Price>(priceId);
 
-        public static IEnumerable<Rate> Get() => Database.All<Rate>();
+        public static IEnumerable<Price> Get() => Database.All<Price>();
     }
 }
