@@ -24,37 +24,57 @@ namespace uit.hotel.ObjectTypes
             Field(x => x.TotalVolatilityRate).Description("Tổng tiền thuê biến động");
             Field(x => x.TotalServicesDetails).Description("Tổng tiền dịch vụ");
 
+            Field(x => x.BaseCheckInTime).Description("Thời gian nhận phòng được dùng");
+            Field(x => x.BaseCheckOutTime).Description("Thời gian trả phòng được dùng");
+            Field(x => x.HourPrice).Description("Giá theo giờ");
+            Field(x => x.NightPrice).Description("Giá theo đêm");
+            Field(x => x.DayPrice).Description("Giá theo ngày");
+            Field(x => x.EarlyCheckInFee).Description("Phí nhận phòng sớm");
+            Field(x => x.LateCheckOutFee).Description("Phí trả phòng trễ");
+            Field<NonNullGraphType<RateType>>(
+                nameof(Booking.Rate),
+                "Giá đang được dùng",
+                resolve: context => context.Source.Rate
+            );
+
             Field<EmployeeType>(
                 nameof(Booking.EmployeeBooking),
                 "Nhân viên thực hiện giao dịch nhận đặt phòng từ khách hàng",
-                resolve: context => context.Source.EmployeeBooking);
+                resolve: context => context.Source.EmployeeBooking
+            );
             Field<EmployeeType>(
                 nameof(Booking.EmployeeCheckIn),
                 "Nhân viên thực hiện check-in cho khách hàng",
-                resolve: context => context.Source.EmployeeCheckIn);
+                resolve: context => context.Source.EmployeeCheckIn
+            );
             Field<EmployeeType>(
                 nameof(Booking.EmployeeCheckOut),
                 "Nhân viên thực hiện check-out cho khách hàng",
-                resolve: context => context.Source.EmployeeCheckOut);
+                resolve: context => context.Source.EmployeeCheckOut
+            );
 
             Field<NonNullGraphType<BillType>>(
                 nameof(Booking.Bill),
                 "Thông tin hóa đơn của thông tin thuê phòng",
-                resolve: context => context.Source.Bill);
+                resolve: context => context.Source.Bill
+            );
+
             Field<NonNullGraphType<RoomType>>(
                 nameof(Booking.Room),
                 "Phòng khách hàng chọn đặt trước",
-                resolve: context => context.Source.Room);
+                resolve: context => context.Source.Room
+            );
 
             Field<NonNullGraphType<ListGraphType<PatronType>>>(
                 nameof(Booking.Patrons),
                 "Danh sách khách hàng yêu cầu đặt phòng",
-                resolve: context => context.Source.Patrons.ToList());
-
-            Field<ListGraphType<ServicesDetailType>>(
+                resolve: context => context.Source.Patrons.ToList()
+            );
+            Field<NonNullGraphType<ListGraphType<ServicesDetailType>>>(
                 nameof(Booking.ServicesDetails),
                 "Danh sách chi tiết sử dụng dịch vụ của khách hàng",
-                resolve: context => context.Source.ServicesDetails.ToList());
+                resolve: context => context.Source.ServicesDetails.ToList()
+            );
         }
     }
 
