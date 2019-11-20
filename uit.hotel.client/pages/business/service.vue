@@ -50,7 +50,7 @@
                         sortable: true,
                     },
                     {
-                        key: 'unitRate',
+                        key: 'unitPrice',
                         label: 'Đơn giá',
                         tdClass: 'text-nowrap text-center',
                         sortable: true,
@@ -77,8 +77,10 @@
                 <template v-slot:cell(index)="data">
                     {{ data.index + 1 }}
                 </template>
-                <template v-slot:cell(unitRate)="{ item: { unitRate, unit } }">
-                    {{ toMoney(unitRate) }} / {{ unit }}
+                <template
+                    v-slot:cell(unitPrice)="{ item: { unitPrice, unit } }"
+                >
+                    {{ toMoney(unitPrice) }} / {{ unit }}
                 </template>
                 <template
                     v-slot:cell(servicesDetails)="{ value, item: { unit } }"

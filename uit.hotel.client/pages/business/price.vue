@@ -5,7 +5,7 @@
                 class="m-2"
                 variant="white"
                 @click="
-                    $refs.rate_add.open({
+                    $refs.price_add.open({
                         roomKind: {
                             id: 1,
                         },
@@ -17,13 +17,13 @@
             </b-button>
         </block-flex->
         <query-
-            v-slot="{ data: { rates } }"
-            :query="getRates"
+            v-slot="{ data: { prices } }"
+            :query="getPrices"
             class="row"
             child-class="col m-2 p-0 bg-white rounded shadow-sm overflow-auto"
         >
             <b-table
-                :items="ratesFilter(rates)"
+                :items="pricesFilter(prices)"
                 :fields="[
                     {
                         key: 'index',
@@ -32,7 +32,7 @@
                         sortable: true,
                     },
                     {
-                        key: 'dayRate',
+                        key: 'dayPrice',
                         label: 'Tên giá cơ bản',
                         tdClass: 'w-100',
                     },
@@ -54,11 +54,11 @@
                 ]"
                 class="table-style"
                 @row-clicked="
-                    (rate, $index, $event) => {
+                    (price, $index, $event) => {
                         $event.stopPropagation();
-                        $refs.context_rate.open(currentEvent || $event, {
-                            rate,
-                            rates,
+                        $refs.context_price.open(currentEvent || $event, {
+                            price,
+                            prices,
                         });
                         currentEvent = null;
                     }
@@ -73,40 +73,40 @@
                 <template v-slot:cell(effectiveStartDate)="{ value }">
                     {{ toDate(value) }}
                 </template>
-                <template v-slot:cell(dayRate)="{ value }">
+                <template v-slot:cell(dayPrice)="{ value }">
                     {{ toMoney(value) }}
                 </template>
                 <template v-slot:cell(roomKind)="{ value }">
                     {{ value.name }}
                 </template>
             </b-table>
-            <div v-if="ratesFilter(rates).length === 0" class="table-after">
+            <div v-if="pricesFilter(prices).length === 0" class="table-after">
                 Không tìm thấy giá nào
             </div>
         </query->
-        <context-manage-rate- ref="context_rate" :refs="$refs" />
-        <popup-rate-add- ref="rate_add" />
+        <context-manage-price- ref="context_price" :refs="$refs" />
+        <popup-price-add- ref="price_add" />
     </div>
 </template>
 <script lang="ts">
 import { Component, mixins } from 'nuxt-property-decorator';
-import { getRates } from '~/graphql/documents';
+import { getPrices } from '~/graphql/documents';
 import { DataMixin } from '~/components/mixins';
-import { GetRates } from '~/graphql/types';
+import { GetPrices } from '~/graphql/types';
 import { toMoney, toDate } from '~/utils';
 
 @Component({
-    name: 'rate-',
+    name: 'price-',
 })
-export default class extends mixins(DataMixin({ getRates, toMoney, toDate })) {
+export default class extends mixins(DataMixin({ getPrices, toMoney, toDate })) {
     head() {
         return {
             title: 'Quản lý giá',
         };
     }
 
-    ratesFilter(rates: GetRates.Rates[]): GetRates.Rates[] {
-        return rates;
+    pricesFilter(prices: GetPrices.Prices[]): GetPrices.Prices[] {
+        return prices;
     }
 
     tableContext(event: MouseEvent) {

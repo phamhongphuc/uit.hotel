@@ -163,7 +163,7 @@
                                 tdClass: 'text-nowrap text-right',
                             },
                             {
-                                key: 'unitRate',
+                                key: 'unitPrice',
                                 label: 'Đơn giá',
                                 tdClass: 'text-nowrap text-right',
                             },
@@ -194,18 +194,18 @@
                             {{ item.service.name }}
                         </template>
                         <template
-                            v-slot:unitRate="{
-                                item: { service: { unitRate, unit } },
+                            v-slot:unitPrice="{
+                                item: { service: { unitPrice, unit } },
                             }"
                         >
-                            {{ toMoney(unitRate) }} / {{ unit }}
+                            {{ toMoney(unitPrice) }} / {{ unit }}
                         </template>
                         <template
                             v-slot:total="{
-                                item: { service: { unitRate }, number },
+                                item: { service: { unitPrice }, number },
                             }"
                         >
-                            {{ toMoney(unitRate * number) }}
+                            {{ toMoney(unitPrice * number) }}
                         </template>
                     </b-table>
                     <div class="text-medium text-right mt-2">
@@ -242,9 +242,12 @@ export default class extends mixins<PopupMixinType>(
 
     totalServiceDetails(servicesDetails: GetBookingDetails.ServicesDetails[]) {
         return toMoney(
-            servicesDetails.reduce((sum, { service: { unitRate }, number }) => {
-                return sum + number * unitRate;
-            }, 0),
+            servicesDetails.reduce(
+                (sum, { service: { unitPrice }, number }) => {
+                    return sum + number * unitPrice;
+                },
+                0,
+            ),
         );
     }
 }

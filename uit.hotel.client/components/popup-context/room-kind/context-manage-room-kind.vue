@@ -20,7 +20,7 @@
         <b-nav-item-icon-
             icon="edit-2"
             text="Thêm giá cơ bản"
-            @click="refs.rate_add.open({ roomKind })"
+            @click="refs.price_add.open({ roomKind })"
         />
         <b-nav-item-icon-mutate-
             :mutation="deleteRoomKind"

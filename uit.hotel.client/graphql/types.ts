@@ -50,7 +50,7 @@ export type AppMutation = {
     /** Tạo và trả về một chức vụ mới */
     createPosition: Position;
     /** Tạo và trả về một loại giá cơ bản mới */
-    createRate: Rate;
+    createPrice: Price;
     /** Tạo và trả về một phiếu thu mới */
     createReceipt: Receipt;
     /** Tạo và trả về một phòng mới */
@@ -62,7 +62,7 @@ export type AppMutation = {
     /** Tạo và trả về một chi tiết dịch vụ mới */
     createServicesDetail: ServicesDetail;
     /** Tạo và trả về một giá biến động mới */
-    createVolatilityRate: VolatilityRate;
+    createVolatilityPrice: VolatilityPrice;
     /** Nhân viên tự đổi mật khẩu cho tài khoản của mình */
     changePassword: Scalars['String'];
     /** Nhận phòng */
@@ -78,7 +78,7 @@ export type AppMutation = {
     /** Xóa một chức vụ */
     deletePosition: Scalars['String'];
     /** Xóa một giá cơ bản */
-    deleteRate: Scalars['String'];
+    deletePrice: Scalars['String'];
     /** Xóa một phòng */
     deleteRoom: Scalars['String'];
     /** Xóa một loại phòng */
@@ -88,7 +88,7 @@ export type AppMutation = {
     /** Xóa một dịch vụ */
     deleteServicesDetail: Scalars['String'];
     /** Xóa một giá biến động */
-    deleteVolatilityRate: Scalars['String'];
+    deleteVolatilityPrice: Scalars['String'];
     /** Khởi tạo tài khoản admin */
     initializeAdminAccount: Scalars['String'];
     /** Khởi tạo dữ liệu */
@@ -126,7 +126,7 @@ export type AppMutation = {
     /** Cập nhật và trả về một chức vụ vừa cập nhật */
     updatePosition: Position;
     /** Cập nhật và trả về một giá cơ bản vừa cập nhật */
-    updateRate: Rate;
+    updatePrice: Price;
     /** Cập nhật và trả về một phòng vừa cập nhật */
     updateRoom: Room;
     /** Cập nhật và trả về loại phòng vừa cập nhật */
@@ -136,7 +136,7 @@ export type AppMutation = {
     /** Cập nhật và trả về một chi tiết dịch vụ mới cập nhật */
     updateServicesDetail: ServicesDetail;
     /** Cập nhật và trả về một giá biến động vừa cập nhật */
-    updateVolatilityRate: VolatilityRate;
+    updateVolatilityPrice: VolatilityPrice;
 };
 
 export type AppMutationAddBookingToBillArgs = {
@@ -178,8 +178,8 @@ export type AppMutationCreatePositionArgs = {
     input: PositionCreateInput;
 };
 
-export type AppMutationCreateRateArgs = {
-    input: RateCreateInput;
+export type AppMutationCreatePriceArgs = {
+    input: PriceCreateInput;
 };
 
 export type AppMutationCreateReceiptArgs = {
@@ -202,8 +202,8 @@ export type AppMutationCreateServicesDetailArgs = {
     input: ServicesDetailCreateInput;
 };
 
-export type AppMutationCreateVolatilityRateArgs = {
-    input: VolatilityRateCreateInput;
+export type AppMutationCreateVolatilityPriceArgs = {
+    input: VolatilityPriceCreateInput;
 };
 
 export type AppMutationChangePasswordArgs = {
@@ -231,7 +231,7 @@ export type AppMutationDeletePositionArgs = {
     id: Scalars['ID'];
 };
 
-export type AppMutationDeleteRateArgs = {
+export type AppMutationDeletePriceArgs = {
     id: Scalars['ID'];
 };
 
@@ -251,7 +251,7 @@ export type AppMutationDeleteServicesDetailArgs = {
     id: Scalars['ID'];
 };
 
-export type AppMutationDeleteVolatilityRateArgs = {
+export type AppMutationDeleteVolatilityPriceArgs = {
     id: Scalars['ID'];
 };
 
@@ -334,8 +334,8 @@ export type AppMutationUpdatePositionArgs = {
     input: PositionUpdateInput;
 };
 
-export type AppMutationUpdateRateArgs = {
-    input: RateUpdateInput;
+export type AppMutationUpdatePriceArgs = {
+    input: PriceUpdateInput;
 };
 
 export type AppMutationUpdateRoomArgs = {
@@ -354,8 +354,8 @@ export type AppMutationUpdateServicesDetailArgs = {
     input: ServicesDetailUpdateInput;
 };
 
-export type AppMutationUpdateVolatilityRateArgs = {
-    input: VolatilityRateUpdateInput;
+export type AppMutationUpdateVolatilityPriceArgs = {
+    input: VolatilityPriceUpdateInput;
 };
 
 export type AppQuery = {
@@ -392,9 +392,9 @@ export type AppQuery = {
     /** Trả về một danh sách các chức vụ */
     positions: Array<Position>;
     /** Trả về thông tin một loại giá cơ bản */
-    rate: Rate;
+    price: Price;
     /** Trả về một danh sách các loại giá cơ bản */
-    rates: Array<Rate>;
+    prices: Array<Price>;
     /** Trả về thông tin một phiếu thu */
     receipt: Receipt;
     /** Trả về một danh sách các phiếu thu */
@@ -416,9 +416,9 @@ export type AppQuery = {
     /** Trả về một danh sách các chi tiết dịch vụ */
     servicesDetails: Array<ServicesDetail>;
     /** Trả về thông tin một giá biến động */
-    volatilityRate: VolatilityRate;
+    volatilityPrice: VolatilityPrice;
     /** Trả về một danh sách các giá biến động */
-    volatilityRates: Array<VolatilityRate>;
+    volatilityPrices: Array<VolatilityPrice>;
 };
 
 export type AppQueryBillArgs = {
@@ -453,7 +453,7 @@ export type AppQueryPositionArgs = {
     id: Scalars['ID'];
 };
 
-export type AppQueryRateArgs = {
+export type AppQueryPriceArgs = {
     id: Scalars['ID'];
 };
 
@@ -477,7 +477,7 @@ export type AppQueryServicesDetailArgs = {
     id: Scalars['ID'];
 };
 
-export type AppQueryVolatilityRateArgs = {
+export type AppQueryVolatilityPriceArgs = {
     id: Scalars['ID'];
 };
 
@@ -564,7 +564,7 @@ export type Booking = {
     /** Danh sách khách hàng yêu cầu đặt phòng */
     patrons: Array<Maybe<Patron>>;
     /** Giá đang được dùng */
-    rate: Rate;
+    price: Price;
     /** Thời điểm nhận phòng của khách hàng */
     realCheckInTime: Maybe<Scalars['DateTimeOffset']>;
     /** Thời điểm trả phòng của khách hàng */
@@ -578,11 +578,11 @@ export type Booking = {
     /** Tổng tiền */
     total: Scalars['Int'];
     /** Tổng tiền thuê cơ bản */
-    totalRate: Scalars['Int'];
+    totalPrice: Scalars['Int'];
     /** Tổng tiền dịch vụ */
     totalServicesDetails: Scalars['Int'];
     /** Tổng tiền thuê biến động */
-    totalVolatilityRate: Scalars['Int'];
+    totalVolatilityPrice: Scalars['Int'];
 };
 
 export type BookingCreateInput = {
@@ -626,16 +626,16 @@ export type Employee = {
     name: Scalars['String'];
     /** Chức vụ */
     position: Position;
+    /** Danh sách các Giá cơ bản mà nhân viên tạo */
+    prices: Array<Price>;
     /** Số điện thoại của nhân viên */
     phoneNumber: Scalars['String'];
-    /** Danh sách các Giá cơ bản mà nhân viên tạo */
-    rates: Array<Rate>;
     /** Danh sách các Phiếu thu mà nhân viên tạo */
     receipts: Array<Receipt>;
     /** Ngày vào làm */
     startingDate: Scalars['DateTimeOffset'];
     /** Danh sách các Giá biến động mà nhân viên tạo */
-    volatilityRates: Array<VolatilityRate>;
+    volatilityPrices: Array<VolatilityPrice>;
 };
 
 export type EmployeeCreateInput = {
@@ -871,7 +871,7 @@ export type Position = {
     /** Quyền lấy thông tin khách hàng */
     permissionGetPatron: Scalars['Boolean'];
     /** Quyền lấy thông tin giá cơ bản và giá biến động */
-    permissionGetRate: Scalars['Boolean'];
+    permissionGetPrice: Scalars['Boolean'];
     /** Quyền lấy thông tin dịch vụ */
     permissionGetService: Scalars['Boolean'];
     /** Quyền quản lý thông tin nhân viên */
@@ -885,7 +885,7 @@ export type Position = {
     /** Quyền quản lý chức vụ */
     permissionManagePosition: Scalars['Boolean'];
     /** Quyền quản lý giá cơ bản và giá biến động */
-    permissionManageRate: Scalars['Boolean'];
+    permissionManagePrice: Scalars['Boolean'];
     /** Quyền quản lý thuê phòng */
     permissionManageRentingRoom: Scalars['Boolean'];
     /** Quyền quản lý dịch vụ */
@@ -904,7 +904,7 @@ export type PositionCreateInput = {
     /** Quyền lấy thông tin khách hàng */
     permissionGetPatron: Scalars['Boolean'];
     /** Quyền lấy thông tin giá cơ bản và giá biến động */
-    permissionGetRate: Scalars['Boolean'];
+    permissionGetPrice: Scalars['Boolean'];
     /** Quyền lấy thông tin dịch vụ */
     permissionGetService: Scalars['Boolean'];
     /** Quyền quản lý thông tin nhân viên */
@@ -918,7 +918,7 @@ export type PositionCreateInput = {
     /** Quyền quản lý chức vụ */
     permissionManagePosition: Scalars['Boolean'];
     /** Quyền quản lý giá cơ bản và giá biến động */
-    permissionManageRate: Scalars['Boolean'];
+    permissionManagePrice: Scalars['Boolean'];
     /** Quyền quản lý dịch vụ */
     permissionManageService: Scalars['Boolean'];
     /** Quyền chỉnh sửa sơ đồ */
@@ -943,7 +943,7 @@ export type PositionUpdateInput = {
     /** Quyền lấy thông tin khách hàng */
     permissionGetPatron: Scalars['Boolean'];
     /** Quyền lấy thông tin giá cơ bản và giá biến động */
-    permissionGetRate: Scalars['Boolean'];
+    permissionGetPrice: Scalars['Boolean'];
     /** Quyền lấy thông tin dịch vụ */
     permissionGetService: Scalars['Boolean'];
     /** Quyền lấy thông tin các chứng từ (hóa đơn, phiếu thu) */
@@ -961,17 +961,17 @@ export type PositionUpdateInput = {
     /** Quyền quản lý chức vụ */
     permissionManagePosition: Scalars['Boolean'];
     /** Quyền quản lý giá cơ bản và giá biến động */
-    permissionManageRate: Scalars['Boolean'];
+    permissionManagePrice: Scalars['Boolean'];
     /** Quyền quản lý dịch vụ */
     permissionManageService: Scalars['Boolean'];
 };
 
 /** Giá cố định của một loại phòng */
-export type Rate = {
+export type Price = {
     /** Ngày tạo giá */
     createDate: Scalars['DateTimeOffset'];
     /** Giá ngày */
-    dayRate: Scalars['Int'];
+    dayPrice: Scalars['Int'];
     /** Phí check-out sớm */
     earlyCheckInFee: Scalars['Int'];
     /** Ngày giá bắt đầu có hiệu lực */
@@ -979,32 +979,32 @@ export type Rate = {
     /** Nhân viên tạo giá */
     employee: Maybe<Employee>;
     /** Giá giờ */
-    hourRate: Scalars['Int'];
+    hourPrice: Scalars['Int'];
     /** Id của giá */
     id: Scalars['Int'];
     /** Phí check-out muộn */
     lateCheckOutFee: Scalars['Int'];
     /** Giá tháng */
-    monthRate: Scalars['Int'];
+    monthPrice: Scalars['Int'];
     /** Giá đêm */
-    nightRate: Scalars['Int'];
+    nightPrice: Scalars['Int'];
     /** Thuộc loại phòng */
     roomKind: RoomKind;
     /** Giá tuần */
-    weekRate: Scalars['Int'];
+    weekPrice: Scalars['Int'];
 };
 
-export type RateCreateInput = {
+export type PriceCreateInput = {
     /** Giá giờ */
-    hourRate: Scalars['Int'];
+    hourPrice: Scalars['Int'];
     /** Giá ngày */
-    dayRate: Scalars['Int'];
+    dayPrice: Scalars['Int'];
     /** Giá đêm */
-    nightRate: Scalars['Int'];
+    nightPrice: Scalars['Int'];
     /** Giá tuần */
-    weekRate: Scalars['Int'];
+    weekPrice: Scalars['Int'];
     /** Giá tháng */
-    monthRate: Scalars['Int'];
+    monthPrice: Scalars['Int'];
     /** Phí check-out muộn */
     lateCheckOutFee: Scalars['Int'];
     /** Phí check-out sớm */
@@ -1015,19 +1015,19 @@ export type RateCreateInput = {
     roomKind: RoomKindId;
 };
 
-export type RateUpdateInput = {
+export type PriceUpdateInput = {
     /** Id của giá cần cập nhật */
     id: Scalars['Int'];
     /** Giá giờ */
-    hourRate: Scalars['Int'];
+    hourPrice: Scalars['Int'];
     /** Giá ngày */
-    dayRate: Scalars['Int'];
+    dayPrice: Scalars['Int'];
     /** Giá đêm */
-    nightRate: Scalars['Int'];
+    nightPrice: Scalars['Int'];
     /** Giá tuần */
-    weekRate: Scalars['Int'];
+    weekPrice: Scalars['Int'];
     /** Giá tháng */
-    monthRate: Scalars['Int'];
+    monthPrice: Scalars['Int'];
     /** Phí check-out muộn */
     lateCheckOutFee: Scalars['Int'];
     /** Phí check-out sớm */
@@ -1125,11 +1125,11 @@ export type RoomKind = {
     /** Số giường */
     numberOfBeds: Scalars['Int'];
     /** Danh sách giá cố định của loại phòng */
-    rates: Maybe<Array<Maybe<Rate>>>;
+    prices: Maybe<Array<Maybe<Price>>>;
     /** Danh sách các phòng thuộc loại phòng này */
     rooms: Maybe<Array<Maybe<Room>>>;
     /** Danh sách giá biến động của loại phòng */
-    volatilityRates: Maybe<Array<Maybe<VolatilityRate>>>;
+    volatilityPrices: Maybe<Array<Maybe<VolatilityPrice>>>;
 };
 
 /** Input cho việc tạo một loại phòng */
@@ -1184,7 +1184,7 @@ export type Service = {
     /** Đơn vị */
     unit: Scalars['String'];
     /** Đơn giá */
-    unitRate: Scalars['Int'];
+    unitPrice: Scalars['Int'];
 };
 
 /** Input cho một thông tin dịch vụ cần tạo mới */
@@ -1192,7 +1192,7 @@ export type ServiceCreateInput = {
     /** Tên dịch vụ */
     name: Scalars['String'];
     /** Đơn giá */
-    unitRate: Scalars['Int'];
+    unitPrice: Scalars['Int'];
     /** Đơn vị */
     unit: Scalars['String'];
 };
@@ -1244,17 +1244,17 @@ export type ServiceUpdateInput = {
     /** Tên dịch vụ */
     name: Scalars['String'];
     /** Đơn giá */
-    unitRate: Scalars['Int'];
+    unitPrice: Scalars['Int'];
     /** Đơn vị */
     unit: Scalars['String'];
 };
 
 /** Giá biến động của một loại phòng */
-export type VolatilityRate = {
+export type VolatilityPrice = {
     /** Ngày tạo giá */
     createDate: Scalars['DateTimeOffset'];
     /** Giá ngày */
-    dayRate: Scalars['Int'];
+    dayPrice: Scalars['Int'];
     /** Phí check-out sớm */
     earlyCheckInFee: Scalars['Int'];
     /** Ngày giá hết hiệu lực */
@@ -1278,32 +1278,32 @@ export type VolatilityRate = {
     /** Nhân viên tạo giá */
     employee: Maybe<Employee>;
     /** Giá giờ */
-    hourRate: Scalars['Int'];
+    hourPrice: Scalars['Int'];
     /** Id của giá */
     id: Scalars['Int'];
     /** Phí check-out muộn */
     lateCheckOutFee: Scalars['Int'];
     /** Giá tháng */
-    monthRate: Scalars['Int'];
+    monthPrice: Scalars['Int'];
     /** Giá đêm */
-    nightRate: Scalars['Int'];
+    nightPrice: Scalars['Int'];
     /** Thuộc loại phòng */
     roomKind: RoomKind;
     /** Giá tuần */
-    weekRate: Scalars['Int'];
+    weekPrice: Scalars['Int'];
 };
 
-export type VolatilityRateCreateInput = {
+export type VolatilityPriceCreateInput = {
     /** Giá giờ */
-    hourRate: Scalars['Int'];
+    hourPrice: Scalars['Int'];
     /** Giá ngày */
-    dayRate: Scalars['Int'];
+    dayPrice: Scalars['Int'];
     /** Giá đêm */
-    nightRate: Scalars['Int'];
+    nightPrice: Scalars['Int'];
     /** Giá tuần */
-    weekRate: Scalars['Int'];
+    weekPrice: Scalars['Int'];
     /** Giá tháng */
-    monthRate: Scalars['Int'];
+    monthPrice: Scalars['Int'];
     /** Phí check-out muộn */
     lateCheckOutFee: Scalars['Int'];
     /** Phí check-out sớm */
@@ -1330,19 +1330,19 @@ export type VolatilityRateCreateInput = {
     roomKind: RoomKindId;
 };
 
-export type VolatilityRateUpdateInput = {
+export type VolatilityPriceUpdateInput = {
     /** Id của giá cần cập nhật */
     id: Scalars['Int'];
     /** Giá giờ */
-    hourRate: Scalars['Int'];
+    hourPrice: Scalars['Int'];
     /** Giá ngày */
-    dayRate: Scalars['Int'];
+    dayPrice: Scalars['Int'];
     /** Giá đêm */
-    nightRate: Scalars['Int'];
+    nightPrice: Scalars['Int'];
     /** Giá tuần */
-    weekRate: Scalars['Int'];
+    weekPrice: Scalars['Int'];
     /** Giá tháng */
-    monthRate: Scalars['Int'];
+    monthPrice: Scalars['Int'];
     /** Phí check-out muộn */
     lateCheckOutFee: Scalars['Int'];
     /** Phí check-out sớm */
@@ -1467,7 +1467,10 @@ export type GetBookingDetailsQuery = {
         servicesDetails: Array<
             Maybe<
                 Pick<ServicesDetail, 'id' | 'number' | 'time'> & {
-                    service: Pick<Service, 'id' | 'name' | 'unit' | 'unitRate'>;
+                    service: Pick<
+                        Service,
+                        'id' | 'name' | 'unit' | 'unitPrice'
+                    >;
                 }
             >
         >;
@@ -1578,7 +1581,7 @@ export type UserLoginMutation = {
                 | 'permissionGetAccountingVoucher'
                 | 'permissionGetMap'
                 | 'permissionGetPatron'
-                | 'permissionGetRate'
+                | 'permissionGetPrice'
                 | 'permissionGetService'
                 | 'permissionManageEmployee'
                 | 'permissionManageRentingRoom'
@@ -1586,7 +1589,7 @@ export type UserLoginMutation = {
                 | 'permissionManagePatron'
                 | 'permissionManagePatronKind'
                 | 'permissionManagePosition'
-                | 'permissionManageRate'
+                | 'permissionManagePrice'
                 | 'permissionManageService'
             >;
         };
@@ -1605,7 +1608,7 @@ export type UserCheckLoginMutation = {
             | 'permissionGetAccountingVoucher'
             | 'permissionGetMap'
             | 'permissionGetPatron'
-            | 'permissionGetRate'
+            | 'permissionGetPrice'
             | 'permissionGetService'
             | 'permissionManageEmployee'
             | 'permissionManageRentingRoom'
@@ -1613,7 +1616,7 @@ export type UserCheckLoginMutation = {
             | 'permissionManagePatron'
             | 'permissionManagePatronKind'
             | 'permissionManagePosition'
-            | 'permissionManageRate'
+            | 'permissionManagePrice'
             | 'permissionManageService'
         >;
     };
@@ -1822,7 +1825,7 @@ export type GetPositionsQuery = {
             | 'permissionGetAccountingVoucher'
             | 'permissionGetMap'
             | 'permissionGetPatron'
-            | 'permissionGetRate'
+            | 'permissionGetPrice'
             | 'permissionGetService'
             | 'permissionManageEmployee'
             | 'permissionManageRentingRoom'
@@ -1830,7 +1833,7 @@ export type GetPositionsQuery = {
             | 'permissionManagePatron'
             | 'permissionManagePatronKind'
             | 'permissionManagePosition'
-            | 'permissionManageRate'
+            | 'permissionManagePrice'
             | 'permissionManageService'
             | 'isActive'
         > & {
@@ -1878,21 +1881,21 @@ export type SetIsActivePositionAndMoveEmployeeMutation = Pick<
     'setIsActivePositionAndMoveEmployee'
 >;
 
-export type GetRatesQueryVariables = {};
+export type GetPricesQueryVariables = {};
 
-export type GetRatesQuery = {
-    rates: Array<
-        Pick<Rate, 'id' | 'dayRate' | 'effectiveStartDate' | 'createDate'> & {
+export type GetPricesQuery = {
+    prices: Array<
+        Pick<Price, 'id' | 'dayPrice' | 'effectiveStartDate' | 'createDate'> & {
             roomKind: Pick<RoomKind, 'id' | 'name'>;
         }
     >;
 };
 
-export type CreateRateMutationVariables = {
-    input: RateCreateInput;
+export type CreatePriceMutationVariables = {
+    input: PriceCreateInput;
 };
 
-export type CreateRateMutation = { createRate: Pick<Rate, 'id'> };
+export type CreatePriceMutation = { createPrice: Pick<Price, 'id'> };
 
 export type GetReceiptsQueryVariables = {};
 
@@ -2019,7 +2022,7 @@ export type GetServicesQueryVariables = {};
 
 export type GetServicesQuery = {
     services: Array<
-        Pick<Service, 'id' | 'name' | 'unitRate' | 'unit' | 'isActive'> & {
+        Pick<Service, 'id' | 'name' | 'unitPrice' | 'unit' | 'isActive'> & {
             servicesDetails: Maybe<
                 Array<Maybe<Pick<ServicesDetail, 'id' | 'number'>>>
             >;
@@ -2401,17 +2404,17 @@ export namespace SetIsActivePositionAndMoveEmployee {
     export type Mutation = SetIsActivePositionAndMoveEmployeeMutation;
 }
 
-export namespace GetRates {
-    export type Variables = GetRatesQueryVariables;
-    export type Query = GetRatesQuery;
-    export type Rates = NonNullable<GetRatesQuery['rates'][0]>;
-    export type RoomKind = NonNullable<GetRatesQuery['rates'][0]>['roomKind'];
+export namespace GetPrices {
+    export type Variables = GetPricesQueryVariables;
+    export type Query = GetPricesQuery;
+    export type Prices = NonNullable<GetPricesQuery['prices'][0]>;
+    export type RoomKind = NonNullable<GetPricesQuery['prices'][0]>['roomKind'];
 }
 
-export namespace CreateRate {
-    export type Variables = CreateRateMutationVariables;
-    export type Mutation = CreateRateMutation;
-    export type CreateRate = CreateRateMutation['createRate'];
+export namespace CreatePrice {
+    export type Variables = CreatePriceMutationVariables;
+    export type Mutation = CreatePriceMutation;
+    export type CreatePrice = CreatePriceMutation['createPrice'];
 }
 
 export namespace GetReceipts {

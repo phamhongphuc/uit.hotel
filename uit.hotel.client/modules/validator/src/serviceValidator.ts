@@ -4,7 +4,7 @@ export const serviceName = {
     required,
     minLength: minLength(1),
 };
-export const unitRate = {
+export const unitPrice = {
     required,
     minLength: minValue(1000),
 };

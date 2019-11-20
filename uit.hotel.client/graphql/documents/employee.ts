@@ -69,7 +69,7 @@ export const userLogin = gql`
                     permissionGetAccountingVoucher
                     permissionGetMap
                     permissionGetPatron
-                    permissionGetRate
+                    permissionGetPrice
                     permissionGetService
                     permissionManageEmployee
                     permissionManageRentingRoom
@@ -77,7 +77,7 @@ export const userLogin = gql`
                     permissionManagePatron
                     permissionManagePatronKind
                     permissionManagePosition
-                    permissionManageRate
+                    permissionManagePrice
                     permissionManageService
                 }
             }
@@ -97,7 +97,7 @@ export const userCheckLogin = gql`
                 permissionGetAccountingVoucher
                 permissionGetMap
                 permissionGetPatron
-                permissionGetRate
+                permissionGetPrice
                 permissionGetService
                 permissionManageEmployee
                 permissionManageRentingRoom
@@ -105,7 +105,7 @@ export const userCheckLogin = gql`
                 permissionManagePatron
                 permissionManagePatronKind
                 permissionManagePosition
-                permissionManageRate
+                permissionManagePrice
                 permissionManageService
             }
         }

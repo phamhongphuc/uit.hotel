@@ -2,7 +2,7 @@
     <popup- ref="popup" v-slot="{ close }" title="Thêm giá cơ bản" no-data>
         <form-mutate-
             v-if="input"
-            :mutation="createRate"
+            :mutation="createPrice"
             :variables="{ input }"
             success="Thêm giá cơ bản mới thành công"
             @success="close"
@@ -53,29 +53,29 @@
                 <div>
                     <div class="input-label">Giá theo ngày</div>
                     <b-input-
-                        v-model="input.dayRate"
-                        :state="!$v.input.dayRate.$invalid"
+                        v-model="input.dayPrice"
+                        :state="!$v.input.dayPrice.$invalid"
                         class="m-3 rounded"
                         icon="type"
                     />
                     <div class="input-label">Giá theo đêm</div>
                     <b-input-
-                        v-model="input.nightRate"
-                        :state="!$v.input.nightRate.$invalid"
+                        v-model="input.nightPrice"
+                        :state="!$v.input.nightPrice.$invalid"
                         class="m-3 rounded"
                         icon="type"
                     />
                     <div class="input-label">Giá theo tuần</div>
                     <b-input-
-                        v-model="input.weekRate"
-                        :state="!$v.input.weekRate.$invalid"
+                        v-model="input.weekPrice"
+                        :state="!$v.input.weekPrice.$invalid"
                         class="m-3 rounded"
                         icon="type"
                     />
                     <div class="input-label">Giá theo tháng</div>
                     <b-input-
-                        v-model="input.monthRate"
-                        :state="!$v.input.monthRate.$invalid"
+                        v-model="input.monthPrice"
+                        :state="!$v.input.monthPrice.$invalid"
                         class="m-3 rounded"
                         icon="type"
                     />
@@ -99,25 +99,25 @@
 import { Component, mixins, Vue } from 'nuxt-property-decorator';
 import { required } from 'vuelidate/lib/validators';
 import { DataMixin, PopupMixin } from '~/components/mixins';
-import { RateCreateInput, GetRoomKinds } from '~/graphql/types';
-import { createRate, getRoomKinds } from '~/graphql/documents';
-import { rate, validDate, included } from '~/modules/validator';
+import { PriceCreateInput, GetRoomKinds } from '~/graphql/types';
+import { createPrice, getRoomKinds } from '~/graphql/documents';
+import { price, validDate, included } from '~/modules/validator';
 
 type PopupMixinType = PopupMixin<
     { roomKind: GetRoomKinds.RoomKinds },
-    RateCreateInput
+    PriceCreateInput
 >;
 
 @Component({
-    name: 'popup-rate-add-',
+    name: 'popup-price-add-',
     validations: {
         input: {
-            dayRate: rate,
-            nightRate: rate,
-            weekRate: rate,
-            monthRate: rate,
-            lateCheckOutFee: rate,
-            earlyCheckInFee: rate,
+            dayPrice: price,
+            nightPrice: price,
+            weekPrice: price,
+            monthPrice: price,
+            lateCheckOutFee: price,
+            earlyCheckInFee: price,
             effectiveStartDate: { required, validDate },
             roomKind: included('roomKind'),
         },
@@ -125,15 +125,15 @@ type PopupMixinType = PopupMixin<
 })
 export default class extends mixins<PopupMixinType>(
     PopupMixin,
-    DataMixin({ createRate, getRoomKinds }),
+    DataMixin({ createPrice, getRoomKinds }),
 ) {
     onOpen() {
         this.input = {
-            hourRate: 0,
-            dayRate: 0,
-            nightRate: 0,
-            weekRate: 0,
-            monthRate: 0,
+            hourPrice: 0,
+            dayPrice: 0,
+            nightPrice: 0,
+            weekPrice: 0,
+            monthPrice: 0,
             lateCheckOutFee: 0,
             earlyCheckInFee: 0,
             effectiveStartDate: '',

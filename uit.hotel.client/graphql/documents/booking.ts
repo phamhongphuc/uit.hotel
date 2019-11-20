@@ -67,7 +67,7 @@ export const getBookingDetails = gql`
                     id
                     name
                     unit
-                    unitRate
+                    unitPrice
                 }
                 time
             }

@@ -8,7 +8,7 @@ import { Component, mixins } from 'nuxt-property-decorator';
 import { ContextMixin } from '~/components/mixins';
 
 @Component({
-    name: 'context-manage-rate-',
+    name: 'context-manage-price-',
 })
 export default class extends mixins<ContextMixin>(ContextMixin) {}
 </script>

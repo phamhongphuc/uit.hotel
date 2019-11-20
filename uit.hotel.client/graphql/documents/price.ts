@@ -1,10 +1,10 @@
 import gql from 'graphql-tag';
 
-export const getRates = gql`
-    query getRates {
-        rates {
+export const getPrices = gql`
+    query getPrices {
+        prices {
             id
-            dayRate
+            dayPrice
             effectiveStartDate
             createDate
             roomKind {
@@ -15,9 +15,9 @@ export const getRates = gql`
     }
 `;
 
-export const createRate = gql`
-    mutation createRate($input: RateCreateInput!) {
-        createRate(input: $input) {
+export const createPrice = gql`
+    mutation createPrice($input: PriceCreateInput!) {
+        createPrice(input: $input) {
             id
         }
     }

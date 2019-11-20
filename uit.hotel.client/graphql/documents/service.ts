@@ -5,7 +5,7 @@ export const getServices = gql`
         services {
             id
             name
-            unitRate
+            unitPrice
             unit
             isActive
             servicesDetails {
