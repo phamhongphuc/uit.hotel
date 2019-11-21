@@ -79,8 +79,11 @@ namespace uit.hotel.Businesses
             return BillDataAccess.BookAndCheckIn(bill, bookings);
         }
 
-        public static Bill Get(int billId) => BillDataAccess.Get(billId);
-        public static IEnumerable<Bill> Get() => BillDataAccess.Get();
+        public static Task<Bill> Update(Bill bill)
+        {
+            var billInDatabase = Get(bill.Id);
+            return BillDataAccess.Update(billInDatabase, bill);
+        }
 
         public static Task<Bill> PayTheBill(Employee employee, int billId)
         {
@@ -96,6 +99,9 @@ namespace uit.hotel.Businesses
 
             return BillDataAccess.PayTheBill(employee, billInDatabase);
         }
+
+        public static Bill Get(int billId) => BillDataAccess.Get(billId);
+        public static IEnumerable<Bill> Get() => BillDataAccess.Get();
     }
 
     public class EqualityBooking : IEqualityComparer<Booking>

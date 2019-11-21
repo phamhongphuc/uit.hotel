@@ -19,7 +19,8 @@ namespace uit.hotel.Models
         [Backlink(nameof(Booking.Bill))]
         public IQueryable<Booking> Bookings { get; }
 
-        public long Total { get; private set; }
+        public long Discount { get; set; }
+        public long TotalPrice { get; private set; }
         public long TotalReceipts { get; private set; }
 
         public void Calculate()
@@ -32,7 +33,7 @@ namespace uit.hotel.Models
         {
             long total = 0;
             foreach (var b in Bookings) total += b.Total;
-            Total = total;
+            TotalPrice = total;
         }
 
         public void CalculateTotalReceipts()

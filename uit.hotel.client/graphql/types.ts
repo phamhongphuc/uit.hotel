@@ -115,6 +115,8 @@ export type AppMutation = {
     setIsActiveService: Scalars['String'];
     /** Cập nhật trạng thái dọn phòng của một phòng */
     setIsCleanRoom: Scalars['String'];
+    /** Cập nhật thông tin hóa đơn */
+    updateBill: Bill;
     /** Chỉnh sửa thông tin nhân viên */
     updateEmployee: Employee;
     /** Cập nhật và trả về một tầng vừa cập nhật */
@@ -314,6 +316,10 @@ export type AppMutationSetIsCleanRoomArgs = {
     isClean: Scalars['Boolean'];
 };
 
+export type AppMutationUpdateBillArgs = {
+    input: BillUpdateInput;
+};
+
 export type AppMutationUpdateEmployeeArgs = {
     input: EmployeeUpdateInput;
 };
@@ -493,6 +499,8 @@ export type AuthenticationObject = {
 export type Bill = {
     /** Danh sách các thông tin đặt trước của hóa đơn */
     bookings: Maybe<Array<Maybe<Booking>>>;
+    /** Giảm giá */
+    discount: Scalars['Int'];
     /** Thông tin nhân viên nhận thanh toán hóa đơn */
     employee: Maybe<Employee>;
     /** Id của hóa đơn */
@@ -518,6 +526,16 @@ export type BillCreateInput = {
 export type BillId = {
     /** Id của hóa đơn */
     id: Scalars['Int'];
+};
+
+/** Input để cập nhật thông tin một hóa đơn */
+export type BillUpdateInput = {
+    /** Id của hóa đơn */
+    id: Scalars['Int'];
+    /** Giảm giá */
+    discount: Scalars['Int'];
+    /** Thông tin khách hàng thanh toán hóa đơn */
+    patron: PatronId;
 };
 
 export type BookAndCheckInCreateInput = {
@@ -1255,8 +1273,6 @@ export type VolatilityPrice = {
     createDate: Scalars['DateTimeOffset'];
     /** Giá ngày */
     dayPrice: Scalars['Int'];
-    /** Phí check-out sớm */
-    earlyCheckInFee: Scalars['Int'];
     /** Ngày giá hết hiệu lực */
     effectiveEndDate: Scalars['DateTimeOffset'];
     /** Giá có hiệu lực vào ngày Thứ 6 */
@@ -1281,8 +1297,6 @@ export type VolatilityPrice = {
     hourPrice: Scalars['Int'];
     /** Id của giá */
     id: Scalars['Int'];
-    /** Phí check-out muộn */
-    lateCheckOutFee: Scalars['Int'];
     /** Giá tháng */
     monthPrice: Scalars['Int'];
     /** Giá đêm */
@@ -1304,10 +1318,6 @@ export type VolatilityPriceCreateInput = {
     weekPrice: Scalars['Int'];
     /** Giá tháng */
     monthPrice: Scalars['Int'];
-    /** Phí check-out muộn */
-    lateCheckOutFee: Scalars['Int'];
-    /** Phí check-out sớm */
-    earlyCheckInFee: Scalars['Int'];
     /** Ngày giá bắt đầu có hiệu lực */
     effectiveStartDate: Scalars['DateTimeOffset'];
     /** Ngày giá hết hiệu lực */
@@ -1343,10 +1353,6 @@ export type VolatilityPriceUpdateInput = {
     weekPrice: Scalars['Int'];
     /** Giá tháng */
     monthPrice: Scalars['Int'];
-    /** Phí check-out muộn */
-    lateCheckOutFee: Scalars['Int'];
-    /** Phí check-out sớm */
-    earlyCheckInFee: Scalars['Int'];
     /** Ngày giá bắt đầu có hiệu lực */
     effectiveStartDate: Scalars['DateTimeOffset'];
     /** Ngày giá hết hiệu lực */

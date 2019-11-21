@@ -1,5 +1,10 @@
 <template>
-    <popup- ref="popup" :no-data="true" title="Thêm loại phòng">
+    <popup-
+        ref="popup"
+        v-slot="{ close }"
+        :no-data="true"
+        title="Thêm loại phòng"
+    >
         <form-mutate-
             v-if="input"
             :mutation="createRoomKind"

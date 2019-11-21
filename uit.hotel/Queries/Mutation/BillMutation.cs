@@ -56,6 +56,16 @@ namespace uit.hotel.Queries.Mutation
             );
 
             Field<NonNullGraphType<BillType>>(
+                _Updation,
+                "Cập nhật thông tin hóa đơn",
+                _InputArgument<BillUpdateInput>(),
+                _CheckPermission_TaskObject(
+                    p => p.PermissionManageRentingRoom,
+                    context => BillBusiness.Update(_GetInput(context))
+                )
+            );
+
+            Field<NonNullGraphType<BillType>>(
                 "PayTheBill",
                 "Thanh toán hóa đơn (thanh toán tiền phòng)",
                 _IdArgument(),

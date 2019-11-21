@@ -14,8 +14,9 @@ namespace uit.hotel.ObjectTypes
 
             Field(x => x.Id).Description("Id của hóa đơn");
             Field(x => x.Time).Description("Thời điểm in hóa đơn");
-            Field(x => x.Total).Description("Tổng giá trị hóa đơn");
+            Field(x => x.TotalPrice).Description("Tổng giá trị hóa đơn");
             Field(x => x.TotalReceipts).Description("Tổng giá trị các phiếu thu");
+            Field(x => x.Discount).Description("Giảm giá");
 
             Field<NonNullGraphType<PatronType>>(
                 nameof(Bill.Patron),
@@ -47,6 +48,23 @@ namespace uit.hotel.ObjectTypes
             Description = "Input cho thông tin một hóa đơn";
 
             Field(x => x.Id).Description("Id của hóa đơn");
+        }
+    }
+
+    public class BillUpdateInput : InputType<Bill>
+    {
+        public BillUpdateInput()
+        {
+            Name = _Updation;
+            Description = "Input để cập nhật thông tin một hóa đơn";
+
+            Field(x => x.Id).Description("Id của hóa đơn");
+            Field(x => x.Discount).Description("Giảm giá");
+
+            Field<NonNullGraphType<PatronIdInput>>(
+                nameof(Bill.Patron),
+                "Thông tin khách hàng thanh toán hóa đơn"
+            );
         }
     }
 
