@@ -1,16 +1,19 @@
 {
     "definitions": {},
     "type": "object",
+    "additionalProperties": false,
     "required": ["data"],
     "properties": {
         "data": {
             "type": "object",
+            "additionalProperties": false,
             "required": ["employees"],
             "properties": {
                 "employees": {
                     "type": "array",
                     "items": {
                         "type": "object",
+                        "additionalProperties": false,
                         "required": [
                             "id",
                             "name",
@@ -51,6 +54,7 @@
                             },
                             "position": {
                                 "type": "object",
+                                "additionalProperties": false,
                                 "required": ["id"],
                                 "properties": {
                                     "id": {

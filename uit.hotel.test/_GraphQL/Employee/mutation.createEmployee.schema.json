@@ -1,14 +1,17 @@
 {
     "definitions": {},
     "type": "object",
+    "additionalProperties": false,
     "required": ["data"],
     "properties": {
         "data": {
             "type": "object",
+            "additionalProperties": false,
             "required": ["createEmployee"],
             "properties": {
                 "createEmployee": {
                     "type": "object",
+                    "additionalProperties": false,
                     "required": [
                         "id",
                         "name",
@@ -63,6 +66,7 @@
                         },
                         "position": {
                             "type": "object",
+                            "additionalProperties": false,
                             "required": ["id"],
                             "properties": {
                                 "id": {

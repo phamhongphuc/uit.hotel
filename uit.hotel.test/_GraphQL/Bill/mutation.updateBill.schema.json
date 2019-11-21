@@ -1,15 +1,26 @@
 {
     "definitions": {},
     "type": "object",
+    "additionalProperties": false,
     "required": ["data"],
     "properties": {
         "data": {
             "type": "object",
+            "additionalProperties": false,
             "required": ["updateBill"],
             "properties": {
                 "updateBill": {
                     "type": "object",
-                    "required": ["id", "time", "patron"],
+                    "additionalProperties": false,
+                    "required": [
+                        "id",
+                        "time",
+                        "patron",
+                        "bookings",
+                        "totalPrice",
+                        "totalReceipts",
+                        "discount"
+                    ],
                     "properties": {
                         "id": {
                             "type": "integer"
@@ -20,6 +31,7 @@
                         },
                         "patron": {
                             "type": "object",
+                            "additionalProperties": false,
                             "required": ["identification"],
                             "properties": {
                                 "identification": {
@@ -27,6 +39,28 @@
                                     "pattern": "^(.*)$"
                                 }
                             }
+                        },
+                        "bookings": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "required": ["id"],
+                                "properties": {
+                                    "id": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        },
+                        "totalPrice": {
+                            "type": "integer"
+                        },
+                        "totalReceipts": {
+                            "type": "integer"
+                        },
+                        "discount": {
+                            "type": "integer"
                         }
                     }
                 }

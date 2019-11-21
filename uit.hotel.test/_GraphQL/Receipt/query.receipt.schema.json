@@ -1,14 +1,17 @@
 {
     "definitions": {},
     "type": "object",
+    "additionalProperties": false,
     "required": ["data"],
     "properties": {
         "data": {
             "type": "object",
+            "additionalProperties": false,
             "required": ["receipt"],
             "properties": {
                 "receipt": {
                     "type": "object",
+                    "additionalProperties": false,
                     "required": [
                         "id",
                         "time",
@@ -34,6 +37,7 @@
                         },
                         "employee": {
                             "type": "object",
+                            "additionalProperties": false,
                             "required": ["id"],
                             "properties": {
                                 "id": {
@@ -44,6 +48,7 @@
                         },
                         "bill": {
                             "type": "object",
+                            "additionalProperties": false,
                             "required": ["id"],
                             "properties": {
                                 "id": {

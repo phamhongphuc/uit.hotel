@@ -1,14 +1,17 @@
 {
     "definitions": {},
     "type": "object",
+    "additionalProperties": false,
     "required": ["data"],
     "properties": {
         "data": {
             "type": "object",
+            "additionalProperties": false,
             "required": ["booking"],
             "properties": {
                 "booking": {
                     "type": "object",
+                    "additionalProperties": false,
                     "required": [
                         "id",
                         "bookCheckInTime",
@@ -53,6 +56,7 @@
                         },
                         "room": {
                             "type": "object",
+                            "additionalProperties": false,
                             "required": ["id"],
                             "properties": {
                                 "id": {
@@ -62,6 +66,7 @@
                         },
                         "employeeBooking": {
                             "type": "object",
+                            "additionalProperties": false,
                             "required": ["id"],
                             "properties": {
                                 "id": {
@@ -78,6 +83,7 @@
                         },
                         "bill": {
                             "type": "object",
+                            "additionalProperties": false,
                             "required": ["id"],
                             "properties": {
                                 "id": {
@@ -89,6 +95,7 @@
                             "type": "array",
                             "items": {
                                 "type": "object",
+                                "additionalProperties": false,
                                 "required": ["id"],
                                 "properties": {
                                     "id": {

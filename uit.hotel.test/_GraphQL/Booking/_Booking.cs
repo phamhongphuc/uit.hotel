@@ -353,6 +353,35 @@ namespace uit.hotel.test._GraphQL
         }
 
         [TestMethod]
+        public void Mutation_CheckBookingPrice()
+        {
+            SchemaHelper.Execute(
+                @"/_GraphQL/Booking/mutation.checkBookingPrice.gql",
+                @"/_GraphQL/Booking/mutation.checkBookingPrice.schema.json",
+                new
+                {
+                    booking = new
+                    {
+                        bookCheckInTime = "11-1-2019",
+                        bookCheckOutTime = "11-3-2019",
+                        room = new
+                        {
+                            id = 1
+                        },
+                        listOfPatrons = new[]
+                        {
+                            new
+                            {
+                                id = 1
+                            }
+                        }
+                    }
+                },
+                p => p.PermissionManageRentingRoom = true
+            );
+        }
+
+        [TestMethod]
         public void Query_Booking()
         {
             SchemaHelper.Execute(

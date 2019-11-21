@@ -1,14 +1,17 @@
 {
     "definitions": {},
     "type": "object",
+    "additionalProperties": false,
     "required": ["data"],
     "properties": {
         "data": {
             "type": "object",
+            "additionalProperties": false,
             "required": ["createRoom"],
             "properties": {
                 "createRoom": {
                     "type": "object",
+                    "additionalProperties": false,
                     "required": ["id", "name", "isActive", "floor", "roomKind"],
                     "properties": {
                         "id": {
@@ -23,6 +26,7 @@
                         },
                         "floor": {
                             "type": "object",
+                            "additionalProperties": false,
                             "required": ["id"],
                             "properties": {
                                 "id": {
@@ -32,6 +36,7 @@
                         },
                         "roomKind": {
                             "type": "object",
+                            "additionalProperties": false,
                             "required": ["id"],
                             "properties": {
                                 "id": {

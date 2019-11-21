@@ -16,6 +16,12 @@ namespace uit.hotel.Models
         public long EarlyCheckInFee { get; private set; }
         public long LateCheckOutFee { get; private set; }
 
+        public void UpdateAndCalculatePrice()
+        {
+            Room = Room.GetManaged();
+            CalculatePrice();
+        }
+
         public void CalculatePrice()
         {
             BaseCheckInTime = (RealCheckInTime != DateTimeOffset.MinValue ? RealCheckInTime : BookCheckInTime).Round();
@@ -125,6 +131,13 @@ namespace uit.hotel.Models
                     iterateTime = iterateTime.AddDays(1);
                 }
             }
+        }
+
+        public long GetPrice()
+        {
+            if (IsManaged) throw new Exception("Chỉ kiểm tra giá của những đơn đặt phòng chưa được lưu trong CSDL");
+            CalculatePrice();
+            return Total;
         }
     }
 }

@@ -1,0 +1,39 @@
+mutation($booking: BookingCreateInput!) {
+    checkBookingPrice(booking: $booking) {
+        id
+        bookCheckInTime
+        bookCheckOutTime
+        realCheckInTime
+        realCheckOutTime
+
+        baseCheckInTime
+        baseCheckInTime
+
+        price {
+            id
+            effectiveStartDate
+
+            earlyCheckInFee
+            lateCheckOutFee
+
+            hourPrice
+            nightPrice
+            dayPrice
+            weekPrice
+            monthPrice
+
+            roomKind {
+                id
+                name
+            }
+        }
+
+        total
+        totalPrice
+        earlyCheckInFee
+        lateCheckOutFee
+        hourPrice
+        dayPrice
+        nightPrice
+    }
+}

@@ -1,14 +1,17 @@
 {
     "definitions": {},
     "type": "object",
+    "additionalProperties": false,
     "required": ["data"],
     "properties": {
         "data": {
             "type": "object",
+            "additionalProperties": false,
             "required": ["createPrice"],
             "properties": {
                 "createPrice": {
                     "type": "object",
+                    "additionalProperties": false,
                     "required": [
                         "id",
                         "dayPrice",
@@ -53,6 +56,7 @@
                         },
                         "roomKind": {
                             "type": "object",
+                            "additionalProperties": false,
                             "required": ["id"],
                             "properties": {
                                 "id": {

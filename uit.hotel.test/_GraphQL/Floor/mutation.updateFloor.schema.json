@@ -1,14 +1,17 @@
 {
     "definitions": {},
     "type": "object",
+    "additionalProperties": false,
     "required": ["data"],
     "properties": {
         "data": {
             "type": "object",
+            "additionalProperties": false,
             "required": ["updateFloor"],
             "properties": {
                 "updateFloor": {
                     "type": "object",
+                    "additionalProperties": false,
                     "required": ["id", "name", "isActive"],
                     "properties": {
                         "id": {

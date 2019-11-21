@@ -1,0 +1,141 @@
+{
+    "definitions": {},
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["data"],
+    "properties": {
+        "data": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["checkBookingPrice"],
+            "properties": {
+                "checkBookingPrice": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                        "id",
+                        "bookCheckInTime",
+                        "bookCheckOutTime",
+                        "realCheckInTime",
+                        "realCheckOutTime",
+                        "baseCheckInTime",
+                        "price",
+                        "total",
+                        "totalPrice",
+                        "earlyCheckInFee",
+                        "lateCheckOutFee",
+                        "hourPrice",
+                        "dayPrice",
+                        "nightPrice"
+                    ],
+                    "properties": {
+                        "id": {
+                            "type": "integer"
+                        },
+                        "bookCheckInTime": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "bookCheckOutTime": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "realCheckInTime": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "realCheckOutTime": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "baseCheckInTime": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "price": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "required": [
+                                "id",
+                                "effectiveStartDate",
+                                "earlyCheckInFee",
+                                "lateCheckOutFee",
+                                "hourPrice",
+                                "nightPrice",
+                                "dayPrice",
+                                "weekPrice",
+                                "monthPrice",
+                                "roomKind"
+                            ],
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "effectiveStartDate": {
+                                    "type": "string",
+                                    "pattern": "^(.*)$"
+                                },
+                                "earlyCheckInFee": {
+                                    "type": "integer"
+                                },
+                                "lateCheckOutFee": {
+                                    "type": "integer"
+                                },
+                                "hourPrice": {
+                                    "type": "integer"
+                                },
+                                "nightPrice": {
+                                    "type": "integer"
+                                },
+                                "dayPrice": {
+                                    "type": "integer"
+                                },
+                                "weekPrice": {
+                                    "type": "integer"
+                                },
+                                "monthPrice": {
+                                    "type": "integer"
+                                },
+                                "roomKind": {
+                                    "type": "object",
+                                    "additionalProperties": false,
+                                    "required": ["id", "name"],
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "pattern": "^(.*)$"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "total": {
+                            "type": "integer"
+                        },
+                        "totalPrice": {
+                            "type": "integer"
+                        },
+                        "earlyCheckInFee": {
+                            "type": "integer"
+                        },
+                        "lateCheckOutFee": {
+                            "type": "integer"
+                        },
+                        "hourPrice": {
+                            "type": "integer"
+                        },
+                        "dayPrice": {
+                            "type": "integer"
+                        },
+                        "nightPrice": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

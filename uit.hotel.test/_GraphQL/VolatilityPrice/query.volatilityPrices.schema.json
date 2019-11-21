@@ -1,16 +1,19 @@
 {
     "definitions": {},
     "type": "object",
+    "additionalProperties": false,
     "required": ["data"],
     "properties": {
         "data": {
             "type": "object",
+            "additionalProperties": false,
             "required": ["volatilityPrices"],
             "properties": {
                 "volatilityPrices": {
                     "type": "array",
                     "items": {
                         "type": "object",
+                        "additionalProperties": false,
                         "required": [
                             "id",
                             "dayPrice",
@@ -80,6 +83,7 @@
                             },
                             "roomKind": {
                                 "type": "object",
+                                "additionalProperties": false,
                                 "required": [
                                     "id",
                                     "name",
