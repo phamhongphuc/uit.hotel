@@ -1,0 +1,79 @@
+{
+    "definitions": {},
+    "type": "object",
+    "required": ["data"],
+    "properties": {
+        "data": {
+            "type": "object",
+            "required": ["updatePrice"],
+            "properties": {
+                "updatePrice": {
+                    "type": "object",
+                    "required": [
+                        "id",
+                        "dayPrice",
+                        "nightPrice",
+                        "weekPrice",
+                        "monthPrice",
+                        "lateCheckOutFee",
+                        "earlyCheckInFee",
+                        "effectiveStartDate",
+                        "createDate",
+                        "employee",
+                        "roomKind"
+                    ],
+                    "properties": {
+                        "id": {
+                            "type": "integer"
+                        },
+                        "dayPrice": {
+                            "type": "integer"
+                        },
+                        "nightPrice": {
+                            "type": "integer"
+                        },
+                        "weekPrice": {
+                            "type": "integer"
+                        },
+                        "monthPrice": {
+                            "type": "integer"
+                        },
+                        "lateCheckOutFee": {
+                            "type": "integer"
+                        },
+                        "earlyCheckInFee": {
+                            "type": "integer"
+                        },
+                        "effectiveStartDate": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "createDate": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "employee": {
+                            "type": "object",
+                            "required": ["id"],
+                            "properties": {
+                                "id": {
+                                    "type": "string",
+                                    "pattern": "^(.*)$"
+                                }
+                            }
+                        },
+                        "roomKind": {
+                            "type": "object",
+                            "required": ["id"],
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

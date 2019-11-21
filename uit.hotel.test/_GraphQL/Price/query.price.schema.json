@@ -1,0 +1,83 @@
+{
+    "definitions": {},
+    "type": "object",
+    "required": ["data"],
+    "properties": {
+        "data": {
+            "type": "object",
+            "required": ["price"],
+            "properties": {
+                "price": {
+                    "type": "object",
+                    "required": [
+                        "id",
+                        "dayPrice",
+                        "nightPrice",
+                        "weekPrice",
+                        "monthPrice",
+                        "lateCheckOutFee",
+                        "earlyCheckInFee",
+                        "effectiveStartDate",
+                        "createDate",
+                        "roomKind"
+                    ],
+                    "properties": {
+                        "id": {
+                            "type": "integer"
+                        },
+                        "dayPrice": {
+                            "type": "integer"
+                        },
+                        "nightPrice": {
+                            "type": "integer"
+                        },
+                        "weekPrice": {
+                            "type": "integer"
+                        },
+                        "monthPrice": {
+                            "type": "integer"
+                        },
+                        "lateCheckOutFee": {
+                            "type": "integer"
+                        },
+                        "earlyCheckInFee": {
+                            "type": "integer"
+                        },
+                        "effectiveStartDate": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "createDate": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "roomKind": {
+                            "type": "object",
+                            "required": [
+                                "id",
+                                "name",
+                                "amountOfPeople",
+                                "numberOfBeds"
+                            ],
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "name": {
+                                    "type": "string",
+                                    "pattern": "^(.*)$"
+                                },
+                                "amountOfPeople": {
+                                    "type": "integer"
+                                },
+                                "numberOfBeds": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

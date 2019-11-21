@@ -1,0 +1,89 @@
+{
+    "definitions": {},
+    "type": "object",
+    "required": ["data"],
+    "properties": {
+        "data": {
+            "type": "object",
+            "required": ["prices"],
+            "properties": {
+                "prices": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "id",
+                            "dayPrice",
+                            "nightPrice",
+                            "weekPrice",
+                            "monthPrice",
+                            "lateCheckOutFee",
+                            "earlyCheckInFee",
+                            "effectiveStartDate",
+                            "createDate",
+                            "employee",
+                            "roomKind"
+                        ],
+                        "properties": {
+                            "id": {
+                                "type": "integer"
+                            },
+                            "dayPrice": {
+                                "type": "integer"
+                            },
+                            "nightPrice": {
+                                "type": "integer"
+                            },
+                            "weekPrice": {
+                                "type": "integer"
+                            },
+                            "monthPrice": {
+                                "type": "integer"
+                            },
+                            "lateCheckOutFee": {
+                                "type": "integer"
+                            },
+                            "earlyCheckInFee": {
+                                "type": "integer"
+                            },
+                            "effectiveStartDate": {
+                                "type": "string",
+                                "pattern": "^(.*)$"
+                            },
+                            "createDate": {
+                                "type": "string",
+                                "pattern": "^(.*)$"
+                            },
+                            "employee": {
+                                "anyOf": [
+                                    {
+                                        "type": "null"
+                                    },
+                                    {
+                                        "type": "object",
+                                        "required": ["id"],
+                                        "properties": {
+                                            "id": {
+                                                "type": "string",
+                                                "pattern": "^(.*)$"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "roomKind": {
+                                "type": "object",
+                                "required": ["id"],
+                                "properties": {
+                                    "id": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

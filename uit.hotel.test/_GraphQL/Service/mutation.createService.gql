@@ -2,7 +2,7 @@ mutation($input: ServiceCreateInput!) {
     createService(input: $input) {
         id
         name
-        unitRate
+        unitPrice
         unit
         isActive
     }

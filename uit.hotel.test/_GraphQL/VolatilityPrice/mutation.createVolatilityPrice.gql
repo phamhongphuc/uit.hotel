@@ -1,0 +1,22 @@
+mutation($input: VolatilityPriceCreateInput!) {
+    createVolatilityPrice(input: $input) {
+        id
+        dayPrice
+        nightPrice
+        weekPrice
+        monthPrice
+        effectiveStartDate
+        effectiveEndDate
+        effectiveOnMonday
+        effectiveOnTuesday
+        effectiveOnWednesday
+        effectiveOnThursday
+        effectiveOnFriday
+        effectiveOnSaturday
+        effectiveOnSunday
+        createDate
+        roomKind {
+            id
+        }
+    }
+}

@@ -23,14 +23,14 @@ namespace uit.hotel.Queries.Helper
                     PermissionGetAccountingVoucher = true,
                     PermissionGetMap = true,
                     PermissionGetPatron = true,
-                    PermissionGetRate = true,
+                    PermissionGetPrice = true,
                     PermissionGetService = true,
                     PermissionManageEmployee = true,
                     PermissionManageRentingRoom = true,
                     PermissionManagePatron = true,
                     PermissionManagePatronKind = true,
                     PermissionManagePosition = true,
-                    PermissionManageRate = true,
+                    PermissionManagePrice = true,
                     PermissionManageMap = true,
                     PermissionManageService = true
                 });
@@ -145,7 +145,7 @@ namespace uit.hotel.Queries.Helper
                 {
                     Id = 1,
                     Name = "Dịch vụ",
-                    UnitRate = 10000,
+                    UnitPrice = 10000,
                     Unit = "Lần",
                     IsActive = true
                 });
@@ -158,14 +158,14 @@ namespace uit.hotel.Queries.Helper
                     Service = service
                 });
 
-                var Rate = realm.Add(new Rate
+                var Price = realm.Add(new Price
                 {
                     Id = 1,
-                    HourRate = 30000,
-                    DayRate = 100000,
-                    NightRate = 80000,
-                    WeekRate = 600000,
-                    MonthRate = 2500000,
+                    HourPrice = 30000,
+                    DayPrice = 100000,
+                    NightPrice = 80000,
+                    WeekPrice = 600000,
+                    MonthPrice = 2500000,
                     LateCheckOutFee = 30000,
                     EarlyCheckInFee = 30000,
                     EffectiveStartDate = DateTimeOffset.MinValue,

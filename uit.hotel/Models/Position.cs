@@ -15,14 +15,14 @@ namespace uit.hotel.Models
         public bool PermissionGetAccountingVoucher { get; set; }
         public bool PermissionGetMap { get; set; }
         public bool PermissionGetPatron { get; set; }
-        public bool PermissionGetRate { get; set; }
+        public bool PermissionGetPrice { get; set; }
         public bool PermissionGetService { get; set; }
         public bool PermissionManageEmployee { get; set; }
         public bool PermissionManageMap { get; set; }
         public bool PermissionManagePatron { get; set; }
         public bool PermissionManagePatronKind { get; set; }
         public bool PermissionManagePosition { get; set; }
-        public bool PermissionManageRate { get; set; }
+        public bool PermissionManagePrice { get; set; }
         public bool PermissionManageRentingRoom { get; set; }
         public bool PermissionManageService { get; set; }
         public bool IsActive { get; set; }

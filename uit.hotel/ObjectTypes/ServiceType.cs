@@ -14,7 +14,7 @@ namespace uit.hotel.ObjectTypes
 
             Field(x => x.Id).Description("Id của dịch vụ");
             Field(x => x.Name).Description("Tên dịch vụ");
-            Field(x => x.UnitRate).Description("Đơn giá");
+            Field(x => x.UnitPrice).Description("Đơn giá");
             Field(x => x.Unit).Description("Đơn vị");
             Field(x => x.IsActive).Description("Trạng thái hoạt động");
 
@@ -33,7 +33,7 @@ namespace uit.hotel.ObjectTypes
             Description = "Input cho một thông tin dịch vụ cần tạo mới";
 
             Field(x => x.Name).Description("Tên dịch vụ");
-            Field(x => x.UnitRate).Description("Đơn giá");
+            Field(x => x.UnitPrice).Description("Đơn giá");
             Field(x => x.Unit).Description("Đơn vị");
         }
     }
@@ -47,7 +47,7 @@ namespace uit.hotel.ObjectTypes
 
             Field(x => x.Id).Description("Id của dịch vụ");
             Field(x => x.Name).Description("Tên dịch vụ");
-            Field(x => x.UnitRate).Description("Đơn giá");
+            Field(x => x.UnitPrice).Description("Đơn giá");
             Field(x => x.Unit).Description("Đơn vị");
         }
     }

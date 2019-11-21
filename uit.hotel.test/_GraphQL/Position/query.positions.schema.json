@@ -18,7 +18,7 @@
                             "permissionGetAccountingVoucher",
                             "permissionGetMap",
                             "permissionGetPatron",
-                            "permissionGetRate",
+                            "permissionGetPrice",
                             "permissionGetService",
                             "permissionManageEmployee",
                             "permissionManageRentingRoom",
@@ -26,7 +26,7 @@
                             "permissionManagePatron",
                             "permissionManagePatronKind",
                             "permissionManagePosition",
-                            "permissionManageRate",
+                            "permissionManagePrice",
                             "permissionManageService"
                         ],
                         "properties": {
@@ -43,10 +43,10 @@
                             "permissionManageMap": {
                                 "type": "boolean"
                             },
-                            "permissionManageRate": {
+                            "permissionManagePrice": {
                                 "type": "boolean"
                             },
-                            "permissionGetRate": {
+                            "permissionGetPrice": {
                                 "type": "boolean"
                             },
                             "permissionCleaning": {

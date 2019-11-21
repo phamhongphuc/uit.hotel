@@ -27,13 +27,13 @@ namespace uit.hotel.DataAccesses
                     typeof(Patron),
                     typeof(PatronKind),
                     typeof(Position),
-                    typeof(Rate),
+                    typeof(Price),
                     typeof(Receipt),
                     typeof(Room),
                     typeof(RoomKind),
                     typeof(Service),
                     typeof(ServicesDetail),
-                    typeof(VolatilityRate)
+                    typeof(VolatilityPrice)
                 }
             };
         }

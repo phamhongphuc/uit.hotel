@@ -21,7 +21,7 @@ namespace uit.hotel.ObjectTypes
             Field(x => x.PermissionGetAccountingVoucher).Description("Quyền lấy thông tin các chứng từ (hóa đơn, phiếu thu)");
             Field(x => x.PermissionGetMap).Description("Quyền lấy thông tin tầng, phòng");
             Field(x => x.PermissionGetPatron).Description("Quyền lấy thông tin khách hàng");
-            Field(x => x.PermissionGetRate).Description("Quyền lấy thông tin giá cơ bản và giá biến động");
+            Field(x => x.PermissionGetPrice).Description("Quyền lấy thông tin giá cơ bản và giá biến động");
             Field(x => x.PermissionGetService).Description("Quyền lấy thông tin dịch vụ");
 
             Field(x => x.PermissionManageEmployee).Description("Quyền quản lý thông tin nhân viên");
@@ -29,7 +29,7 @@ namespace uit.hotel.ObjectTypes
             Field(x => x.PermissionManagePatron).Description("Quyền quản lý khách hàng");
             Field(x => x.PermissionManagePatronKind).Description("Quyền quản lý loại khách hàng");
             Field(x => x.PermissionManagePosition).Description("Quyền quản lý chức vụ");
-            Field(x => x.PermissionManageRate).Description("Quyền quản lý giá cơ bản và giá biến động");
+            Field(x => x.PermissionManagePrice).Description("Quyền quản lý giá cơ bản và giá biến động");
             Field(x => x.PermissionManageRentingRoom).Description("Quyền quản lý thuê phòng");
             Field(x => x.PermissionManageService).Description("Quyền quản lý dịch vụ");
 
@@ -78,7 +78,7 @@ namespace uit.hotel.ObjectTypes
                .Description("Quyền lấy thông tin các chứng từ (hóa đơn, phiếu thu)");
             Field(x => x.PermissionGetMap).Description("Quyền lấy thông tin tầng, phòng");
             Field(x => x.PermissionGetPatron).Description("Quyền lấy thông tin khách hàng");
-            Field(x => x.PermissionGetRate).Description("Quyền lấy thông tin giá cơ bản và giá biến động");
+            Field(x => x.PermissionGetPrice).Description("Quyền lấy thông tin giá cơ bản và giá biến động");
             Field(x => x.PermissionGetService).Description("Quyền lấy thông tin dịch vụ");
 
             Field(x => x.PermissionManageEmployee).Description("Quyền quản lý thông tin nhân viên");
@@ -86,7 +86,7 @@ namespace uit.hotel.ObjectTypes
             Field(x => x.PermissionManagePatron).Description("Quyền quản lý khách hàng");
             Field(x => x.PermissionManagePatronKind).Description("Quyền quản lý loại khách hàng");
             Field(x => x.PermissionManagePosition).Description("Quyền quản lý chức vụ");
-            Field(x => x.PermissionManageRate).Description("Quyền quản lý giá cơ bản và giá biến động");
+            Field(x => x.PermissionManagePrice).Description("Quyền quản lý giá cơ bản và giá biến động");
             Field(x => x.PermissionManageService).Description("Quyền quản lý dịch vụ");
             Field(x => x.PermissionManageMap).Description("Quyền chỉnh sửa sơ đồ");
         }
@@ -103,7 +103,7 @@ namespace uit.hotel.ObjectTypes
             Field(x => x.PermissionCleaning).Description("Quyền thao tác dọn phòng");
             Field(x => x.PermissionGetMap).Description("Quyền lấy thông tin tầng, phòng");
             Field(x => x.PermissionGetPatron).Description("Quyền lấy thông tin khách hàng");
-            Field(x => x.PermissionGetRate).Description("Quyền lấy thông tin giá cơ bản và giá biến động");
+            Field(x => x.PermissionGetPrice).Description("Quyền lấy thông tin giá cơ bản và giá biến động");
             Field(x => x.PermissionGetService).Description("Quyền lấy thông tin dịch vụ");
             Field(x => x.PermissionGetAccountingVoucher)
                .Description("Quyền lấy thông tin các chứng từ (hóa đơn, phiếu thu)");
@@ -114,7 +114,7 @@ namespace uit.hotel.ObjectTypes
             Field(x => x.PermissionManagePatron).Description("Quyền quản lý khách hàng");
             Field(x => x.PermissionManagePatronKind).Description("Quyền quản lý loại khách hàng");
             Field(x => x.PermissionManagePosition).Description("Quyền quản lý chức vụ");
-            Field(x => x.PermissionManageRate).Description("Quyền quản lý giá cơ bản và giá biến động");
+            Field(x => x.PermissionManagePrice).Description("Quyền quản lý giá cơ bản và giá biến động");
             Field(x => x.PermissionManageService).Description("Quyền quản lý dịch vụ");
         }
     }

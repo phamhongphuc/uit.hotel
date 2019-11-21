@@ -1,0 +1,93 @@
+{
+    "definitions": {},
+    "type": "object",
+    "required": ["data"],
+    "properties": {
+        "data": {
+            "type": "object",
+            "required": ["createVolatilityPrice"],
+            "properties": {
+                "createVolatilityPrice": {
+                    "type": "object",
+                    "required": [
+                        "id",
+                        "dayPrice",
+                        "nightPrice",
+                        "weekPrice",
+                        "monthPrice",
+                        "effectiveStartDate",
+                        "effectiveEndDate",
+                        "effectiveOnMonday",
+                        "effectiveOnTuesday",
+                        "effectiveOnWednesday",
+                        "effectiveOnThursday",
+                        "effectiveOnFriday",
+                        "effectiveOnSaturday",
+                        "effectiveOnSunday",
+                        "createDate",
+                        "roomKind"
+                    ],
+                    "properties": {
+                        "id": {
+                            "type": "integer"
+                        },
+                        "dayPrice": {
+                            "type": "integer"
+                        },
+                        "nightPrice": {
+                            "type": "integer"
+                        },
+                        "weekPrice": {
+                            "type": "integer"
+                        },
+                        "monthPrice": {
+                            "type": "integer"
+                        },
+                        "effectiveStartDate": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "effectiveEndDate": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "effectiveOnMonday": {
+                            "type": "boolean"
+                        },
+                        "effectiveOnTuesday": {
+                            "type": "boolean"
+                        },
+                        "effectiveOnWednesday": {
+                            "type": "boolean"
+                        },
+                        "effectiveOnThursday": {
+                            "type": "boolean"
+                        },
+                        "effectiveOnFriday": {
+                            "type": "boolean"
+                        },
+                        "effectiveOnSaturday": {
+                            "type": "boolean"
+                        },
+                        "effectiveOnSunday": {
+                            "type": "boolean"
+                        },
+                        "createDate": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "roomKind": {
+                            "type": "object",
+                            "required": ["id"],
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

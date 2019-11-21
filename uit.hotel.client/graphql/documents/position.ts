@@ -10,7 +10,7 @@ export const getPositions = gql`
             permissionGetAccountingVoucher
             permissionGetMap
             permissionGetPatron
-            permissionGetRate
+            permissionGetPrice
             permissionGetService
             permissionManageEmployee
             permissionManageRentingRoom
@@ -18,7 +18,7 @@ export const getPositions = gql`
             permissionManagePatron
             permissionManagePatronKind
             permissionManagePosition
-            permissionManageRate
+            permissionManagePrice
             permissionManageService
             isActive
             employees {
@@ -97,7 +97,7 @@ export const positionOptionsBusiness: CheckboxOption[] = [
     },
     {
         text: 'Quản lý giá cơ bản và giá biến động',
-        value: 'permissionManageRate',
+        value: 'permissionManagePrice',
     },
 ];
 
@@ -116,7 +116,7 @@ export const positionOptionsReceptionist: CheckboxOption[] = [
     },
     {
         text: 'Lấy thông tin giá cơ bản và giá biến động',
-        value: 'permissionGetRate',
+        value: 'permissionGetPrice',
     },
     {
         text: 'Lấy thông tin dịch vụ',

@@ -1,0 +1,19 @@
+mutation($input: PriceUpdateInput!) {
+    updatePrice(input: $input) {
+        id
+        dayPrice
+        nightPrice
+        weekPrice
+        monthPrice
+        lateCheckOutFee
+        earlyCheckInFee
+        effectiveStartDate
+        createDate
+        employee {
+            id
+        }
+        roomKind {
+            id
+        }
+    }
+}

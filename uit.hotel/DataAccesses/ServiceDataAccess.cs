@@ -25,7 +25,7 @@ namespace uit.hotel.DataAccesses
             await Database.WriteAsync(realm =>
             {
                 serviceInDatabase.Name = service.Name;
-                serviceInDatabase.UnitRate = service.UnitRate;
+                serviceInDatabase.UnitPrice = service.UnitPrice;
                 serviceInDatabase.Unit = service.Unit;
             });
             return serviceInDatabase;

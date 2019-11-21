@@ -17,13 +17,13 @@ namespace uit.hotel.Queries
                 new PatronKindMutation(),
                 new PatronMutation(),
                 new PositionMutation(),
-                new RateMutation(),
+                new PriceMutation(),
                 new ReceiptMutation(),
                 new RoomKindMutation(),
                 new RoomMutation(),
                 new ServiceMutation(),
                 new ServicesDetailMutation(),
-                new VolatilityRateMutation()
+                new VolatilityPriceMutation()
             );
         }
     }

@@ -1,0 +1,19 @@
+{
+    prices {
+        id
+        dayPrice
+        nightPrice
+        weekPrice
+        monthPrice
+        lateCheckOutFee
+        earlyCheckInFee
+        effectiveStartDate
+        createDate
+        employee {
+            id
+        }
+        roomKind {
+            id
+        }
+    }
+}

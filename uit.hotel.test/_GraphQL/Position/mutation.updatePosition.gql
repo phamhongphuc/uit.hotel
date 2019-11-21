@@ -7,7 +7,7 @@ mutation($input: PositionUpdateInput!) {
         permissionGetAccountingVoucher
         permissionGetMap
         permissionGetPatron
-        permissionGetRate
+        permissionGetPrice
         permissionGetService
         permissionManageEmployee
         permissionManageRentingRoom
@@ -15,7 +15,7 @@ mutation($input: PositionUpdateInput!) {
         permissionManagePatron
         permissionManagePatronKind
         permissionManagePosition
-        permissionManageRate
+        permissionManagePrice
         permissionManageService
     }
 }

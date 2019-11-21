@@ -454,7 +454,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "rate",
+                        "name": "price",
                         "description": "Trả về thông tin một loại giá cơ bản",
                         "args": [
                             {
@@ -477,7 +477,7 @@
                             "name": null,
                             "ofType": {
                                 "kind": "OBJECT",
-                                "name": "Rate",
+                                "name": "Price",
                                 "ofType": null
                             }
                         },
@@ -485,7 +485,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "rates",
+                        "name": "prices",
                         "description": "Trả về một danh sách các loại giá cơ bản",
                         "args": [],
                         "type": {
@@ -499,7 +499,7 @@
                                     "name": null,
                                     "ofType": {
                                         "kind": "OBJECT",
-                                        "name": "Rate",
+                                        "name": "Price",
                                         "ofType": null
                                     }
                                 }
@@ -784,7 +784,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "volatilityRate",
+                        "name": "volatilityPrice",
                         "description": "Trả về thông tin một giá biến động",
                         "args": [
                             {
@@ -807,7 +807,7 @@
                             "name": null,
                             "ofType": {
                                 "kind": "OBJECT",
-                                "name": "VolatilityRate",
+                                "name": "VolatilityPrice",
                                 "ofType": null
                             }
                         },
@@ -815,7 +815,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "volatilityRates",
+                        "name": "volatilityPrices",
                         "description": "Trả về một danh sách các giá biến động",
                         "args": [],
                         "type": {
@@ -829,7 +829,7 @@
                                     "name": null,
                                     "ofType": {
                                         "kind": "OBJECT",
-                                        "name": "VolatilityRate",
+                                        "name": "VolatilityPrice",
                                         "ofType": null
                                     }
                                 }
@@ -1243,7 +1243,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "rate",
+                        "name": "price",
                         "description": "Giá đang được dùng",
                         "args": [],
                         "type": {
@@ -1251,7 +1251,7 @@
                             "name": null,
                             "ofType": {
                                 "kind": "OBJECT",
-                                "name": "Rate",
+                                "name": "Price",
                                 "ofType": null
                             }
                         },
@@ -1351,7 +1351,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "totalRate",
+                        "name": "totalPrice",
                         "description": "Tổng tiền thuê cơ bản",
                         "args": [],
                         "type": {
@@ -1383,7 +1383,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "totalVolatilityRate",
+                        "name": "totalVolatilityPrice",
                         "description": "Tổng tiền thuê biến động",
                         "args": [],
                         "type": {
@@ -1622,23 +1622,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "phoneNumber",
-                        "description": "Số điện thoại của nhân viên",
-                        "args": [],
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "String",
-                                "ofType": null
-                            }
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "rates",
+                        "name": "prices",
                         "description": "Danh sách các Giá cơ bản mà nhân viên tạo",
                         "args": [],
                         "type": {
@@ -1652,10 +1636,26 @@
                                     "name": null,
                                     "ofType": {
                                         "kind": "OBJECT",
-                                        "name": "Rate",
+                                        "name": "Price",
                                         "ofType": null
                                     }
                                 }
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "phoneNumber",
+                        "description": "Số điện thoại của nhân viên",
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
                             }
                         },
                         "isDeprecated": false,
@@ -1702,7 +1702,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "volatilityRates",
+                        "name": "volatilityPrices",
                         "description": "Danh sách các Giá biến động mà nhân viên tạo",
                         "args": [],
                         "type": {
@@ -1716,7 +1716,7 @@
                                     "name": null,
                                     "ofType": {
                                         "kind": "OBJECT",
-                                        "name": "VolatilityRate",
+                                        "name": "VolatilityPrice",
                                         "ofType": null
                                     }
                                 }
@@ -1933,7 +1933,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "permissionGetRate",
+                        "name": "permissionGetPrice",
                         "description": "Quyền lấy thông tin giá cơ bản và giá biến động",
                         "args": [],
                         "type": {
@@ -2045,7 +2045,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "permissionManageRate",
+                        "name": "permissionManagePrice",
                         "description": "Quyền quản lý giá cơ bản và giá biến động",
                         "args": [],
                         "type": {
@@ -2100,7 +2100,7 @@
             },
             {
                 "kind": "OBJECT",
-                "name": "Rate",
+                "name": "Price",
                 "description": "Giá cố định của một loại phòng",
                 "fields": [
                     {
@@ -2120,7 +2120,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "dayRate",
+                        "name": "dayPrice",
                         "description": "Giá ngày",
                         "args": [],
                         "type": {
@@ -2180,7 +2180,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "hourRate",
+                        "name": "hourPrice",
                         "description": "Giá giờ",
                         "args": [],
                         "type": {
@@ -2228,7 +2228,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "monthRate",
+                        "name": "monthPrice",
                         "description": "Giá tháng",
                         "args": [],
                         "type": {
@@ -2244,7 +2244,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "nightRate",
+                        "name": "nightPrice",
                         "description": "Giá đêm",
                         "args": [],
                         "type": {
@@ -2276,7 +2276,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "weekRate",
+                        "name": "weekPrice",
                         "description": "Giá tuần",
                         "args": [],
                         "type": {
@@ -2383,7 +2383,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "rates",
+                        "name": "prices",
                         "description": "Danh sách giá cố định của loại phòng",
                         "args": [],
                         "type": {
@@ -2391,7 +2391,7 @@
                             "name": null,
                             "ofType": {
                                 "kind": "OBJECT",
-                                "name": "Rate",
+                                "name": "Price",
                                 "ofType": null
                             }
                         },
@@ -2415,7 +2415,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "volatilityRates",
+                        "name": "volatilityPrices",
                         "description": "Danh sách giá biến động của loại phòng",
                         "args": [],
                         "type": {
@@ -2423,7 +2423,7 @@
                             "name": null,
                             "ofType": {
                                 "kind": "OBJECT",
-                                "name": "VolatilityRate",
+                                "name": "VolatilityPrice",
                                 "ofType": null
                             }
                         },
@@ -2738,7 +2738,7 @@
             },
             {
                 "kind": "OBJECT",
-                "name": "VolatilityRate",
+                "name": "VolatilityPrice",
                 "description": "Giá biến động của một loại phòng",
                 "fields": [
                     {
@@ -2758,7 +2758,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "dayRate",
+                        "name": "dayPrice",
                         "description": "Giá ngày",
                         "args": [],
                         "type": {
@@ -2946,7 +2946,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "hourRate",
+                        "name": "hourPrice",
                         "description": "Giá giờ",
                         "args": [],
                         "type": {
@@ -2994,7 +2994,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "monthRate",
+                        "name": "monthPrice",
                         "description": "Giá tháng",
                         "args": [],
                         "type": {
@@ -3010,7 +3010,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "nightRate",
+                        "name": "nightPrice",
                         "description": "Giá đêm",
                         "args": [],
                         "type": {
@@ -3042,7 +3042,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "weekRate",
+                        "name": "weekPrice",
                         "description": "Giá tuần",
                         "args": [],
                         "type": {
@@ -3709,7 +3709,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "unitRate",
+                        "name": "unitPrice",
                         "description": "Đơn giá",
                         "args": [],
                         "type": {
@@ -4073,7 +4073,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "createRate",
+                        "name": "createPrice",
                         "description": "Tạo và trả về một loại giá cơ bản mới",
                         "args": [
                             {
@@ -4084,7 +4084,7 @@
                                     "name": null,
                                     "ofType": {
                                         "kind": "INPUT_OBJECT",
-                                        "name": "RateCreateInput",
+                                        "name": "PriceCreateInput",
                                         "ofType": null
                                     }
                                 },
@@ -4096,7 +4096,7 @@
                             "name": null,
                             "ofType": {
                                 "kind": "OBJECT",
-                                "name": "Rate",
+                                "name": "Price",
                                 "ofType": null
                             }
                         },
@@ -4259,7 +4259,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "createVolatilityRate",
+                        "name": "createVolatilityPrice",
                         "description": "Tạo và trả về một giá biến động mới",
                         "args": [
                             {
@@ -4270,7 +4270,7 @@
                                     "name": null,
                                     "ofType": {
                                         "kind": "INPUT_OBJECT",
-                                        "name": "VolatilityRateCreateInput",
+                                        "name": "VolatilityPriceCreateInput",
                                         "ofType": null
                                     }
                                 },
@@ -4282,7 +4282,7 @@
                             "name": null,
                             "ofType": {
                                 "kind": "OBJECT",
-                                "name": "VolatilityRate",
+                                "name": "VolatilityPrice",
                                 "ofType": null
                             }
                         },
@@ -4506,7 +4506,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "deleteRate",
+                        "name": "deletePrice",
                         "description": "Xóa một giá cơ bản",
                         "args": [
                             {
@@ -4661,7 +4661,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "deleteVolatilityRate",
+                        "name": "deleteVolatilityPrice",
                         "description": "Xóa một giá biến động",
                         "args": [
                             {
@@ -5389,7 +5389,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "updateRate",
+                        "name": "updatePrice",
                         "description": "Cập nhật và trả về một giá cơ bản vừa cập nhật",
                         "args": [
                             {
@@ -5400,7 +5400,7 @@
                                     "name": null,
                                     "ofType": {
                                         "kind": "INPUT_OBJECT",
-                                        "name": "RateUpdateInput",
+                                        "name": "PriceUpdateInput",
                                         "ofType": null
                                     }
                                 },
@@ -5412,7 +5412,7 @@
                             "name": null,
                             "ofType": {
                                 "kind": "OBJECT",
-                                "name": "Rate",
+                                "name": "Price",
                                 "ofType": null
                             }
                         },
@@ -5544,7 +5544,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "updateVolatilityRate",
+                        "name": "updateVolatilityPrice",
                         "description": "Cập nhật và trả về một giá biến động vừa cập nhật",
                         "args": [
                             {
@@ -5555,7 +5555,7 @@
                                     "name": null,
                                     "ofType": {
                                         "kind": "INPUT_OBJECT",
-                                        "name": "VolatilityRateUpdateInput",
+                                        "name": "VolatilityPriceUpdateInput",
                                         "ofType": null
                                     }
                                 },
@@ -5567,7 +5567,7 @@
                             "name": null,
                             "ofType": {
                                 "kind": "OBJECT",
-                                "name": "VolatilityRate",
+                                "name": "VolatilityPrice",
                                 "ofType": null
                             }
                         },
@@ -6355,7 +6355,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "permissionGetRate",
+                        "name": "permissionGetPrice",
                         "description": "Quyền lấy thông tin giá cơ bản và giá biến động",
                         "type": {
                             "kind": "NON_NULL",
@@ -6453,7 +6453,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "permissionManageRate",
+                        "name": "permissionManagePrice",
                         "description": "Quyền quản lý giá cơ bản và giá biến động",
                         "type": {
                             "kind": "NON_NULL",
@@ -6501,12 +6501,12 @@
             },
             {
                 "kind": "INPUT_OBJECT",
-                "name": "RateCreateInput",
+                "name": "PriceCreateInput",
                 "description": "",
                 "fields": null,
                 "inputFields": [
                     {
-                        "name": "hourRate",
+                        "name": "hourPrice",
                         "description": "Giá giờ",
                         "type": {
                             "kind": "NON_NULL",
@@ -6520,7 +6520,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "dayRate",
+                        "name": "dayPrice",
                         "description": "Giá ngày",
                         "type": {
                             "kind": "NON_NULL",
@@ -6534,7 +6534,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "nightRate",
+                        "name": "nightPrice",
                         "description": "Giá đêm",
                         "type": {
                             "kind": "NON_NULL",
@@ -6548,7 +6548,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "weekRate",
+                        "name": "weekPrice",
                         "description": "Giá tuần",
                         "type": {
                             "kind": "NON_NULL",
@@ -6562,7 +6562,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "monthRate",
+                        "name": "monthPrice",
                         "description": "Giá tháng",
                         "type": {
                             "kind": "NON_NULL",
@@ -6862,7 +6862,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "unitRate",
+                        "name": "unitPrice",
                         "description": "Đơn giá",
                         "type": {
                             "kind": "NON_NULL",
@@ -6999,12 +6999,12 @@
             },
             {
                 "kind": "INPUT_OBJECT",
-                "name": "VolatilityRateCreateInput",
+                "name": "VolatilityPriceCreateInput",
                 "description": "",
                 "fields": null,
                 "inputFields": [
                     {
-                        "name": "hourRate",
+                        "name": "hourPrice",
                         "description": "Giá giờ",
                         "type": {
                             "kind": "NON_NULL",
@@ -7018,7 +7018,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "dayRate",
+                        "name": "dayPrice",
                         "description": "Giá ngày",
                         "type": {
                             "kind": "NON_NULL",
@@ -7032,7 +7032,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "nightRate",
+                        "name": "nightPrice",
                         "description": "Giá đêm",
                         "type": {
                             "kind": "NON_NULL",
@@ -7046,7 +7046,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "weekRate",
+                        "name": "weekPrice",
                         "description": "Giá tuần",
                         "type": {
                             "kind": "NON_NULL",
@@ -7060,7 +7060,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "monthRate",
+                        "name": "monthPrice",
                         "description": "Giá tháng",
                         "type": {
                             "kind": "NON_NULL",
@@ -7810,7 +7810,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "permissionGetRate",
+                        "name": "permissionGetPrice",
                         "description": "Quyền lấy thông tin giá cơ bản và giá biến động",
                         "type": {
                             "kind": "NON_NULL",
@@ -7936,7 +7936,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "permissionManageRate",
+                        "name": "permissionManagePrice",
                         "description": "Quyền quản lý giá cơ bản và giá biến động",
                         "type": {
                             "kind": "NON_NULL",
@@ -7970,7 +7970,7 @@
             },
             {
                 "kind": "INPUT_OBJECT",
-                "name": "RateUpdateInput",
+                "name": "PriceUpdateInput",
                 "description": "",
                 "fields": null,
                 "inputFields": [
@@ -7989,7 +7989,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "hourRate",
+                        "name": "hourPrice",
                         "description": "Giá giờ",
                         "type": {
                             "kind": "NON_NULL",
@@ -8003,7 +8003,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "dayRate",
+                        "name": "dayPrice",
                         "description": "Giá ngày",
                         "type": {
                             "kind": "NON_NULL",
@@ -8017,7 +8017,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "nightRate",
+                        "name": "nightPrice",
                         "description": "Giá đêm",
                         "type": {
                             "kind": "NON_NULL",
@@ -8031,7 +8031,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "weekRate",
+                        "name": "weekPrice",
                         "description": "Giá tuần",
                         "type": {
                             "kind": "NON_NULL",
@@ -8045,7 +8045,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "monthRate",
+                        "name": "monthPrice",
                         "description": "Giá tháng",
                         "type": {
                             "kind": "NON_NULL",
@@ -8288,7 +8288,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "unitRate",
+                        "name": "unitPrice",
                         "description": "Đơn giá",
                         "type": {
                             "kind": "NON_NULL",
@@ -8375,7 +8375,7 @@
             },
             {
                 "kind": "INPUT_OBJECT",
-                "name": "VolatilityRateUpdateInput",
+                "name": "VolatilityPriceUpdateInput",
                 "description": "",
                 "fields": null,
                 "inputFields": [
@@ -8394,7 +8394,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "hourRate",
+                        "name": "hourPrice",
                         "description": "Giá giờ",
                         "type": {
                             "kind": "NON_NULL",
@@ -8408,7 +8408,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "dayRate",
+                        "name": "dayPrice",
                         "description": "Giá ngày",
                         "type": {
                             "kind": "NON_NULL",
@@ -8422,7 +8422,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "nightRate",
+                        "name": "nightPrice",
                         "description": "Giá đêm",
                         "type": {
                             "kind": "NON_NULL",
@@ -8436,7 +8436,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "weekRate",
+                        "name": "weekPrice",
                         "description": "Giá tuần",
                         "type": {
                             "kind": "NON_NULL",
@@ -8450,7 +8450,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "monthRate",
+                        "name": "monthPrice",
                         "description": "Giá tháng",
                         "type": {
                             "kind": "NON_NULL",

@@ -18,8 +18,8 @@
             <div class="input-label">Đơn giá</div>
             <b-input-
                 ref="autoFocus"
-                v-model="input.unitRate"
-                :state="!$v.input.unitRate.$invalid"
+                v-model="input.unitPrice"
+                :state="!$v.input.unitPrice.$invalid"
                 class="m-3 rounded"
                 icon="type"
             />
@@ -50,14 +50,14 @@ import { Component, mixins } from 'nuxt-property-decorator';
 import { DataMixin, PopupMixin } from '~/components/mixins';
 import { ServiceCreateInput } from '~/graphql/types';
 import { createService } from '~/graphql/documents';
-import { serviceName, unitRate, unit } from '~/modules/validator';
+import { serviceName, unitPrice, unit } from '~/modules/validator';
 
 @Component({
     name: 'popup-service-add-',
     validations: {
         input: {
             name: serviceName,
-            unitRate,
+            unitPrice,
             unit,
         },
     },
@@ -69,7 +69,7 @@ export default class extends mixins<PopupMixin<void, ServiceCreateInput>>(
     onOpen() {
         this.input = {
             name: '',
-            unitRate: 10000,
+            unitPrice: 10000,
             unit: 'đơn vị',
         };
     }

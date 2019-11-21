@@ -17,20 +17,20 @@ namespace uit.hotel.DataAccesses
                 roomKind.Id = NextId;
                 roomKind.IsActive = true;
 
-                var rate = new Rate
+                var price = new Price
                 {
-                    HourRate = 0,
-                    DayRate = 0,
-                    NightRate = 0,
-                    WeekRate = 0,
-                    MonthRate = 0,
+                    HourPrice = 0,
+                    DayPrice = 0,
+                    NightPrice = 0,
+                    WeekPrice = 0,
+                    MonthPrice = 0,
                     LateCheckOutFee = 0,
                     EarlyCheckInFee = 0,
                     EffectiveStartDate = DateTimeOffset.MinValue,
                     Employee = null,
                     RoomKind = roomKind
                 };
-                RateDataAccess.Add(realm, rate);
+                PriceDataAccess.Add(realm, price);
 
                 roomKind = realm.Add(roomKind);
             });
@@ -57,8 +57,8 @@ namespace uit.hotel.DataAccesses
         {
             await Database.WriteAsync(realm =>
             {
-                realm.RemoveRange(roomKind.VolatilityRates);
-                realm.RemoveRange(roomKind.Rates);
+                realm.RemoveRange(roomKind.VolatilityPrices);
+                realm.RemoveRange(roomKind.Prices);
                 realm.Remove(roomKind);
             });
         }

@@ -46,7 +46,7 @@
             :permission="[
                 'GetAccountingVoucher',
                 'ManageService',
-                'ManageRate',
+                'ManagePrice',
             ]"
         />
 
@@ -88,11 +88,11 @@
             :permission="['ManageService']"
         />
         <b-nav-item-icon-
-            to="/business/rate"
+            to="/business/price"
             icon="shopping-cart"
             text="Quản lý giá"
             exact
-            :permission="['ManageRate']"
+            :permission="['ManagePrice']"
         />
         <b-nav-item-icon-
             text="Quản lý nhân sự"

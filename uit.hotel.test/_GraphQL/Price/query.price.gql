@@ -1,0 +1,19 @@
+query($id: ID!) {
+    price(id: $id) {
+        id
+        dayPrice
+        nightPrice
+        weekPrice
+        monthPrice
+        lateCheckOutFee
+        earlyCheckInFee
+        effectiveStartDate
+        createDate
+        roomKind {
+            id
+            name
+            amountOfPeople
+            numberOfBeds
+        }
+    }
+}

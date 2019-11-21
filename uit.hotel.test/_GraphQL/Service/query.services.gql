@@ -2,7 +2,7 @@
     services {
         id
         name
-        unitRate
+        unitPrice
         unit
     }
 }
