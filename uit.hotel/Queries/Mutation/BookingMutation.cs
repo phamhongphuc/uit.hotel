@@ -72,6 +72,23 @@ namespace uit.hotel.Queries.Mutation
                     }
                 )
             );
+
+            Field<NonNullGraphType<BookingType>>(
+                "CheckBookingPrice",
+                "Kiểm tra thử giá của phòng",
+                new QueryArguments(
+                    new QueryArgument<NonNullGraphType<BookingCreateInput>> { Name = "booking" }
+                ),
+                _CheckPermission_Object(
+                    p => p.PermissionManageRentingRoom,
+                    context =>
+                    {
+                        var booking = context.GetArgument<Booking>("booking");
+                        booking.UpdateAndCalculatePrice();
+                        return booking;
+                    }
+                )
+            );
         }
     }
 }
