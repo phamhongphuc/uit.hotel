@@ -60,7 +60,7 @@
                         class: 'text-right',
                     },
                     {
-                        key: 'total',
+                        key: 'totalPrice',
                         label: 'Tổng cộng',
                         class: 'text-right',
                     },
@@ -95,7 +95,7 @@
                 <template v-slot:cell(totalReceipts)="{ item }">
                     {{ toMoney(sumReceipts(item.receipts)) }}
                 </template>
-                <template v-slot:cell(total)="{ value }">
+                <template v-slot:cell(totalPrice)="{ value }">
                     {{ toMoney(value) }}
                 </template>
             </b-table>

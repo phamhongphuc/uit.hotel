@@ -57,7 +57,7 @@ namespace uit.hotel.DataAccesses
                 billInDatabase.Employee = employee;
                 billInDatabase.Time = DateTimeOffset.Now;
 
-                var remain = billInDatabase.Total + billInDatabase.Discount - billInDatabase.TotalReceipts;
+                var remain = billInDatabase.TotalPrice + billInDatabase.Discount - billInDatabase.TotalReceipts;
                 if (remain == 0) return;
 
                 var receipt = new Receipt();
