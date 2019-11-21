@@ -418,7 +418,7 @@ namespace uit.hotel.test._GraphQL
         }
 
         [TestMethod]
-        public void Query_Bill()
+        public void Mutation_UpdateBill()
         {
             Database.WriteAsync(realm => realm.Add(new Bill
             {
@@ -428,9 +428,35 @@ namespace uit.hotel.test._GraphQL
             })).Wait();
 
             SchemaHelper.Execute(
+                @"/_GraphQL/Bill/mutation.updateBill.gql",
+                @"/_GraphQL/Bill/mutation.updateBill.schema.json",
+                new
+                {
+                    input = new
+                    {
+                        id = 10,
+                        discount = -100000,
+                        patron = new { id = 1 }
+                    },
+                },
+                p => p.PermissionManageRentingRoom = true
+            );
+        }
+
+        [TestMethod]
+        public void Query_Bill()
+        {
+            Database.WriteAsync(realm => realm.Add(new Bill
+            {
+                Id = 20,
+                Time = DateTimeOffset.Now,
+                Patron = PatronBusiness.Get(1)
+            })).Wait();
+
+            SchemaHelper.Execute(
                 @"/_GraphQL/Bill/query.bill.gql",
                 @"/_GraphQL/Bill/query.bill.schema.json",
-                new { id = 10 },
+                new { id = 20 },
                 p => p.PermissionGetAccountingVoucher = true
             );
         }
