@@ -1,16 +1,19 @@
 {
     "definitions": {},
     "type": "object",
+    "additionalProperties": false,
     "title": "The Root Schema",
     "required": ["data"],
     "properties": {
         "data": {
             "type": "object",
+            "additionalProperties": false,
             "title": "The Data Schema",
             "required": ["service"],
             "properties": {
                 "service": {
                     "type": "object",
+                    "additionalProperties": false,
                     "title": "The Service Schema",
                     "required": ["id", "name"],
                     "properties": {

@@ -1,16 +1,19 @@
 {
     "definitions": {},
     "type": "object",
+    "additionalProperties": false,
     "required": ["data"],
     "properties": {
         "data": {
             "type": "object",
+            "additionalProperties": false,
             "required": ["prices"],
             "properties": {
                 "prices": {
                     "type": "array",
                     "items": {
                         "type": "object",
+                        "additionalProperties": false,
                         "required": [
                             "id",
                             "dayPrice",
@@ -61,6 +64,7 @@
                                     },
                                     {
                                         "type": "object",
+                                        "additionalProperties": false,
                                         "required": ["id"],
                                         "properties": {
                                             "id": {
@@ -73,6 +77,7 @@
                             },
                             "roomKind": {
                                 "type": "object",
+                                "additionalProperties": false,
                                 "required": ["id"],
                                 "properties": {
                                     "id": {

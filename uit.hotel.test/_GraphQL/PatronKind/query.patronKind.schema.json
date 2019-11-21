@@ -1,14 +1,17 @@
 {
     "definitions": {},
     "type": "object",
+    "additionalProperties": false,
     "required": ["data"],
     "properties": {
         "data": {
             "type": "object",
+            "additionalProperties": false,
             "required": ["patronKind"],
             "properties": {
                 "patronKind": {
                     "type": "object",
+                    "additionalProperties": false,
                     "required": ["id", "name", "description"],
                     "properties": {
                         "id": {

@@ -1,16 +1,19 @@
 {
     "definitions": {},
     "type": "object",
+    "additionalProperties": false,
     "required": ["data"],
     "properties": {
         "data": {
             "type": "object",
+            "additionalProperties": false,
             "required": ["patronKinds"],
             "properties": {
                 "patronKinds": {
                     "type": "array",
                     "items": {
                         "type": "object",
+                        "additionalProperties": false,
                         "required": ["id", "name", "description"],
                         "properties": {
                             "id": {

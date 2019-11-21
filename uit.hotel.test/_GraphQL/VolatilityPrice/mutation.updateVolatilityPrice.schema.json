@@ -1,14 +1,17 @@
 {
     "definitions": {},
     "type": "object",
+    "additionalProperties": false,
     "required": ["data"],
     "properties": {
         "data": {
             "type": "object",
+            "additionalProperties": false,
             "required": ["updateVolatilityPrice"],
             "properties": {
                 "updateVolatilityPrice": {
                     "type": "object",
+                    "additionalProperties": false,
                     "required": [
                         "id",
                         "dayPrice",
@@ -79,6 +82,7 @@
                         },
                         "employee": {
                             "type": "object",
+                            "additionalProperties": false,
                             "required": ["id"],
                             "properties": {
                                 "id": {
@@ -89,6 +93,7 @@
                         },
                         "roomKind": {
                             "type": "object",
+                            "additionalProperties": false,
                             "required": ["id"],
                             "properties": {
                                 "id": {

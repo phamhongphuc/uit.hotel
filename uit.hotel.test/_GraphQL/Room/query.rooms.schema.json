@@ -1,16 +1,19 @@
 {
     "definitions": {},
     "type": "object",
+    "additionalProperties": false,
     "required": ["data"],
     "properties": {
         "data": {
             "type": "object",
+            "additionalProperties": false,
             "required": ["rooms"],
             "properties": {
                 "rooms": {
                     "type": "array",
                     "items": {
                         "type": "object",
+                        "additionalProperties": false,
                         "required": [
                             "id",
                             "name",
@@ -31,6 +34,7 @@
                             },
                             "floor": {
                                 "type": "object",
+                                "additionalProperties": false,
                                 "required": ["id"],
                                 "properties": {
                                     "id": {
@@ -40,6 +44,7 @@
                             },
                             "roomKind": {
                                 "type": "object",
+                                "additionalProperties": false,
                                 "required": ["id"],
                                 "properties": {
                                     "id": {

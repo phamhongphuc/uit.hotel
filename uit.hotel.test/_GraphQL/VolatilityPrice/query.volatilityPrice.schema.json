@@ -1,16 +1,19 @@
 {
     "definitions": {},
     "type": "object",
+    "additionalProperties": false,
     "title": "The Root Schema",
     "required": ["data"],
     "properties": {
         "data": {
             "type": "object",
+            "additionalProperties": false,
             "title": "The Data Schema",
             "required": ["volatilityPrice"],
             "properties": {
                 "volatilityPrice": {
                     "type": "object",
+                    "additionalProperties": false,
                     "title": "The Volatilityprice Schema",
                     "required": [
                         "id",
@@ -126,6 +129,7 @@
                         },
                         "roomKind": {
                             "type": "object",
+                            "additionalProperties": false,
                             "title": "The Roomkind Schema",
                             "required": [
                                 "id",

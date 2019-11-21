@@ -1,10 +1,12 @@
 {
     "definitions": {},
     "type": "object",
+    "additionalProperties": false,
     "required": ["data"],
     "properties": {
         "data": {
             "type": "object",
+            "additionalProperties": false,
             "required": ["deleteFloor"],
             "properties": {
                 "deleteFloor": {

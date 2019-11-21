@@ -1,16 +1,19 @@
 {
     "definitions": {},
     "type": "object",
+    "additionalProperties": false,
     "required": ["data"],
     "properties": {
         "data": {
             "type": "object",
+            "additionalProperties": false,
             "required": ["servicesDetails"],
             "properties": {
                 "servicesDetails": {
                     "type": "array",
                     "items": {
                         "type": "object",
+                        "additionalProperties": false,
                         "required": [
                             "id",
                             "time",
@@ -31,6 +34,7 @@
                             },
                             "booking": {
                                 "type": "object",
+                                "additionalProperties": false,
                                 "required": ["id"],
                                 "properties": {
                                     "id": {
@@ -40,6 +44,7 @@
                             },
                             "service": {
                                 "type": "object",
+                                "additionalProperties": false,
                                 "required": ["id"],
                                 "properties": {
                                     "id": {

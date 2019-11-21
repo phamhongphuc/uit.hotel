@@ -1,14 +1,17 @@
 {
     "definitions": {},
     "type": "object",
+    "additionalProperties": false,
     "required": ["data"],
     "properties": {
         "data": {
             "type": "object",
+            "additionalProperties": false,
             "required": ["bill"],
             "properties": {
                 "bill": {
                     "type": "object",
+                    "additionalProperties": false,
                     "required": ["id", "time", "patron"],
                     "properties": {
                         "id": {
@@ -20,6 +23,7 @@
                         },
                         "patron": {
                             "type": "object",
+                            "additionalProperties": false,
                             "required": ["identification"],
                             "properties": {
                                 "identification": {
