@@ -876,6 +876,22 @@
                         "deprecationReason": null
                     },
                     {
+                        "name": "discount",
+                        "description": "Giảm giá",
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Int",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
                         "name": "employee",
                         "description": "Thông tin nhân viên nhận thanh toán hóa đơn",
                         "args": [],
@@ -2774,22 +2790,6 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "earlyCheckInFee",
-                        "description": "Phí check-out sớm",
-                        "args": [],
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Int",
-                                "ofType": null
-                            }
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
                         "name": "effectiveEndDate",
                         "description": "Ngày giá hết hiệu lực",
                         "args": [],
@@ -2964,22 +2964,6 @@
                     {
                         "name": "id",
                         "description": "Id của giá",
-                        "args": [],
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Int",
-                                "ofType": null
-                            }
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "lateCheckOutFee",
-                        "description": "Phí check-out muộn",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -5234,6 +5218,37 @@
                         "deprecationReason": null
                     },
                     {
+                        "name": "updateBill",
+                        "description": "Cập nhật thông tin hóa đơn",
+                        "args": [
+                            {
+                                "name": "input",
+                                "description": "",
+                                "type": {
+                                    "kind": "NON_NULL",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "INPUT_OBJECT",
+                                        "name": "BillUpdateInput",
+                                        "ofType": null
+                                    }
+                                },
+                                "defaultValue": null
+                            }
+                        ],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "OBJECT",
+                                "name": "Bill",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
                         "name": "updateEmployee",
                         "description": "Chỉnh sửa thông tin nhân viên",
                         "args": [
@@ -7074,34 +7089,6 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "lateCheckOutFee",
-                        "description": "Phí check-out muộn",
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Int",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "earlyCheckInFee",
-                        "description": "Phí check-out sớm",
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Int",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
                         "name": "effectiveStartDate",
                         "description": "Ngày giá bắt đầu có hiệu lực",
                         "type": {
@@ -7286,6 +7273,59 @@
                 ],
                 "inputFields": null,
                 "interfaces": [],
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "INPUT_OBJECT",
+                "name": "BillUpdateInput",
+                "description": "Input để cập nhật thông tin một hóa đơn",
+                "fields": null,
+                "inputFields": [
+                    {
+                        "name": "id",
+                        "description": "Id của hóa đơn",
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Int",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "discount",
+                        "description": "Giảm giá",
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Int",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "patron",
+                        "description": "Thông tin khách hàng thanh toán hóa đơn",
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "INPUT_OBJECT",
+                                "name": "PatronId",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    }
+                ],
+                "interfaces": null,
                 "enumValues": null,
                 "possibleTypes": null
             },
@@ -8452,34 +8492,6 @@
                     {
                         "name": "monthPrice",
                         "description": "Giá tháng",
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Int",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "lateCheckOutFee",
-                        "description": "Phí check-out muộn",
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Int",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "earlyCheckInFee",
-                        "description": "Phí check-out sớm",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,

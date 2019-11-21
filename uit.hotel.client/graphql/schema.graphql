@@ -137,6 +137,9 @@ type AppMutation {
     # Cập nhật trạng thái dọn phòng của một phòng
     setIsCleanRoom(id: ID!, isClean: Boolean!): String!
 
+    # Cập nhật thông tin hóa đơn
+    updateBill(input: BillUpdateInput!): Bill!
+
     # Chỉnh sửa thông tin nhân viên
     updateEmployee(input: EmployeeUpdateInput!): Employee!
 
@@ -277,6 +280,9 @@ type Bill {
     # Danh sách các thông tin đặt trước của hóa đơn
     bookings: [Booking]
 
+    # Giảm giá
+    discount: Int!
+
     # Thông tin nhân viên nhận thanh toán hóa đơn
     employee: Employee
 
@@ -308,6 +314,18 @@ input BillCreateInput {
 input BillId {
     # Id của hóa đơn
     id: Int!
+}
+
+# Input để cập nhật thông tin một hóa đơn
+input BillUpdateInput {
+    # Id của hóa đơn
+    id: Int!
+
+    # Giảm giá
+    discount: Int!
+
+    # Thông tin khách hàng thanh toán hóa đơn
+    patron: PatronId!
 }
 
 input BookAndCheckInCreateInput {
@@ -1296,9 +1314,6 @@ type VolatilityPrice {
     # Giá ngày
     dayPrice: Int!
 
-    # Phí check-out sớm
-    earlyCheckInFee: Int!
-
     # Ngày giá hết hiệu lực
     effectiveEndDate: DateTimeOffset!
 
@@ -1335,9 +1350,6 @@ type VolatilityPrice {
     # Id của giá
     id: Int!
 
-    # Phí check-out muộn
-    lateCheckOutFee: Int!
-
     # Giá tháng
     monthPrice: Int!
 
@@ -1366,12 +1378,6 @@ input VolatilityPriceCreateInput {
 
     # Giá tháng
     monthPrice: Int!
-
-    # Phí check-out muộn
-    lateCheckOutFee: Int!
-
-    # Phí check-out sớm
-    earlyCheckInFee: Int!
 
     # Ngày giá bắt đầu có hiệu lực
     effectiveStartDate: DateTimeOffset!
@@ -1422,12 +1428,6 @@ input VolatilityPriceUpdateInput {
 
     # Giá tháng
     monthPrice: Int!
-
-    # Phí check-out muộn
-    lateCheckOutFee: Int!
-
-    # Phí check-out sớm
-    earlyCheckInFee: Int!
 
     # Ngày giá bắt đầu có hiệu lực
     effectiveStartDate: DateTimeOffset!
