@@ -57,7 +57,7 @@ namespace uit.hotel.DataAccesses
                 billInDatabase.Employee = employee;
                 billInDatabase.Time = DateTimeOffset.Now;
 
-                var remain = billInDatabase.Total - billInDatabase.TotalReceipts;
+                var remain = billInDatabase.Total + billInDatabase.Discount - billInDatabase.TotalReceipts;
                 if (remain == 0) return;
 
                 var receipt = new Receipt();
@@ -72,14 +72,25 @@ namespace uit.hotel.DataAccesses
             return billInDatabase;
         }
 
-        public static Bill Get(int billId) => Database.Find<Bill>(billId);
+        public static async Task<Bill> Update(Bill billInDatabase, Bill bill)
+        {
+            await Database.WriteAsync(realm =>
+            {
+                billInDatabase.Discount = bill.Discount;
+                billInDatabase.Patron = bill.Patron.GetManaged();
+            });
 
-        public static IEnumerable<Bill> Get() => Database.All<Bill>();
+            return billInDatabase;
+        }
 
         public static async void Delete(Bill bill) => await Database.WriteAsync(realm =>
         {
             foreach (var booking in bill.Bookings) realm.Remove(booking);
             realm.Remove(bill);
         });
+
+        public static Bill Get(int billId) => Database.Find<Bill>(billId);
+
+        public static IEnumerable<Bill> Get() => Database.All<Bill>();
     }
 }

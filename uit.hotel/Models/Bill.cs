@@ -19,6 +19,7 @@ namespace uit.hotel.Models
         [Backlink(nameof(Booking.Bill))]
         public IQueryable<Booking> Bookings { get; }
 
+        public long Discount { get; set; }
         public long Total { get; private set; }
         public long TotalReceipts { get; private set; }
 
