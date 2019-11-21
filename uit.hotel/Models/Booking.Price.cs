@@ -105,24 +105,24 @@ namespace uit.hotel.Models
 
         private void CalculateDay()
         {
-            var itepriceTime = BaseCheckInTime;
-            while (itepriceTime <= BaseCheckOutTime)
+            var iterateTime = BaseCheckInTime;
+            while (iterateTime <= BaseCheckOutTime)
             {
-                var remain = (BaseCheckOutTime - itepriceTime).Days;
+                var remain = (BaseCheckOutTime - iterateTime).Days;
                 if (remain >= 30 && Price.MonthPrice != 0)
                 {
                     DayPrice += Price.MonthPrice;
-                    itepriceTime = itepriceTime.AddDays(30);
+                    iterateTime = iterateTime.AddDays(30);
                 }
                 else if (remain >= 7 && Price.WeekPrice != 0)
                 {
                     DayPrice += Price.WeekPrice;
-                    itepriceTime = itepriceTime.AddDays(7);
+                    iterateTime = iterateTime.AddDays(7);
                 }
                 else
                 {
                     DayPrice += Price.DayPrice;
-                    itepriceTime = itepriceTime.AddDays(1);
+                    iterateTime = iterateTime.AddDays(1);
                 }
             }
         }
