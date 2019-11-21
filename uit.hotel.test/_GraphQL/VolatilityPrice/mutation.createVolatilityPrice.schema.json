@@ -15,8 +15,6 @@
                         "nightPrice",
                         "weekPrice",
                         "monthPrice",
-                        "lateCheckOutFee",
-                        "earlyCheckInFee",
                         "effectiveStartDate",
                         "effectiveEndDate",
                         "effectiveOnMonday",
@@ -43,12 +41,6 @@
                             "type": "integer"
                         },
                         "monthPrice": {
-                            "type": "integer"
-                        },
-                        "lateCheckOutFee": {
-                            "type": "integer"
-                        },
-                        "earlyCheckInFee": {
                             "type": "integer"
                         },
                         "effectiveStartDate": {

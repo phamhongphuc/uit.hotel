@@ -5,8 +5,6 @@
         nightPrice
         weekPrice
         monthPrice
-        lateCheckOutFee
-        earlyCheckInFee
         effectiveStartDate
         effectiveEndDate
         effectiveOnMonday
