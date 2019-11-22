@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Realms;
 
 namespace uit.hotel.Models
@@ -24,5 +25,13 @@ namespace uit.hotel.Models
         public DateTimeOffset CreateDate { get; set; }
         public Employee Employee { get; set; }
         public RoomKind RoomKind { get; set; }
+
+        public static VolatilityPrice operator +(VolatilityPrice a, VolatilityPrice b)
+        => new VolatilityPrice()
+        {
+            HourPrice = a.HourPrice + b.HourPrice,
+            DayPrice = a.DayPrice + b.DayPrice,
+            NightPrice = a.NightPrice + b.NightPrice
+        };
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Realms;
 using uit.hotel.Queries.Helper;
 
@@ -16,6 +17,17 @@ namespace uit.hotel.Models
         public long EarlyCheckInFee { get; private set; }
         public long LateCheckOutFee { get; private set; }
 
+        public string PriceFormular { get; set; }
+
+        [Ignored]
+        private object PriceFormularObject { get; set; }
+        [Ignored]
+        private object VolatilityPriceFormularObject { get; set; }
+        [Ignored]
+        private IList<VolatilityPrice> VolatilityPrices { get; set; }
+        [Ignored]
+        private IList<VolatilityPrice> CheckInVolatilityPrices { get; set; }
+
         public void UpdateAndCalculatePrice()
         {
             Room = Room.GetManaged();
@@ -28,6 +40,9 @@ namespace uit.hotel.Models
             BaseCheckOutTime = (RealCheckOutTime != DateTimeOffset.MinValue ? RealCheckOutTime : BookCheckOutTime).Round();
 
             Price = Room.RoomKind.GetPrice(BaseCheckInTime);
+            VolatilityPrices = Room.RoomKind.GetVolatilityPrices(BaseCheckInTime, BaseCheckOutTime);
+            CheckInVolatilityPrices = VolatilityPrices.InDate(BaseCheckInTime);
+
             HourPrice = 0;
             EarlyCheckInFee = 0;
             LateCheckOutFee = 0;
@@ -51,7 +66,8 @@ namespace uit.hotel.Models
             var timeSpan = BaseCheckOutTime - BaseCheckInTime;
             if (timeSpan.FloatHour() <= Price.HourTimeSpan)
             {
-                HourPrice = (long)(Price.HourPrice * timeSpan.FloatHour());
+                var sumVolatilityPrice = VolatilityPrices.Sum();
+                HourPrice = (long)((Price.HourPrice + sumVolatilityPrice.HourPrice) * timeSpan.FloatHour());
             }
         }
 
@@ -104,7 +120,8 @@ namespace uit.hotel.Models
         {
             if (BaseCheckInTime.FloatHour() == Price.CheckInNightTime) // isNight
             {
-                NightPrice = Price.NightPrice;
+                var sumVolatilityPrice = VolatilityPrices.Sum();
+                NightPrice = Price.NightPrice + sumVolatilityPrice.NightPrice;
                 BaseCheckInTime = BaseCheckInTime.AtHour(Price.CheckInDayTime).AddDays(1);
             }
         }
@@ -130,6 +147,15 @@ namespace uit.hotel.Models
                     DayPrice += Price.DayPrice;
                     iterateTime = iterateTime.AddDays(1);
                 }
+            }
+
+            iterateTime = BaseCheckInTime;
+            while (iterateTime <= BaseCheckOutTime)
+            {
+                var remain = (BaseCheckOutTime - iterateTime).Days;
+                var sumVolatilityPrice = VolatilityPrices.InDate(iterateTime).Sum();
+                DayPrice += sumVolatilityPrice.DayPrice;
+                iterateTime = iterateTime.AddDays(1);
             }
         }
 

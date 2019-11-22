@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Realms;
 using uit.hotel.Businesses;
@@ -25,15 +26,26 @@ namespace uit.hotel.Models
 
         public Price GetPrice(DateTimeOffset date)
         {
-            Price select = null;
-            foreach (var price in Prices)
+            Price selected = null;
+            foreach (var p in Prices)
                 if (
-                    date >= price.EffectiveStartDate &&
-                    (select == null || select.EffectiveStartDate < price.EffectiveStartDate)
+                    date >= p.EffectiveStartDate &&
+                    (selected == null || selected.EffectiveStartDate < p.EffectiveStartDate)
                 )
-                    select = price;
-            if (select == null) throw new Exception("Loại phòng này chưa được cài đặt giá");
-            return select;
+                    selected = p;
+            if (selected == null) throw new Exception("Loại phòng này chưa được cài đặt giá");
+            return selected;
+        }
+
+        public IList<VolatilityPrice> GetVolatilityPrices(DateTimeOffset from, DateTimeOffset to)
+        {
+            IList<VolatilityPrice> selecteds = new List<VolatilityPrice> { };
+            foreach (var v in VolatilityPrices)
+            {
+                if (v.EffectiveStartDate <= to && from <= v.EffectiveEndDate)
+                    selecteds.Add(v);
+            }
+            return selecteds;
         }
 
         public RoomKind GetManaged()
