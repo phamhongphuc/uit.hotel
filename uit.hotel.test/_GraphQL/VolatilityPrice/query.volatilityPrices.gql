@@ -3,8 +3,6 @@
         id
         dayPrice
         nightPrice
-        weekPrice
-        monthPrice
         effectiveStartDate
         effectiveEndDate
         effectiveOnMonday
