@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Realms;
 using uit.hotel.Queries.Helper;
 
@@ -19,10 +20,6 @@ namespace uit.hotel.Models
 
         public string PriceFormular { get; set; }
 
-        [Ignored]
-        private object PriceFormularObject { get; set; }
-        [Ignored]
-        private object VolatilityPriceFormularObject { get; set; }
         [Ignored]
         private IList<VolatilityPrice> VolatilityPrices { get; set; }
         [Ignored]
