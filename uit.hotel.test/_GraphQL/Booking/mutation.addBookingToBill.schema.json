@@ -52,7 +52,8 @@
                             "pattern": "^(.*)$"
                         },
                         "status": {
-                            "type": "integer"
+                            "type": "string",
+                            "enum": ["BOOKED", "CHECKED_IN", "CHECKED_OUT"]
                         },
                         "room": {
                             "type": "object",

@@ -141,7 +141,7 @@ namespace uit.hotel.test._GraphQL
                 realm.Add(new Booking
                 {
                     Id = 200,
-                    Status = (int)Booking.StatusEnum.CheckedOut,
+                    Status = Booking.StatusEnum.CheckedOut,
                     EmployeeBooking = EmployeeDataAccess.Get("admin"),
                     EmployeeCheckIn = EmployeeDataAccess.Get("admin"),
                     EmployeeCheckOut = EmployeeDataAccess.Get("admin"),
