@@ -968,7 +968,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "total",
+                        "name": "totalPrice",
                         "description": "Tổng giá trị hóa đơn",
                         "args": [],
                         "type": {
@@ -1342,8 +1342,8 @@
                             "kind": "NON_NULL",
                             "name": null,
                             "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Int",
+                                "kind": "ENUM",
+                                "name": "StatusEnum",
                                 "ofType": null
                             }
                         },
@@ -2978,22 +2978,6 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "monthPrice",
-                        "description": "Giá tháng",
-                        "args": [],
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Int",
-                                "ofType": null
-                            }
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
                         "name": "nightPrice",
                         "description": "Giá đêm",
                         "args": [],
@@ -3019,22 +3003,6 @@
                             "ofType": {
                                 "kind": "OBJECT",
                                 "name": "RoomKind",
-                                "ofType": null
-                            }
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "weekPrice",
-                        "description": "Giá tuần",
-                        "args": [],
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Int",
                                 "ofType": null
                             }
                         },
@@ -3715,6 +3683,35 @@
                 "possibleTypes": null
             },
             {
+                "kind": "ENUM",
+                "name": "StatusEnum",
+                "description": "Trạng thái của đơn đặt phòng",
+                "fields": null,
+                "inputFields": null,
+                "interfaces": null,
+                "enumValues": [
+                    {
+                        "name": "BOOKED",
+                        "description": "",
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "CHECKED_IN",
+                        "description": "",
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "CHECKED_OUT",
+                        "description": "",
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    }
+                ],
+                "possibleTypes": null
+            },
+            {
                 "kind": "OBJECT",
                 "name": "AppMutation",
                 "description": "",
@@ -4312,6 +4309,37 @@
                             "ofType": {
                                 "kind": "SCALAR",
                                 "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "checkBookingPrice",
+                        "description": "Kiểm tra thử giá của phòng",
+                        "args": [
+                            {
+                                "name": "booking",
+                                "description": "",
+                                "type": {
+                                    "kind": "NON_NULL",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "INPUT_OBJECT",
+                                        "name": "BookingCreateInput",
+                                        "ofType": null
+                                    }
+                                },
+                                "defaultValue": null
+                            }
+                        ],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "OBJECT",
+                                "name": "Booking",
                                 "ofType": null
                             }
                         },
@@ -7061,34 +7089,6 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "weekPrice",
-                        "description": "Giá tuần",
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Int",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "monthPrice",
-                        "description": "Giá tháng",
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Int",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
                         "name": "effectiveStartDate",
                         "description": "Ngày giá bắt đầu có hiệu lực",
                         "type": {
@@ -8464,34 +8464,6 @@
                     {
                         "name": "nightPrice",
                         "description": "Giá đêm",
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Int",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "weekPrice",
-                        "description": "Giá tuần",
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Int",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "monthPrice",
-                        "description": "Giá tháng",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,

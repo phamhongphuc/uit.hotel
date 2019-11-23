@@ -111,7 +111,7 @@
 import { Component, mixins } from 'nuxt-property-decorator';
 import { getBookings } from '~/graphql/documents';
 import { DataMixin } from '~/components/mixins';
-import { GetBookings } from '~/graphql/types';
+import { GetBookings, StatusEnum } from '~/graphql/types';
 import { toMoney, toDate } from '~/utils';
 
 @Component({
@@ -126,14 +126,9 @@ export default class extends mixins(
         };
     }
 
-    show = [0, 1, 2, 3];
+    show = [StatusEnum.Booked, StatusEnum.CheckedIn, StatusEnum.CheckedOut];
 
-    bookingStatusEnum = [
-        'Đã đặt',
-        'Đã nhận phòng',
-        'Đã yêu cầu trả phòng',
-        'Đã trả phòng',
-    ];
+    bookingStatusEnum = ['Đã đặt', 'Đã nhận phòng', 'Đã trả phòng'];
 
     showOptions = this.bookingStatusEnum.map((booking, index) => ({
         text: booking,
@@ -157,12 +152,12 @@ export default class extends mixins(
     currentEvent: MouseEvent | null = null;
 
     getCheckInTime(item: GetBookings.Bookings) {
-        if (item.status === 0) return item.bookCheckInTime;
+        if (item.status === StatusEnum.Booked) return item.bookCheckInTime;
         return item.realCheckInTime;
     }
 
     getCheckOutTime(item: GetBookings.Bookings) {
-        if (item.status === 3) return item.realCheckOutTime;
+        if (item.status === StatusEnum.CheckedOut) return item.realCheckOutTime;
         return item.bookCheckOutTime;
     }
 }

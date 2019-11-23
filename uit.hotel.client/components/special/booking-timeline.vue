@@ -96,14 +96,8 @@
 <script lang="ts">
 import { Vue, Component, Prop } from 'nuxt-property-decorator';
 import moment from 'moment';
-import { GetTimeline } from '~/graphql/types';
+import { GetTimeline, StatusEnum } from '~/graphql/types';
 import { toDate } from '~/utils';
-
-enum StatusEnum {
-    Booked,
-    CheckedIn,
-    CheckedOut,
-}
 
 type StatusEnumMap = { [key in StatusEnum]: string };
 

@@ -58,6 +58,9 @@ type AppMutation {
     # Nhân viên tự đổi mật khẩu cho tài khoản của mình
     changePassword(password: String!, newPassword: String!): String!
 
+    # Kiểm tra thử giá của phòng
+    checkBookingPrice(booking: BookingCreateInput!): Booking!
+
     # Nhận phòng
     checkIn(id: ID!): Booking!
 
@@ -299,7 +302,7 @@ type Bill {
     time: DateTimeOffset!
 
     # Tổng giá trị hóa đơn
-    total: Int!
+    totalPrice: Int!
 
     # Tổng giá trị các phiếu thu
     totalReceipts: Int!
@@ -405,7 +408,7 @@ type Booking {
     servicesDetails: [ServicesDetail]!
 
     # Trạng thái của thông tin thuê phòng
-    status: Int!
+    status: StatusEnum!
 
     # Tổng tiền
     total: Int!
@@ -1306,6 +1309,13 @@ input ServiceUpdateInput {
     unit: String!
 }
 
+# Trạng thái của đơn đặt phòng
+enum StatusEnum {
+    BOOKED
+    CHECKED_IN
+    CHECKED_OUT
+}
+
 # Giá biến động của một loại phòng
 type VolatilityPrice {
     # Ngày tạo giá
@@ -1350,17 +1360,11 @@ type VolatilityPrice {
     # Id của giá
     id: Int!
 
-    # Giá tháng
-    monthPrice: Int!
-
     # Giá đêm
     nightPrice: Int!
 
     # Thuộc loại phòng
     roomKind: RoomKind!
-
-    # Giá tuần
-    weekPrice: Int!
 }
 
 input VolatilityPriceCreateInput {
@@ -1372,12 +1376,6 @@ input VolatilityPriceCreateInput {
 
     # Giá đêm
     nightPrice: Int!
-
-    # Giá tuần
-    weekPrice: Int!
-
-    # Giá tháng
-    monthPrice: Int!
 
     # Ngày giá bắt đầu có hiệu lực
     effectiveStartDate: DateTimeOffset!
@@ -1422,12 +1420,6 @@ input VolatilityPriceUpdateInput {
 
     # Giá đêm
     nightPrice: Int!
-
-    # Giá tuần
-    weekPrice: Int!
-
-    # Giá tháng
-    monthPrice: Int!
 
     # Ngày giá bắt đầu có hiệu lực
     effectiveStartDate: DateTimeOffset!
