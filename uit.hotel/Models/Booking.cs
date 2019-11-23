@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using Realms;
 using uit.hotel.Businesses;
@@ -11,9 +12,9 @@ namespace uit.hotel.Models
     {
         public enum StatusEnum
         {
-            Booked,
-            CheckedIn,
-            CheckedOut
+            [Description("Đã đặt, chưa nhận phòng")] Booked,
+            [Description("Đã nhận phòng")] CheckedIn,
+            [Description("Đã trả phòng")] CheckedOut
         }
 
         [Ignored]
