@@ -83,6 +83,7 @@ namespace uit.hotel.GraphQLHelper
         {
             services.AddSingleton<AuthenticationType>();
             services.AddSingleton<BillType>();
+            services.AddSingleton<BookingStatusEnumType>();
             services.AddSingleton<BookingType>();
             services.AddSingleton<EmployeeType>();
             services.AddSingleton<FloorType>();

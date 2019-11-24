@@ -31,7 +31,9 @@ namespace uit.hotel.Models
 
         [PrimaryKey]
         public int Id { get; set; }
-        public int Status { get; set; }
+        private int StatusRaw { get; set; }
+        [Ignored]
+        public StatusEnum Status { get => (StatusEnum)StatusRaw; set { StatusRaw = (int)value; } }
         public DateTimeOffset BookCheckInTime { get; set; }
         public DateTimeOffset BookCheckOutTime { get; set; }
         public DateTimeOffset RealCheckInTime { get; set; }
@@ -55,7 +57,7 @@ namespace uit.hotel.Models
 
         public void CalculateTotal(bool updateBill = false)
         {
-            if (Status == (int)StatusEnum.CheckedOut)
+            if (Status == StatusEnum.CheckedOut)
                 throw new Exception("Phòng đã checkout, không thể tính toán lại giá tiền.");
 
             CalculatePrice();
