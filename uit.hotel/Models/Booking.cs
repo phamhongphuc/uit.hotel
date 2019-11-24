@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using Realms;
 using uit.hotel.Businesses;
@@ -7,15 +8,15 @@ using uit.hotel.Queries.Helper;
 
 namespace uit.hotel.Models
 {
+    public enum BookingStatusEnum
+    {
+        [Description("Đã đặt, chưa nhận phòng")] Booked,
+        [Description("Đã nhận phòng")] CheckedIn,
+        [Description("Đã trả phòng")] CheckedOut
+    }
+
     public partial class Booking : RealmObject
     {
-        public enum StatusEnum
-        {
-            Booked,
-            CheckedIn,
-            CheckedOut
-        }
-
         [Ignored]
         public List<Patron> ListOfPatrons
         {
@@ -30,7 +31,9 @@ namespace uit.hotel.Models
 
         [PrimaryKey]
         public int Id { get; set; }
-        public int Status { get; set; }
+        private int StatusRaw { get; set; }
+        [Ignored]
+        public BookingStatusEnum Status { get => (BookingStatusEnum)StatusRaw; set { StatusRaw = (int)value; } }
         public DateTimeOffset BookCheckInTime { get; set; }
         public DateTimeOffset BookCheckOutTime { get; set; }
         public DateTimeOffset RealCheckInTime { get; set; }
@@ -54,7 +57,7 @@ namespace uit.hotel.Models
 
         public void CalculateTotal(bool updateBill = false)
         {
-            if (Status == (int)StatusEnum.CheckedOut)
+            if (Status == BookingStatusEnum.CheckedOut)
                 throw new Exception("Phòng đã checkout, không thể tính toán lại giá tiền.");
 
             CalculatePrice();

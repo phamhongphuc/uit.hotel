@@ -131,7 +131,7 @@ namespace uit.hotel.Queries.Helper
                 var booking = realm.Add(new Booking
                 {
                     Id = 1,
-                    Status = (int)Booking.StatusEnum.CheckedIn,
+                    Status = BookingStatusEnum.CheckedIn,
                     EmployeeBooking = admin,
                     EmployeeCheckIn = null,
                     EmployeeCheckOut = null,

@@ -5,7 +5,7 @@ export const getBills = gql`
         bills {
             id
             time
-            total
+            totalPrice
             patron {
                 id
                 name

@@ -16,8 +16,6 @@
                         "id",
                         "dayPrice",
                         "nightPrice",
-                        "weekPrice",
-                        "monthPrice",
                         "effectiveStartDate",
                         "effectiveEndDate",
                         "effectiveOnMonday",
@@ -38,12 +36,6 @@
                             "type": "integer"
                         },
                         "nightPrice": {
-                            "type": "integer"
-                        },
-                        "weekPrice": {
-                            "type": "integer"
-                        },
-                        "monthPrice": {
                             "type": "integer"
                         },
                         "effectiveStartDate": {

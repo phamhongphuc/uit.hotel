@@ -15,8 +15,6 @@ namespace uit.hotel.ObjectTypes
             Field(x => x.HourPrice).Description("Giá giờ");
             Field(x => x.DayPrice).Description("Giá ngày");
             Field(x => x.NightPrice).Description("Giá đêm");
-            Field(x => x.WeekPrice).Description("Giá tuần");
-            Field(x => x.MonthPrice).Description("Giá tháng");
             Field(x => x.EffectiveStartDate).Description("Ngày giá bắt đầu có hiệu lực");
             Field(x => x.EffectiveEndDate).Description("Ngày giá hết hiệu lực");
             Field(x => x.EffectiveOnMonday).Description("Giá có hiệu lực vào ngày Thứ 2");
@@ -48,8 +46,6 @@ namespace uit.hotel.ObjectTypes
             Field(x => x.HourPrice).Description("Giá giờ");
             Field(x => x.DayPrice).Description("Giá ngày");
             Field(x => x.NightPrice).Description("Giá đêm");
-            Field(x => x.WeekPrice).Description("Giá tuần");
-            Field(x => x.MonthPrice).Description("Giá tháng");
             Field(x => x.EffectiveStartDate).Description("Ngày giá bắt đầu có hiệu lực");
             Field(x => x.EffectiveEndDate).Description("Ngày giá hết hiệu lực");
             Field(x => x.EffectiveOnMonday).Description("Giá có hiệu lực vào ngày Thứ 2");
@@ -76,8 +72,6 @@ namespace uit.hotel.ObjectTypes
             Field(x => x.HourPrice).Description("Giá giờ");
             Field(x => x.DayPrice).Description("Giá ngày");
             Field(x => x.NightPrice).Description("Giá đêm");
-            Field(x => x.WeekPrice).Description("Giá tuần");
-            Field(x => x.MonthPrice).Description("Giá tháng");
             Field(x => x.EffectiveStartDate).Description("Ngày giá bắt đầu có hiệu lực");
             Field(x => x.EffectiveEndDate).Description("Ngày giá hết hiệu lực");
             Field(x => x.EffectiveOnMonday).Description("Giá có hiệu lực vào ngày Thứ 2");

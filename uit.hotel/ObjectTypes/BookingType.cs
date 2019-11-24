@@ -5,6 +5,15 @@ using uit.hotel.Queries.Base;
 
 namespace uit.hotel.ObjectTypes
 {
+    public class BookingStatusEnumType : EnumerationGraphType<BookingStatusEnum>
+    {
+        public BookingStatusEnumType()
+        {
+            Name = nameof(BookingStatusEnum);
+            Description = "Trạng thái của đơn đặt phòng";
+        }
+    }
+
     public class BookingType : ObjectGraphType<Booking>
     {
         public BookingType()
@@ -18,7 +27,10 @@ namespace uit.hotel.ObjectTypes
             Field(x => x.RealCheckInTime, true).Description("Thời điểm nhận phòng của khách hàng");
             Field(x => x.RealCheckOutTime, true).Description("Thời điểm trả phòng của khách hàng");
             Field(x => x.CreateTime).Description("Thời điểm tạo thông tin thuê phòng");
-            Field(x => x.Status).Description("Trạng thái của thông tin thuê phòng");
+            Field<NonNullGraphType<BookingStatusEnumType>>(
+                nameof(Booking.Status),
+                "Trạng thái của thông tin thuê phòng"
+            );
             Field(x => x.Total).Description("Tổng tiền");
             Field(x => x.TotalPrice).Description("Tổng tiền thuê cơ bản");
             Field(x => x.TotalVolatilityPrice).Description("Tổng tiền thuê biến động");

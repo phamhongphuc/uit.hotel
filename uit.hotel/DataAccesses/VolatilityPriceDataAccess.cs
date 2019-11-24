@@ -29,8 +29,6 @@ namespace uit.hotel.DataAccesses
                 volatilityPriceInDatabase.HourPrice = volatilityPrice.HourPrice;
                 volatilityPriceInDatabase.DayPrice = volatilityPrice.DayPrice;
                 volatilityPriceInDatabase.NightPrice = volatilityPrice.NightPrice;
-                volatilityPriceInDatabase.WeekPrice = volatilityPrice.WeekPrice;
-                volatilityPriceInDatabase.MonthPrice = volatilityPrice.MonthPrice;
                 volatilityPriceInDatabase.EffectiveStartDate = volatilityPrice.EffectiveStartDate;
                 volatilityPriceInDatabase.EffectiveEndDate = volatilityPrice.EffectiveEndDate;
                 volatilityPriceInDatabase.EffectiveOnMonday = volatilityPrice.EffectiveOnMonday;

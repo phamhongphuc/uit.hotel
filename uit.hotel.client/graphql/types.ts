@@ -65,6 +65,8 @@ export type AppMutation = {
     createVolatilityPrice: VolatilityPrice;
     /** Nhân viên tự đổi mật khẩu cho tài khoản của mình */
     changePassword: Scalars['String'];
+    /** Kiểm tra thử giá của phòng */
+    checkBookingPrice: Booking;
     /** Nhận phòng */
     checkIn: Booking;
     /** Kiểm tra đăng nhập */
@@ -211,6 +213,10 @@ export type AppMutationCreateVolatilityPriceArgs = {
 export type AppMutationChangePasswordArgs = {
     password: Scalars['String'];
     newPassword: Scalars['String'];
+};
+
+export type AppMutationCheckBookingPriceArgs = {
+    booking: BookingCreateInput;
 };
 
 export type AppMutationCheckInArgs = {
@@ -512,7 +518,7 @@ export type Bill = {
     /** Thời điểm in hóa đơn */
     time: Scalars['DateTimeOffset'];
     /** Tổng giá trị hóa đơn */
-    total: Scalars['Int'];
+    totalPrice: Scalars['Int'];
     /** Tổng giá trị các phiếu thu */
     totalReceipts: Scalars['Int'];
 };
@@ -592,7 +598,7 @@ export type Booking = {
     /** Danh sách chi tiết sử dụng dịch vụ của khách hàng */
     servicesDetails: Array<Maybe<ServicesDetail>>;
     /** Trạng thái của thông tin thuê phòng */
-    status: Scalars['Int'];
+    status: BookingStatusEnum;
     /** Tổng tiền */
     total: Scalars['Int'];
     /** Tổng tiền thuê cơ bản */
@@ -619,6 +625,13 @@ export type BookingId = {
     /** Id của một đơn đặt phòng */
     id: Scalars['Int'];
 };
+
+/** Trạng thái của đơn đặt phòng */
+export enum BookingStatusEnum {
+    Booked = 'BOOKED',
+    CheckedIn = 'CHECKED_IN',
+    CheckedOut = 'CHECKED_OUT',
+}
 
 /** Một nhân viên trong khách sạn */
 export type Employee = {
@@ -1297,14 +1310,10 @@ export type VolatilityPrice = {
     hourPrice: Scalars['Int'];
     /** Id của giá */
     id: Scalars['Int'];
-    /** Giá tháng */
-    monthPrice: Scalars['Int'];
     /** Giá đêm */
     nightPrice: Scalars['Int'];
     /** Thuộc loại phòng */
     roomKind: RoomKind;
-    /** Giá tuần */
-    weekPrice: Scalars['Int'];
 };
 
 export type VolatilityPriceCreateInput = {
@@ -1314,10 +1323,6 @@ export type VolatilityPriceCreateInput = {
     dayPrice: Scalars['Int'];
     /** Giá đêm */
     nightPrice: Scalars['Int'];
-    /** Giá tuần */
-    weekPrice: Scalars['Int'];
-    /** Giá tháng */
-    monthPrice: Scalars['Int'];
     /** Ngày giá bắt đầu có hiệu lực */
     effectiveStartDate: Scalars['DateTimeOffset'];
     /** Ngày giá hết hiệu lực */
@@ -1349,10 +1354,6 @@ export type VolatilityPriceUpdateInput = {
     dayPrice: Scalars['Int'];
     /** Giá đêm */
     nightPrice: Scalars['Int'];
-    /** Giá tuần */
-    weekPrice: Scalars['Int'];
-    /** Giá tháng */
-    monthPrice: Scalars['Int'];
     /** Ngày giá bắt đầu có hiệu lực */
     effectiveStartDate: Scalars['DateTimeOffset'];
     /** Ngày giá hết hiệu lực */
@@ -1379,7 +1380,7 @@ export type GetBillsQueryVariables = {};
 
 export type GetBillsQuery = {
     bills: Array<
-        Pick<Bill, 'id' | 'time' | 'total'> & {
+        Pick<Bill, 'id' | 'time' | 'totalPrice'> & {
             patron: Pick<Patron, 'id' | 'name'>;
             receipts: Maybe<Array<Maybe<Pick<Receipt, 'id' | 'money'>>>>;
             bookings: Maybe<Array<Maybe<Pick<Booking, 'id'>>>>;

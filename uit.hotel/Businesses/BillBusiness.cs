@@ -20,7 +20,7 @@ namespace uit.hotel.Businesses
 
             if (
                 bookings.Count() !=
-                bookings.ToList().Distinct(new EqualityBooking(Booking.StatusEnum.Booked)).Count()
+                bookings.ToList().Distinct(new EqualityBooking(BookingStatusEnum.Booked)).Count()
             )
                 throw new Exception("Có booking trùng nhau");
 
@@ -54,7 +54,7 @@ namespace uit.hotel.Businesses
 
             if (
                 bookings.Count() !=
-                bookings.ToList().Distinct(new EqualityBooking(Booking.StatusEnum.CheckedIn)).Count()
+                bookings.ToList().Distinct(new EqualityBooking(BookingStatusEnum.CheckedIn)).Count()
             )
                 throw new Exception("Có booking trùng nhau");
 
@@ -93,7 +93,7 @@ namespace uit.hotel.Businesses
 
             foreach (var booking in billInDatabase.Bookings)
             {
-                if (booking.Status != (int)Booking.StatusEnum.CheckedOut)
+                if (booking.Status != BookingStatusEnum.CheckedOut)
                     throw new Exception("Có phòng chưa Check-out, không thể thanh toán");
             }
 
@@ -106,17 +106,17 @@ namespace uit.hotel.Businesses
 
     public class EqualityBooking : IEqualityComparer<Booking>
     {
-        public EqualityBooking(Booking.StatusEnum Kind)
+        public EqualityBooking(BookingStatusEnum Kind)
         {
             this.Kind = Kind;
         }
 
-        public Booking.StatusEnum Kind { get; set; }
+        public BookingStatusEnum Kind { get; set; }
 
         //kiểm tra trùng -> true
         public bool Equals(Booking x, Booking y)
         {
-            if (Kind == Booking.StatusEnum.Booked)
+            if (Kind == BookingStatusEnum.Booked)
             {
                 if (x.Room.Id != y.Room.Id) return false;
                 if (!DateTimeHelper.IsTwoDateRangesOverlap(
@@ -125,7 +125,7 @@ namespace uit.hotel.Businesses
                     ))
                     return false;
             }
-            else if (Kind == Booking.StatusEnum.CheckedIn)
+            else if (Kind == BookingStatusEnum.CheckedIn)
             {
                 if (x.Room.Id != y.Room.Id) return false;
             }

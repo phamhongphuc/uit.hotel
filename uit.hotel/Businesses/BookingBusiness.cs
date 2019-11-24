@@ -14,7 +14,7 @@ namespace uit.hotel.Businesses
             var bookingInDatabase = Get(bookingId);
             if (bookingInDatabase == null)
                 throw new Exception("Mã Booking không tồn tại");
-            if (bookingInDatabase.Status != (int)Booking.StatusEnum.Booked)
+            if (bookingInDatabase.Status != BookingStatusEnum.Booked)
                 throw new Exception("Phòng đã được check-in, không thể check-in lại");
             if (bookingInDatabase.Room.IsClean == false)
                 throw new Exception("Phòng chưa được dọn, không thể check-in");
@@ -27,7 +27,7 @@ namespace uit.hotel.Businesses
             var bookingInDatabase = Get(bookingId);
             if (bookingInDatabase == null)
                 throw new Exception("Mã Booking không tồn tại");
-            if (bookingInDatabase.Status != (int)Booking.StatusEnum.CheckedIn)
+            if (bookingInDatabase.Status != BookingStatusEnum.CheckedIn)
                 throw new Exception("Booking chưa thực hiện yêu cầu check-in");
 
             return BookingDataAccess.CheckOut(bookingInDatabase, employee);
@@ -39,7 +39,7 @@ namespace uit.hotel.Businesses
             if (bookingInDatabase == null)
                 throw new Exception("Mã Booking không tồn tại");
 
-            if (bookingInDatabase.Status != (int)Booking.StatusEnum.Booked)
+            if (bookingInDatabase.Status != BookingStatusEnum.Booked)
                 throw new Exception("Không thể hủy đặt phòng. Booking đã hoặc đang được sử dụng.");
 
             if (bookingInDatabase.Bill.Bookings.Count() == 1) BillDataAccess.Delete(bookingInDatabase.Bill);

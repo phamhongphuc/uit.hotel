@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Realms;
 
 namespace uit.hotel.Models
@@ -10,8 +11,6 @@ namespace uit.hotel.Models
         public long HourPrice { get; set; }
         public long DayPrice { get; set; }
         public long NightPrice { get; set; }
-        public long WeekPrice { get; set; }
-        public long MonthPrice { get; set; }
         public DateTimeOffset EffectiveStartDate { get; set; }
         public DateTimeOffset EffectiveEndDate { get; set; }
         public bool EffectiveOnMonday { get; set; }
@@ -24,5 +23,13 @@ namespace uit.hotel.Models
         public DateTimeOffset CreateDate { get; set; }
         public Employee Employee { get; set; }
         public RoomKind RoomKind { get; set; }
+
+        public static VolatilityPrice operator +(VolatilityPrice a, VolatilityPrice b)
+        => new VolatilityPrice()
+        {
+            HourPrice = a.HourPrice + b.HourPrice,
+            DayPrice = a.DayPrice + b.DayPrice,
+            NightPrice = a.NightPrice + b.NightPrice
+        };
     }
 }
