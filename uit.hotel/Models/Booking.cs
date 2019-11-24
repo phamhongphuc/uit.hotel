@@ -31,9 +31,11 @@ namespace uit.hotel.Models
 
         [PrimaryKey]
         public int Id { get; set; }
-        private int StatusRaw { get; set; }
+
         [Ignored]
         public BookingStatusEnum Status { get => (BookingStatusEnum)StatusRaw; set { StatusRaw = (int)value; } }
+        private int StatusRaw { get; set; }
+
         public DateTimeOffset BookCheckInTime { get; set; }
         public DateTimeOffset BookCheckOutTime { get; set; }
         public DateTimeOffset RealCheckInTime { get; set; }
@@ -50,10 +52,7 @@ namespace uit.hotel.Models
         public IQueryable<ServicesDetail> ServicesDetails { get; }
 
         [Ignored]
-        public long Total { get => TotalPrice + TotalVolatilityPrice + TotalServicesDetails; }
-        public long TotalPrice { get; set; }
-        public long TotalVolatilityPrice { get; set; }
-        public long TotalServicesDetails { get; set; }
+        public long Total { get => TotalPrice + TotalServicesDetails; }
 
         public void CalculateTotal(bool updateBill = false)
         {

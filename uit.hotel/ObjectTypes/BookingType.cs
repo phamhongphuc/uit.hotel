@@ -32,8 +32,7 @@ namespace uit.hotel.ObjectTypes
                 "Trạng thái của thông tin thuê phòng"
             );
             Field(x => x.Total).Description("Tổng tiền");
-            Field(x => x.TotalPrice).Description("Tổng tiền thuê cơ bản");
-            Field(x => x.TotalVolatilityPrice).Description("Tổng tiền thuê biến động");
+            Field(x => x.TotalPrice).Description("Tổng tiền thuê");
             Field(x => x.TotalServicesDetails).Description("Tổng tiền dịch vụ");
 
             Field(x => x.BaseCheckInTime).Description("Thời gian nhận phòng được dùng");

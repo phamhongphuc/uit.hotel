@@ -6,14 +6,6 @@ namespace uit.hotel.Models
 {
     public class Price : RealmObject
     {
-        public static int CheckInDayTime = 13;
-        public static int CheckOutDayTime = 11;
-        public static int CheckInNightTime = 21;
-        public static int CheckOutNightTime = 11;
-        public static int MaxCheckInNightTime = 6;
-        public static int ToleranceTimeSpan = 4;
-        public static int HourTimeSpan = 4;
-
         [PrimaryKey]
         public int Id { get; set; }
         public long HourPrice { get; set; }

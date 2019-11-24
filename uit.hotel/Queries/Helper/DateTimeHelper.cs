@@ -56,7 +56,10 @@ namespace uit.hotel.Queries.Helper
             );
         }
 
-        public static double FloatHour(this TimeSpan timeSpan)
-            => timeSpan.Round().TotalMinutes / 60;
+        public static float FloatHour(this TimeSpan timeSpan)
+            => (float)timeSpan.Round().TotalMinutes / 60;
+
+        public static long MultiplyByHourPrice(this TimeSpan timeSpan, long unitPrice)
+            => (long)(timeSpan.FloatHour() * unitPrice);
     }
 }
