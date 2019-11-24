@@ -408,7 +408,7 @@ type Booking {
     servicesDetails: [ServicesDetail]!
 
     # Trạng thái của thông tin thuê phòng
-    status: StatusEnum!
+    status: BookingStatusEnum!
 
     # Tổng tiền
     total: Int!
@@ -441,6 +441,13 @@ input BookingCreateInput {
 input BookingId {
     # Id của một đơn đặt phòng
     id: Int!
+}
+
+# Trạng thái của đơn đặt phòng
+enum BookingStatusEnum {
+    BOOKED
+    CHECKED_IN
+    CHECKED_OUT
 }
 
 # The `Date` scalar type represents a year, month and day in accordance with the
@@ -1307,13 +1314,6 @@ input ServiceUpdateInput {
 
     # Đơn vị
     unit: String!
-}
-
-# Trạng thái của đơn đặt phòng
-enum StatusEnum {
-    BOOKED
-    CHECKED_IN
-    CHECKED_OUT
 }
 
 # Giá biến động của một loại phòng

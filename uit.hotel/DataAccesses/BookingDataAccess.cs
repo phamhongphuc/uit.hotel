@@ -29,7 +29,7 @@ namespace uit.hotel.DataAccesses
         {
             booking.Id = NextId;
             booking.CreateTime = DateTimeOffset.Now;
-            booking.Status = Booking.StatusEnum.Booked;
+            booking.Status = BookingStatusEnum.Booked;
             return realm.Add(booking);
         }
 
@@ -40,7 +40,7 @@ namespace uit.hotel.DataAccesses
             booking.CreateTime = DateTimeOffset.Now;
             booking.BookCheckInTime = DateTimeOffset.Now;
             booking.RealCheckInTime = DateTimeOffset.Now;
-            booking.Status = Booking.StatusEnum.CheckedIn;
+            booking.Status = BookingStatusEnum.CheckedIn;
 
             booking = realm.Add(booking);
             return booking;
@@ -52,7 +52,7 @@ namespace uit.hotel.DataAccesses
             {
                 bookingInDatabase.EmployeeCheckIn = employee;
                 bookingInDatabase.RealCheckInTime = DateTimeOffset.Now;
-                bookingInDatabase.Status = Booking.StatusEnum.CheckedIn;
+                bookingInDatabase.Status = BookingStatusEnum.CheckedIn;
 
                 bookingInDatabase.CalculateTotal();
             });
@@ -67,7 +67,7 @@ namespace uit.hotel.DataAccesses
                 bookingInDatabase.RealCheckOutTime = DateTimeOffset.Now;
                 bookingInDatabase.CalculateTotal();
 
-                bookingInDatabase.Status = Booking.StatusEnum.CheckedOut;
+                bookingInDatabase.Status = BookingStatusEnum.CheckedOut;
                 bookingInDatabase.Room.IsClean = false;
             });
             return bookingInDatabase;

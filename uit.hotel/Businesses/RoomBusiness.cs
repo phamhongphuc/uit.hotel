@@ -100,15 +100,15 @@ namespace uit.hotel.Businesses
                 DateTimeOffset bookingTo;
                 switch (status)
                 {
-                    case Booking.StatusEnum.Booked:
+                    case BookingStatusEnum.Booked:
                         bookingFrom = booking.BookCheckInTime;
                         bookingTo = booking.BookCheckOutTime;
                         break;
-                    case Booking.StatusEnum.CheckedIn:
+                    case BookingStatusEnum.CheckedIn:
                         bookingFrom = booking.RealCheckInTime;
                         bookingTo = booking.BookCheckOutTime;
                         break;
-                    case Booking.StatusEnum.CheckedOut:
+                    case BookingStatusEnum.CheckedOut:
                         bookingFrom = booking.RealCheckInTime;
                         bookingTo = booking.BookCheckOutTime;
                         break;
@@ -134,15 +134,15 @@ namespace uit.hotel.Businesses
                 DateTimeOffset bookingTo;
                 switch (status)
                 {
-                    case Booking.StatusEnum.Booked:
+                    case BookingStatusEnum.Booked:
                         bookingFrom = booking.BookCheckInTime;
                         bookingTo = booking.BookCheckOutTime;
                         break;
-                    case Booking.StatusEnum.CheckedIn:
+                    case BookingStatusEnum.CheckedIn:
                         bookingFrom = booking.RealCheckInTime;
                         bookingTo = booking.BookCheckOutTime;
                         break;
-                    case Booking.StatusEnum.CheckedOut:
+                    case BookingStatusEnum.CheckedOut:
                         bookingFrom = booking.RealCheckInTime;
                         bookingTo = booking.BookCheckOutTime;
                         break;

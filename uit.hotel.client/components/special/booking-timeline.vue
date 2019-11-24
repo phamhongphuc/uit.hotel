@@ -96,21 +96,21 @@
 <script lang="ts">
 import { Vue, Component, Prop } from 'nuxt-property-decorator';
 import moment from 'moment';
-import { GetTimeline, StatusEnum } from '~/graphql/types';
+import { GetTimeline, BookingStatusEnum } from '~/graphql/types';
 import { toDate } from '~/utils';
 
-type StatusEnumMap = { [key in StatusEnum]: string };
+type BookingStatusEnumMap = { [key in BookingStatusEnum]: string };
 
-const statusVariantMap: StatusEnumMap = {
-    [StatusEnum.Booked]: 'light-blue',
-    [StatusEnum.CheckedIn]: 'orange',
-    [StatusEnum.CheckedOut]: 'gray',
+const statusVariantMap: BookingStatusEnumMap = {
+    [BookingStatusEnum.Booked]: 'light-blue',
+    [BookingStatusEnum.CheckedIn]: 'orange',
+    [BookingStatusEnum.CheckedOut]: 'gray',
 };
 
-const statusTitleMap: StatusEnumMap = {
-    [StatusEnum.Booked]: 'Đã đặt phòng',
-    [StatusEnum.CheckedIn]: 'Đã nhận phòng',
-    [StatusEnum.CheckedOut]: 'Đã trả phòng',
+const statusTitleMap: BookingStatusEnumMap = {
+    [BookingStatusEnum.Booked]: 'Đã đặt phòng',
+    [BookingStatusEnum.CheckedIn]: 'Đã nhận phòng',
+    [BookingStatusEnum.CheckedOut]: 'Đã trả phòng',
 };
 
 const seconds = moment.duration(1, 'day').asSeconds();
@@ -226,13 +226,13 @@ export default class extends Vue {
         } = this;
         return room.bookings.map(booking => {
             const inTime = moment(
-                booking.status === StatusEnum.Booked
+                booking.status === BookingStatusEnum.Booked
                     ? booking.bookCheckInTime
                     : (booking.realCheckInTime as string),
             ).unix();
 
             const outTime = moment(
-                booking.status === StatusEnum.CheckedOut
+                booking.status === BookingStatusEnum.CheckedOut
                     ? (booking.realCheckOutTime as string)
                     : booking.bookCheckOutTime,
             ).unix();

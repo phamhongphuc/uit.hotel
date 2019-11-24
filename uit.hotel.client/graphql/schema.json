@@ -1343,7 +1343,7 @@
                             "name": null,
                             "ofType": {
                                 "kind": "ENUM",
-                                "name": "StatusEnum",
+                                "name": "BookingStatusEnum",
                                 "ofType": null
                             }
                         },
@@ -3684,7 +3684,7 @@
             },
             {
                 "kind": "ENUM",
-                "name": "StatusEnum",
+                "name": "BookingStatusEnum",
                 "description": "Trạng thái của đơn đặt phòng",
                 "fields": null,
                 "inputFields": null,

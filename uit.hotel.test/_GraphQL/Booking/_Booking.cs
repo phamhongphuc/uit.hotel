@@ -206,7 +206,7 @@ namespace uit.hotel.test._GraphQL
             Database.WriteAsync(realm => realm.Add(new Booking
             {
                 Id = 10,
-                Status = Booking.StatusEnum.Booked,
+                Status = BookingStatusEnum.Booked,
                 EmployeeBooking = EmployeeDataAccess.Get("admin"),
                 EmployeeCheckIn = null,
                 EmployeeCheckOut = null,
@@ -228,7 +228,7 @@ namespace uit.hotel.test._GraphQL
             Database.WriteAsync(realm => realm.Add(new Booking
             {
                 Id = 11,
-                Status = Booking.StatusEnum.CheckedIn,
+                Status = BookingStatusEnum.CheckedIn,
                 EmployeeBooking = EmployeeDataAccess.Get("admin"),
                 EmployeeCheckIn = null,
                 EmployeeCheckOut = null,
@@ -261,7 +261,7 @@ namespace uit.hotel.test._GraphQL
             Database.WriteAsync(realm => realm.Add(new Booking
             {
                 Id = 20,
-                Status = Booking.StatusEnum.CheckedIn,
+                Status = BookingStatusEnum.CheckedIn,
                 EmployeeBooking = EmployeeDataAccess.Get("admin"),
                 EmployeeCheckIn = EmployeeDataAccess.Get("admin"),
                 EmployeeCheckOut = EmployeeDataAccess.Get("admin"),
@@ -284,7 +284,7 @@ namespace uit.hotel.test._GraphQL
             Database.WriteAsync(realm => realm.Add(new Booking
             {
                 Id = 21,
-                Status = Booking.StatusEnum.CheckedIn,
+                Status = BookingStatusEnum.CheckedIn,
                 EmployeeBooking = EmployeeDataAccess.Get("admin"),
                 EmployeeCheckIn = EmployeeDataAccess.Get("admin"),
                 EmployeeCheckOut = EmployeeDataAccess.Get("admin"),
@@ -323,7 +323,7 @@ namespace uit.hotel.test._GraphQL
                 realm.Add(new Booking
                 {
                     Id = 22,
-                    Status = Booking.StatusEnum.CheckedIn,
+                    Status = BookingStatusEnum.CheckedIn,
                     EmployeeBooking = EmployeeDataAccess.Get("admin"),
                     EmployeeCheckIn = EmployeeDataAccess.Get("admin"),
                     EmployeeCheckOut = EmployeeDataAccess.Get("nhanvien_1"),

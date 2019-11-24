@@ -5,11 +5,11 @@ using uit.hotel.Queries.Base;
 
 namespace uit.hotel.ObjectTypes
 {
-    public class BookingStatusEnumType : EnumerationGraphType<Booking.StatusEnum>
+    public class BookingStatusEnumType : EnumerationGraphType<BookingStatusEnum>
     {
         public BookingStatusEnumType()
         {
-            Name = nameof(Booking.StatusEnum);
+            Name = nameof(BookingStatusEnum);
             Description = "Trạng thái của đơn đặt phòng";
         }
     }

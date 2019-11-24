@@ -598,7 +598,7 @@ export type Booking = {
     /** Danh sách chi tiết sử dụng dịch vụ của khách hàng */
     servicesDetails: Array<Maybe<ServicesDetail>>;
     /** Trạng thái của thông tin thuê phòng */
-    status: StatusEnum;
+    status: BookingStatusEnum;
     /** Tổng tiền */
     total: Scalars['Int'];
     /** Tổng tiền thuê cơ bản */
@@ -625,6 +625,13 @@ export type BookingId = {
     /** Id của một đơn đặt phòng */
     id: Scalars['Int'];
 };
+
+/** Trạng thái của đơn đặt phòng */
+export enum BookingStatusEnum {
+    Booked = 'BOOKED',
+    CheckedIn = 'CHECKED_IN',
+    CheckedOut = 'CHECKED_OUT',
+}
 
 /** Một nhân viên trong khách sạn */
 export type Employee = {
@@ -1272,13 +1279,6 @@ export type ServiceUpdateInput = {
     /** Đơn vị */
     unit: Scalars['String'];
 };
-
-/** Trạng thái của đơn đặt phòng */
-export enum StatusEnum {
-    Booked = 'BOOKED',
-    CheckedIn = 'CHECKED_IN',
-    CheckedOut = 'CHECKED_OUT',
-}
 
 /** Giá biến động của một loại phòng */
 export type VolatilityPrice = {
