@@ -362,9 +362,6 @@ type Booking {
     # Thời điểm tạo thông tin thuê phòng
     createTime: DateTimeOffset!
 
-    # Giá theo ngày
-    dayPrice: Int!
-
     # Phí nhận phòng sớm
     earlyCheckInFee: Int!
 
@@ -377,23 +374,20 @@ type Booking {
     # Nhân viên thực hiện check-out cho khách hàng
     employeeCheckOut: Employee
 
-    # Giá theo giờ
-    hourPrice: Int!
-
     # Id của thông tin thuê phòng
     id: Int!
 
     # Phí trả phòng trễ
     lateCheckOutFee: Int!
 
-    # Giá theo đêm
-    nightPrice: Int!
-
     # Danh sách khách hàng yêu cầu đặt phòng
     patrons: [Patron]!
 
-    # Giá đang được dùng
+    # Công thức giá
     price: Price!
+
+    # Danh sách đơn vị giá
+    priceItems: [PriceItem]!
 
     # Thời điểm nhận phòng của khách hàng
     realCheckInTime: DateTimeOffset
@@ -1026,6 +1020,30 @@ input PriceCreateInput {
 
     # Loại phòng
     roomKind: RoomKindId!
+}
+
+# Đơn vị giá
+type PriceItem {
+    # Đơn đặt phòng
+    booking: Booking!
+
+    # Loại đơn vị giá
+    kind: PriceItemKindEnum!
+
+    # Thời gian
+    timeSpan: Seconds!
+
+    # Giá trị
+    value: Int!
+}
+
+# Loại đơn vị giá
+enum PriceItemKindEnum {
+    HOUR
+    NIGHT
+    DAY
+    WEEK
+    MONTH
 }
 
 input PriceUpdateInput {

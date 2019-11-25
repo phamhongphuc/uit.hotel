@@ -5,35 +5,31 @@ mutation($booking: BookingCreateInput!) {
         bookCheckOutTime
         realCheckInTime
         realCheckOutTime
-
         baseCheckInTime
-        baseCheckInTime
-
+        baseCheckOutTime
+        total
+        totalPrice
+        earlyCheckInFee
+        lateCheckOutFee
         price {
             id
             effectiveStartDate
-
             earlyCheckInFee
             lateCheckOutFee
-
             hourPrice
             nightPrice
             dayPrice
             weekPrice
             monthPrice
-
             roomKind {
                 id
                 name
             }
         }
-
-        total
-        totalPrice
-        earlyCheckInFee
-        lateCheckOutFee
-        hourPrice
-        dayPrice
-        nightPrice
+        priceItems {
+            value
+            kind
+            timeSpan
+        }
     }
 }

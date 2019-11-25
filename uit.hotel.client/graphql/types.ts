@@ -12,6 +12,8 @@ export type Scalars = {
      * [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
      **/
     DateTimeOffset: string | Date;
+    /** The `Seconds` scalar type represents a period of time represented as the total number of seconds. */
+    Seconds: number;
     /**
      * The `Date` scalar type represents a year, month and day in accordance with the
      * [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
@@ -26,8 +28,6 @@ export type Scalars = {
     Decimal: number;
     /** The `Milliseconds` scalar type represents a period of time represented as the total number of milliseconds. */
     Milliseconds: number;
-    /** The `Seconds` scalar type represents a period of time represented as the total number of seconds. */
-    Seconds: number;
 };
 
 export type AppMutation = {
@@ -567,8 +567,6 @@ export type Booking = {
     bookCheckOutTime: Scalars['DateTimeOffset'];
     /** Thời điểm tạo thông tin thuê phòng */
     createTime: Scalars['DateTimeOffset'];
-    /** Giá theo ngày */
-    dayPrice: Scalars['Int'];
     /** Phí nhận phòng sớm */
     earlyCheckInFee: Scalars['Int'];
     /** Nhân viên thực hiện giao dịch nhận đặt phòng từ khách hàng */
@@ -577,18 +575,16 @@ export type Booking = {
     employeeCheckIn: Maybe<Employee>;
     /** Nhân viên thực hiện check-out cho khách hàng */
     employeeCheckOut: Maybe<Employee>;
-    /** Giá theo giờ */
-    hourPrice: Scalars['Int'];
     /** Id của thông tin thuê phòng */
     id: Scalars['Int'];
     /** Phí trả phòng trễ */
     lateCheckOutFee: Scalars['Int'];
-    /** Giá theo đêm */
-    nightPrice: Scalars['Int'];
     /** Danh sách khách hàng yêu cầu đặt phòng */
     patrons: Array<Maybe<Patron>>;
-    /** Giá đang được dùng */
+    /** Công thức giá */
     price: Price;
+    /** Danh sách đơn vị giá */
+    priceItems: Array<Maybe<PriceItem>>;
     /** Thời điểm nhận phòng của khách hàng */
     realCheckInTime: Maybe<Scalars['DateTimeOffset']>;
     /** Thời điểm trả phòng của khách hàng */
@@ -1043,6 +1039,27 @@ export type PriceCreateInput = {
     /** Loại phòng */
     roomKind: RoomKindId;
 };
+
+/** Đơn vị giá */
+export type PriceItem = {
+    /** Đơn đặt phòng */
+    booking: Booking;
+    /** Loại đơn vị giá */
+    kind: PriceItemKindEnum;
+    /** Thời gian */
+    timeSpan: Scalars['Seconds'];
+    /** Giá trị */
+    value: Scalars['Int'];
+};
+
+/** Loại đơn vị giá */
+export enum PriceItemKindEnum {
+    Hour = 'HOUR',
+    Night = 'NIGHT',
+    Day = 'DAY',
+    Week = 'WEEK',
+    Month = 'MONTH',
+}
 
 export type PriceUpdateInput = {
     /** Id của giá cần cập nhật */

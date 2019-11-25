@@ -19,14 +19,13 @@
                         "realCheckInTime",
                         "realCheckOutTime",
                         "baseCheckInTime",
-                        "price",
+                        "baseCheckOutTime",
                         "total",
                         "totalPrice",
                         "earlyCheckInFee",
                         "lateCheckOutFee",
-                        "hourPrice",
-                        "dayPrice",
-                        "nightPrice"
+                        "price",
+                        "priceItems"
                     ],
                     "properties": {
                         "id": {
@@ -51,6 +50,22 @@
                         "baseCheckInTime": {
                             "type": "string",
                             "pattern": "^(.*)$"
+                        },
+                        "baseCheckOutTime": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "total": {
+                            "type": "integer"
+                        },
+                        "totalPrice": {
+                            "type": "integer"
+                        },
+                        "earlyCheckInFee": {
+                            "type": "integer"
+                        },
+                        "lateCheckOutFee": {
+                            "type": "integer"
                         },
                         "price": {
                             "type": "object",
@@ -112,26 +127,25 @@
                                 }
                             }
                         },
-                        "total": {
-                            "type": "integer"
-                        },
-                        "totalPrice": {
-                            "type": "integer"
-                        },
-                        "earlyCheckInFee": {
-                            "type": "integer"
-                        },
-                        "lateCheckOutFee": {
-                            "type": "integer"
-                        },
-                        "hourPrice": {
-                            "type": "integer"
-                        },
-                        "dayPrice": {
-                            "type": "integer"
-                        },
-                        "nightPrice": {
-                            "type": "integer"
+                        "priceItems": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "required": ["value", "kind", "timeSpan"],
+                                "properties": {
+                                    "value": {
+                                        "type": "integer"
+                                    },
+                                    "kind": {
+                                        "type": "string",
+                                        "pattern": "^(.*)$"
+                                    },
+                                    "timeSpan": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
                         }
                     }
                 }

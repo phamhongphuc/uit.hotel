@@ -1107,22 +1107,6 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "dayPrice",
-                        "description": "Giá theo ngày",
-                        "args": [],
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Int",
-                                "ofType": null
-                            }
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
                         "name": "earlyCheckInFee",
                         "description": "Phí nhận phòng sớm",
                         "args": [],
@@ -1175,22 +1159,6 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "hourPrice",
-                        "description": "Giá theo giờ",
-                        "args": [],
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Int",
-                                "ofType": null
-                            }
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
                         "name": "id",
                         "description": "Id của thông tin thuê phòng",
                         "args": [],
@@ -1209,22 +1177,6 @@
                     {
                         "name": "lateCheckOutFee",
                         "description": "Phí trả phòng trễ",
-                        "args": [],
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Int",
-                                "ofType": null
-                            }
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "nightPrice",
-                        "description": "Giá theo đêm",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -1260,7 +1212,7 @@
                     },
                     {
                         "name": "price",
-                        "description": "Giá đang được dùng",
+                        "description": "Công thức giá",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -1269,6 +1221,26 @@
                                 "kind": "OBJECT",
                                 "name": "Price",
                                 "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "priceItems",
+                        "description": "Danh sách đơn vị giá",
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "LIST",
+                                "name": null,
+                                "ofType": {
+                                    "kind": "OBJECT",
+                                    "name": "PriceItem",
+                                    "ofType": null
+                                }
                             }
                         },
                         "isDeprecated": false,
@@ -3449,6 +3421,132 @@
                 ],
                 "inputFields": null,
                 "interfaces": [],
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "OBJECT",
+                "name": "PriceItem",
+                "description": "Đơn vị giá",
+                "fields": [
+                    {
+                        "name": "booking",
+                        "description": "Đơn đặt phòng",
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "OBJECT",
+                                "name": "Booking",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "kind",
+                        "description": "Loại đơn vị giá",
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "ENUM",
+                                "name": "PriceItemKindEnum",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "timeSpan",
+                        "description": "Thời gian",
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Seconds",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "value",
+                        "description": "Giá trị",
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Int",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    }
+                ],
+                "inputFields": null,
+                "interfaces": [],
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "ENUM",
+                "name": "PriceItemKindEnum",
+                "description": "Loại đơn vị giá",
+                "fields": null,
+                "inputFields": null,
+                "interfaces": null,
+                "enumValues": [
+                    {
+                        "name": "HOUR",
+                        "description": "",
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "NIGHT",
+                        "description": "",
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "DAY",
+                        "description": "",
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "WEEK",
+                        "description": "",
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "MONTH",
+                        "description": "",
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    }
+                ],
+                "possibleTypes": null
+            },
+            {
+                "kind": "SCALAR",
+                "name": "Seconds",
+                "description": "The `Seconds` scalar type represents a period of time represented as the total number of seconds.",
+                "fields": null,
+                "inputFields": null,
+                "interfaces": null,
                 "enumValues": null,
                 "possibleTypes": null
             },
@@ -9434,16 +9532,6 @@
                 "kind": "SCALAR",
                 "name": "Milliseconds",
                 "description": "The `Milliseconds` scalar type represents a period of time represented as the total number of milliseconds.",
-                "fields": null,
-                "inputFields": null,
-                "interfaces": null,
-                "enumValues": null,
-                "possibleTypes": null
-            },
-            {
-                "kind": "SCALAR",
-                "name": "Seconds",
-                "description": "The `Seconds` scalar type represents a period of time represented as the total number of seconds.",
                 "fields": null,
                 "inputFields": null,
                 "interfaces": null,
