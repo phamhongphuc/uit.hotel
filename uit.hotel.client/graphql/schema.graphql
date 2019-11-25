@@ -37,6 +37,9 @@ type AppMutation {
     # Tạo và trả về một loại giá cơ bản mới
     createPrice(input: PriceCreateInput!): Price!
 
+    # Tạo và trả về một giá biến động mới
+    createPriceVolatility(input: PriceVolatilityCreateInput!): PriceVolatility!
+
     # Tạo và trả về một phiếu thu mới
     createReceipt(input: ReceiptCreateInput!): Receipt!
 
@@ -51,9 +54,6 @@ type AppMutation {
 
     # Tạo và trả về một chi tiết dịch vụ mới
     createServicesDetail(input: ServicesDetailCreateInput!): ServicesDetail!
-
-    # Tạo và trả về một giá biến động mới
-    createVolatilityPrice(input: VolatilityPriceCreateInput!): VolatilityPrice!
 
     # Nhân viên tự đổi mật khẩu cho tài khoản của mình
     changePassword(password: String!, newPassword: String!): String!
@@ -82,6 +82,9 @@ type AppMutation {
     # Xóa một giá cơ bản
     deletePrice(id: ID!): String!
 
+    # Xóa một giá biến động
+    deletePriceVolatility(id: ID!): String!
+
     # Xóa một phòng
     deleteRoom(id: ID!): String!
 
@@ -93,9 +96,6 @@ type AppMutation {
 
     # Xóa một dịch vụ
     deleteServicesDetail(id: ID!): String!
-
-    # Xóa một giá biến động
-    deleteVolatilityPrice(id: ID!): String!
 
     # Khởi tạo tài khoản admin
     initializeAdminAccount(email: String!, password: String!): String!
@@ -161,6 +161,9 @@ type AppMutation {
     # Cập nhật và trả về một giá cơ bản vừa cập nhật
     updatePrice(input: PriceUpdateInput!): Price!
 
+    # Cập nhật và trả về một giá biến động vừa cập nhật
+    updatePriceVolatility(input: PriceVolatilityUpdateInput!): PriceVolatility!
+
     # Cập nhật và trả về một phòng vừa cập nhật
     updateRoom(input: RoomUpdateInput!): Room!
 
@@ -172,9 +175,6 @@ type AppMutation {
 
     # Cập nhật và trả về một chi tiết dịch vụ mới cập nhật
     updateServicesDetail(input: ServicesDetailUpdateInput!): ServicesDetail!
-
-    # Cập nhật và trả về một giá biến động vừa cập nhật
-    updateVolatilityPrice(input: VolatilityPriceUpdateInput!): VolatilityPrice!
 }
 
 type AppQuery {
@@ -232,6 +232,12 @@ type AppQuery {
     # Trả về một danh sách các loại giá cơ bản
     prices: [Price!]!
 
+    # Trả về một danh sách các giá biến động
+    priceVolatilities: [PriceVolatility!]!
+
+    # Trả về thông tin một giá biến động
+    priceVolatility(id: ID!): PriceVolatility!
+
     # Trả về thông tin một phiếu thu
     receipt(id: ID!): Receipt!
 
@@ -261,12 +267,6 @@ type AppQuery {
 
     # Trả về một danh sách các chi tiết dịch vụ
     servicesDetails: [ServicesDetail!]!
-
-    # Trả về thông tin một giá biến động
-    volatilityPrice(id: ID!): VolatilityPrice!
-
-    # Trả về một danh sách các giá biến động
-    volatilityPrices: [VolatilityPrice!]!
 }
 
 # Một đối tượng đăng nhập
@@ -413,14 +413,11 @@ type Booking {
     # Tổng tiền
     total: Int!
 
-    # Tổng tiền thuê cơ bản
+    # Tổng tiền thuê
     totalPrice: Int!
 
     # Tổng tiền dịch vụ
     totalServicesDetails: Int!
-
-    # Tổng tiền thuê biến động
-    totalVolatilityPrice: Int!
 }
 
 input BookingCreateInput {
@@ -504,6 +501,9 @@ type Employee {
     # Danh sách các Giá cơ bản mà nhân viên tạo
     prices: [Price!]!
 
+    # Danh sách các Giá biến động mà nhân viên tạo
+    priceVolatilities: [PriceVolatility!]!
+
     # Số điện thoại của nhân viên
     phoneNumber: String!
 
@@ -512,9 +512,6 @@ type Employee {
 
     # Ngày vào làm
     startingDate: DateTimeOffset!
-
-    # Danh sách các Giá biến động mà nhân viên tạo
-    volatilityPrices: [VolatilityPrice!]!
 }
 
 input EmployeeCreateInput {
@@ -1063,6 +1060,142 @@ input PriceUpdateInput {
     roomKind: RoomKindId!
 }
 
+# Giá biến động của một loại phòng
+type PriceVolatility {
+    # Ngày tạo giá
+    createDate: DateTimeOffset!
+
+    # Giá ngày
+    dayPrice: Int!
+
+    # Ngày giá hết hiệu lực
+    effectiveEndDate: DateTimeOffset!
+
+    # Giá có hiệu lực vào ngày Thứ 6
+    effectiveOnFriday: Boolean!
+
+    # Giá có hiệu lực vào ngày Thứ 2
+    effectiveOnMonday: Boolean!
+
+    # Giá có hiệu lực vào ngày Thứ 7
+    effectiveOnSaturday: Boolean!
+
+    # Giá có hiệu lực vào ngày Chủ Nhật
+    effectiveOnSunday: Boolean!
+
+    # Giá có hiệu lực vào ngày Thứ 3
+    effectiveOnTuesday: Boolean!
+
+    # Giá có hiệu lực vào ngày Thứ 5
+    effectiveOnThursday: Boolean!
+
+    # Giá có hiệu lực vào ngày Thứ 4
+    effectiveOnWednesday: Boolean!
+
+    # Ngày giá bắt đầu có hiệu lực
+    effectiveStartDate: DateTimeOffset!
+
+    # Nhân viên tạo giá
+    employee: Employee
+
+    # Giá giờ
+    hourPrice: Int!
+
+    # Id của giá
+    id: Int!
+
+    # Giá đêm
+    nightPrice: Int!
+
+    # Thuộc loại phòng
+    roomKind: RoomKind!
+}
+
+input PriceVolatilityCreateInput {
+    # Giá giờ
+    hourPrice: Int!
+
+    # Giá ngày
+    dayPrice: Int!
+
+    # Giá đêm
+    nightPrice: Int!
+
+    # Ngày giá bắt đầu có hiệu lực
+    effectiveStartDate: DateTimeOffset!
+
+    # Ngày giá hết hiệu lực
+    effectiveEndDate: DateTimeOffset!
+
+    # Giá có hiệu lực vào ngày Thứ 2
+    effectiveOnMonday: Boolean!
+
+    # Giá có hiệu lực vào ngày Thứ 3
+    effectiveOnTuesday: Boolean!
+
+    # Giá có hiệu lực vào ngày Thứ 4
+    effectiveOnWednesday: Boolean!
+
+    # Giá có hiệu lực vào ngày Thứ 5
+    effectiveOnThursday: Boolean!
+
+    # Giá có hiệu lực vào ngày Thứ 6
+    effectiveOnFriday: Boolean!
+
+    # Giá có hiệu lực vào ngày Thứ 7
+    effectiveOnSaturday: Boolean!
+
+    # Giá có hiệu lực vào ngày Chủ Nhật
+    effectiveOnSunday: Boolean!
+
+    # Loại phòng
+    roomKind: RoomKindId!
+}
+
+input PriceVolatilityUpdateInput {
+    # Id của giá cần cập nhật
+    id: Int!
+
+    # Giá giờ
+    hourPrice: Int!
+
+    # Giá ngày
+    dayPrice: Int!
+
+    # Giá đêm
+    nightPrice: Int!
+
+    # Ngày giá bắt đầu có hiệu lực
+    effectiveStartDate: DateTimeOffset!
+
+    # Ngày giá hết hiệu lực
+    effectiveEndDate: DateTimeOffset!
+
+    # Giá có hiệu lực vào ngày Thứ 2
+    effectiveOnMonday: Boolean!
+
+    # Giá có hiệu lực vào ngày Thứ 3
+    effectiveOnTuesday: Boolean!
+
+    # Giá có hiệu lực vào ngày Thứ 4
+    effectiveOnWednesday: Boolean!
+
+    # Giá có hiệu lực vào ngày Thứ 5
+    effectiveOnThursday: Boolean!
+
+    # Giá có hiệu lực vào ngày Thứ 6
+    effectiveOnFriday: Boolean!
+
+    # Giá có hiệu lực vào ngày Thứ 7
+    effectiveOnSaturday: Boolean!
+
+    # Giá có hiệu lực vào ngày Chủ Nhật
+    effectiveOnSunday: Boolean!
+
+    # Loại phòng
+    roomKind: RoomKindId!
+}
+
 # Phiếu thu
 type Receipt {
     # Số tài khoản ngân hàng của khách
@@ -1162,11 +1295,11 @@ type RoomKind {
     # Danh sách giá cố định của loại phòng
     prices: [Price]
 
+    # Danh sách giá biến động của loại phòng
+    priceVolatilities: [PriceVolatility]
+
     # Danh sách các phòng thuộc loại phòng này
     rooms: [Room]
-
-    # Danh sách giá biến động của loại phòng
-    volatilityPrices: [VolatilityPrice]
 }
 
 # Input cho việc tạo một loại phòng
@@ -1314,140 +1447,4 @@ input ServiceUpdateInput {
 
     # Đơn vị
     unit: String!
-}
-
-# Giá biến động của một loại phòng
-type VolatilityPrice {
-    # Ngày tạo giá
-    createDate: DateTimeOffset!
-
-    # Giá ngày
-    dayPrice: Int!
-
-    # Ngày giá hết hiệu lực
-    effectiveEndDate: DateTimeOffset!
-
-    # Giá có hiệu lực vào ngày Thứ 6
-    effectiveOnFriday: Boolean!
-
-    # Giá có hiệu lực vào ngày Thứ 2
-    effectiveOnMonday: Boolean!
-
-    # Giá có hiệu lực vào ngày Thứ 7
-    effectiveOnSaturday: Boolean!
-
-    # Giá có hiệu lực vào ngày Chủ Nhật
-    effectiveOnSunday: Boolean!
-
-    # Giá có hiệu lực vào ngày Thứ 3
-    effectiveOnTuesday: Boolean!
-
-    # Giá có hiệu lực vào ngày Thứ 5
-    effectiveOnThursday: Boolean!
-
-    # Giá có hiệu lực vào ngày Thứ 4
-    effectiveOnWednesday: Boolean!
-
-    # Ngày giá bắt đầu có hiệu lực
-    effectiveStartDate: DateTimeOffset!
-
-    # Nhân viên tạo giá
-    employee: Employee
-
-    # Giá giờ
-    hourPrice: Int!
-
-    # Id của giá
-    id: Int!
-
-    # Giá đêm
-    nightPrice: Int!
-
-    # Thuộc loại phòng
-    roomKind: RoomKind!
-}
-
-input VolatilityPriceCreateInput {
-    # Giá giờ
-    hourPrice: Int!
-
-    # Giá ngày
-    dayPrice: Int!
-
-    # Giá đêm
-    nightPrice: Int!
-
-    # Ngày giá bắt đầu có hiệu lực
-    effectiveStartDate: DateTimeOffset!
-
-    # Ngày giá hết hiệu lực
-    effectiveEndDate: DateTimeOffset!
-
-    # Giá có hiệu lực vào ngày Thứ 2
-    effectiveOnMonday: Boolean!
-
-    # Giá có hiệu lực vào ngày Thứ 3
-    effectiveOnTuesday: Boolean!
-
-    # Giá có hiệu lực vào ngày Thứ 4
-    effectiveOnWednesday: Boolean!
-
-    # Giá có hiệu lực vào ngày Thứ 5
-    effectiveOnThursday: Boolean!
-
-    # Giá có hiệu lực vào ngày Thứ 6
-    effectiveOnFriday: Boolean!
-
-    # Giá có hiệu lực vào ngày Thứ 7
-    effectiveOnSaturday: Boolean!
-
-    # Giá có hiệu lực vào ngày Chủ Nhật
-    effectiveOnSunday: Boolean!
-
-    # Loại phòng
-    roomKind: RoomKindId!
-}
-
-input VolatilityPriceUpdateInput {
-    # Id của giá cần cập nhật
-    id: Int!
-
-    # Giá giờ
-    hourPrice: Int!
-
-    # Giá ngày
-    dayPrice: Int!
-
-    # Giá đêm
-    nightPrice: Int!
-
-    # Ngày giá bắt đầu có hiệu lực
-    effectiveStartDate: DateTimeOffset!
-
-    # Ngày giá hết hiệu lực
-    effectiveEndDate: DateTimeOffset!
-
-    # Giá có hiệu lực vào ngày Thứ 2
-    effectiveOnMonday: Boolean!
-
-    # Giá có hiệu lực vào ngày Thứ 3
-    effectiveOnTuesday: Boolean!
-
-    # Giá có hiệu lực vào ngày Thứ 4
-    effectiveOnWednesday: Boolean!
-
-    # Giá có hiệu lực vào ngày Thứ 5
-    effectiveOnThursday: Boolean!
-
-    # Giá có hiệu lực vào ngày Thứ 6
-    effectiveOnFriday: Boolean!
-
-    # Giá có hiệu lực vào ngày Thứ 7
-    effectiveOnSaturday: Boolean!
-
-    # Giá có hiệu lực vào ngày Chủ Nhật
-    effectiveOnSunday: Boolean!
-
-    # Loại phòng
-    roomKind: RoomKindId!
 }
