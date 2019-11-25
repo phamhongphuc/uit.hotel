@@ -22,10 +22,6 @@ namespace uit.hotel.Models
         public long EarlyCheckInFee { get; private set; }
         public long LateCheckOutFee { get; private set; }
 
-        //? Only use to calculate, don't use to store
-        [Ignored]
-        private IList<VolatilityPrice> VolatilityPrices { get; set; }
-
         public void UpdateAndCalculatePrice()
         {
             Room = Room.GetManaged();
@@ -38,7 +34,6 @@ namespace uit.hotel.Models
             BaseCheckOutTime = (RealCheckOutTime != DateTimeOffset.MinValue ? RealCheckOutTime : BookCheckOutTime).Round();
 
             Price = Room.RoomKind.GetPrice(BaseCheckInTime);
-            VolatilityPrices = Room.RoomKind.GetVolatilityPrices(BaseCheckInTime, BaseCheckOutTime);
 
             EarlyCheckInFee = 0;
             LateCheckOutFee = 0;
@@ -67,8 +62,7 @@ namespace uit.hotel.Models
             var timeSpan = BaseCheckOutTime - BaseCheckInTime;
             if (timeSpan.FloatHour() <= BookingBusiness._HourTimeSpan)
             {
-                var sumVolatilityPrice = VolatilityPrices.Sum();
-                var price = Price.HourPrice + sumVolatilityPrice.HourPrice;
+                var price = Price.HourPrice;
                 HourPrice = timeSpan.MultiplyByHourPrice(price);
             }
         }
@@ -122,8 +116,7 @@ namespace uit.hotel.Models
         {
             if (BaseCheckInTime.FloatHour() == BookingBusiness._CheckInNightTime) // isNight
             {
-                var sumVolatilityPrice = VolatilityPrices.Sum();
-                NightPrice = Price.NightPrice + sumVolatilityPrice.NightPrice;
+                NightPrice = Price.NightPrice;
                 BaseCheckInTime = BaseCheckInTime.AtHour(BookingBusiness._CheckInDayTime).AddDays(1);
             }
         }
@@ -149,15 +142,6 @@ namespace uit.hotel.Models
                     DayPrice += Price.DayPrice;
                     iterateTime = iterateTime.AddDays(1);
                 }
-            }
-
-            iterateTime = BaseCheckInTime;
-            while (iterateTime <= BaseCheckOutTime)
-            {
-                var remain = (BaseCheckOutTime - iterateTime).Days;
-                var sumVolatilityPrice = VolatilityPrices.InDate(iterateTime).Sum();
-                DayPrice += sumVolatilityPrice.DayPrice;
-                iterateTime = iterateTime.AddDays(1);
             }
         }
     }
