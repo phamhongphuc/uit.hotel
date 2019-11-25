@@ -22,14 +22,11 @@ namespace uit.hotel.Models
         public long EarlyCheckInFee { get; private set; }
         public long LateCheckOutFee { get; private set; }
 
-        public void UpdateAndCalculatePrice()
-        {
-            Room = Room.GetManaged();
-            CalculatePrice();
-        }
 
         public void CalculatePrice()
         {
+            if (!Room.IsManaged) Room = Room.GetManaged();
+
             BaseCheckInTime = (RealCheckInTime != DateTimeOffset.MinValue ? RealCheckInTime : BookCheckInTime).Round();
             BaseCheckOutTime = (RealCheckOutTime != DateTimeOffset.MinValue ? RealCheckOutTime : BookCheckOutTime).Round();
 
