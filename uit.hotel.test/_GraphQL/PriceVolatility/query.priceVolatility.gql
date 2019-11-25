@@ -1,5 +1,5 @@
 query($id: ID!) {
-    volatilityPrice(id: $id) {
+    priceVolatility(id: $id) {
         id
         dayPrice
         nightPrice

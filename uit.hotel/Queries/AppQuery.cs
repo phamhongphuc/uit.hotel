@@ -17,12 +17,12 @@ namespace uit.hotel.Queries
                 new PatronQuery(),
                 new PositionQuery(),
                 new PriceQuery(),
+                new PriceVolatilityQuery(),
                 new ReceiptQuery(),
                 new RoomKindQuery(),
                 new RoomQuery(),
                 new ServiceQuery(),
-                new ServicesDetailQuery(),
-                new VolatilityPriceQuery()
+                new ServicesDetailQuery()
             );
         }
     }

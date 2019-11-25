@@ -4,7 +4,7 @@ using Realms;
 
 namespace uit.hotel.Models
 {
-    public class VolatilityPrice : RealmObject
+    public class PriceVolatility : RealmObject
     {
         [PrimaryKey]
         public int Id { get; set; }
@@ -24,8 +24,8 @@ namespace uit.hotel.Models
         public Employee Employee { get; set; }
         public RoomKind RoomKind { get; set; }
 
-        public static VolatilityPrice operator +(VolatilityPrice a, VolatilityPrice b)
-        => new VolatilityPrice()
+        public static PriceVolatility operator +(PriceVolatility a, PriceVolatility b)
+        => new PriceVolatility()
         {
             HourPrice = a.HourPrice + b.HourPrice,
             DayPrice = a.DayPrice + b.DayPrice,

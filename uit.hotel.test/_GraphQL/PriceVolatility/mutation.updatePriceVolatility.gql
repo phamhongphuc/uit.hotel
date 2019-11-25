@@ -1,5 +1,5 @@
-mutation($input: VolatilityPriceUpdateInput!) {
-    updateVolatilityPrice(input: $input) {
+mutation($input: PriceVolatilityUpdateInput!) {
+    updatePriceVolatility(input: $input) {
         id
         dayPrice
         nightPrice

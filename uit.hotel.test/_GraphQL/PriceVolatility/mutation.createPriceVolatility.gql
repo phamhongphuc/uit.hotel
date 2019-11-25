@@ -1,5 +1,5 @@
-{
-    volatilityPrices {
+mutation($input: PriceVolatilityCreateInput!) {
+    createPriceVolatility(input: $input) {
         id
         dayPrice
         nightPrice
@@ -15,9 +15,6 @@
         createDate
         roomKind {
             id
-            name
-            amountOfPeople
-            numberOfBeds
         }
     }
 }

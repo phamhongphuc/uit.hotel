@@ -7,9 +7,9 @@
         "data": {
             "type": "object",
             "additionalProperties": false,
-            "required": ["createVolatilityPrice"],
+            "required": ["updatePriceVolatility"],
             "properties": {
-                "createVolatilityPrice": {
+                "updatePriceVolatility": {
                     "type": "object",
                     "additionalProperties": false,
                     "required": [
@@ -26,6 +26,7 @@
                         "effectiveOnSaturday",
                         "effectiveOnSunday",
                         "createDate",
+                        "employee",
                         "roomKind"
                     ],
                     "properties": {
@@ -70,6 +71,17 @@
                         "createDate": {
                             "type": "string",
                             "pattern": "^(.*)$"
+                        },
+                        "employee": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "required": ["id"],
+                            "properties": {
+                                "id": {
+                                    "type": "string",
+                                    "pattern": "^(.*)$"
+                                }
+                            }
                         },
                         "roomKind": {
                             "type": "object",

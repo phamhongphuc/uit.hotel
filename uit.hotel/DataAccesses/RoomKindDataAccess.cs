@@ -57,7 +57,7 @@ namespace uit.hotel.DataAccesses
         {
             await Database.WriteAsync(realm =>
             {
-                realm.RemoveRange(roomKind.VolatilityPrices);
+                realm.RemoveRange(roomKind.PriceVolatilities);
                 realm.RemoveRange(roomKind.Prices);
                 realm.Remove(roomKind);
             });

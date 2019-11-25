@@ -18,12 +18,12 @@ namespace uit.hotel.Queries
                 new PatronMutation(),
                 new PositionMutation(),
                 new PriceMutation(),
+                new PriceVolatilityMutation(),
                 new ReceiptMutation(),
                 new RoomKindMutation(),
                 new RoomMutation(),
                 new ServiceMutation(),
-                new ServicesDetailMutation(),
-                new VolatilityPriceMutation()
+                new ServicesDetailMutation()
             );
         }
     }

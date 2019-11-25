@@ -4,11 +4,11 @@ using uit.hotel.Queries.Base;
 
 namespace uit.hotel.ObjectTypes
 {
-    public class VolatilityPriceType : ObjectGraphType<VolatilityPrice>
+    public class PriceVolatilityType : ObjectGraphType<PriceVolatility>
     {
-        public VolatilityPriceType()
+        public PriceVolatilityType()
         {
-            Name = nameof(VolatilityPrice);
+            Name = nameof(PriceVolatility);
             Description = "Giá biến động của một loại phòng";
 
             Field(x => x.Id).Description("Id của giá");
@@ -27,20 +27,20 @@ namespace uit.hotel.ObjectTypes
             Field(x => x.CreateDate).Description("Ngày tạo giá");
 
             Field<NonNullGraphType<RoomKindType>>(
-                nameof(VolatilityPrice.RoomKind),
+                nameof(PriceVolatility.RoomKind),
                 "Thuộc loại phòng",
                 resolve: context => context.Source.RoomKind);
 
             Field<EmployeeType>(
-                nameof(VolatilityPrice.Employee),
+                nameof(PriceVolatility.Employee),
                 "Nhân viên tạo giá",
                 resolve: context => context.Source.Employee);
         }
     }
 
-    public class VolatilityPriceCreateInput : InputType<VolatilityPrice>
+    public class PriceVolatilityCreateInput : InputType<PriceVolatility>
     {
-        public VolatilityPriceCreateInput()
+        public PriceVolatilityCreateInput()
         {
             Name = _Creation;
             Field(x => x.HourPrice).Description("Giá giờ");
@@ -57,15 +57,15 @@ namespace uit.hotel.ObjectTypes
             Field(x => x.EffectiveOnSunday).Description("Giá có hiệu lực vào ngày Chủ Nhật");
 
             Field<NonNullGraphType<RoomKindIdInput>>(
-                nameof(VolatilityPrice.RoomKind),
+                nameof(PriceVolatility.RoomKind),
                 "Loại phòng"
             );
         }
     }
 
-    public class VolatilityPriceUpdateInput : InputType<VolatilityPrice>
+    public class PriceVolatilityUpdateInput : InputType<PriceVolatility>
     {
-        public VolatilityPriceUpdateInput()
+        public PriceVolatilityUpdateInput()
         {
             Name = _Updation;
             Field(x => x.Id).Description("Id của giá cần cập nhật");
@@ -83,7 +83,7 @@ namespace uit.hotel.ObjectTypes
             Field(x => x.EffectiveOnSunday).Description("Giá có hiệu lực vào ngày Chủ Nhật");
 
             Field<NonNullGraphType<RoomKindIdInput>>(
-                nameof(VolatilityPrice.RoomKind),
+                nameof(PriceVolatility.RoomKind),
                 "Loại phòng"
             );
         }
