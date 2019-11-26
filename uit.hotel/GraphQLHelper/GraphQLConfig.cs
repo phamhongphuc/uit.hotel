@@ -93,6 +93,8 @@ namespace uit.hotel.GraphQLHelper
             services.AddSingleton<PriceItemKindEnumType>();
             services.AddSingleton<PriceItemType>();
             services.AddSingleton<PriceType>();
+            services.AddSingleton<PriceVolatilityItemKindEnumType>();
+            services.AddSingleton<PriceVolatilityItemType>();
             services.AddSingleton<PriceVolatilityType>();
             services.AddSingleton<ReceiptType>();
             services.AddSingleton<RoomKindType>();

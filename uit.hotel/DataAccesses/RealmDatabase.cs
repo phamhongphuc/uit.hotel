@@ -31,6 +31,7 @@ namespace uit.hotel.DataAccesses
                     typeof(Price),
                     typeof(PriceItem),
                     typeof(PriceVolatility),
+                    typeof(PriceVolatilityItem),
                     typeof(Receipt),
                     typeof(Room),
                     typeof(RoomKind),

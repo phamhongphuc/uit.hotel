@@ -17,6 +17,13 @@ namespace uit.hotel.Models
         [Ignored]
         public IEnumerable<PriceItem> PriceItems => IsManaged ? PriceItemsInDatabase.ToList() : PriceItemsInObject;
 
+        [Backlink(nameof(PriceVolatilityItem.Booking))]
+        private IQueryable<PriceVolatilityItem> PriceVolatilityItemsInDatabase { get; }
+        [Ignored]
+        private IList<PriceVolatilityItem> PriceVolatilityItemsInObject { get; set; }
+        [Ignored]
+        public IEnumerable<PriceVolatilityItem> PriceVolatilityItems => IsManaged ? PriceVolatilityItemsInDatabase.ToList() : PriceVolatilityItemsInObject;
+
         //? Calculated fields
         public DateTimeOffset BaseNightCheckInTime { get; private set; }
         public DateTimeOffset BaseDayCheckInTime { get; private set; }
@@ -30,6 +37,8 @@ namespace uit.hotel.Models
         //? Temporary fields
         [Ignored]
         private TimeSpan TimeSpan => BaseDayCheckOutTime - BaseNightCheckInTime;
+        [Ignored]
+        private IList<PriceVolatility> PriceVolatilities { get; set; }
 
         public void CalculatePrice()
         {
@@ -41,15 +50,19 @@ namespace uit.hotel.Models
 
             Price = Room.RoomKind.GetPrice(BaseNightCheckInTime);
 
-            CleanItems();
+            InitializeData();
             CalculateCaseByCase();
             SaveResult();
         }
 
-        private void CleanItems()
+        private void InitializeData()
         {
             PriceItemBusiness.Delete(PriceItemsInDatabase);
             PriceItemsInObject = new List<PriceItem>();
+            PriceVolatilityItemBusiness.Delete(PriceVolatilityItemsInDatabase);
+            PriceVolatilityItemsInObject = new List<PriceVolatilityItem>();
+
+            PriceVolatilities = Room.RoomKind.PriceVolatilities.ToList();
         }
 
         private void CalculateCaseByCase()
@@ -57,8 +70,8 @@ namespace uit.hotel.Models
             var isCalculated = CalculateHour();
             if (isCalculated) return;
 
-            CalculateCheckIn();
-            CalculateCheckOut();
+            CalculateCheckInTime();
+            CalculateCheckOutTime();
 
             CalculateFee();
             CalculateNight();
@@ -69,11 +82,12 @@ namespace uit.hotel.Models
         private bool CalculateHour()
         {
             if (TimeSpan.FloatHour() > BookingBusiness._HourTimeSpan) return false;
+            AddPriceVolatilityItems(PriceVolatilityItemKindEnum.Hour, BaseNightCheckInTime, TimeSpan);
             AddPriceItem(PriceItemKindEnum.Hour, TimeSpan);
             return true;
         }
 
-        private void CalculateCheckIn()
+        private void CalculateCheckInTime()
         {
             var checkInHour = BaseNightCheckInTime.FloatHour();
 
@@ -89,7 +103,7 @@ namespace uit.hotel.Models
                 BaseNightCheckInTime = BaseNightCheckInTime.AtHour(BookingBusiness._CheckInNightTime);
         }
 
-        private void CalculateCheckOut()
+        private void CalculateCheckOutTime()
         {
             var checkOutTime = BaseDayCheckOutTime.FloatHour();
 
@@ -111,6 +125,7 @@ namespace uit.hotel.Models
         {
             if (BaseNightCheckInTime.FloatHour() == BookingBusiness._CheckInNightTime)
             {
+                AddPriceVolatilityItems(PriceVolatilityItemKindEnum.Night, BaseNightCheckInTime);
                 AddPriceItem(PriceItemKindEnum.Night);
                 BaseDayCheckInTime = BaseNightCheckInTime.AtHour(BookingBusiness._CheckInDayTime).AddDays(1);
             }
@@ -147,17 +162,32 @@ namespace uit.hotel.Models
                     iterateTime = iterateTime.AddDays(remain + 1);
                 }
             }
+
+            iterateTime = beginDay;
+            while (iterateTime < endDay)
+            {
+                AddPriceVolatilityItems(PriceVolatilityItemKindEnum.Night, BaseNightCheckInTime);
+                iterateTime = iterateTime.AddDays(1);
+            }
         }
 
         private void CalculateSumary()
         {
-            TotalPrice = PriceItems.Aggregate<PriceItem, long>(0, (sum, priceItem) => sum + priceItem.Value);
+            TotalPrice =
+                PriceItems.Aggregate<PriceItem, long>(0, (sum, x) => sum + x.Value) +
+                PriceVolatilityItems.Aggregate<PriceVolatilityItem, long>(0, (sum, x) => sum + x.Value);
         }
 
         private void SaveResult()
         {
+            PriceVolatilities.Clear();
+
             if (!IsManaged) return;
             PriceItemBusiness.Add(PriceItems);
+            PriceVolatilityItemBusiness.Add(PriceVolatilityItems);
+
+            PriceItemsInObject.Clear();
+            PriceVolatilityItemsInObject.Clear();
         }
 
         // Helper Method
@@ -170,6 +200,23 @@ namespace uit.hotel.Models
                 TimeSpan = timeSpan
             };
             PriceItemsInObject.Add(priceItem);
+        }
+
+        private void AddPriceVolatilityItems(PriceVolatilityItemKindEnum kind, DateTimeOffset date, TimeSpan timeSpan = new TimeSpan())
+        {
+            var priceVolatilities = PriceVolatilities.InDate(BaseNightCheckInTime);
+            foreach (var priceVolatility in priceVolatilities)
+            {
+                var priceItem = new PriceVolatilityItem()
+                {
+                    Booking = this,
+                    Kind = kind,
+                    Date = date,
+                    TimeSpan = timeSpan,
+                    PriceVolatility = priceVolatility
+                };
+                PriceVolatilityItemsInObject.Add(priceItem);
+            }
         }
     }
 }

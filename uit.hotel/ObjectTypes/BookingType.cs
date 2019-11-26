@@ -80,6 +80,7 @@ namespace uit.hotel.ObjectTypes
                 "Danh sách chi tiết sử dụng dịch vụ của khách hàng",
                 resolve: context => context.Source.ServicesDetails.ToList()
             );
+
             Field<NonNullGraphType<PriceType>>(
                 nameof(Booking.Price),
                 "Công thức giá"
@@ -89,6 +90,11 @@ namespace uit.hotel.ObjectTypes
                 "Danh sách đơn vị giá",
                 resolve: context => context.Source.PriceItems.ToList()
             );
+            Field<NonNullGraphType<ListGraphType<PriceVolatilityItemType>>>(
+               nameof(Booking.PriceVolatilityItems),
+               "Danh sách đơn vị giá biến động",
+               resolve: context => context.Source.PriceVolatilityItems.ToList()
+           );
         }
     }
 
