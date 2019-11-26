@@ -12,6 +12,7 @@ namespace uit.hotel.ObjectTypes
             Description = "Giá biến động của một loại phòng";
 
             Field(x => x.Id).Description("Id của giá");
+            Field(x => x.Name).Description("Tên của giá biến động");
             Field(x => x.HourPrice).Description("Giá giờ");
             Field(x => x.DayPrice).Description("Giá ngày");
             Field(x => x.NightPrice).Description("Giá đêm");

@@ -8,6 +8,7 @@ namespace uit.hotel.Models
     {
         [PrimaryKey]
         public int Id { get; set; }
+        public string Name { get; set; }
         public long HourPrice { get; set; }
         public long DayPrice { get; set; }
         public long NightPrice { get; set; }
