@@ -35,8 +35,9 @@ namespace uit.hotel.ObjectTypes
             Field(x => x.TotalPrice).Description("Tổng tiền thuê");
             Field(x => x.TotalServicesDetails).Description("Tổng tiền dịch vụ");
 
-            Field(x => x.BaseCheckInTime).Description("Thời gian nhận phòng được dùng");
-            Field(x => x.BaseCheckOutTime).Description("Thời gian trả phòng được dùng");
+            Field(x => x.BaseNightCheckInTime).Description("Thời gian nhận phòng, tính giá theo đêm");
+            Field(x => x.BaseDayCheckInTime).Description("Thời gian nhận phòng, tính giá theo ngày");
+            Field(x => x.BaseDayCheckOutTime).Description("Thời gian trả phòng");
 
             Field(x => x.EarlyCheckInFee).Description("Phí nhận phòng sớm");
             Field(x => x.LateCheckOutFee).Description("Phí trả phòng trễ");

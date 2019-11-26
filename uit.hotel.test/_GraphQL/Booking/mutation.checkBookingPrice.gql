@@ -5,8 +5,9 @@ mutation($booking: BookingCreateInput!) {
         bookCheckOutTime
         realCheckInTime
         realCheckOutTime
-        baseCheckInTime
-        baseCheckOutTime
+        baseNightCheckInTime
+        baseDayCheckInTime
+        baseDayCheckOutTime
         total
         totalPrice
         earlyCheckInFee

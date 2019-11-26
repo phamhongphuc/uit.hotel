@@ -18,8 +18,9 @@
                         "bookCheckOutTime",
                         "realCheckInTime",
                         "realCheckOutTime",
-                        "baseCheckInTime",
-                        "baseCheckOutTime",
+                        "baseNightCheckInTime",
+                        "baseDayCheckInTime",
+                        "baseDayCheckOutTime",
                         "total",
                         "totalPrice",
                         "earlyCheckInFee",
@@ -47,11 +48,15 @@
                             "type": "string",
                             "pattern": "^(.*)$"
                         },
-                        "baseCheckInTime": {
+                        "baseNightCheckInTime": {
                             "type": "string",
                             "pattern": "^(.*)$"
                         },
-                        "baseCheckOutTime": {
+                        "baseDayCheckInTime": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "baseDayCheckOutTime": {
                             "type": "string",
                             "pattern": "^(.*)$"
                         },
