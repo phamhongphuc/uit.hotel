@@ -344,11 +344,14 @@ input BookAndCheckInCreateInput {
 
 # Một thông tin thuê phòng của khách hàng
 type Booking {
-    # Thời gian nhận phòng được dùng
-    baseCheckInTime: DateTimeOffset!
+    # Thời gian nhận phòng, tính giá theo ngày
+    baseDayCheckInTime: DateTimeOffset!
 
-    # Thời gian trả phòng được dùng
-    baseCheckOutTime: DateTimeOffset!
+    # Thời gian trả phòng
+    baseDayCheckOutTime: DateTimeOffset!
+
+    # Thời gian nhận phòng, tính giá theo đêm
+    baseNightCheckInTime: DateTimeOffset!
 
     # Thông tin hóa đơn của thông tin thuê phòng
     bill: Bill!
@@ -388,6 +391,9 @@ type Booking {
 
     # Danh sách đơn vị giá
     priceItems: [PriceItem]!
+
+    # Danh sách đơn vị giá biến động
+    priceVolatilityItems: [PriceVolatilityItem]!
 
     # Thời điểm nhận phòng của khách hàng
     realCheckInTime: DateTimeOffset
@@ -1122,6 +1128,9 @@ type PriceVolatility {
     # Id của giá
     id: Int!
 
+    # Tên của giá biến động
+    name: String!
+
     # Giá đêm
     nightPrice: Int!
 
@@ -1168,6 +1177,34 @@ input PriceVolatilityCreateInput {
 
     # Loại phòng
     roomKind: RoomKindId!
+}
+
+# Đơn vị giá biến động
+type PriceVolatilityItem {
+    # Đơn đặt phòng
+    booking: Booking!
+
+    # Mốc thời gian
+    date: DateTimeOffset!
+
+    # Loại đơn vị giá
+    kind: PriceVolatilityItemKindEnum!
+
+    # Đối tượng giá biến động
+    priceVolatility: PriceVolatility!
+
+    # Khoảng thời gian
+    timeSpan: Seconds!
+
+    # Giá trị
+    value: Int!
+}
+
+# Loại đơn vị giá biến động
+enum PriceVolatilityItemKindEnum {
+    HOUR
+    NIGHT
+    DAY
 }
 
 input PriceVolatilityUpdateInput {

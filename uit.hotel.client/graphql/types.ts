@@ -555,10 +555,12 @@ export type BookAndCheckInCreateInput = {
 
 /** Một thông tin thuê phòng của khách hàng */
 export type Booking = {
-    /** Thời gian nhận phòng được dùng */
-    baseCheckInTime: Scalars['DateTimeOffset'];
-    /** Thời gian trả phòng được dùng */
-    baseCheckOutTime: Scalars['DateTimeOffset'];
+    /** Thời gian nhận phòng, tính giá theo ngày */
+    baseDayCheckInTime: Scalars['DateTimeOffset'];
+    /** Thời gian trả phòng */
+    baseDayCheckOutTime: Scalars['DateTimeOffset'];
+    /** Thời gian nhận phòng, tính giá theo đêm */
+    baseNightCheckInTime: Scalars['DateTimeOffset'];
     /** Thông tin hóa đơn của thông tin thuê phòng */
     bill: Bill;
     /** Thời điểm nhận phòng dự kiến của khách hàng */
@@ -585,6 +587,8 @@ export type Booking = {
     price: Price;
     /** Danh sách đơn vị giá */
     priceItems: Array<Maybe<PriceItem>>;
+    /** Danh sách đơn vị giá biến động */
+    priceVolatilityItems: Array<Maybe<PriceVolatilityItem>>;
     /** Thời điểm nhận phòng của khách hàng */
     realCheckInTime: Maybe<Scalars['DateTimeOffset']>;
     /** Thời điểm trả phòng của khách hàng */
@@ -1114,6 +1118,8 @@ export type PriceVolatility = {
     hourPrice: Scalars['Int'];
     /** Id của giá */
     id: Scalars['Int'];
+    /** Tên của giá biến động */
+    name: Scalars['String'];
     /** Giá đêm */
     nightPrice: Scalars['Int'];
     /** Thuộc loại phòng */
@@ -1148,6 +1154,29 @@ export type PriceVolatilityCreateInput = {
     /** Loại phòng */
     roomKind: RoomKindId;
 };
+
+/** Đơn vị giá biến động */
+export type PriceVolatilityItem = {
+    /** Đơn đặt phòng */
+    booking: Booking;
+    /** Mốc thời gian */
+    date: Scalars['DateTimeOffset'];
+    /** Loại đơn vị giá */
+    kind: PriceVolatilityItemKindEnum;
+    /** Đối tượng giá biến động */
+    priceVolatility: PriceVolatility;
+    /** Khoảng thời gian */
+    timeSpan: Scalars['Seconds'];
+    /** Giá trị */
+    value: Scalars['Int'];
+};
+
+/** Loại đơn vị giá biến động */
+export enum PriceVolatilityItemKindEnum {
+    Hour = 'HOUR',
+    Night = 'NIGHT',
+    Day = 'DAY',
+}
 
 export type PriceVolatilityUpdateInput = {
     /** Id của giá cần cập nhật */

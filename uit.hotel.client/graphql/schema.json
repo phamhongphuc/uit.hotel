@@ -1011,8 +1011,8 @@
                 "description": "Một thông tin thuê phòng của khách hàng",
                 "fields": [
                     {
-                        "name": "baseCheckInTime",
-                        "description": "Thời gian nhận phòng được dùng",
+                        "name": "baseDayCheckInTime",
+                        "description": "Thời gian nhận phòng, tính giá theo ngày",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -1027,8 +1027,24 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "baseCheckOutTime",
-                        "description": "Thời gian trả phòng được dùng",
+                        "name": "baseDayCheckOutTime",
+                        "description": "Thời gian trả phòng",
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "DateTimeOffset",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "baseNightCheckInTime",
+                        "description": "Thời gian nhận phòng, tính giá theo đêm",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -1239,6 +1255,26 @@
                                 "ofType": {
                                     "kind": "OBJECT",
                                     "name": "PriceItem",
+                                    "ofType": null
+                                }
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "priceVolatilityItems",
+                        "description": "Danh sách đơn vị giá biến động",
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "LIST",
+                                "name": null,
+                                "ofType": {
+                                    "kind": "OBJECT",
+                                    "name": "PriceVolatilityItem",
                                     "ofType": null
                                 }
                             }
@@ -2634,6 +2670,22 @@
                         "deprecationReason": null
                     },
                     {
+                        "name": "name",
+                        "description": "Tên của giá biến động",
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
                         "name": "nightPrice",
                         "description": "Giá đêm",
                         "args": [],
@@ -3548,6 +3600,142 @@
                 "inputFields": null,
                 "interfaces": null,
                 "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "OBJECT",
+                "name": "PriceVolatilityItem",
+                "description": "Đơn vị giá biến động",
+                "fields": [
+                    {
+                        "name": "booking",
+                        "description": "Đơn đặt phòng",
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "OBJECT",
+                                "name": "Booking",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "date",
+                        "description": "Mốc thời gian",
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "DateTimeOffset",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "kind",
+                        "description": "Loại đơn vị giá",
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "ENUM",
+                                "name": "PriceVolatilityItemKindEnum",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "priceVolatility",
+                        "description": "Đối tượng giá biến động",
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "OBJECT",
+                                "name": "PriceVolatility",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "timeSpan",
+                        "description": "Khoảng thời gian",
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Seconds",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "value",
+                        "description": "Giá trị",
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Int",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    }
+                ],
+                "inputFields": null,
+                "interfaces": [],
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "ENUM",
+                "name": "PriceVolatilityItemKindEnum",
+                "description": "Loại đơn vị giá biến động",
+                "fields": null,
+                "inputFields": null,
+                "interfaces": null,
+                "enumValues": [
+                    {
+                        "name": "HOUR",
+                        "description": "",
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "NIGHT",
+                        "description": "",
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "DAY",
+                        "description": "",
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    }
+                ],
                 "possibleTypes": null
             },
             {
