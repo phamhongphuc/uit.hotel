@@ -51,8 +51,7 @@ namespace uit.hotel.Businesses
                 throw new Exception("Không thể hủy đặt phòng. Booking đã hoặc đang được sử dụng.");
 
             if (bookingInDatabase.Bill.Bookings.Count() == 1) BillDataAccess.Delete(bookingInDatabase.Bill);
-
-            BookingDataAccess.Delete(bookingInDatabase);
+            else BookingDataAccess.Delete(bookingInDatabase);
         }
 
         public static Task<Booking> Add(Employee employee, Bill bill, Booking booking)
