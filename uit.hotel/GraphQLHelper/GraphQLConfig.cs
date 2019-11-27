@@ -60,6 +60,8 @@ namespace uit.hotel.GraphQLHelper
             services.AddSingleton<PositionUpdateInput>();
             services.AddSingleton<PriceCreateInput>();
             services.AddSingleton<PriceUpdateInput>();
+            services.AddSingleton<PriceVolatilityCreateInput>();
+            services.AddSingleton<PriceVolatilityUpdateInput>();
             services.AddSingleton<ReceiptCreateInput>();
             services.AddSingleton<RoomCreateInput>();
             services.AddSingleton<RoomIdInput>();
@@ -73,8 +75,6 @@ namespace uit.hotel.GraphQLHelper
             services.AddSingleton<ServicesDetailIdInput>();
             services.AddSingleton<ServicesDetailUpdateInput>();
             services.AddSingleton<ServiceUpdateInput>();
-            services.AddSingleton<VolatilityPriceCreateInput>();
-            services.AddSingleton<VolatilityPriceUpdateInput>();
 
             return services;
         }
@@ -90,13 +90,17 @@ namespace uit.hotel.GraphQLHelper
             services.AddSingleton<PatronKindType>();
             services.AddSingleton<PatronType>();
             services.AddSingleton<PositionType>();
+            services.AddSingleton<PriceItemKindEnumType>();
+            services.AddSingleton<PriceItemType>();
             services.AddSingleton<PriceType>();
+            services.AddSingleton<PriceVolatilityItemKindEnumType>();
+            services.AddSingleton<PriceVolatilityItemType>();
+            services.AddSingleton<PriceVolatilityType>();
             services.AddSingleton<ReceiptType>();
             services.AddSingleton<RoomKindType>();
             services.AddSingleton<RoomType>();
             services.AddSingleton<ServicesDetailType>();
             services.AddSingleton<ServiceType>();
-            services.AddSingleton<VolatilityPriceType>();
 
             return services;
         }

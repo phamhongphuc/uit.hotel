@@ -21,8 +21,8 @@ namespace uit.hotel.Models
         [Backlink(nameof(Price.RoomKind))]
         public IQueryable<Price> Prices { get; }
 
-        [Backlink(nameof(VolatilityPrice.RoomKind))]
-        public IQueryable<VolatilityPrice> VolatilityPrices { get; }
+        [Backlink(nameof(PriceVolatility.RoomKind))]
+        public IQueryable<PriceVolatility> PriceVolatilities { get; }
 
         public Price GetPrice(DateTimeOffset date)
         {
@@ -37,10 +37,10 @@ namespace uit.hotel.Models
             return selected;
         }
 
-        public IList<VolatilityPrice> GetVolatilityPrices(DateTimeOffset from, DateTimeOffset to)
+        public IList<PriceVolatility> GetPriceVolatilities(DateTimeOffset from, DateTimeOffset to)
         {
-            IList<VolatilityPrice> selecteds = new List<VolatilityPrice> { };
-            foreach (var v in VolatilityPrices)
+            IList<PriceVolatility> selecteds = new List<PriceVolatility> { };
+            foreach (var v in PriceVolatilities)
             {
                 if (v.EffectiveStartDate <= to && from <= v.EffectiveEndDate)
                     selecteds.Add(v);

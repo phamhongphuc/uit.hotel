@@ -38,6 +38,7 @@ namespace uit.hotel.test.Helper
                 var errorMessage = string.Join(
                     Environment.NewLine,
                     "",
+                    "----- ----- ----- ----- -----",
                     "Query:", result.Query,
                     "Result:", jsonResult.ToString(),
                     "Error Messages:", string.Join("\n", errorMessages)
@@ -66,6 +67,7 @@ namespace uit.hotel.test.Helper
                 var errorMessage = string.Join(
                     Environment.NewLine,
                     "",
+                    "----- ----- ----- ----- -----",
                     "Query:", result.Query,
                     "Variable:", result.Variable,
                     "Result:", jsonResult.ToString(),

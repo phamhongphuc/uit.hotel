@@ -7,9 +7,9 @@
         "data": {
             "type": "object",
             "additionalProperties": false,
-            "required": ["volatilityPrices"],
+            "required": ["priceVolatilities"],
             "properties": {
-                "volatilityPrices": {
+                "priceVolatilities": {
                     "type": "array",
                     "items": {
                         "type": "object",

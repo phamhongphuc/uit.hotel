@@ -84,7 +84,7 @@ namespace uit.hotel.Queries.Mutation
                     context =>
                     {
                         var booking = context.GetArgument<Booking>("booking");
-                        booking.UpdateAndCalculatePrice();
+                        booking.CalculatePrice();
                         return booking;
                     }
                 )

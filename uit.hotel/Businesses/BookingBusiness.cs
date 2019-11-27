@@ -9,6 +9,14 @@ namespace uit.hotel.Businesses
 {
     public static class BookingBusiness
     {
+        public static int _CheckInDayTime = 13;
+        public static int _CheckOutDayTime = 11;
+        public static int _CheckInNightTime = 21;
+        public static int _CheckOutNightTime = 11;
+        public static int _MaxCheckInNightTime = 6;
+        public static int _ToleranceTimeSpan = 4;
+        public static int _HourTimeSpan = 4;
+
         public static Task<Booking> CheckIn(Employee employee, int bookingId)
         {
             var bookingInDatabase = Get(bookingId);
@@ -43,8 +51,7 @@ namespace uit.hotel.Businesses
                 throw new Exception("Không thể hủy đặt phòng. Booking đã hoặc đang được sử dụng.");
 
             if (bookingInDatabase.Bill.Bookings.Count() == 1) BillDataAccess.Delete(bookingInDatabase.Bill);
-
-            BookingDataAccess.Delete(bookingInDatabase);
+            else BookingDataAccess.Delete(bookingInDatabase);
         }
 
         public static Task<Booking> Add(Employee employee, Bill bill, Booking booking)

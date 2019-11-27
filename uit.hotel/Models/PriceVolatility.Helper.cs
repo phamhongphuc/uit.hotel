@@ -3,13 +3,13 @@ using System.Collections.Generic;
 
 namespace uit.hotel.Models
 {
-    public static class VolatilityPriceHelper
+    public static class PriceVolatilityHelper
     {
-        public static IList<VolatilityPrice> InDate(this IList<VolatilityPrice> volatilityPrices, DateTimeOffset date)
+        public static IList<PriceVolatility> InDate(this IList<PriceVolatility> priceVolatilities, DateTimeOffset date)
         {
             var dayOfWeek = date.DayOfWeek;
-            IList<VolatilityPrice> selecteds = new List<VolatilityPrice> { };
-            foreach (var v in volatilityPrices)
+            IList<PriceVolatility> selecteds = new List<PriceVolatility> { };
+            foreach (var v in priceVolatilities)
             {
                 if (v.EffectiveStartDate <= date && date <= v.EffectiveEndDate)
                 {
@@ -39,15 +39,15 @@ namespace uit.hotel.Models
             return selecteds;
         }
 
-        public static VolatilityPrice Sum(this IList<VolatilityPrice> volatilityPrices)
+        public static PriceVolatility Sum(this IList<PriceVolatility> priceVolatilities)
         {
-            var sum = new VolatilityPrice()
+            var sum = new PriceVolatility()
             {
                 HourPrice = 0,
                 DayPrice = 0,
                 NightPrice = 0,
             };
-            foreach (var v in volatilityPrices) sum += v;
+            foreach (var v in priceVolatilities) sum += v;
             return sum;
         }
     }

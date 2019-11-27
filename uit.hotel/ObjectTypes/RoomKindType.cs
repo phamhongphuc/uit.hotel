@@ -28,10 +28,10 @@ namespace uit.hotel.ObjectTypes
                 "Danh sách giá cố định của loại phòng",
                 resolve: context => context.Source.Prices.ToList());
 
-            Field<ListGraphType<VolatilityPriceType>>(
-                nameof(RoomKind.VolatilityPrices),
+            Field<ListGraphType<PriceVolatilityType>>(
+                nameof(RoomKind.PriceVolatilities),
                 "Danh sách giá biến động của loại phòng",
-                resolve: context => context.Source.VolatilityPrices.ToList());
+                resolve: context => context.Source.PriceVolatilities.ToList());
         }
     }
 

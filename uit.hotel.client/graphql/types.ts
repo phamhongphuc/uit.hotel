@@ -12,6 +12,8 @@ export type Scalars = {
      * [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
      **/
     DateTimeOffset: string | Date;
+    /** The `Seconds` scalar type represents a period of time represented as the total number of seconds. */
+    Seconds: number;
     /**
      * The `Date` scalar type represents a year, month and day in accordance with the
      * [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
@@ -26,8 +28,6 @@ export type Scalars = {
     Decimal: number;
     /** The `Milliseconds` scalar type represents a period of time represented as the total number of milliseconds. */
     Milliseconds: number;
-    /** The `Seconds` scalar type represents a period of time represented as the total number of seconds. */
-    Seconds: number;
 };
 
 export type AppMutation = {
@@ -51,6 +51,8 @@ export type AppMutation = {
     createPosition: Position;
     /** Tạo và trả về một loại giá cơ bản mới */
     createPrice: Price;
+    /** Tạo và trả về một giá biến động mới */
+    createPriceVolatility: PriceVolatility;
     /** Tạo và trả về một phiếu thu mới */
     createReceipt: Receipt;
     /** Tạo và trả về một phòng mới */
@@ -61,8 +63,6 @@ export type AppMutation = {
     createService: Service;
     /** Tạo và trả về một chi tiết dịch vụ mới */
     createServicesDetail: ServicesDetail;
-    /** Tạo và trả về một giá biến động mới */
-    createVolatilityPrice: VolatilityPrice;
     /** Nhân viên tự đổi mật khẩu cho tài khoản của mình */
     changePassword: Scalars['String'];
     /** Kiểm tra thử giá của phòng */
@@ -81,6 +81,8 @@ export type AppMutation = {
     deletePosition: Scalars['String'];
     /** Xóa một giá cơ bản */
     deletePrice: Scalars['String'];
+    /** Xóa một giá biến động */
+    deletePriceVolatility: Scalars['String'];
     /** Xóa một phòng */
     deleteRoom: Scalars['String'];
     /** Xóa một loại phòng */
@@ -89,8 +91,6 @@ export type AppMutation = {
     deleteService: Scalars['String'];
     /** Xóa một dịch vụ */
     deleteServicesDetail: Scalars['String'];
-    /** Xóa một giá biến động */
-    deleteVolatilityPrice: Scalars['String'];
     /** Khởi tạo tài khoản admin */
     initializeAdminAccount: Scalars['String'];
     /** Khởi tạo dữ liệu */
@@ -131,6 +131,8 @@ export type AppMutation = {
     updatePosition: Position;
     /** Cập nhật và trả về một giá cơ bản vừa cập nhật */
     updatePrice: Price;
+    /** Cập nhật và trả về một giá biến động vừa cập nhật */
+    updatePriceVolatility: PriceVolatility;
     /** Cập nhật và trả về một phòng vừa cập nhật */
     updateRoom: Room;
     /** Cập nhật và trả về loại phòng vừa cập nhật */
@@ -139,8 +141,6 @@ export type AppMutation = {
     updateService: Service;
     /** Cập nhật và trả về một chi tiết dịch vụ mới cập nhật */
     updateServicesDetail: ServicesDetail;
-    /** Cập nhật và trả về một giá biến động vừa cập nhật */
-    updateVolatilityPrice: VolatilityPrice;
 };
 
 export type AppMutationAddBookingToBillArgs = {
@@ -186,6 +186,10 @@ export type AppMutationCreatePriceArgs = {
     input: PriceCreateInput;
 };
 
+export type AppMutationCreatePriceVolatilityArgs = {
+    input: PriceVolatilityCreateInput;
+};
+
 export type AppMutationCreateReceiptArgs = {
     input: ReceiptCreateInput;
 };
@@ -204,10 +208,6 @@ export type AppMutationCreateServiceArgs = {
 
 export type AppMutationCreateServicesDetailArgs = {
     input: ServicesDetailCreateInput;
-};
-
-export type AppMutationCreateVolatilityPriceArgs = {
-    input: VolatilityPriceCreateInput;
 };
 
 export type AppMutationChangePasswordArgs = {
@@ -243,6 +243,10 @@ export type AppMutationDeletePriceArgs = {
     id: Scalars['ID'];
 };
 
+export type AppMutationDeletePriceVolatilityArgs = {
+    id: Scalars['ID'];
+};
+
 export type AppMutationDeleteRoomArgs = {
     id: Scalars['ID'];
 };
@@ -256,10 +260,6 @@ export type AppMutationDeleteServiceArgs = {
 };
 
 export type AppMutationDeleteServicesDetailArgs = {
-    id: Scalars['ID'];
-};
-
-export type AppMutationDeleteVolatilityPriceArgs = {
     id: Scalars['ID'];
 };
 
@@ -350,6 +350,10 @@ export type AppMutationUpdatePriceArgs = {
     input: PriceUpdateInput;
 };
 
+export type AppMutationUpdatePriceVolatilityArgs = {
+    input: PriceVolatilityUpdateInput;
+};
+
 export type AppMutationUpdateRoomArgs = {
     input: RoomUpdateInput;
 };
@@ -364,10 +368,6 @@ export type AppMutationUpdateServiceArgs = {
 
 export type AppMutationUpdateServicesDetailArgs = {
     input: ServicesDetailUpdateInput;
-};
-
-export type AppMutationUpdateVolatilityPriceArgs = {
-    input: VolatilityPriceUpdateInput;
 };
 
 export type AppQuery = {
@@ -407,6 +407,10 @@ export type AppQuery = {
     price: Price;
     /** Trả về một danh sách các loại giá cơ bản */
     prices: Array<Price>;
+    /** Trả về một danh sách các giá biến động */
+    priceVolatilities: Array<PriceVolatility>;
+    /** Trả về thông tin một giá biến động */
+    priceVolatility: PriceVolatility;
     /** Trả về thông tin một phiếu thu */
     receipt: Receipt;
     /** Trả về một danh sách các phiếu thu */
@@ -427,10 +431,6 @@ export type AppQuery = {
     servicesDetail: ServicesDetail;
     /** Trả về một danh sách các chi tiết dịch vụ */
     servicesDetails: Array<ServicesDetail>;
-    /** Trả về thông tin một giá biến động */
-    volatilityPrice: VolatilityPrice;
-    /** Trả về một danh sách các giá biến động */
-    volatilityPrices: Array<VolatilityPrice>;
 };
 
 export type AppQueryBillArgs = {
@@ -469,6 +469,10 @@ export type AppQueryPriceArgs = {
     id: Scalars['ID'];
 };
 
+export type AppQueryPriceVolatilityArgs = {
+    id: Scalars['ID'];
+};
+
 export type AppQueryReceiptArgs = {
     id: Scalars['ID'];
 };
@@ -486,10 +490,6 @@ export type AppQueryServiceArgs = {
 };
 
 export type AppQueryServicesDetailArgs = {
-    id: Scalars['ID'];
-};
-
-export type AppQueryVolatilityPriceArgs = {
     id: Scalars['ID'];
 };
 
@@ -555,10 +555,12 @@ export type BookAndCheckInCreateInput = {
 
 /** Một thông tin thuê phòng của khách hàng */
 export type Booking = {
-    /** Thời gian nhận phòng được dùng */
-    baseCheckInTime: Scalars['DateTimeOffset'];
-    /** Thời gian trả phòng được dùng */
-    baseCheckOutTime: Scalars['DateTimeOffset'];
+    /** Thời gian nhận phòng, tính giá theo ngày */
+    baseDayCheckInTime: Scalars['DateTimeOffset'];
+    /** Thời gian trả phòng */
+    baseDayCheckOutTime: Scalars['DateTimeOffset'];
+    /** Thời gian nhận phòng, tính giá theo đêm */
+    baseNightCheckInTime: Scalars['DateTimeOffset'];
     /** Thông tin hóa đơn của thông tin thuê phòng */
     bill: Bill;
     /** Thời điểm nhận phòng dự kiến của khách hàng */
@@ -567,8 +569,6 @@ export type Booking = {
     bookCheckOutTime: Scalars['DateTimeOffset'];
     /** Thời điểm tạo thông tin thuê phòng */
     createTime: Scalars['DateTimeOffset'];
-    /** Giá theo ngày */
-    dayPrice: Scalars['Int'];
     /** Phí nhận phòng sớm */
     earlyCheckInFee: Scalars['Int'];
     /** Nhân viên thực hiện giao dịch nhận đặt phòng từ khách hàng */
@@ -577,18 +577,18 @@ export type Booking = {
     employeeCheckIn: Maybe<Employee>;
     /** Nhân viên thực hiện check-out cho khách hàng */
     employeeCheckOut: Maybe<Employee>;
-    /** Giá theo giờ */
-    hourPrice: Scalars['Int'];
     /** Id của thông tin thuê phòng */
     id: Scalars['Int'];
     /** Phí trả phòng trễ */
     lateCheckOutFee: Scalars['Int'];
-    /** Giá theo đêm */
-    nightPrice: Scalars['Int'];
     /** Danh sách khách hàng yêu cầu đặt phòng */
     patrons: Array<Maybe<Patron>>;
-    /** Giá đang được dùng */
+    /** Công thức giá */
     price: Price;
+    /** Danh sách đơn vị giá */
+    priceItems: Array<Maybe<PriceItem>>;
+    /** Danh sách đơn vị giá biến động */
+    priceVolatilityItems: Array<Maybe<PriceVolatilityItem>>;
     /** Thời điểm nhận phòng của khách hàng */
     realCheckInTime: Maybe<Scalars['DateTimeOffset']>;
     /** Thời điểm trả phòng của khách hàng */
@@ -601,12 +601,10 @@ export type Booking = {
     status: BookingStatusEnum;
     /** Tổng tiền */
     total: Scalars['Int'];
-    /** Tổng tiền thuê cơ bản */
+    /** Tổng tiền thuê */
     totalPrice: Scalars['Int'];
     /** Tổng tiền dịch vụ */
     totalServicesDetails: Scalars['Int'];
-    /** Tổng tiền thuê biến động */
-    totalVolatilityPrice: Scalars['Int'];
 };
 
 export type BookingCreateInput = {
@@ -659,14 +657,14 @@ export type Employee = {
     position: Position;
     /** Danh sách các Giá cơ bản mà nhân viên tạo */
     prices: Array<Price>;
+    /** Danh sách các Giá biến động mà nhân viên tạo */
+    priceVolatilities: Array<PriceVolatility>;
     /** Số điện thoại của nhân viên */
     phoneNumber: Scalars['String'];
     /** Danh sách các Phiếu thu mà nhân viên tạo */
     receipts: Array<Receipt>;
     /** Ngày vào làm */
     startingDate: Scalars['DateTimeOffset'];
-    /** Danh sách các Giá biến động mà nhân viên tạo */
-    volatilityPrices: Array<VolatilityPrice>;
 };
 
 export type EmployeeCreateInput = {
@@ -1046,6 +1044,27 @@ export type PriceCreateInput = {
     roomKind: RoomKindId;
 };
 
+/** Đơn vị giá */
+export type PriceItem = {
+    /** Đơn đặt phòng */
+    booking: Booking;
+    /** Loại đơn vị giá */
+    kind: PriceItemKindEnum;
+    /** Thời gian */
+    timeSpan: Scalars['Seconds'];
+    /** Giá trị */
+    value: Scalars['Int'];
+};
+
+/** Loại đơn vị giá */
+export enum PriceItemKindEnum {
+    Hour = 'HOUR',
+    Night = 'NIGHT',
+    Day = 'DAY',
+    Week = 'WEEK',
+    Month = 'MONTH',
+}
+
 export type PriceUpdateInput = {
     /** Id của giá cần cập nhật */
     id: Scalars['Int'];
@@ -1065,6 +1084,127 @@ export type PriceUpdateInput = {
     earlyCheckInFee: Scalars['Int'];
     /** Ngày giá bắt đầu có hiệu lực */
     effectiveStartDate: Scalars['DateTimeOffset'];
+    /** Loại phòng */
+    roomKind: RoomKindId;
+};
+
+/** Giá biến động của một loại phòng */
+export type PriceVolatility = {
+    /** Ngày tạo giá */
+    createDate: Scalars['DateTimeOffset'];
+    /** Giá ngày */
+    dayPrice: Scalars['Int'];
+    /** Ngày giá hết hiệu lực */
+    effectiveEndDate: Scalars['DateTimeOffset'];
+    /** Giá có hiệu lực vào ngày Thứ 6 */
+    effectiveOnFriday: Scalars['Boolean'];
+    /** Giá có hiệu lực vào ngày Thứ 2 */
+    effectiveOnMonday: Scalars['Boolean'];
+    /** Giá có hiệu lực vào ngày Thứ 7 */
+    effectiveOnSaturday: Scalars['Boolean'];
+    /** Giá có hiệu lực vào ngày Chủ Nhật */
+    effectiveOnSunday: Scalars['Boolean'];
+    /** Giá có hiệu lực vào ngày Thứ 3 */
+    effectiveOnTuesday: Scalars['Boolean'];
+    /** Giá có hiệu lực vào ngày Thứ 5 */
+    effectiveOnThursday: Scalars['Boolean'];
+    /** Giá có hiệu lực vào ngày Thứ 4 */
+    effectiveOnWednesday: Scalars['Boolean'];
+    /** Ngày giá bắt đầu có hiệu lực */
+    effectiveStartDate: Scalars['DateTimeOffset'];
+    /** Nhân viên tạo giá */
+    employee: Maybe<Employee>;
+    /** Giá giờ */
+    hourPrice: Scalars['Int'];
+    /** Id của giá */
+    id: Scalars['Int'];
+    /** Tên của giá biến động */
+    name: Scalars['String'];
+    /** Giá đêm */
+    nightPrice: Scalars['Int'];
+    /** Thuộc loại phòng */
+    roomKind: RoomKind;
+};
+
+export type PriceVolatilityCreateInput = {
+    /** Giá giờ */
+    hourPrice: Scalars['Int'];
+    /** Giá ngày */
+    dayPrice: Scalars['Int'];
+    /** Giá đêm */
+    nightPrice: Scalars['Int'];
+    /** Ngày giá bắt đầu có hiệu lực */
+    effectiveStartDate: Scalars['DateTimeOffset'];
+    /** Ngày giá hết hiệu lực */
+    effectiveEndDate: Scalars['DateTimeOffset'];
+    /** Giá có hiệu lực vào ngày Thứ 2 */
+    effectiveOnMonday: Scalars['Boolean'];
+    /** Giá có hiệu lực vào ngày Thứ 3 */
+    effectiveOnTuesday: Scalars['Boolean'];
+    /** Giá có hiệu lực vào ngày Thứ 4 */
+    effectiveOnWednesday: Scalars['Boolean'];
+    /** Giá có hiệu lực vào ngày Thứ 5 */
+    effectiveOnThursday: Scalars['Boolean'];
+    /** Giá có hiệu lực vào ngày Thứ 6 */
+    effectiveOnFriday: Scalars['Boolean'];
+    /** Giá có hiệu lực vào ngày Thứ 7 */
+    effectiveOnSaturday: Scalars['Boolean'];
+    /** Giá có hiệu lực vào ngày Chủ Nhật */
+    effectiveOnSunday: Scalars['Boolean'];
+    /** Loại phòng */
+    roomKind: RoomKindId;
+};
+
+/** Đơn vị giá biến động */
+export type PriceVolatilityItem = {
+    /** Đơn đặt phòng */
+    booking: Booking;
+    /** Mốc thời gian */
+    date: Scalars['DateTimeOffset'];
+    /** Loại đơn vị giá */
+    kind: PriceVolatilityItemKindEnum;
+    /** Đối tượng giá biến động */
+    priceVolatility: PriceVolatility;
+    /** Khoảng thời gian */
+    timeSpan: Scalars['Seconds'];
+    /** Giá trị */
+    value: Scalars['Int'];
+};
+
+/** Loại đơn vị giá biến động */
+export enum PriceVolatilityItemKindEnum {
+    Hour = 'HOUR',
+    Night = 'NIGHT',
+    Day = 'DAY',
+}
+
+export type PriceVolatilityUpdateInput = {
+    /** Id của giá cần cập nhật */
+    id: Scalars['Int'];
+    /** Giá giờ */
+    hourPrice: Scalars['Int'];
+    /** Giá ngày */
+    dayPrice: Scalars['Int'];
+    /** Giá đêm */
+    nightPrice: Scalars['Int'];
+    /** Ngày giá bắt đầu có hiệu lực */
+    effectiveStartDate: Scalars['DateTimeOffset'];
+    /** Ngày giá hết hiệu lực */
+    effectiveEndDate: Scalars['DateTimeOffset'];
+    /** Giá có hiệu lực vào ngày Thứ 2 */
+    effectiveOnMonday: Scalars['Boolean'];
+    /** Giá có hiệu lực vào ngày Thứ 3 */
+    effectiveOnTuesday: Scalars['Boolean'];
+    /** Giá có hiệu lực vào ngày Thứ 4 */
+    effectiveOnWednesday: Scalars['Boolean'];
+    /** Giá có hiệu lực vào ngày Thứ 5 */
+    effectiveOnThursday: Scalars['Boolean'];
+    /** Giá có hiệu lực vào ngày Thứ 6 */
+    effectiveOnFriday: Scalars['Boolean'];
+    /** Giá có hiệu lực vào ngày Thứ 7 */
+    effectiveOnSaturday: Scalars['Boolean'];
+    /** Giá có hiệu lực vào ngày Chủ Nhật */
+    effectiveOnSunday: Scalars['Boolean'];
     /** Loại phòng */
     roomKind: RoomKindId;
 };
@@ -1157,10 +1297,10 @@ export type RoomKind = {
     numberOfBeds: Scalars['Int'];
     /** Danh sách giá cố định của loại phòng */
     prices: Maybe<Array<Maybe<Price>>>;
+    /** Danh sách giá biến động của loại phòng */
+    priceVolatilities: Maybe<Array<Maybe<PriceVolatility>>>;
     /** Danh sách các phòng thuộc loại phòng này */
     rooms: Maybe<Array<Maybe<Room>>>;
-    /** Danh sách giá biến động của loại phòng */
-    volatilityPrices: Maybe<Array<Maybe<VolatilityPrice>>>;
 };
 
 /** Input cho việc tạo một loại phòng */
@@ -1278,102 +1418,6 @@ export type ServiceUpdateInput = {
     unitPrice: Scalars['Int'];
     /** Đơn vị */
     unit: Scalars['String'];
-};
-
-/** Giá biến động của một loại phòng */
-export type VolatilityPrice = {
-    /** Ngày tạo giá */
-    createDate: Scalars['DateTimeOffset'];
-    /** Giá ngày */
-    dayPrice: Scalars['Int'];
-    /** Ngày giá hết hiệu lực */
-    effectiveEndDate: Scalars['DateTimeOffset'];
-    /** Giá có hiệu lực vào ngày Thứ 6 */
-    effectiveOnFriday: Scalars['Boolean'];
-    /** Giá có hiệu lực vào ngày Thứ 2 */
-    effectiveOnMonday: Scalars['Boolean'];
-    /** Giá có hiệu lực vào ngày Thứ 7 */
-    effectiveOnSaturday: Scalars['Boolean'];
-    /** Giá có hiệu lực vào ngày Chủ Nhật */
-    effectiveOnSunday: Scalars['Boolean'];
-    /** Giá có hiệu lực vào ngày Thứ 3 */
-    effectiveOnTuesday: Scalars['Boolean'];
-    /** Giá có hiệu lực vào ngày Thứ 5 */
-    effectiveOnThursday: Scalars['Boolean'];
-    /** Giá có hiệu lực vào ngày Thứ 4 */
-    effectiveOnWednesday: Scalars['Boolean'];
-    /** Ngày giá bắt đầu có hiệu lực */
-    effectiveStartDate: Scalars['DateTimeOffset'];
-    /** Nhân viên tạo giá */
-    employee: Maybe<Employee>;
-    /** Giá giờ */
-    hourPrice: Scalars['Int'];
-    /** Id của giá */
-    id: Scalars['Int'];
-    /** Giá đêm */
-    nightPrice: Scalars['Int'];
-    /** Thuộc loại phòng */
-    roomKind: RoomKind;
-};
-
-export type VolatilityPriceCreateInput = {
-    /** Giá giờ */
-    hourPrice: Scalars['Int'];
-    /** Giá ngày */
-    dayPrice: Scalars['Int'];
-    /** Giá đêm */
-    nightPrice: Scalars['Int'];
-    /** Ngày giá bắt đầu có hiệu lực */
-    effectiveStartDate: Scalars['DateTimeOffset'];
-    /** Ngày giá hết hiệu lực */
-    effectiveEndDate: Scalars['DateTimeOffset'];
-    /** Giá có hiệu lực vào ngày Thứ 2 */
-    effectiveOnMonday: Scalars['Boolean'];
-    /** Giá có hiệu lực vào ngày Thứ 3 */
-    effectiveOnTuesday: Scalars['Boolean'];
-    /** Giá có hiệu lực vào ngày Thứ 4 */
-    effectiveOnWednesday: Scalars['Boolean'];
-    /** Giá có hiệu lực vào ngày Thứ 5 */
-    effectiveOnThursday: Scalars['Boolean'];
-    /** Giá có hiệu lực vào ngày Thứ 6 */
-    effectiveOnFriday: Scalars['Boolean'];
-    /** Giá có hiệu lực vào ngày Thứ 7 */
-    effectiveOnSaturday: Scalars['Boolean'];
-    /** Giá có hiệu lực vào ngày Chủ Nhật */
-    effectiveOnSunday: Scalars['Boolean'];
-    /** Loại phòng */
-    roomKind: RoomKindId;
-};
-
-export type VolatilityPriceUpdateInput = {
-    /** Id của giá cần cập nhật */
-    id: Scalars['Int'];
-    /** Giá giờ */
-    hourPrice: Scalars['Int'];
-    /** Giá ngày */
-    dayPrice: Scalars['Int'];
-    /** Giá đêm */
-    nightPrice: Scalars['Int'];
-    /** Ngày giá bắt đầu có hiệu lực */
-    effectiveStartDate: Scalars['DateTimeOffset'];
-    /** Ngày giá hết hiệu lực */
-    effectiveEndDate: Scalars['DateTimeOffset'];
-    /** Giá có hiệu lực vào ngày Thứ 2 */
-    effectiveOnMonday: Scalars['Boolean'];
-    /** Giá có hiệu lực vào ngày Thứ 3 */
-    effectiveOnTuesday: Scalars['Boolean'];
-    /** Giá có hiệu lực vào ngày Thứ 4 */
-    effectiveOnWednesday: Scalars['Boolean'];
-    /** Giá có hiệu lực vào ngày Thứ 5 */
-    effectiveOnThursday: Scalars['Boolean'];
-    /** Giá có hiệu lực vào ngày Thứ 6 */
-    effectiveOnFriday: Scalars['Boolean'];
-    /** Giá có hiệu lực vào ngày Thứ 7 */
-    effectiveOnSaturday: Scalars['Boolean'];
-    /** Giá có hiệu lực vào ngày Chủ Nhật */
-    effectiveOnSunday: Scalars['Boolean'];
-    /** Loại phòng */
-    roomKind: RoomKindId;
 };
 
 export type GetBillsQueryVariables = {};

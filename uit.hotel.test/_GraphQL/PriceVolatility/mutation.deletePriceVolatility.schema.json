@@ -7,9 +7,9 @@
         "data": {
             "type": "object",
             "additionalProperties": false,
-            "required": ["deleteVolatilityPrice"],
+            "required": ["deletePriceVolatility"],
             "properties": {
-                "deleteVolatilityPrice": {
+                "deletePriceVolatility": {
                     "type": "string",
                     "pattern": "^(.*)$"
                 }

@@ -1,166 +1,223 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Realms;
+using uit.hotel.Businesses;
 using uit.hotel.Queries.Helper;
 
 namespace uit.hotel.Models
 {
     public partial class Booking : RealmObject
     {
+        [Backlink(nameof(PriceItem.Booking))]
+        private IQueryable<PriceItem> PriceItemsInDatabase { get; }
+        [Ignored]
+        private IList<PriceItem> PriceItemsInObject { get; set; }
+        [Ignored]
+        public IEnumerable<PriceItem> PriceItems => IsManaged ? PriceItemsInDatabase.ToList() : PriceItemsInObject;
+
+        [Backlink(nameof(PriceVolatilityItem.Booking))]
+        private IQueryable<PriceVolatilityItem> PriceVolatilityItemsInDatabase { get; }
+        [Ignored]
+        private IList<PriceVolatilityItem> PriceVolatilityItemsInObject { get; set; }
+        [Ignored]
+        public IEnumerable<PriceVolatilityItem> PriceVolatilityItems => IsManaged ? PriceVolatilityItemsInDatabase.ToList() : PriceVolatilityItemsInObject;
+
         //? Calculated fields
-        public DateTimeOffset BaseCheckInTime { get; private set; }
-        public DateTimeOffset BaseCheckOutTime { get; private set; }
-        public Price Price { get; private set; }
-        public long HourPrice { get; private set; }
-        public long NightPrice { get; private set; }
-        public long DayPrice { get; private set; }
-        public long EarlyCheckInFee { get; private set; }
-        public long LateCheckOutFee { get; private set; }
+        public DateTimeOffset BaseNightCheckInTime { get; private set; }
+        public DateTimeOffset BaseDayCheckInTime { get; private set; }
+        public DateTimeOffset BaseDayCheckOutTime { get; private set; }
 
-        public string PriceFormular { get; set; }
+        public long TotalPrice { get; set; }
+        public long EarlyCheckInFee { get; set; }
+        public long LateCheckOutFee { get; set; }
+        public Price Price { get; set; }
 
+        //? Temporary fields
         [Ignored]
-        private IList<VolatilityPrice> VolatilityPrices { get; set; }
+        private TimeSpan TimeSpan => BaseDayCheckOutTime - BaseNightCheckInTime;
         [Ignored]
-        private IList<VolatilityPrice> CheckInVolatilityPrices { get; set; }
-
-        public void UpdateAndCalculatePrice()
-        {
-            Room = Room.GetManaged();
-            CalculatePrice();
-        }
+        private IList<PriceVolatility> PriceVolatilities { get; set; }
 
         public void CalculatePrice()
         {
-            BaseCheckInTime = (RealCheckInTime != DateTimeOffset.MinValue ? RealCheckInTime : BookCheckInTime).Round();
-            BaseCheckOutTime = (RealCheckOutTime != DateTimeOffset.MinValue ? RealCheckOutTime : BookCheckOutTime).Round();
+            if (!Room.IsManaged) Room = Room.GetManaged();
 
-            Price = Room.RoomKind.GetPrice(BaseCheckInTime);
-            VolatilityPrices = Room.RoomKind.GetVolatilityPrices(BaseCheckInTime, BaseCheckOutTime);
-            CheckInVolatilityPrices = VolatilityPrices.InDate(BaseCheckInTime);
+            BaseNightCheckInTime = (RealCheckInTime != DateTimeOffset.MinValue ? RealCheckInTime : BookCheckInTime).Round();
+            BaseDayCheckInTime = DateTimeOffset.MinValue;
+            BaseDayCheckOutTime = (RealCheckOutTime != DateTimeOffset.MinValue ? RealCheckOutTime : BookCheckOutTime).Round();
 
-            HourPrice = 0;
-            EarlyCheckInFee = 0;
-            LateCheckOutFee = 0;
-            NightPrice = 0;
-            DayPrice = 0;
+            Price = Room.RoomKind.GetPrice(BaseNightCheckInTime);
 
-            CalculateHour();
-            if (HourPrice == 0)
-            {
-                CalculateCheckIn();
-                CalculateCheckOut();
-                CalculateNight();
-                CalculateDay();
-            }
-
-            TotalPrice = HourPrice + EarlyCheckInFee + LateCheckOutFee + NightPrice + DayPrice;
+            InitializeData();
+            CalculateCaseByCase();
+            SaveResult();
         }
 
-        private void CalculateHour()
+        private void InitializeData()
         {
-            var timeSpan = BaseCheckOutTime - BaseCheckInTime;
-            if (timeSpan.FloatHour() <= Price.HourTimeSpan)
-            {
-                var sumVolatilityPrice = VolatilityPrices.Sum();
-                HourPrice = (long)((Price.HourPrice + sumVolatilityPrice.HourPrice) * timeSpan.FloatHour());
-            }
+            PriceItemBusiness.Delete(PriceItemsInDatabase);
+            PriceItemsInObject = new List<PriceItem>();
+            PriceVolatilityItemBusiness.Delete(PriceVolatilityItemsInDatabase);
+            PriceVolatilityItemsInObject = new List<PriceVolatilityItem>();
+
+            PriceVolatilities = Room.RoomKind.PriceVolatilities.ToList();
         }
 
-        private void CalculateCheckIn()
+        private void CalculateCaseByCase()
         {
-            var checkInHour = BaseCheckInTime.FloatHour();
-            if (checkInHour <= Price.MaxCheckInNightTime)
-            {
-                BaseCheckInTime = BaseCheckInTime.AtHour(Price.CheckInNightTime).AddDays(-1);
-            }
-            else if (checkInHour <= Price.CheckInDayTime)
-            {
-                EarlyCheckInFee = (long)(Price.EarlyCheckInFee * (Price.CheckInDayTime - checkInHour));
-                BaseCheckInTime = BaseCheckInTime.AtHour(Price.CheckInDayTime);
-            }
-            else if (checkInHour <= Price.CheckInNightTime - Price.ToleranceTimeSpan)
-            {
-                BaseCheckInTime.AtHour(Price.CheckInDayTime);
-            }
-            else if (checkInHour <= Price.CheckInNightTime)
-            {
-                EarlyCheckInFee = (long)(Price.EarlyCheckInFee * (Price.CheckInNightTime - checkInHour));
-                BaseCheckInTime = BaseCheckInTime.AtHour(Price.CheckInNightTime);
-            }
+            var isCalculated = CalculateHour();
+            if (isCalculated) return;
+
+            CalculateCheckInTime();
+            CalculateCheckOutTime();
+
+            CalculateFee();
+            CalculateNight();
+            CalculateDayWeekMonth();
+
+            CalculateSumary();
+        }
+
+        private bool CalculateHour()
+        {
+            if (TimeSpan.FloatHour() > BookingBusiness._HourTimeSpan) return false;
+            AddPriceVolatilityItems(PriceVolatilityItemKindEnum.Hour, BaseNightCheckInTime, TimeSpan);
+            AddPriceItem(PriceItemKindEnum.Hour, TimeSpan);
+            return true;
+        }
+
+        private void CalculateCheckInTime()
+        {
+            var checkInHour = BaseNightCheckInTime.FloatHour();
+
+            if (checkInHour <= BookingBusiness._MaxCheckInNightTime)
+                BaseNightCheckInTime = BaseNightCheckInTime.AtHour(BookingBusiness._CheckInNightTime).AddDays(-1);
+            else if (checkInHour <= BookingBusiness._CheckInDayTime)
+                BaseNightCheckInTime = BaseNightCheckInTime.AtHour(BookingBusiness._CheckInDayTime);
+            else if (checkInHour <= BookingBusiness._CheckInNightTime - BookingBusiness._ToleranceTimeSpan)
+                BaseNightCheckInTime.AtHour(BookingBusiness._CheckInDayTime);
+            else if (checkInHour <= BookingBusiness._CheckInNightTime)
+                BaseNightCheckInTime = BaseNightCheckInTime.AtHour(BookingBusiness._CheckInNightTime);
             else
-            {
-                BaseCheckInTime = BaseCheckInTime.AtHour(Price.CheckInNightTime);
-            }
+                BaseNightCheckInTime = BaseNightCheckInTime.AtHour(BookingBusiness._CheckInNightTime);
         }
 
-        private void CalculateCheckOut()
+        private void CalculateCheckOutTime()
         {
-            var checkOutTime = BaseCheckOutTime.FloatHour();
-            if (checkOutTime <= Price.CheckOutNightTime)
-            {
-                BaseCheckOutTime = BaseCheckOutTime.AtHour(Price.CheckOutNightTime);
-            }
-            else if (checkOutTime <= Price.CheckInDayTime + Price.ToleranceTimeSpan)
-            {
-                BaseCheckOutTime = BaseCheckOutTime.AtHour(Price.CheckInNightTime);
-                LateCheckOutFee = (long)(Price.LateCheckOutFee * (checkOutTime - Price.CheckOutNightTime));
-            }
+            var checkOutTime = BaseDayCheckOutTime.FloatHour();
+
+            if (checkOutTime <= BookingBusiness._CheckOutNightTime)
+                BaseDayCheckOutTime = BaseDayCheckOutTime.AtHour(BookingBusiness._CheckOutNightTime);
+            else if (checkOutTime <= BookingBusiness._CheckInDayTime + BookingBusiness._ToleranceTimeSpan)
+                BaseDayCheckOutTime = BaseDayCheckOutTime.AtHour(BookingBusiness._CheckInNightTime);
             else
-            {
-                BaseCheckOutTime = BaseCheckOutTime.AtHour(Price.CheckOutDayTime).AddDays(1);
-            }
+                BaseDayCheckOutTime = BaseDayCheckOutTime.AtHour(BookingBusiness._CheckOutDayTime).AddDays(1);
+        }
+
+        private void CalculateFee()
+        {
+            EarlyCheckInFee = (long)(Price.EarlyCheckInFee * (BookingBusiness._CheckInNightTime - BaseNightCheckInTime.FloatHour()));
+            LateCheckOutFee = (long)(Price.LateCheckOutFee * (BaseDayCheckOutTime.FloatHour() - BookingBusiness._CheckOutNightTime));
         }
 
         private void CalculateNight()
         {
-            if (BaseCheckInTime.FloatHour() == Price.CheckInNightTime) // isNight
+            if (BaseNightCheckInTime.FloatHour() == BookingBusiness._CheckInNightTime)
             {
-                var sumVolatilityPrice = VolatilityPrices.Sum();
-                NightPrice = Price.NightPrice + sumVolatilityPrice.NightPrice;
-                BaseCheckInTime = BaseCheckInTime.AtHour(Price.CheckInDayTime).AddDays(1);
+                AddPriceVolatilityItems(PriceVolatilityItemKindEnum.Night, BaseNightCheckInTime);
+                AddPriceItem(PriceItemKindEnum.Night);
+                BaseDayCheckInTime = BaseNightCheckInTime.AtHour(BookingBusiness._CheckInDayTime).AddDays(1);
+            }
+            else
+            {
+                BaseDayCheckInTime = BaseNightCheckInTime;
             }
         }
 
-        private void CalculateDay()
+        private void CalculateDayWeekMonth()
         {
-            var iterateTime = BaseCheckInTime;
-            while (iterateTime <= BaseCheckOutTime)
+            var beginDay = BaseDayCheckInTime.AtHour(0);
+            var endDay = BaseDayCheckOutTime.AtHour(0);
+
+            var iterateTime = beginDay;
+            while (iterateTime < endDay)
             {
-                var remain = (BaseCheckOutTime - iterateTime).Days;
+                var remain = (BaseDayCheckOutTime - iterateTime).Days;
                 if (remain >= 30 && Price.MonthPrice != 0)
                 {
-                    DayPrice += Price.MonthPrice;
-                    iterateTime = iterateTime.AddDays(30);
+                    var days = remain / 30 * 30;
+                    AddPriceItem(PriceItemKindEnum.Month, new TimeSpan(days, 0, 0, 0));
+                    iterateTime = iterateTime.AddDays(days);
                 }
                 else if (remain >= 7 && Price.WeekPrice != 0)
                 {
-                    DayPrice += Price.WeekPrice;
-                    iterateTime = iterateTime.AddDays(7);
+                    var days = remain / 7 * 7;
+                    AddPriceItem(PriceItemKindEnum.Week, new TimeSpan(days, 0, 0, 0));
+                    iterateTime = iterateTime.AddDays(days);
                 }
                 else
                 {
-                    DayPrice += Price.DayPrice;
-                    iterateTime = iterateTime.AddDays(1);
+                    AddPriceItem(PriceItemKindEnum.Day, new TimeSpan(remain, 0, 0, 0));
+                    iterateTime = iterateTime.AddDays(remain + 1);
                 }
             }
 
-            iterateTime = BaseCheckInTime;
-            while (iterateTime <= BaseCheckOutTime)
+            iterateTime = beginDay;
+            while (iterateTime < endDay)
             {
-                var remain = (BaseCheckOutTime - iterateTime).Days;
-                var sumVolatilityPrice = VolatilityPrices.InDate(iterateTime).Sum();
-                DayPrice += sumVolatilityPrice.DayPrice;
+                AddPriceVolatilityItems(PriceVolatilityItemKindEnum.Night, BaseNightCheckInTime);
                 iterateTime = iterateTime.AddDays(1);
             }
         }
 
-        public long GetPrice()
+        private void CalculateSumary()
         {
-            if (IsManaged) throw new Exception("Chỉ kiểm tra giá của những đơn đặt phòng chưa được lưu trong CSDL");
-            CalculatePrice();
-            return Total;
+            TotalPrice =
+                PriceItemsInObject.Aggregate<PriceItem, long>(0, (sum, x) => sum + x.Value) +
+                PriceVolatilityItemsInObject.Aggregate<PriceVolatilityItem, long>(0, (sum, x) => sum + x.Value);
+        }
+
+        private void SaveResult()
+        {
+            PriceVolatilities.Clear();
+
+            if (!IsManaged) return;
+            PriceItemBusiness.Add(PriceItemsInObject);
+            PriceVolatilityItemBusiness.Add(PriceVolatilityItemsInObject);
+
+            PriceItemsInObject.Clear();
+            PriceVolatilityItemsInObject.Clear();
+        }
+
+        // Helper Method
+        private void AddPriceItem(PriceItemKindEnum kind, TimeSpan timeSpan = new TimeSpan())
+        {
+            var priceItem = new PriceItem()
+            {
+                Booking = this,
+                Kind = kind,
+                TimeSpan = timeSpan
+            };
+            PriceItemsInObject.Add(priceItem);
+        }
+
+        private void AddPriceVolatilityItems(PriceVolatilityItemKindEnum kind, DateTimeOffset date, TimeSpan timeSpan = new TimeSpan())
+        {
+            var priceVolatilities = PriceVolatilities.InDate(BaseNightCheckInTime);
+            foreach (var priceVolatility in priceVolatilities)
+            {
+                var priceItem = new PriceVolatilityItem()
+                {
+                    Booking = this,
+                    Kind = kind,
+                    Date = date,
+                    TimeSpan = timeSpan,
+                    PriceVolatility = priceVolatility
+                };
+                PriceVolatilityItemsInObject.Add(priceItem);
+            }
         }
     }
 }

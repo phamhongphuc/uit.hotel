@@ -7,14 +7,14 @@ using uit.hotel.test.Helper;
 namespace uit.hotel.test._GraphQL
 {
     [TestClass]
-    public class _VolatilityPrice : RealmDatabase
+    public class _PriceVolatility : RealmDatabase
     {
         [TestMethod]
-        public void Mutation_CreateVolatilityPrice()
+        public void Mutation_CreatePriceVolatility()
         {
             SchemaHelper.Execute(
-                @"/_GraphQL/VolatilityPrice/mutation.createVolatilityPrice.gql",
-                @"/_GraphQL/VolatilityPrice/mutation.createVolatilityPrice.schema.json",
+                @"/_GraphQL/PriceVolatility/mutation.createPriceVolatility.gql",
+                @"/_GraphQL/PriceVolatility/mutation.createPriceVolatility.schema.json",
                 new
                 {
                     input = new
@@ -42,11 +42,11 @@ namespace uit.hotel.test._GraphQL
         }
 
         [TestMethod]
-        public void Mutation_CreateVolatilityPrice_InvalidRoomKind()
+        public void Mutation_CreatePriceVolatility_InvalidRoomKind()
         {
             SchemaHelper.ExecuteAndExpectError(
                 "Mã loại phòng không tồn tại",
-                @"/_GraphQL/VolatilityPrice/mutation.createVolatilityPrice.gql",
+                @"/_GraphQL/PriceVolatility/mutation.createPriceVolatility.gql",
                 new
                 {
                     input = new
@@ -74,7 +74,7 @@ namespace uit.hotel.test._GraphQL
         }
 
         [TestMethod]
-        public void Mutation_CreateVolatilityPrice_InvalidRoomKind_InActive()
+        public void Mutation_CreatePriceVolatility_InvalidRoomKind_InActive()
         {
             Database.WriteAsync(realm => realm.Add(new RoomKind
             {
@@ -87,7 +87,7 @@ namespace uit.hotel.test._GraphQL
 
             SchemaHelper.ExecuteAndExpectError(
                 "Loại phòng 200 đã ngưng hoại động",
-                @"/_GraphQL/VolatilityPrice/mutation.createVolatilityPrice.gql",
+                @"/_GraphQL/PriceVolatility/mutation.createPriceVolatility.gql",
                 new
                 {
                     input = new
@@ -117,13 +117,14 @@ namespace uit.hotel.test._GraphQL
         [TestMethod]
         public void Mutation_DeletelatilityPrice()
         {
-            Database.WriteAsync(realm => realm.Add(new VolatilityPrice
+            Database.WriteAsync(realm => realm.Add(new PriceVolatility
             {
-                Id = 10
+                Id = 10,
+                RoomKind = RoomKindBusiness.Get(1)
             })).Wait();
             SchemaHelper.Execute(
-                @"/_GraphQL/VolatilityPrice/mutation.deleteVolatilityPrice.gql",
-                @"/_GraphQL/VolatilityPrice/mutation.deleteVolatilityPrice.schema.json",
+                @"/_GraphQL/PriceVolatility/mutation.deletePriceVolatility.gql",
+                @"/_GraphQL/PriceVolatility/mutation.deletePriceVolatility.schema.json",
                 new { id = 10 },
                 p => p.PermissionManagePrice = true
             );
@@ -134,16 +135,16 @@ namespace uit.hotel.test._GraphQL
         {
             SchemaHelper.ExecuteAndExpectError(
                 "Giá có Id: 100 không hợp lệ!",
-                @"/_GraphQL/VolatilityPrice/mutation.deleteVolatilityPrice.gql",
+                @"/_GraphQL/PriceVolatility/mutation.deletePriceVolatility.gql",
                 new { id = 100 },
                 p => p.PermissionManagePrice = true
             );
         }
 
         [TestMethod]
-        public void Mutation_UpdateVolatilityPrice()
+        public void Mutation_UpdatePriceVolatility()
         {
-            Database.WriteAsync(realm => realm.Add(new VolatilityPrice
+            Database.WriteAsync(realm => realm.Add(new PriceVolatility
             {
                 Id = 20,
                 RoomKind = RoomKindBusiness.Get(1),
@@ -151,7 +152,7 @@ namespace uit.hotel.test._GraphQL
             })).Wait();
             SchemaHelper.ExecuteAndExpectError(
                 "Mã loại phòng không tồn tại",
-                @"/_GraphQL/VolatilityPrice/mutation.updateVolatilityPrice.gql",
+                @"/_GraphQL/PriceVolatility/mutation.updatePriceVolatility.gql",
                 new
                 {
                     input = new
@@ -180,11 +181,11 @@ namespace uit.hotel.test._GraphQL
         }
 
         [TestMethod]
-        public void Mutation_UpdateVolatilityPrice_InvalidId()
+        public void Mutation_UpdatePriceVolatility_InvalidId()
         {
             SchemaHelper.ExecuteAndExpectError(
                 "Giá có Id: 100 không hợp lệ!",
-                @"/_GraphQL/VolatilityPrice/mutation.updateVolatilityPrice.gql",
+                @"/_GraphQL/PriceVolatility/mutation.updatePriceVolatility.gql",
                 new
                 {
                     input = new
@@ -213,17 +214,17 @@ namespace uit.hotel.test._GraphQL
         }
 
         [TestMethod]
-        public void Mutation_UpdateVolatilityPrice_InvalidRoomKind()
+        public void Mutation_UpdatePriceVolatility_InvalidRoomKind()
         {
-            Database.WriteAsync(realm => realm.Add(new VolatilityPrice
+            Database.WriteAsync(realm => realm.Add(new PriceVolatility
             {
                 Id = 21,
                 RoomKind = RoomKindBusiness.Get(1),
                 Employee = EmployeeBusiness.Get("admin")
             })).Wait();
             SchemaHelper.Execute(
-                @"/_GraphQL/VolatilityPrice/mutation.updateVolatilityPrice.gql",
-                @"/_GraphQL/VolatilityPrice/mutation.updateVolatilityPrice.schema.json",
+                @"/_GraphQL/PriceVolatility/mutation.updatePriceVolatility.gql",
+                @"/_GraphQL/PriceVolatility/mutation.updatePriceVolatility.schema.json",
                 new
                 {
                     input = new
@@ -252,7 +253,7 @@ namespace uit.hotel.test._GraphQL
         }
 
         [TestMethod]
-        public void Mutation_UpdateVolatilityPrice_InvalidRoomKind_InActive()
+        public void Mutation_UpdatePriceVolatility_InvalidRoomKind_InActive()
         {
             Database.WriteAsync(realm =>
             {
@@ -264,7 +265,7 @@ namespace uit.hotel.test._GraphQL
                     NumberOfBeds = 1,
                     IsActive = false
                 });
-                realm.Add(new VolatilityPrice
+                realm.Add(new PriceVolatility
                 {
                     Id = 22,
                     RoomKind = RoomKindBusiness.Get(1),
@@ -274,7 +275,7 @@ namespace uit.hotel.test._GraphQL
 
             SchemaHelper.ExecuteAndExpectError(
                 "Loại phòng 201 đã ngưng hoại động",
-                @"/_GraphQL/VolatilityPrice/mutation.updateVolatilityPrice.gql",
+                @"/_GraphQL/PriceVolatility/mutation.updatePriceVolatility.gql",
                 new
                 {
                     input = new
@@ -303,22 +304,40 @@ namespace uit.hotel.test._GraphQL
         }
 
         [TestMethod]
-        public void Query_VolatilityPrice()
+        public void Query_PriceVolatility()
         {
+            Database.WriteAsync(realm =>
+            {
+                realm.Add(new RoomKind
+                {
+                    Id = 301,
+                    Name = "Tên loại phòng",
+                    AmountOfPeople = 1,
+                    NumberOfBeds = 1,
+                    IsActive = false
+                });
+                realm.Add(new PriceVolatility
+                {
+                    Id = 23,
+                    RoomKind = RoomKindBusiness.Get(1),
+                    Employee = EmployeeBusiness.Get("admin")
+                });
+            }).Wait();
+
             SchemaHelper.Execute(
-                @"/_GraphQL/VolatilityPrice/query.volatilityPrice.gql",
-                @"/_GraphQL/VolatilityPrice/query.volatilityPrice.schema.json",
-                new { id = 1 },
+                @"/_GraphQL/PriceVolatility/query.priceVolatility.gql",
+                @"/_GraphQL/PriceVolatility/query.priceVolatility.schema.json",
+                new { id = 23 },
                 p => p.PermissionGetPrice = true
             );
         }
 
         [TestMethod]
-        public void Query_VolatilityPrices()
+        public void Query_PriceVolatilities()
         {
             SchemaHelper.Execute(
-                @"/_GraphQL/VolatilityPrice/query.volatilityPrices.gql",
-                @"/_GraphQL/VolatilityPrice/query.volatilityPrices.schema.json",
+                @"/_GraphQL/PriceVolatility/query.priceVolatilities.gql",
+                @"/_GraphQL/PriceVolatility/query.priceVolatilities.schema.json",
                 null,
                 p => p.PermissionGetPrice = true
             );
