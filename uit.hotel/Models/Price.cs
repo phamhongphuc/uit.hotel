@@ -20,8 +20,5 @@ namespace uit.hotel.Models
         public DateTimeOffset CreateDate { get; set; }
         public Employee Employee { get; set; }
         public RoomKind RoomKind { get; set; }
-
-        [Backlink(nameof(Booking.Price))]
-        public IQueryable<Booking> Bookings { get; }
     }
 }

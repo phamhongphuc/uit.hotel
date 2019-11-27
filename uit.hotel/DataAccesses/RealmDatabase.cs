@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Threading.Tasks;
 using Realms;
 using uit.hotel.Models;
 
@@ -28,6 +29,7 @@ namespace uit.hotel.DataAccesses
                     typeof(PatronKind),
                     typeof(Position),
                     typeof(Price),
+                    typeof(PriceItem),
                     typeof(PriceVolatility),
                     typeof(Receipt),
                     typeof(Room),
@@ -39,5 +41,11 @@ namespace uit.hotel.DataAccesses
         }
 
         protected static Realm Database => Realm.GetInstance(Config);
+
+        protected static async Task WriteAsync(Action<Realm> action)
+        {
+            if (Database.IsInTransaction) action(Database);
+            else await Database.WriteAsync(action);
+        }
     }
 }

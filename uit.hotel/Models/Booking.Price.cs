@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Realms;
 using uit.hotel.Businesses;
 using uit.hotel.Queries.Helper;
@@ -9,19 +10,26 @@ namespace uit.hotel.Models
 {
     public partial class Booking : RealmObject
     {
-        public long TotalPrice { get; set; }
+        [Backlink(nameof(PriceItem.Booking))]
+        private IQueryable<PriceItem> PriceItemsInDatabase { get; }
+        [Ignored]
+        private IList<PriceItem> PriceItemsInObject { get; set; }
+        [Ignored]
+        public IEnumerable<PriceItem> PriceItems => IsManaged ? PriceItemsInDatabase.ToList() : PriceItemsInObject;
 
         //? Calculated fields
         public DateTimeOffset BaseCheckInTime { get; private set; }
+        public DateTimeOffset BaseDayCheckInTime { get; private set; }
         public DateTimeOffset BaseCheckOutTime { get; private set; }
 
-        public Price Price { get; private set; }
-        public long HourPrice { get; private set; }
-        public long NightPrice { get; private set; }
-        public long DayPrice { get; private set; }
-        public long EarlyCheckInFee { get; private set; }
-        public long LateCheckOutFee { get; private set; }
+        public long TotalPrice { get; set; }
+        public long EarlyCheckInFee { get; set; }
+        public long LateCheckOutFee { get; set; }
+        public Price Price { get; set; }
 
+        //? Temporary fields
+        [Ignored]
+        private TimeSpan TimeSpan => BaseCheckOutTime - BaseCheckInTime;
 
         public void CalculatePrice()
         {
@@ -32,114 +40,131 @@ namespace uit.hotel.Models
 
             Price = Room.RoomKind.GetPrice(BaseCheckInTime);
 
-            EarlyCheckInFee = 0;
-            LateCheckOutFee = 0;
-            HourPrice = 0;
-            NightPrice = 0;
-            DayPrice = 0;
-
+            CleanItems();
             CalculateCaseByCase();
+            SaveResult();
+        }
 
-            TotalPrice = HourPrice + EarlyCheckInFee + LateCheckOutFee + NightPrice + DayPrice;
+        private void CleanItems()
+        {
+            PriceItemBusiness.Delete(PriceItemsInDatabase);
+            PriceItemsInObject = new List<PriceItem>();
         }
 
         private void CalculateCaseByCase()
         {
-            CalculateHour();
-            if (HourPrice != 0) return;
+            var isCalculated = CalculateHour();
+            if (isCalculated) return;
 
             CalculateCheckIn();
             CalculateCheckOut();
+
+            CalculateFee();
             CalculateNight();
-            CalculateDay();
+            CalculateDayWeekMonth();
+            CalculateSumary();
         }
 
-        private void CalculateHour()
+        private bool CalculateHour()
         {
-            var timeSpan = BaseCheckOutTime - BaseCheckInTime;
-            if (timeSpan.FloatHour() <= BookingBusiness._HourTimeSpan)
-            {
-                var price = Price.HourPrice;
-                HourPrice = timeSpan.MultiplyByHourPrice(price);
-            }
+            if (TimeSpan.FloatHour() > BookingBusiness._HourTimeSpan) return false;
+            AddPriceItem(PriceItemKindEnum.Hour, TimeSpan);
+            return true;
         }
 
         private void CalculateCheckIn()
         {
             var checkInHour = BaseCheckInTime.FloatHour();
+
             if (checkInHour <= BookingBusiness._MaxCheckInNightTime)
-            {
                 BaseCheckInTime = BaseCheckInTime.AtHour(BookingBusiness._CheckInNightTime).AddDays(-1);
-            }
             else if (checkInHour <= BookingBusiness._CheckInDayTime)
-            {
-                EarlyCheckInFee = (long)(Price.EarlyCheckInFee * (BookingBusiness._CheckInDayTime - checkInHour));
                 BaseCheckInTime = BaseCheckInTime.AtHour(BookingBusiness._CheckInDayTime);
-            }
             else if (checkInHour <= BookingBusiness._CheckInNightTime - BookingBusiness._ToleranceTimeSpan)
-            {
                 BaseCheckInTime.AtHour(BookingBusiness._CheckInDayTime);
-            }
             else if (checkInHour <= BookingBusiness._CheckInNightTime)
-            {
-                EarlyCheckInFee = (long)(Price.EarlyCheckInFee * (BookingBusiness._CheckInNightTime - checkInHour));
                 BaseCheckInTime = BaseCheckInTime.AtHour(BookingBusiness._CheckInNightTime);
-            }
             else
-            {
                 BaseCheckInTime = BaseCheckInTime.AtHour(BookingBusiness._CheckInNightTime);
-            }
         }
 
         private void CalculateCheckOut()
         {
             var checkOutTime = BaseCheckOutTime.FloatHour();
+
             if (checkOutTime <= BookingBusiness._CheckOutNightTime)
-            {
                 BaseCheckOutTime = BaseCheckOutTime.AtHour(BookingBusiness._CheckOutNightTime);
-            }
             else if (checkOutTime <= BookingBusiness._CheckInDayTime + BookingBusiness._ToleranceTimeSpan)
-            {
                 BaseCheckOutTime = BaseCheckOutTime.AtHour(BookingBusiness._CheckInNightTime);
-                LateCheckOutFee = (long)(Price.LateCheckOutFee * (checkOutTime - BookingBusiness._CheckOutNightTime));
-            }
             else
-            {
                 BaseCheckOutTime = BaseCheckOutTime.AtHour(BookingBusiness._CheckOutDayTime).AddDays(1);
-            }
+        }
+
+        private void CalculateFee()
+        {
+            EarlyCheckInFee = (long)(Price.EarlyCheckInFee * (BookingBusiness._CheckInNightTime - BaseCheckInTime.FloatHour()));
+            LateCheckOutFee = (long)(Price.LateCheckOutFee * (BaseCheckOutTime.FloatHour() - BookingBusiness._CheckOutNightTime));
         }
 
         private void CalculateNight()
         {
-            if (BaseCheckInTime.FloatHour() == BookingBusiness._CheckInNightTime) // isNight
-            {
-                NightPrice = Price.NightPrice;
-                BaseCheckInTime = BaseCheckInTime.AtHour(BookingBusiness._CheckInDayTime).AddDays(1);
-            }
+            if (BaseCheckInTime.FloatHour() != BookingBusiness._CheckInNightTime) return;
+
+            var nextTime = BaseCheckInTime.AtHour(BookingBusiness._CheckInDayTime).AddDays(1);
+            AddPriceItem(PriceItemKindEnum.Night, nextTime - BaseCheckInTime);
+            BaseCheckInTime = nextTime;
         }
 
-        private void CalculateDay()
+        private void CalculateDayWeekMonth()
         {
-            var iterateTime = BaseCheckInTime;
-            while (iterateTime <= BaseCheckOutTime)
+            var startDay = BaseCheckInTime.AtHour(0);
+            var endDay = BaseCheckOutTime.AtHour(0);
+
+            var iterateTime = startDay;
+            while (iterateTime < endDay)
             {
                 var remain = (BaseCheckOutTime - iterateTime).Days;
                 if (remain >= 30 && Price.MonthPrice != 0)
                 {
-                    DayPrice += Price.MonthPrice;
-                    iterateTime = iterateTime.AddDays(30);
+                    var days = remain / 30 * 30;
+                    AddPriceItem(PriceItemKindEnum.Month, new TimeSpan(days, 0, 0, 0));
+                    iterateTime = iterateTime.AddDays(days);
                 }
                 else if (remain >= 7 && Price.WeekPrice != 0)
                 {
-                    DayPrice += Price.WeekPrice;
-                    iterateTime = iterateTime.AddDays(7);
+                    var days = remain / 7 * 7;
+                    AddPriceItem(PriceItemKindEnum.Week, new TimeSpan(days, 0, 0, 0));
+                    iterateTime = iterateTime.AddDays(days);
                 }
                 else
                 {
-                    DayPrice += Price.DayPrice;
-                    iterateTime = iterateTime.AddDays(1);
+                    AddPriceItem(PriceItemKindEnum.Day, new TimeSpan(remain, 0, 0, 0));
+                    iterateTime = iterateTime.AddDays(remain + 1);
                 }
             }
+        }
+
+        private void CalculateSumary()
+        {
+            TotalPrice = PriceItems.Aggregate<PriceItem, long>(0, (sum, priceItem) => sum + priceItem.Value);
+        }
+
+        private void SaveResult()
+        {
+            if (!IsManaged) return;
+            PriceItemBusiness.Add(PriceItems);
+        }
+
+        // Helper Method
+        private void AddPriceItem(PriceItemKindEnum kind, TimeSpan timeSpan = new TimeSpan())
+        {
+            var priceItem = new PriceItem()
+            {
+                Booking = this,
+                Kind = kind,
+                TimeSpan = timeSpan
+            };
+            PriceItemsInObject.Add(priceItem);
         }
     }
 }

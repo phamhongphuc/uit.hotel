@@ -37,16 +37,9 @@ namespace uit.hotel.ObjectTypes
 
             Field(x => x.BaseCheckInTime).Description("Thời gian nhận phòng được dùng");
             Field(x => x.BaseCheckOutTime).Description("Thời gian trả phòng được dùng");
-            Field(x => x.HourPrice).Description("Giá theo giờ");
-            Field(x => x.NightPrice).Description("Giá theo đêm");
-            Field(x => x.DayPrice).Description("Giá theo ngày");
+
             Field(x => x.EarlyCheckInFee).Description("Phí nhận phòng sớm");
             Field(x => x.LateCheckOutFee).Description("Phí trả phòng trễ");
-            Field<NonNullGraphType<PriceType>>(
-                nameof(Booking.Price),
-                "Giá đang được dùng",
-                resolve: context => context.Source.Price
-            );
 
             Field<EmployeeType>(
                 nameof(Booking.EmployeeBooking),
@@ -85,6 +78,15 @@ namespace uit.hotel.ObjectTypes
                 nameof(Booking.ServicesDetails),
                 "Danh sách chi tiết sử dụng dịch vụ của khách hàng",
                 resolve: context => context.Source.ServicesDetails.ToList()
+            );
+            Field<NonNullGraphType<PriceType>>(
+                nameof(Booking.Price),
+                "Công thức giá"
+            );
+            Field<NonNullGraphType<ListGraphType<PriceItemType>>>(
+                nameof(Booking.PriceItems),
+                "Danh sách đơn vị giá",
+                resolve: context => context.Source.PriceItems.ToList()
             );
         }
     }
