@@ -76,6 +76,7 @@ namespace uit.hotel.Models
             CalculateFee();
             CalculateNight();
             CalculateDayWeekMonth();
+
             CalculateSumary();
         }
 
@@ -174,8 +175,8 @@ namespace uit.hotel.Models
         private void CalculateSumary()
         {
             TotalPrice =
-                PriceItems.Aggregate<PriceItem, long>(0, (sum, x) => sum + x.Value) +
-                PriceVolatilityItems.Aggregate<PriceVolatilityItem, long>(0, (sum, x) => sum + x.Value);
+                PriceItemsInObject.Aggregate<PriceItem, long>(0, (sum, x) => sum + x.Value) +
+                PriceVolatilityItemsInObject.Aggregate<PriceVolatilityItem, long>(0, (sum, x) => sum + x.Value);
         }
 
         private void SaveResult()
@@ -183,8 +184,8 @@ namespace uit.hotel.Models
             PriceVolatilities.Clear();
 
             if (!IsManaged) return;
-            PriceItemBusiness.Add(PriceItems);
-            PriceVolatilityItemBusiness.Add(PriceVolatilityItems);
+            PriceItemBusiness.Add(PriceItemsInObject);
+            PriceVolatilityItemBusiness.Add(PriceVolatilityItemsInObject);
 
             PriceItemsInObject.Clear();
             PriceVolatilityItemsInObject.Clear();
