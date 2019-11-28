@@ -935,13 +935,25 @@
     import-from "3.0.0"
     tslib "1.10.0"
 
-"@graphql-codegen/schema-ast@^1.9.0":
-  version "1.9.0"
-  resolved "https://registry.yarnpkg.com/@graphql-codegen/schema-ast/-/schema-ast-1.9.0.tgz#0cbaef326fda9d1c312dda1920d5d30d11fa2523"
-  integrity sha512-8LQzLQjfTJGz5CoPN1AIcF8wsS3g/PBmJDn5k8c6vp/lByRbCCjXuoXMy2MefSX/VG7T9Yg9upwt6mvCLAq5XA==
+"@graphql-codegen/plugin-helpers@1.9.1":
+  version "1.9.1"
+  resolved "https://registry.yarnpkg.com/@graphql-codegen/plugin-helpers/-/plugin-helpers-1.9.1.tgz#2be98ca17d71c7395508a8f3880bd1e5cb3e206b"
+  integrity sha512-Ji8pk7t6Lcjj09R4Qc7yS7LsyQw9A5IUwFa0LFXyLpdNOmukGhnenIkHG/eLqPzWQfVSXvBsqQBYYDsW8YlDlQ==
   dependencies:
-    "@graphql-codegen/plugin-helpers" "1.8.3"
-    "@graphql-toolkit/common" "0.7.2"
+    "@graphql-toolkit/common" "0.7.4"
+    change-case "3.1.0"
+    common-tags "1.8.0"
+    import-from "3.0.0"
+    tslib "1.10.0"
+
+"@graphql-codegen/schema-ast@^1.9.1":
+  version "1.9.1"
+  resolved "https://registry.yarnpkg.com/@graphql-codegen/schema-ast/-/schema-ast-1.9.1.tgz#1cf92df38a1d4b250a2635d31db375f1317b508e"
+  integrity sha512-cP1aURpK9z57WXSQZcjkPlq8dlSXYI3TiNk6oRdQuiGCnnZbcdKMTm5o14+4Fg0VM+GFKaPg2U4kPkgN6Ketow==
+  dependencies:
+    "@graphql-codegen/plugin-helpers" "1.9.1"
+    "@graphql-toolkit/common" "0.7.4"
+    tslib "1.10.0"
 
 "@graphql-codegen/typescript-compatibility@^1.9.0":
   version "1.9.0"
@@ -1021,6 +1033,15 @@
   version "0.7.2"
   resolved "https://registry.yarnpkg.com/@graphql-toolkit/common/-/common-0.7.2.tgz#10d5ea0a73aac483fba1bf7b1c1274a0ec1da195"
   integrity sha512-VXbyoaEtWIJVyld/XAysWCcdU20VFckAhTRjsf/H5IvqZy89LvVJiPgzVkJqWfYVVT1UxGJSLEnIIFyfk6V9SQ==
+  dependencies:
+    "@kamilkisiela/graphql-tools" "4.0.6"
+    aggregate-error "3.0.1"
+    lodash "4.17.15"
+
+"@graphql-toolkit/common@0.7.4":
+  version "0.7.4"
+  resolved "https://registry.yarnpkg.com/@graphql-toolkit/common/-/common-0.7.4.tgz#abf995268572c83da6e093e8578a67add73d2d51"
+  integrity sha512-uRNF8JT52CVQ4SWM0lbIL+y44G8WSSZ+MIPNoYq6guT4wbwYDMHWPk/6QXyfBN8N5kZePg/Xa9tTyzWF9SLC1w==
   dependencies:
     "@kamilkisiela/graphql-tools" "4.0.6"
     aggregate-error "3.0.1"
