@@ -34,9 +34,7 @@ namespace uit.hotel.DataAccesses
                 patronInDatabase.Company = patron.Company;
                 patronInDatabase.Note = patron.Note;
                 patronInDatabase.PatronKind = patron.PatronKind;
-
-                patronInDatabase.PhoneNumbers.Clear();
-                foreach (var p in patron.PhoneNumbers) patronInDatabase.PhoneNumbers.Add(p);
+                patronInDatabase.PhoneNumbers = patron.PhoneNumbers;
             });
             return patronInDatabase;
         }

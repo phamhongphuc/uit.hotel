@@ -8,18 +8,6 @@ namespace uit.hotel.Models
 {
     public class Patron : RealmObject
     {
-        [Ignored]
-        public List<string> ListOfPhoneNumbers
-        {
-            set
-            {
-                if (IsManaged)
-                    throw new Exception("Chỉ tạo setter cho trường dữ liệu này đối với đối tượng chưa được quản lý");
-                foreach (var phoneNumber in value)
-                    PhoneNumbers.Add(phoneNumber);
-            }
-        }
-
         [Indexed]
         [PrimaryKey]
         public int Id { get; set; }
@@ -29,7 +17,7 @@ namespace uit.hotel.Models
         public string Email { get; set; }
         public bool Gender { get; set; }
         public DateTimeOffset Birthdate { get; set; }
-        public IList<string> PhoneNumbers { get; }
+        public string PhoneNumbers { get; set; }
         public string Nationality { get; set; } // Quốc tịch
         public string Domicile { get; set; } // Nguyên quán
         public string Residence { get; set; } // Thường trú
