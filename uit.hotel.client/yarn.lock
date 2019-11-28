@@ -960,14 +960,13 @@
     import-from "3.0.0"
     tslib "1.10.0"
 
-"@graphql-codegen/schema-ast@^1.8.3":
-  version "1.8.3"
-  resolved "https://registry.yarnpkg.com/@graphql-codegen/schema-ast/-/schema-ast-1.8.3.tgz#28beaabe239bdcf34e5600ae07a2d7cf6fd217cd"
-  integrity sha512-o3CraFnU0RdFmNjYHg/pN8ABceflzjhr4AtCv3jZvhN9JBnsYJx7qED/Jbhsjxlq+XpSJrrhSOq8Ghpvj/kYdg==
+"@graphql-codegen/schema-ast@^1.9.0":
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/@graphql-codegen/schema-ast/-/schema-ast-1.9.0.tgz#0cbaef326fda9d1c312dda1920d5d30d11fa2523"
+  integrity sha512-8LQzLQjfTJGz5CoPN1AIcF8wsS3g/PBmJDn5k8c6vp/lByRbCCjXuoXMy2MefSX/VG7T9Yg9upwt6mvCLAq5XA==
   dependencies:
     "@graphql-codegen/plugin-helpers" "1.8.3"
-    "@graphql-toolkit/common" "0.6.6"
-    tslib "1.10.0"
+    "@graphql-toolkit/common" "0.7.2"
 
 "@graphql-codegen/typescript-compatibility@^1.9.0":
   version "1.9.0"
@@ -1036,6 +1035,15 @@
   version "0.6.6"
   resolved "https://registry.yarnpkg.com/@graphql-toolkit/common/-/common-0.6.6.tgz#78e40a60eff843497140abf18733e170de4a1a40"
   integrity sha512-6el8vYdtwO+LCZTfrpBsblsCYFFeUQ7W/KMGz2K/paE2V6mn93T0lzGkyGTSjxknqvqaTJOUMejzK719wAoQdQ==
+  dependencies:
+    "@kamilkisiela/graphql-tools" "4.0.6"
+    aggregate-error "3.0.1"
+    lodash "4.17.15"
+
+"@graphql-toolkit/common@0.7.2":
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/@graphql-toolkit/common/-/common-0.7.2.tgz#10d5ea0a73aac483fba1bf7b1c1274a0ec1da195"
+  integrity sha512-VXbyoaEtWIJVyld/XAysWCcdU20VFckAhTRjsf/H5IvqZy89LvVJiPgzVkJqWfYVVT1UxGJSLEnIIFyfk6V9SQ==
   dependencies:
     "@kamilkisiela/graphql-tools" "4.0.6"
     aggregate-error "3.0.1"
