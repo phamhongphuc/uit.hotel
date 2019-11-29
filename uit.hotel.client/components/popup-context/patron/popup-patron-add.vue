@@ -73,8 +73,8 @@
                     />
                     <div class="input-label">Số điện thoại</div>
                     <b-input-
-                        v-model="phoneNumbers"
-                        :state="!$v.input.listOfPhoneNumbers.$invalid"
+                        v-model="input.phoneNumbers"
+                        :state="!$v.input.phoneNumbers.$invalid"
                         class="m-3 rounded"
                         icon="phone"
                     />
@@ -144,13 +144,13 @@ import { PopupMixin, DataMixin } from '~/components/mixins';
 import { PatronCreateInput } from '~/graphql/types';
 import { getPatronKinds, createPatron } from '~/graphql/documents';
 import {
-    birthdate,
     gender,
     identification,
     included,
-    listOfPhoneNumbers,
+    phoneNumbers,
     name,
     optional,
+    optionalBirthdate,
     optionalEmail,
 } from '~/modules/validator';
 
@@ -162,8 +162,8 @@ import {
             identification,
             gender,
             patronKind: included('patronKind'),
-            birthdate,
-            listOfPhoneNumbers,
+            birthdate: optionalBirthdate,
+            phoneNumbers,
             email: optionalEmail,
             company: {},
             nationality: {},
@@ -177,10 +177,7 @@ export default class extends mixins<PopupMixin<void, PatronCreateInput>>(
     PopupMixin,
     DataMixin({ createPatron, getPatronKinds, optional }),
 ) {
-    phoneNumbers = '';
-
     onOpen() {
-        const { phoneNumbers } = this;
         this.input = {
             name: '',
             identification: '',
@@ -189,11 +186,7 @@ export default class extends mixins<PopupMixin<void, PatronCreateInput>>(
                 id: -1,
             },
             birthdate: '',
-            get listOfPhoneNumbers() {
-                return phoneNumbers === null || phoneNumbers === ''
-                    ? []
-                    : phoneNumbers.split(/\s*,\s*/);
-            },
+            phoneNumbers: '',
             email: '',
             company: '',
             nationality: '',

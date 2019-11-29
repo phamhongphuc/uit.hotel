@@ -17,12 +17,9 @@ export const optionalBirthdate = {
     or: or(not(required), and(validDate, beforeDate())),
 };
 
-export const listOfPhoneNumbers = {
-    minLength: minLength(0),
-    $each: {
-        required,
-        numeric,
-    },
+export const phoneNumbers = {
+    minLength: minLength(8),
+    numeric,
 };
 
 export const patronKindName = {

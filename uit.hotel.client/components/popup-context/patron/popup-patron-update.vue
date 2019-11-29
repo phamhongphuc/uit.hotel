@@ -75,7 +75,7 @@
                     <div class="input-label">Số điện thoại</div>
                     <b-input-
                         v-model="phoneNumbers"
-                        :state="!$v.input.listOfPhoneNumbers.$invalid"
+                        :state="!$v.input.phoneNumbers.$invalid"
                         class="m-3 rounded"
                         icon="phone"
                     />
@@ -149,7 +149,7 @@ import {
     gender,
     identification,
     included,
-    listOfPhoneNumbers,
+    phoneNumbers,
     name,
     optional,
     optionalEmail,
@@ -164,7 +164,7 @@ import {
             gender,
             patronKind: included('patronKind'),
             birthdate,
-            listOfPhoneNumbers,
+            phoneNumbers,
             email: optionalEmail,
             company: {},
             nationality: {},
@@ -177,11 +177,7 @@ import {
 export default class extends mixins<
     PopupMixin<{ patron: GetPatrons.Patrons }, PatronUpdateInput>
 >(PopupMixin, DataMixin({ updatePatron, getPatronKinds, optional })) {
-    phoneNumbers = '';
-
     onOpen() {
-        this.phoneNumbers = this.data.patron.phoneNumbers.join(',');
-
         const {
             id,
             identification,
@@ -193,9 +189,9 @@ export default class extends mixins<
             domicile,
             residence,
             company,
+            phoneNumbers,
             note,
         } = this.data.patron;
-        const { phoneNumbers } = this;
 
         this.input = {
             id,
@@ -209,9 +205,7 @@ export default class extends mixins<
             residence,
             company,
             note,
-            get listOfPhoneNumbers() {
-                return phoneNumbers === '' ? [] : phoneNumbers.split(/\s*,\s*/);
-            },
+            phoneNumbers,
             patronKind: {
                 id: -1,
             },
