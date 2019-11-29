@@ -10,20 +10,20 @@ export type Scalars = {
      * The `DateTimeOffset` scalar type represents a date, time and offset from UTC.
      * `DateTimeOffset` expects timestamps to be formatted in accordance with the
      * [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-     **/
+     */
     DateTimeOffset: string | Date;
     /** The `Seconds` scalar type represents a period of time represented as the total number of seconds. */
     Seconds: number;
     /**
      * The `Date` scalar type represents a year, month and day in accordance with the
      * [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-     **/
+     */
     Date: string | Date;
     /**
      * The `DateTime` scalar type represents a date and time. `DateTime` expects
      * timestamps to be formatted in accordance with the
      * [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-     **/
+     */
     DateTime: string | Date;
     Decimal: number;
     /** The `Milliseconds` scalar type represents a period of time represented as the total number of milliseconds. */
@@ -774,7 +774,7 @@ export type Patron = {
     /** Loại khách hàng */
     patronKind: PatronKind;
     /** Danh sách số điện thoại của khách hàng */
-    phoneNumbers: Array<Scalars['String']>;
+    phoneNumbers: Scalars['String'];
     /** Địa chỉ thường trú của khách hàng */
     residence: Scalars['String'];
 };
@@ -796,12 +796,12 @@ export type PatronCreateInput = {
     domicile: Scalars['String'];
     /** Địa chỉ thường trú của khách hàng */
     residence: Scalars['String'];
+    /** Danh sách số điện thoại của khách hàng */
+    phoneNumbers: Scalars['String'];
     /** Công ty mà khách hàng đang làm việc */
     company: Scalars['String'];
     /** Một số chú thích về khách hàng nếu cần thiết */
     note: Scalars['String'];
-    /** Danh sách số điện thoại của khách hàng */
-    listOfPhoneNumbers: Array<Scalars['String']>;
     /** Loại khách hàng */
     patronKind: PatronKindId;
 };
@@ -865,12 +865,12 @@ export type PatronUpdateInput = {
     domicile: Scalars['String'];
     /** Địa chỉ thường trú của khách hàng */
     residence: Scalars['String'];
+    /** Danh sách số điện thoại của khách hàng */
+    phoneNumbers: Scalars['String'];
     /** Công ty mà khách hàng đang làm việc */
     company: Scalars['String'];
     /** Một số chú thích về khách hàng nếu cần thiết */
     note: Scalars['String'];
-    /** Danh sách số điện thoại của khách hàng */
-    listOfPhoneNumbers: Array<Scalars['String']>;
     /** Loại khách hàng */
     patronKind: PatronKindId;
 };

@@ -86,7 +86,7 @@
                     <b-input-
                         v-model="phoneNumbers"
                         :disabled="disabled"
-                        :state="!$v.input.listOfPhoneNumbers.$invalid"
+                        :state="!$v.input.phoneNumbers.$invalid"
                         class="m-3 rounded"
                         icon="phone"
                     />
@@ -188,7 +188,7 @@ import {
     gender,
     identification,
     included,
-    listOfPhoneNumbers,
+    phoneNumbers,
     name,
     optional,
     optionalBirthdate,
@@ -204,7 +204,7 @@ import {
             gender,
             patronKind: included('patronKind'),
             birthdate: optionalBirthdate,
-            listOfPhoneNumbers,
+            phoneNumbers,
             email: optionalEmail,
             company: {},
             nationality: {},
@@ -220,8 +220,6 @@ export default class extends mixins<
     PopupMixin,
     DataMixin({ createPatron, getPatronKinds, getPatrons, optional }),
 ) {
-    phoneNumbers = '';
-
     patrons: GetPatrons.Patrons[] = [];
 
     get disabled() {
@@ -238,7 +236,6 @@ export default class extends mixins<
     }
 
     onOpen() {
-        const { phoneNumbers } = this;
         this.input = {
             identification: '',
             name: '',
@@ -247,9 +244,7 @@ export default class extends mixins<
                 id: -1,
             },
             birthdate: null,
-            get listOfPhoneNumbers() {
-                return phoneNumbers === '' ? [] : phoneNumbers.split(/\s*,\s*/);
-            },
+            phoneNumbers: '',
             email: '',
             company: '',
             nationality: '',
@@ -276,7 +271,7 @@ export default class extends mixins<
             this.input.gender = patron.gender;
             this.input.patronKind = patron.patronKind;
             this.input.birthdate = patron.birthdate;
-            this.phoneNumbers = patron.phoneNumbers.join(',');
+            this.input.phoneNumbers = patron.phoneNumbers;
             this.input.email = patron.email;
             this.input.company = patron.company;
             this.input.nationality = patron.nationality;

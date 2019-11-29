@@ -3363,17 +3363,9 @@
                             "kind": "NON_NULL",
                             "name": null,
                             "ofType": {
-                                "kind": "LIST",
-                                "name": null,
-                                "ofType": {
-                                    "kind": "NON_NULL",
-                                    "name": null,
-                                    "ofType": {
-                                        "kind": "SCALAR",
-                                        "name": "String",
-                                        "ofType": null
-                                    }
-                                }
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
                             }
                         },
                         "isDeprecated": false,
@@ -6459,6 +6451,20 @@
                         "defaultValue": null
                     },
                     {
+                        "name": "phoneNumbers",
+                        "description": "Danh sách số điện thoại của khách hàng",
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
                         "name": "company",
                         "description": "Công ty mà khách hàng đang làm việc",
                         "type": {
@@ -6482,28 +6488,6 @@
                                 "kind": "SCALAR",
                                 "name": "String",
                                 "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "listOfPhoneNumbers",
-                        "description": "Danh sách số điện thoại của khách hàng",
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "LIST",
-                                "name": null,
-                                "ofType": {
-                                    "kind": "NON_NULL",
-                                    "name": null,
-                                    "ofType": {
-                                        "kind": "SCALAR",
-                                        "name": "String",
-                                        "ofType": null
-                                    }
-                                }
                             }
                         },
                         "defaultValue": null
@@ -7922,6 +7906,20 @@
                         "defaultValue": null
                     },
                     {
+                        "name": "phoneNumbers",
+                        "description": "Danh sách số điện thoại của khách hàng",
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
                         "name": "company",
                         "description": "Công ty mà khách hàng đang làm việc",
                         "type": {
@@ -7945,28 +7943,6 @@
                                 "kind": "SCALAR",
                                 "name": "String",
                                 "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "listOfPhoneNumbers",
-                        "description": "Danh sách số điện thoại của khách hàng",
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "LIST",
-                                "name": null,
-                                "ofType": {
-                                    "kind": "NON_NULL",
-                                    "name": null,
-                                    "ofType": {
-                                        "kind": "SCALAR",
-                                        "name": "String",
-                                        "ofType": null
-                                    }
-                                }
                             }
                         },
                         "defaultValue": null

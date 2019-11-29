@@ -59,11 +59,8 @@
                             "pattern": "^(.*)$"
                         },
                         "phoneNumbers": {
-                            "type": "array",
-                            "items": {
-                                "type": "string",
-                                "pattern": "^(.*)$"
-                            }
+                            "type": "string",
+                            "pattern": "^(.*)$"
                         },
                         "nationality": {
                             "type": "string",

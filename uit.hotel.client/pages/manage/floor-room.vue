@@ -27,7 +27,7 @@
         <query-
             v-slot="{ data: { floors } }"
             :query="getFloors"
-            class="hotel-map row flex-1"
+            class="hotel-map row flex-1 overflow-hidden"
             child-class="col m-2 p-3 bg-white rounded shadow-sm overflow-auto"
         >
             <div>
