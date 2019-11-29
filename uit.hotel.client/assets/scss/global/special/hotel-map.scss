@@ -1,4 +1,7 @@
 .hotel-map {
+    > div {
+        max-height: calc(100% - 1rem);
+    }
     button {
         display: block;
         width: 10rem;

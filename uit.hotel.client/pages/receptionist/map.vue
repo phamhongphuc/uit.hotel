@@ -17,8 +17,8 @@
                 from,
                 to,
             }"
-            class="hotel-map row flex-1 p-2"
-            child-class="bg-white rounded shadow-sm w-100 overflow-auto"
+            class="hotel-map row flex-1 overflow-hidden"
+            child-class="m-2 bg-white rounded shadow-sm w-100 overflow-auto"
         >
             <div class="hotel-map-table-container p-3">
                 <table>
