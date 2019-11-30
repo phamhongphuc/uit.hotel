@@ -9,9 +9,9 @@ export const toMoney = (num: number) =>
 export const toDate = (date: string | number) => {
     const current = moment();
     const time = moment(date);
-    if (current.year() === time.year()) return time.format('hh:mm - DD/MM');
+    if (current.year() === time.year()) return time.format('HH:mm - DD/MM');
     if (time.year() === 1) return 'N/A';
-    return time.format('hh:mm - DD/MM/YYYY');
+    return time.format('HH:mm - DD/MM/YYYY');
 };
 
 export const toInputDate = (date: string | Date) =>
