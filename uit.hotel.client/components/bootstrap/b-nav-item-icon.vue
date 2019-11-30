@@ -15,7 +15,7 @@
         :router-tag="routerTag"
         :to="to"
         class="nav-item-icon"
-        @click="$emit('click')"
+        @click="$emit('click', $event)"
     >
         <icon- v-if="icon" :i="icon" />
         <div v-else-if="image !== ''" class="icon">

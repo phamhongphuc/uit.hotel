@@ -7,12 +7,13 @@
         :circle="circle"
         :text-class="textClass"
         :icon="icon"
-        :text="text"
-        @click="mutate"
+        :text="isClicked ? textConfirm : text"
+        :class="isClicked ? 'text-red' : ''"
+        @click="onClick"
     />
 </template>
 <script lang="ts">
-import { Component, mixins } from 'nuxt-property-decorator';
+import { Component, mixins, Prop } from 'nuxt-property-decorator';
 import {
     MutableMixin,
     IconProps,
@@ -28,5 +29,21 @@ export default class extends mixins<
     IconProps,
     TextProps,
     ImageProps
->(MutableMixin, IconProps, TextProps, ImageProps) {}
+>(MutableMixin, IconProps, TextProps, ImageProps) {
+    isClicked = false;
+
+    @Prop({ default: 'Ấn lần nữa để xác nhận' })
+    textConfirm!: string;
+
+    @Prop({ default: false, type: Boolean })
+    confirm!: boolean;
+
+    onClick(event: MouseEvent) {
+        if (!this.confirm || this.isClicked) this.mutate();
+        else {
+            event.stopPropagation();
+            this.isClicked = true;
+        }
+    }
+}
 </script>

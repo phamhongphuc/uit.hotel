@@ -20,6 +20,7 @@
             v-if="position.isActive"
             :mutation="deletePosition"
             :variables="{ id: position.id }"
+            confirm
             icon="trash-2"
             text="Xóa vị trí"
         />
