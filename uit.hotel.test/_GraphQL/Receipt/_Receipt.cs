@@ -63,7 +63,7 @@ namespace uit.hotel.test._GraphQL
                 Money = 1,
                 BankAccountNumber = "11111",
                 Bill = BillBusiness.Get(1),
-                Employee = EmployeeBusiness.Get(Constant.adminName)
+                Employee = EmployeeBusiness.Get(Constant.AdminName)
             })).Wait();
             SchemaHelper.Execute(
                 @"/_GraphQL/Receipt/query.receipt.gql",

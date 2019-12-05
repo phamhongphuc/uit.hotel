@@ -4,7 +4,7 @@ namespace uit.hotel.Queries.Helper
 {
     public static class Constant
     {
-        public static string adminName = "admin";
+        public static string AdminName = "admin";
 
         public static Employee admin = null;
     }
