@@ -24,8 +24,8 @@ namespace uit.hotel.ObjectTypes
             Field(x => x.Id).Description("Id của thông tin thuê phòng");
             Field(x => x.BookCheckInTime).Description("Thời điểm nhận phòng dự kiến của khách hàng");
             Field(x => x.BookCheckOutTime).Description("Thời điểm trả phòng dự kiến của khách hàng");
-            Field(x => x.RealCheckInTime, true).Description("Thời điểm nhận phòng của khách hàng");
-            Field(x => x.RealCheckOutTime, true).Description("Thời điểm trả phòng của khách hàng");
+            Field(x => x.RealCheckInTime).Description("Thời điểm nhận phòng của khách hàng");
+            Field(x => x.RealCheckOutTime).Description("Thời điểm trả phòng của khách hàng");
             Field(x => x.CreateTime).Description("Thời điểm tạo thông tin thuê phòng");
             Field<NonNullGraphType<BookingStatusEnumType>>(
                 nameof(Booking.Status),
@@ -70,12 +70,12 @@ namespace uit.hotel.ObjectTypes
                 resolve: context => context.Source.Room
             );
 
-            Field<NonNullGraphType<ListGraphType<PatronType>>>(
+            Field<NonNullGraphType<ListGraphType<NonNullGraphType<PatronType>>>>(
                 nameof(Booking.Patrons),
                 "Danh sách khách hàng yêu cầu đặt phòng",
                 resolve: context => context.Source.Patrons.ToList()
             );
-            Field<NonNullGraphType<ListGraphType<ServicesDetailType>>>(
+            Field<NonNullGraphType<ListGraphType<NonNullGraphType<ServicesDetailType>>>>(
                 nameof(Booking.ServicesDetails),
                 "Danh sách chi tiết sử dụng dịch vụ của khách hàng",
                 resolve: context => context.Source.ServicesDetails.ToList()
@@ -85,12 +85,12 @@ namespace uit.hotel.ObjectTypes
                 nameof(Booking.Price),
                 "Công thức giá"
             );
-            Field<NonNullGraphType<ListGraphType<PriceItemType>>>(
+            Field<NonNullGraphType<ListGraphType<NonNullGraphType<PriceItemType>>>>(
                 nameof(Booking.PriceItems),
                 "Danh sách đơn vị giá",
                 resolve: context => context.Source.PriceItems.ToList()
             );
-            Field<NonNullGraphType<ListGraphType<PriceVolatilityItemType>>>(
+            Field<NonNullGraphType<ListGraphType<NonNullGraphType<PriceVolatilityItemType>>>>(
                nameof(Booking.PriceVolatilityItems),
                "Danh sách đơn vị giá biến động",
                resolve: context => context.Source.PriceVolatilityItems.ToList()

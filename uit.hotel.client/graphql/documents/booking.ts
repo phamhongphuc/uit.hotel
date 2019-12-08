@@ -39,6 +39,35 @@ export const getBookingDetails = gql`
             bookCheckOutTime
             realCheckInTime
             realCheckOutTime
+
+            baseNightCheckInTime
+            baseDayCheckInTime
+            baseDayCheckOutTime
+
+            price {
+                id
+                hourPrice
+                nightPrice
+                dayPrice
+                weekPrice
+                monthPrice
+                earlyCheckInFee
+                lateCheckOutFee
+            }
+            priceItems {
+                kind
+                timeSpan
+                value
+            }
+            priceVolatilityItems {
+                kind
+                date
+                timeSpan
+                value
+            }
+            earlyCheckInFee
+            lateCheckOutFee
+
             status
             patrons {
                 id

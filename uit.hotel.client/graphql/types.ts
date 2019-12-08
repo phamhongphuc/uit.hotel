@@ -582,21 +582,21 @@ export type Booking = {
     /** Phí trả phòng trễ */
     lateCheckOutFee: Scalars['Int'];
     /** Danh sách khách hàng yêu cầu đặt phòng */
-    patrons: Array<Maybe<Patron>>;
+    patrons: Array<Patron>;
     /** Công thức giá */
     price: Price;
     /** Danh sách đơn vị giá */
-    priceItems: Array<Maybe<PriceItem>>;
+    priceItems: Array<PriceItem>;
     /** Danh sách đơn vị giá biến động */
-    priceVolatilityItems: Array<Maybe<PriceVolatilityItem>>;
+    priceVolatilityItems: Array<PriceVolatilityItem>;
     /** Thời điểm nhận phòng của khách hàng */
-    realCheckInTime: Maybe<Scalars['DateTimeOffset']>;
+    realCheckInTime: Scalars['DateTimeOffset'];
     /** Thời điểm trả phòng của khách hàng */
-    realCheckOutTime: Maybe<Scalars['DateTimeOffset']>;
+    realCheckOutTime: Scalars['DateTimeOffset'];
     /** Phòng khách hàng chọn đặt trước */
     room: Room;
     /** Danh sách chi tiết sử dụng dịch vụ của khách hàng */
-    servicesDetails: Array<Maybe<ServicesDetail>>;
+    servicesDetails: Array<ServicesDetail>;
     /** Trạng thái của thông tin thuê phòng */
     status: BookingStatusEnum;
     /** Tổng tiền */
@@ -1474,7 +1474,7 @@ export type GetBookingsQuery = {
             | 'realCheckOutTime'
             | 'status'
         > & {
-            patrons: Array<Maybe<Pick<Patron, 'id' | 'name'>>>;
+            patrons: Array<Pick<Patron, 'id' | 'name'>>;
             bill: Pick<Bill, 'id'>;
             room: Pick<Room, 'id' | 'name' | 'isClean'>;
         }
@@ -1493,37 +1493,50 @@ export type GetBookingDetailsQuery = {
         | 'bookCheckOutTime'
         | 'realCheckInTime'
         | 'realCheckOutTime'
+        | 'baseNightCheckInTime'
+        | 'baseDayCheckInTime'
+        | 'baseDayCheckOutTime'
+        | 'earlyCheckInFee'
+        | 'lateCheckOutFee'
         | 'status'
     > & {
+        price: Pick<
+            Price,
+            | 'id'
+            | 'hourPrice'
+            | 'nightPrice'
+            | 'dayPrice'
+            | 'weekPrice'
+            | 'monthPrice'
+            | 'earlyCheckInFee'
+            | 'lateCheckOutFee'
+        >;
+        priceItems: Array<Pick<PriceItem, 'kind' | 'timeSpan' | 'value'>>;
+        priceVolatilityItems: Array<
+            Pick<PriceVolatilityItem, 'kind' | 'date' | 'timeSpan' | 'value'>
+        >;
         patrons: Array<
-            Maybe<
-                Pick<
-                    Patron,
-                    | 'id'
-                    | 'identification'
-                    | 'name'
-                    | 'birthdate'
-                    | 'email'
-                    | 'gender'
-                    | 'residence'
-                    | 'domicile'
-                    | 'phoneNumbers'
-                    | 'nationality'
-                    | 'company'
-                    | 'note'
-                > & { patronKind: Pick<PatronKind, 'id'> }
-            >
+            Pick<
+                Patron,
+                | 'id'
+                | 'identification'
+                | 'name'
+                | 'birthdate'
+                | 'email'
+                | 'gender'
+                | 'residence'
+                | 'domicile'
+                | 'phoneNumbers'
+                | 'nationality'
+                | 'company'
+                | 'note'
+            > & { patronKind: Pick<PatronKind, 'id'> }
         >;
         bill: Pick<Bill, 'id'>;
         servicesDetails: Array<
-            Maybe<
-                Pick<ServicesDetail, 'id' | 'number' | 'time'> & {
-                    service: Pick<
-                        Service,
-                        'id' | 'name' | 'unit' | 'unitPrice'
-                    >;
-                }
-            >
+            Pick<ServicesDetail, 'id' | 'number' | 'time'> & {
+                service: Pick<Service, 'id' | 'name' | 'unit' | 'unitPrice'>;
+            }
         >;
         room: Pick<Room, 'id' | 'name' | 'isClean'> & {
             roomKind: Pick<
@@ -1722,7 +1735,7 @@ export type GetTimelineQuery = {
                             | 'bookCheckOutTime'
                             | 'realCheckInTime'
                             | 'realCheckOutTime'
-                        > & { patrons: Array<Maybe<Pick<Patron, 'id'>>> }
+                        > & { patrons: Array<Pick<Patron, 'id'>> }
                     >;
                     roomKind: Pick<RoomKind, 'id' | 'name'>;
                 }
@@ -2188,6 +2201,13 @@ export namespace GetBookingDetails {
     export type Variables = GetBookingDetailsQueryVariables;
     export type Query = GetBookingDetailsQuery;
     export type Booking = GetBookingDetailsQuery['booking'];
+    export type Price = GetBookingDetailsQuery['booking']['price'];
+    export type PriceItems = NonNullable<
+        GetBookingDetailsQuery['booking']['priceItems'][0]
+    >;
+    export type PriceVolatilityItems = NonNullable<
+        GetBookingDetailsQuery['booking']['priceVolatilityItems'][0]
+    >;
     export type Patrons = NonNullable<
         GetBookingDetailsQuery['booking']['patrons'][0]
     >;

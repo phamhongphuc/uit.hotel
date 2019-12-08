@@ -384,28 +384,28 @@ type Booking {
     lateCheckOutFee: Int!
 
     # Danh sách khách hàng yêu cầu đặt phòng
-    patrons: [Patron]!
+    patrons: [Patron!]!
 
     # Công thức giá
     price: Price!
 
     # Danh sách đơn vị giá
-    priceItems: [PriceItem]!
+    priceItems: [PriceItem!]!
 
     # Danh sách đơn vị giá biến động
-    priceVolatilityItems: [PriceVolatilityItem]!
+    priceVolatilityItems: [PriceVolatilityItem!]!
 
     # Thời điểm nhận phòng của khách hàng
-    realCheckInTime: DateTimeOffset
+    realCheckInTime: DateTimeOffset!
 
     # Thời điểm trả phòng của khách hàng
-    realCheckOutTime: DateTimeOffset
+    realCheckOutTime: DateTimeOffset!
 
     # Phòng khách hàng chọn đặt trước
     room: Room!
 
     # Danh sách chi tiết sử dụng dịch vụ của khách hàng
-    servicesDetails: [ServicesDetail]!
+    servicesDetails: [ServicesDetail!]!
 
     # Trạng thái của thông tin thuê phòng
     status: BookingStatusEnum!
