@@ -3,7 +3,7 @@
         <b-checkbox
             v-model="allSelected"
             :indeterminate="indeterminate"
-            class="inline-checkbox text-bold"
+            class="inline-checkbox font-weight-bold"
             @input="toggleAll($event)"
         >
             {{ title }}
