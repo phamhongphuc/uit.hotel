@@ -36,17 +36,19 @@ namespace uit.hotel.Models
 
         //? Temporary fields
         [Ignored]
-        private TimeSpan TimeSpan => BaseDayCheckOutTime - BaseNightCheckInTime;
-        [Ignored]
         private IList<PriceVolatility> PriceVolatilities { get; set; }
+
+        private TimeSpan TimeSpan => BaseDayCheckOutTime - BaseNightCheckInTime;
+        private DateTimeOffset CheckInTime => (RealCheckInTime != DateTimeOffset.MinValue ? RealCheckInTime : BookCheckInTime).Round();
+        private DateTimeOffset CheckOutTime => (RealCheckOutTime != DateTimeOffset.MinValue ? RealCheckOutTime : BookCheckOutTime).Round();
 
         public void CalculatePrice()
         {
             if (!Room.IsManaged) Room = Room.GetManaged();
 
-            BaseNightCheckInTime = (RealCheckInTime != DateTimeOffset.MinValue ? RealCheckInTime : BookCheckInTime).Round();
+            BaseNightCheckInTime = CheckInTime;
             BaseDayCheckInTime = DateTimeOffset.MinValue;
-            BaseDayCheckOutTime = (RealCheckOutTime != DateTimeOffset.MinValue ? RealCheckOutTime : BookCheckOutTime).Round();
+            BaseDayCheckOutTime = CheckOutTime;
 
             Price = Room.RoomKind.GetPrice(BaseNightCheckInTime);
 
@@ -108,18 +110,23 @@ namespace uit.hotel.Models
         {
             var checkOutTime = BaseDayCheckOutTime.FloatHour();
 
-            if (checkOutTime <= BookingBusiness._CheckOutNightTime)
-                BaseDayCheckOutTime = BaseDayCheckOutTime.AtHour(BookingBusiness._CheckOutNightTime);
-            else if (checkOutTime <= BookingBusiness._CheckInDayTime + BookingBusiness._ToleranceTimeSpan)
-                BaseDayCheckOutTime = BaseDayCheckOutTime.AtHour(BookingBusiness._CheckInNightTime);
+            if (checkOutTime <= BookingBusiness._CheckOutDayTime)
+                BaseDayCheckOutTime = BaseDayCheckOutTime.AtHour(BookingBusiness._CheckOutDayTime);
+            else if (checkOutTime <= BookingBusiness._CheckOutDayTime + BookingBusiness._ToleranceTimeSpan)
+                BaseDayCheckOutTime = BaseDayCheckOutTime.AtHour(BookingBusiness._CheckOutDayTime);
             else
                 BaseDayCheckOutTime = BaseDayCheckOutTime.AtHour(BookingBusiness._CheckOutDayTime).AddDays(1);
         }
 
         private void CalculateFee()
         {
-            EarlyCheckInFee = (long)(Price.EarlyCheckInFee * (BookingBusiness._CheckInNightTime - BaseNightCheckInTime.FloatHour()));
-            LateCheckOutFee = (long)(Price.LateCheckOutFee * (BaseDayCheckOutTime.FloatHour() - BookingBusiness._CheckOutNightTime));
+            var earlyCheckInHour = BaseNightCheckInTime.FloatHour() == BookingBusiness._CheckInNightTime
+                ? BookingBusiness._CheckInNightTime - CheckInTime.FloatHour()
+                : BookingBusiness._CheckInDayTime - CheckInTime.FloatHour();
+            var lateCheckOutHour = CheckOutTime.FloatHour() - BookingBusiness._CheckOutDayTime;
+
+            EarlyCheckInFee = (long)(Price.EarlyCheckInFee * earlyCheckInHour);
+            LateCheckOutFee = (long)(Price.LateCheckOutFee * lateCheckOutHour);
         }
 
         private void CalculateNight()
@@ -127,7 +134,9 @@ namespace uit.hotel.Models
             if (BaseNightCheckInTime.FloatHour() == BookingBusiness._CheckInNightTime)
             {
                 AddPriceVolatilityItems(PriceVolatilityItemKindEnum.Night, BaseNightCheckInTime);
-                AddPriceItem(PriceItemKindEnum.Night);
+                AddPriceItem(PriceItemKindEnum.Night, new TimeSpan(
+                    24 + BookingBusiness._CheckOutNightTime - BookingBusiness._CheckInNightTime, 0, 0
+                ));
                 BaseDayCheckInTime = BaseNightCheckInTime.AtHour(BookingBusiness._CheckInDayTime).AddDays(1);
             }
             else
@@ -141,6 +150,8 @@ namespace uit.hotel.Models
             var beginDay = BaseDayCheckInTime.AtHour(0);
             var endDay = BaseDayCheckOutTime.AtHour(0);
 
+            var overHours = BookingBusiness._CheckInDayTime - BookingBusiness._CheckOutDayTime;
+
             var iterateTime = beginDay;
             while (iterateTime < endDay)
             {
@@ -148,18 +159,18 @@ namespace uit.hotel.Models
                 if (remain >= 30 && Price.MonthPrice != 0)
                 {
                     var days = remain / 30 * 30;
-                    AddPriceItem(PriceItemKindEnum.Month, new TimeSpan(days, 0, 0, 0));
+                    AddPriceItem(PriceItemKindEnum.Month, new TimeSpan(days, -overHours, 0, 0));
                     iterateTime = iterateTime.AddDays(days);
                 }
                 else if (remain >= 7 && Price.WeekPrice != 0)
                 {
                     var days = remain / 7 * 7;
-                    AddPriceItem(PriceItemKindEnum.Week, new TimeSpan(days, 0, 0, 0));
+                    AddPriceItem(PriceItemKindEnum.Week, new TimeSpan(days, -overHours, 0, 0));
                     iterateTime = iterateTime.AddDays(days);
                 }
                 else
                 {
-                    AddPriceItem(PriceItemKindEnum.Day, new TimeSpan(remain, 0, 0, 0));
+                    AddPriceItem(PriceItemKindEnum.Day, new TimeSpan(remain, -overHours, 0, 0));
                     iterateTime = iterateTime.AddDays(remain + 1);
                 }
             }
@@ -192,7 +203,7 @@ namespace uit.hotel.Models
         }
 
         // Helper Method
-        private void AddPriceItem(PriceItemKindEnum kind, TimeSpan timeSpan = new TimeSpan())
+        private void AddPriceItem(PriceItemKindEnum kind, TimeSpan timeSpan)
         {
             var priceItem = new PriceItem()
             {

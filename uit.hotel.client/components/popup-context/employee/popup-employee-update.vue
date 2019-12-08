@@ -138,7 +138,7 @@ import { Component, mixins, Vue } from 'nuxt-property-decorator';
 import { PopupMixin, DataMixin } from '~/components/mixins';
 import { EmployeeUpdateInput, GetEmployees } from '~/graphql/types';
 import { updateEmployee, getPositions } from '~/graphql/documents';
-import { toInputDate } from '~/utils/dataFormater';
+import { toInputDate } from '~/utils';
 import {
     address,
     birthdate,

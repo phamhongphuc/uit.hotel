@@ -20,6 +20,7 @@
             v-if="service.isActive"
             :mutation="deleteService"
             :variables="{ id: service.id }"
+            confirm
             icon="trash-2"
             text="Xóa dịch vụ"
         />

@@ -4,78 +4,20 @@
         v-slot
         title="Chi tiết đặt phòng"
         class="popup-booking-detail"
+        child-class="w-100"
     >
         <query-
-            v-slot="{
-                data: {
-                    booking,
-                    booking: {
-                        room,
-                    },
-                },
-            }"
+            v-slot="{ data: { booking } }"
             :query="getBookingDetails"
             :variables="variables"
-            :poll-interval="0"
+            :poll-interval="500"
         >
-            <div class="d-flex m-2">
-                <div
-                    class="flex-fill border shadow-sm p-3 m-2 child-float-right"
-                >
-                    <div>
-                        Tầng:
-                        <span>{{ room.floor.name }}</span>
-                    </div>
-                    <div>
-                        Phòng:
-                        <span>{{ room.name }}</span>
-                    </div>
-                    <hr class="my-3 mx-n3" />
-                    <div>
-                        Loại phòng:
-                        <span>{{ room.roomKind.name }}</span>
-                    </div>
-                    <div>
-                        Số người tối đa:
-                        <span>{{ room.roomKind.amountOfPeople }}</span>
-                    </div>
-                    <div>
-                        Số giường:
-                        <span>{{ room.roomKind.numberOfBeds }}</span>
-                    </div>
-                </div>
-                <div
-                    class="flex-fill border shadow-sm p-3 m-2 child-float-right"
-                >
-                    <div>
-                        Nhận phòng dự kiến:
-                        <span>
-                            {{ toDate(booking.bookCheckInTime) }}
-                        </span>
-                    </div>
-                    <div>
-                        Trả phòng dự kiến:
-                        <span>
-                            {{ toDate(booking.bookCheckOutTime) }}
-                        </span>
-                    </div>
-                    <div>
-                        Nhận phòng thực tế:
-                        <span>
-                            {{ toDate(booking.realCheckInTime) }}
-                        </span>
-                    </div>
-                    <div>
-                        Trả phòng thực tế:
-                        <span>
-                            {{ toDate(booking.realCheckOutTime) }}
-                        </span>
-                    </div>
-                </div>
+            <div class="m-3">
+                <horizontal-timeline- :booking="booking" />
             </div>
-            <div class="my-n2" />
+
             <div class="d-flex m-2">
-                <div class="m-2 flex-1">
+                <div class="m-2 flex-1" @contextmenu.prevent="tableContext">
                     <b-table
                         :items="booking.patrons"
                         :fields="[
@@ -120,31 +62,29 @@
                             }
                         "
                     >
-                        <template v-slot:index="data">
+                        <template v-slot:cell(index)="data">
                             {{ data.index + 1 }}
                         </template>
-                        <template v-slot:phoneNumbers="{ value }">
+                        <template v-slot:cell(phoneNumbers)="{ value }">
                             <a
-                                v-for="phoneNumber in value"
-                                :key="phoneNumber"
-                                :href="`tel:${phoneNumber}`"
+                                :href="`tel:${value}`"
                                 class="d-block"
                                 @click.stop
                             >
-                                {{ phoneNumber }}
+                                {{ value }}
                             </a>
                         </template>
-                        <template v-slot:birthdate="{ value }">
+                        <template v-slot:cell(birthdate)="{ value }">
                             {{ toYear(value) }}
                         </template>
                     </b-table>
                 </div>
             </div>
-            <div class="my-n2" />
             <div class="d-flex m-2">
                 <div class="m-2 flex-1">
                     <b-table
                         class="table-style border shadow-sm"
+                        show-empty
                         :items="booking.servicesDetails"
                         :fields="[
                             {
@@ -187,34 +127,39 @@
                             }
                         "
                     >
-                        <template v-slot:index="data">
+                        <template v-slot:empty>
+                            Phòng chưa sử dụng dịch vụ nào
+                        </template>
+                        <template v-slot:cell(index)="data">
                             {{ data.index + 1 }}
                         </template>
-                        <template v-slot:name="{ item }">
+                        <template v-slot:cell(name)="{ item }">
                             {{ item.service.name }}
                         </template>
                         <template
-                            v-slot:unitPrice="{
+                            v-slot:cell(unitPrice)="{
                                 item: { service: { unitPrice, unit } },
                             }"
                         >
                             {{ toMoney(unitPrice) }} / {{ unit }}
                         </template>
                         <template
-                            v-slot:total="{
+                            v-slot:cell(total)="{
                                 item: { service: { unitPrice }, number },
                             }"
                         >
                             {{ toMoney(unitPrice * number) }}
                         </template>
                     </b-table>
-                    <div class="text-medium text-right mt-2">
+                    <div class="text-right mt-2">
                         Tổng cộng:
                         {{ totalServiceDetails(booking.servicesDetails) }}
                     </div>
                 </div>
             </div>
         </query->
+        <context-manage-patron- ref="context_patron" :refs="$refs" />
+        <popup-patron-update- ref="patron_update" />
     </popup->
 </template>
 <script lang="ts">
@@ -234,21 +179,30 @@ export default class extends mixins<PopupMixinType>(
     PopupMixin,
     DataMixin({ getBookingDetails, toDate, toMoney, toYear }),
 ) {
-    onOpen() {}
+    variables!: GetBookingDetails.Variables;
 
-    get variables(): GetBookingDetails.Variables {
-        return { id: this.data.id.toString() };
+    currentEvent: MouseEvent | null = null;
+
+    onOpen() {
+        this.variables = { id: this.data.id.toString() };
     }
 
     totalServiceDetails(servicesDetails: GetBookingDetails.ServicesDetails[]) {
         return toMoney(
             servicesDetails.reduce(
-                (sum, { service: { unitPrice }, number }) => {
-                    return sum + number * unitPrice;
-                },
+                (sum, { service: { unitPrice }, number }) =>
+                    sum + number * unitPrice,
                 0,
             ),
         );
+    }
+
+    tableContext(event: MouseEvent) {
+        const tr = (event.target as HTMLElement).closest('tr');
+        if (tr !== null) {
+            this.currentEvent = event;
+            tr.click();
+        }
     }
 }
 </script>

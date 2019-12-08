@@ -84,7 +84,7 @@
                     />
                     <div class="input-label">Số điện thoại</div>
                     <b-input-
-                        v-model="phoneNumbers"
+                        v-model="input.phoneNumbers"
                         :disabled="disabled"
                         :state="!$v.input.phoneNumbers.$invalid"
                         class="m-3 rounded"

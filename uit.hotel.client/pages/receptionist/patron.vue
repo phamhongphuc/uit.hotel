@@ -60,14 +60,8 @@
                     {{ data.index + 1 }}
                 </template>
                 <template v-slot:cell(phoneNumbers)="{ value }">
-                    <a
-                        v-for="phoneNumber in value"
-                        :key="phoneNumber"
-                        :href="`tel:${phoneNumber}`"
-                        class="d-block"
-                        @click.stop
-                    >
-                        {{ phoneNumber }}
+                    <a :href="`tel:${value}`" class="d-block" @click.stop>
+                        {{ value }}
                     </a>
                 </template>
                 <template v-slot:cell(birthdate)="{ value }">

@@ -25,6 +25,7 @@
         <b-nav-item-icon-mutate-
             :mutation="deleteRoomKind"
             :variables="{ id: roomKind.id }"
+            confirm
             icon="trash-2"
             text="Xóa loại phòng"
         />

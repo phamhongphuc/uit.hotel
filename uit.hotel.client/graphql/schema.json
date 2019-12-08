@@ -1217,9 +1217,13 @@
                                 "kind": "LIST",
                                 "name": null,
                                 "ofType": {
-                                    "kind": "OBJECT",
-                                    "name": "Patron",
-                                    "ofType": null
+                                    "kind": "NON_NULL",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "OBJECT",
+                                        "name": "Patron",
+                                        "ofType": null
+                                    }
                                 }
                             }
                         },
@@ -1253,9 +1257,13 @@
                                 "kind": "LIST",
                                 "name": null,
                                 "ofType": {
-                                    "kind": "OBJECT",
-                                    "name": "PriceItem",
-                                    "ofType": null
+                                    "kind": "NON_NULL",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "OBJECT",
+                                        "name": "PriceItem",
+                                        "ofType": null
+                                    }
                                 }
                             }
                         },
@@ -1273,9 +1281,13 @@
                                 "kind": "LIST",
                                 "name": null,
                                 "ofType": {
-                                    "kind": "OBJECT",
-                                    "name": "PriceVolatilityItem",
-                                    "ofType": null
+                                    "kind": "NON_NULL",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "OBJECT",
+                                        "name": "PriceVolatilityItem",
+                                        "ofType": null
+                                    }
                                 }
                             }
                         },
@@ -1287,9 +1299,13 @@
                         "description": "Thời điểm nhận phòng của khách hàng",
                         "args": [],
                         "type": {
-                            "kind": "SCALAR",
-                            "name": "DateTimeOffset",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "DateTimeOffset",
+                                "ofType": null
+                            }
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -1299,9 +1315,13 @@
                         "description": "Thời điểm trả phòng của khách hàng",
                         "args": [],
                         "type": {
-                            "kind": "SCALAR",
-                            "name": "DateTimeOffset",
-                            "ofType": null
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "DateTimeOffset",
+                                "ofType": null
+                            }
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -1333,9 +1353,13 @@
                                 "kind": "LIST",
                                 "name": null,
                                 "ofType": {
-                                    "kind": "OBJECT",
-                                    "name": "ServicesDetail",
-                                    "ofType": null
+                                    "kind": "NON_NULL",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "OBJECT",
+                                        "name": "ServicesDetail",
+                                        "ofType": null
+                                    }
                                 }
                             }
                         },

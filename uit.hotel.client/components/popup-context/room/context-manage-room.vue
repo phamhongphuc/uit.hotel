@@ -18,6 +18,7 @@
             v-if="room.isActive"
             :mutation="deleteRoom"
             :variables="{ id: room.id }"
+            confirm
             icon="trash-2"
             text="Xóa phòng"
         />

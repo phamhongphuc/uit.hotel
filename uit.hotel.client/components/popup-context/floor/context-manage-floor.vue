@@ -22,6 +22,7 @@
             v-if="floor.isActive"
             :mutation="deleteFloor"
             :variables="{ id: floor.id }"
+            confirm
             icon="trash-2"
             text="Xóa tầng"
         />

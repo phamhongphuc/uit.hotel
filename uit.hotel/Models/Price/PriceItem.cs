@@ -40,11 +40,11 @@ namespace uit.hotel.Models
                     case PriceItemKindEnum.Night:
                         return Booking.Price.NightPrice;
                     case PriceItemKindEnum.Day:
-                        return Booking.Price.DayPrice * TimeSpan.Days;
+                        return Booking.Price.DayPrice * (TimeSpan.Days + 1);
                     case PriceItemKindEnum.Week:
-                        return Booking.Price.WeekPrice * (TimeSpan.Days / 7);
+                        return Booking.Price.WeekPrice * ((TimeSpan.Days + 1) / 7);
                     case PriceItemKindEnum.Month:
-                        return Booking.Price.MonthPrice * (TimeSpan.Days / 30);
+                        return Booking.Price.MonthPrice * ((TimeSpan.Days + 1) / 30);
                 }
                 return 0;
             }

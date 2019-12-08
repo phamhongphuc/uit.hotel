@@ -128,13 +128,13 @@ export default class extends Vue {
     ratio = 6;
 
     now = moment().unix();
-    formattedNow = moment().format('hh:mm:ss');
+    formattedNow = moment().format('HH:mm:ss');
 
     interval?: NodeJS.Timeout;
 
     calcValue() {
         this.now = moment().unix();
-        this.formattedNow = moment().format('hh:mm:ss');
+        this.formattedNow = moment().format('HH:mm:ss');
     }
 
     mounted() {

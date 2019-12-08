@@ -113,11 +113,11 @@ namespace uit.hotel.test.Helper
 
             var User = new ClaimsPrincipal(
                 new ClaimsIdentity(
-                    new[] { new Claim(ClaimTypes.Name, Constant.adminName) }
+                    new[] { new Claim(ClaimTypes.Name, Constant.AdminName) }
                 )
             );
 
-            var position = EmployeeBusiness.Get(Constant.adminName).Position;
+            var position = EmployeeBusiness.Get(Constant.AdminName).Position;
 
             if (setPermission != null) PositionBusiness.UpdateForHelper(setPermission, position);
 

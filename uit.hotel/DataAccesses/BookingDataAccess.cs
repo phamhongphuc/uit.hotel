@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Realms;
 using uit.hotel.Models;
+using uit.hotel.Queries.Helper;
 
 namespace uit.hotel.DataAccesses
 {
@@ -30,6 +31,8 @@ namespace uit.hotel.DataAccesses
             booking.Id = NextId;
             booking.CreateTime = DateTimeOffset.Now;
             booking.Status = BookingStatusEnum.Booked;
+            booking.BookCheckInTime = booking.BookCheckInTime.Round();
+            booking.BookCheckOutTime = booking.BookCheckOutTime.Round();
             return realm.Add(booking);
         }
 
@@ -37,9 +40,9 @@ namespace uit.hotel.DataAccesses
         public static Booking BookAndCheckIn(Realm realm, Booking booking)
         {
             booking.Id = NextId;
-            booking.CreateTime = DateTimeOffset.Now;
-            booking.BookCheckInTime = DateTimeOffset.Now;
-            booking.RealCheckInTime = DateTimeOffset.Now;
+            booking.CreateTime = DateTimeOffset.Now.Round();
+            booking.BookCheckInTime = DateTimeOffset.Now.Round();
+            booking.RealCheckInTime = DateTimeOffset.Now.Round();
             booking.Status = BookingStatusEnum.CheckedIn;
 
             booking = realm.Add(booking);
@@ -51,7 +54,7 @@ namespace uit.hotel.DataAccesses
             await Database.WriteAsync(realm =>
             {
                 bookingInDatabase.EmployeeCheckIn = employee;
-                bookingInDatabase.RealCheckInTime = DateTimeOffset.Now;
+                bookingInDatabase.RealCheckInTime = DateTimeOffset.Now.Round();
                 bookingInDatabase.Status = BookingStatusEnum.CheckedIn;
 
                 bookingInDatabase.CalculateTotal();
@@ -64,7 +67,7 @@ namespace uit.hotel.DataAccesses
             await Database.WriteAsync(realm =>
             {
                 bookingInDatabase.EmployeeCheckOut = employee;
-                bookingInDatabase.RealCheckOutTime = DateTimeOffset.Now;
+                bookingInDatabase.RealCheckOutTime = DateTimeOffset.Now.Round();
                 bookingInDatabase.CalculateTotal();
 
                 bookingInDatabase.Status = BookingStatusEnum.CheckedOut;
