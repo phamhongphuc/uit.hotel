@@ -1,6 +1,11 @@
 <template>
     <div v-show="show" class="popup" @click="close">
-        <div ref="popup" class="popup-modal m-3" @click.stop>
+        <div
+            ref="popup"
+            class="popup-modal m-3"
+            :class="childClass"
+            @click.stop
+        >
             <div class="popup-modal-title">
                 <div class="text">{{ title }}</div>
                 <b-button
@@ -27,6 +32,9 @@ import { ClickawayMixin } from '~/components/mixins/clickaway';
 export default class Popup extends mixins<ClickawayMixin>(ClickawayMixin) {
     show = false;
     data: any = null;
+
+    @Prop({ type: String })
+    childClass!: string;
 
     @Prop({ required: true, type: String })
     title!: string;
