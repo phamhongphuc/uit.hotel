@@ -28,7 +28,7 @@ $position-types: top right bottom left;
         @each $size, $length in $spacers {
             @if $size != 0 {
                 .m-child#{$infix}-#{$size} {
-                    margin: -$length !important;
+                    margin: -$length;
                     > * {
                         margin: $length;
                     }
