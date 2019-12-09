@@ -67,6 +67,9 @@ export const getBookingDetails = gql`
             }
             earlyCheckInFee
             lateCheckOutFee
+            total
+            totalPrice
+            totalServicesDetails
 
             status
             patrons {

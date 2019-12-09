@@ -1498,6 +1498,9 @@ export type GetBookingDetailsQuery = {
         | 'baseDayCheckOutTime'
         | 'earlyCheckInFee'
         | 'lateCheckOutFee'
+        | 'total'
+        | 'totalPrice'
+        | 'totalServicesDetails'
         | 'status'
     > & {
         price: Pick<
