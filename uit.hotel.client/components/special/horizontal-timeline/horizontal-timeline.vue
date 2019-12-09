@@ -107,7 +107,9 @@
                     :line="1"
                     :range="[price.left, price.right]"
                 >
-                    {{ toMoney(price.value) }}
+                    <div>
+                        {{ toMoney(price.value) }}
+                    </div>
                 </horizontal-timeline-range->
             </div>
         </div>

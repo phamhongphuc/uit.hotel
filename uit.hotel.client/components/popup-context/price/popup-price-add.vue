@@ -51,6 +51,13 @@
                     />
                 </div>
                 <div>
+                    <div class="input-label">Giá theo giờ</div>
+                    <b-input-
+                        v-model="input.hourPrice"
+                        :state="!$v.input.hourPrice.$invalid"
+                        class="m-3 rounded"
+                        icon="type"
+                    />
                     <div class="input-label">Giá theo ngày</div>
                     <b-input-
                         v-model="input.dayPrice"
@@ -112,6 +119,7 @@ type PopupMixinType = PopupMixin<
     name: 'popup-price-add-',
     validations: {
         input: {
+            hourPrice: price,
             dayPrice: price,
             nightPrice: price,
             weekPrice: price,

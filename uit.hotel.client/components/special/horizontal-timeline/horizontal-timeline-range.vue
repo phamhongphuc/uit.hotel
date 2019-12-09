@@ -87,11 +87,12 @@ export default class extends mixins(DataMixin({ toDate })) {
     }
 
     &.price {
-        &:not(:empty) {
+        &:not(:empty) > div {
             padding: 0 0.75rem;
         }
 
         height: $ht-price-child;
+        overflow: auto;
         line-height: $ht-price-child;
         transform: translateY(
             -$ht-price-child / 2 + $ht-day-title-height + $ht-line-size
