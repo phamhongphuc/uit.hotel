@@ -246,17 +246,14 @@
                                 },
                             ]"
                             @row-clicked="
-                                (service, $index, $event) => {
+                                (servicesDetail, $index, $event) => {
                                     $event.stopPropagation();
-                                    /**
-                                    $refs.context_service.open(
+                                    $refs.context_service_detail.open(
                                         currentEvent || $event,
                                         {
-                                            service,
-                                            services,
+                                            servicesDetail,
                                         },
                                     );
-                                    */
                                     currentEvent = null;
                                 }
                             "
@@ -299,6 +296,10 @@
                 </div>
             </div>
         </query->
+        <context-receptionist-service-detail-
+            ref="context_service_detail"
+            :refs="$refs"
+        />
         <context-manage-patron- ref="context_patron" :refs="$refs" />
         <popup-patron-update- ref="patron_update" />
         <popup-service-detail-add- ref="service_detail_add" />
