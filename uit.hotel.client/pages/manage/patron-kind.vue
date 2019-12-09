@@ -43,7 +43,7 @@
                         sortable: true,
                     },
                 ]"
-                class="table-style"
+                class="table-style table-header-line"
                 @row-clicked="
                     (patronKind, $index, $event) => {
                         $event.stopPropagation();

@@ -57,7 +57,7 @@
                         tdClass: 'w-100 text-nowrap',
                     },
                 ]"
-                class="table-style"
+                class="table-style table-header-line"
                 @row-clicked="
                     (booking, $index, $event) => {
                         $event.stopPropagation();

@@ -62,7 +62,7 @@
                         sortable: true,
                     },
                 ]"
-                class="table-style"
+                class="table-style table-header-line"
                 @row-clicked="
                     (employee, $index, $event) => {
                         $event.stopPropagation();

@@ -26,12 +26,17 @@
     }
 }
 
+.table-header-line {
+    th {
+        border-bottom-color: $main !important;
+    }
+}
+
 .table-style {
     cursor: pointer;
 
     th {
         vertical-align: inherit !important;
-        border-bottom-color: $main !important;
     }
 
     th,
@@ -40,6 +45,13 @@
         text-overflow: ellipsis;
         border: 1px solid $table-border-color;
     }
+    &.bg-lighten {
+        th,
+        td {
+            border-color: $ht-line-color;
+        }
+    }
+
     tr:first-child th {
         border-top: 0;
     }

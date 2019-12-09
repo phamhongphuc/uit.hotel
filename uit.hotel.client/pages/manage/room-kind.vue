@@ -66,7 +66,7 @@
                         tdClass: 'text-right',
                     },
                 ]"
-                class="table-style"
+                class="table-style table-header-line"
                 @row-clicked="
                     (roomKind, $index, $event) => {
                         $event.stopPropagation();
