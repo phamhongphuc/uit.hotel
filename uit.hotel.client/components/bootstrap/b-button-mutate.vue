@@ -1,5 +1,6 @@
 <template>
     <b-button
+        v-on-clickaway="clickaway"
         :block="block"
         :disabled="disabled"
         :size="size"
@@ -15,16 +16,22 @@
 </template>
 <script lang="ts">
 import { Component, mixins, Prop } from 'nuxt-property-decorator';
+import { directive as onClickaway } from 'vue-clickaway';
 import { MutableMixin, ButtonProps } from '~/components/mixins';
 
 @Component({
     name: 'b-button-mutate-',
+    directives: { onClickaway },
 })
 export default class extends mixins<MutableMixin, ButtonProps>(
     MutableMixin,
     ButtonProps,
 ) {
     isClicked = false;
+
+    clickaway() {
+        if (this.confirm) this.isClicked = false;
+    }
 
     @Prop({ default: 'Ấn lần nữa để xác nhận' })
     textConfirm!: string;
