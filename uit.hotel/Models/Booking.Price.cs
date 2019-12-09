@@ -54,6 +54,8 @@ namespace uit.hotel.Models
 
             InitializeData();
             CalculateCaseByCase();
+            CalculateSumary();
+
             SaveResult();
         }
 
@@ -69,8 +71,7 @@ namespace uit.hotel.Models
 
         private void CalculateCaseByCase()
         {
-            var isCalculated = CalculateHour();
-            if (isCalculated) return;
+            if (CalculateHour()) return;
 
             CalculateCheckInTime();
             CalculateCheckOutTime();
@@ -78,8 +79,6 @@ namespace uit.hotel.Models
             CalculateFee();
             CalculateNight();
             CalculateDayWeekMonth();
-
-            CalculateSumary();
         }
 
         private bool CalculateHour()
@@ -120,13 +119,11 @@ namespace uit.hotel.Models
 
         private void CalculateFee()
         {
-            var earlyCheckInHour = BaseNightCheckInTime.FloatHour() == BookingBusiness._CheckInNightTime
-                ? BookingBusiness._CheckInNightTime - CheckInTime.FloatHour()
-                : BookingBusiness._CheckInDayTime - CheckInTime.FloatHour();
-            var lateCheckOutHour = CheckOutTime.FloatHour() - BookingBusiness._CheckOutDayTime;
+            var earlyCheckInHour = (BaseNightCheckInTime - CheckInTime).FloatHour();
+            var lateCheckOutHour = (CheckOutTime - BaseDayCheckOutTime).FloatHour();
 
-            EarlyCheckInFee = (long)(Price.EarlyCheckInFee * earlyCheckInHour);
-            LateCheckOutFee = (long)(Price.LateCheckOutFee * lateCheckOutHour);
+            EarlyCheckInFee = (long)(Price.EarlyCheckInFee * Math.Max(earlyCheckInHour, 0));
+            LateCheckOutFee = (long)(Price.LateCheckOutFee * Math.Max(lateCheckOutHour, 0));
         }
 
         private void CalculateNight()
