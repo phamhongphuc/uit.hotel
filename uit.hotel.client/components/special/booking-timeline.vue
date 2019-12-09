@@ -74,7 +74,6 @@
                             })
                         "
                     >
-                        {{ booking.id }}
                         <b-tooltip
                             :target="`booking-${booking.id}`"
                             placement="left"
@@ -98,20 +97,9 @@ import { Vue, Component, Prop } from 'nuxt-property-decorator';
 import moment from 'moment';
 import { GetTimeline, BookingStatusEnum } from '~/graphql/types';
 import { toDate } from '~/utils';
+import { bookingStatusMap, bookingStatusColorMap } from '~/modules/model';
 
 type BookingStatusEnumMap = { [key in BookingStatusEnum]: string };
-
-const statusVariantMap: BookingStatusEnumMap = {
-    [BookingStatusEnum.Booked]: 'light-blue',
-    [BookingStatusEnum.CheckedIn]: 'orange',
-    [BookingStatusEnum.CheckedOut]: 'gray',
-};
-
-const statusTitleMap: BookingStatusEnumMap = {
-    [BookingStatusEnum.Booked]: 'Đã đặt phòng',
-    [BookingStatusEnum.CheckedIn]: 'Đã nhận phòng',
-    [BookingStatusEnum.CheckedOut]: 'Đã trả phòng',
-};
 
 const seconds = moment.duration(1, 'day').asSeconds();
 
@@ -249,8 +237,8 @@ export default class extends Vue {
                     left: `${left}rem`,
                     width: `${width}rem`,
                 },
-                variant: statusVariantMap[booking.status],
-                statusTitle: statusTitleMap[booking.status],
+                variant: bookingStatusColorMap[booking.status],
+                statusTitle: bookingStatusMap[booking.status],
             };
         });
     }

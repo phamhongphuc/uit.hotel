@@ -14,10 +14,154 @@
             @result="onResult"
         >
             <div class="row p-3">
-                <div class="col-7">
-                    <horizontal-timeline- :booking="booking" class="mb-3" />
+                <div class="col-6" @contextmenu.prevent="tableContext">
+                    <div class="d-flex m-child-1 mb-1 flex-wrap">
+                        <div class="font-weight-medium py-1 pr-1">
+                            <icon-
+                                i="circle-fill"
+                                class="mx-1"
+                                :class="
+                                    booking.room.isClean
+                                        ? 'text-blue'
+                                        : 'text-yellow'
+                                "
+                            />
+                            {{
+                                booking.room.isClean
+                                    ? 'Phòng đã dọn'
+                                    : 'Phòng chưa dọn'
+                            }}
+                        </div>
+                        <b-button-mutate-
+                            class="px-2 py-1 ml-auto"
+                            variant="lighten"
+                            :mutation="setIsCleanRoom"
+                            :variables="{
+                                id: booking.room.id,
+                                isClean: !booking.room.isClean,
+                            }"
+                        >
+                            <icon- i="wind" class="ml-n1 mr-1" />
+                            Đánh dấu là đã dọn
+                        </b-button-mutate->
+                    </div>
+                    <horizontal-timeline- :booking="booking" />
+                    <div class="font-weight-medium my-1 pl-1">
+                        Danh sách khách hàng:
+                    </div>
+                    <b-table
+                        class="table-style table-sm bg-lighten rounded overflow-hidden"
+                        :items="booking.patrons"
+                        :fields="[
+                            {
+                                key: 'index',
+                                label: '#',
+                                class: 'table-cell-id text-center',
+                            },
+                            {
+                                key: 'name',
+                                label: 'Tên',
+                                tdClass: 'w-100',
+                            },
+                            {
+                                key: 'identification',
+                                label: 'CMND',
+                                tdClass: 'w-100',
+                            },
+                            {
+                                key: 'phoneNumbers',
+                                label: 'Số điện thoại',
+                                thClass: 'text-nowrap',
+                                tdClass: 'text-nowrap text-right',
+                            },
+                            {
+                                key: 'birthdate',
+                                label: 'Năm sinh',
+                                thClass: 'text-nowrap',
+                                tdClass: 'text-nowrap text-right',
+                            },
+                        ]"
+                        @row-clicked="
+                            (patron, $index, $event) => {
+                                $event.stopPropagation();
+                                $refs.context_patron.open(
+                                    currentEvent || $event,
+                                    {
+                                        patron,
+                                    },
+                                );
+                                currentEvent = null;
+                            }
+                        "
+                    >
+                        <template v-slot:cell(index)="data">
+                            {{ data.index + 1 }}
+                        </template>
+                        <template v-slot:cell(phoneNumbers)="{ value }">
+                            <a
+                                :href="`tel:${value}`"
+                                class="d-block"
+                                @click.stop
+                            >
+                                {{ value }}
+                            </a>
+                        </template>
+                        <template v-slot:cell(birthdate)="{ value }">
+                            {{ toYear(value) }}
+                        </template>
+                    </b-table>
+                </div>
+                <!-- Right -->
+                <div class="col-6 pl-0 d-flex flex-column">
                     <div
-                        class="my-2 overflow-auto"
+                        class="d-flex m-child-1 mb-1 flex-wrap justify-content-end"
+                    >
+                        <b-button-mutate-
+                            v-if="booking.status == BookingStatusEnum.Booked"
+                            class="px-2 py-1"
+                            variant="lighten"
+                            confirm
+                            :mutation="checkIn"
+                            :variables="{ id: booking.id }"
+                        >
+                            <icon- i="corner-down-right" class="ml-n1 mr-1" />
+                            Nhận phòng
+                        </b-button-mutate->
+                        <b-button-mutate-
+                            v-if="booking.status == BookingStatusEnum.Booked"
+                            class="px-2 py-1"
+                            variant="lighten"
+                            confirm
+                            :mutation="cancel"
+                            :variables="{ id: booking.id }"
+                            @click="close"
+                        >
+                            <icon- i="x" class="ml-n1 mr-1" />
+                            Hủy
+                        </b-button-mutate->
+                        <b-button-mutate-
+                            v-if="booking.status == BookingStatusEnum.CheckedIn"
+                            class="px-2 py-1"
+                            variant="lighten"
+                            confirm
+                            :mutation="checkOut"
+                            :variables="{ id: booking.id }"
+                        >
+                            <icon- i="corner-right-up" class="ml-n1 mr-1" />
+                            Trả phòng
+                        </b-button-mutate->
+                        <b-button
+                            class="px-2 py-1"
+                            variant="lighten"
+                            confirm
+                            @click="$refs.service_detail_add.open({ booking })"
+                        >
+                            <icon- i="shopping-bag" class="ml-n1 mr-1" />
+                            Thêm dịch vụ
+                        </b-button>
+                    </div>
+                    <div
+                        class="mb-1 overflow-auto"
                         @contextmenu.prevent="tableContext"
                     >
                         <b-table
@@ -62,12 +206,12 @@
                             </template>
                         </b-table>
                     </div>
-                    <div class="my-2 font-weight-medium text-right">
+                    <div class="my-1 font-weight-medium text-right">
                         Tổng số tiền thuê phòng:
                         {{ toMoney(booking.totalPrice) }}
                     </div>
                     <div
-                        class="my-2 overflow-auto"
+                        class="my-1 overflow-auto"
                         @contextmenu.prevent="tableContext"
                     >
                         <b-table
@@ -104,6 +248,7 @@
                             @row-clicked="
                                 (service, $index, $event) => {
                                     $event.stopPropagation();
+                                    /**
                                     $refs.context_service.open(
                                         currentEvent || $event,
                                         {
@@ -111,6 +256,7 @@
                                             services,
                                         },
                                     );
+                                    */
                                     currentEvent = null;
                                 }
                             "
@@ -140,125 +286,22 @@
                             </template>
                         </b-table>
                     </div>
-                    <div class="my-2 font-weight-medium text-right">
+                    <div class="my-1 font-weight-medium text-right">
                         Tổng số tiền dịch vụ:
                         {{ toMoney(booking.totalServicesDetails) }}
                     </div>
-                    <div class="mt-2 font-weight-medium text-right">
+                    <div class="mt-1 font-weight-medium text-right">
                         Tổng cộng:
-                        {{ toMoney(booking.total) }}
-                    </div>
-                </div>
-                <!-- Right -->
-                <div class="col-5 pl-0 d-flex flex-column">
-                    <div
-                        class="d-flex m-child-1 flex-wrap justify-content-start"
-                    >
-                        <b-button-mutate-
-                            v-if="booking.status == BookingStatusEnum.Booked"
-                            class="px-2 py-1"
-                            variant="lighten"
-                            confirm
-                            :mutation="checkIn"
-                            :variables="{ id: booking.id }"
-                        >
-                            <icon- i="corner-down-right" class="ml-n1 mr-1" />
-                            Nhận phòng
-                        </b-button-mutate->
-                        <b-button-mutate-
-                            v-if="booking.status == BookingStatusEnum.Booked"
-                            class="px-2 py-1"
-                            variant="lighten"
-                            confirm
-                            :mutation="cancel"
-                            :variables="{ id: booking.id }"
-                            @click="close"
-                        >
-                            <icon- i="x" class="ml-n1 mr-1" />
-                            Hủy
-                        </b-button-mutate->
-                        <b-button-mutate-
-                            v-if="booking.status == BookingStatusEnum.CheckedIn"
-                            class="px-2 py-1"
-                            variant="lighten"
-                            confirm
-                            :mutation="checkOut"
-                            :variables="{ id: booking.id }"
-                        >
-                            <icon- i="corner-right-up" class="ml-n1 mr-1" />
-                            Trả phòng
-                        </b-button-mutate->
-                    </div>
-                    <div class="mt-2 flex-1 overflow-auto">
-                        <div class="font-weight-medium mb-1">
-                            Danh sách khách hàng:
-                        </div>
-                        <b-table
-                            class="table-style table-sm bg-lighten rounded overflow-hidden"
-                            :items="booking.patrons"
-                            :fields="[
-                                {
-                                    key: 'index',
-                                    label: '#',
-                                    class: 'table-cell-id text-center',
-                                    sortable: true,
-                                },
-                                {
-                                    key: 'name',
-                                    label: 'Tên',
-                                    tdClass: 'w-100',
-                                },
-                                {
-                                    key: 'identification',
-                                    label: 'CMND',
-                                    tdClass: 'w-100',
-                                },
-                                {
-                                    key: 'phoneNumbers',
-                                    label: 'Số điện thoại',
-                                    tdClass: 'text-nowrap text-right',
-                                },
-                                {
-                                    key: 'birthdate',
-                                    label: 'Năm sinh',
-                                    tdClass: 'text-nowrap text-right',
-                                },
-                            ]"
-                            @row-clicked="
-                                (patron, $index, $event) => {
-                                    $event.stopPropagation();
-                                    $refs.context_patron.open(
-                                        currentEvent || $event,
-                                        {
-                                            patron,
-                                        },
-                                    );
-                                    currentEvent = null;
-                                }
-                            "
-                        >
-                            <template v-slot:cell(index)="data">
-                                {{ data.index + 1 }}
-                            </template>
-                            <template v-slot:cell(phoneNumbers)="{ value }">
-                                <a
-                                    :href="`tel:${value}`"
-                                    class="d-block"
-                                    @click.stop
-                                >
-                                    {{ value }}
-                                </a>
-                            </template>
-                            <template v-slot:cell(birthdate)="{ value }">
-                                {{ toYear(value) }}
-                            </template>
-                        </b-table>
+                        <span class="text-main">
+                            {{ toMoney(booking.total) }}
+                        </span>
                     </div>
                 </div>
             </div>
         </query->
         <context-manage-patron- ref="context_patron" :refs="$refs" />
         <popup-patron-update- ref="patron_update" />
+        <popup-service-detail-add- ref="service_detail_add" />
     </popup->
 </template>
 <script lang="ts">
@@ -267,20 +310,21 @@ import { ApolloQueryResult } from 'apollo-client';
 import moment, { duration } from 'moment';
 import {
     priceItemGetAmount,
-    priceItemKindMap,
     priceItemGetUnitPrice,
+    priceItemKindMap,
 } from '~/modules/model';
 import {
-    GetBookingDetails,
     BookingStatusEnum,
+    GetBookingDetails,
     GetBookingDetailsQuery,
 } from '~/graphql/types';
 import { PopupMixin, DataMixin } from '~/components/mixins';
 import {
-    getBookingDetails,
+    cancel,
     checkIn,
     checkOut,
-    cancel,
+    getBookingDetails,
+    setIsCleanRoom,
 } from '~/graphql/documents';
 import { toDate, toMoney, toYear, getDate } from '~/utils';
 
@@ -302,9 +346,10 @@ export default class extends mixins<PopupMixinType>(
     DataMixin({
         BookingStatusEnum,
         getBookingDetails,
+        cancel,
         checkIn,
         checkOut,
-        cancel,
+        setIsCleanRoom,
         toDate,
         toMoney,
         toYear,

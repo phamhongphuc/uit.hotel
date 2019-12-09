@@ -4,17 +4,17 @@ import { BookingStatusEnum } from '~/graphql/types';
 export const bookingStatusMap: {
     [key in BookingStatusEnum]: string;
 } = {
-    [BookingStatusEnum.Booked]: 'Đã đặt phòng',
-    [BookingStatusEnum.CheckedIn]: 'Đã nhận phòng',
-    [BookingStatusEnum.CheckedOut]: 'Đã trả phòng',
+    [BookingStatusEnum.Booked]: 'Phòng chờ nhận',
+    [BookingStatusEnum.CheckedIn]: 'Phòng đã nhận',
+    [BookingStatusEnum.CheckedOut]: 'Phòng đã trả',
 };
 
-export const bookingStatusIconMap: {
-    [key in BookingStatusEnum]: [string, string];
+export const bookingStatusColorMap: {
+    [key in BookingStatusEnum]: string;
 } = {
-    [BookingStatusEnum.Booked]: ['circle', 'orange'],
-    [BookingStatusEnum.CheckedIn]: ['check-circle', 'green'],
-    [BookingStatusEnum.CheckedOut]: ['disc', 'light'],
+    [BookingStatusEnum.Booked]: 'yellow',
+    [BookingStatusEnum.CheckedIn]: 'green',
+    [BookingStatusEnum.CheckedOut]: 'light',
 };
 
 export const bookingStatusRemainMap = (

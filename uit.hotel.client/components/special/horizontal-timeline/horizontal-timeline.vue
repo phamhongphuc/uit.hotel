@@ -3,9 +3,9 @@
         <div class="horizontal-timeline-toolbar d-flex m-child-1 flex-wrap">
             <div class="title px-1 font-weight-medium">
                 <icon-
-                    :i="statusIcon[0]"
+                    i="circle-fill"
                     class="mr-1"
-                    :class="`text-${statusIcon[1]}`"
+                    :class="`text-${statusColor}`"
                 />
                 {{ status }}
             </div>
@@ -124,7 +124,7 @@ import {
     bookingStatusRemainMap,
     getPriceItemText,
     bookingStatusMap,
-    bookingStatusIconMap,
+    bookingStatusColorMap,
 } from '~/modules/model';
 
 interface RenderPriceItem {
@@ -147,8 +147,8 @@ export default class extends mixins(DataMixin({ toDate, toMoney })) {
         return bookingStatusMap[this.booking.status];
     }
 
-    get statusIcon() {
-        return bookingStatusIconMap[this.booking.status];
+    get statusColor() {
+        return bookingStatusColorMap[this.booking.status];
     }
 
     get remain() {
