@@ -52,7 +52,7 @@ namespace uit.hotel.Models
         public IQueryable<ServicesDetail> ServicesDetails { get; }
 
         [Ignored]
-        public long Total { get => TotalPrice + TotalServicesDetails; }
+        public long Total => TotalPrice + TotalServicesDetails;
 
         public void CalculateTotal(bool updateBill = false)
         {

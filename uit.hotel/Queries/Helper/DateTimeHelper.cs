@@ -38,7 +38,7 @@ namespace uit.hotel.Queries.Helper
                 0,
                 0,
                 dateTime.Offset
-           );
+            );
         }
 
         public static TimeSpan Round(this TimeSpan dateTime)

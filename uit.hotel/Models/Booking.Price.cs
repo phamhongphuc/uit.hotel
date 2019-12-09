@@ -187,7 +187,8 @@ namespace uit.hotel.Models
         {
             TotalPrice =
                 PriceItemsInObject.Aggregate<PriceItem, long>(0, (sum, x) => sum + x.Value) +
-                PriceVolatilityItemsInObject.Aggregate<PriceVolatilityItem, long>(0, (sum, x) => sum + x.Value);
+                PriceVolatilityItemsInObject.Aggregate<PriceVolatilityItem, long>(0, (sum, x) => sum + x.Value) +
+                EarlyCheckInFee + LateCheckOutFee;
         }
 
         private void SaveResult()
