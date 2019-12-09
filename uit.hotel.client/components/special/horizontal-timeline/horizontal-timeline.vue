@@ -1,18 +1,30 @@
 <template>
     <div class="horizontal-timeline" :style="style">
-        <div class="horizontal-timeline-toolbar d-flex mb-2">
-            <div class="title px-2 font-weight-medium">
-                Sơ đồ giá phòng
+        <div class="horizontal-timeline-toolbar d-flex m-child-1 flex-wrap">
+            <div class="title px-1 font-weight-medium">
+                <icon-
+                    :i="statusIcon[0]"
+                    class="mr-1"
+                    :class="`text-${statusIcon[1]}`"
+                />
+                {{ status }}
             </div>
-            <b-button class="ml-auto p-1" @click="zoomOut">
+            <div class="title px-1 font-weight-medium">
+                <icon- i="clock" class="mr-1" />
+                {{ remain }}
+            </div>
+            <b-button class="ml-auto p-1" variant="lighten" @click="zoomOut">
                 <icon- i="zoom-out" class="ml-0" />
             </b-button>
-            <b-button class="ml-2 p-1" @click="zoomIn">
+            <b-button class="p-1" variant="lighten" @click="zoomIn">
                 <icon- i="zoom-in" class="ml-0" />
             </b-button>
         </div>
-        <div class="overflow-auto">
-            <div class="line-container rounded" :style="lineContainerStyle()">
+        <div class="overflow-auto mt-2">
+            <div
+                class="line-container rounded bg-lighten"
+                :style="lineContainerStyle()"
+            >
                 <div
                     v-for="(day, index) in days"
                     ref="vertical-line"
@@ -61,7 +73,7 @@
                         <br />
                         {{ earlyCheckInHour }} giờ ✕
                         {{ toMoney(booking.price.earlyCheckInFee) }} =
-                        {{ toMoney(booking.lateCheckOutFee) }}
+                        {{ toMoney(booking.earlyCheckInFee) }}
                     </b-tooltip>
                 </horizontal-timeline-range->
 
@@ -108,7 +120,12 @@ import { getBounding } from './horizontal-timeline.helper';
 import { toDate, toMoney, getDate } from '~/utils';
 import { GetBookingDetails } from '~/graphql/types';
 import { DataMixin } from '~/components/mixins';
-import { getPriceItemText } from '~/modules/model';
+import {
+    bookingStatusRemainMap,
+    getPriceItemText,
+    bookingStatusMap,
+    bookingStatusIconMap,
+} from '~/modules/model';
 
 interface RenderPriceItem {
     left: Moment;
@@ -125,6 +142,20 @@ export default class extends mixins(DataMixin({ toDate, toMoney })) {
     booking!: GetBookingDetails.Booking;
 
     dayWidth = 4;
+
+    get status() {
+        return bookingStatusMap[this.booking.status];
+    }
+
+    get statusIcon() {
+        return bookingStatusIconMap[this.booking.status];
+    }
+
+    get remain() {
+        return bookingStatusRemainMap(this.left, this.right)[
+            this.booking.status
+        ]();
+    }
 
     currentWidth() {
         return (this.$refs['vertical-line'] as HTMLElement[])[1].offsetWidth;
@@ -235,9 +266,6 @@ export default class extends mixins(DataMixin({ toDate, toMoney })) {
         > .title {
             line-height: calc(2rem + 2px);
         }
-        > .btn {
-            background-color: $ht-background;
-        }
     }
 
     .line-container {
@@ -247,7 +275,6 @@ export default class extends mixins(DataMixin({ toDate, toMoney })) {
         width: fit-content;
         min-width: 100%;
         padding-top: $ht-day-title-height + $ht-line-size;
-        background-color: $ht-background;
 
         > .vertical-line {
             position: relative;

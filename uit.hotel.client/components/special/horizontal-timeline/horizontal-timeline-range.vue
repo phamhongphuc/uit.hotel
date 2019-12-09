@@ -75,10 +75,16 @@ export default class extends mixins(DataMixin({ toDate })) {
     position: absolute;
     height: $ht-main-child;
     overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     transform: translateY(
         -$ht-main-child / 2 + $ht-day-title-height + $ht-line-size
     );
     cursor: pointer;
+
+    > * {
+        width: fit-content;
+    }
 
     &.price {
         &:not(:empty) {
@@ -99,14 +105,12 @@ export default class extends mixins(DataMixin({ toDate })) {
             padding: 0 0.75rem;
             font-size: 1.25rem;
             line-height: 1.75rem;
-            white-space: nowrap;
         }
         > .text {
             margin-top: 0.25rem;
             padding: 0 0.75rem;
             font-size: 0.875rem;
             line-height: 1.25rem;
-            white-space: nowrap;
             opacity: 0.625;
         }
     }

@@ -2,7 +2,7 @@ import { duration, Duration } from 'moment';
 import { GetBookingDetails, PriceItemKindEnum } from '~/graphql/types';
 import { toMoney } from '~/utils';
 
-const kingMap: {
+const kindMap: {
     [key in PriceItemKindEnum]: string;
 } = {
     [PriceItemKindEnum.Hour]: 'giờ',
@@ -36,7 +36,7 @@ export function getPriceItemText(
     booking: GetBookingDetails.Booking,
     priceItem: GetBookingDetails.PriceItems,
 ) {
-    const unit = kingMap[priceItem.kind];
+    const unit = kindMap[priceItem.kind];
     const unitPrice = getUnitPriceMap(booking.price)[priceItem.kind]();
     const number = parseFloat(
         getAmountMap(duration(priceItem.timeSpan, 'second'))

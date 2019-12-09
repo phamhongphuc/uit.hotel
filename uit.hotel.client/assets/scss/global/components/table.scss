@@ -30,12 +30,14 @@
     cursor: pointer;
 
     th {
-        white-space: nowrap;
+        vertical-align: inherit !important;
         border-bottom-color: $main !important;
     }
 
     th,
     td {
+        overflow: hidden;
+        text-overflow: ellipsis;
         border: 1px solid $table-border-color;
     }
     tr:first-child th {

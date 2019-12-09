@@ -1,23 +1,62 @@
 <template>
     <popup-
         ref="popup"
-        v-slot
+        v-slot="{ close }"
         title="Chi tiết đặt phòng"
         class="popup-booking-detail"
         child-class="w-100"
     >
         <query-
-            v-slot="{ data: { booking } }"
+            v-slot="{ data: { booking, booking: { id } } }"
             :query="getBookingDetails"
             :variables="variables"
             :poll-interval="500"
         >
-            <div class="m-3">
-                <horizontal-timeline- :booking="booking" />
+            <div class="row p-3">
+                <div class="col-8">
+                    <horizontal-timeline- :booking="booking" />
+                </div>
+                <div class="col-4 pl-0">
+                    <div class="d-flex m-child-1 flex-wrap justify-content-end">
+                        <b-button-mutate-
+                            v-if="booking.status == BookingStatusEnum.Booked"
+                            class="px-2"
+                            variant="lighten"
+                            :mutation="checkIn"
+                            :variables="{ id }"
+                        >
+                            <icon- i="corner-down-right" class="ml-n1 mr-1" />
+                            Nhận phòng
+                        </b-button-mutate->
+                        <b-button-mutate-
+                            v-if="booking.status == BookingStatusEnum.Booked"
+                            class="px-2"
+                            variant="lighten"
+                            :mutation="cancel"
+                            :variables="{ id }"
+                            @click="close"
+                        >
+                            <icon- i="x" class="ml-n1 mr-1" />
+                            Hủy
+                        </b-button-mutate->
+                        <b-button-mutate-
+                            v-if="booking.status == BookingStatusEnum.CheckedIn"
+                            class="px-2"
+                            variant="lighten"
+                            :mutation="checkOut"
+                            :variables="{ id }"
+                        >
+                            <icon- i="corner-right-up" class="ml-n1 mr-1" />
+                            Trả phòng
+                        </b-button-mutate->
+                    </div>
+                    <div class="font-weight-medium mt-2">
+                        Trạng thái:
+                    </div>
+                </div>
             </div>
-
-            <div class="d-flex m-2">
-                <div class="m-2 flex-1" @contextmenu.prevent="tableContext">
+            <div class="row px-3 pb-3 pt-0">
+                <div class="col-7" @contextmenu.prevent="tableContext">
                     <b-table
                         :items="booking.patrons"
                         :fields="[
@@ -48,7 +87,7 @@
                                 tdClass: 'text-nowrap text-right',
                             },
                         ]"
-                        class="table-style border shadow-sm"
+                        class="table-style table-sm border shadow-sm"
                         @row-clicked="
                             (patron, $index, $event) => {
                                 $event.stopPropagation();
@@ -79,81 +118,81 @@
                         </template>
                     </b-table>
                 </div>
-            </div>
-            <div class="d-flex m-2">
-                <div class="m-2 flex-1">
-                    <b-table
-                        class="table-style border shadow-sm"
-                        show-empty
-                        :items="booking.servicesDetails"
-                        :fields="[
-                            {
-                                key: 'index',
-                                label: '#',
-                                class: 'table-cell-id text-center',
-                            },
-                            {
-                                key: 'name',
-                                label: 'Tên dịch vụ',
-                                tdClass: 'text-nowrap text-center',
-                            },
-                            {
-                                key: 'number',
-                                label: 'Số lượng',
-                                tdClass: 'text-nowrap text-right',
-                            },
-                            {
-                                key: 'unitPrice',
-                                label: 'Đơn giá',
-                                tdClass: 'text-nowrap text-right',
-                            },
-                            {
-                                key: 'total',
-                                label: 'Thành tiền',
-                                tdClass: 'text-nowrap text-right',
-                            },
-                        ]"
-                        @row-clicked="
-                            (service, $index, $event) => {
-                                $event.stopPropagation();
-                                $refs.context_service.open(
-                                    currentEvent || $event,
-                                    {
-                                        service,
-                                        services,
-                                    },
-                                );
-                                currentEvent = null;
-                            }
-                        "
-                    >
-                        <template v-slot:empty>
-                            Phòng chưa sử dụng dịch vụ nào
-                        </template>
-                        <template v-slot:cell(index)="data">
-                            {{ data.index + 1 }}
-                        </template>
-                        <template v-slot:cell(name)="{ item }">
-                            {{ item.service.name }}
-                        </template>
-                        <template
-                            v-slot:cell(unitPrice)="{
-                                item: { service: { unitPrice, unit } },
-                            }"
+                <div class="col-5 pl-0">
+                    <div class="flex-1">
+                        <b-table
+                            class="table-style table-sm border shadow-sm"
+                            show-empty
+                            :items="booking.servicesDetails"
+                            :fields="[
+                                {
+                                    key: 'index',
+                                    label: '#',
+                                    class: 'table-cell-id text-center',
+                                },
+                                {
+                                    key: 'name',
+                                    label: 'Tên dịch vụ',
+                                    tdClass: 'text-nowrap text-center',
+                                },
+                                {
+                                    key: 'number',
+                                    label: 'Số lượng',
+                                    tdClass: 'text-nowrap text-right',
+                                },
+                                {
+                                    key: 'unitPrice',
+                                    label: 'Đơn giá',
+                                    tdClass: 'text-nowrap text-right',
+                                },
+                                {
+                                    key: 'total',
+                                    label: 'Thành tiền',
+                                    tdClass: 'text-nowrap text-right',
+                                },
+                            ]"
+                            @row-clicked="
+                                (service, $index, $event) => {
+                                    $event.stopPropagation();
+                                    $refs.context_service.open(
+                                        currentEvent || $event,
+                                        {
+                                            service,
+                                            services,
+                                        },
+                                    );
+                                    currentEvent = null;
+                                }
+                            "
                         >
-                            {{ toMoney(unitPrice) }} / {{ unit }}
-                        </template>
-                        <template
-                            v-slot:cell(total)="{
-                                item: { service: { unitPrice }, number },
-                            }"
-                        >
-                            {{ toMoney(unitPrice * number) }}
-                        </template>
-                    </b-table>
-                    <div class="text-right mt-2">
-                        Tổng cộng:
-                        {{ totalServiceDetails(booking.servicesDetails) }}
+                            <template v-slot:empty>
+                                Phòng chưa sử dụng dịch vụ nào
+                            </template>
+                            <template v-slot:cell(index)="data">
+                                {{ data.index + 1 }}
+                            </template>
+                            <template v-slot:cell(name)="{ item }">
+                                {{ item.service.name }}
+                            </template>
+                            <template
+                                v-slot:cell(unitPrice)="{
+                                    item: { service: { unitPrice, unit } },
+                                }"
+                            >
+                                {{ toMoney(unitPrice) }} / {{ unit }}
+                            </template>
+                            <template
+                                v-slot:cell(total)="{
+                                    item: { service: { unitPrice }, number },
+                                }"
+                            >
+                                {{ toMoney(unitPrice * number) }}
+                            </template>
+                        </b-table>
+                        <!-- <div class="text-right mt-2">
+                            Tổng cộng:
+                            {{ totalServiceDetails(booking.servicesDetails) }}
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -164,9 +203,14 @@
 </template>
 <script lang="ts">
 import { Component, mixins } from 'nuxt-property-decorator';
-import { GetBookingDetails } from '~/graphql/types';
+import { GetBookingDetails, BookingStatusEnum } from '~/graphql/types';
 import { PopupMixin, DataMixin } from '~/components/mixins';
-import { getBookingDetails } from '~/graphql/documents';
+import {
+    getBookingDetails,
+    checkIn,
+    checkOut,
+    cancel,
+} from '~/graphql/documents';
 import { toDate, toMoney, toYear } from '~/utils';
 
 type PopupMixinType = PopupMixin<{ id: number }, null>;
@@ -177,7 +221,16 @@ type PopupMixinType = PopupMixin<{ id: number }, null>;
 })
 export default class extends mixins<PopupMixinType>(
     PopupMixin,
-    DataMixin({ getBookingDetails, toDate, toMoney, toYear }),
+    DataMixin({
+        BookingStatusEnum,
+        getBookingDetails,
+        checkIn,
+        checkOut,
+        cancel,
+        toDate,
+        toMoney,
+        toYear,
+    }),
 ) {
     variables!: GetBookingDetails.Variables;
 

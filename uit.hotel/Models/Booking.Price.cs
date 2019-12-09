@@ -99,7 +99,7 @@ namespace uit.hotel.Models
             else if (checkInHour <= BookingBusiness._CheckInDayTime)
                 BaseNightCheckInTime = BaseNightCheckInTime.AtHour(BookingBusiness._CheckInDayTime);
             else if (checkInHour <= BookingBusiness._CheckInNightTime - BookingBusiness._ToleranceTimeSpan)
-                BaseNightCheckInTime.AtHour(BookingBusiness._CheckInDayTime);
+                BaseNightCheckInTime = BaseNightCheckInTime.AtHour(BookingBusiness._CheckInDayTime);
             else if (checkInHour <= BookingBusiness._CheckInNightTime)
                 BaseNightCheckInTime = BaseNightCheckInTime.AtHour(BookingBusiness._CheckInNightTime);
             else

@@ -19,3 +19,21 @@ $position-types: top right bottom left;
         #{$position}: 0;
     }
 }
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+    @include media-breakpoint-up($breakpoint) {
+        $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+        // Negative margins (e.g., where `.mb-n1` is negative version of `.mb-1`)
+        @each $size, $length in $spacers {
+            @if $size != 0 {
+                .m-child#{$infix}-#{$size} {
+                    margin: -$length !important;
+                    > * {
+                        margin: $length;
+                    }
+                }
+            }
+        }
+    }
+}

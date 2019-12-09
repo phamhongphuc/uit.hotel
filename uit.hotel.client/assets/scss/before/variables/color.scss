@@ -4,6 +4,8 @@ $light: #717786;
 
 $main: #4398d1;
 
+$lighten: lighten($light, 45%);
+
 $dribbble: #ea4c89;
 $facebook: #4267b2;
 $netlify: #25c7b7;
@@ -25,6 +27,7 @@ $white: white;
 $theme-colors: (
     'dark': $dark,
     'light': $light,
+    'lighten': $lighten,
     'main': $main,
     'white': $white,
     'black': $black,
