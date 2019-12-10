@@ -21,6 +21,7 @@ namespace uit.hotel.DataAccesses
                 Add(realm, booking);
 
                 booking.CalculateTotal();
+                booking.Bill.CalculateTotalPrice();
             });
             return booking;
         }
@@ -58,6 +59,7 @@ namespace uit.hotel.DataAccesses
                 bookingInDatabase.Status = BookingStatusEnum.CheckedIn;
 
                 bookingInDatabase.CalculateTotal();
+                bookingInDatabase.Bill.CalculateTotalPrice();
             });
             return bookingInDatabase;
         }
@@ -69,6 +71,7 @@ namespace uit.hotel.DataAccesses
                 bookingInDatabase.EmployeeCheckOut = employee;
                 bookingInDatabase.RealCheckOutTime = DateTimeOffset.Now.Round();
                 bookingInDatabase.CalculateTotal();
+                bookingInDatabase.Bill.CalculateTotalPrice();
 
                 bookingInDatabase.Status = BookingStatusEnum.CheckedOut;
                 bookingInDatabase.Room.IsClean = false;
