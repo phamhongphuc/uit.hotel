@@ -62,7 +62,7 @@
         "@types/node": "^12.12.14",
         "@types/vuelidate": "^0.7.9",
         "@types/webpack-env": "^1.14.1",
-        "@typescript-eslint/eslint-plugin": "^2.10.0",
+        "@typescript-eslint/eslint-plugin": "^2.11.0",
         "@typescript-eslint/parser": "^2.10.0",
         "babel-eslint": "^10.0.3",
         "chai": "^4.2.0",
