@@ -8,7 +8,7 @@
     >
         <query-
             v-slot
-            :query="getBookingDetails"
+            :query="getBooking"
             :variables="variables"
             :poll-interval="500"
             @result="onResult"
@@ -61,24 +61,20 @@
                             {
                                 key: 'name',
                                 label: 'Tên',
-                                tdClass: 'w-100',
                             },
                             {
                                 key: 'identification',
                                 label: 'CMND',
-                                tdClass: 'w-100',
                             },
                             {
                                 key: 'phoneNumbers',
                                 label: 'Số điện thoại',
-                                thClass: 'text-nowrap',
-                                tdClass: 'text-nowrap text-right',
+                                tdClass: 'text-right',
                             },
                             {
                                 key: 'birthdate',
                                 label: 'Năm sinh',
-                                thClass: 'text-nowrap',
-                                tdClass: 'text-nowrap text-right',
+                                tdClass: 'text-right',
                             },
                         ]"
                         @row-clicked="
@@ -324,7 +320,7 @@ import {
     cancel,
     checkIn,
     checkOut,
-    getBookingDetails,
+    getBooking,
     setIsCleanRoom,
 } from '~/graphql/documents';
 import { toDate, toMoney, toYear, getDate } from '~/utils';
@@ -346,7 +342,7 @@ export default class extends mixins<PopupMixinType>(
     PopupMixin,
     DataMixin({
         BookingStatusEnum,
-        getBookingDetails,
+        getBooking,
         cancel,
         checkIn,
         checkOut,

@@ -31,8 +31,8 @@ export const getBookings = gql`
     }
 `;
 
-export const getBookingDetails = gql`
-    query getBookingDetails($id: ID!) {
+export const getBooking = gql`
+    query getBooking($id: ID!) {
         booking(id: $id) {
             id
             bookCheckInTime
