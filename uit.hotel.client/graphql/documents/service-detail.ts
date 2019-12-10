@@ -7,3 +7,9 @@ export const createServicesDetail = gql`
         }
     }
 `;
+
+export const deleteServicesDetail = gql`
+    mutation deleteServicesDetail($id: ID!) {
+        deleteServicesDetail(id: $id)
+    }
+`;

@@ -52,7 +52,7 @@
                         tdClass: 'text-nowrap text-center',
                     },
                 ]"
-                class="table-style"
+                class="table-style table-header-line"
                 @row-clicked="
                     (price, $index, $event) => {
                         $event.stopPropagation();

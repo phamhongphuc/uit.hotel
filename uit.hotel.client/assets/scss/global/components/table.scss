@@ -26,18 +26,32 @@
     }
 }
 
+.table-header-line {
+    th {
+        border-bottom-color: $main !important;
+    }
+}
+
 .table-style {
     cursor: pointer;
 
     th {
-        white-space: nowrap;
-        border-bottom-color: $main !important;
+        vertical-align: inherit !important;
     }
 
     th,
     td {
+        overflow: hidden;
+        text-overflow: ellipsis;
         border: 1px solid $table-border-color;
     }
+    &.bg-lighten {
+        th,
+        td {
+            border-color: $ht-line-color;
+        }
+    }
+
     tr:first-child th {
         border-top: 0;
     }

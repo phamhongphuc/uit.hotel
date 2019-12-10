@@ -45,7 +45,7 @@
                         tdClass: 'text-nowrap',
                     },
                 ]"
-                class="table-style"
+                class="table-style table-header-line"
                 @row-clicked="
                     (patron, $index, $event) => {
                         $event.stopPropagation();

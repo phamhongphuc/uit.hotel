@@ -65,7 +65,7 @@
                         class: 'text-right',
                     },
                 ]"
-                class="table-style"
+                class="table-style table-header-line"
                 @row-clicked="
                     (bill, $index, $event) => {
                         $event.stopPropagation();

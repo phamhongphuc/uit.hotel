@@ -28,15 +28,18 @@ namespace uit.hotel.Queries.Helper
             => dateTime.UtcDateTime.Add(Constant.TimeZone).TimeOfDay.TotalHours;
 
         public static DateTimeOffset AtHour(this DateTimeOffset dateTime, int hour)
-            => new DateTimeOffset(
+        {
+            dateTime = dateTime.ToOffset(Constant.TimeZone);
+            return new DateTimeOffset(
                 dateTime.Year,
                 dateTime.Month,
                 dateTime.Day,
                 hour,
                 0,
                 0,
-                Constant.TimeZone
+                dateTime.Offset
             );
+        }
 
         public static TimeSpan Round(this TimeSpan dateTime)
         {

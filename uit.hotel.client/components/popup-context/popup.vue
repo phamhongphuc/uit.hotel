@@ -1,10 +1,10 @@
 <template>
-    <div v-show="show" class="popup" @click="close">
+    <div v-show="show" class="popup" @click="click">
         <div
             ref="popup"
             class="popup-modal m-3"
             :class="childClass"
-            @click.stop
+            @click="currentEvent = $event"
         >
             <div class="popup-modal-title">
                 <div class="text">{{ title }}</div>
@@ -23,15 +23,21 @@
     </div>
 </template>
 <script lang="ts">
-import { Component, Prop, mixins } from 'nuxt-property-decorator';
-import { ClickawayMixin } from '~/components/mixins/clickaway';
+import { Component, Prop, Vue } from 'nuxt-property-decorator';
 
 @Component({
     name: 'popup-',
 })
-export default class Popup extends mixins<ClickawayMixin>(ClickawayMixin) {
+export default class Popup extends Vue {
     show = false;
     data: any = null;
+
+    currentEvent: MouseEvent | null = null;
+
+    click() {
+        if (this.currentEvent !== null) this.currentEvent = null;
+        else this.close();
+    }
 
     @Prop({ type: String })
     childClass!: string;
@@ -108,7 +114,8 @@ export default class Popup extends mixins<ClickawayMixin>(ClickawayMixin) {
         }
 
         > .popup-modal-content {
-            overflow: auto;
+            overflow-x: hidden;
+            overflow-y: auto;
         }
     }
 }

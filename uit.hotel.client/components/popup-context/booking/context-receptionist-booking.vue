@@ -39,7 +39,7 @@
         />
         <b-nav-item-icon-
             icon="shopping-bag"
-            text="Thêm chi tiết dịch vụ"
+            text="Thêm dịch vụ"
             @click="refs.service_detail_add.open({ booking })"
         />
     </context->

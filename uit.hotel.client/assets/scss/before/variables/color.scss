@@ -1,43 +1,39 @@
-// Use Lab ( x , 0 , -9 )
 $dark: #181e2a;
 $light: #717786;
 
 $main: #4398d1;
 
-$dribbble: #ea4c89;
-$facebook: #4267b2;
-$netlify: #25c7b7;
+$lighten: lighten($light, 45%);
 
 $body-bg: #f2f2f2;
 $body-color: lighten(#212529, 25%);
 $gray: #f5f6fa;
 $blue: #507af2;
-$green: #28a745;
+$green: #2ecc71;
 $light-blue: #bde7ff;
 $dark-blue: #9abeff;
 $light-red: #f39190;
 $red: #eb4d4b;
 $orange: #f39c12;
-
+$yellow: #f4d247;
 $black: black;
 $white: white;
 
 $theme-colors: (
     'dark': $dark,
     'light': $light,
+    'lighten': $lighten,
     'main': $main,
     'white': $white,
     'black': $black,
     'blue': $blue,
     'green': $green,
     'orange': $orange,
+    'yellow': $yellow,
     'light-blue': $light-blue,
     'dark-blue': $dark-blue,
     'light-red': $light-red,
     'gray': $gray,
-    'dribbble': $dribbble,
-    'facebook': $facebook,
-    'netlify': $netlify,
     'red': $red,
 );
 

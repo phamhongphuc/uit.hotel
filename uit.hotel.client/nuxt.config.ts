@@ -53,6 +53,7 @@ const config: Configuration = {
         { src: '~/plugins/notification', ssr: false },
         { src: '~/plugins/notify', ssr: false },
         { src: '~/plugins/global', ssr: false },
+        { src: '~/plugins/moment' },
         { src: '~/plugins/component' },
         { src: '~/plugins/vuelidate' },
     ],

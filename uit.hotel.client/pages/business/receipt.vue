@@ -31,7 +31,7 @@
                         class: 'text-center',
                     },
                 ]"
-                class="table-style"
+                class="table-style table-header-line"
             >
                 <template v-slot:cell(index)="data">
                     {{ data.index + 1 }}

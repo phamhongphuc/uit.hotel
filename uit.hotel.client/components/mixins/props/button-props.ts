@@ -4,10 +4,10 @@ import { Vue, Prop, Component } from 'nuxt-property-decorator';
 @Component
 export class ButtonProps extends Vue {
     @Prop({ default: false })
-    protected block = false;
+    protected block!: boolean;
 
     @Prop({ default: false })
-    protected disabled = false;
+    protected disabled!: boolean;
 
     @Prop({ default: null })
     protected size!: string;
@@ -19,5 +19,5 @@ export class ButtonProps extends Vue {
     protected type!: string;
 
     @Prop({ default: null })
-    protected pressed = false;
+    protected pressed!: boolean;
 }
