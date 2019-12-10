@@ -81,6 +81,7 @@ const config = {
         'node/no-unpublished-import': 'off',
         'node/no-unsupported-features/es-syntax': 'off',
 
+        'import/extensions': ['error', 'never', { json: 'always' }],
         'import/prefer-default-export': 'off',
         'import/order': [
             'error',
