@@ -312,8 +312,8 @@ import {
 } from '~/modules/model';
 import {
     BookingStatusEnum,
-    GetBookingDetails,
-    GetBookingDetailsQuery,
+    GetBooking,
+    GetBookingQuery,
 } from '~/graphql/types';
 import { PopupMixin, DataMixin } from '~/components/mixins';
 import {
@@ -352,8 +352,8 @@ export default class extends mixins<PopupMixinType>(
         toYear,
     }),
 ) {
-    variables!: GetBookingDetails.Variables;
-    booking!: GetBookingDetails.Booking;
+    variables!: GetBooking.Variables;
+    booking!: GetBooking.Booking;
 
     currentEvent: MouseEvent | null = null;
     priceItems: PriceItemRender[] = [];
@@ -362,7 +362,7 @@ export default class extends mixins<PopupMixinType>(
         this.variables = { id: this.data.id.toString() };
     }
 
-    async onResult({ data }: ApolloQueryResult<GetBookingDetailsQuery>) {
+    async onResult({ data }: ApolloQueryResult<GetBookingQuery>) {
         this.booking = data.booking;
 
         this.priceItems = [

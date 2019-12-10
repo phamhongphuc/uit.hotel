@@ -1481,11 +1481,11 @@ export type GetBookingsQuery = {
     >;
 };
 
-export type GetBookingDetailsQueryVariables = {
+export type GetBookingQueryVariables = {
     id: Scalars['ID'];
 };
 
-export type GetBookingDetailsQuery = {
+export type GetBookingQuery = {
     booking: Pick<
         Booking,
         | 'id'
@@ -2200,33 +2200,31 @@ export namespace GetBookings {
     export type Room = NonNullable<GetBookingsQuery['bookings'][0]>['room'];
 }
 
-export namespace GetBookingDetails {
-    export type Variables = GetBookingDetailsQueryVariables;
-    export type Query = GetBookingDetailsQuery;
-    export type Booking = GetBookingDetailsQuery['booking'];
-    export type Price = GetBookingDetailsQuery['booking']['price'];
+export namespace GetBooking {
+    export type Variables = GetBookingQueryVariables;
+    export type Query = GetBookingQuery;
+    export type Booking = GetBookingQuery['booking'];
+    export type Price = GetBookingQuery['booking']['price'];
     export type PriceItems = NonNullable<
-        GetBookingDetailsQuery['booking']['priceItems'][0]
+        GetBookingQuery['booking']['priceItems'][0]
     >;
     export type PriceVolatilityItems = NonNullable<
-        GetBookingDetailsQuery['booking']['priceVolatilityItems'][0]
+        GetBookingQuery['booking']['priceVolatilityItems'][0]
     >;
-    export type Patrons = NonNullable<
-        GetBookingDetailsQuery['booking']['patrons'][0]
-    >;
+    export type Patrons = NonNullable<GetBookingQuery['booking']['patrons'][0]>;
     export type PatronKind = NonNullable<
-        GetBookingDetailsQuery['booking']['patrons'][0]
+        GetBookingQuery['booking']['patrons'][0]
     >['patronKind'];
-    export type Bill = GetBookingDetailsQuery['booking']['bill'];
+    export type Bill = GetBookingQuery['booking']['bill'];
     export type ServicesDetails = NonNullable<
-        GetBookingDetailsQuery['booking']['servicesDetails'][0]
+        GetBookingQuery['booking']['servicesDetails'][0]
     >;
     export type Service = NonNullable<
-        GetBookingDetailsQuery['booking']['servicesDetails'][0]
+        GetBookingQuery['booking']['servicesDetails'][0]
     >['service'];
-    export type Room = GetBookingDetailsQuery['booking']['room'];
-    export type RoomKind = GetBookingDetailsQuery['booking']['room']['roomKind'];
-    export type Floor = GetBookingDetailsQuery['booking']['room']['floor'];
+    export type Room = GetBookingQuery['booking']['room'];
+    export type RoomKind = GetBookingQuery['booking']['room']['roomKind'];
+    export type Floor = GetBookingQuery['booking']['room']['floor'];
 }
 
 export namespace GetSimpleBookings {

@@ -120,7 +120,7 @@ import { Component, Prop, mixins, Provide } from 'nuxt-property-decorator';
 import moment, { duration, Moment } from 'moment';
 import { getBounding } from './horizontal-timeline.helper';
 import { toDate, toMoney, getDate } from '~/utils';
-import { GetBookingDetails } from '~/graphql/types';
+import { GetBooking } from '~/graphql/types';
 import { DataMixin } from '~/components/mixins';
 import {
     bookingStatusRemainMap,
@@ -141,7 +141,7 @@ interface RenderPriceItem {
 })
 export default class extends mixins(DataMixin({ toDate, toMoney })) {
     @Prop({ required: true })
-    booking!: GetBookingDetails.Booking;
+    booking!: GetBooking.Booking;
 
     dayWidth = 4;
 
