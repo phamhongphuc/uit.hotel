@@ -6,7 +6,7 @@ export const toMoney = (num = 0) =>
         currency: 'VND',
     });
 
-export const toDate = (date: string | number) => {
+export const toDate = (date: string | number | Moment) => {
     const current = moment();
     const time = moment(date);
 
