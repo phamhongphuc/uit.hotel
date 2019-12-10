@@ -85,7 +85,7 @@ namespace uit.hotel.DataAccesses
 
         public static async void Delete(Bill bill) => await Database.WriteAsync(realm =>
         {
-            foreach (var booking in bill.Bookings) realm.Remove(booking);
+            foreach (var booking in bill.Bookings) BookingDataAccess.Delete(booking);
             realm.Remove(bill);
         });
 

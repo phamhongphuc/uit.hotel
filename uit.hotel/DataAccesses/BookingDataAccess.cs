@@ -78,7 +78,12 @@ namespace uit.hotel.DataAccesses
 
         public static Task Delete(Booking bookingInDatabase)
         {
-            await Database.WriteAsync(realm => realm.Remove(bookingInDatabase));
+            return WriteAsync(async realm =>
+            {
+                await PriceItemDataAccess.Delete(bookingInDatabase.PriceItems);
+                await PriceVolatilityItemDataAccess.Delete(bookingInDatabase.PriceVolatilityItems);
+                realm.Remove(bookingInDatabase);
+            });
         }
 
         public static Booking Get(int bookingId) => Database.Find<Booking>(bookingId);
