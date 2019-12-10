@@ -2085,6 +2085,15 @@ export type CreateServicesDetailMutation = {
     createServicesDetail: Pick<ServicesDetail, 'id'>;
 };
 
+export type DeleteServicesDetailMutationVariables = {
+    id: Scalars['ID'];
+};
+
+export type DeleteServicesDetailMutation = Pick<
+    AppMutation,
+    'deleteServicesDetail'
+>;
+
 export type GetServicesQueryVariables = {};
 
 export type GetServicesQuery = {
@@ -2582,6 +2591,11 @@ export namespace CreateServicesDetail {
     export type Variables = CreateServicesDetailMutationVariables;
     export type Mutation = CreateServicesDetailMutation;
     export type CreateServicesDetail = CreateServicesDetailMutation['createServicesDetail'];
+}
+
+export namespace DeleteServicesDetail {
+    export type Variables = DeleteServicesDetailMutationVariables;
+    export type Mutation = DeleteServicesDetailMutation;
 }
 
 export namespace GetServices {
