@@ -185,13 +185,16 @@ export default class extends mixins<PopupMixinType>(
                     room: { id: tableRow.room.id },
                     listOfPatrons: tableRow.patrons.map(patron => {
                         if (patron.isOwner) patronId = patron.id;
+
                         return { id: patron.id };
                     }),
                 })),
                 bill: { patron: { id: patronId } },
             };
+
             return output;
         }
+
         const output: CreateBill.Variables = {
             bookings: this.tableData.map(tableRow => ({
                 bookCheckInTime: this.bookCheckInTime,
@@ -199,11 +202,13 @@ export default class extends mixins<PopupMixinType>(
                 room: { id: tableRow.room.id },
                 listOfPatrons: tableRow.patrons.map(patron => {
                     if (patron.isOwner) patronId = patron.id;
+
                     return { id: patron.id };
                 }),
             })),
             bill: { patron: { id: patronId } },
         };
+
         return output;
     }
 
@@ -232,6 +237,7 @@ export default class extends mixins<PopupMixinType>(
     get currentRoomIds() {
         return this.tableData.reduce((output, rowData) => {
             output.push(rowData.room.id);
+
             return output;
         }, [] as number[]);
     }
@@ -240,7 +246,9 @@ export default class extends mixins<PopupMixinType>(
         if (isNew) await this.nextResult();
 
         const patron = this.patrons.find(patron => patron.id === patronId);
+
         if (patron === undefined) return;
+
         row.patrons.push({ ...patron, isOwner: this.numberOfPatrons === 0 });
     }
 
@@ -257,12 +265,14 @@ export default class extends mixins<PopupMixinType>(
             const index = row.patrons.findIndex(
                 patron => patron.id === patronId,
             );
+
             if (index !== -1) row.patrons.splice(index, 1);
         });
     }
 
     removeRoom(roomId: number) {
         const index = this.tableData.findIndex(row => row.room.id === roomId);
+
         this.tableData.splice(index, 1);
     }
 

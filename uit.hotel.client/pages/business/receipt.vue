@@ -84,6 +84,7 @@ export default class extends mixins(
 
     tableContext(event: MouseEvent) {
         const tr = (event.target as HTMLElement).closest('tr');
+
         if (tr !== null) {
             this.currentEvent = event;
             tr.click();

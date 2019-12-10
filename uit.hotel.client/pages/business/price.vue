@@ -111,6 +111,7 @@ export default class extends mixins(DataMixin({ getPrices, toMoney, toDate })) {
 
     tableContext(event: MouseEvent) {
         const tr = (event.target as HTMLElement).closest('tr');
+
         if (tr !== null) {
             this.currentEvent = event;
             tr.click();

@@ -16,6 +16,7 @@ export class MutableMixin extends Vue {
 
     protected get mutationName(): string | undefined {
         const operation = this.mutation.definitions[0];
+
         if (
             operation !== undefined &&
             'name' in operation &&
@@ -23,6 +24,7 @@ export class MutableMixin extends Vue {
         ) {
             return operation.name.value;
         }
+
         return undefined;
     }
 
@@ -34,11 +36,15 @@ export class MutableMixin extends Vue {
             },
         );
         const { mutationName } = this;
+
         if (mutationName !== undefined) {
             const { data } = result;
+
             if (data == null) return undefined;
+
             if (mutationName in data) {
                 const text = data[mutationName];
+
                 if (typeof text === 'string') {
                     notify.success({
                         title: 'Thông báo',
@@ -50,9 +56,11 @@ export class MutableMixin extends Vue {
                         text: this.success,
                     });
                 }
+
                 this.$emit('success');
             }
         }
+
         return result;
     }
 }

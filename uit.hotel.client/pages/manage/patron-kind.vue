@@ -87,6 +87,7 @@ export default class extends mixins(DataMixin({ getPatronKinds })) {
 
     tableContext(event: MouseEvent) {
         const tr = (event.target as HTMLElement).closest('tr');
+
         if (tr !== null) {
             this.currentEvent = event;
             tr.click();

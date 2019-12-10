@@ -127,11 +127,13 @@ export default class extends mixins(DataMixin({ getPositions })) {
         positions: GetPositions.Positions[],
     ): GetPositions.Positions[] {
         if (this.showInactive) return positions;
+
         return positions.filter(rk => rk.isActive);
     }
 
     tableContext(event: MouseEvent) {
         const tr = (event.target as HTMLElement).closest('tr');
+
         if (tr !== null) {
             this.currentEvent = event;
             tr.click();

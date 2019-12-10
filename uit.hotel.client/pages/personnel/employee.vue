@@ -115,12 +115,15 @@ export default class extends mixins(DataMixin({ getEmployees })) {
         employees: GetEmployees.Employees[],
     ): GetEmployees.Employees[] {
         if (this.showInactive) return employees;
+
         if (employees === undefined) return [];
+
         return employees.filter(rk => rk.isActive);
     }
 
     tableContext(event: MouseEvent) {
         const tr = (event.target as HTMLElement).closest('tr');
+
         if (tr !== null) {
             this.currentEvent = event;
             tr.click();

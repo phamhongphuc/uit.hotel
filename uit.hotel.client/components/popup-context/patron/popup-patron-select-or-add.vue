@@ -232,6 +232,7 @@ export default class extends mixins<
 
     identificationFormatter(value: string) {
         if (value.length > 9) value = value.slice(0, 9);
+
         return value;
     }
 
@@ -265,6 +266,7 @@ export default class extends mixins<
         const patron = this.patrons.find(
             p => p.identification === identification,
         );
+
         if (patron !== undefined) {
             this.input.name = patron.name;
             this.input.name = patron.name;
@@ -279,6 +281,7 @@ export default class extends mixins<
             this.input.residence = patron.residence;
             this.input.note = patron.note;
         }
+
         return patron;
     }
 
@@ -287,6 +290,7 @@ export default class extends mixins<
         mutate: () => Promise<{ data: CreatePatron.Mutation }>,
     ) {
         const { data } = await mutate();
+
         this.data.callback(data.createPatron.id, true);
         close();
     }

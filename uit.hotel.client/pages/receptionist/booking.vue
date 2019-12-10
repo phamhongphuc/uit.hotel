@@ -147,6 +147,7 @@ export default class extends mixins(
 
     tableContext(event: MouseEvent) {
         const tr = (event.target as HTMLElement).closest('tr');
+
         if (tr !== null) {
             this.currentEvent = event;
             tr.click();
@@ -158,12 +159,14 @@ export default class extends mixins(
     getCheckInTime(item: GetBookings.Bookings) {
         if (item.status === BookingStatusEnum.Booked)
             return item.bookCheckInTime;
+
         return item.realCheckInTime;
     }
 
     getCheckOutTime(item: GetBookings.Bookings) {
         if (item.status === BookingStatusEnum.CheckedOut)
             return item.realCheckOutTime;
+
         return item.bookCheckOutTime;
     }
 }

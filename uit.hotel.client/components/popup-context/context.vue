@@ -42,6 +42,7 @@ export default class extends mixins<ClickawayMixin>(ClickawayMixin) {
         if (value === oldValue) {
             return;
         }
+
         if (value) {
             this.addScrollEventListener();
         } else {
@@ -53,10 +54,12 @@ export default class extends mixins<ClickawayMixin>(ClickawayMixin) {
         if (!this.show) {
             return;
         }
+
         this.top = 0;
         this.left = 0;
         this.data = null;
         this.show = false;
+
         if (emit) {
             this.$emit('close');
         }
@@ -93,12 +96,15 @@ export default class extends mixins<ClickawayMixin>(ClickawayMixin) {
             window.innerHeight - (this.$el as HTMLElement).offsetHeight - 25;
         const largestWidth =
             window.innerWidth - (this.$el as HTMLElement).offsetWidth - 25;
+
         if (top > largestHeight) {
             top = largestHeight;
         }
+
         if (left > largestWidth) {
             left = largestWidth;
         }
+
         this.top = top;
         this.left = left;
     }

@@ -94,9 +94,11 @@ export default class extends mixins<PopupMixinType>(
         if (this.data.currentRoomIds.includes(room.id)) {
             return 'Phòng đã được chọn';
         }
+
         if (room.currentBooking !== null) {
             return 'Phòng đã được thuê';
         }
+
         return `Loại: Phòng ${room.roomKind.name}`;
     }
 
@@ -104,9 +106,11 @@ export default class extends mixins<PopupMixinType>(
         if (this.data.currentRoomIds.includes(room.id)) {
             return 'orange';
         }
+
         if (room.currentBooking !== null) {
             return 'light-red';
         }
+
         return 'light-blue';
     }
 

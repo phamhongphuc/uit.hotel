@@ -17,6 +17,7 @@ export default class extends Vue {
 
     get stateClass() {
         if (this.state === null) return null;
+
         return this.state ? 'is-valid' : 'is-invalid';
     }
 }

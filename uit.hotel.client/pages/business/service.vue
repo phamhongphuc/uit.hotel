@@ -119,6 +119,7 @@ export default class extends mixins(DataMixin({ getServices, toMoney })) {
 
     servicesFilter(services: GetServices.Services[]): GetServices.Services[] {
         if (this.showInactive) return services;
+
         return services.filter(rk => rk.isActive);
     }
 
@@ -130,6 +131,7 @@ export default class extends mixins(DataMixin({ getServices, toMoney })) {
 
     tableContext(event: MouseEvent) {
         const tr = (event.target as HTMLElement).closest('tr');
+
         if (tr !== null) {
             this.currentEvent = event;
             tr.click();

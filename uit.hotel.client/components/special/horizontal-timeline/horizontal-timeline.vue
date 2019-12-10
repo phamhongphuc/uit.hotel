@@ -179,6 +179,7 @@ export default class extends mixins(DataMixin({ toDate, toMoney })) {
 
     lineContainerStyle() {
         const lines = 1;
+
         return {
             height: `calc(var(--main-height) + var(--line-size) + var(--price-space) + (var(--price-space) + var(--price-child)) * ${lines})`,
         };
@@ -190,18 +191,22 @@ export default class extends mixins(DataMixin({ toDate, toMoney })) {
         } = this;
 
         let iterate = moment(baseNightCheckInTime);
+
         return priceItems.map(priceItem => {
             const left = iterate.clone();
             const right = iterate.clone().add(priceItem.timeSpan, 'second');
             const text = getPriceItemText(this.booking, priceItem);
             const { value } = priceItem;
+
             iterate = right.clone().add(2, 'hour');
+
             return { left, right, text, value };
         });
     }
 
     get earlyCheckInHour() {
         const { booking, left } = this;
+
         return parseFloat(
             duration(moment(booking.baseNightCheckInTime).diff(left))
                 .asHours()
@@ -211,6 +216,7 @@ export default class extends mixins(DataMixin({ toDate, toMoney })) {
 
     get lateCheckOutHour() {
         const { booking, right } = this;
+
         return parseFloat(
             duration(moment(right).diff(booking.baseDayCheckOutTime))
                 .asHours()

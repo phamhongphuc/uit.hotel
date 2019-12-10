@@ -100,6 +100,7 @@ export default class extends mixins<PopupMixin<void, any>>(
         const eachOption = option => {
             options[option.value] = this.selected.indexOf(option.value) !== -1;
         };
+
         this.positionOptionsAdministrative.forEach(eachOption);
         this.positionOptionsBusiness.forEach(eachOption);
         this.positionOptionsReceptionist.forEach(eachOption);
@@ -126,17 +127,23 @@ export default class extends mixins<PopupMixin<void, any>>(
     toggleAll(checked: boolean, options: CheckboxOption[]) {
         function addUnique(array: string[], add: string[]) {
             const a = array.concat();
+
             add.forEach(e => {
                 if (a.indexOf(e) === -1) a.push(e);
             });
+
             return a;
         }
+
         function removeUnique(array: string[], sub: string[]) {
             const a = array.concat();
+
             sub.forEach(e => {
                 const index = a.indexOf(e);
+
                 if (index !== -1) a.splice(index, 1);
             });
+
             return a;
         }
 

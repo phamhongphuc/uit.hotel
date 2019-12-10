@@ -151,6 +151,7 @@ export default class extends mixins<PopupMixinType>(
 
     async onResult() {
         if (this.input === null) return;
+
         await Vue.nextTick();
         this.input.roomKind.id = this.data.roomKind.id;
         this.$v.$touch();

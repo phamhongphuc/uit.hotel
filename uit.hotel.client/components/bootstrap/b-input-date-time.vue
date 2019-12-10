@@ -48,6 +48,7 @@ export default class extends mixins<InputProps, StateProps>(
             `${this.date} ${this.time}`,
             'YYYY-MM-DD HH:mm',
         ).format();
+
         this.$emit('input', dateTime);
     }
 

@@ -37,19 +37,25 @@ export default class extends mixins<PermissionMixin>(PermissionMixin) {
         if (this.autoPermission === false) return;
 
         const defaultSlot = this.$slots.default;
+
         if (defaultSlot === undefined) return;
 
         this.autoPermissionValue = defaultSlot.reduce<PermissionUnion[]>(
             (output, current) => {
                 (() => {
                     const child = current.componentInstance;
+
                     if (child === undefined) return;
+
                     if (!isPermissionMixin(child)) return;
+
                     const { permission } = child;
+
                     if (typeof permission === 'boolean') return;
 
                     output = output.concat(permission);
                 })();
+
                 return output;
             },
             [],

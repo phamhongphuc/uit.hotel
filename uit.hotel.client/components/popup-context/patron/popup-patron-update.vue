@@ -214,6 +214,7 @@ export default class extends mixins<
 
     async onResult() {
         if (this.input === null) return;
+
         await Vue.nextTick();
         this.input.patronKind.id = this.data.patron.patronKind.id;
         this.$v.$touch();

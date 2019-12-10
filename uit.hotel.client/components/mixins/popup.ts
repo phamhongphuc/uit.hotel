@@ -26,8 +26,10 @@ export class PopupMixin<TData, TInput> extends Vue {
         await Vue.nextTick();
 
         const autoFocus = this.$refs.autoFocus as Vue;
+
         if (autoFocus !== undefined && autoFocus.$refs.input !== undefined) {
             const input = (autoFocus.$refs.input as Vue).$el as HTMLElement;
+
             if (typeof input.focus === 'function') input.focus();
         }
     }

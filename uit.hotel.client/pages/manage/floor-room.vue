@@ -93,6 +93,7 @@ export default class extends mixins(DataMixin({ getFloors })) {
 
     floorsFilter(floors: GetFloors.Floors[]): GetFloors.Floors[] {
         if (this.showInactive) return floors;
+
         return floors
             .filter(f => f.isActive)
             .sort((a, b) => (a.name > b.name ? 1 : -1));
@@ -100,6 +101,7 @@ export default class extends mixins(DataMixin({ getFloors })) {
 
     roomsFilter(rooms: GetFloors.Rooms[]): GetFloors.Rooms[] {
         if (this.showInactive) return rooms;
+
         return rooms
             .filter(r => r.isActive)
             .sort((a, b) => (a.name > b.name ? 1 : -1));

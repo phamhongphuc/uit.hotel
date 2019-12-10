@@ -156,6 +156,7 @@ export default class extends Vue {
 
     async mounted() {
         await Vue.nextTick();
+
         if (this.$route !== undefined) {
             if (this.$route.path.indexOf('/receptionist') === 0) {
                 this.showReceptionist = true;

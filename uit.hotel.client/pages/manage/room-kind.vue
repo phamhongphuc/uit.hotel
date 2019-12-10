@@ -117,11 +117,13 @@ export default class extends mixins(DataMixin({ getRoomKinds })) {
         roomKinds: GetRoomKinds.RoomKinds[],
     ): GetRoomKinds.RoomKinds[] {
         if (this.showInactive) return roomKinds;
+
         return roomKinds.filter(rk => rk.isActive);
     }
 
     tableContext(event: MouseEvent) {
         const tr = (event.target as HTMLElement).closest('tr');
+
         if (tr !== null) {
             this.currentEvent = event;
             tr.click();

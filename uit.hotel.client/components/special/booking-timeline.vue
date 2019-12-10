@@ -188,6 +188,7 @@ export default class extends Vue {
             now,
         } = this;
         const value = ((max - now) / seconds) * ratio;
+
         return {
             right: `${value}rem`,
         };
@@ -199,6 +200,7 @@ export default class extends Vue {
         } = this;
         const length = (max - min) / seconds;
         const startDay = moment.unix(min);
+
         return Array.from({ length }, (v, index) =>
             startDay.clone().add(index, 'days'),
         ).map(day => ({
@@ -212,6 +214,7 @@ export default class extends Vue {
             timeBound: { min },
             ratio,
         } = this;
+
         return room.bookings.map(booking => {
             const inTime = moment(
                 booking.status === BookingStatusEnum.Booked

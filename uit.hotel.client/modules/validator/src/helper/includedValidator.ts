@@ -14,7 +14,9 @@ export const included = (ref: string) => ({
                 element === undefined ||
                 !('options' in element) ||
                 !Array.isArray(element.options);
+
             if (condition) return false;
+
             return element.options.some(option => option.id === value);
         },
     },

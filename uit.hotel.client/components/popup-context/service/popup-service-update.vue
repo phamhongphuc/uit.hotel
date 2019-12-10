@@ -73,6 +73,7 @@ export default class extends mixins<PopupMixinType>(
 ) {
     onOpen() {
         const { id, name, unitPrice, unit } = this.data.service;
+
         this.input = { id, name, unitPrice, unit };
     }
 }

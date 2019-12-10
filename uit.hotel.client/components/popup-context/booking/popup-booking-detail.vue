@@ -401,6 +401,7 @@ export default class extends mixins<PopupMixinType>(
 
     tableContext(event: MouseEvent) {
         const tr = (event.target as HTMLElement).closest('tr');
+
         if (tr !== null) {
             this.currentEvent = event;
             tr.click();
@@ -409,6 +410,7 @@ export default class extends mixins<PopupMixinType>(
 
     get earlyCheckInHour() {
         const { booking, left } = this;
+
         return parseFloat(
             duration(moment(booking.baseNightCheckInTime).diff(left))
                 .asHours()
@@ -418,6 +420,7 @@ export default class extends mixins<PopupMixinType>(
 
     get lateCheckOutHour() {
         const { booking, right } = this;
+
         return parseFloat(
             duration(moment(right).diff(booking.baseDayCheckOutTime))
                 .asHours()

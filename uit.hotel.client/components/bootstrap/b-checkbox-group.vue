@@ -22,7 +22,9 @@ import { CheckboxProps } from '~/components/mixins';
 
 function isEquals(a: string[], b: string[]): boolean {
     if (a.length !== b.length) return false;
+
     const filter = a.filter(e => b.indexOf(e) === -1);
+
     return filter.length === 0;
 }
 
@@ -49,6 +51,7 @@ export default class extends mixins<CheckboxProps>(CheckboxProps) {
             this.indeterminate = true;
             this.allSelected = false;
         }
+
         const arrayFiltered = this.value.filter(
             e => this.optionsList.indexOf(e) === -1,
         );
@@ -72,11 +75,13 @@ export default class extends mixins<CheckboxProps>(CheckboxProps) {
 
     updateSelectedFromValue() {
         const arr = this.value.filter(e => this.optionsList.indexOf(e) !== -1);
+
         if (!isEquals(this.selected, arr)) this.selected = arr;
     }
 
     toggleAll(checked: boolean) {
         if (this.indeterminate && !checked) return;
+
         this.selected = checked ? this.optionsList : [];
     }
 }
