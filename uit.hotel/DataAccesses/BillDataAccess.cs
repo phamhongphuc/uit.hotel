@@ -25,7 +25,7 @@ namespace uit.hotel.DataAccesses
                     booking.CalculateTotal();
                 }
 
-                bill.CalculateTotal();
+                bill.CalculateTotalPrice();
             });
             return bill;
         }
@@ -45,7 +45,7 @@ namespace uit.hotel.DataAccesses
                     booking.CalculateTotal();
                 }
 
-                bill.CalculateTotal();
+                bill.CalculateTotalPrice();
             });
             return bill;
         }

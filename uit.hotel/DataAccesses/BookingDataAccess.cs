@@ -12,7 +12,7 @@ namespace uit.hotel.DataAccesses
     {
         public static int NextId => Get().Count() == 0 ? 1 : Get().Max(i => i.Id) + 1;
 
-        public static async Task<Booking> Add(Employee employee, Bill bill, Booking booking)
+        public static async Task<Booking> AddBookingToBill(Employee employee, Bill bill, Booking booking)
         {
             await Database.WriteAsync(realm =>
             {
@@ -25,7 +25,7 @@ namespace uit.hotel.DataAccesses
             return booking;
         }
 
-        // Doesn't calculate anything. Add only.
+        // Don't calculate anything. Add only.
         public static Booking Add(Realm realm, Booking booking)
         {
             booking.Id = NextId;
@@ -36,7 +36,7 @@ namespace uit.hotel.DataAccesses
             return realm.Add(booking);
         }
 
-        // Doesn't calculate anything. Add only.
+        // Don't calculate anything. Add only.
         public static Booking BookAndCheckIn(Realm realm, Booking booking)
         {
             booking.Id = NextId;
@@ -76,7 +76,7 @@ namespace uit.hotel.DataAccesses
             return bookingInDatabase;
         }
 
-        public static async void Delete(Booking bookingInDatabase)
+        public static Task Delete(Booking bookingInDatabase)
         {
             await Database.WriteAsync(realm => realm.Remove(bookingInDatabase));
         }
