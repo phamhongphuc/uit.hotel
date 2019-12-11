@@ -1424,12 +1424,52 @@ export type GetBillsQueryVariables = {};
 
 export type GetBillsQuery = {
     bills: Array<
-        Pick<Bill, 'id' | 'time' | 'totalPrice'> & {
+        Pick<
+            Bill,
+            'id' | 'time' | 'totalPrice' | 'totalReceipts' | 'discount'
+        > & {
             patron: Pick<Patron, 'id' | 'name'>;
             receipts: Array<Pick<Receipt, 'id' | 'money'>>;
-            bookings: Array<Pick<Booking, 'id'>>;
+            bookings: Array<
+                Pick<Booking, 'id' | 'status'> & {
+                    room: Pick<Room, 'id' | 'name'>;
+                }
+            >;
         }
     >;
+};
+
+export type GetBillQueryVariables = {
+    id: Scalars['ID'];
+};
+
+export type GetBillQuery = {
+    bill: Pick<
+        Bill,
+        'id' | 'time' | 'discount' | 'totalPrice' | 'totalReceipts'
+    > & {
+        patron: Pick<Patron, 'id' | 'name'>;
+        bookings: Array<
+            Pick<
+                Booking,
+                | 'id'
+                | 'total'
+                | 'status'
+                | 'realCheckInTime'
+                | 'realCheckOutTime'
+                | 'bookCheckInTime'
+                | 'bookCheckOutTime'
+            > & {
+                patrons: Array<Pick<Patron, 'id'>>;
+                room: Pick<Room, 'id' | 'name'>;
+            }
+        >;
+        receipts: Array<
+            Pick<Receipt, 'id' | 'money' | 'time'> & {
+                employee: Pick<Employee, 'id' | 'name'>;
+            }
+        >;
+    };
 };
 
 export type AddBookingToBillMutationVariables = {
@@ -1712,7 +1752,7 @@ export type GetFloorsMapQuery = {
     floors: Array<
         Pick<Floor, 'id' | 'name' | 'isActive'> & {
             rooms: Array<
-                Pick<Room, 'id' | 'name' | 'isActive'> & {
+                Pick<Room, 'id' | 'name' | 'isClean' | 'isActive'> & {
                     currentBooking: Maybe<Pick<Booking, 'id'>>;
                     roomKind: Pick<RoomKind, 'id' | 'name'>;
                 }
@@ -2168,6 +2208,25 @@ export namespace GetBills {
     export type Bookings = NonNullable<
         NonNullable<GetBillsQuery['bills'][0]>['bookings'][0]
     >;
+    export type Room = NonNullable<
+        NonNullable<GetBillsQuery['bills'][0]>['bookings'][0]
+    >['room'];
+}
+
+export namespace GetBill {
+    export type Variables = GetBillQueryVariables;
+    export type Query = GetBillQuery;
+    export type Bill = GetBillQuery['bill'];
+    export type Patron = GetBillQuery['bill']['patron'];
+    export type Bookings = NonNullable<GetBillQuery['bill']['bookings'][0]>;
+    export type Patrons = NonNullable<
+        NonNullable<GetBillQuery['bill']['bookings'][0]>['patrons'][0]
+    >;
+    export type Room = NonNullable<GetBillQuery['bill']['bookings'][0]>['room'];
+    export type Receipts = NonNullable<GetBillQuery['bill']['receipts'][0]>;
+    export type Employee = NonNullable<
+        GetBillQuery['bill']['receipts'][0]
+    >['employee'];
 }
 
 export namespace AddBookingToBill {

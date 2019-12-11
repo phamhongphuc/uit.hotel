@@ -28,6 +28,7 @@ export const getFloorsMap = gql`
             rooms {
                 id
                 name
+                isClean
                 isActive
                 currentBooking(from: $from, to: $to) {
                     id
