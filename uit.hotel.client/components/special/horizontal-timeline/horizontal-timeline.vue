@@ -1,7 +1,7 @@
 <template>
     <div class="horizontal-timeline" :style="style">
-        <div class="horizontal-timeline-toolbar d-flex m-child-1 flex-wrap">
-            <div class="title px-1 font-weight-medium">
+        <div class="d-flex m-child-1 flex-wrap">
+            <div class="py-1 px-1 font-weight-medium">
                 <icon-
                     i="circle-fill"
                     class="mr-1"
@@ -9,7 +9,7 @@
                 />
                 {{ status }}
             </div>
-            <div class="title px-1 font-weight-medium">
+            <div class="py-1 px-1 font-weight-medium">
                 <icon- i="clock" class="mr-1" />
                 {{ remain }}
             </div>
@@ -269,12 +269,6 @@ export default class extends mixins(DataMixin({ toDate, toMoney })) {
     --main-height: #{$ht-main-height};
     --price-child: #{$ht-price-child};
     --price-space: #{$ht-price-space};
-
-    &-toolbar {
-        > .title {
-            line-height: calc(2rem + 2px);
-        }
-    }
 
     .line-container {
         position: relative;

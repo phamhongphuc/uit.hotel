@@ -20,25 +20,6 @@ export default class extends mixins<Page, {}>(Page, DataMixin({})) {
             title: 'Trang chủ',
         };
     }
-
-    floorsFilter(floors: GetFloors.Floors[]): GetFloors.Floors[] {
-        return floors
-            .filter(f => f.isActive)
-            .sort((a, b) => (a.name > b.name ? 1 : -1));
-    }
-
-    roomsFilter(rooms: GetFloors.Rooms[]): GetFloors.Rooms[] {
-        return rooms
-            .filter(r => r.isActive)
-            .sort((a, b) => (a.name > b.name ? 1 : -1));
-    }
-
-    toggle(room: GetFloors.Rooms): void {
-        const index = this.selected.indexOf(room);
-
-        if (index === -1) this.selected.push(room);
-        else this.selected.splice(index, 1);
-    }
 }
 </script>
 <style lang="scss">
