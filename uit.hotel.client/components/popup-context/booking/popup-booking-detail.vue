@@ -42,8 +42,12 @@
                                 isClean: !booking.room.isClean,
                             }"
                         >
-                            <icon- i="wind" class="ml-n1 mr-1" />
-                            Đánh dấu là đã dọn
+                            <icon- i="broom" class="ml-n1 mr-1" />
+                            {{
+                                booking.room.isClean
+                                    ? 'Đánh dấu là chưa dọn'
+                                    : 'Đánh dấu là đã dọn'
+                            }}
                         </b-button-mutate->
                     </div>
                     <horizontal-timeline- :booking="booking" />

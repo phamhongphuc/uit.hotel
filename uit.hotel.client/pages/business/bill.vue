@@ -6,7 +6,7 @@
                 variant="white"
                 @click="$refs.book.open({ rooms: [] })"
             >
-                <icon- class="mr-1" i="plus" />
+                <icon- class="mr-1" i="edit-3" />
                 <span>Đặt phòng</span>
             </b-button>
             <b-button

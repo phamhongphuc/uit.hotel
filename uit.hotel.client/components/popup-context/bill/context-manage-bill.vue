@@ -1,18 +1,17 @@
 <template>
-    <context- ref="context" v-slot="{ data: { bill } }">
+    <context- ref="context" v-slot="{ data: { bill, bill: { id } } }">
         <b-nav-item-icon-
             v-if="moment(bill.time).year() === 1"
-            icon="dollar-sign"
+            icon="invoice-1"
             text="Tạo phiếu thu"
             @click="refs.receipt_add.open({ bill })"
         />
         <b-nav-item-icon-mutate-
             v-if="moment(bill.time).year() === 1"
             :mutation="payTheBill"
-            :variables="{ id: bill.id }"
-            icon="dollar-sign"
+            :variables="{ id }"
+            icon="invoice-3"
             text="Chốt hóa đơn"
-            @click="refs.receipt_add.open({ bill })"
         />
     </context->
 </template>

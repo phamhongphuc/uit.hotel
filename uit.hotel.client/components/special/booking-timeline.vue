@@ -54,11 +54,7 @@
                     "
                 >
                     Phòng {{ room.name }}
-                    <icon-
-                        v-if="!room.isClean"
-                        i="alert-triangle"
-                        class="text-orange"
-                    />
+                    <icon- v-if="!room.isClean" i="broom" class="text-orange" />
                 </td>
                 <td class="bookings">
                     <b-button
