@@ -72,7 +72,7 @@
                 Không tìm thấy khách hàng nào
             </div>
         </query->
-        <context-manage-patron- ref="context_patron" :refs="$refs" />
+        <context-manage-patron- ref="context_patron" />
         <popup-patron-add- ref="patron_add" />
         <popup-patron-update- ref="patron_update" />
     </div>
@@ -80,28 +80,20 @@
 <script lang="ts">
 import { Component, mixins } from 'nuxt-property-decorator';
 import { getPatrons } from '~/graphql/documents';
-import { DataMixin } from '~/components/mixins';
+import { DataMixin, Page } from '~/components/mixins';
 import { toYear } from '~/utils';
 
 @Component({
     name: 'patron-',
 })
-export default class extends mixins(DataMixin({ getPatrons, toYear })) {
+export default class extends mixins<Page, {}>(
+    Page,
+    DataMixin({ getPatrons, toYear }),
+) {
     head() {
         return {
             title: 'Quản lý khách hàng',
         };
     }
-
-    tableContext(event: MouseEvent) {
-        const tr = (event.target as HTMLElement).closest('tr');
-
-        if (tr !== null) {
-            this.currentEvent = event;
-            tr.click();
-        }
-    }
-
-    currentEvent: MouseEvent | null = null;
 }
 </script>

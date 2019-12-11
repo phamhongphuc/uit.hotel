@@ -93,8 +93,9 @@
     </table>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop } from 'nuxt-property-decorator';
+import { Component, Prop, mixins } from 'nuxt-property-decorator';
 import moment from 'moment';
+import { InjectRefs } from '~/components/mixins';
 import { GetTimeline, BookingStatusEnum } from '~/graphql/types';
 import { toDate } from '~/utils';
 import { bookingStatusMap, bookingStatusColorMap } from '~/modules/model';
@@ -106,10 +107,7 @@ const seconds = moment.duration(1, 'day').asSeconds();
 @Component({
     name: 'booking-timeline-',
 })
-export default class extends Vue {
-    @Prop({ default: undefined })
-    refs: any;
-
+export default class extends mixins<InjectRefs>(InjectRefs) {
     @Prop({ required: true })
     floors!: GetTimeline.Floors[];
 

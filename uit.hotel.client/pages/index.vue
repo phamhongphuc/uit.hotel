@@ -9,16 +9,12 @@
 </template>
 <script lang="ts">
 import { Component, mixins } from 'nuxt-property-decorator';
-import { GetFloors } from '~/graphql/types';
-import { getFloors } from '~/graphql/documents';
-import { DataMixin } from '~/components/mixins';
+import { DataMixin, Page } from '~/components/mixins';
 
 @Component({
     name: 'index-',
 })
-export default class extends mixins(DataMixin({ getFloors })) {
-    selected: GetFloors.Rooms[] = [];
-
+export default class extends mixins<Page, {}>(Page, DataMixin({})) {
     head() {
         return {
             title: 'Trang chủ',

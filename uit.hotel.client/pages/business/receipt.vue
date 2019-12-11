@@ -50,7 +50,7 @@
                 Không tìm thấy phiếu thu nào
             </div>
         </query->
-        <!-- <context-manage-receipt- ref="context_receipt" :refs="$refs" /> -->
+        <!-- <context-manage-receipt- ref="context_receipt"  /> -->
         <!-- <popup-receipt-add- ref="receipt_add" />
         <popup-receipt-update- ref="receipt_update" /> -->
     </div>
@@ -58,14 +58,15 @@
 <script lang="ts">
 import { Component, mixins } from 'nuxt-property-decorator';
 import { getReceipts } from '~/graphql/documents';
-import { DataMixin } from '~/components/mixins';
+import { DataMixin, Page } from '~/components/mixins';
 import { GetReceipts } from '~/graphql/types';
 import { toMoney, toDate } from '~/utils';
 
 @Component({
     name: 'receipt-',
 })
-export default class extends mixins(
+export default class extends mixins<Page, {}>(
+    Page,
     DataMixin({ getReceipts, toMoney, toDate }),
 ) {
     head() {
@@ -81,16 +82,5 @@ export default class extends mixins(
     sumReceipts(bookings: GetReceipts.Receipts[]) {
         return bookings.map(r => r.money).reduce((a, b) => a + b, 0);
     }
-
-    tableContext(event: MouseEvent) {
-        const tr = (event.target as HTMLElement).closest('tr');
-
-        if (tr !== null) {
-            this.currentEvent = event;
-            tr.click();
-        }
-    }
-
-    currentEvent: MouseEvent | null = null;
 }
 </script>

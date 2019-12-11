@@ -4,6 +4,7 @@
         v-slot
         title="Chi tiết đặt phòng"
         class="popup-bill-detail"
+        @contextmenu.prevent="tableContext"
     >
         <query-
             v-slot

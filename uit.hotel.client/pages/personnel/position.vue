@@ -102,7 +102,7 @@
                 Không tìm thấy vị trí nào
             </div>
         </query->
-        <context-manage-position- ref="context_position" :refs="$refs" />
+        <context-manage-position- ref="context_position" />
         <popup-position-add- ref="position_add" />
         <popup-position-update- ref="position_update" />
     </div>
@@ -110,13 +110,16 @@
 <script lang="ts">
 import { Component, mixins } from 'nuxt-property-decorator';
 import { getPositions } from '~/graphql/documents';
-import { DataMixin } from '~/components/mixins';
+import { DataMixin, Page } from '~/components/mixins';
 import { GetPositions } from '~/graphql/types';
 
 @Component({
     name: 'position-',
 })
-export default class extends mixins(DataMixin({ getPositions })) {
+export default class extends mixins<Page, {}>(
+    Page,
+    DataMixin({ getPositions }),
+) {
     head() {
         return {
             title: 'Quản lý vị trí',
@@ -130,17 +133,6 @@ export default class extends mixins(DataMixin({ getPositions })) {
 
         return positions.filter(rk => rk.isActive);
     }
-
-    tableContext(event: MouseEvent) {
-        const tr = (event.target as HTMLElement).closest('tr');
-
-        if (tr !== null) {
-            this.currentEvent = event;
-            tr.click();
-        }
-    }
-
-    currentEvent: MouseEvent | null = null;
 
     showInactive = false;
 }

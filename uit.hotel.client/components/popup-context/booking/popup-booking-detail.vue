@@ -5,6 +5,7 @@
         title="Chi tiết đặt phòng"
         class="popup-booking-detail"
         child-class="w-100"
+        @contextmenu.prevent="tableContext"
     >
         <query-
             v-slot
@@ -14,7 +15,7 @@
             @result="onResult"
         >
             <div class="row p-3">
-                <div class="col-6" @contextmenu.prevent="tableContext">
+                <div class="col-6">
                     <div class="d-flex m-child-1 mb-1 flex-wrap">
                         <div class="font-weight-medium py-1 pr-1">
                             <icon-
@@ -80,7 +81,7 @@
                         @row-clicked="
                             (patron, $index, $event) => {
                                 $event.stopPropagation();
-                                $refs.context_patron.open(
+                                refs.context_patron.open(
                                     currentEvent || $event,
                                     {
                                         patron,
@@ -150,16 +151,13 @@
                             class="px-2 py-1"
                             variant="lighten"
                             confirm
-                            @click="$refs.service_detail_add.open({ booking })"
+                            @click="refs.service_detail_add.open({ booking })"
                         >
                             <icon- i="shopping-bag" class="ml-n1 mr-1" />
                             Thêm dịch vụ
                         </b-button>
                     </div>
-                    <div
-                        class="mb-1 overflow-auto"
-                        @contextmenu.prevent="tableContext"
-                    >
+                    <div class="mb-1 overflow-auto">
                         <b-table
                             class="table-style table-sm bg-lighten rounded overflow-hidden"
                             show-empty
@@ -206,10 +204,7 @@
                         Tổng số tiền thuê phòng:
                         {{ toMoney(booking.totalPrice) }}
                     </div>
-                    <div
-                        class="my-1 overflow-auto"
-                        @contextmenu.prevent="tableContext"
-                    >
+                    <div class="my-1 overflow-auto">
                         <b-table
                             class="table-style table-sm bg-lighten rounded overflow-hidden"
                             show-empty
@@ -244,7 +239,7 @@
                             @row-clicked="
                                 (servicesDetail, $index, $event) => {
                                     $event.stopPropagation();
-                                    $refs.context_service_detail.open(
+                                    refs.context_service_detail.open(
                                         currentEvent || $event,
                                         {
                                             servicesDetail,
@@ -292,13 +287,6 @@
                 </div>
             </div>
         </query->
-        <context-receptionist-service-detail-
-            ref="context_service_detail"
-            :refs="$refs"
-        />
-        <context-manage-patron- ref="context_patron" :refs="$refs" />
-        <popup-patron-update- ref="patron_update" />
-        <popup-service-detail-add- ref="service_detail_add" />
     </popup->
 </template>
 <script lang="ts">
@@ -338,7 +326,7 @@ interface PriceItemRender {
     name: 'popup-booking-detail-',
     validations: {},
 })
-export default class extends mixins<PopupMixinType>(
+export default class extends mixins<PopupMixinType, {}>(
     PopupMixin,
     DataMixin({
         BookingStatusEnum,
@@ -355,7 +343,6 @@ export default class extends mixins<PopupMixinType>(
     variables!: GetBooking.Variables;
     booking!: GetBooking.Booking;
 
-    currentEvent: MouseEvent | null = null;
     priceItems: PriceItemRender[] = [];
 
     onOpen() {
@@ -393,15 +380,6 @@ export default class extends mixins<PopupMixinType>(
                       },
                   ]),
         ];
-    }
-
-    tableContext(event: MouseEvent) {
-        const tr = (event.target as HTMLElement).closest('tr');
-
-        if (tr !== null) {
-            this.currentEvent = event;
-            tr.click();
-        }
     }
 
     get earlyCheckInHour() {

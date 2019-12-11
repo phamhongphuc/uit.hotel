@@ -97,12 +97,9 @@
                 Không tìm thấy bản ghi đặt phòng nào
             </div>
         </query->
-        <context-receptionist-booking-
-            ref="context_receptionist_booking"
-            :refs="$refs"
-        />
+        <context-receptionist-booking- ref="context_receptionist_booking" />
         <popup-service-detail-add- ref="service_detail_add" />
-        <popup-book- ref="book" :refs="$refs" />
+        <popup-book- ref="book" />
         <popup-patron-select-or-add- ref="patron_select_or_add" />
         <popup-room-select- ref="room_select" />
     </div>
@@ -110,14 +107,15 @@
 <script lang="ts">
 import { Component, mixins } from 'nuxt-property-decorator';
 import { getBookings } from '~/graphql/documents';
-import { DataMixin } from '~/components/mixins';
+import { DataMixin, Page } from '~/components/mixins';
 import { GetBookings, BookingStatusEnum } from '~/graphql/types';
 import { toMoney, toDate } from '~/utils';
 
 @Component({
     name: 'booking-',
 })
-export default class extends mixins(
+export default class extends mixins<Page, {}>(
+    Page,
     DataMixin({ getBookings, toMoney, toDate }),
 ) {
     head() {
@@ -144,17 +142,6 @@ export default class extends mixins(
             booking => this.show.indexOf(booking.status) !== -1,
         );
     }
-
-    tableContext(event: MouseEvent) {
-        const tr = (event.target as HTMLElement).closest('tr');
-
-        if (tr !== null) {
-            this.currentEvent = event;
-            tr.click();
-        }
-    }
-
-    currentEvent: MouseEvent | null = null;
 
     getCheckInTime(item: GetBookings.Bookings) {
         if (item.status === BookingStatusEnum.Booked)

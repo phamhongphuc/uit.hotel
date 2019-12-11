@@ -103,25 +103,33 @@
                 Không tìm thấy hóa đơn nào
             </div>
         </query->
-        <context-manage-bill- ref="context_bill" :refs="$refs" />
-        <popup-receipt-add- ref="receipt_add" />
-        <popup-book- ref="book" :refs="$refs" />
+        <context-manage-bill- ref="context_bill" />
+        <context-manage-patron- ref="context_patron" />
+        <context-receptionist-booking- ref="context_receptionist_booking" />
+        <context-receptionist-service-detail- ref="context_service_detail" />
+        <popup-bill-detail- ref="bill_detail" />
+        <popup-book- ref="book" />
+        <popup-booking-detail- ref="booking_detail" />
         <popup-patron-select-or-add- ref="patron_select_or_add" />
+        <popup-patron-update- ref="patron_update" />
+        <popup-receipt-add- ref="receipt_add" />
         <popup-room-select- ref="room_select" />
+        <popup-service-detail-add- ref="service_detail_add" />
     </div>
 </template>
 <script lang="ts">
 import { Component, mixins } from 'nuxt-property-decorator';
 import moment from 'moment';
 import { getBills } from '~/graphql/documents';
-import { DataMixin } from '~/components/mixins';
+import { DataMixin, Page } from '~/components/mixins';
 import { GetBills } from '~/graphql/types';
 import { toMoney, toDate } from '~/utils';
 
 @Component({
     name: 'bill-',
 })
-export default class extends mixins(
+export default class extends mixins<Page, {}>(
+    Page,
     DataMixin({ getBills, toMoney, toDate, moment }),
 ) {
     head() {
@@ -137,17 +145,6 @@ export default class extends mixins(
     sumReceipts(receipt: GetBills.Receipts[]) {
         return receipt.map(r => r.money).reduce((a, b) => a + b, 0);
     }
-
-    tableContext(event: MouseEvent) {
-        const tr = (event.target as HTMLElement).closest('tr');
-
-        if (tr !== null) {
-            this.currentEvent = event;
-            tr.click();
-        }
-    }
-
-    currentEvent: MouseEvent | null = null;
 
     showInactive = false;
 }
