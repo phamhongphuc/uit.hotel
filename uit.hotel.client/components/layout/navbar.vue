@@ -11,7 +11,7 @@
                 <icon- i="menu" />
             </b-navbar-toggle>
             <b-nav-item
-                class="font-pacifico font-size-bigger ml-md-2 mx-auto"
+                class="font-pacifico font-size-5 ml-md-2 mx-auto"
                 to="/"
             >
                 Quản lý khách sạn
