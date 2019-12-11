@@ -11,8 +11,8 @@
                 id: room.id,
                 isClean: !room.isClean,
             }"
-            icon="wind"
-            text="Đánh dấu là đã dọn"
+            icon="broom"
+            :text="room.isClean ? 'Đánh dấu là chưa dọn' : 'Đánh dấu là đã dọn'"
         />
     </context->
 </template>

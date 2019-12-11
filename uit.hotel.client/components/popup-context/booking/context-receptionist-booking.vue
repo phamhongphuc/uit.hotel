@@ -10,7 +10,7 @@
     >
         <b-nav-item-icon-
             icon="info"
-            text="Xem thông tin chi tiết"
+            text="Chi tiết đặt phòng"
             @click="refs.booking_detail.open({ id })"
         />
         <b-nav-item-icon-mutate-

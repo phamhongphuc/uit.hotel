@@ -2,7 +2,7 @@
     <context- ref="context" v-slot="{ data: { bill, bill: { id } } }">
         <b-nav-item-icon-
             icon="info"
-            text="Xem thông tin chi tiết"
+            text="Chi tiết hóa đơn"
             @click="refs.bill_detail.open({ id })"
         />
         <b-nav-item-icon-
