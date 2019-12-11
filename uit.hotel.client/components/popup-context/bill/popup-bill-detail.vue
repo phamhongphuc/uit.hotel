@@ -2,7 +2,7 @@
     <popup-
         ref="popup"
         v-slot
-        title="Chi tiết đặt phòng"
+        :title="`Chi tiết hóa đơn #${id}`"
         class="popup-bill-detail"
         @contextmenu.prevent="tableContext"
     >
@@ -13,21 +13,154 @@
             :poll-interval="500"
             @result="onResult"
         >
-            <div class="m-3">
-                <div
-                    class="d-flex m-child-1 mb-2 flex-wrap justify-content-start"
-                >
+            <div class="p-3">
+                <div class="d-flex m-child-1 mb-2 flex-wrap">
+                    <div class="py-1 px-1 font-weight-medium mr-auto">
+                        <span>
+                            <icon-
+                                i="circle-fill"
+                                class="mr-1"
+                                :class="`text-${bookingStatusColorMap[status]}`"
+                            />
+                            {{ billStatusMap[status] }}
+                        </span>
+                        <span
+                            v-if="status === BookingStatusEnum.CheckedOut"
+                            class="ml-1"
+                        >
+                            <span v-if="isMinDate(bill.time)">
+                                <icon- i="circle" class="mr-1 text-yellow" />
+                                Chưa thanh toán
+                            </span>
+                            <span v-else>
+                                <icon-
+                                    i="check-circle"
+                                    class="mr-1 text-green"
+                                />
+                                Đã thanh toán {{ fromNow(bill.time) }}
+                            </span>
+                        </span>
+                    </div>
                     <b-button
+                        v-if="isMinDate(bill.time)"
+                        size="sm"
                         variant="lighten"
-                        @click="$refs.book.open({ rooms: [] })"
+                        @click="refs.receipt_add.open({ bill })"
                     >
-                        <icon- class="mr-1" i="plus" />
-                        <span>Đặt phòng</span>
+                        <icon- class="mr-1" i="receipt" />
+                        <span>Giảm giá</span>
                     </b-button>
+                    <b-button-mutate-
+                        v-if="
+                            isMinDate(bill.time) &&
+                                status === BookingStatusEnum.CheckedOut &&
+                                rest === 0
+                        "
+                        size="sm"
+                        variant="lighten"
+                        :mutation="payTheBill"
+                        :variables="{ id }"
+                    >
+                        <icon- class="mr-1" i="card" />
+                        Chốt hóa đơn
+                    </b-button-mutate->
+                    <b-button
+                        v-if="isMinDate(bill.time)"
+                        size="sm"
+                        variant="green"
+                        @click="refs.receipt_add.open({ bill })"
+                    >
+                        <icon- class="mr-1" i="card-down" />
+                        <span>Thanh toán</span>
+                    </b-button>
+                </div>
+                <div class="my-1 overflow-auto">
+                    <b-table
+                        class="table-style table-sm bg-lighten rounded overflow-hidden"
+                        :items="bill.bookings"
+                        :fields="[
+                            {
+                                key: 'index',
+                                label: '#',
+                                class: 'table-cell-id text-center',
+                                sortable: true,
+                            },
+                            {
+                                key: 'room',
+                                label: 'Phòng',
+                            },
+                            {
+                                key: 'patrons',
+                                label: 'Khách',
+                            },
+                            {
+                                key: 'checkIn',
+                                label: 'Nhận phòng',
+                            },
+                            {
+                                key: 'checkOut',
+                                label: 'Trả phòng',
+                            },
+                            {
+                                key: 'status',
+                                label: 'Trạng thái',
+                            },
+                            {
+                                key: 'total',
+                                label: 'Chi phí',
+                            },
+                        ]"
+                        @row-clicked="
+                            (booking, $index, $event) => {
+                                $event.stopPropagation();
+                                refs.context_receptionist_booking.open(
+                                    currentEvent || $event,
+                                    {
+                                        booking,
+                                    },
+                                );
+                                currentEvent = null;
+                            }
+                        "
+                    >
+                        <template v-slot:cell(index)="data">
+                            {{ data.index + 1 }}
+                        </template>
+                        <template v-slot:cell(room)="{ value }">
+                            Phòng {{ value.name }}
+                        </template>
+                        <template v-slot:cell(patrons)="{ value }">
+                            {{ value.length }} khách
+                        </template>
+                        <template v-slot:cell(checkIn)="{ item }">
+                            {{ checkIn(item) }}
+                        </template>
+                        <template v-slot:cell(checkOut)="{ item }">
+                            {{ checkOut(item) }}
+                        </template>
+                        <template v-slot:cell(status)="{ value }">
+                            <icon-
+                                class="mr-1"
+                                i="circle-fill"
+                                :class="`text-${bookingStatusColorMap[value]}`"
+                            />
+                            {{ bookingStatusMap[value] }}
+                        </template>
+                        <template v-slot:cell(total)="{ value }">
+                            {{ toMoney(value) }}
+                        </template>
+                    </b-table>
+                </div>
+                <div class="mt-1 mb-2 font-weight-medium text-right">
+                    Tổng cộng:
+                    <span class="text-blue">
+                        {{ toMoney(bill.totalPrice) }}
+                    </span>
                 </div>
                 <b-table
                     class="table-style table-sm bg-lighten rounded overflow-hidden"
-                    :items="bill.bookings"
+                    show-empty
+                    :items="bill.receipts"
                     :fields="[
                         {
                             key: 'index',
@@ -36,61 +169,52 @@
                             sortable: true,
                         },
                         {
-                            key: 'room',
-                            label: 'Phòng',
+                            key: 'time',
+                            label: 'Thời gian',
+                            class: 'text-center',
                         },
                         {
-                            key: 'patrons',
-                            label: 'Khách',
+                            key: 'money',
+                            label: 'Số tiền',
+                            class: 'text-center',
                         },
                         {
-                            key: 'checkIn',
-                            label: 'Nhận phòng',
-                        },
-                        {
-                            key: 'checkOut',
-                            label: 'Trả phòng',
-                        },
-                        {
-                            key: 'total',
-                            label: 'Chi phí',
+                            key: 'bankAccountNumber',
+                            label: 'Tài khoản   ',
+                            class: 'text-center',
                         },
                     ]"
-                    @row-clicked="
-                        (booking, $index, $event) => {
-                            $event.stopPropagation();
-                            $refs.context_receptionist_booking.open(
-                                currentEvent || $event,
-                                {
-                                    booking,
-                                },
-                            );
-                            currentEvent = null;
-                        }
-                    "
                 >
+                    <template v-slot:empty>
+                        Chưa có phiếu thu nào được tạo
+                    </template>
                     <template v-slot:cell(index)="data">
                         {{ data.index + 1 }}
                     </template>
-                    <template v-slot:cell(room)="{ value }">
-                        Phòng {{ value.name }}
+                    <template v-slot:cell(time)="{ value }">
+                        {{ toDate(value) }}
                     </template>
-                    <template v-slot:cell(patrons)="{ value }">
-                        {{ value.length }} khách
-                    </template>
-                    <template v-slot:cell(checkIn)="{ item }">
-                        {{ checkIn(item) }}
-                    </template>
-                    <template v-slot:cell(checkOut)="{ item }">
-                        {{ checkOut(item) }}
-                    </template>
-                    <template v-slot:cell(total)="{ value }">
+                    <template v-slot:cell(money)="{ value }">
                         {{ toMoney(value) }}
                     </template>
                 </b-table>
                 <div class="my-1 font-weight-medium text-right">
-                    Tổng cộng:
-                    {{ toMoney(bill.totalPrice) }}
+                    Đã thanh toán:
+                    <span class="text-blue">
+                        {{ toMoney(bill.totalReceipts) }}
+                    </span>
+                </div>
+                <div class="my-1 font-weight-medium text-right">
+                    Giảm giá:
+                    <span class="text-yellow">
+                        {{ toMoney(bill.discount) }}
+                    </span>
+                </div>
+                <div class="mt-1 font-weight-medium text-right font-size-6">
+                    Chưa thanh toán:
+                    <span class="text-red">
+                        {{ toMoney(rest) }}
+                    </span>
                 </div>
             </div>
         </query->
@@ -100,10 +224,15 @@
 import { Component, mixins } from 'nuxt-property-decorator';
 import { ApolloQueryResult } from 'apollo-client';
 import { checkIn, checkOut } from './popup-bill-detail.helper';
-import { GetBillQuery, GetBill } from '~/graphql/types';
+import { GetBillQuery, GetBill, BookingStatusEnum } from '~/graphql/types';
 import { PopupMixin, DataMixin } from '~/components/mixins';
-import { getBill } from '~/graphql/documents';
-import { toDate, toMoney } from '~/utils';
+import { getBill, payTheBill } from '~/graphql/documents';
+import { toDate, toMoney, isMinDate, fromNow } from '~/utils';
+import {
+    billStatusMap,
+    bookingStatusMap,
+    bookingStatusColorMap,
+} from '~/modules/model';
 
 type PopupMixinType = PopupMixin<{ id: number }, null>;
 
@@ -111,35 +240,47 @@ type PopupMixinType = PopupMixin<{ id: number }, null>;
     name: 'popup-booking-detail-',
     validations: {},
 })
-export default class extends mixins<PopupMixinType>(
+export default class extends mixins<PopupMixinType, {}>(
     PopupMixin,
     DataMixin({
-        toDate,
-        toMoney,
-        getBill,
+        billStatusMap,
+        bookingStatusColorMap,
+        BookingStatusEnum,
+        bookingStatusMap,
         checkIn,
         checkOut,
+        fromNow,
+        getBill,
+        isMinDate,
+        payTheBill,
+        toDate,
+        toMoney,
     }),
 ) {
     variables!: GetBill.Variables;
+
     bill!: GetBill.Bill;
-    currentEvent: MouseEvent | null = null;
+    id = -1;
+    rest = 0;
+    status: BookingStatusEnum = BookingStatusEnum.Booked;
 
     onOpen() {
         this.variables = { id: this.data.id.toString() };
     }
 
-    async onResult({ data }: ApolloQueryResult<GetBillQuery>) {
-        this.bill = data.bill;
-    }
-
-    tableContext(event: MouseEvent) {
-        const tr = (event.target as HTMLElement).closest('tr');
-
-        if (tr !== null) {
-            this.currentEvent = event;
-            tr.click();
-        }
+    async onResult({ data: { bill } }: ApolloQueryResult<GetBillQuery>) {
+        this.bill = bill;
+        this.id = bill.id;
+        this.rest = bill.totalPrice - bill.totalReceipts - bill.discount;
+        this.status = bill.bookings.reduce<BookingStatusEnum>(
+            (result, booking, index) => {
+                if (index === 0) return booking.status;
+                if (booking.status !== result)
+                    return BookingStatusEnum.CheckedIn;
+                return result;
+            },
+            BookingStatusEnum.CheckedIn,
+        );
     }
 }
 </script>

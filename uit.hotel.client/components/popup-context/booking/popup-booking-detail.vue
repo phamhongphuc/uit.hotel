@@ -16,7 +16,10 @@
         >
             <div class="row p-3">
                 <div class="col-6">
-                    <div class="d-flex m-child-1 mb-1 flex-wrap">
+                    <div
+                        v-if="booking.status !== BookingStatusEnum.CheckedOut"
+                        class="d-flex m-child-1 mb-1 flex-wrap"
+                    >
                         <div class="font-weight-medium py-1 pr-1">
                             <icon-
                                 i="circle-fill"
@@ -117,22 +120,21 @@
                     <div
                         class="d-flex m-child-1 mb-1 flex-wrap justify-content-end"
                     >
-                        <b-button-mutate-
-                            v-if="booking.status == BookingStatusEnum.Booked"
-                            class="px-2 py-1"
+                        <b-button
+                            class="px-2 py-1 mr-auto"
                             variant="lighten"
                             confirm
-                            :mutation="checkIn"
-                            :variables="{ id: booking.id }"
+                            @click="refs.service_detail_add.open({ booking })"
                         >
-                            <icon- i="corner-down-right" class="ml-n1 mr-1" />
-                            Nhận phòng
-                        </b-button-mutate->
+                            <icon- i="shopping-bag" class="ml-n1 mr-1" />
+                            Thêm dịch vụ
+                        </b-button>
                         <b-button-mutate-
                             v-if="booking.status == BookingStatusEnum.Booked"
                             class="px-2 py-1"
-                            variant="lighten"
+                            variant="red"
                             confirm
+                            clicked-class="text-white"
                             :mutation="cancel"
                             :variables="{ id: booking.id }"
                             @click="close"
@@ -141,25 +143,29 @@
                             Hủy
                         </b-button-mutate->
                         <b-button-mutate-
+                            v-if="booking.status == BookingStatusEnum.Booked"
+                            class="px-2 py-1"
+                            variant="green"
+                            confirm
+                            clicked-class="text-white"
+                            :mutation="checkIn"
+                            :variables="{ id: booking.id }"
+                        >
+                            <icon- i="corner-down-right" class="ml-n1 mr-1" />
+                            Nhận phòng
+                        </b-button-mutate->
+                        <b-button-mutate-
                             v-if="booking.status == BookingStatusEnum.CheckedIn"
                             class="px-2 py-1"
-                            variant="lighten"
+                            variant="blue"
                             confirm
+                            clicked-class="text-white"
                             :mutation="checkOut"
                             :variables="{ id: booking.id }"
                         >
                             <icon- i="corner-right-up" class="ml-n1 mr-1" />
                             Trả phòng
                         </b-button-mutate->
-                        <b-button
-                            class="px-2 py-1"
-                            variant="lighten"
-                            confirm
-                            @click="refs.service_detail_add.open({ booking })"
-                        >
-                            <icon- i="shopping-bag" class="ml-n1 mr-1" />
-                            Thêm dịch vụ
-                        </b-button>
                     </div>
                     <div class="mb-1 overflow-auto">
                         <b-table
