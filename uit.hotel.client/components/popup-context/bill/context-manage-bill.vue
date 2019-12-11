@@ -1,6 +1,11 @@
 <template>
     <context- ref="context" v-slot="{ data: { bill, bill: { id } } }">
         <b-nav-item-icon-
+            icon="info"
+            text="Xem thông tin chi tiết"
+            @click="refs.bill_detail.open({ id })"
+        />
+        <b-nav-item-icon-
             v-if="moment(bill.time).year() === 1"
             icon="invoice-1"
             text="Tạo phiếu thu"
