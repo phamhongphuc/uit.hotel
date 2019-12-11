@@ -14,7 +14,7 @@
             @click="refs.booking_detail.open({ id })"
         />
         <b-nav-item-icon-mutate-
-            v-if="booking.status === statusEnum.Booked"
+            v-if="booking.status === BookingStatusEnum.Booked"
             :mutation="cancel"
             :variables="{ id }"
             icon="trash-2"
@@ -22,7 +22,7 @@
             text="Hủy đặt phòng"
         />
         <b-nav-item-icon-mutate-
-            v-if="booking.status === statusEnum.Booked"
+            v-if="booking.status === BookingStatusEnum.Booked"
             :mutation="checkIn"
             :variables="{ id }"
             class="text-green"
@@ -30,7 +30,7 @@
             text="Nhận phòng"
         />
         <b-nav-item-icon-mutate-
-            v-else-if="booking.status === statusEnum.CheckedIn"
+            v-else-if="booking.status === BookingStatusEnum.CheckedIn"
             :mutation="checkOut"
             :variables="{ id }"
             class="text-green"
@@ -48,18 +48,13 @@
 import { Component, mixins } from 'nuxt-property-decorator';
 import { ContextMixin, DataMixin } from '~/components/mixins';
 import { checkIn, checkOut, cancel } from '~/graphql/documents';
+import { BookingStatusEnum } from '~/graphql/types';
 
 @Component({
     name: 'context-receptionist-booking-',
 })
 export default class extends mixins<ContextMixin>(
     ContextMixin,
-    DataMixin({ checkIn, checkOut, cancel }),
-) {
-    statusEnum = {
-        Booked: 0,
-        CheckedIn: 1,
-        CheckedOut: 2,
-    };
-}
+    DataMixin({ checkIn, checkOut, cancel, BookingStatusEnum }),
+) {}
 </script>
