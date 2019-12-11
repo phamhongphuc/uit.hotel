@@ -1,10 +1,8 @@
-import { Vue, Prop, Component } from 'nuxt-property-decorator';
+import { Component, mixins, Vue } from 'nuxt-property-decorator';
+import { InjectRefs } from './refs';
 
 @Component
-export class ContextMixin extends Vue {
-    @Prop({ default: undefined })
-    protected refs!: { [key: string]: Vue | Element | Vue[] | Element[] };
-
+export class ContextMixin extends mixins<InjectRefs>(InjectRefs) {
     protected data: any = null;
 
     protected open(event: MouseEvent, data: any): void {
