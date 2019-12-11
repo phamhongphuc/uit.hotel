@@ -1,5 +1,5 @@
 <template>
-    <div @contextmenu.prevent="tableContext">
+    <div class="bill-page" @contextmenu.prevent="tableContext">
         <block-flex->
             <b-button
                 class="m-2"
@@ -9,98 +9,132 @@
                 <icon- class="mr-1" i="edit-3" />
                 <span>Đặt phòng</span>
             </b-button>
-            <b-button
-                class="m-2 ml-auto"
-                variant="white"
-                @click="showInactive = !showInactive"
-            >
-                <icon- :i="showInactive ? 'eye' : 'eye-off'" class="mx-1" />
-                <span>
-                    {{
-                        `Đang ${
-                            showInactive ? 'hiện' : 'ẩn'
-                        } dịch vụ đã bị vô hiệu hóa`
-                    }}
-                </span>
-            </b-button>
         </block-flex->
         <query-
-            v-slot="{ data: { bills } }"
+            v-slot
             :query="getBills"
-            class="row"
+            class="row overflow-auto"
             child-class="col m-2 p-0 bg-white rounded shadow-sm overflow-auto"
+            @result="onResult"
         >
-            <b-table
-                :items="billsFilter(bills)"
-                :fields="[
-                    {
-                        key: 'index',
-                        label: '#',
-                        class: 'table-cell-id text-center',
-                        sortable: true,
-                    },
-                    {
-                        key: 'time',
-                        label: 'Thời gian chốt hóa đơn',
-                        tdClass: 'w-100',
-                    },
-                    {
-                        key: 'bookings',
-                        label: 'Phòng',
-                        class: 'text-right text-nowrap',
-                    },
-                    {
-                        key: 'receipts',
-                        label: 'Số lần',
-                        class: 'text-right',
-                    },
-                    {
-                        key: 'totalReceipts',
-                        label: 'Đã thanh toán',
-                        class: 'text-right',
-                    },
-                    {
-                        key: 'totalPrice',
-                        label: 'Tổng cộng',
-                        class: 'text-right',
-                    },
-                ]"
-                class="table-style table-header-line"
-                @row-clicked="
-                    (bill, $index, $event) => {
-                        $event.stopPropagation();
-                        $refs.context_bill.open(currentEvent || $event, {
-                            bill,
-                        });
-                        currentEvent = null;
-                    }
-                "
-            >
-                <template v-slot:cell(index)="data">
-                    {{ data.index + 1 }}
-                </template>
-                <template v-slot:cell(time)="{ value }">
-                    {{
-                        moment(value).year() === 1
-                            ? 'Chưa chốt hóa đơn'
-                            : toDate(value)
-                    }}
-                </template>
-                <template v-slot:cell(bookings)="{ value }">
-                    {{ value.length }} phòng
-                </template>
-                <template v-slot:cell(receipts)="{ value }">
-                    {{ value.length }} lần
-                </template>
-                <template v-slot:cell(totalReceipts)="{ item }">
-                    {{ toMoney(sumReceipts(item.receipts)) }}
-                </template>
-                <template v-slot:cell(totalPrice)="{ value }">
-                    {{ toMoney(value) }}
-                </template>
-            </b-table>
-            <div v-if="billsFilter(bills).length === 0" class="table-after">
-                Không tìm thấy hóa đơn nào
+            <div>
+                <b-table
+                    class="table-style table-header-line table-cell-middle"
+                    show-empty
+                    :items="billsFiltered"
+                    :fields="[
+                        {
+                            key: 'index',
+                            label: '#',
+                            class: 'table-cell-id text-center',
+                            sortable: true,
+                        },
+                        {
+                            key: 'bookings',
+                            label: 'Phòng',
+                        },
+                        {
+                            key: 'status',
+                            label: 'Trạng thái phòng',
+                        },
+                        {
+                            key: 'time',
+                            label: 'Trạng thái thanh toán',
+                        },
+                        {
+                            key: 'totalPrice',
+                            label: 'Tổng cộng',
+                            class: 'text-right text-nowrap',
+                        },
+                        {
+                            key: 'discount',
+                            label: 'Giảm giá',
+                            class: 'text-right text-nowrap',
+                        },
+                        {
+                            key: 'totalReceipts',
+                            label: 'Đã thanh toán',
+                            class: 'text-right text-nowrap',
+                        },
+                        {
+                            key: 'rest',
+                            label: 'Chưa thanh toán',
+                            class: 'text-right text-nowrap',
+                        },
+                    ]"
+                    @row-clicked="
+                        (bill, $index, $event) => {
+                            $event.stopPropagation();
+                            $refs.context_bill.open(currentEvent || $event, {
+                                bill,
+                            });
+                            currentEvent = null;
+                        }
+                    "
+                >
+                    <template v-slot:empty>
+                        Không tìm thấy hóa đơn nào
+                    </template>
+                    <template v-slot:cell(index)="data">
+                        {{ data.index + 1 }}
+                    </template>
+                    <template v-slot:cell(time)="{ value }">
+                        <span v-if="isMinDate(value)">
+                            <icon- i="circle" class="mr-1 text-yellow" />
+                            Chưa thanh toán
+                        </span>
+                        <span v-else>
+                            <icon- i="check-circle" class="mr-1 text-green" />
+                            Đã thanh toán {{ fromNow(value) }}
+                        </span>
+                    </template>
+                    <template v-slot:cell(bookings)="{ value }">
+                        <div class="d-flex m-child-1 flex-wrap">
+                            <div
+                                v-for="booking in value"
+                                :key="`booking-${booking.id}`"
+                                @contextmenu.prevent.stop="
+                                    $refs.context_receptionist_booking.open(
+                                        $event,
+                                        {
+                                            booking,
+                                        },
+                                    )
+                                "
+                            >
+                                <b-button
+                                    size="sm"
+                                    class="bill-page-booking-item shadow-none"
+                                    :variant="
+                                        bookingStatusColorMap[booking.status]
+                                    "
+                                >
+                                    Phòng {{ booking.room.name }}
+                                </b-button>
+                            </div>
+                        </div>
+                    </template>
+                    <template v-slot:cell(status)="{ value }">
+                        <icon-
+                            i="circle-fill"
+                            class="mr-1"
+                            :class="`text-${bookingStatusColorMap[value]}`"
+                        />
+                        {{ billStatusMap[value] }}
+                    </template>
+                    <template v-slot:cell(totalPrice)="{ value }">
+                        {{ toMoney(value) }}
+                    </template>
+                    <template v-slot:cell(discount)="{ value }">
+                        {{ toMoney(value) }}
+                    </template>
+                    <template v-slot:cell(totalReceipts)="{ value }">
+                        {{ toMoney(value) }}
+                    </template>
+                    <template v-slot:cell(rest)="{ value }">
+                        {{ toMoney(value) }}
+                    </template>
+                </b-table>
             </div>
         </query->
         <context-manage-bill- ref="context_bill" />
@@ -119,33 +153,57 @@
 </template>
 <script lang="ts">
 import { Component, mixins } from 'nuxt-property-decorator';
-import moment from 'moment';
+import { ApolloQueryResult } from 'apollo-client';
 import { getBills } from '~/graphql/documents';
 import { DataMixin, Page } from '~/components/mixins';
-import { GetBills } from '~/graphql/types';
-import { toMoney, toDate } from '~/utils';
+import { GetBills, BookingStatusEnum, GetBillsQuery } from '~/graphql/types';
+import { fromNow, toMoney, isMinDate } from '~/utils';
+import {
+    getBillStatus,
+    bookingStatusColorMap,
+    billStatusMap,
+} from '~/modules/model';
 
 @Component({
     name: 'bill-',
 })
 export default class extends mixins<Page, {}>(
     Page,
-    DataMixin({ getBills, toMoney, toDate, moment }),
+    DataMixin({
+        billStatusMap,
+        bookingStatusColorMap,
+        getBills,
+        toMoney,
+        fromNow,
+        isMinDate,
+    }),
 ) {
     head() {
-        return {
-            title: 'Quản lý hóa đơn',
-        };
+        return { title: 'Quản lý hóa đơn' };
     }
 
-    billsFilter(bills: GetBills.Bills[]): GetBills.Bills[] {
-        return bills;
-    }
+    bills: GetBills.Bills[] = [];
+    billsFiltered: (GetBills.Bills & {
+        status: BookingStatusEnum;
+        rest: number;
+    })[] = [];
 
-    sumReceipts(receipt: GetBills.Receipts[]) {
-        return receipt.map(r => r.money).reduce((a, b) => a + b, 0);
+    async onResult({ data: { bills } }: ApolloQueryResult<GetBillsQuery>) {
+        this.bills = bills;
+        this.billsFiltered = bills.map(bill => ({
+            ...bill,
+            status: getBillStatus(bill),
+            rest: bill.totalPrice - bill.totalReceipts - bill.discount,
+        }));
     }
 
     showInactive = false;
 }
 </script>
+<style lang="scss">
+.bill-page {
+    &-booking-item {
+        font-size: $font-size-sm;
+    }
+}
+</style>
