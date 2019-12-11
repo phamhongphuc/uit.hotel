@@ -44,6 +44,7 @@ export default class extends mixins<MutableMixin, ButtonProps>(
             try {
                 await this.mutate();
                 this.$emit('click');
+                this.isClicked = false;
             } catch (e) {
                 this.isClicked = false;
             }
