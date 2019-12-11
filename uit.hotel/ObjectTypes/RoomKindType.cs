@@ -18,17 +18,17 @@ namespace uit.hotel.ObjectTypes
             Field(x => x.AmountOfPeople).Description("Số người trong một phòng");
             Field(x => x.IsActive).Description("Trạng thái phòng");
 
-            Field<ListGraphType<RoomType>>(
+            Field<NonNullGraphType<ListGraphType<NonNullGraphType<RoomType>>>>(
                 nameof(RoomKind.Rooms),
                 "Danh sách các phòng thuộc loại phòng này",
                 resolve: context => context.Source.Rooms.ToList());
 
-            Field<ListGraphType<PriceType>>(
+            Field<NonNullGraphType<ListGraphType<NonNullGraphType<PriceType>>>>(
                 nameof(RoomKind.Prices),
                 "Danh sách giá cố định của loại phòng",
                 resolve: context => context.Source.Prices.ToList());
 
-            Field<ListGraphType<PriceVolatilityType>>(
+            Field<NonNullGraphType<ListGraphType<NonNullGraphType<PriceVolatilityType>>>>(
                 nameof(RoomKind.PriceVolatilities),
                 "Danh sách giá biến động của loại phòng",
                 resolve: context => context.Source.PriceVolatilities.ToList());

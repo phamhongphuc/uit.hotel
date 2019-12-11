@@ -281,7 +281,7 @@ type AuthenticationObject {
 # Một phiếu hóa đơn của khách hàng
 type Bill {
     # Danh sách các thông tin đặt trước của hóa đơn
-    bookings: [Booking]
+    bookings: [Booking!]!
 
     # Giảm giá
     discount: Int!
@@ -296,7 +296,7 @@ type Bill {
     patron: Patron!
 
     # Danh sách các biên nhận cho hóa đơn
-    receipts: [Receipt]
+    receipts: [Receipt!]!
 
     # Thời điểm in hóa đơn
     time: DateTimeOffset!
@@ -722,7 +722,7 @@ type PatronKind {
     name: String!
 
     # Danh sách các khách hàng thuộc loại khách hàng
-    patrons: [Patron]
+    patrons: [Patron!]!
 }
 
 input PatronKindCreateInput {
@@ -803,7 +803,7 @@ type Position {
     countInActiveEmployees: Int!
 
     # Danh sách các nhân viên thuộc quyền này
-    employees: [Employee]
+    employees: [Employee!]!
 
     # Id của chức vụ
     id: Int!
@@ -1348,13 +1348,13 @@ type RoomKind {
     numberOfBeds: Int!
 
     # Danh sách giá cố định của loại phòng
-    prices: [Price]
+    prices: [Price!]!
 
     # Danh sách giá biến động của loại phòng
-    priceVolatilities: [PriceVolatility]
+    priceVolatilities: [PriceVolatility!]!
 
     # Danh sách các phòng thuộc loại phòng này
-    rooms: [Room]
+    rooms: [Room!]!
 }
 
 # Input cho việc tạo một loại phòng
@@ -1419,7 +1419,7 @@ type Service {
     name: String!
 
     # Danh sách chi tiết dịch vụ
-    servicesDetails: [ServicesDetail]
+    servicesDetails: [ServicesDetail!]!
 
     # Đơn vị
     unit: String!

@@ -18,7 +18,7 @@ namespace uit.hotel.ObjectTypes
             Field(x => x.Unit).Description("Đơn vị");
             Field(x => x.IsActive).Description("Trạng thái hoạt động");
 
-            Field<ListGraphType<ServicesDetailType>>(
+            Field<NonNullGraphType<ListGraphType<NonNullGraphType<ServicesDetailType>>>>(
                 nameof(Service.ServicesDetails),
                 "Danh sách chi tiết dịch vụ",
                 resolve: context => context.Source.ServicesDetails.ToList());

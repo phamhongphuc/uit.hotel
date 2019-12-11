@@ -16,7 +16,7 @@ namespace uit.hotel.ObjectTypes
             Field(x => x.Name).Description("Tên loại khách hàng");
             Field(x => x.Description).Description("Thông tin mô tả loại khách hàng");
 
-            Field<ListGraphType<PatronType>>(
+            Field<NonNullGraphType<ListGraphType<NonNullGraphType<PatronType>>>>(
                 nameof(PatronKind.Patrons),
                 "Danh sách các khách hàng thuộc loại khách hàng",
                 resolve: context => context.Source.Patrons.ToList());

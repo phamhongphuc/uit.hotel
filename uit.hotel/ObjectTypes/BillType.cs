@@ -28,12 +28,12 @@ namespace uit.hotel.ObjectTypes
                 "Thông tin nhân viên nhận thanh toán hóa đơn",
                 resolve: context => context.Source.Employee);
 
-            Field<ListGraphType<ReceiptType>>(
+            Field<NonNullGraphType<ListGraphType<NonNullGraphType<ReceiptType>>>>(
                 nameof(Bill.Receipts),
                 "Danh sách các biên nhận cho hóa đơn",
                 resolve: context => context.Source.Receipts.ToList());
 
-            Field<ListGraphType<BookingType>>(
+            Field<NonNullGraphType<ListGraphType<NonNullGraphType<BookingType>>>>(
                 nameof(Bill.Bookings),
                 "Danh sách các thông tin đặt trước của hóa đơn",
                 resolve: context => context.Source.Bookings.ToList());

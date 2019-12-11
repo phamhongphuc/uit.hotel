@@ -504,7 +504,7 @@ export type AuthenticationObject = {
 /** Một phiếu hóa đơn của khách hàng */
 export type Bill = {
     /** Danh sách các thông tin đặt trước của hóa đơn */
-    bookings: Maybe<Array<Maybe<Booking>>>;
+    bookings: Array<Booking>;
     /** Giảm giá */
     discount: Scalars['Int'];
     /** Thông tin nhân viên nhận thanh toán hóa đơn */
@@ -514,7 +514,7 @@ export type Bill = {
     /** Thông tin khách hàng thanh toán hóa đơn */
     patron: Patron;
     /** Danh sách các biên nhận cho hóa đơn */
-    receipts: Maybe<Array<Maybe<Receipt>>>;
+    receipts: Array<Receipt>;
     /** Thời điểm in hóa đơn */
     time: Scalars['DateTimeOffset'];
     /** Tổng giá trị hóa đơn */
@@ -821,7 +821,7 @@ export type PatronKind = {
     /** Tên loại khách hàng */
     name: Scalars['String'];
     /** Danh sách các khách hàng thuộc loại khách hàng */
-    patrons: Maybe<Array<Maybe<Patron>>>;
+    patrons: Array<Patron>;
 };
 
 export type PatronKindCreateInput = {
@@ -884,7 +884,7 @@ export type Position = {
     /** Số nhân viên ngưng hoạt động */
     countInActiveEmployees: Scalars['Int'];
     /** Danh sách các nhân viên thuộc quyền này */
-    employees: Maybe<Array<Maybe<Employee>>>;
+    employees: Array<Employee>;
     /** Id của chức vụ */
     id: Scalars['Int'];
     /** Trạng thái kích hoạt/vô hiệu hóa chức vụ */
@@ -1296,11 +1296,11 @@ export type RoomKind = {
     /** Số giường */
     numberOfBeds: Scalars['Int'];
     /** Danh sách giá cố định của loại phòng */
-    prices: Maybe<Array<Maybe<Price>>>;
+    prices: Array<Price>;
     /** Danh sách giá biến động của loại phòng */
-    priceVolatilities: Maybe<Array<Maybe<PriceVolatility>>>;
+    priceVolatilities: Array<PriceVolatility>;
     /** Danh sách các phòng thuộc loại phòng này */
-    rooms: Maybe<Array<Maybe<Room>>>;
+    rooms: Array<Room>;
 };
 
 /** Input cho việc tạo một loại phòng */
@@ -1351,7 +1351,7 @@ export type Service = {
     /** Tên dịch vụ */
     name: Scalars['String'];
     /** Danh sách chi tiết dịch vụ */
-    servicesDetails: Maybe<Array<Maybe<ServicesDetail>>>;
+    servicesDetails: Array<ServicesDetail>;
     /** Đơn vị */
     unit: Scalars['String'];
     /** Đơn giá */
@@ -1426,8 +1426,8 @@ export type GetBillsQuery = {
     bills: Array<
         Pick<Bill, 'id' | 'time' | 'totalPrice'> & {
             patron: Pick<Patron, 'id' | 'name'>;
-            receipts: Maybe<Array<Maybe<Pick<Receipt, 'id' | 'money'>>>>;
-            bookings: Maybe<Array<Maybe<Pick<Booking, 'id'>>>>;
+            receipts: Array<Pick<Receipt, 'id' | 'money'>>;
+            bookings: Array<Pick<Booking, 'id'>>;
         }
     >;
 };
@@ -1859,7 +1859,7 @@ export type GetPatronKindsQueryVariables = {};
 export type GetPatronKindsQuery = {
     patronKinds: Array<
         Pick<PatronKind, 'id' | 'name' | 'description'> & {
-            patrons: Maybe<Array<Maybe<Pick<Patron, 'id' | 'name'>>>>;
+            patrons: Array<Pick<Patron, 'id' | 'name'>>;
         }
     >;
 };
@@ -1903,9 +1903,7 @@ export type GetPositionsQuery = {
             | 'permissionManagePrice'
             | 'permissionManageService'
             | 'isActive'
-        > & {
-            employees: Maybe<Array<Maybe<Pick<Employee, 'id' | 'isActive'>>>>;
-        }
+        > & { employees: Array<Pick<Employee, 'id' | 'isActive'>> }
     >;
 };
 
@@ -1987,7 +1985,7 @@ export type GetRoomKindsQuery = {
         Pick<
             RoomKind,
             'id' | 'name' | 'isActive' | 'amountOfPeople' | 'numberOfBeds'
-        > & { rooms: Maybe<Array<Maybe<Pick<Room, 'id'>>>> }
+        > & { rooms: Array<Pick<Room, 'id'>> }
     >;
 };
 
@@ -2099,9 +2097,7 @@ export type GetServicesQueryVariables = {};
 export type GetServicesQuery = {
     services: Array<
         Pick<Service, 'id' | 'name' | 'unitPrice' | 'unit' | 'isActive'> & {
-            servicesDetails: Maybe<
-                Array<Maybe<Pick<ServicesDetail, 'id' | 'number'>>>
-            >;
+            servicesDetails: Array<Pick<ServicesDetail, 'id' | 'number'>>;
         }
     >;
 };
@@ -2167,10 +2163,10 @@ export namespace GetBills {
     export type Bills = NonNullable<GetBillsQuery['bills'][0]>;
     export type Patron = NonNullable<GetBillsQuery['bills'][0]>['patron'];
     export type Receipts = NonNullable<
-        NonNullable<NonNullable<GetBillsQuery['bills'][0]>['receipts']>[0]
+        NonNullable<GetBillsQuery['bills'][0]>['receipts'][0]
     >;
     export type Bookings = NonNullable<
-        NonNullable<NonNullable<GetBillsQuery['bills'][0]>['bookings']>[0]
+        NonNullable<GetBillsQuery['bills'][0]>['bookings'][0]
     >;
 }
 
@@ -2429,9 +2425,7 @@ export namespace GetPatronKinds {
         GetPatronKindsQuery['patronKinds'][0]
     >;
     export type Patrons = NonNullable<
-        NonNullable<
-            NonNullable<GetPatronKindsQuery['patronKinds'][0]>['patrons']
-        >[0]
+        NonNullable<GetPatronKindsQuery['patronKinds'][0]>['patrons'][0]
     >;
 }
 
@@ -2452,9 +2446,7 @@ export namespace GetPositions {
     export type Query = GetPositionsQuery;
     export type Positions = NonNullable<GetPositionsQuery['positions'][0]>;
     export type Employees = NonNullable<
-        NonNullable<
-            NonNullable<GetPositionsQuery['positions'][0]>['employees']
-        >[0]
+        NonNullable<GetPositionsQuery['positions'][0]>['employees'][0]
     >;
 }
 
@@ -2516,7 +2508,7 @@ export namespace GetRoomKinds {
     export type Query = GetRoomKindsQuery;
     export type RoomKinds = NonNullable<GetRoomKindsQuery['roomKinds'][0]>;
     export type Rooms = NonNullable<
-        NonNullable<NonNullable<GetRoomKindsQuery['roomKinds'][0]>['rooms']>[0]
+        NonNullable<GetRoomKindsQuery['roomKinds'][0]>['rooms'][0]
     >;
 }
 
@@ -2603,9 +2595,7 @@ export namespace GetServices {
     export type Query = GetServicesQuery;
     export type Services = NonNullable<GetServicesQuery['services'][0]>;
     export type ServicesDetails = NonNullable<
-        NonNullable<
-            NonNullable<GetServicesQuery['services'][0]>['servicesDetails']
-        >[0]
+        NonNullable<GetServicesQuery['services'][0]>['servicesDetails'][0]
     >;
 }
 
