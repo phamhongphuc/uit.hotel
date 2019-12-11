@@ -1,4 +1,4 @@
-<template>
+﻿<template>
     <div>
         <block-flex->
             <b-button
@@ -6,7 +6,7 @@
                 variant="white"
                 @click="$refs.book.open({ rooms: selected })"
             >
-                <icon- class="mr-1" i="plus" />
+                <icon- class="mr-1" i="edit-3" />
                 <span>Đặt phòng</span>
             </b-button>
         </block-flex->

@@ -6,7 +6,7 @@
                 variant="white"
                 @click="$refs.patron_add.open()"
             >
-                <icon- class="mr-1" i="plus" />
+                <icon- class="mr-1" i="user-plus" />
                 <span>Thêm khách hàng mới</span>
             </b-button>
         </block-flex->
