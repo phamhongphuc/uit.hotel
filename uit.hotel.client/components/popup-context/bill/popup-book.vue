@@ -110,6 +110,7 @@ import {
     getPatronsAndRooms,
     bookAndCheckIn,
 } from '~/graphql/documents';
+import { RoomSelectMixinType } from '~/components/popup-context/room/popup-room-select.helper';
 import { PopupMixin, DataMixin } from '~/components/mixins';
 import { bookCheckOutTime, bookCheckInTime } from '~/modules/validator';
 
@@ -213,7 +214,7 @@ export default class extends mixins<PopupMixinType>(
     }
 
     addRoom() {
-        this.refs.room_select.open({
+        (this.refs.room_select as RoomSelectMixinType).open({
             currentRoomIds: this.currentRoomIds,
             callback: (roomIds: number[]) =>
                 roomIds
