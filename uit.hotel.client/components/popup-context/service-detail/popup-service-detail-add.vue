@@ -1,5 +1,9 @@
 <template>
-    <popup- ref="popup" v-slot="{ close }" title="Thêm dịch vụ">
+    <popup-
+        ref="popup"
+        v-slot="{ close }"
+        :title="`Thêm dịch vụ cho phòng ${roomName}`"
+    >
         <form-mutate-
             v-if="input"
             :mutation="createServicesDetail"
@@ -87,7 +91,7 @@ export default class extends mixins<PopupMixinType>(
     PopupMixin,
     DataMixin({ getServices, createServicesDetail, getSimpleBookings }),
 ) {
-    bookings: GetSimpleBookingsQuery['bookings'] = [];
+    roomName = '';
 
     onOpen() {
         this.input = {
@@ -95,19 +99,11 @@ export default class extends mixins<PopupMixinType>(
             service: { id: -1 },
             booking: { id: this.data.booking.id },
         };
-    }
-
-    get mappedBookings() {
-        return this.bookings.map(booking => ({
-            id: booking.id,
-            name: booking.room.name,
-        }));
+        this.roomName = this.data.booking.room.name;
     }
 
     async onResult(result: ExecutionResult<GetSimpleBookingsQuery>) {
         if (!result.data) return;
-
-        this.bookings = result.data.bookings;
 
         if (this.input === null) return;
 
