@@ -9,7 +9,6 @@
         >
             <div class="input-label">Số lượng</div>
             <b-input-
-                ref="autoFocus"
                 v-model="input.number"
                 :state="!$v.input.number.$invalid"
                 class="m-3 rounded"
@@ -30,24 +29,6 @@
                     v-model="input.service.id"
                     :state="!$v.input.service.$invalid"
                     :options="services"
-                    class="rounded"
-                    text-field="name"
-                    value-field="id"
-                />
-            </query->
-            <div class="input-label">Đơn đặt tại phòng</div>
-            <query-
-                v-slot
-                :query="getSimpleBookings"
-                :poll-interval="0"
-                class="m-3"
-                @result="onResult"
-            >
-                <b-form-select
-                    ref="booking"
-                    v-model="input.booking.id"
-                    :state="!$v.input.booking.$invalid"
-                    :options="mappedBookings"
                     class="rounded"
                     text-field="name"
                     value-field="id"
@@ -99,7 +80,6 @@ type PopupMixinType = PopupMixin<
                 minLength: minValue(1),
             },
             service: included('service'),
-            booking: included('booking'),
         },
     },
 })
@@ -111,9 +91,9 @@ export default class extends mixins<PopupMixinType>(
 
     onOpen() {
         this.input = {
-            number: 0,
+            number: 1,
             service: { id: -1 },
-            booking: { id: -1 },
+            booking: { id: this.data.booking.id },
         };
     }
 
