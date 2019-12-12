@@ -82,6 +82,8 @@ namespace uit.hotel.Businesses
         public static Task<Bill> Update(Bill bill)
         {
             var billInDatabase = Get(bill.Id);
+            bill.Patron = bill.Patron.GetManaged();
+
             return BillDataAccess.Update(billInDatabase, bill);
         }
 

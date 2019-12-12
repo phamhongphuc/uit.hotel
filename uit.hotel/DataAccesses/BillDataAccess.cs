@@ -77,7 +77,7 @@ namespace uit.hotel.DataAccesses
             await Database.WriteAsync(realm =>
             {
                 billInDatabase.Discount = bill.Discount;
-                billInDatabase.Patron = bill.Patron.GetManaged();
+                billInDatabase.Patron = bill.Patron;
             });
 
             return billInDatabase;
