@@ -49,17 +49,17 @@
                         {
                             key: 'discount',
                             label: 'Giảm giá',
-                            class: 'text-right text-nowrap',
+                            tdClass: 'text-right text-nowrap',
                         },
                         {
                             key: 'totalReceipts',
                             label: 'Đã thanh toán',
-                            class: 'text-right text-nowrap',
+                            tdClass: 'text-right text-nowrap',
                         },
                         {
                             key: 'rest',
                             label: 'Chưa thanh toán',
-                            class: 'text-right text-nowrap',
+                            tdClass: 'text-right text-nowrap',
                         },
                     ]"
                     @row-clicked="
@@ -104,7 +104,7 @@
                             >
                                 <b-button
                                     size="sm"
-                                    class="bill-page-booking-item shadow-none"
+                                    class="bill-page-booking-item shadow-none text-nowrap"
                                     :variant="
                                         bookingStatusColorMap[booking.status]
                                     "
@@ -142,6 +142,7 @@
         <context-receptionist-booking- ref="context_receptionist_booking" />
         <context-receptionist-service-detail- ref="context_service_detail" />
         <popup-bill-detail- ref="bill_detail" />
+        <popup-bill-update-discount- ref="bill_update_discount" />
         <popup-book- ref="book" />
         <popup-booking-detail- ref="booking_detail" />
         <popup-patron-select-or-add- ref="patron_select_or_add" />

@@ -27,3 +27,9 @@ export const toYear = (date: string) => {
 
     return year === 1 ? 'N/A' : year;
 };
+
+export const toPercent = (num: number) =>
+    `${parseFloat((num * 100).toFixed(2))}%`;
+
+export const toNumber = (num: string | number) =>
+    typeof num !== 'string' ? num : parseFloat(num);

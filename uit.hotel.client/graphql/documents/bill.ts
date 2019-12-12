@@ -106,3 +106,11 @@ export const payTheBill = gql`
         }
     }
 `;
+
+export const updateBillDiscount = gql`
+    mutation updateBillDiscount($input: BillUpdateDiscountInput!) {
+        updateBillDiscount(input: $input) {
+            id
+        }
+    }
+`;

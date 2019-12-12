@@ -1515,6 +1515,14 @@ export type PayTheBillMutationVariables = {
 
 export type PayTheBillMutation = { payTheBill: Pick<Bill, 'id'> };
 
+export type UpdateBillDiscountMutationVariables = {
+    input: BillUpdateDiscountInput;
+};
+
+export type UpdateBillDiscountMutation = {
+    updateBillDiscount: Pick<Bill, 'id'>;
+};
+
 export type GetBookingsQueryVariables = {};
 
 export type GetBookingsQuery = {
@@ -2265,6 +2273,12 @@ export namespace PayTheBill {
     export type Variables = PayTheBillMutationVariables;
     export type Mutation = PayTheBillMutation;
     export type PayTheBill = PayTheBillMutation['payTheBill'];
+}
+
+export namespace UpdateBillDiscount {
+    export type Variables = UpdateBillDiscountMutationVariables;
+    export type Mutation = UpdateBillDiscountMutation;
+    export type UpdateBillDiscount = UpdateBillDiscountMutation['updateBillDiscount'];
 }
 
 export namespace GetBookings {

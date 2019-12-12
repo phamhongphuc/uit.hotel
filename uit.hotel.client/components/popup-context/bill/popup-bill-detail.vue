@@ -45,7 +45,7 @@
                         v-if="isMinDate(bill.time)"
                         size="sm"
                         variant="lighten"
-                        @click="refs.receipt_add.open({ bill })"
+                        @click="refs.bill_update_discount.open({ bill })"
                     >
                         <icon- class="mr-1" i="receipt" />
                         <span>Giảm giá</span>
