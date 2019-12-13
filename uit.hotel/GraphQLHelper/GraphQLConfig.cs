@@ -39,6 +39,7 @@ namespace uit.hotel.GraphQLHelper
         {
             services.AddSingleton<BillCreateInput>();
             services.AddSingleton<BillIdInput>();
+            services.AddSingleton<BillUpdateDiscountInput>();
             services.AddSingleton<BillUpdateInput>();
             services.AddSingleton<BookAndCheckInCreateInput>();
             services.AddSingleton<BookingCreateInput>();

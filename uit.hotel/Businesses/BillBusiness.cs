@@ -84,7 +84,19 @@ namespace uit.hotel.Businesses
             var billInDatabase = Get(bill.Id);
             bill.Patron = bill.Patron.GetManaged();
 
+            if (billInDatabase.Time != DateTimeOffset.MinValue)
+                throw new Exception("Không thể cập nhật thông tin cho hóa đơn đã thanh toán");
+
             return BillDataAccess.Update(billInDatabase, bill);
+        }
+
+        public static Task<Bill> UpdateDiscount(Bill bill)
+        {
+            var billInDatabase = Get(bill.Id);
+            if (billInDatabase.Time != DateTimeOffset.MinValue)
+                throw new Exception("Không thể cập nhật giảm giá cho hóa đơn đã thanh toán");
+
+            return BillDataAccess.UpdateDiscount(billInDatabase, bill);
         }
 
         public static Task<Bill> PayTheBill(Employee employee, int billId)

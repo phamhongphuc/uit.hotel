@@ -83,6 +83,16 @@ namespace uit.hotel.DataAccesses
             return billInDatabase;
         }
 
+        public static async Task<Bill> UpdateDiscount(Bill billInDatabase, Bill bill)
+        {
+            await Database.WriteAsync(realm =>
+            {
+                billInDatabase.Discount = bill.Discount;
+            });
+
+            return billInDatabase;
+        }
+
         public static async void Delete(Bill bill) => await Database.WriteAsync(realm =>
         {
             foreach (var booking in bill.Bookings) BookingDataAccess.Delete(booking);

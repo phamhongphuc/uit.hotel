@@ -119,6 +119,8 @@ export type AppMutation = {
     setIsCleanRoom: Scalars['String'];
     /** Cập nhật thông tin hóa đơn */
     updateBill: Bill;
+    /** Cập nhật giảm giá của hóa đơn */
+    updateBillDiscount: Bill;
     /** Chỉnh sửa thông tin nhân viên */
     updateEmployee: Employee;
     /** Cập nhật và trả về một tầng vừa cập nhật */
@@ -324,6 +326,10 @@ export type AppMutationSetIsCleanRoomArgs = {
 
 export type AppMutationUpdateBillArgs = {
     input: BillUpdateInput;
+};
+
+export type AppMutationUpdateBillDiscountArgs = {
+    input: BillUpdateDiscountInput;
 };
 
 export type AppMutationUpdateEmployeeArgs = {
@@ -532,6 +538,14 @@ export type BillCreateInput = {
 export type BillId = {
     /** Id của hóa đơn */
     id: Scalars['Int'];
+};
+
+/** Input để cập nhật thông tin một hóa đơn */
+export type BillUpdateDiscountInput = {
+    /** Id của hóa đơn */
+    id: Scalars['Int'];
+    /** Giảm giá */
+    discount: Scalars['Int'];
 };
 
 /** Input để cập nhật thông tin một hóa đơn */

@@ -68,6 +68,18 @@ namespace uit.hotel.ObjectTypes
         }
     }
 
+    public class BillUpdateDiscountInput : InputType<Bill>
+    {
+        public BillUpdateDiscountInput()
+        {
+            Name = _UpdationField(nameof(Bill.Discount));
+            Description = "Input để cập nhật thông tin một hóa đơn";
+
+            Field(x => x.Id).Description("Id của hóa đơn");
+            Field(x => x.Discount).Description("Giảm giá");
+        }
+    }
+
     public class BillCreateInput : InputType<Bill>
     {
         public BillCreateInput()

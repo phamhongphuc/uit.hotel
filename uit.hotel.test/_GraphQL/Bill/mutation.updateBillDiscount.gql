@@ -1,0 +1,15 @@
+mutation($input: BillUpdateDiscountInput!) {
+    updateBillDiscount(input: $input) {
+        id
+        time
+        patron {
+            identification
+        }
+        bookings {
+            id
+        }
+        totalPrice
+        totalReceipts
+        discount
+    }
+}

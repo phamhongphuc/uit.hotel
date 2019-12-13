@@ -21,6 +21,8 @@ namespace uit.hotel.Queries.Base
 
         public string _Updation => "Update" + typeof(TModel).Name;
 
+        public string _UpdationField(string field) => "Update" + typeof(TModel).Name + field;
+
         public string _SetIsActive => "SetIsActive" + typeof(TModel).Name;
 
         public QueryArguments _InputArgument<TInputGraphType>() where TInputGraphType : InputType<TModel>

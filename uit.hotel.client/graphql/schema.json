@@ -5627,6 +5627,37 @@
                         "deprecationReason": null
                     },
                     {
+                        "name": "updateBillDiscount",
+                        "description": "Cập nhật giảm giá của hóa đơn",
+                        "args": [
+                            {
+                                "name": "input",
+                                "description": "",
+                                "type": {
+                                    "kind": "NON_NULL",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "INPUT_OBJECT",
+                                        "name": "BillUpdateDiscountInput",
+                                        "ofType": null
+                                    }
+                                },
+                                "defaultValue": null
+                            }
+                        ],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "OBJECT",
+                                "name": "Bill",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
                         "name": "updateEmployee",
                         "description": "Chỉnh sửa thông tin nhân viên",
                         "args": [
@@ -7661,6 +7692,45 @@
                             "ofType": {
                                 "kind": "INPUT_OBJECT",
                                 "name": "PatronId",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    }
+                ],
+                "interfaces": null,
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "INPUT_OBJECT",
+                "name": "BillUpdateDiscountInput",
+                "description": "Input để cập nhật thông tin một hóa đơn",
+                "fields": null,
+                "inputFields": [
+                    {
+                        "name": "id",
+                        "description": "Id của hóa đơn",
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Int",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "discount",
+                        "description": "Giảm giá",
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Int",
                                 "ofType": null
                             }
                         },

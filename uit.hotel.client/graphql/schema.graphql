@@ -143,6 +143,9 @@ type AppMutation {
     # Cập nhật thông tin hóa đơn
     updateBill(input: BillUpdateInput!): Bill!
 
+    # Cập nhật giảm giá của hóa đơn
+    updateBillDiscount(input: BillUpdateDiscountInput!): Bill!
+
     # Chỉnh sửa thông tin nhân viên
     updateEmployee(input: EmployeeUpdateInput!): Employee!
 
@@ -317,6 +320,15 @@ input BillCreateInput {
 input BillId {
     # Id của hóa đơn
     id: Int!
+}
+
+# Input để cập nhật thông tin một hóa đơn
+input BillUpdateDiscountInput {
+    # Id của hóa đơn
+    id: Int!
+
+    # Giảm giá
+    discount: Int!
 }
 
 # Input để cập nhật thông tin một hóa đơn
