@@ -49,21 +49,20 @@
                     },
                     {
                         key: 'employeesActive',
-                        label: 'Hoạt động',
+                        label: 'Còn hoạt động',
                         class: 'text-right',
                         sortable: true,
-                    },
-                    {
-                        key: 'employeesInactive',
-                        label: 'Ngưng hoạt động',
-                        class: 'text-right',
-                        sortable: true,
+                        formatter: (value, key, item) =>
+                            toPeople(
+                                item.employees.filter(e => e.isActive).length,
+                            ),
                     },
                     {
                         key: 'employees',
                         label: 'Tổng cộng',
                         class: 'text-right',
                         sortable: true,
+                        formatter: value => toPeople(value.length),
                     },
                 ]"
                 class="table-style table-header-line"
@@ -84,17 +83,6 @@
                 <template v-slot:cell(index)="data">
                     {{ data.index + 1 }}
                 </template>
-                <template v-slot:cell(employeesActive)="{ item }">
-                    {{ item.employees.filter(e => e.isActive).length }}
-                    người
-                </template>
-                <template v-slot:cell(employeesInactive)="{ item }">
-                    {{ item.employees.filter(e => !e.isActive).length }}
-                    người
-                </template>
-                <template v-slot:cell(employees)="{ value }">
-                    {{ value.length }} người
-                </template>
             </b-table>
         </query->
         <context-manage-position- ref="context_position" />
@@ -107,13 +95,14 @@ import { Component, mixins } from 'nuxt-property-decorator';
 import { getPositions } from '~/graphql/documents';
 import { DataMixin, Page } from '~/components/mixins';
 import { GetPositions } from '~/graphql/types';
+import { toPeople } from '~/utils';
 
 @Component({
     name: 'position-',
 })
 export default class extends mixins<Page, {}>(
     Page,
-    DataMixin({ getPositions }),
+    DataMixin({ getPositions, toPeople }),
 ) {
     head() {
         return {
