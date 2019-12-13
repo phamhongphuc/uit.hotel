@@ -1,8 +1,10 @@
 .table {
     margin-bottom: 0;
-    & + .table-after {
-        padding: map-get($spacers, 3);
-        text-align: center;
+}
+
+.table-header-line {
+    th {
+        border-bottom-color: $main !important;
     }
 }
 
@@ -12,10 +14,6 @@
     }
 }
 
-.table-cell-disable {
-    text-decoration: line-through;
-}
-
 .table-inner {
     background-color: $input-bg;
     box-shadow: $input-box-shadow;
@@ -23,12 +21,6 @@
     th,
     td {
         border-color: rgba($main, 0.5) !important;
-    }
-}
-
-.table-header-line {
-    th {
-        border-bottom-color: $main !important;
     }
 }
 
@@ -76,8 +68,24 @@
             outline: 0;
         }
     }
+
+    tr.b-table-empty-row > td {
+        padding: 1rem;
+        text-align: center;
+    }
+
+    &.table-sm {
+        tr.b-table-empty-row > td {
+            padding: 0.75rem;
+            text-align: center;
+        }
+    }
 }
 
 .table-cell-id {
     min-width: 3rem !important;
+}
+
+.table-cell-disable {
+    text-decoration: line-through;
 }

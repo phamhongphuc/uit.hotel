@@ -17,6 +17,7 @@ export const getPatrons = gql`
             note
             patronKind {
                 id
+                name
             }
         }
     }
@@ -39,6 +40,7 @@ export const getPatron = gql`
             note
             patronKind {
                 id
+                name
             }
         }
     }

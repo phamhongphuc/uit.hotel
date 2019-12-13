@@ -1862,7 +1862,7 @@ export type GetPatronsQuery = {
             | 'nationality'
             | 'company'
             | 'note'
-        > & { patronKind: Pick<PatronKind, 'id'> }
+        > & { patronKind: Pick<PatronKind, 'id' | 'name'> }
     >;
 };
 

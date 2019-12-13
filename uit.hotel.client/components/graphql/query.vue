@@ -73,7 +73,7 @@ export default class extends Vue {
             background-color: $white;
             border-radius: $border-radius;
             box-shadow: $box-shadow-sm;
-            > div:not(.table-after):not(.query-text) {
+            > div:not(.query-text) {
                 min-width: fit-content;
                 padding: map-get($spacers, 2);
             }

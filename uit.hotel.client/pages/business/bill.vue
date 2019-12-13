@@ -45,21 +45,25 @@
                             key: 'totalPrice',
                             label: 'Tổng cộng',
                             class: 'text-right text-nowrap',
+                            formatter: toMoney,
                         },
                         {
                             key: 'discount',
                             label: 'Giảm giá',
                             tdClass: 'text-right text-nowrap',
+                            formatter: toMoney,
                         },
                         {
                             key: 'totalReceipts',
                             label: 'Đã thanh toán',
                             tdClass: 'text-right text-nowrap',
+                            formatter: toMoney,
                         },
                         {
                             key: 'rest',
                             label: 'Chưa thanh toán',
                             tdClass: 'text-right text-nowrap',
+                            formatter: toMoney,
                         },
                     ]"
                     @row-clicked="
@@ -121,18 +125,6 @@
                             :class="`text-${bookingStatusColorMap[value]}`"
                         />
                         {{ billStatusMap[value] }}
-                    </template>
-                    <template v-slot:cell(totalPrice)="{ value }">
-                        {{ toMoney(value) }}
-                    </template>
-                    <template v-slot:cell(discount)="{ value }">
-                        {{ toMoney(value) }}
-                    </template>
-                    <template v-slot:cell(totalReceipts)="{ value }">
-                        {{ toMoney(value) }}
-                    </template>
-                    <template v-slot:cell(rest)="{ value }">
-                        {{ toMoney(value) }}
                     </template>
                 </b-table>
             </div>

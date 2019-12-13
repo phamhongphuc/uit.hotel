@@ -21,9 +21,10 @@
             :query="getPrices"
             class="row"
             child-class="col m-2 p-0 bg-white rounded shadow-sm overflow-auto"
+            @result="onResult"
         >
             <b-table
-                :items="pricesFilter(prices)"
+                :items="pricesFiltered"
                 :fields="[
                     {
                         key: 'index',
@@ -32,24 +33,39 @@
                         sortable: true,
                     },
                     {
-                        key: 'dayPrice',
-                        label: 'Tên giá cơ bản',
-                        tdClass: 'w-100',
+                        key: 'effectiveStartDate',
+                        label: 'Có hiệu lực từ',
+                        tdClass: 'text-center',
+                        formatter: toDate,
                     },
                     {
                         key: 'createDate',
                         label: 'Ngày tạo',
-                        tdClass: 'text-nowrap text-left',
+                        tdClass: 'text-left',
+                        formatter: toDate,
                     },
                     {
-                        key: 'effectiveStartDate',
-                        label: 'Có hiệu lực từ',
-                        tdClass: 'text-nowrap text-center',
+                        key: 'hourPrice',
+                        label: 'Giá theo giờ',
+                        class: 'text-right',
+                        formatter: toMoney,
+                    },
+                    {
+                        key: 'nightPrice',
+                        label: 'Giá theo đêm',
+                        class: 'text-right',
+                        formatter: toMoney,
+                    },
+                    {
+                        key: 'dayPrice',
+                        label: 'Giá theo ngày',
+                        class: 'text-right',
+                        formatter: toMoney,
                     },
                     {
                         key: 'roomKind',
                         label: 'Loại phòng',
-                        tdClass: 'text-nowrap text-center',
+                        formatter: toNameFormatter,
                     },
                 ]"
                 class="table-style table-header-line"
@@ -67,22 +83,7 @@
                 <template v-slot:cell(index)="data">
                     {{ data.index + 1 }}
                 </template>
-                <template v-slot:cell(createDate)="{ value }">
-                    {{ toDate(value) }}
-                </template>
-                <template v-slot:cell(effectiveStartDate)="{ value }">
-                    {{ toDate(value) }}
-                </template>
-                <template v-slot:cell(dayPrice)="{ value }">
-                    {{ toMoney(value) }}
-                </template>
-                <template v-slot:cell(roomKind)="{ value }">
-                    {{ value.name }}
-                </template>
             </b-table>
-            <div v-if="pricesFilter(prices).length === 0" class="table-after">
-                Không tìm thấy giá nào
-            </div>
         </query->
         <context-manage-price- ref="context_price" />
         <popup-price-add- ref="price_add" />
@@ -90,17 +91,18 @@
 </template>
 <script lang="ts">
 import { Component, mixins } from 'nuxt-property-decorator';
+import { ApolloQueryResult } from 'apollo-client';
 import { getPrices } from '~/graphql/documents';
 import { DataMixin, Page } from '~/components/mixins';
-import { GetPrices } from '~/graphql/types';
-import { toMoney, toDate } from '~/utils';
+import { GetPrices, GetPricesQuery } from '~/graphql/types';
+import { toMoney, toDate, toNameFormatter } from '~/utils';
 
 @Component({
     name: 'price-',
 })
 export default class extends mixins<Page, {}>(
     Page,
-    DataMixin({ getPrices, toMoney, toDate }),
+    DataMixin({ getPrices, toMoney, toDate, toNameFormatter }),
 ) {
     head() {
         return {
@@ -108,8 +110,12 @@ export default class extends mixins<Page, {}>(
         };
     }
 
-    pricesFilter(prices: GetPrices.Prices[]): GetPrices.Prices[] {
-        return prices;
+    prices: GetPrices.Prices[] = [];
+    pricesFiltered: GetPrices.Prices[] = [];
+
+    async onResult({ data: { prices } }: ApolloQueryResult<GetPricesQuery>) {
+        this.prices = prices;
+        this.pricesFiltered = prices;
     }
 }
 </script>

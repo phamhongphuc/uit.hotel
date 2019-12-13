@@ -4,6 +4,8 @@ export const getPrices = gql`
     query getPrices {
         prices {
             id
+            hourPrice
+            nightPrice
             dayPrice
             effectiveStartDate
             createDate

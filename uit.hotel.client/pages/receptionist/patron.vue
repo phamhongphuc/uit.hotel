@@ -16,6 +16,7 @@
             class="query-fill"
         >
             <b-table
+                show-empty
                 :items="patrons"
                 :fields="[
                     {
@@ -27,12 +28,16 @@
                     {
                         key: 'name',
                         label: 'Tên khách hàng',
-                        tdClass: 'w-100',
+                    },
+                    {
+                        key: 'gender',
+                        label: 'Giới tính',
+                        formatter: gender => (gender ? 'Nam' : 'Nữ'),
                     },
                     {
                         key: 'identification',
                         label: 'Chứng minh nhân dân',
-                        tdClass: 'w-100',
+                        tdClass: 'text-nowrap',
                     },
                     {
                         key: 'phoneNumbers',
@@ -42,7 +47,12 @@
                     {
                         key: 'birthdate',
                         label: 'Năm sinh',
-                        tdClass: 'text-nowrap',
+                        formatter: toYear,
+                    },
+                    {
+                        key: 'patronKind',
+                        label: 'Loại khách hàng',
+                        formatter: toNameFormatter,
                     },
                 ]"
                 class="table-style table-header-line"
@@ -56,6 +66,9 @@
                     }
                 "
             >
+                <template v-slot:empty>
+                    Không tìm thấy khách hàng nào
+                </template>
                 <template v-slot:cell(index)="data">
                     {{ data.index + 1 }}
                 </template>
@@ -64,13 +77,7 @@
                         {{ value }}
                     </a>
                 </template>
-                <template v-slot:cell(birthdate)="{ value }">
-                    {{ toYear(value) }}
-                </template>
             </b-table>
-            <div v-if="patrons.length === 0" class="table-after">
-                Không tìm thấy khách hàng nào
-            </div>
         </query->
         <context-manage-patron- ref="context_patron" />
         <popup-patron-add- ref="patron_add" />
@@ -81,14 +88,14 @@
 import { Component, mixins } from 'nuxt-property-decorator';
 import { getPatrons } from '~/graphql/documents';
 import { DataMixin, Page } from '~/components/mixins';
-import { toYear } from '~/utils';
+import { toYear, toNameFormatter } from '~/utils';
 
 @Component({
     name: 'patron-',
 })
 export default class extends mixins<Page, {}>(
     Page,
-    DataMixin({ getPatrons, toYear }),
+    DataMixin({ getPatrons, toYear, toNameFormatter }),
 ) {
     head() {
         return {

@@ -1,6 +1,6 @@
-import { GetPatrons, GetRooms } from '~/graphql/types';
+import { GetPatronsAndRooms } from '~/graphql/types';
 
 export type TableDataType = {
-    room: GetRooms.Rooms;
-    patrons: (GetPatrons.Patrons & { isOwner: boolean })[];
+    room: GetPatronsAndRooms.Rooms;
+    patrons: (GetPatronsAndRooms.Patrons & { isOwner: boolean })[];
 };
