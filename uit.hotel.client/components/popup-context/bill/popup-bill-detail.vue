@@ -47,7 +47,7 @@
                         variant="lighten"
                         @click="refs.bill_update_discount.open({ bill })"
                     >
-                        <icon- class="mr-1" i="receipt" />
+                        <icon- class="mr-1" i="discount" />
                         <span>Giảm giá</span>
                     </b-button>
                     <b-button-mutate-
