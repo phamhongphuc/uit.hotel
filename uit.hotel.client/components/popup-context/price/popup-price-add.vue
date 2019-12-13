@@ -28,19 +28,21 @@
                         />
                     </query->
                     <div class="input-label">Phí trả phòng trễ</div>
-                    <b-input-
+                    <b-input-money-
                         v-model="input.lateCheckOutFee"
                         :state="!$v.input.lateCheckOutFee.$invalid"
                         class="m-3 rounded"
                         icon="type"
                     />
                     <div class="input-label">Phí nhận phòng sớm</div>
-                    <b-input-
+                    <b-input-money-
                         v-model="input.earlyCheckInFee"
                         :state="!$v.input.earlyCheckInFee.$invalid"
                         class="m-3 rounded"
                         icon="type"
                     />
+                </div>
+                <div>
                     <div class="input-label">Ngày bắt đầu có hiệu lực</div>
                     <b-input-
                         v-model="input.effectiveStartDate"
@@ -49,38 +51,38 @@
                         type="date"
                         icon="type"
                     />
-                </div>
-                <div>
                     <div class="input-label">Giá theo giờ</div>
-                    <b-input-
+                    <b-input-money-
                         v-model="input.hourPrice"
                         :state="!$v.input.hourPrice.$invalid"
                         class="m-3 rounded"
                         icon="type"
                     />
                     <div class="input-label">Giá theo ngày</div>
-                    <b-input-
+                    <b-input-money-
                         v-model="input.dayPrice"
                         :state="!$v.input.dayPrice.$invalid"
                         class="m-3 rounded"
                         icon="type"
                     />
+                </div>
+                <div>
                     <div class="input-label">Giá theo đêm</div>
-                    <b-input-
+                    <b-input-money-
                         v-model="input.nightPrice"
                         :state="!$v.input.nightPrice.$invalid"
                         class="m-3 rounded"
                         icon="type"
                     />
                     <div class="input-label">Giá theo tuần</div>
-                    <b-input-
+                    <b-input-money-
                         v-model="input.weekPrice"
                         :state="!$v.input.weekPrice.$invalid"
                         class="m-3 rounded"
                         icon="type"
                     />
                     <div class="input-label">Giá theo tháng</div>
-                    <b-input-
+                    <b-input-money-
                         v-model="input.monthPrice"
                         :state="!$v.input.monthPrice.$invalid"
                         class="m-3 rounded"

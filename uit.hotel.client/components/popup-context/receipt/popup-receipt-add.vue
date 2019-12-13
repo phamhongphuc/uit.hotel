@@ -8,7 +8,7 @@
             @success="close"
         >
             <div class="input-label">Số tiền</div>
-            <b-input-
+            <b-input-money-
                 ref="autoFocus"
                 v-model="input.money"
                 :state="!$v.input.money.$invalid"
@@ -43,7 +43,6 @@ import { Component, mixins } from 'nuxt-property-decorator';
 import {
     required,
     numeric,
-    integer,
     not,
     or,
     and,
@@ -53,7 +52,7 @@ import {
 import { DataMixin, PopupMixin } from '~/components/mixins';
 import { ReceiptCreateInput, GetBills } from '~/graphql/types';
 import { createReceipt } from '~/graphql/documents';
-import { optional } from '~/modules/validator';
+import { optional, currency } from '~/modules/validator';
 
 type PopupMixinType = PopupMixin<{ bill: GetBills.Bills }, ReceiptCreateInput>;
 
@@ -61,10 +60,7 @@ type PopupMixinType = PopupMixin<{ bill: GetBills.Bills }, ReceiptCreateInput>;
     name: 'popup-receipt-add-',
     validations: {
         input: {
-            money: {
-                required,
-                integer,
-            },
+            money: currency,
             bankAccountNumber: {
                 or: or(
                     and(numeric, minLength(6), maxLength(20)),

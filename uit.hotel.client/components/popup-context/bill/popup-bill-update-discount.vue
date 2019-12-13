@@ -55,11 +55,11 @@
 </template>
 <script lang="ts">
 import { Component, mixins } from 'nuxt-property-decorator';
-import { required, integer } from 'vuelidate/lib/validators';
 import { DataMixin, PopupMixin } from '~/components/mixins';
 import { BillUpdateDiscountInput, GetBill } from '~/graphql/types';
 import { updateBillDiscount } from '~/graphql/documents';
 import { toMoney, toPercent, toNumber } from '~/utils';
+import { currency } from '~/modules/validator';
 
 type PopupMixinType = PopupMixin<
     {
@@ -73,8 +73,7 @@ type PopupMixinType = PopupMixin<
     validations: {
         input: {
             discount: {
-                required,
-                integer,
+                ...currency,
                 lessThanTotalPrice(value: string | number) {
                     return (
                         toNumber(value) <
