@@ -31,6 +31,7 @@
             child-class="col m-2 p-0 bg-white rounded shadow-sm overflow-auto"
         >
             <b-table
+                show-empty
                 :items="positionsFilter(positions)"
                 :fields="[
                     {
@@ -42,29 +43,26 @@
                     {
                         key: 'name',
                         label: 'Tên vị trí',
-                        tdClass: (value, key, row) => {
-                            if (!row.isActive)
-                                return 'table-cell-disable w-100';
-                            return 'w-100';
-                        },
+                        tdClass: (value, key, row) =>
+                            !row.isActive && 'table-cell-disable',
                         sortable: true,
                     },
                     {
                         key: 'employeesActive',
                         label: 'Hoạt động',
-                        tdClass: 'text-center',
+                        class: 'text-right',
                         sortable: true,
                     },
                     {
                         key: 'employeesInactive',
                         label: 'Ngưng hoạt động',
-                        tdClass: 'text-center',
+                        class: 'text-right',
                         sortable: true,
                     },
                     {
                         key: 'employees',
                         label: 'Tổng cộng',
-                        tdClass: 'text-center',
+                        class: 'text-right',
                         sortable: true,
                     },
                 ]"
@@ -80,6 +78,9 @@
                     }
                 "
             >
+                <template v-slot:empty>
+                    Không tìm thấy vị trí nào
+                </template>
                 <template v-slot:cell(index)="data">
                     {{ data.index + 1 }}
                 </template>
@@ -95,12 +96,6 @@
                     {{ value.length }} người
                 </template>
             </b-table>
-            <div
-                v-if="positionsFilter(positions).length === 0"
-                class="table-after"
-            >
-                Không tìm thấy vị trí nào
-            </div>
         </query->
         <context-manage-position- ref="context_position" />
         <popup-position-add- ref="position_add" />

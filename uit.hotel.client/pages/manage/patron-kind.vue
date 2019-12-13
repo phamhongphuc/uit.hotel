@@ -17,6 +17,7 @@
             child-class="col m-2 p-0 bg-white rounded shadow-sm overflow-auto"
         >
             <b-table
+                show-empty=""
                 :items="patronKinds"
                 :fields="[
                     {
@@ -54,6 +55,9 @@
                     }
                 "
             >
+                <template v-slot:empty>
+                    Không tìm thấy loại khách hàng nào
+                </template>
                 <template v-slot:cell(index)="data">
                     {{ data.index + 1 }}
                 </template>
@@ -61,9 +65,6 @@
                     {{ value.length }} khách hàng
                 </template>
             </b-table>
-            <div v-if="patronKinds.length === 0" class="table-after">
-                Không tìm thấy loại khách hàng nào
-            </div>
         </query->
         <context-manage-patron-kind- ref="context_patron_kind" />
         <popup-patron-kind-add- ref="patron_kind_add" />

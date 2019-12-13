@@ -31,6 +31,7 @@
             child-class="col m-2 p-0 bg-white rounded shadow-sm overflow-auto"
         >
             <b-table
+                show-empty
                 :items="roomKindsFilter(roomKinds)"
                 :fields="[
                     {
@@ -77,6 +78,9 @@
                     }
                 "
             >
+                <template v-slot:empty>
+                    Không tìm thấy loại phòng nào Không tìm thấy dịch vụ nào
+                </template>
                 <template v-slot:cell(index)="data">
                     {{ data.index + 1 }}
                 </template>
@@ -84,12 +88,6 @@
                     {{ value.length }} phòng
                 </template>
             </b-table>
-            <div
-                v-if="roomKindsFilter(roomKinds).length === 0"
-                class="table-after"
-            >
-                Không tìm thấy loại phòng nào
-            </div>
         </query->
         <context-manage-room-kind- ref="context_room_kind" />
         <popup-room-kind-add- ref="room_kind_add" />

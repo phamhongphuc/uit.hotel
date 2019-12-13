@@ -31,6 +31,7 @@
             child-class="col m-2 p-0 bg-white rounded shadow-sm overflow-auto"
         >
             <b-table
+                show-empty
                 :items="employeesFilter(employees)"
                 :fields="[
                     {
@@ -40,14 +41,35 @@
                         sortable: true,
                     },
                     {
+                        key: 'id',
+                        label: 'Tên đăng nhập',
+                        tdClass: (value, key, row) =>
+                            !row.isActive && 'table-cell-disable',
+                        sortable: true,
+                    },
+                    {
+                        key: 'position',
+                        label: 'Vị trí',
+                        tdClass: 'text-center text-nowrap',
+                        sortable: true,
+                        formatter: toNameFormatter,
+                    },
+                    {
                         key: 'name',
                         label: 'Tên nhân viên',
-                        tdClass: (value, key, row) => {
-                            if (!row.isActive)
-                                return 'table-cell-disable w-100';
-                            return 'w-100';
-                        },
+                        tdClass: (value, key, row) =>
+                            !row.isActive && 'table-cell-disable',
                         sortable: true,
+                    },
+                    {
+                        key: 'isActive',
+                        label: 'Trạng thái',
+                    },
+
+                    {
+                        key: 'gender',
+                        label: 'Giới tính',
+                        formatter: gender => (gender ? 'Nam' : 'Nữ'),
                     },
                     {
                         key: 'phoneNumber',
@@ -56,10 +78,15 @@
                         sortable: true,
                     },
                     {
-                        key: 'position',
-                        label: 'Vị trí',
-                        tdClass: 'text-center text-nowrap',
-                        sortable: true,
+                        key: 'birthdate',
+                        label: 'Năm sinh',
+                        tdClass: 'text-nowrap',
+                        formatter: toYear,
+                    },
+                    {
+                        key: 'startingDate',
+                        label: 'Đã vào làm',
+                        formatter: v => `Từ năm ${toYear(v)} - ${fromNow(v)}`,
                     },
                 ]"
                 class="table-style table-header-line"
@@ -73,22 +100,26 @@
                     }
                 "
             >
+                <template v-slot:empty>
+                    Không tìm thấy nhân viên nào
+                </template>
                 <template v-slot:cell(index)="data">
                     {{ data.index + 1 }}
+                </template>
+                <template v-slot:cell(isActive)="{ value }">
+                    <span v-if="value">
+                        <icon- i="circle-fill" class="mr-1 text-green" />
+                        Đang hoạt động
+                    </span>
+                    <span v-else>
+                        <icon- i="circle-fill" class="mr-1 text-light" />
+                        Ngưng hoạt động
+                    </span>
                 </template>
                 <template v-slot:cell(phoneNumber)="{ value }">
                     <a :href="`tel:${value}`" @click.stop>{{ value }}</a>
                 </template>
-                <template v-slot:cell(position)="{ value }">
-                    {{ value.name }}
-                </template>
             </b-table>
-            <div
-                v-if="employeesFilter(employees).length === 0"
-                class="table-after"
-            >
-                Không tìm thấy nhân viên nào
-            </div>
         </query->
         <context-manage-employee- ref="context_employee" />
         <popup-employee-add- ref="employee_add" />
@@ -100,13 +131,14 @@ import { Component, mixins } from 'nuxt-property-decorator';
 import { getEmployees } from '~/graphql/documents';
 import { DataMixin, Page } from '~/components/mixins';
 import { GetEmployees } from '~/graphql/types';
+import { toNameFormatter, toYear, fromNow } from '~/utils';
 
 @Component({
     name: 'employee-',
 })
 export default class extends mixins<Page, {}>(
     Page,
-    DataMixin({ getEmployees }),
+    DataMixin({ getEmployees, toNameFormatter, toYear, fromNow }),
 ) {
     head() {
         return {

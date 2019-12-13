@@ -31,6 +31,7 @@
             child-class="col m-2 p-0 bg-white rounded shadow-sm overflow-auto"
         >
             <b-table
+                show-empty
                 :items="servicesFilter(services)"
                 :fields="[
                     {
@@ -42,23 +43,20 @@
                     {
                         key: 'name',
                         label: 'Tên dịch vụ',
-                        tdClass: (value, key, row) => {
-                            if (!row.isActive)
-                                return 'table-cell-disable w-100';
-                            return 'w-100';
-                        },
+                        tdClass: (value, key, row) =>
+                            !row.isActive && 'table-cell-disable',
                         sortable: true,
                     },
                     {
                         key: 'unitPrice',
                         label: 'Đơn giá',
-                        tdClass: 'text-nowrap text-center',
+                        tdClass: 'text-center',
                         sortable: true,
                     },
                     {
                         key: 'servicesDetails',
                         label: 'Đã sử dụng',
-                        tdClass: 'text-nowrap text-center',
+                        tdClass: 'text-center',
                         sortable: true,
                     },
                 ]"
@@ -74,6 +72,9 @@
                     }
                 "
             >
+                <template v-slot:empty>
+                    Không tìm thấy dịch vụ nào
+                </template>
                 <template v-slot:cell(index)="data">
                     {{ data.index + 1 }}
                 </template>
@@ -88,12 +89,6 @@
                     {{ servicesDetailsCount(value) }} {{ unit }}
                 </template>
             </b-table>
-            <div
-                v-if="servicesFilter(services).length === 0"
-                class="table-after"
-            >
-                Không tìm thấy dịch vụ nào
-            </div>
         </query->
         <context-manage-service- ref="context_service" />
         <popup-service-add- ref="service_add" />
@@ -127,8 +122,8 @@ export default class extends mixins<Page, {}>(
     }
 
     servicesDetailsCount(servicesDetails: GetServices.ServicesDetails[]) {
-        return servicesDetails.reduce((output, current) => {
-            return output + current.number;
+        return servicesDetails.reduce((output, servicesDetail) => {
+            return output + servicesDetail.number;
         }, 0);
     }
 
