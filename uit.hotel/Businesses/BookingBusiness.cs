@@ -54,7 +54,7 @@ namespace uit.hotel.Businesses
             else BookingDataAccess.Delete(bookingInDatabase);
         }
 
-        public static Task<Booking> Add(Employee employee, Bill bill, Booking booking)
+        public static Task<Booking> AddBookingToBill(Employee employee, Bill bill, Booking booking)
         {
             bill = bill.GetManaged();
             booking.Room = booking.Room.GetManaged();
@@ -68,7 +68,7 @@ namespace uit.hotel.Businesses
             if (!booking.Room.IsEmptyRoom(booking.BookCheckInTime, booking.BookCheckOutTime))
                 throw new Exception("Phòng đã được đặt hoặc đang được sử dụng");
 
-            return BookingDataAccess.Add(employee, bill, booking);
+            return BookingDataAccess.AddBookingToBill(employee, bill, booking);
         }
 
         public static Booking Get(int bookingId) => BookingDataAccess.Get(bookingId);

@@ -79,7 +79,9 @@ export const actions: ActionTree<UserState, RootState> = {
                 token,
                 employee: result.data.checkLogin,
             };
+
             commit('login', loginArgs);
+
             return true;
         } catch (e) {
             return false;
@@ -88,6 +90,7 @@ export const actions: ActionTree<UserState, RootState> = {
 
     async checkIsInitializedDatabase() {
         let isInitialized = true;
+
         try {
             const result = await apolloClient(this).query<IsInitialized.Query>({
                 query: gql`
@@ -96,6 +99,7 @@ export const actions: ActionTree<UserState, RootState> = {
                     }
                 `,
             });
+
             isInitialized = result.data.isInitialized;
         } finally {
             if (isInitialized) {

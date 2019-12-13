@@ -1,0 +1,70 @@
+{
+    "definitions": {},
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["data"],
+    "properties": {
+        "data": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["updateBillDiscount"],
+            "properties": {
+                "updateBillDiscount": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                        "id",
+                        "time",
+                        "patron",
+                        "bookings",
+                        "totalPrice",
+                        "totalReceipts",
+                        "discount"
+                    ],
+                    "properties": {
+                        "id": {
+                            "type": "integer"
+                        },
+                        "time": {
+                            "type": "string",
+                            "pattern": "^(.*)$"
+                        },
+                        "patron": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "required": ["identification"],
+                            "properties": {
+                                "identification": {
+                                    "type": "string",
+                                    "pattern": "^(.*)$"
+                                }
+                            }
+                        },
+                        "bookings": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "required": ["id"],
+                                "properties": {
+                                    "id": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        },
+                        "totalPrice": {
+                            "type": "integer"
+                        },
+                        "totalReceipts": {
+                            "type": "integer"
+                        },
+                        "discount": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

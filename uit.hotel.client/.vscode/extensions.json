@@ -51,10 +51,6 @@
         "mrmlnc.vscode-scss",
         // Sort JS object keys
         "zengxingxin.sort-js-object-keys",
-        // stylelint
-        "shinnn.stylelint",
-        // Travis CI Status
-        "felixrieseberg.vsc-travis-ci-status",
         // TypeScript Importer
         "pmneo.tsimporter",
         // Vetur

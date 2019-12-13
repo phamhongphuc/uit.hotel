@@ -28,12 +28,12 @@ namespace uit.hotel.ObjectTypes
                 "Thông tin nhân viên nhận thanh toán hóa đơn",
                 resolve: context => context.Source.Employee);
 
-            Field<ListGraphType<ReceiptType>>(
+            Field<NonNullGraphType<ListGraphType<NonNullGraphType<ReceiptType>>>>(
                 nameof(Bill.Receipts),
                 "Danh sách các biên nhận cho hóa đơn",
                 resolve: context => context.Source.Receipts.ToList());
 
-            Field<ListGraphType<BookingType>>(
+            Field<NonNullGraphType<ListGraphType<NonNullGraphType<BookingType>>>>(
                 nameof(Bill.Bookings),
                 "Danh sách các thông tin đặt trước của hóa đơn",
                 resolve: context => context.Source.Bookings.ToList());
@@ -65,6 +65,18 @@ namespace uit.hotel.ObjectTypes
                 nameof(Bill.Patron),
                 "Thông tin khách hàng thanh toán hóa đơn"
             );
+        }
+    }
+
+    public class BillUpdateDiscountInput : InputType<Bill>
+    {
+        public BillUpdateDiscountInput()
+        {
+            Name = _UpdationField(nameof(Bill.Discount));
+            Description = "Input để cập nhật thông tin một hóa đơn";
+
+            Field(x => x.Id).Description("Id của hóa đơn");
+            Field(x => x.Discount).Description("Giảm giá");
         }
     }
 

@@ -10,6 +10,8 @@ namespace uit.hotel.Queries.Base
 
         public string _Updation => typeof(TModel).Name + "UpdateInput";
 
+        public string _UpdationField(string field) => typeof(TModel).Name + "Update" + field + "Input";
+
         public string _Id => typeof(TModel).Name + "Id";
     }
 }

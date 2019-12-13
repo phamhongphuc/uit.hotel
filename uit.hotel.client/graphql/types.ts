@@ -119,6 +119,8 @@ export type AppMutation = {
     setIsCleanRoom: Scalars['String'];
     /** Cập nhật thông tin hóa đơn */
     updateBill: Bill;
+    /** Cập nhật giảm giá của hóa đơn */
+    updateBillDiscount: Bill;
     /** Chỉnh sửa thông tin nhân viên */
     updateEmployee: Employee;
     /** Cập nhật và trả về một tầng vừa cập nhật */
@@ -326,6 +328,10 @@ export type AppMutationUpdateBillArgs = {
     input: BillUpdateInput;
 };
 
+export type AppMutationUpdateBillDiscountArgs = {
+    input: BillUpdateDiscountInput;
+};
+
 export type AppMutationUpdateEmployeeArgs = {
     input: EmployeeUpdateInput;
 };
@@ -504,7 +510,7 @@ export type AuthenticationObject = {
 /** Một phiếu hóa đơn của khách hàng */
 export type Bill = {
     /** Danh sách các thông tin đặt trước của hóa đơn */
-    bookings: Maybe<Array<Maybe<Booking>>>;
+    bookings: Array<Booking>;
     /** Giảm giá */
     discount: Scalars['Int'];
     /** Thông tin nhân viên nhận thanh toán hóa đơn */
@@ -514,7 +520,7 @@ export type Bill = {
     /** Thông tin khách hàng thanh toán hóa đơn */
     patron: Patron;
     /** Danh sách các biên nhận cho hóa đơn */
-    receipts: Maybe<Array<Maybe<Receipt>>>;
+    receipts: Array<Receipt>;
     /** Thời điểm in hóa đơn */
     time: Scalars['DateTimeOffset'];
     /** Tổng giá trị hóa đơn */
@@ -532,6 +538,14 @@ export type BillCreateInput = {
 export type BillId = {
     /** Id của hóa đơn */
     id: Scalars['Int'];
+};
+
+/** Input để cập nhật thông tin một hóa đơn */
+export type BillUpdateDiscountInput = {
+    /** Id của hóa đơn */
+    id: Scalars['Int'];
+    /** Giảm giá */
+    discount: Scalars['Int'];
 };
 
 /** Input để cập nhật thông tin một hóa đơn */
@@ -821,7 +835,7 @@ export type PatronKind = {
     /** Tên loại khách hàng */
     name: Scalars['String'];
     /** Danh sách các khách hàng thuộc loại khách hàng */
-    patrons: Maybe<Array<Maybe<Patron>>>;
+    patrons: Array<Patron>;
 };
 
 export type PatronKindCreateInput = {
@@ -884,7 +898,7 @@ export type Position = {
     /** Số nhân viên ngưng hoạt động */
     countInActiveEmployees: Scalars['Int'];
     /** Danh sách các nhân viên thuộc quyền này */
-    employees: Maybe<Array<Maybe<Employee>>>;
+    employees: Array<Employee>;
     /** Id của chức vụ */
     id: Scalars['Int'];
     /** Trạng thái kích hoạt/vô hiệu hóa chức vụ */
@@ -1296,11 +1310,11 @@ export type RoomKind = {
     /** Số giường */
     numberOfBeds: Scalars['Int'];
     /** Danh sách giá cố định của loại phòng */
-    prices: Maybe<Array<Maybe<Price>>>;
+    prices: Array<Price>;
     /** Danh sách giá biến động của loại phòng */
-    priceVolatilities: Maybe<Array<Maybe<PriceVolatility>>>;
+    priceVolatilities: Array<PriceVolatility>;
     /** Danh sách các phòng thuộc loại phòng này */
-    rooms: Maybe<Array<Maybe<Room>>>;
+    rooms: Array<Room>;
 };
 
 /** Input cho việc tạo một loại phòng */
@@ -1351,7 +1365,7 @@ export type Service = {
     /** Tên dịch vụ */
     name: Scalars['String'];
     /** Danh sách chi tiết dịch vụ */
-    servicesDetails: Maybe<Array<Maybe<ServicesDetail>>>;
+    servicesDetails: Array<ServicesDetail>;
     /** Đơn vị */
     unit: Scalars['String'];
     /** Đơn giá */
@@ -1424,12 +1438,52 @@ export type GetBillsQueryVariables = {};
 
 export type GetBillsQuery = {
     bills: Array<
-        Pick<Bill, 'id' | 'time' | 'totalPrice'> & {
+        Pick<
+            Bill,
+            'id' | 'time' | 'totalPrice' | 'totalReceipts' | 'discount'
+        > & {
             patron: Pick<Patron, 'id' | 'name'>;
-            receipts: Maybe<Array<Maybe<Pick<Receipt, 'id' | 'money'>>>>;
-            bookings: Maybe<Array<Maybe<Pick<Booking, 'id'>>>>;
+            receipts: Array<Pick<Receipt, 'id' | 'money'>>;
+            bookings: Array<
+                Pick<Booking, 'id' | 'status'> & {
+                    room: Pick<Room, 'id' | 'name'>;
+                }
+            >;
         }
     >;
+};
+
+export type GetBillQueryVariables = {
+    id: Scalars['ID'];
+};
+
+export type GetBillQuery = {
+    bill: Pick<
+        Bill,
+        'id' | 'time' | 'discount' | 'totalPrice' | 'totalReceipts'
+    > & {
+        patron: Pick<Patron, 'id' | 'name'>;
+        bookings: Array<
+            Pick<
+                Booking,
+                | 'id'
+                | 'total'
+                | 'status'
+                | 'realCheckInTime'
+                | 'realCheckOutTime'
+                | 'bookCheckInTime'
+                | 'bookCheckOutTime'
+            > & {
+                patrons: Array<Pick<Patron, 'id'>>;
+                room: Pick<Room, 'id' | 'name'>;
+            }
+        >;
+        receipts: Array<
+            Pick<Receipt, 'id' | 'money' | 'time'> & {
+                employee: Pick<Employee, 'id' | 'name'>;
+            }
+        >;
+    };
 };
 
 export type AddBookingToBillMutationVariables = {
@@ -1461,6 +1515,14 @@ export type PayTheBillMutationVariables = {
 
 export type PayTheBillMutation = { payTheBill: Pick<Bill, 'id'> };
 
+export type UpdateBillDiscountMutationVariables = {
+    input: BillUpdateDiscountInput;
+};
+
+export type UpdateBillDiscountMutation = {
+    updateBillDiscount: Pick<Bill, 'id'>;
+};
+
 export type GetBookingsQueryVariables = {};
 
 export type GetBookingsQuery = {
@@ -1481,11 +1543,11 @@ export type GetBookingsQuery = {
     >;
 };
 
-export type GetBookingDetailsQueryVariables = {
+export type GetBookingQueryVariables = {
     id: Scalars['ID'];
 };
 
-export type GetBookingDetailsQuery = {
+export type GetBookingQuery = {
     booking: Pick<
         Booking,
         | 'id'
@@ -1712,7 +1774,7 @@ export type GetFloorsMapQuery = {
     floors: Array<
         Pick<Floor, 'id' | 'name' | 'isActive'> & {
             rooms: Array<
-                Pick<Room, 'id' | 'name' | 'isActive'> & {
+                Pick<Room, 'id' | 'name' | 'isClean' | 'isActive'> & {
                     currentBooking: Maybe<Pick<Booking, 'id'>>;
                     roomKind: Pick<RoomKind, 'id' | 'name'>;
                 }
@@ -1859,7 +1921,7 @@ export type GetPatronKindsQueryVariables = {};
 export type GetPatronKindsQuery = {
     patronKinds: Array<
         Pick<PatronKind, 'id' | 'name' | 'description'> & {
-            patrons: Maybe<Array<Maybe<Pick<Patron, 'id' | 'name'>>>>;
+            patrons: Array<Pick<Patron, 'id' | 'name'>>;
         }
     >;
 };
@@ -1903,9 +1965,7 @@ export type GetPositionsQuery = {
             | 'permissionManagePrice'
             | 'permissionManageService'
             | 'isActive'
-        > & {
-            employees: Maybe<Array<Maybe<Pick<Employee, 'id' | 'isActive'>>>>;
-        }
+        > & { employees: Array<Pick<Employee, 'id' | 'isActive'>> }
     >;
 };
 
@@ -1987,7 +2047,7 @@ export type GetRoomKindsQuery = {
         Pick<
             RoomKind,
             'id' | 'name' | 'isActive' | 'amountOfPeople' | 'numberOfBeds'
-        > & { rooms: Maybe<Array<Maybe<Pick<Room, 'id'>>>> }
+        > & { rooms: Array<Pick<Room, 'id'>> }
     >;
 };
 
@@ -2085,14 +2145,21 @@ export type CreateServicesDetailMutation = {
     createServicesDetail: Pick<ServicesDetail, 'id'>;
 };
 
+export type DeleteServicesDetailMutationVariables = {
+    id: Scalars['ID'];
+};
+
+export type DeleteServicesDetailMutation = Pick<
+    AppMutation,
+    'deleteServicesDetail'
+>;
+
 export type GetServicesQueryVariables = {};
 
 export type GetServicesQuery = {
     services: Array<
         Pick<Service, 'id' | 'name' | 'unitPrice' | 'unit' | 'isActive'> & {
-            servicesDetails: Maybe<
-                Array<Maybe<Pick<ServicesDetail, 'id' | 'number'>>>
-            >;
+            servicesDetails: Array<Pick<ServicesDetail, 'id' | 'number'>>;
         }
     >;
 };
@@ -2158,11 +2225,30 @@ export namespace GetBills {
     export type Bills = NonNullable<GetBillsQuery['bills'][0]>;
     export type Patron = NonNullable<GetBillsQuery['bills'][0]>['patron'];
     export type Receipts = NonNullable<
-        NonNullable<NonNullable<GetBillsQuery['bills'][0]>['receipts']>[0]
+        NonNullable<GetBillsQuery['bills'][0]>['receipts'][0]
     >;
     export type Bookings = NonNullable<
-        NonNullable<NonNullable<GetBillsQuery['bills'][0]>['bookings']>[0]
+        NonNullable<GetBillsQuery['bills'][0]>['bookings'][0]
     >;
+    export type Room = NonNullable<
+        NonNullable<GetBillsQuery['bills'][0]>['bookings'][0]
+    >['room'];
+}
+
+export namespace GetBill {
+    export type Variables = GetBillQueryVariables;
+    export type Query = GetBillQuery;
+    export type Bill = GetBillQuery['bill'];
+    export type Patron = GetBillQuery['bill']['patron'];
+    export type Bookings = NonNullable<GetBillQuery['bill']['bookings'][0]>;
+    export type Patrons = NonNullable<
+        NonNullable<GetBillQuery['bill']['bookings'][0]>['patrons'][0]
+    >;
+    export type Room = NonNullable<GetBillQuery['bill']['bookings'][0]>['room'];
+    export type Receipts = NonNullable<GetBillQuery['bill']['receipts'][0]>;
+    export type Employee = NonNullable<
+        GetBillQuery['bill']['receipts'][0]
+    >['employee'];
 }
 
 export namespace AddBookingToBill {
@@ -2189,6 +2275,12 @@ export namespace PayTheBill {
     export type PayTheBill = PayTheBillMutation['payTheBill'];
 }
 
+export namespace UpdateBillDiscount {
+    export type Variables = UpdateBillDiscountMutationVariables;
+    export type Mutation = UpdateBillDiscountMutation;
+    export type UpdateBillDiscount = UpdateBillDiscountMutation['updateBillDiscount'];
+}
+
 export namespace GetBookings {
     export type Variables = GetBookingsQueryVariables;
     export type Query = GetBookingsQuery;
@@ -2200,33 +2292,31 @@ export namespace GetBookings {
     export type Room = NonNullable<GetBookingsQuery['bookings'][0]>['room'];
 }
 
-export namespace GetBookingDetails {
-    export type Variables = GetBookingDetailsQueryVariables;
-    export type Query = GetBookingDetailsQuery;
-    export type Booking = GetBookingDetailsQuery['booking'];
-    export type Price = GetBookingDetailsQuery['booking']['price'];
+export namespace GetBooking {
+    export type Variables = GetBookingQueryVariables;
+    export type Query = GetBookingQuery;
+    export type Booking = GetBookingQuery['booking'];
+    export type Price = GetBookingQuery['booking']['price'];
     export type PriceItems = NonNullable<
-        GetBookingDetailsQuery['booking']['priceItems'][0]
+        GetBookingQuery['booking']['priceItems'][0]
     >;
     export type PriceVolatilityItems = NonNullable<
-        GetBookingDetailsQuery['booking']['priceVolatilityItems'][0]
+        GetBookingQuery['booking']['priceVolatilityItems'][0]
     >;
-    export type Patrons = NonNullable<
-        GetBookingDetailsQuery['booking']['patrons'][0]
-    >;
+    export type Patrons = NonNullable<GetBookingQuery['booking']['patrons'][0]>;
     export type PatronKind = NonNullable<
-        GetBookingDetailsQuery['booking']['patrons'][0]
+        GetBookingQuery['booking']['patrons'][0]
     >['patronKind'];
-    export type Bill = GetBookingDetailsQuery['booking']['bill'];
+    export type Bill = GetBookingQuery['booking']['bill'];
     export type ServicesDetails = NonNullable<
-        GetBookingDetailsQuery['booking']['servicesDetails'][0]
+        GetBookingQuery['booking']['servicesDetails'][0]
     >;
     export type Service = NonNullable<
-        GetBookingDetailsQuery['booking']['servicesDetails'][0]
+        GetBookingQuery['booking']['servicesDetails'][0]
     >['service'];
-    export type Room = GetBookingDetailsQuery['booking']['room'];
-    export type RoomKind = GetBookingDetailsQuery['booking']['room']['roomKind'];
-    export type Floor = GetBookingDetailsQuery['booking']['room']['floor'];
+    export type Room = GetBookingQuery['booking']['room'];
+    export type RoomKind = GetBookingQuery['booking']['room']['roomKind'];
+    export type Floor = GetBookingQuery['booking']['room']['floor'];
 }
 
 export namespace GetSimpleBookings {
@@ -2422,9 +2512,7 @@ export namespace GetPatronKinds {
         GetPatronKindsQuery['patronKinds'][0]
     >;
     export type Patrons = NonNullable<
-        NonNullable<
-            NonNullable<GetPatronKindsQuery['patronKinds'][0]>['patrons']
-        >[0]
+        NonNullable<GetPatronKindsQuery['patronKinds'][0]>['patrons'][0]
     >;
 }
 
@@ -2445,9 +2533,7 @@ export namespace GetPositions {
     export type Query = GetPositionsQuery;
     export type Positions = NonNullable<GetPositionsQuery['positions'][0]>;
     export type Employees = NonNullable<
-        NonNullable<
-            NonNullable<GetPositionsQuery['positions'][0]>['employees']
-        >[0]
+        NonNullable<GetPositionsQuery['positions'][0]>['employees'][0]
     >;
 }
 
@@ -2509,7 +2595,7 @@ export namespace GetRoomKinds {
     export type Query = GetRoomKindsQuery;
     export type RoomKinds = NonNullable<GetRoomKindsQuery['roomKinds'][0]>;
     export type Rooms = NonNullable<
-        NonNullable<NonNullable<GetRoomKindsQuery['roomKinds'][0]>['rooms']>[0]
+        NonNullable<GetRoomKindsQuery['roomKinds'][0]>['rooms'][0]
     >;
 }
 
@@ -2586,14 +2672,17 @@ export namespace CreateServicesDetail {
     export type CreateServicesDetail = CreateServicesDetailMutation['createServicesDetail'];
 }
 
+export namespace DeleteServicesDetail {
+    export type Variables = DeleteServicesDetailMutationVariables;
+    export type Mutation = DeleteServicesDetailMutation;
+}
+
 export namespace GetServices {
     export type Variables = GetServicesQueryVariables;
     export type Query = GetServicesQuery;
     export type Services = NonNullable<GetServicesQuery['services'][0]>;
     export type ServicesDetails = NonNullable<
-        NonNullable<
-            NonNullable<GetServicesQuery['services'][0]>['servicesDetails']
-        >[0]
+        NonNullable<GetServicesQuery['services'][0]>['servicesDetails'][0]
     >;
 }
 

@@ -33,7 +33,7 @@ namespace uit.hotel.ObjectTypes
             Field(x => x.PermissionManageRentingRoom).Description("Quyền quản lý thuê phòng");
             Field(x => x.PermissionManageService).Description("Quyền quản lý dịch vụ");
 
-            Field<ListGraphType<EmployeeType>>(
+            Field<NonNullGraphType<ListGraphType<NonNullGraphType<EmployeeType>>>>(
                 nameof(Position.Employees),
                 "Danh sách các nhân viên thuộc quyền này",
                 resolve: context => context.Source.Employees.ToList());

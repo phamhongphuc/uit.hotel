@@ -1,5 +1,4 @@
 <template>
-    <!-- <b-collapse id="sidebar-collapse" class="sidebar" visible> -->
     <b-navbar-nav class="sidebar-nav">
         <b-nav-item-icon- to="/" icon="trello" text="Bảng điều khiển" exact />
         <b-nav-item-icon-
@@ -33,13 +32,6 @@
             exact
             :permission="['ManagePatron', 'ManagePatronKind']"
         />
-        <!-- <b-nav-item-icon-
-                    to="/receptionist/booking"
-                    icon="box"
-                    text="Quản lý đặt phòng"
-                    exact
-                    :permission="['ManageRentingRoom']"
-                /> -->
         <b-nav-item-icon-
             text="Quản lý kinh doanh"
             class="sidebar-nav-item-header"
@@ -49,11 +41,10 @@
                 'ManagePrice',
             ]"
         />
-
         <b-nav-item-icon-
             id="sidebar-business-bill"
             to="/business/bill"
-            icon="dollar-sign"
+            icon="bill-sign"
             text="Quản lý hóa đơn"
             exact
             :permission="['GetAccountingVoucher']"
@@ -74,25 +65,18 @@
             </b-tooltip>
         </b-nav-item-icon->
         <b-nav-item-icon-
-            to="/business/receipt"
-            icon="dollar-sign"
-            text="Quản lý phiếu thu"
-            exact
-            :permission="['GetAccountingVoucher']"
-        />
-        <b-nav-item-icon-
-            to="/business/service"
-            icon="shopping-cart"
-            text="Quản lý dịch vụ"
-            exact
-            :permission="['ManageService']"
-        />
-        <b-nav-item-icon-
             to="/business/price"
-            icon="shopping-cart"
+            icon="receipt"
             text="Quản lý giá"
             exact
             :permission="['ManagePrice']"
+        />
+        <b-nav-item-icon-
+            to="/business/service"
+            icon="shopping-bag"
+            text="Quản lý dịch vụ"
+            exact
+            :permission="['ManageService']"
         />
         <b-nav-item-icon-
             text="Quản lý nhân sự"
@@ -140,7 +124,6 @@
             :permission="['ManagePatronKind']"
         />
     </b-navbar-nav>
-    <!-- </b-collapse> -->
 </template>
 <script lang="ts">
 import { Vue, Component } from 'nuxt-property-decorator';
@@ -156,6 +139,7 @@ export default class extends Vue {
 
     async mounted() {
         await Vue.nextTick();
+
         if (this.$route !== undefined) {
             if (this.$route.path.indexOf('/receptionist') === 0) {
                 this.showReceptionist = true;

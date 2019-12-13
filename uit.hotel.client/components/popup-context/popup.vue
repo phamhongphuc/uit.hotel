@@ -1,5 +1,10 @@
 <template>
-    <div v-show="show" class="popup" @click="click">
+    <div
+        v-show="show"
+        class="popup"
+        @click="click"
+        @contextmenu="$emit('contextmenu', $event)"
+    >
         <div
             ref="popup"
             class="popup-modal m-3"

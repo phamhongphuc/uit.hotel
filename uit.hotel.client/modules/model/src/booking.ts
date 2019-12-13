@@ -4,7 +4,7 @@ import { BookingStatusEnum } from '~/graphql/types';
 export const bookingStatusMap: {
     [key in BookingStatusEnum]: string;
 } = {
-    [BookingStatusEnum.Booked]: 'Phòng chờ nhận',
+    [BookingStatusEnum.Booked]: 'Phòng đang chờ nhận',
     [BookingStatusEnum.CheckedIn]: 'Phòng đã nhận',
     [BookingStatusEnum.CheckedOut]: 'Phòng đã trả',
 };

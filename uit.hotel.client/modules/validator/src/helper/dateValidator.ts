@@ -25,7 +25,9 @@ export const startingDate: RuleDecl = {
     validDate,
     notBefore(value: string) {
         const { input } = (this as any) as HasBirthdate;
+
         if (!input) return false;
+
         return !beforeDate(moment(input.birthdate))(value);
     },
 };
@@ -45,7 +47,9 @@ export const bookCheckOutTime = {
     validDate,
     beforeDateTime(value: string) {
         const { bookCheckInTime } = (this as any) as HasBookCheckInTime;
+
         if (!bookCheckInTime) return false;
+
         return !beforeDateTime(moment(bookCheckInTime))(value);
     },
 };

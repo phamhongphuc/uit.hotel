@@ -84,21 +84,24 @@
                 Không tìm thấy giá nào
             </div>
         </query->
-        <context-manage-price- ref="context_price" :refs="$refs" />
+        <context-manage-price- ref="context_price" />
         <popup-price-add- ref="price_add" />
     </div>
 </template>
 <script lang="ts">
 import { Component, mixins } from 'nuxt-property-decorator';
 import { getPrices } from '~/graphql/documents';
-import { DataMixin } from '~/components/mixins';
+import { DataMixin, Page } from '~/components/mixins';
 import { GetPrices } from '~/graphql/types';
 import { toMoney, toDate } from '~/utils';
 
 @Component({
     name: 'price-',
 })
-export default class extends mixins(DataMixin({ getPrices, toMoney, toDate })) {
+export default class extends mixins<Page, {}>(
+    Page,
+    DataMixin({ getPrices, toMoney, toDate }),
+) {
     head() {
         return {
             title: 'Quản lý giá',
@@ -108,15 +111,5 @@ export default class extends mixins(DataMixin({ getPrices, toMoney, toDate })) {
     pricesFilter(prices: GetPrices.Prices[]): GetPrices.Prices[] {
         return prices;
     }
-
-    tableContext(event: MouseEvent) {
-        const tr = (event.target as HTMLElement).closest('tr');
-        if (tr !== null) {
-            this.currentEvent = event;
-            tr.click();
-        }
-    }
-
-    currentEvent: MouseEvent | null = null;
 }
 </script>

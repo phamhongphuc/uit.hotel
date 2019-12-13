@@ -9,39 +9,16 @@
 </template>
 <script lang="ts">
 import { Component, mixins } from 'nuxt-property-decorator';
-import { GetFloors } from '~/graphql/types';
-import { getFloors } from '~/graphql/documents';
-import { DataMixin } from '~/components/mixins';
+import { DataMixin, Page } from '~/components/mixins';
 
 @Component({
     name: 'index-',
 })
-export default class extends mixins(DataMixin({ getFloors })) {
-    selected: GetFloors.Rooms[] = [];
-
+export default class extends mixins<Page, {}>(Page, DataMixin({})) {
     head() {
         return {
             title: 'Trang chủ',
         };
-    }
-
-    floorsFilter(floors: GetFloors.Floors[]): GetFloors.Floors[] {
-        return floors
-            .filter(f => f.isActive)
-            .sort((a, b) => (a.name > b.name ? 1 : -1));
-    }
-
-    roomsFilter(rooms: GetFloors.Rooms[]): GetFloors.Rooms[] {
-        return rooms
-            .filter(r => r.isActive)
-            .sort((a, b) => (a.name > b.name ? 1 : -1));
-    }
-
-    toggle(room: GetFloors.Rooms): void {
-        const index = this.selected.indexOf(room);
-
-        if (index === -1) this.selected.push(room);
-        else this.selected.splice(index, 1);
     }
 }
 </script>

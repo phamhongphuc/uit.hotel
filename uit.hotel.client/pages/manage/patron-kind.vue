@@ -65,7 +65,7 @@
                 Không tìm thấy loại khách hàng nào
             </div>
         </query->
-        <context-manage-patron-kind- ref="context_patron_kind" :refs="$refs" />
+        <context-manage-patron-kind- ref="context_patron_kind" />
         <popup-patron-kind-add- ref="patron_kind_add" />
         <popup-patron-kind-update- ref="patron_kind_update" />
     </div>
@@ -73,26 +73,19 @@
 <script lang="ts">
 import { Component, mixins } from 'nuxt-property-decorator';
 import { getPatronKinds } from '~/graphql/documents';
-import { DataMixin } from '~/components/mixins';
+import { DataMixin, Page } from '~/components/mixins';
 
 @Component({
     name: 'patronKind-',
 })
-export default class extends mixins(DataMixin({ getPatronKinds })) {
+export default class extends mixins<Page, {}>(
+    Page,
+    DataMixin({ getPatronKinds }),
+) {
     head() {
         return {
             title: 'Quản lý loại khách hàng',
         };
     }
-
-    tableContext(event: MouseEvent) {
-        const tr = (event.target as HTMLElement).closest('tr');
-        if (tr !== null) {
-            this.currentEvent = event;
-            tr.click();
-        }
-    }
-
-    currentEvent: MouseEvent | null = null;
 }
 </script>

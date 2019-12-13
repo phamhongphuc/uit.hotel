@@ -4,10 +4,10 @@
         :block="block"
         :disabled="disabled"
         :size="size"
-        :variant="variant"
+        :variant="isClicked && clickedVariant !== '' ? clickedVariant : variant"
         :type="type"
         :pressed="pressed"
-        :class="isClicked ? 'text-red' : ''"
+        :class="{ [clickedClass]: isClicked }"
         @click="onClick"
     >
         <span v-if="isClicked">{{ textConfirm }}</span>
@@ -29,6 +29,12 @@ export default class extends mixins<MutableMixin, ButtonProps>(
 ) {
     isClicked = false;
 
+    @Prop({ required: false, type: String, default: 'text-red' })
+    clickedClass!: string;
+
+    @Prop({ required: false, type: String, default: '' })
+    clickedVariant!: string;
+
     clickaway() {
         if (this.confirm) this.isClicked = false;
     }
@@ -44,6 +50,7 @@ export default class extends mixins<MutableMixin, ButtonProps>(
             try {
                 await this.mutate();
                 this.$emit('click');
+                this.isClicked = false;
             } catch (e) {
                 this.isClicked = false;
             }

@@ -42,25 +42,16 @@
 <script lang="ts">
 import { Component, mixins } from 'nuxt-property-decorator';
 import moment from 'moment';
+import { RoomSelectMixinType } from './popup-room-select.helper';
 import { PopupMixin, DataMixin } from '~/components/mixins';
-import { RoomCreateInput, GetFloorsMap } from '~/graphql/types';
+import { GetFloorsMap } from '~/graphql/types';
 import { getFloorsMap } from '~/graphql/documents';
-
-type PopupMixinType = PopupMixin<
-    {
-        currentRoomIds: number[];
-        callback: (roomIds: number[]) => void;
-        from: string;
-        to: string;
-    },
-    RoomCreateInput
->;
 
 @Component({
     name: 'popup-room-select-',
     validations: {},
 })
-export default class extends mixins<PopupMixinType>(
+export default class extends mixins<RoomSelectMixinType>(
     PopupMixin,
     DataMixin({ getFloorsMap }),
 ) {
@@ -94,9 +85,11 @@ export default class extends mixins<PopupMixinType>(
         if (this.data.currentRoomIds.includes(room.id)) {
             return 'Phòng đã được chọn';
         }
+
         if (room.currentBooking !== null) {
             return 'Phòng đã được thuê';
         }
+
         return `Loại: Phòng ${room.roomKind.name}`;
     }
 
@@ -104,9 +97,11 @@ export default class extends mixins<PopupMixinType>(
         if (this.data.currentRoomIds.includes(room.id)) {
             return 'orange';
         }
+
         if (room.currentBooking !== null) {
             return 'light-red';
         }
+
         return 'light-blue';
     }
 

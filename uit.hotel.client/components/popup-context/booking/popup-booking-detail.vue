@@ -5,17 +5,21 @@
         title="Chi tiết đặt phòng"
         class="popup-booking-detail"
         child-class="w-100"
+        @contextmenu.prevent="tableContext"
     >
         <query-
             v-slot
-            :query="getBookingDetails"
+            :query="getBooking"
             :variables="variables"
             :poll-interval="500"
             @result="onResult"
         >
             <div class="row p-3">
-                <div class="col-6" @contextmenu.prevent="tableContext">
-                    <div class="d-flex m-child-1 mb-1 flex-wrap">
+                <div class="col-6">
+                    <div
+                        v-if="booking.status !== BookingStatusEnum.CheckedOut"
+                        class="d-flex m-child-1 mb-1 flex-wrap"
+                    >
                         <div class="font-weight-medium py-1 pr-1">
                             <icon-
                                 i="circle-fill"
@@ -41,8 +45,12 @@
                                 isClean: !booking.room.isClean,
                             }"
                         >
-                            <icon- i="wind" class="ml-n1 mr-1" />
-                            Đánh dấu là đã dọn
+                            <icon- i="broom" class="ml-n1 mr-1" />
+                            {{
+                                booking.room.isClean
+                                    ? 'Đánh dấu là chưa dọn'
+                                    : 'Đánh dấu là đã dọn'
+                            }}
                         </b-button-mutate->
                     </div>
                     <horizontal-timeline- :booking="booking" />
@@ -61,30 +69,26 @@
                             {
                                 key: 'name',
                                 label: 'Tên',
-                                tdClass: 'w-100',
                             },
                             {
                                 key: 'identification',
                                 label: 'CMND',
-                                tdClass: 'w-100',
                             },
                             {
                                 key: 'phoneNumbers',
                                 label: 'Số điện thoại',
-                                thClass: 'text-nowrap',
-                                tdClass: 'text-nowrap text-right',
+                                tdClass: 'text-right',
                             },
                             {
                                 key: 'birthdate',
                                 label: 'Năm sinh',
-                                thClass: 'text-nowrap',
-                                tdClass: 'text-nowrap text-right',
+                                tdClass: 'text-right',
                             },
                         ]"
                         @row-clicked="
                             (patron, $index, $event) => {
                                 $event.stopPropagation();
-                                $refs.context_patron.open(
+                                refs.context_patron.open(
                                     currentEvent || $event,
                                     {
                                         patron,
@@ -116,22 +120,21 @@
                     <div
                         class="d-flex m-child-1 mb-1 flex-wrap justify-content-end"
                     >
-                        <b-button-mutate-
-                            v-if="booking.status == BookingStatusEnum.Booked"
-                            class="px-2 py-1"
+                        <b-button
+                            class="px-2 py-1 mr-auto"
                             variant="lighten"
                             confirm
-                            :mutation="checkIn"
-                            :variables="{ id: booking.id }"
+                            @click="refs.service_detail_add.open({ booking })"
                         >
-                            <icon- i="corner-down-right" class="ml-n1 mr-1" />
-                            Nhận phòng
-                        </b-button-mutate->
+                            <icon- i="shopping-bag" class="ml-n1 mr-1" />
+                            Thêm dịch vụ
+                        </b-button>
                         <b-button-mutate-
                             v-if="booking.status == BookingStatusEnum.Booked"
                             class="px-2 py-1"
-                            variant="lighten"
+                            variant="red"
                             confirm
+                            clicked-class="text-white"
                             :mutation="cancel"
                             :variables="{ id: booking.id }"
                             @click="close"
@@ -140,30 +143,31 @@
                             Hủy
                         </b-button-mutate->
                         <b-button-mutate-
+                            v-if="booking.status == BookingStatusEnum.Booked"
+                            class="px-2 py-1"
+                            variant="green"
+                            confirm
+                            clicked-class="text-white"
+                            :mutation="checkIn"
+                            :variables="{ id: booking.id }"
+                        >
+                            <icon- i="corner-down-right" class="ml-n1 mr-1" />
+                            Nhận phòng
+                        </b-button-mutate->
+                        <b-button-mutate-
                             v-if="booking.status == BookingStatusEnum.CheckedIn"
                             class="px-2 py-1"
-                            variant="lighten"
+                            variant="blue"
                             confirm
+                            clicked-class="text-white"
                             :mutation="checkOut"
                             :variables="{ id: booking.id }"
                         >
                             <icon- i="corner-right-up" class="ml-n1 mr-1" />
                             Trả phòng
                         </b-button-mutate->
-                        <b-button
-                            class="px-2 py-1"
-                            variant="lighten"
-                            confirm
-                            @click="$refs.service_detail_add.open({ booking })"
-                        >
-                            <icon- i="shopping-bag" class="ml-n1 mr-1" />
-                            Thêm dịch vụ
-                        </b-button>
                     </div>
-                    <div
-                        class="mb-1 overflow-auto"
-                        @contextmenu.prevent="tableContext"
-                    >
+                    <div class="mb-1 overflow-auto">
                         <b-table
                             class="table-style table-sm bg-lighten rounded overflow-hidden"
                             show-empty
@@ -210,10 +214,7 @@
                         Tổng số tiền thuê phòng:
                         {{ toMoney(booking.totalPrice) }}
                     </div>
-                    <div
-                        class="my-1 overflow-auto"
-                        @contextmenu.prevent="tableContext"
-                    >
+                    <div class="my-1 overflow-auto">
                         <b-table
                             class="table-style table-sm bg-lighten rounded overflow-hidden"
                             show-empty
@@ -248,7 +249,7 @@
                             @row-clicked="
                                 (servicesDetail, $index, $event) => {
                                     $event.stopPropagation();
-                                    $refs.context_service_detail.open(
+                                    refs.context_service_detail.open(
                                         currentEvent || $event,
                                         {
                                             servicesDetail,
@@ -296,13 +297,6 @@
                 </div>
             </div>
         </query->
-        <context-receptionist-service-detail-
-            ref="context_service_detail"
-            :refs="$refs"
-        />
-        <context-manage-patron- ref="context_patron" :refs="$refs" />
-        <popup-patron-update- ref="patron_update" />
-        <popup-service-detail-add- ref="service_detail_add" />
     </popup->
 </template>
 <script lang="ts">
@@ -316,15 +310,15 @@ import {
 } from '~/modules/model';
 import {
     BookingStatusEnum,
-    GetBookingDetails,
-    GetBookingDetailsQuery,
+    GetBooking,
+    GetBookingQuery,
 } from '~/graphql/types';
 import { PopupMixin, DataMixin } from '~/components/mixins';
 import {
     cancel,
     checkIn,
     checkOut,
-    getBookingDetails,
+    getBooking,
     setIsCleanRoom,
 } from '~/graphql/documents';
 import { toDate, toMoney, toYear, getDate } from '~/utils';
@@ -342,11 +336,11 @@ interface PriceItemRender {
     name: 'popup-booking-detail-',
     validations: {},
 })
-export default class extends mixins<PopupMixinType>(
+export default class extends mixins<PopupMixinType, {}>(
     PopupMixin,
     DataMixin({
         BookingStatusEnum,
-        getBookingDetails,
+        getBooking,
         cancel,
         checkIn,
         checkOut,
@@ -356,17 +350,16 @@ export default class extends mixins<PopupMixinType>(
         toYear,
     }),
 ) {
-    variables!: GetBookingDetails.Variables;
-    booking!: GetBookingDetails.Booking;
+    variables!: GetBooking.Variables;
+    booking!: GetBooking.Booking;
 
-    currentEvent: MouseEvent | null = null;
     priceItems: PriceItemRender[] = [];
 
     onOpen() {
         this.variables = { id: this.data.id.toString() };
     }
 
-    async onResult({ data }: ApolloQueryResult<GetBookingDetailsQuery>) {
+    async onResult({ data }: ApolloQueryResult<GetBookingQuery>) {
         this.booking = data.booking;
 
         this.priceItems = [
@@ -399,16 +392,9 @@ export default class extends mixins<PopupMixinType>(
         ];
     }
 
-    tableContext(event: MouseEvent) {
-        const tr = (event.target as HTMLElement).closest('tr');
-        if (tr !== null) {
-            this.currentEvent = event;
-            tr.click();
-        }
-    }
-
     get earlyCheckInHour() {
         const { booking, left } = this;
+
         return parseFloat(
             duration(moment(booking.baseNightCheckInTime).diff(left))
                 .asHours()
@@ -418,6 +404,7 @@ export default class extends mixins<PopupMixinType>(
 
     get lateCheckOutHour() {
         const { booking, right } = this;
+
         return parseFloat(
             duration(moment(right).diff(booking.baseDayCheckOutTime))
                 .asHours()

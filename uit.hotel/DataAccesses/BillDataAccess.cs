@@ -25,7 +25,7 @@ namespace uit.hotel.DataAccesses
                     booking.CalculateTotal();
                 }
 
-                bill.CalculateTotal();
+                bill.CalculateTotalPrice();
             });
             return bill;
         }
@@ -45,7 +45,7 @@ namespace uit.hotel.DataAccesses
                     booking.CalculateTotal();
                 }
 
-                bill.CalculateTotal();
+                bill.CalculateTotalPrice();
             });
             return bill;
         }
@@ -77,7 +77,17 @@ namespace uit.hotel.DataAccesses
             await Database.WriteAsync(realm =>
             {
                 billInDatabase.Discount = bill.Discount;
-                billInDatabase.Patron = bill.Patron.GetManaged();
+                billInDatabase.Patron = bill.Patron;
+            });
+
+            return billInDatabase;
+        }
+
+        public static async Task<Bill> UpdateDiscount(Bill billInDatabase, Bill bill)
+        {
+            await Database.WriteAsync(realm =>
+            {
+                billInDatabase.Discount = bill.Discount;
             });
 
             return billInDatabase;
@@ -85,7 +95,7 @@ namespace uit.hotel.DataAccesses
 
         public static async void Delete(Bill bill) => await Database.WriteAsync(realm =>
         {
-            foreach (var booking in bill.Bookings) realm.Remove(booking);
+            foreach (var booking in bill.Bookings) BookingDataAccess.Delete(booking);
             realm.Remove(bill);
         });
 

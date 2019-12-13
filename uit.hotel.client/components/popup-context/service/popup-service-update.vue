@@ -50,7 +50,7 @@ import { Component, mixins } from 'nuxt-property-decorator';
 import { DataMixin, PopupMixin } from '~/components/mixins';
 import { ServiceUpdateInput, GetServices } from '~/graphql/types';
 import { updateService } from '~/graphql/documents';
-import { serviceName, unitPrice, unit } from '~/modules/validator';
+import { serviceName, unit, currency } from '~/modules/validator';
 
 type PopupMixinType = PopupMixin<
     { service: GetServices.Services },
@@ -62,7 +62,7 @@ type PopupMixinType = PopupMixin<
     validations: {
         input: {
             name: serviceName,
-            unitPrice,
+            unitPrice: currency,
             unit,
         },
     },
@@ -73,6 +73,7 @@ export default class extends mixins<PopupMixinType>(
 ) {
     onOpen() {
         const { id, name, unitPrice, unit } = this.data.service;
+
         this.input = { id, name, unitPrice, unit };
     }
 }

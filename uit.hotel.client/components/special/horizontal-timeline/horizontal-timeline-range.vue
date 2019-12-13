@@ -44,6 +44,7 @@ export default class extends mixins(DataMixin({ toDate })) {
         const total = duration(max.diff(min))
             .add(-0.75 * 2, 'day')
             .asSeconds();
+
         return `${(current * 100) / total}%`;
     }
 

@@ -35,6 +35,7 @@
         "nuxt": "^2.10.2",
         "nuxt-property-decorator": "^2.5.0",
         "source-map-support": "^0.5.16",
+        "v-money": "^0.8.1",
         "velocity-animate": "^1.5.2",
         "vue-clickaway": "^2.2.2",
         "vue-multiselect": "^2.1.6",

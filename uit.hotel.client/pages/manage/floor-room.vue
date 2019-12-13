@@ -67,8 +67,8 @@
                 </table>
             </div>
         </query->
-        <context-manage-room- ref="context_room" :refs="$refs" />
-        <context-manage-floor- ref="context_floor" :refs="$refs" />
+        <context-manage-room- ref="context_room" />
+        <context-manage-floor- ref="context_floor" />
         <popup-room-add- ref="room_add" />
         <popup-room-update- ref="room_update" />
         <popup-floor-add- ref="floor_add" />
@@ -78,13 +78,13 @@
 <script lang="ts">
 import { Component, mixins } from 'nuxt-property-decorator';
 import { getFloors } from '~/graphql/documents';
-import { DataMixin } from '~/components/mixins';
+import { DataMixin, Page } from '~/components/mixins';
 import { GetFloors } from '~/graphql/types';
 
 @Component({
     name: 'floor-room-',
 })
-export default class extends mixins(DataMixin({ getFloors })) {
+export default class extends mixins<Page, {}>(Page, DataMixin({ getFloors })) {
     head() {
         return {
             title: 'Sơ đồ khách sạn',
@@ -93,6 +93,7 @@ export default class extends mixins(DataMixin({ getFloors })) {
 
     floorsFilter(floors: GetFloors.Floors[]): GetFloors.Floors[] {
         if (this.showInactive) return floors;
+
         return floors
             .filter(f => f.isActive)
             .sort((a, b) => (a.name > b.name ? 1 : -1));
@@ -100,6 +101,7 @@ export default class extends mixins(DataMixin({ getFloors })) {
 
     roomsFilter(rooms: GetFloors.Rooms[]): GetFloors.Rooms[] {
         if (this.showInactive) return rooms;
+
         return rooms
             .filter(r => r.isActive)
             .sort((a, b) => (a.name > b.name ? 1 : -1));

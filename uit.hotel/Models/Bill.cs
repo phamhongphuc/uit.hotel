@@ -25,11 +25,11 @@ namespace uit.hotel.Models
 
         public void Calculate()
         {
-            CalculateTotal();
+            CalculateTotalPrice();
             CalculateTotalReceipts();
         }
 
-        public void CalculateTotal()
+        public void CalculateTotalPrice()
         {
             long total = 0;
             foreach (var b in Bookings) total += b.Total;

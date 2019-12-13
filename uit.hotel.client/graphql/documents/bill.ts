@@ -6,6 +6,8 @@ export const getBills = gql`
             id
             time
             totalPrice
+            totalReceipts
+            discount
             patron {
                 id
                 name
@@ -16,6 +18,52 @@ export const getBills = gql`
             }
             bookings {
                 id
+                status
+                room {
+                    id
+                    name
+                }
+            }
+        }
+    }
+`;
+
+export const getBill = gql`
+    query getBill($id: ID!) {
+        bill(id: $id) {
+            id
+            patron {
+                id
+                name
+            }
+            time
+            discount
+            totalPrice
+            totalReceipts
+            bookings {
+                id
+                total
+                status
+                patrons {
+                    id
+                }
+                room {
+                    id
+                    name
+                }
+                realCheckInTime
+                realCheckOutTime
+                bookCheckInTime
+                bookCheckOutTime
+            }
+            receipts {
+                id
+                money
+                employee {
+                    id
+                    name
+                }
+                time
             }
         }
     }
@@ -54,6 +102,14 @@ export const createBill = gql`
 export const payTheBill = gql`
     mutation payTheBill($id: ID!) {
         payTheBill(id: $id) {
+            id
+        }
+    }
+`;
+
+export const updateBillDiscount = gql`
+    mutation updateBillDiscount($input: BillUpdateDiscountInput!) {
+        updateBillDiscount(input: $input) {
             id
         }
     }

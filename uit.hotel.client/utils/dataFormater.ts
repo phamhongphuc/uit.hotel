@@ -6,11 +6,14 @@ export const toMoney = (num = 0) =>
         currency: 'VND',
     });
 
-export const toDate = (date: string | number) => {
+export const toDate = (date: string | number | Moment) => {
     const current = moment();
     const time = moment(date);
+
     if (current.year() === time.year()) return time.format('DD/MM HH:mm');
+
     if (time.year() === 1) return 'N/A';
+
     return time.format('DD/MM/YYYY HH:mm');
 };
 
@@ -21,5 +24,12 @@ export const toInputDate = (date: string | Date) =>
 
 export const toYear = (date: string) => {
     const year = moment(date).year();
+
     return year === 1 ? 'N/A' : year;
 };
+
+export const toPercent = (num: number) =>
+    `${parseFloat((num * 100).toFixed(2))}%`;
+
+export const toNumber = (num: string | number) =>
+    typeof num !== 'string' ? num : parseFloat(num);

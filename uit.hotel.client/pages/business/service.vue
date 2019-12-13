@@ -95,7 +95,7 @@
                 Không tìm thấy dịch vụ nào
             </div>
         </query->
-        <context-manage-service- ref="context_service" :refs="$refs" />
+        <context-manage-service- ref="context_service" />
         <popup-service-add- ref="service_add" />
         <popup-service-update- ref="service_update" />
     </div>
@@ -103,14 +103,17 @@
 <script lang="ts">
 import { Component, mixins } from 'nuxt-property-decorator';
 import { getServices } from '~/graphql/documents';
-import { DataMixin } from '~/components/mixins';
+import { DataMixin, Page } from '~/components/mixins';
 import { GetServices } from '~/graphql/types';
 import { toMoney } from '~/utils';
 
 @Component({
     name: 'service-',
 })
-export default class extends mixins(DataMixin({ getServices, toMoney })) {
+export default class extends mixins<Page, {}>(
+    Page,
+    DataMixin({ getServices, toMoney }),
+) {
     head() {
         return {
             title: 'Quản lý dịch vụ',
@@ -119,6 +122,7 @@ export default class extends mixins(DataMixin({ getServices, toMoney })) {
 
     servicesFilter(services: GetServices.Services[]): GetServices.Services[] {
         if (this.showInactive) return services;
+
         return services.filter(rk => rk.isActive);
     }
 
@@ -127,16 +131,6 @@ export default class extends mixins(DataMixin({ getServices, toMoney })) {
             return output + current.number;
         }, 0);
     }
-
-    tableContext(event: MouseEvent) {
-        const tr = (event.target as HTMLElement).closest('tr');
-        if (tr !== null) {
-            this.currentEvent = event;
-            tr.click();
-        }
-    }
-
-    currentEvent: MouseEvent | null = null;
 
     showInactive = false;
 }

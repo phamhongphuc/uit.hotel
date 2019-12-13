@@ -81,6 +81,7 @@ export default class extends mixins<PopupMixinType>(
 ) {
     onOpen() {
         const { id, name, numberOfBeds, amountOfPeople } = this.data.roomKind;
+
         this.input = { id, name, numberOfBeds, amountOfPeople };
     }
 }

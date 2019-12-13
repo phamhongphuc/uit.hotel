@@ -1,7 +1,7 @@
 <template>
     <div class="horizontal-timeline" :style="style">
-        <div class="horizontal-timeline-toolbar d-flex m-child-1 flex-wrap">
-            <div class="title px-1 font-weight-medium">
+        <div class="d-flex m-child-1 flex-wrap">
+            <div class="py-1 px-1 font-weight-medium">
                 <icon-
                     i="circle-fill"
                     class="mr-1"
@@ -9,7 +9,7 @@
                 />
                 {{ status }}
             </div>
-            <div class="title px-1 font-weight-medium">
+            <div class="py-1 px-1 font-weight-medium">
                 <icon- i="clock" class="mr-1" />
                 {{ remain }}
             </div>
@@ -120,7 +120,7 @@ import { Component, Prop, mixins, Provide } from 'nuxt-property-decorator';
 import moment, { duration, Moment } from 'moment';
 import { getBounding } from './horizontal-timeline.helper';
 import { toDate, toMoney, getDate } from '~/utils';
-import { GetBookingDetails } from '~/graphql/types';
+import { GetBooking } from '~/graphql/types';
 import { DataMixin } from '~/components/mixins';
 import {
     bookingStatusRemainMap,
@@ -141,7 +141,7 @@ interface RenderPriceItem {
 })
 export default class extends mixins(DataMixin({ toDate, toMoney })) {
     @Prop({ required: true })
-    booking!: GetBookingDetails.Booking;
+    booking!: GetBooking.Booking;
 
     dayWidth = 4;
 
@@ -179,6 +179,7 @@ export default class extends mixins(DataMixin({ toDate, toMoney })) {
 
     lineContainerStyle() {
         const lines = 1;
+
         return {
             height: `calc(var(--main-height) + var(--line-size) + var(--price-space) + (var(--price-space) + var(--price-child)) * ${lines})`,
         };
@@ -190,18 +191,22 @@ export default class extends mixins(DataMixin({ toDate, toMoney })) {
         } = this;
 
         let iterate = moment(baseNightCheckInTime);
+
         return priceItems.map(priceItem => {
             const left = iterate.clone();
             const right = iterate.clone().add(priceItem.timeSpan, 'second');
             const text = getPriceItemText(this.booking, priceItem);
             const { value } = priceItem;
+
             iterate = right.clone().add(2, 'hour');
+
             return { left, right, text, value };
         });
     }
 
     get earlyCheckInHour() {
         const { booking, left } = this;
+
         return parseFloat(
             duration(moment(booking.baseNightCheckInTime).diff(left))
                 .asHours()
@@ -211,6 +216,7 @@ export default class extends mixins(DataMixin({ toDate, toMoney })) {
 
     get lateCheckOutHour() {
         const { booking, right } = this;
+
         return parseFloat(
             duration(moment(right).diff(booking.baseDayCheckOutTime))
                 .asHours()
@@ -263,12 +269,6 @@ export default class extends mixins(DataMixin({ toDate, toMoney })) {
     --main-height: #{$ht-main-height};
     --price-child: #{$ht-price-child};
     --price-space: #{$ht-price-space};
-
-    &-toolbar {
-        > .title {
-            line-height: calc(2rem + 2px);
-        }
-    }
 
     .line-container {
         position: relative;

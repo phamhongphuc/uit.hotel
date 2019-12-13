@@ -43,10 +43,12 @@ export class PermissionMixin extends Vue {
         default: true,
         validator(value: boolean | string[]) {
             if (typeof value === 'boolean') return true;
+
             if (!Array.isArray(value)) return false;
 
             return value.every((key: string) => {
                 const condition = `permission${key}` in PermissionInstance;
+
                 if (!condition) {
                     console.error(
                         `[Permission warn]: String "${key}" is not a is not a valid prop for permission.\n`,
@@ -56,6 +58,7 @@ export class PermissionMixin extends Vue {
                         ),
                     );
                 }
+
                 return condition;
             });
         },
@@ -70,10 +73,14 @@ export class PermissionMixin extends Vue {
             autoPermissionValue !== null ? autoPermissionValue : permission;
 
         if (!employee) return true;
+
         if (typeof keys === 'boolean') return keys;
+
         if (keys === undefined) return false;
+
         return keys.every((each: string | PermissionUnion) => {
             const key = each; // if p is string
+
             return employee.position[`permission${key}`];
         });
     }

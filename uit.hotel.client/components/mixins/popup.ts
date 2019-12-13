@@ -1,16 +1,18 @@
-import { Vue, Prop, Component } from 'nuxt-property-decorator';
+import { Component, Vue, mixins } from 'nuxt-property-decorator';
+import { InjectRefs } from './refs';
+import { TableContext } from './table';
 
 @Component
-export class PopupMixin<TData, TInput> extends Vue {
-    @Prop({ default: undefined })
-    protected refs: any;
-
+export class PopupMixin<TData, TInput> extends mixins<InjectRefs, TableContext>(
+    InjectRefs,
+    TableContext,
+) {
     protected data!: TData;
     protected input: TInput | null = null;
 
     protected onOpen(): void | Promise<void> {}
 
-    protected async open(data: TData): Promise<void> {
+    public async open(data: TData): Promise<void> {
         const popup = this.$refs.popup as Vue & PopupMixin<TData, TInput>;
 
         if (popup === undefined || typeof popup.open !== 'function') {
@@ -26,8 +28,10 @@ export class PopupMixin<TData, TInput> extends Vue {
         await Vue.nextTick();
 
         const autoFocus = this.$refs.autoFocus as Vue;
+
         if (autoFocus !== undefined && autoFocus.$refs.input !== undefined) {
             const input = (autoFocus.$refs.input as Vue).$el as HTMLElement;
+
             if (typeof input.focus === 'function') input.focus();
         }
     }

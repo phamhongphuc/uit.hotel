@@ -106,13 +106,17 @@ export default class extends mixins<PopupMixinType>(
         data,
     }: ApolloQueryResult<GetRoomKindsQuery | GetFloorsQuery>) {
         if (this.input === null) return;
+
         await Vue.nextTick();
+
         if ('roomKinds' in data) {
             if (data.roomKinds.length === 0) return;
+
             this.input.roomKind.id = data.roomKinds[0].id;
         } else if ('floors' in data) {
             this.input.floor.id = this.data.floor.id;
         }
+
         this.$v.$touch();
     }
 }

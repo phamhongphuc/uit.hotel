@@ -9,11 +9,13 @@ module.exports = function typescript() {
                 appendTsSuffixTo: [/\.vue$/],
             },
         };
+
         // Add TypeScript loader
         config.module.rules.push({
             test: /((client|server)\.js)|(\.tsx?)$/,
             ...tsLoader,
         });
+
         // Add TypeScript loader for vue files
         // eslint-disable-next-line no-restricted-syntax
         for (const rule of config.module.rules) {
@@ -21,6 +23,7 @@ module.exports = function typescript() {
                 rule.options.loaders.ts = tsLoader;
             }
         }
+
         // Add .ts extension in webpack resolve
         if (config.resolve.extensions.indexOf('.ts') === -1) {
             config.resolve.extensions.push('.ts');

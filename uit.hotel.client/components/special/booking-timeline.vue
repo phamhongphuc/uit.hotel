@@ -54,11 +54,7 @@
                     "
                 >
                     Phòng {{ room.name }}
-                    <icon-
-                        v-if="!room.isClean"
-                        i="alert-triangle"
-                        class="text-orange"
-                    />
+                    <icon- v-if="!room.isClean" i="broom" class="text-orange" />
                 </td>
                 <td class="bookings">
                     <b-button
@@ -93,8 +89,9 @@
     </table>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop } from 'nuxt-property-decorator';
+import { Component, Prop, mixins } from 'nuxt-property-decorator';
 import moment from 'moment';
+import { InjectRefs } from '~/components/mixins';
 import { GetTimeline, BookingStatusEnum } from '~/graphql/types';
 import { toDate } from '~/utils';
 import { bookingStatusMap, bookingStatusColorMap } from '~/modules/model';
@@ -106,10 +103,7 @@ const seconds = moment.duration(1, 'day').asSeconds();
 @Component({
     name: 'booking-timeline-',
 })
-export default class extends Vue {
-    @Prop({ default: undefined })
-    refs: any;
-
+export default class extends mixins<InjectRefs>(InjectRefs) {
     @Prop({ required: true })
     floors!: GetTimeline.Floors[];
 
@@ -188,6 +182,7 @@ export default class extends Vue {
             now,
         } = this;
         const value = ((max - now) / seconds) * ratio;
+
         return {
             right: `${value}rem`,
         };
@@ -199,6 +194,7 @@ export default class extends Vue {
         } = this;
         const length = (max - min) / seconds;
         const startDay = moment.unix(min);
+
         return Array.from({ length }, (v, index) =>
             startDay.clone().add(index, 'days'),
         ).map(day => ({
@@ -212,6 +208,7 @@ export default class extends Vue {
             timeBound: { min },
             ratio,
         } = this;
+
         return room.bookings.map(booking => {
             const inTime = moment(
                 booking.status === BookingStatusEnum.Booked

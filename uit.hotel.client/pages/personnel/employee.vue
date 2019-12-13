@@ -90,7 +90,7 @@
                 Không tìm thấy nhân viên nào
             </div>
         </query->
-        <context-manage-employee- ref="context_employee" :refs="$refs" />
+        <context-manage-employee- ref="context_employee" />
         <popup-employee-add- ref="employee_add" />
         <popup-employee-update- ref="employee_update" />
     </div>
@@ -98,13 +98,16 @@
 <script lang="ts">
 import { Component, mixins } from 'nuxt-property-decorator';
 import { getEmployees } from '~/graphql/documents';
-import { DataMixin } from '~/components/mixins';
+import { DataMixin, Page } from '~/components/mixins';
 import { GetEmployees } from '~/graphql/types';
 
 @Component({
     name: 'employee-',
 })
-export default class extends mixins(DataMixin({ getEmployees })) {
+export default class extends mixins<Page, {}>(
+    Page,
+    DataMixin({ getEmployees }),
+) {
     head() {
         return {
             title: 'Quản lý nhân viên',
@@ -115,19 +118,11 @@ export default class extends mixins(DataMixin({ getEmployees })) {
         employees: GetEmployees.Employees[],
     ): GetEmployees.Employees[] {
         if (this.showInactive) return employees;
+
         if (employees === undefined) return [];
+
         return employees.filter(rk => rk.isActive);
     }
-
-    tableContext(event: MouseEvent) {
-        const tr = (event.target as HTMLElement).closest('tr');
-        if (tr !== null) {
-            this.currentEvent = event;
-            tr.click();
-        }
-    }
-
-    currentEvent: MouseEvent | null = null;
 
     showInactive = false;
 }

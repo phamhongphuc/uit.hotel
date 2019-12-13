@@ -1,5 +1,5 @@
 import { duration, Duration } from 'moment';
-import { GetBookingDetails, PriceItemKindEnum } from '~/graphql/types';
+import { GetBooking, PriceItemKindEnum } from '~/graphql/types';
 import { toMoney } from '~/utils';
 
 export const priceItemKindMap: {
@@ -23,7 +23,7 @@ const priceItemGetAmountMap = (
 });
 
 const priceItemGetUnitPriceMap = (
-    price: GetBookingDetails.Price,
+    price: GetBooking.Price,
 ): { [key in PriceItemKindEnum]: () => number } => ({
     [PriceItemKindEnum.Hour]: () => price.hourPrice,
     [PriceItemKindEnum.Night]: () => price.nightPrice,
@@ -32,7 +32,7 @@ const priceItemGetUnitPriceMap = (
     [PriceItemKindEnum.Month]: () => price.monthPrice,
 });
 
-export const priceItemGetAmount = (priceItem: GetBookingDetails.PriceItems) =>
+export const priceItemGetAmount = (priceItem: GetBooking.PriceItems) =>
     parseFloat(
         priceItemGetAmountMap(duration(priceItem.timeSpan, 'second'))
             [priceItem.kind]()
@@ -40,13 +40,13 @@ export const priceItemGetAmount = (priceItem: GetBookingDetails.PriceItems) =>
     );
 
 export const priceItemGetUnitPrice = (
-    booking: GetBookingDetails.Booking,
-    priceItem: GetBookingDetails.PriceItems,
+    booking: GetBooking.Booking,
+    priceItem: GetBooking.PriceItems,
 ) => priceItemGetUnitPriceMap(booking.price)[priceItem.kind]();
 
 export function getPriceItemText(
-    booking: GetBookingDetails.Booking,
-    priceItem: GetBookingDetails.PriceItems,
+    booking: GetBooking.Booking,
+    priceItem: GetBooking.PriceItems,
 ) {
     const unit = priceItemKindMap[priceItem.kind];
     const unitPrice = priceItemGetUnitPriceMap(booking.price)[priceItem.kind]();

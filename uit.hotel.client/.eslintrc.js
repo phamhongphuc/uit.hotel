@@ -68,6 +68,7 @@ const config = {
         'no-lonely-if': 'error',
         'no-param-reassign': 'off',
         'no-shadow': 'off',
+        'no-unexpected-multiline': 'off',
         'prefer-const': 'error',
 
         '@typescript-eslint/explicit-function-return-type': 'off',
@@ -120,6 +121,8 @@ const config = {
             'error',
             { validators: 'all', env: 'apollo', schemaJson },
         ],
+
+        'jest/valid-describe': 'off',
     },
     overrides: [
         {

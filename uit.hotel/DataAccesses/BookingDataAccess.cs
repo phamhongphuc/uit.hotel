@@ -12,7 +12,7 @@ namespace uit.hotel.DataAccesses
     {
         public static int NextId => Get().Count() == 0 ? 1 : Get().Max(i => i.Id) + 1;
 
-        public static async Task<Booking> Add(Employee employee, Bill bill, Booking booking)
+        public static async Task<Booking> AddBookingToBill(Employee employee, Bill bill, Booking booking)
         {
             await Database.WriteAsync(realm =>
             {
@@ -21,11 +21,12 @@ namespace uit.hotel.DataAccesses
                 Add(realm, booking);
 
                 booking.CalculateTotal();
+                booking.Bill.CalculateTotalPrice();
             });
             return booking;
         }
 
-        // Doesn't calculate anything. Add only.
+        // Don't calculate anything. Add only.
         public static Booking Add(Realm realm, Booking booking)
         {
             booking.Id = NextId;
@@ -36,7 +37,7 @@ namespace uit.hotel.DataAccesses
             return realm.Add(booking);
         }
 
-        // Doesn't calculate anything. Add only.
+        // Don't calculate anything. Add only.
         public static Booking BookAndCheckIn(Realm realm, Booking booking)
         {
             booking.Id = NextId;
@@ -58,6 +59,7 @@ namespace uit.hotel.DataAccesses
                 bookingInDatabase.Status = BookingStatusEnum.CheckedIn;
 
                 bookingInDatabase.CalculateTotal();
+                bookingInDatabase.Bill.CalculateTotalPrice();
             });
             return bookingInDatabase;
         }
@@ -69,6 +71,7 @@ namespace uit.hotel.DataAccesses
                 bookingInDatabase.EmployeeCheckOut = employee;
                 bookingInDatabase.RealCheckOutTime = DateTimeOffset.Now.Round();
                 bookingInDatabase.CalculateTotal();
+                bookingInDatabase.Bill.CalculateTotalPrice();
 
                 bookingInDatabase.Status = BookingStatusEnum.CheckedOut;
                 bookingInDatabase.Room.IsClean = false;
@@ -76,9 +79,14 @@ namespace uit.hotel.DataAccesses
             return bookingInDatabase;
         }
 
-        public static async void Delete(Booking bookingInDatabase)
+        public static Task Delete(Booking bookingInDatabase)
         {
-            await Database.WriteAsync(realm => realm.Remove(bookingInDatabase));
+            return WriteAsync(async realm =>
+            {
+                await PriceItemDataAccess.Delete(bookingInDatabase.PriceItems);
+                await PriceVolatilityItemDataAccess.Delete(bookingInDatabase.PriceVolatilityItems);
+                realm.Remove(bookingInDatabase);
+            });
         }
 
         public static Booking Get(int bookingId) => Database.Find<Booking>(bookingId);

@@ -68,7 +68,7 @@ namespace uit.hotel.Queries.Mutation
                         var bill = context.GetArgument<Bill>("bill");
                         var booking = context.GetArgument<Booking>("booking");
 
-                        return BookingBusiness.Add(employee, bill, booking);
+                        return BookingBusiness.AddBookingToBill(employee, bill, booking);
                     }
                 )
             );

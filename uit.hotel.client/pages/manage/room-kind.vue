@@ -91,7 +91,7 @@
                 Không tìm thấy loại phòng nào
             </div>
         </query->
-        <context-manage-room-kind- ref="context_room_kind" :refs="$refs" />
+        <context-manage-room-kind- ref="context_room_kind" />
         <popup-room-kind-add- ref="room_kind_add" />
         <popup-room-kind-update- ref="room_kind_update" />
         <popup-price-add- ref="price_add" />
@@ -100,13 +100,16 @@
 <script lang="ts">
 import { Component, mixins } from 'nuxt-property-decorator';
 import { getRoomKinds } from '~/graphql/documents';
-import { DataMixin } from '~/components/mixins';
+import { DataMixin, Page } from '~/components/mixins';
 import { GetRoomKinds } from '~/graphql/types';
 
 @Component({
     name: 'floor-room-',
 })
-export default class extends mixins(DataMixin({ getRoomKinds })) {
+export default class extends mixins<Page, {}>(
+    Page,
+    DataMixin({ getRoomKinds }),
+) {
     head() {
         return {
             title: 'Quản lý loại phòng',
@@ -117,18 +120,9 @@ export default class extends mixins(DataMixin({ getRoomKinds })) {
         roomKinds: GetRoomKinds.RoomKinds[],
     ): GetRoomKinds.RoomKinds[] {
         if (this.showInactive) return roomKinds;
+
         return roomKinds.filter(rk => rk.isActive);
     }
-
-    tableContext(event: MouseEvent) {
-        const tr = (event.target as HTMLElement).closest('tr');
-        if (tr !== null) {
-            this.currentEvent = event;
-            tr.click();
-        }
-    }
-
-    currentEvent: MouseEvent | null = null;
 
     showInactive = false;
 }

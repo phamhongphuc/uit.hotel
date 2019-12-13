@@ -6,7 +6,7 @@
                 variant="white"
                 @click="$refs.book.open({ rooms: selected })"
             >
-                <icon- class="mr-1" i="plus" />
+                <icon- class="mr-1" i="edit-3" />
                 <span>Đặt phòng</span>
             </b-button>
         </block-flex->
@@ -64,11 +64,8 @@
             </div>
         </query->
         <div>
-            <context-receptionist-room-
-                ref="context_receptionist_room"
-                :refs="$refs"
-            />
-            <popup-book- ref="book" :refs="$refs" />
+            <context-receptionist-room- ref="context_receptionist_room" />
+            <popup-book- ref="book" />
             <popup-patron-select-or-add- ref="patron_select_or_add" />
             <popup-room-select- ref="room_select" />
         </div>
@@ -79,12 +76,15 @@ import { Component, mixins } from 'nuxt-property-decorator';
 import moment from 'moment';
 import { GetFloors } from '~/graphql/types';
 import { getFloorsMap } from '~/graphql/documents';
-import { DataMixin } from '~/components/mixins';
+import { DataMixin, Page } from '~/components/mixins';
 
 @Component({
     name: 'index-',
 })
-export default class extends mixins(DataMixin({ getFloorsMap })) {
+export default class extends mixins<Page, {}>(
+    Page,
+    DataMixin({ getFloorsMap }),
+) {
     selected: GetFloors.Rooms[] = [];
 
     from = moment().format();

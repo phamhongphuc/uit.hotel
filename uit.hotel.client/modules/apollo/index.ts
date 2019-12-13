@@ -17,6 +17,7 @@ const hasApp = (context: object | HasAppType): context is HasAppType =>
 export function apolloHelpers(context: AppContextType) {
     if (!hasApp(context))
         throw new Error('Phải truyền vào một thể hiện của Store');
+
     return context.app.$apolloHelpers;
 }
 
@@ -26,14 +27,18 @@ export function apolloClient(
 ): ApolloClient<InMemoryCache> {
     if (!hasApp(context))
         throw new Error('Phải truyền vào một thể hiện của Store');
+
     const provider = context.app.$apolloProvider || context.app.apolloProvider;
+
     if (!provider) throw new Error('Không thể tìm thấy apolloProvider');
+
     return provider.defaultClient;
 }
 
 // mixin/mutable và store/user
 export function apolloClientNotify(context: AppContextType): ApolloNotify {
     const client = apolloClient(context);
+
     return {
         async mutate<TType, TVariables>(
             options: MutationOptions<TType, TVariables>,
@@ -50,6 +55,7 @@ export function apolloClientNotify(context: AppContextType): ApolloNotify {
                 ) {
                     const result = (error.networkError as ServerError)
                         .result[0];
+
                     notify.error({
                         title: 'Lỗi',
                         text: result.InnerException
@@ -64,8 +70,8 @@ export function apolloClientNotify(context: AppContextType): ApolloNotify {
                     });
                 }
 
-                // eslint-disable-next-line no-console
                 console.warn(error);
+
                 return {};
             }
         },
