@@ -23,7 +23,7 @@
         "test": "mocha test/**/*.ts -r test/ts-register --exit"
     },
     "dependencies": {
-        "@nuxt/typescript-runtime": "^0.3.1",
+        "@nuxt/typescript-runtime": "^0.3.2",
         "@nuxtjs/apollo": "^4.0.0-rc18",
         "@nuxtjs/style-resources": "^1.0.0",
         "bluebird": "^3.7.2",
