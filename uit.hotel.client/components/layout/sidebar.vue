@@ -42,28 +42,12 @@
             ]"
         />
         <b-nav-item-icon-
-            id="sidebar-business-bill"
             to="/business/bill"
             icon="bill-sign"
             text="Quản lý hóa đơn"
             exact
             :permission="['GetAccountingVoucher']"
-        >
-            <template v-slot:suffix>
-                <b-badge pill variant="danger" class="ml-2">
-                    12
-                </b-badge>
-            </template>
-            <b-tooltip
-                target="sidebar-business-bill"
-                placement="right"
-                boundary="window"
-            >
-                Chưa thanh toán: 12
-                <br />
-                Đang thuê: 5
-            </b-tooltip>
-        </b-nav-item-icon->
+        />
         <b-nav-item-icon-
             to="/business/price"
             icon="receipt"
