@@ -108,7 +108,7 @@
                             >
                                 <b-button
                                     size="sm"
-                                    class="bill-page-booking-item shadow-none text-nowrap"
+                                    class="shadow-none text-nowrap"
                                     :variant="
                                         bookingStatusColorMap[booking.status]
                                     "

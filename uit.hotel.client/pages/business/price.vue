@@ -24,6 +24,8 @@
             @result="onResult"
         >
             <b-table
+                class="table-style table-header-line table-cell-middle"
+                show-empty
                 :items="pricesFiltered"
                 :fields="[
                     {
@@ -68,7 +70,6 @@
                         formatter: toNameFormatter,
                     },
                 ]"
-                class="table-style table-header-line"
                 @row-clicked="
                     (price, $index, $event) => {
                         $event.stopPropagation();
@@ -80,6 +81,9 @@
                     }
                 "
             >
+                <template v-slot:empty>
+                    Chưa có giá biến động nào được tạo
+                </template>
                 <template v-slot:cell(index)="data">
                     {{ data.index + 1 }}
                 </template>

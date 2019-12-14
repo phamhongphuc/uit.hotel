@@ -191,22 +191,18 @@
                                     key: 'unitPrice',
                                     label: 'Đơn giá',
                                     tdClass: 'text-right',
+                                    formatter: toMoney,
                                 },
                                 {
                                     key: 'total',
                                     label: 'Thành tiền',
                                     tdClass: 'text-right',
+                                    formatter: toMoney,
                                 },
                             ]"
                         >
                             <template v-slot:cell(index)="data">
                                 {{ data.index + 1 }}
-                            </template>
-                            <template v-slot:cell(unitPrice)="{ value }">
-                                {{ toMoney(value) }}
-                            </template>
-                            <template v-slot:cell(total)="{ value }">
-                                {{ toMoney(value) }}
                             </template>
                         </b-table>
                     </div>
@@ -226,9 +222,10 @@
                                     class: 'table-cell-id text-center',
                                 },
                                 {
-                                    key: 'name',
+                                    key: 'service',
                                     label: 'Tên dịch vụ',
                                     tdClass: 'text-nowrap text-center',
+                                    formatter: toNameFormatter,
                                 },
                                 {
                                     key: 'number',
@@ -239,11 +236,21 @@
                                     key: 'unitPrice',
                                     label: 'Đơn giá',
                                     tdClass: 'text-nowrap text-right',
+                                    formatter: (
+                                        value,
+                                        key,
+                                        { service: { unitPrice, unit } },
+                                    ) => `${toMoney(unitPrice)} / ${unit}`,
                                 },
                                 {
                                     key: 'total',
                                     label: 'Thành tiền',
                                     tdClass: 'text-nowrap text-right',
+                                    formatter: (
+                                        value,
+                                        key,
+                                        { service: { unitPrice }, number },
+                                    ) => toMoney(unitPrice * number),
                                 },
                             ]"
                             @row-clicked="
@@ -264,23 +271,6 @@
                             </template>
                             <template v-slot:cell(index)="data">
                                 {{ data.index + 1 }}
-                            </template>
-                            <template v-slot:cell(name)="{ item }">
-                                {{ item.service.name }}
-                            </template>
-                            <template
-                                v-slot:cell(unitPrice)="{
-                                    item: { service: { unitPrice, unit } },
-                                }"
-                            >
-                                {{ toMoney(unitPrice) }} / {{ unit }}
-                            </template>
-                            <template
-                                v-slot:cell(total)="{
-                                    item: { service: { unitPrice }, number },
-                                }"
-                            >
-                                {{ toMoney(unitPrice * number) }}
                             </template>
                         </b-table>
                     </div>
@@ -321,7 +311,7 @@ import {
     getBooking,
     setIsCleanRoom,
 } from '~/graphql/documents';
-import { toDate, toMoney, toYear, getDate } from '~/utils';
+import { toDate, toMoney, toYear, getDate, toNameFormatter } from '~/utils';
 
 type PopupMixinType = PopupMixin<{ id: number }, null>;
 
@@ -340,13 +330,14 @@ export default class extends mixins<PopupMixinType, {}>(
     PopupMixin,
     DataMixin({
         BookingStatusEnum,
-        getBooking,
         cancel,
         checkIn,
         checkOut,
+        getBooking,
         setIsCleanRoom,
         toDate,
         toMoney,
+        toNameFormatter,
         toYear,
     }),
 ) {

@@ -88,18 +88,22 @@
                             {
                                 key: 'room',
                                 label: 'Phòng',
+                                formatter: room => `Phòng ${room.name}`,
                             },
                             {
                                 key: 'patrons',
                                 label: 'Khách',
+                                formatter: patrons => `${patrons} khách`,
                             },
                             {
                                 key: 'checkIn',
                                 label: 'Nhận phòng',
+                                formatter: checkIn,
                             },
                             {
                                 key: 'checkOut',
                                 label: 'Trả phòng',
+                                formatter: checkOut,
                             },
                             {
                                 key: 'status',
@@ -108,6 +112,7 @@
                             {
                                 key: 'total',
                                 label: 'Chi phí',
+                                formatter: toMoney,
                             },
                         ]"
                         @row-clicked="
@@ -126,18 +131,6 @@
                         <template v-slot:cell(index)="data">
                             {{ data.index + 1 }}
                         </template>
-                        <template v-slot:cell(room)="{ value }">
-                            Phòng {{ value.name }}
-                        </template>
-                        <template v-slot:cell(patrons)="{ value }">
-                            {{ value.length }} khách
-                        </template>
-                        <template v-slot:cell(checkIn)="{ item }">
-                            {{ checkIn(item) }}
-                        </template>
-                        <template v-slot:cell(checkOut)="{ item }">
-                            {{ checkOut(item) }}
-                        </template>
                         <template v-slot:cell(status)="{ value }">
                             <icon-
                                 class="mr-1"
@@ -145,9 +138,6 @@
                                 :class="`text-${bookingStatusColorMap[value]}`"
                             />
                             {{ bookingStatusMap[value] }}
-                        </template>
-                        <template v-slot:cell(total)="{ value }">
-                            {{ toMoney(value) }}
                         </template>
                     </b-table>
                 </div>
@@ -172,6 +162,7 @@
                             key: 'time',
                             label: 'Thời gian',
                             class: 'text-center',
+                            formatter: toDate,
                         },
                         {
                             key: 'money',
@@ -182,6 +173,7 @@
                             key: 'bankAccountNumber',
                             label: 'Tài khoản   ',
                             class: 'text-center',
+                            formatter: toMoney,
                         },
                     ]"
                 >
@@ -190,12 +182,6 @@
                     </template>
                     <template v-slot:cell(index)="data">
                         {{ data.index + 1 }}
-                    </template>
-                    <template v-slot:cell(time)="{ value }">
-                        {{ toDate(value) }}
-                    </template>
-                    <template v-slot:cell(money)="{ value }">
-                        {{ toMoney(value) }}
                     </template>
                 </b-table>
                 <div class="my-1 font-weight-medium text-right">
