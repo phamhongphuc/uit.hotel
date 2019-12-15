@@ -93,17 +93,17 @@
                             {
                                 key: 'patrons',
                                 label: 'Khách',
-                                formatter: patrons => `${patrons} khách`,
+                                formatter: patrons => `${patrons.length} khách`,
                             },
                             {
                                 key: 'checkIn',
                                 label: 'Nhận phòng',
-                                formatter: checkIn,
+                                formatter: checkInFormatter,
                             },
                             {
                                 key: 'checkOut',
                                 label: 'Trả phòng',
-                                formatter: checkOut,
+                                formatter: checkOutFormatter,
                             },
                             {
                                 key: 'status',
@@ -209,7 +209,10 @@
 <script lang="ts">
 import { Component, mixins } from 'nuxt-property-decorator';
 import { ApolloQueryResult } from 'apollo-client';
-import { checkIn, checkOut } from './popup-bill-detail.helper';
+import {
+    checkInFormatter,
+    checkOutFormatter,
+} from './popup-bill-detail.helper';
 import { GetBillQuery, GetBill, BookingStatusEnum } from '~/graphql/types';
 import { PopupMixin, DataMixin } from '~/components/mixins';
 import { getBill, payTheBill } from '~/graphql/documents';
@@ -233,8 +236,8 @@ export default class extends mixins<PopupMixinType, {}>(
         bookingStatusColorMap,
         BookingStatusEnum,
         bookingStatusMap,
-        checkIn,
-        checkOut,
+        checkInFormatter,
+        checkOutFormatter,
         fromNow,
         getBill,
         isMinDate,
