@@ -1151,6 +1151,9 @@ type PriceVolatility {
 }
 
 input PriceVolatilityCreateInput {
+    # Tên của giá biến động
+    name: String!
+
     # Giá giờ
     hourPrice: Int!
 

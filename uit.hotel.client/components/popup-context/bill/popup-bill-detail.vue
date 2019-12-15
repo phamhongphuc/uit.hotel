@@ -47,7 +47,7 @@
                         variant="lighten"
                         @click="refs.bill_update_discount.open({ bill })"
                     >
-                        <icon- class="mr-1" i="receipt" />
+                        <icon- class="mr-1" i="discount" />
                         <span>Giảm giá</span>
                     </b-button>
                     <b-button-mutate-
@@ -88,18 +88,22 @@
                             {
                                 key: 'room',
                                 label: 'Phòng',
+                                formatter: room => `Phòng ${room.name}`,
                             },
                             {
                                 key: 'patrons',
                                 label: 'Khách',
+                                formatter: patrons => `${patrons.length} khách`,
                             },
                             {
                                 key: 'checkIn',
                                 label: 'Nhận phòng',
+                                formatter: checkInFormatter,
                             },
                             {
                                 key: 'checkOut',
                                 label: 'Trả phòng',
+                                formatter: checkOutFormatter,
                             },
                             {
                                 key: 'status',
@@ -108,6 +112,7 @@
                             {
                                 key: 'total',
                                 label: 'Chi phí',
+                                formatter: toMoney,
                             },
                         ]"
                         @row-clicked="
@@ -126,18 +131,6 @@
                         <template v-slot:cell(index)="data">
                             {{ data.index + 1 }}
                         </template>
-                        <template v-slot:cell(room)="{ value }">
-                            Phòng {{ value.name }}
-                        </template>
-                        <template v-slot:cell(patrons)="{ value }">
-                            {{ value.length }} khách
-                        </template>
-                        <template v-slot:cell(checkIn)="{ item }">
-                            {{ checkIn(item) }}
-                        </template>
-                        <template v-slot:cell(checkOut)="{ item }">
-                            {{ checkOut(item) }}
-                        </template>
                         <template v-slot:cell(status)="{ value }">
                             <icon-
                                 class="mr-1"
@@ -145,9 +138,6 @@
                                 :class="`text-${bookingStatusColorMap[value]}`"
                             />
                             {{ bookingStatusMap[value] }}
-                        </template>
-                        <template v-slot:cell(total)="{ value }">
-                            {{ toMoney(value) }}
                         </template>
                     </b-table>
                 </div>
@@ -172,6 +162,7 @@
                             key: 'time',
                             label: 'Thời gian',
                             class: 'text-center',
+                            formatter: toDateTime,
                         },
                         {
                             key: 'money',
@@ -182,6 +173,7 @@
                             key: 'bankAccountNumber',
                             label: 'Tài khoản   ',
                             class: 'text-center',
+                            formatter: toMoney,
                         },
                     ]"
                 >
@@ -190,12 +182,6 @@
                     </template>
                     <template v-slot:cell(index)="data">
                         {{ data.index + 1 }}
-                    </template>
-                    <template v-slot:cell(time)="{ value }">
-                        {{ toDate(value) }}
-                    </template>
-                    <template v-slot:cell(money)="{ value }">
-                        {{ toMoney(value) }}
                     </template>
                 </b-table>
                 <div class="my-1 font-weight-medium text-right">
@@ -223,11 +209,14 @@
 <script lang="ts">
 import { Component, mixins } from 'nuxt-property-decorator';
 import { ApolloQueryResult } from 'apollo-client';
-import { checkIn, checkOut } from './popup-bill-detail.helper';
+import {
+    checkInFormatter,
+    checkOutFormatter,
+} from './popup-bill-detail.helper';
 import { GetBillQuery, GetBill, BookingStatusEnum } from '~/graphql/types';
 import { PopupMixin, DataMixin } from '~/components/mixins';
 import { getBill, payTheBill } from '~/graphql/documents';
-import { toDate, toMoney, isMinDate, fromNow } from '~/utils';
+import { toDateTime, toMoney, isMinDate, fromNow } from '~/utils';
 import {
     billStatusMap,
     bookingStatusMap,
@@ -247,13 +236,13 @@ export default class extends mixins<PopupMixinType, {}>(
         bookingStatusColorMap,
         BookingStatusEnum,
         bookingStatusMap,
-        checkIn,
-        checkOut,
+        checkInFormatter,
+        checkOutFormatter,
         fromNow,
         getBill,
         isMinDate,
         payTheBill,
-        toDate,
+        toDateTime,
         toMoney,
     }),
 ) {

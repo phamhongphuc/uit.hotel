@@ -93,7 +93,7 @@ import { Component, Prop, mixins } from 'nuxt-property-decorator';
 import moment from 'moment';
 import { InjectRefs } from '~/components/mixins';
 import { GetTimeline, BookingStatusEnum } from '~/graphql/types';
-import { toDate } from '~/utils';
+import { toDateTime } from '~/utils';
 import { bookingStatusMap, bookingStatusColorMap } from '~/modules/model';
 
 type BookingStatusEnumMap = { [key in BookingStatusEnum]: string };
@@ -228,8 +228,8 @@ export default class extends mixins<InjectRefs>(InjectRefs) {
 
             return {
                 ...booking,
-                outTime: toDate(outTime),
-                inTime: toDate(inTime),
+                outTime: toDateTime(outTime),
+                inTime: toDateTime(inTime),
                 style: {
                     left: `${left}rem`,
                     width: `${width}rem`,

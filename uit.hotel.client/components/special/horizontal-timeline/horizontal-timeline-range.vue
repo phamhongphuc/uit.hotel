@@ -10,13 +10,13 @@
 <script lang="ts">
 import { Component, mixins, Inject, Prop } from 'nuxt-property-decorator';
 import moment, { Moment, duration } from 'moment';
-import { toDate } from '~/utils';
+import { toDateTime } from '~/utils';
 import { DataMixin } from '~/components/mixins';
 
 @Component({
     name: 'horizontal-timeline-range-',
 })
-export default class extends mixins(DataMixin({ toDate })) {
+export default class extends mixins(DataMixin({ toDateTime })) {
     @Inject() min!: Moment;
     @Inject() max!: Moment;
 

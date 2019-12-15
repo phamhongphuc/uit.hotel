@@ -44,6 +44,7 @@ namespace uit.hotel.ObjectTypes
         public PriceVolatilityCreateInput()
         {
             Name = _Creation;
+            Field(x => x.Name).Description("Tên của giá biến động");
             Field(x => x.HourPrice).Description("Giá giờ");
             Field(x => x.DayPrice).Description("Giá ngày");
             Field(x => x.NightPrice).Description("Giá đêm");

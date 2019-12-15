@@ -56,6 +56,13 @@
             :permission="['ManagePrice']"
         />
         <b-nav-item-icon-
+            to="/business/price-volatility"
+            icon="receipt"
+            text="Quản lý giá biến động"
+            exact
+            :permission="['ManagePrice']"
+        />
+        <b-nav-item-icon-
             to="/business/service"
             icon="shopping-bag"
             text="Quản lý dịch vụ"

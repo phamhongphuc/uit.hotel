@@ -51,8 +51,8 @@
                         {{ booking.room.roomKind.name }}
                     </div>
                     <div class="text">
-                        {{ toDate(left) }} —
-                        {{ toDate(right) }}
+                        {{ toDateTime(left) }} —
+                        {{ toDateTime(right) }}
                     </div>
                 </horizontal-timeline-range->
 
@@ -101,7 +101,7 @@
                 <horizontal-timeline-range-
                     v-for="(price, index) in prices"
                     :key="`price-${index}`"
-                    v-b-tooltip="price.text"
+                    v-b-tooltip.window="price.text"
                     class="text-white bg-blue bg-stripes"
                     price
                     :line="1"
@@ -119,7 +119,7 @@
 import { Component, Prop, mixins, Provide } from 'nuxt-property-decorator';
 import moment, { duration, Moment } from 'moment';
 import { getBounding } from './horizontal-timeline.helper';
-import { toDate, toMoney, getDate } from '~/utils';
+import { toDateTime, toMoney, getDate } from '~/utils';
 import { GetBooking } from '~/graphql/types';
 import { DataMixin } from '~/components/mixins';
 import {
@@ -139,7 +139,7 @@ interface RenderPriceItem {
 @Component({
     name: 'horizontal-timeline-',
 })
-export default class extends mixins(DataMixin({ toDate, toMoney })) {
+export default class extends mixins(DataMixin({ toDateTime, toMoney })) {
     @Prop({ required: true })
     booking!: GetBooking.Booking;
 

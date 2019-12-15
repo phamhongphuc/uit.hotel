@@ -6,16 +6,20 @@ export const toMoney = (num = 0) =>
         currency: 'VND',
     });
 
-export const toDate = (date: string | number | Moment) => {
-    const current = moment();
+const dateTimeFormatter = (date: string | number | Moment, hasTime = false) => {
     const time = moment(date);
-
-    if (current.year() === time.year()) return time.format('DD/MM HH:mm');
-
     if (time.year() === 1) return 'N/A';
 
-    return time.format('DD/MM/YYYY HH:mm');
+    const timeSuffixFormat = hasTime ? ' HH:mm' : '';
+    const yearFormat = moment().year() === time.year() ? '' : '/YYYY';
+    return time.format(`DD/MM${yearFormat}${timeSuffixFormat}`);
 };
+
+export const toDateTime = (date: string | number | Moment) =>
+    dateTimeFormatter(date, true);
+
+export const toDate = (date: string | number | Moment) =>
+    dateTimeFormatter(date, false);
 
 export const toHour = (time: Moment) => time.format('HH:mm');
 

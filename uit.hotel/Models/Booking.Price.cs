@@ -175,7 +175,7 @@ namespace uit.hotel.Models
             iterateTime = beginDay;
             while (iterateTime < endDay)
             {
-                AddPriceVolatilityItems(PriceVolatilityItemKindEnum.Night, BaseNightCheckInTime);
+                AddPriceVolatilityItems(PriceVolatilityItemKindEnum.Day, BaseNightCheckInTime);
                 iterateTime = iterateTime.AddDays(1);
             }
         }
@@ -214,7 +214,7 @@ namespace uit.hotel.Models
 
         private void AddPriceVolatilityItems(PriceVolatilityItemKindEnum kind, DateTimeOffset date, TimeSpan timeSpan = new TimeSpan())
         {
-            var priceVolatilities = PriceVolatilities.InDate(BaseNightCheckInTime);
+            var priceVolatilities = PriceVolatilities.InDate(date);
             foreach (var priceVolatility in priceVolatilities)
             {
                 var priceItem = new PriceVolatilityItem()

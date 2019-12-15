@@ -19,6 +19,7 @@ namespace uit.hotel.test._GraphQL
                 {
                     input = new
                     {
+                        name = "Giá biến động",
                         hourPrice = 1,
                         dayPrice = 1,
                         nightPrice = 1,
@@ -51,6 +52,7 @@ namespace uit.hotel.test._GraphQL
                 {
                     input = new
                     {
+                        name = "Giá biến động",
                         hourPrice = 1,
                         dayPrice = 1,
                         nightPrice = 1,
@@ -92,6 +94,7 @@ namespace uit.hotel.test._GraphQL
                 {
                     input = new
                     {
+                        name = "Giá biến động",
                         hourPrice = 1,
                         dayPrice = 1,
                         nightPrice = 1,

@@ -83,6 +83,7 @@
                                 key: 'birthdate',
                                 label: 'Năm sinh',
                                 tdClass: 'text-right',
+                                formatter: toYear,
                             },
                         ]"
                         @row-clicked="
@@ -109,9 +110,6 @@
                             >
                                 {{ value }}
                             </a>
-                        </template>
-                        <template v-slot:cell(birthdate)="{ value }">
-                            {{ toYear(value) }}
                         </template>
                     </b-table>
                 </div>
@@ -191,22 +189,28 @@
                                     key: 'unitPrice',
                                     label: 'Đơn giá',
                                     tdClass: 'text-right',
+                                    formatter: toMoney,
                                 },
                                 {
                                     key: 'total',
                                     label: 'Thành tiền',
                                     tdClass: 'text-right',
+                                    formatter: toMoney,
                                 },
                             ]"
                         >
                             <template v-slot:cell(index)="data">
                                 {{ data.index + 1 }}
                             </template>
-                            <template v-slot:cell(unitPrice)="{ value }">
-                                {{ toMoney(value) }}
-                            </template>
-                            <template v-slot:cell(total)="{ value }">
-                                {{ toMoney(value) }}
+                            <template v-slot:cell(name)="{ value, item }">
+                                <div v-b-tooltip.window.left="item.tooltip">
+                                    <icon-
+                                        i="circle-fill"
+                                        class="mr-1"
+                                        :class="`text-${item.kind}`"
+                                    />
+                                    {{ value }}
+                                </div>
                             </template>
                         </b-table>
                     </div>
@@ -226,9 +230,10 @@
                                     class: 'table-cell-id text-center',
                                 },
                                 {
-                                    key: 'name',
+                                    key: 'service',
                                     label: 'Tên dịch vụ',
                                     tdClass: 'text-nowrap text-center',
+                                    formatter: toNameFormatter,
                                 },
                                 {
                                     key: 'number',
@@ -239,11 +244,21 @@
                                     key: 'unitPrice',
                                     label: 'Đơn giá',
                                     tdClass: 'text-nowrap text-right',
+                                    formatter: (
+                                        value,
+                                        key,
+                                        { service: { unitPrice, unit } },
+                                    ) => `${toMoney(unitPrice)} / ${unit}`,
                                 },
                                 {
                                     key: 'total',
                                     label: 'Thành tiền',
                                     tdClass: 'text-nowrap text-right',
+                                    formatter: (
+                                        value,
+                                        key,
+                                        { service: { unitPrice }, number },
+                                    ) => toMoney(unitPrice * number),
                                 },
                             ]"
                             @row-clicked="
@@ -265,23 +280,6 @@
                             <template v-slot:cell(index)="data">
                                 {{ data.index + 1 }}
                             </template>
-                            <template v-slot:cell(name)="{ item }">
-                                {{ item.service.name }}
-                            </template>
-                            <template
-                                v-slot:cell(unitPrice)="{
-                                    item: { service: { unitPrice, unit } },
-                                }"
-                            >
-                                {{ toMoney(unitPrice) }} / {{ unit }}
-                            </template>
-                            <template
-                                v-slot:cell(total)="{
-                                    item: { service: { unitPrice }, number },
-                                }"
-                            >
-                                {{ toMoney(unitPrice * number) }}
-                            </template>
                         </b-table>
                     </div>
                     <div class="my-1 font-weight-medium text-right">
@@ -302,12 +300,7 @@
 <script lang="ts">
 import { Component, mixins } from 'nuxt-property-decorator';
 import { ApolloQueryResult } from 'apollo-client';
-import moment, { duration } from 'moment';
-import {
-    priceItemGetAmount,
-    priceItemGetUnitPrice,
-    priceItemKindMap,
-} from '~/modules/model';
+import { getPriceItems, PriceItemRender } from './popup-booking-detail.helper';
 import {
     BookingStatusEnum,
     GetBooking,
@@ -321,16 +314,9 @@ import {
     getBooking,
     setIsCleanRoom,
 } from '~/graphql/documents';
-import { toDate, toMoney, toYear, getDate } from '~/utils';
+import { toDateTime, toMoney, toYear, toNameFormatter } from '~/utils';
 
 type PopupMixinType = PopupMixin<{ id: number }, null>;
-
-interface PriceItemRender {
-    name: string;
-    number: string;
-    unitPrice: number;
-    total: number;
-}
 
 @Component({
     name: 'popup-booking-detail-',
@@ -340,13 +326,14 @@ export default class extends mixins<PopupMixinType, {}>(
     PopupMixin,
     DataMixin({
         BookingStatusEnum,
-        getBooking,
         cancel,
         checkIn,
         checkOut,
+        getBooking,
         setIsCleanRoom,
-        toDate,
+        toDateTime,
         toMoney,
+        toNameFormatter,
         toYear,
     }),
 ) {
@@ -359,71 +346,9 @@ export default class extends mixins<PopupMixinType, {}>(
         this.variables = { id: this.data.id.toString() };
     }
 
-    async onResult({ data }: ApolloQueryResult<GetBookingQuery>) {
-        this.booking = data.booking;
-
-        this.priceItems = [
-            ...this.booking.priceItems.map(p => ({
-                name: `Thuê theo ${priceItemKindMap[p.kind]}`,
-                number: `${priceItemGetAmount(p)} ${priceItemKindMap[p.kind]}`,
-                unitPrice: priceItemGetUnitPrice(this.booking, p),
-                total: p.value,
-            })),
-            ...(this.booking.earlyCheckInFee === 0
-                ? []
-                : [
-                      {
-                          name: 'Phí nhận phòng sớm',
-                          number: `${this.earlyCheckInHour} giờ`,
-                          unitPrice: this.booking.price.earlyCheckInFee,
-                          total: this.booking.earlyCheckInFee,
-                      },
-                  ]),
-            ...(this.booking.lateCheckOutFee === 0
-                ? []
-                : [
-                      {
-                          name: 'Phí trả phòng trễ',
-                          number: `${this.lateCheckOutHour} giờ`,
-                          unitPrice: this.booking.price.lateCheckOutFee,
-                          total: this.booking.lateCheckOutFee,
-                      },
-                  ]),
-        ];
-    }
-
-    get earlyCheckInHour() {
-        const { booking, left } = this;
-
-        return parseFloat(
-            duration(moment(booking.baseNightCheckInTime).diff(left))
-                .asHours()
-                .toFixed(2),
-        );
-    }
-
-    get lateCheckOutHour() {
-        const { booking, right } = this;
-
-        return parseFloat(
-            duration(moment(right).diff(booking.baseDayCheckOutTime))
-                .asHours()
-                .toFixed(2),
-        );
-    }
-
-    get left() {
-        return getDate(
-            this.booking.realCheckInTime,
-            this.booking.bookCheckInTime,
-        );
-    }
-
-    get right() {
-        return getDate(
-            this.booking.realCheckOutTime,
-            this.booking.bookCheckOutTime,
-        );
+    async onResult({ data: { booking } }: ApolloQueryResult<GetBookingQuery>) {
+        this.booking = booking;
+        this.priceItems = getPriceItems(booking);
     }
 }
 </script>
