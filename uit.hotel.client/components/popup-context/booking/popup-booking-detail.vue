@@ -83,6 +83,7 @@
                                 key: 'birthdate',
                                 label: 'Năm sinh',
                                 tdClass: 'text-right',
+                                formatter: toYear,
                             },
                         ]"
                         @row-clicked="
@@ -109,9 +110,6 @@
                             >
                                 {{ value }}
                             </a>
-                        </template>
-                        <template v-slot:cell(birthdate)="{ value }">
-                            {{ toYear(value) }}
                         </template>
                     </b-table>
                 </div>
@@ -292,12 +290,7 @@
 <script lang="ts">
 import { Component, mixins } from 'nuxt-property-decorator';
 import { ApolloQueryResult } from 'apollo-client';
-import moment, { duration } from 'moment';
-import {
-    priceItemGetAmount,
-    priceItemGetUnitPrice,
-    priceItemKindMap,
-} from '~/modules/model';
+import { PriceItemRender, getPriceItems } from './popup-booking-detail.helper';
 import {
     BookingStatusEnum,
     GetBooking,
@@ -311,16 +304,9 @@ import {
     getBooking,
     setIsCleanRoom,
 } from '~/graphql/documents';
-import { toDate, toMoney, toYear, getDate, toNameFormatter } from '~/utils';
+import { toDate, toMoney, toYear, toNameFormatter } from '~/utils';
 
 type PopupMixinType = PopupMixin<{ id: number }, null>;
-
-interface PriceItemRender {
-    name: string;
-    number: string;
-    unitPrice: number;
-    total: number;
-}
 
 @Component({
     name: 'popup-booking-detail-',
@@ -350,71 +336,9 @@ export default class extends mixins<PopupMixinType, {}>(
         this.variables = { id: this.data.id.toString() };
     }
 
-    async onResult({ data }: ApolloQueryResult<GetBookingQuery>) {
-        this.booking = data.booking;
-
-        this.priceItems = [
-            ...this.booking.priceItems.map(p => ({
-                name: `Thuê theo ${priceItemKindMap[p.kind]}`,
-                number: `${priceItemGetAmount(p)} ${priceItemKindMap[p.kind]}`,
-                unitPrice: priceItemGetUnitPrice(this.booking, p),
-                total: p.value,
-            })),
-            ...(this.booking.earlyCheckInFee === 0
-                ? []
-                : [
-                      {
-                          name: 'Phí nhận phòng sớm',
-                          number: `${this.earlyCheckInHour} giờ`,
-                          unitPrice: this.booking.price.earlyCheckInFee,
-                          total: this.booking.earlyCheckInFee,
-                      },
-                  ]),
-            ...(this.booking.lateCheckOutFee === 0
-                ? []
-                : [
-                      {
-                          name: 'Phí trả phòng trễ',
-                          number: `${this.lateCheckOutHour} giờ`,
-                          unitPrice: this.booking.price.lateCheckOutFee,
-                          total: this.booking.lateCheckOutFee,
-                      },
-                  ]),
-        ];
-    }
-
-    get earlyCheckInHour() {
-        const { booking, left } = this;
-
-        return parseFloat(
-            duration(moment(booking.baseNightCheckInTime).diff(left))
-                .asHours()
-                .toFixed(2),
-        );
-    }
-
-    get lateCheckOutHour() {
-        const { booking, right } = this;
-
-        return parseFloat(
-            duration(moment(right).diff(booking.baseDayCheckOutTime))
-                .asHours()
-                .toFixed(2),
-        );
-    }
-
-    get left() {
-        return getDate(
-            this.booking.realCheckInTime,
-            this.booking.bookCheckInTime,
-        );
-    }
-
-    get right() {
-        return getDate(
-            this.booking.realCheckOutTime,
-            this.booking.bookCheckOutTime,
-        );
+    async onResult({ data: { booking } }: ApolloQueryResult<GetBookingQuery>) {
+        this.booking = booking;
+        this.priceItems = getPriceItems(booking);
     }
 }
 </script>
