@@ -7,6 +7,7 @@ export * from './patron';
 export * from './patronKind';
 export * from './position';
 export * from './price';
+export * from './priceVolatility';
 export * from './receipt';
 export * from './room-kind';
 export * from './room';

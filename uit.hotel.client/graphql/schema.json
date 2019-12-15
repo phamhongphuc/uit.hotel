@@ -7084,6 +7084,20 @@
                 "fields": null,
                 "inputFields": [
                     {
+                        "name": "name",
+                        "description": "Tên của giá biến động",
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
                         "name": "hourPrice",
                         "description": "Giá giờ",
                         "type": {

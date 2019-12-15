@@ -58,6 +58,13 @@ export const getBooking = gql`
                 date
                 timeSpan
                 value
+                priceVolatility {
+                    id
+                    name
+                    dayPrice
+                    hourPrice
+                    nightPrice
+                }
             }
             earlyCheckInFee
             lateCheckOutFee
