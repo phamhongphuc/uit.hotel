@@ -202,6 +202,16 @@
                             <template v-slot:cell(index)="data">
                                 {{ data.index + 1 }}
                             </template>
+                            <template v-slot:cell(name)="{ value, item }">
+                                <div v-b-tooltip.window.left="item.tooltip">
+                                    <icon-
+                                        i="circle-fill"
+                                        class="mr-1"
+                                        :class="`text-${item.kind}`"
+                                    />
+                                    {{ value }}
+                                </div>
+                            </template>
                         </b-table>
                     </div>
                     <div class="my-1 font-weight-medium text-right">
@@ -290,7 +300,7 @@
 <script lang="ts">
 import { Component, mixins } from 'nuxt-property-decorator';
 import { ApolloQueryResult } from 'apollo-client';
-import { PriceItemRender, getPriceItems } from './popup-booking-detail.helper';
+import { getPriceItems, PriceItemRender } from './popup-booking-detail.helper';
 import {
     BookingStatusEnum,
     GetBooking,

@@ -1,12 +1,12 @@
 import moment, { duration } from 'moment';
 import _ from 'lodash';
-import { getDate } from '~/utils';
 import { GetBooking, PriceVolatilityItemKindEnum } from '~/graphql/types';
 import {
-    priceItemKindMap,
     priceItemGetAmount,
     priceItemGetUnitPrice,
+    priceItemKindMap,
 } from '~/modules/model';
+import { getDate } from '~/utils';
 
 const getPrice = (groups: GetBooking.PriceVolatilityItems[]): number => {
     const { priceVolatility, kind } = groups[0];
@@ -17,11 +17,19 @@ const getPrice = (groups: GetBooking.PriceVolatilityItems[]): number => {
     }[kind];
 };
 
+export enum PriceItemRenderKindEnum {
+    Fee = 'red',
+    Price = 'green',
+    PriceVolatility = 'blue',
+}
+
 export interface PriceItemRender {
     name: string;
     number: string;
     unitPrice: number;
     total: number;
+    kind: PriceItemRenderKindEnum;
+    tooltip: string;
 }
 
 export const getPriceItems = (
@@ -40,13 +48,17 @@ export const getPriceItems = (
             .toFixed(2),
     );
 
-    const priceItems = booking.priceItems.map(p => ({
+    const priceItems: PriceItemRender[] = booking.priceItems.map<
+        PriceItemRender
+    >(p => ({
         name: `Thuê theo ${priceItemKindMap[p.kind]}`,
         number: `${priceItemGetAmount(p)} ${priceItemKindMap[p.kind]}`,
         unitPrice: priceItemGetUnitPrice(booking, p),
         total: p.value,
+        kind: PriceItemRenderKindEnum.Price,
+        tooltip: 'Giá cơ bản',
     }));
-    const priceVolatilityItems = _.map(
+    const priceVolatilityItems: PriceItemRender[] = _.map(
         _.groupBy(
             booking.priceVolatilityItems,
             item => `${item.priceVolatility.id}-${item.kind}`,
@@ -56,19 +68,25 @@ export const getPriceItems = (
             number: `${group.length} ${priceItemKindMap[group[0].kind]} `,
             unitPrice: getPrice(group),
             total: group.reduce((sum, item) => sum + item.value, 0),
+            kind: PriceItemRenderKindEnum.PriceVolatility,
+            tooltip: 'Giá biến động',
         }),
     );
-    const earlyCheckInFeeItem = {
+    const earlyCheckInFeeItem: PriceItemRender = {
         name: 'Phí nhận phòng sớm',
         number: `${earlyCheckInHour} giờ`,
         unitPrice: booking.price.earlyCheckInFee,
         total: booking.earlyCheckInFee,
+        kind: PriceItemRenderKindEnum.Fee,
+        tooltip: 'Phụ phí',
     };
-    const lateCheckOutFeeItem = {
+    const lateCheckOutFeeItem: PriceItemRender = {
         name: 'Phí trả phòng trễ',
         number: `${lateCheckOutHour} giờ`,
         unitPrice: booking.price.lateCheckOutFee,
         total: booking.lateCheckOutFee,
+        kind: PriceItemRenderKindEnum.Fee,
+        tooltip: 'Phụ phí',
     };
 
     return [
