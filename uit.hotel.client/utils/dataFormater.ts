@@ -15,10 +15,10 @@ const dateTimeFormatter = (date: string | number | Moment, hasTime = false) => {
     return time.format(`DD/MM${yearFormat}${timeSuffixFormat}`);
 };
 
-export const toDate = (date: string | number | Moment) =>
+export const toDateTime = (date: string | number | Moment) =>
     dateTimeFormatter(date, true);
 
-export const toDateTime = (date: string | number | Moment) =>
+export const toDate = (date: string | number | Moment) =>
     dateTimeFormatter(date, false);
 
 export const toHour = (time: Moment) => time.format('HH:mm');

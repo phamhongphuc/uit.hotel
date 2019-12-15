@@ -38,13 +38,13 @@
                         key: 'effectiveStartDate',
                         label: 'Có hiệu lực từ',
                         tdClass: 'text-center',
-                        formatter: toDate,
+                        formatter: toDateTime,
                     },
                     {
                         key: 'createDate',
                         label: 'Ngày tạo',
                         tdClass: 'text-left',
-                        formatter: toDate,
+                        formatter: toDateTime,
                     },
                     {
                         key: 'hourPrice',
@@ -99,14 +99,14 @@ import { ApolloQueryResult } from 'apollo-client';
 import { getPrices } from '~/graphql/documents';
 import { DataMixin, Page } from '~/components/mixins';
 import { GetPrices, GetPricesQuery } from '~/graphql/types';
-import { toMoney, toDate, toNameFormatter } from '~/utils';
+import { toMoney, toDateTime, toNameFormatter } from '~/utils';
 
 @Component({
     name: 'price-',
 })
 export default class extends mixins<Page, {}>(
     Page,
-    DataMixin({ getPrices, toMoney, toDate, toNameFormatter }),
+    DataMixin({ getPrices, toMoney, toDateTime, toNameFormatter }),
 ) {
     head() {
         return {

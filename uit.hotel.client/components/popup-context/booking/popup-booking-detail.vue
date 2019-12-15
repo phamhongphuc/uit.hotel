@@ -304,7 +304,7 @@ import {
     getBooking,
     setIsCleanRoom,
 } from '~/graphql/documents';
-import { toDate, toMoney, toYear, toNameFormatter } from '~/utils';
+import { toDateTime, toMoney, toYear, toNameFormatter } from '~/utils';
 
 type PopupMixinType = PopupMixin<{ id: number }, null>;
 
@@ -321,7 +321,7 @@ export default class extends mixins<PopupMixinType, {}>(
         checkOut,
         getBooking,
         setIsCleanRoom,
-        toDate,
+        toDateTime,
         toMoney,
         toNameFormatter,
         toYear,

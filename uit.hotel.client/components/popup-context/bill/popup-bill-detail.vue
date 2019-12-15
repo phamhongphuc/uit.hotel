@@ -162,7 +162,7 @@
                             key: 'time',
                             label: 'Thời gian',
                             class: 'text-center',
-                            formatter: toDate,
+                            formatter: toDateTime,
                         },
                         {
                             key: 'money',
@@ -213,7 +213,7 @@ import { checkIn, checkOut } from './popup-bill-detail.helper';
 import { GetBillQuery, GetBill, BookingStatusEnum } from '~/graphql/types';
 import { PopupMixin, DataMixin } from '~/components/mixins';
 import { getBill, payTheBill } from '~/graphql/documents';
-import { toDate, toMoney, isMinDate, fromNow } from '~/utils';
+import { toDateTime, toMoney, isMinDate, fromNow } from '~/utils';
 import {
     billStatusMap,
     bookingStatusMap,
@@ -239,7 +239,7 @@ export default class extends mixins<PopupMixinType, {}>(
         getBill,
         isMinDate,
         payTheBill,
-        toDate,
+        toDateTime,
         toMoney,
     }),
 ) {

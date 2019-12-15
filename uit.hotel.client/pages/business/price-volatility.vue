@@ -41,19 +41,19 @@
                     {
                         key: 'createDate',
                         label: 'Ngày tạo',
-                        formatter: toDate,
+                        formatter: toDateTime,
                     },
                     {
                         key: 'effectiveStartDate',
                         label: 'Bắt đầu từ',
                         tdClass: 'text-center',
-                        formatter: toDateTime,
+                        formatter: toDate,
                     },
                     {
                         key: 'effectiveEndDate',
                         label: 'Kết thúc lúc',
                         tdClass: 'text-center',
-                        formatter: toDateTime,
+                        formatter: toDate,
                     },
                     {
                         key: 'roomKind',
@@ -136,7 +136,7 @@ import {
     GetPriceVolatilitiesQuery,
     GetPriceVolatilities,
 } from '~/graphql/types';
-import { toMoney, toDate, toDateTime, toNameFormatter } from '~/utils';
+import { toMoney, toDateTime, toDate, toNameFormatter } from '~/utils';
 
 @Component({
     name: 'price-volatility-',
@@ -146,8 +146,8 @@ export default class extends mixins<Page, {}>(
     DataMixin({
         DaysOfWeekTitles,
         getPriceVolatilities,
-        toDate,
         toDateTime,
+        toDate,
         toMoney,
         toNameFormatter,
     }),
