@@ -101,7 +101,7 @@
                 <horizontal-timeline-range-
                     v-for="(price, index) in prices"
                     :key="`price-${index}`"
-                    v-b-tooltip="price.text"
+                    v-b-tooltip.window="price.text"
                     class="text-white bg-blue bg-stripes"
                     price
                     :line="1"
