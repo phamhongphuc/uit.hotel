@@ -19,8 +19,8 @@ const getPrice = (groups: GetBooking.PriceVolatilityItems[]): number => {
 
 export enum PriceItemRenderKindEnum {
     Fee = 'red',
-    Price = 'green',
-    PriceVolatility = 'blue',
+    Price = 'blue',
+    PriceVolatility = 'green',
 }
 
 export interface PriceItemRender {
