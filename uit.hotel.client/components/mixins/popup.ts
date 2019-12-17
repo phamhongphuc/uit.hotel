@@ -35,4 +35,11 @@ export class PopupMixin<TData, TInput> extends mixins<InjectRefs, TableContext>(
             if (typeof input.focus === 'function') input.focus();
         }
     }
+
+    protected close() {
+        const popup = this.$children[0] as Vue & {
+            close: () => void;
+        };
+        if (typeof popup.close === 'function') popup.close();
+    }
 }

@@ -23,4 +23,11 @@ export class ContextMixin extends mixins<InjectRefs>(InjectRefs) {
             'Không tìm thấy ref=`context` hoặc hàm `context.open` trong component',
         );
     }
+
+    protected close(event: MouseEvent) {
+        const context = this.$children[0] as Vue & {
+            close: (emit: boolean | Event) => void;
+        };
+        if (typeof context.close === 'function') context.close(event);
+    }
 }

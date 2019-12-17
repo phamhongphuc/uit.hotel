@@ -1,5 +1,9 @@
 <template>
-    <div class="bill-page" @contextmenu.prevent="tableContext">
+    <div
+        class="bill-page"
+        @contextmenu.prevent="tableContext"
+        @dblclick="tableContext"
+    >
         <block-flex->
             <b-button
                 class="m-2"
@@ -69,9 +73,20 @@
                     @row-clicked="
                         (bill, $index, $event) => {
                             $event.stopPropagation();
-                            $refs.context_bill.open(currentEvent || $event, {
-                                bill,
-                            });
+                            if (
+                                currentEvent !== null &&
+                                currentEvent.type === 'dblclick'
+                            ) {
+                                $refs.bill_detail.open({ id: bill.id });
+                                $refs.context_bill.close();
+                            } else {
+                                $refs.context_bill.open(
+                                    currentEvent || $event,
+                                    {
+                                        bill,
+                                    },
+                                );
+                            }
                             currentEvent = null;
                         }
                     "
@@ -97,6 +112,12 @@
                             <div
                                 v-for="booking in value"
                                 :key="`booking-${booking.id}`"
+                                @dblclick.stop="
+                                    refs.booking_detail.open({
+                                        id: booking.id,
+                                    });
+                                    $refs.bill_detail.close();
+                                "
                                 @contextmenu.prevent.stop="
                                     $refs.context_receptionist_booking.open(
                                         $event,
