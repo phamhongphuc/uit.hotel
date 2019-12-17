@@ -57,61 +57,63 @@
                     <div class="font-weight-medium my-1 pl-1">
                         Danh sách khách hàng:
                     </div>
-                    <b-table
-                        class="table-style table-sm bg-lighten rounded overflow-hidden"
-                        :items="booking.patrons"
-                        :fields="[
-                            {
-                                key: 'index',
-                                label: '#',
-                                class: 'table-cell-id text-center',
-                            },
-                            {
-                                key: 'name',
-                                label: 'Tên',
-                            },
-                            {
-                                key: 'identification',
-                                label: 'CMND',
-                            },
-                            {
-                                key: 'phoneNumbers',
-                                label: 'Số điện thoại',
-                                tdClass: 'text-right',
-                            },
-                            {
-                                key: 'birthdate',
-                                label: 'Năm sinh',
-                                tdClass: 'text-right',
-                                formatter: toYear,
-                            },
-                        ]"
-                        @row-clicked="
-                            (patron, $index, $event) => {
-                                $event.stopPropagation();
-                                refs.context_patron.open(
-                                    currentEvent || $event,
-                                    {
-                                        patron,
-                                    },
-                                );
-                                currentEvent = null;
-                            }
-                        "
-                    >
-                        <template v-slot:cell(index)="data">
-                            {{ data.index + 1 }}
-                        </template>
-                        <template v-slot:cell(phoneNumbers)="{ value }">
-                            <a
-                                :href="`tel:${value}`"
-                                class="d-block"
-                                @click.stop
-                            >
-                                {{ value }}
-                            </a>
-                        </template>
-                    </b-table>
+                    <div class="mb-1 overflow-auto">
+                        <b-table
+                            class="table-style table-sm bg-lighten rounded overflow-hidden"
+                            :items="booking.patrons"
+                            :fields="[
+                                {
+                                    key: 'index',
+                                    label: '#',
+                                    class: 'table-cell-id text-center',
+                                },
+                                {
+                                    key: 'name',
+                                    label: 'Tên',
+                                },
+                                {
+                                    key: 'identification',
+                                    label: 'CMND',
+                                },
+                                {
+                                    key: 'phoneNumbers',
+                                    label: 'Số điện thoại',
+                                    tdClass: 'text-right',
+                                },
+                                {
+                                    key: 'birthdate',
+                                    label: 'Năm sinh',
+                                    tdClass: 'text-right',
+                                    formatter: toYear,
+                                },
+                            ]"
+                            @row-clicked="
+                                (patron, $index, $event) => {
+                                    $event.stopPropagation();
+                                    refs.context_patron.open(
+                                        currentEvent || $event,
+                                        {
+                                            patron,
+                                        },
+                                    );
+                                    currentEvent = null;
+                                }
+                            "
+                        >
+                            <template v-slot:cell(index)="data">
+                                {{ data.index + 1 }}
+                            </template>
+                            <template v-slot:cell(phoneNumbers)="{ value }">
+                                <a
+                                    :href="`tel:${value}`"
+                                    class="d-block"
+                                    @click.stop
+                                >
+                                    {{ value }}
+                                </a>
+                            </template>
+                        </b-table>
+                    </div>
                 </div>
                 <!-- Right -->
                 <div class="col-6 pl-0 d-flex flex-column">
@@ -165,6 +167,9 @@
                             Trả phòng
                         </b-button-mutate->
                     </div>
+                    <div class="font-weight-medium my-1 pl-1">
+                        Bảng tính giá:
+                    </div>
                     <div class="mb-1 overflow-auto">
                         <b-table
                             class="table-style table-sm bg-lighten rounded overflow-hidden"
@@ -182,19 +187,19 @@
                                 },
                                 {
                                     key: 'number',
-                                    label: 'Số lượng',
-                                    tdClass: 'text-right',
+                                    label: 'Thời gian',
+                                    class: 'text-right',
                                 },
                                 {
                                     key: 'unitPrice',
                                     label: 'Đơn giá',
-                                    tdClass: 'text-right',
+                                    class: 'text-right',
                                     formatter: toMoney,
                                 },
                                 {
                                     key: 'total',
                                     label: 'Thành tiền',
-                                    tdClass: 'text-right',
+                                    class: 'text-right',
                                     formatter: toMoney,
                                 },
                             ]"
@@ -218,6 +223,9 @@
                         Tổng số tiền thuê phòng:
                         {{ toMoney(booking.totalPrice) }}
                     </div>
+                    <div class="font-weight-medium my-1 pl-1">
+                        Dịch vụ sử dụng:
+                    </div>
                     <div class="my-1 overflow-auto">
                         <b-table
                             class="table-style table-sm bg-lighten rounded overflow-hidden"
@@ -238,11 +246,13 @@
                                 {
                                     key: 'number',
                                     label: 'Số lượng',
+                                    thClass: 'text-right',
                                     tdClass: 'text-nowrap text-right',
                                 },
                                 {
                                     key: 'unitPrice',
                                     label: 'Đơn giá',
+                                    thClass: 'text-right',
                                     tdClass: 'text-nowrap text-right',
                                     formatter: (
                                         value,
@@ -253,6 +263,7 @@
                                 {
                                     key: 'total',
                                     label: 'Thành tiền',
+                                    thClass: 'text-right',
                                     tdClass: 'text-nowrap text-right',
                                     formatter: (
                                         value,
@@ -300,7 +311,10 @@
 <script lang="ts">
 import { Component, mixins } from 'nuxt-property-decorator';
 import { ApolloQueryResult } from 'apollo-client';
-import { getPriceItems, PriceItemRender } from './popup-booking-detail.helper';
+import {
+    getPriceItems,
+    PriceItemTableRender,
+} from './popup-booking-detail.helper';
 import {
     BookingStatusEnum,
     GetBooking,
@@ -340,7 +354,7 @@ export default class extends mixins<PopupMixinType, {}>(
     variables!: GetBooking.Variables;
     booking!: GetBooking.Booking;
 
-    priceItems: PriceItemRender[] = [];
+    priceItems: PriceItemTableRender[] = [];
 
     onOpen() {
         this.variables = { id: this.data.id.toString() };

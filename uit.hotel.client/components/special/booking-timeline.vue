@@ -64,6 +64,7 @@
                         :style="booking.style"
                         :variant="booking.variant"
                         class="booking shadow-sm"
+                        @dblclick="refs.booking_detail.open({ id: booking.id })"
                         @contextmenu.prevent="
                             refs.context_receptionist_booking.open($event, {
                                 booking,
@@ -74,6 +75,7 @@
                             :target="`booking-${booking.id}`"
                             placement="left"
                             boundary="window"
+                            triggers="hover"
                         >
                             Từ: {{ booking.inTime }}
                             <br />
