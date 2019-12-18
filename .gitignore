@@ -274,4 +274,5 @@ coverage
 
 uit.hotel/Tools/
 uit.hotel.test/Tools/
+uit.hotel/appsettings.Development.json
 *.xsd
