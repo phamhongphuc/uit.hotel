@@ -90,11 +90,13 @@ namespace uit.hotel.Businesses
             return roomInDatabase;
         }
 
-        public static bool IsEmptyRoom(this Room room, DateTimeOffset from, DateTimeOffset to)
+        public static bool IsEmptyRoom(this Room room, DateTimeOffset from, DateTimeOffset to, Booking ignoreBooking = null)
         {
             if (from > to) throw new Exception("Ngày đến < ngày đi");
             foreach (var booking in room.Bookings)
             {
+                if (ignoreBooking != null && booking.Id == ignoreBooking.Id) continue;
+
                 var status = booking.Status;
                 DateTimeOffset bookingFrom;
                 DateTimeOffset bookingTo;

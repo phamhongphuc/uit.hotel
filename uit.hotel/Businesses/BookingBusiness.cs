@@ -36,7 +36,7 @@ namespace uit.hotel.Businesses
             if (bookingInDatabase == null)
                 throw new Exception("Mã Booking không tồn tại");
             if (bookingInDatabase.Status != BookingStatusEnum.CheckedIn)
-                throw new Exception("Booking chưa thực hiện yêu cầu check-in");
+                throw new Exception("Booking chưa check-in, không thể check-out");
 
             return BookingDataAccess.CheckOut(bookingInDatabase, employee);
         }

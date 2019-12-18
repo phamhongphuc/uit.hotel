@@ -188,7 +188,7 @@ namespace uit.hotel.test._GraphQL
             Database.WriteAsync(realm => realm.Add(new Service
             {
                 Id = 31,
-                IsActive = true,
+                IsActive = false,
                 Name = "Tên dịch vụ 31",
                 Unit = "Đơn vị"
             })).Wait();

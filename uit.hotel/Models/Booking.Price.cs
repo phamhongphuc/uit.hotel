@@ -39,8 +39,8 @@ namespace uit.hotel.Models
         private IList<PriceVolatility> PriceVolatilities { get; set; }
 
         private TimeSpan TimeSpan => BaseDayCheckOutTime - BaseNightCheckInTime;
-        private DateTimeOffset CheckInTime => (RealCheckInTime != DateTimeOffset.MinValue ? RealCheckInTime : BookCheckInTime).Round();
-        private DateTimeOffset CheckOutTime => (RealCheckOutTime != DateTimeOffset.MinValue ? RealCheckOutTime : BookCheckOutTime).Round();
+        public DateTimeOffset CheckInTime => (RealCheckInTime != DateTimeOffset.MinValue ? RealCheckInTime : BookCheckInTime).Round();
+        public DateTimeOffset CheckOutTime => (RealCheckOutTime != DateTimeOffset.MinValue ? RealCheckOutTime : BookCheckOutTime).Round();
 
         public void CalculatePrice()
         {

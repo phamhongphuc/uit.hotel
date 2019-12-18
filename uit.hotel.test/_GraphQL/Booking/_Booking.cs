@@ -76,7 +76,7 @@ namespace uit.hotel.test._GraphQL
                     },
                     bill = new
                     {
-                        id = 1
+                        id = 11
                     }
                 },
                 p => p.PermissionManageRentingRoom = true
@@ -284,7 +284,7 @@ namespace uit.hotel.test._GraphQL
             Database.WriteAsync(realm => realm.Add(new Booking
             {
                 Id = 21,
-                Status = BookingStatusEnum.CheckedIn,
+                Status = BookingStatusEnum.Booked,
                 EmployeeBooking = EmployeeDataAccess.Get("admin"),
                 EmployeeCheckIn = EmployeeDataAccess.Get("admin"),
                 EmployeeCheckOut = EmployeeDataAccess.Get("admin"),
@@ -292,51 +292,11 @@ namespace uit.hotel.test._GraphQL
                 Bill = BillDataAccess.Get(1),
                 Room = RoomDataAccess.Get(1)
             })).Wait();
+
             SchemaHelper.ExecuteAndExpectError(
-                "Booking chưa thực hiện yêu cầu check-out",
+                "Booking chưa check-in, không thể check-out",
                 @"/_GraphQL/Booking/mutation.checkOut.gql",
                 new { id = 21 },
-                p => p.PermissionManageRentingRoom = true
-            );
-        }
-
-        [TestMethod]
-        public void Mutation_CheckOut_InvalidEmployee()
-        {
-            Database.WriteAsync(realm =>
-            {
-                realm.Add(new Employee
-                {
-                    Id = "nhanvien_1",
-                    Address = "Địa chỉ",
-                    IsActive = true,
-                    Birthdate = DateTimeOffset.Now,
-                    Email = "email@gmail.com",
-                    Gender = true,
-                    Name = "Quản trị viên",
-                    IdentityCard = "123456789",
-                    Password = CryptoHelper.Encrypt("12345678"),
-                    PhoneNumber = "+84 0123456789",
-                    Position = PositionBusiness.Get(1),
-                    StartingDate = DateTimeOffset.Now
-                });
-                realm.Add(new Booking
-                {
-                    Id = 22,
-                    Status = BookingStatusEnum.CheckedIn,
-                    EmployeeBooking = EmployeeDataAccess.Get("admin"),
-                    EmployeeCheckIn = EmployeeDataAccess.Get("admin"),
-                    EmployeeCheckOut = EmployeeDataAccess.Get("nhanvien_1"),
-                    RealCheckInTime = DateTimeOffset.Now.AddDays(-1),
-                    Bill = BillDataAccess.Get(1),
-                    Room = RoomDataAccess.Get(1)
-                });
-            }).Wait();
-
-            SchemaHelper.ExecuteAndExpectError(
-                "Nhân viên không được phép check-out",
-                @"/_GraphQL/Booking/mutation.checkOut.gql",
-                new { id = 22 },
                 p => p.PermissionManageRentingRoom = true
             );
         }

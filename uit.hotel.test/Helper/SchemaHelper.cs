@@ -26,7 +26,7 @@ namespace uit.hotel.test.Helper
         )
         {
             var result = ExecuteAsync(queryPath, variable, setPermission).GetAwaiter().GetResult();
-            var jsonResult = getJsonResultOrThrow(result);
+            var jsonResult = GetJsonResultOrThrow(result);
             var jSchema = JSchema.Parse(
                 File.ReadAllText(schemaPath.TrimStart('/'))
             );
@@ -47,38 +47,6 @@ namespace uit.hotel.test.Helper
             }
         }
 
-        private static JObject getJsonResultOrThrow(ExecuteAsyncResult result)
-        {
-            var jsonResult = JObject.Parse(
-                JsonConvert.SerializeObject(
-                    new { data = result.Result.Data }
-                )
-            );
-            if (result.Result.Errors != null)
-            {
-                Exception error = result.Result.Errors[0];
-                var message = "";
-                while (error != null)
-                {
-                    message = error.Message;
-                    error = error.InnerException;
-                }
-
-                var errorMessage = string.Join(
-                    Environment.NewLine,
-                    "",
-                    "----- ----- ----- ----- -----",
-                    "Query:", result.Query,
-                    "Variable:", result.Variable,
-                    "Result:", jsonResult.ToString(),
-                    "Error Messages:", message
-                );
-                throw new Exception(errorMessage, new Exception(message));
-            }
-
-            return jsonResult;
-        }
-
         public static void ExecuteAndExpectError(
             string expectErrorMessage,
             string queryPath,
@@ -87,9 +55,19 @@ namespace uit.hotel.test.Helper
         )
         {
             var result = ExecuteAsync(queryPath, variable, setPermission).GetAwaiter().GetResult();
+            JObject jsonResult;
             try
             {
-                getJsonResultOrThrow(result);
+                jsonResult = GetJsonResultOrThrow(result);
+                var errorMessage = string.Join(
+                    Environment.NewLine,
+                    "",
+                    "----- ----- ----- ----- -----",
+                    "Query:", result.Query,
+                    "Result:", jsonResult.ToString(),
+                    "ExpectErrorMessage:", expectErrorMessage
+                );
+                throw new Exception(errorMessage);
             }
             catch (Exception error)
             {
@@ -136,6 +114,38 @@ namespace uit.hotel.test.Helper
                 Query = query,
                 Variable = variable
             };
+        }
+
+        private static JObject GetJsonResultOrThrow(ExecuteAsyncResult result)
+        {
+            var jsonResult = JObject.Parse(
+                JsonConvert.SerializeObject(
+                    new { data = result.Result.Data }
+                )
+            );
+            if (result.Result.Errors != null)
+            {
+                Exception error = result.Result.Errors[0];
+                var message = "";
+                while (error != null)
+                {
+                    message = error.Message;
+                    error = error.InnerException;
+                }
+
+                var errorMessage = string.Join(
+                    Environment.NewLine,
+                    "",
+                    "----- ----- ----- ----- -----",
+                    "Query:", result.Query,
+                    "Variable:", result.Variable,
+                    "Result:", jsonResult.ToString(),
+                    "Error Messages:", message
+                );
+                throw new Exception(errorMessage, new Exception(message));
+            }
+
+            return jsonResult;
         }
 
         private class ExecuteAsyncResult

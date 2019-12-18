@@ -18,10 +18,7 @@ namespace uit.hotel.Businesses
             if (bookings.Count() == 0)
                 throw new Exception("Chưa có booking nào");
 
-            if (
-                bookings.Count() !=
-                bookings.ToList().Distinct(new EqualityBooking(BookingStatusEnum.Booked)).Count()
-            )
+            if (bookings.IsOverlap())
                 throw new Exception("Có booking trùng nhau");
 
             foreach (var booking in bookings)
@@ -52,10 +49,7 @@ namespace uit.hotel.Businesses
             if (bookings.Count() == 0)
                 throw new Exception("Chưa có booking nào");
 
-            if (
-                bookings.Count() !=
-                bookings.ToList().Distinct(new EqualityBooking(BookingStatusEnum.CheckedIn)).Count()
-            )
+            if (bookings.IsOverlap())
                 throw new Exception("Có booking trùng nhau");
 
             foreach (var booking in bookings)
@@ -116,44 +110,5 @@ namespace uit.hotel.Businesses
 
         public static Bill Get(int billId) => BillDataAccess.Get(billId);
         public static IEnumerable<Bill> Get() => BillDataAccess.Get();
-    }
-
-    public class EqualityBooking : IEqualityComparer<Booking>
-    {
-        public EqualityBooking(BookingStatusEnum Kind)
-        {
-            this.Kind = Kind;
-        }
-
-        public BookingStatusEnum Kind { get; set; }
-
-        //kiểm tra trùng -> true
-        public bool Equals(Booking x, Booking y)
-        {
-            if (Kind == BookingStatusEnum.Booked)
-            {
-                if (x.Room.Id != y.Room.Id) return false;
-                if (!DateTimeHelper.IsTwoDateRangesOverlap(
-                        x.BookCheckInTime, x.BookCheckOutTime,
-                        y.BookCheckInTime, y.BookCheckOutTime
-                    ))
-                    return false;
-            }
-            else if (Kind == BookingStatusEnum.CheckedIn)
-            {
-                if (x.Room.Id != y.Room.Id) return false;
-            }
-            else throw new Exception("Lỗi hệ thống: Kind phải là Booked hoặc CheckedIn");
-
-            return true;
-        }
-
-        public int GetHashCode(Booking obj)
-        {
-            return string.Format(
-                "{0} {1} {2}", obj.Room.Id,
-                obj.BookCheckInTime.Ticks, obj.BookCheckOutTime.Ticks
-            ).GetHashCode();
-        }
     }
 }

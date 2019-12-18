@@ -228,7 +228,7 @@ namespace uit.hotel.test._GraphQL
             SchemaHelper.ExecuteAndExpectError(
                 "Chức vụ này còn nhân viên đang hoạt động sử dụng",
                 @"/_GraphQL/Position/mutation.setIsActivePosition.gql",
-                new { id = 1, isActive = true },
+                new { id = 1, isActive = false },
                 p => p.PermissionManagePosition = true
             );
         }
