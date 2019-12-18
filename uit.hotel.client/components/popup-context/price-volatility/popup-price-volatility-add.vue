@@ -102,7 +102,7 @@
 import { Component, mixins, Vue, Watch } from 'nuxt-property-decorator';
 import Moment from 'moment';
 import { required, minLength } from 'vuelidate/lib/validators';
-import { DaysOfWeekProperty, DaysOfWeekOptions } from '~/modules/model';
+import { DaysOfWeekPropertyType, daysOfWeekOptions } from '~/modules/model';
 import { DataMixin, PopupMixin } from '~/components/mixins';
 import { PriceVolatilityCreateInput, GetRoomKinds } from '~/graphql/types';
 import { createPriceVolatility, getRoomKinds } from '~/graphql/documents';
@@ -129,7 +129,7 @@ type PopupMixinType = PopupMixin<
 })
 export default class extends mixins<PopupMixinType>(
     PopupMixin,
-    DataMixin({ createPriceVolatility, getRoomKinds }),
+    DataMixin({ createPriceVolatility, getRoomKinds, daysOfWeekOptions }),
 ) {
     input!: PriceVolatilityCreateInput;
 
@@ -156,14 +156,12 @@ export default class extends mixins<PopupMixinType>(
         };
     }
 
-    daysOfWeekOptions = DaysOfWeekOptions;
-
     daysOfWeek = [];
 
     @Watch('daysOfWeek')
-    onDaysOfWeekChange(value: DaysOfWeekProperty[]) {
+    onDaysOfWeekChange(value: DaysOfWeekPropertyType[]) {
         const daysOfWeekObject = value.reduce<
-            { [key in DaysOfWeekProperty]: boolean }
+            { [key in DaysOfWeekPropertyType]: boolean }
         >(
             (output, key) => {
                 output[key] = true;

@@ -18,9 +18,9 @@ export const toDaysOfWeek = (
     ],
 });
 
-export const DaysOfWeekTitles = ['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN'];
+export const daysOfWeekTitles = ['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN'];
 
-export const DaysOfWeekProperties = [
+export const daysOfWeekProperties = [
     'effectiveOnMonday',
     'effectiveOnTuesday',
     'effectiveOnWednesday',
@@ -30,9 +30,9 @@ export const DaysOfWeekProperties = [
     'effectiveOnSunday',
 ];
 
-export const DaysOfWeekOptions = DaysOfWeekTitles.map((text, index) => ({
+export const daysOfWeekOptions = daysOfWeekTitles.map((text, index) => ({
     text,
-    value: DaysOfWeekProperties[index],
+    value: daysOfWeekProperties[index],
 }));
 
-export type DaysOfWeekProperty = typeof DaysOfWeekProperties[number];
+export type DaysOfWeekPropertyType = typeof daysOfWeekProperties[number];

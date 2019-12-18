@@ -39,8 +39,8 @@ namespace uit.hotel.Models
         private IList<PriceVolatility> PriceVolatilities { get; set; }
 
         private TimeSpan TimeSpan => BaseDayCheckOutTime - BaseNightCheckInTime;
-        private DateTimeOffset CheckInTime => (RealCheckInTime != DateTimeOffset.MinValue ? RealCheckInTime : BookCheckInTime).Round();
-        private DateTimeOffset CheckOutTime => (RealCheckOutTime != DateTimeOffset.MinValue ? RealCheckOutTime : BookCheckOutTime).Round();
+        public DateTimeOffset CheckInTime => (RealCheckInTime != DateTimeOffset.MinValue ? RealCheckInTime : BookCheckInTime).Round();
+        public DateTimeOffset CheckOutTime => (RealCheckOutTime != DateTimeOffset.MinValue ? RealCheckOutTime : BookCheckOutTime).Round();
 
         public void CalculatePrice()
         {
@@ -130,11 +130,15 @@ namespace uit.hotel.Models
         {
             if (BaseNightCheckInTime.FloatHour() == BookingBusiness._CheckInNightTime)
             {
-                AddPriceVolatilityItems(PriceVolatilityItemKindEnum.Night, BaseNightCheckInTime);
+                BaseDayCheckInTime = BaseNightCheckInTime.AtHour(BookingBusiness._CheckInDayTime).AddDays(1);
+                AddPriceVolatilityItems(
+                    PriceVolatilityItemKindEnum.Night,
+                    BaseNightCheckInTime,
+                    BaseDayCheckInTime - BaseNightCheckInTime
+                );
                 AddPriceItem(PriceItemKindEnum.Night, new TimeSpan(
                     24 + BookingBusiness._CheckOutNightTime - BookingBusiness._CheckInNightTime, 0, 0
                 ));
-                BaseDayCheckInTime = BaseNightCheckInTime.AtHour(BookingBusiness._CheckInDayTime).AddDays(1);
             }
             else
             {
@@ -175,7 +179,11 @@ namespace uit.hotel.Models
             iterateTime = beginDay;
             while (iterateTime < endDay)
             {
-                AddPriceVolatilityItems(PriceVolatilityItemKindEnum.Day, BaseNightCheckInTime);
+                AddPriceVolatilityItems(
+                    PriceVolatilityItemKindEnum.Day,
+                    iterateTime.AtHour(BookingBusiness._CheckInDayTime),
+                    new TimeSpan(1, -overHours, 0, 0)
+                );
                 iterateTime = iterateTime.AddDays(1);
             }
         }
@@ -212,7 +220,7 @@ namespace uit.hotel.Models
             PriceItemsInObject.Add(priceItem);
         }
 
-        private void AddPriceVolatilityItems(PriceVolatilityItemKindEnum kind, DateTimeOffset date, TimeSpan timeSpan = new TimeSpan())
+        private void AddPriceVolatilityItems(PriceVolatilityItemKindEnum kind, DateTimeOffset date, TimeSpan timeSpan)
         {
             var priceVolatilities = PriceVolatilities.InDate(date);
             foreach (var priceVolatility in priceVolatilities)

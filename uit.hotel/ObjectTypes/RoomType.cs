@@ -31,7 +31,7 @@ namespace uit.hotel.ObjectTypes
                 {
                     var from = context.GetArgument<DateTimeOffset>("from");
                     var to = context.GetArgument<DateTimeOffset>("to");
-                    return context.Source.IsEmptyRoom(from, to);
+                    return context.Source.IsEmpty(from, to);
                 }
             );
 

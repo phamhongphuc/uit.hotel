@@ -78,7 +78,7 @@ namespace uit.hotel.test._GraphQL
                 Name = "Loại phòng 11",
                 AmountOfPeople = 1,
                 NumberOfBeds = 1,
-                IsActive = true
+                IsActive = false
             })).Wait();
 
             SchemaHelper.ExecuteAndExpectError(

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using uit.hotel.Queries.Helper;
 
 namespace uit.hotel.Models
 {
@@ -7,7 +8,7 @@ namespace uit.hotel.Models
     {
         public static IList<PriceVolatility> InDate(this IList<PriceVolatility> priceVolatilities, DateTimeOffset date)
         {
-            var dayOfWeek = date.DayOfWeek;
+            var dayOfWeek = date.ToOffset(Constant.TimeZone).DayOfWeek;
             IList<PriceVolatility> selecteds = new List<PriceVolatility> { };
             foreach (var v in priceVolatilities)
             {
@@ -26,6 +27,9 @@ namespace uit.hotel.Models
                             break;
                         case DayOfWeek.Thursday:
                             if (v.EffectiveOnThursday) selecteds.Add(v);
+                            break;
+                        case DayOfWeek.Friday:
+                            if (v.EffectiveOnFriday) selecteds.Add(v);
                             break;
                         case DayOfWeek.Saturday:
                             if (v.EffectiveOnSaturday) selecteds.Add(v);

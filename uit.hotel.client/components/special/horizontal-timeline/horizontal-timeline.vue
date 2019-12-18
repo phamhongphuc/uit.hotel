@@ -104,12 +104,29 @@
                     v-b-tooltip.window="price.text"
                     class="text-white bg-blue bg-stripes"
                     price
-                    :line="1"
+                    :line="price.line"
                     :range="[price.left, price.right]"
                 >
-                    <div>
-                        {{ toMoney(price.value) }}
-                    </div>
+                    <div>{{ toMoney(price.value) }}</div>
+                </horizontal-timeline-range->
+
+                <horizontal-timeline-range-
+                    v-for="(priceVolatility, index) in priceVolatilities"
+                    :id="`priceVolatility-${index}`"
+                    :key="`priceVolatility-${index}`"
+                    class="text-white bg-green bg-stripes"
+                    price
+                    :line="priceVolatility.line"
+                    :range="[priceVolatility.left, priceVolatility.right]"
+                >
+                    <b-tooltip
+                        :target="`priceVolatility-${index}`"
+                        boundary="window"
+                    >
+                        {{ priceVolatility.name }}:
+                        <br />
+                        {{ priceVolatility.text }}
+                    </b-tooltip>
                 </horizontal-timeline-range->
             </div>
         </div>
@@ -117,24 +134,18 @@
 </template>
 <script lang="ts">
 import { Component, Prop, mixins, Provide } from 'nuxt-property-decorator';
-import moment, { duration, Moment } from 'moment';
+import { duration } from 'moment';
+import _ from 'lodash';
 import { getBounding } from './horizontal-timeline.helper';
-import { toDateTime, toMoney, getDate } from '~/utils';
+import { toDateTime, toMoney } from '~/utils';
 import { GetBooking } from '~/graphql/types';
 import { DataMixin } from '~/components/mixins';
 import {
-    bookingStatusRemainMap,
-    getPriceItemText,
     bookingStatusMap,
     bookingStatusColorMap,
+    BookingObject,
+    PriceItemRender,
 } from '~/modules/model';
-
-interface RenderPriceItem {
-    left: Moment;
-    right: Moment;
-    text: string;
-    value: number;
-}
 
 @Component({
     name: 'horizontal-timeline-',
@@ -145,6 +156,10 @@ export default class extends mixins(DataMixin({ toDateTime, toMoney })) {
 
     dayWidth = 4;
 
+    get bookingObject() {
+        return new BookingObject(this.booking);
+    }
+
     get status() {
         return bookingStatusMap[this.booking.status];
     }
@@ -154,9 +169,7 @@ export default class extends mixins(DataMixin({ toDateTime, toMoney })) {
     }
 
     get remain() {
-        return bookingStatusRemainMap(this.left, this.right)[
-            this.booking.status
-        ]();
+        return this.bookingObject.remain;
     }
 
     currentWidth() {
@@ -178,64 +191,39 @@ export default class extends mixins(DataMixin({ toDateTime, toMoney })) {
     }
 
     lineContainerStyle() {
-        const lines = 1;
-
+        const lines =
+            1 +
+            _.chain(this.priceVolatilities)
+                .groupBy(item => item.line)
+                .values()
+                .value().length;
         return {
             height: `calc(var(--main-height) + var(--line-size) + var(--price-space) + (var(--price-space) + var(--price-child)) * ${lines})`,
         };
     }
 
-    get prices(): RenderPriceItem[] {
-        const {
-            booking: { baseNightCheckInTime, priceItems },
-        } = this;
-
-        let iterate = moment(baseNightCheckInTime);
-
-        return priceItems.map(priceItem => {
-            const left = iterate.clone();
-            const right = iterate.clone().add(priceItem.timeSpan, 'second');
-            const text = getPriceItemText(this.booking, priceItem);
-            const { value } = priceItem;
-
-            iterate = right.clone().add(2, 'hour');
-
-            return { left, right, text, value };
-        });
-    }
-
     get earlyCheckInHour() {
-        const { booking, left } = this;
-
-        return parseFloat(
-            duration(moment(booking.baseNightCheckInTime).diff(left))
-                .asHours()
-                .toFixed(2),
-        );
+        return this.bookingObject.earlyCheckInHour;
     }
 
     get lateCheckOutHour() {
-        const { booking, right } = this;
-
-        return parseFloat(
-            duration(moment(right).diff(booking.baseDayCheckOutTime))
-                .asHours()
-                .toFixed(2),
-        );
+        return this.bookingObject.lateCheckOutHour;
     }
 
     get left() {
-        return getDate(
-            this.booking.realCheckInTime,
-            this.booking.bookCheckInTime,
-        );
+        return this.bookingObject.left;
     }
 
     get right() {
-        return getDate(
-            this.booking.realCheckOutTime,
-            this.booking.bookCheckOutTime,
-        );
+        return this.bookingObject.right;
+    }
+
+    get prices(): PriceItemRender[] {
+        return this.bookingObject.priceItemsRender;
+    }
+
+    get priceVolatilities(): PriceItemRender[] {
+        return this.bookingObject.priceVolatilityItemsRender;
     }
 
     @Provide()

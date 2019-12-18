@@ -151,8 +151,8 @@ namespace uit.hotel.test._GraphQL
                 realm.Add(new ServicesDetail
                 {
                     Id = 11,
-                    Booking = BookingBusiness.Get(1),
-                    Service = ServiceBusiness.Get(200),
+                    Booking = BookingBusiness.Get(200),
+                    Service = ServiceBusiness.Get(1),
                     Number = 10
                 });
             }).Wait();

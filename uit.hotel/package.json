@@ -1,0 +1,16 @@
+{
+    "name": "uit.hotel",
+    "version": "1.0.0",
+    "description": "",
+    "dependencies": {},
+    "devDependencies": {
+        "cross-env": "^6.0.3"
+    },
+    "scripts": {
+        "dev": "cross-env ASPNETCORE_ENVIRONMENT=Development dotnet run",
+        "watch": "cross-env ASPNETCORE_ENVIRONMENT=Development dotnet watch",
+        "test": "cd ../uit.hotel.test && dotnet test"
+    },
+    "author": "",
+    "license": "ISC"
+}

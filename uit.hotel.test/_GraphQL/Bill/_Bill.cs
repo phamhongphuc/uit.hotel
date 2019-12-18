@@ -117,12 +117,6 @@ namespace uit.hotel.test._GraphQL
                             bookCheckOutTime = DateTimeOffset.Now.AddDays(2),
                             room = new { id = 1 },
                             listOfPatrons = new[] { new { id = 1 } }
-                        },
-                        new
-                        {
-                            bookCheckOutTime = DateTimeOffset.Now.AddDays(2),
-                            room = new { id = 1 },
-                            listOfPatrons = new[] { new { id = 1 } }
                         }
                     },
                     bill = new { patron = new { id = 1 } }
@@ -185,6 +179,12 @@ namespace uit.hotel.test._GraphQL
                         new
                         {
                             bookCheckOutTime = DateTimeOffset.Now.AddDays(2),
+                            room = new { id = 111 },
+                            listOfPatrons = new[] { new { id = 1 } }
+                        },
+                        new
+                        {
+                            bookCheckOutTime = DateTimeOffset.Now.AddDays(1),
                             room = new { id = 111 },
                             listOfPatrons = new[] { new { id = 1 } }
                         }

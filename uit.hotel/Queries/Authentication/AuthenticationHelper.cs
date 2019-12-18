@@ -14,15 +14,20 @@ namespace uit.hotel.Queries.Authentication
     public static class AuthenticationHelper
     {
         private static IConfiguration Configuration;
+        private static string KeyString;
 
         public static void Initialize(IConfiguration configuration)
         {
             Configuration = configuration;
+
+            var keyFromEnvironment = Environment.GetEnvironmentVariable("SECRET_KEY");
+            var keyFromConfiguration = Configuration["JWT:key"];
+            KeyString = keyFromEnvironment != null ? keyFromEnvironment : keyFromConfiguration;
         }
 
         public static string TokenBuilder(string id)
         {
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JWT:key"]));
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(KeyString));
             var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
             var token = new JwtSecurityToken(

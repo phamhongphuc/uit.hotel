@@ -112,7 +112,7 @@
                             size="sm"
                             :variant="day ? 'green' : 'light'"
                         >
-                            {{ DaysOfWeekTitles[index] }}
+                            {{ daysOfWeekTitles[index] }}
                         </b-button>
                     </b-button-group>
                 </template>
@@ -128,7 +128,7 @@ import { ApolloQueryResult } from 'apollo-client';
 import {
     DaysOfWeekType,
     toDaysOfWeek,
-    DaysOfWeekTitles,
+    daysOfWeekTitles,
 } from '~/modules/model';
 import { getPriceVolatilities } from '~/graphql/documents';
 import { DataMixin, Page } from '~/components/mixins';
@@ -144,7 +144,7 @@ import { toMoney, toDateTime, toDate, toNameFormatter } from '~/utils';
 export default class extends mixins<Page, {}>(
     Page,
     DataMixin({
-        DaysOfWeekTitles,
+        daysOfWeekTitles,
         getPriceVolatilities,
         toDateTime,
         toDate,

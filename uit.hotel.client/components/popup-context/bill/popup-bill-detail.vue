@@ -173,7 +173,6 @@
                             key: 'bankAccountNumber',
                             label: 'Tài khoản   ',
                             class: 'text-center',
-                            formatter: toMoney,
                         },
                     ]"
                 >

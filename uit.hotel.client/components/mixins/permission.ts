@@ -15,7 +15,7 @@ type PermissionType = Pick<
     >
 >;
 
-const PermissionInstance: PermissionType = {
+const permissionInstance: PermissionType = {
     permissionCleaning: true,
     permissionGetAccountingVoucher: true,
     permissionGetMap: true,
@@ -47,13 +47,13 @@ export class PermissionMixin extends Vue {
             if (!Array.isArray(value)) return false;
 
             return value.every((key: string) => {
-                const condition = `permission${key}` in PermissionInstance;
+                const condition = `permission${key}` in permissionInstance;
 
                 if (!condition) {
                     console.error(
                         `[Permission warn]: String "${key}" is not a is not a valid prop for permission.\n`,
                         `Expect key to be one of these types:`,
-                        Object.keys(PermissionInstance).map(k =>
+                        Object.keys(permissionInstance).map(k =>
                             k.replace(/^permission/, ''),
                         ),
                     );

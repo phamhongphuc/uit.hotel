@@ -1,56 +1,64 @@
-import { duration, Duration } from 'moment';
+import { duration } from 'moment';
 import { GetBooking, PriceItemKindEnum } from '~/graphql/types';
 import { toMoney } from '~/utils';
 
-export const priceItemKindMap: {
-    [key in PriceItemKindEnum]: string;
-} = {
-    [PriceItemKindEnum.Hour]: 'giờ',
-    [PriceItemKindEnum.Night]: 'đêm',
-    [PriceItemKindEnum.Day]: 'ngày',
-    [PriceItemKindEnum.Week]: 'tuần',
-    [PriceItemKindEnum.Month]: 'tháng',
-};
+export class PriceItemObject {
+    price: GetBooking.Price;
+    priceItem: GetBooking.PriceItems;
 
-const priceItemGetAmountMap = (
-    time: Duration,
-): { [key in PriceItemKindEnum]: () => number } => ({
-    [PriceItemKindEnum.Hour]: () => time.asHours(),
-    [PriceItemKindEnum.Night]: () => 1,
-    [PriceItemKindEnum.Day]: () => time.add(2, 'hour').asDays(),
-    [PriceItemKindEnum.Week]: () => time.add(2, 'hour').asWeeks(),
-    [PriceItemKindEnum.Month]: () => time.add(2, 'hour').asMonths(),
-});
+    constructor(price: GetBooking.Price, priceItem: GetBooking.PriceItems) {
+        this.price = price;
+        this.priceItem = priceItem;
+    }
 
-const priceItemGetUnitPriceMap = (
-    price: GetBooking.Price,
-): { [key in PriceItemKindEnum]: () => number } => ({
-    [PriceItemKindEnum.Hour]: () => price.hourPrice,
-    [PriceItemKindEnum.Night]: () => price.nightPrice,
-    [PriceItemKindEnum.Day]: () => price.dayPrice,
-    [PriceItemKindEnum.Week]: () => price.weekPrice,
-    [PriceItemKindEnum.Month]: () => price.monthPrice,
-});
+    get amount() {
+        const { timeSpan, kind } = this.priceItem;
+        const time = duration(timeSpan, 'second');
+        return parseFloat(
+            {
+                [PriceItemKindEnum.Hour]: () => time.asHours(),
+                [PriceItemKindEnum.Night]: () => 1,
+                [PriceItemKindEnum.Day]: () => time.add(2, 'hour').asDays(),
+                [PriceItemKindEnum.Week]: () => time.add(2, 'hour').asWeeks(),
+                [PriceItemKindEnum.Month]: () => time.add(2, 'hour').asMonths(),
+            }
+                [kind]()
+                .toFixed(2),
+        );
+    }
 
-export const priceItemGetAmount = (priceItem: GetBooking.PriceItems) =>
-    parseFloat(
-        priceItemGetAmountMap(duration(priceItem.timeSpan, 'second'))
-            [priceItem.kind]()
-            .toFixed(2),
-    );
+    get unit() {
+        const { kind } = this.priceItem;
+        return {
+            [PriceItemKindEnum.Hour]: 'giờ',
+            [PriceItemKindEnum.Night]: 'đêm',
+            [PriceItemKindEnum.Day]: 'ngày',
+            [PriceItemKindEnum.Week]: 'tuần',
+            [PriceItemKindEnum.Month]: 'tháng',
+        }[kind];
+    }
 
-export const priceItemGetUnitPrice = (
-    booking: GetBooking.Booking,
-    priceItem: GetBooking.PriceItems,
-) => priceItemGetUnitPriceMap(booking.price)[priceItem.kind]();
+    get unitPrice() {
+        const { price, priceItem } = this;
+        return {
+            [PriceItemKindEnum.Hour]: () => price.hourPrice,
+            [PriceItemKindEnum.Night]: () => price.nightPrice,
+            [PriceItemKindEnum.Day]: () => price.dayPrice,
+            [PriceItemKindEnum.Week]: () => price.weekPrice,
+            [PriceItemKindEnum.Month]: () => price.monthPrice,
+        }[priceItem.kind]();
+    }
 
-export function getPriceItemText(
-    booking: GetBooking.Booking,
-    priceItem: GetBooking.PriceItems,
-) {
-    const unit = priceItemKindMap[priceItem.kind];
-    const unitPrice = priceItemGetUnitPriceMap(booking.price)[priceItem.kind]();
-    const number = priceItemGetAmount(priceItem);
+    get total() {
+        return this.priceItem.value;
+    }
 
-    return `${number} ${unit} ✕ ${toMoney(unitPrice)}`;
+    get number() {
+        return `${this.amount} ${this.unit}`;
+    }
+
+    get text() {
+        const { unit, unitPrice, amount } = this;
+        return `${amount} ${unit} ✕ ${toMoney(unitPrice)}`;
+    }
 }
