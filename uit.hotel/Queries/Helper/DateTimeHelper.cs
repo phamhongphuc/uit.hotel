@@ -4,7 +4,7 @@ namespace uit.hotel.Queries.Helper
 {
     public static class DateTimeHelper
     {
-        public static bool IsTwoDateRangesOverlap(DateTimeOffset aStart, DateTimeOffset aEnd,
+        public static bool IsOverlap(DateTimeOffset aStart, DateTimeOffset aEnd,
                                                   DateTimeOffset bStart, DateTimeOffset bEnd)
             => aStart < bEnd && bStart < aEnd;
 

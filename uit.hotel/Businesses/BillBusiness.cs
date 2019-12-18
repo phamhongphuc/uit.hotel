@@ -31,7 +31,7 @@ namespace uit.hotel.Businesses
                 if (booking.BookCheckInTime >= booking.BookCheckOutTime || booking.BookCheckInTime < DateTimeOffset.Now)
                     throw new Exception("Ngày check-in, check-out dự kiến không hợp lệ");
 
-                if (!booking.Room.IsEmptyRoom(booking.BookCheckInTime, booking.BookCheckOutTime))
+                if (!booking.IsEmpty())
                     throw new Exception("Phòng đã được đặt hoặc đang được sử dụng");
 
                 if (booking.Patrons.Count() == 0)
@@ -63,7 +63,7 @@ namespace uit.hotel.Businesses
                 if (booking.BookCheckOutTime < DateTimeOffset.Now)
                     throw new Exception("Ngày check-out dự kiến không hợp lệ");
 
-                if (!booking.Room.IsEmptyRoom(DateTimeOffset.Now, booking.BookCheckOutTime))
+                if (!booking.IsEmpty(true))
                     throw new Exception("Phòng đã được đặt hoặc đang được sử dụng");
 
                 if (booking.Patrons.Count() == 0)

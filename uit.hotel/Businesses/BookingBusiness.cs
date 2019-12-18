@@ -26,6 +26,8 @@ namespace uit.hotel.Businesses
                 throw new Exception("Phòng đã được check-in, không thể check-in lại");
             if (bookingInDatabase.Room.IsClean == false)
                 throw new Exception("Phòng chưa được dọn, không thể check-in");
+            if (!bookingInDatabase.IsEmpty())
+                throw new Exception("Phòng đang được sử dụng, không thể check-in sớm");
 
             return BookingDataAccess.CheckIn(employee, bookingInDatabase);
         }
@@ -65,7 +67,7 @@ namespace uit.hotel.Businesses
             if (booking.BookCheckInTime >= booking.BookCheckOutTime || booking.BookCheckInTime < DateTimeOffset.Now)
                 throw new Exception("Ngày check-in, check-out dự kiến không hợp lệ");
 
-            if (!booking.Room.IsEmptyRoom(booking.BookCheckInTime, booking.BookCheckOutTime))
+            if (!booking.IsEmpty())
                 throw new Exception("Phòng đã được đặt hoặc đang được sử dụng");
 
             return BookingDataAccess.AddBookingToBill(employee, bill, booking);
