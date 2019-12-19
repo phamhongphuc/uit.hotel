@@ -53,7 +53,7 @@ export type AppMutation = {
     createPrice: Price;
     /** Tạo và trả về một giá biến động mới */
     createPriceVolatility: PriceVolatility;
-    /** Tạo và trả về một phiếu thu mới */
+    /** Tạo và trả về một phiếu thu tiền mặt mới */
     createReceipt: Receipt;
     /** Tạo và trả về một phòng mới */
     createRoom: Room;
@@ -1227,8 +1227,6 @@ export type PriceVolatilityUpdateInput = {
 
 /** Phiếu thu */
 export type Receipt = {
-    /** Số tài khoản ngân hàng của khách */
-    bankAccountNumber: Maybe<Scalars['String']>;
     /** Phiếu thu thuộc hóa đơn nào */
     bill: Bill;
     /** Nhân viên tạo phiếu thu */
@@ -1244,8 +1242,6 @@ export type Receipt = {
 export type ReceiptCreateInput = {
     /** Số tiền đã thu */
     money: Scalars['Int'];
-    /** Số tài khoản ngân hàng của khách */
-    bankAccountNumber: Maybe<Scalars['String']>;
     /** Thuộc hóa đơn */
     bill: BillId;
 };
@@ -2080,9 +2076,7 @@ export type GetReceiptsQueryVariables = {};
 
 export type GetReceiptsQuery = {
     receipts: Array<
-        Pick<Receipt, 'id' | 'money' | 'time' | 'bankAccountNumber'> & {
-            bill: Pick<Bill, 'id'>;
-        }
+        Pick<Receipt, 'id' | 'money' | 'time'> & { bill: Pick<Bill, 'id'> }
     >;
 };
 

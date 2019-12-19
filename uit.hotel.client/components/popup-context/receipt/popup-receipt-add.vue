@@ -16,14 +16,6 @@
                 class="m-3 rounded"
                 icon="type"
             />
-            <div class="input-label">Số tài khoản</div>
-            <b-input-
-                v-model="input.bankAccountNumber"
-                :state="optional($v.input.bankAccountNumber)"
-                type="number"
-                class="m-3 rounded"
-                icon="type"
-            />
             <div class="d-flex m-3">
                 <b-button
                     :disabled="$v.$invalid"
@@ -40,15 +32,6 @@
 </template>
 <script lang="ts">
 import { Component, mixins } from 'nuxt-property-decorator';
-import {
-    required,
-    numeric,
-    not,
-    or,
-    and,
-    minLength,
-    maxLength,
-} from 'vuelidate/lib/validators';
 import { DataMixin, PopupMixin } from '~/components/mixins';
 import { ReceiptCreateInput, GetBills } from '~/graphql/types';
 import { createReceipt } from '~/graphql/documents';
@@ -61,12 +44,6 @@ type PopupMixinType = PopupMixin<{ bill: GetBills.Bills }, ReceiptCreateInput>;
     validations: {
         input: {
             money: currency,
-            bankAccountNumber: {
-                or: or(
-                    and(numeric, minLength(6), maxLength(20)),
-                    not(required),
-                ),
-            },
         },
     },
 })
@@ -77,7 +54,6 @@ export default class extends mixins<PopupMixinType>(
     onOpen() {
         this.input = {
             money: 0,
-            bankAccountNumber: '',
             bill: {
                 id: this.data.bill.id,
             },

@@ -40,7 +40,7 @@ type AppMutation {
     # Tạo và trả về một giá biến động mới
     createPriceVolatility(input: PriceVolatilityCreateInput!): PriceVolatility!
 
-    # Tạo và trả về một phiếu thu mới
+    # Tạo và trả về một phiếu thu tiền mặt mới
     createReceipt(input: ReceiptCreateInput!): Receipt!
 
     # Tạo và trả về một phòng mới
@@ -1268,9 +1268,6 @@ input PriceVolatilityUpdateInput {
 
 # Phiếu thu
 type Receipt {
-    # Số tài khoản ngân hàng của khách
-    bankAccountNumber: String
-
     # Phiếu thu thuộc hóa đơn nào
     bill: Bill!
 
@@ -1290,9 +1287,6 @@ type Receipt {
 input ReceiptCreateInput {
     # Số tiền đã thu
     money: Int!
-
-    # Số tài khoản ngân hàng của khách
-    bankAccountNumber: String = null
 
     # Thuộc hóa đơn
     bill: BillId!

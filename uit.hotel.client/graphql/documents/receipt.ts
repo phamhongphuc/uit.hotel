@@ -6,7 +6,6 @@ export const getReceipts = gql`
             id
             money
             time
-            bankAccountNumber
             bill {
                 id
             }
