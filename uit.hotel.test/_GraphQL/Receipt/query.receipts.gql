@@ -3,7 +3,6 @@
         id
         time
         money
-        bankAccountNumber
         employee {
             id
         }

@@ -13,14 +13,14 @@ namespace uit.hotel.Queries.Mutation
         {
             Field<NonNullGraphType<ReceiptType>>(
                 _Creation,
-                "Tạo và trả về một phiếu thu mới",
+                "Tạo và trả về một phiếu thu tiền mặt mới",
                 _InputArgument<ReceiptCreateInput>(),
                 _CheckPermission_TaskObject(
                     p => p.PermissionManageRentingRoom,
                     context =>
                     {
                         var employee = AuthenticationHelper.GetEmployee(context);
-                        return ReceiptBusiness.Add(employee, _GetInput(context));
+                        return ReceiptBusiness.AddCash(employee, _GetInput(context));
                     }
                 )
             );

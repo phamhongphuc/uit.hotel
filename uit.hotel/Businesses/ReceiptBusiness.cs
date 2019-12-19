@@ -7,7 +7,7 @@ namespace uit.hotel.Businesses
 {
     public static class ReceiptBusiness
     {
-        public static Task<Receipt> Add(Employee employee, Receipt receipt)
+        public static Task<Receipt> AddCash(Employee employee, Receipt receipt)
         {
             receipt.Bill = receipt.Bill.GetManaged();
             receipt.Employee = employee;

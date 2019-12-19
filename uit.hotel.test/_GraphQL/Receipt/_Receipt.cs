@@ -21,7 +21,6 @@ namespace uit.hotel.test._GraphQL
                     input = new
                     {
                         money = 1000,
-                        bankAccountNumber = "10-10-2015",
                         bill = new
                         {
                             id = 1
@@ -43,7 +42,6 @@ namespace uit.hotel.test._GraphQL
                     input = new
                     {
                         money = 1000,
-                        bankAccountNumber = "10-10-2015",
                         bill = new
                         {
                             id = 100
@@ -61,7 +59,6 @@ namespace uit.hotel.test._GraphQL
             {
                 Id = 10,
                 Money = 1,
-                BankAccountNumber = "11111",
                 Bill = BillBusiness.Get(1),
                 Employee = EmployeeBusiness.Get(Constant.AdminName)
             })).Wait();

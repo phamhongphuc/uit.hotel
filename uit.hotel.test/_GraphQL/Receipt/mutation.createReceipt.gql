@@ -3,7 +3,6 @@ mutation($input: ReceiptCreateInput!) {
         id
         money
         time
-        bankAccountNumber
         bill {
             id
         }
