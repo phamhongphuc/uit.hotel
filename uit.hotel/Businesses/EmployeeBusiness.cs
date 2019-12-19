@@ -20,7 +20,7 @@ namespace uit.hotel.Businesses
             if (employee.Position == null)
                 throw new Exception("Không tồn tại vị trí này");
 
-            employee.Password = CryptoHelper.Encrypt(employee.Password);
+            employee.Password = CryptoHelper.EncryptPassword(employee.Password);
 
             return EmployeeDataAccess.Add(employee);
         }
@@ -42,7 +42,7 @@ namespace uit.hotel.Businesses
         {
             var employee = Get(id);
             if (!employee.IsEqualPassword(password)) throw new Exception("Mật khẩu không chính xác");
-            newPassword = CryptoHelper.Encrypt(newPassword);
+            newPassword = CryptoHelper.EncryptPassword(newPassword);
 
             EmployeeDataAccess.ChangePassword(employee, newPassword);
         }
@@ -61,7 +61,7 @@ namespace uit.hotel.Businesses
                 throw new Exception("Nhân viên không thể tự reset mật khẩu của chính mình");
 
             var newPassword = AuthenticationHelper.GetRandomString();
-            EmployeeDataAccess.ChangePassword(employee, CryptoHelper.Encrypt(newPassword));
+            EmployeeDataAccess.ChangePassword(employee, CryptoHelper.EncryptPassword(newPassword));
 
             return newPassword;
         }

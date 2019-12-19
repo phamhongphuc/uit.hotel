@@ -1,17 +1,21 @@
-﻿using System.Security.Cryptography;
+﻿using System;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace uit.hotel.Queries.Authentication
 {
     public static class CryptoHelper
     {
-        public static string Encrypt(string password)
+        public static string EncryptPassword(string password)
         {
-            var crypt = new SHA256Managed();
-            var hash = new StringBuilder();
-            var crypto = crypt.ComputeHash(Encoding.UTF8.GetBytes(password));
-            foreach (var theByte in crypto) hash.Append(theByte.ToString("x2"));
-            return hash.ToString();
+            using (var crypt = new SHA256Managed())
+                return crypt.ComputeHash(Encoding.UTF8.GetBytes(password)).ToHash();
         }
+
+        public static string ToHash(this byte[] bytes)
+            => BitConverter.ToString(bytes).Replace("-", "").ToLower();
+
+        public static byte[] ToBytes(this string str)
+            => Encoding.UTF8.GetBytes(str);
     }
 }

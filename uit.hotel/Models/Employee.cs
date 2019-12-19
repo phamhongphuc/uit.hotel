@@ -45,7 +45,7 @@ namespace uit.hotel.Models
 
         public bool IsEqualPassword(string rawPassword)
         {
-            return CryptoHelper.Encrypt(rawPassword).Equals(Password);
+            return CryptoHelper.EncryptPassword(rawPassword).Equals(Password);
         }
 
         public Employee GetManaged()

@@ -45,7 +45,7 @@ namespace uit.hotel.Queries.Helper
                     Gender = true,
                     Name = "Quản trị viên",
                     IdentityCard = "123456789",
-                    Password = CryptoHelper.Encrypt("12345678"),
+                    Password = CryptoHelper.EncryptPassword("12345678"),
                     PhoneNumber = "+84 0123456789",
                     Position = position,
                     StartingDate = DateTimeOffset.Now
@@ -61,7 +61,7 @@ namespace uit.hotel.Queries.Helper
                     Gender = true,
                     Name = "Quản trị viên",
                     IdentityCard = "123456789",
-                    Password = CryptoHelper.Encrypt("12345678"),
+                    Password = CryptoHelper.EncryptPassword("12345678"),
                     PhoneNumber = "+84 0123456789",
                     Position = position,
                     StartingDate = DateTimeOffset.Now

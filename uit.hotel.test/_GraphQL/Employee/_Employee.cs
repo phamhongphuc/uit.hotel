@@ -116,7 +116,7 @@ namespace uit.hotel.test._GraphQL
                     Gender = true,
                     Name = "Quản trị viên",
                     IdentityCard = "123456789",
-                    Password = CryptoHelper.Encrypt("12345678"),
+                    Password = CryptoHelper.EncryptPassword("12345678"),
                     PhoneNumber = "+84 0123456789",
                     Position = PositionBusiness.Get(1),
                     StartingDate = DateTimeOffset.Now
