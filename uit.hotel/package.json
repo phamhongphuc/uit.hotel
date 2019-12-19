@@ -8,7 +8,7 @@
     },
     "scripts": {
         "dev": "cross-env ASPNETCORE_ENVIRONMENT=Development dotnet run",
-        "watch": "cross-env ASPNETCORE_ENVIRONMENT=Development dotnet watch",
+        "watch": "cross-env ASPNETCORE_ENVIRONMENT=Development dotnet watch run",
         "test": "cd ../uit.hotel.test && dotnet test"
     },
     "author": "",
