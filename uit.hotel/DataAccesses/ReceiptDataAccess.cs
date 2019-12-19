@@ -15,19 +15,12 @@ namespace uit.hotel.DataAccesses
         {
             await Database.WriteAsync(realm =>
             {
-                Add(realm, receipt);
-
+                receipt.Id = NextId;
+                receipt.Time = DateTimeOffset.Now;
                 receipt.Bill.CalculateTotalReceipts();
+                realm.Add(receipt);
             });
             return receipt;
-        }
-
-        // Doesn't calculate anything. Add only.
-        public static void Add(Realm realm, Receipt receipt)
-        {
-            receipt.Id = NextId;
-            receipt.Time = DateTimeOffset.Now;
-            realm.Add(receipt);
         }
 
         public static Receipt Get(int receiptId) => Database.Find<Receipt>(receiptId);
