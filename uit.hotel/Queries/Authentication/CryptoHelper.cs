@@ -12,6 +12,12 @@ namespace uit.hotel.Queries.Authentication
                 return crypt.ComputeHash(Encoding.UTF8.GetBytes(password)).ToHash();
         }
 
+        public static string EncryptSHA256(this string content, string key)
+        {
+            using (var crypt = new HMACSHA256(key.ToBytes()))
+                return crypt.ComputeHash(content.ToBytes()).ToHash();
+        }
+
         public static string ToHash(this byte[] bytes)
             => BitConverter.ToString(bytes).Replace("-", "").ToLower();
 
