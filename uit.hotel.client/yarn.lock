@@ -1366,7 +1366,7 @@
     "@types/webpack-dev-middleware" "^2.0.3"
     "@types/webpack-hot-middleware" "^2.25.0"
 
-"@nuxt/types@^0.5.7":
+"@nuxt/types@0.5.7", "@nuxt/types@^0.5.7":
   version "0.5.7"
   resolved "https://registry.yarnpkg.com/@nuxt/types/-/types-0.5.7.tgz#ec989a7e2071bdcc60f68010df9ee1b5bba54037"
   integrity sha512-pB4TcUB09Gx0QFFN1Wjv8CgZdmDucmVT3QMUMFQDX7WCQYtMKwu00hlmwzCYK0no4m8xQ1jGyKulVZu+a61kSw==
@@ -1390,13 +1390,13 @@
     "@types/webpack-dev-middleware" "^2.0.3"
     "@types/webpack-hot-middleware" "^2.25.0"
 
-"@nuxt/typescript-build@^0.5.1":
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/@nuxt/typescript-build/-/typescript-build-0.5.1.tgz#5ceb4031175bc2c2ded0a962a0fc88f9b08728cb"
-  integrity sha512-Aw/W5NWdnfqlNt4xcTHODOvIDzfANVCTDMyvoJBKwP59l8H8n9e5D5w+nlVDdDMiTr3V4A7Udh2NQje7YmKz9A==
+"@nuxt/typescript-build@^0.5.2":
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/@nuxt/typescript-build/-/typescript-build-0.5.2.tgz#df649db628951b06e035e5c36f7bee9b0eba2a53"
+  integrity sha512-8FKtt+0bU+6TxWdcY/G7a3OK/lXh1oSqDJLEGqrkj41ObK3HXO3a1LsfgZpgxIHJL5Y+mmuLvhMXRmbVZSjN7g==
   dependencies:
-    "@nuxt/types" "0.5.6"
-    consola "^2.11.0"
+    "@nuxt/types" "0.5.7"
+    consola "^2.11.1"
     fork-ts-checker-webpack-plugin "^3.1.1"
     ts-loader "^6.2.1"
     typescript "~3.7"
@@ -4438,10 +4438,10 @@ connect@^3.7.0:
     parseurl "~1.3.3"
     utils-merge "1.0.1"
 
-consola@^2.10.0, consola@^2.10.1, consola@^2.11.0, consola@^2.4.0, consola@^2.6.0, consola@^2.9.0:
-  version "2.11.0"
-  resolved "https://registry.yarnpkg.com/consola/-/consola-2.11.0.tgz#9bb35d850d8cecde894ce2eb4d792fa6b90d9013"
-  integrity sha512-2bcAqHastlPSCvZ+ur8bgHInGAWvUnysWz3h3xRX+/XZoCY7avolJJnVXOPGoVoyCcg1b231XixonoArmgxaoA==
+consola@^2.10.0, consola@^2.10.1, consola@^2.11.1, consola@^2.4.0, consola@^2.6.0, consola@^2.9.0:
+  version "2.11.1"
+  resolved "https://registry.yarnpkg.com/consola/-/consola-2.11.1.tgz#1df259c0a7aef44c9eb4f448e3a20ba0850a65e7"
+  integrity sha512-zFH/xFAE/KHJiWqwyTEDmdFe34Swc0pqMKJeowTvR3irepx8kKPu8bjaKzRd+RLjLH+0TvFxFBnohbSUQ+hOsw==
 
 console-browserify@^1.1.0:
   version "1.2.0"
