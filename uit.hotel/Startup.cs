@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using uit.hotel.GraphQLHelper;
 using uit.hotel.Queries.Authentication;
+using uit.hotel.Queries.Helper;
 
 namespace uit.hotel
 {
@@ -16,6 +17,7 @@ namespace uit.hotel
         public Startup(IConfiguration configuration)
         {
             AuthenticationHelper.Initialize(configuration);
+            Constant.Initialize(configuration);
             Configuration = configuration;
         }
 
