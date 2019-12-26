@@ -75,7 +75,6 @@ namespace uit.hotel.Queries.Mutation
                 )
             );
 
-
             Field<NonNullGraphType<BillType>>(
                 "PayTheBill",
                 "Thanh toán hóa đơn (thanh toán tiền phòng)",

@@ -54,16 +54,18 @@ namespace uit.hotel.ObjectTypes
             Field<NonNullGraphType<FloorType>>(
                 nameof(Room.Floor),
                 "Phòng thuộc tầng nào",
-                resolve: context => context.Source.Floor);
+                resolve: context => context.Source.Floor
+            );
             Field<NonNullGraphType<RoomKindType>>(
                 nameof(Room.RoomKind),
                 "Loại phòng của phòng",
-                resolve: context => context.Source.RoomKind);
-
+                resolve: context => context.Source.RoomKind
+            );
             Field<NonNullGraphType<ListGraphType<NonNullGraphType<BookingType>>>>(
                 nameof(Room.Bookings),
                 "Danh sách thông tin thuê phòng",
-                resolve: context => context.Source.Bookings.ToList());
+                resolve: context => context.Source.Bookings.ToList()
+            );
         }
     }
 

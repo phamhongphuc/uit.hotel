@@ -30,12 +30,13 @@ namespace uit.hotel.ObjectTypes
             Field<NonNullGraphType<RoomKindType>>(
                 nameof(PriceVolatility.RoomKind),
                 "Thuộc loại phòng",
-                resolve: context => context.Source.RoomKind);
-
+                resolve: context => context.Source.RoomKind
+            );
             Field<EmployeeType>(
                 nameof(PriceVolatility.Employee),
                 "Nhân viên tạo giá",
-                resolve: context => context.Source.Employee);
+                resolve: context => context.Source.Employee
+            );
         }
     }
 

@@ -21,17 +21,18 @@ namespace uit.hotel.ObjectTypes
             Field<NonNullGraphType<ListGraphType<NonNullGraphType<RoomType>>>>(
                 nameof(RoomKind.Rooms),
                 "Danh sách các phòng thuộc loại phòng này",
-                resolve: context => context.Source.Rooms.ToList());
-
+                resolve: context => context.Source.Rooms.ToList()
+            );
             Field<NonNullGraphType<ListGraphType<NonNullGraphType<PriceType>>>>(
                 nameof(RoomKind.Prices),
                 "Danh sách giá cố định của loại phòng",
-                resolve: context => context.Source.Prices.ToList());
-
+                resolve: context => context.Source.Prices.ToList()
+            );
             Field<NonNullGraphType<ListGraphType<NonNullGraphType<PriceVolatilityType>>>>(
                 nameof(RoomKind.PriceVolatilities),
                 "Danh sách giá biến động của loại phòng",
-                resolve: context => context.Source.PriceVolatilities.ToList());
+                resolve: context => context.Source.PriceVolatilities.ToList()
+            );
         }
     }
 

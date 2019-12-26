@@ -12,6 +12,7 @@ namespace uit.hotel.ObjectTypes
             Description = "Loại đơn vị giá biến động";
         }
     }
+
     public class PriceVolatilityItemType : ObjectGraphType<PriceVolatilityItem>
     {
         public PriceVolatilityItemType()

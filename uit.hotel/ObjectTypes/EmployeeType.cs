@@ -26,32 +26,33 @@ namespace uit.hotel.ObjectTypes
             Field<NonNullGraphType<PositionType>>(
                 nameof(Employee.Position),
                 "Chức vụ",
-                resolve: context => context.Source.Position);
-
+                resolve: context => context.Source.Position
+            );
             Field<NonNullGraphType<ListGraphType<NonNullGraphType<BillType>>>>(
                 nameof(Employee.Bills),
                 "Danh sách các Hóa đơn mà nhân viên tạo",
-                resolve: context => context.Source.Bills.ToList());
-
+                resolve: context => context.Source.Bills.ToList()
+            );
             Field<NonNullGraphType<ListGraphType<NonNullGraphType<ReceiptType>>>>(
                 nameof(Employee.Receipts),
                 "Danh sách các Phiếu thu mà nhân viên tạo",
-                resolve: context => context.Source.Receipts.ToList());
-
+                resolve: context => context.Source.Receipts.ToList()
+            );
             Field<NonNullGraphType<ListGraphType<NonNullGraphType<PriceType>>>>(
                 nameof(Employee.Prices),
                 "Danh sách các Giá cơ bản mà nhân viên tạo",
-                resolve: context => context.Source.Prices.ToList());
-
+                resolve: context => context.Source.Prices.ToList()
+            );
             Field<NonNullGraphType<ListGraphType<NonNullGraphType<PriceVolatilityType>>>>(
                 nameof(Employee.PriceVolatilities),
                 "Danh sách các Giá biến động mà nhân viên tạo",
-                resolve: context => context.Source.PriceVolatilities.ToList());
-
+                resolve: context => context.Source.PriceVolatilities.ToList()
+            );
             Field<NonNullGraphType<ListGraphType<NonNullGraphType<BookingType>>>>(
                 nameof(Employee.Bookings),
                 "Danh sách các Thông tin thuê phòng mà nhân viên tạo",
-                resolve: context => context.Source.Bookings.ToList());
+                resolve: context => context.Source.Bookings.ToList()
+            );
         }
     }
 

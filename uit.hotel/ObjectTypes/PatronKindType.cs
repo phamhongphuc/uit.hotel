@@ -19,7 +19,8 @@ namespace uit.hotel.ObjectTypes
             Field<NonNullGraphType<ListGraphType<NonNullGraphType<PatronType>>>>(
                 nameof(PatronKind.Patrons),
                 "Danh sách các khách hàng thuộc loại khách hàng",
-                resolve: context => context.Source.Patrons.ToList());
+                resolve: context => context.Source.Patrons.ToList()
+            );
         }
     }
 
