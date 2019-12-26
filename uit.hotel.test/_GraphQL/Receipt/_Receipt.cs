@@ -21,6 +21,7 @@ namespace uit.hotel.test._GraphQL
                     input = new
                     {
                         money = 1000,
+                        kind = "CASH",
                         bill = new
                         {
                             id = 1
@@ -42,6 +43,7 @@ namespace uit.hotel.test._GraphQL
                     input = new
                     {
                         money = 1000,
+                        kind = "CASH",
                         bill = new
                         {
                             id = 100
@@ -59,6 +61,10 @@ namespace uit.hotel.test._GraphQL
             {
                 Id = 10,
                 Money = 1,
+                Kind = ReceiptKindEnum.Cash,
+                PayUrl = "",
+                Status = ReceiptStatusEnum.Success,
+                StatusText = "",
                 Bill = BillBusiness.Get(1),
                 Employee = EmployeeBusiness.Get(Constant.AdminName)
             })).Wait();
