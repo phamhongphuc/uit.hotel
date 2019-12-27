@@ -75,10 +75,10 @@ type PopupMixinType = PopupMixin<
             discount: {
                 ...currency,
                 lessThanTotalPrice(value: string | number) {
-                    return (
-                        toNumber(value) <
-                        (this as PopupBillUpdateDiscount).data.bill.totalPrice
-                    );
+                    const self = this as PopupBillUpdateDiscount;
+                    return self.data
+                        ? toNumber(value) < self.data.bill.totalPrice
+                        : true;
                 },
             },
         },

@@ -146,7 +146,7 @@
                     </span>
                 </div>
                 <b-table
-                    class="table-style table-sm bg-lighten rounded overflow-hidden"
+                    class="table-style table-sm table-cell-middle bg-lighten rounded overflow-hidden"
                     show-empty
                     :items="bill.receipts"
                     :fields="[
@@ -163,14 +163,18 @@
                             formatter: toDateTime,
                         },
                         {
+                            key: 'kind',
+                            label: 'Hình thức',
+                        },
+                        {
+                            key: 'status',
+                            label: 'Trạng thái',
+                        },
+                        {
                             key: 'money',
                             label: 'Số tiền',
                             class: 'text-center',
-                        },
-                        {
-                            key: 'bankAccountNumber',
-                            label: 'Tài khoản   ',
-                            class: 'text-center',
+                            formatter: toMoney,
                         },
                     ]"
                 >
@@ -179,6 +183,51 @@
                     </template>
                     <template v-slot:cell(index)="data">
                         {{ data.index + 1 }}
+                    </template>
+                    <template v-slot:cell(kind)="{ value }">
+                        <icon-
+                            class="mr-1"
+                            :i="ReceiptKindIconMap[value]"
+                            :class="`text-${ReceiptKindColorMap[value]}`"
+                        />
+                        {{ ReceiptKindTitleMap[value] }}
+                    </template>
+                    <template
+                        v-slot:cell(status)="{
+                            value,
+                            item,
+                            item: { kind, statusText },
+                        }"
+                    >
+                        <div
+                            class="d-flex m-child-1 flex-wrap align-items-center mr-n2"
+                        >
+                            <icon-
+                                class="mr-1"
+                                i="circle-fill"
+                                :class="`text-${ReceiptStatusColorMap[value]}`"
+                            />
+                            <span class="mr-2">
+                                {{ statusText }}
+                            </span>
+                            <b-button
+                                v-if="
+                                    kind == ReceiptKindEnum.Momo &&
+                                        value == ReceiptStatusEnum.Pending
+                                "
+                                size="sm"
+                                class="shadow-none text-nowrap ml-auto"
+                                variant="momo"
+                                @click="
+                                    refs.receipt_pay_momo.open({
+                                        receipt: item,
+                                    })
+                                "
+                            >
+                                <icon- i="card-down" class="mr-1" />
+                                Thanh toán
+                            </b-button>
+                        </div>
                     </template>
                 </b-table>
                 <div class="my-1 font-weight-medium text-right">
@@ -210,14 +259,24 @@ import {
     checkInFormatter,
     checkOutFormatter,
 } from './popup-bill-detail.helper';
-import { GetBillQuery, GetBill, BookingStatusEnum } from '~/graphql/types';
+import {
+    BookingStatusEnum,
+    GetBill,
+    GetBillQuery,
+    ReceiptKindEnum,
+    ReceiptStatusEnum,
+} from '~/graphql/types';
 import { PopupMixin, DataMixin } from '~/components/mixins';
 import { getBill, payTheBill } from '~/graphql/documents';
 import { toDateTime, toMoney, isMinDate, fromNow } from '~/utils';
 import {
     billStatusMap,
-    bookingStatusMap,
     bookingStatusColorMap,
+    bookingStatusMap,
+    ReceiptKindColorMap,
+    ReceiptKindIconMap,
+    ReceiptKindTitleMap,
+    ReceiptStatusColorMap,
 } from '~/modules/model';
 
 type PopupMixinType = PopupMixin<{ id: number }, null>;
@@ -239,6 +298,12 @@ export default class extends mixins<PopupMixinType, {}>(
         getBill,
         isMinDate,
         payTheBill,
+        ReceiptKindColorMap,
+        ReceiptKindEnum,
+        ReceiptKindIconMap,
+        ReceiptKindTitleMap,
+        ReceiptStatusEnum,
+        ReceiptStatusColorMap,
         toDateTime,
         toMoney,
     }),

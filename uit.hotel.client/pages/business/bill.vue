@@ -160,6 +160,7 @@
         <popup-receipt-add- ref="receipt_add" />
         <popup-room-select- ref="room_select" />
         <popup-service-detail-add- ref="service_detail_add" />
+        <popup-receipt-pay-momo- ref="receipt_pay_momo" />
     </div>
 </template>
 <script lang="ts">
