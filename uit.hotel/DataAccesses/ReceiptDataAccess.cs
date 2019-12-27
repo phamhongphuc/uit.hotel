@@ -22,6 +22,25 @@ namespace uit.hotel.DataAccesses
             return receipt;
         }
 
+        public static async Task<Receipt> UpdatePayUrl(Receipt receipt, string payUrl)
+        {
+            await Database.WriteAsync(realm => receipt.PayUrl = payUrl);
+            return receipt;
+        }
+
+        public static async Task<Receipt> UpdateStatus(Receipt receipt, ReceiptStatusEnum status, string statusText)
+        {
+            await Database.WriteAsync(realm =>
+            {
+                receipt.Status = status;
+                receipt.StatusText = statusText;
+            });
+            return receipt;
+        }
+
+        public static Task Delete(Receipt receiptInDatabase)
+            => Database.WriteAsync(realm => realm.Remove(receiptInDatabase));
+
         public static Receipt Get(int receiptId) => Database.Find<Receipt>(receiptId);
 
         public static IEnumerable<Receipt> Get() => Database.All<Receipt>();
