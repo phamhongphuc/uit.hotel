@@ -21,7 +21,7 @@
             </div>
         </query->
         <context-manage-patron- ref="context_patron" />
-        <context-receptionist-booking- ref="context_receptionist_booking" />
+        <context-receptionist-booking- ref="context_booking" />
         <context-receptionist-room- ref="context_receptionist_room" />
         <context-receptionist-service-detail- ref="context_service_detail" />
         <popup-book- ref="book" />

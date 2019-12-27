@@ -53,7 +53,7 @@ export type AppMutation = {
     createPrice: Price;
     /** Tạo và trả về một giá biến động mới */
     createPriceVolatility: PriceVolatility;
-    /** Tạo và trả về một phiếu thu mới */
+    /** Tạo và trả về một phiếu thu tiền mới */
     createReceipt: Receipt;
     /** Tạo và trả về một phòng mới */
     createRoom: Room;
@@ -73,6 +73,8 @@ export type AppMutation = {
     checkLogin: Employee;
     /** Trả phòng */
     checkOut: Booking;
+    /** Kiểm tra trạng thái của một phiếu thu */
+    checkReceipt: Receipt;
     /** Xóa một tầng */
     deleteFloor: Scalars['String'];
     /** Xóa một loại khách hàng */
@@ -226,6 +228,10 @@ export type AppMutationCheckInArgs = {
 };
 
 export type AppMutationCheckOutArgs = {
+    id: Scalars['ID'];
+};
+
+export type AppMutationCheckReceiptArgs = {
     id: Scalars['ID'];
 };
 
@@ -1227,16 +1233,26 @@ export type PriceVolatilityUpdateInput = {
 
 /** Phiếu thu */
 export type Receipt = {
-    /** Số tài khoản ngân hàng của khách */
-    bankAccountNumber: Maybe<Scalars['String']>;
     /** Phiếu thu thuộc hóa đơn nào */
     bill: Bill;
     /** Nhân viên tạo phiếu thu */
     employee: Employee;
+    /** Thông tin thêm */
+    extraData: Scalars['String'];
     /** Id của phiếu thu */
     id: Scalars['Int'];
+    /** Loại thanh toán */
+    kind: ReceiptKindEnum;
     /** Số tiền đã thu */
     money: Scalars['Int'];
+    /** Thông tin thanh toán */
+    orderInfo: Scalars['String'];
+    /** Đường dẫn thanh toán */
+    payUrl: Scalars['String'];
+    /** Trạng thái thanh toán */
+    status: ReceiptStatusEnum;
+    /** Trạng thái của phiếu thu */
+    statusText: Scalars['String'];
     /** Thời gian tạo phiếu thu */
     time: Scalars['DateTimeOffset'];
 };
@@ -1244,11 +1260,25 @@ export type Receipt = {
 export type ReceiptCreateInput = {
     /** Số tiền đã thu */
     money: Scalars['Int'];
-    /** Số tài khoản ngân hàng của khách */
-    bankAccountNumber: Maybe<Scalars['String']>;
     /** Thuộc hóa đơn */
     bill: BillId;
+    /** Loại thanh toán */
+    kind: ReceiptKindEnum;
 };
+
+/** Loại phiếu thu */
+export enum ReceiptKindEnum {
+    Cash = 'CASH',
+    Momo = 'MOMO',
+}
+
+/** Loại phiếu thu */
+export enum ReceiptStatusEnum {
+    Pending = 'PENDING',
+    Success = 'SUCCESS',
+    Error = 'ERROR',
+    SystemError = 'SYSTEM_ERROR',
+}
 
 /** Một phòng trong khách sạn */
 export type Room = {
@@ -1481,9 +1511,16 @@ export type GetBillQuery = {
             }
         >;
         receipts: Array<
-            Pick<Receipt, 'id' | 'money' | 'time'> & {
-                employee: Pick<Employee, 'id' | 'name'>;
-            }
+            Pick<
+                Receipt,
+                | 'id'
+                | 'time'
+                | 'kind'
+                | 'status'
+                | 'statusText'
+                | 'payUrl'
+                | 'money'
+            >
         >;
     };
 };
@@ -2080,10 +2117,27 @@ export type GetReceiptsQueryVariables = {};
 
 export type GetReceiptsQuery = {
     receipts: Array<
-        Pick<Receipt, 'id' | 'money' | 'time' | 'bankAccountNumber'> & {
-            bill: Pick<Bill, 'id'>;
-        }
+        Pick<Receipt, 'id' | 'money' | 'time'> & { bill: Pick<Bill, 'id'> }
     >;
+};
+
+export type GetReceiptQueryVariables = {
+    id: Scalars['ID'];
+};
+
+export type GetReceiptQuery = {
+    receipt: Pick<
+        Receipt,
+        'id' | 'time' | 'kind' | 'status' | 'statusText' | 'payUrl' | 'money'
+    >;
+};
+
+export type CheckReceiptMutationVariables = {
+    id: Scalars['ID'];
+};
+
+export type CheckReceiptMutation = {
+    checkReceipt: Pick<Receipt, 'id' | 'status' | 'statusText'>;
 };
 
 export type CreateReceiptMutationVariables = {
@@ -2298,9 +2352,6 @@ export namespace GetBill {
     >;
     export type Room = NonNullable<GetBillQuery['bill']['bookings'][0]>['room'];
     export type Receipts = NonNullable<GetBillQuery['bill']['receipts'][0]>;
-    export type Employee = NonNullable<
-        GetBillQuery['bill']['receipts'][0]
-    >['employee'];
 }
 
 export namespace AddBookingToBill {
@@ -2659,6 +2710,18 @@ export namespace GetReceipts {
     export type Query = GetReceiptsQuery;
     export type Receipts = NonNullable<GetReceiptsQuery['receipts'][0]>;
     export type Bill = NonNullable<GetReceiptsQuery['receipts'][0]>['bill'];
+}
+
+export namespace GetReceipt {
+    export type Variables = GetReceiptQueryVariables;
+    export type Query = GetReceiptQuery;
+    export type Receipt = GetReceiptQuery['receipt'];
+}
+
+export namespace CheckReceipt {
+    export type Variables = CheckReceiptMutationVariables;
+    export type Mutation = CheckReceiptMutation;
+    export type CheckReceipt = CheckReceiptMutation['checkReceipt'];
 }
 
 export namespace CreateReceipt {

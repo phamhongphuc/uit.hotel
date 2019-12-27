@@ -56,17 +56,6 @@ namespace uit.hotel.DataAccesses
             {
                 billInDatabase.Employee = employee;
                 billInDatabase.Time = DateTimeOffset.Now;
-
-                var remain = billInDatabase.TotalPrice + billInDatabase.Discount - billInDatabase.TotalReceipts;
-                if (remain == 0) return;
-
-                var receipt = new Receipt();
-                receipt.Money = remain;
-                receipt.Bill = billInDatabase;
-                receipt.Employee = employee;
-
-                ReceiptDataAccess.Add(realm, receipt);
-
                 billInDatabase.CalculateTotalReceipts();
             });
             return billInDatabase;

@@ -6,10 +6,33 @@ export const getReceipts = gql`
             id
             money
             time
-            bankAccountNumber
             bill {
                 id
             }
+        }
+    }
+`;
+
+export const getReceipt = gql`
+    query getReceipt($id: ID!) {
+        receipt(id: $id) {
+            id
+            time
+            kind
+            status
+            statusText
+            payUrl
+            money
+        }
+    }
+`;
+
+export const checkReceipt = gql`
+    mutation checkReceipt($id: ID!) {
+        checkReceipt(id: $id) {
+            id
+            status
+            statusText
         }
     }
 `;

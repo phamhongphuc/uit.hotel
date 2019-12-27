@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Realms;
 using uit.hotel.Models;
 
 namespace uit.hotel.DataAccesses
@@ -15,20 +14,32 @@ namespace uit.hotel.DataAccesses
         {
             await Database.WriteAsync(realm =>
             {
-                Add(realm, receipt);
-
+                receipt.Id = NextId;
+                receipt.Time = DateTimeOffset.Now;
                 receipt.Bill.CalculateTotalReceipts();
+                realm.Add(receipt);
             });
             return receipt;
         }
 
-        // Doesn't calculate anything. Add only.
-        public static void Add(Realm realm, Receipt receipt)
+        public static async Task<Receipt> UpdatePayUrl(Receipt receipt, string payUrl)
         {
-            receipt.Id = NextId;
-            receipt.Time = DateTimeOffset.Now;
-            realm.Add(receipt);
+            await Database.WriteAsync(realm => receipt.PayUrl = payUrl);
+            return receipt;
         }
+
+        public static async Task<Receipt> UpdateStatus(Receipt receipt, ReceiptStatusEnum status, string statusText)
+        {
+            await Database.WriteAsync(realm =>
+            {
+                receipt.Status = status;
+                receipt.StatusText = statusText;
+            });
+            return receipt;
+        }
+
+        public static Task Delete(Receipt receiptInDatabase)
+            => Database.WriteAsync(realm => realm.Remove(receiptInDatabase));
 
         public static Receipt Get(int receiptId) => Database.Find<Receipt>(receiptId);
 

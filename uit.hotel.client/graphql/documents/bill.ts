@@ -58,12 +58,12 @@ export const getBill = gql`
             }
             receipts {
                 id
-                money
-                employee {
-                    id
-                    name
-                }
                 time
+                kind
+                status
+                statusText
+                payUrl
+                money
             }
         }
     }

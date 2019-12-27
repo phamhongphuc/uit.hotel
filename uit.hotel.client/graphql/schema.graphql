@@ -40,7 +40,7 @@ type AppMutation {
     # Tạo và trả về một giá biến động mới
     createPriceVolatility(input: PriceVolatilityCreateInput!): PriceVolatility!
 
-    # Tạo và trả về một phiếu thu mới
+    # Tạo và trả về một phiếu thu tiền mới
     createReceipt(input: ReceiptCreateInput!): Receipt!
 
     # Tạo và trả về một phòng mới
@@ -69,6 +69,9 @@ type AppMutation {
 
     # Trả phòng
     checkOut(id: ID!): Booking!
+
+    # Kiểm tra trạng thái của một phiếu thu
+    checkReceipt(id: ID!): Receipt!
 
     # Xóa một tầng
     deleteFloor(id: ID!): String!
@@ -1268,20 +1271,35 @@ input PriceVolatilityUpdateInput {
 
 # Phiếu thu
 type Receipt {
-    # Số tài khoản ngân hàng của khách
-    bankAccountNumber: String
-
     # Phiếu thu thuộc hóa đơn nào
     bill: Bill!
 
     # Nhân viên tạo phiếu thu
     employee: Employee!
 
+    # Thông tin thêm
+    extraData: String!
+
     # Id của phiếu thu
     id: Int!
 
+    # Loại thanh toán
+    kind: ReceiptKindEnum!
+
     # Số tiền đã thu
     money: Int!
+
+    # Thông tin thanh toán
+    orderInfo: String!
+
+    # Đường dẫn thanh toán
+    payUrl: String!
+
+    # Trạng thái thanh toán
+    status: ReceiptStatusEnum!
+
+    # Trạng thái của phiếu thu
+    statusText: String!
 
     # Thời gian tạo phiếu thu
     time: DateTimeOffset!
@@ -1291,11 +1309,25 @@ input ReceiptCreateInput {
     # Số tiền đã thu
     money: Int!
 
-    # Số tài khoản ngân hàng của khách
-    bankAccountNumber: String = null
-
     # Thuộc hóa đơn
     bill: BillId!
+
+    # Loại thanh toán
+    kind: ReceiptKindEnum!
+}
+
+# Loại phiếu thu
+enum ReceiptKindEnum {
+    CASH
+    MOMO
+}
+
+# Loại phiếu thu
+enum ReceiptStatusEnum {
+    PENDING
+    SUCCESS
+    ERROR
+    SYSTEM_ERROR
 }
 
 # Một phòng trong khách sạn

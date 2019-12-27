@@ -3101,18 +3101,6 @@
                 "description": "Phiếu thu",
                 "fields": [
                     {
-                        "name": "bankAccountNumber",
-                        "description": "Số tài khoản ngân hàng của khách",
-                        "args": [],
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "String",
-                            "ofType": null
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
                         "name": "bill",
                         "description": "Phiếu thu thuộc hóa đơn nào",
                         "args": [],
@@ -3145,6 +3133,22 @@
                         "deprecationReason": null
                     },
                     {
+                        "name": "extraData",
+                        "description": "Thông tin thêm",
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
                         "name": "id",
                         "description": "Id của phiếu thu",
                         "args": [],
@@ -3161,6 +3165,22 @@
                         "deprecationReason": null
                     },
                     {
+                        "name": "kind",
+                        "description": "Loại thanh toán",
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "ENUM",
+                                "name": "ReceiptKindEnum",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
                         "name": "money",
                         "description": "Số tiền đã thu",
                         "args": [],
@@ -3170,6 +3190,70 @@
                             "ofType": {
                                 "kind": "SCALAR",
                                 "name": "Int",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "orderInfo",
+                        "description": "Thông tin thanh toán",
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "payUrl",
+                        "description": "Đường dẫn thanh toán",
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "status",
+                        "description": "Trạng thái thanh toán",
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "ENUM",
+                                "name": "ReceiptStatusEnum",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "statusText",
+                        "description": "Trạng thái của phiếu thu",
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
                                 "ofType": null
                             }
                         },
@@ -3196,6 +3280,64 @@
                 "inputFields": null,
                 "interfaces": [],
                 "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "ENUM",
+                "name": "ReceiptKindEnum",
+                "description": "Loại phiếu thu",
+                "fields": null,
+                "inputFields": null,
+                "interfaces": null,
+                "enumValues": [
+                    {
+                        "name": "CASH",
+                        "description": "",
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "MOMO",
+                        "description": "",
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    }
+                ],
+                "possibleTypes": null
+            },
+            {
+                "kind": "ENUM",
+                "name": "ReceiptStatusEnum",
+                "description": "Loại phiếu thu",
+                "fields": null,
+                "inputFields": null,
+                "interfaces": null,
+                "enumValues": [
+                    {
+                        "name": "PENDING",
+                        "description": "",
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "SUCCESS",
+                        "description": "",
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "ERROR",
+                        "description": "",
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "SYSTEM_ERROR",
+                        "description": "",
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    }
+                ],
                 "possibleTypes": null
             },
             {
@@ -4467,7 +4609,7 @@
                     },
                     {
                         "name": "createReceipt",
-                        "description": "Tạo và trả về một phiếu thu mới",
+                        "description": "Tạo và trả về một phiếu thu tiền mới",
                         "args": [
                             {
                                 "name": "input",
@@ -4768,6 +4910,37 @@
                             "ofType": {
                                 "kind": "OBJECT",
                                 "name": "Booking",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "checkReceipt",
+                        "description": "Kiểm tra trạng thái của một phiếu thu",
+                        "args": [
+                            {
+                                "name": "id",
+                                "description": "",
+                                "type": {
+                                    "kind": "NON_NULL",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "SCALAR",
+                                        "name": "ID",
+                                        "ofType": null
+                                    }
+                                },
+                                "defaultValue": null
+                            }
+                        ],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "OBJECT",
+                                "name": "Receipt",
                                 "ofType": null
                             }
                         },
@@ -7305,16 +7478,6 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "bankAccountNumber",
-                        "description": "Số tài khoản ngân hàng của khách",
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "String",
-                            "ofType": null
-                        },
-                        "defaultValue": "null"
-                    },
-                    {
                         "name": "bill",
                         "description": "Thuộc hóa đơn",
                         "type": {
@@ -7323,6 +7486,20 @@
                             "ofType": {
                                 "kind": "INPUT_OBJECT",
                                 "name": "BillId",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "kind",
+                        "description": "Loại thanh toán",
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "ENUM",
+                                "name": "ReceiptKindEnum",
                                 "ofType": null
                             }
                         },

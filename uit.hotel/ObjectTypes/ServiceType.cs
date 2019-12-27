@@ -21,7 +21,8 @@ namespace uit.hotel.ObjectTypes
             Field<NonNullGraphType<ListGraphType<NonNullGraphType<ServicesDetailType>>>>(
                 nameof(Service.ServicesDetails),
                 "Danh sách chi tiết dịch vụ",
-                resolve: context => context.Source.ServicesDetails.ToList());
+                resolve: context => context.Source.ServicesDetails.ToList()
+            );
         }
     }
 

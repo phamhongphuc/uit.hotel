@@ -12,6 +12,7 @@ namespace uit.hotel.ObjectTypes
             Description = "Loại đơn vị giá";
         }
     }
+
     public class PriceItemType : ObjectGraphType<PriceItem>
     {
         public PriceItemType()

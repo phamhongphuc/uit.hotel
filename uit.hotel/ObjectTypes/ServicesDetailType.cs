@@ -19,11 +19,13 @@ namespace uit.hotel.ObjectTypes
             Field<NonNullGraphType<BookingType>>(
                 nameof(ServicesDetail.Booking),
                 "Thuộc thông tin thuê phòng nào",
-                resolve: context => context.Source.Booking);
+                resolve: context => context.Source.Booking
+            );
             Field<NonNullGraphType<ServiceType>>(
                 nameof(ServicesDetail.Service),
                 "Thuộc dịch vụ nào",
-                resolve: context => context.Source.Service);
+                resolve: context => context.Source.Service
+            );
         }
     }
 
@@ -50,7 +52,6 @@ namespace uit.hotel.ObjectTypes
                 nameof(ServicesDetail.Service),
                 "Thuộc dịch vụ nào"
             );
-
             Field<NonNullGraphType<BookingIdInput>>(
                 nameof(ServicesDetail.Booking),
                 "Thuộc booking nào"

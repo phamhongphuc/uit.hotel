@@ -39,7 +39,8 @@ namespace uit.hotel.Models
         public void CalculateTotalReceipts()
         {
             long total = 0;
-            foreach (var r in Receipts) total += r.Money;
+            foreach (var receipt in Receipts)
+                if (receipt.Status == ReceiptStatusEnum.Success) total += receipt.Money;
             TotalReceipts = total;
         }
 

@@ -16,7 +16,6 @@
                         "id",
                         "money",
                         "time",
-                        "bankAccountNumber",
                         "bill",
                         "employee"
                     ],
@@ -28,10 +27,6 @@
                             "type": "integer"
                         },
                         "time": {
-                            "type": "string",
-                            "pattern": "^(.*)$"
-                        },
-                        "bankAccountNumber": {
                             "type": "string",
                             "pattern": "^(.*)$"
                         },

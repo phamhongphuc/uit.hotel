@@ -18,7 +18,8 @@ namespace uit.hotel.ObjectTypes
             Field<NonNullGraphType<ListGraphType<NonNullGraphType<RoomType>>>>(
                 nameof(Floor.Rooms),
                 "Danh sách các phòng có trong tầng",
-                resolve: context => context.Source.Rooms.ToList());
+                resolve: context => context.Source.Rooms.ToList()
+            );
         }
     }
 

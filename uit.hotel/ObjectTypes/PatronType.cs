@@ -29,16 +29,18 @@ namespace uit.hotel.ObjectTypes
             Field<NonNullGraphType<PatronKindType>>(
                 nameof(Patron.PatronKind),
                 "Loại khách hàng",
-                resolve: context => context.Source.PatronKind);
-
+                resolve: context => context.Source.PatronKind
+            );
             Field<NonNullGraphType<ListGraphType<NonNullGraphType<BillType>>>>(
                 nameof(Patron.Bills),
                 "Danh sách các số hóa đơn của khách hàng",
-                resolve: context => context.Source.Bills.ToList());
+                resolve: context => context.Source.Bills.ToList()
+            );
             Field<NonNullGraphType<ListGraphType<NonNullGraphType<BookingType>>>>(
                 nameof(Patron.Bookings),
                 "Danh sách các đơn đặt trước của khách hàng",
-                resolve: context => context.Source.Bookings.ToList());
+                resolve: context => context.Source.Bookings.ToList()
+            );
         }
     }
 

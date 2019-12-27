@@ -2,9 +2,10 @@
     "files.exclude": {
         "**/.vscode": true,
         "**/bin": true,
+        "**/node_modules": true,
+        "Database": true,
         "obj": true,
         "Properties": true,
-        "Database": true,
         "Tools": true,
         "clean.bat": true,
         "uit.hotel.csproj.user": true,

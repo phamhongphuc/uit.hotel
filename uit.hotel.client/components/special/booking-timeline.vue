@@ -66,7 +66,7 @@
                         class="booking shadow-sm"
                         @dblclick="refs.booking_detail.open({ id: booking.id })"
                         @contextmenu.prevent="
-                            refs.context_receptionist_booking.open($event, {
+                            refs.context_booking.open($event, {
                                 booking,
                             })
                         "

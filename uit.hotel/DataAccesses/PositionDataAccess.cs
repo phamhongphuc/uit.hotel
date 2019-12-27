@@ -45,29 +45,23 @@ namespace uit.hotel.DataAccesses
             return positionInDatabase;
         }
 
-        public static async void SetIsActive(Position positionInDatabase, bool isActive)
-        {
-            await Database.WriteAsync(realm => positionInDatabase.IsActive = isActive);
-        }
+        public static Task SetIsActive(Position positionInDatabase, bool isActive)
+            => Database.WriteAsync(realm => positionInDatabase.IsActive = isActive);
 
-        public static async void SetIsActiveAndMoveEmployee(Position positionInDatabase, Position positionNew)
-        {
-            await Database.WriteAsync(realm =>
+        public static Task SetIsActiveAndMoveEmployee(Position positionInDatabase, Position positionNew)
+            => Database.WriteAsync(realm =>
             {
                 foreach (var employee in positionInDatabase.Employees)
                     if (employee.IsActive)
                         employee.Position = positionNew;
                 positionInDatabase.IsActive = false;
             });
-        }
 
-        public static async void Delete(Position positionInDatabase)
-        {
-            await Database.WriteAsync(realm => realm.Remove(positionInDatabase));
-        }
+        public static Task Delete(Position positionInDatabase)
+            => Database.WriteAsync(realm => realm.Remove(positionInDatabase));
 
-        public static async void UpdateForHelper(Action<Position> setPermission, Position position)
-            => await Database.WriteAsync(realm => { setPermission(position); });
+        public static Task UpdateForHelper(Action<Position> setPermission, Position position)
+            => Database.WriteAsync(realm => { setPermission(position); });
 
         public static Position Get(int positionId) => Database.Find<Position>(positionId);
 

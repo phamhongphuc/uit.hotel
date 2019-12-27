@@ -105,6 +105,9 @@ namespace uit.hotel.Businesses
                     throw new Exception("Có phòng chưa Check-out, không thể thanh toán");
             }
 
+            if (billInDatabase.TotalPrice + billInDatabase.Discount != billInDatabase.TotalReceipts)
+                throw new Exception("Chỉ có thể chốt hóa đơn khi đã thanh toán toàn bộ");
+
             return BillDataAccess.PayTheBill(employee, billInDatabase);
         }
 
