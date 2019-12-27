@@ -118,11 +118,9 @@
                         @row-clicked="
                             (booking, $index, $event) => {
                                 $event.stopPropagation();
-                                refs.context_receptionist_booking.open(
+                                refs.context_booking.open(
                                     currentEvent || $event,
-                                    {
-                                        booking,
-                                    },
+                                    { booking },
                                 );
                                 currentEvent = null;
                             }

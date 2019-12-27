@@ -119,12 +119,9 @@
                                     $refs.bill_detail.close();
                                 "
                                 @contextmenu.prevent.stop="
-                                    $refs.context_receptionist_booking.open(
-                                        $event,
-                                        {
-                                            booking,
-                                        },
-                                    )
+                                    $refs.context_booking.open($event, {
+                                        booking,
+                                    })
                                 "
                             >
                                 <b-button
@@ -152,7 +149,7 @@
         </query->
         <context-manage-bill- ref="context_bill" />
         <context-manage-patron- ref="context_patron" />
-        <context-receptionist-booking- ref="context_receptionist_booking" />
+        <context-receptionist-booking- ref="context_booking" />
         <context-receptionist-service-detail- ref="context_service_detail" />
         <popup-bill-detail- ref="bill_detail" />
         <popup-bill-update-discount- ref="bill_update_discount" />
