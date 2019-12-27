@@ -1,4 +1,5 @@
 using System;
+using uit.hotel.Queries.Authentication;
 
 namespace uit.hotel.Queries.Helper
 {
@@ -59,5 +60,12 @@ namespace uit.hotel.Queries.Helper
 
         public static long MultiplyByHourPrice(this TimeSpan timeSpan, long unitPrice)
             => (long)(timeSpan.FloatHour() * unitPrice);
+
+        public static string ToAlphabet(this DateTimeOffset time)
+        {
+            var span = time - new DateTimeOffset(2000, 1, 1, 0, 0, 0, TimeSpan.Zero);
+            var seconds = (long)span.TotalSeconds;
+            return seconds.ToAlphabet();
+        }
     }
 }
