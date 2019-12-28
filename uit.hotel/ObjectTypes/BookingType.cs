@@ -57,19 +57,16 @@ namespace uit.hotel.ObjectTypes
                 "Nhân viên thực hiện check-out cho khách hàng",
                 resolve: context => context.Source.EmployeeCheckOut
             );
-
             Field<NonNullGraphType<BillType>>(
                 nameof(Booking.Bill),
                 "Thông tin hóa đơn của thông tin thuê phòng",
                 resolve: context => context.Source.Bill
             );
-
             Field<NonNullGraphType<RoomType>>(
                 nameof(Booking.Room),
                 "Phòng khách hàng chọn đặt trước",
                 resolve: context => context.Source.Room
             );
-
             Field<NonNullGraphType<ListGraphType<NonNullGraphType<PatronType>>>>(
                 nameof(Booking.Patrons),
                 "Danh sách khách hàng yêu cầu đặt phòng",
@@ -80,7 +77,6 @@ namespace uit.hotel.ObjectTypes
                 "Danh sách chi tiết sử dụng dịch vụ của khách hàng",
                 resolve: context => context.Source.ServicesDetails.ToList()
             );
-
             Field<NonNullGraphType<PriceType>>(
                 nameof(Booking.Price),
                 "Công thức giá"

@@ -21,22 +21,23 @@ namespace uit.hotel.ObjectTypes
             Field<NonNullGraphType<PatronType>>(
                 nameof(Bill.Patron),
                 "Thông tin khách hàng thanh toán hóa đơn",
-                resolve: context => context.Source.Patron);
-
+                resolve: context => context.Source.Patron
+            );
             Field<EmployeeType>(
                 nameof(Bill.Employee),
                 "Thông tin nhân viên nhận thanh toán hóa đơn",
-                resolve: context => context.Source.Employee);
-
+                resolve: context => context.Source.Employee
+            );
             Field<NonNullGraphType<ListGraphType<NonNullGraphType<ReceiptType>>>>(
                 nameof(Bill.Receipts),
                 "Danh sách các biên nhận cho hóa đơn",
-                resolve: context => context.Source.Receipts.ToList());
-
+                resolve: context => context.Source.Receipts.ToList()
+            );
             Field<NonNullGraphType<ListGraphType<NonNullGraphType<BookingType>>>>(
                 nameof(Bill.Bookings),
                 "Danh sách các thông tin đặt trước của hóa đơn",
-                resolve: context => context.Source.Bookings.ToList());
+                resolve: context => context.Source.Bookings.ToList()
+            );
         }
     }
 

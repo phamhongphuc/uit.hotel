@@ -34,7 +34,6 @@ namespace uit.hotel.ObjectTypes
                     return context.Source.IsEmpty(from, to);
                 }
             );
-
             Field<BookingType>(
                 "currentBooking",
                 "Đơn đặt phòng hiện tại",
@@ -50,7 +49,6 @@ namespace uit.hotel.ObjectTypes
                     return context.Source.GetCurrentBooking(from, to);
                 }
             );
-
             Field<NonNullGraphType<FloorType>>(
                 nameof(Room.Floor),
                 "Phòng thuộc tầng nào",
