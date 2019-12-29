@@ -4,12 +4,14 @@
     "description": "",
     "dependencies": {},
     "devDependencies": {
-        "cross-env": "^6.0.3"
+        "cross-env": "^6.0.3",
+        "ngrok": "^3.2.7"
     },
     "scripts": {
-        "dev": "cross-env ASPNETCORE_ENVIRONMENT=Development dotnet run",
+        "dev": "node dev.js",
+        "dev:dotnet": "cross-env ASPNETCORE_ENVIRONMENT=Development dotnet run",
+        "dev:dotnet:watch": "cross-env ASPNETCORE_ENVIRONMENT=Development dotnet watch run",
         "dev:c": "cd ../uit.hotel.client && yarn dev",
-        "watch": "cross-env ASPNETCORE_ENVIRONMENT=Development dotnet watch run",
         "test": "cd ../uit.hotel.test && dotnet test"
     },
     "author": "",

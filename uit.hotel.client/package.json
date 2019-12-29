@@ -6,7 +6,7 @@
     "private": true,
     "scripts": {
         "dev": "nuxt-ts",
-        "dev:s": "cd ../uit.hotel && dotnet run",
+        "dev:s": "cd ../uit.hotel && yarn dev",
         "build": "nuxt-ts build",
         "build:s": "tsc nuxt.config.ts",
         "start": "nuxt-ts start",
