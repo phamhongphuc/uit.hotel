@@ -14,7 +14,13 @@
         "paths": {
             "~/*": ["./*"]
         },
-        "types": ["node", "mocha", "chai", "webpack-env", "vue-notification"],
+        "types": [
+            "node",
+            "mocha",
+            "chai",
+            "webpack-env",
+            "vue-notification"
+        ],
         "esModuleInterop": true,
         "allowJs": true,
         "sourceMap": true,
