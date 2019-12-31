@@ -83,9 +83,15 @@ namespace uit.hotel.DataAccesses
         {
             return WriteAsync(async realm =>
             {
+                var bill = bookingInDatabase.Bill;
+
                 await PriceItemDataAccess.Delete(bookingInDatabase.PriceItems);
                 await PriceVolatilityItemDataAccess.Delete(bookingInDatabase.PriceVolatilityItems);
                 realm.Remove(bookingInDatabase);
+
+                if (bill.Bookings.Count() == 0) await BillDataAccess.Cancel(bill);
+
+                bill.CalculateTotalPrice();
             });
         }
 

@@ -5,6 +5,15 @@ using uit.hotel.Queries.Base;
 
 namespace uit.hotel.ObjectTypes
 {
+    public class BillStatusEnumType : EnumerationGraphType<BillStatusEnum>
+    {
+        public BillStatusEnumType()
+        {
+            Name = nameof(BillStatusEnum);
+            Description = "Trạng thái của hóa đơn đặt phòng";
+        }
+    }
+
     public class BillType : ObjectGraphType<Bill>
     {
         public BillType()
@@ -27,6 +36,10 @@ namespace uit.hotel.ObjectTypes
                 nameof(Bill.Employee),
                 "Thông tin nhân viên nhận thanh toán hóa đơn",
                 resolve: context => context.Source.Employee
+            );
+            Field<NonNullGraphType<BillStatusEnumType>>(
+                nameof(Bill.Status),
+                "Trạng thái thanh toán của hóa đơn"
             );
             Field<NonNullGraphType<ListGraphType<NonNullGraphType<ReceiptType>>>>(
                 nameof(Bill.Receipts),

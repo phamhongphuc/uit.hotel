@@ -14,6 +14,7 @@ namespace uit.hotel.Businesses
         {
             bill.Patron = bill.Patron.GetManaged();
             bill.Employee = employee;
+            bill.Status = BillStatusEnum.Pending;
 
             if (bookings.Count() == 0)
                 throw new Exception("Chưa có booking nào");
@@ -45,6 +46,7 @@ namespace uit.hotel.Businesses
         {
             bill.Patron = bill.Patron.GetManaged();
             bill.Employee = employee;
+            bill.Status = BillStatusEnum.Pending;
 
             if (bookings.Count() == 0)
                 throw new Exception("Chưa có booking nào");
@@ -78,7 +80,7 @@ namespace uit.hotel.Businesses
             var billInDatabase = Get(bill.Id);
             bill.Patron = bill.Patron.GetManaged();
 
-            if (billInDatabase.Time != DateTimeOffset.MinValue)
+            if (billInDatabase.Status != BillStatusEnum.Pending)
                 throw new Exception("Không thể cập nhật thông tin cho hóa đơn đã thanh toán");
 
             return BillDataAccess.Update(billInDatabase, bill);
@@ -87,7 +89,7 @@ namespace uit.hotel.Businesses
         public static Task<Bill> UpdateDiscount(Bill bill)
         {
             var billInDatabase = Get(bill.Id);
-            if (billInDatabase.Time != DateTimeOffset.MinValue)
+            if (billInDatabase.Status != BillStatusEnum.Pending)
                 throw new Exception("Không thể cập nhật giảm giá cho hóa đơn đã thanh toán");
 
             return BillDataAccess.UpdateDiscount(billInDatabase, bill);
@@ -98,6 +100,9 @@ namespace uit.hotel.Businesses
             var billInDatabase = Get(billId);
             if (billInDatabase == null)
                 throw new Exception("Mã bill không tồn tại");
+
+            if (billInDatabase.Status != BillStatusEnum.Pending)
+                throw new Exception("Chỉ có thể chốt hóa đơn cho hóa đơn chưa chốt");
 
             foreach (var booking in billInDatabase.Bookings)
             {

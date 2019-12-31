@@ -56,6 +56,7 @@ namespace uit.hotel.DataAccesses
             {
                 billInDatabase.Employee = employee;
                 billInDatabase.Time = DateTimeOffset.Now;
+                billInDatabase.Status = BillStatusEnum.Success;
                 billInDatabase.CalculateTotalReceipts();
             });
             return billInDatabase;
@@ -82,10 +83,10 @@ namespace uit.hotel.DataAccesses
             return billInDatabase;
         }
 
-        public static async void Delete(Bill bill) => await Database.WriteAsync(realm =>
+        public static Task Cancel(Bill bill) => WriteAsync(realm =>
         {
-            foreach (var booking in bill.Bookings) BookingDataAccess.Delete(booking);
-            realm.Remove(bill);
+            bill.Time = DateTimeOffset.Now;
+            bill.Status = BillStatusEnum.Cancel;
         });
 
         public static Bill Get(int billId) => Database.Find<Bill>(billId);

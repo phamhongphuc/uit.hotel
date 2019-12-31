@@ -84,6 +84,7 @@ namespace uit.hotel.GraphQLHelper
         private static IServiceCollection AddObjectType(this IServiceCollection services)
         {
             services.AddSingleton<AuthenticationType>();
+            services.AddSingleton<BillStatusEnumType>();
             services.AddSingleton<BillType>();
             services.AddSingleton<BookingStatusEnumType>();
             services.AddSingleton<BookingType>();

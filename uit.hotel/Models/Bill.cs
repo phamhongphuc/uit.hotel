@@ -1,10 +1,18 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Linq;
 using Realms;
 using uit.hotel.Businesses;
 
 namespace uit.hotel.Models
 {
+    public enum BillStatusEnum
+    {
+        [Description("Đang chờ")] Pending,
+        [Description("Đã thanh toán")] Success,
+        [Description("Đã hủy")] Cancel,
+    }
+
     public class Bill : RealmObject
     {
         [PrimaryKey]
@@ -12,6 +20,10 @@ namespace uit.hotel.Models
         public DateTimeOffset Time { get; set; }
         public Patron Patron { get; set; }
         public Employee Employee { get; set; }
+
+        [Ignored]
+        public BillStatusEnum Status { get => (BillStatusEnum)StatusRaw; set { StatusRaw = (int)value; } }
+        private int StatusRaw { get; set; }
 
         [Backlink(nameof(Receipt.Bill))]
         public IQueryable<Receipt> Receipts { get; }
