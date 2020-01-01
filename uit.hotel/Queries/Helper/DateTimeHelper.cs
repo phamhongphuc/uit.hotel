@@ -67,5 +67,8 @@ namespace uit.hotel.Queries.Helper
             var seconds = (long)span.TotalSeconds;
             return seconds.ToAlphabet();
         }
+
+        public static string Format(this DateTimeOffset time)
+            => time.ToOffset(Constant.TimeZone).ToString("HH:mm dd/MM/yyyy ");
     }
 }
