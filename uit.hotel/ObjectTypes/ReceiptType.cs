@@ -36,6 +36,7 @@ namespace uit.hotel.ObjectTypes
             Field(x => x.StatusText).Description("Trạng thái của phiếu thu");
             Field(x => x.OrderInfo).Description("Thông tin thanh toán");
             Field(x => x.ExtraData).Description("Thông tin thêm");
+            Field(x => x.OrderId).Description("Mã thanh toán");
 
             Field<NonNullGraphType<ReceiptStatusEnumType>>(
                 nameof(Receipt.Status),
