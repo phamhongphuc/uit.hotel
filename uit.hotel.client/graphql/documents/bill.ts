@@ -56,6 +56,7 @@ export const getBill = gql`
             }
             receipts {
                 id
+                orderId
                 time
                 kind
                 status

@@ -1254,6 +1254,8 @@ export type Receipt = {
     kind: ReceiptKindEnum;
     /** Số tiền đã thu */
     money: Scalars['Int'];
+    /** Mã thanh toán */
+    orderId: Scalars['String'];
     /** Thông tin thanh toán */
     orderInfo: Scalars['String'];
     /** Đường dẫn thanh toán */
@@ -1527,6 +1529,7 @@ export type GetBillQuery = {
             Pick<
                 Receipt,
                 | 'id'
+                | 'orderId'
                 | 'time'
                 | 'kind'
                 | 'status'

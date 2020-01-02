@@ -1299,6 +1299,9 @@ type Receipt {
     # Số tiền đã thu
     money: Int!
 
+    # Mã thanh toán
+    orderId: String!
+
     # Thông tin thanh toán
     orderInfo: String!
 
