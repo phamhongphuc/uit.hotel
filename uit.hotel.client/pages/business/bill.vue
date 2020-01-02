@@ -39,35 +39,37 @@
                         },
                         {
                             key: 'status',
-                            label: 'Trạng thái phòng',
+                            label: 'Trạng thái thanh toán',
                         },
                         {
-                            key: 'time',
-                            label: 'Trạng thái thanh toán',
+                            key: 'patron',
+                            label: 'Khách hàng',
+                            class: 'text-right',
+                            formatter: patron => patron.name,
                         },
                         {
                             key: 'totalPrice',
                             label: 'Tổng cộng',
                             class: 'text-right text-nowrap',
-                            formatter: toMoney,
+                            formatter: billToMoney,
                         },
                         {
                             key: 'discount',
                             label: 'Giảm giá',
                             tdClass: 'text-right text-nowrap',
-                            formatter: toMoney,
+                            formatter: discountToMoney,
                         },
                         {
                             key: 'totalReceipts',
                             label: 'Đã thanh toán',
                             tdClass: 'text-right text-nowrap',
-                            formatter: toMoney,
+                            formatter: billToMoney,
                         },
                         {
                             key: 'rest',
                             label: 'Chưa thanh toán',
                             tdClass: 'text-right text-nowrap',
-                            formatter: toMoney,
+                            formatter: billToMoney,
                         },
                     ]"
                     @row-clicked="
@@ -96,16 +98,6 @@
                     </template>
                     <template v-slot:cell(index)="data">
                         {{ data.index + 1 }}
-                    </template>
-                    <template v-slot:cell(time)="{ value }">
-                        <span v-if="isMinDate(value)">
-                            <icon- i="circle" class="mr-1 text-yellow" />
-                            Chưa thanh toán
-                        </span>
-                        <span v-else>
-                            <icon- i="check-circle" class="mr-1 text-green" />
-                            Đã thanh toán {{ fromNow(value) }}
-                        </span>
                     </template>
                     <template v-slot:cell(bookings)="{ value }">
                         <div class="d-flex m-child-1 flex-wrap">
@@ -136,13 +128,13 @@
                             </div>
                         </div>
                     </template>
-                    <template v-slot:cell(status)="{ value }">
+                    <template v-slot:cell(status)="{ value, item: { time } }">
                         <icon-
                             i="circle-fill"
                             class="mr-1"
-                            :class="`text-${bookingStatusColorMap[value]}`"
+                            :class="`text-${billStatusColorMap[value]}`"
                         />
-                        {{ billStatusMap[value] }}
+                        {{ billStatusMap(value, time) }}
                     </template>
                 </b-table>
             </div>
@@ -168,12 +160,12 @@ import { Component, mixins } from 'nuxt-property-decorator';
 import { ApolloQueryResult } from 'apollo-client';
 import { getBills } from '~/graphql/documents';
 import { DataMixin, Page } from '~/components/mixins';
-import { GetBills, BookingStatusEnum, GetBillsQuery } from '~/graphql/types';
+import { GetBills, GetBillsQuery, BillStatusEnum } from '~/graphql/types';
 import { fromNow, toMoney, isMinDate } from '~/utils';
 import {
-    getBillStatus,
     bookingStatusColorMap,
     billStatusMap,
+    billStatusColorMap,
 } from '~/modules/model';
 
 @Component({
@@ -184,6 +176,7 @@ export default class extends mixins<Page, {}>(
     DataMixin({
         billStatusMap,
         bookingStatusColorMap,
+        billStatusColorMap,
         getBills,
         toMoney,
         fromNow,
@@ -196,7 +189,6 @@ export default class extends mixins<Page, {}>(
 
     bills: GetBills.Bills[] = [];
     billsFiltered: (GetBills.Bills & {
-        status: BookingStatusEnum;
         rest: number;
     })[] = [];
 
@@ -204,9 +196,20 @@ export default class extends mixins<Page, {}>(
         this.bills = bills;
         this.billsFiltered = bills.map(bill => ({
             ...bill,
-            status: getBillStatus(bill),
-            rest: bill.totalPrice - bill.totalReceipts - bill.discount,
+            rest:
+                bill.status === BillStatusEnum.Cancel
+                    ? 0
+                    : bill.totalPrice - bill.totalReceipts - bill.discount,
         }));
+    }
+
+    billToMoney(value: number, key: string, item: GetBills.Bills) {
+        if (item.status === BillStatusEnum.Cancel && value === 0) return '-';
+        return toMoney(value);
+    }
+
+    discountToMoney(value: number) {
+        return value === 0 ? '-' : toMoney(value);
     }
 
     showInactive = false;

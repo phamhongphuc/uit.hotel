@@ -527,6 +527,8 @@ export type Bill = {
     patron: Patron;
     /** Danh sách các biên nhận cho hóa đơn */
     receipts: Array<Receipt>;
+    /** Trạng thái thanh toán của hóa đơn */
+    status: BillStatusEnum;
     /** Thời điểm in hóa đơn */
     time: Scalars['DateTimeOffset'];
     /** Tổng giá trị hóa đơn */
@@ -545,6 +547,13 @@ export type BillId = {
     /** Id của hóa đơn */
     id: Scalars['Int'];
 };
+
+/** Trạng thái của hóa đơn đặt phòng */
+export enum BillStatusEnum {
+    Pending = 'PENDING',
+    Success = 'SUCCESS',
+    Cancel = 'CANCEL',
+}
 
 /** Input để cập nhật thông tin một hóa đơn */
 export type BillUpdateDiscountInput = {
@@ -1245,6 +1254,8 @@ export type Receipt = {
     kind: ReceiptKindEnum;
     /** Số tiền đã thu */
     money: Scalars['Int'];
+    /** Mã thanh toán */
+    orderId: Scalars['String'];
     /** Thông tin thanh toán */
     orderInfo: Scalars['String'];
     /** Đường dẫn thanh toán */
@@ -1472,10 +1483,14 @@ export type GetBillsQuery = {
     bills: Array<
         Pick<
             Bill,
-            'id' | 'time' | 'totalPrice' | 'totalReceipts' | 'discount'
+            | 'id'
+            | 'time'
+            | 'totalPrice'
+            | 'totalReceipts'
+            | 'discount'
+            | 'status'
         > & {
             patron: Pick<Patron, 'id' | 'name'>;
-            receipts: Array<Pick<Receipt, 'id' | 'money'>>;
             bookings: Array<
                 Pick<Booking, 'id' | 'status'> & {
                     room: Pick<Room, 'id' | 'name'>;
@@ -1492,7 +1507,7 @@ export type GetBillQueryVariables = {
 export type GetBillQuery = {
     bill: Pick<
         Bill,
-        'id' | 'time' | 'discount' | 'totalPrice' | 'totalReceipts'
+        'id' | 'status' | 'time' | 'discount' | 'totalPrice' | 'totalReceipts'
     > & {
         patron: Pick<Patron, 'id' | 'name'>;
         bookings: Array<
@@ -1514,6 +1529,7 @@ export type GetBillQuery = {
             Pick<
                 Receipt,
                 | 'id'
+                | 'orderId'
                 | 'time'
                 | 'kind'
                 | 'status'
@@ -2330,9 +2346,6 @@ export namespace GetBills {
     export type Query = GetBillsQuery;
     export type Bills = NonNullable<GetBillsQuery['bills'][0]>;
     export type Patron = NonNullable<GetBillsQuery['bills'][0]>['patron'];
-    export type Receipts = NonNullable<
-        NonNullable<GetBillsQuery['bills'][0]>['receipts'][0]
-    >;
     export type Bookings = NonNullable<
         NonNullable<GetBillsQuery['bills'][0]>['bookings'][0]
     >;

@@ -1,10 +1,14 @@
 import moment, { Moment } from 'moment';
 
-export const toMoney = (num = 0) =>
-    num.toLocaleString('vi', {
-        style: 'currency',
-        currency: 'VND',
-    });
+export const toMoney = (num = 0, skipPrefix = false) => {
+    return (
+        (num < 0 && !skipPrefix ? 'Hoàn tiền ' : '') +
+        (skipPrefix ? num : Math.abs(num)).toLocaleString('vi', {
+            style: 'currency',
+            currency: 'VND',
+        })
+    );
+};
 
 const dateTimeFormatter = (date: string | number | Moment, hasTime = false) => {
     const time = moment(date);

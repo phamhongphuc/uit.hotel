@@ -22,6 +22,7 @@ namespace uit.hotel.ObjectTypes
 
             Field(x => x.Value).Description("Giá trị");
             Field(x => x.TimeSpan).Description("Thời gian");
+
             Field<NonNullGraphType<BookingType>>(
                 nameof(PriceItem.Booking),
                 "Đơn đặt phòng"

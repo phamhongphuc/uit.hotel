@@ -16,8 +16,9 @@ namespace uit.hotel.DataAccesses
             {
                 receipt.Id = NextId;
                 receipt.Time = DateTimeOffset.Now;
-                receipt.Bill.CalculateTotalReceipts();
                 realm.Add(receipt);
+
+                receipt.Bill.CalculateTotalReceipts();
             });
             return receipt;
         }
@@ -34,6 +35,8 @@ namespace uit.hotel.DataAccesses
             {
                 receipt.Status = status;
                 receipt.StatusText = statusText;
+
+                receipt.Bill.CalculateTotalReceipts();
             });
             return receipt;
         }

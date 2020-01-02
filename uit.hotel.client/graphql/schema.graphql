@@ -304,6 +304,9 @@ type Bill {
     # Danh sách các biên nhận cho hóa đơn
     receipts: [Receipt!]!
 
+    # Trạng thái thanh toán của hóa đơn
+    status: BillStatusEnum!
+
     # Thời điểm in hóa đơn
     time: DateTimeOffset!
 
@@ -323,6 +326,13 @@ input BillCreateInput {
 input BillId {
     # Id của hóa đơn
     id: Int!
+}
+
+# Trạng thái của hóa đơn đặt phòng
+enum BillStatusEnum {
+    PENDING
+    SUCCESS
+    CANCEL
 }
 
 # Input để cập nhật thông tin một hóa đơn
@@ -1288,6 +1298,9 @@ type Receipt {
 
     # Số tiền đã thu
     money: Int!
+
+    # Mã thanh toán
+    orderId: String!
 
     # Thông tin thanh toán
     orderInfo: String!

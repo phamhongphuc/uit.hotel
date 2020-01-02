@@ -8,13 +8,10 @@ export const getBills = gql`
             totalPrice
             totalReceipts
             discount
+            status
             patron {
                 id
                 name
-            }
-            receipts {
-                id
-                money
             }
             bookings {
                 id
@@ -36,6 +33,7 @@ export const getBill = gql`
                 id
                 name
             }
+            status
             time
             discount
             totalPrice
@@ -58,6 +56,7 @@ export const getBill = gql`
             }
             receipts {
                 id
+                orderId
                 time
                 kind
                 status

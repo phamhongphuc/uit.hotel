@@ -1,19 +1,17 @@
-import { BookingStatusEnum, GetBill, GetBills } from '~/graphql/types';
+import { BillStatusEnum } from '~/graphql/types';
+import { fromNow } from '~/utils';
 
-export const billStatusMap: {
-    [key in BookingStatusEnum]: string;
+export const billStatusMap = (status: BillStatusEnum, time: string): string =>
+    ({
+        [BillStatusEnum.Pending]: 'Đang chờ',
+        [BillStatusEnum.Cancel]: `Đã hủy ${fromNow(time)}`,
+        [BillStatusEnum.Success]: `Đã thanh toán ${fromNow(time)}`,
+    }[status]);
+
+export const billStatusColorMap: {
+    [key in BillStatusEnum]: string;
 } = {
-    [BookingStatusEnum.Booked]: 'Tất cả các phòng đang chờ nhận',
-    [BookingStatusEnum.CheckedIn]: 'Có phòng đang được sử dụng',
-    [BookingStatusEnum.CheckedOut]: 'Tất cả các phòng đã trả',
-};
-
-export const getBillStatus = (bill: GetBill.Bill | GetBills.Bills) => {
-    return (bill as GetBill.Bill).bookings
-        .map(b => b.status)
-        .reduce<BookingStatusEnum>((result, status, index) => {
-            if (index === 0) return status;
-            if (status !== result) return BookingStatusEnum.CheckedIn;
-            return result;
-        }, BookingStatusEnum.CheckedIn);
+    [BillStatusEnum.Pending]: 'yellow',
+    [BillStatusEnum.Cancel]: 'light',
+    [BillStatusEnum.Success]: 'green',
 };

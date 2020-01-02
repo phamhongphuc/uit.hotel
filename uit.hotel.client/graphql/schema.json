@@ -968,6 +968,22 @@
                         "deprecationReason": null
                     },
                     {
+                        "name": "status",
+                        "description": "Trạng thái thanh toán của hóa đơn",
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "ENUM",
+                                "name": "BillStatusEnum",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
                         "name": "time",
                         "description": "Thời điểm in hóa đơn",
                         "args": [],
@@ -3197,6 +3213,22 @@
                         "deprecationReason": null
                     },
                     {
+                        "name": "orderId",
+                        "description": "Mã thanh toán",
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
                         "name": "orderInfo",
                         "description": "Thông tin thanh toán",
                         "args": [],
@@ -4196,6 +4228,35 @@
                     },
                     {
                         "name": "CHECKED_OUT",
+                        "description": "",
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    }
+                ],
+                "possibleTypes": null
+            },
+            {
+                "kind": "ENUM",
+                "name": "BillStatusEnum",
+                "description": "Trạng thái của hóa đơn đặt phòng",
+                "fields": null,
+                "inputFields": null,
+                "interfaces": null,
+                "enumValues": [
+                    {
+                        "name": "PENDING",
+                        "description": "",
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "SUCCESS",
+                        "description": "",
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "CANCEL",
                         "description": "",
                         "isDeprecated": false,
                         "deprecationReason": null

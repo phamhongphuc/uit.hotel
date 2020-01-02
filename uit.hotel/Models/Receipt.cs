@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel;
+using System.Linq;
 using Realms;
 using uit.hotel.Businesses;
 using uit.hotel.Queries.Helper;
@@ -47,8 +48,12 @@ namespace uit.hotel.Models
         public string OrderId => $"{Time.ToAlphabet()}-{Id}";
         public string RequestId => OrderId;
 
-        public string OrderInfo => $"Khách sạn culur";
+        public string OrderInfo => $"Thuê phòng {Rooms}. {Dates}.";
         public string ExtraData => $"id={Id}&billId={Bill.Id}";
+
+        private string Rooms => String.Join(", ",Bill.Bookings.ToArray().Select(b => b.Room.Name));
+        private string Dates => $"Từ {FirstBooking.CheckInTime.Format()} đến {FirstBooking.CheckOutTime.Format()}";
+        private Booking FirstBooking => Bill.Bookings.ToArray()[0];
 
         public Receipt GetManaged()
         {
