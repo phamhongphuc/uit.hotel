@@ -20,6 +20,8 @@ namespace uit.hotel.Businesses
             switch (receipt.Kind)
             {
                 case ReceiptKindEnum.Momo:
+                    if(receipt.Money < 0)
+                        throw new Exception("Hệ thống hiện chỉ cho phép hoàn tiền mặt");
                     receipt.Status = ReceiptStatusEnum.Pending;
                     receipt.StatusText = "";
                     receipt = await ReceiptDataAccess.Add(receipt);
