@@ -121,6 +121,18 @@
                         class="d-flex m-child-1 mb-1 flex-wrap justify-content-end"
                     >
                         <b-button
+                            class="px-2 py-1"
+                            variant="lighten"
+                            confirm
+                            @click="
+                                close();
+                                refs.bill_detail.open({ id: booking.bill.id });
+                            "
+                        >
+                            <icon- i="bill-sign" class="ml-n1 mr-1" />
+                            Xem hóa đơn
+                        </b-button>
+                        <b-button
                             class="px-2 py-1 mr-auto"
                             variant="lighten"
                             confirm
