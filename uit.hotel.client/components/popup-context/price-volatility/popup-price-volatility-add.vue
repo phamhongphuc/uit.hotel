@@ -76,7 +76,7 @@
                     <div class="input-label">Hiệu lực</div>
                     <b-checkbox-group
                         v-model="daysOfWeek"
-                        class="m-3 rounded box-shadow-inner days-of-week-checkbox"
+                        class="m-3 rounded box-shadow-inner color-green"
                         :options="daysOfWeekOptions"
                         button-variant=""
                         name="buttons-1"
@@ -192,17 +192,3 @@ export default class extends mixins<PopupMixinType>(
     }
 }
 </script>
-<style lang="scss">
-.days-of-week-checkbox {
-    > label {
-        &:active {
-            box-shadow: none !important;
-        }
-        &.active {
-            color: $white;
-            background-color: $green;
-            box-shadow: none !important;
-        }
-    }
-}
-</style>
