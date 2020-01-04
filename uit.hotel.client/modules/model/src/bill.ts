@@ -15,3 +15,9 @@ export const billStatusColorMap: {
     [BillStatusEnum.Cancel]: 'light',
     [BillStatusEnum.Success]: 'green',
 };
+
+export const billStatusOptions: { text: string; value: BillStatusEnum }[] = [
+    { text: 'Đã hủy', value: BillStatusEnum.Cancel },
+    { text: 'Đang chờ', value: BillStatusEnum.Pending },
+    { text: 'Đã thanh toán', value: BillStatusEnum.Success },
+];

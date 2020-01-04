@@ -13,6 +13,14 @@
                 <icon- class="mr-1" i="edit-3" />
                 <span>Đặt phòng</span>
             </b-button>
+            <b-checkbox-group
+                v-model="billStatus"
+                class="m-2 ml-auto rounded box-shadow-inner color-green"
+                :options="billStatusOptions"
+                button-variant="white"
+                name="buttons-1"
+                buttons
+            />
         </block-flex->
         <query-
             v-slot
@@ -156,16 +164,17 @@
     </div>
 </template>
 <script lang="ts">
-import { Component, mixins } from 'nuxt-property-decorator';
+import { Component, mixins, Watch } from 'nuxt-property-decorator';
 import { ApolloQueryResult } from 'apollo-client';
 import { getBills } from '~/graphql/documents';
 import { DataMixin, Page } from '~/components/mixins';
 import { GetBills, GetBillsQuery, BillStatusEnum } from '~/graphql/types';
 import { fromNow, toMoney, isMinDate } from '~/utils';
 import {
-    bookingStatusColorMap,
-    billStatusMap,
     billStatusColorMap,
+    billStatusMap,
+    billStatusOptions,
+    bookingStatusColorMap,
 } from '~/modules/model';
 
 @Component({
@@ -174,18 +183,21 @@ import {
 export default class extends mixins<Page, {}>(
     Page,
     DataMixin({
-        billStatusMap,
-        bookingStatusColorMap,
         billStatusColorMap,
-        getBills,
-        toMoney,
+        billStatusMap,
+        billStatusOptions,
+        bookingStatusColorMap,
         fromNow,
+        getBills,
         isMinDate,
+        toMoney,
     }),
 ) {
     head() {
         return { title: 'Quản lý hóa đơn' };
     }
+
+    billStatus: BillStatusEnum[] = [BillStatusEnum.Pending];
 
     bills: GetBills.Bills[] = [];
     billsFiltered: (GetBills.Bills & {
@@ -194,13 +206,20 @@ export default class extends mixins<Page, {}>(
 
     async onResult({ data: { bills } }: ApolloQueryResult<GetBillsQuery>) {
         this.bills = bills;
-        this.billsFiltered = bills.map(bill => ({
-            ...bill,
-            rest:
-                bill.status === BillStatusEnum.Cancel
-                    ? 0
-                    : bill.totalPrice - bill.totalReceipts - bill.discount,
-        }));
+        this.setBillsFiltered();
+    }
+
+    @Watch('billStatus')
+    setBillsFiltered() {
+        this.billsFiltered = this.bills
+            .filter(bill => this.billStatus.includes(bill.status))
+            .map(bill => ({
+                ...bill,
+                rest:
+                    bill.status === BillStatusEnum.Cancel
+                        ? 0
+                        : bill.totalPrice - bill.totalReceipts - bill.discount,
+            }));
     }
 
     billToMoney(value: number, key: string, item: GetBills.Bills) {
