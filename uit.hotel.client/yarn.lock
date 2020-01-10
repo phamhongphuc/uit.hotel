@@ -941,22 +941,6 @@
     "@graphql-codegen/plugin-helpers" "1.11.2"
     tslib "1.10.0"
 
-"@graphql-codegen/plugin-helpers@1.11.0":
-  version "1.11.0"
-  resolved "https://registry.yarnpkg.com/@graphql-codegen/plugin-helpers/-/plugin-helpers-1.11.0.tgz#86475de8d17481da32b83043d046141216e419a4"
-  integrity sha512-phmX7qhzzpsRMgXiugvz2nD1EqMhVHCRdr5+A/gd4muBhUGL++W9vq2eV1/Lp7gH2C0Jkwa8tD85RYzyWkh4eQ==
-  dependencies:
-    "@graphql-toolkit/common" "0.9.0"
-    camel-case "4.1.1"
-    common-tags "1.8.0"
-    constant-case "3.0.3"
-    import-from "3.0.0"
-    lower-case "2.0.1"
-    param-case "3.0.3"
-    pascal-case "3.1.1"
-    tslib "1.10.0"
-    upper-case "2.0.1"
-
 "@graphql-codegen/plugin-helpers@1.11.2":
   version "1.11.2"
   resolved "https://registry.yarnpkg.com/@graphql-codegen/plugin-helpers/-/plugin-helpers-1.11.2.tgz#16aaf31be620eb1b1758f1237168bb8fbf7519ae"
@@ -982,13 +966,13 @@
     "@graphql-toolkit/common" "0.9.0"
     tslib "1.10.0"
 
-"@graphql-codegen/typescript-compatibility@^1.11.0":
-  version "1.11.0"
-  resolved "https://registry.yarnpkg.com/@graphql-codegen/typescript-compatibility/-/typescript-compatibility-1.11.0.tgz#da7d57660236ed18599c98888a23b50d69daf364"
-  integrity sha512-r6buldwRYJTri1TMuq2febXlNZqj/t/9ooCF0EuCu6jWaSSt3ZjiY/FMjlpw4sXa0SeO89h7IGP85NV2jUdBwg==
+"@graphql-codegen/typescript-compatibility@^1.11.2":
+  version "1.11.2"
+  resolved "https://registry.yarnpkg.com/@graphql-codegen/typescript-compatibility/-/typescript-compatibility-1.11.2.tgz#9f3a743924be89e0063c85444481df72d4abfb71"
+  integrity sha512-i2DGwipOo3r7Vz2iQCvyAORx0w4TiSSllP4r15BetfEDv/xQpEczb9r/Fj3zkndTzeyvumkwP2pWQCMAIBQe6A==
   dependencies:
-    "@graphql-codegen/plugin-helpers" "1.11.0"
-    "@graphql-codegen/visitor-plugin-common" "1.11.0"
+    "@graphql-codegen/plugin-helpers" "1.11.2"
+    "@graphql-codegen/visitor-plugin-common" "1.11.2"
     tslib "1.10.0"
 
 "@graphql-codegen/typescript-operations@^1.11.2":
@@ -1009,18 +993,6 @@
     "@graphql-codegen/plugin-helpers" "1.11.2"
     "@graphql-codegen/visitor-plugin-common" "1.11.2"
     auto-bind "4.0.0"
-    tslib "1.10.0"
-
-"@graphql-codegen/visitor-plugin-common@1.11.0":
-  version "1.11.0"
-  resolved "https://registry.yarnpkg.com/@graphql-codegen/visitor-plugin-common/-/visitor-plugin-common-1.11.0.tgz#669f3338f04e40cf4703f2c46b9448a4cd992d9f"
-  integrity sha512-zR6v7CBCweYBjCa/rLD6f2vIqfSkSe8ncyurCQLPagk82u/Wo2B27wUN4++8zCFxSkwgjYkEGmShrlBYcIsBTg==
-  dependencies:
-    "@graphql-codegen/plugin-helpers" "1.11.0"
-    auto-bind "4.0.0"
-    dependency-graph "0.8.1"
-    graphql-tag "2.10.1"
-    relay-compiler "8.0.0"
     tslib "1.10.0"
 
 "@graphql-codegen/visitor-plugin-common@1.11.2":
@@ -2043,10 +2015,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/node@*", "@types/node@>=6", "@types/node@^13.1.4":
-  version "13.1.4"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-13.1.4.tgz#4cfd90175a200ee9b02bd6b1cd19bc349741607e"
-  integrity sha512-Lue/mlp2egZJoHXZr4LndxDAd7i/7SQYhV0EjWfb/a4/OZ6tuVwMCVPiwkU5nsEipxEf7hmkSU7Em5VQ8P5NGA==
+"@types/node@*", "@types/node@>=6", "@types/node@^13.1.6":
+  version "13.1.6"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-13.1.6.tgz#076028d0b0400be8105b89a0a55550c86684ffec"
+  integrity sha512-Jg1F+bmxcpENHP23sVKkNuU3uaxPnsBMW0cLjleiikFKomJQbsn0Cqk2yDvQArqzZN6ABfBkZ0To7pQ8sLdWDg==
 
 "@types/node@^10.1.0":
   version "10.17.13"
@@ -3560,18 +3532,18 @@ boolbase@^1.0.0, boolbase@~1.0.0:
   resolved "https://registry.yarnpkg.com/boolbase/-/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
   integrity sha1-aN/1++YMUes3cl6p4+0xDcwed24=
 
-bootstrap-vue@2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/bootstrap-vue/-/bootstrap-vue-2.1.0.tgz#41c0cd265a6cea14ffe29eeea71543ec396d1789"
-  integrity sha512-dftb5fc42x7QLv814nN+3Cx8MMuCB+xrGQjOmSXH81ET0+yo7KYb4lUN3/pOnf+8Tkv8oaawZ1OOth5/AZfktg==
+bootstrap-vue@2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/bootstrap-vue/-/bootstrap-vue-2.2.0.tgz#cef661ec4875a45bdede38c629d26bd42ff5a111"
+  integrity sha512-Y/n6wxMga0Be/RKb1tkAZfCXfSN9vPS66TRuva/MlJ+MqyxW9+htbsTOQj13Yq0oBw0aY5r6cVBlqoCEpZb7tQ==
   dependencies:
     "@nuxt/opencollective" "^0.3.0"
-    bootstrap ">=4.3.1 <5.0.0"
+    bootstrap ">=4.4.1 <5.0.0"
     popper.js "^1.16.0"
-    portal-vue "^2.1.6"
+    portal-vue "^2.1.7"
     vue-functional-data-merge "^3.1.0"
 
-"bootstrap@>=4.3.1 <5.0.0":
+"bootstrap@>=4.4.1 <5.0.0":
   version "4.4.1"
   resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.4.1.tgz#8582960eea0c5cd2bede84d8b0baf3789c3e8b01"
   integrity sha512-tbx5cHubwE6e2ZG7nqM3g/FZ5PQEDMWmMGNrCUBVRPHXTJaH7CBDdsLeu3eCh3B1tzAxTnAbtmrzvWEvT2NNEA==
@@ -9927,7 +9899,7 @@ popper.js@^1.16.0:
   resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.16.0.tgz#2e1816bcbbaa518ea6c2e15a466f4cb9c6e2fbb3"
   integrity sha512-+G+EkOPoE5S/zChTpmBSSDYmhXJ5PsW8eMhH8cP/CQHMFPBG/kC9Y5IIw6qNYgdJ+/COf0ddY2li28iHaZRSjw==
 
-portal-vue@^2.1.6:
+portal-vue@^2.1.7:
   version "2.1.7"
   resolved "https://registry.yarnpkg.com/portal-vue/-/portal-vue-2.1.7.tgz#ea08069b25b640ca08a5b86f67c612f15f4e4ad4"
   integrity sha512-+yCno2oB3xA7irTt0EU5Ezw22L2J51uKAacE/6hMPMoO/mx3h4rXFkkBkT4GFsMDv/vEe8TNKC3ujJJ0PTwb6g==
