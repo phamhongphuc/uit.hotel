@@ -39,9 +39,12 @@ namespace uit.hotel.Businesses
 
         private static void CheckUniqueName(RoomKind roomKind)
         {
-            var numberOfRoomKinds = Get().Where(rk => rk.Name == roomKind.Name).Count();
+            var roomKindInDataBase = roomKind.GetManaged();
+            var numberOfRoomKinds = Get().Where(rk =>
+                rk.Name == roomKind.Name && roomKindInDataBase.Id != rk.Id
+            ).Count();
             if (numberOfRoomKinds == 1)
-                throw new Exception("Loại Phòng " + roomKind.Name + " đã được tạo.");
+                throw new Exception("Loại phòng " + roomKind.Name + " đã được tạo.");
             else if (numberOfRoomKinds > 1)
                 throw new Exception("Cơ sở dữ liệu lỗi!");
         }
