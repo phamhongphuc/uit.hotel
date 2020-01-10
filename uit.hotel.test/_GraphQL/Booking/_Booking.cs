@@ -203,7 +203,8 @@ namespace uit.hotel.test._GraphQL
         [TestMethod]
         public void Mutation_CheckIn()
         {
-            Database.WriteAsync(realm =>{
+            Database.WriteAsync(realm =>
+            {
                 realm.Add(new Room
                 {
                     Id = 101,

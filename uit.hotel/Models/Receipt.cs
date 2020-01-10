@@ -52,7 +52,7 @@ namespace uit.hotel.Models
         public string ExtraData => $"id={Id}&billId={Bill.Id}";
 
         [Ignored]
-        private string Rooms => String.Join(", ",Bill.Bookings.ToArray().Select(b => b.Room.Name));
+        private string Rooms => String.Join(", ", Bill.Bookings.ToArray().Select(b => b.Room.Name));
         [Ignored]
         private string Dates => $"Từ {FirstBooking.CheckInTime.Format()} đến {FirstBooking.CheckOutTime.Format()}";
         [Ignored]
