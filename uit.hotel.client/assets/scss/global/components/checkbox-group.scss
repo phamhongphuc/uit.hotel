@@ -1,0 +1,18 @@
+.btn-group.btn-group-toggle.color-green {
+    > label {
+        &:focus,
+        &.focus,
+        &:hover {
+            background: white;
+        }
+
+        &:active {
+            box-shadow: none !important;
+        }
+        &.active {
+            color: $white;
+            background-color: $green;
+            box-shadow: none !important;
+        }
+    }
+}

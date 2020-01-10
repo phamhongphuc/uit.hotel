@@ -26,8 +26,8 @@ namespace uit.hotel.Businesses
                 throw new Exception("Phòng đã được check-in, không thể check-in lại");
             if (bookingInDatabase.Room.IsClean == false)
                 throw new Exception("Phòng chưa được dọn, không thể check-in");
-            if (!bookingInDatabase.IsEmpty())
-                throw new Exception("Phòng đang được sử dụng, không thể check-in sớm");
+            if (!bookingInDatabase.IsEmpty(true))
+                throw new Exception("Phòng đang/sẽ được sử dụng, không thể check-in");
 
             return BookingDataAccess.CheckIn(employee, bookingInDatabase);
         }

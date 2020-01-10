@@ -203,16 +203,29 @@ namespace uit.hotel.test._GraphQL
         [TestMethod]
         public void Mutation_CheckIn()
         {
-            Database.WriteAsync(realm => realm.Add(new Booking
-            {
-                Id = 10,
-                Status = BookingStatusEnum.Booked,
-                EmployeeBooking = EmployeeDataAccess.Get("admin"),
-                EmployeeCheckIn = null,
-                EmployeeCheckOut = null,
-                Bill = BillDataAccess.Get(1),
-                Room = RoomDataAccess.Get(1)
-            })).Wait();
+            Database.WriteAsync(realm =>{
+                realm.Add(new Room
+                {
+                    Id = 101,
+                    IsActive = false,
+                    Name = "Tên phòng",
+                    IsClean = true,
+                    Floor = FloorBusiness.Get(1),
+                    RoomKind = RoomKindBusiness.Get(1)
+                });
+                realm.Add(new Booking
+                {
+                    Id = 10,
+                    Status = BookingStatusEnum.Booked,
+                    EmployeeBooking = EmployeeDataAccess.Get("admin"),
+                    BookCheckInTime = DateTimeOffset.Now.AddDays(-1),
+                    BookCheckOutTime = DateTimeOffset.Now.AddDays(1),
+                    EmployeeCheckIn = null,
+                    EmployeeCheckOut = null,
+                    Bill = BillDataAccess.Get(1),
+                    Room = RoomDataAccess.Get(101)
+                });
+            }).Wait();
 
             SchemaHelper.Execute(
                 @"/_GraphQL/Booking/mutation.checkIn.gql",

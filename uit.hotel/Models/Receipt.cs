@@ -51,8 +51,11 @@ namespace uit.hotel.Models
         public string OrderInfo => $"Thuê phòng {Rooms}. {Dates}.";
         public string ExtraData => $"id={Id}&billId={Bill.Id}";
 
+        [Ignored]
         private string Rooms => String.Join(", ",Bill.Bookings.ToArray().Select(b => b.Room.Name));
+        [Ignored]
         private string Dates => $"Từ {FirstBooking.CheckInTime.Format()} đến {FirstBooking.CheckOutTime.Format()}";
+        [Ignored]
         private Booking FirstBooking => Bill.Bookings.ToArray()[0];
 
         public Receipt GetManaged()

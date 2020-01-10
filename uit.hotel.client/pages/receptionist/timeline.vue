@@ -24,12 +24,16 @@
         <context-receptionist-booking- ref="context_booking" />
         <context-receptionist-room- ref="context_receptionist_room" />
         <context-receptionist-service-detail- ref="context_service_detail" />
+        <popup-bill-detail- ref="bill_detail" />
+        <popup-bill-update-discount- ref="bill_update_discount" />
         <popup-book- ref="book" />
         <popup-booking-detail- ref="booking_detail" />
         <popup-patron-select-or-add- ref="patron_select_or_add" />
         <popup-patron-update- ref="patron_update" />
+        <popup-receipt-add- ref="receipt_add" />
         <popup-room-select- ref="room_select" />
         <popup-service-detail-add- ref="service_detail_add" />
+        <popup-receipt-pay-momo- ref="receipt_pay_momo" />
     </div>
 </template>
 <script lang="ts">

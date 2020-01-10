@@ -96,31 +96,12 @@ namespace uit.hotel.Businesses
             foreach (var booking in room.Bookings)
             {
                 if (ignoreBooking != null && booking.Id == ignoreBooking.Id) continue;
-
-                var status = booking.Status;
-                DateTimeOffset bookingFrom;
-                DateTimeOffset bookingTo;
-                switch (status)
-                {
-                    case BookingStatusEnum.Booked:
-                        bookingFrom = booking.BookCheckInTime;
-                        bookingTo = booking.BookCheckOutTime;
-                        break;
-                    case BookingStatusEnum.CheckedIn:
-                        bookingFrom = booking.RealCheckInTime;
-                        bookingTo = booking.BookCheckOutTime;
-                        break;
-                    case BookingStatusEnum.CheckedOut:
-                        bookingFrom = booking.RealCheckInTime;
-                        bookingTo = booking.BookCheckOutTime;
-                        break;
-                    default:
-                        bookingFrom = booking.RealCheckInTime;
-                        bookingTo = booking.RealCheckOutTime;
-                        break;
-                }
-
-                if (DateTimeHelper.IsOverlap(bookingFrom, bookingTo, from, to)) return false;
+                if (DateTimeHelper.IsOverlap(
+                    booking.CheckInTime,
+                    booking.CheckOutTime,
+                    from,
+                    to
+                )) return false;
             }
 
             return true;
