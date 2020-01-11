@@ -15,3 +15,8 @@ export const identification = {
     maxLength: maxLength(9),
     minLength: minLength(9),
 };
+
+export const phoneNumber = {
+    minLength: minLength(8),
+    numeric,
+};

@@ -94,11 +94,11 @@
             :permission="['ManageMap', 'ManagePatronKind']"
         />
         <b-nav-item-icon-
-            to="/manage/floor-room"
-            icon="archive"
-            text="Quản lý tầng phòng"
+            to="/manage/patron-kind"
+            icon="users"
+            text="Quản lý loại khách hàng"
             exact
-            :permission="['ManageMap']"
+            :permission="['ManagePatronKind']"
         />
         <b-nav-item-icon-
             to="/manage/room-kind"
@@ -108,11 +108,11 @@
             :permission="['ManageMap']"
         />
         <b-nav-item-icon-
-            to="/manage/patron-kind"
-            icon="users"
-            text="Quản lý loại khách hàng"
+            to="/manage/floor-room"
+            icon="archive"
+            text="Quản lý tầng phòng"
             exact
-            :permission="['ManagePatronKind']"
+            :permission="['ManageMap']"
         />
     </b-navbar-nav>
 </template>

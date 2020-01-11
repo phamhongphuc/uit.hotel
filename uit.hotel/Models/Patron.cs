@@ -17,7 +17,7 @@ namespace uit.hotel.Models
         public string Email { get; set; }
         public bool Gender { get; set; }
         public DateTimeOffset Birthdate { get; set; }
-        public string PhoneNumbers { get; set; }
+        public string PhoneNumber { get; set; }
         public string Nationality { get; set; } // Quốc tịch
         public string Domicile { get; set; } // Nguyên quán
         public string Residence { get; set; } // Thường trú

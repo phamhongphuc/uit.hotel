@@ -11,7 +11,7 @@ export const getPatronsAndRooms = gql`
             gender
             residence
             domicile
-            phoneNumbers
+            phoneNumber
             nationality
             company
             note

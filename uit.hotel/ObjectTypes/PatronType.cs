@@ -22,7 +22,7 @@ namespace uit.hotel.ObjectTypes
             Field(x => x.Nationality).Description("Quốc tịch của khách hàng");
             Field(x => x.Domicile).Description("Nguyên quán của khách hàng");
             Field(x => x.Residence).Description("Địa chỉ thường trú của khách hàng");
-            Field(x => x.PhoneNumbers).Description("Danh sách số điện thoại của khách hàng");
+            Field(x => x.PhoneNumber).Description("Danh sách số điện thoại của khách hàng");
             Field(x => x.Company).Description("Công ty mà khách hàng đang làm việc");
             Field(x => x.Note).Description("Một số chú thích về khách hàng nếu cần thiết");
 
@@ -70,7 +70,7 @@ namespace uit.hotel.ObjectTypes
             Field(x => x.Nationality).Description("Quốc tịch của khách hàng");
             Field(x => x.Domicile).Description("Nguyên quán của khách hàng");
             Field(x => x.Residence).Description("Địa chỉ thường trú của khách hàng");
-            Field(x => x.PhoneNumbers).Description("Danh sách số điện thoại của khách hàng");
+            Field(x => x.PhoneNumber).Description("Danh sách số điện thoại của khách hàng");
             Field(x => x.Company).Description("Công ty mà khách hàng đang làm việc");
             Field(x => x.Note).Description("Một số chú thích về khách hàng nếu cần thiết");
 
@@ -97,7 +97,7 @@ namespace uit.hotel.ObjectTypes
             Field(x => x.Nationality).Description("Quốc tịch của khách hàng");
             Field(x => x.Domicile).Description("Nguyên quán của khách hàng");
             Field(x => x.Residence).Description("Địa chỉ thường trú của khách hàng");
-            Field(x => x.PhoneNumbers).Description("Danh sách số điện thoại của khách hàng");
+            Field(x => x.PhoneNumber).Description("Danh sách số điện thoại của khách hàng");
             Field(x => x.Company).Description("Công ty mà khách hàng đang làm việc");
             Field(x => x.Note).Description("Một số chú thích về khách hàng nếu cần thiết");
 

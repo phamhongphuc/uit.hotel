@@ -685,7 +685,7 @@ type Patron {
     patronKind: PatronKind!
 
     # Danh sách số điện thoại của khách hàng
-    phoneNumbers: String!
+    phoneNumber: String!
 
     # Địa chỉ thường trú của khách hàng
     residence: String!
@@ -717,7 +717,7 @@ input PatronCreateInput {
     residence: String!
 
     # Danh sách số điện thoại của khách hàng
-    phoneNumbers: String!
+    phoneNumber: String!
 
     # Công ty mà khách hàng đang làm việc
     company: String!
@@ -804,7 +804,7 @@ input PatronUpdateInput {
     residence: String!
 
     # Danh sách số điện thoại của khách hàng
-    phoneNumbers: String!
+    phoneNumber: String!
 
     # Công ty mà khách hàng đang làm việc
     company: String!

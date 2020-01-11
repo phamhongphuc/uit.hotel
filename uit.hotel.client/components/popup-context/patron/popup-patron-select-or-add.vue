@@ -84,9 +84,9 @@
                     />
                     <div class="input-label">Số điện thoại</div>
                     <b-input-
-                        v-model="input.phoneNumbers"
+                        v-model="input.phoneNumber"
                         :disabled="disabled"
-                        :state="!$v.input.phoneNumbers.$invalid"
+                        :state="!$v.input.phoneNumber.$invalid"
                         class="m-3 rounded"
                         icon="phone"
                     />
@@ -188,7 +188,7 @@ import {
     gender,
     identification,
     included,
-    phoneNumbers,
+    phoneNumber,
     name,
     optional,
     optionalBirthdate,
@@ -204,7 +204,7 @@ import {
             gender,
             patronKind: included('patronKind'),
             birthdate: optionalBirthdate,
-            phoneNumbers,
+            phoneNumber,
             email: optionalEmail,
             company: {},
             nationality: {},
@@ -245,7 +245,7 @@ export default class extends mixins<
                 id: -1,
             },
             birthdate: null,
-            phoneNumbers: '',
+            phoneNumber: '',
             email: '',
             company: '',
             nationality: '',
@@ -273,7 +273,7 @@ export default class extends mixins<
             this.input.gender = patron.gender;
             this.input.patronKind = patron.patronKind;
             this.input.birthdate = patron.birthdate;
-            this.input.phoneNumbers = patron.phoneNumbers;
+            this.input.phoneNumber = patron.phoneNumber;
             this.input.email = patron.email;
             this.input.company = patron.company;
             this.input.nationality = patron.nationality;

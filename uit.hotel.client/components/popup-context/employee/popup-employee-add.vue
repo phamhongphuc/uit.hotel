@@ -147,6 +147,7 @@
 </template>
 <script lang="ts">
 import { Component, mixins } from 'nuxt-property-decorator';
+import { required } from 'vuelidate/lib/validators';
 import { PopupMixin, DataMixin } from '~/components/mixins';
 import { EmployeeCreateInput } from '~/graphql/types';
 import { getPositions, createEmployee } from '~/graphql/documents';
@@ -175,7 +176,7 @@ import {
             identityCard,
             startingDate,
             gender,
-            phoneNumber,
+            phoneNumber: { phoneNumber, required },
             address,
             email: requiredEmail,
             birthdate,

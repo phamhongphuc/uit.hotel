@@ -11,7 +11,7 @@ export const getPatrons = gql`
             gender
             residence
             domicile
-            phoneNumbers
+            phoneNumber
             nationality
             company
             note
@@ -34,7 +34,7 @@ export const getPatron = gql`
             gender
             residence
             domicile
-            phoneNumbers
+            phoneNumber
             nationality
             company
             note
@@ -57,7 +57,7 @@ export const createPatron = gql`
             gender
             residence
             domicile
-            phoneNumbers
+            phoneNumber
             nationality
             company
             note

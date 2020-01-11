@@ -28,7 +28,7 @@ namespace uit.hotel.test._GraphQL
                         birthdate = DateTimeOffset.FromUnixTimeSeconds(857293200),
                         residence = "Hộ khẩu",
                         domicile = "Nguyên quán",
-                        phoneNumbers = "0123456789",
+                        phoneNumber = "0123456789",
                         nationality = "Quốc tịch",
                         company = "BOSCH",
                         note = "Ghi chú",
@@ -59,7 +59,7 @@ namespace uit.hotel.test._GraphQL
                         birthdate = DateTimeOffset.FromUnixTimeSeconds(857293200),
                         residence = "Hộ khẩu",
                         domicile = "Nguyên quán",
-                        phoneNumbers = "0123456789",
+                        phoneNumber = "0123456789",
                         nationality = "Quốc tịch",
                         company = "BOSCH",
                         note = "Ghi chú",
@@ -90,7 +90,7 @@ namespace uit.hotel.test._GraphQL
                         birthdate = DateTimeOffset.FromUnixTimeSeconds(857293200),
                         residence = "Hộ khẩu",
                         domicile = "Nguyên quán",
-                        phoneNumbers = "0123456789",
+                        phoneNumber = "0123456789",
                         nationality = "Quốc tịch",
                         company = "BOSCH",
                         note = "Ghi chú",
@@ -121,7 +121,7 @@ namespace uit.hotel.test._GraphQL
                 Company = "Công ty",
                 Note = "Ghi chú",
                 PatronKind = PatronKindBusiness.Get(1),
-                PhoneNumbers = "0123456789"
+                PhoneNumber = "0123456789"
             })).Wait();
 
             SchemaHelper.Execute(
@@ -139,7 +139,7 @@ namespace uit.hotel.test._GraphQL
                         birthdate = DateTimeOffset.FromUnixTimeSeconds(857293200),
                         residence = "Hộ khẩu",
                         domicile = "Nguyên quán",
-                        phoneNumbers = "0123456789",
+                        phoneNumber = "0123456789",
                         nationality = "Quốc tịch",
                         company = "BOSCH",
                         note = "Ghi chú",
@@ -171,7 +171,7 @@ namespace uit.hotel.test._GraphQL
                         birthdate = DateTimeOffset.FromUnixTimeSeconds(857293200),
                         residence = "Hộ khẩu",
                         domicile = "Nguyên quán",
-                        phoneNumbers = "0123456789",
+                        phoneNumber = "0123456789",
                         nationality = "Quốc tịch",
                         company = "BOSCH",
                         note = "Ghi chú",
@@ -202,7 +202,7 @@ namespace uit.hotel.test._GraphQL
                 Company = "Công ty",
                 Note = "Ghi chú",
                 PatronKind = PatronKindBusiness.Get(1),
-                PhoneNumbers = "0123456789"
+                PhoneNumber = "0123456789"
             })).Wait();
 
             SchemaHelper.ExecuteAndExpectError(
@@ -220,7 +220,7 @@ namespace uit.hotel.test._GraphQL
                         birthdate = DateTimeOffset.FromUnixTimeSeconds(857293200),
                         residence = "Hộ khẩu",
                         domicile = "Nguyên quán",
-                        phoneNumbers = "0123456789",
+                        phoneNumber = "0123456789",
                         nationality = "Quốc tịch",
                         company = "BOSCH",
                         note = "Ghi chú",

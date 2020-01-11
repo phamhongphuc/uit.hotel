@@ -12,7 +12,8 @@
         "dev:dotnet": "cross-env ASPNETCORE_ENVIRONMENT=Development dotnet run",
         "dev:dotnet:watch": "cross-env ASPNETCORE_ENVIRONMENT=Development dotnet watch run",
         "dev:c": "cd ../uit.hotel.client && yarn dev",
-        "test": "cd ../uit.hotel.test && dotnet test"
+        "test": "cd ../uit.hotel.test && dotnet test",
+        "type": "cd .. && dotnet format"
     },
     "author": "",
     "license": "ISC"

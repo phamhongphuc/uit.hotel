@@ -34,7 +34,7 @@ namespace uit.hotel.DataAccesses
                 patronInDatabase.Company = patron.Company;
                 patronInDatabase.Note = patron.Note;
                 patronInDatabase.PatronKind = patron.PatronKind;
-                patronInDatabase.PhoneNumbers = patron.PhoneNumbers;
+                patronInDatabase.PhoneNumber = patron.PhoneNumber;
             });
             return patronInDatabase;
         }

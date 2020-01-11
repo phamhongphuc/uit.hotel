@@ -18,7 +18,7 @@ namespace uit.hotel.Businesses
         public static Task<Service> Update(Service service)
         {
             var serviceInDatabase = GetAndCheckValid(service.Id);
-            CheckUniqueName(service);
+            CheckUniqueName(service, true);
 
             return ServiceDataAccess.Update(serviceInDatabase, service);
         }
@@ -38,9 +38,9 @@ namespace uit.hotel.Businesses
             ServiceDataAccess.SetIsActive(serviceInDatabase, isActive);
         }
 
-        private static void CheckUniqueName(Service service)
+        private static void CheckUniqueName(Service service, bool isUpdate = false)
         {
-            var numberOfServices = Get().Where(s => s.Name == service.Name).Count();
+            var numberOfServices = Get().Where(s => s.Name == service.Name && (isUpdate ? s.Id != service.GetManaged().Id : true)).Count();
             if (numberOfServices == 1)
                 throw new Exception("Dịch vụ " + service.Name + " đã được tạo.");
             else if (numberOfServices > 1)

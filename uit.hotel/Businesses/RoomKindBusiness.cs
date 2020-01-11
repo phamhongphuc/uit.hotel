@@ -18,7 +18,7 @@ namespace uit.hotel.Businesses
         public static Task<RoomKind> Update(RoomKind roomKind)
         {
             var roomKindInDatabase = GetAndCheckValid(roomKind.Id);
-            CheckUniqueName(roomKind);
+            CheckUniqueName(roomKind, true);
 
             return RoomKindDataAccess.Update(roomKindInDatabase, roomKind);
         }
@@ -37,11 +37,11 @@ namespace uit.hotel.Businesses
             RoomKindDataAccess.SetIsActive(roomKindInDatabase, isActive);
         }
 
-        private static void CheckUniqueName(RoomKind roomKind)
+        private static void CheckUniqueName(RoomKind roomKind, bool isUpdate = false)
         {
-            var numberOfRoomKinds = Get().Where(rk => rk.Name == roomKind.Name).Count();
+            var numberOfRoomKinds = Get().Where(rk => rk.Name == roomKind.Name && (isUpdate ? rk.Id != roomKind.GetManaged().Id : true)).Count();
             if (numberOfRoomKinds == 1)
-                throw new Exception("Loại Phòng " + roomKind.Name + " đã được tạo.");
+                throw new Exception("Loại phòng " + roomKind.Name + " đã được tạo.");
             else if (numberOfRoomKinds > 1)
                 throw new Exception("Cơ sở dữ liệu lỗi!");
         }

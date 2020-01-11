@@ -18,7 +18,7 @@ namespace uit.hotel.Businesses
         public static Task<PatronKind> Update(PatronKind patronKind)
         {
             var patronKindInDatabase = GetAndCheckValid(patronKind.Id);
-            CheckUniqueName(patronKind);
+            CheckUniqueName(patronKind, true);
 
             return PatronKindDataAccess.Update(patronKindInDatabase, patronKind);
         }
@@ -32,9 +32,9 @@ namespace uit.hotel.Businesses
             PatronKindDataAccess.Delete(patronKindInDatabase);
         }
 
-        private static void CheckUniqueName(PatronKind patronKind)
+        private static void CheckUniqueName(PatronKind patronKind, bool isUpdate = false)
         {
-            var numberOfPatronKinds = Get().Where(p => p.Name == patronKind.Name).Count();
+            var numberOfPatronKinds = Get().Where(p => p.Name == patronKind.Name && (isUpdate ? p.Id != patronKind.GetManaged().Id : true)).Count();
             if (numberOfPatronKinds == 1)
                 throw new Exception("Loại khách hàng " + patronKind.Name + " đã được tạo.");
             else if (numberOfPatronKinds > 1)

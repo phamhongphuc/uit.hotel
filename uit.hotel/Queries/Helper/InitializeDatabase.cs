@@ -114,7 +114,7 @@ namespace uit.hotel.Queries.Helper
                     Company = "Công ty",
                     Note = "Ghi chú",
                     PatronKind = patronKind,
-                    PhoneNumbers = "0123456789",
+                    PhoneNumber = "0123456789",
                 });
 
                 var bill = realm.Add(new Bill

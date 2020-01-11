@@ -39,7 +39,6 @@
                             key: 'index',
                             label: '#',
                             class: 'table-cell-id text-center',
-                            sortable: true,
                         },
                         {
                             key: 'bookings',

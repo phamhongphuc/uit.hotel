@@ -3,7 +3,6 @@ import {
     email,
     minLength,
     not,
-    numeric,
     or,
     required,
 } from 'vuelidate/lib/validators';
@@ -15,11 +14,6 @@ export const optionalEmail = {
 
 export const optionalBirthdate = {
     or: or(not(required), and(validDate, beforeDate())),
-};
-
-export const phoneNumbers = {
-    minLength: minLength(8),
-    numeric,
 };
 
 export const patronKindName = {

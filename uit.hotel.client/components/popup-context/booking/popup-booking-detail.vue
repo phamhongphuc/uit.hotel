@@ -76,7 +76,7 @@
                                     label: 'CMND',
                                 },
                                 {
-                                    key: 'phoneNumbers',
+                                    key: 'phoneNumber',
                                     label: 'Số điện thoại',
                                     tdClass: 'text-right',
                                 },
@@ -103,7 +103,7 @@
                             <template v-slot:cell(index)="data">
                                 {{ data.index + 1 }}
                             </template>
-                            <template v-slot:cell(phoneNumbers)="{ value }">
+                            <template v-slot:cell(phoneNumber)="{ value }">
                                 <a
                                     :href="`tel:${value}`"
                                     class="d-block"
