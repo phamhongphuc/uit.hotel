@@ -18,7 +18,7 @@ namespace uit.hotel.Businesses
         public static Task<Position> Update(Position position)
         {
             var positionInDatabase = GetAndCheckValid(position.Id);
-            CheckUniqueName(position);
+            CheckUniqueName(position, true);
 
             return PositionDataAccess.Update(positionInDatabase, position);
         }
@@ -41,9 +41,9 @@ namespace uit.hotel.Businesses
             PositionDataAccess.SetIsActive(positionInDatabase, isActive);
         }
 
-        private static void CheckUniqueName(Position position)
+        private static void CheckUniqueName(Position position, bool isUpdate = false)
         {
-            var positions = Get().Where(p => p.Name == position.Name);
+            var positions = Get().Where(p => p.Name == position.Name && (isUpdate ? p.Id != position.GetManaged().Id : true));
             if (positions.Count() == 1 && positions.First().Id != position.Id)
                 throw new Exception("Chức vụ " + position.Name + " đã được tạo.");
             else if (positions.Count() > 1)

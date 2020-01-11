@@ -28,7 +28,7 @@ namespace uit.hotel.Businesses
         public static Task<Room> Update(Room room)
         {
             var roomInDatabase = GetAndCheckValid(room.Id);
-            CheckUniqueName(room);
+            CheckUniqueName(room, true);
 
             room.Floor = room.Floor.GetManaged();
             if (!room.Floor.IsActive)
@@ -66,9 +66,9 @@ namespace uit.hotel.Businesses
             RoomDataAccess.SetIsClean(roomInDatabase, isClean);
         }
 
-        private static void CheckUniqueName(Room room)
+        private static void CheckUniqueName(Room room, bool isUpdate = false)
         {
-            var numberOfRooms = Get().Where(r => r.Name == room.Name).Count();
+            var numberOfRooms = Get().Where(r => r.Name == room.Name && (isUpdate ? r.Id != room.GetManaged().Id : true)).Count();
             if (numberOfRooms == 1)
                 throw new Exception("Phòng " + room.Name + " đã được tạo.");
             else if (numberOfRooms > 1)
