@@ -23,7 +23,7 @@
                             "gender",
                             "residence",
                             "domicile",
-                            "phoneNumbers",
+                            "phoneNumber",
                             "nationality",
                             "company",
                             "note",
@@ -60,7 +60,7 @@
                                 "type": "string",
                                 "pattern": "^(.*)$"
                             },
-                            "phoneNumbers": {
+                            "phoneNumber": {
                                 "type": "string",
                                 "pattern": "^(.*)$"
                             },

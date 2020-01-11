@@ -82,7 +82,7 @@ export const getBooking = gql`
                 gender
                 residence
                 domicile
-                phoneNumbers
+                phoneNumber
                 nationality
                 company
                 note

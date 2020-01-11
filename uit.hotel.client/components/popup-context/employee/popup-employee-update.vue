@@ -135,6 +135,7 @@
 </template>
 <script lang="ts">
 import { Component, mixins, Vue } from 'nuxt-property-decorator';
+import { required } from 'vuelidate/lib/validators';
 import { PopupMixin, DataMixin } from '~/components/mixins';
 import { EmployeeUpdateInput, GetEmployees } from '~/graphql/types';
 import { updateEmployee, getPositions } from '~/graphql/documents';
@@ -166,7 +167,7 @@ type PopupMixinType = PopupMixin<
             identityCard,
             startingDate,
             gender,
-            phoneNumber,
+            phoneNumber: { phoneNumber, required },
             address,
             email: requiredEmail,
             birthdate,

@@ -803,7 +803,7 @@ export type Patron = {
     /** Loại khách hàng */
     patronKind: PatronKind;
     /** Danh sách số điện thoại của khách hàng */
-    phoneNumbers: Scalars['String'];
+    phoneNumber: Scalars['String'];
     /** Địa chỉ thường trú của khách hàng */
     residence: Scalars['String'];
 };
@@ -826,7 +826,7 @@ export type PatronCreateInput = {
     /** Địa chỉ thường trú của khách hàng */
     residence: Scalars['String'];
     /** Danh sách số điện thoại của khách hàng */
-    phoneNumbers: Scalars['String'];
+    phoneNumber: Scalars['String'];
     /** Công ty mà khách hàng đang làm việc */
     company: Scalars['String'];
     /** Một số chú thích về khách hàng nếu cần thiết */
@@ -895,7 +895,7 @@ export type PatronUpdateInput = {
     /** Địa chỉ thường trú của khách hàng */
     residence: Scalars['String'];
     /** Danh sách số điện thoại của khách hàng */
-    phoneNumbers: Scalars['String'];
+    phoneNumber: Scalars['String'];
     /** Công ty mà khách hàng đang làm việc */
     company: Scalars['String'];
     /** Một số chú thích về khách hàng nếu cần thiết */
@@ -1654,7 +1654,7 @@ export type GetBookingQuery = {
                 | 'gender'
                 | 'residence'
                 | 'domicile'
-                | 'phoneNumbers'
+                | 'phoneNumber'
                 | 'nationality'
                 | 'company'
                 | 'note'
@@ -1921,7 +1921,7 @@ export type GetPatronsQuery = {
             | 'gender'
             | 'residence'
             | 'domicile'
-            | 'phoneNumbers'
+            | 'phoneNumber'
             | 'nationality'
             | 'company'
             | 'note'
@@ -1944,7 +1944,7 @@ export type GetPatronQuery = {
         | 'gender'
         | 'residence'
         | 'domicile'
-        | 'phoneNumbers'
+        | 'phoneNumber'
         | 'nationality'
         | 'company'
         | 'note'
@@ -1966,7 +1966,7 @@ export type CreatePatronMutation = {
         | 'gender'
         | 'residence'
         | 'domicile'
-        | 'phoneNumbers'
+        | 'phoneNumber'
         | 'nationality'
         | 'company'
         | 'note'
@@ -2328,7 +2328,7 @@ export type GetPatronsAndRoomsQuery = {
             | 'gender'
             | 'residence'
             | 'domicile'
-            | 'phoneNumbers'
+            | 'phoneNumber'
             | 'nationality'
             | 'company'
             | 'note'

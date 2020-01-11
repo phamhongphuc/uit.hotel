@@ -17,8 +17,6 @@ export const rePassword = {
 
 export const password = { required, minLength: minLength(3) };
 
-export const phoneNumber = { required, alphaNum };
-
 export const address = { required, minLength: minLength(10) };
 
 export const requiredEmail = { required, email };

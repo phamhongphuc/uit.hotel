@@ -3602,7 +3602,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "phoneNumbers",
+                        "name": "phoneNumber",
                         "description": "Danh sách số điện thoại của khách hàng",
                         "args": [],
                         "type": {
@@ -6804,7 +6804,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "phoneNumbers",
+                        "name": "phoneNumber",
                         "description": "Danh sách số điện thoại của khách hàng",
                         "type": {
                             "kind": "NON_NULL",
@@ -8316,7 +8316,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "phoneNumbers",
+                        "name": "phoneNumber",
                         "description": "Danh sách số điện thoại của khách hàng",
                         "type": {
                             "kind": "NON_NULL",
