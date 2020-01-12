@@ -39,10 +39,6 @@ export default class Popup extends Vue {
 
     currentEvent: MouseEvent | null = null;
 
-    click() {
-        if (this.currentEvent !== null) this.currentEvent = null;
-    }
-
     @Prop({ type: String })
     childClass!: string;
 
