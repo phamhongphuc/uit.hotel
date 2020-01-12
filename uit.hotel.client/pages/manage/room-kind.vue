@@ -42,11 +42,8 @@
                     {
                         key: 'name',
                         label: 'Tên loại phòng',
-                        tdClass: (value, key, row) => {
-                            if (!row.isActive)
-                                return 'table-cell-disable w-100';
-                            return 'w-100';
-                        },
+                        tdClass: (value, key, row) =>
+                            !row.isActive && 'table-cell-disable',
                         sortable: true,
                     },
                     {
