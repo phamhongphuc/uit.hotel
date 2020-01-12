@@ -10,7 +10,6 @@
             v-slot
             :query="getBill"
             :variables="variables"
-            :poll-interval="500"
             @result="onResult"
         >
             <div class="p-3">
