@@ -3,6 +3,17 @@
         <b-nav-item-icon- icon="info" text="Xem thông tin chi tiết" />
         <div class="context-hr" />
         <b-nav-item-icon-
+            icon="receipt"
+            text="Thêm giá cơ bản"
+            @click="refs.price_add.open({ roomKind })"
+        />
+        <b-nav-item-icon-
+            icon="receipt"
+            text="Thêm giá biến động"
+            @click="refs.price_volatility_add.open({ roomKind })"
+        />
+        <div class="context-hr" />
+        <b-nav-item-icon-
             icon="edit-2"
             text="Sửa thông tin phòng"
             @click="refs.room_kind_update.open({ roomKind })"
@@ -16,11 +27,6 @@
                     ? 'Vô hiệu hóa loại phòng'
                     : 'Kích hoạt lại loại phòng'
             "
-        />
-        <b-nav-item-icon-
-            icon="edit-2"
-            text="Thêm giá cơ bản"
-            @click="refs.price_add.open({ roomKind })"
         />
         <b-nav-item-icon-mutate-
             :mutation="deleteRoomKind"

@@ -92,6 +92,7 @@
         <popup-room-kind-add- ref="room_kind_add" />
         <popup-room-kind-update- ref="room_kind_update" />
         <popup-price-add- ref="price_add" />
+        <popup-price-volatility-add- ref="price_volatility_add" />
     </div>
 </template>
 <script lang="ts">

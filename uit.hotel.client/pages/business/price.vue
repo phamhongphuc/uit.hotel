@@ -4,13 +4,7 @@
             <b-button
                 class="m-2"
                 variant="white"
-                @click="
-                    $refs.price_add.open({
-                        roomKind: {
-                            id: 1,
-                        },
-                    })
-                "
+                @click="$refs.price_add.open({ roomKind: { id: -1 } })"
             >
                 <icon- class="mr-1" i="plus" />
                 <span>Thêm giá cơ bản mới</span>

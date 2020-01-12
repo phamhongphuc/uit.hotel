@@ -5,11 +5,7 @@
                 class="m-2"
                 variant="white"
                 @click="
-                    $refs.price_volatility_add.open({
-                        roomKind: {
-                            id: 1,
-                        },
-                    })
+                    $refs.price_volatility_add.open({ roomKind: { id: -1 } })
                 "
             >
                 <icon- class="mr-1" i="plus" />
