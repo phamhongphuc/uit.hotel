@@ -42,9 +42,11 @@
                     {
                         key: 'name',
                         label: 'Tên loại phòng',
-                        tdClass: (value, key, row) =>
-                            !row.isActive && 'table-cell-disable',
                         sortable: true,
+                    },
+                    {
+                        key: 'isActive',
+                        label: 'Trạng thái',
                     },
                     {
                         key: 'rooms',
@@ -80,6 +82,14 @@
                 <template v-slot:cell(index)="data">
                     {{ data.index + 1 }}
                 </template>
+                <template v-slot:cell(isActive)="{ value }">
+                    <icon-
+                        i="circle-fill"
+                        class="mr-1"
+                        :class="`text-${roomKindColorMap(value)}`"
+                    />
+                    {{ roomKindTitleMap(value) }}
+                </template>
                 <template v-slot:cell(rooms)="{ value }">
                     {{ value.length }} phòng
                 </template>
@@ -94,6 +104,7 @@
 </template>
 <script lang="ts">
 import { Component, mixins } from 'nuxt-property-decorator';
+import { roomKindColorMap, roomKindTitleMap } from '~/modules/model';
 import { getRoomKinds } from '~/graphql/documents';
 import { DataMixin, Page } from '~/components/mixins';
 import { GetRoomKinds } from '~/graphql/types';
@@ -103,7 +114,7 @@ import { GetRoomKinds } from '~/graphql/types';
 })
 export default class extends mixins<Page, {}>(
     Page,
-    DataMixin({ getRoomKinds }),
+    DataMixin({ getRoomKinds, roomKindColorMap, roomKindTitleMap }),
 ) {
     head() {
         return {
