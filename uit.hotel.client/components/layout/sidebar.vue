@@ -51,7 +51,7 @@
         <b-nav-item-icon-
             to="/business/price"
             icon="receipt"
-            text="Quản lý giá"
+            text="Quản lý giá cơ bản"
             exact
             :permission="['ManagePrice']"
         />
