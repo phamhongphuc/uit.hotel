@@ -101,7 +101,7 @@
         "stylelint-order": "^4.0.0",
         "stylelint-scss": "^3.13.0",
         "ts-loader": "^6.2.1",
-        "ts-node": "^8.6.1",
+        "ts-node": "^8.6.2",
         "typescript": "^3.7.4"
     }
 }
