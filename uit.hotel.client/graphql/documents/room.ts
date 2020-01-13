@@ -27,6 +27,27 @@ export const getRoom = gql`
             id
             name
             isActive
+            isClean
+            roomKind {
+                id
+                name
+            }
+            bookings {
+                id
+                patrons {
+                    id
+                }
+                room {
+                    id
+                    name
+                }
+                total
+                status
+                realCheckInTime
+                realCheckOutTime
+                bookCheckInTime
+                bookCheckOutTime
+            }
         }
     }
 `;

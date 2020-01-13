@@ -1757,7 +1757,26 @@ export type GetRoomQueryVariables = {
     id: Scalars['ID'];
 };
 
-export type GetRoomQuery = { room: Pick<Room, 'id' | 'name' | 'isActive'> };
+export type GetRoomQuery = {
+    room: Pick<Room, 'id' | 'name' | 'isActive' | 'isClean'> & {
+        roomKind: Pick<RoomKind, 'id' | 'name'>;
+        bookings: Array<
+            Pick<
+                Booking,
+                | 'id'
+                | 'total'
+                | 'status'
+                | 'realCheckInTime'
+                | 'realCheckOutTime'
+                | 'bookCheckInTime'
+                | 'bookCheckOutTime'
+            > & {
+                patrons: Array<Pick<Patron, 'id'>>;
+                room: Pick<Room, 'id' | 'name'>;
+            }
+        >;
+    };
+};
 
 export type CreateRoomMutationVariables = {
     input: RoomCreateInput;
@@ -2336,6 +2355,14 @@ export namespace GetRoom {
     export type Variables = GetRoomQueryVariables;
     export type Query = GetRoomQuery;
     export type Room = GetRoomQuery['room'];
+    export type RoomKind = GetRoomQuery['room']['roomKind'];
+    export type Bookings = NonNullable<GetRoomQuery['room']['bookings'][0]>;
+    export type Patrons = NonNullable<
+        NonNullable<GetRoomQuery['room']['bookings'][0]>['patrons'][0]
+    >;
+    export type _Room = NonNullable<
+        GetRoomQuery['room']['bookings'][0]
+    >['room'];
 }
 
 export namespace CreateRoom {
