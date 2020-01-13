@@ -15,6 +15,43 @@ export const getRoomKinds = gql`
     }
 `;
 
+export const getRoomKind = gql`
+    query getRoomKind($id: ID!) {
+        roomKind(id: $id) {
+            id
+            name
+            isActive
+            amountOfPeople
+            numberOfBeds
+            rooms {
+                id
+                isActive
+                name
+                floor {
+                    id
+                }
+            }
+            currentPrice {
+                id
+                earlyCheckInFee
+                lateCheckOutFee
+                hourPrice
+                nightPrice
+                dayPrice
+                weekPrice
+                monthPrice
+            }
+            currentPriceVolatilities {
+                id
+                name
+                hourPrice
+                nightPrice
+                dayPrice
+            }
+        }
+    }
+`;
+
 export const createRoomKind = gql`
     mutation createRoomKind($input: RoomKindCreateInput!) {
         createRoomKind(input: $input) {

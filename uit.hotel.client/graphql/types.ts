@@ -6,144 +6,71 @@ export type Scalars = {
     Boolean: boolean;
     Int: number;
     Float: number;
-    /**
-     * The `DateTimeOffset` scalar type represents a date, time and offset from UTC.
-     * `DateTimeOffset` expects timestamps to be formatted in accordance with the
-     * [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-     */
     DateTimeOffset: string | Date;
-    /** The `Seconds` scalar type represents a period of time represented as the total number of seconds. */
     Seconds: number;
-    /**
-     * The `Date` scalar type represents a year, month and day in accordance with the
-     * [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-     */
     Date: string | Date;
-    /**
-     * The `DateTime` scalar type represents a date and time. `DateTime` expects
-     * timestamps to be formatted in accordance with the
-     * [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
-     */
     DateTime: string | Date;
     Decimal: number;
-    /** The `Milliseconds` scalar type represents a period of time represented as the total number of milliseconds. */
     Milliseconds: number;
 };
 
 export type AppMutation = {
-    /** Thêm phòng vào hóa đơn */
     addBookingToBill: Booking;
-    /** Đặt và nhận phòng ngay tại khách sạn */
     bookAndCheckIn: Bill;
-    /** Hủy đặt phòng */
     cancel: Scalars['String'];
-    /** Tạo và trả về một đơn đặt phòng */
     createBill: Bill;
-    /** Tạo và trả về một nhân viên mới */
     createEmployee: Employee;
-    /** Tạo và trả về một tầng mới */
     createFloor: Floor;
-    /** Tạo và trả về một khách hàng mới */
     createPatron: Patron;
-    /** Tạo và trả về một loại khách hàng mới */
     createPatronKind: PatronKind;
-    /** Tạo và trả về một chức vụ mới */
     createPosition: Position;
-    /** Tạo và trả về một loại giá cơ bản mới */
     createPrice: Price;
-    /** Tạo và trả về một giá biến động mới */
     createPriceVolatility: PriceVolatility;
-    /** Tạo và trả về một phiếu thu tiền mới */
     createReceipt: Receipt;
-    /** Tạo và trả về một phòng mới */
     createRoom: Room;
-    /** Tạo và trả về một loại phòng */
     createRoomKind: RoomKind;
-    /** Tạo và trả về một dịch vụ mới */
     createService: Service;
-    /** Tạo và trả về một chi tiết dịch vụ mới */
     createServicesDetail: ServicesDetail;
-    /** Nhân viên tự đổi mật khẩu cho tài khoản của mình */
     changePassword: Scalars['String'];
-    /** Kiểm tra thử giá của phòng */
     checkBookingPrice: Booking;
-    /** Nhận phòng */
     checkIn: Booking;
-    /** Kiểm tra đăng nhập */
     checkLogin: Employee;
-    /** Trả phòng */
     checkOut: Booking;
-    /** Kiểm tra trạng thái của một phiếu thu */
     checkReceipt: Receipt;
-    /** Xóa một tầng */
     deleteFloor: Scalars['String'];
-    /** Xóa một loại khách hàng */
     deletePatronKind: Scalars['String'];
-    /** Xóa một chức vụ */
     deletePosition: Scalars['String'];
-    /** Xóa một giá cơ bản */
     deletePrice: Scalars['String'];
-    /** Xóa một giá biến động */
     deletePriceVolatility: Scalars['String'];
-    /** Xóa một phòng */
     deleteRoom: Scalars['String'];
-    /** Xóa một loại phòng */
     deleteRoomKind: Scalars['String'];
-    /** Xóa một dịch vụ */
     deleteService: Scalars['String'];
-    /** Xóa một dịch vụ */
     deleteServicesDetail: Scalars['String'];
-    /** Khởi tạo tài khoản admin */
     initializeAdminAccount: Scalars['String'];
-    /** Khởi tạo dữ liệu */
     initializeDatabase: Scalars['String'];
-    /** Đăng nhập mới */
     login: AuthenticationObject;
-    /** Thanh toán hóa đơn (thanh toán tiền phòng) */
     payTheBill: Bill;
-    /** Reset lại mật khẩu cho nhân viên khi quên mật khẩu */
     resetPassword: Scalars['String'];
-    /** Vô hiệu hóa/ kích hoạt tài khoản */
     setIsActiveAccount: Scalars['String'];
-    /** Cập nhật trạng thái hoạt động của tầng */
     setIsActiveFloor: Scalars['String'];
-    /** Cập nhật trạng thái hoạt động của chức vụ */
     setIsActivePosition: Scalars['String'];
-    /** Vô hiệu hóa chức vụ và chuyển nhân viên sang chức vụ mới */
     setIsActivePositionAndMoveEmployee: Scalars['String'];
-    /** Cập nhật trạng thái hoạt động của một phòng */
     setIsActiveRoom: Scalars['String'];
-    /** Cập nhật trạng thái hoạt động của loại phòng */
     setIsActiveRoomKind: Scalars['String'];
-    /** Cập nhật trạng thái của dịch vụ */
     setIsActiveService: Scalars['String'];
-    /** Cập nhật trạng thái dọn phòng của một phòng */
     setIsCleanRoom: Scalars['String'];
-    /** Cập nhật thông tin hóa đơn */
     updateBill: Bill;
-    /** Cập nhật giảm giá của hóa đơn */
     updateBillDiscount: Bill;
-    /** Chỉnh sửa thông tin nhân viên */
     updateEmployee: Employee;
-    /** Cập nhật và trả về một tầng vừa cập nhật */
     updateFloor: Floor;
-    /** Cập nhật và trả về một khách hàng vừa cập nhật */
     updatePatron: Patron;
-    /** Cập nhật và trả về một loại khách hàng vừa cập nhật */
     updatePatronKind: PatronKind;
-    /** Cập nhật và trả về một chức vụ vừa cập nhật */
     updatePosition: Position;
-    /** Cập nhật và trả về một giá cơ bản vừa cập nhật */
     updatePrice: Price;
-    /** Cập nhật và trả về một giá biến động vừa cập nhật */
     updatePriceVolatility: PriceVolatility;
-    /** Cập nhật và trả về một phòng vừa cập nhật */
     updateRoom: Room;
-    /** Cập nhật và trả về loại phòng vừa cập nhật */
     updateRoomKind: RoomKind;
-    /** Cập nhật và trả về một dịch vụ mới cập nhật */
     updateService: Service;
-    /** Cập nhật và trả về một chi tiết dịch vụ mới cập nhật */
     updateServicesDetail: ServicesDetail;
 };
 
@@ -383,65 +310,35 @@ export type AppMutationUpdateServicesDetailArgs = {
 };
 
 export type AppQuery = {
-    /** Trả về thông tin một hóa đơn */
     bill: Bill;
-    /** Trả về một danh sách các hóa đơn */
     bills: Array<Bill>;
-    /** Trả về thông tin một đơn đặt phòng */
     booking: Booking;
-    /** Trả về một danh sách các đơn đặt phòng */
     bookings: Array<Booking>;
-    /** Trả về thông tin một nhân viên */
     employee: Employee;
-    /** Trả về một danh sách các nhân viên */
     employees: Array<Employee>;
-    /** Trả về danh sách khách hàng theo từ khóa tìm kiếm */
     findingPatron: Array<Patron>;
-    /** Trả về thông tin một tầng */
     floor: Floor;
-    /** Trả về một danh sách các tầng */
     floors: Array<Floor>;
-    /** Kiểm tra */
     isInitialized: Scalars['Boolean'];
-    /** Trả về thông tin một khách hàng */
     patron: Patron;
-    /** Trả về thông tin của một loại khách hàng */
     patronKind: PatronKind;
-    /** Trả về một danh sách các loại khách hàng có trong hệ thống */
     patronKinds: Array<PatronKind>;
-    /** Trả về một danh sách các khách hàng */
     patrons: Array<Patron>;
-    /** Trả về thông tin một chức vụ */
     position: Position;
-    /** Trả về một danh sách các chức vụ */
     positions: Array<Position>;
-    /** Trả về thông tin một loại giá cơ bản */
     price: Price;
-    /** Trả về một danh sách các loại giá cơ bản */
     prices: Array<Price>;
-    /** Trả về một danh sách các giá biến động */
     priceVolatilities: Array<PriceVolatility>;
-    /** Trả về thông tin một giá biến động */
     priceVolatility: PriceVolatility;
-    /** Trả về thông tin một phiếu thu */
     receipt: Receipt;
-    /** Trả về một danh sách các phiếu thu */
     receipts: Array<Receipt>;
-    /** Trả về thông tin của một phòng */
     room: Room;
-    /** Trả về thông tin của một loại phòng */
     roomKind: RoomKind;
-    /** Trả về một danh sách các loại phòng */
     roomKinds: Array<RoomKind>;
-    /** Trả về một danh sách các phòng */
     rooms: Array<Room>;
-    /** Trả về thông tin một dịch vụ */
     service: Service;
-    /** Trả về một danh sách các dịch vụ */
     services: Array<Service>;
-    /** Trả về thông tin một chi tiết dịch vụ */
     servicesDetail: ServicesDetail;
-    /** Trả về một danh sách các chi tiết dịch vụ */
     servicesDetails: Array<ServicesDetail>;
 };
 
@@ -505,587 +402,340 @@ export type AppQueryServicesDetailArgs = {
     id: Scalars['ID'];
 };
 
-/** Một đối tượng đăng nhập */
 export type AuthenticationObject = {
-    /** Thông tin nhân viên đăng nhập */
     employee: Employee;
-    /** Token đăng nhập */
     token: Scalars['String'];
 };
 
-/** Một phiếu hóa đơn của khách hàng */
 export type Bill = {
-    /** Danh sách các thông tin đặt trước của hóa đơn */
     bookings: Array<Booking>;
-    /** Giảm giá */
     discount: Scalars['Int'];
-    /** Thông tin nhân viên nhận thanh toán hóa đơn */
     employee: Maybe<Employee>;
-    /** Id của hóa đơn */
     id: Scalars['Int'];
-    /** Thông tin khách hàng thanh toán hóa đơn */
     patron: Patron;
-    /** Danh sách các biên nhận cho hóa đơn */
     receipts: Array<Receipt>;
-    /** Trạng thái thanh toán của hóa đơn */
     status: BillStatusEnum;
-    /** Thời điểm in hóa đơn */
     time: Scalars['DateTimeOffset'];
-    /** Tổng giá trị hóa đơn */
     totalPrice: Scalars['Int'];
-    /** Tổng giá trị các phiếu thu */
     totalReceipts: Scalars['Int'];
 };
 
 export type BillCreateInput = {
-    /** Khách hàng */
     patron: PatronId;
 };
 
-/** Input cho thông tin một hóa đơn */
 export type BillId = {
-    /** Id của hóa đơn */
     id: Scalars['Int'];
 };
 
-/** Trạng thái của hóa đơn đặt phòng */
 export enum BillStatusEnum {
     Pending = 'PENDING',
     Success = 'SUCCESS',
     Cancel = 'CANCEL',
 }
 
-/** Input để cập nhật thông tin một hóa đơn */
 export type BillUpdateDiscountInput = {
-    /** Id của hóa đơn */
     id: Scalars['Int'];
-    /** Giảm giá */
     discount: Scalars['Int'];
 };
 
-/** Input để cập nhật thông tin một hóa đơn */
 export type BillUpdateInput = {
-    /** Id của hóa đơn */
     id: Scalars['Int'];
-    /** Giảm giá */
     discount: Scalars['Int'];
-    /** Thông tin khách hàng thanh toán hóa đơn */
     patron: PatronId;
 };
 
 export type BookAndCheckInCreateInput = {
-    /** Thời điểm trả phòng dự kiến của khách hàng */
     bookCheckOutTime: Scalars['DateTimeOffset'];
-    /** Phòng khách hàng chọn đặt trước */
     room: RoomId;
-    /** Danh sách khách hàng */
     listOfPatrons: Array<PatronId>;
 };
 
-/** Một thông tin thuê phòng của khách hàng */
 export type Booking = {
-    /** Thời gian nhận phòng, tính giá theo ngày */
     baseDayCheckInTime: Scalars['DateTimeOffset'];
-    /** Thời gian trả phòng */
     baseDayCheckOutTime: Scalars['DateTimeOffset'];
-    /** Thời gian nhận phòng, tính giá theo đêm */
     baseNightCheckInTime: Scalars['DateTimeOffset'];
-    /** Thông tin hóa đơn của thông tin thuê phòng */
     bill: Bill;
-    /** Thời điểm nhận phòng dự kiến của khách hàng */
     bookCheckInTime: Scalars['DateTimeOffset'];
-    /** Thời điểm trả phòng dự kiến của khách hàng */
     bookCheckOutTime: Scalars['DateTimeOffset'];
-    /** Thời điểm tạo thông tin thuê phòng */
     createTime: Scalars['DateTimeOffset'];
-    /** Phí nhận phòng sớm */
     earlyCheckInFee: Scalars['Int'];
-    /** Nhân viên thực hiện giao dịch nhận đặt phòng từ khách hàng */
     employeeBooking: Maybe<Employee>;
-    /** Nhân viên thực hiện check-in cho khách hàng */
     employeeCheckIn: Maybe<Employee>;
-    /** Nhân viên thực hiện check-out cho khách hàng */
     employeeCheckOut: Maybe<Employee>;
-    /** Id của thông tin thuê phòng */
     id: Scalars['Int'];
-    /** Phí trả phòng trễ */
     lateCheckOutFee: Scalars['Int'];
-    /** Danh sách khách hàng yêu cầu đặt phòng */
     patrons: Array<Patron>;
-    /** Công thức giá */
     price: Price;
-    /** Danh sách đơn vị giá */
     priceItems: Array<PriceItem>;
-    /** Danh sách đơn vị giá biến động */
     priceVolatilityItems: Array<PriceVolatilityItem>;
-    /** Thời điểm nhận phòng của khách hàng */
     realCheckInTime: Scalars['DateTimeOffset'];
-    /** Thời điểm trả phòng của khách hàng */
     realCheckOutTime: Scalars['DateTimeOffset'];
-    /** Phòng khách hàng chọn đặt trước */
     room: Room;
-    /** Danh sách chi tiết sử dụng dịch vụ của khách hàng */
     servicesDetails: Array<ServicesDetail>;
-    /** Trạng thái của thông tin thuê phòng */
     status: BookingStatusEnum;
-    /** Tổng tiền */
     total: Scalars['Int'];
-    /** Tổng tiền thuê */
     totalPrice: Scalars['Int'];
-    /** Tổng tiền dịch vụ */
     totalServicesDetails: Scalars['Int'];
 };
 
 export type BookingCreateInput = {
-    /** Thời điểm nhận phòng dự kiến của khách hàng */
     bookCheckInTime: Scalars['DateTimeOffset'];
-    /** Thời điểm trả phòng dự kiến của khách hàng */
     bookCheckOutTime: Scalars['DateTimeOffset'];
-    /** Phòng khách hàng chọn đặt trước */
     room: RoomId;
-    /** Danh sách khách hàng */
     listOfPatrons: Array<PatronId>;
 };
 
-/** Input cho một thông tin một đơn đặt phòng */
 export type BookingId = {
-    /** Id của một đơn đặt phòng */
     id: Scalars['Int'];
 };
 
-/** Trạng thái của đơn đặt phòng */
 export enum BookingStatusEnum {
     Booked = 'BOOKED',
     CheckedIn = 'CHECKED_IN',
     CheckedOut = 'CHECKED_OUT',
 }
 
-/** Một nhân viên trong khách sạn */
 export type Employee = {
-    /** Địa chỉ của nhân viên */
     address: Scalars['String'];
-    /** Danh sách các Hóa đơn mà nhân viên tạo */
     bills: Array<Bill>;
-    /** Ngày sinh của nhân viên */
     birthdate: Scalars['DateTimeOffset'];
-    /** Danh sách các Thông tin thuê phòng mà nhân viên tạo */
     bookings: Array<Booking>;
-    /** Email của nhân viên */
     email: Scalars['String'];
-    /** Giới tính của nhân viên */
     gender: Scalars['Boolean'];
-    /** Id của nhân viên */
     id: Scalars['String'];
-    /** Chứng minh nhân dân */
     identityCard: Scalars['String'];
-    /** Tài khoản còn hiệu lực hay không */
     isActive: Scalars['Boolean'];
-    /** Tên nhân viên */
     name: Scalars['String'];
-    /** Chức vụ */
     position: Position;
-    /** Danh sách các Giá cơ bản mà nhân viên tạo */
     prices: Array<Price>;
-    /** Danh sách các Giá biến động mà nhân viên tạo */
     priceVolatilities: Array<PriceVolatility>;
-    /** Số điện thoại của nhân viên */
     phoneNumber: Scalars['String'];
-    /** Danh sách các Phiếu thu mà nhân viên tạo */
     receipts: Array<Receipt>;
-    /** Ngày vào làm */
     startingDate: Scalars['DateTimeOffset'];
 };
 
 export type EmployeeCreateInput = {
-    /** Id của nhân viên */
     id: Scalars['String'];
-    /** Mật khẩu của tài khoản nhân viên */
     password: Scalars['String'];
-    /** Tên nhân viên */
     name: Scalars['String'];
-    /** Chứng minh nhân dân */
     identityCard: Scalars['String'];
-    /** Số điện thoại của nhân viên */
     phoneNumber: Scalars['String'];
-    /** Địa chỉ của nhân viên */
     address: Scalars['String'];
-    /** Email của nhân viên */
     email: Scalars['String'];
-    /** Ngày sinh của nhân viên */
     birthdate: Scalars['DateTimeOffset'];
-    /** Giới tính của nhân viên */
     gender: Scalars['Boolean'];
-    /** Ngày vào làm */
     startingDate: Scalars['DateTimeOffset'];
-    /** Loại chức vụ */
     position: PositionId;
 };
 
 export type EmployeeUpdateInput = {
-    /** Id của nhân viên */
     id: Scalars['String'];
-    /** Tên nhân viên */
     name: Scalars['String'];
-    /** Chứng minh nhân dân */
     identityCard: Scalars['String'];
-    /** Địa chỉ của nhân viên */
     address: Scalars['String'];
-    /** Ngày sinh của nhân viên */
     birthdate: Scalars['DateTimeOffset'];
-    /** Email của nhân viên */
     email: Scalars['String'];
-    /** Giới tính của nhân viên */
     gender: Scalars['Boolean'];
-    /** Số điện thoại của nhân viên */
     phoneNumber: Scalars['String'];
-    /** Ngày vào làm */
     startingDate: Scalars['DateTimeOffset'];
-    /** Loại chức vụ */
     position: PositionId;
 };
 
-/** Một tầng trong khách sạn */
 export type Floor = {
-    /** Id của tầng */
     id: Scalars['Int'];
-    /** Trạng thái hoạt động */
     isActive: Scalars['Boolean'];
-    /** Tên tầng */
     name: Scalars['String'];
-    /** Danh sách các phòng có trong tầng */
     rooms: Array<Room>;
 };
 
 export type FloorCreateInput = {
-    /** Tên tầng */
     name: Scalars['String'];
 };
 
-/** Input cho một thông tin tầng */
 export type FloorId = {
-    /** Id của tầng */
     id: Scalars['Int'];
 };
 
 export type FloorUpdateInput = {
-    /** Id tầng cần cập nhật */
     id: Scalars['Int'];
-    /** Tên tầng */
     name: Scalars['String'];
 };
 
-/** Thông tin  một khách hàng của khách sạn */
 export type Patron = {
-    /** Danh sách các số hóa đơn của khách hàng */
     bills: Array<Bill>;
-    /** Ngày sinh của khách hàng */
     birthdate: Scalars['DateTimeOffset'];
-    /** Danh sách các đơn đặt trước của khách hàng */
     bookings: Array<Booking>;
-    /** Công ty mà khách hàng đang làm việc */
     company: Scalars['String'];
-    /** Nguyên quán của khách hàng */
     domicile: Scalars['String'];
-    /** Địa chỉ e-mail của khách hàng */
     email: Scalars['String'];
-    /** Giới tính của khách hàng */
     gender: Scalars['Boolean'];
-    /** Id của khách hàng */
     id: Scalars['Int'];
-    /** Số an sinh xã hội / Số chứng minh nhân dân / Số passport của khách hàng */
     identification: Scalars['String'];
-    /** Tên của khách hàng */
     name: Scalars['String'];
-    /** Quốc tịch của khách hàng */
     nationality: Scalars['String'];
-    /** Một số chú thích về khách hàng nếu cần thiết */
     note: Scalars['String'];
-    /** Loại khách hàng */
     patronKind: PatronKind;
-    /** Danh sách số điện thoại của khách hàng */
     phoneNumber: Scalars['String'];
-    /** Địa chỉ thường trú của khách hàng */
     residence: Scalars['String'];
 };
 
 export type PatronCreateInput = {
-    /** Số an sinh xã hội / Số chứng minh nhân dân / Số passport của khách hàng */
     identification: Scalars['String'];
-    /** Tên của khách hàng */
     name: Scalars['String'];
-    /** Địa chỉ e-mail của khách hàng */
     email: Scalars['String'];
-    /** Giới tính của khách hàng */
     gender: Scalars['Boolean'];
-    /** Ngày sinh của khách hàng */
     birthdate: Maybe<Scalars['DateTimeOffset']>;
-    /** Quốc tịch của khách hàng */
     nationality: Scalars['String'];
-    /** Nguyên quán của khách hàng */
     domicile: Scalars['String'];
-    /** Địa chỉ thường trú của khách hàng */
     residence: Scalars['String'];
-    /** Danh sách số điện thoại của khách hàng */
     phoneNumber: Scalars['String'];
-    /** Công ty mà khách hàng đang làm việc */
     company: Scalars['String'];
-    /** Một số chú thích về khách hàng nếu cần thiết */
     note: Scalars['String'];
-    /** Loại khách hàng */
     patronKind: PatronKindId;
 };
 
-/** Input cho thông tin một khách hàng */
 export type PatronId = {
-    /** Id của khách hàng */
     id: Scalars['Int'];
 };
 
-/** Thông tin  một loại khách hàng */
 export type PatronKind = {
-    /** Thông tin mô tả loại khách hàng */
     description: Scalars['String'];
-    /** Id của loại khách hàng */
     id: Scalars['Int'];
-    /** Tên loại khách hàng */
     name: Scalars['String'];
-    /** Danh sách các khách hàng thuộc loại khách hàng */
     patrons: Array<Patron>;
 };
 
 export type PatronKindCreateInput = {
-    /** Tên loại khách hàng */
     name: Scalars['String'];
-    /** Thông tin mô tả loại khách hàng */
     description: Scalars['String'];
 };
 
-/** Input cho thông tin  một loại khách hàng */
 export type PatronKindId = {
-    /** Id của loại khách hàng */
     id: Scalars['Int'];
 };
 
 export type PatronKindUpdateInput = {
-    /** Id của loại khách hàng */
     id: Scalars['Int'];
-    /** Tên loại khách hàng */
     name: Scalars['String'];
-    /** Thông tin mô tả loại khách hàng */
     description: Scalars['String'];
 };
 
 export type PatronUpdateInput = {
-    /** Id của khách hàng */
     id: Scalars['Int'];
-    /** Số an sinh xã hội / Số chứng minh nhân dân / Số passport của khách hàng */
     identification: Scalars['String'];
-    /** Tên của khách hàng */
     name: Scalars['String'];
-    /** Địa chỉ e-mail của khách hàng */
     email: Scalars['String'];
-    /** Giới tính của khách hàng */
     gender: Scalars['Boolean'];
-    /** Ngày sinh của khách hàng */
     birthdate: Scalars['DateTimeOffset'];
-    /** Quốc tịch của khách hàng */
     nationality: Scalars['String'];
-    /** Nguyên quán của khách hàng */
     domicile: Scalars['String'];
-    /** Địa chỉ thường trú của khách hàng */
     residence: Scalars['String'];
-    /** Danh sách số điện thoại của khách hàng */
     phoneNumber: Scalars['String'];
-    /** Công ty mà khách hàng đang làm việc */
     company: Scalars['String'];
-    /** Một số chú thích về khách hàng nếu cần thiết */
     note: Scalars['String'];
-    /** Loại khách hàng */
     patronKind: PatronKindId;
 };
 
-/** Một chức vụ trong khách sạn */
 export type Position = {
-    /** Số nhân viên còn hoạt động */
     countActiveEmployees: Scalars['Int'];
-    /** Số nhân viên */
     countEmployees: Scalars['Int'];
-    /** Số nhân viên ngưng hoạt động */
     countInActiveEmployees: Scalars['Int'];
-    /** Danh sách các nhân viên thuộc quyền này */
     employees: Array<Employee>;
-    /** Id của chức vụ */
     id: Scalars['Int'];
-    /** Trạng thái kích hoạt/vô hiệu hóa chức vụ */
     isActive: Scalars['Boolean'];
-    /** Tên chức vụ */
     name: Scalars['String'];
-    /** Quyền thao tác dọn phòng */
     permissionCleaning: Scalars['Boolean'];
-    /** Quyền lấy thông tin các chứng từ (hóa đơn, phiếu thu) */
     permissionGetAccountingVoucher: Scalars['Boolean'];
-    /** Quyền lấy thông tin tầng, phòng */
     permissionGetMap: Scalars['Boolean'];
-    /** Quyền lấy thông tin khách hàng */
     permissionGetPatron: Scalars['Boolean'];
-    /** Quyền lấy thông tin giá cơ bản và giá biến động */
     permissionGetPrice: Scalars['Boolean'];
-    /** Quyền lấy thông tin dịch vụ */
     permissionGetService: Scalars['Boolean'];
-    /** Quyền quản lý thông tin nhân viên */
     permissionManageEmployee: Scalars['Boolean'];
-    /** Quyền chỉnh sửa sơ đồ */
     permissionManageMap: Scalars['Boolean'];
-    /** Quyền quản lý khách hàng */
     permissionManagePatron: Scalars['Boolean'];
-    /** Quyền quản lý loại khách hàng */
     permissionManagePatronKind: Scalars['Boolean'];
-    /** Quyền quản lý chức vụ */
     permissionManagePosition: Scalars['Boolean'];
-    /** Quyền quản lý giá cơ bản và giá biến động */
     permissionManagePrice: Scalars['Boolean'];
-    /** Quyền quản lý thuê phòng */
     permissionManageRentingRoom: Scalars['Boolean'];
-    /** Quyền quản lý dịch vụ */
     permissionManageService: Scalars['Boolean'];
 };
 
 export type PositionCreateInput = {
-    /** Tên chức vụ */
     name: Scalars['String'];
-    /** Quyền thao tác dọn phòng */
     permissionCleaning: Scalars['Boolean'];
-    /** Quyền lấy thông tin các chứng từ (hóa đơn, phiếu thu) */
     permissionGetAccountingVoucher: Scalars['Boolean'];
-    /** Quyền lấy thông tin tầng, phòng */
     permissionGetMap: Scalars['Boolean'];
-    /** Quyền lấy thông tin khách hàng */
     permissionGetPatron: Scalars['Boolean'];
-    /** Quyền lấy thông tin giá cơ bản và giá biến động */
     permissionGetPrice: Scalars['Boolean'];
-    /** Quyền lấy thông tin dịch vụ */
     permissionGetService: Scalars['Boolean'];
-    /** Quyền quản lý thông tin nhân viên */
     permissionManageEmployee: Scalars['Boolean'];
-    /** Quyền quản lý thuê phòng */
     permissionManageRentingRoom: Scalars['Boolean'];
-    /** Quyền quản lý khách hàng */
     permissionManagePatron: Scalars['Boolean'];
-    /** Quyền quản lý loại khách hàng */
     permissionManagePatronKind: Scalars['Boolean'];
-    /** Quyền quản lý chức vụ */
     permissionManagePosition: Scalars['Boolean'];
-    /** Quyền quản lý giá cơ bản và giá biến động */
     permissionManagePrice: Scalars['Boolean'];
-    /** Quyền quản lý dịch vụ */
     permissionManageService: Scalars['Boolean'];
-    /** Quyền chỉnh sửa sơ đồ */
     permissionManageMap: Scalars['Boolean'];
 };
 
-/** Input cho thông tin một chức vụ */
 export type PositionId = {
-    /** Id của chức vụ */
     id: Scalars['Int'];
 };
 
 export type PositionUpdateInput = {
-    /** Id của chức vụ */
     id: Scalars['Int'];
-    /** Tên chức vụ */
     name: Scalars['String'];
-    /** Quyền thao tác dọn phòng */
     permissionCleaning: Scalars['Boolean'];
-    /** Quyền lấy thông tin tầng, phòng */
     permissionGetMap: Scalars['Boolean'];
-    /** Quyền lấy thông tin khách hàng */
     permissionGetPatron: Scalars['Boolean'];
-    /** Quyền lấy thông tin giá cơ bản và giá biến động */
     permissionGetPrice: Scalars['Boolean'];
-    /** Quyền lấy thông tin dịch vụ */
     permissionGetService: Scalars['Boolean'];
-    /** Quyền lấy thông tin các chứng từ (hóa đơn, phiếu thu) */
     permissionGetAccountingVoucher: Scalars['Boolean'];
-    /** Quyền quản lý thông tin nhân viên */
     permissionManageEmployee: Scalars['Boolean'];
-    /** Quyền quản lý thuê phòng */
     permissionManageRentingRoom: Scalars['Boolean'];
-    /** Quyền chỉnh sửa sơ đồ */
     permissionManageMap: Scalars['Boolean'];
-    /** Quyền quản lý khách hàng */
     permissionManagePatron: Scalars['Boolean'];
-    /** Quyền quản lý loại khách hàng */
     permissionManagePatronKind: Scalars['Boolean'];
-    /** Quyền quản lý chức vụ */
     permissionManagePosition: Scalars['Boolean'];
-    /** Quyền quản lý giá cơ bản và giá biến động */
     permissionManagePrice: Scalars['Boolean'];
-    /** Quyền quản lý dịch vụ */
     permissionManageService: Scalars['Boolean'];
 };
 
-/** Giá cố định của một loại phòng */
 export type Price = {
-    /** Ngày tạo giá */
     createDate: Scalars['DateTimeOffset'];
-    /** Giá ngày */
     dayPrice: Scalars['Int'];
-    /** Phí check-out sớm */
     earlyCheckInFee: Scalars['Int'];
-    /** Ngày giá bắt đầu có hiệu lực */
     effectiveStartDate: Scalars['DateTimeOffset'];
-    /** Nhân viên tạo giá */
     employee: Maybe<Employee>;
-    /** Giá giờ */
     hourPrice: Scalars['Int'];
-    /** Id của giá */
     id: Scalars['Int'];
-    /** Phí check-out muộn */
     lateCheckOutFee: Scalars['Int'];
-    /** Giá tháng */
     monthPrice: Scalars['Int'];
-    /** Giá đêm */
     nightPrice: Scalars['Int'];
-    /** Thuộc loại phòng */
     roomKind: RoomKind;
-    /** Giá tuần */
     weekPrice: Scalars['Int'];
 };
 
 export type PriceCreateInput = {
-    /** Giá giờ */
     hourPrice: Scalars['Int'];
-    /** Giá ngày */
     dayPrice: Scalars['Int'];
-    /** Giá đêm */
     nightPrice: Scalars['Int'];
-    /** Giá tuần */
     weekPrice: Scalars['Int'];
-    /** Giá tháng */
     monthPrice: Scalars['Int'];
-    /** Phí check-out muộn */
     lateCheckOutFee: Scalars['Int'];
-    /** Phí check-out sớm */
     earlyCheckInFee: Scalars['Int'];
-    /** Ngày giá bắt đầu có hiệu lực */
     effectiveStartDate: Scalars['DateTimeOffset'];
-    /** Loại phòng */
     roomKind: RoomKindId;
 };
 
-/** Đơn vị giá */
 export type PriceItem = {
-    /** Đơn đặt phòng */
     booking: Booking;
-    /** Loại đơn vị giá */
     kind: PriceItemKindEnum;
-    /** Thời gian */
     timeSpan: Scalars['Seconds'];
-    /** Giá trị */
     value: Scalars['Int'];
 };
 
-/** Loại đơn vị giá */
 export enum PriceItemKindEnum {
     Hour = 'HOUR',
     Night = 'NIGHT',
@@ -1095,114 +745,64 @@ export enum PriceItemKindEnum {
 }
 
 export type PriceUpdateInput = {
-    /** Id của giá cần cập nhật */
     id: Scalars['Int'];
-    /** Giá giờ */
     hourPrice: Scalars['Int'];
-    /** Giá ngày */
     dayPrice: Scalars['Int'];
-    /** Giá đêm */
     nightPrice: Scalars['Int'];
-    /** Giá tuần */
     weekPrice: Scalars['Int'];
-    /** Giá tháng */
     monthPrice: Scalars['Int'];
-    /** Phí check-out muộn */
     lateCheckOutFee: Scalars['Int'];
-    /** Phí check-out sớm */
     earlyCheckInFee: Scalars['Int'];
-    /** Ngày giá bắt đầu có hiệu lực */
     effectiveStartDate: Scalars['DateTimeOffset'];
-    /** Loại phòng */
     roomKind: RoomKindId;
 };
 
-/** Giá biến động của một loại phòng */
 export type PriceVolatility = {
-    /** Ngày tạo giá */
     createDate: Scalars['DateTimeOffset'];
-    /** Giá ngày */
     dayPrice: Scalars['Int'];
-    /** Ngày giá hết hiệu lực */
     effectiveEndDate: Scalars['DateTimeOffset'];
-    /** Giá có hiệu lực vào ngày Thứ 6 */
     effectiveOnFriday: Scalars['Boolean'];
-    /** Giá có hiệu lực vào ngày Thứ 2 */
     effectiveOnMonday: Scalars['Boolean'];
-    /** Giá có hiệu lực vào ngày Thứ 7 */
     effectiveOnSaturday: Scalars['Boolean'];
-    /** Giá có hiệu lực vào ngày Chủ Nhật */
     effectiveOnSunday: Scalars['Boolean'];
-    /** Giá có hiệu lực vào ngày Thứ 3 */
     effectiveOnTuesday: Scalars['Boolean'];
-    /** Giá có hiệu lực vào ngày Thứ 5 */
     effectiveOnThursday: Scalars['Boolean'];
-    /** Giá có hiệu lực vào ngày Thứ 4 */
     effectiveOnWednesday: Scalars['Boolean'];
-    /** Ngày giá bắt đầu có hiệu lực */
     effectiveStartDate: Scalars['DateTimeOffset'];
-    /** Nhân viên tạo giá */
     employee: Maybe<Employee>;
-    /** Giá giờ */
     hourPrice: Scalars['Int'];
-    /** Id của giá */
     id: Scalars['Int'];
-    /** Tên của giá biến động */
     name: Scalars['String'];
-    /** Giá đêm */
     nightPrice: Scalars['Int'];
-    /** Thuộc loại phòng */
     roomKind: RoomKind;
 };
 
 export type PriceVolatilityCreateInput = {
-    /** Tên của giá biến động */
     name: Scalars['String'];
-    /** Giá giờ */
     hourPrice: Scalars['Int'];
-    /** Giá ngày */
     dayPrice: Scalars['Int'];
-    /** Giá đêm */
     nightPrice: Scalars['Int'];
-    /** Ngày giá bắt đầu có hiệu lực */
     effectiveStartDate: Scalars['DateTimeOffset'];
-    /** Ngày giá hết hiệu lực */
     effectiveEndDate: Scalars['DateTimeOffset'];
-    /** Giá có hiệu lực vào ngày Thứ 2 */
     effectiveOnMonday: Scalars['Boolean'];
-    /** Giá có hiệu lực vào ngày Thứ 3 */
     effectiveOnTuesday: Scalars['Boolean'];
-    /** Giá có hiệu lực vào ngày Thứ 4 */
     effectiveOnWednesday: Scalars['Boolean'];
-    /** Giá có hiệu lực vào ngày Thứ 5 */
     effectiveOnThursday: Scalars['Boolean'];
-    /** Giá có hiệu lực vào ngày Thứ 6 */
     effectiveOnFriday: Scalars['Boolean'];
-    /** Giá có hiệu lực vào ngày Thứ 7 */
     effectiveOnSaturday: Scalars['Boolean'];
-    /** Giá có hiệu lực vào ngày Chủ Nhật */
     effectiveOnSunday: Scalars['Boolean'];
-    /** Loại phòng */
     roomKind: RoomKindId;
 };
 
-/** Đơn vị giá biến động */
 export type PriceVolatilityItem = {
-    /** Đơn đặt phòng */
     booking: Booking;
-    /** Mốc thời gian */
     date: Scalars['DateTimeOffset'];
-    /** Loại đơn vị giá */
     kind: PriceVolatilityItemKindEnum;
-    /** Đối tượng giá biến động */
     priceVolatility: PriceVolatility;
-    /** Khoảng thời gian */
     timeSpan: Scalars['Seconds'];
-    /** Giá trị */
     value: Scalars['Int'];
 };
 
-/** Loại đơn vị giá biến động */
 export enum PriceVolatilityItemKindEnum {
     Hour = 'HOUR',
     Night = 'NIGHT',
@@ -1210,80 +810,48 @@ export enum PriceVolatilityItemKindEnum {
 }
 
 export type PriceVolatilityUpdateInput = {
-    /** Id của giá cần cập nhật */
     id: Scalars['Int'];
-    /** Giá giờ */
     hourPrice: Scalars['Int'];
-    /** Giá ngày */
     dayPrice: Scalars['Int'];
-    /** Giá đêm */
     nightPrice: Scalars['Int'];
-    /** Ngày giá bắt đầu có hiệu lực */
     effectiveStartDate: Scalars['DateTimeOffset'];
-    /** Ngày giá hết hiệu lực */
     effectiveEndDate: Scalars['DateTimeOffset'];
-    /** Giá có hiệu lực vào ngày Thứ 2 */
     effectiveOnMonday: Scalars['Boolean'];
-    /** Giá có hiệu lực vào ngày Thứ 3 */
     effectiveOnTuesday: Scalars['Boolean'];
-    /** Giá có hiệu lực vào ngày Thứ 4 */
     effectiveOnWednesday: Scalars['Boolean'];
-    /** Giá có hiệu lực vào ngày Thứ 5 */
     effectiveOnThursday: Scalars['Boolean'];
-    /** Giá có hiệu lực vào ngày Thứ 6 */
     effectiveOnFriday: Scalars['Boolean'];
-    /** Giá có hiệu lực vào ngày Thứ 7 */
     effectiveOnSaturday: Scalars['Boolean'];
-    /** Giá có hiệu lực vào ngày Chủ Nhật */
     effectiveOnSunday: Scalars['Boolean'];
-    /** Loại phòng */
     roomKind: RoomKindId;
 };
 
-/** Phiếu thu */
 export type Receipt = {
-    /** Phiếu thu thuộc hóa đơn nào */
     bill: Bill;
-    /** Nhân viên tạo phiếu thu */
     employee: Employee;
-    /** Thông tin thêm */
     extraData: Scalars['String'];
-    /** Id của phiếu thu */
     id: Scalars['Int'];
-    /** Loại thanh toán */
     kind: ReceiptKindEnum;
-    /** Số tiền đã thu */
     money: Scalars['Int'];
-    /** Mã thanh toán */
     orderId: Scalars['String'];
-    /** Thông tin thanh toán */
     orderInfo: Scalars['String'];
-    /** Đường dẫn thanh toán */
     payUrl: Scalars['String'];
-    /** Trạng thái thanh toán */
     status: ReceiptStatusEnum;
-    /** Trạng thái của phiếu thu */
     statusText: Scalars['String'];
-    /** Thời gian tạo phiếu thu */
     time: Scalars['DateTimeOffset'];
 };
 
 export type ReceiptCreateInput = {
-    /** Số tiền đã thu */
     money: Scalars['Int'];
-    /** Thuộc hóa đơn */
     bill: BillId;
-    /** Loại thanh toán */
     kind: ReceiptKindEnum;
 };
 
-/** Loại phiếu thu */
 export enum ReceiptKindEnum {
     Cash = 'CASH',
     Momo = 'MOMO',
 }
 
-/** Loại phiếu thu */
 export enum ReceiptStatusEnum {
     Pending = 'PENDING',
     Success = 'SUCCESS',
@@ -1291,189 +859,119 @@ export enum ReceiptStatusEnum {
     SystemError = 'SYSTEM_ERROR',
 }
 
-/** Một phòng trong khách sạn */
 export type Room = {
-    /** Danh sách thông tin thuê phòng */
     bookings: Array<Booking>;
-    /** Đơn đặt phòng hiện tại */
     currentBooking: Maybe<Booking>;
-    /** Phòng thuộc tầng nào */
     floor: Floor;
-    /** Id của phòng */
     id: Scalars['Int'];
-    /** Trạng thái phòng */
     isActive: Scalars['Boolean'];
-    /** Trạng thái dọn phòng */
     isClean: Scalars['Boolean'];
-    /** Phòng trống */
     isEmpty: Scalars['Boolean'];
-    /** Tên phòng */
     name: Scalars['String'];
-    /** Loại phòng của phòng */
     roomKind: RoomKind;
 };
 
-/** Một phòng trong khách sạn */
 export type RoomCurrentBookingArgs = {
     from: Scalars['DateTimeOffset'];
     to: Scalars['DateTimeOffset'];
 };
 
-/** Một phòng trong khách sạn */
 export type RoomIsEmptyArgs = {
     from: Scalars['DateTimeOffset'];
     to: Scalars['DateTimeOffset'];
 };
 
 export type RoomCreateInput = {
-    /** Tên phòng */
     name: Scalars['String'];
-    /** Phòng thuộc tầng nào */
     floor: FloorId;
-    /** Loại phòng của phòng */
     roomKind: RoomKindId;
 };
 
-/** Input cho thông tin một phòng */
 export type RoomId = {
-    /** Id của phòng */
     id: Scalars['Int'];
 };
 
-/** Một loại phòng hiện có trong khách sạn */
 export type RoomKind = {
-    /** Số người trong một phòng */
     amountOfPeople: Scalars['Int'];
-    /** Id của loại phòng */
+    currentPrice: Price;
+    currentPriceVolatilities: Array<PriceVolatility>;
     id: Scalars['Int'];
-    /** Trạng thái phòng */
     isActive: Scalars['Boolean'];
-    /** Tên loại phòng */
     name: Scalars['String'];
-    /** Số giường */
     numberOfBeds: Scalars['Int'];
-    /** Danh sách giá cố định của loại phòng */
     prices: Array<Price>;
-    /** Danh sách giá biến động của loại phòng */
     priceVolatilities: Array<PriceVolatility>;
-    /** Danh sách các phòng thuộc loại phòng này */
     rooms: Array<Room>;
 };
 
-/** Input cho việc tạo một loại phòng */
 export type RoomKindCreateInput = {
-    /** Tên loại phòng */
     name: Scalars['String'];
-    /** Số giường */
     numberOfBeds: Scalars['Int'];
-    /** Số người trong một phòng */
     amountOfPeople: Scalars['Int'];
 };
 
-/** Input cho một thông tin một loại phòng */
 export type RoomKindId = {
-    /** Id của một loại phòng */
     id: Scalars['Int'];
 };
 
-/** Input cho việc chỉnh sửa một loại phòng */
 export type RoomKindUpdateInput = {
-    /** Id loại phòng */
     id: Scalars['Int'];
-    /** Tên loại phòng */
     name: Scalars['String'];
-    /** Số giường */
     numberOfBeds: Scalars['Int'];
-    /** Số người trong một phòng */
     amountOfPeople: Scalars['Int'];
 };
 
 export type RoomUpdateInput = {
-    /** Id phòng cần cập nhật */
     id: Scalars['Int'];
-    /** Tên phòng */
     name: Scalars['String'];
-    /** Phòng thuộc tầng nào */
     floor: FloorId;
-    /** Loại phòng của phòng */
     roomKind: RoomKindId;
 };
 
-/** Một dịch vụ trong khách sạn */
 export type Service = {
-    /** Id của dịch vụ */
     id: Scalars['Int'];
-    /** Trạng thái hoạt động */
     isActive: Scalars['Boolean'];
-    /** Tên dịch vụ */
     name: Scalars['String'];
-    /** Danh sách chi tiết dịch vụ */
     servicesDetails: Array<ServicesDetail>;
-    /** Đơn vị */
     unit: Scalars['String'];
-    /** Đơn giá */
     unitPrice: Scalars['Int'];
 };
 
-/** Input cho một thông tin dịch vụ cần tạo mới */
 export type ServiceCreateInput = {
-    /** Tên dịch vụ */
     name: Scalars['String'];
-    /** Đơn giá */
     unitPrice: Scalars['Int'];
-    /** Đơn vị */
     unit: Scalars['String'];
 };
 
-/** Input cho một thông tin dịch vụ */
 export type ServiceId = {
-    /** Id của dịch vụ */
     id: Scalars['Int'];
 };
 
-/** Một chi tiết dịch vụ của Thông tin thuê phòng */
 export type ServicesDetail = {
-    /** Thuộc thông tin thuê phòng nào */
     booking: Booking;
-    /** Id của chi tiết dịch vụ */
     id: Scalars['Int'];
-    /** Số lượng */
     number: Scalars['Int'];
-    /** Thuộc dịch vụ nào */
     service: Service;
-    /** Thời gian tạo */
     time: Scalars['DateTimeOffset'];
-    /** Thành tiền */
     total: Scalars['Int'];
 };
 
 export type ServicesDetailCreateInput = {
-    /** Số lượng */
     number: Scalars['Int'];
-    /** Thuộc dịch vụ nào */
     service: ServiceId;
-    /** Thuộc booking nào */
     booking: BookingId;
 };
 
 export type ServicesDetailUpdateInput = {
-    /** Id của chi tiết dịch vụ cần cập nhật */
     id: Scalars['Int'];
-    /** Số lượng */
     number: Scalars['Int'];
-    /** Thuộc dịch vụ nào */
     service: ServiceId;
 };
 
-/** Input cho một thông tin dịch vụ cần cập nhật */
 export type ServiceUpdateInput = {
-    /** Id của dịch vụ */
     id: Scalars['Int'];
-    /** Tên dịch vụ */
     name: Scalars['String'];
-    /** Đơn giá */
     unitPrice: Scalars['Int'];
-    /** Đơn vị */
     unit: Scalars['String'];
 };
 
@@ -2173,6 +1671,40 @@ export type GetRoomKindsQuery = {
     >;
 };
 
+export type GetRoomKindQueryVariables = {
+    id: Scalars['ID'];
+};
+
+export type GetRoomKindQuery = {
+    roomKind: Pick<
+        RoomKind,
+        'id' | 'name' | 'isActive' | 'amountOfPeople' | 'numberOfBeds'
+    > & {
+        rooms: Array<
+            Pick<Room, 'id' | 'isActive' | 'name'> & {
+                floor: Pick<Floor, 'id'>;
+            }
+        >;
+        currentPrice: Pick<
+            Price,
+            | 'id'
+            | 'earlyCheckInFee'
+            | 'lateCheckOutFee'
+            | 'hourPrice'
+            | 'nightPrice'
+            | 'dayPrice'
+            | 'weekPrice'
+            | 'monthPrice'
+        >;
+        currentPriceVolatilities: Array<
+            Pick<
+                PriceVolatility,
+                'id' | 'name' | 'hourPrice' | 'nightPrice' | 'dayPrice'
+            >
+        >;
+    };
+};
+
 export type CreateRoomKindMutationVariables = {
     input: RoomKindCreateInput;
 };
@@ -2749,6 +2281,20 @@ export namespace GetRoomKinds {
     export type RoomKinds = NonNullable<GetRoomKindsQuery['roomKinds'][0]>;
     export type Rooms = NonNullable<
         NonNullable<GetRoomKindsQuery['roomKinds'][0]>['rooms'][0]
+    >;
+}
+
+export namespace GetRoomKind {
+    export type Variables = GetRoomKindQueryVariables;
+    export type Query = GetRoomKindQuery;
+    export type RoomKind = GetRoomKindQuery['roomKind'];
+    export type Rooms = NonNullable<GetRoomKindQuery['roomKind']['rooms'][0]>;
+    export type Floor = NonNullable<
+        GetRoomKindQuery['roomKind']['rooms'][0]
+    >['floor'];
+    export type CurrentPrice = GetRoomKindQuery['roomKind']['currentPrice'];
+    export type CurrentPriceVolatilities = NonNullable<
+        GetRoomKindQuery['roomKind']['currentPriceVolatilities'][0]
     >;
 }
 

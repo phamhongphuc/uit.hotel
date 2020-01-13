@@ -15,7 +15,7 @@
                 "fields": [
                     {
                         "name": "bill",
-                        "description": "Trả về thông tin một hóa đơn",
+                        "description": "",
                         "args": [
                             {
                                 "name": "id",
@@ -46,7 +46,7 @@
                     },
                     {
                         "name": "bills",
-                        "description": "Trả về một danh sách các hóa đơn",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -70,7 +70,7 @@
                     },
                     {
                         "name": "booking",
-                        "description": "Trả về thông tin một đơn đặt phòng",
+                        "description": "",
                         "args": [
                             {
                                 "name": "id",
@@ -101,7 +101,7 @@
                     },
                     {
                         "name": "bookings",
-                        "description": "Trả về một danh sách các đơn đặt phòng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -125,7 +125,7 @@
                     },
                     {
                         "name": "employee",
-                        "description": "Trả về thông tin một nhân viên",
+                        "description": "",
                         "args": [
                             {
                                 "name": "id",
@@ -156,7 +156,7 @@
                     },
                     {
                         "name": "employees",
-                        "description": "Trả về một danh sách các nhân viên",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -180,7 +180,7 @@
                     },
                     {
                         "name": "findingPatron",
-                        "description": "Trả về danh sách khách hàng theo từ khóa tìm kiếm",
+                        "description": "",
                         "args": [
                             {
                                 "name": "id",
@@ -219,7 +219,7 @@
                     },
                     {
                         "name": "floor",
-                        "description": "Trả về thông tin một tầng",
+                        "description": "",
                         "args": [
                             {
                                 "name": "id",
@@ -250,7 +250,7 @@
                     },
                     {
                         "name": "floors",
-                        "description": "Trả về một danh sách các tầng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -274,7 +274,7 @@
                     },
                     {
                         "name": "isInitialized",
-                        "description": "Kiểm tra",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -290,7 +290,7 @@
                     },
                     {
                         "name": "patron",
-                        "description": "Trả về thông tin một khách hàng",
+                        "description": "",
                         "args": [
                             {
                                 "name": "id",
@@ -321,7 +321,7 @@
                     },
                     {
                         "name": "patronKind",
-                        "description": "Trả về thông tin của một loại khách hàng",
+                        "description": "",
                         "args": [
                             {
                                 "name": "id",
@@ -352,7 +352,7 @@
                     },
                     {
                         "name": "patronKinds",
-                        "description": "Trả về một danh sách các loại khách hàng có trong hệ thống",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -376,7 +376,7 @@
                     },
                     {
                         "name": "patrons",
-                        "description": "Trả về một danh sách các khách hàng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -400,7 +400,7 @@
                     },
                     {
                         "name": "position",
-                        "description": "Trả về thông tin một chức vụ",
+                        "description": "",
                         "args": [
                             {
                                 "name": "id",
@@ -431,7 +431,7 @@
                     },
                     {
                         "name": "positions",
-                        "description": "Trả về một danh sách các chức vụ",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -455,7 +455,7 @@
                     },
                     {
                         "name": "price",
-                        "description": "Trả về thông tin một loại giá cơ bản",
+                        "description": "",
                         "args": [
                             {
                                 "name": "id",
@@ -486,7 +486,7 @@
                     },
                     {
                         "name": "prices",
-                        "description": "Trả về một danh sách các loại giá cơ bản",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -510,7 +510,7 @@
                     },
                     {
                         "name": "priceVolatilities",
-                        "description": "Trả về một danh sách các giá biến động",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -534,7 +534,7 @@
                     },
                     {
                         "name": "priceVolatility",
-                        "description": "Trả về thông tin một giá biến động",
+                        "description": "",
                         "args": [
                             {
                                 "name": "id",
@@ -565,7 +565,7 @@
                     },
                     {
                         "name": "receipt",
-                        "description": "Trả về thông tin một phiếu thu",
+                        "description": "",
                         "args": [
                             {
                                 "name": "id",
@@ -596,7 +596,7 @@
                     },
                     {
                         "name": "receipts",
-                        "description": "Trả về một danh sách các phiếu thu",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -620,7 +620,7 @@
                     },
                     {
                         "name": "room",
-                        "description": "Trả về thông tin của một phòng",
+                        "description": "",
                         "args": [
                             {
                                 "name": "id",
@@ -651,7 +651,7 @@
                     },
                     {
                         "name": "roomKind",
-                        "description": "Trả về thông tin của một loại phòng",
+                        "description": "",
                         "args": [
                             {
                                 "name": "id",
@@ -682,7 +682,7 @@
                     },
                     {
                         "name": "roomKinds",
-                        "description": "Trả về một danh sách các loại phòng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -706,7 +706,7 @@
                     },
                     {
                         "name": "rooms",
-                        "description": "Trả về một danh sách các phòng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -730,7 +730,7 @@
                     },
                     {
                         "name": "service",
-                        "description": "Trả về thông tin một dịch vụ",
+                        "description": "",
                         "args": [
                             {
                                 "name": "id",
@@ -761,7 +761,7 @@
                     },
                     {
                         "name": "services",
-                        "description": "Trả về một danh sách các dịch vụ",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -785,7 +785,7 @@
                     },
                     {
                         "name": "servicesDetail",
-                        "description": "Trả về thông tin một chi tiết dịch vụ",
+                        "description": "",
                         "args": [
                             {
                                 "name": "id",
@@ -816,7 +816,7 @@
                     },
                     {
                         "name": "servicesDetails",
-                        "description": "Trả về một danh sách các chi tiết dịch vụ",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -857,11 +857,11 @@
             {
                 "kind": "OBJECT",
                 "name": "Bill",
-                "description": "Một phiếu hóa đơn của khách hàng",
+                "description": "",
                 "fields": [
                     {
                         "name": "bookings",
-                        "description": "Danh sách các thông tin đặt trước của hóa đơn",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -885,7 +885,7 @@
                     },
                     {
                         "name": "discount",
-                        "description": "Giảm giá",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -901,7 +901,7 @@
                     },
                     {
                         "name": "employee",
-                        "description": "Thông tin nhân viên nhận thanh toán hóa đơn",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "OBJECT",
@@ -913,7 +913,7 @@
                     },
                     {
                         "name": "id",
-                        "description": "Id của hóa đơn",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -929,7 +929,7 @@
                     },
                     {
                         "name": "patron",
-                        "description": "Thông tin khách hàng thanh toán hóa đơn",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -945,7 +945,7 @@
                     },
                     {
                         "name": "receipts",
-                        "description": "Danh sách các biên nhận cho hóa đơn",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -969,7 +969,7 @@
                     },
                     {
                         "name": "status",
-                        "description": "Trạng thái thanh toán của hóa đơn",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -985,7 +985,7 @@
                     },
                     {
                         "name": "time",
-                        "description": "Thời điểm in hóa đơn",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -1001,7 +1001,7 @@
                     },
                     {
                         "name": "totalPrice",
-                        "description": "Tổng giá trị hóa đơn",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -1017,7 +1017,7 @@
                     },
                     {
                         "name": "totalReceipts",
-                        "description": "Tổng giá trị các phiếu thu",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -1040,11 +1040,11 @@
             {
                 "kind": "OBJECT",
                 "name": "Booking",
-                "description": "Một thông tin thuê phòng của khách hàng",
+                "description": "",
                 "fields": [
                     {
                         "name": "baseDayCheckInTime",
-                        "description": "Thời gian nhận phòng, tính giá theo ngày",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -1060,7 +1060,7 @@
                     },
                     {
                         "name": "baseDayCheckOutTime",
-                        "description": "Thời gian trả phòng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -1076,7 +1076,7 @@
                     },
                     {
                         "name": "baseNightCheckInTime",
-                        "description": "Thời gian nhận phòng, tính giá theo đêm",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -1092,7 +1092,7 @@
                     },
                     {
                         "name": "bill",
-                        "description": "Thông tin hóa đơn của thông tin thuê phòng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -1108,7 +1108,7 @@
                     },
                     {
                         "name": "bookCheckInTime",
-                        "description": "Thời điểm nhận phòng dự kiến của khách hàng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -1124,7 +1124,7 @@
                     },
                     {
                         "name": "bookCheckOutTime",
-                        "description": "Thời điểm trả phòng dự kiến của khách hàng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -1140,7 +1140,7 @@
                     },
                     {
                         "name": "createTime",
-                        "description": "Thời điểm tạo thông tin thuê phòng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -1156,7 +1156,7 @@
                     },
                     {
                         "name": "earlyCheckInFee",
-                        "description": "Phí nhận phòng sớm",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -1172,7 +1172,7 @@
                     },
                     {
                         "name": "employeeBooking",
-                        "description": "Nhân viên thực hiện giao dịch nhận đặt phòng từ khách hàng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "OBJECT",
@@ -1184,7 +1184,7 @@
                     },
                     {
                         "name": "employeeCheckIn",
-                        "description": "Nhân viên thực hiện check-in cho khách hàng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "OBJECT",
@@ -1196,7 +1196,7 @@
                     },
                     {
                         "name": "employeeCheckOut",
-                        "description": "Nhân viên thực hiện check-out cho khách hàng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "OBJECT",
@@ -1208,7 +1208,7 @@
                     },
                     {
                         "name": "id",
-                        "description": "Id của thông tin thuê phòng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -1224,7 +1224,7 @@
                     },
                     {
                         "name": "lateCheckOutFee",
-                        "description": "Phí trả phòng trễ",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -1240,7 +1240,7 @@
                     },
                     {
                         "name": "patrons",
-                        "description": "Danh sách khách hàng yêu cầu đặt phòng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -1264,7 +1264,7 @@
                     },
                     {
                         "name": "price",
-                        "description": "Công thức giá",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -1280,7 +1280,7 @@
                     },
                     {
                         "name": "priceItems",
-                        "description": "Danh sách đơn vị giá",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -1304,7 +1304,7 @@
                     },
                     {
                         "name": "priceVolatilityItems",
-                        "description": "Danh sách đơn vị giá biến động",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -1328,7 +1328,7 @@
                     },
                     {
                         "name": "realCheckInTime",
-                        "description": "Thời điểm nhận phòng của khách hàng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -1344,7 +1344,7 @@
                     },
                     {
                         "name": "realCheckOutTime",
-                        "description": "Thời điểm trả phòng của khách hàng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -1360,7 +1360,7 @@
                     },
                     {
                         "name": "room",
-                        "description": "Phòng khách hàng chọn đặt trước",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -1376,7 +1376,7 @@
                     },
                     {
                         "name": "servicesDetails",
-                        "description": "Danh sách chi tiết sử dụng dịch vụ của khách hàng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -1400,7 +1400,7 @@
                     },
                     {
                         "name": "status",
-                        "description": "Trạng thái của thông tin thuê phòng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -1416,7 +1416,7 @@
                     },
                     {
                         "name": "total",
-                        "description": "Tổng tiền",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -1432,7 +1432,7 @@
                     },
                     {
                         "name": "totalPrice",
-                        "description": "Tổng tiền thuê",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -1448,7 +1448,7 @@
                     },
                     {
                         "name": "totalServicesDetails",
-                        "description": "Tổng tiền dịch vụ",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -1471,7 +1471,7 @@
             {
                 "kind": "SCALAR",
                 "name": "DateTimeOffset",
-                "description": "The `DateTimeOffset` scalar type represents a date, time and offset from UTC.\n`DateTimeOffset` expects timestamps to be formatted in accordance with the\n[ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) standard.",
+                "description": "The `DateTimeOffset` scalar type represents a date, time and offset from UTC. `DateTimeOffset` expects timestamps to be formatted in accordance with the [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) standard.",
                 "fields": null,
                 "inputFields": null,
                 "interfaces": null,
@@ -1491,11 +1491,11 @@
             {
                 "kind": "OBJECT",
                 "name": "Employee",
-                "description": "Một nhân viên trong khách sạn",
+                "description": "",
                 "fields": [
                     {
                         "name": "address",
-                        "description": "Địa chỉ của nhân viên",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -1511,7 +1511,7 @@
                     },
                     {
                         "name": "bills",
-                        "description": "Danh sách các Hóa đơn mà nhân viên tạo",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -1535,7 +1535,7 @@
                     },
                     {
                         "name": "birthdate",
-                        "description": "Ngày sinh của nhân viên",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -1551,7 +1551,7 @@
                     },
                     {
                         "name": "bookings",
-                        "description": "Danh sách các Thông tin thuê phòng mà nhân viên tạo",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -1575,7 +1575,7 @@
                     },
                     {
                         "name": "email",
-                        "description": "Email của nhân viên",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -1591,7 +1591,7 @@
                     },
                     {
                         "name": "gender",
-                        "description": "Giới tính của nhân viên",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -1607,7 +1607,7 @@
                     },
                     {
                         "name": "id",
-                        "description": "Id của nhân viên",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -1623,7 +1623,7 @@
                     },
                     {
                         "name": "identityCard",
-                        "description": "Chứng minh nhân dân",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -1639,7 +1639,7 @@
                     },
                     {
                         "name": "isActive",
-                        "description": "Tài khoản còn hiệu lực hay không",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -1655,7 +1655,7 @@
                     },
                     {
                         "name": "name",
-                        "description": "Tên nhân viên",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -1671,7 +1671,7 @@
                     },
                     {
                         "name": "position",
-                        "description": "Chức vụ",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -1687,7 +1687,7 @@
                     },
                     {
                         "name": "prices",
-                        "description": "Danh sách các Giá cơ bản mà nhân viên tạo",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -1711,7 +1711,7 @@
                     },
                     {
                         "name": "priceVolatilities",
-                        "description": "Danh sách các Giá biến động mà nhân viên tạo",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -1735,7 +1735,7 @@
                     },
                     {
                         "name": "phoneNumber",
-                        "description": "Số điện thoại của nhân viên",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -1751,7 +1751,7 @@
                     },
                     {
                         "name": "receipts",
-                        "description": "Danh sách các Phiếu thu mà nhân viên tạo",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -1775,7 +1775,7 @@
                     },
                     {
                         "name": "startingDate",
-                        "description": "Ngày vào làm",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -1818,11 +1818,11 @@
             {
                 "kind": "OBJECT",
                 "name": "Position",
-                "description": "Một chức vụ trong khách sạn",
+                "description": "",
                 "fields": [
                     {
                         "name": "countActiveEmployees",
-                        "description": "Số nhân viên còn hoạt động",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -1838,7 +1838,7 @@
                     },
                     {
                         "name": "countEmployees",
-                        "description": "Số nhân viên",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -1854,7 +1854,7 @@
                     },
                     {
                         "name": "countInActiveEmployees",
-                        "description": "Số nhân viên ngưng hoạt động",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -1870,7 +1870,7 @@
                     },
                     {
                         "name": "employees",
-                        "description": "Danh sách các nhân viên thuộc quyền này",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -1894,7 +1894,7 @@
                     },
                     {
                         "name": "id",
-                        "description": "Id của chức vụ",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -1910,7 +1910,7 @@
                     },
                     {
                         "name": "isActive",
-                        "description": "Trạng thái kích hoạt/vô hiệu hóa chức vụ",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -1926,7 +1926,7 @@
                     },
                     {
                         "name": "name",
-                        "description": "Tên chức vụ",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -1942,7 +1942,7 @@
                     },
                     {
                         "name": "permissionCleaning",
-                        "description": "Quyền thao tác dọn phòng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -1958,7 +1958,7 @@
                     },
                     {
                         "name": "permissionGetAccountingVoucher",
-                        "description": "Quyền lấy thông tin các chứng từ (hóa đơn, phiếu thu)",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -1974,7 +1974,7 @@
                     },
                     {
                         "name": "permissionGetMap",
-                        "description": "Quyền lấy thông tin tầng, phòng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -1990,7 +1990,7 @@
                     },
                     {
                         "name": "permissionGetPatron",
-                        "description": "Quyền lấy thông tin khách hàng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -2006,7 +2006,7 @@
                     },
                     {
                         "name": "permissionGetPrice",
-                        "description": "Quyền lấy thông tin giá cơ bản và giá biến động",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -2022,7 +2022,7 @@
                     },
                     {
                         "name": "permissionGetService",
-                        "description": "Quyền lấy thông tin dịch vụ",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -2038,7 +2038,7 @@
                     },
                     {
                         "name": "permissionManageEmployee",
-                        "description": "Quyền quản lý thông tin nhân viên",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -2054,7 +2054,7 @@
                     },
                     {
                         "name": "permissionManageMap",
-                        "description": "Quyền chỉnh sửa sơ đồ",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -2070,7 +2070,7 @@
                     },
                     {
                         "name": "permissionManagePatron",
-                        "description": "Quyền quản lý khách hàng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -2086,7 +2086,7 @@
                     },
                     {
                         "name": "permissionManagePatronKind",
-                        "description": "Quyền quản lý loại khách hàng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -2102,7 +2102,7 @@
                     },
                     {
                         "name": "permissionManagePosition",
-                        "description": "Quyền quản lý chức vụ",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -2118,7 +2118,7 @@
                     },
                     {
                         "name": "permissionManagePrice",
-                        "description": "Quyền quản lý giá cơ bản và giá biến động",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -2134,7 +2134,7 @@
                     },
                     {
                         "name": "permissionManageRentingRoom",
-                        "description": "Quyền quản lý thuê phòng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -2150,7 +2150,7 @@
                     },
                     {
                         "name": "permissionManageService",
-                        "description": "Quyền quản lý dịch vụ",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -2173,11 +2173,11 @@
             {
                 "kind": "OBJECT",
                 "name": "Price",
-                "description": "Giá cố định của một loại phòng",
+                "description": "",
                 "fields": [
                     {
                         "name": "createDate",
-                        "description": "Ngày tạo giá",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -2193,7 +2193,7 @@
                     },
                     {
                         "name": "dayPrice",
-                        "description": "Giá ngày",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -2209,7 +2209,7 @@
                     },
                     {
                         "name": "earlyCheckInFee",
-                        "description": "Phí check-out sớm",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -2225,7 +2225,7 @@
                     },
                     {
                         "name": "effectiveStartDate",
-                        "description": "Ngày giá bắt đầu có hiệu lực",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -2241,7 +2241,7 @@
                     },
                     {
                         "name": "employee",
-                        "description": "Nhân viên tạo giá",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "OBJECT",
@@ -2253,7 +2253,7 @@
                     },
                     {
                         "name": "hourPrice",
-                        "description": "Giá giờ",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -2269,7 +2269,7 @@
                     },
                     {
                         "name": "id",
-                        "description": "Id của giá",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -2285,7 +2285,7 @@
                     },
                     {
                         "name": "lateCheckOutFee",
-                        "description": "Phí check-out muộn",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -2301,7 +2301,7 @@
                     },
                     {
                         "name": "monthPrice",
-                        "description": "Giá tháng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -2317,7 +2317,7 @@
                     },
                     {
                         "name": "nightPrice",
-                        "description": "Giá đêm",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -2333,7 +2333,7 @@
                     },
                     {
                         "name": "roomKind",
-                        "description": "Thuộc loại phòng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -2349,7 +2349,7 @@
                     },
                     {
                         "name": "weekPrice",
-                        "description": "Giá tuần",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -2372,11 +2372,11 @@
             {
                 "kind": "OBJECT",
                 "name": "RoomKind",
-                "description": "Một loại phòng hiện có trong khách sạn",
+                "description": "",
                 "fields": [
                     {
                         "name": "amountOfPeople",
-                        "description": "Số người trong một phòng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -2391,8 +2391,48 @@
                         "deprecationReason": null
                     },
                     {
+                        "name": "currentPrice",
+                        "description": "",
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "OBJECT",
+                                "name": "Price",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "currentPriceVolatilities",
+                        "description": "",
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "LIST",
+                                "name": null,
+                                "ofType": {
+                                    "kind": "NON_NULL",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "OBJECT",
+                                        "name": "PriceVolatility",
+                                        "ofType": null
+                                    }
+                                }
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
                         "name": "id",
-                        "description": "Id của loại phòng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -2408,7 +2448,7 @@
                     },
                     {
                         "name": "isActive",
-                        "description": "Trạng thái phòng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -2424,7 +2464,7 @@
                     },
                     {
                         "name": "name",
-                        "description": "Tên loại phòng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -2440,7 +2480,7 @@
                     },
                     {
                         "name": "numberOfBeds",
-                        "description": "Số giường",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -2456,7 +2496,7 @@
                     },
                     {
                         "name": "prices",
-                        "description": "Danh sách giá cố định của loại phòng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -2480,7 +2520,7 @@
                     },
                     {
                         "name": "priceVolatilities",
-                        "description": "Danh sách giá biến động của loại phòng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -2504,7 +2544,7 @@
                     },
                     {
                         "name": "rooms",
-                        "description": "Danh sách các phòng thuộc loại phòng này",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -2535,11 +2575,11 @@
             {
                 "kind": "OBJECT",
                 "name": "PriceVolatility",
-                "description": "Giá biến động của một loại phòng",
+                "description": "",
                 "fields": [
                     {
                         "name": "createDate",
-                        "description": "Ngày tạo giá",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -2555,7 +2595,7 @@
                     },
                     {
                         "name": "dayPrice",
-                        "description": "Giá ngày",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -2571,7 +2611,7 @@
                     },
                     {
                         "name": "effectiveEndDate",
-                        "description": "Ngày giá hết hiệu lực",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -2587,7 +2627,7 @@
                     },
                     {
                         "name": "effectiveOnFriday",
-                        "description": "Giá có hiệu lực vào ngày Thứ 6",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -2603,7 +2643,7 @@
                     },
                     {
                         "name": "effectiveOnMonday",
-                        "description": "Giá có hiệu lực vào ngày Thứ 2",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -2619,7 +2659,7 @@
                     },
                     {
                         "name": "effectiveOnSaturday",
-                        "description": "Giá có hiệu lực vào ngày Thứ 7",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -2635,7 +2675,7 @@
                     },
                     {
                         "name": "effectiveOnSunday",
-                        "description": "Giá có hiệu lực vào ngày Chủ Nhật",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -2651,7 +2691,7 @@
                     },
                     {
                         "name": "effectiveOnTuesday",
-                        "description": "Giá có hiệu lực vào ngày Thứ 3",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -2667,7 +2707,7 @@
                     },
                     {
                         "name": "effectiveOnThursday",
-                        "description": "Giá có hiệu lực vào ngày Thứ 5",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -2683,7 +2723,7 @@
                     },
                     {
                         "name": "effectiveOnWednesday",
-                        "description": "Giá có hiệu lực vào ngày Thứ 4",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -2699,7 +2739,7 @@
                     },
                     {
                         "name": "effectiveStartDate",
-                        "description": "Ngày giá bắt đầu có hiệu lực",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -2715,7 +2755,7 @@
                     },
                     {
                         "name": "employee",
-                        "description": "Nhân viên tạo giá",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "OBJECT",
@@ -2727,7 +2767,7 @@
                     },
                     {
                         "name": "hourPrice",
-                        "description": "Giá giờ",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -2743,7 +2783,7 @@
                     },
                     {
                         "name": "id",
-                        "description": "Id của giá",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -2759,7 +2799,7 @@
                     },
                     {
                         "name": "name",
-                        "description": "Tên của giá biến động",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -2775,7 +2815,7 @@
                     },
                     {
                         "name": "nightPrice",
-                        "description": "Giá đêm",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -2791,7 +2831,7 @@
                     },
                     {
                         "name": "roomKind",
-                        "description": "Thuộc loại phòng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -2814,11 +2854,11 @@
             {
                 "kind": "OBJECT",
                 "name": "Room",
-                "description": "Một phòng trong khách sạn",
+                "description": "",
                 "fields": [
                     {
                         "name": "bookings",
-                        "description": "Danh sách thông tin thuê phòng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -2842,7 +2882,7 @@
                     },
                     {
                         "name": "currentBooking",
-                        "description": "Đơn đặt phòng hiện tại",
+                        "description": "",
                         "args": [
                             {
                                 "name": "from",
@@ -2883,7 +2923,7 @@
                     },
                     {
                         "name": "floor",
-                        "description": "Phòng thuộc tầng nào",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -2899,7 +2939,7 @@
                     },
                     {
                         "name": "id",
-                        "description": "Id của phòng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -2915,7 +2955,7 @@
                     },
                     {
                         "name": "isActive",
-                        "description": "Trạng thái phòng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -2931,7 +2971,7 @@
                     },
                     {
                         "name": "isClean",
-                        "description": "Trạng thái dọn phòng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -2947,7 +2987,7 @@
                     },
                     {
                         "name": "isEmpty",
-                        "description": "Phòng trống",
+                        "description": "",
                         "args": [
                             {
                                 "name": "from",
@@ -2992,7 +3032,7 @@
                     },
                     {
                         "name": "name",
-                        "description": "Tên phòng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -3008,7 +3048,7 @@
                     },
                     {
                         "name": "roomKind",
-                        "description": "Loại phòng của phòng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -3031,11 +3071,11 @@
             {
                 "kind": "OBJECT",
                 "name": "Floor",
-                "description": "Một tầng trong khách sạn",
+                "description": "",
                 "fields": [
                     {
                         "name": "id",
-                        "description": "Id của tầng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -3051,7 +3091,7 @@
                     },
                     {
                         "name": "isActive",
-                        "description": "Trạng thái hoạt động",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -3067,7 +3107,7 @@
                     },
                     {
                         "name": "name",
-                        "description": "Tên tầng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -3083,7 +3123,7 @@
                     },
                     {
                         "name": "rooms",
-                        "description": "Danh sách các phòng có trong tầng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -3114,11 +3154,11 @@
             {
                 "kind": "OBJECT",
                 "name": "Receipt",
-                "description": "Phiếu thu",
+                "description": "",
                 "fields": [
                     {
                         "name": "bill",
-                        "description": "Phiếu thu thuộc hóa đơn nào",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -3134,7 +3174,7 @@
                     },
                     {
                         "name": "employee",
-                        "description": "Nhân viên tạo phiếu thu",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -3150,7 +3190,7 @@
                     },
                     {
                         "name": "extraData",
-                        "description": "Thông tin thêm",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -3166,7 +3206,7 @@
                     },
                     {
                         "name": "id",
-                        "description": "Id của phiếu thu",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -3182,7 +3222,7 @@
                     },
                     {
                         "name": "kind",
-                        "description": "Loại thanh toán",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -3198,7 +3238,7 @@
                     },
                     {
                         "name": "money",
-                        "description": "Số tiền đã thu",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -3214,7 +3254,7 @@
                     },
                     {
                         "name": "orderId",
-                        "description": "Mã thanh toán",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -3230,7 +3270,7 @@
                     },
                     {
                         "name": "orderInfo",
-                        "description": "Thông tin thanh toán",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -3246,7 +3286,7 @@
                     },
                     {
                         "name": "payUrl",
-                        "description": "Đường dẫn thanh toán",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -3262,7 +3302,7 @@
                     },
                     {
                         "name": "status",
-                        "description": "Trạng thái thanh toán",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -3278,7 +3318,7 @@
                     },
                     {
                         "name": "statusText",
-                        "description": "Trạng thái của phiếu thu",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -3294,7 +3334,7 @@
                     },
                     {
                         "name": "time",
-                        "description": "Thời gian tạo phiếu thu",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -3317,7 +3357,7 @@
             {
                 "kind": "ENUM",
                 "name": "ReceiptKindEnum",
-                "description": "Loại phiếu thu",
+                "description": "",
                 "fields": null,
                 "inputFields": null,
                 "interfaces": null,
@@ -3340,7 +3380,7 @@
             {
                 "kind": "ENUM",
                 "name": "ReceiptStatusEnum",
-                "description": "Loại phiếu thu",
+                "description": "",
                 "fields": null,
                 "inputFields": null,
                 "interfaces": null,
@@ -3375,11 +3415,11 @@
             {
                 "kind": "OBJECT",
                 "name": "Patron",
-                "description": "Thông tin  một khách hàng của khách sạn",
+                "description": "",
                 "fields": [
                     {
                         "name": "bills",
-                        "description": "Danh sách các số hóa đơn của khách hàng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -3403,7 +3443,7 @@
                     },
                     {
                         "name": "birthdate",
-                        "description": "Ngày sinh của khách hàng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -3419,7 +3459,7 @@
                     },
                     {
                         "name": "bookings",
-                        "description": "Danh sách các đơn đặt trước của khách hàng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -3443,7 +3483,7 @@
                     },
                     {
                         "name": "company",
-                        "description": "Công ty mà khách hàng đang làm việc",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -3459,7 +3499,7 @@
                     },
                     {
                         "name": "domicile",
-                        "description": "Nguyên quán của khách hàng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -3475,7 +3515,7 @@
                     },
                     {
                         "name": "email",
-                        "description": "Địa chỉ e-mail của khách hàng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -3491,7 +3531,7 @@
                     },
                     {
                         "name": "gender",
-                        "description": "Giới tính của khách hàng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -3507,7 +3547,7 @@
                     },
                     {
                         "name": "id",
-                        "description": "Id của khách hàng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -3523,7 +3563,7 @@
                     },
                     {
                         "name": "identification",
-                        "description": "Số an sinh xã hội / Số chứng minh nhân dân / Số passport của khách hàng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -3539,7 +3579,7 @@
                     },
                     {
                         "name": "name",
-                        "description": "Tên của khách hàng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -3555,7 +3595,7 @@
                     },
                     {
                         "name": "nationality",
-                        "description": "Quốc tịch của khách hàng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -3571,7 +3611,7 @@
                     },
                     {
                         "name": "note",
-                        "description": "Một số chú thích về khách hàng nếu cần thiết",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -3587,7 +3627,7 @@
                     },
                     {
                         "name": "patronKind",
-                        "description": "Loại khách hàng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -3603,7 +3643,7 @@
                     },
                     {
                         "name": "phoneNumber",
-                        "description": "Danh sách số điện thoại của khách hàng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -3619,7 +3659,7 @@
                     },
                     {
                         "name": "residence",
-                        "description": "Địa chỉ thường trú của khách hàng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -3642,11 +3682,11 @@
             {
                 "kind": "OBJECT",
                 "name": "PatronKind",
-                "description": "Thông tin  một loại khách hàng",
+                "description": "",
                 "fields": [
                     {
                         "name": "description",
-                        "description": "Thông tin mô tả loại khách hàng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -3662,7 +3702,7 @@
                     },
                     {
                         "name": "id",
-                        "description": "Id của loại khách hàng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -3678,7 +3718,7 @@
                     },
                     {
                         "name": "name",
-                        "description": "Tên loại khách hàng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -3694,7 +3734,7 @@
                     },
                     {
                         "name": "patrons",
-                        "description": "Danh sách các khách hàng thuộc loại khách hàng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -3725,11 +3765,11 @@
             {
                 "kind": "OBJECT",
                 "name": "PriceItem",
-                "description": "Đơn vị giá",
+                "description": "",
                 "fields": [
                     {
                         "name": "booking",
-                        "description": "Đơn đặt phòng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -3745,7 +3785,7 @@
                     },
                     {
                         "name": "kind",
-                        "description": "Loại đơn vị giá",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -3761,7 +3801,7 @@
                     },
                     {
                         "name": "timeSpan",
-                        "description": "Thời gian",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -3777,7 +3817,7 @@
                     },
                     {
                         "name": "value",
-                        "description": "Giá trị",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -3800,7 +3840,7 @@
             {
                 "kind": "ENUM",
                 "name": "PriceItemKindEnum",
-                "description": "Loại đơn vị giá",
+                "description": "",
                 "fields": null,
                 "inputFields": null,
                 "interfaces": null,
@@ -3851,11 +3891,11 @@
             {
                 "kind": "OBJECT",
                 "name": "PriceVolatilityItem",
-                "description": "Đơn vị giá biến động",
+                "description": "",
                 "fields": [
                     {
                         "name": "booking",
-                        "description": "Đơn đặt phòng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -3871,7 +3911,7 @@
                     },
                     {
                         "name": "date",
-                        "description": "Mốc thời gian",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -3887,7 +3927,7 @@
                     },
                     {
                         "name": "kind",
-                        "description": "Loại đơn vị giá",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -3903,7 +3943,7 @@
                     },
                     {
                         "name": "priceVolatility",
-                        "description": "Đối tượng giá biến động",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -3919,7 +3959,7 @@
                     },
                     {
                         "name": "timeSpan",
-                        "description": "Khoảng thời gian",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -3935,7 +3975,7 @@
                     },
                     {
                         "name": "value",
-                        "description": "Giá trị",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -3958,7 +3998,7 @@
             {
                 "kind": "ENUM",
                 "name": "PriceVolatilityItemKindEnum",
-                "description": "Loại đơn vị giá biến động",
+                "description": "",
                 "fields": null,
                 "inputFields": null,
                 "interfaces": null,
@@ -3987,11 +4027,11 @@
             {
                 "kind": "OBJECT",
                 "name": "ServicesDetail",
-                "description": "Một chi tiết dịch vụ của Thông tin thuê phòng",
+                "description": "",
                 "fields": [
                     {
                         "name": "booking",
-                        "description": "Thuộc thông tin thuê phòng nào",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -4007,7 +4047,7 @@
                     },
                     {
                         "name": "id",
-                        "description": "Id của chi tiết dịch vụ",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -4023,7 +4063,7 @@
                     },
                     {
                         "name": "number",
-                        "description": "Số lượng",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -4039,7 +4079,7 @@
                     },
                     {
                         "name": "service",
-                        "description": "Thuộc dịch vụ nào",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -4055,7 +4095,7 @@
                     },
                     {
                         "name": "time",
-                        "description": "Thời gian tạo",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -4071,7 +4111,7 @@
                     },
                     {
                         "name": "total",
-                        "description": "Thành tiền",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -4094,11 +4134,11 @@
             {
                 "kind": "OBJECT",
                 "name": "Service",
-                "description": "Một dịch vụ trong khách sạn",
+                "description": "",
                 "fields": [
                     {
                         "name": "id",
-                        "description": "Id của dịch vụ",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -4114,7 +4154,7 @@
                     },
                     {
                         "name": "isActive",
-                        "description": "Trạng thái hoạt động",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -4130,7 +4170,7 @@
                     },
                     {
                         "name": "name",
-                        "description": "Tên dịch vụ",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -4146,7 +4186,7 @@
                     },
                     {
                         "name": "servicesDetails",
-                        "description": "Danh sách chi tiết dịch vụ",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -4170,7 +4210,7 @@
                     },
                     {
                         "name": "unit",
-                        "description": "Đơn vị",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -4186,7 +4226,7 @@
                     },
                     {
                         "name": "unitPrice",
-                        "description": "Đơn giá",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -4209,7 +4249,7 @@
             {
                 "kind": "ENUM",
                 "name": "BookingStatusEnum",
-                "description": "Trạng thái của đơn đặt phòng",
+                "description": "",
                 "fields": null,
                 "inputFields": null,
                 "interfaces": null,
@@ -4238,7 +4278,7 @@
             {
                 "kind": "ENUM",
                 "name": "BillStatusEnum",
-                "description": "Trạng thái của hóa đơn đặt phòng",
+                "description": "",
                 "fields": null,
                 "inputFields": null,
                 "interfaces": null,
@@ -4271,7 +4311,7 @@
                 "fields": [
                     {
                         "name": "addBookingToBill",
-                        "description": "Thêm phòng vào hóa đơn",
+                        "description": "",
                         "args": [
                             {
                                 "name": "bill",
@@ -4316,7 +4356,7 @@
                     },
                     {
                         "name": "bookAndCheckIn",
-                        "description": "Đặt và nhận phòng ngay tại khách sạn",
+                        "description": "",
                         "args": [
                             {
                                 "name": "bookings",
@@ -4369,7 +4409,7 @@
                     },
                     {
                         "name": "cancel",
-                        "description": "Hủy đặt phòng",
+                        "description": "",
                         "args": [
                             {
                                 "name": "id",
@@ -4400,7 +4440,7 @@
                     },
                     {
                         "name": "createBill",
-                        "description": "Tạo và trả về một đơn đặt phòng",
+                        "description": "",
                         "args": [
                             {
                                 "name": "bookings",
@@ -4453,7 +4493,7 @@
                     },
                     {
                         "name": "createEmployee",
-                        "description": "Tạo và trả về một nhân viên mới",
+                        "description": "",
                         "args": [
                             {
                                 "name": "input",
@@ -4484,7 +4524,7 @@
                     },
                     {
                         "name": "createFloor",
-                        "description": "Tạo và trả về một tầng mới",
+                        "description": "",
                         "args": [
                             {
                                 "name": "input",
@@ -4515,7 +4555,7 @@
                     },
                     {
                         "name": "createPatron",
-                        "description": "Tạo và trả về một khách hàng mới",
+                        "description": "",
                         "args": [
                             {
                                 "name": "input",
@@ -4546,7 +4586,7 @@
                     },
                     {
                         "name": "createPatronKind",
-                        "description": "Tạo và trả về một loại khách hàng mới",
+                        "description": "",
                         "args": [
                             {
                                 "name": "input",
@@ -4577,7 +4617,7 @@
                     },
                     {
                         "name": "createPosition",
-                        "description": "Tạo và trả về một chức vụ mới",
+                        "description": "",
                         "args": [
                             {
                                 "name": "input",
@@ -4608,7 +4648,7 @@
                     },
                     {
                         "name": "createPrice",
-                        "description": "Tạo và trả về một loại giá cơ bản mới",
+                        "description": "",
                         "args": [
                             {
                                 "name": "input",
@@ -4639,7 +4679,7 @@
                     },
                     {
                         "name": "createPriceVolatility",
-                        "description": "Tạo và trả về một giá biến động mới",
+                        "description": "",
                         "args": [
                             {
                                 "name": "input",
@@ -4670,7 +4710,7 @@
                     },
                     {
                         "name": "createReceipt",
-                        "description": "Tạo và trả về một phiếu thu tiền mới",
+                        "description": "",
                         "args": [
                             {
                                 "name": "input",
@@ -4701,7 +4741,7 @@
                     },
                     {
                         "name": "createRoom",
-                        "description": "Tạo và trả về một phòng mới",
+                        "description": "",
                         "args": [
                             {
                                 "name": "input",
@@ -4732,7 +4772,7 @@
                     },
                     {
                         "name": "createRoomKind",
-                        "description": "Tạo và trả về một loại phòng",
+                        "description": "",
                         "args": [
                             {
                                 "name": "input",
@@ -4763,7 +4803,7 @@
                     },
                     {
                         "name": "createService",
-                        "description": "Tạo và trả về một dịch vụ mới",
+                        "description": "",
                         "args": [
                             {
                                 "name": "input",
@@ -4794,7 +4834,7 @@
                     },
                     {
                         "name": "createServicesDetail",
-                        "description": "Tạo và trả về một chi tiết dịch vụ mới",
+                        "description": "",
                         "args": [
                             {
                                 "name": "input",
@@ -4825,7 +4865,7 @@
                     },
                     {
                         "name": "changePassword",
-                        "description": "Nhân viên tự đổi mật khẩu cho tài khoản của mình",
+                        "description": "",
                         "args": [
                             {
                                 "name": "password",
@@ -4870,7 +4910,7 @@
                     },
                     {
                         "name": "checkBookingPrice",
-                        "description": "Kiểm tra thử giá của phòng",
+                        "description": "",
                         "args": [
                             {
                                 "name": "booking",
@@ -4901,7 +4941,7 @@
                     },
                     {
                         "name": "checkIn",
-                        "description": "Nhận phòng",
+                        "description": "",
                         "args": [
                             {
                                 "name": "id",
@@ -4932,7 +4972,7 @@
                     },
                     {
                         "name": "checkLogin",
-                        "description": "Kiểm tra đăng nhập",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -4948,7 +4988,7 @@
                     },
                     {
                         "name": "checkOut",
-                        "description": "Trả phòng",
+                        "description": "",
                         "args": [
                             {
                                 "name": "id",
@@ -4979,7 +5019,7 @@
                     },
                     {
                         "name": "checkReceipt",
-                        "description": "Kiểm tra trạng thái của một phiếu thu",
+                        "description": "",
                         "args": [
                             {
                                 "name": "id",
@@ -5010,7 +5050,7 @@
                     },
                     {
                         "name": "deleteFloor",
-                        "description": "Xóa một tầng",
+                        "description": "",
                         "args": [
                             {
                                 "name": "id",
@@ -5041,7 +5081,7 @@
                     },
                     {
                         "name": "deletePatronKind",
-                        "description": "Xóa một loại khách hàng",
+                        "description": "",
                         "args": [
                             {
                                 "name": "id",
@@ -5072,7 +5112,7 @@
                     },
                     {
                         "name": "deletePosition",
-                        "description": "Xóa một chức vụ",
+                        "description": "",
                         "args": [
                             {
                                 "name": "id",
@@ -5103,7 +5143,7 @@
                     },
                     {
                         "name": "deletePrice",
-                        "description": "Xóa một giá cơ bản",
+                        "description": "",
                         "args": [
                             {
                                 "name": "id",
@@ -5134,7 +5174,7 @@
                     },
                     {
                         "name": "deletePriceVolatility",
-                        "description": "Xóa một giá biến động",
+                        "description": "",
                         "args": [
                             {
                                 "name": "id",
@@ -5165,7 +5205,7 @@
                     },
                     {
                         "name": "deleteRoom",
-                        "description": "Xóa một phòng",
+                        "description": "",
                         "args": [
                             {
                                 "name": "id",
@@ -5196,7 +5236,7 @@
                     },
                     {
                         "name": "deleteRoomKind",
-                        "description": "Xóa một loại phòng",
+                        "description": "",
                         "args": [
                             {
                                 "name": "id",
@@ -5227,7 +5267,7 @@
                     },
                     {
                         "name": "deleteService",
-                        "description": "Xóa một dịch vụ",
+                        "description": "",
                         "args": [
                             {
                                 "name": "id",
@@ -5258,7 +5298,7 @@
                     },
                     {
                         "name": "deleteServicesDetail",
-                        "description": "Xóa một dịch vụ",
+                        "description": "",
                         "args": [
                             {
                                 "name": "id",
@@ -5289,7 +5329,7 @@
                     },
                     {
                         "name": "initializeAdminAccount",
-                        "description": "Khởi tạo tài khoản admin",
+                        "description": "",
                         "args": [
                             {
                                 "name": "email",
@@ -5334,7 +5374,7 @@
                     },
                     {
                         "name": "initializeDatabase",
-                        "description": "Khởi tạo dữ liệu",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -5350,7 +5390,7 @@
                     },
                     {
                         "name": "login",
-                        "description": "Đăng nhập mới",
+                        "description": "",
                         "args": [
                             {
                                 "name": "id",
@@ -5395,7 +5435,7 @@
                     },
                     {
                         "name": "payTheBill",
-                        "description": "Thanh toán hóa đơn (thanh toán tiền phòng)",
+                        "description": "",
                         "args": [
                             {
                                 "name": "id",
@@ -5426,7 +5466,7 @@
                     },
                     {
                         "name": "resetPassword",
-                        "description": "Reset lại mật khẩu cho nhân viên khi quên mật khẩu",
+                        "description": "",
                         "args": [
                             {
                                 "name": "id",
@@ -5457,7 +5497,7 @@
                     },
                     {
                         "name": "setIsActiveAccount",
-                        "description": "Vô hiệu hóa/ kích hoạt tài khoản",
+                        "description": "",
                         "args": [
                             {
                                 "name": "id",
@@ -5502,7 +5542,7 @@
                     },
                     {
                         "name": "setIsActiveFloor",
-                        "description": "Cập nhật trạng thái hoạt động của tầng",
+                        "description": "",
                         "args": [
                             {
                                 "name": "id",
@@ -5547,7 +5587,7 @@
                     },
                     {
                         "name": "setIsActivePosition",
-                        "description": "Cập nhật trạng thái hoạt động của chức vụ",
+                        "description": "",
                         "args": [
                             {
                                 "name": "id",
@@ -5592,7 +5632,7 @@
                     },
                     {
                         "name": "setIsActivePositionAndMoveEmployee",
-                        "description": "Vô hiệu hóa chức vụ và chuyển nhân viên sang chức vụ mới",
+                        "description": "",
                         "args": [
                             {
                                 "name": "id",
@@ -5651,7 +5691,7 @@
                     },
                     {
                         "name": "setIsActiveRoom",
-                        "description": "Cập nhật trạng thái hoạt động của một phòng",
+                        "description": "",
                         "args": [
                             {
                                 "name": "id",
@@ -5696,7 +5736,7 @@
                     },
                     {
                         "name": "setIsActiveRoomKind",
-                        "description": "Cập nhật trạng thái hoạt động của loại phòng",
+                        "description": "",
                         "args": [
                             {
                                 "name": "id",
@@ -5741,7 +5781,7 @@
                     },
                     {
                         "name": "setIsActiveService",
-                        "description": "Cập nhật trạng thái của dịch vụ",
+                        "description": "",
                         "args": [
                             {
                                 "name": "id",
@@ -5786,7 +5826,7 @@
                     },
                     {
                         "name": "setIsCleanRoom",
-                        "description": "Cập nhật trạng thái dọn phòng của một phòng",
+                        "description": "",
                         "args": [
                             {
                                 "name": "id",
@@ -5831,7 +5871,7 @@
                     },
                     {
                         "name": "updateBill",
-                        "description": "Cập nhật thông tin hóa đơn",
+                        "description": "",
                         "args": [
                             {
                                 "name": "input",
@@ -5862,7 +5902,7 @@
                     },
                     {
                         "name": "updateBillDiscount",
-                        "description": "Cập nhật giảm giá của hóa đơn",
+                        "description": "",
                         "args": [
                             {
                                 "name": "input",
@@ -5893,7 +5933,7 @@
                     },
                     {
                         "name": "updateEmployee",
-                        "description": "Chỉnh sửa thông tin nhân viên",
+                        "description": "",
                         "args": [
                             {
                                 "name": "input",
@@ -5924,7 +5964,7 @@
                     },
                     {
                         "name": "updateFloor",
-                        "description": "Cập nhật và trả về một tầng vừa cập nhật",
+                        "description": "",
                         "args": [
                             {
                                 "name": "input",
@@ -5955,7 +5995,7 @@
                     },
                     {
                         "name": "updatePatron",
-                        "description": "Cập nhật và trả về một khách hàng vừa cập nhật",
+                        "description": "",
                         "args": [
                             {
                                 "name": "input",
@@ -5986,7 +6026,7 @@
                     },
                     {
                         "name": "updatePatronKind",
-                        "description": "Cập nhật và trả về một loại khách hàng vừa cập nhật",
+                        "description": "",
                         "args": [
                             {
                                 "name": "input",
@@ -6017,7 +6057,7 @@
                     },
                     {
                         "name": "updatePosition",
-                        "description": "Cập nhật và trả về một chức vụ vừa cập nhật",
+                        "description": "",
                         "args": [
                             {
                                 "name": "input",
@@ -6048,7 +6088,7 @@
                     },
                     {
                         "name": "updatePrice",
-                        "description": "Cập nhật và trả về một giá cơ bản vừa cập nhật",
+                        "description": "",
                         "args": [
                             {
                                 "name": "input",
@@ -6079,7 +6119,7 @@
                     },
                     {
                         "name": "updatePriceVolatility",
-                        "description": "Cập nhật và trả về một giá biến động vừa cập nhật",
+                        "description": "",
                         "args": [
                             {
                                 "name": "input",
@@ -6110,7 +6150,7 @@
                     },
                     {
                         "name": "updateRoom",
-                        "description": "Cập nhật và trả về một phòng vừa cập nhật",
+                        "description": "",
                         "args": [
                             {
                                 "name": "input",
@@ -6141,7 +6181,7 @@
                     },
                     {
                         "name": "updateRoomKind",
-                        "description": "Cập nhật và trả về loại phòng vừa cập nhật",
+                        "description": "",
                         "args": [
                             {
                                 "name": "input",
@@ -6172,7 +6212,7 @@
                     },
                     {
                         "name": "updateService",
-                        "description": "Cập nhật và trả về một dịch vụ mới cập nhật",
+                        "description": "",
                         "args": [
                             {
                                 "name": "input",
@@ -6203,7 +6243,7 @@
                     },
                     {
                         "name": "updateServicesDetail",
-                        "description": "Cập nhật và trả về một chi tiết dịch vụ mới cập nhật",
+                        "description": "",
                         "args": [
                             {
                                 "name": "input",
@@ -6241,12 +6281,12 @@
             {
                 "kind": "INPUT_OBJECT",
                 "name": "BillId",
-                "description": "Input cho thông tin một hóa đơn",
+                "description": "",
                 "fields": null,
                 "inputFields": [
                     {
                         "name": "id",
-                        "description": "Id của hóa đơn",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -6271,7 +6311,7 @@
                 "inputFields": [
                     {
                         "name": "bookCheckInTime",
-                        "description": "Thời điểm nhận phòng dự kiến của khách hàng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -6285,7 +6325,7 @@
                     },
                     {
                         "name": "bookCheckOutTime",
-                        "description": "Thời điểm trả phòng dự kiến của khách hàng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -6299,7 +6339,7 @@
                     },
                     {
                         "name": "room",
-                        "description": "Phòng khách hàng chọn đặt trước",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -6313,7 +6353,7 @@
                     },
                     {
                         "name": "listOfPatrons",
-                        "description": "Danh sách khách hàng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -6341,12 +6381,12 @@
             {
                 "kind": "INPUT_OBJECT",
                 "name": "RoomId",
-                "description": "Input cho thông tin một phòng",
+                "description": "",
                 "fields": null,
                 "inputFields": [
                     {
                         "name": "id",
-                        "description": "Id của phòng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -6366,12 +6406,12 @@
             {
                 "kind": "INPUT_OBJECT",
                 "name": "PatronId",
-                "description": "Input cho thông tin một khách hàng",
+                "description": "",
                 "fields": null,
                 "inputFields": [
                     {
                         "name": "id",
-                        "description": "Id của khách hàng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -6396,7 +6436,7 @@
                 "inputFields": [
                     {
                         "name": "bookCheckOutTime",
-                        "description": "Thời điểm trả phòng dự kiến của khách hàng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -6410,7 +6450,7 @@
                     },
                     {
                         "name": "room",
-                        "description": "Phòng khách hàng chọn đặt trước",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -6424,7 +6464,7 @@
                     },
                     {
                         "name": "listOfPatrons",
-                        "description": "Danh sách khách hàng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -6457,7 +6497,7 @@
                 "inputFields": [
                     {
                         "name": "patron",
-                        "description": "Khách hàng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -6482,7 +6522,7 @@
                 "inputFields": [
                     {
                         "name": "id",
-                        "description": "Id của nhân viên",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -6496,7 +6536,7 @@
                     },
                     {
                         "name": "password",
-                        "description": "Mật khẩu của tài khoản nhân viên",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -6510,7 +6550,7 @@
                     },
                     {
                         "name": "name",
-                        "description": "Tên nhân viên",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -6524,7 +6564,7 @@
                     },
                     {
                         "name": "identityCard",
-                        "description": "Chứng minh nhân dân",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -6538,7 +6578,7 @@
                     },
                     {
                         "name": "phoneNumber",
-                        "description": "Số điện thoại của nhân viên",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -6552,7 +6592,7 @@
                     },
                     {
                         "name": "address",
-                        "description": "Địa chỉ của nhân viên",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -6566,7 +6606,7 @@
                     },
                     {
                         "name": "email",
-                        "description": "Email của nhân viên",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -6580,7 +6620,7 @@
                     },
                     {
                         "name": "birthdate",
-                        "description": "Ngày sinh của nhân viên",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -6594,7 +6634,7 @@
                     },
                     {
                         "name": "gender",
-                        "description": "Giới tính của nhân viên",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -6608,7 +6648,7 @@
                     },
                     {
                         "name": "startingDate",
-                        "description": "Ngày vào làm",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -6622,7 +6662,7 @@
                     },
                     {
                         "name": "position",
-                        "description": "Loại chức vụ",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -6642,12 +6682,12 @@
             {
                 "kind": "INPUT_OBJECT",
                 "name": "PositionId",
-                "description": "Input cho thông tin một chức vụ",
+                "description": "",
                 "fields": null,
                 "inputFields": [
                     {
                         "name": "id",
-                        "description": "Id của chức vụ",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -6672,7 +6712,7 @@
                 "inputFields": [
                     {
                         "name": "name",
-                        "description": "Tên tầng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -6697,7 +6737,7 @@
                 "inputFields": [
                     {
                         "name": "identification",
-                        "description": "Số an sinh xã hội / Số chứng minh nhân dân / Số passport của khách hàng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -6711,7 +6751,7 @@
                     },
                     {
                         "name": "name",
-                        "description": "Tên của khách hàng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -6725,7 +6765,7 @@
                     },
                     {
                         "name": "email",
-                        "description": "Địa chỉ e-mail của khách hàng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -6739,7 +6779,7 @@
                     },
                     {
                         "name": "gender",
-                        "description": "Giới tính của khách hàng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -6753,7 +6793,7 @@
                     },
                     {
                         "name": "birthdate",
-                        "description": "Ngày sinh của khách hàng",
+                        "description": "",
                         "type": {
                             "kind": "SCALAR",
                             "name": "DateTimeOffset",
@@ -6763,7 +6803,7 @@
                     },
                     {
                         "name": "nationality",
-                        "description": "Quốc tịch của khách hàng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -6777,7 +6817,7 @@
                     },
                     {
                         "name": "domicile",
-                        "description": "Nguyên quán của khách hàng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -6791,7 +6831,7 @@
                     },
                     {
                         "name": "residence",
-                        "description": "Địa chỉ thường trú của khách hàng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -6805,7 +6845,7 @@
                     },
                     {
                         "name": "phoneNumber",
-                        "description": "Danh sách số điện thoại của khách hàng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -6819,7 +6859,7 @@
                     },
                     {
                         "name": "company",
-                        "description": "Công ty mà khách hàng đang làm việc",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -6833,7 +6873,7 @@
                     },
                     {
                         "name": "note",
-                        "description": "Một số chú thích về khách hàng nếu cần thiết",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -6847,7 +6887,7 @@
                     },
                     {
                         "name": "patronKind",
-                        "description": "Loại khách hàng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -6867,12 +6907,12 @@
             {
                 "kind": "INPUT_OBJECT",
                 "name": "PatronKindId",
-                "description": "Input cho thông tin  một loại khách hàng",
+                "description": "",
                 "fields": null,
                 "inputFields": [
                     {
                         "name": "id",
-                        "description": "Id của loại khách hàng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -6897,7 +6937,7 @@
                 "inputFields": [
                     {
                         "name": "name",
-                        "description": "Tên loại khách hàng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -6911,7 +6951,7 @@
                     },
                     {
                         "name": "description",
-                        "description": "Thông tin mô tả loại khách hàng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -6936,7 +6976,7 @@
                 "inputFields": [
                     {
                         "name": "name",
-                        "description": "Tên chức vụ",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -6950,7 +6990,7 @@
                     },
                     {
                         "name": "permissionCleaning",
-                        "description": "Quyền thao tác dọn phòng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -6964,7 +7004,7 @@
                     },
                     {
                         "name": "permissionGetAccountingVoucher",
-                        "description": "Quyền lấy thông tin các chứng từ (hóa đơn, phiếu thu)",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -6978,7 +7018,7 @@
                     },
                     {
                         "name": "permissionGetMap",
-                        "description": "Quyền lấy thông tin tầng, phòng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -6992,7 +7032,7 @@
                     },
                     {
                         "name": "permissionGetPatron",
-                        "description": "Quyền lấy thông tin khách hàng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -7006,7 +7046,7 @@
                     },
                     {
                         "name": "permissionGetPrice",
-                        "description": "Quyền lấy thông tin giá cơ bản và giá biến động",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -7020,7 +7060,7 @@
                     },
                     {
                         "name": "permissionGetService",
-                        "description": "Quyền lấy thông tin dịch vụ",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -7034,7 +7074,7 @@
                     },
                     {
                         "name": "permissionManageEmployee",
-                        "description": "Quyền quản lý thông tin nhân viên",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -7048,7 +7088,7 @@
                     },
                     {
                         "name": "permissionManageRentingRoom",
-                        "description": "Quyền quản lý thuê phòng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -7062,7 +7102,7 @@
                     },
                     {
                         "name": "permissionManagePatron",
-                        "description": "Quyền quản lý khách hàng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -7076,7 +7116,7 @@
                     },
                     {
                         "name": "permissionManagePatronKind",
-                        "description": "Quyền quản lý loại khách hàng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -7090,7 +7130,7 @@
                     },
                     {
                         "name": "permissionManagePosition",
-                        "description": "Quyền quản lý chức vụ",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -7104,7 +7144,7 @@
                     },
                     {
                         "name": "permissionManagePrice",
-                        "description": "Quyền quản lý giá cơ bản và giá biến động",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -7118,7 +7158,7 @@
                     },
                     {
                         "name": "permissionManageService",
-                        "description": "Quyền quản lý dịch vụ",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -7132,7 +7172,7 @@
                     },
                     {
                         "name": "permissionManageMap",
-                        "description": "Quyền chỉnh sửa sơ đồ",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -7157,7 +7197,7 @@
                 "inputFields": [
                     {
                         "name": "hourPrice",
-                        "description": "Giá giờ",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -7171,7 +7211,7 @@
                     },
                     {
                         "name": "dayPrice",
-                        "description": "Giá ngày",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -7185,7 +7225,7 @@
                     },
                     {
                         "name": "nightPrice",
-                        "description": "Giá đêm",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -7199,7 +7239,7 @@
                     },
                     {
                         "name": "weekPrice",
-                        "description": "Giá tuần",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -7213,7 +7253,7 @@
                     },
                     {
                         "name": "monthPrice",
-                        "description": "Giá tháng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -7227,7 +7267,7 @@
                     },
                     {
                         "name": "lateCheckOutFee",
-                        "description": "Phí check-out muộn",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -7241,7 +7281,7 @@
                     },
                     {
                         "name": "earlyCheckInFee",
-                        "description": "Phí check-out sớm",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -7255,7 +7295,7 @@
                     },
                     {
                         "name": "effectiveStartDate",
-                        "description": "Ngày giá bắt đầu có hiệu lực",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -7269,7 +7309,7 @@
                     },
                     {
                         "name": "roomKind",
-                        "description": "Loại phòng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -7289,12 +7329,12 @@
             {
                 "kind": "INPUT_OBJECT",
                 "name": "RoomKindId",
-                "description": "Input cho một thông tin một loại phòng",
+                "description": "",
                 "fields": null,
                 "inputFields": [
                     {
                         "name": "id",
-                        "description": "Id của một loại phòng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -7319,7 +7359,7 @@
                 "inputFields": [
                     {
                         "name": "name",
-                        "description": "Tên của giá biến động",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -7333,7 +7373,7 @@
                     },
                     {
                         "name": "hourPrice",
-                        "description": "Giá giờ",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -7347,7 +7387,7 @@
                     },
                     {
                         "name": "dayPrice",
-                        "description": "Giá ngày",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -7361,7 +7401,7 @@
                     },
                     {
                         "name": "nightPrice",
-                        "description": "Giá đêm",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -7375,7 +7415,7 @@
                     },
                     {
                         "name": "effectiveStartDate",
-                        "description": "Ngày giá bắt đầu có hiệu lực",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -7389,7 +7429,7 @@
                     },
                     {
                         "name": "effectiveEndDate",
-                        "description": "Ngày giá hết hiệu lực",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -7403,7 +7443,7 @@
                     },
                     {
                         "name": "effectiveOnMonday",
-                        "description": "Giá có hiệu lực vào ngày Thứ 2",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -7417,7 +7457,7 @@
                     },
                     {
                         "name": "effectiveOnTuesday",
-                        "description": "Giá có hiệu lực vào ngày Thứ 3",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -7431,7 +7471,7 @@
                     },
                     {
                         "name": "effectiveOnWednesday",
-                        "description": "Giá có hiệu lực vào ngày Thứ 4",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -7445,7 +7485,7 @@
                     },
                     {
                         "name": "effectiveOnThursday",
-                        "description": "Giá có hiệu lực vào ngày Thứ 5",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -7459,7 +7499,7 @@
                     },
                     {
                         "name": "effectiveOnFriday",
-                        "description": "Giá có hiệu lực vào ngày Thứ 6",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -7473,7 +7513,7 @@
                     },
                     {
                         "name": "effectiveOnSaturday",
-                        "description": "Giá có hiệu lực vào ngày Thứ 7",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -7487,7 +7527,7 @@
                     },
                     {
                         "name": "effectiveOnSunday",
-                        "description": "Giá có hiệu lực vào ngày Chủ Nhật",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -7501,7 +7541,7 @@
                     },
                     {
                         "name": "roomKind",
-                        "description": "Loại phòng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -7526,7 +7566,7 @@
                 "inputFields": [
                     {
                         "name": "money",
-                        "description": "Số tiền đã thu",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -7540,7 +7580,7 @@
                     },
                     {
                         "name": "bill",
-                        "description": "Thuộc hóa đơn",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -7554,7 +7594,7 @@
                     },
                     {
                         "name": "kind",
-                        "description": "Loại thanh toán",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -7579,7 +7619,7 @@
                 "inputFields": [
                     {
                         "name": "name",
-                        "description": "Tên phòng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -7593,7 +7633,7 @@
                     },
                     {
                         "name": "floor",
-                        "description": "Phòng thuộc tầng nào",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -7607,7 +7647,7 @@
                     },
                     {
                         "name": "roomKind",
-                        "description": "Loại phòng của phòng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -7627,12 +7667,12 @@
             {
                 "kind": "INPUT_OBJECT",
                 "name": "FloorId",
-                "description": "Input cho một thông tin tầng",
+                "description": "",
                 "fields": null,
                 "inputFields": [
                     {
                         "name": "id",
-                        "description": "Id của tầng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -7652,12 +7692,12 @@
             {
                 "kind": "INPUT_OBJECT",
                 "name": "RoomKindCreateInput",
-                "description": "Input cho việc tạo một loại phòng",
+                "description": "",
                 "fields": null,
                 "inputFields": [
                     {
                         "name": "name",
-                        "description": "Tên loại phòng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -7671,7 +7711,7 @@
                     },
                     {
                         "name": "numberOfBeds",
-                        "description": "Số giường",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -7685,7 +7725,7 @@
                     },
                     {
                         "name": "amountOfPeople",
-                        "description": "Số người trong một phòng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -7705,12 +7745,12 @@
             {
                 "kind": "INPUT_OBJECT",
                 "name": "ServiceCreateInput",
-                "description": "Input cho một thông tin dịch vụ cần tạo mới",
+                "description": "",
                 "fields": null,
                 "inputFields": [
                     {
                         "name": "name",
-                        "description": "Tên dịch vụ",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -7724,7 +7764,7 @@
                     },
                     {
                         "name": "unitPrice",
-                        "description": "Đơn giá",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -7738,7 +7778,7 @@
                     },
                     {
                         "name": "unit",
-                        "description": "Đơn vị",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -7763,7 +7803,7 @@
                 "inputFields": [
                     {
                         "name": "number",
-                        "description": "Số lượng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -7777,7 +7817,7 @@
                     },
                     {
                         "name": "service",
-                        "description": "Thuộc dịch vụ nào",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -7791,7 +7831,7 @@
                     },
                     {
                         "name": "booking",
-                        "description": "Thuộc booking nào",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -7811,12 +7851,12 @@
             {
                 "kind": "INPUT_OBJECT",
                 "name": "ServiceId",
-                "description": "Input cho một thông tin dịch vụ",
+                "description": "",
                 "fields": null,
                 "inputFields": [
                     {
                         "name": "id",
-                        "description": "Id của dịch vụ",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -7836,12 +7876,12 @@
             {
                 "kind": "INPUT_OBJECT",
                 "name": "BookingId",
-                "description": "Input cho một thông tin một đơn đặt phòng",
+                "description": "",
                 "fields": null,
                 "inputFields": [
                     {
                         "name": "id",
-                        "description": "Id của một đơn đặt phòng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -7861,11 +7901,11 @@
             {
                 "kind": "OBJECT",
                 "name": "AuthenticationObject",
-                "description": "Một đối tượng đăng nhập",
+                "description": "",
                 "fields": [
                     {
                         "name": "employee",
-                        "description": "Thông tin nhân viên đăng nhập",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -7881,7 +7921,7 @@
                     },
                     {
                         "name": "token",
-                        "description": "Token đăng nhập",
+                        "description": "",
                         "args": [],
                         "type": {
                             "kind": "NON_NULL",
@@ -7904,12 +7944,12 @@
             {
                 "kind": "INPUT_OBJECT",
                 "name": "BillUpdateInput",
-                "description": "Input để cập nhật thông tin một hóa đơn",
+                "description": "",
                 "fields": null,
                 "inputFields": [
                     {
                         "name": "id",
-                        "description": "Id của hóa đơn",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -7923,7 +7963,7 @@
                     },
                     {
                         "name": "discount",
-                        "description": "Giảm giá",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -7937,7 +7977,7 @@
                     },
                     {
                         "name": "patron",
-                        "description": "Thông tin khách hàng thanh toán hóa đơn",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -7957,12 +7997,12 @@
             {
                 "kind": "INPUT_OBJECT",
                 "name": "BillUpdateDiscountInput",
-                "description": "Input để cập nhật thông tin một hóa đơn",
+                "description": "",
                 "fields": null,
                 "inputFields": [
                     {
                         "name": "id",
-                        "description": "Id của hóa đơn",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -7976,7 +8016,7 @@
                     },
                     {
                         "name": "discount",
-                        "description": "Giảm giá",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8001,7 +8041,7 @@
                 "inputFields": [
                     {
                         "name": "id",
-                        "description": "Id của nhân viên",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8015,7 +8055,7 @@
                     },
                     {
                         "name": "name",
-                        "description": "Tên nhân viên",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8029,7 +8069,7 @@
                     },
                     {
                         "name": "identityCard",
-                        "description": "Chứng minh nhân dân",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8043,7 +8083,7 @@
                     },
                     {
                         "name": "address",
-                        "description": "Địa chỉ của nhân viên",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8057,7 +8097,7 @@
                     },
                     {
                         "name": "birthdate",
-                        "description": "Ngày sinh của nhân viên",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8071,7 +8111,7 @@
                     },
                     {
                         "name": "email",
-                        "description": "Email của nhân viên",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8085,7 +8125,7 @@
                     },
                     {
                         "name": "gender",
-                        "description": "Giới tính của nhân viên",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8099,7 +8139,7 @@
                     },
                     {
                         "name": "phoneNumber",
-                        "description": "Số điện thoại của nhân viên",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8113,7 +8153,7 @@
                     },
                     {
                         "name": "startingDate",
-                        "description": "Ngày vào làm",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8127,7 +8167,7 @@
                     },
                     {
                         "name": "position",
-                        "description": "Loại chức vụ",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8152,7 +8192,7 @@
                 "inputFields": [
                     {
                         "name": "id",
-                        "description": "Id tầng cần cập nhật",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8166,7 +8206,7 @@
                     },
                     {
                         "name": "name",
-                        "description": "Tên tầng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8191,7 +8231,7 @@
                 "inputFields": [
                     {
                         "name": "id",
-                        "description": "Id của khách hàng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8205,7 +8245,7 @@
                     },
                     {
                         "name": "identification",
-                        "description": "Số an sinh xã hội / Số chứng minh nhân dân / Số passport của khách hàng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8219,7 +8259,7 @@
                     },
                     {
                         "name": "name",
-                        "description": "Tên của khách hàng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8233,7 +8273,7 @@
                     },
                     {
                         "name": "email",
-                        "description": "Địa chỉ e-mail của khách hàng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8247,7 +8287,7 @@
                     },
                     {
                         "name": "gender",
-                        "description": "Giới tính của khách hàng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8261,7 +8301,7 @@
                     },
                     {
                         "name": "birthdate",
-                        "description": "Ngày sinh của khách hàng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8275,7 +8315,7 @@
                     },
                     {
                         "name": "nationality",
-                        "description": "Quốc tịch của khách hàng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8289,7 +8329,7 @@
                     },
                     {
                         "name": "domicile",
-                        "description": "Nguyên quán của khách hàng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8303,7 +8343,7 @@
                     },
                     {
                         "name": "residence",
-                        "description": "Địa chỉ thường trú của khách hàng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8317,7 +8357,7 @@
                     },
                     {
                         "name": "phoneNumber",
-                        "description": "Danh sách số điện thoại của khách hàng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8331,7 +8371,7 @@
                     },
                     {
                         "name": "company",
-                        "description": "Công ty mà khách hàng đang làm việc",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8345,7 +8385,7 @@
                     },
                     {
                         "name": "note",
-                        "description": "Một số chú thích về khách hàng nếu cần thiết",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8359,7 +8399,7 @@
                     },
                     {
                         "name": "patronKind",
-                        "description": "Loại khách hàng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8384,7 +8424,7 @@
                 "inputFields": [
                     {
                         "name": "id",
-                        "description": "Id của loại khách hàng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8398,7 +8438,7 @@
                     },
                     {
                         "name": "name",
-                        "description": "Tên loại khách hàng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8412,7 +8452,7 @@
                     },
                     {
                         "name": "description",
-                        "description": "Thông tin mô tả loại khách hàng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8437,7 +8477,7 @@
                 "inputFields": [
                     {
                         "name": "id",
-                        "description": "Id của chức vụ",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8451,7 +8491,7 @@
                     },
                     {
                         "name": "name",
-                        "description": "Tên chức vụ",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8465,7 +8505,7 @@
                     },
                     {
                         "name": "permissionCleaning",
-                        "description": "Quyền thao tác dọn phòng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8479,7 +8519,7 @@
                     },
                     {
                         "name": "permissionGetMap",
-                        "description": "Quyền lấy thông tin tầng, phòng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8493,7 +8533,7 @@
                     },
                     {
                         "name": "permissionGetPatron",
-                        "description": "Quyền lấy thông tin khách hàng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8507,7 +8547,7 @@
                     },
                     {
                         "name": "permissionGetPrice",
-                        "description": "Quyền lấy thông tin giá cơ bản và giá biến động",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8521,7 +8561,7 @@
                     },
                     {
                         "name": "permissionGetService",
-                        "description": "Quyền lấy thông tin dịch vụ",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8535,7 +8575,7 @@
                     },
                     {
                         "name": "permissionGetAccountingVoucher",
-                        "description": "Quyền lấy thông tin các chứng từ (hóa đơn, phiếu thu)",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8549,7 +8589,7 @@
                     },
                     {
                         "name": "permissionManageEmployee",
-                        "description": "Quyền quản lý thông tin nhân viên",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8563,7 +8603,7 @@
                     },
                     {
                         "name": "permissionManageRentingRoom",
-                        "description": "Quyền quản lý thuê phòng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8577,7 +8617,7 @@
                     },
                     {
                         "name": "permissionManageMap",
-                        "description": "Quyền chỉnh sửa sơ đồ",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8591,7 +8631,7 @@
                     },
                     {
                         "name": "permissionManagePatron",
-                        "description": "Quyền quản lý khách hàng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8605,7 +8645,7 @@
                     },
                     {
                         "name": "permissionManagePatronKind",
-                        "description": "Quyền quản lý loại khách hàng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8619,7 +8659,7 @@
                     },
                     {
                         "name": "permissionManagePosition",
-                        "description": "Quyền quản lý chức vụ",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8633,7 +8673,7 @@
                     },
                     {
                         "name": "permissionManagePrice",
-                        "description": "Quyền quản lý giá cơ bản và giá biến động",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8647,7 +8687,7 @@
                     },
                     {
                         "name": "permissionManageService",
-                        "description": "Quyền quản lý dịch vụ",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8672,7 +8712,7 @@
                 "inputFields": [
                     {
                         "name": "id",
-                        "description": "Id của giá cần cập nhật",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8686,7 +8726,7 @@
                     },
                     {
                         "name": "hourPrice",
-                        "description": "Giá giờ",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8700,7 +8740,7 @@
                     },
                     {
                         "name": "dayPrice",
-                        "description": "Giá ngày",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8714,7 +8754,7 @@
                     },
                     {
                         "name": "nightPrice",
-                        "description": "Giá đêm",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8728,7 +8768,7 @@
                     },
                     {
                         "name": "weekPrice",
-                        "description": "Giá tuần",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8742,7 +8782,7 @@
                     },
                     {
                         "name": "monthPrice",
-                        "description": "Giá tháng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8756,7 +8796,7 @@
                     },
                     {
                         "name": "lateCheckOutFee",
-                        "description": "Phí check-out muộn",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8770,7 +8810,7 @@
                     },
                     {
                         "name": "earlyCheckInFee",
-                        "description": "Phí check-out sớm",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8784,7 +8824,7 @@
                     },
                     {
                         "name": "effectiveStartDate",
-                        "description": "Ngày giá bắt đầu có hiệu lực",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8798,7 +8838,7 @@
                     },
                     {
                         "name": "roomKind",
-                        "description": "Loại phòng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8823,7 +8863,7 @@
                 "inputFields": [
                     {
                         "name": "id",
-                        "description": "Id của giá cần cập nhật",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8837,7 +8877,7 @@
                     },
                     {
                         "name": "hourPrice",
-                        "description": "Giá giờ",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8851,7 +8891,7 @@
                     },
                     {
                         "name": "dayPrice",
-                        "description": "Giá ngày",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8865,7 +8905,7 @@
                     },
                     {
                         "name": "nightPrice",
-                        "description": "Giá đêm",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8879,7 +8919,7 @@
                     },
                     {
                         "name": "effectiveStartDate",
-                        "description": "Ngày giá bắt đầu có hiệu lực",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8893,7 +8933,7 @@
                     },
                     {
                         "name": "effectiveEndDate",
-                        "description": "Ngày giá hết hiệu lực",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8907,7 +8947,7 @@
                     },
                     {
                         "name": "effectiveOnMonday",
-                        "description": "Giá có hiệu lực vào ngày Thứ 2",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8921,7 +8961,7 @@
                     },
                     {
                         "name": "effectiveOnTuesday",
-                        "description": "Giá có hiệu lực vào ngày Thứ 3",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8935,7 +8975,7 @@
                     },
                     {
                         "name": "effectiveOnWednesday",
-                        "description": "Giá có hiệu lực vào ngày Thứ 4",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8949,7 +8989,7 @@
                     },
                     {
                         "name": "effectiveOnThursday",
-                        "description": "Giá có hiệu lực vào ngày Thứ 5",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8963,7 +9003,7 @@
                     },
                     {
                         "name": "effectiveOnFriday",
-                        "description": "Giá có hiệu lực vào ngày Thứ 6",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8977,7 +9017,7 @@
                     },
                     {
                         "name": "effectiveOnSaturday",
-                        "description": "Giá có hiệu lực vào ngày Thứ 7",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -8991,7 +9031,7 @@
                     },
                     {
                         "name": "effectiveOnSunday",
-                        "description": "Giá có hiệu lực vào ngày Chủ Nhật",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -9005,7 +9045,7 @@
                     },
                     {
                         "name": "roomKind",
-                        "description": "Loại phòng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -9030,7 +9070,7 @@
                 "inputFields": [
                     {
                         "name": "id",
-                        "description": "Id phòng cần cập nhật",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -9044,7 +9084,7 @@
                     },
                     {
                         "name": "name",
-                        "description": "Tên phòng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -9058,7 +9098,7 @@
                     },
                     {
                         "name": "floor",
-                        "description": "Phòng thuộc tầng nào",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -9072,7 +9112,7 @@
                     },
                     {
                         "name": "roomKind",
-                        "description": "Loại phòng của phòng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -9092,12 +9132,12 @@
             {
                 "kind": "INPUT_OBJECT",
                 "name": "RoomKindUpdateInput",
-                "description": "Input cho việc chỉnh sửa một loại phòng",
+                "description": "",
                 "fields": null,
                 "inputFields": [
                     {
                         "name": "id",
-                        "description": "Id loại phòng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -9111,7 +9151,7 @@
                     },
                     {
                         "name": "name",
-                        "description": "Tên loại phòng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -9125,7 +9165,7 @@
                     },
                     {
                         "name": "numberOfBeds",
-                        "description": "Số giường",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -9139,7 +9179,7 @@
                     },
                     {
                         "name": "amountOfPeople",
-                        "description": "Số người trong một phòng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -9159,12 +9199,12 @@
             {
                 "kind": "INPUT_OBJECT",
                 "name": "ServiceUpdateInput",
-                "description": "Input cho một thông tin dịch vụ cần cập nhật",
+                "description": "",
                 "fields": null,
                 "inputFields": [
                     {
                         "name": "id",
-                        "description": "Id của dịch vụ",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -9178,7 +9218,7 @@
                     },
                     {
                         "name": "name",
-                        "description": "Tên dịch vụ",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -9192,7 +9232,7 @@
                     },
                     {
                         "name": "unitPrice",
-                        "description": "Đơn giá",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -9206,7 +9246,7 @@
                     },
                     {
                         "name": "unit",
-                        "description": "Đơn vị",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -9231,7 +9271,7 @@
                 "inputFields": [
                     {
                         "name": "id",
-                        "description": "Id của chi tiết dịch vụ cần cập nhật",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -9245,7 +9285,7 @@
                     },
                     {
                         "name": "number",
-                        "description": "Số lượng",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -9259,7 +9299,7 @@
                     },
                     {
                         "name": "service",
-                        "description": "Thuộc dịch vụ nào",
+                        "description": "",
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
@@ -10075,7 +10115,7 @@
             {
                 "kind": "SCALAR",
                 "name": "Date",
-                "description": "The `Date` scalar type represents a year, month and day in accordance with the\n[ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) standard.",
+                "description": "The `Date` scalar type represents a year, month and day in accordance with the [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) standard.",
                 "fields": null,
                 "inputFields": null,
                 "interfaces": null,
@@ -10085,7 +10125,7 @@
             {
                 "kind": "SCALAR",
                 "name": "DateTime",
-                "description": "The `DateTime` scalar type represents a date and time. `DateTime` expects\ntimestamps to be formatted in accordance with the\n[ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) standard.",
+                "description": "The `DateTime` scalar type represents a date and time. `DateTime` expects timestamps to be formatted in accordance with the [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) standard.",
                 "fields": null,
                 "inputFields": null,
                 "interfaces": null,
@@ -10095,7 +10135,7 @@
             {
                 "kind": "SCALAR",
                 "name": "Decimal",
-                "description": "",
+                "description": null,
                 "fields": null,
                 "inputFields": null,
                 "interfaces": null,
