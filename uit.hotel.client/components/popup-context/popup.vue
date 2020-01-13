@@ -2,7 +2,7 @@
     <div
         v-show="show"
         class="popup"
-        @click="currentEvent !== null && (currentEvent = null)"
+        @click="currentEvent !== null ? (currentEvent = null) : close()"
         @contextmenu="$emit('contextmenu', $event)"
     >
         <div

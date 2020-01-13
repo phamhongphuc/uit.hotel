@@ -1,6 +1,10 @@
 <template>
     <context- ref="context" v-slot="{ data: { roomKind } }">
-        <b-nav-item-icon- icon="info" text="Xem thông tin chi tiết" />
+        <b-nav-item-icon-
+            icon="info"
+            text="Xem thông tin chi tiết"
+            @click="refs.room_kind_detail.open({ id: roomKind.id })"
+        />
         <div class="context-hr" />
         <b-nav-item-icon-
             icon="receipt"
