@@ -3,7 +3,6 @@
         ref="popup"
         v-slot
         :title="`Chi tiết hóa đơn #${id}`"
-        class="popup-bill-detail"
         @contextmenu.prevent="tableContext"
     >
         <query-

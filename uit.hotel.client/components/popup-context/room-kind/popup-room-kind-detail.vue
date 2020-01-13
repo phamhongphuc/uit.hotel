@@ -3,7 +3,6 @@
         ref="popup"
         v-slot
         title="Chi tiết loại phòng"
-        class="popup-booking-detail"
         @contextmenu.prevent="tableContext"
     >
         <query-

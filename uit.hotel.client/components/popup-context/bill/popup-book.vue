@@ -101,7 +101,6 @@ import {
 } from '~/graphql/types';
 import {
     createBill,
-    getRoom,
     getPatronsAndRooms,
     bookAndCheckIn,
 } from '~/graphql/documents';
@@ -136,7 +135,7 @@ type PopupMixinType = PopupMixin<{ rooms: GetFloors.Rooms[] }, null>;
 })
 export default class extends mixins<PopupMixinType>(
     PopupMixin,
-    DataMixin({ getPatronsAndRooms, getRoom, moment }),
+    DataMixin({ getPatronsAndRooms, moment }),
 ) {
     isCheckinNow = false;
 
