@@ -58,6 +58,10 @@
                 <div class="row mt-2">
                     <div class="col-8 pr-0">
                         <div class="font-weight-medium my-1 pl-1">
+                            Tối đa: {{ roomKind.amountOfPeople }} người,
+                            {{ roomKind.numberOfBeds }} giường
+                        </div>
+                        <div class="font-weight-medium my-1 pl-1">
                             Danh sách phòng:
                         </div>
                         <div
