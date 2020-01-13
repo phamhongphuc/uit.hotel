@@ -48,9 +48,7 @@
                     title="Phòng chưa được dọn"
                     :disabled="room.isClean"
                     @contextmenu.prevent="
-                        refs.context_receptionist_room.open($event, {
-                            room,
-                        })
+                        refs.context_receptionist_room.open($event, { room })
                     "
                 >
                     Phòng {{ room.name }}
@@ -66,9 +64,7 @@
                         class="booking shadow-sm"
                         @dblclick="refs.booking_detail.open({ id: booking.id })"
                         @contextmenu.prevent="
-                            refs.context_booking.open($event, {
-                                booking,
-                            })
+                            refs.context_booking.open($event, { booking })
                         "
                     >
                         <b-tooltip
