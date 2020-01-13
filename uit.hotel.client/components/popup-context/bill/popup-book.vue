@@ -1,10 +1,5 @@
 <template>
-    <popup-
-        ref="popup"
-        v-slot="{ close }"
-        title="Đặt phòng"
-        class="align-items-start"
-    >
+    <popup- ref="popup" v-slot="{ close }" title="Đặt phòng">
         <form-mutate-
             :mutation="mutation"
             :variables="variables"

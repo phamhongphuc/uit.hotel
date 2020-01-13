@@ -3,7 +3,7 @@
         <form-mutate-
             v-if="input"
             :mutation="createPosition"
-            :variables="{ input, getInput }"
+            :variables="{ input: getInput }"
             success="Thêm vị trí mới thành công"
             @success="close"
         >

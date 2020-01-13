@@ -1,5 +1,5 @@
 <template>
-    <popup- ref="popup" v-slot="{ close }" title="Thêm giá cơ bản" no-data>
+    <popup- ref="popup" v-slot="{ close }" title="Thêm giá cơ bản">
         <form-mutate-
             v-if="input"
             :mutation="createPrice"
@@ -106,6 +106,7 @@
 </template>
 <script lang="ts">
 import { Component, mixins, Vue } from 'nuxt-property-decorator';
+import Moment from 'moment';
 import { required } from 'vuelidate/lib/validators';
 import { DataMixin, PopupMixin } from '~/components/mixins';
 import { PriceCreateInput, GetRoomKinds } from '~/graphql/types';
@@ -146,7 +147,9 @@ export default class extends mixins<PopupMixinType>(
             monthPrice: 0,
             lateCheckOutFee: 0,
             earlyCheckInFee: 0,
-            effectiveStartDate: '',
+            effectiveStartDate: Moment()
+                .set({ hour: 0, minute: 0, second: 0 })
+                .format('YYYY-MM-DD'),
             roomKind: { id: -1 },
         };
     }

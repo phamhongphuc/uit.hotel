@@ -37,9 +37,7 @@
                             <b-button
                                 :variant="floor.isActive ? 'main' : 'gray'"
                                 @contextmenu.prevent="
-                                    $refs.context_floor.open($event, {
-                                        floor,
-                                    })
+                                    $refs.context_floor.open($event, { floor })
                                 "
                             >
                                 Tầng {{ floor.name }}

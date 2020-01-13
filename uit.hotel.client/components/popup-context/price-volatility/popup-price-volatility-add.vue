@@ -1,5 +1,5 @@
 <template>
-    <popup- ref="popup" v-slot="{ close }" title="Thêm giá biến động" no-data>
+    <popup- ref="popup" v-slot="{ close }" title="Thêm giá biến động">
         <form-mutate-
             v-if="input"
             :mutation="createPriceVolatility"

@@ -11,7 +11,6 @@
             v-slot
             :query="getReceipt"
             :variables="variables"
-            :poll-interval="500"
             class="w-100 h-100"
             child-class="w-100 h-100"
             @result="onResult"

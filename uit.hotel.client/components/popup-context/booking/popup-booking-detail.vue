@@ -11,7 +11,6 @@
             v-slot
             :query="getBooking"
             :variables="variables"
-            :poll-interval="500"
             @result="onResult"
         >
             <div class="row p-3">

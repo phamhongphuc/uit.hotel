@@ -2,7 +2,7 @@
     <div
         v-show="show"
         class="popup"
-        @click="currentEvent !== null && (currentEvent = null)"
+        @click="currentEvent !== null ? (currentEvent = null) : close()"
         @contextmenu="$emit('contextmenu', $event)"
     >
         <div
@@ -38,10 +38,6 @@ export default class Popup extends Vue {
     data: any = null;
 
     currentEvent: MouseEvent | null = null;
-
-    click() {
-        if (this.currentEvent !== null) this.currentEvent = null;
-    }
 
     @Prop({ type: String })
     childClass!: string;

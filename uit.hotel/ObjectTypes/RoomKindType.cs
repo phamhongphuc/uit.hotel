@@ -1,7 +1,9 @@
+using System;
 using System.Linq;
 using GraphQL.Types;
 using uit.hotel.Models;
 using uit.hotel.Queries.Base;
+using uit.hotel.Queries.Helper;
 
 namespace uit.hotel.ObjectTypes
 {
@@ -32,6 +34,16 @@ namespace uit.hotel.ObjectTypes
                 nameof(RoomKind.PriceVolatilities),
                 "Danh sách giá biến động của loại phòng",
                 resolve: context => context.Source.PriceVolatilities.ToList()
+            );
+            Field<NonNullGraphType<PriceType>>(
+                "Current" + nameof(Price),
+                "Giá cơ bản đang áp dụng",
+                resolve: context => context.Source.GetPrice(DateTimeOffset.Now)
+            );
+            Field<NonNullGraphType<ListGraphType<NonNullGraphType<PriceVolatilityType>>>>(
+                "CurrentPriceVolatilities",
+                "Danh sách giá biến động đang áp dụng",
+                resolve: context => context.Source.GetPriceVolatilities(DateTimeOffset.Now.AtHour(0), DateTimeOffset.Now.AtHour(0).AddDays(1))
             );
         }
     }

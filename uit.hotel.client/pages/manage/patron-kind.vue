@@ -33,7 +33,6 @@
                     {
                         key: 'description',
                         label: 'Mô tả',
-                        tdClass: 'w-100',
                         sortable: true,
                     },
                     {

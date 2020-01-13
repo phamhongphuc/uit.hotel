@@ -1,5 +1,5 @@
 <template>
-    <div @contextmenu.prevent="tableContext">
+    <div @contextmenu.prevent="tableContext" @dblclick="tableContext">
         <block-flex->
             <b-button
                 class="m-2"
@@ -42,12 +42,11 @@
                     {
                         key: 'name',
                         label: 'Tên loại phòng',
-                        tdClass: (value, key, row) => {
-                            if (!row.isActive)
-                                return 'table-cell-disable w-100';
-                            return 'w-100';
-                        },
                         sortable: true,
+                    },
+                    {
+                        key: 'isActive',
+                        label: 'Trạng thái',
                     },
                     {
                         key: 'rooms',
@@ -70,9 +69,20 @@
                 @row-clicked="
                     (roomKind, $index, $event) => {
                         $event.stopPropagation();
-                        $refs.context_room_kind.open(currentEvent || $event, {
-                            roomKind,
-                        });
+                        if (
+                            currentEvent !== null &&
+                            currentEvent.type === 'dblclick'
+                        ) {
+                            $refs.room_kind_detail.open({ id: roomKind.id });
+                            $refs.context_room_kind.close();
+                        } else {
+                            $refs.context_room_kind.open(
+                                currentEvent || $event,
+                                {
+                                    roomKind,
+                                },
+                            );
+                        }
                         currentEvent = null;
                     }
                 "
@@ -83,19 +93,32 @@
                 <template v-slot:cell(index)="data">
                     {{ data.index + 1 }}
                 </template>
+                <template v-slot:cell(isActive)="{ value }">
+                    <icon-
+                        i="circle-fill"
+                        class="mr-1"
+                        :class="`text-${roomKindColorMap(value)}`"
+                    />
+                    {{ roomKindTitleMap(value) }}
+                </template>
                 <template v-slot:cell(rooms)="{ value }">
                     {{ value.length }} phòng
                 </template>
             </b-table>
         </query->
+        <context-manage-room- ref="context_room" />
         <context-manage-room-kind- ref="context_room_kind" />
-        <popup-room-kind-add- ref="room_kind_add" />
-        <popup-room-kind-update- ref="room_kind_update" />
         <popup-price-add- ref="price_add" />
+        <popup-price-volatility-add- ref="price_volatility_add" />
+        <popup-room-kind-add- ref="room_kind_add" />
+        <popup-room-kind-detail- ref="room_kind_detail" />
+        <popup-room-kind-update- ref="room_kind_update" />
+        <popup-room-update- ref="room_update" />
     </div>
 </template>
 <script lang="ts">
 import { Component, mixins } from 'nuxt-property-decorator';
+import { roomKindColorMap, roomKindTitleMap } from '~/modules/model';
 import { getRoomKinds } from '~/graphql/documents';
 import { DataMixin, Page } from '~/components/mixins';
 import { GetRoomKinds } from '~/graphql/types';
@@ -105,7 +128,7 @@ import { GetRoomKinds } from '~/graphql/types';
 })
 export default class extends mixins<Page, {}>(
     Page,
-    DataMixin({ getRoomKinds }),
+    DataMixin({ getRoomKinds, roomKindColorMap, roomKindTitleMap }),
 ) {
     head() {
         return {
