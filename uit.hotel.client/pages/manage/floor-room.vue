@@ -48,6 +48,7 @@
                             :key="room.id"
                         >
                             <b-button
+                                class="position-relative"
                                 :variant="room.isActive ? 'light-blue' : 'gray'"
                                 @contextmenu.prevent="
                                     $refs.context_room.open($event, {
@@ -59,6 +60,11 @@
                                 Phòng {{ room.name }}
                                 <br />
                                 {{ room.roomKind.name }}
+                                <icon-
+                                    v-if="!room.isClean"
+                                    i="broom"
+                                    class="position-absolute b-0 r-0 m-1"
+                                />
                             </b-button>
                         </td>
                     </tr>
@@ -67,10 +73,11 @@
         </query->
         <context-manage-room- ref="context_room" />
         <context-manage-floor- ref="context_floor" />
-        <popup-room-add- ref="room_add" />
-        <popup-room-update- ref="room_update" />
         <popup-floor-add- ref="floor_add" />
         <popup-floor-update- ref="floor_update" />
+        <popup-room-add- ref="room_add" />
+        <popup-room-detail- ref="room_detail" />
+        <popup-room-update- ref="room_update" />
     </div>
 </template>
 <script lang="ts">
