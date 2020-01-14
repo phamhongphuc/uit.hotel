@@ -1237,7 +1237,7 @@ export type GetEmployeeQuery = {
         | 'gender'
         | 'startingDate'
         | 'isActive'
-    > & { position: Pick<Position, 'id'> };
+    > & { position: Pick<Position, 'id' | 'name'> };
 };
 
 export type CreateEmployeeMutationVariables = {
