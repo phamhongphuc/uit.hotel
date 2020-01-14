@@ -3,7 +3,7 @@
         <b-nav-item-icon-
             icon="edit-2"
             text="Sửa thông tin khách hàng"
-            @click="refs.patron_update.open({ patron })"
+            @click="refs.patron_update.open({ id: patron.id })"
         />
     </context->
 </template>
