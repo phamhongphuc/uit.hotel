@@ -1646,6 +1646,26 @@ export type GetPricesQuery = {
     >;
 };
 
+export type GetPriceQueryVariables = {
+    id: Scalars['ID'];
+};
+
+export type GetPriceQuery = {
+    price: Pick<
+        Price,
+        | 'id'
+        | 'createDate'
+        | 'effectiveStartDate'
+        | 'earlyCheckInFee'
+        | 'lateCheckOutFee'
+        | 'hourPrice'
+        | 'nightPrice'
+        | 'dayPrice'
+        | 'weekPrice'
+        | 'monthPrice'
+    > & { roomKind: Pick<RoomKind, 'id' | 'name'> };
+};
+
 export type CreatePriceMutationVariables = {
     input: PriceCreateInput;
 };
@@ -1678,6 +1698,34 @@ export type GetPriceVolatilitiesQuery = {
             roomKind: Pick<RoomKind, 'id' | 'name'>;
         }
     >;
+};
+
+export type GetPriceVolatilityQueryVariables = {
+    id: Scalars['ID'];
+};
+
+export type GetPriceVolatilityQuery = {
+    priceVolatility: Pick<
+        PriceVolatility,
+        | 'id'
+        | 'name'
+        | 'hourPrice'
+        | 'dayPrice'
+        | 'nightPrice'
+        | 'effectiveStartDate'
+        | 'effectiveEndDate'
+        | 'effectiveOnMonday'
+        | 'effectiveOnTuesday'
+        | 'effectiveOnWednesday'
+        | 'effectiveOnThursday'
+        | 'effectiveOnFriday'
+        | 'effectiveOnSaturday'
+        | 'effectiveOnSunday'
+        | 'createDate'
+    > & {
+        employee: Maybe<Pick<Employee, 'id'>>;
+        roomKind: Pick<RoomKind, 'id' | 'name'>;
+    };
 };
 
 export type CreatePriceVolatilityMutationVariables = {
@@ -2322,6 +2370,13 @@ export namespace GetPrices {
     export type RoomKind = NonNullable<GetPricesQuery['prices'][0]>['roomKind'];
 }
 
+export namespace GetPrice {
+    export type Variables = GetPriceQueryVariables;
+    export type Query = GetPriceQuery;
+    export type Price = GetPriceQuery['price'];
+    export type RoomKind = GetPriceQuery['price']['roomKind'];
+}
+
 export namespace CreatePrice {
     export type Variables = CreatePriceMutationVariables;
     export type Mutation = CreatePriceMutation;
@@ -2342,6 +2397,16 @@ export namespace GetPriceVolatilities {
     export type RoomKind = NonNullable<
         GetPriceVolatilitiesQuery['priceVolatilities'][0]
     >['roomKind'];
+}
+
+export namespace GetPriceVolatility {
+    export type Variables = GetPriceVolatilityQueryVariables;
+    export type Query = GetPriceVolatilityQuery;
+    export type PriceVolatility = GetPriceVolatilityQuery['priceVolatility'];
+    export type Employee = NonNullable<
+        GetPriceVolatilityQuery['priceVolatility']['employee']
+    >;
+    export type RoomKind = GetPriceVolatilityQuery['priceVolatility']['roomKind'];
 }
 
 export namespace CreatePriceVolatility {

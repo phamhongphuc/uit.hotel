@@ -17,6 +17,27 @@ export const getPrices = gql`
     }
 `;
 
+export const getPrice = gql`
+    query getPrice($id: ID!) {
+        price(id: $id) {
+            id
+            createDate
+            effectiveStartDate
+            earlyCheckInFee
+            lateCheckOutFee
+            hourPrice
+            nightPrice
+            dayPrice
+            weekPrice
+            monthPrice
+            roomKind {
+                id
+                name
+            }
+        }
+    }
+`;
+
 export const createPrice = gql`
     mutation createPrice($input: PriceCreateInput!) {
         createPrice(input: $input) {

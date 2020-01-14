@@ -1,11 +1,13 @@
-import { GetPriceVolatilities } from '~/graphql/types';
+import { GetPriceVolatilities, GetPriceVolatility } from '~/graphql/types';
 
 export type DaysOfWeekType = {
     daysOfWeek: [boolean, boolean, boolean, boolean, boolean, boolean, boolean];
 };
 
 export const toDaysOfWeek = (
-    priceVolatility: GetPriceVolatilities.PriceVolatilities,
+    priceVolatility:
+        | GetPriceVolatilities.PriceVolatilities
+        | GetPriceVolatility.PriceVolatility,
 ): DaysOfWeekType => ({
     daysOfWeek: [
         priceVolatility.effectiveOnMonday,

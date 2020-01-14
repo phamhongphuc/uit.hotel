@@ -29,9 +29,6 @@
                         <span>Sửa thông tin khách hàng</span>
                     </b-button>
                 </div>
-                <!-- <div class="p-1 mt-2 font-weight-medium mr-auto">
-                    Thông tin chi tiết khách hàng:
-                </div> -->
                 <div class="row mt-2">
                     <div class="col-6">
                         <div class="px-1">

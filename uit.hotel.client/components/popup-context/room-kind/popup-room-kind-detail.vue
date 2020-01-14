@@ -46,11 +46,19 @@
                                 : 'Kích hoạt lại loại phòng'
                         }}
                     </b-button-mutate->
-                    <b-button size="sm" variant="lighten">
+                    <b-button
+                        size="sm"
+                        variant="lighten"
+                        @click="refs.price_add.open({ roomKind })"
+                    >
                         <icon- class="mr-1" i="receipt" />
                         <span>Thêm giá cơ bản</span>
                     </b-button>
-                    <b-button size="sm" variant="lighten">
+                    <b-button
+                        size="sm"
+                        variant="lighten"
+                        @click="refs.price_volatility_add.open({ roomKind })"
+                    >
                         <icon- class="mr-1" i="receipt" />
                         <span>Thêm giá biến động</span>
                     </b-button>

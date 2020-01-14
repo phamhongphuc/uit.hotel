@@ -1,6 +1,12 @@
 <template>
-    <context- ref="context" v-slot>
-        <b-nav-item-icon- icon="info" text="Thông tin giá" />
+    <context- ref="context" v-slot="{ data: { priceVolatility } }">
+        <b-nav-item-icon-
+            icon="info"
+            text="Thông tin giá"
+            @click="
+                refs.price_volatility_detail.open({ id: priceVolatility.id })
+            "
+        />
     </context->
 </template>
 <script lang="ts">

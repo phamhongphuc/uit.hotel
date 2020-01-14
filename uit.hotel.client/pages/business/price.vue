@@ -11,7 +11,7 @@
             </b-button>
         </block-flex->
         <query-
-            v-slot="{ data: { prices } }"
+            v-slot
             :query="getPrices"
             class="row"
             child-class="col m-2 p-0 bg-white rounded shadow-sm overflow-auto"
@@ -68,7 +68,6 @@
                         $event.stopPropagation();
                         $refs.context_price.open(currentEvent || $event, {
                             price,
-                            prices,
                         });
                         currentEvent = null;
                     }
@@ -83,6 +82,11 @@
             </b-table>
         </query->
         <context-manage-price- ref="context_price" />
+        <popup-price-detail- ref="price_detail" />
+        <popup-room-kind-detail- ref="room_kind_detail" />
+        <popup-room-kind-update- ref="room_kind_update" />
+        <popup-room-detail- ref="room_detail" />
+        <popup-room-update- ref="room_update" />
         <popup-price-add- ref="price_add" />
     </div>
 </template>
