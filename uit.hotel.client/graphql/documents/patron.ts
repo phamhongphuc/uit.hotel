@@ -42,6 +42,19 @@ export const getPatron = gql`
                 id
                 name
             }
+            bookings {
+                id
+                bookCheckInTime
+                bookCheckOutTime
+                realCheckInTime
+                realCheckOutTime
+                status
+                total
+                room {
+                    id
+                    name
+                }
+            }
         }
     }
 `;

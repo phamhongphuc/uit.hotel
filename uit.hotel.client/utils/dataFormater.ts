@@ -41,3 +41,6 @@ export const toPercent = (num: number) =>
 
 export const toNumber = (num: string | number) =>
     typeof num !== 'string' ? num : parseFloat(num);
+
+export const dash = (value: string | number | any) =>
+    value === null || value === undefined || value === '' ? '-' : value;

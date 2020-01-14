@@ -64,6 +64,7 @@
             </b-table>
         </query->
         <context-manage-patron-kind- ref="context_patron_kind" />
+        <popup-patron-detail- ref="patron_detail" />
         <popup-patron-kind-add- ref="patron_kind_add" />
         <popup-patron-kind-update- ref="patron_kind_update" />
     </div>

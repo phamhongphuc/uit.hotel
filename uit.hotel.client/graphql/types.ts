@@ -1466,7 +1466,21 @@ export type GetPatronQuery = {
         | 'nationality'
         | 'company'
         | 'note'
-    > & { patronKind: Pick<PatronKind, 'id' | 'name'> };
+    > & {
+        patronKind: Pick<PatronKind, 'id' | 'name'>;
+        bookings: Array<
+            Pick<
+                Booking,
+                | 'id'
+                | 'bookCheckInTime'
+                | 'bookCheckOutTime'
+                | 'realCheckInTime'
+                | 'realCheckOutTime'
+                | 'status'
+                | 'total'
+            > & { room: Pick<Room, 'id' | 'name'> }
+        >;
+    };
 };
 
 export type CreatePatronMutationVariables = {
@@ -2214,6 +2228,10 @@ export namespace GetPatron {
     export type Query = GetPatronQuery;
     export type Patron = GetPatronQuery['patron'];
     export type PatronKind = GetPatronQuery['patron']['patronKind'];
+    export type Bookings = NonNullable<GetPatronQuery['patron']['bookings'][0]>;
+    export type Room = NonNullable<
+        GetPatronQuery['patron']['bookings'][0]
+    >['room'];
 }
 
 export namespace CreatePatron {

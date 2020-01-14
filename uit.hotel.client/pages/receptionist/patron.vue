@@ -79,6 +79,7 @@
             </b-table>
         </query->
         <context-manage-patron- ref="context_patron" />
+        <popup-patron-detail- ref="patron_detail" />
         <popup-patron-add- ref="patron_add" />
         <popup-patron-update- ref="patron_update" />
     </div>
