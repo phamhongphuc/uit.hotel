@@ -59,13 +59,14 @@
 import { Component, mixins } from 'nuxt-property-decorator';
 import { PopupMixin, DataMixin } from '~/components/mixins';
 import { GetPositions } from '~/graphql/types';
+import { updatePosition } from '~/graphql/documents';
 import {
-    updatePosition,
     positionOptionsAdministrative,
     positionOptionsBusiness,
     positionOptionsReceptionist,
     positionOptionsHouseKeeping,
-} from '~/graphql/documents';
+    permission,
+} from '~/modules/model';
 import { CheckboxOption } from '~/utils';
 import { positionName } from '~/modules/validator';
 
@@ -123,17 +124,8 @@ export default class extends mixins<
     }
 
     onOpen() {
-        const permission = [
-            ...positionOptionsAdministrative,
-            ...positionOptionsBusiness,
-            ...positionOptionsReceptionist,
-            ...positionOptionsHouseKeeping,
-        ].map(p => p.value);
-
         this.selected = [];
-        permission.forEach(p => {
-            if (this.data.position[p]) this.selected.push(p);
-        });
+        permission.forEach(p => this.data.position[p] && this.selected.push(p));
 
         this.input = {
             id: this.data.position.id,

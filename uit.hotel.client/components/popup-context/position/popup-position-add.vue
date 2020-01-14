@@ -58,13 +58,13 @@
 <script lang="ts">
 import { Component, mixins } from 'nuxt-property-decorator';
 import { PopupMixin, DataMixin } from '~/components/mixins';
+import { createPosition } from '~/graphql/documents';
 import {
-    createPosition,
     positionOptionsAdministrative,
     positionOptionsBusiness,
     positionOptionsReceptionist,
     positionOptionsHouseKeeping,
-} from '~/graphql/documents';
+} from '~/modules/model';
 import { CheckboxOption } from '~/utils';
 import { positionName } from '~/modules/validator';
 
