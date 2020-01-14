@@ -89,6 +89,7 @@
         <popup-position-add- ref="position_add" />
         <popup-position-detail- ref="position_detail" />
         <popup-position-update- ref="position_update" />
+        <popup-employee-detail- ref="employee_detail" />
         <popup-employee-update- ref="employee_update" />
     </div>
 </template>
