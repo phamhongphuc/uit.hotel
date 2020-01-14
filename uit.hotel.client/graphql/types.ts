@@ -1220,6 +1220,26 @@ export type GetEmployeesQuery = {
     >;
 };
 
+export type GetEmployeeQueryVariables = {
+    id: Scalars['ID'];
+};
+
+export type GetEmployeeQuery = {
+    employee: Pick<
+        Employee,
+        | 'id'
+        | 'name'
+        | 'identityCard'
+        | 'phoneNumber'
+        | 'address'
+        | 'email'
+        | 'birthdate'
+        | 'gender'
+        | 'startingDate'
+        | 'isActive'
+    > & { position: Pick<Position, 'id'> };
+};
+
 export type CreateEmployeeMutationVariables = {
     input: EmployeeCreateInput;
 };
@@ -1528,6 +1548,33 @@ export type GetPositionsQuery = {
             | 'isActive'
         > & { employees: Array<Pick<Employee, 'id' | 'isActive'>> }
     >;
+};
+
+export type GetPositionQueryVariables = {
+    id: Scalars['ID'];
+};
+
+export type GetPositionQuery = {
+    position: Pick<
+        Position,
+        | 'id'
+        | 'name'
+        | 'permissionCleaning'
+        | 'permissionGetAccountingVoucher'
+        | 'permissionGetMap'
+        | 'permissionGetPatron'
+        | 'permissionGetPrice'
+        | 'permissionGetService'
+        | 'permissionManageEmployee'
+        | 'permissionManageRentingRoom'
+        | 'permissionManageMap'
+        | 'permissionManagePatron'
+        | 'permissionManagePatronKind'
+        | 'permissionManagePosition'
+        | 'permissionManagePrice'
+        | 'permissionManageService'
+        | 'isActive'
+    > & { employees: Array<Pick<Employee, 'id' | 'name' | 'isActive'>> };
 };
 
 export type CreatePositionMutationVariables = {
@@ -2024,6 +2071,13 @@ export namespace GetEmployees {
     >['position'];
 }
 
+export namespace GetEmployee {
+    export type Variables = GetEmployeeQueryVariables;
+    export type Query = GetEmployeeQuery;
+    export type Employee = GetEmployeeQuery['employee'];
+    export type Position = GetEmployeeQuery['employee']['position'];
+}
+
 export namespace CreateEmployee {
     export type Variables = CreateEmployeeMutationVariables;
     export type Mutation = CreateEmployeeMutation;
@@ -2204,6 +2258,15 @@ export namespace GetPositions {
     export type Positions = NonNullable<GetPositionsQuery['positions'][0]>;
     export type Employees = NonNullable<
         NonNullable<GetPositionsQuery['positions'][0]>['employees'][0]
+    >;
+}
+
+export namespace GetPosition {
+    export type Variables = GetPositionQueryVariables;
+    export type Query = GetPositionQuery;
+    export type Position = GetPositionQuery['position'];
+    export type Employees = NonNullable<
+        GetPositionQuery['position']['employees'][0]
     >;
 }
 

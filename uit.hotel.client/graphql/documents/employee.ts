@@ -21,6 +21,26 @@ export const getEmployees = gql`
     }
 `;
 
+export const getEmployee = gql`
+    query getEmployee($id: ID!) {
+        employee(id: $id) {
+            id
+            name
+            identityCard
+            phoneNumber
+            address
+            email
+            birthdate
+            gender
+            startingDate
+            isActive
+            position {
+                id
+            }
+        }
+    }
+`;
+
 export const createEmployee = gql`
     mutation createEmployee($input: EmployeeCreateInput!) {
         createEmployee(input: $input) {
