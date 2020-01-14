@@ -1220,6 +1220,26 @@ export type GetEmployeesQuery = {
     >;
 };
 
+export type GetEmployeeQueryVariables = {
+    id: Scalars['ID'];
+};
+
+export type GetEmployeeQuery = {
+    employee: Pick<
+        Employee,
+        | 'id'
+        | 'name'
+        | 'identityCard'
+        | 'phoneNumber'
+        | 'address'
+        | 'email'
+        | 'birthdate'
+        | 'gender'
+        | 'startingDate'
+        | 'isActive'
+    > & { position: Pick<Position, 'id'> };
+};
+
 export type CreateEmployeeMutationVariables = {
     input: EmployeeCreateInput;
 };
@@ -1530,6 +1550,33 @@ export type GetPositionsQuery = {
     >;
 };
 
+export type GetPositionQueryVariables = {
+    id: Scalars['ID'];
+};
+
+export type GetPositionQuery = {
+    position: Pick<
+        Position,
+        | 'id'
+        | 'name'
+        | 'permissionCleaning'
+        | 'permissionGetAccountingVoucher'
+        | 'permissionGetMap'
+        | 'permissionGetPatron'
+        | 'permissionGetPrice'
+        | 'permissionGetService'
+        | 'permissionManageEmployee'
+        | 'permissionManageRentingRoom'
+        | 'permissionManageMap'
+        | 'permissionManagePatron'
+        | 'permissionManagePatronKind'
+        | 'permissionManagePosition'
+        | 'permissionManagePrice'
+        | 'permissionManageService'
+        | 'isActive'
+    > & { employees: Array<Pick<Employee, 'id' | 'name' | 'isActive'>> };
+};
+
 export type CreatePositionMutationVariables = {
     input: PositionCreateInput;
 };
@@ -1757,7 +1804,26 @@ export type GetRoomQueryVariables = {
     id: Scalars['ID'];
 };
 
-export type GetRoomQuery = { room: Pick<Room, 'id' | 'name' | 'isActive'> };
+export type GetRoomQuery = {
+    room: Pick<Room, 'id' | 'name' | 'isActive' | 'isClean'> & {
+        roomKind: Pick<RoomKind, 'id' | 'name'>;
+        bookings: Array<
+            Pick<
+                Booking,
+                | 'id'
+                | 'total'
+                | 'status'
+                | 'realCheckInTime'
+                | 'realCheckOutTime'
+                | 'bookCheckInTime'
+                | 'bookCheckOutTime'
+            > & {
+                patrons: Array<Pick<Patron, 'id'>>;
+                room: Pick<Room, 'id' | 'name'>;
+            }
+        >;
+    };
+};
 
 export type CreateRoomMutationVariables = {
     input: RoomCreateInput;
@@ -2005,6 +2071,13 @@ export namespace GetEmployees {
     >['position'];
 }
 
+export namespace GetEmployee {
+    export type Variables = GetEmployeeQueryVariables;
+    export type Query = GetEmployeeQuery;
+    export type Employee = GetEmployeeQuery['employee'];
+    export type Position = GetEmployeeQuery['employee']['position'];
+}
+
 export namespace CreateEmployee {
     export type Variables = CreateEmployeeMutationVariables;
     export type Mutation = CreateEmployeeMutation;
@@ -2188,6 +2261,15 @@ export namespace GetPositions {
     >;
 }
 
+export namespace GetPosition {
+    export type Variables = GetPositionQueryVariables;
+    export type Query = GetPositionQuery;
+    export type Position = GetPositionQuery['position'];
+    export type Employees = NonNullable<
+        GetPositionQuery['position']['employees'][0]
+    >;
+}
+
 export namespace CreatePosition {
     export type Variables = CreatePositionMutationVariables;
     export type Mutation = CreatePositionMutation;
@@ -2336,6 +2418,14 @@ export namespace GetRoom {
     export type Variables = GetRoomQueryVariables;
     export type Query = GetRoomQuery;
     export type Room = GetRoomQuery['room'];
+    export type RoomKind = GetRoomQuery['room']['roomKind'];
+    export type Bookings = NonNullable<GetRoomQuery['room']['bookings'][0]>;
+    export type Patrons = NonNullable<
+        NonNullable<GetRoomQuery['room']['bookings'][0]>['patrons'][0]
+    >;
+    export type _Room = NonNullable<
+        GetRoomQuery['room']['bookings'][0]
+    >['room'];
 }
 
 export namespace CreateRoom {

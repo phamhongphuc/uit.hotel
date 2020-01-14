@@ -4,7 +4,7 @@
             v-if="employee.isActive"
             icon="edit-2"
             text="Sửa thông tin nhân viên"
-            @click="refs.employee_update.open({ employee })"
+            @click="refs.employee_update.open({ id: employee.id })"
         />
         <b-nav-item-icon-mutate-
             :mutation="setIsActiveAccount"

@@ -3,7 +3,6 @@
         ref="popup"
         v-slot
         :title="`Chi tiết hóa đơn #${id}`"
-        class="popup-bill-detail"
         @contextmenu.prevent="tableContext"
     >
         <query-
@@ -82,7 +81,6 @@
                                 key: 'index',
                                 label: '#',
                                 class: 'table-cell-id text-center',
-                                sortable: true,
                             },
                             {
                                 key: 'room',

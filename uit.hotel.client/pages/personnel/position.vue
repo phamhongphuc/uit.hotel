@@ -85,8 +85,11 @@
             </b-table>
         </query->
         <context-manage-position- ref="context_position" />
+        <context-manage-employee- ref="context_employee" />
         <popup-position-add- ref="position_add" />
+        <popup-position-detail- ref="position_detail" />
         <popup-position-update- ref="position_update" />
+        <popup-employee-update- ref="employee_update" />
     </div>
 </template>
 <script lang="ts">

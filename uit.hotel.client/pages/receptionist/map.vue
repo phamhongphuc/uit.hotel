@@ -35,6 +35,7 @@
                             :key="room.id"
                         >
                             <b-button
+                                class="position-relative"
                                 :variant="
                                     selected.indexOf(room) === -1
                                         ? room.currentBooking
@@ -57,6 +58,11 @@
                                 Phòng {{ room.name }}
                                 <br />
                                 {{ room.roomKind.name }}
+                                <icon-
+                                    v-if="!room.isClean"
+                                    i="broom"
+                                    class="position-absolute b-0 r-0 m-1"
+                                />
                             </b-button>
                         </td>
                     </tr>
@@ -67,7 +73,9 @@
             <context-receptionist-room- ref="context_receptionist_room" />
             <popup-book- ref="book" />
             <popup-patron-select-or-add- ref="patron_select_or_add" />
+            <popup-room-detail- ref="room_detail" />
             <popup-room-select- ref="room_select" />
+            <popup-room-kind-detail- ref="room_kind_detail" />
         </div>
     </div>
 </template>

@@ -74,7 +74,6 @@
                         key: 'phoneNumber',
                         label: 'Số điện thoại',
                         tdClass: 'text-center text-nowrap',
-                        sortable: true,
                     },
                     {
                         key: 'birthdate',

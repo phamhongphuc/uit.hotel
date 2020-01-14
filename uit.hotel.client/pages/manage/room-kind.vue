@@ -113,6 +113,7 @@
         <popup-room-kind-add- ref="room_kind_add" />
         <popup-room-kind-detail- ref="room_kind_detail" />
         <popup-room-kind-update- ref="room_kind_update" />
+        <popup-room-detail- ref="room_detail" />
         <popup-room-update- ref="room_update" />
     </div>
 </template>

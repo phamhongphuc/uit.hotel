@@ -53,15 +53,10 @@
     </popup->
 </template>
 <script lang="ts">
-import { Component, mixins, Vue } from 'nuxt-property-decorator';
-import { ExecutionResult } from 'graphql';
+import { Component, mixins } from 'nuxt-property-decorator';
 import { minValue } from 'vuelidate/lib/validators';
 import { DataMixin, PopupMixin } from '~/components/mixins';
-import {
-    ServicesDetailCreateInput,
-    GetBookings,
-    GetSimpleBookingsQuery,
-} from '~/graphql/types';
+import { ServicesDetailCreateInput, GetBookings } from '~/graphql/types';
 import { included } from '~/modules/validator';
 import {
     getServices,
@@ -100,16 +95,6 @@ export default class extends mixins<PopupMixinType>(
             booking: { id: this.data.booking.id },
         };
         this.roomName = this.data.booking.room.name;
-    }
-
-    async onResult(result: ExecutionResult<GetSimpleBookingsQuery>) {
-        if (!result.data) return;
-
-        if (this.input === null) return;
-
-        await Vue.nextTick();
-        this.input.booking.id = this.data.booking.id;
-        this.$v.$touch();
     }
 }
 </script>

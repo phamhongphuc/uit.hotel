@@ -1,6 +1,11 @@
 <template>
     <context- ref="context" v-slot="{ data: { position } }">
         <b-nav-item-icon-
+            icon="info"
+            text="Chi tiết vị trí"
+            @click="refs.position_detail.open({ id: position.id })"
+        />
+        <b-nav-item-icon-
             v-if="position.isActive"
             icon="edit-2"
             text="Sửa thông tin vị trí"

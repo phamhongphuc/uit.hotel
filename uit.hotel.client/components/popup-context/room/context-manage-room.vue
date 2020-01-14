@@ -1,6 +1,10 @@
 <template>
     <context- ref="context" v-slot="{ data: { room, floor } }">
-        <b-nav-item-icon- icon="info" text="Xem thông tin chi tiết" />
+        <b-nav-item-icon-
+            icon="info"
+            text="Xem thông tin chi tiết"
+            @click="refs.room_detail.open({ id: room.id })"
+        />
         <div class="context-hr" />
         <b-nav-item-icon-
             v-if="room.isActive"
