@@ -33,7 +33,6 @@
                     {
                         key: 'description',
                         label: 'Mô tả',
-                        sortable: true,
                     },
                     {
                         key: 'patrons',
