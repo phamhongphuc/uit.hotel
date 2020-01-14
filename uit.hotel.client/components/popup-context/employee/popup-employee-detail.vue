@@ -57,106 +57,96 @@
                         <span>Sửa</span>
                     </b-button>
                 </div>
-                <div class="row mt-2">
-                    <div class="col-12">
-                        <div class="px-1">
-                            <b-table-simple
-                                small
-                                borderless
-                                class="table-key-value"
-                            >
-                                <b-tbody>
-                                    <b-tr>
-                                        <b-td>Tên đăng nhập</b-td>
-                                        <b-td>{{ employee.id }}</b-td>
-                                    </b-tr>
-                                    <b-tr>
-                                        <b-td>Tên nhân viên</b-td>
-                                        <b-td>{{ employee.name }}</b-td>
-                                    </b-tr>
-                                    <b-tr>
-                                        <b-td>Vị trí</b-td>
-                                        <b-td>
-                                            <b-link
-                                                class="text-main"
-                                                href="#"
-                                                @click="
-                                                    refs.position_detail.open({
-                                                        id:
-                                                            employee.position
-                                                                .id,
-                                                    })
-                                                "
-                                            >
-                                                {{ employee.position.name }}
-                                            </b-link>
-                                        </b-td>
-                                    </b-tr>
-                                    <b-tr>
-                                        <b-td>Ngày bắt đầu</b-td>
-                                        <b-td>
-                                            {{
-                                                toInputDate(
-                                                    employee.startingDate,
-                                                )
-                                            }}
-                                        </b-td>
-                                    </b-tr>
-                                    <b-tr>
-                                        <b-td>Chứng minh nhân dân</b-td>
-                                        <b-td>{{ employee.identityCard }}</b-td>
-                                    </b-tr>
-                                    <b-tr>
-                                        <b-td>Giới tính</b-td>
-                                        <b-td>
-                                            {{ employee.gender ? 'Nam' : 'Nữ' }}
-                                        </b-td>
-                                    </b-tr>
-                                    <b-tr>
-                                        <b-td>Số điện thoại</b-td>
+                <div class="px-1 mt-2">
+                    <b-table-simple small borderless class="table-key-value">
+                        <b-tbody>
+                            <b-tr>
+                                <b-td>Tên đăng nhập</b-td>
+                                <b-td>{{ employee.id }}</b-td>
+                            </b-tr>
+                            <b-tr>
+                                <b-td>Tên nhân viên</b-td>
+                                <b-td>{{ employee.name }}</b-td>
+                            </b-tr>
+                            <b-tr>
+                                <b-td>Vị trí</b-td>
+                                <b-td>
+                                    <b-link
+                                        class="text-main"
+                                        href="#"
+                                        @click="
+                                            refs.position_detail.open({
+                                                id: employee.position.id,
+                                            })
+                                        "
+                                    >
+                                        {{ employee.position.name }}
+                                    </b-link>
+                                </b-td>
+                            </b-tr>
+                            <b-tr>
+                                <b-td>Ngày bắt đầu</b-td>
+                                <b-td>
+                                    {{ toDate(employee.startingDate) }}
+                                </b-td>
+                            </b-tr>
+                            <b-tr>
+                                <b-td>Chứng minh nhân dân</b-td>
+                                <b-td>{{ employee.identityCard }}</b-td>
+                            </b-tr>
+                            <b-tr>
+                                <b-td>Giới tính</b-td>
+                                <b-td>
+                                    {{ employee.gender ? 'Nam' : 'Nữ' }}
+                                </b-td>
+                            </b-tr>
+                            <b-tr>
+                                <b-td>Ngày sinh</b-td>
+                                <b-td>
+                                    {{ toDate(employee.birthdate) }}
+                                </b-td>
+                            </b-tr>
+                            <b-tr>
+                                <b-td>Số điện thoại</b-td>
 
-                                        <b-td>
-                                            <a
-                                                :href="
-                                                    `tel:${employee.phoneNumber}`
-                                                "
-                                                @click.stop
-                                            >
-                                                {{ employee.phoneNumber }}
-                                            </a>
-                                        </b-td>
-                                    </b-tr>
-                                    <b-tr>
-                                        <b-td>Thư điện tử</b-td>
-                                        <b-td>
-                                            <a
-                                                :href="
-                                                    `mailto:${employee.email}`
-                                                "
-                                                @click.stop
-                                            >
-                                                {{ employee.email }}
-                                            </a>
-                                        </b-td>
-                                    </b-tr>
-                                    <b-tr>
-                                        <b-td>Địa chỉ</b-td>
-                                        <b-td>
-                                            {{ employee.address }}
-                                        </b-td>
-                                    </b-tr>
-                                    <b-tr>
-                                        <b-td>Ngày sinh</b-td>
-                                        <b-td>
-                                            {{
-                                                toInputDate(employee.birthdate)
-                                            }}
-                                        </b-td>
-                                    </b-tr>
-                                </b-tbody>
-                            </b-table-simple>
-                        </div>
-                    </div>
+                                <b-td>
+                                    <a
+                                        v-if="
+                                            employee.phoneNumber !== '' &&
+                                                employee.phoneNumber !== null
+                                        "
+                                        :href="`tel:${employee.phoneNumber}`"
+                                        @click.stop
+                                    >
+                                        {{ employee.phoneNumber }}
+                                    </a>
+                                    <span v-else>-</span>
+                                </b-td>
+                            </b-tr>
+                            <b-tr>
+                                <b-td>Thư điện tử</b-td>
+                                <b-td>
+                                    <a
+                                        v-if="
+                                            employee.email !== '' &&
+                                                employee.email !== null
+                                        "
+                                        :href="`mailto:${employee.email}`"
+                                        @click.stop
+                                    >
+                                        {{ employee.email }}
+                                    </a>
+                                    <span v-else>-</span>
+                                </b-td>
+                            </b-tr>
+                            <b-tr>
+                                <b-td>Địa chỉ</b-td>
+                                <b-td>
+                                    {{ dash(employee.address) }}
+                                </b-td>
+                            </b-tr>
+                        </b-tbody>
+                    </b-table-simple>
                 </div>
             </div>
         </query->
@@ -165,11 +155,11 @@
 <script lang="ts">
 import { Component, mixins } from 'nuxt-property-decorator';
 import { ApolloQueryResult } from 'apollo-client';
+import { dash, toDate } from '~/utils';
 import { PopupMixin, DataMixin } from '~/components/mixins';
 import { GetEmployee, GetEmployeeQuery } from '~/graphql/types';
 import { getEmployee, setIsActiveAccount } from '~/graphql/documents';
 import { employeeTitleMap, employeeColorMap } from '~/modules/model';
-import { toInputDate } from '~/utils';
 
 type PopupMixinType = PopupMixin<{ id: number | string }, null>;
 
@@ -184,7 +174,8 @@ export default class extends mixins<PopupMixinType, {}>(
         employeeTitleMap,
         getEmployee,
         setIsActiveAccount,
-        toInputDate,
+        toDate,
+        dash,
     }),
 ) {
     variables!: GetEmployee.Variables;
