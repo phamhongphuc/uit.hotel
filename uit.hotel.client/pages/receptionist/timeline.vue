@@ -24,6 +24,8 @@
         <context-receptionist-booking- ref="context_booking" />
         <context-receptionist-room- ref="context_receptionist_room" />
         <context-receptionist-service-detail- ref="context_service_detail" />
+        <popup-room-detail- ref="room_detail" />
+        <popup-room-kind-detail- ref="room_kind_detail" />
         <popup-bill-detail- ref="bill_detail" />
         <popup-bill-update-discount- ref="bill_update_discount" />
         <popup-book- ref="book" />

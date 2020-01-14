@@ -78,6 +78,7 @@
         <popup-room-add- ref="room_add" />
         <popup-room-detail- ref="room_detail" />
         <popup-room-update- ref="room_update" />
+        <popup-room-kind-detail- ref="room_kind_detail" />
     </div>
 </template>
 <script lang="ts">

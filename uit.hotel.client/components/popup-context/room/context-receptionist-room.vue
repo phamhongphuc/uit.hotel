@@ -4,6 +4,7 @@
             v-if="room"
             icon="info"
             text="Xem thông tin chi tiết"
+            @click="refs.room_detail.open({ id: room.id })"
         />
         <b-nav-item-icon-mutate-
             :mutation="setIsCleanRoom"

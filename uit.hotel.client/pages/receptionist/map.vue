@@ -73,7 +73,9 @@
             <context-receptionist-room- ref="context_receptionist_room" />
             <popup-book- ref="book" />
             <popup-patron-select-or-add- ref="patron_select_or_add" />
+            <popup-room-detail- ref="room_detail" />
             <popup-room-select- ref="room_select" />
+            <popup-room-kind-detail- ref="room_kind_detail" />
         </div>
     </div>
 </template>
