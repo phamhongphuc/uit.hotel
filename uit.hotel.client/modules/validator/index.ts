@@ -7,4 +7,5 @@ export * from './src/helper/optionalValidator';
 export * from './src/patronValidator';
 export * from './src/personValidator';
 export * from './src/positionValidator';
+export * from './src/refresh';
 export * from './src/serviceValidator';
