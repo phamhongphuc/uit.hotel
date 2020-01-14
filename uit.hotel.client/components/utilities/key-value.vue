@@ -1,7 +1,8 @@
 <template>
     <b-table-lite
-        class="table-style bg-lighten rounded"
         small
+        :thead-class="theadClass"
+        :borderless="borderless"
         :items="calculatedData"
         :fields="[
             {
@@ -32,6 +33,12 @@ export default class extends Vue {
     @Prop({ type: Object, default: () => ({}) })
     keyField!: object;
 
+    @Prop({ default: false })
+    borderless!: boolean;
+
+    @Prop({ default: undefined })
+    theadClass!: string | string[] | object;
+
     get calculatedData() {
         return Object.entries(this.data).map(([key, value]) => ({
             key,
@@ -40,3 +47,18 @@ export default class extends Vue {
     }
 }
 </script>
+<style lang="scss">
+.table-key-value {
+    tr > td {
+        padding-top: 0;
+        padding-bottom: 0;
+        &:nth-child(1) {
+            padding-left: 0;
+            font-weight: 600;
+        }
+        &:nth-child(2) {
+            padding-right: 0;
+        }
+    }
+}
+</style>

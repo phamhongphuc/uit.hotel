@@ -132,6 +132,7 @@
                             Tổng giá đang áp dụng:
                         </div>
                         <key-value-
+                            class="table-style bg-lighten rounded"
                             :key-field="{
                                 label: 'Loại giá/phí',
                             }"
