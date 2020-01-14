@@ -2,6 +2,7 @@
     <div>
         <b-checkbox
             v-model="allSelected"
+            :disabled="disabled"
             :indeterminate="indeterminate"
             class="inline-checkbox font-weight-bold"
             @input="toggleAll($event)"
@@ -10,6 +11,7 @@
         </b-checkbox>
         <b-checkbox-group
             v-model="selected"
+            :disabled="disabled"
             :options="options"
             class="h-auto m-4"
             stacked
@@ -34,6 +36,9 @@ function isEquals(a: string[], b: string[]): boolean {
 export default class extends mixins<CheckboxProps>(CheckboxProps) {
     @Prop({ required: true })
     title!: string;
+
+    @Prop({ default: false })
+    disabled!: boolean;
 
     selected: string[] = [];
     allSelected = false;
