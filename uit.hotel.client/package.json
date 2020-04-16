@@ -33,7 +33,7 @@
         "graphql-tag": "^2.10.1",
         "lodash": "^4.17.15",
         "moment": "^2.24.0",
-        "nuxt": "^2.11.0",
+        "nuxt": "^2.12.2",
         "nuxt-property-decorator": "^2.5.0",
         "source-map-support": "^0.5.16",
         "v-money": "^0.8.1",
