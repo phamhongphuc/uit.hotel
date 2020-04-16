@@ -108,13 +108,13 @@
         </query->
         <context-manage-room- ref="context_room" />
         <context-manage-room-kind- ref="context_room_kind" />
-        <popup-price-add- ref="price_add" />
-        <popup-price-volatility-add- ref="price_volatility_add" />
         <popup-room-kind-add- ref="room_kind_add" />
         <popup-room-kind-detail- ref="room_kind_detail" />
         <popup-room-kind-update- ref="room_kind_update" />
         <popup-room-detail- ref="room_detail" />
         <popup-room-update- ref="room_update" />
+        <popup-price-add- ref="price_add" />
+        <popup-price-volatility-add- ref="price_volatility_add" />
     </div>
 </template>
 <script lang="ts">
