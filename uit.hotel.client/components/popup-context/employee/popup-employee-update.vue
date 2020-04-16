@@ -150,7 +150,6 @@ import { required } from 'vuelidate/lib/validators';
 import {
     EmployeeUpdateInput,
     GetEmployeeQuery,
-    GetPositionsQuery,
     GetEmployee,
 } from '~/graphql/types';
 import { PopupMixin, DataMixin } from '~/components/mixins';
@@ -196,42 +195,34 @@ export default class extends mixins<PopupMixinType>(
     employee!: GetEmployee.Employee;
 
     async onResult({
-        data,
-    }: ApolloQueryResult<GetEmployeeQuery | GetPositionsQuery>) {
+        data: { employee },
+    }: ApolloQueryResult<GetEmployeeQuery>) {
         await Vue.nextTick();
-
-        if ('employee' in data) {
-            this.employee = data.employee;
-
-            const {
-                id,
-                name,
-                identityCard,
-                phoneNumber,
-                address,
-                email,
-                birthdate,
-                gender,
-                startingDate,
-                position,
-            } = data.employee;
-
-            this.input = {
-                id,
-                name,
-                identityCard,
-                phoneNumber,
-                address,
-                email,
-                birthdate: toInputDate(birthdate),
-                gender,
-                startingDate: toInputDate(startingDate),
-                position: { id: position.id },
-            };
-        } else if ('positions' in data) {
-            // if (this.input === null) return;
-            // refresh(this.input.position);
-        }
+        this.employee = employee;
+        const {
+            id,
+            name,
+            identityCard,
+            phoneNumber,
+            address,
+            email,
+            birthdate,
+            gender,
+            startingDate,
+            position,
+        } = employee;
+        this.input = {
+            id,
+            name,
+            identityCard,
+            phoneNumber,
+            address,
+            email,
+            birthdate: toInputDate(birthdate),
+            gender,
+            startingDate: toInputDate(startingDate),
+            position: { id: position.id },
+        };
         this.$v.$touch();
     }
 }

@@ -100,7 +100,7 @@
 </template>
 <script lang="ts">
 import { Component, mixins, Vue, Watch } from 'nuxt-property-decorator';
-import Moment from 'moment';
+import moment from 'moment';
 import { required, minLength } from 'vuelidate/lib/validators';
 import { DaysOfWeekPropertyType, daysOfWeekOptions } from '~/modules/model';
 import { DataMixin, PopupMixin } from '~/components/mixins';
@@ -139,10 +139,10 @@ export default class extends mixins<PopupMixinType>(
             hourPrice: 0,
             dayPrice: 0,
             nightPrice: 0,
-            effectiveStartDate: Moment()
+            effectiveStartDate: moment()
                 .set({ hour: 0, minute: 0, second: 0 })
                 .format('YYYY-MM-DD'),
-            effectiveEndDate: Moment()
+            effectiveEndDate: moment()
                 .set({ hour: 0, minute: 0, second: 0 })
                 .format('YYYY-MM-DD'),
             effectiveOnMonday: true,

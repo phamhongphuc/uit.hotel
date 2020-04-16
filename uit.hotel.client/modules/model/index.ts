@@ -1,5 +1,6 @@
 export * from './src/bill';
 export * from './src/booking';
+export * from './src/employee';
 export * from './src/position';
 export * from './src/priceItem';
 export * from './src/priceVolatility';

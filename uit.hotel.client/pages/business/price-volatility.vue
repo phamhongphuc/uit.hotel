@@ -13,7 +13,7 @@
             </b-button>
         </block-flex->
         <query-
-            v-slot="{ data: { priceVolatilities } }"
+            v-slot
             :query="getPriceVolatilities"
             class="row"
             child-class="col m-2 p-0 bg-white rounded shadow-sm overflow-auto"
@@ -79,13 +79,12 @@
                     },
                 ]"
                 @row-clicked="
-                    (price, $index, $event) => {
+                    (priceVolatility, $index, $event) => {
                         $event.stopPropagation();
                         $refs.context_price_volatility.open(
                             currentEvent || $event,
                             {
-                                price,
-                                priceVolatilities,
+                                priceVolatility,
                             },
                         );
                         currentEvent = null;
@@ -114,6 +113,11 @@
             </b-table>
         </query->
         <context-manage-price-volatility- ref="context_price_volatility" />
+        <popup-price-volatility-detail- ref="price_volatility_detail" />
+        <popup-room-kind-detail- ref="room_kind_detail" />
+        <popup-room-kind-update- ref="room_kind_update" />
+        <popup-room-detail- ref="room_detail" />
+        <popup-room-update- ref="room_update" />
         <popup-price-volatility-add- ref="price_volatility_add" />
     </div>
 </template>

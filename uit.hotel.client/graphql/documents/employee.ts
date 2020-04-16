@@ -36,6 +36,7 @@ export const getEmployee = gql`
             isActive
             position {
                 id
+                name
             }
         }
     }

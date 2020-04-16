@@ -106,7 +106,7 @@
 </template>
 <script lang="ts">
 import { Component, mixins, Vue } from 'nuxt-property-decorator';
-import Moment from 'moment';
+import moment from 'moment';
 import { required } from 'vuelidate/lib/validators';
 import { DataMixin, PopupMixin } from '~/components/mixins';
 import { PriceCreateInput, GetRoomKinds } from '~/graphql/types';
@@ -147,7 +147,7 @@ export default class extends mixins<PopupMixinType>(
             monthPrice: 0,
             lateCheckOutFee: 0,
             earlyCheckInFee: 0,
-            effectiveStartDate: Moment()
+            effectiveStartDate: moment()
                 .set({ hour: 0, minute: 0, second: 0 })
                 .format('YYYY-MM-DD'),
             roomKind: { id: -1 },

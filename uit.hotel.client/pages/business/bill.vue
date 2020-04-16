@@ -154,6 +154,7 @@
         <popup-bill-update-discount- ref="bill_update_discount" />
         <popup-book- ref="book" />
         <popup-booking-detail- ref="booking_detail" />
+        <popup-patron-detail- ref="patron_detail" />
         <popup-patron-select-or-add- ref="patron_select_or_add" />
         <popup-patron-update- ref="patron_update" />
         <popup-receipt-add- ref="receipt_add" />

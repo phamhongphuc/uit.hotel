@@ -147,6 +147,7 @@
 </template>
 <script lang="ts">
 import { Component, mixins } from 'nuxt-property-decorator';
+import moment from 'moment';
 import { required } from 'vuelidate/lib/validators';
 import { PopupMixin, DataMixin } from '~/components/mixins';
 import { EmployeeCreateInput } from '~/graphql/types';
@@ -200,7 +201,9 @@ export default class PopupEmployeeAdd extends mixins<
             email: '',
             birthdate: '',
             gender: true,
-            startingDate: '',
+            startingDate: moment()
+                .set({ hour: 0, minute: 0, second: 0 })
+                .format('YYYY-MM-DD'),
             position: {
                 id: -1,
             },
