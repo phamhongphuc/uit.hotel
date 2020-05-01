@@ -1414,12 +1414,28 @@
     tslib "~1.11.1"
     upper-case "2.0.1"
 
-"@graphql-codegen/schema-ast@^1.13.3":
-  version "1.13.3"
-  resolved "https://registry.yarnpkg.com/@graphql-codegen/schema-ast/-/schema-ast-1.13.3.tgz#91af209a51779d3315a8a95055a8e8a4e70f83b8"
-  integrity sha512-9c5v5pff+ZdC/Fk8OSrNOVtI9lsGS9FsFZL1UzcaZtD5u+9RG7j7SCa4FQPHQEwlKkQOwSAo4B88fi/K8PIXig==
+"@graphql-codegen/plugin-helpers@1.13.4":
+  version "1.13.4"
+  resolved "https://registry.yarnpkg.com/@graphql-codegen/plugin-helpers/-/plugin-helpers-1.13.4.tgz#bb750f22d723403c76e079ce58fe1f9345ae9ef4"
+  integrity sha512-nMuzxW/HpE1XtJagvakbdvuQkp0ttMCSB30Kh71DBx8Yoi2SizvQBeWm0FiqJJDDrjJDQdE0i4KN/rRvpPkWHw==
   dependencies:
-    "@graphql-codegen/plugin-helpers" "1.13.3"
+    "@graphql-toolkit/common" "~0.10.4"
+    camel-case "4.1.1"
+    common-tags "1.8.0"
+    constant-case "3.0.3"
+    import-from "3.0.0"
+    lower-case "2.0.1"
+    param-case "3.0.3"
+    pascal-case "3.1.1"
+    tslib "~1.11.1"
+    upper-case "2.0.1"
+
+"@graphql-codegen/schema-ast@^1.13.4":
+  version "1.13.4"
+  resolved "https://registry.yarnpkg.com/@graphql-codegen/schema-ast/-/schema-ast-1.13.4.tgz#193592395abd166ba951b62dd8580898e876cef0"
+  integrity sha512-I6Ah6saZcppfHROU5arqc38/qC5tnlVeF1fZ9odF7fhzXFwzFhOw5kVyxvWTcqfqHilMq7OA2tRdyGnx0QVViA==
+  dependencies:
+    "@graphql-codegen/plugin-helpers" "1.13.4"
     "@graphql-toolkit/common" "~0.10.4"
     tslib "~1.11.1"
 
