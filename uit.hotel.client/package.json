@@ -30,7 +30,7 @@
         "bootstrap-vue": "2.13.0",
         "cookie": "^0.4.1",
         "express": "^4.17.1",
-        "graphql-tag": "^2.10.1",
+        "graphql-tag": "^2.10.3",
         "lodash": "^4.17.15",
         "moment": "^2.24.0",
         "nuxt": "^2.12.2",
