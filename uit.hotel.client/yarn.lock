@@ -2751,10 +2751,10 @@
     "@types/unist" "*"
     "@types/vfile-message" "*"
 
-"@types/vuelidate@^0.7.10":
-  version "0.7.10"
-  resolved "https://registry.yarnpkg.com/@types/vuelidate/-/vuelidate-0.7.10.tgz#bb4f8cbe1e48c7fe3a294dd15dc0ac7a97b896dd"
-  integrity sha512-gQ82mjTxniDCZGBfCYnpfMnZOYB+e0dhIW5ftWDR5p5AwXLdsQEk2ByAqe40Gm7XA4OtQZKEIJ2xAgTdZCVz6A==
+"@types/vuelidate@^0.7.13":
+  version "0.7.13"
+  resolved "https://registry.yarnpkg.com/@types/vuelidate/-/vuelidate-0.7.13.tgz#6e7249e1d6b72b3aed14f4439a082e14662c485e"
+  integrity sha512-CFyaS5yov3HjwoZrQyehiE1cNkyuN0/EDQfpeneWQFC9onJ0ieQL6dgFxN6zzPMHDZ87If3UH9WcgkPB4vbcoQ==
   dependencies:
     vue "^2.6.11"
 
