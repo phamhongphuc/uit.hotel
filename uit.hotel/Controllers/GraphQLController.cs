@@ -8,6 +8,7 @@ using GraphQL.Types;
 using GraphQL.Validation;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
 using uit.hotel.GraphQLHelper;
 
 namespace uit.hotel.Controllers
@@ -35,8 +36,11 @@ namespace uit.hotel.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] GraphQLParameter parameter)
+        public async Task<IActionResult> Post([FromBody] System.Text.Json.JsonElement rawQuery)
         {
+            string rawJson = rawQuery.ToString();
+            var parameter = JsonConvert.DeserializeObject<GraphQLParameter>(rawJson);
+
             if (parameter == null) throw new ArgumentNullException(nameof(parameter));
 
             var executionOptions = new ExecutionOptions
