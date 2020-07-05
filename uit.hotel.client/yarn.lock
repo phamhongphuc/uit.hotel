@@ -1498,22 +1498,6 @@
     tslib "~1.11.1"
     upper-case "2.0.1"
 
-"@graphql-codegen/plugin-helpers@1.15.0":
-  version "1.15.0"
-  resolved "https://registry.yarnpkg.com/@graphql-codegen/plugin-helpers/-/plugin-helpers-1.15.0.tgz#140ba0b3c452eb6b81b820bbec536ee99faa8cfb"
-  integrity sha512-wCD5mY7g3ZP0ftuYEHiycmRgEyPuMihMyaas2Xd5DNgQ9MHUndjxOKbvlIA64Ju0BCL0tSSL5TKy2iITpEPbKQ==
-  dependencies:
-    "@graphql-tools/utils" "6.0.1"
-    camel-case "4.1.1"
-    common-tags "1.8.0"
-    constant-case "3.0.3"
-    import-from "3.0.0"
-    lower-case "2.0.1"
-    param-case "3.0.3"
-    pascal-case "3.1.1"
-    tslib "~2.0.0"
-    upper-case "2.0.1"
-
 "@graphql-codegen/plugin-helpers@1.16.0":
   version "1.16.0"
   resolved "https://registry.yarnpkg.com/@graphql-codegen/plugin-helpers/-/plugin-helpers-1.16.0.tgz#4be4788735c6e7e2ef5d25ba1cb2609a89c0505a"
@@ -1530,13 +1514,29 @@
     tslib "~2.0.0"
     upper-case "2.0.1"
 
-"@graphql-codegen/schema-ast@^1.15.0":
-  version "1.15.0"
-  resolved "https://registry.yarnpkg.com/@graphql-codegen/schema-ast/-/schema-ast-1.15.0.tgz#101aa77d39ad630f39d5d5dea0d251c2c55350b4"
-  integrity sha512-txoiZ74SQZEo/90QnrGWhNSwm9wXGyMlKT8o/uG0+GRz+6JMPlBt/NOSP8u+A1JUXOQpAU6SrN+rbdR8i9mBMQ==
+"@graphql-codegen/plugin-helpers@1.16.1":
+  version "1.16.1"
+  resolved "https://registry.yarnpkg.com/@graphql-codegen/plugin-helpers/-/plugin-helpers-1.16.1.tgz#5594d16743ac28496f5b5c3d460c74c61ede8f21"
+  integrity sha512-ar84BNVgmHawpyrPEeS7i44Qn/2kRD3Wi4g6/KNK+lLaFH7r/m3wbLFz73oSVEe6+L69Qx17OAhFQ4EeBVkrWA==
   dependencies:
-    "@graphql-codegen/plugin-helpers" "1.15.0"
-    "@graphql-tools/utils" "6.0.1"
+    "@graphql-tools/utils" "^6.0.0"
+    camel-case "4.1.1"
+    common-tags "1.8.0"
+    constant-case "3.0.3"
+    import-from "3.0.0"
+    lower-case "2.0.1"
+    param-case "3.0.3"
+    pascal-case "3.1.1"
+    tslib "~2.0.0"
+    upper-case "2.0.1"
+
+"@graphql-codegen/schema-ast@^1.16.1":
+  version "1.16.1"
+  resolved "https://registry.yarnpkg.com/@graphql-codegen/schema-ast/-/schema-ast-1.16.1.tgz#c37b5a3db011e636288f9f370d65eb808999df5c"
+  integrity sha512-nhoH/MlK39MDML4XDT6QGxwim8fJN8g37a0uL/k1GU5E7XlBd2ov+bZTepxsqsxatyipePfs/MHIXGJ1ZOgiIA==
+  dependencies:
+    "@graphql-codegen/plugin-helpers" "1.16.1"
+    "@graphql-tools/utils" "^6.0.0"
     tslib "~2.0.0"
 
 "@graphql-codegen/typescript-compatibility@^1.11.2":
@@ -1754,13 +1754,6 @@
     graphql-tools "5.0.0"
     tslib "1.11.1"
     valid-url "1.0.9"
-
-"@graphql-tools/utils@6.0.1":
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/@graphql-tools/utils/-/utils-6.0.1.tgz#2c65c15102ff59963d0c399c48616402c110bbc1"
-  integrity sha512-HqqJFYFG464ydL6XgUkwmYJLO/VzCsD86Bl25AX7aCLabPpn4O/pwCKSKRFsGQZvZbrth+urkHpyRU82Iqw2RQ==
-  dependencies:
-    camel-case "4.1.1"
 
 "@graphql-tools/utils@^6.0.0":
   version "6.0.12"
