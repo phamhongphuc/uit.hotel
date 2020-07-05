@@ -19,11 +19,9 @@
                             <icon-
                                 i="circle-fill"
                                 class="m-1"
-                                :class="
-                                    `text-${employeeColorMap(
-                                        employee.isActive,
-                                    )}`
-                                "
+                                :class="`text-${employeeColorMap(
+                                    employee.isActive,
+                                )}`"
                             />
                             {{ employeeTitleMap(employee.isActive) }}
                         </span>
@@ -113,7 +111,7 @@
                                     <a
                                         v-if="
                                             employee.phoneNumber !== '' &&
-                                                employee.phoneNumber !== null
+                                            employee.phoneNumber !== null
                                         "
                                         :href="`tel:${employee.phoneNumber}`"
                                         @click.stop
@@ -129,7 +127,7 @@
                                     <a
                                         v-if="
                                             employee.email !== '' &&
-                                                employee.email !== null
+                                            employee.email !== null
                                         "
                                         :href="`mailto:${employee.email}`"
                                         @click.stop

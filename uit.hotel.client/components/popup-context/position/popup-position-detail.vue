@@ -20,11 +20,9 @@
                             <icon-
                                 i="circle-fill"
                                 class="m-1"
-                                :class="
-                                    `text-${positionColorMap(
-                                        position.isActive,
-                                    )}`
-                                "
+                                :class="`text-${positionColorMap(
+                                    position.isActive,
+                                )}`"
                             />
                             {{ positionTitleMap(position.isActive) }}
                         </span>

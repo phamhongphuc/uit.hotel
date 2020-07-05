@@ -58,9 +58,7 @@ export default class extends mixins<RoomSelectMixinType>(
     roomIds = [];
 
     from = moment().format();
-    to = moment()
-        .add(1, 'hours')
-        .format();
+    to = moment().add(1, 'hours').format();
 
     floorsFilter(floors: GetFloorsMap.Floors[]): GetFloorsMap.Floors[] {
         return floors

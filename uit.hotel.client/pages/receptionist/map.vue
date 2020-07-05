@@ -96,9 +96,7 @@ export default class extends mixins<Page, {}>(
     selected: GetFloors.Rooms[] = [];
 
     from = moment().format();
-    to = moment()
-        .add(1, 'hours')
-        .format();
+    to = moment().add(1, 'hours').format();
 
     head() {
         return {

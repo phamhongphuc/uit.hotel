@@ -63,8 +63,9 @@ const config: Configuration = {
     apollo: {
         clientConfigs: {
             default: {
-                httpEndpoint: `${process.env.HTTP_ENDPOINT ||
-                    LOCALHOST}/api/graphql`,
+                httpEndpoint: `${
+                    process.env.HTTP_ENDPOINT || LOCALHOST
+                }/api/graphql`,
             },
         },
     },
