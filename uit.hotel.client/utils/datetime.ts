@@ -16,11 +16,4 @@ export const getMiddleOfDay = (time: Moment) =>
     time.clone().set({ hour: 12, minute: 0, second: 0, millisecond: 0 });
 
 export const getHours = (time: Moment) =>
-    moment
-        .duration(
-            -time
-                .clone()
-                .startOf('days')
-                .diff(time),
-        )
-        .asHours();
+    moment.duration(-time.clone().startOf('days').diff(time)).asHours();

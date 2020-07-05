@@ -19,9 +19,9 @@
                             <icon-
                                 i="circle-fill"
                                 class="m-1"
-                                :class="
-                                    `text-${billStatusColorMap[bill.status]}`
-                                "
+                                :class="`text-${
+                                    billStatusColorMap[bill.status]
+                                }`"
                             />
                             {{ billStatusMap(bill.status, bill.time) }}
                         </span>
@@ -231,9 +231,7 @@
                                 <icon-
                                     class="mr-1"
                                     i="circle-fill"
-                                    :class="
-                                        `text-${ReceiptStatusColorMap[value]}`
-                                    "
+                                    :class="`text-${ReceiptStatusColorMap[value]}`"
                                 />
                                 <span class="mr-2">
                                     {{ statusText }}
@@ -241,7 +239,7 @@
                                 <b-button
                                     v-if="
                                         kind == ReceiptKindEnum.Momo &&
-                                            value == ReceiptStatusEnum.Pending
+                                        value == ReceiptStatusEnum.Pending
                                     "
                                     size="sm"
                                     class="shadow-none ml-auto"

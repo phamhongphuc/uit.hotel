@@ -1,117 +1,85 @@
 variables:
-    folder_root: $(Build.SourcesDirectory)
-    folder_packages: $(folder_root)/packages
-    NUGET_PACKAGES: $(folder_packages)
+  PATH_SERVER: 'uit.hotel'
+  PATH_SERVER_TEST: 'uit.hotel.test'
+  PATH_CLIENT: 'uit.hotel.client'
 
-    artifacts_dotnet_core: 'd09745d0-213d-4136-bcd1-78ba4998212a'
-    artifacts_nodejs: '112b6df3-39ce-4dc9-a4ed-df6940f01b04'
-
-    path_server: 'uit.hotel'
-    path_server_test: 'uit.hotel.test'
-    path_client: 'uit.hotel.client'
-
-    dotnet_key_file: '**/*.csproj, **/*.sln, **/.azure.yml'
-
-    obj_path: $(path_server)/obj
-    obj_cache: $(folder_packages)/$(obj_path)
-    obj_project: $(folder_root)/$(obj_path)
-
-    obj_test_path: $(path_server_test)/obj
-    obj_test_cache: $(folder_packages)/$(obj_test_path)
-    obj_test_project: $(folder_root)/$(obj_test_path)
+  NUGET_PACKAGES: $(Pipeline.Workspace)/.nuget/packages
+  YARN_CACHE_FOLDER: $(Pipeline.Workspace)/.yarn
+  NODE_CACHE_FOLDER: $(System.DefaultWorkingDirectory)/$(PATH_CLIENT)/node_modules
 
 jobs:
-    - job: DotNetCore
-      pool:
-          vmImage: 'ubuntu-latest'
-      steps:
-          - task: RestoreAndSaveCache@1
-            displayName: '[Cache] Restore artifact based on: $(dotnet_key_file)'
-            inputs:
-                keyfile: $(dotnet_key_file)
-                targetfolder: '$(folder_packages)'
-                vstsFeed: $(artifacts_dotnet_core)
-            condition: ne(variables['CacheRestored'], 'true')
+  - job: DotNetCore
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+      - task: Cache@2
+        inputs:
+          key: nuget | $(Agent.OS) | .azure.yml
+          path: $(NUGET_PACKAGES)
+          restoreKeys: |
+            nuget | $(Agent.OS)
+        displayName: '[Cache] Cache Nuget packages'
 
-          - script: |
-                mkdir -p $(obj_cache)
-                mkdir -p $(obj_project)
-                cp -R $(obj_cache)/* $(obj_project) || true
-                ls -R $(obj_cache)
-                ls -R $(obj_project)
+      - script: dotnet --info
+        displayName: '[Server] Run `dotnet --info`'
 
-                mkdir -p $(obj_test_cache)
-                mkdir -p $(obj_test_project)
-                cp -R $(obj_test_cache)/* $(obj_test_project) || true
-                ls -R $(obj_test_cache)
-                ls -R $(obj_test_project)
-            displayName: '[Copy] Copy from cache'
+      - script: dotnet restore
+        condition: ne(variables.CACHE_RESTORED, 'true')
+        displayName: '[Server] Run `dotnet restore`'
 
-          - script: dotnet --info
-            displayName: '[Server] Run `dotnet --info`'
+      - script: dotnet build --no-restore
+        displayName: '[Server] Run `dotnet build`'
 
-          - script: dotnet restore
-            condition: ne(variables['CacheRestored'], 'true')
-            displayName: '[Server] Run `dotnet restore`'
+      - script: dotnet test --no-build
+        displayName: '[Server] Run `dotnet test`'
 
-          - script: dotnet build --no-restore
-            displayName: '[Server] Run `dotnet build`'
+  - job: NodeJS
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+      - task: Cache@2
+        inputs:
+          key: yarn | $(Agent.OS) | $(PATH_CLIENT)/yarn.lock | .azure.yml
+          path: $(YARN_CACHE_FOLDER)
+          restoreKeys: |
+            yarn | $(Agent.OS)
+        displayName: '[Cache] Cache Yarn packages'
 
-          - script: |
-                mkdir -p $(obj_cache)
-                mkdir -p $(obj_project)
-                cp -R $(obj_project)/* $(obj_cache) || true
-                ls -R $(obj_cache)
-                ls -R $(obj_project)
+      - task: Cache@2
+        inputs:
+          key: node | $(Agent.OS) | $(PATH_CLIENT)/yarn.lock | .azure.yml
+          path: $(NODE_CACHE_FOLDER)
+        displayName: Cache Node Modules
 
-                mkdir -p $(obj_test_cache)
-                mkdir -p $(obj_test_project)
-                cp -R $(obj_test_project)/* $(obj_test_cache) || true
-                ls -R $(obj_test_cache)
-                ls -R $(obj_test_project)
-            displayName: '[Copy] Copy to cache'
+      - task: UseNode@1
+        inputs:
+          version: '12.x'
+          checkLatest: true
+        displayName: '[Client] Install NodeJS'
 
-          - script: dotnet test --no-build
-            displayName: '[Server] Run `dotnet test`'
+      - script: |
+          cd $(PATH_CLIENT)
+          yarn
+          yarn cache list
+        condition: ne(variables['CacheRestored'], 'true')
+        displayName: '[Client] Run `yarn install`'
 
-    - job: NodeJS
-      pool:
-          vmImage: 'ubuntu-latest'
-      steps:
-          - task: RestoreAndSaveCache@1
-            displayName: '[Cache] Restore artifact based on: yarn.lock'
-            inputs:
-                keyfile: '**/yarn.lock, !**/node_modules/**/yarn.lock, !**/.*/**/yarn.lock, **/.azure.yml'
-                targetfolder: '**/node_modules, !**/node_modules/**/node_modules'
-                vstsFeed: '$(artifacts_nodejs)'
+      - script: |
+          cd $(PATH_CLIENT)
+          yarn lint:js --max-warnings=0
+        displayName: '[Client] Run `yarn lint:js`'
 
-          - task: UseNode@1
-            inputs:
-                version: '10.16.0'
-            displayName: '[Client] Install NodeJS'
+      - script: |
+          cd $(PATH_CLIENT)
+          yarn lint:css
+        displayName: '[Client] Run `yarn lint:css`'
 
-          - script: |
-                cd $(path_client)
-                yarn
-            condition: ne(variables['CacheRestored'], 'true')
-            displayName: '[Client] Run `yarn install`'
+      - script: |
+          cd $(PATH_CLIENT)
+          yarn build
+        displayName: '[Client] Run `yarn build`'
 
-          - script: |
-                cd $(path_client)
-                yarn lint:js --max-warnings=0
-            displayName: '[Client] Run `yarn lint:js`'
-
-          - script: |
-                cd $(path_client)
-                yarn lint:css
-            displayName: '[Client] Run `yarn lint:css`'
-
-          - script: |
-                cd $(path_client)
-                yarn build
-            displayName: '[Client] Run `yarn build`'
-
-          - script: |
-                cd $(path_client)
-                yarn test
-            displayName: '[Client] Run `yarn test`'
+      - script: |
+          cd $(PATH_CLIENT)
+          yarn test
+        displayName: '[Client] Run `yarn test`'

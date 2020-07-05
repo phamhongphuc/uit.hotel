@@ -4,7 +4,7 @@ import { RootState } from '~/store';
 
 const publicRoutes = ['login', 'initialize'];
 
-export default async function({
+export default async function ({
     req,
     store,
     redirect,

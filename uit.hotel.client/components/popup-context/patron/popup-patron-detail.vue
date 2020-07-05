@@ -75,12 +75,9 @@
                                             <a
                                                 v-if="
                                                     patron.phoneNumber !== '' &&
-                                                        patron.phoneNumber !==
-                                                            null
+                                                    patron.phoneNumber !== null
                                                 "
-                                                :href="
-                                                    `tel:${patron.phoneNumber}`
-                                                "
+                                                :href="`tel:${patron.phoneNumber}`"
                                                 @click.stop
                                             >
                                                 {{ patron.phoneNumber }}
@@ -94,7 +91,7 @@
                                             <a
                                                 v-if="
                                                     patron.email !== '' &&
-                                                        patron.email !== null
+                                                    patron.email !== null
                                                 "
                                                 :href="`mailto:${patron.email}`"
                                                 @click.stop
