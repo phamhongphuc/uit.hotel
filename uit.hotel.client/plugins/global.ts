@@ -4,7 +4,7 @@ import moment from 'moment';
 
 moment.locale('vi');
 
-export default function({ app }: Context): void {
+export default function ({ app }: Context): void {
     if (!app.mixins) app.mixins = [];
 
     app.mixins.push({

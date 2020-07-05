@@ -19,11 +19,9 @@
                             <icon-
                                 i="circle-fill"
                                 class="m-1"
-                                :class="
-                                    `text-${roomKindColorMap(
-                                        roomKind.isActive,
-                                    )}`
-                                "
+                                :class="`text-${roomKindColorMap(
+                                    roomKind.isActive,
+                                )}`"
                             />
                             {{ roomKindTitleMap(roomKind.isActive) }}
                         </span>
