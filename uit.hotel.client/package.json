@@ -58,7 +58,7 @@
         "@nuxt/typescript-build": "^1.0.3",
         "@playlyfe/gql": "^2.6.2",
         "@types/chai": "^4.2.11",
-        "@types/cookie": "^0.3.3",
+        "@types/cookie": "^0.4.0",
         "@types/express": "^4.17.7",
         "@types/lodash": "^4.14.150",
         "@types/mocha": "^7.0.2",
