@@ -53,7 +53,7 @@
         "@graphql-codegen/schema-ast": "^1.16.1",
         "@graphql-codegen/typescript": "^1.10.0",
         "@graphql-codegen/typescript-compatibility": "^1.17.0",
-        "@graphql-codegen/typescript-operations": "^1.13.2",
+        "@graphql-codegen/typescript-operations": "^1.17.7",
         "@nuxt/types": "^0.7.4",
         "@nuxt/typescript-build": "^1.0.3",
         "@playlyfe/gql": "^2.6.2",
