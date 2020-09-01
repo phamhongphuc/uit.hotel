@@ -46,7 +46,7 @@
         "vuex-persistedstate": "^3.0.1"
     },
     "devDependencies": {
-        "@babel/polyfill": "^7.8.7",
+        "@babel/polyfill": "^7.11.5",
         "@babel/register": "7.9.0",
         "@graphql-codegen/cli": "^1.17.0",
         "@graphql-codegen/introspection": "^1.16.0",
