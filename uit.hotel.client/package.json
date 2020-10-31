@@ -51,7 +51,7 @@
         "@graphql-codegen/cli": "^1.17.0",
         "@graphql-codegen/introspection": "^1.16.0",
         "@graphql-codegen/schema-ast": "^1.16.1",
-        "@graphql-codegen/typescript": "^1.10.0",
+        "@graphql-codegen/typescript": "^1.17.11",
         "@graphql-codegen/typescript-compatibility": "^1.17.0",
         "@graphql-codegen/typescript-operations": "^1.13.2",
         "@nuxt/types": "^0.7.4",
