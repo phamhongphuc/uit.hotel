@@ -64,7 +64,7 @@
         "@types/mocha": "^7.0.2",
         "@types/node": "^14.14.6",
         "@types/vuelidate": "^0.7.13",
-        "@types/webpack-env": "^1.15.2",
+        "@types/webpack-env": "^1.15.3",
         "@typescript-eslint/eslint-plugin": "^2.34.0",
         "@typescript-eslint/parser": "^2.34.0",
         "babel-eslint": "^10.1.0",
