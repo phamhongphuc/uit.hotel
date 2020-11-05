@@ -27,7 +27,7 @@
         "@nuxtjs/apollo": "^4.0.0-rc19",
         "@nuxtjs/style-resources": "^1.0.0",
         "bluebird": "^3.7.2",
-        "bootstrap-vue": "2.15.0",
+        "bootstrap-vue": "2.18.1",
         "cookie": "^0.4.1",
         "express": "^4.17.1",
         "graphql-tag": "^2.10.3",
