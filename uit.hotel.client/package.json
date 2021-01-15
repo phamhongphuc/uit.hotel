@@ -34,7 +34,7 @@
         "lodash": "^4.17.19",
         "moment": "^2.24.0",
         "nuxt": "^2.13.3",
-        "nuxt-property-decorator": "^2.7.2",
+        "nuxt-property-decorator": "^2.9.1",
         "source-map-support": "^0.5.19",
         "v-money": "^0.8.1",
         "velocity-animate": "^1.5.2",
