@@ -1,0 +1,76 @@
+version: 2
+updates:
+- package-ecosystem: nuget
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "22:00"
+  open-pull-requests-limit: 10
+  target-branch: dependency
+  ignore:
+  - dependency-name: Microsoft.AspNetCore.App
+    versions:
+    - "> 2.1.4"
+  - dependency-name: GraphQL
+    versions:
+    - 3.3.2
+    - 4.0.0
+    - 4.0.1
+    - 4.0.2
+    - 4.1.0
+    - 4.2.0
+    - 4.3.0
+    - 4.4.0
+  - dependency-name: Realm
+    versions:
+    - 10.0.1
+    - 10.1.0
+    - 10.1.1
+    - 10.1.2
+  - dependency-name: Microsoft.AspNetCore.Authentication.JwtBearer
+    versions:
+    - 5.0.2
+    - 5.0.3
+    - 5.0.4
+  - dependency-name: MSTest.TestFramework
+    versions:
+    - 2.2.1
+  - dependency-name: MSTest.TestAdapter
+    versions:
+    - 2.2.1
+  - dependency-name: Microsoft.NET.Test.Sdk
+    versions:
+    - 16.8.3
+    - 16.9.1
+  - dependency-name: GraphQL.Authorization
+    versions:
+    - 3.1.0
+- package-ecosystem: npm
+  directory: "/uit.hotel.test"
+  schedule:
+    interval: daily
+    time: "22:00"
+  open-pull-requests-limit: 10
+  target-branch: dependency
+- package-ecosystem: npm
+  directory: "/uit.hotel.client"
+  schedule:
+    interval: daily
+    time: "22:00"
+  open-pull-requests-limit: 10
+  target-branch: dependency
+  versioning-strategy: increase
+  ignore:
+  - dependency-name: "@graphql-codegen/cli"
+    versions:
+    - 1.20.1
+    - 1.21.1
+    - 1.21.2
+    - 1.21.3
+  - dependency-name: "@types/mocha"
+    versions:
+    - 8.2.0
+    - 8.2.1
+  - dependency-name: "@graphql-codegen/schema-ast"
+    versions:
+    - 1.18.1
