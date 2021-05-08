@@ -31,7 +31,7 @@
         "cookie": "^0.4.1",
         "express": "^4.17.1",
         "graphql-tag": "^2.10.3",
-        "lodash": "^4.17.19",
+        "lodash": "^4.17.21",
         "moment": "^2.24.0",
         "nuxt": "^2.12.2",
         "nuxt-property-decorator": "^2.7.2",
