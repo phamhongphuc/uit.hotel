@@ -43,7 +43,7 @@
         "vue-notification": "^1.3.20",
         "vuelidate": "^0.7.6",
         "vuex-class": "^0.3.2",
-        "vuex-persistedstate": "^3.0.1"
+        "vuex-persistedstate": "^4.0.0"
     },
     "devDependencies": {
         "@babel/polyfill": "^7.12.1",
